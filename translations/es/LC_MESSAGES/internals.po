@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-01-16 17:05+Hora estándar romance\n"
-"PO-Revision-Date: 2018-01-16 17:06+0100\n"
+"PO-Revision-Date: 2018-01-16 17:22+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:3
 msgid "# NVDA feature internals"
-msgstr ""
+msgstr "# Características internas de NVDA"
 
 #: ..\python_docs\internals.py:4
 msgid ""
@@ -27,6 +27,10 @@ msgid ""
 "various features of NVDA. Thus, it is important to have some knowledge of "
 "NVDA itself, Python, C++ and programming concepts to follow this article."
 msgstr ""
+"Este artículo está diseñado para ofrecer a los usuarios y desarrolladores un "
+"recorrido por el interior de algunas características de NVDA. Por tanto, es "
+"importante tener algunos conocimientos de Python, C++, conceptos generales "
+"de programación y NVDA en sí mismo para seguirlo."
 
 #: ..\python_docs\internals.py:5
 msgid ""
@@ -34,22 +38,25 @@ msgid ""
 "design overview document found in NVDA Community website. Parts of this "
 "article are based on NVDA User Guide."
 msgstr ""
+"Nota: este artículo está basado en el documento de descripción del diseño "
+"que se encuentra en un sitio web, y es una versión mejorada del mismo. Parte "
+"de los contenidos de este documento provienen de la guía de usuario."
 
 #: ..\python_docs\internals.py:6 ..\python_docs\internals.py:8
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: ..\python_docs\internals.py:7
 msgid "[[PageOutline(2-4,,inline)]]"
-msgstr ""
+msgstr "[[PageOutline(2-4,,inline)]]"
 
 #: ..\python_docs\internals.py:9
 msgid "## Introduction"
-msgstr ""
+msgstr "## Introducción"
 
 #: ..\python_docs\internals.py:10
 msgid "### About NVDA"
-msgstr ""
+msgstr "### Acerca de NVDA"
 
 #: ..\python_docs\internals.py:11
 msgid ""
@@ -59,42 +66,56 @@ msgid ""
 "accepting keyboard input to perform various tasks, displaying a rich set of "
 "configuration options, responding to events and so on."
 msgstr ""
+"NVDA (acceso no visual a ordenadores de escritorio (Non Visual Desktop "
+"Access)) es un lector de pantalla gratuito, de código abierto y dirigido por "
+"la comunidad para Microsoft Windows. Este lector de pantalla modular y "
+"altamente extensible ofrece todas las funciones que se espera de un lector "
+"de pantalla, tales como aceptar entrada por teclado para realizar ciertas "
+"tareas, mostrar un rico y variado conjunto de opciones de configuración, "
+"responder a eventos, etc."
 
 #: ..\python_docs\internals.py:12
 msgid "### Audience"
-msgstr ""
+msgstr "### Audiencia"
 
 #: ..\python_docs\internals.py:13
 msgid ""
 "As this is an article on feature internals, we will assume that you meet the "
 "following prerequisites:"
 msgstr ""
+"Ya que este es un artículo que habla de características internas, se asumirá "
+"que cumples los siguientes requisitos previos:"
 
 #: ..\python_docs\internals.py:14
 msgid "- You are a user of NVDA and curious about how things work."
-msgstr ""
+msgstr "- Eres un usuario de NVDA y tienes curiosidad por saber cómo funciona."
 
 #: ..\python_docs\internals.py:15
 msgid ""
 "- You have some experience with programming and are familiar with C++ and "
 "Python."
 msgstr ""
+"- Tienes alguna experiencia programando y conocimientos en C++ y Python."
 
 #: ..\python_docs\internals.py:16
 msgid ""
 "- You would like to contribute your expertise but don't know where to start "
 "and how NVDA performs its job."
 msgstr ""
+"- Quieres contribuir con tus conocimientos pero no sabes por dónde empezar "
+"ni cómo hace su trabajo NVDA."
 
 #: ..\python_docs\internals.py:17
 msgid ""
 "- You are a new or a seasoned NVDA add-on writer and like to dive deeper "
 "into NVDA internals."
 msgstr ""
+"- Eres nuevo o tienes experiencia escribiendo complementos y quieres conocer "
+"el funcionamiento interno de NVDA."
 
 #: ..\python_docs\internals.py:18
 msgid "### Article structure"
-msgstr ""
+msgstr "### Estructura del artículo"
 
 #: ..\python_docs\internals.py:19
 msgid ""
@@ -151,7 +172,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:25
 msgid "## Where to obtain NVDA source code and compile NVDA"
-msgstr ""
+msgstr "## Dónde obtener el código fuente y cómo compilar NVDA"
 
 #: ..\python_docs\internals.py:26
 msgid ""
@@ -163,7 +184,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:27
 msgid "### Building NVDA"
-msgstr ""
+msgstr "### Construcción de NVDA"
 
 #: ..\python_docs\internals.py:28
 msgid ""
@@ -176,7 +197,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:29
 msgid "## NVDA components and source code layout"
-msgstr ""
+msgstr "## Componentes de NVDA y disposición del código fuente"
 
 #: ..\python_docs\internals.py:30
 msgid ""
