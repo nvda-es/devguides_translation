@@ -34,7 +34,6 @@ Si quieres participar en el proceso de conversión de documentos, necesitas lo s
 * Python, versión 2.7.14 o posterior para Windows. Se pueden usar las versiones de 32 o 64 bits.
 * Los paquetes markdown y html2markdown, que puedes instalar desde pip
 * Agrega la ruta a tu carpeta de instalación de Python modificando la variable path en las variables de entorno de tu sistema. El instalador lo hará por ti si marcas la opción correspondiente.
-* Agrega la ruta scripts dentro de tu carpeta de Python a la variable path.
 
 ## Conversión de ejemplo
 
