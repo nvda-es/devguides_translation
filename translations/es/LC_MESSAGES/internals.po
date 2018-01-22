@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-01-16 17:05+Hora estándar romance\n"
-"PO-Revision-Date: 2018-01-16 17:22+0100\n"
+"PO-Revision-Date: 2018-01-22 19:55+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
@@ -124,6 +124,10 @@ msgid ""
 "letting you see how to obtain NVDA source code and the software packages "
 "involved in doing this and building NVDA for the first time."
 msgstr ""
+"Sería inútil hablar de cuestiones internas de un complejo sistema de "
+"software como NVDA sin tener algo que podamos seguir. Por tanto, vamos a "
+"empezar por ver cómo obtener el código fuente de NVDA y los paquetes de "
+"software involucrados, y la construcción de NVDA por primera vez."
 
 #: ..\python_docs\internals.py:20
 msgid ""
@@ -133,6 +137,12 @@ msgid ""
 "high-level overview of runtime life of NVDA, you'll get a chance to learn "
 "why NVDA uses two programming languages for various tasks."
 msgstr ""
+"Después de descargar el código fuente, podrías estar interesado en ver el "
+"contenido de las carpetas de su interior y la relación entre los módulos que "
+"conforman NVDA. Además de aprender más sobre los distintos componentes de "
+"NVDA y una descripción a alto nivel de su vida en tiempo de ejecución, "
+"tendrás la oportunidad de saber por qué NVDA usa dos lenguajes de "
+"programación."
 
 #: ..\python_docs\internals.py:21
 msgid ""
@@ -142,6 +152,11 @@ msgid ""
 "that, we'll visit core.main, the function responsible for starting and "
 "exiting NVDA and things it does in between."
 msgstr ""
+"A continuación, visitaremos los procedimientos que permiten que NVDA se "
+"inicie en tu equipo (instalador y lanzador) incluyendo aquellos que se usan "
+"para saber si NVDA está instalado o se ejecuta desde una unidad USB. Después "
+"de eso, visitaremos core.main, la función responsable de iniciar NVDA, salir "
+"de él y procesar todo lo que ocurre entre estos dos sucesos."
 
 #: ..\python_docs\internals.py:22
 msgid ""
@@ -153,6 +168,15 @@ msgid ""
 "synthesizers and braille display driver modules. We'll then visit add-on "
 "subsystem and discuss how various add-ons use various NVDA functionality."
 msgstr ""
+"Una parte significativa del artículo se enfocará en la vida de NVDA y qué es "
+"lo que hace para permitir el acceso a los ordenadores a miles de personas "
+"ciegas. Durante nuestro recorrido sabremos qué son los scripts y los "
+"eventos, cómo se manejan las apis de accesibilidad, cómo vienen a la vida "
+"los objetos y clases superpuestos, una visita al funcionamiento del modo "
+"exploración, y tendremos una oportunidad de entrevistar a distintos módulos "
+"de aplicación, sintetizadores de voz y controladores braille. Después de eso "
+"hablaremos del subsistema de complementos y debatiremos sobre cómo estos "
+"usan y mejoran la funcionalidad de NVDA."
 
 #: ..\python_docs\internals.py:23
 msgid ""
@@ -162,6 +186,11 @@ msgid ""
 "behavior when running from secure screens, Ease of Access integration and "
 "other miscellaneous services."
 msgstr ""
+"Siguiendo con nuestra discusión sobre las rutinas importantes de NVDA, "
+"echaremos un vistazo a su interfaz de usuario y cómo se administra la "
+"configuración. También sabremos qué pasa cuando NVDA busca actualizaciones, "
+"cómo cambia su comportamiento en pantallas seguras, su integración con el "
+"servicio de facilidad de uso del sistema y otros servicios adicionales."
 
 #: ..\python_docs\internals.py:24
 msgid ""
@@ -169,6 +198,9 @@ msgid ""
 "briefly talk about coding style, submitting patches for review and will "
 "conclude with development process."
 msgstr ""
+"Finalmente, te explicaremos cómo hacer realidad una idea. Hablaremos "
+"brevemente del estilo del código, cómo enviar parches para que se revisen y "
+"concluiremos con el proceso de desarrollo."
 
 #: ..\python_docs\internals.py:25
 msgid "## Where to obtain NVDA source code and compile NVDA"
@@ -181,6 +213,11 @@ msgid ""
 "code management. For more information on obtaining source code, see "
 "AccessingAndRunningSourceCode article."
 msgstr ""
+"Si quieres aprender cómo funciona NVDA por dentro, es importante tener a "
+"mano su código fuente. Como muchos proyectos de código abierto, NVDA usa Git "
+"para administrar el código. Para más información sobre cómo obtener el "
+"código fuente, visita el artículo correspondiente de nuestra documentación "
+"para desarrolladores."
 
 #: ..\python_docs\internals.py:27
 msgid "### Building NVDA"
@@ -194,6 +231,12 @@ msgid ""
 "details on how to build NVDA from source can be found in readme.md found in "
 "the root directory of the NVDA source code."
 msgstr ""
+"Hay ocasiones en las que te gustaría ver a NVDA en acción. Para ayudarte en "
+"esto y en caso de que quieras probar una nueva característica, deberías "
+"construir NVDA desde el código. La herramienta SCons administra los pasos de "
+"compilación del código fuente, y se pueden encontrar detalles sobre cómo "
+"construir NVDA en el archivo readme.md que hay en la raíz del código fuente, "
+"o traducidos en nuestra web."
 
 #: ..\python_docs\internals.py:29
 msgid "## NVDA components and source code layout"
@@ -206,72 +249,92 @@ msgid ""
 "Let's examine the folder structure, and after that, we'll tour various "
 "components that holds NVDA together."
 msgstr ""
+"Cuando abras la carpeta que contiene el código fuente, te darás cuenta de "
+"que hay varios directorios además de \"source\". Examinemos la estructura de "
+"las carpetas, y después de eso, haremos un recorrido por distintos "
+"componentes que conforman NVDA."
 
 #: ..\python_docs\internals.py:31
 msgid "### Source code folder structure"
-msgstr ""
+msgstr "### Estructura de la carpeta del código fuente"
 
 #: ..\python_docs\internals.py:32
 msgid "The source code package comprises following folders and files:"
 msgstr ""
+"El paquete de código fuente consta de las siguientes carpetas y archivos:"
 
 #: ..\python_docs\internals.py:33
 msgid ""
 "- build: Created when NVDA is built from source and is used as a staging "
 "area for compiled code."
 msgstr ""
+"- build: se crea al construir NVDA desde el código fuente y se usa como área "
+"intermedia para el código compilado."
 
 #: ..\python_docs\internals.py:34
 msgid "- extras: Contains NVDA Controller Client package."
-msgstr ""
+msgstr "- extras: contiene el paquete del cliente para el controlador de NVDA."
 
 #: ..\python_docs\internals.py:35
 msgid ""
 "- include: Major dependencies needed by NVDA, such as IAccessible2 library, "
 "are stored here."
 msgstr ""
+"- include: la mayoría de las dependencias que NVDA necesita, como por "
+"ejemplo la biblioteca IACcessible2, se almacenan aquí."
 
 #: ..\python_docs\internals.py:36
 msgid "- launcher: Holds the MSI for NVDA's launcher."
-msgstr ""
+msgstr "- launcher: contiene el código del lanzador de NVDA."
 
 #: ..\python_docs\internals.py:37
 msgid ""
 "- misc-deps: The miscellaneous dependencies folder houses other packages "
 "required to build NVDA such as various Python packages."
 msgstr ""
+"- misc-deps: contiene paquetes necesarios para construir NVDA, entre ellos "
+"paquetes Python."
 
 #: ..\python_docs\internals.py:38
 msgid ""
 "- nvdaHelper: Contains the C++ portion of NVDA used in various situations."
 msgstr ""
+"- nvdaHelper: contiene la parte de código en C++ de NVDA usada en distintas "
+"situaciones."
 
 #: ..\python_docs\internals.py:39
 msgid ""
 "- output: The resulting packages from various build tasks are stored here."
 msgstr ""
+"- output: los paquetes resultantes de las tareas de construcción se "
+"almacenan aquí."
 
 #: ..\python_docs\internals.py:40
 msgid "- site_scons: Other packages built by SCons are stored here."
-msgstr ""
+msgstr "- site_scons: otros paquetes construidos por SCons se almacenan aquí."
 
 #: ..\python_docs\internals.py:41
 msgid ""
 "- source: This is where Python portion of NVDA lives. We'll talk about "
 "contents of this directory throughout this article."
 msgstr ""
+"- source: aquí es donde vive el código Python de NVDA. Hablaremos del "
+"contenido de este directorio a lo largo de este artículo."
 
 #: ..\python_docs\internals.py:42
 msgid "- uninstaller: Routines used by NVDA's uninstaller is stored here."
 msgstr ""
+"- uninstaller: almacena los procedimientos que usa el desinstalador de NVDA."
 
 #: ..\python_docs\internals.py:43
 msgid "- user_docs: Documentation files for NVDA are stored in this folder."
 msgstr ""
+"- user_docs: aquí se almacenan los archivos con la documentación de usuario "
+"de NVDA."
 
 #: ..\python_docs\internals.py:44
 msgid "### NVDA components overview"
-msgstr ""
+msgstr "### Descripción de los componentes de NVDA"
 
 #: ..\python_docs\internals.py:45
 msgid ""
@@ -280,12 +343,18 @@ msgid ""
 "to a braille display and more. Here is a complete list of components used by "
 "NVDA:"
 msgstr ""
+"NVDA se apoya en varios componentes para realizar su trabajo (dar soporte a "
+"varias apis de accesibilidad, entender órdenes de teclado, enviar la salida "
+"a una pantalla braille, etc.). Aquí se encuentra una lista completa de los "
+"componentes de NVDA:"
 
 #: ..\python_docs\internals.py:46
 msgid ""
 "- Installer: This module is the first module encountered when using NVDA for "
 "the very first time."
 msgstr ""
+"- Instalador: este es el primer módulo que nos encontramos al usar NVDA por "
+"primera vez."
 
 #: ..\python_docs\internals.py:47
 msgid ""
@@ -293,6 +362,9 @@ msgid ""
 "This module is responsible for checking command-line arguments and performs "
 "initial startup tasks."
 msgstr ""
+"- Lanzador (nvda.pyw, nvda.exe en versiones binarias): se usa para iniciar "
+"NVDA. Este módulo es el encargado de comprobar los argumentos de la línea de "
+"órdenes y realizar distintas tareas de inicialización."
 
 #: ..\python_docs\internals.py:48
 msgid ""
@@ -300,18 +372,27 @@ msgid ""
 "NVDA in secure screens. A related module is used to register NVDA with Ease "
 "of Access (Windows Vista and later)."
 msgstr ""
+"- Servicio de NVDA: este se usa cuando NVDA se ejecuta como servicio, por "
+"ejemplo al usarlo en pantallas seguras. Existe un módulo relacionado que "
+"registra NVDA con el servicio de accesibilidad (Windows Vista y posterior)."
 
 #: ..\python_docs\internals.py:49
 msgid ""
 "- Core: Performs bulk of NVDA's startup routine, coordinates how NVDA should "
 "exit and involved in NVDA's life from start to finish."
 msgstr ""
+"- Núcleo: se encarga de todo lo relativo al inicio de NVDA, coordina cómo "
+"debe cerrarse y está implicado en la vida de NVDA desde el principio hasta "
+"el fin."
 
 #: ..\python_docs\internals.py:50
 msgid ""
 "- Event processor: Routines in event handler and queue handler are used to "
 "process events, queue events and perform related actions."
 msgstr ""
+"- Procesador de eventos: las instrucciones en el manejador de eventos y en "
+"el procesador de cola se usan para procesar eventos, meterlos en la cola y "
+"realizar acciones relacionadas."
 
 #: ..\python_docs\internals.py:51
 msgid ""
@@ -320,12 +401,19 @@ msgid ""
 "and UI Automation (UIA). Together with various overlay classes, API handlers "
 "allow NVDA to present uniform experience across different API's."
 msgstr ""
+"- Soporte para apis de accesibilidad: NVDA viene con manejadores para MSAA "
+"(Microsoft Active Accessibility)/IAccessible, IAccessible2, Java Access "
+"Bridge (JAB) y UI Automation (UIA). Junto con varias clases de "
+"superposición, los manejadores de apis permiten a NVDA presentar una "
+"experiencia uniforme entre distintas apis."
 
 #: ..\python_docs\internals.py:52
 msgid ""
 "- Text navigation and access: Various methods for handling different types "
 "of text widgets are provided in text infos package."
 msgstr ""
+"- Acceso y navegación por texto: se ofrecen varios métodos para trabajar con "
+"distintos widgets de texto en el paquete text infos."
 
 #: ..\python_docs\internals.py:53
 msgid ""
@@ -334,6 +422,12 @@ msgid ""
 "duties include managing app module initialization and termination and "
 "keeping track of which app modules are active."
 msgstr ""
+"- Módulos de aplicación: NVDA viene con varios módulos que te permiten "
+"usarlo en distintas aplicaciones. El coordinador del soporte de módulos de "
+"aplicación es el manejador de módulos de aplicación, también llamado app "
+"module handler, y entre sus tareas se encuentran administrar el inicio y "
+"finalización de módulos de aplicación, y llevar un registro con los módulos "
+"que están activos."
 
 #: ..\python_docs\internals.py:54
 msgid ""
@@ -341,6 +435,9 @@ msgid ""
 "by NVDA users, and there is a manager that keeps an eye on global plugins: "
 "global plugin handler."
 msgstr ""
+"- Extensiones globales: una extensión global añade funciones muy "
+"interesantes para los usuarios de NVDA, y hay un administrador que no les "
+"quita ojo: el global plugin handler o manejador de extensiones globales."
 
 #: ..\python_docs\internals.py:55
 msgid ""
@@ -431,38 +528,42 @@ msgid ""
 "learn more about NVDA's architecture, starting with some important "
 "definitions."
 msgstr ""
+"Examinaremos en detalle estos módulos a lo largo de este artículo. El resto "
+"del artículo está basado en el de descripción del diseño. Pero primero "
+"aprendamos algo más sobre la arquitectura de NVDA, comenzando con algunas "
+"definiciones importantes."
 
 #: ..\python_docs\internals.py:68
 msgid "## Terminology"
-msgstr ""
+msgstr "## Terminología"
 
 #: ..\python_docs\internals.py:69
 msgid "### Abbreviations"
-msgstr ""
+msgstr "### Abreviaturas"
 
 #: ..\python_docs\internals.py:70
 msgid " * API: Application programming interface"
-msgstr ""
+msgstr " * API: interfaz de programación de aplicaciones"
 
 #: ..\python_docs\internals.py:71
 msgid " * GUI: Graphical user interface"
-msgstr ""
+msgstr " * GUI: interfaz gráfica de usuario"
 
 #: ..\python_docs\internals.py:72
 msgid " * OS: Operating system"
-msgstr ""
+msgstr " * SO: sistema operativo"
 
 #: ..\python_docs\internals.py:73
 msgid " * DLL: Dynamic Link Library"
-msgstr ""
+msgstr " * DLL: biblioteca de vínculos dinámicos"
 
 #: ..\python_docs\internals.py:74
 msgid " "
-msgstr ""
+msgstr " "
 
 #: ..\python_docs\internals.py:75
 msgid "### Definitions"
-msgstr ""
+msgstr "### Definiciones"
 
 #: ..\python_docs\internals.py:76
 msgid ""
@@ -498,11 +599,11 @@ msgstr ""
 
 #: ..\python_docs\internals.py:82
 msgid "## General"
-msgstr ""
+msgstr "## General"
 
 #: ..\python_docs\internals.py:83
 msgid "### Programming Languages"
-msgstr ""
+msgstr "### Lenguajes de programación"
 
 #: ..\python_docs\internals.py:84
 msgid ""
