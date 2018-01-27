@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-01-16 17:05+Hora estándar romance\n"
-"PO-Revision-Date: 2018-01-22 19:55+0100\n"
+"PO-Revision-Date: 2018-01-27 15:42+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -446,6 +446,10 @@ msgid ""
 "invoked when installing and removing add-ons and throughout the life of an "
 "add-on."
 msgstr ""
+"- Subsistema de complementos: puedes programar o utilizar complementos para "
+"extender la funcionalidad de NVDA. El manejador de complementos "
+"(addonHandler) es el encargado de coordinarlos, y reacciona al instalarlos, "
+"desinstalarlos y durante la vida de cada complemento."
 
 #: ..\python_docs\internals.py:56
 msgid ""
@@ -453,6 +457,9 @@ msgid ""
 "browse mode module allow you to navigate complex documents such as PDF "
 "documents and websites."
 msgstr ""
+"- Administración del modo exploración: el código almacenado en el paquete "
+"virtualBuffers y en el módulo browseMode te permite navegar por documentos "
+"complejos, tales como sitios web o documentos pdf."
 
 #: ..\python_docs\internals.py:57
 msgid ""
@@ -461,18 +468,28 @@ msgid ""
 "tracking mouse movement and recording actions associated with a button on a "
 "braille display."
 msgstr ""
+"- Soporte de entrada: el módulo inputCore y aquellos relacionados con él "
+"controlan distintos escenarios de entrada. Estos incluyen una pulsación de "
+"teclado, un movimiento en una pantalla táctil, el rastreo del movimiento del "
+"ratón y la pulsación de un botón en una pantalla braille."
 
 #: ..\python_docs\internals.py:58
 msgid ""
 "- Output routines: NVDA can be told to announce something via speech, "
 "braille, tones, wave file playback or combination of these."
 msgstr ""
+"- Componentes de salida: se le puede pedir a NVDA que anuncie algo a través "
+"de voz, braille, tonos, la reproducción de un archivo de sonido o una "
+"combinación de todo esto."
 
 #: ..\python_docs\internals.py:59
 msgid ""
 "- Speech and synthesizers: These two subsystems allow NVDA to speak things "
 "on screen via a user-defined speech synthesizer."
 msgstr ""
+"- Voz y sintetizadores: estos dos subsistemas permiten a NVDA verbalizar lo "
+"que hay en pantalla a través de un sintetizador de voz definido por el "
+"usuario."
 
 #: ..\python_docs\internals.py:60
 msgid ""
@@ -480,18 +497,25 @@ msgid ""
 "communicate with various braille displays to send braille text or receive "
 "and interpret input from them."
 msgstr ""
+"- Administración de pantallas braille: este complejo subsistema permite que "
+"NVDA se comunique con distintas pantallas braille para enviarles texto o "
+"recibir e interpretar la entrada que se realice desde ellas."
 
 #: ..\python_docs\internals.py:61
 msgid ""
 "- Message announcer: NVDA can announce various information via speech and/or "
 "braille using a function in the \"ui\" module."
 msgstr ""
+"- Anunciado de mensajes: NVDA puede anunciar información por síntesis de voz "
+"o braille usando una función disponible en el módulo \"ui\"."
 
 #: ..\python_docs\internals.py:62
 msgid ""
 "- Graphical user interface: NVDA can show various dialogs, windows and so "
 "on, all housed in the \"gui\" package."
 msgstr ""
+"- Interfaz gráfica de usuario: NVDA puede mostrar múltiples diálogos y "
+"ventanas, todos ellos alojados en el paquete \"gui\"."
 
 #: ..\python_docs\internals.py:63
 msgid ""
@@ -499,6 +523,9 @@ msgid ""
 "configuration for NVDA, but also acts as a clerk responsible for managing "
 "user configuration such as switching between configuration profiles."
 msgstr ""
+"- Administración de la configuración: el paquete config no sólo aloja la "
+"configuración por defecto de NVDA, sino que también se usa para administrar "
+"la configuración de usuario y alternar entre distintos perfiles."
 
 #: ..\python_docs\internals.py:64
 msgid ""
@@ -506,6 +533,9 @@ msgid ""
 "localization, including language handler and translation files for NVDA "
 "interfaces in different languages."
 msgstr ""
+"- Soporte de idiomas: hay varios módulos implicados en la traducción de "
+"NVDA, incluidos languageHandler y los archivos de traducción de la interfaz "
+"de NVDA en distintos idiomas."
 
 #: ..\python_docs\internals.py:65
 msgid ""
@@ -513,6 +543,9 @@ msgid ""
 "routines to call C++ routines and used to let NVDA communicate with other "
 "programs via code injection and other advanced techniques."
 msgstr ""
+"- NVDA helper: este módulo realiza dos acciones: permite al código Python "
+"comunicarse con código C++, y permite que NVDA se comunique con otros "
+"programas mediante inyección de código y otras técnicas avanzadas."
 
 #: ..\python_docs\internals.py:66
 msgid ""
@@ -520,6 +553,9 @@ msgid ""
 "functions, housed in different modules named after Windows API libraries "
 "such as user32.dll wrapped in winUser.py."
 msgstr ""
+"- Soporte para la API de Windows: NVDA viene con módulos que abstraen "
+"algunas funciones de la api de Windows, alojadas en módulos tales como "
+"winUser.py, que contiene funciones de la biblioteca user32.dll."
 
 #: ..\python_docs\internals.py:67
 msgid ""
@@ -570,10 +606,14 @@ msgid ""
 " * Caret: The system cursor; i.e. the cursor generally moved when you use "
 "the normal cursor keys."
 msgstr ""
+" * Caret: el cursor del sistema; por ejemplo, el cursor que se mueve "
+"generalmente cuando pulsas las flechas y el tabulador."
 
 #: ..\python_docs\internals.py:77
 msgid " * Focus: The highlighted region of screen where the system sets focus."
 msgstr ""
+" * Foco: la región resaltada de la pantalla donde el sistema establece el "
+"foco."
 
 #: ..\python_docs\internals.py:78
 msgid ""
@@ -581,14 +621,19 @@ msgid ""
 "such  as key presses from the keyboard, manipulating braille display "
 "controls and taps on touchscreens. Also known as a command."
 msgstr ""
+" * Script: función que se ejecuta en respuesta a la entrada de usuario: "
+"pulsaciones de teclado, manipulación de controles en pantallas braille o "
+"toques en pantallas táctiles. El script también puede llamarse comando u "
+"orden."
 
 #: ..\python_docs\internals.py:79
 msgid " * Gesture: A piece of input such as a keyboard command."
-msgstr ""
+msgstr " * Gesto: unidad mínima de entrada. Por ejemplo, una orden de teclado."
 
 #: ..\python_docs\internals.py:80
 msgid " * Event: A routine to be used when certain conditions occur."
 msgstr ""
+" * Evento: código que debe ejecutarse cuando se dan ciertas condiciones."
 
 #: ..\python_docs\internals.py:81
 msgid ""
@@ -596,6 +641,9 @@ msgid ""
 "e.g. a button, an editable text field, a list box, etc. Also known as a "
 "control or object."
 msgstr ""
+" * Widget: un componente individual en una GUI con el que el usuario puede "
+"ineractuar; por ejemplo un botón, un campo de texto editable, un cuadro de "
+"lista, etc. También es conocido como control u objeto."
 
 #: ..\python_docs\internals.py:82
 msgid "## General"
@@ -612,14 +660,18 @@ msgid ""
 "that needs to be [#In-processCode injected into other processes] is written "
 "in C++ for high performance."
 msgstr ""
+"NVDA ha sido desarrollado principalmente con el [lenguaje de programación "
+"Python](http://www.python.org/), que permite un desarrollo rápido entre "
+"otras ventajas. El código que se inyecta en otros procesos está escrito en C+"
+"+ para aumentar el rendimiento."
 
 #: ..\python_docs\internals.py:85
 msgid "Note: Because of dependencies, NVDA is written using Python 2.7."
-msgstr ""
+msgstr "Nota: por cuestión de dependencias, NVDA utiliza Python 2.7."
 
 #: ..\python_docs\internals.py:86
 msgid "### Accessibility APIs"
-msgstr ""
+msgstr "### Apis de accesibilidad"
 
 #: ..\python_docs\internals.py:87
 msgid ""
@@ -639,10 +691,26 @@ msgid ""
 "(also known as IAccessible), [IAccessible2](http://www.linuxfoundation.org/"
 "en/Accessibility/IAccessible2), Java Access Bridge and UI Automation."
 msgstr ""
+"Para hacer accesibles los widgets gráficos a las tecnologías de asistencia, "
+"las aplicaciones y los sistemas operativos pueden usar apis específicas de "
+"accesibilidad. Estas apis ofrecen información sobre el widget tal como su "
+"nombre, tipo/rol (botón, casilla de verificación, campo de texto editable, "
+"etc.), descripción, valor, estados (marcado, no disponible, invisible, etc.) "
+"y atajo de teclado. Las apis de accesibilidad también ofrecen eventos para "
+"permitir a las tecnologías de asistencia monitorizar cambios, tales como los "
+"cambios de foco, de propiedades de un objeto (tales como nombre, "
+"descripción, valor y estado), etc. Las apis de accesibilidad enriquecida "
+"ofrecen información adicional, incluyendo la capacidad de acceder a detalles "
+"de los campos de texto editables y seguir la posición del cursor, o conocer "
+"en una tabla las coordenadas de fila y columna. NVDA se apoya en las apis de "
+"accesibilidad para recopilar información. Se usan varias apis de "
+"accesibilidad, incluyendo Microsoft Active Accessibility (MSAA, también "
+"llamada IAccessible), [IAccessible2](http://www.linuxfoundation.org/en/"
+"Accessibility/IAccessible2), Java Access Bridge y UI Automation."
 
 #: ..\python_docs\internals.py:88
 msgid "### Native APIs"
-msgstr ""
+msgstr "### Apis nativas"
 
 #: ..\python_docs\internals.py:89
 msgid ""
@@ -655,10 +723,19 @@ msgid ""
 "information. NVDA makes use of these APIs where possible; e.g. in standard "
 "edit controls."
 msgstr ""
+"Algunos widgets no exponen información suficiente a las apis de "
+"accesibilidad para ser completamente accesibles. Por ejemplo, MSAA, que es "
+"la api de accesibilidad usada por la mayoría de controles estándar, no "
+"ofrece la posibilidad de obtener la ubicación del cursor o recuperar "
+"unidades individuales de texto en campos de texto editable. Sin embargo, "
+"algunos widgets ofrecen sus propias apis nativas (no específicas para "
+"accesibilidad) que pueden usarse para obtener esta información. NVDA hace "
+"uso de estas apis cuando es posible; por ejemplo en campos de edición "
+"estándar."
 
 #: ..\python_docs\internals.py:90
 msgid "### Operating System Functions"
-msgstr ""
+msgstr "### Funciones del sistema operativo"
 
 #: ..\python_docs\internals.py:91
 msgid ""
@@ -668,20 +745,28 @@ msgid ""
 "window and system battery status. Tasks that can be performed include moving/"
 "clicking the mouse and sending key presses."
 msgstr ""
+"Además de apis nativas y de accesibilidad, Windows ofrece muchas funciones "
+"que pueden usarse para obtener información y realizar tareas. La información "
+"que puede obtenerse incluye el nombre de clase de una ventana, la ventana "
+"actual en primer plano o el estado de la batería del sistema. Entre las "
+"tareas que pueden hacerse están mover el ratón o hacer clic con él y enviar "
+"pulsaciones de teclado."
 
 #: ..\python_docs\internals.py:92
 msgid "## NVDA Components"
-msgstr ""
+msgstr "## Componentes de NVDA"
 
 #: ..\python_docs\internals.py:93
 msgid ""
 "NVDA is built with an extensible, modular, object oriented, abstract design. "
 "It is divided into several distinct components."
 msgstr ""
+"NVDA ha sido construido con un diseño extensible, modular, abstracto y "
+"orientado a objetos. Está dividido en muchos componentes distintos."
 
 #: ..\python_docs\internals.py:94
 msgid "### Launcher"
-msgstr ""
+msgstr "### Lanzador"
 
 #: ..\python_docs\internals.py:95
 msgid ""
@@ -694,7 +779,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:96
 msgid "### Core"
-msgstr ""
+msgstr "### Núcleo"
 
 #: ..\python_docs\internals.py:97
 msgid ""
