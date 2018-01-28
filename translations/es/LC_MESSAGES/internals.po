@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-01-16 17:05+Hora estándar romance\n"
-"PO-Revision-Date: 2018-01-27 15:42+0100\n"
+"PO-Revision-Date: 2018-01-28 16:02+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -776,6 +776,12 @@ msgid ""
 "initialisation and starts the [#Core core] (unless NVDA is already running "
 "or a command line option specifies otherwise)."
 msgstr ""
+"El lanzador es el módulo que el usuario ejecuta para iniciar NVDA. Se "
+"encuentra en el archivo `nvda.pyw` (`nvda.exe` o variantes en versiones "
+"binarias). Este módulo procesa los argumentos de la línea de órdenes, "
+"realiza una inicialización básica e inicia el núcleo (a menos que NVDA ya "
+"esté ejecutándose o una opción de la línea de órdenes especifique lo "
+"contrario)."
 
 #: ..\python_docs\internals.py:96
 msgid "### Core"
@@ -786,47 +792,59 @@ msgid ""
 "The core (in the function `core.main`) loads the configuration, initialises "
 "all other components and then enters the main loop."
 msgstr ""
+"El núcleo (en la función `core.main`) carga la configuración, inicializa "
+"todos los demás componentes y entra en el bucle principal."
 
 #: ..\python_docs\internals.py:98
 msgid "The initialization steps in `core.main` are thus:"
-msgstr ""
+msgstr "Por lo tanto, los pasos de inicialización en `core.main` son:"
 
 #: ..\python_docs\internals.py:99
 msgid ""
 "1. Obtains the configuration file path and the name for the initial "
 "configuration file unless overridden from the command line."
 msgstr ""
+"1. Se obtiene la ruta al archivo de configuración y el nombre del archivo de "
+"configuración inicial, a menos que ya se especifique en la línea de órdenes."
 
 #: ..\python_docs\internals.py:100
 msgid ""
 "2. Initializes configuration management subsystem (`config.initialize`)."
 msgstr ""
+"2. Se inicializa el subsistema de administración de configuración (`config."
+"initialize`)."
 
 #: ..\python_docs\internals.py:101
 msgid ""
 "3. Unless silenced by the user, NVDA's startup sound is played unless "
 "minimal initialization option is specified in the command line."
 msgstr ""
+"3. A menos que el usuario lo silencie, se reproduce el sonido de inicio de "
+"NVDA si la opción de inicialización mínima no se especifica en la línea de "
+"órdenes."
 
 #: ..\python_docs\internals.py:102
 msgid "4. Obtains following information:"
-msgstr ""
+msgstr "4. Se obtiene la siguiente información:"
 
 #: ..\python_docs\internals.py:103
 msgid ""
 "* Log level as defined by the user unless a predefined log level is "
 "specified in the command line."
 msgstr ""
+"* Nivel de registro tal y como lo ha definido el usuario, a no ser que se "
+"especifique en la línea de órdenes un nivel de registro predefinido."
 
 #: ..\python_docs\internals.py:104
 msgid ""
 "* Language (either a specific language or the language used by the Windows "
 "operating system)."
-msgstr ""
+msgstr "* Idioma (ya sea específico o el que usa Windows por defecto)."
 
 #: ..\python_docs\internals.py:105
 msgid "* Version information for NVDA, Python, Windows and COMTypes package."
 msgstr ""
+"* Información de versión de NVDA, Python, Windows y el paquete ComTypes."
 
 #: ..\python_docs\internals.py:106
 msgid ""
@@ -834,36 +852,51 @@ msgid ""
 "configuration folder). One of the jobs of this routine is to see if the user "
 "told NVDA to disable add-ons."
 msgstr ""
+"5. Se cargan los complementos (por defecto, se encuentran en la carpeta "
+"addons en el directorio de configuración de usuario). Uno de los trabajos "
+"que se hacen en esta parte es comprobar si el usuario ha indicado que se "
+"desactiven los complementos."
 
 #: ..\python_docs\internals.py:107
 msgid ""
 "6. Next, NVDA continues by initializing app module handler, NvDA Helper and "
 "speech components including speech dictionaries."
 msgstr ""
+"6. A continuación, NVDA inicializa el manejador de módulos de aplicación, "
+"NVDA Helper y los componentes de voz incluyendo los diccionarios."
 
 #: ..\python_docs\internals.py:108
 msgid ""
 "7. If it took NVDA five seconds or more to initialize components, this fact "
 "is recorded and the user will hear, \"Loading NVDA, please wait\"."
 msgstr ""
+"7. Si la inicialización de componentes tarda más de cinco segundos, se "
+"registra este hecho y se verbaliza la frase \"Cargando NVDA. Espera por favor"
+"\"."
 
 #: ..\python_docs\internals.py:109
 msgid ""
 "8. Next, wxPython, braille support (including braille input module), display "
 "model and GUI subsystem are prepared."
 msgstr ""
+"8. Después WXPython, el soporte braille (incluyendo el módulo de entrada "
+"braille), el modelo de pantalla y el subsistema gráfico se preparan."
 
 #: ..\python_docs\internals.py:110
 msgid ""
 "9. Localization support preparation is next, preparing NVDA to display its "
 "interface in the configured language."
 msgstr ""
+"9. El soporte de idiomas va después, preparando a NVDA para que muestre su "
+"interfaz en el idioma adecuado."
 
 #: ..\python_docs\internals.py:111
 msgid ""
 "10. The NVDA API module is initialized, including setting initial focus, "
 "mouse and other objects."
 msgstr ""
+"10. Se inicializa el módulo api de NVDA. Aquí se incluye el establecimiento "
+"inicial del foco, el ratón y otros objetos."
 
 #: ..\python_docs\internals.py:112
 msgid ""
@@ -872,6 +905,10 @@ msgid ""
 "performed at this time (for example, making sure the user is running Windows "
 "7 or later when initializing UIA support)."
 msgstr ""
+"11. NVDA inicializa módulos para distintas apis de accesibilidad. En el caso "
+"de Java Access Bridge (JAB) o UI Automation (UIA), se realizan varias "
+"comprobaciones en este paso (por ejemplo, se comprueba que el usuario tiene "
+"Windows 7 o posterior antes de iniciar el soporte UIA)."
 
 #: ..\python_docs\internals.py:113
 msgid ""
@@ -879,6 +916,10 @@ msgid ""
 "itself and modules supporting input from keyboards, mice and touchscreens "
 "(if one is installed on a computer running Windows 8 and later)."
 msgstr ""
+"12. Se inicializan los módulos de soporte de entrada, incluyendo el módulo "
+"inputCore y los módulos que soportan la entrada desde teclados, ratones y "
+"pantallas táctiles (si el ordenador tiene Windows 8 o posterior y alguna "
+"pantalla instalada)."
 
 #: ..\python_docs\internals.py:114
 msgid ""
@@ -886,6 +927,9 @@ msgid ""
 "this step complete, basic NVDA features such as GUI support are ready for "
 "action."
 msgstr ""
+"13. Finalmente, se inicializa el manejador de extensiones globales y las "
+"propias extensiones. Con este paso completado, las características básicas "
+"de NVDA como por ejemplo el soporte GUI están listas para la acción."
 
 #: ..\python_docs\internals.py:115
 msgid ""
@@ -894,6 +938,10 @@ msgid ""
 "action such as displaying the welcome dialog, performing automatic update "
 "check and so on."
 msgstr ""
+"14. Dependiendo de las opciones de la línea de órdenes, valores de "
+"configuración y circunstancias como la instalación silenciosa, NVDA "
+"realizará las acciones adecuadas: mostrar el diálogo de bienvenida, "
+"comprobar automáticamente si hay actualizaciones, etc."
 
 #: ..\python_docs\internals.py:116
 msgid ""
@@ -904,6 +952,12 @@ msgid ""
 "API and input handlers, so pumping the main queue causes these to be "
 "executed. The main loop is what \"drives\" NVDA or makes it \"tick\"."
 msgstr ""
+"El bucle principal se mantiene iterando hasta que NVDA recibe la orden de "
+"salir. En cada iteración o ciclo, el núcleo llama a los manejadores de api y "
+"entrada, a los generadores registrados y a la cola principal. Todos los "
+"eventos, scripts, etc. llegan indirectamente a la cola principal a través de "
+"los manejadores de api y entrada, por lo que al llamar a esta cola hacemos "
+"que se ejecuten. El bucle principal es lo que le da vida a NVDA."
 
 #: ..\python_docs\internals.py:117
 msgid ""
@@ -911,10 +965,15 @@ msgid ""
 "saves the configuration if appropriate and then exits. The details steps are "
 "as follows:"
 msgstr ""
+"Una vez NVDA recibe la orden de salir, el núcleo hace finalizar a todos los "
+"demás componentes, guarda la configuración si debe hacerlo y después sale. "
+"Los pasos detallados son los siguientes:"
 
 #: ..\python_docs\internals.py:118
 msgid "1. If update check is in progress, tells update check to quit."
 msgstr ""
+"1. Si la comprobación de actualizaciones está en proceso, se le ordena "
+"terminar."
 
 #: ..\python_docs\internals.py:119
 msgid ""
@@ -922,12 +981,17 @@ msgid ""
 "(along with global plugins if any), GUI subsystem and saves user settings if "
 "told to do so."
 msgstr ""
+"2. Se finaliza watchdog (el monitor del núcleo), el soporte de extensiones "
+"globales (junto con las extensiones si hay alguna), el subsistema gráfico y "
+"se guarda la configuración de usuario si hay que hacerlo."
 
 #: ..\python_docs\internals.py:120
 msgid ""
 "3. If focus is located on a control, NVDA is instructed to call lose focus "
 "event on this control."
 msgstr ""
+"3. Si el foco está ubicado en un control, NVDA llama al evento loseFocus en "
+"este control."
 
 #: ..\python_docs\internals.py:121
 msgid ""
@@ -936,16 +1000,22 @@ msgid ""
 "various app modules, input handlers, speech and braille support and add-on "
 "handler."
 msgstr ""
+"4. NVDA finaliza varios subsistemas, empezando por el manejador de "
+"interceptores de árbol, el soporte de apis de accesibilidad, manejador de "
+"módulos de aplicación y sus módulos cargados, manejadores de entrada, "
+"soporte de voz y braille, y manejador de complementos."
 
 #: ..\python_docs\internals.py:122
 msgid ""
 "5. Lastly, unless explicitly silenced, NVDA shutdown sound is played, and "
 "the message window is destroyed."
 msgstr ""
+"5. Finalmente, a menos que haya sido silenciado explícitamente, se reproduce "
+"el sonido de cierre de NVDA y se destruye la ventana de mensajes."
 
 #: ..\python_docs\internals.py:123
 msgid "#### Event and Script Handling"
-msgstr ""
+msgstr "#### Procesamiento de scripts y entrada"
 
 #: ..\python_docs\internals.py:124
 msgid ""
@@ -954,10 +1024,14 @@ msgid ""
 "API handlers use these modules to queue or directly execute scripts and "
 "events."
 msgstr ""
+"En vez de poner los eventos y los scripts directamente en la cola, esto se "
+"abstrae mediante los módulos `eventHandler` y `scriptHandler`. Los "
+"manejadores de api y entrada usan estos módulos para poner en la cola o "
+"ejecutar directamente estos eventos y scripts."
 
 #: ..\python_docs\internals.py:125
 msgid "#### Registered Generators"
-msgstr ""
+msgstr "#### Generadores registrados"
 
 #: ..\python_docs\internals.py:126
 msgid ""
@@ -969,10 +1043,18 @@ msgid ""
 "this include the say all and speak spelling functionality. They are "
 "registered using `queueHandler.registerGeneratorObject`."
 msgstr ""
+"Algunas tareas necesitan ejecutarse en segundo plano sin causar que NVDA se "
+"bloquee (cuelgue) mientras espera a que estas tareas se completen. Necesitan "
+"ejecutar código regularmente, pero no en un intervalo de tiempo concreto. "
+"NVDA permite registrar funciones generadoras de Python con este propósito. "
+"Una vez registradas, se ejecutarán una vez en cada ciclo o iteración del "
+"bucle principal. Algunos ejemplos de esto son las funciones de verbalizar "
+"todo o deletrear. Se registran llamando a `queueHandler."
+"registerGeneratorObject`."
 
 #: ..\python_docs\internals.py:127
 msgid "### Input Handlers"
-msgstr ""
+msgstr "### Manejadores de entrada"
 
 #: ..\python_docs\internals.py:128
 msgid ""
@@ -982,10 +1064,15 @@ msgid ""
 "input. These handlers listen for input and generate appropriate "
 "[#InputGestures input gestures] and events."
 msgstr ""
+"Los manejadores de entrada gestionan la entrada desde distintas fuentes. "
+"Actualmente, hay tres módulos principales de entrada: `keyboardHandler`, "
+"`mouseHandler` y `touchHandler`. Los controladores de pantallas braille "
+"también pueden procesar la entrada. Estos manejadores escuchan la entrada y "
+"generan gestos de entrada y eventos según corresponda."
 
 #: ..\python_docs\internals.py:129
 msgid "### Input Gestures"
-msgstr ""
+msgstr "### Gestos de entrada"
 
 #: ..\python_docs\internals.py:130
 msgid ""
@@ -995,10 +1082,16 @@ msgid ""
 "consistent, unified way. For example, any input gesture can be bound to any "
 "script, both in code and by the user."
 msgstr ""
+"Un gesto de entrada es una representación abstracta de una unidad mínima de "
+"entrada por parte del usuario; por ejemplo, la pulsación de una tecla. Todos "
+"los gestos de entrada heredan de la clase base `inputCore.InputGesture`. "
+"Esto permite procesar toda la entrada de una manera consistente y unificada. "
+"Por ejemplo, cualquier gesto de entrada puede asociarse a cualquier script, "
+"tanto mediante código como por el propio usuario."
 
 #: ..\python_docs\internals.py:131
 msgid "### API Handlers"
-msgstr ""
+msgstr "### Manejadores de api"
 
 #: ..\python_docs\internals.py:132
 msgid ""
@@ -1018,7 +1111,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:133
 msgid "### Output Modules"
-msgstr ""
+msgstr "### Módulos de salida"
 
 #: ..\python_docs\internals.py:134
 msgid ""
@@ -1027,6 +1120,10 @@ msgid ""
 "is also the `tones` module, which is used to output tones/beeps, and "
 "`nvWave` module used to play wave files indicating specific events."
 msgstr ""
+"Distintos módulos encapsulan el manejo de la funcionalidad de salida. Hay "
+"actualmente dos módulos principales: `speech` y `braille`. También está el "
+"módulo `tones`, que se usa para reproducir tonos o pitidos, y el módulo "
+"`nvWave`, usado para reproducir archivos de sonido wav ante ciertos eventos."
 
 #: ..\python_docs\internals.py:135
 msgid ""
@@ -1035,10 +1132,15 @@ msgid ""
 "braille a message. This function (`ui.message`) calls `speech.speakMessage` "
 "and `braille.handler.message` functions."
 msgstr ""
+"En la mayoría de casos, la síntesis de voz y el braille emitirán el mismo "
+"texto de salida. Para facilitar esta tarea, se ofrece un módulo con una "
+"interfaz de usuario dedicada (ui) para enviar un mensaje por voz y/o "
+"braille. La función `ui.message` llama a las funciones `speech.speakMessage` "
+"y `braille.handler.message`."
 
 #: ..\python_docs\internals.py:136
 msgid "### Output Drivers"
-msgstr ""
+msgstr "### Controladores de salida"
 
 #: ..\python_docs\internals.py:137
 msgid ""
@@ -1223,7 +1325,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:161
 msgid "### GUI"
-msgstr ""
+msgstr "### GUI"
 
 #: ..\python_docs\internals.py:162
 msgid ""
@@ -1231,6 +1333,10 @@ msgid ""
 "and other user interaction. This code is primarily contained in the `gui` "
 "package. [wxPython](http://www.wxpython.org/) is used as the GUI toolkit."
 msgstr ""
+"NVDA dispone de su propia interfaz gráfica para facilitar el proceso de "
+"configuración y otras interacciones del usuario. Su código está "
+"principalmente dentro del paquete `gui`. Se usa [wxPython](http://www."
+"wxpython.org/) como motor gráfico."
 
 #: ..\python_docs\internals.py:163
 msgid "## Special Object Functions"
@@ -1275,7 +1381,7 @@ msgstr ""
 
 #: ..\python_docs\internals.py:169
 msgid "## Inter-process Communication"
-msgstr ""
+msgstr "## Comunicación interproceso"
 
 #: ..\python_docs\internals.py:170
 msgid ""
@@ -1284,10 +1390,14 @@ msgid ""
 "process except via special operating system mechanisms. This is called inter-"
 "process communication (IPC)."
 msgstr ""
+"En términos generales, cada aplicación o servicio en un ordenador, "
+"incluyendo NVDA, constituye un proceso independiente. Ningún proceso puede "
+"acceder a datos de otro proceso salvo si usa mecanismos especiales del "
+"sistema operativo. Esto se llama comunicación interproceso (IPC)."
 
 #: ..\python_docs\internals.py:171
 msgid "### Out-of-process Code"
-msgstr ""
+msgstr "### Código fuera del proceso"
 
 #: ..\python_docs\internals.py:172
 msgid ""
@@ -1297,10 +1407,16 @@ msgid ""
 "queries and events managed in the same process. However, for the majority of "
 "screen reader functionality, this performance hit is insignificant."
 msgstr ""
+"NVDA funciona principalmente fuera de los procesos. Esto significa que los "
+"eventos y consultas de información de otros procesos deben fluir por un "
+"canal de comunicaciones entre NVDA y el proceso en cuestión usando IPC. "
+"Muchas veces esto es más lento que las consultas y eventos administradas en "
+"el propio proceso. Sin embargo, para la mayoría de funciones del lector de "
+"pantalla, la pérdida de rendimiento es insignificante."
 
 #: ..\python_docs\internals.py:173
 msgid "### In-process Code"
-msgstr ""
+msgstr "### Código dentro del proceso"
 
 #: ..\python_docs\internals.py:174
 msgid ""
