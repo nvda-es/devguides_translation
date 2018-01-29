@@ -1,0 +1,298 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-01-29 19:39+Hora estándar romance\n"
+"PO-Revision-Date: 2018-01-29 19:43+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\gcaddoninternals.py:3
+msgid "# NVDA Add-on internals: Golden Cursor"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:4
+msgid "Author: Joseph Lee"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:5
+msgid "## Introduction"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:6
+msgid ""
+"A graphical user interface isn't complete without means of moving around the "
+"screen and interacting with various elements. For years, a computer mouse "
+"was a handy tool for working with graphical elements, with touchscreens and "
+"mixed reality replacing functions of the mouse for some people. Even with "
+"the introduction of the mouse in the 1970's and move towards touch "
+"interaction in the 21st century, one input device has stil remained king of "
+"computer interaction: keyboards."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:7
+msgid ""
+"For many blind people, the concept of using a mouse (or touch interaction) "
+"may sound foreign, especially for people used to textual interfaces. For "
+"some people, using the mouse as a blind person was only a dream. Recent "
+"advancements in screen reading has bridged the gap somewhat, although there "
+"are areas that still need work, including describing cursor colors, more "
+"accuracy in mouse cursor shape announcement and so on, as well as ability to "
+"move the mouse with a keyboard. Fortunately, the last advancement is now a "
+"reality thanks to an add-on we'll be examining in this aricle: Golden Cursor."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:8
+msgid ""
+"Simply speaking, Golden Cursor is an add-on that allows NVDA users to "
+"manipulate the mouse via keyboard. Although Windows does have mouse keys, a "
+"keyboard with a physical numpad is required to take full advantage of this. "
+"On the other hand, Golden Cursor does not require a physical numpad, thus "
+"making it a bit more universal. Even though the add-on has seen little "
+"development activity, it is still an interesting add-on to study, as it "
+"showcases the enthusiasm the NVDA community has shown for this add-on, and a "
+"chance for the author of this article to improve the add-on and present its "
+"inner workings. In \"NVDA Add-on Internals: Golden Cursor\", we'll learn the "
+"history behind this add-on, recent developments, and dive into how this add-"
+"on improves mouse usability for blind people around the world."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:9
+msgid ""
+"To download this add-on, visit https://addons.nvda-project.org/addons/"
+"goldenCursor.en.html. The source code repository can be found at https://"
+"github.com/josephsl/goldenCursor."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:10
+msgid ""
+"Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden "
+"Cursor add-on is copyright 2015-2017 Salah Atair, Wafeeq Taher, Joseph Lee "
+"and contributors. Microsoft Windows, Windows API and related technologies "
+"are copyright Microsoft Corporation."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:11
+msgid "## Golden Cursor: A History"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:12
+msgid ""
+"Towards end of 2015, an Arabic-speaking NVDA translator contacted NVDA add-"
+"ons team and introduced the community to an add-on a friend of the "
+"translator was developing. Called \"Golden Cursor\", the add-on came with "
+"keyboard commands to manipulate the mouse. Since the community has shown "
+"interest in this add-on, I decided to contact the devleoper and review the "
+"new add-on."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:13
+msgid ""
+"Although the add-on had potential, it had numerous coding problems. for "
+"example, in early drafts, it used Python's boolean statements like this:"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:14
+msgid "\tif something == False: #code"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:15
+msgid ""
+"Eventually some serious issues were resolved, and after working closely with "
+"the original add-on developer, Golden Cursor was submitted to the add-ons "
+"website for community testing, wihch resulted in positive feedback. Thus in "
+"January 2016, Golden Cursor became na official NVDA add-on."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:16
+msgid ""
+"In 2017, I (Joseph Lee) announced an initiative to modernize community add-"
+"ons by making them work well under Python 3, and naturally Golden Cursor was "
+"one of those add-ons that needed modernization. The problem was that the "
+"community lost contact with the original developers of this add-on, thus I "
+"volunteered to modernize this add-on. Thus the below notes are based on old "
+"add-on releaes, as well as ongoing modernization work."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:17
+msgid "## Add-on mechanics"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:18
+msgid ""
+"Simply put, the add-on serves as a \"keyboard wheel\" for a computer mouse. "
+"This is made more intuitive by the fact that Control+Windows+arrow keys were "
+"assigned to move the mouse. In addition, hotspot functionality is available "
+"where a mouse coordinate (xy) is tagged with a label and jumped to, as well "
+"as giving users ability to move to a specific mouse coordinate location. The "
+"coordinate tag is then stored in a file that looks like a typical ini file, "
+"allowing easy sharing between systems."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:19
+msgid ""
+"The \"wheel\" is actually a call to SetCursorPos Windows API function, "
+"wrapped inside winUser module (as winUser module wraps user32.dll), "
+"ultimately controlled by moveMouse method in the add-on. The moveMouse "
+"method takes the mouse direction flag, and based on cursor location, "
+"direction given and mouse restriction flag, positions the mouse cursor on "
+"the new location. The direction flags are:"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:20
+msgid "* 0: Move mouse to the right."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:21
+msgid "* 1: Move mouse to the left."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:22
+msgid "* 2: Move mouse down."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:23
+msgid "* 3: Move mouse up."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:24
+msgid "The moveMouse routine is as follows:"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:25
+msgid ""
+"1. Obtains the current mouse location by calling GetCursorPos function, "
+"which returns current X and Y mouse coordinates."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:26
+msgid ""
+"2. Calculates the new mouse location based on direction given and movement "
+"unit (movement unit can range from 1 to 100 pixels; a pixel (picture "
+"element) is a very small square on displays used to hold display output, "
+"such as color, intensity and others, and displays ship with millions of "
+"pixels). For example, if Control=Windows+right arrow is pressed, since we're "
+"moving to the right, new X coordinate will be current X coordinate plus the "
+"movement unit. Similarly, if Contorl+Windows+left arrow is pressed, the new "
+"X coordinate will be current coordinate minus the movement unit."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:27
+msgid ""
+"3. If mouse restriction is set (that is, if a mouse is told to stay at the "
+"current application), the new locatin will be somewhere inside the "
+"restircted application, otherwise mouse will move. Then SetCursorPos "
+"function is claled to plce the mouse on the new location."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:28
+msgid ""
+"4. The add-on also includes ability to announce mouse coordinates, and if "
+"this is true, new coordinate (at least the new X or Y coordinate) will be "
+"announced."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:29
+msgid ""
+"Mouse coordinate tag and jumping to a specific coordinate is a variation of "
+"the above mechanism. When one wishes to move mouse to another location, one "
+"can invoke mouse jump dialog and type the new coordinate (x, then comma, "
+"then y value). Similarly, when one wishes to mark a mouse locatoin with a "
+"tag, one can move th mouse to the desired location and open positions "
+"dilaog, give it a label nad press Enter, with the tag saved to an ini file "
+"named for the app name with the file extension of .gc (for example, outlook."
+"gc for mouse tags for Microsoft Outlook). Then one can invoke positions list "
+"dialog, select a tag, and press Enter to move the mouse to the tagged "
+"location, with the positoins list dilaog also providing means to rename, "
+"delete or clear the tag for the application."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:30
+msgid ""
+"Besides mouse movement commands, the add-on comes with two option flags to "
+"announce new mouse coordinate in pixels and to restrict mouse movement to "
+"the currently using app."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:31
+msgid "## Screen coordinates on Windows"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:32
+msgid ""
+"For people familiar with mathematical representation of a 2D graph or a "
+"plane, the ideal starting point (or origin) would be center, or for computer "
+"monitors, bottom left. However, on Windows, the starting point is top left. "
+"For example, on a 1920 by 1080 pixel display, the top left is (0, 0), and "
+"top right is (1920, 0). Using this logic, we can see that bottom left is (0, "
+"1080), and bottom right is (1920, 1080). Note that you need to subtract one "
+"from the maximum, so the coordinate for the bottom right corner becomes "
+"(1919, 1079)."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:33
+msgid ""
+"When we apply this to mouse movement, the X coordinate increases when the "
+"mouse moves to the right, while the Y coordinate decreases as the mouse "
+"moves up. For sake of completeness, mouse movement expressions are:"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:34
+msgid "* Mouse moving right: new X = currnet X + movmenet unit"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:35
+msgid "* Mouse moving left: new X = current X - movement unit"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:36
+msgid "* Mouse moving down: new Y = current Y + movement unit"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:37
+msgid "* Mouse moving up: new Y = current Y - movement unit"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:38
+msgid "## Conclusion"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:39
+msgid ""
+"It is said that the simple something is, the better. The Golden Cursor add-"
+"on fits this definition perfectly: a simple add-on that is surprisingly "
+"powerful and useful. The ability to use the keyboard to move the mouse has "
+"been a dream for many, and now, thanks to this add-on, it has become a "
+"reality. Time will tell how this add-on will evolve to meet people's needs, "
+"and some useful ideas are already being planned by the community."
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:40
+msgid "## References"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:41
+msgid "* Pixel (Wikipedia): https://en.wikipedia.org/wiki/Pixel"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:42
+msgid ""
+"* GetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:43
+msgid ""
+"* SetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ms648394(v=vs.85).aspx"
+msgstr ""
