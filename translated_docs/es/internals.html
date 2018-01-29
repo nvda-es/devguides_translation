@@ -1,0 +1,202 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Características internas de NVDA</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Características internas de NVDA</h1></header>
+  <p>Este artículo está diseñado para ofrecer a los usuarios y desarrolladores un recorrido por el interior de algunas características de NVDA. Por tanto, es importante tener algunos conocimientos de Python, C++, conceptos generales de programación y NVDA en sí mismo para seguirlo.</p>
+<p>Nota: este artículo está basado en el documento de descripción del diseño que se encuentra en un sitio web, y es una versión mejorada del mismo. Parte de los contenidos de este documento provienen de la guía de usuario.</p>
+<hr />
+<h2 id="pageoutline2-4inline">[[PageOutline(2-4,,inline)]]</h2>
+<h2 id="introduccion">Introducción</h2>
+<h3 id="acerca-de-nvda">Acerca de NVDA</h3>
+<p>NVDA (acceso no visual a ordenadores de escritorio (Non Visual Desktop Access)) es un lector de pantalla gratuito, de código abierto y dirigido por la comunidad para Microsoft Windows. Este lector de pantalla modular y altamente extensible ofrece todas las funciones que se espera de un lector de pantalla, tales como aceptar entrada por teclado para realizar ciertas tareas, mostrar un rico y variado conjunto de opciones de configuración, responder a eventos, etc.</p>
+<h3 id="audiencia">Audiencia</h3>
+<p>Ya que este es un artículo que habla de características internas, se asumirá que cumples los siguientes requisitos previos:</p>
+<ul>
+<li>Eres un usuario de NVDA y tienes curiosidad por saber cómo funciona.</li>
+<li>Tienes alguna experiencia programando y conocimientos en C++ y Python.</li>
+<li>Quieres contribuir con tus conocimientos pero no sabes por dónde empezar ni cómo hace su trabajo NVDA.</li>
+<li>Eres nuevo o tienes experiencia escribiendo complementos y quieres conocer el funcionamiento interno de NVDA.</li>
+</ul>
+<h3 id="estructura-del-articulo">Estructura del artículo</h3>
+<p>Sería inútil hablar de cuestiones internas de un complejo sistema de software como NVDA sin tener algo que podamos seguir. Por tanto, vamos a empezar por ver cómo obtener el código fuente de NVDA y los paquetes de software involucrados, y la construcción de NVDA por primera vez.</p>
+<p>Después de descargar el código fuente, podrías estar interesado en ver el contenido de las carpetas de su interior y la relación entre los módulos que conforman NVDA. Además de aprender más sobre los distintos componentes de NVDA y una descripción a alto nivel de su vida en tiempo de ejecución, tendrás la oportunidad de saber por qué NVDA usa dos lenguajes de programación.</p>
+<p>A continuación, visitaremos los procedimientos que permiten que NVDA se inicie en tu equipo (instalador y lanzador) incluyendo aquellos que se usan para saber si NVDA está instalado o se ejecuta desde una unidad USB. Después de eso, visitaremos core.main, la función responsable de iniciar NVDA, salir de él y procesar todo lo que ocurre entre estos dos sucesos.</p>
+<p>Una parte significativa del artículo se enfocará en la vida de NVDA y qué es lo que hace para permitir el acceso a los ordenadores a miles de personas ciegas. Durante nuestro recorrido sabremos qué son los scripts y los eventos, cómo se manejan las apis de accesibilidad, cómo vienen a la vida los objetos y clases superpuestos, una visita al funcionamiento del modo exploración, y tendremos una oportunidad de entrevistar a distintos módulos de aplicación, sintetizadores de voz y controladores braille. Después de eso hablaremos del subsistema de complementos y debatiremos sobre cómo estos usan y mejoran la funcionalidad de NVDA.</p>
+<p>Siguiendo con nuestra discusión sobre las rutinas importantes de NVDA, echaremos un vistazo a su interfaz de usuario y cómo se administra la configuración. También sabremos qué pasa cuando NVDA busca actualizaciones, cómo cambia su comportamiento en pantallas seguras, su integración con el servicio de facilidad de uso del sistema y otros servicios adicionales.</p>
+<p>Finalmente, te explicaremos cómo hacer realidad una idea. Hablaremos brevemente del estilo del código, cómo enviar parches para que se revisen y concluiremos con el proceso de desarrollo.</p>
+<h2 id="donde-obtener-el-codigo-fuente-y-como-compilar-nvda">Dónde obtener el código fuente y cómo compilar NVDA</h2>
+<p>Si quieres aprender cómo funciona NVDA por dentro, es importante tener a mano su código fuente. Como muchos proyectos de código abierto, NVDA usa Git para administrar el código. Para más información sobre cómo obtener el código fuente, visita el artículo correspondiente de nuestra documentación para desarrolladores.</p>
+<h3 id="construccion-de-nvda">Construcción de NVDA</h3>
+<p>Hay ocasiones en las que te gustaría ver a NVDA en acción. Para ayudarte en esto y en caso de que quieras probar una nueva característica, deberías construir NVDA desde el código. La herramienta SCons administra los pasos de compilación del código fuente, y se pueden encontrar detalles sobre cómo construir NVDA en el archivo readme.md que hay en la raíz del código fuente, o traducidos en nuestra web.</p>
+<h2 id="componentes-de-nvda-y-disposicion-del-codigo-fuente">Componentes de NVDA y disposición del código fuente</h2>
+<p>Cuando abras la carpeta que contiene el código fuente, te darás cuenta de que hay varios directorios además de "source". Examinemos la estructura de las carpetas, y después de eso, haremos un recorrido por distintos componentes que conforman NVDA.</p>
+<h3 id="estructura-de-la-carpeta-del-codigo-fuente">Estructura de la carpeta del código fuente</h3>
+<p>El paquete de código fuente consta de las siguientes carpetas y archivos:</p>
+<ul>
+<li>build: se crea al construir NVDA desde el código fuente y se usa como área intermedia para el código compilado.</li>
+<li>extras: contiene el paquete del cliente para el controlador de NVDA.</li>
+<li>include: la mayoría de las dependencias que NVDA necesita, como por ejemplo la biblioteca IACcessible2, se almacenan aquí.</li>
+<li>launcher: contiene el código del lanzador de NVDA.</li>
+<li>misc-deps: contiene paquetes necesarios para construir NVDA, entre ellos paquetes Python.</li>
+<li>nvdaHelper: contiene la parte de código en C++ de NVDA usada en distintas situaciones.</li>
+<li>output: los paquetes resultantes de las tareas de construcción se almacenan aquí.</li>
+<li>site_scons: otros paquetes construidos por SCons se almacenan aquí.</li>
+<li>source: aquí es donde vive el código Python de NVDA. Hablaremos del contenido de este directorio a lo largo de este artículo.</li>
+<li>uninstaller: almacena los procedimientos que usa el desinstalador de NVDA.</li>
+<li>user_docs: aquí se almacenan los archivos con la documentación de usuario de NVDA.</li>
+</ul>
+<h3 id="descripcion-de-los-componentes-de-nvda">Descripción de los componentes de NVDA</h3>
+<p>NVDA se apoya en varios componentes para realizar su trabajo (dar soporte a varias apis de accesibilidad, entender órdenes de teclado, enviar la salida a una pantalla braille, etc.). Aquí se encuentra una lista completa de los componentes de NVDA:</p>
+<ul>
+<li>Instalador: este es el primer módulo que nos encontramos al usar NVDA por primera vez.</li>
+<li>Lanzador (nvda.pyw, nvda.exe en versiones binarias): se usa para iniciar NVDA. Este módulo es el encargado de comprobar los argumentos de la línea de órdenes y realizar distintas tareas de inicialización.</li>
+<li>Servicio de NVDA: este se usa cuando NVDA se ejecuta como servicio, por ejemplo al usarlo en pantallas seguras. Existe un módulo relacionado que registra NVDA con el servicio de accesibilidad (Windows Vista y posterior).</li>
+<li>Núcleo: se encarga de todo lo relativo al inicio de NVDA, coordina cómo debe cerrarse y está implicado en la vida de NVDA desde el principio hasta el fin.</li>
+<li>Procesador de eventos: las instrucciones en el manejador de eventos y en el procesador de cola se usan para procesar eventos, meterlos en la cola y realizar acciones relacionadas.</li>
+<li>Soporte para apis de accesibilidad: NVDA viene con manejadores para MSAA (Microsoft Active Accessibility)/IAccessible, IAccessible2, Java Access Bridge (JAB) y UI Automation (UIA). Junto con varias clases de superposición, los manejadores de apis permiten a NVDA presentar una experiencia uniforme entre distintas apis.</li>
+<li>Acceso y navegación por texto: se ofrecen varios métodos para trabajar con distintos widgets de texto en el paquete text infos.</li>
+<li>Módulos de aplicación: NVDA viene con varios módulos que te permiten usarlo en distintas aplicaciones. El coordinador del soporte de módulos de aplicación es el manejador de módulos de aplicación, también llamado app module handler, y entre sus tareas se encuentran administrar el inicio y finalización de módulos de aplicación, y llevar un registro con los módulos que están activos.</li>
+<li>Extensiones globales: una extensión global añade funciones muy interesantes para los usuarios de NVDA, y hay un administrador que no les quita ojo: el global plugin handler o manejador de extensiones globales.</li>
+<li>Subsistema de complementos: puedes programar o utilizar complementos para extender la funcionalidad de NVDA. El manejador de complementos (addonHandler) es el encargado de coordinarlos, y reacciona al instalarlos, desinstalarlos y durante la vida de cada complemento.</li>
+<li>Administración del modo exploración: el código almacenado en el paquete virtualBuffers y en el módulo browseMode te permite navegar por documentos complejos, tales como sitios web o documentos pdf.</li>
+<li>Soporte de entrada: el módulo inputCore y aquellos relacionados con él controlan distintos escenarios de entrada. Estos incluyen una pulsación de teclado, un movimiento en una pantalla táctil, el rastreo del movimiento del ratón y la pulsación de un botón en una pantalla braille.</li>
+<li>Componentes de salida: se le puede pedir a NVDA que anuncie algo a través de voz, braille, tonos, la reproducción de un archivo de sonido o una combinación de todo esto.</li>
+<li>Voz y sintetizadores: estos dos subsistemas permiten a NVDA verbalizar lo que hay en pantalla a través de un sintetizador de voz definido por el usuario.</li>
+<li>Administración de pantallas braille: este complejo subsistema permite que NVDA se comunique con distintas pantallas braille para enviarles texto o recibir e interpretar la entrada que se realice desde ellas.</li>
+<li>Anunciado de mensajes: NVDA puede anunciar información por síntesis de voz o braille usando una función disponible en el módulo "ui".</li>
+<li>Interfaz gráfica de usuario: NVDA puede mostrar múltiples diálogos y ventanas, todos ellos alojados en el paquete "gui".</li>
+<li>Administración de la configuración: el paquete config no sólo aloja la configuración por defecto de NVDA, sino que también se usa para administrar la configuración de usuario y alternar entre distintos perfiles.</li>
+<li>Soporte de idiomas: hay varios módulos implicados en la traducción de NVDA, incluidos languageHandler y los archivos de traducción de la interfaz de NVDA en distintos idiomas.</li>
+<li>NVDA helper: este módulo realiza dos acciones: permite al código Python comunicarse con código C++, y permite que NVDA se comunique con otros programas mediante inyección de código y otras técnicas avanzadas.</li>
+<li>Soporte para la API de Windows: NVDA viene con módulos que abstraen algunas funciones de la api de Windows, alojadas en módulos tales como winUser.py, que contiene funciones de la biblioteca user32.dll.</li>
+</ul>
+<p>Examinaremos en detalle estos módulos a lo largo de este artículo. El resto del artículo está basado en el de descripción del diseño. Pero primero aprendamos algo más sobre la arquitectura de NVDA, comenzando con algunas definiciones importantes.</p>
+<h2 id="terminologia">Terminología</h2>
+<h3 id="abreviaturas">Abreviaturas</h3>
+<ul>
+<li>API: interfaz de programación de aplicaciones</li>
+<li>GUI: interfaz gráfica de usuario</li>
+<li>SO: sistema operativo</li>
+<li>DLL: biblioteca de vínculos dinámicos</li>
+</ul>
+<h3 id="definiciones">Definiciones</h3>
+<ul>
+<li>Caret: el cursor del sistema; por ejemplo, el cursor que se mueve generalmente cuando pulsas las flechas y el tabulador.</li>
+<li>Foco: la región resaltada de la pantalla donde el sistema establece el foco.</li>
+<li>Script: función que se ejecuta en respuesta a la entrada de usuario: pulsaciones de teclado, manipulación de controles en pantallas braille o toques en pantallas táctiles. El script también puede llamarse comando u orden.</li>
+<li>Gesto: unidad mínima de entrada. Por ejemplo, una orden de teclado.</li>
+<li>Evento: código que debe ejecutarse cuando se dan ciertas condiciones.</li>
+<li>Widget: un componente individual en una GUI con el que el usuario puede ineractuar; por ejemplo un botón, un campo de texto editable, un cuadro de lista, etc. También es conocido como control u objeto.</li>
+</ul>
+<h2 id="general">General</h2>
+<h3 id="lenguajes-de-programacion">Lenguajes de programación</h3>
+<p>NVDA ha sido desarrollado principalmente con el <a href="http://www.python.org/">lenguaje de programación Python</a>, que permite un desarrollo rápido entre otras ventajas. El código que se inyecta en otros procesos está escrito en C++ para aumentar el rendimiento.</p>
+<p>Nota: por cuestión de dependencias, NVDA utiliza Python 2.7.</p>
+<h3 id="apis-de-accesibilidad">Apis de accesibilidad</h3>
+<p>Para hacer accesibles los widgets gráficos a las tecnologías de asistencia, las aplicaciones y los sistemas operativos pueden usar apis específicas de accesibilidad. Estas apis ofrecen información sobre el widget tal como su nombre, tipo/rol (botón, casilla de verificación, campo de texto editable, etc.), descripción, valor, estados (marcado, no disponible, invisible, etc.) y atajo de teclado. Las apis de accesibilidad también ofrecen eventos para permitir a las tecnologías de asistencia monitorizar cambios, tales como los cambios de foco, de propiedades de un objeto (tales como nombre, descripción, valor y estado), etc. Las apis de accesibilidad enriquecida ofrecen información adicional, incluyendo la capacidad de acceder a detalles de los campos de texto editables y seguir la posición del cursor, o conocer en una tabla las coordenadas de fila y columna. NVDA se apoya en las apis de accesibilidad para recopilar información. Se usan varias apis de accesibilidad, incluyendo Microsoft Active Accessibility (MSAA, también llamada IAccessible), <a href="http://www.linuxfoundation.org/en/Accessibility/IAccessible2">IAccessible2</a>, Java Access Bridge y UI Automation.</p>
+<h3 id="apis-nativas">Apis nativas</h3>
+<p>Algunos widgets no exponen información suficiente a las apis de accesibilidad para ser completamente accesibles. Por ejemplo, MSAA, que es la api de accesibilidad usada por la mayoría de controles estándar, no ofrece la posibilidad de obtener la ubicación del cursor o recuperar unidades individuales de texto en campos de texto editable. Sin embargo, algunos widgets ofrecen sus propias apis nativas (no específicas para accesibilidad) que pueden usarse para obtener esta información. NVDA hace uso de estas apis cuando es posible; por ejemplo en campos de edición estándar.</p>
+<h3 id="funciones-del-sistema-operativo">Funciones del sistema operativo</h3>
+<p>Además de apis nativas y de accesibilidad, Windows ofrece muchas funciones que pueden usarse para obtener información y realizar tareas. La información que puede obtenerse incluye el nombre de clase de una ventana, la ventana actual en primer plano o el estado de la batería del sistema. Entre las tareas que pueden hacerse están mover el ratón o hacer clic con él y enviar pulsaciones de teclado.</p>
+<h2 id="componentes-de-nvda">Componentes de NVDA</h2>
+<p>NVDA ha sido construido con un diseño extensible, modular, abstracto y orientado a objetos. Está dividido en muchos componentes distintos.</p>
+<h3 id="lanzador">Lanzador</h3>
+<p>El lanzador es el módulo que el usuario ejecuta para iniciar NVDA. Se encuentra en el archivo <code>nvda.pyw</code> (<code>nvda.exe</code> o variantes en versiones binarias). Este módulo procesa los argumentos de la línea de órdenes, realiza una inicialización básica e inicia el núcleo (a menos que NVDA ya esté ejecutándose o una opción de la línea de órdenes especifique lo contrario).</p>
+<h3 id="nucleo">Núcleo</h3>
+<p>El núcleo (en la función <code>core.main</code>) carga la configuración, inicializa todos los demás componentes y entra en el bucle principal.</p>
+<p>Por lo tanto, los pasos de inicialización en <code>core.main</code> son:</p>
+<ol>
+<li>Se obtiene la ruta al archivo de configuración y el nombre del archivo de configuración inicial, a menos que ya se especifique en la línea de órdenes.</li>
+<li>Se inicializa el subsistema de administración de configuración (<code>config.initialize</code>).</li>
+<li>A menos que el usuario lo silencie, se reproduce el sonido de inicio de NVDA si la opción de inicialización mínima no se especifica en la línea de órdenes.</li>
+<li>
+<p>Se obtiene la siguiente información:</p>
+</li>
+<li>
+<p>Nivel de registro tal y como lo ha definido el usuario, a no ser que se especifique en la línea de órdenes un nivel de registro predefinido.</p>
+</li>
+<li>Idioma (ya sea específico o el que usa Windows por defecto).</li>
+<li>
+<p>Información de versión de NVDA, Python, Windows y el paquete ComTypes.</p>
+</li>
+<li>
+<p>Se cargan los complementos (por defecto, se encuentran en la carpeta addons en el directorio de configuración de usuario). Uno de los trabajos que se hacen en esta parte es comprobar si el usuario ha indicado que se desactiven los complementos.</p>
+</li>
+<li>A continuación, NVDA inicializa el manejador de módulos de aplicación, NVDA Helper y los componentes de voz incluyendo los diccionarios.</li>
+<li>Si la inicialización de componentes tarda más de cinco segundos, se registra este hecho y se verbaliza la frase "Cargando NVDA. Espera por favor".</li>
+<li>Después WXPython, el soporte braille (incluyendo el módulo de entrada braille), el modelo de pantalla y el subsistema gráfico se preparan.</li>
+<li>El soporte de idiomas va después, preparando a NVDA para que muestre su interfaz en el idioma adecuado.</li>
+<li>Se inicializa el módulo api de NVDA. Aquí se incluye el establecimiento inicial del foco, el ratón y otros objetos.</li>
+<li>NVDA inicializa módulos para distintas apis de accesibilidad. En el caso de Java Access Bridge (JAB) o UI Automation (UIA), se realizan varias comprobaciones en este paso (por ejemplo, se comprueba que el usuario tiene Windows 7 o posterior antes de iniciar el soporte UIA).</li>
+<li>Se inicializan los módulos de soporte de entrada, incluyendo el módulo inputCore y los módulos que soportan la entrada desde teclados, ratones y pantallas táctiles (si el ordenador tiene Windows 8 o posterior y alguna pantalla instalada).</li>
+<li>Finalmente, se inicializa el manejador de extensiones globales y las propias extensiones. Con este paso completado, las características básicas de NVDA como por ejemplo el soporte GUI están listas para la acción.</li>
+<li>Dependiendo de las opciones de la línea de órdenes, valores de configuración y circunstancias como la instalación silenciosa, NVDA realizará las acciones adecuadas: mostrar el diálogo de bienvenida, comprobar automáticamente si hay actualizaciones, etc.</li>
+</ol>
+<p>El bucle principal se mantiene iterando hasta que NVDA recibe la orden de salir. En cada iteración o ciclo, el núcleo llama a los manejadores de api y entrada, a los generadores registrados y a la cola principal. Todos los eventos, scripts, etc. llegan indirectamente a la cola principal a través de los manejadores de api y entrada, por lo que al llamar a esta cola hacemos que se ejecuten. El bucle principal es lo que le da vida a NVDA.</p>
+<p>Una vez NVDA recibe la orden de salir, el núcleo hace finalizar a todos los demás componentes, guarda la configuración si debe hacerlo y después sale. Los pasos detallados son los siguientes:</p>
+<ol>
+<li>Si la comprobación de actualizaciones está en proceso, se le ordena terminar.</li>
+<li>Se finaliza watchdog (el monitor del núcleo), el soporte de extensiones globales (junto con las extensiones si hay alguna), el subsistema gráfico y se guarda la configuración de usuario si hay que hacerlo.</li>
+<li>Si el foco está ubicado en un control, NVDA llama al evento loseFocus en este control.</li>
+<li>NVDA finaliza varios subsistemas, empezando por el manejador de interceptores de árbol, el soporte de apis de accesibilidad, manejador de módulos de aplicación y sus módulos cargados, manejadores de entrada, soporte de voz y braille, y manejador de complementos.</li>
+<li>Finalmente, a menos que haya sido silenciado explícitamente, se reproduce el sonido de cierre de NVDA y se destruye la ventana de mensajes.</li>
+</ol>
+<h4 id="procesamiento-de-scripts-y-entrada">Procesamiento de scripts y entrada</h4>
+<p>En vez de poner los eventos y los scripts directamente en la cola, esto se abstrae mediante los módulos <code>eventHandler</code> y <code>scriptHandler</code>. Los manejadores de api y entrada usan estos módulos para poner en la cola o ejecutar directamente estos eventos y scripts.</p>
+<h4 id="generadores-registrados">Generadores registrados</h4>
+<p>Algunas tareas necesitan ejecutarse en segundo plano sin causar que NVDA se bloquee (cuelgue) mientras espera a que estas tareas se completen. Necesitan ejecutar código regularmente, pero no en un intervalo de tiempo concreto. NVDA permite registrar funciones generadoras de Python con este propósito. Una vez registradas, se ejecutarán una vez en cada ciclo o iteración del bucle principal. Algunos ejemplos de esto son las funciones de verbalizar todo o deletrear. Se registran llamando a <code>queueHandler.registerGeneratorObject</code>.</p>
+<h3 id="manejadores-de-entrada">Manejadores de entrada</h3>
+<p>Los manejadores de entrada gestionan la entrada desde distintas fuentes. Actualmente, hay tres módulos principales de entrada: <code>keyboardHandler</code>, <code>mouseHandler</code> y <code>touchHandler</code>. Los controladores de pantallas braille también pueden procesar la entrada. Estos manejadores escuchan la entrada y generan gestos de entrada y eventos según corresponda.</p>
+<h3 id="gestos-de-entrada">Gestos de entrada</h3>
+<p>Un gesto de entrada es una representación abstracta de una unidad mínima de entrada por parte del usuario; por ejemplo, la pulsación de una tecla. Todos los gestos de entrada heredan de la clase base <code>inputCore.InputGesture</code>. Esto permite procesar toda la entrada de una manera consistente y unificada. Por ejemplo, cualquier gesto de entrada puede asociarse a cualquier script, tanto mediante código como por el propio usuario.</p>
+<h3 id="manejadores-de-api">Manejadores de api</h3>
+<p>Los manejadores de api administran la inicialización, finalización y escucha de eventos en apis nativas y específicas de accesibilidad. También contienen funciones útiles para trabajar con su api. Cuando se recibe un evento para un widget, se construye o recupera un objeto NVDA adecuado y el evento se mete en la cola para ese objeto. Además de los objetos NVDA, también abstraen el manejo de eventos y consultas para apis específicas, por lo que el resto de módulos no necesitan conocer los detalles internos de cada api. Para introducir soporte para una nueva api, el desarrollador simplemente crea otro manejador de api y objetos NVDA adecuados sin necesidad de cambiar la mayoría del código. Los módulos manejadores de api incluyen <code>IAccessibleHandler</code> para MSAA/IAccessible e IAccessible2, <code>JABHandler</code> para Java Access Bridge y <code>UIAHandler</code> para UI Automation.</p>
+<h3 id="modulos-de-salida">Módulos de salida</h3>
+<p>Distintos módulos encapsulan el manejo de la funcionalidad de salida. Hay actualmente dos módulos principales: <code>speech</code> y <code>braille</code>. También está el módulo <code>tones</code>, que se usa para reproducir tonos o pitidos, y el módulo <code>nvWave</code>, usado para reproducir archivos de sonido wav ante ciertos eventos.</p>
+<p>En la mayoría de casos, la síntesis de voz y el braille emitirán el mismo texto de salida. Para facilitar esta tarea, se ofrece un módulo con una interfaz de usuario dedicada (ui) para enviar un mensaje por voz y/o braille. La función <code>ui.message</code> llama a las funciones <code>speech.speakMessage</code> y <code>braille.handler.message</code>.</p>
+<h3 id="controladores-de-salida">Controladores de salida</h3>
+<p>Los controladores de sintetizador permiten que NVDA utilice distintos sintetizadores de voz. Heredan de la clase base <code>synthDriverHandler.SynthDriver</code>.</p>
+<p>Los controladores de pantallas braille permiten que NVDA utilice modelos específicos de estos dispositivos. Heredan de la clase base <code>braille.BrailleDisplayDriver</code>.</p>
+<h3 id="objetos-nvda">Objetos NVDA</h3>
+<p>Un objeto NVDA (NVDAObject) es una representación abstracta de un widget único en NVDA. Todos los objetos NVDA heredan de la clase base <code>NVDAObjects.NVDAObject</code>. Los métodos y propiedades se usan para consultar información, capturar eventos o ejecutar acciones en el widget  representado por el objeto NVDA de una forma abstracta. Esto significa que la implementación de NVDA no tiene que estar atada a apis nativas o de accesibilidad, sino que puede trabajar con una representación única y abstracta. Esto permite integrar y dar soporte a muchas apis diferentes.</p>
+<p>Aquí es donde se usa todo el potencial de la programación orientada a objetos. Muchos métodos se implementan en la clase base <code>NVDAObject</code>, y sólo es necesario redefinirlos si se requiere funcionalidad específica. De forma similar, si un widget en particular no es estándar, problemático, ofrece información usando otros mecanismos, etc., simplemente se hace una subclase de NVDAObject y se sobreescriben los métodos que correspondan.</p>
+<p>Los objetos NVDA que podrían usarse en cualquier aplicación se encuentran en el paquete NVDAObjects. Los módulos de aplicación también pueden definir objetos NVDA específicos para una aplicación.</p>
+<h3 id="rangos-de-texto">Rangos de texto</h3>
+<p>Al trabajar con controles de texto editable, NVDA debe ser capaz de obtener información sobre el texto en el widget. En vez de recuperar todo el texto simplemente, para una navegación adecuada se necesitan recuperar unidades específicas de texto (párrafos, líneas, palabras y letras), así como la habilidad de buscar y establecer la ubicación del caret y la selección. También, si el widget soporta formato, NVDA debería ser capaz de recuperar atributos del texto tales como nombre de la fuente, tamaño, negrita, cursiva, subrayado y si hay un error ortográfico. Cada api tiene su forma particular de consultar y manipular texto. Al igual que los objetos NVDA ofrecen una representación abstracta de un widget, los objetos TextInfo ofrecen una representación abstracta de un rango de texto. Estos objetos heredan de la clase base <code>textInfos.TextInfo</code>.</p>
+<h3 id="ordenes-globales">Órdenes globales</h3>
+<p>El objeto de órdenes globales (<code>globalCommands.GlobalCommands</code>) contiene scripts integrados; pueden ejecutarse en todas partes. Por ejemplo, los scripts de revisar, verbalizar objeto bajo el foco o anunciar la hora y la fecha están todos ubicados ahí.</p>
+<h3 id="extensiones">Extensiones</h3>
+<p>NVDA permite a terceros extender su funcionalidad mediante extensiones y complementos. Estos pueden definir objetos NVDA específicos para ciertas aplicaciones, agregar características globales o añadir soporte para nuevas pantallas braille y sintetizadores de voz. Hay tres tipos de extensiones: módulos de aplicación, extensiones globales y controladores, donde estos últimos se dividen en a su vez en sintetizadores de voz y soporte para pantallas braille.</p>
+<h4 id="modulos-de-aplicacion">Módulos de aplicación</h4>
+<p>Generalmente, la mayoría de widgets pueden aparecer en una aplicación y por tanto se debería incluir un nuevo objeto NVDA en el paquete principal <code>NVDAObjects</code>. Sin embargo, algunas veces se dan casos en los que se implementa un widget específicamente para una aplicación, como también hay casos donde debe sobreescribirse un único evento u ofrecerse un script sólo en una aplicación. Un módulo de aplicación da soporte específico para una aplicación en estos casos.</p>
+<p>Un módulo de aplicación hereda de la clase base <code>appModuleHandler.AppModule</code>. Los módulos de aplicación reciben eventos para todos los objetos NVDA que hay en la aplicación y pueden asociar scripts que pueden ejecutarse en cualquier zona de esa aplicación. También pueden implementar sus propios objetos NVDA para usarlos en el contexto de la aplicación.</p>
+<h4 id="extensiones-globales">Extensiones globales</h4>
+<p>Además de la personalización específica de aplicaciones usando módulos de aplicación, es posible extender NVDA a nivel global. Por ejemplo, pueden añadirse nuevas órdenes globales, cambios de comportamiento, soporte para nuevos motores gráficos, etc. Esto puede hacerse con extensiones globales.</p>
+<p>Una extensión global hereda de la clase base <code>globalPluginHandler.GlobalPlugin</code>. De forma similar a las órdenes globales, pueden asociar scripts que pueden ejecutarse en todas partes. También pueden implementar sus propios objetos NVDA.</p>
+<h3 id="interceptores-de-arbol">Interceptores de árbol</h3>
+<p>En ocasiones, es necesario interceptar eventos y scripts para una jerarquía entera (o árbol) de objetos NVDA. Por ejemplo, esto es necesario para trabajar con documentos complejos que están formados por muchos objetos. Esto puede hacerse usando un interceptor de árbol.</p>
+<p>Un interceptor de árbol (TreeInterceptor) hereda de la clase base <code>treeInterceptorHandler.TreeInterceptor</code>. Recibe scripts y eventos para todos los objetos NVDA que incluye, también para el objeto raíz. Los interceptores de árbol se crean cuando se devuelve la clase TreeInterceptor en la propiedad <code>treeInterceptorClass</code> de un objeto NVDA.</p>
+<h3 id="buffers-virtuales">Buffers virtuales</h3>
+<p>Los documentos complejos tales como páginas web con mucha frecuencia no son planos; la información no va de arriba hacia abajo. Por este motivo, los exploradores de documentos complejos no ofrecen frecuentemente una manera de navegar por ellos usando el caret, e incluso cuando lo hacen, suele dar problemas. Por tanto, los lectores de pantalla necesitan crear una representación plana de un documento a partir de la jerarquía de objetos ofrecida por el navegador, y permitir al usuario navegar por esta representación plana. NVDA llama a esto buffers virtuales. Debido a la extrema lentitud al hacer un gran número de consultas fuera de proceso, NVDA los crea con la ayuda de código dentro del proceso.</p>
+<p>Un buffer virtual (VirtualBuffer) en NVDA hereda de la clase base <code>virtualBuffers.VirtualBuffer</code> y es un tipo de interceptor de árbol.</p>
+<h3 id="gui">GUI</h3>
+<p>NVDA dispone de su propia interfaz gráfica para facilitar el proceso de configuración y otras interacciones del usuario. Su código está principalmente dentro del paquete <code>gui</code>. Se usa <a href="http://www.wxpython.org/">wxPython</a> como motor gráfico.</p>
+<h2 id="funciones-especiales-de-objetos">Funciones especiales de objetos</h2>
+<h3 id="eventos">Eventos</h3>
+<p>Todas las instancias de NVDAObject, AppModule y VirtualBuffer pueden contener métodos especiales que capturan eventos para objetos NVDA. Todos estos métodos se nombran empezando por "event_"; por ejemplo <code>event_gainFocus</code> y <code>event_nameChange</code>. Estos eventos son generalmente ejecutados en una llamada a <code>eventHandler.executeEvent</code>, realizada generalmente en los eventos en cola puestos por los manejadores de api. La mayoría de eventos no necesitan argumentos adicionales. Los módulos de aplicación y buffers virtuales reciben una función manejadora a la que debería llamarse si queremos que el evento capturado sea procesado por el siguiente manejador de eventos; por ejemplo, el objeto en sí mismo.</p>
+<h3 id="scripts">Scripts</h3>
+<p>Todas las instancias de NVDAObject, AppModule y VirtualBuffer pueden contener métodos especiales llamados scripts, que se ejecutan como respuesta a gestos de entrada por parte del usuario. Todos estos métodos se nombran comenzando con "script_"; por ejemplo <code>script_reportCurrentFocus</code> y <code>script_dateTime</code>. Los métodos de tipo script reciben como argumento el gesto de entrada que los llamó.</p>
+<p>Los gestos de entrada se asocian a los scripts en la clase usando un diccionario llamado <code>__gestures</code>. También pueden asociarse en tiempo de ejecución llamando a <code>bindGesture</code>. Estos métodos se heredan de la clase <code>baseObject.ScriptableObject</code>.</p>
+<h2 id="comunicacion-interproceso">Comunicación interproceso</h2>
+<p>En términos generales, cada aplicación o servicio en un ordenador, incluyendo NVDA, constituye un proceso independiente. Ningún proceso puede acceder a datos de otro proceso salvo si usa mecanismos especiales del sistema operativo. Esto se llama comunicación interproceso (IPC).</p>
+<h3 id="codigo-fuera-del-proceso">Código fuera del proceso</h3>
+<p>NVDA funciona principalmente fuera de los procesos. Esto significa que los eventos y consultas de información de otros procesos deben fluir por un canal de comunicaciones entre NVDA y el proceso en cuestión usando IPC. Muchas veces esto es más lento que las consultas y eventos administradas en el propio proceso. Sin embargo, para la mayoría de funciones del lector de pantalla, la pérdida de rendimiento es insignificante.</p>
+<h3 id="codigo-dentro-del-proceso">Código dentro del proceso</h3>
+<p>Cuando es necesario hacer un gran número de consultas de golpe, trabajar fuera del proceso es demasiado lento. Un ejemplo típico es el renderizado de una página web en una representación plana, tal y como hacen los buffers virtuales. En estos casos, el código puede "inyectarse" en el proceso remoto. Como el código inyectado está en el proceso en cuestión, las consultas y eventos son mucho más rápidos, ya que no hay que usar comunicación interproceso. Esto significa que se pueden hacer muchas consultas de golpe más rápido. NVDA puede realizar entonces consultas únicas desde fuera del proceso y obtener información relevante.</p>
+<p>El código dentro del proceso debe ser pequeño y ligero, ya que se inyecta en otros procesos. También debe ser tan rápido como sea posible para garantizar el máximo rendimiento. Python no es adecuado para esta tarea. Todo el código de NVDA que se inyecta en los procesos está escrito en C++, que garantiza un rendimiento máximo y sobrecarga mínima.</p>
+</body>
+</html>
