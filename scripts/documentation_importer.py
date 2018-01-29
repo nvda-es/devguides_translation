@@ -19,6 +19,7 @@ def prepare_documentation_in_file(fileSource, fileDest):
 			newvar = "_(u\"\"\"%s\"\"\"),\n" % (i[:-1])
 		else:
 			newvar = "_(u\"\"\"%s\"\"\"),\n" % (i)
+		newvar=newvar.replace("|\"\"\"", "| \"\"\"").replace("\"\"\"\"", "\" \"\"\"").replace("u\" \"\"\"", "u\"\"\" \"").replace("u\"\"\"|", "u\"\"\" |")
 		f2.write(newvar)
 	f1.close()
 	f2.write("]")
