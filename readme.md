@@ -51,9 +51,8 @@ Vamos a convertir el documento home.md, que corresponde a una sencilla página d
 
 ## Conversión de html a markdown
 
-En ocasiones hay documentos que están en formato t2t. Este formato no es ideal para trabajar. Afortunadamente estos documentos se convierten a html, como la guía del desarrollador. Para convertirlos a markdown y procesarlos como en el apartado anterior, hacemos lo siguiente:
+En ocasiones hay documentos que están en formato t2t. Este formato no es ideal para trabajar. Afortunadamente estos documentos se convierten a html, como la guía del desarrollador. Para convertirlos a markdown y procesarlos como en el apartado anterior, necesitamos un programa como pandoc. Se puede descargar de http://pandoc.org. Una vez instalado, hacemos lo siguiente:
 
-1. Descargamos el documento a nuestro disco duro usando la opción guardar como del navegador. Por ejemplo vamos a guardar este en la carpeta scripts, con el nombre devguide.html: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
-2. Ejecutamos el siguiente comando, siempre desde la carpeta scripts: python html2md.py devguide.html
-3. El conversor hará lo que pueda para convertir a markdown, pero dejará muchas etiquetas html por el camino. Obviamente, no hay que traducirlas en Poedit.
-4. El documento convertido aparecerá en original_docs. Borra el html de origen, no sirve para nada y ocupará un preciado espacio en el repositorio si no lo haces.
+1. Descargamos el documento a nuestro disco duro usando la opción guardar como del navegador. Por ejemplo vamos a guardar este en la carpeta raíz del repositorio, con el nombre devguide.html: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
+2. Ejecutamos el siguiente comando desde la raíz del repositorio: pandoc devguide.html -f html -t markdown -s -o original_docs/devguide.md
+3. El documento convertido aparecerá en original_docs. Borra el html de origen, no sirve para nada y ocupará un preciado espacio en el repositorio si no lo haces.
