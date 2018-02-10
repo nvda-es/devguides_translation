@@ -13,13 +13,14 @@ def prepare_documentation_in_file(fileSource, fileDest):
 	f2.write("# -*- coding: utf-8 -*-\n")
 	f2.write("documentation = [\n")
 	for i in lns:
+		i=i.replace('"', '\\"')
 		if "\n" == i:
 			newvar = "\"\","
 		elif "\n" == i[-1]:
 			newvar = "_(u\"\"\"%s\"\"\"),\n" % (i[:-1])
 		else:
 			newvar = "_(u\"\"\"%s\"\"\"),\n" % (i)
-		newvar=newvar.replace("|\"\"\"", "| \"\"\"").replace("\"\"\"\"", "\" \"\"\"").replace("u\" \"\"\"", "u\"\"\" \"").replace("u\"\"\"|", "u\"\"\" |")
+		#newvar=newvar.replace("|\"\"\"", "| \"\"\"").replace("\"\"\"\"", "\" \"\"\"").replace("u\" \"\"\"", "u\"\"\" \"").replace("u\"\"\"|", "u\"\"\" |")
 		f2.write(newvar)
 	f1.close()
 	f2.write("]")
