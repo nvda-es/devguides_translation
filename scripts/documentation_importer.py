@@ -13,7 +13,7 @@ def prepare_documentation_in_file(fileSource, fileDest):
 	f2.write("# -*- coding: utf-8 -*-\n")
 	f2.write("documentation = [\n")
 	for i in lns:
-		i=i.replace('"', '\\"')
+		i=i.replace("\\", "\\\\").replace('"', '\\"')
 		if "\n" == i:
 			newvar = "\"\","
 		elif "\n" == i[-1]:
