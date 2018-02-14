@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-10 12:05+0100\n"
+"POT-Creation-Date: 2018-02-11 16:45+Hora estándar romance\n"
+"PO-Revision-Date: 2018-02-14 21:14+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,15 +19,15 @@ msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:3
 msgid "# NVDA Add-on internals: Golden Cursor"
-msgstr ""
+msgstr "# Complementos de NVDA vistos por dentro: Golden Cursor"
 
 #: ..\python_docs\gcaddoninternals.py:4
 msgid "Author: Joseph Lee"
-msgstr ""
+msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\gcaddoninternals.py:5
 msgid "## Introduction"
-msgstr ""
+msgstr "## Introducción"
 
 #: ..\python_docs\gcaddoninternals.py:6
 msgid ""
@@ -39,6 +39,15 @@ msgid ""
 "interaction in the 21st century, one input device has stil remained king of "
 "computer interaction: keyboards."
 msgstr ""
+"Una interfaz gráfica de usuario no está completa si no da la posibilidad de "
+"moverse por la pantalla e interactuar con diversos elementos. Durante años, "
+"un ratón de ordenador ha sido una herramienta muy útil para trabajar con "
+"elementos gráficos, siendo algunas de sus funciones sustituidas para algunas "
+"personas por tecnologías tales como pantallas táctiles o realidad mixta. "
+"Incluso con la llegada del ratón en la década de los 70 y el movimiento "
+"hacia la interacción táctil en el siglo XXI, un dispositivo de entrada ha "
+"permanecido todavía como el rey de la interacción con ordenadores: el "
+"teclado."
 
 #: ..\python_docs\gcaddoninternals.py:7
 msgid ""
@@ -51,6 +60,15 @@ msgid ""
 "move the mouse with a keyboard. Fortunately, the last advancement is now a "
 "reality thanks to an add-on we'll be examining in this aricle: Golden Cursor."
 msgstr ""
+"Para muchas personas ciegas, el concepto de usar un ratón (o interacción "
+"táctil) puede sonar extraño, especialmente para aquellas acostumbradas a "
+"interfaces basadas en texto. Para algunos, usar el ratón siendo ciegos era "
+"solamente un sueño. Los recientes avances en lectores de pantalla lo han "
+"posibilitado un poco, aunque hay áreas que todavía necesitan trabajo: "
+"descripción de los colores del cursor, más precisión en el anunciado de sus "
+"cambios de forma, así como la posibilidad de mover el ratón con un teclado. "
+"Por suerte, el último punto ya se ha hecho realidad gracias a un complemento "
+"que examinaremos en este artículo: Golden Cursor."
 
 #: ..\python_docs\gcaddoninternals.py:8
 msgid ""
@@ -66,6 +84,18 @@ msgid ""
 "history behind this add-on, recent developments, and dive into how this add-"
 "on improves mouse usability for blind people around the world."
 msgstr ""
+"A modo de resumen, Golden Cursor es un complemento que permite a los "
+"usuarios de NVDA manipular el ratón utilizando el teclado. Aunque Windows "
+"tiene la función de teclas del ratón, es imprescindible disponer de un "
+"teclado numérico para aprovechar al máximo esta característica. Por otra "
+"parte, Golden Cursor no necesita un teclado numérico físico, haciéndolo por "
+"tanto más universal. Incluso aunque el complemento ha tenido poca actividad "
+"de desarrollo últimamente, sigue siendo digno de estudio al ser un caso de "
+"éxito. La comunidad se ha mostrado entusiasmada con este complemento, y este "
+"artículo supone una oportunidad para su autor para mejorar el complemento y "
+"exponer los detalles internos de su trabajo. En este artículo conoceremos la "
+"historia que hay tras este complemento, los desarrollos recientes, y veremos "
+"cómo mejora la usabilidad del ratón para personas ciegas de todo el mundo."
 
 #: ..\python_docs\gcaddoninternals.py:9
 msgid ""
@@ -73,6 +103,9 @@ msgid ""
 "goldenCursor.en.html. The source code repository can be found at https://"
 "github.com/josephsl/goldenCursor."
 msgstr ""
+"Para descargar este complemento, visita la sección de complementos en el "
+"menú superior de nuestra web. Su código fuente se encuentra en https://"
+"github.com/josephsl/goldenCursor."
 
 #: ..\python_docs\gcaddoninternals.py:10
 msgid ""
@@ -81,10 +114,15 @@ msgid ""
 "and contributors. Microsoft Windows, Windows API and related technologies "
 "are copyright Microsoft Corporation."
 msgstr ""
+"Aviso de derechos de copia: NVDA tiene copyright 2006-2018 por NV Access "
+"Limited. El complemento Golden Cursor tiene copyright 2015-2017 por Salah "
+"Atair, Wafeeq Taher, Joseph Lee y otros contribuyentes. Microsoft Windows, "
+"la api de Windows y otras tecnologías relacionadas tienen copyright de "
+"Microsoft Corporation."
 
 #: ..\python_docs\gcaddoninternals.py:11
 msgid "## Golden Cursor: A History"
-msgstr ""
+msgstr "## Golden Cursor: la historia"
 
 #: ..\python_docs\gcaddoninternals.py:12
 msgid ""
@@ -95,16 +133,25 @@ msgid ""
 "interest in this add-on, I decided to contact the devleoper and review the "
 "new add-on."
 msgstr ""
+"Hacia finales de 2015, un traductor árabe contactó con el equipo de "
+"complementos de NVDA y presentó ante la comunidad un complemento que un "
+"amigo suyo estaba desarrollando. Llamado \"Golden Cursor\", el complemento "
+"vino con órdenes de teclado para manipular el ratón. Ya que la comunidad ha "
+"mostrado interés en este complemento, decidí contactar con el desarrollador "
+"y revisarlo."
 
 #: ..\python_docs\gcaddoninternals.py:13
 msgid ""
 "Although the add-on had potential, it had numerous coding problems. for "
 "example, in early drafts, it used Python's boolean statements like this:"
 msgstr ""
+"Aunque el complemento tenía potencial, padecía varios problemas de "
+"codificación. Por ejemplo, en sus versiones preliminares, usaba sentencias "
+"booleanas de Python como estas:"
 
 #: ..\python_docs\gcaddoninternals.py:14
 msgid "\tif something == False: #code"
-msgstr ""
+msgstr "\tif algo == False: #código"
 
 #: ..\python_docs\gcaddoninternals.py:15
 msgid ""
@@ -113,6 +160,11 @@ msgid ""
 "website for community testing, wihch resulted in positive feedback. Thus in "
 "January 2016, Golden Cursor became na official NVDA add-on."
 msgstr ""
+"Eventualmente se resolvieron varias incidencias serias, y después de "
+"trabajar mano a mano con el desarrollador del complemento, se envió Golden "
+"Cursor a la web de complementos de la comunidad en fase de pruebas, "
+"recibiendo una retroalimentación muy positiva. Por tanto, en enero de 2016, "
+"Golden Cursor se convirtió en un complemento oficial."
 
 #: ..\python_docs\gcaddoninternals.py:16
 msgid ""
@@ -123,10 +175,18 @@ msgid ""
 "volunteered to modernize this add-on. Thus the below notes are based on old "
 "add-on releaes, as well as ongoing modernization work."
 msgstr ""
+"En 2017, yo (Joseph Lee) anuncié una iniciativa para modernizar los "
+"complementos de la comunidad haciéndolos compatibles con Python 3, y "
+"naturalmente Golden Cursor era uno de esos complementos que necesitaban "
+"modernizarse. El problema vino porque la comunidad perdió el contacto con "
+"los desarrolladores originales del complemento, así que me ofrecí voluntario "
+"para modernizarlo. Las notas que hay más abajo están basadas en las "
+"versiones antiguas del complemento, así como en los trabajos de "
+"modernización."
 
 #: ..\python_docs\gcaddoninternals.py:17
 msgid "## Add-on mechanics"
-msgstr ""
+msgstr "## Mecanismos del complemento"
 
 #: ..\python_docs\gcaddoninternals.py:18
 msgid ""
@@ -151,19 +211,19 @@ msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:20
 msgid "* 0: Move mouse to the right."
-msgstr ""
+msgstr "* 0: mueve el ratón hacia la derecha."
 
 #: ..\python_docs\gcaddoninternals.py:21
 msgid "* 1: Move mouse to the left."
-msgstr ""
+msgstr "* 1: mueve el ratón hacia la izquierda."
 
 #: ..\python_docs\gcaddoninternals.py:22
 msgid "* 2: Move mouse down."
-msgstr ""
+msgstr "* 2: mueve el ratón hacia abajo."
 
 #: ..\python_docs\gcaddoninternals.py:23
 msgid "* 3: Move mouse up."
-msgstr ""
+msgstr "* 3: mueve el ratón hacia arriba."
 
 #: ..\python_docs\gcaddoninternals.py:24
 msgid "The moveMouse routine is as follows:"
@@ -279,20 +339,24 @@ msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:40
 msgid "## References"
-msgstr ""
+msgstr "## Referencias"
 
 #: ..\python_docs\gcaddoninternals.py:41
 msgid "* Pixel (Wikipedia): https://en.wikipedia.org/wiki/Pixel"
-msgstr ""
+msgstr "* Píxel (Wikipedia): https://en.wikipedia.org/wiki/Pixel"
 
 #: ..\python_docs\gcaddoninternals.py:42
 msgid ""
 "* GetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx"
 msgstr ""
+"* Referencia de GetCursorPos (user32.dll) (Windows API): https://msdn."
+"microsoft.com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx"
 
 #: ..\python_docs\gcaddoninternals.py:43
 msgid ""
 "* SetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms648394(v=vs.85).aspx"
 msgstr ""
+"* Referencia de SetCursorPos (user32.dll) (Windows API): https://msdn."
+"microsoft.com/en-us/library/windows/desktop/ms648394(v=vs.85).aspx"
