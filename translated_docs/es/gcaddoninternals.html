@@ -1,0 +1,59 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Complementos de NVDA vistos por dentro: Golden Cursor</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Complementos de NVDA vistos por dentro: Golden Cursor</h1></header>
+  <p>Autor: Joseph Lee</p>
+<h2 id="introduccion">Introducción</h2>
+<p>Una interfaz gráfica de usuario no está completa si no da la posibilidad de moverse por la pantalla e interactuar con diversos elementos. Durante años, un ratón de ordenador ha sido una herramienta muy útil para trabajar con elementos gráficos, siendo algunas de sus funciones sustituidas para algunas personas por tecnologías tales como pantallas táctiles o realidad mixta. Incluso con la llegada del ratón en la década de los 70 y el movimiento hacia la interacción táctil en el siglo XXI, un dispositivo de entrada ha permanecido todavía como el rey de la interacción con ordenadores: el teclado.</p>
+<p>Para muchas personas ciegas, el concepto de usar un ratón (o interacción táctil) puede sonar extraño, especialmente para aquellas acostumbradas a interfaces basadas en texto. Para algunos, usar el ratón siendo ciegos era solamente un sueño. Los recientes avances en lectores de pantalla lo han posibilitado un poco, aunque hay áreas que todavía necesitan trabajo: descripción de los colores del cursor, más precisión en el anunciado de sus cambios de forma, así como la posibilidad de mover el ratón con un teclado. Por suerte, el último punto ya se ha hecho realidad gracias a un complemento que examinaremos en este artículo: Golden Cursor.</p>
+<p>A modo de resumen, Golden Cursor es un complemento que permite a los usuarios de NVDA manipular el ratón utilizando el teclado. Aunque Windows tiene la función de teclas del ratón, es imprescindible disponer de un teclado numérico para aprovechar al máximo esta característica. Por otra parte, Golden Cursor no necesita un teclado numérico físico, haciéndolo por tanto más universal. Incluso aunque el complemento ha tenido poca actividad de desarrollo últimamente, sigue siendo digno de estudio al ser un caso de éxito. La comunidad se ha mostrado entusiasmada con este complemento, y este artículo supone una oportunidad para su autor para mejorar el complemento y exponer los detalles internos de su trabajo. En este artículo conoceremos la historia que hay tras este complemento, los desarrollos recientes, y veremos cómo mejora la usabilidad del ratón para personas ciegas de todo el mundo.</p>
+<p>Para descargar este complemento, visita la sección de complementos en el menú superior de nuestra web. Su código fuente se encuentra en https://github.com/josephsl/goldenCursor.</p>
+<p>Aviso de derechos de copia: NVDA tiene copyright 2006-2018 por NV Access Limited. El complemento Golden Cursor tiene copyright 2015-2017 por Salah Atair, Wafeeq Taher, Joseph Lee y otros contribuyentes. Microsoft Windows, la api de Windows y otras tecnologías relacionadas tienen copyright de Microsoft Corporation.</p>
+<h2 id="golden-cursor-la-historia">Golden Cursor: la historia</h2>
+<p>Hacia finales de 2015, un traductor árabe contactó con el equipo de complementos de NVDA y presentó ante la comunidad un complemento que un amigo suyo estaba desarrollando. Llamado "Golden Cursor", el complemento vino con órdenes de teclado para manipular el ratón. Ya que la comunidad ha mostrado interés en este complemento, decidí contactar con el desarrollador y revisarlo.</p>
+<p>Aunque el complemento tenía potencial, padecía varios problemas de codificación. Por ejemplo, en sus versiones preliminares, usaba sentencias booleanas de Python como estas:</p>
+<pre><code>if algo == False: #código
+</code></pre>
+<p>Eventualmente se resolvieron varias incidencias serias, y después de trabajar mano a mano con el desarrollador del complemento, se envió Golden Cursor a la web de complementos de la comunidad en fase de pruebas, recibiendo una retroalimentación muy positiva. Por tanto, en enero de 2016, Golden Cursor se convirtió en un complemento oficial.</p>
+<p>En 2017, yo (Joseph Lee) anuncié una iniciativa para modernizar los complementos de la comunidad haciéndolos compatibles con Python 3, y naturalmente Golden Cursor era uno de esos complementos que necesitaban modernizarse. El problema vino porque la comunidad perdió el contacto con los desarrolladores originales del complemento, así que me ofrecí voluntario para modernizarlo. Las notas que hay más abajo están basadas en las versiones antiguas del complemento, así como en los trabajos de modernización.</p>
+<h2 id="mecanismos-del-complemento">Mecanismos del complemento</h2>
+<p>En términos generales, el complemento sirve como una "rueda en el teclado" para el ratón del ordenador. Esto se vuelve más intuitivo con el hecho de que las teclas que se asignan por defecto para mover el ratón son ctrl+windows+flechas. Además, hay disponible una función de marcadores que permite etiquetar posiciones del ratón en pantalla (coordenadas x e y) y saltar a ellas, así como saltar simplemente a coordenadas introducidas manualmente. Las coordenadas etiquetadas se almacenan en un fichero que tiene el aspecto de cualquier fichero ini, y que puede compartirse fácilmente con otros usuarios y sistemas.</p>
+<p>Realmente, la "rueda" es una llamada a la función de la api de Windows SetCursorPos, encapsulada dentro del módulo winUser (ya que winUser encapsula las funciones de user32.dll), y controlada en última instancia por el método moveMouse del complemento. El método moveMouse recibe un indicador con la dirección del ratón, y basándose en la posición actual del mismo, su dirección y el indicador de restricciones, posiciona el cursor del ratón en la nueva ubicación. Los indicadores de dirección son:</p>
+<ul>
+<li>0: mueve el ratón hacia la derecha.</li>
+<li>1: mueve el ratón hacia la izquierda.</li>
+<li>2: mueve el ratón hacia abajo.</li>
+<li>3: mueve el ratón hacia arriba.</li>
+</ul>
+<p>El procedimiento para mover el ratón es el siguiente:</p>
+<ol>
+<li>Se obtiene la ubicación actual del cursor llamando a la función GetCursorPos, que devuelve las coordenadas x e y del ratón.</li>
+<li>Se calcula la nueva ubicación del ratón basada en la dirección dada y la unidad de movimiento (esta unidad tiene un rango que varía entre 1 y 100 píxeles; un píxel (del inglés picture element) es un cuadrado muy pequeño en los monitores usado para procesar la información saliente, como por ejemplo el color, intensidad y demás, y los monitores vienen con millones de píxeles). Por ejemplo, si pulsamos ctrl+windows+flecha derecha ya que nos movemos en esa dirección, la nueva coordenada x será la suma de la coordenada x actual y la unidad de movimiento. De manera similar, si pulsamos ctrl+windows+flecha izquierda, la nueva coordenada x será la resta de la coordenada x actual y la unidad de movimiento.</li>
+<li>Si se establece una restricción del ratón (por ejemplo, si lo configuramos para que deba permanecer en la aplicación actual), la nueva ubicación estará en algún lugar dentro de la aplicación donde restringimos, en cualquier otro caso el ratón se moverá. A continuación, se llama a la función SetCursorPos para establecer en pantalla la nueva ubicación del ratón.</li>
+<li>El complemento también incluye la posibilidad de verbalizar las nuevas coordenadas del ratón. Si esta característica está activada, se verbalizará al menos una coordenada (x o y) o ambas.</li>
+</ol>
+<p>El etiquetado de coordenadas y el salto a coordenadas específicas son dos variantes del mecanismo explicado más arriba. Cuando se desea desplazar el ratón a otra ubicación, se puede invocar el diálogo de salto y escribir las nuevas coordenadas (valor de x, una coma, y luego el valor de y). De forma similar, si se desea marcar una ubicación del ratón con una etiqueta, se puede mover el ratón a la ubicación deseada y abrir el diálogo de posiciones, escribir una etiqueta y pulsar intro, guardando esta etiqueta en un fichero ini cuyo nombre es el nombre de la aplicación y la extensión .gc (por ejemplo, outlook.gc para etiquetas del ratón en Microsoft Outlook). A continuación, se puede invocar el diálogo de lista de posiciones, seleccionar una etiqueta, y pulsar intro para mover el ratón a la ubicación etiquetada, con el diálogo de lista de posiciones ofreciendo también opciones para renombrar, eliminar o limpiar las etiquetas para la aplicación.</p>
+<p>Además de las órdenes de movimiento del ratón, este complemento viene equipado con dos indicadores que permiten configurar si se verbalizan las nuevas coordenadas del ratón en píxeles, o si se restringe el movimiento del mismo a la aplicación utilizada actualmente.</p>
+<h2 id="coordenadas-de-la-pantalla-en-windows">Coordenadas de la pantalla en Windows</h2>
+<p>Para la gente familiarizada con la representación matemática de un plano o un gráfico 2D, el punto de inicio ideal (también llamado origen) podría ser el centro, o para monitores de ordenador, la esquina inferior izquierda. Sin embargo, en Windows, el punto de inicio es la esquina superior izquierda. Por ejemplo, en una pantalla con una resolución de 1920x1080 píxeles, la esquina superior izquierda es (0,0), y la esquina superior derecha es (1920,0). Aplicando esta lógica, podemos ver que la esquina inferior izquierda es (0,1080) y la inferior derecha es (1920,1080). Ten en cuenta que es necesario restar una unidad del máximo, por lo que la coordenada de la esquina inferior derecha en realidad es (1919,1079).</p>
+<p>Cuando aplicamos esto al movimiento del ratón, la coordenada x se incrementa al mover el ratón a la derecha, mientras que la coordenada y disminuye cuando lo subimos hacia arriba. Para dar más completitud, las expresiones de movimiento del ratón son:</p>
+<ul>
+<li>Se mueve el ratón a la derecha: nueva x = x actual + unidad de movimiento</li>
+<li>Se mueve el ratón hacia la izquierda: nueva x = x actual - unidad de movimiento</li>
+<li>Se mueve el ratón hacia abajo: nueva y = y actual + unidad de movimiento</li>
+<li>Se mueve el ratón hacia arriba: nueva y = y actual - unidad de movimiento</li>
+</ul>
+<h2 id="conclusion">Conclusión</h2>
+<p>Se suele decir que cuanto más simple es algo, mejor. El complemento Golden Cursor encaja en esta definición perfectamente: un complemento simple que a la vez es sorprendentemente potente y útil. La capacidad para usar el teclado para mover el ratón ha sido un sueño para muchos, y ahora, gracias a este complemento, se ha hecho realidad. El tiempo dirá como evolucionará este complemento para satisfacer las necesidades de la gente, ya se están planteando algunas buenas ideas en la comunidad.</p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li>Píxel (Wikipedia): https://en.wikipedia.org/wiki/Pixel</li>
+<li>Referencia de GetCursorPos (user32.dll) (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx</li>
+<li>Referencia de SetCursorPos (user32.dll) (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms648394(v=vs.85).aspx</li>
+</ul>
+</body>
+</html>
