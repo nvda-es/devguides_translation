@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-10 12:05+0100\n"
+"PO-Revision-Date: 2018-02-18 16:06+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,15 +19,15 @@ msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:3
 msgid "# NVDA Add-on internals: SysTray List"
-msgstr ""
+msgstr "# Complementos de NVDA vistos por dentro: SysTray List"
 
 #: ..\python_docs\stladdoninternals.py:4
 msgid "Author: Joseph Lee"
-msgstr ""
+msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\stladdoninternals.py:5
 msgid "## Introduction"
-msgstr ""
+msgstr "## Introducción"
 
 #: ..\python_docs\stladdoninternals.py:6
 msgid ""
@@ -36,6 +36,11 @@ msgid ""
 "new product. As a user who have worked with multiple screen readers, I often "
 "ask this question when moving from one screen reader to another."
 msgstr ""
+"Al hacer la transición entre lectores de pantalla, una de las primeras cosas "
+"que alguien podría preguntarse es si existen características del antiguo "
+"lector de pantalla en el nuevo a las que la gente ya esté acostumbrada. Como "
+"usuario que ha trabajado con varios lectores de pantalla, frecuentemente me "
+"hago esta pregunta cuando paso de un lector de pantalla a otro."
 
 #: ..\python_docs\stladdoninternals.py:7
 msgid ""
