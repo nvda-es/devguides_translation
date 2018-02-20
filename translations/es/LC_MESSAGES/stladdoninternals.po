@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-20 11:10+0100\n"
+"PO-Revision-Date: 2018-02-20 15:54+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -135,42 +135,55 @@ msgid ""
 "(globalPlugins/sysTrayList/__init__.py). Some add-ons, especially those that "
 "use helper modules uses package-style directory structure."
 msgstr ""
+"Esta extensión global reside en su propia carpeta, llamada sysTrayList "
+"(globalPlugins/sysTrayList/__init__.py). Algunos complementos, especialmente "
+"aquellos que se apoyan en módulos auxiliares, siguen un estilo de paquete en "
+"su estructura de directorios."
 
 #: ..\python_docs\stladdoninternals.py:15
 msgid "The global plugin file is composed of the following sections:"
-msgstr ""
+msgstr "El fichero de extensión global se divide en las siguientes secciones:"
 
 #: ..\python_docs\stladdoninternals.py:16
 msgid "* Like any Python module, various modules are imported."
-msgstr ""
+msgstr "* Como en cualquier módulo Python, se importan varios módulos."
 
 #: ..\python_docs\stladdoninternals.py:17
 msgid ""
 "* An event executor (more on this below) that sends mouse events specified "
 "in the parameter."
 msgstr ""
+"* Un ejecutor de eventos (más información sobre esto debajo) que envía los "
+"eventos de ratón que recibe como parámetro."
 
 #: ..\python_docs\stladdoninternals.py:18
 msgid ""
 "* The global plugin (class GlobalPlugin(globalPluginHandler.GlobalPlugin)) "
 "which contains the systray script and helper functions."
 msgstr ""
+"* La extensión global (class GlobalPlugin(globalPluginHandler."
+"GlobalPlugin)), que contiene el script de bandeja del sistema y funciones "
+"auxiliares."
 
 #: ..\python_docs\stladdoninternals.py:19
 msgid ""
 "* The dialog class (globalPlugins.systraylist.SystrayListDialog) for "
 "displaying the dialog itself."
 msgstr ""
+"* La clase del diálogo (globalPlugins.systraylist.SystrayListDialog), "
+"encargada de mostrar el diálogo en cuestión."
 
 #: ..\python_docs\stladdoninternals.py:20
 msgid "## NVDA+F11: A behind the scenes tour"
-msgstr ""
+msgstr "## NVDA+f11: recorrido por detrás del escenario"
 
 #: ..\python_docs\stladdoninternals.py:21
 msgid ""
 "So what exactly happens when you press NVDA+F11? When you press this command "
 "after installing the add-on, NVDA will do the following:"
 msgstr ""
+"¿Qué ocurre exactamente cuando pulsas NVDA+f11? Cuando pulsas esta orden "
+"después de instalar el complemento, NVDA hace lo siguiente:"
 
 #: ..\python_docs\stladdoninternals.py:22
 msgid ""
@@ -179,18 +192,27 @@ msgid ""
 "press NVDA+F11 within the next half a second, NvDA will treat this as "
 "multiple press of this command."
 msgstr ""
+"1. Determina si has pulsado esta orden una o dos veces llamando a "
+"scriptHandler.getLastScriptRepeatCount. Si pulsas NVDA+f11 y lo vuelves a "
+"pulsar en el siguiente medio segundo, NVDA tratará este hecho como múltiples "
+"pulsaciones de esta orden."
 
 #: ..\python_docs\stladdoninternals.py:23
 msgid ""
 "2. If NVDA sees that you have pressed NVDA+F11 once, NvDA will locate system "
 "tray icons, otherwise it'll fetch taskbar icons."
 msgstr ""
+"2. Si NVDA ve que has pulsado NVDA+f11 una vez, localizará los iconos de la "
+"bandeja del sistema, en caso contrario recopilará los iconos de la barra de "
+"tareas."
 
 #: ..\python_docs\stladdoninternals.py:24
 msgid ""
 "3. The icon locators (both are private functions) will do the following to "
 "obtain a list of icons needed:"
 msgstr ""
+"3. Los ubicadores de iconos (ambos son funciones privadas) harán lo "
+"siguiente para obtener una lista con los iconos necesarios:"
 
 #: ..\python_docs\stladdoninternals.py:25
 msgid ""
