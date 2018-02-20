@@ -32,8 +32,8 @@ Si eres traductor, únicamente necesitas Poedit. Puedes descargarlo desde http:/
 Si quieres participar en el proceso de conversión de documentos, necesitas lo siguiente:
 
 * Python, versión 2.7.14 o posterior para Windows. Se pueden usar las versiones de 32 o 64 bits.
-* Los paquetes markdown y html2markdown, que puedes instalar desde pip
-* Agrega la ruta a tu carpeta de instalación de Python modificando la variable path en las variables de entorno de tu sistema. El instalador lo hará por ti si marcas la opción correspondiente.
+* Los paquetes markdown y html2text, que puedes instalar desde pip
+* Agrega la ruta a tu carpeta de instalación de Python modificando la variable path en las variables de entorno de tu sistema. Agrega también la subcarpeta scripts. El instalador hará todo esto por ti si marcas la opción correspondiente.
 
 ## Conversión de ejemplo
 
@@ -51,8 +51,7 @@ Vamos a convertir el documento home.md, que corresponde a una sencilla página d
 
 ## Conversión de html a markdown
 
-En ocasiones hay documentos que están en formato t2t. Este formato no es ideal para trabajar. Afortunadamente estos documentos se convierten a html, como la guía del desarrollador. Para convertirlos a markdown y procesarlos como en el apartado anterior, necesitamos un programa como pandoc. Se puede descargar de http://pandoc.org. Una vez instalado, hacemos lo siguiente:
+En ocasiones hay documentos que están en formato t2t. Este formato no es ideal para trabajar. Afortunadamente estos documentos se convierten a html, como la guía del desarrollador. Para convertirlos a markdown y procesarlos como en el apartado anterior, necesitamos un paquete como html2text. Se puede instalar usando pip: pip install html2text. Una vez instalado, hacemos lo siguiente:
 
-1. Descargamos el documento a nuestro disco duro usando la opción guardar como del navegador. Por ejemplo vamos a guardar este en la carpeta raíz del repositorio, con el nombre devguide.html: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
-2. Ejecutamos el siguiente comando desde la raíz del repositorio: pandoc devguide.html -f html -t markdown -s -o original_docs/devguide.md
-3. El documento convertido aparecerá en original_docs. Borra el html de origen, no sirve para nada y ocupará un preciado espacio en el repositorio si no lo haces.
+1. Ejecutamos el siguiente comando desde la raíz del repositorio: html2text -b 0 --escape-all https://www.nvaccess.org/files/nvda/documentation/developerGuide.html > original_docs/developer_guide.md
+2. El documento convertido aparecerá en original_docs. La opción --escape-all escapa todos aquellos caracteres que podrían afectar de forma no deseada al resultado en Markdown, y la opción -b 0 elimina el límite de caracteres por línea, que puede dificultar la traducción.
