@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-20 15:54+0100\n"
+"PO-Revision-Date: 2018-02-21 13:01+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -220,6 +220,10 @@ msgid ""
 "searched to locate the needed icons and their locations, and this list is "
 "used by another private function to obtain a list of icon names."
 msgstr ""
+"\t1. Cada ubicador tiene una lista de rutas a ventanas (nombres de clase de "
+"ventanas) en las que buscar para encontrar los iconos necesarios y sus "
+"ubicaciones, esta lista se pasa a otra función privada para obtener una "
+"lista con los nombres de los iconos."
 
 #: ..\python_docs\stladdoninternals.py:26
 msgid ""
@@ -227,6 +231,9 @@ msgid ""
 "handle to the icons list where the icons live (more on this in the next "
 "section)."
 msgstr ""
+"\t2. La función privada llamará a la función FindWindowEx de user32.dll para "
+"obtener el manejador de la lista de iconos donde estos se alojan (más sobre "
+"esto en la siguiente sección)."
 
 #: ..\python_docs\stladdoninternals.py:27
 msgid ""
@@ -236,6 +243,12 @@ msgid ""
 "to locate the icons and store their names and location in a list, which will "
 "then be returned to the locator routines."
 msgstr ""
+"\t3. Una vez se encuentra el manejador, NVDA ubicará el primer icono a "
+"través de la función NVDAObjects.IAccessible.getNVDAObjectFromEvent. A "
+"continuación, NVDA usará emulación de navegación por objetos (objeto, hace "
+"algo, objeto=objeto.next) para encontrar los iconos y almacenar sus nombres "
+"y posiciones en una lista, que será devuelta a los procedimientos del "
+"ubicador."
 
 #: ..\python_docs\stladdoninternals.py:28
 msgid ""
@@ -244,26 +257,38 @@ msgid ""
 "Depending on script count, it'll change the title and the label for the "
 "icons list view."
 msgstr ""
+"4. Una vez los ubicadores hayan obtenido las listas de iconos y sus "
+"posiciones, se llama a otra función privada para abrir un diálogo y mostrar "
+"los iconos solicitados. Dependiendo del número de veces que se ha pulsado la "
+"orden, el script cambiará el título y la etiqueta de la vista de lista de "
+"iconos."
 
 #: ..\python_docs\stladdoninternals.py:29
 msgid ""
 "5. After you select an icon and what to do (left click (default), right "
 "click, double-click), NVDA will perform the following:"
 msgstr ""
+"5. Después de seleccionar un icono e indicar lo que quieres hacer con él "
+"(clic con el botón izquierdo (por defecto), clic con el botón derecho, doble "
+"clic), NVDA hará lo siguiente:"
 
 #: ..\python_docs\stladdoninternals.py:30
 msgid "\t1. NVDA will look up the location of the selected icon."
-msgstr ""
+msgstr "\t1. NVDA buscará la ubicación del icono seleccionado."
 
 #: ..\python_docs\stladdoninternals.py:31
 msgid ""
 "\t2. NVDA will perform a series of mouse clicks (mouseEvents function, more "
 "on this routine below)."
 msgstr ""
+"\t2. NVDA realizará una serie de clics con el ratón (función mouseEvents, "
+"más info sobre este procedimiento debajo)."
 
 #: ..\python_docs\stladdoninternals.py:32
 msgid "## FindWindow versus FindWindowEx and its relation to icon locators"
 msgstr ""
+"## Diferencias entre FindWindow y FindWindowEx y relación con los ubicadores "
+"de iconos"
 
 #: ..\python_docs\stladdoninternals.py:33
 msgid ""
@@ -272,6 +297,11 @@ msgid ""
 "Because of this, you may see many Windows API functions that ends with \"Ex"
 "\" (short for \"extended\")."
 msgstr ""
+"La api de Windows ha cambiado muchísimo en versiones recientes de este "
+"sistema operativo. Estos cambios se dieron como una reacción ante problemas "
+"de seguridad, para extender la funcionalidad de la api, etc. Por este "
+"motivo, pueden verse muchas funciones de la api de Windows que terminan con "
+"\"Ex\" (abreviatura de \"extended\")."
 
 #: ..\python_docs\stladdoninternals.py:34
 msgid ""
@@ -279,16 +309,22 @@ msgid ""
 "the class name and child window class name. For example, if we need to "
 "obtain a handle to a menu bar in an app, we would use:"
 msgstr ""
+"En la versión original, FindWindow devolvería un manejador a una ventana "
+"pasándole el nombre de clase de esta ventana y el nombre de clase de la "
+"ventana hija. Por ejemplo, si queremos obtener el manejador para una barra "
+"de menú en una aplicación, usaríamos:"
 
 #: ..\python_docs\stladdoninternals.py:35
 msgid "hwnd = FindWindow(\"WindowClassName\", \"MenuBar\")"
-msgstr ""
+msgstr "hwnd = FindWindow(\"WindowClassName\", \"MenuBar\")"
 
 #: ..\python_docs\stladdoninternals.py:36
 msgid ""
 "Specifying NULL (None) for the second parameter would search for the top-"
 "level window."
 msgstr ""
+"Si se pasa NULL (None) como segundo parámetro se buscaría la ventana de más "
+"alto nivel."
 
 #: ..\python_docs\stladdoninternals.py:37
 msgid ""
@@ -297,26 +333,33 @@ msgid ""
 "window to search (or a group of windows to search). This results in the "
 "following signature:"
 msgstr ""
+"Al contrario que en FindWindow, FindWindowEx recibe dos parámetros "
+"adicionales, uno es el manejador de la ventana donde debería comenzar la "
+"búsqueda y el otro en qué ventana hija buscar (o en qué grupo de ventanas "
+"hijas). Esto se traduce en lo siguiente:"
 
 #: ..\python_docs\stladdoninternals.py:38
 msgid "hwnd = FindWindowEx(handle, childGroup, className, childClassName)"
-msgstr ""
+msgstr "hwnd = FindWindowEx(handle, childGroup, className, childClassName)"
 
 #: ..\python_docs\stladdoninternals.py:39
 msgid "For example, the above call to FindWindow could become:"
 msgstr ""
+"Por ejemplo, la llamada de más arriba a FindWindow podría quedar de la "
+"siguiente manera:"
 
 #: ..\python_docs\stladdoninternals.py:40
 msgid "parentHwnd = FindWindow(\"Desktop\", None)"
-msgstr ""
+msgstr "parentHwnd = FindWindow(\"Desktop\", None)"
 
 #: ..\python_docs\stladdoninternals.py:41
 msgid "hwnd = FindWindowEx(parentHwnd, None, \"WindowClassName\", \"MenuBar\")"
 msgstr ""
+"hwnd = FindWindowEx(parentHwnd, None, \"WindowClassName\", \"MenuBar\")"
 
 #: ..\python_docs\stladdoninternals.py:42
 msgid "## The \"magic\" behind icon name locator function"
-msgstr ""
+msgstr "## La \"magia\" detrás de la función buscadora de nombres de iconos"
 
 #: ..\python_docs\stladdoninternals.py:43
 msgid ""
@@ -324,6 +367,9 @@ msgid ""
 "its best to locate the first system tray or taskbar icon. This is how it is "
 "done:"
 msgstr ""
+"Cuando NVDA la llama, la función buscadora de nombres de iconos (de la que "
+"hemos hablado arriba) dará lo mejor de sí misma para encontrar el primer "
+"icono de la bandeja del sistema o la barra de tareas. Así es como lo hace:"
 
 #: ..\python_docs\stladdoninternals.py:44
 msgid ""
@@ -331,12 +377,18 @@ msgid ""
 "the needed handle. At first, this handle is 0, and search begins from the "
 "shell (desktop) object (the root of all windows)."
 msgstr ""
+"1. Para cada elemento en la ruta de búsqueda, se llama a FindWindowEx para "
+"obtener su manejador. Al principio, este manejador es 0, y la búsqueda "
+"comienza desde la raíz de todas las ventanas, el objeto escritorio de la "
+"Shell."
 
 #: ..\python_docs\stladdoninternals.py:45
 msgid ""
 "2. Depending on the icons you are looking for, NvDA will search the "
 "following windows:"
 msgstr ""
+"2. Dependiendo de los iconos que hayas solicitado, NVDA buscará en las "
+"siguientes ventanas:"
 
 #: ..\python_docs\stladdoninternals.py:46
 msgid ""
@@ -344,6 +396,10 @@ msgid ""
 "\" (notification area), \"SysPager\" (system tray), "
 "\"ToolbarWindow32\" (first system tray icon)."
 msgstr ""
+"\tPara la lista de la bandeja del sistema: \"shell_TrayWnd\" (objeto del "
+"escritorio), \"TrayNotifyWnd\" (área de notificaciones), \"SysPager"
+"\" (bandeja del sistema), \"ToolbarWindow32\" (primer icono de la bandeja "
+"del sistema)."
 
 #: ..\python_docs\stladdoninternals.py:47
 msgid ""
@@ -351,6 +407,10 @@ msgid ""
 "\"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), "
 "\"ToolbarWindow32\"), (first taskbar icon)."
 msgstr ""
+"\t* Para iconos en la barra de tareas en Windows XP / Server 2003: "
+"\"Shell_TrayWnd\" (Escritorio), \"RebarWindow32\" (Barra de tareas), "
+"\"MSTaskSwWClass\" (Barra de tareas), \"ToolbarWindow32\" (primer icono de "
+"la barra de tareas)."
 
 #: ..\python_docs\stladdoninternals.py:48
 msgid ""
@@ -358,12 +418,19 @@ msgid ""
 "\" (Desktop), \"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), "
 "\"MSTaskListWClass\") , (taskbar icon)."
 msgstr ""
+"\t* Iconos de la barra de tareas en Windows Vista / Server 2008 y "
+"posteriores: \"Shell_TrayWnd\" (Escritorio), \"RebarWindow32\" (Barra de "
+"tareas), \"MSTaskSwWClass\" (Barra de tareas), \"MSTaskListWClass\" (icono "
+"de la barra de tareas)."
 
 #: ..\python_docs\stladdoninternals.py:49
 msgid ""
 "3. For each path (window handle if found), this function will ask Windows to "
 "search for the next window in the path and store the resulting handle."
 msgstr ""
+"3. Para cada ruta (manejador de ventana si se encuentra), esta función "
+"pedirá a Windows que busque la próxima ventana en la ruta y almacenará el "
+"manejador correspondiente."
 
 #: ..\python_docs\stladdoninternals.py:50
 msgid "## Conclusion"
