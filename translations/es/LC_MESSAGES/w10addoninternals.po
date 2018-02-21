@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-19 16:28+0100\n"
+"PO-Revision-Date: 2018-02-21 16:04+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1255,21 +1255,23 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:180
 msgid "## References"
-msgstr ""
+msgstr "## Referencias"
 
 #: ..\python_docs\w10addoninternals.py:181
 msgid "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
-msgstr ""
+msgstr "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
 
 #: ..\python_docs\w10addoninternals.py:182
 msgid "* Windows Insider Program (Microsoft): https://insider.windows.com/"
-msgstr ""
+msgstr "* Windows Insider Program (Microsoft): https://insider.windows.com/"
 
 #: ..\python_docs\w10addoninternals.py:183
 msgid ""
 "* Windows as a Service Overview (Microsoft Docs): https://docs.microsoft.com/"
 "en-us/windows/deployment/update/waas-overview"
 msgstr ""
+"* Descripción de Windows como servicio (Microsoft Docs): https://docs."
+"microsoft.com/en-us/windows/deployment/update/waas-overview"
 
 #: ..\python_docs\w10addoninternals.py:184
 msgid ""
@@ -1277,60 +1279,81 @@ msgid ""
 "Developer): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-"
 "uwp"
 msgstr ""
+"* Qué es una aplicación de la plataforma de Windows universal (UWP) "
+"(desarrollador de aplicaciones Microsoft UWP): https://docs.microsoft.com/en-"
+"us/windows/uwp/get-started/whats-a-uwp"
 
 #: ..\python_docs\w10addoninternals.py:185
 msgid ""
 "* UI Automation Overview (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee684076(v=vs.85).aspx"
 msgstr ""
+"* Descripción de UI Automation (MSDN): https://msdn.microsoft.com/en-us/"
+"library/windows/desktop/ee684076(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:186
 msgid ""
 "* MSAA overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/"
 "desktop/dd373592(v=vs.85).aspx"
 msgstr ""
+"* Descripción de MSAA (MSDN): https://msdn.microsoft.com/en-us/library/"
+"windows/desktop/dd373592(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:187
 msgid ""
 "* UI Automation and Active Accessibility (MSDN): https://msdn.microsoft.com/"
 "en-us/library/windows/desktop/ee671585(v=vs.85).aspx"
 msgstr ""
+"* UI Automation y Active Accessibility (MSDN): https://msdn.microsoft.com/en-"
+"us/library/windows/desktop/ee671585(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:188
 msgid ""
 "* Component Object Model Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ms680573(v=vs.85).aspx"
 msgstr ""
+"* Descripción de Component Object Model (MSDN): https://msdn.microsoft.com/"
+"en-us/library/windows/desktop/ms680573(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:189
 msgid ""
 "* IUIAutomationElement interface (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671425(v=vs.85).aspx"
 msgstr ""
+"* La interfaz IUIAutomationElement (MSDN): https://msdn.microsoft.com/en-us/"
+"library/windows/desktop/ee671425(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:190
 msgid ""
 "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee671434(v=vs.85).aspx"
 msgstr ""
+"* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/"
+"windows/desktop/ee671434(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:191
 msgid ""
 "* UI Automation Properties Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671594(v=vs.85).aspx"
 msgstr ""
+"* Descripción de las propiedades de UI Automation (MSDN): https://msdn."
+"microsoft.com/en-us/library/windows/desktop/ee671594(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:192
 msgid ""
 "* UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671221(v=vs.85).aspx"
 msgstr ""
+"* Descripción de los eventos de UI Automation (MSDN): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:193
 msgid ""
 "* UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671223(v=vs.85).aspx"
 msgstr ""
+"* Identificadores de eventos en UI Automation (MSDN): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx"
 
 #: ..\python_docs\w10addoninternals.py:194
 msgid ""
@@ -1338,3 +1361,6 @@ msgid ""
 "(Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/"
 "accessible-text-requirements"
 msgstr ""
+"* Accesibilidad de sugerencias automáticas, parte de los requisitos de "
+"textos accesibles (Microsoft Docs): https://docs.microsoft.com/en-us/windows/"
+"uwp/accessibility/accessible-text-requirements"
