@@ -1,0 +1,77 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Complementos de NVDA vistos por dentro: SysTray List</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Complementos de NVDA vistos por dentro: SysTray List</h1></header>
+  <p>Autor: Joseph Lee</p>
+<h2 id="introduccion">Introducción</h2>
+<p>Al hacer la transición entre lectores de pantalla, una de las primeras cosas que alguien podría preguntarse es si existen características del antiguo lector de pantalla en el nuevo a las que la gente ya esté acostumbrada. Como usuario que ha trabajado con varios lectores de pantalla, frecuentemente me hago esta pregunta cuando paso de un lector de pantalla a otro.</p>
+<p>Cuanta más y más gente hace la transición desde Jaws for Windows a NVDA, más surge con frecuencia la pregunta de si NVDA dispone de un diálogo para mostrar los iconos de la bandeja del sistema (también llamada área de notificaciones). Por defecto, NVDA no incluye esta característica de serie, pero podemos tenerla de vuelta gracias a un complemento llamado apropiadamente "SysTray List". Este complemento, desarrollado por Rui Fontes y Rui Batista, permite ver una lista con los iconos de la bandeja del sistema o la barra de tareas, y este es el complemento que veremos con detalle en este artículo.</p>
+<p>Para descargar el complemento, visita la sección correspondiente en el menú principal de esta página, y para acceder al código fuente, visita http://bitbucket.org/nvdaaddonteam/systraylist. No es necesario que uses este complemento para conocer cómo está hecho por dentro, pero tener su código fuente y/o usarlo puede ayudarte a conocer mejor cómo funciona.</p>
+<p>Descargo de responsabilidad: este complemento no ha sido desarrollado por el autor de este artículo, y los puntos de vista expresados en este artículo son estrictamente del autor del mismo. El complemento SysTray List tiene copyright de Rui Fontes y Rui Batista, la api de Windows tiene copyright de Microsoft Corporation, NVDA tiene copyright de NV Access y Python tiene copyright de la Python Software Foundation.</p>
+<h2 id="caracteristicas-del-complemento-systray-list">Características del complemento SysTray List</h2>
+<p>Tras instalar este complemento, puedes pulsar NVDA+f11 para ver la lista de iconos de la bandeja del sistema. Este diálogo lista los iconos del área de notificaciones, y tiene botones para hacer clic, doble clic y clic con el botón derecho del ratón.</p>
+<p>Una joya oculta de este complemento es que no hay una orden para ver los iconos de la barra de tareas (esta orden se asigna a la opción de copiar texto al portapapeles seleccionado por el cursor de revisión (NVDA+f10)). En su lugar, para ver los iconos de la barra de tareas, pulsa NVDA+f11 dos veces rápidamente (en un segundo se puede pulsar incluso más veces). La vista de lista cambia para mostrar los iconos de la barra de tareas (incluyendo elementos anclados). Al pulsar intro NVDA simula un clic con el botón izquierdo.</p>
+<h2 id="estructura-del-codigo-fuente">Estructura del código fuente</h2>
+<p>Esta extensión global reside en su propia carpeta, llamada sysTrayList (globalPlugins/sysTrayList/<strong>init</strong>.py). Algunos complementos, especialmente aquellos que se apoyan en módulos auxiliares, siguen un estilo de paquete en su estructura de directorios.</p>
+<p>El fichero de extensión global se divide en las siguientes secciones:</p>
+<ul>
+<li>Como en cualquier módulo Python, se importan varios módulos.</li>
+<li>Un ejecutor de eventos (más información sobre esto debajo) que envía los eventos de ratón que recibe como parámetro.</li>
+<li>La extensión global (class GlobalPlugin(globalPluginHandler.GlobalPlugin)), que contiene el script de bandeja del sistema y funciones auxiliares.</li>
+<li>La clase del diálogo (globalPlugins.systraylist.SystrayListDialog), encargada de mostrar el diálogo en cuestión.</li>
+</ul>
+<h2 id="nvdaf11-recorrido-por-detras-del-escenario">NVDA+f11: recorrido por detrás del escenario</h2>
+<p>¿Qué ocurre exactamente cuando pulsas NVDA+f11? Cuando pulsas esta orden después de instalar el complemento, NVDA hace lo siguiente:</p>
+<ol>
+<li>Determina si has pulsado esta orden una o dos veces llamando a scriptHandler.getLastScriptRepeatCount. Si pulsas NVDA+f11 y lo vuelves a pulsar en el siguiente medio segundo, NVDA tratará este hecho como múltiples pulsaciones de esta orden.</li>
+<li>Si NVDA ve que has pulsado NVDA+f11 una vez, localizará los iconos de la bandeja del sistema, en caso contrario recopilará los iconos de la barra de tareas.</li>
+<li>Los ubicadores de iconos (ambos son funciones privadas) harán lo siguiente para obtener una lista con los iconos necesarios:<ol>
+<li>Cada ubicador tiene una lista de rutas a ventanas (nombres de clase de ventanas) en las que buscar para encontrar los iconos necesarios y sus ubicaciones, esta lista se pasa a otra función privada para obtener una lista con los nombres de los iconos.</li>
+<li>La función privada llamará a la función FindWindowEx de user32.dll para obtener el manejador de la lista de iconos donde estos se alojan (más sobre esto en la siguiente sección).</li>
+<li>Una vez se encuentra el manejador, NVDA ubicará el primer icono a través de la función NVDAObjects.IAccessible.getNVDAObjectFromEvent. A continuación, NVDA usará emulación de navegación por objetos (objeto, hace algo, objeto=objeto.next) para encontrar los iconos y almacenar sus nombres y posiciones en una lista, que será devuelta a los procedimientos del ubicador.</li>
+</ol>
+</li>
+<li>Una vez los ubicadores hayan obtenido las listas de iconos y sus posiciones, se llama a otra función privada para abrir un diálogo y mostrar los iconos solicitados. Dependiendo del número de veces que se ha pulsado la orden, el script cambiará el título y la etiqueta de la vista de lista de iconos.</li>
+<li>Después de seleccionar un icono e indicar lo que quieres hacer con él (clic con el botón izquierdo (por defecto), clic con el botón derecho, doble clic), NVDA hará lo siguiente:<ol>
+<li>NVDA buscará la ubicación del icono seleccionado.</li>
+<li>NVDA realizará una serie de clics con el ratón (función mouseEvents, más info sobre este procedimiento debajo).</li>
+</ol>
+</li>
+</ol>
+<h2 id="diferencias-entre-findwindow-y-findwindowex-y-relacion-con-los-ubicadores-de-iconos">Diferencias entre FindWindow y FindWindowEx y relación con los ubicadores de iconos</h2>
+<p>La api de Windows ha cambiado muchísimo en versiones recientes de este sistema operativo. Estos cambios se dieron como una reacción ante problemas de seguridad, para extender la funcionalidad de la api, etc. Por este motivo, pueden verse muchas funciones de la api de Windows que terminan con "Ex" (abreviatura de "extended").</p>
+<p>En la versión original, FindWindow devolvería un manejador a una ventana pasándole el nombre de clase de esta ventana y el nombre de clase de la ventana hija. Por ejemplo, si queremos obtener el manejador para una barra de menú en una aplicación, usaríamos:</p>
+<p>hwnd = FindWindow("WindowClassName", "MenuBar")</p>
+<p>Si se pasa NULL (None) como segundo parámetro se buscaría la ventana de más alto nivel.</p>
+<p>Al contrario que en FindWindow, FindWindowEx recibe dos parámetros adicionales, uno es el manejador de la ventana donde debería comenzar la búsqueda y el otro en qué ventana hija buscar (o en qué grupo de ventanas hijas). Esto se traduce en lo siguiente:</p>
+<p>hwnd = FindWindowEx(handle, childGroup, className, childClassName)</p>
+<p>Por ejemplo, la llamada de más arriba a FindWindow podría quedar de la siguiente manera:</p>
+<p>parentHwnd = FindWindow("Desktop", None)
+hwnd = FindWindowEx(parentHwnd, None, "WindowClassName", "MenuBar")</p>
+<h2 id="la-magia-detras-de-la-funcion-buscadora-de-nombres-de-iconos">La "magia" detrás de la función buscadora de nombres de iconos</h2>
+<p>Cuando NVDA la llama, la función buscadora de nombres de iconos (de la que hemos hablado arriba) dará lo mejor de sí misma para encontrar el primer icono de la bandeja del sistema o la barra de tareas. Así es como lo hace:</p>
+<ol>
+<li>Para cada elemento en la ruta de búsqueda, se llama a FindWindowEx para obtener su manejador. Al principio, este manejador es 0, y la búsqueda comienza desde la raíz de todas las ventanas, el objeto escritorio de la Shell.</li>
+<li>Dependiendo de los iconos que hayas solicitado, NVDA buscará en las siguientes ventanas:<ul>
+<li>Para la lista de la bandeja del sistema: "shell_TrayWnd" (objeto del escritorio), "TrayNotifyWnd" (área de notificaciones), "SysPager" (bandeja del sistema), "ToolbarWindow32" (primer icono de la bandeja del sistema).</li>
+<li>Para iconos en la barra de tareas en Windows XP / Server 2003: "Shell_TrayWnd" (Escritorio), "RebarWindow32" (Barra de tareas), "MSTaskSwWClass" (Barra de tareas), "ToolbarWindow32" (primer icono de la barra de tareas).</li>
+<li>Iconos de la barra de tareas en Windows Vista / Server 2008 y posteriores: "Shell_TrayWnd" (Escritorio), "RebarWindow32" (Barra de tareas), "MSTaskSwWClass" (Barra de tareas), "MSTaskListWClass" (icono de la barra de tareas).</li>
+</ul>
+</li>
+<li>Para cada ruta (manejador de ventana si se encuentra), esta función pedirá a Windows que busque la próxima ventana en la ruta y almacenará el manejador correspondiente.</li>
+</ol>
+<h2 id="conclusion">Conclusión</h2>
+<p>Aunque la idea de listar iconos de la bandeja del sistema parece fácil, hay mucho trabajo de fondo, que implica ubicar la ventana correcta a través de la Api de Windows y diseñar la interfaz de usuario cuidadosamente. Esto muestra que diseñar un complemento simple como este implica pensar cuidadosamente, especialmente sabiendo que será usado por muchos usuarios de todo el mundo. Espero que este artículo haya sido útil a la hora de hacerte entender cómo se desarrolla y diseña una sugerencia de un complemento simple.</p>
+<p>Sugerencia importante: no tienes que usar este complemento para listar los iconos de la bandeja del sistema. Para acceder a la bandeja del sistema, pulsa Windows+B.</p>
+<p>Finalmente, me gustaría resaltar el hecho de que Jaws for Windows y Non Visual Desktop Access son dos lectores de pantalla completamente diferentes. Aunque ambos han tomado prestadas funciones del otro, la filosofía de fondo, tipo de licencia (propietaria y comercial para Jaws contra GPL y de código abierto para NVDA), diseño y lenguaje de programación utilizado son diferentes. Por lo tanto, no esperes que todas las sugerencias de características de Jaws sean investigadas por NV Access, o que Freedom Scientific tome prestada cada característica de NVDA.</p>
+<h2 id="referencias">Referencias:</h2>
+<ol>
+<li>Referencia de FindWindow (user32.dll) (Api de Windows): https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx</li>
+<li>Referencia de FindWindowEx (user32.dll) (Api de Windows): https://msdn.microsoft.com/en-us/library/windows/desktop/ms633500(v=vs.85).aspx</li>
+</ol>
+</body>
+</html>
