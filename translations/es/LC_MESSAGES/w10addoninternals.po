@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-22 12:58+0100\n"
+"PO-Revision-Date: 2018-02-22 13:24+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -217,6 +217,8 @@ msgstr "## Propósitos de Windows 10 App Essentials"
 #: ..\python_docs\w10addoninternals.py:18
 msgid "Windows 10 App Essentials add-on is built on top of four pillars:"
 msgstr ""
+"El complemento Windows 10 App Essentials se ha construido sobre cuatro "
+"pilares:"
 
 #: ..\python_docs\w10addoninternals.py:19
 msgid ""
@@ -496,11 +498,11 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:60
 msgid "### Startup and shutdown"
-msgstr ""
+msgstr "### Inicio y apagado"
 
 #: ..\python_docs\w10addoninternals.py:61
 msgid "When the add-on loads, it performs three things:"
-msgstr ""
+msgstr "Cuando el complemento se carga, hace tres cosas:"
 
 #: ..\python_docs\w10addoninternals.py:62
 msgid ""
@@ -510,22 +512,34 @@ msgid ""
 "NVDA screen reader, but search suggestion announcement was made possible as "
 "this add-on added this event."
 msgstr ""
+"1. Activa el rastreo de eventos UIA ausentes. Por ejemplo, hasta mayo de "
+"2017, el controlador para evento (un evento producido por un control que "
+"depende de otro control, como un campo de texto con sugerencias de búsqueda) "
+"no estaba disponible en el lector de pantalla NVDA, pero la verbalización de "
+"sugerencias de búsqueda se hizo posible cuando este complemento añadió este "
+"evento."
 
 #: ..\python_docs\w10addoninternals.py:63
 msgid ""
 "2. Adds user interface elements for this add-on, specifically add-on "
 "settings."
 msgstr ""
+"2. Añade elementos de interfaz de usuario para este complemento, y más "
+"concretamente su diálogo de ajustes."
 
 #: ..\python_docs\w10addoninternals.py:64
 msgid "3. Checks for add-on updates if told to do so."
 msgstr ""
+"3. Comprueba actualizaciones del complemento si le hemos indicado que lo "
+"haga."
 
 #: ..\python_docs\w10addoninternals.py:65
 msgid ""
 "The only thing done at shutdown is terminating the update check facility and "
 "removing user interface elements."
 msgstr ""
+"Lo único que se hace al apagarlo es desactivar su sistema de comprobación de "
+"actualizaciones y eliminar los elementos de interfaz de usuario."
 
 #: ..\python_docs\w10addoninternals.py:66
 msgid "### Notable Windows 10 objects and features"
