@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-28 12:24+0100\n"
+"PO-Revision-Date: 2018-02-28 12:41+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1381,7 +1381,7 @@ msgid ""
 "One function in particular is useful in app modules:"
 msgstr ""
 "* Eventos (eventHandler.py): maneja varios eventos como la optención del "
-"foco. Una función en particular es útil en los módulos app:"
+"foco. Una función en particular es útil en los módulos de aplicación:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:169
 msgid ""
@@ -1391,7 +1391,7 @@ msgid ""
 msgstr ""
 "\t* `eventHandler.requestEvents(process ID, window class name for the "
 "control, event to be requested)`: Permite a NVDA escuchar eventos "
-"específicos para ciertos controles mientras se utiliza otra app."
+"específicos para ciertos controles mientras se utiliza otra aplicación."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:170
 msgid ""
@@ -1426,7 +1426,7 @@ msgid ""
 "\t* `extensionPoints.Filter`: modifies a given text for further processing e."
 "g. advanced speech sequences."
 msgstr ""
-"\t* `extensionPoints. Filter`: modifica un texto determinado para su "
+"\t* `extensionPoints.Filter`: modifica un texto determinado para su "
 "procesamiento posterior, por ejemplo, secuencias avanzadas de voz."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:174
@@ -1444,8 +1444,8 @@ msgid ""
 "* Global Plugin subsystem (globalPluginHandler.py): The module needed for "
 "controlling global plugins."
 msgstr ""
-"* Subsistema Global Plugin globalPluginHandler.py): El módulo necesario para "
-"controlar los plugins globales."
+"* Subsistema de extensiones globales (globalPluginHandler.py): El módulo "
+"necesario para controlar las extensiones globales."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:176
 msgid ""
@@ -1472,8 +1472,8 @@ msgid ""
 "* IAccessible support (IAccessibleHandler.py, IAccessible objects): Used for "
 "supporting Microsoft Active Accessibility (MSAA)/IAccessible controls."
 msgstr ""
-"* Soporte para IAccessible (IAccessibleHandler.py, IAccessible <objects): Se "
-"utiliza para soportar los controles IAccessible."
+"* Soporte para IAccessible (IAccessibleHandler.py, objetos IAccessible): Se "
+"utiliza para dar soporte a los controles IAccessible."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:179
 msgid "* Input management (inputCore.py): Manages input from the user."
@@ -1508,8 +1508,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:183
 msgid "\t* `logHandler.Log`: The class which implements logging facility."
-msgstr ""
-"\t* `logHandler.Log`: la clase que implementa la utilidad de autentificación."
+msgstr "\t* `logHandler.Log`: la clase que implementa la utilidad de registro."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:184
 msgid ""
@@ -1538,15 +1537,16 @@ msgstr ""
 "controles de NVDA que se utilizan en muchas aplicaciones y estándares como "
 "la UIA (User Interface Automation). Algunos objetos requieren que se "
 "realicen acciones especiales y éstas se especifican en el módulo de "
-"comportamientos del paquete de objetos NVDA. Algunos de los comunes incluyen:"
+"comportamientos del paquete de objetos NVDA. Entre los más comunes se "
+"incluyen:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:187
 msgid ""
 "\t* `NVDAObjects.NVDAObject`: the base class for NVDA objects that define "
 "events, properties and so on."
 msgstr ""
-"\t* `NVDAObjects.NVDAObject`: la clase base para objetos de NVDA que definen "
-"eventos, propiedades, etcétera."
+"\t* `NVDAObjects.NVDAObject`: la clase base para objetos de NVDA donde se "
+"definen eventos, propiedades, etcétera."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:188
 msgid ""
@@ -1607,7 +1607,7 @@ msgid ""
 "to the user pressing keyboard commands and other input."
 msgstr ""
 "* Soporte de Scripts (scriptHandler.py): Maneja scripts, métodos ejecutados "
-"debido a la pulsación de los comandos de teclado y otras entradas."
+"debido a la pulsación de las órdenes de teclado y otras entradas."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:195
 msgid "* Speech output (speech.py): Controls speech output."
@@ -1618,8 +1618,8 @@ msgid ""
 "* Synthesizer driver support (synthDriverHandler.py): This is the core "
 "module needed for speech synthesizer add-ons."
 msgstr ""
-"* Soporte para controlador de Sintetizador (synthDriverHandler.py): Este es "
-"el módulo principal necesario para complementos de sintetizador de voz."
+"* Soporte para controladores de Sintetizador (synthDriverHandler.py): Este "
+"es el módulo principal necesario para complementos de sintetizador de voz."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:197
 msgid ""
@@ -1707,8 +1707,8 @@ msgid ""
 msgstr ""
 "* Capas de la API de Windows: los siguientes módulos son capas delgadas de "
 "las bibliotecas de la API de Windows. Puedes utilizar los módulos siguientes "
-"o llamar a la API de Windows directamente a través de ctypes. windll. "
-"dllname (por ejemplo, ctypes. windll. user32):"
+"o llamar a la API de Windows directamente a través de ctypes.windll.dllname "
+"(por ejemplo, ctypes.windll.user32):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:207
 msgid ""
@@ -1716,15 +1716,15 @@ msgid ""
 "kernel32.dll that are commonly encountered in NVDA."
 msgstr ""
 "\t* `winKernel`: abarca algunas constantes, estructuras y funciones de "
-"kernel32. dll que se encuentran comúnmente en NVDA."
+"kernel32.dll que se encuentran comúnmente en NVDA."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:208
 msgid ""
 "\t* `winUser`: wraps around constants, structures and functions defined in "
 "user32.dll that are used by NVDA."
 msgstr ""
-"\t* `winUser`: se refiere a las constantes, estructuras y funciones "
-"definidas en user32. dll que utiliza NVDA."
+"\t* `winUser`: abarca las constantes, estructuras y funciones definidas en "
+"user32.dll que utiliza NVDA."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:209
 msgid ""
@@ -1737,7 +1737,7 @@ msgstr ""
 "Los módulos sin extensión .py son directorios que contienen módulos "
 "especializados. Hay otros métodos útiles por ahí, además de la lista "
 "anterior, pero los anteriores son los más útiles. Consulta la documentación "
-"del código fuente de NVDA para ver otros métodos, o nira los ejemplos que "
+"del código fuente de NVDA para ver otros métodos, o mira los ejemplos que "
 "aparecen a continuación para ver cómo se utilizan estos métodos y otros "
 "durante la vida de un complemento."
 
