@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-28 17:48+0100\n"
+"PO-Revision-Date: 2018-02-28 17:56+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2237,10 +2237,10 @@ msgid ""
 "properties, you know that the toolbar is the last child of the foreground "
 "object."
 msgstr ""
-"Supongamos que se te preguntó por un usuario para darle el valor de un "
-"deslizador en un programa usando un app module. Después de buscar en la "
-"jerarquía de objetos y otras propiedades, sabes que la barra de herramientas "
-"es el último hijo del objeto en primer plano."
+"Supongamos que un usuario te pide que le des el valor de un deslizador en un "
+"programa usando un app module. Después de buscar en la jerarquía de objetos "
+"y otras propiedades, sabes que la barra de herramientas es el último hijo "
+"del objeto en primer plano."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:282
 msgid "Here is the code to implement this feature:"
@@ -2248,7 +2248,7 @@ msgstr "Aquí está el código para implementar esta función:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:283
 msgid "\t# Object example 1"
-msgstr "\t# Objeto ejemplo 1"
+msgstr "\t# Ejemplo de objeto 1"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:290
 msgid "\t\tsliderChildIndex = -1 # The variable to store the child index."
@@ -2282,8 +2282,8 @@ msgstr ""
 "En este código, el método `fg.children[index]` se utiliza para recuperar al "
 "hijo con el índice dado (aquí, ya dijimos que la barra de herramientas es el "
 "último hijo, el índice sería menos 1, o el último hijo; podríamos haber "
-"utilizado fg.lastChild). Alternativamente, puedes utilizar `fg. getChild "
-"(-1) en ciertas situaciones (IAccesible, por ejemplo)."
+"utilizado fg.lastChild). Alternativamente, puedes utilizar `fg.getChild (-1) "
+"en ciertas situaciones (IAccesible, por ejemplo)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:297
 msgid ""
@@ -2294,7 +2294,7 @@ msgstr ""
 "Sin embargo, este código tiene un problema: ¿y si el valor del deslizador "
 "está en realidad dentro del primer elemento secundario del control "
 "deslizador real? Una forma de solucionar este problema es comprobar el rol "
-"del objeto. El código modificado se ve así:"
+"del objeto. El código modificado quedaría así:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:298
 msgid "\tdef getSliderValue(self):"
