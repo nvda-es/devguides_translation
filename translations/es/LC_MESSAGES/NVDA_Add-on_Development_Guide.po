@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-01 13:55+0100\n"
+"PO-Revision-Date: 2018-03-01 14:13+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2720,13 +2720,14 @@ msgid ""
 "In this example, we'll define two scripts called \"sayHello\" and say"
 "\"GoodBye\", then bind them into two separate gestures."
 msgstr ""
-"En este ejemplo, definiremos dos scripts llamados \"sayHello\" y say\"GoodBye"
+"En este ejemplo, definiremos dos scripts llamados \"sayHello\" y \"sayGoodBye"
 "\", luego los vincularemos a dos gestos separados."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:350
 msgid "\t# An example fragment for script assignment from a global plugin."
 msgstr ""
-"\t# Un fragmento ejemplo para asignación de script desde un plugin global."
+"\t# Un fragmento de ejemplo de asignación de un script desde una extensión "
+"global."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:353
 msgid "\tdef script_sayHello(self, gesture):"
@@ -2734,7 +2735,7 @@ msgstr "\tdef script_sayHello(self, gesture):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:354
 msgid "\t\tui.message\"Hello!\")"
-msgstr "\t\tui.message\"Hello!\")"
+msgstr "\t\tui.message(\"Hello!\")"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:356
 msgid "\tdef script_sayGoodBye(self, gesture):"
@@ -2797,7 +2798,7 @@ msgstr "\tfrom NVDAObjects.IAccessible import IAccessible"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:369
 msgid "\tclass Player(IAccessible)"
-msgstr "\tclass Player(IAccessible)"
+msgstr "\tclass Player(IAccessible):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:370
 msgid "\t\tdef script_saySongName(self, gesture):"
@@ -2816,7 +2817,7 @@ msgstr "\t\t\t\"kb:NVDA+T\":\"saySongTitle\""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:377
 msgid "\t# And in the main app module:"
-msgstr "\t# Y en el app module principal:"
+msgstr "\t# Y en el módulo de aplicación principal:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:379
 msgid ""
@@ -2842,7 +2843,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:381
 msgid "### Script lookup order and command conflicts"
-msgstr "### Orden de búsqueda de scripts y conflictos de comandos"
+msgstr "### Orden de búsqueda de scripts y conflictos de órdenes"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:382
 msgid ""
@@ -2850,15 +2851,15 @@ msgid ""
 "script lookup order when trying to assign commands to scripts:"
 msgstr ""
 "Según escribas tus complementos con scripts, necesitas recordar el siguiente "
-"orden de búsqueda de script cuando intentes asignar comandos a scripts:"
+"orden de búsqueda de script cuando intentes asignar órdenes a scripts:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:383
 msgid "1. Global plugins."
-msgstr "1. Plugins globales."
+msgstr "1. Extensiones globales."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:384
 msgid "2. App modules for the currently focused program."
-msgstr "2. App modules para el programa actualmente enfocado."
+msgstr "2. Módulos de aplicación para el programa actualmente enfocado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:385
 msgid "3. NVDA objects we're dealing with."
@@ -2880,16 +2881,16 @@ msgid ""
 "player, NVDA+T will announce the name of the song (NVDA objects in app "
 "modules takes precedence)."
 msgstr ""
-"Por ejemplo, si asignas el comando NVDA+Shift+Y a un script de módulo de "
-"aplicación, NVDA ejecutará ese script desde ese programa ya que ningún "
-"plugin global está usando este comando. Sin embargo, si se instala un plugin "
-"global que use ese comando, el script del plugin global se ejecutará en "
-"lugar del script del app module. Del mismo modo, desde el ejemplo anterior, "
-"cuando se utilicen programas distintos a ese reproductor multimedia, NVDA "
-"ejecutará un comando desde la colección de órdenes globales cuando se pulse "
-"NVDA+T; pero mientras utilicemos este reproductor multimedia, NVDA+T "
-"anunciará el nombre de la canción (se da prioridad a los objetos de NVDA en "
-"los módulos de aplicación)."
+"Por ejemplo, si asignas la orden NVDA+Shift+Y a un script de módulo de "
+"aplicación, NVDA ejecutará ese script desde ese programa ya que ninguna "
+"extensión global está usando esta orden. Sin embargo, si se instala una "
+"extensión global que use esa orden, el script de la extensión global se "
+"ejecutará en lugar del script del módulo de aplicación. Del mismo modo, "
+"desde el ejemplo anterior, cuando se utilicen programas distintos a ese "
+"reproductor multimedia, NVDA ejecutará una orden desde la colección de "
+"órdenes globales cuando se pulse NVDA+T; pero mientras utilicemos este "
+"reproductor multimedia, NVDA+T anunciará el nombre de la canción (se da "
+"prioridad a los objetos de NVDA en los módulos de aplicación)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:388
 msgid ""
@@ -2909,10 +2910,11 @@ msgid ""
 "another."
 msgstr ""
 "1. En primer lugar, consulta la referencia rápida de órdenes de NVDA para "
-"ver si la orden que deseas utilizar se ha definido en comandos globales. "
+"ver si la orden que deseas utilizar se ha definido en las órdenes globales. "
 "Deberías tratar de minimizar los conflictos con las órdenes de NVDA "
-"incorporadas. Una excepción son las órdenes para los app modules, donde una "
-"misma orden puede ser utilizada de forma diferente de un programa a otro."
+"incorporadas. Una excepción son las órdenes para los módulos de aplicación, "
+"donde una misma orden puede ser utilizada de forma diferente de un programa "
+"a otro."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:390
 msgid ""
@@ -2920,7 +2922,7 @@ msgid ""
 "any add-on is using this command, and if so, contact the add-on author to "
 "come up with an alternate binding."
 msgstr ""
-"2. Lee la documentación de los complementos (especialmente los plugins "
+"2. Lee la documentación de los complementos (especialmente las extensiones "
 "globales) para ver si algún complemento está utilizando esta orden y, en "
 "caso afirmativo, ponte en contacto con el autor del complemento para obtener "
 "un vínculo alternativo."
