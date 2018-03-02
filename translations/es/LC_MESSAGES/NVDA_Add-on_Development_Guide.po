@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-28 12:41+0100\n"
+"PO-Revision-Date: 2018-03-02 13:31+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1944,10 +1944,10 @@ msgid ""
 "input and output, working with different NVDA objects, reacting to events, "
 "storing configuration and more."
 msgstr ""
-"Un módulo de complemento se compone de un número de componentes. Esto "
-"incluye el manejo de la entrada y de la salida, del trabajo con diferentes "
-"objetos de NVDA, reaccionar a los eventos, el almacenamiento de "
-"configuración y más."
+"Un módulo de complemento se compone de una serie de componentes. Esto "
+"incluye el manejo de la entrada y de la salida, el trabajo con diferentes "
+"objetos de NVDA, la reacción a eventos, el almacenamiento de configuración y "
+"más."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:256
 msgid ""
@@ -1992,8 +1992,8 @@ msgid ""
 "defined, the button on a screen is the object of this button class."
 msgstr ""
 "Un objeto es una instancia de una clase - es decir, una clase activa "
-"mientras que un programa se esté ejecutando. Por ejemplo, si se ha definido "
-"una clase llamada botón, el botón en una pantalla es el objeto de esta clase "
+"mientras un programa se está ejecutando. Por ejemplo, si se ha definido una "
+"clase llamada botón, el botón en una pantalla es el objeto de esta clase "
 "botón."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:261
@@ -2029,7 +2029,7 @@ msgstr ""
 "propiedades o atributos útiles. Estos incluyen el nombre del objeto, su "
 "valor (seleccionado, el texto de la ventana de edición, etc), rol (casilla "
 "de verificación, ventana, objeto incrustado, etc., localización (coordenadas "
-"de la pantalla) y más.Los objetos de NVDA también contienen métodos útiles "
+"de la pantalla) y más. Los objetos de NVDA también contienen métodos útiles "
 "para su manipulación, tales como cambiar el valor del objeto, reaccionar a "
 "los eventos para el objeto (recepción del foco, valor de cambio, etc)."
 
@@ -2082,7 +2082,7 @@ msgid ""
 "There are a number of ways which you can use to see the hierarchy of an "
 "object for a given program:"
 msgstr ""
-"Hay un número de maneras que puedes utilizar para ver la jerarquía de un "
+"Hay varias alternativas que puedes utilizar para ver la jerarquía de un "
 "objeto de un determinado programa:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:267
@@ -2101,7 +2101,7 @@ msgid ""
 msgstr ""
 "2. Utilizando la consola de Python, usa los atributos obj.next/previous/"
 "parent/firstChild/lastChild. Si quieres ver todas las propiedades "
-"disponibles, desde la consola mPython , escribe dir(obj)."
+"disponibles, desde la consola Python , escribe dir(obj)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:269
 msgid ""
@@ -2126,8 +2126,8 @@ msgid ""
 "and focus objects, changing the role of an object and so on."
 msgstr ""
 "En tu complemento, podrías querer trabajar con varios objetos y "
-"manipularlos. Estos podrán incluír cambiar el objeto enfocado, sincronizar "
-"el navegador de objetos y el foco, cambiar la función de un objeto y así "
+"manipularlos. Esto puede incluír cambiar el objeto enfocado, sincronizar el "
+"navegador de objetos y el foco, cambiar la función de un objeto y así "
 "sucesivamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:272
@@ -2147,7 +2147,10 @@ msgstr ""
 "el navegador de objetos se puede mover en cualquier lugar, puedes examinar "
 "dos objetos a la vez: el objeto enfocado y el navegador de objetos. Por "
 "ejemplo, podrías enfocar sobre un campo de edición mientras examinas la "
-"barra de título con el navegador de objetos."
+"barra de título con el navegador de objetos. Ya hemos visto un ejemplo más "
+"arriba donde podemos comprobar si estamos en dos aplicaciones diferentes "
+"mirando los módulos de aplicación del navegador de objetos y del objeto con "
+"el foco."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:273
 msgid ""
@@ -2164,7 +2167,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:274
 msgid "### Other useful object-related goodies"
-msgstr "### Otras golosinas relacionadas con objetos útiles"
+msgstr "### Otras golosinas útiles relacionadas con objetos"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:275
 msgid ""
@@ -2206,7 +2209,10 @@ msgid ""
 "the focus and navigator object."
 msgstr ""
 "* Para definir un objeto como el foco nuevo o el navegador de objetos, "
-"utiliza `api.setFocusObject(obj)` o `api.setNavigatorObject(obj)`."
+"utiliza `api.setFocusObject(obj)` o `api.setNavigatorObject(obj)`. Esto no "
+"cambia la forma que tiene Windows de ver el objeto enfocado, simplemente "
+"hace creer a NVDA que el nuevo objeto es el que tiene el foco o el navegador "
+"de objetos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:279
 msgid ""
@@ -2216,7 +2222,9 @@ msgid ""
 "and so on."
 msgstr ""
 "* Puedes obtener varias propiedades de un objeto especificando obj.property "
-"donde property es el atributo que deseas ver (por ejemplo. obj.value)."
+"donde property es el atributo que deseas ver (por ejemplo obj.value). Entre "
+"las propiedades más comunes se incluyen name, value, states, role, "
+"appModule, windowClassName, etc."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:280
 msgid "### Example 1: Finding the value of a slider in a program"
@@ -2229,10 +2237,10 @@ msgid ""
 "properties, you know that the toolbar is the last child of the foreground "
 "object."
 msgstr ""
-"Supongamos que se te preguntó por un usuario para darle el valor de un "
-"deslizador en un programa usando un app module. Después de buscar en la "
-"jerarquía de objetos y otras propiedades, sabes que la barra de herramientas "
-"es el último hijo del objeto en primer plano."
+"Supongamos que un usuario te pide que le des el valor de un deslizador en un "
+"programa usando un app module. Después de buscar en la jerarquía de objetos "
+"y otras propiedades, sabes que la barra de herramientas es el último hijo "
+"del objeto en primer plano."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:282
 msgid "Here is the code to implement this feature:"
@@ -2240,7 +2248,7 @@ msgstr "Aquí está el código para implementar esta función:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:283
 msgid "\t# Object example 1"
-msgstr "\t# Objeto ejemplo 1"
+msgstr "\t# Ejemplo de objeto 1"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:290
 msgid "\t\tsliderChildIndex = -1 # The variable to store the child index."
@@ -2274,8 +2282,8 @@ msgstr ""
 "En este código, el método `fg.children[index]` se utiliza para recuperar al "
 "hijo con el índice dado (aquí, ya dijimos que la barra de herramientas es el "
 "último hijo, el índice sería menos 1, o el último hijo; podríamos haber "
-"utilizado fg.lastChild). Alternativamente, puedes utilizar `fg. getChild "
-"(-1) en ciertas situaciones (IAccesible, por ejemplo)."
+"utilizado fg.lastChild). Alternativamente, puedes utilizar `fg.getChild (-1) "
+"en ciertas situaciones (IAccesible, por ejemplo)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:297
 msgid ""
@@ -2286,7 +2294,7 @@ msgstr ""
 "Sin embargo, este código tiene un problema: ¿y si el valor del deslizador "
 "está en realidad dentro del primer elemento secundario del control "
 "deslizador real? Una forma de solucionar este problema es comprobar el rol "
-"del objeto. El código modificado se ve así:"
+"del objeto. El código modificado quedaría así:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:298
 msgid "\tdef getSliderValue(self):"
@@ -2321,37 +2329,38 @@ msgid ""
 msgstr ""
 "Así, cuando estemos seguros de que estamos tratando con el control "
 "deslizador, el método devuelve el valor del primer hijo del deslizador (Si "
-"ese es el caso). Nota los dos signos de igual para la igualdad, en lugar de "
-"sólo uno que es signo igual para la asignación."
+"ese es el caso). Presta atención a los dos signos de igual para la "
+"comparación de igualdad, en lugar de sólo uno que es el signo igual para la "
+"asignación."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:304
 msgid ""
 "There are other examples you can try to familiarize yourself with object "
 "navigation and manipulation:"
 msgstr ""
-"Hay otros ejemplos que puedes intentar para familiarizarte con la navegación "
-"y manipulación de objetos:"
+"Hay otros ejemplos que puedes probar para familiarizarte con la navegación y "
+"manipulación de objetos:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:305
 msgid ""
 "* Obtaining the name of an object that is located somewhere else in the "
 "program."
 msgstr ""
-"* Obteniendo el nombre de un objeto que se encuentre en otro lugar en el "
+"* Obtener el nombre de un objeto que se encuentre en otro lugar en el "
 "programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:306
 msgid "* Moving the navigator to the foreground object."
-msgstr "* Moviendo el navegador al objeto en primer plano."
+msgstr "* Mover el navegador de objetos al objeto en primer plano."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:307
 msgid "* Setting focus to another program."
-msgstr "* Poniendo el foco en otro programa."
+msgstr "* Poner el foco en otro programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:308
 msgid "* Locating the first status bar in a program with multiple status bars."
 msgstr ""
-"* Localizando la primera barra de estado en un programa con varias barras de "
+"* Localizar la primera barra de estado en un programa con varias barras de "
 "estado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:309
@@ -2359,7 +2368,7 @@ msgid ""
 "For real-life examples on objects in NVDA, consult the NVDA source code or "
 "source codes of various community add-ons."
 msgstr ""
-"Para ver ejemplos en la vida real sobre los objetos de NVDA, consulta el "
+"Para ver ejemplos de la vida real sobre los objetos de NVDA, consulta el "
 "código fuente de NVDA o los códigos fuente de diversos complementos de la "
 "comunidad."
 
@@ -2385,7 +2394,7 @@ msgid ""
 "NVDA provides two methods for creating or manipulating specialist, or "
 "overlay objects (or classes), each suited for different needs:"
 msgstr ""
-"NVDA proporciona dos métodos para crear especiales, o superponer objetos (o "
+"NVDA proporciona dos métodos para crear objetos especiales o superpuestos (o "
 "clases), cada uno adaptado para diferentes necesidades:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:313
@@ -2399,14 +2408,14 @@ msgid ""
 "by assigning obj.role = ROLE_WINDOW (see control types dictionary for list "
 "of available roles)."
 msgstr ""
-"* `event_NvDAObject_init(self, object we're dealing with)`: Si deseas pasar "
-"por alto ciertos atributos de un control, como su rol o la etiqueta(nombre), "
-"puedes utilizar este método para preguntar a NVDA para tomar tu\"input\" a "
-"tener en cuenta cuando se encuentran los objetos por primera vez (o "
-"inicializado). Por ejemplo, si el control tiene el nombre de clase de "
-"ventana de TForm (visto en muchas aplicaciones Delphi), puedes pedir a NVDA "
-"tratar a este control como una ventana estándar asignando obj.role = "
-"ROLE_WINDOW (ver diccionario tipos de control para lista de funciones "
+"* `event_NVDAObject_init(self, objeto con el que trabajamos)`: Si deseas "
+"sobreescribir ciertos atributos de un control, como su rol o la "
+"etiqueta(nombre), puedes utilizar este método para pedirle a NVDA que tome "
+"en cuenta tu\"entrada\" cuando se encuentran los objetos por primera vez (o "
+"inicializados). Por ejemplo, si el control tiene el nombre de clase de "
+"ventana TForm (visto en muchas aplicaciones Delphi), puedes pedir a NVDA que "
+"trate a este control como una ventana estándar asignando obj.role = "
+"ROLE_WINDOW (ver diccionario tipos de control para lista de roles "
 "disponibles)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:314
@@ -2424,17 +2433,21 @@ msgid ""
 "from an object, such as telling NVDA to not treat this object as a progress "
 "bar by removing progress bar behavior from this object."
 msgstr ""
-"* `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: Esto "
+"* `chooseNVDAObjectOverlayClasses(self, object, lista de clases)`: Esto "
 "permite a NVDA que utilice su propia lógica cuando se trate de ciertos "
 "objetos. Por ejemplo, esto es útil si deseas asignar gestos personalizados "
-"para determinadas partes de un programa en tu app module (De hecho, muchos "
-"app modules crean objetos para hacer frente a determinadas partes de un "
-"programa, luego usan chooseNvDAObjectOverlayClasses para seleccionar el "
-"objeto correcto cuando se cumplan ciertas condiciones). Estos objetos "
-"personalizados se deben basar en un objeto sólido con el que deseamos hacer "
-"frente (principalmente IAccessible es suficiente, por lo tanto los demás "
-"objetos superppuestos heredan de, o es el hijo o la clase especializada de "
-"los objetos IAccessible)."
+"para determinadas partes de un programa en tu módulo de aplicación (De "
+"hecho, muchos módulos de aplicación crean objetos para hacer frente a "
+"determinadas partes de un programa, luego usan "
+"chooseNVDAObjectOverlayClasses para seleccionar el objeto correcto cuando se "
+"cumplan ciertas condiciones). Estos objetos personalizados se deben basar en "
+"un objeto sólido con el que deseamos trabajar (la mayoría de las veces "
+"IAccessible es suficiente, por lo tanto los demás objetos superppuestos "
+"heredan de, o son los hijos o clases especializadas de los objetos "
+"IAccessible). En ciertas situaciones, puedes deshacerte de una propiedad de "
+"un objeto usando este método, por ejemplo diciendo a NVDA que no trate a una "
+"barra de progreso como tal, eliminando el comportamiento de barra de "
+"progreso del objeto en cuestión."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:315
 msgid ""
@@ -2447,7 +2460,7 @@ msgstr ""
 "Ten en cuenta que en el caso del segundo método, la clase(s) con el nombre "
 "dado debe estar presente en el fichero, que es/son heredados de un objeto "
 "base conocido (en Python, la sintaxis para la herencia es "
-"`childClass(baseClass)`, y es por lo general leída como, \"esta clase hija "
+"`claseHija(claseBase)`, y es por lo general leída como, \"esta clase hija "
 "hereda de esta clase base\". Veremos un código como éste más tarde)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:316
@@ -2497,9 +2510,9 @@ msgid ""
 "specific parts of a program, then uses chooseNVDAObjectOverlayClasses to "
 "assign the logic for each control."
 msgstr ""
-"El ejemplo 2 trata de un app module que tiene dos objetos para tratar con "
-"partes específicas de un programa, luego usa elegir NVDAObjectOverlayClasses "
-"para asignar la lógica para cada control."
+"El ejemplo 2 trata de un módulo de aplicación que tiene dos objetos para "
+"tratar con partes específicas de un programa, luego usa "
+"chooseNVDAObjectOverlayClasses para asignar la lógica para cada control."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:325
 msgid "\t#An example of overlay classes"
@@ -2512,8 +2525,8 @@ msgstr "\tclass enhancedEdit(IAccessible):"
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:328
 msgid "\t\t# Some code to be run when window class name is MyEdit."
 msgstr ""
-"\t\t# Algún código para ejecutarse cuando el nombre de la clase ventana es "
-"MyEdit."
+"\t\t# Algún código para ejecutarse cuando el nombre de la clase de la "
+"ventana es MyEdit."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:330
 msgid "\tclass MainWindow(IAccessible):"
@@ -2529,7 +2542,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:333
 msgid "\t# In the app module:"
-msgstr "\t# En el app module:"
+msgstr "\t# En el módulo de aplicación:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:335
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:378
@@ -2558,10 +2571,10 @@ msgid ""
 msgstr ""
 "En ambos casos, el objeto que se desea comprobar debe insertarse como el "
 "primer elemento de la clsList. El efecto es que estos objetos personalizados "
-"tendrán prioridad cuando se esté buscando gestos o código (comportamiento) "
+"tendrán prioridad cuando se estén buscando gestos o código (comportamiento) "
 "para el objeto, y en la información del desarrollador, estos objetos "
-"personalizados vendrán por primera vez cuando MRO (orden de Métodos de "
-"Resolución) para que se muestre el navegador de objetos."
+"personalizados vendrán por primera vez cuando el MRO (orden de Métodos de "
+"Resolución) muestre el navegador de objetos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:339
 msgid ""
@@ -2573,14 +2586,15 @@ msgid ""
 msgstr ""
 "Nota: es posible que tengas que afinar estos dos métodos para proporcionar "
 "clases de superposición correctas para controles muy específicos (tales como "
-"nombres de verificación, roles específicos, etc.); de lo contrario, es "
+"comprobación de nombres, roles específicos, etc.); de lo contrario, es "
 "posible que descubras que se asignan dos o más controles de apariencia "
 "idéntica a tu objeto personalizado cuando en realidad son muy diferentes. "
-"Además, el event_NVDAObject_init sólo está disponible en módulos app."
+"Además, el event_NVDAObject_init sólo está disponible en módulos de "
+"aplicación."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:340
 msgid "### Input and output: scripts and UI messages"
-msgstr "### Entrada y salida: scripts y mensajes UI"
+msgstr "### Entrada y salida: scripts y mensajes IU"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:341
 msgid ""
@@ -2590,7 +2604,7 @@ msgid ""
 msgstr ""
 "Otro  componente crucial de los complementos es manejar órdenes del usuario "
 "y mostrar qué está haciendo el complemento. Esto se realiza a través de "
-"scripts (en la entrada) y  mensajes UI (en la salida)."
+"scripts (en la entrada) y  mensajes IU (en la salida)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:342
 msgid ""
@@ -2607,7 +2621,7 @@ msgstr ""
 "un traductor pulsa Control+Shift+A, NVDA leerá los comentarios para el "
 "traductor añadidos por el programador para ayudar a clarificar una cadena "
 "traducible dada. Esta orden no es una orden nativa de NVDA, pero se definió "
-"en el appModule de Poedit para llevar a cabo esta función."
+"en el módulo de aplicación de Poedit para llevar a cabo esta función."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:343
 msgid ""
@@ -2619,14 +2633,14 @@ msgid ""
 "loads and is cleared when either NVDA exits or the app for the app module "
 "loses focus (that is, the user has switched to another program)."
 msgstr ""
-"Normalmente, un complemento  que acepte scripts tendrá una lista de command:"
-"function map en algún lugar en el módulo. El más simple es un diccionario de "
-"Gestos (órdenes), un diccionario python (llamado normalmente __gestures) que "
-"posee órdenes como teclas y scripts como valores para estas teclas (más de "
-"una tecla, u orden que puede vincularse a los scripts). Estos diccionarios "
-"se cargan cuando el complemento se carga y se borra cuando se sale de NVDA o "
-"cuando la aplicación para la que es el módulo de aplicación pierde el "
-"foco(es decir, el usuario ha cambiado a otro programa)."
+"Normalmente, un complemento  que acepte scripts tendrá un mapa de lista "
+"orden:función en algún lugar en el módulo. El más simple es un diccionario "
+"de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) "
+"que posee órdenes como teclas y scripts como valores para estas teclas (más "
+"de una tecla, u orden que puede vincularse a los scripts). Estos "
+"diccionarios se cargan cuando el complemento se carga y se borran cuando se "
+"sale de NVDA o cuando la aplicación para la que es el módulo de aplicación "
+"pierde el foco(es decir, el usuario ha cambiado a otro programa)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:344
 msgid ""
@@ -2648,8 +2662,8 @@ msgstr ""
 "gesto/script) para definir ciertos gestos a la vez, entonces utilizar "
 "inputCore.clearGestures luego inputCore.bindGestures(__gestures) para "
 "eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts "
-"para objetos específicos, se tratará cuando hablemos acerca de superposición "
-"de clases."
+"para objetos específicos, se tratará cuando hablemos sobre módulos de "
+"aplicación y cómo asignar gestos a partes específicas de un programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:345
 msgid ""
@@ -2679,9 +2693,9 @@ msgstr ""
 "mensaje `ui.message(algo que decir)` donde `algo que decir` se reemplaza por "
 "una cadena para que NVDA la diga. Alternativamente, puedes llamar a los "
 "métodos de manejo del habla y del braille directamente si deseas que el "
-"habla diga una cosa y la pantalla braille muestre otra. No repasaremos el "
-"`mensajeui.message' aquí (verás ejemplos de esos), pero lo más importante "
-"son los scripts, así que nos enfocaremos en eso en esta sección."
+"habla diga una cosa y la pantalla braille muestre otra. No repasaremos `ui."
+"message' aquí (verás ejemplos de esos), pero lo más importante son los "
+"scripts, así que nos enfocaremos en eso en esta sección."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:347
 msgid ""
@@ -2691,28 +2705,29 @@ msgid ""
 "and ts for touchscreen) which identifies the type of gesture. Output can be "
 "sent via speech and/or braille."
 msgstr ""
-"A partir de tiempo de escritura, NVDA soporta entrada desde el teclado, "
-"pantallas braille con o sin teclado braille y pantallas táctiles. Estos "
-"tipos de entrada tienen un prefijo de gesto correspondiente (kb para "
+"En el momento de escritura de esta guía, NVDA soporta entrada desde el "
+"teclado, pantallas braille con o sin teclado braille y pantallas táctiles. "
+"Estos tipos de entrada tienen un prefijo de gesto correspondiente (kb para "
 "teclado, br para braille y ts para pantalla táctil) que identifica el tipo "
 "de gesto. La salida puede enviarse vía voz y/o braille."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:348
 msgid "### Example 2: A basic script dictionary and message output"
-msgstr "### Ejemplo 2: Un script diccionario básico y mensaje de salida"
+msgstr "### Ejemplo 2: Un diccionario de scripts básico y un mensaje de salida"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:349
 msgid ""
 "In this example, we'll define two scripts called \"sayHello\" and say"
 "\"GoodBye\", then bind them into two separate gestures."
 msgstr ""
-"En este ejemplo, definiremos dos scripts llamados \"sayHello\" y say\"GoodBye"
+"En este ejemplo, definiremos dos scripts llamados \"sayHello\" y \"sayGoodBye"
 "\", luego los vincularemos a dos gestos separados."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:350
 msgid "\t# An example fragment for script assignment from a global plugin."
 msgstr ""
-"\t# Un fragmento ejemplo para asignación de script desde un plugin global."
+"\t# Un fragmento de ejemplo de asignación de un script desde una extensión "
+"global."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:353
 msgid "\tdef script_sayHello(self, gesture):"
@@ -2720,7 +2735,7 @@ msgstr "\tdef script_sayHello(self, gesture):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:354
 msgid "\t\tui.message\"Hello!\")"
-msgstr "\t\tui.message\"Hello!\")"
+msgstr "\t\tui.message(\"Hello!\")"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:356
 msgid "\tdef script_sayGoodBye(self, gesture):"
@@ -2783,7 +2798,7 @@ msgstr "\tfrom NVDAObjects.IAccessible import IAccessible"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:369
 msgid "\tclass Player(IAccessible)"
-msgstr "\tclass Player(IAccessible)"
+msgstr "\tclass Player(IAccessible):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:370
 msgid "\t\tdef script_saySongName(self, gesture):"
@@ -2802,7 +2817,7 @@ msgstr "\t\t\t\"kb:NVDA+T\":\"saySongTitle\""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:377
 msgid "\t# And in the main app module:"
-msgstr "\t# Y en el app module principal:"
+msgstr "\t# Y en el módulo de aplicación principal:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:379
 msgid ""
@@ -2828,7 +2843,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:381
 msgid "### Script lookup order and command conflicts"
-msgstr "### Orden de búsqueda de scripts y conflictos de comandos"
+msgstr "### Orden de búsqueda de scripts y conflictos de órdenes"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:382
 msgid ""
@@ -2836,15 +2851,15 @@ msgid ""
 "script lookup order when trying to assign commands to scripts:"
 msgstr ""
 "Según escribas tus complementos con scripts, necesitas recordar el siguiente "
-"orden de búsqueda de script cuando intentes asignar comandos a scripts:"
+"orden de búsqueda de script cuando intentes asignar órdenes a scripts:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:383
 msgid "1. Global plugins."
-msgstr "1. Plugins globales."
+msgstr "1. Extensiones globales."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:384
 msgid "2. App modules for the currently focused program."
-msgstr "2. App modules para el programa actualmente enfocado."
+msgstr "2. Módulos de aplicación para el programa actualmente enfocado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:385
 msgid "3. NVDA objects we're dealing with."
@@ -2866,16 +2881,16 @@ msgid ""
 "player, NVDA+T will announce the name of the song (NVDA objects in app "
 "modules takes precedence)."
 msgstr ""
-"Por ejemplo, si asignas el comando NVDA+Shift+Y a un script de módulo de "
-"aplicación, NVDA ejecutará ese script desde ese programa ya que ningún "
-"plugin global está usando este comando. Sin embargo, si se instala un plugin "
-"global que use ese comando, el script del plugin global se ejecutará en "
-"lugar del script del app module. Del mismo modo, desde el ejemplo anterior, "
-"cuando se utilicen programas distintos a ese reproductor multimedia, NVDA "
-"ejecutará un comando desde la colección de órdenes globales cuando se pulse "
-"NVDA+T; pero mientras utilicemos este reproductor multimedia, NVDA+T "
-"anunciará el nombre de la canción (se da prioridad a los objetos de NVDA en "
-"los módulos de aplicación)."
+"Por ejemplo, si asignas la orden NVDA+Shift+Y a un script de módulo de "
+"aplicación, NVDA ejecutará ese script desde ese programa ya que ninguna "
+"extensión global está usando esta orden. Sin embargo, si se instala una "
+"extensión global que use esa orden, el script de la extensión global se "
+"ejecutará en lugar del script del módulo de aplicación. Del mismo modo, "
+"desde el ejemplo anterior, cuando se utilicen programas distintos a ese "
+"reproductor multimedia, NVDA ejecutará una orden desde la colección de "
+"órdenes globales cuando se pulse NVDA+T; pero mientras utilicemos este "
+"reproductor multimedia, NVDA+T anunciará el nombre de la canción (se da "
+"prioridad a los objetos de NVDA en los módulos de aplicación)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:388
 msgid ""
@@ -2895,10 +2910,11 @@ msgid ""
 "another."
 msgstr ""
 "1. En primer lugar, consulta la referencia rápida de órdenes de NVDA para "
-"ver si la orden que deseas utilizar se ha definido en comandos globales. "
+"ver si la orden que deseas utilizar se ha definido en las órdenes globales. "
 "Deberías tratar de minimizar los conflictos con las órdenes de NVDA "
-"incorporadas. Una excepción son las órdenes para los app modules, donde una "
-"misma orden puede ser utilizada de forma diferente de un programa a otro."
+"incorporadas. Una excepción son las órdenes para los módulos de aplicación, "
+"donde una misma orden puede ser utilizada de forma diferente de un programa "
+"a otro."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:390
 msgid ""
@@ -2906,7 +2922,7 @@ msgid ""
 "any add-on is using this command, and if so, contact the add-on author to "
 "come up with an alternate binding."
 msgstr ""
-"2. Lee la documentación de los complementos (especialmente los plugins "
+"2. Lee la documentación de los complementos (especialmente las extensiones "
 "globales) para ver si algún complemento está utilizando esta orden y, en "
 "caso afirmativo, ponte en contacto con el autor del complemento para obtener "
 "un vínculo alternativo."
@@ -2922,9 +2938,9 @@ msgid ""
 "minimizing use of commands that programs might use such as Control+letter, "
 "Alt+Shift+letter and so on."
 msgstr ""
-"* Puedes utilizar cualquier modificador como parte de órdenes para scripts "
-"(por ejemplo, Alt+NVDA+letra). Sin embargo, para evitar conflictos de "
-"órdenes, intenta reducir al mínimo el uso de órdenes que los programas "
+"* Puedes utilizar cualquier modificador como parte de las órdenes para "
+"scripts (por ejemplo, Alt+NVDA+letra). Sin embargo, para evitar conflictos "
+"de órdenes, intenta reducir al mínimo el uso de órdenes que los programas "
 "puedan utilizar como Control+letra, Alt+Shift+letra, etcétera."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:393
@@ -3018,7 +3034,7 @@ msgstr "Cuando se produce un evento, NVDA hace lo siguiente:"
 msgid "1. Finds out what the event was (for example, a check box gains focus)."
 msgstr ""
 "1. Encuentra qué fue el evento (por ejemplo, una casilla de verificación "
-"obtiene atención)."
+"obtiene el foco)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:402
 msgid ""
@@ -3045,11 +3061,11 @@ msgid ""
 "part of an object, the name of the event and the object (self) is required."
 msgstr ""
 "Dependiendo de dónde se defina el evento, necesitarás dos o cuatro cosas al "
-"definirlo. Si se declara desde el módulo add-on, las partes requeridas son "
-"el nombre del evento, el módulo add-on (self), el objeto y el siguiente "
-"manejador en caso de que el objeto tenga otros eventos asociados. Si se "
-"define como parte de un objeto, se requiere el nombre del evento y el objeto "
-"(self)."
+"definirlo. Si se declara desde el módulo de un complemento, las partes "
+"requeridas son el nombre del evento, el módulo en cuestión (self), el objeto "
+"y el siguiente manejador en caso de que el objeto tenga otros eventos "
+"asociados. Si se define como parte de un objeto, se requiere el nombre del "
+"evento y el objeto (self)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:405
 msgid "A typical event routine looks like this:"
@@ -3091,18 +3107,18 @@ msgstr ""
 "De hecho, hemos conocido un\"evento\" real antes: `event_NVDAObject-Init`. "
 "Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) "
 "disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de "
-"acuerdo con su entrada (consulta la sección sobre las propiedades del objeto "
-"principal para obtener más información). Veamos otros eventos que puedes ver "
-"mientras escribes tu complemento."
+"acuerdo con su entrada (consulta la sección sobre sobreescritura de "
+"propiedades de un objeto para obtener más información). Veamos otros eventos "
+"que puedes ver mientras escribes tu complemento."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:413
 msgid "### Example 4: Announcing the changed name of a control"
-msgstr "### Ejemplo 4: Anunciando el nombre cambiado de un control"
+msgstr "### Ejemplo 4: Anunciar el nombre cambiado de un control"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:414
 msgid "The below code came from one of the add-on app modules."
 msgstr ""
-"El siguiente código procede de uno de los módulos adicionales de la "
+"El siguiente código procede de uno de los complementos de módulos de "
 "aplicación."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:415
@@ -3165,12 +3181,12 @@ msgid ""
 "* gainFocus: The user has moved the focus to a specific control, or the user "
 "has just switched to a program."
 msgstr ""
-"* gainFocus: el usuario ha movido el enfoque a un control específico, o el "
+"* gainFocus: el usuario ha movido el foco a un control específico, o el "
 "usuario acaba de cambiar a un programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:424
 msgid "* loseFocus: Opposite of gainFocus."
-msgstr "* loseFocus: opuesto a gainFocus."
+msgstr "* loseFocus: el contrario a gainFocus."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:425
 msgid ""
@@ -3219,20 +3235,20 @@ msgid ""
 "announcing extra info about the current state of the app and so on."
 msgstr ""
 "* appModule_gainFocus: el usuario ha cambiado a la aplicación donde se "
-"define un app module. Los usos comunes incluyen añadir órdenes de pantalla "
-"táctil para aplicaciones específicas, anunciar información adicional sobre "
-"el estado actual de la aplicación y así sucesivamente."
+"define un módulo de aplicación. Los usos comunes incluyen añadir órdenes de "
+"pantalla táctil para aplicaciones específicas, anunciar información "
+"adicional sobre el estado actual de la aplicación y así sucesivamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:432
 msgid "* appModule_loseFocus: opposite of appModule_gainFocus."
-msgstr "* appModule_loseFocus: opuesto a appModule_gainFocus."
+msgstr "* appModule_loseFocus: el contrario a appModule_gainFocus."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:433
 msgid ""
 "* descriptionChange: the description for a control provided by the "
 "accessibility API has changed."
 msgstr ""
-"* descriptionChange: la descripción de un control provisto por la API de "
+"* descriptionChange: la descripción de un control ofrecida por la API de "
 "accesibilidad ha cambiado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:434
@@ -3252,9 +3268,9 @@ msgid ""
 "requires NVDA 2017.3 and the object must inherit from `NVDAObjects.behaviors."
 "EditableTextWithSuggestions` class."
 msgstr ""
-"* suggestionsClosed: opuesto a suggestionsOpened. Los eventos de sugerencias "
-"requieren NVDA 2017.3 y el objeto debe heredar de la clase `NVDAObjects."
-"behaviorviors.editableTextWithSuggestions`."
+"* suggestionsClosed: el contrario a suggestionsOpened. Los eventos de "
+"sugerencias requieren NVDA 2017.3 y el objeto debe heredar de la clase "
+"`NVDAObjects.behaviors.editableTextWithSuggestions`."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:436
 msgid "### Events within objects"
@@ -3288,7 +3304,7 @@ msgid ""
 msgstr ""
 "Además de objetos, scripts y eventos, puedes añadir otros componentes en tu "
 "complemento para trabajar con controles específicos. Por ejemplo, puedes "
-"utilizar un módulo textInfo (como NVDAObjects. NVDAObjectTextInfo) para "
+"utilizar un módulo textInfo (como NVDAObjects.NVDAObjectTextInfo) para "
 "trabajar con offsets de texto y texto en campos de edición y otros "
 "controles, o utilizar módulos externos de desarrolladores externos para "
 "tareas especializadas como el acceso al registro de Windows (_winreg) y "
@@ -3303,13 +3319,13 @@ msgid ""
 "For most add-ons, it isn't required to define custom text infos, as the "
 "underlying accessibility API will provide suitable information."
 msgstr ""
-"Un componente notable es la información de texto, una forma de permitir que "
-"los complementos tengan acceso al texto ubicado en los objetos. Puedes "
-"acceder al texto, desplazarte en él (por ejemplo, mediante líneas y "
-"palabras) y manipular partes mediante intervalos de marcación y "
-"desplazamientos. Para la mayoría de los complementos, no es necesario "
-"definir información de texto personalizada, ya que la API de accesibilidad "
-"subyacente proporcionará la información adecuada."
+"Un componente notable es text infos, una forma de permitir que los "
+"complementos tengan acceso al texto ubicado en los objetos. Puedes acceder "
+"al texto, desplazarte por él (por ejemplo, mediante líneas y palabras) y "
+"manipular partes mediante intervalos de marcación y desplazamientos. Para la "
+"mayoría de los complementos, no es necesario definir un text info "
+"personalizado, ya que la API de accesibilidad subyacente proporcionará la "
+"información adecuada."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:441
 msgid ""
@@ -3325,8 +3341,8 @@ msgstr ""
 "matemático en lugares como navegadores web, así como para que los "
 "complementos definan capas personalizadas de presentación matemática y "
 "formas de acceder al contenido matemático en varias aplicaciones. Hasta "
-"ahora, la recuperación de contenido matemático se hace en texto marcado con "
-"MathPlayer instalado."
+"ahora, la recuperación de contenido matemático se hace en texto marcado en "
+"MathML con MathPlayer instalado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:442
 msgid ""
@@ -3341,9 +3357,9 @@ msgstr ""
 "gestor de configuración integrado de NVDA para almacenar los archivos de "
 "configuración y los ajustes. ConfigObj define los ajustes como una colección "
 "de diccionarios que se pueden actualizar en tiempo real. También puedes "
-"pasarlos en el mapa de validación para permitir al gestor de configuración "
-"(config.conf) de NVDA validar los ajustes para tu complemento y dejar que "
-"los ajustes adicionales se conviertan en ajustes específicos del perfil."
+"pasar un mapa de validación para permitir al gestor de configuración (config."
+"conf) de NVDA validar los ajustes para tu complemento y dejar que los "
+"ajustes adicionales se conviertan en ajustes específicos del perfil."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:443
 msgid ""
@@ -3353,12 +3369,12 @@ msgid ""
 msgstr ""
 "Finalmente, puedes pedirle a NVDA que realice algunas rutinas mientras el "
 "complemento se esté cargando o finalizando. Esto se hace definiendo el "
-"método `___init__` y `terminate` para el complemento. Dependiendo del tipo "
-"de plugin, utiliza:"
+"método `__init__` y `terminate` para el complemento. Dependiendo del tipo de "
+"extensión, utiliza:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:444
 msgid "* For global plugin:"
-msgstr "* Para plugin global:"
+msgstr "* Para extensiones globales:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:445
 msgid "\tdef __init__(self):"
@@ -3370,7 +3386,7 @@ msgstr "\t\tsuper(GlobalPlugin, self).__init__()"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:447
 msgid "\t\t# The routine to do when the global plugin loads."
-msgstr "\t\t# La rutina a hacer cuando el plugin global se cargue."
+msgstr "\t\t# La rutina a hacer cuando la extensión global se cargue."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:448
 msgid ""
@@ -3378,11 +3394,11 @@ msgid ""
 "initialize various foundations correctly."
 msgstr ""
 "\t\t# ¡Precaución! siempre deberías llamar al método super primero para "
-"inicializar varias fundaciones correctamente."
+"inicializar la clase padre correctamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:449
 msgid "* For app modules:"
-msgstr "* Para app modules:"
+msgstr "* Para módulos de aplicación:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:450
 msgid "\tdef __init__(self, *args, **kwargs):"
@@ -3394,11 +3410,11 @@ msgstr "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:452
 msgid "\t\t# What NvDA should do when the app module loads."
-msgstr "\t\t# Qué debería hacer NVDA cuando el app module se cargue."
+msgstr "\t\t# Lo que debería hacer NVDA cuando el app module se cargue."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:453
 msgid "* For terminating, regardless of the add-on type:"
-msgstr "* Para terminar, independientemente del tipo de add-on:"
+msgstr "* Para terminar, independientemente del tipo de complemento:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:454
 msgid "\tdef terminate(self):"
@@ -3413,8 +3429,9 @@ msgid ""
 "\t\t# Warning! Never initialize ANY core module such as GUI in terminate "
 "method as doing so will prevent NVDA from exiting properly."
 msgstr ""
-"\t\t# ¡Precaución! nunca inicializar cualquier módulo del núcleo tal como "
-"GUI en el método de terminación para evitar que NVDA salga correctamente."
+"\t\t# ¡Precaución! nunca inicializes cualquier módulo del núcleo tal como "
+"GUI en el método terminate, ya que al hacerlo evitarás que NVDA salga "
+"correctamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:457
 msgid "### Let's build an add-on"
@@ -3428,12 +3445,12 @@ msgid ""
 msgstr ""
 "Ahora tenemos una visión general básica de los componentes de los "
 "complementos, estamos listos para crear algunos complementos sencillos. Pero "
-"primero, repasemos el proceso real de desarrollo de complementos, depurando "
-"los consejos, lo que se debe hacer y lo que no se debe hacer y otras cosas."
+"primero, repasemos el proceso real de desarrollo de complementos, consejos "
+"de depuración, lo que se debe hacer y lo que no se debe hacer y otras cosas."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:459
 msgid "### Add-on planning and development tips"
-msgstr "### Consejos adicionales de planificación y desarrollo de complementos"
+msgstr "### Consejos para planificación y desarrollo de complementos"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:460
 msgid ""
