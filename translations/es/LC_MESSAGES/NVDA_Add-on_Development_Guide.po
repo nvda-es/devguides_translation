@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-02 13:07+0100\n"
+"PO-Revision-Date: 2018-03-02 13:31+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3319,13 +3319,13 @@ msgid ""
 "For most add-ons, it isn't required to define custom text infos, as the "
 "underlying accessibility API will provide suitable information."
 msgstr ""
-"Un componente notable es la información de texto, una forma de permitir que "
-"los complementos tengan acceso al texto ubicado en los objetos. Puedes "
-"acceder al texto, desplazarte en él (por ejemplo, mediante líneas y "
-"palabras) y manipular partes mediante intervalos de marcación y "
-"desplazamientos. Para la mayoría de los complementos, no es necesario "
-"definir información de texto personalizada, ya que la API de accesibilidad "
-"subyacente proporcionará la información adecuada."
+"Un componente notable es text infos, una forma de permitir que los "
+"complementos tengan acceso al texto ubicado en los objetos. Puedes acceder "
+"al texto, desplazarte por él (por ejemplo, mediante líneas y palabras) y "
+"manipular partes mediante intervalos de marcación y desplazamientos. Para la "
+"mayoría de los complementos, no es necesario definir un text info "
+"personalizado, ya que la API de accesibilidad subyacente proporcionará la "
+"información adecuada."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:441
 msgid ""
@@ -3341,8 +3341,8 @@ msgstr ""
 "matemático en lugares como navegadores web, así como para que los "
 "complementos definan capas personalizadas de presentación matemática y "
 "formas de acceder al contenido matemático en varias aplicaciones. Hasta "
-"ahora, la recuperación de contenido matemático se hace en texto marcado con "
-"MathPlayer instalado."
+"ahora, la recuperación de contenido matemático se hace en texto marcado en "
+"MathML con MathPlayer instalado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:442
 msgid ""
@@ -3357,9 +3357,9 @@ msgstr ""
 "gestor de configuración integrado de NVDA para almacenar los archivos de "
 "configuración y los ajustes. ConfigObj define los ajustes como una colección "
 "de diccionarios que se pueden actualizar en tiempo real. También puedes "
-"pasarlos en el mapa de validación para permitir al gestor de configuración "
-"(config.conf) de NVDA validar los ajustes para tu complemento y dejar que "
-"los ajustes adicionales se conviertan en ajustes específicos del perfil."
+"pasar un mapa de validación para permitir al gestor de configuración (config."
+"conf) de NVDA validar los ajustes para tu complemento y dejar que los "
+"ajustes adicionales se conviertan en ajustes específicos del perfil."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:443
 msgid ""
@@ -3369,12 +3369,12 @@ msgid ""
 msgstr ""
 "Finalmente, puedes pedirle a NVDA que realice algunas rutinas mientras el "
 "complemento se esté cargando o finalizando. Esto se hace definiendo el "
-"método `___init__` y `terminate` para el complemento. Dependiendo del tipo "
-"de plugin, utiliza:"
+"método `__init__` y `terminate` para el complemento. Dependiendo del tipo de "
+"extensión, utiliza:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:444
 msgid "* For global plugin:"
-msgstr "* Para plugin global:"
+msgstr "* Para extensiones globales:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:445
 msgid "\tdef __init__(self):"
@@ -3386,7 +3386,7 @@ msgstr "\t\tsuper(GlobalPlugin, self).__init__()"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:447
 msgid "\t\t# The routine to do when the global plugin loads."
-msgstr "\t\t# La rutina a hacer cuando el plugin global se cargue."
+msgstr "\t\t# La rutina a hacer cuando la extensión global se cargue."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:448
 msgid ""
@@ -3394,11 +3394,11 @@ msgid ""
 "initialize various foundations correctly."
 msgstr ""
 "\t\t# ¡Precaución! siempre deberías llamar al método super primero para "
-"inicializar varias fundaciones correctamente."
+"inicializar la clase padre correctamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:449
 msgid "* For app modules:"
-msgstr "* Para app modules:"
+msgstr "* Para módulos de aplicación:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:450
 msgid "\tdef __init__(self, *args, **kwargs):"
@@ -3410,11 +3410,11 @@ msgstr "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:452
 msgid "\t\t# What NvDA should do when the app module loads."
-msgstr "\t\t# Qué debería hacer NVDA cuando el app module se cargue."
+msgstr "\t\t# Lo que debería hacer NVDA cuando el app module se cargue."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:453
 msgid "* For terminating, regardless of the add-on type:"
-msgstr "* Para terminar, independientemente del tipo de add-on:"
+msgstr "* Para terminar, independientemente del tipo de complemento:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:454
 msgid "\tdef terminate(self):"
@@ -3429,8 +3429,9 @@ msgid ""
 "\t\t# Warning! Never initialize ANY core module such as GUI in terminate "
 "method as doing so will prevent NVDA from exiting properly."
 msgstr ""
-"\t\t# ¡Precaución! nunca inicializar cualquier módulo del núcleo tal como "
-"GUI en el método de terminación para evitar que NVDA salga correctamente."
+"\t\t# ¡Precaución! nunca inicializes cualquier módulo del núcleo tal como "
+"GUI en el método terminate, ya que al hacerlo evitarás que NVDA salga "
+"correctamente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:457
 msgid "### Let's build an add-on"
@@ -3444,12 +3445,12 @@ msgid ""
 msgstr ""
 "Ahora tenemos una visión general básica de los componentes de los "
 "complementos, estamos listos para crear algunos complementos sencillos. Pero "
-"primero, repasemos el proceso real de desarrollo de complementos, depurando "
-"los consejos, lo que se debe hacer y lo que no se debe hacer y otras cosas."
+"primero, repasemos el proceso real de desarrollo de complementos, consejos "
+"de depuración, lo que se debe hacer y lo que no se debe hacer y otras cosas."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:459
 msgid "### Add-on planning and development tips"
-msgstr "### Consejos adicionales de planificación y desarrollo de complementos"
+msgstr "### Consejos para planificación y desarrollo de complementos"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:460
 msgid ""
