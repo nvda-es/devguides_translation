@@ -1,12 +1,12 @@
 # NVDA Add-on Development Guide
 
-* Latest version: February 2018 for NVDA 2018.1
+* Latest version: December 2017 for NVDA 2017.4
 
 ## Authors, Contributions, and Copyright
 
 This guide was originally written by Joseph Lee, and is shaped by the NVDA user and developer community. We welcome your feedback and contributions.
 
-NVDA is copyright 2006-2018 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
+NVDA is copyright 2006-2017 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction
 
@@ -41,10 +41,6 @@ Some of the concepts described in this document are same across different screen
 * Unlike scripting engines for some screen readers, there is no special hack involved when you wish to provide a feature that'll work in all applications.
 * Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with older NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself.
 
-### A special note about Windows Store version of NvDA
-
-As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store application. Once the Windows Store version of NVDA is published to Microsoft Store, users running Windows 10 can go to Store and obtain NVDA. However, there are restrictions that comes with this version of NVDA, notably add-ons cannot run in this environment. Thus, if you need to run or write NVDA add-ons, you need to use the classic desktop version of NVDA, available from nvaccess.org website.
-
 ## What are Add-ons?
 
 Add-ons are additional packages that extend NVDA's functionality or support for programs. This may include adding global features, enhancing support for an application, or adding support for newer braille displays or speech synthesizers. Add-ons may contain more than one module. The following is a general description of add-on module types.
@@ -72,7 +68,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
 * A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the NV Access page at https://www.nvaccess.org.
 	* We recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python 2.7 series, version 2.7.14 32-bit for Windows: <https://www.python.org/download/releases/2.7.14/>.
-* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): <http://www.scons.org/>.
+* SCons 2, version 2.3.0 or later for generating add-on packages: <http://www.scons.org/>.
 * Markdown 2.0.1 or later for generating add-on documentation: <https://pypi.python.org/pypi/Markdown/2.0.1>.
 * The GNU Gettext package for Windows for message localization support. The build can be found at: <http://gnuwin32.sourceforge.net/downlinks/gettext.php>.
 	* Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
@@ -259,7 +255,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
 	* `eventHandler.requestEvents(process ID, window class name for the control, event to be requested)`: Allows NVDA to listen to specific events for certain controls while using another app.
 * Extension points (extensionPoints.py): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
-	* `extensionPoints.Action`: notifies when something happens e.g. profile switches.
+	* `extensionPoints.Action`; notifies when something happens e.g. profile swithces.
 	* `extensionPoints.Decider`: decides whether to process something further e.g. processing keyboard input from a remote system.
 	* `extensionPoints.Filter`: modifies a given text for further processing e.g. advanced speech sequences.
 * Global Commands collection (globalCommands.py): A list of global commands available while using NVDA (see section on script scope for more information).
@@ -287,7 +283,6 @@ The following lists available NVDA core modules and some useful methods and clas
 * Synthesizer driver support (synthDriverHandler.py): This is the core module needed for speech synthesizer add-ons.
 * Widget text access (textInfos): Allows access to text for widget and documents.
 * Touchscreen support (touchHandler.py): Provides support for touchscreen input (installed versions only).
-	* `touchHandler.touchSupported()` (NVDA 2018.1 and later): returns if the system supports touch interaction.
 * Tone output (tones.py): Allows the user to hear tones. The following function is defined:
 	* `tones.beep(pitch in hertz, duration in milliseconds, left channel volume, right channel volume)`: Plays a tone of specified pitch for specified duration. The first two arguments are mandatory, while the other two are optional.
 * User interface messages (ui.py): Includes various functions for speech and/or braille output, including:
