@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-05 13:22+0100\n"
+"PO-Revision-Date: 2018-03-05 13:37+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4129,26 +4129,27 @@ msgid ""
 "However, app modules have additional properties that global plugins lack, "
 "including:"
 msgstr ""
-"A primera vista, los app modules pueden tener el mismo aspecto que cualquier "
-"plugin global. Sin embargo, los app modules tienen propiedades adicionales "
-"que carecen de plugins globales, incluyendo:"
+"A primera vista, los módulos de aplicación pueden tener el mismo aspecto que "
+"cualquier extensión global. Sin embargo, los módulos de aplicación tienen "
+"propiedades adicionales de las que carecen las extensiones globales, "
+"incluyendo:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:548
 msgid ""
 "* Instead of `globalPluginHandler`, you need to import `appModuleHandler`. "
 "The class to implement is `AppModule(appModuleHandler.AppModule)`."
 msgstr ""
-"* En lugar de `globalPluginHandler`, necesita importar `appModuleHandler`. "
-"La clase a implementar es `AppModule(appModuleHandler. AppModule)`."
+"* En lugar de `globalPluginHandler`, necesitas importar `appModuleHandler`. "
+"La clase a implementar es `AppModule(appModuleHandler.AppModule)`."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:549
 msgid ""
 "* App modules are stored in appModules folder in your add-on directory "
 "structure and is named the same as the executable name of the program."
 msgstr ""
-"* Los app modules se almacenan en la carpeta appModules de la estructura de "
-"directorios del complemento y reciben el mismo nombre que el nombre "
-"ejecutable del programa."
+"* Los módulos de aplicación se almacenan en la carpeta appModules de la "
+"estructura de directorios del complemento y reciben el mismo nombre que el "
+"nombre ejecutable del programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:550
 msgid ""
@@ -4159,14 +4160,15 @@ msgid ""
 msgstr ""
 "* Puedes pedir a NVDA que entre en el modo de suspensión en un programa "
 "donde NVDA no hable o no tenga nada en braille mientras estés utilizando el "
-"programa, y cualquier comando de teclado que pulses será manejado "
-"directamente por el programa. Esto se hace estableciendo el atributo "
-"`sleepMode` en la clase AppModule en True."
+"programa, y cualquier orden de teclado que pulses será manejado directamente "
+"por el programa. Esto se hace estableciendo el atributo `sleepMode` en la "
+"clase AppModule a True."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:551
 msgid "* The `event_NVDAObject_init` routine is only available in app modules."
 msgstr ""
-"* La rutina `event_NVDAObject_init` sólo está disponible en los app modules."
+"* La rutina `event_NVDAObject_init` sólo está disponible en los módulos de "
+"aplicación."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:552
 msgid ""
@@ -4178,7 +4180,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:553
 msgid "### App module development process and strategies"
-msgstr "### Proceso y estrategias de desarrollo del app module"
+msgstr "### Proceso y estrategias de desarrollo de módulos de aplicación"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:554
 msgid "A typical app module is developed thus:"
@@ -4210,8 +4212,8 @@ msgid ""
 "4. Write and test the app module (with users) until the app module is ready "
 "for release."
 msgstr ""
-"4. Escribe y prueba el app module (con usuarios) hasta que esté listo para "
-"su lanzamiento."
+"4. Escribe y prueba el módulo de aplicación (con usuarios) hasta que esté "
+"listo para su lanzamiento."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:559
 msgid "As you write app modules, try these tips:"
@@ -4247,7 +4249,7 @@ msgid ""
 "some of them for a future release."
 msgstr ""
 "3. No deberías incorporar todas las características deseadas en la versión "
-"1.0 - dejando algunas de ellas para una futura versión."
+"1.0 - deja algunas de ellas para una futura versión."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:563
 msgid "### Example 2: Simple app module in Notepad"
@@ -4270,7 +4272,7 @@ msgstr "El módulo de aplicación para el Bloc de notas se vería así:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:566
 msgid "\t# The example app module for Notepad, notepad.py."
-msgstr "\t# El app module de ejemplo para bloq de notas, notepad.py."
+msgstr "\t# El módulo de aplicación de ejemplo para bloc de notas, notepad.py."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:572
 msgid "\t\tdef script_sayLineNumber(self, gesture):"
@@ -4278,7 +4280,7 @@ msgstr "\t\tdef script_sayLineNumber(self, gesture):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:573
 msgid "\t\t\t# Suppose line number is in the form \"  ln 1\"."
-msgstr "\t\t\t# Supongamos que el número de línea está en la forma \"  ln 1\"."
+msgstr "\t\t\t# Supongamos que el número de línea sigue el formato \"  ln 1\"."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:574
 msgid "\t\t\tlineNumList = api.getStatusBar().name.split()"
@@ -4315,8 +4317,9 @@ msgid ""
 "Openbook (openbook.exe) is running using the below app module:"
 msgstr ""
 "Openbook es un programa de lectura y escaneo de Freedom scientific. Como "
-"Openbook proporciona voz, puedes decir a NVDA que entre en modo durmiente "
-"mientras Openbook (openbook.exe) se ejecute usando el app module siguiente:"
+"Openbook proporciona voz, puedes decir a NVDA que entre en modo latente "
+"mientras Openbook (openbook.exe) se ejecute usando el módulo de aplicación "
+"siguiente:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:584
 msgid "\t# Silencing NVDA in openbook, openbook.py."
