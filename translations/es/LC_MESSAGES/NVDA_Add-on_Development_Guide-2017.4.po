@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-05 13:37+0100\n"
+"PO-Revision-Date: 2018-03-05 14:54+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4335,9 +4335,9 @@ msgid ""
 "(you should do this only if the program provides speech and/or braille "
 "support on its own)."
 msgstr ""
-"Con esa única línea de código, NVDA entrará en modo durmiente en ese "
-"programa (sólo debes hacerlo si el programa proporciona soporte de voz y/o "
-"braille por sí solo)."
+"Con esa única línea de código, NVDA entrará en modo latente en ese programa "
+"(sólo debes hacerlo si el programa proporciona soporte de voz y/o braille "
+"por sí solo)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:590
 msgid ""
@@ -4356,9 +4356,9 @@ msgid ""
 msgstr ""
 "Puedes pedir a NVDA que gestione eventos específicos mientras se concentra "
 "en otra aplicación. Esto se hace llamando a eventHandler.requestEvents en el "
-"método __init__ del app module. Para poder invocar esto, necesitas el ID de "
-"proceso (PID) para la aplicación, el nombre de clase de ventana para el "
-"objeto y el nombre del evento a tratar."
+"método __init__ del módulo de aplicación. Para poder invocar esto, necesitas "
+"el ID de proceso (PID) para la aplicación, el nombre de clase de ventana "
+"para el objeto y el nombre del evento a tratar."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:592
 msgid ""
@@ -4370,13 +4370,13 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:593
 msgid "\t# The example app module for a messenger app."
-msgstr "\t# El ejemplo para el app module para la aplicación messenger."
+msgstr "\t# Ejemplo de módulo de aplicación para un programa de mensajería."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:594
 msgid ""
 "\t# The object we wish to track has window class name of \"MessengerWindow\"."
 msgstr ""
-"\t# El objeto que deseamos rastrear tiene el nombre de la clase window "
+"\t# El objeto que deseamos rastrear tiene el nombre de la clase de ventana "
 "\"MessengerWindow\"."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:597
@@ -4409,7 +4409,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:604
 msgid "### Useful app module properties and methods"
-msgstr "### Propiedades y métodos útiles de los app modules"
+msgstr "### Propiedades y métodos útiles de los módulos de aplicación"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:605
 msgid ""
@@ -4418,8 +4418,8 @@ msgid ""
 "following:"
 msgstr ""
 "`sleepMode` y `processID` son sólo dos de los muchos atributos que tienen "
-"los app modules. Otras propiedades y métodos útiles utilizados en los app "
-"modules incluyen las siguientes:"
+"los módulos de aplicación. Otras propiedades y métodos útiles utilizados en "
+"los módulos de aplicación incluyen los siguientes:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:606
 msgid "* appName: the name of the app (usually the name of the executable)."
@@ -4441,7 +4441,7 @@ msgid ""
 "using a 64-bit app under 64-bit Windows versions)."
 msgstr ""
 "* is64BitProcess: si es true, la aplicación es un proceso de 64 bits (sólo "
-"true si está usando una aplicación de 64 bits en versiones Windows de 64 "
+"true si se está usando una aplicación de 64 bits en versiones Windows de 64 "
 "bits)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:610
@@ -4451,25 +4451,25 @@ msgid ""
 "directory so you can retrieve it later."
 msgstr ""
 "* dumpOnCrash: si estás depurando aplicaciones que se bloquean con "
-"frecuencia, puedes llamar a esta función para permitir que NVDA guarde una "
-"descarga de esta aplicación en el directorio de archivos temporales para que "
-"puedas recuperarla más tarde."
+"frecuencia, puedes llamar a esta función para permitir que NVDA guarde un "
+"volcado de esta aplicación en el directorio de archivos temporales para que "
+"puedas recuperarlo más tarde."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:611
 msgid ""
 "And other properties. Type dir(obj.appModule) from Python Console for the "
 "complete list."
 msgstr ""
-"Y otras propiedades. Escribe dir(obj. appModule) desde la consola Python "
-"para obtener la lista completa."
+"Y otras propiedades. Escribe dir(obj.appModule) desde la consola Python para "
+"obtener la lista completa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:612
 msgid "### Other remarks on app modules"
-msgstr "### Otros comentarios sobre los app modules"
+msgstr "### Otros comentarios sobre los módulos de aplicación"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:613
 msgid "Here are other remarks regarding app modules:"
-msgstr "Aquí hay otras observaciones sobre los app modules:"
+msgstr "Aquí hay otras observaciones sobre los módulos de aplicación:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:614
 msgid ""
@@ -4484,8 +4484,8 @@ msgstr ""
 "de forma diferente, por ejemplo, las ubicaciones para los controles son "
 "diferentes, entonces puedes escribir código que pueda manejar estos casos. "
 "Hay una serie de opciones entre las que puedes elegir: añadir algunas "
-"constantes en tu app module para manejar diferentes ubicaciones de objetos, "
-"escribir código para estos controles (uno por versión) en objetos "
+"constantes en tu módulo de aplicación para manejar diferentes ubicaciones de "
+"objetos, escribir código para estos controles (uno por versión) en objetos "
 "personalizados que se seleccionarán en el método de clases de superposición, "
 "etc."
 
@@ -4509,8 +4509,8 @@ msgid ""
 msgstr ""
 "* Para soportar una aplicación que funcione igual que otro programa "
 "(especialmente si estás escribiendo un módulo de aplicación para una versión "
-"de 64 bits de un programa de 32 bits para el que has escrito un app module), "
-"utiliza el siguiente fragmento de código (llamado aliasing):"
+"de 64 bits de un programa de 32 bits para el que has escrito un módulo de "
+"aplicación), utiliza el siguiente fragmento de código (llamado aliasing):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:617
 msgid "\tfrom appName import *"
@@ -4523,8 +4523,8 @@ msgid ""
 "Miranda32 and Miranda64."
 msgstr ""
 "donde appName es el nombre del app module y * (asterisco o estrella) "
-"significa importarlo todo. Para un ejemplo de esto, mira los app modules de "
-"NVDA para Miranda32 y Miranda64."
+"significa importarlo todo. Para un ejemplo de esto, mira los módulos de "
+"aplicación de NVDA para Miranda32 y Miranda64."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:619
 msgid ""
@@ -4532,7 +4532,7 @@ msgid ""
 "following code fragment (this is called overriding the built-in module):"
 msgstr ""
 "* Si deseas ampliar un app module que venga con NVDA, utiliza el siguiente "
-"fragmento de código (llamado overriding the built-in module:"
+"fragmento de código (llamado sobreescritura del módulo incorporado):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:620
 msgid "\tfrom nvdaBuiltin.appModules.appName import *"
@@ -4560,13 +4560,13 @@ msgid ""
 "app module file (splstudio.py) starts with \"SPL\". This is used to remind "
 "you where this constants are used."
 msgstr ""
-"* Muchos app modules (tanto integrados como de terceros) utilizan nombres de "
-"applicación como parte del nombre de una constante (un valor que no cambia). "
-"Por ejemplo, en el módulo Powerpoint de NVDA (powerpnt.py), muchas "
-"constantes comienzan con \"PP\". Del mismo modo, en el app module de Station "
-"Playlist Studio, muchas constantes en el archivo del módulo de aplicación "
-"(splstudio.py) comienzan con \"SPL\". Esto se usa para recordarte dónde se "
-"utilizan estas constantes."
+"* Muchos módulos de aplicación (tanto integrados como de terceros) utilizan "
+"nombres de applicación como parte del nombre de una constante (un valor que "
+"no cambia). Por ejemplo, en el módulo Powerpoint de NVDA (powerpnt.py), "
+"muchas constantes comienzan con \"PP\". Del mismo modo, en el app module de "
+"Station Playlist Studio, muchas constantes en el archivo del módulo de "
+"aplicación (splstudio.py) comienzan con \"SPL\". Esto se usa para recordarte "
+"dónde se utilizan estas constantes."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:624
 msgid "## Drivers"
