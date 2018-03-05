@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-19 10:31+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-05 14:54+0100\n"
+"PO-Revision-Date: 2018-03-05 15:29+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4617,8 +4617,7 @@ msgstr ""
 "\"synthDriverHandler\". Para la mayoría de los controladores, la mayoría del "
 "código del controlador trata sobre la comunicación con el dispositivo o "
 "software de destino, y todos los controladores deben definir la clase de "
-"controlador (synthDriverHandler.SynthDriver o braille."
-"BrailleDisplayDisplayDriver)."
+"controlador (synthDriverHandler.SynthDriver o braille.BrailleDisplayDriver)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:629
 msgid "All driver classes, at a minimum, must contain:"
@@ -4668,7 +4667,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:635
 msgid "For speech synthesizers, they need to have:"
-msgstr "Para los sintetizadores de voz, necesitan tener:"
+msgstr "Para los sintetizadores de voz, es necesario tener:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:636
 msgid ""
@@ -4690,7 +4689,7 @@ msgid ""
 "buttons and additional hardware."
 msgstr ""
 "* Manejadores de entrada: si se desea la entrada de la pantalla braille, el "
-"autor del controlador debe implementar detectores para comandos tales como "
+"autor del controlador debe implementar detectores para órdenes tales como "
 "teclas braille, botones de enrutamiento y hardware adicional."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:639
@@ -4745,7 +4744,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:645
 msgid "### Typical driver development steps"
-msgstr "### Pasos típicos de desarrollo del driver"
+msgstr "### Pasos típicos de desarrollo de un controlador"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:646
 msgid ""
@@ -4757,12 +4756,12 @@ msgid ""
 "(braille commands, routing buttons, etc.)."
 msgstr ""
 "Cuando escribas controladores, es posible que desees seguir los pasos "
-"recomendados para el desarrollo del app module (planificación, comunicación "
-"con los proveedores, pruebas de usuario, etc.). Sin embargo, dado que los "
-"controladores requieren un conocimiento íntimo del hardware y/o del "
-"software, deberías dedicar más tiempo a probar tu controlador. Esto es más "
-"importante si estás escribiendo un controlador para una pantalla braille que "
-"puede enviar comandos arbitrarios (comandos braille, botones de "
+"recomendados para el desarrollo de módulos de aplicación (planificación, "
+"comunicación con los proveedores, pruebas de usuario, etc.). Sin embargo, "
+"dado que los controladores requieren un conocimiento íntimo del hardware y/o "
+"del software, deberías dedicar más tiempo a probar tu controlador. Esto es "
+"más importante si estás escribiendo un controlador para una pantalla braille "
+"que puede enviar órdenes arbitrarias (órdenes braille, botones de "
 "enrutamiento, etc.)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:647
@@ -4802,7 +4801,7 @@ msgid ""
 "ons, as well as to review other add-ons created by members of the community "
 "or have your add-on reviewed by other add-on developers around the world."
 msgstr ""
-"Si deseas mantenerte en contacto con tus usuarios adicionales o deseas "
+"Si deseas mantenerte en contacto con los usuarios de tu complemento o deseas "
 "aprender o contribuir con tu complemento a otros, suscríbete a[la lista de "
 "complementos de NVDA][4]. Esta es una lista de poco tráfico dedicada a "
 "discutir los complementos actuales y futuros, así como a revisar otros "
@@ -4823,7 +4822,7 @@ msgid ""
 msgstr ""
 "Para descargar u obtener más información sobre los diversos complementos "
 "creados por los usuarios de NVDA, visita el [sitio web de los complementos "
-"de la comunidad de NVDA][[5]. Puedes examinar los complementos actualmente "
+"de la comunidad de NVDA][5]. Puedes examinar los complementos actualmente "
 "disponibles, ver los complementos en desarrollo y leer las directrices de "
 "desarrollo de complementos."
 
@@ -4848,7 +4847,7 @@ msgid ""
 "the source code repository for the community add-on template."
 msgstr ""
 "* [add-on template](https://github.com/nvdaaddons/addonTemplate): este es el "
-"repositorio de código fuente para la plantilla del complemento de la "
+"repositorio de código fuente para la plantilla de complementos de la "
 "comunidad."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:657
@@ -4859,7 +4858,7 @@ msgid ""
 msgstr ""
 "* [Place markers de Noelia Martínez](https://github.com/nvdaes/"
 "placeMarkers): agrega funcionalidad de marcadores de posición y proporciona "
-"un buen ejemplo sobre el uso de información de texto."
+"un buen ejemplo sobre el uso de text infos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:658
 msgid ""
@@ -4871,8 +4870,8 @@ msgid ""
 msgstr ""
 "* [Windows 10 App Essentials de Joseph Lee](https://github.com/josephsl/"
 "wintenApps): proporciona soporte mejorado para Windows 10 y varias "
-"aplicaciones universales, considerado un clásico en la forma en que los "
-"plugins globales y módulos de aplicaciones trabajan juntos e incluye "
+"aplicaciones universales, considerado un clásico en la forma en que las "
+"extensiones globales y módulos de aplicaciones trabajan juntos e incluye "
 "ejemplos de clases de superposición y comportamientos de control que se "
 "derivan de los objetos UI Automation."
 
@@ -4908,8 +4907,8 @@ msgstr ""
 "* [StationPlaylist Studio de Joseph Lee](https://github.com/josephsl/"
 "stationPlaylist): mejora el uso de StationPlaylist Studio, proporciona "
 "ejemplos interesantes sobre las clases de superposición y la API de "
-"aplicaciones, el uso de subprocesos y diálogos adicionales y otras "
-"interfaces de usuario."
+"aplicaciones, el uso de hilos y diálogos adicionales y otras interfaces de "
+"usuario."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:662
 msgid "## Miscellaneous information"
@@ -4926,7 +4925,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:664
 msgid "## Appendicies"
-msgstr "@@ Apéndices"
+msgstr "## Apéndices"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:665
 msgid "### Appendix A: add-on terms dictionary"
@@ -4960,11 +4959,14 @@ msgstr "* Aplicación: sinónimo de programa."
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:669
 msgid "* App module: a module that adds or improves support for a program."
 msgstr ""
-"* App module: un módulo que añade o mejora el soporte para un programa."
+"* Módulo de aplicación: un módulo que añade o mejora el soporte para un "
+"programa."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:670
 msgid "* API: Application Programming Interface."
-msgstr "* API: Application Programming Interface."
+msgstr ""
+"* API: interfaz de programación de aplicaciones. En inglés, Application "
+"Programming Interface."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:671
 msgid "* Base class: parent class of an object."
@@ -4985,8 +4987,8 @@ msgid ""
 "* Built-in module: a module that comes with NVDA that add-ons can optionally "
 "override or extend."
 msgstr ""
-"* Módulo integrado: un módulo que viene con NVDA y que puede anular o "
-"ampliar los complementos opcionalmente."
+"* Módulo integrado: un módulo que viene con NVDA y que puede ser "
+"sobreescrito o ampliado por los complementos opcionalmente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:674
 msgid ""
@@ -5027,7 +5029,8 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:679
 msgid "* Global plugin: a module that adds features everywhere."
-msgstr "* Plugin global: un módulo que añade características en todas partes."
+msgstr ""
+"* Extensión global: un módulo que añade características en todas partes."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:680
 msgid ""
