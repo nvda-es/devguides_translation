@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-07 17:11+0100\n"
+"PO-Revision-Date: 2018-03-08 17:38+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -455,28 +455,38 @@ msgid ""
 "class of this element (not to be confused with automation ID that uniquely "
 "identifies an element)."
 msgstr ""
+"* Nombre de clase: el nombre de la clase para este control, una cadena que "
+"identifica la clase de este elemento (no debe confundirse con el ID de "
+"automatización, que identifica unívocamente un elemento)."
 
 #: ..\python_docs\w10addoninternals.py:37
 msgid ""
 "* Framework: the underlying framework used to create a given control such as "
 "XAML, Direct UI and others."
 msgstr ""
+"* Marco de trabajo: el marco de trabajo subyacente usado para crear un "
+"control dado, por ejemplo XAML, Direct UI y otros."
 
 #: ..\python_docs\w10addoninternals.py:38
 msgid ""
 "* Localized control type: a role type text that should be spoken by screen "
 "readers in different languages."
 msgstr ""
+"* Tipo de control localizado: un texto con el tipo de rol que debería ser "
+"verbalizado por los lectores de pantalla en diferentes idiomas."
 
 #: ..\python_docs\w10addoninternals.py:39
 msgid ""
 "* Controller for: a list (array) of controls that this element manipulates "
 "when performing actions such as search suggestions (explained below)."
 msgstr ""
+"* Controlador para: una lista (array) de controles que este elemento "
+"manipula cuando realiza acciones tales como sugerencias de búsqueda (se "
+"explica más abajo)."
 
 #: ..\python_docs\w10addoninternals.py:40
 msgid "### UIA events"
-msgstr ""
+msgstr "### Eventos UIA"
 
 #: ..\python_docs\w10addoninternals.py:41
 msgid ""
@@ -487,49 +497,69 @@ msgid ""
 "events such as structure change and others. How NVDA and Windows 10 App "
 "Essentials deals with certain UIA events is covered later in this article."
 msgstr ""
+"Además de los eventos estándar esperados de las apis de accesibilidad, tales "
+"como manipulación de foco y cambios en las propiedades de un objeto (como "
+"nombre y estado), UIA viene con algunos eventos interesantes, incluyendo "
+"controlador para (Controller for), cambios en región viva (live región "
+"changed) y muchos otros. Por razones de rendimiento, NVDA ignora ciertos "
+"eventos como cambio de estructura y algunos más. Más adelante en este "
+"artículo se explica cómo trabajan NVDA y Windows 10 App Essentials con "
+"ciertos eventos UIA."
 
 #: ..\python_docs\w10addoninternals.py:42
 msgid "### UIA-related additions, fixes and workarounds"
-msgstr ""
+msgstr "### Solución de fallos y características añadidas relacionadas con UIA"
 
 #: ..\python_docs\w10addoninternals.py:43
 msgid ""
 "The Windows 10 App Essentials add-on includes the following additions, fixes "
 "and workarounds for UIA issues and control problems:"
 msgstr ""
+"El complemento Windows 10 App Essentials incluye los siguientes extras, "
+"parches y soluciones para problemas de UIA y controles:"
 
 #: ..\python_docs\w10addoninternals.py:44
 msgid ""
 "* Search suggestions: NVDA now plays a sound to indicate appearance of "
 "search suggestions. More on this below."
 msgstr ""
+"* Sugerencias de búsqueda: NVDA ahora reproduce un sonido para indicar la "
+"aparición de sugerencias de búsqueda. Más detalles sobre esto más adelante."
 
 #: ..\python_docs\w10addoninternals.py:45
 msgid ""
 "* Live region change announcements in various apps. In the global plugin "
 "portion, a way to define and track this event is included."
 msgstr ""
+"* Verbalización de cambio de regiones vivas en diversas aplicaciones. En la "
+"parte de extensión global se incluye una forma de definir y rastrear este "
+"evento."
 
 #: ..\python_docs\w10addoninternals.py:46
 msgid ""
 "* Floating suggestions such as Emoji panel in Fall Creators Update and "
 "hardware keyboard suggestions in Redstone 4."
 msgstr ""
+"* Sugerencias flotantes como el panel de emojis en la actualización Fall "
+"Creators y sugerencias del teclado hardware en Redstone 4."
 
 #: ..\python_docs\w10addoninternals.py:47
 msgid ""
 "* Providing more meaningful labels for certain controls such as update "
 "history in Settings/Update and Security/Windows Update."
 msgstr ""
+"* Se ofrecen etiquetas más significativas para ciertos controles, como el "
+"historial de actualizaciones en configuración / actualización y seguridad / "
+"Windows Update."
 
 #: ..\python_docs\w10addoninternals.py:48
 msgid ""
 "We'll meet various UIA controls and workarounds throughout this article."
-msgstr ""
+msgstr "Conoceremos varios controles y soluciones a lo largo de este artículo."
 
 #: ..\python_docs\w10addoninternals.py:49
 msgid "## Windows 10 Objects"
-msgstr ""
+msgstr "## Objetos para Windows 10"
 
 #: ..\python_docs\w10addoninternals.py:50
 msgid ""
@@ -539,18 +569,24 @@ msgid ""
 "looping selectors for time pickers and so on. It also includes configuration "
 "and update facility for the add-on."
 msgstr ""
+"El complemento Windows 10 App Essentials viene con Objetos para Windows 10, "
+"una extensión global que contiene definiciones de controles comunes que se "
+"encuentran en Windows 10 y diversas aplicaciones universales. Aquí se "
+"incluyen el manejo de sugerencias de búsqueda, repetición para selectores de "
+"tiempo y así sucesivamente. También incluye las características de "
+"configuración y actualización del complemento."
 
 #: ..\python_docs\w10addoninternals.py:51
 msgid "### Source code layout"
-msgstr ""
+msgstr "### Estructura del código fuente"
 
 #: ..\python_docs\w10addoninternals.py:52
 msgid "The global plugin consists of the following:"
-msgstr ""
+msgstr "La extensión global está formada por lo siguiente:"
 
 #: ..\python_docs\w10addoninternals.py:53
 msgid "* winTenObjs/__init__.py: the base global plugin."
-msgstr ""
+msgstr "* winTenObjs/__init__.py: la extensión global básica."
 
 #: ..\python_docs\w10addoninternals.py:54
 msgid ""
@@ -559,6 +595,11 @@ msgid ""
 "update facility, which includes whether update check should be performed "
 "automatically, update check interval and channel."
 msgstr ""
+"* winTenObjs/w10config.py: configuración y actualizaciones. A partir de "
+"junio de 2017, lo único que se puede configurar desde el diálogo de ajustes "
+"de Windows 10 App Essentials es el sistema de actualizaciones: si deberían "
+"buscarse actualizaciones automáticamente o no, el intervalo de búsqueda de "
+"actualizaciones y el canal."
 
 #: ..\python_docs\w10addoninternals.py:55
 msgid "The main global plugin file is laid out thus:"
