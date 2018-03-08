@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-08 17:38+0100\n"
+"PO-Revision-Date: 2018-03-08 17:46+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -603,23 +603,31 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:55
 msgid "The main global plugin file is laid out thus:"
-msgstr ""
+msgstr "El archivo con la extensión global principal se presenta así:"
 
 #: ..\python_docs\w10addoninternals.py:56
 msgid "1. Usual add-on header such as copyright information."
 msgstr ""
+"1. Cabecera típica de cualquier complemento con información de derechos de "
+"copia, autor, etc."
 
 #: ..\python_docs\w10addoninternals.py:57
 msgid ""
 "2. UIA constants not included in NVDA, including property ID's such as "
 "controller for event. Most are now part of NVDA itself."
 msgstr ""
+"2. Constantes UIA no incluidas en NVDA, incluyendo identificadores de "
+"propiedades tales como los del evento controlador para (controller for). La "
+"mayoría ya forman parte de NVDA."
 
 #: ..\python_docs\w10addoninternals.py:58
 msgid ""
 "3. Classes defining various Windows 10 and universal app controls, including "
 "search suggestions, looping selectors and so on."
 msgstr ""
+"3. Clases que definen diversos controles de Windows 10 y las aplicaciones "
+"universales, incluyendo sugerencias de búsqueda, selectores en bucle y así "
+"sucesivamente."
 
 #: ..\python_docs\w10addoninternals.py:59
 msgid ""
@@ -627,6 +635,9 @@ msgid ""
 "tracking routines for various UIA events (only available if NVDA is "
 "restarted with debug logging enabled)."
 msgstr ""
+"4. La clase real de la extensión global, formada por un buscador de clases "
+"de superposición y procedimientos de rastreo para diversos eventos UIA (sólo "
+"disponibles si NVDA se reinicia con el registro de depuración habilitado)."
 
 #: ..\python_docs\w10addoninternals.py:60
 msgid "### Startup and shutdown"
@@ -675,11 +686,11 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:66
 msgid "### Notable Windows 10 objects and features"
-msgstr ""
+msgstr "### Objetos de Windows 10 y características destacables"
 
 #: ..\python_docs\w10addoninternals.py:67
 msgid "#### Sounds to indicate appearance of search suggestions"
-msgstr ""
+msgstr "#### Sonidos para indicar la aparición de sugerencias de búsqueda"
 
 #: ..\python_docs\w10addoninternals.py:68
 msgid ""
