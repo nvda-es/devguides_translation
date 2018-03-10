@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-08 17:46+0100\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"PO-Revision-Date: 2018-03-10 14:02+0100\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -701,6 +701,14 @@ msgid ""
 "using Narrator, Narrator will play a sound to indicate appearance of "
 "suggestions, while old NVDA releases will announce top suggestion."
 msgstr ""
+"En algunos cuadros de edición, como el de búsqueda del menú inicio, "
+"aparecerá una lista de sugerencias mientras se escribe texto. En "
+"implementaciones más nuevas, se lanza el evento controlador para de UIA si "
+"esto ocurre, con los distintos lectores de pantalla reaccionando de forma "
+"diferente. Por ejemplo, al escribir texto en el cuadro de búsqueda del menú "
+"inicio mientras se usa el narrador, este reproducirá un sonido indicando la "
+"aparición de sugerencias, mientras que las versiones viejas de NVDA "
+"verbalizarán la sugerencia superior."
 
 #: ..\python_docs\w10addoninternals.py:69
 msgid ""
@@ -709,6 +717,10 @@ msgid ""
 "have implemented code to handle search suggestions. This is divided into "
 "four components:"
 msgstr ""
+"Ya que sentía que lo mejor era notificar a los usuarios cuando las "
+"sugerencias aparecen y desaparecen (y en algunos aspectos seguir los pasos "
+"del narrador), he implementado código para manejar las sugerencias de "
+"búsqueda. Este código se divide en cuatro componentes:"
 
 #: ..\python_docs\w10addoninternals.py:70
 msgid ""
@@ -718,29 +730,42 @@ msgid ""
 "releases does not come with a search field class. These classes include two "
 "events related to controller for event:"
 msgstr ""
+"* Una o más clases usadas para identificar cuadros de edición que lanzan el "
+"evento de UIA controlador para, y formas de identificarlas. El motivo por el "
+"que se usan clases para el mismo objeto tiene que ver con la compatibilidad, "
+"ya que las versiones antiguas de NVDA no vienen con una clase para los "
+"cuadros de búsqueda. Estas clases incluyen dos eventos relacionados con el "
+"evento controlador para:"
 
 #: ..\python_docs\w10addoninternals.py:71
 msgid "\t* `event_suggestionsOpened`: called when suggestions appear."
-msgstr ""
+msgstr "\t* `event_suggestionsOpened`: llamado cuando aparecen sugerencias."
 
 #: ..\python_docs\w10addoninternals.py:72
 msgid ""
 "\t* `event_suggestionsClosed`: called when suggestions disappear. There are "
 "controls that does not raise this, including Edge's address omnibar."
 msgstr ""
+"\t* `event_suggestionsClosed`: llamado cuando desaparecen las sugerencias. "
+"Hay controles que no lanzan estos eventos, como la barra de direcciones de "
+"Microsoft Edge."
 
 #: ..\python_docs\w10addoninternals.py:73
 msgid "* A class representing the suggestion items themselves."
-msgstr ""
+msgstr "* Una clase que representa los elementos de sugerencia en sí."
 
 #: ..\python_docs\w10addoninternals.py:74
 msgid "* A set of sounds to indicate appearance/disappearance of suggestions."
 msgstr ""
+"* Un conjunto de sonidos para indicar la aparición y desaparición de "
+"sugerencias."
 
 #: ..\python_docs\w10addoninternals.py:75
 msgid ""
 "* A compatibility layer for old and upcoming NVDA releases as noted above."
 msgstr ""
+"* Una capa de compatibilidad para versiones de NVDA antiguas y futuras, tal "
+"y como se ha resaltado arriba."
 
 #: ..\python_docs\w10addoninternals.py:76
 msgid ""
@@ -748,10 +773,13 @@ msgid ""
 "have appeared, thus a routine has been added to announce this. With this "
 "added, the complete picture is as follows:"
 msgstr ""
+"Además, en algunos casos, es útil verbalizar cuántas sugerencias han "
+"aparecido, y por ello se ha añadido un procedimiento para hacerlo. Con esto "
+"añadido, el cuadro completo es el siguiente:"
 
 #: ..\python_docs\w10addoninternals.py:77
 msgid "1. User types text into a search field."
-msgstr ""
+msgstr "1. El usuario escribe texto en un cuadro de búsqueda."
 
 #: ..\python_docs\w10addoninternals.py:78
 msgid ""
@@ -759,6 +787,9 @@ msgid ""
 "If such a list is found, NVDA will play the suggestion sound by raising "
 "suggestions opened event."
 msgstr ""
+"2. NVDA recibirá el evento controlador para y buscará la lista de "
+"sugerencias. Si dicha lista se encuentra, NVDA reproducirá el sonido de "
+"sugerencias llamando al evento suggestionsOpened."
 
 #: ..\python_docs\w10addoninternals.py:79
 msgid ""
@@ -766,6 +797,9 @@ msgid ""
 "count. The former is for Start menu, while the latter is for other edit "
 "fields."
 msgstr ""
+"3. Si se encuentran sugerencias, NVDA verbalizará la sugerencia superior o "
+"la cantidad de sugerencias. Lo primero se hace en el menú inicio, mientras "
+"que lo último se hace en los demás cuadros de búsqueda."
 
 #: ..\python_docs\w10addoninternals.py:80
 msgid ""
@@ -773,16 +807,22 @@ msgid ""
 "press Enter to select or Escape to close suggestions list. When closing "
 "suggestions list, NVDA will play suggestions close sound."
 msgstr ""
+"4. Se pueden usar las flechas arriba y abajo para moverse por las "
+"sugerencias, y pulsar intro para seleccionar o escape para cerrar la lista "
+"de sugerencias. Al cerrar la lista de sugerencias, NVDA reproducirá el "
+"sonido de desaparición de sugerencias."
 
 #: ..\python_docs\w10addoninternals.py:81
 msgid ""
 "Since NVDA 2017.3, suggestion announcement (not the count) is part of the "
 "screen reader."
 msgstr ""
+"Desde NVDA 2017.3, la verbalización de sugerencias de búsqueda (y no el "
+"total) es parte del lector de pantalla."
 
 #: ..\python_docs\w10addoninternals.py:82
 msgid "#### Tracking UIA events for controls"
-msgstr ""
+msgstr "#### Rastreo de eventos UIA en controles"
 
 #: ..\python_docs\w10addoninternals.py:83
 msgid ""
@@ -791,35 +831,44 @@ msgid ""
 "function that takes an object and the event name. This function records the "
 "following if NVDA is started with debug logging enabled:"
 msgstr ""
+"La extensión global Objetos de Windows 10 tiene también la capacidad de "
+"rastrear eventos UIA para controles y registrar información sobre ellos, "
+"ejecutando la función `uiaDebugLogging`, que recibe el objeto y el nombre "
+"del evento. Esta función registra lo siguiente si NVDA se ha iniciado con el "
+"registro de depuración habilitado:"
 
 #: ..\python_docs\w10addoninternals.py:84
 msgid "* Object name."
-msgstr ""
+msgstr "* Nombre del objeto."
 
 #: ..\python_docs\w10addoninternals.py:85
 msgid "* Name of the event being logged."
-msgstr ""
+msgstr "* Nombre del evento que se registra."
 
 #: ..\python_docs\w10addoninternals.py:86
 msgid "* App where the control can be found (specifically, the app module)."
 msgstr ""
+"* Aplicación donde puede encontrarse el control (específicamente, el módulo "
+"de aplicación)."
 
 #: ..\python_docs\w10addoninternals.py:87
 msgid "* Automation ID."
-msgstr ""
+msgstr "* ID de automatización."
 
 #: ..\python_docs\w10addoninternals.py:88
 msgid "* UIA class name."
-msgstr ""
+msgstr "* Nombre de clase UIA."
 
 #: ..\python_docs\w10addoninternals.py:89
 msgid ""
 "* For controller for event, the list of objects the given control depends on."
 msgstr ""
+"* Para el evento controlador para, la lista de objetos de la que depende el "
+"control dado."
 
 #: ..\python_docs\w10addoninternals.py:90
 msgid "#### Looping selectors"
-msgstr ""
+msgstr "#### Selectores en bucle"
 
 #: ..\python_docs\w10addoninternals.py:91
 msgid ""
@@ -827,6 +876,10 @@ msgid ""
 "around. This is employed in places such as Alarms and Clock, Settings/Update "
 "and Security/Windows Update/active hours and so on."
 msgstr ""
+"Un selector en bucle es un control similar a un cuadro combinado, donde la "
+"selección está en bucle y se repite. Se emplea en lugares como Reloj y "
+"alarmas, Configuración / Actualización y seguridad / Windows Update / Horas "
+"activas y así sucesivamente."
 
 #: ..\python_docs\w10addoninternals.py:92
 msgid ""
@@ -836,10 +889,16 @@ msgid ""
 "state. This isn't the case for newer implementations, but for backward "
 "compatibility, the old routines are kept."
 msgstr ""
+"En versiones antiguas de Windows 10 y las aplicaciones universales, al "
+"cambiar los valores del selector, no se disparaba el evento UIA elemento "
+"seleccionado. Para solucionar esto, el complemento examinará los estados "
+"para cada elemento y verbalizará si un elemento tiene el estado "
+"seleccionado. Este no es el caso para implementaciones más nuevas, pero se "
+"conservan los procedimientos para garantizar compatibilidad hacia atrás."
 
 #: ..\python_docs\w10addoninternals.py:93
 msgid "#### Live region change events"
-msgstr ""
+msgstr "#### Eventos de cambio de región viva"
 
 #: ..\python_docs\w10addoninternals.py:94
 msgid ""
@@ -850,6 +909,13 @@ msgid ""
 "implementation where NVDA will announce the live region text i.e. object "
 "name."
 msgstr ""
+"Algunos controles son regiones vivas, o lo que es lo mismo: un control cuyo "
+"contenido denota texto vivo, como el progreso de algo, alertas y demás. "
+"Debido a implementaciones defectuosas del evento de cambio de región viva, "
+"las versiones más antiguas de NVDA no soportan este evento de forma nativa, "
+"pero en NVDA 2017.3 y versiones posteriores se incluye una implementación "
+"trivial donde NVDA verbalizará el texto de la región viva, como el nombre "
+"del objeto."
 
 #: ..\python_docs\w10addoninternals.py:95
 msgid ""
@@ -858,6 +924,10 @@ msgid ""
 "correct text for Edge alerts (see below), preventing repeat announcements in "
 "some apps and so on."
 msgstr ""
+"Objetos de Windows 10 va un paso más allá registrando instancias de este "
+"evento y ofreciendo soluciones para casos específicos. Aquí se incluye la "
+"verbalización correcta de texto para las alertas en Edge (mira más abajo), "
+"la prevención de verbalizaciones repetidas en algunas aplicaciones, etc."
 
 #: ..\python_docs\w10addoninternals.py:96
 msgid "## App modules for universal apps"
