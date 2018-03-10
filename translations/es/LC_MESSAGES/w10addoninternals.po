@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-10 14:02+0100\n"
+"PO-Revision-Date: 2018-03-10 21:21+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -931,7 +931,7 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:96
 msgid "## App modules for universal apps"
-msgstr ""
+msgstr "## Módulos de aplicación para aplicaciones universales"
 
 #: ..\python_docs\w10addoninternals.py:97
 msgid ""
@@ -940,34 +940,43 @@ msgid ""
 "comes with Windows 10. These modules include enhancers and/or fixers, "
 "broadly divided into five categories:"
 msgstr ""
+"Además de la extensión global Objetos de Windows 10, el complemento viene "
+"con módulos de aplicación diseñados para proporcionar soporte extra para "
+"diversas aplicaciones universales que vienen con Windows 10. Estos módulos "
+"incluyen mejoras y/o solución de problemas, principalmente divididas en "
+"cinco categorías:"
 
 #: ..\python_docs\w10addoninternals.py:98
 msgid "1. Adding extra features."
-msgstr ""
+msgstr "1. Añadir funciones extra."
 
 #: ..\python_docs\w10addoninternals.py:99
 msgid "2. Supporting new technologies."
-msgstr ""
+msgstr "2. Dar soporte a nuevas tecnologías."
 
 #: ..\python_docs\w10addoninternals.py:100
 msgid ""
 "3. Announcing (or, more recently, suppressing extraneous announcement of) "
 "information in various situations."
 msgstr ""
+"3. Verbalizar (o, más recientemente, suprimir verbalización sobrante de) "
+"información en diversas situaciones."
 
 #: ..\python_docs\w10addoninternals.py:101
 msgid "4. Workarounds for UIA issues."
-msgstr ""
+msgstr "4. Solución a problemas de UIA."
 
 #: ..\python_docs\w10addoninternals.py:102
 msgid ""
 "5. Respond to changes in apps, and in at least three occasions, adding "
 "aliases due to renamed executable names."
 msgstr ""
+"5. Respuesta a cambios en aplicaciones, y en al menos tres ocasiones, añadir "
+"algunos alias para aplicaciones con el nombre del ejecutable cambiado."
 
 #: ..\python_docs\w10addoninternals.py:103
 msgid "The modules and enhancers/fixers applied are:"
-msgstr ""
+msgstr "Los módulos, mejoras y soluciones aplicadas son:"
 
 #: ..\python_docs\w10addoninternals.py:104
 msgid "* Calculator: selectively announce calculator display."
@@ -1493,7 +1502,7 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:177
 msgid "## Conclusion"
-msgstr ""
+msgstr "## Conclusión"
 
 #: ..\python_docs\w10addoninternals.py:178
 msgid ""
@@ -1505,6 +1514,15 @@ msgid ""
 "driven by Microsoft's commitment to accessibility, continued feedback, and "
 "collaboration between Microsoft and assistive technology vendors."
 msgstr ""
+"Con la introducción de Windows 10 y la plataforma Windows Universal ha "
+"emergido una nueva forma de conectar a usuarios y desarrolladores: "
+"desarrollo dirigido por retroalimentación. Esto permite a los usuarios "
+"enviar retroalimentación relacionada con características y fallos, "
+"incluyendo los de accesibilidad. Aunque la accesibilidad de Windows 10 y las "
+"aplicaciones universales era irregular al principio, esta situación está "
+"mejorando, dirigida por el compromiso de Microsoft hacia la accesibilidad, "
+"la retroalimentación continuada, y la colaboración entre Microsoft y los "
+"fabricantes de ayudas técnicas."
 
 #: ..\python_docs\w10addoninternals.py:179
 msgid ""
@@ -1523,6 +1541,23 @@ msgid ""
 "accessibility is everywhere in Windows 10 ecosystem and universal apps, the "
 "add-on will still be here."
 msgstr ""
+"Ya centrándonos en NVDA, lo que hizo posible la usabilidad de Windows 10 no "
+"fueron solamente los cambios introducidos en Windows y las aplicaciones "
+"universales, sino también la investigación proactiva para asegurarse de que "
+"los usuarios de NVDA disfrutan de una experiencia fantástica con Windows 10. "
+"El complemento Windows 10 App Essentials es parte de ese trabajo, como se ha "
+"expuesto en este artículo al hablar sobre las soluciones de UIA, el soporte "
+"mejorado de aplicaciones, controles y demás. Sin embargo, hay límites que el "
+"complemento no puede superar, y las otras piezas del puzle deben ponerlas "
+"los desarrolladores (especialmente los desarrolladores UWP de aplicaciones "
+"de terceros) para establecer la accesibilidad como un pilar en sus "
+"desarrollos, y los usuarios que envían retroalimentación sobre "
+"accesibilidad. Aunque algunas funciones del complemento se están integrando "
+"en NVDA, hay algunas áreas donde el complemento es necesario (especialmente "
+"al introducir funciones nuevas en las compilaciones de Windows Insider "
+"Preview), y mientras no llegue el día en que la accesibilidad esté en todas "
+"partes en el ecosistema de Windows 10 y las aplicaciones universales, el "
+"complemento seguirá aquí."
 
 #: ..\python_docs\w10addoninternals.py:180
 msgid "## References"
