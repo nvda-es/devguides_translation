@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-10 21:21+0100\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"PO-Revision-Date: 2018-03-12 13:18+0100\n"
+"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -980,17 +980,22 @@ msgstr "Los módulos, mejoras y soluciones aplicadas son:"
 
 #: ..\python_docs\w10addoninternals.py:104
 msgid "* Calculator: selectively announce calculator display."
-msgstr ""
+msgstr "* Calculadora: verbaliza la pantalla de manera selectiva."
 
 #: ..\python_docs\w10addoninternals.py:105
 msgid "* Calendar: suppress read-only state announcement in various controls."
 msgstr ""
+"* Calendario: suprime el anunciado del estado de sólo lectura en múltiples "
+"controles."
 
 #: ..\python_docs\w10addoninternals.py:106
 msgid ""
 "* Cortana/Start menu: suppress double announcement of suggestion result item "
 "in some cases, staying silent when user is dictating to Cortana."
 msgstr ""
+"* Cortana / Menú inicio: suprime la verbalización doble del elemento de "
+"sugerencia de resultado en algunos casos, y permanece en silencio cuando el "
+"usuario dicta a Cortana."
 
 #: ..\python_docs\w10addoninternals.py:107
 msgid ""
@@ -998,6 +1003,10 @@ msgid ""
 "announcement in email content, app alias for hxmail.exe and hxoutlook.exe "
 "(the latter for updates released in May 2017)."
 msgstr ""
+"* Correo: órdenes de navegación de tablas en la lista de mensajes, elimina "
+"la verbalización de sólo lectura en el contenido del correo, alias de "
+"aplicación para hxmail.exe y hxoutlook.exe (el más reciente para "
+"actualizaciones publicadas después de mayo del 2017)."
 
 #: ..\python_docs\w10addoninternals.py:108
 msgid ""
@@ -1005,38 +1014,55 @@ msgid ""
 "region announcements, aliases to support old and new Maps releases (the old "
 "alias, maps_windows, is gone)."
 msgstr ""
+"* Mapas: reproduce coordenadas de eventos para elementos en el mapa, se "
+"suprime la verbalización repetida en el cambio de regiones vivas, alias para "
+"dar soporte a versiones viejas y nuevas de la aplicación (el alias viejo, "
+"maps_windows, ya no está)."
 
 #: ..\python_docs\w10addoninternals.py:109
 msgid ""
 "* Microsoft Edge: announce correct alert text, supports both the overall "
 "Microsoft Edge process and the content process (microsoftedgecp.exe)."
 msgstr ""
+"* Microsoft Edge: verbaliza el texto correcto en alertas, soporta el proceso "
+"de Edge y el proceso de contenido (microsoftedgecp.exe)."
 
 #: ..\python_docs\w10addoninternals.py:110
 msgid ""
 "* Modern keyboard: support for emoji panel and hardware input suggestions."
 msgstr ""
+"* Teclado moderno: soporte para el panel de emojis y las sugerencias de "
+"entrada por hardware."
 
 #: ..\python_docs\w10addoninternals.py:111
 msgid "* MSN Weather: use up or down arrow keys to read forecast information."
 msgstr ""
+"* El tiempo: usa las flechas arriba o abajo para leer la información "
+"meteorológica."
 
 #: ..\python_docs\w10addoninternals.py:112
 msgid ""
 "* Settings: selectively announce various status information, provide correct "
 "labels for certain controls."
 msgstr ""
+"* Configuración: verbaliza de forma selectiva diversa información de estado, "
+"proporciona etiquetas correctas para ciertos controles."
 
 #: ..\python_docs\w10addoninternals.py:113
 msgid ""
 "* Shell Experience Host: work around some UIA state information mismatch."
 msgstr ""
+"* Host de experiencia con la Shell (Shell Experience Host): soluciona "
+"pequeñas pérdidas de información de estado de UIA."
 
 #: ..\python_docs\w10addoninternals.py:114
 msgid ""
 "* Skype (modern): commands to move to various Skype controls, commands to "
 "read recent messages, suppress extraneous text from new messages."
 msgstr ""
+"* Skype (moderno): órdenes para moverse a ciertos controles de Skype, "
+"órdenes para leer los mensajes recientes, se suprime texto extraño en los "
+"nuevos mensajes."
 
 #: ..\python_docs\w10addoninternals.py:115
 msgid ""
@@ -1044,6 +1070,10 @@ msgid ""
 "by some controls, aliases to support old and new Store versions (the old "
 "alias, winstore_mobile, is no more)."
 msgstr ""
+"* Tienda: verbaliza información necesaria cuando se dispara el evento de "
+"cambio de región viva en algunos controles, alias para soportar versiones "
+"antiguas y nuevas de la tienda (el alias antiguo, winstore_mobile, ya no "
+"está)."
 
 #: ..\python_docs\w10addoninternals.py:116
 msgid "### Adding useful features in apps"
