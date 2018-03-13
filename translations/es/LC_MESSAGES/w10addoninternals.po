@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-12 13:18+0100\n"
+"PO-Revision-Date: 2018-03-13 10:48+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1077,13 +1077,16 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:116
 msgid "### Adding useful features in apps"
-msgstr ""
+msgstr "### Añadiendo funciones útiles en aplicaciones"
 
 #: ..\python_docs\w10addoninternals.py:117
 msgid ""
 "The following app modules add functionality unique to NVDA and/or commands "
 "that are used to improve user experience when using apps:"
 msgstr ""
+"Los siguientes módulos de aplicación añaden funcionalidad específica de NVDA "
+"y / o órdenes utilizadas exclusivamente para mejorar la experiencia de "
+"usuario al utilizar aplicaciones:"
 
 #: ..\python_docs\w10addoninternals.py:118
 msgid ""
@@ -1095,6 +1098,15 @@ msgid ""
 "to hear new locations when using street view to navigate the map, and this "
 "is done through handlers for live region changed event."
 msgstr ""
+"* Mapas (maps.py): al usar navegación de objetos para examinar un mapa, se "
+"reproducirá un tono para indicar dónde se ubican las cosas en el mapa. Esto "
+"se hace definiendo un manejador personalizado para "
+"`event_becomeNavigatorObject` que tomará las coordenadas del objeto (en "
+"píxeles) y reproducirá un tono, emulando esencialmente los pitidos de "
+"coordenadas del ratón de NVDA. El módulo de aplicación también permite a los "
+"usuarios oír nuevas ubicaciones al usar la vista de calle para navegar por "
+"el mapa, y esto se ha realizado a través de manejadores para el evento de "
+"región viva cambiada."
 
 #: ..\python_docs\w10addoninternals.py:119
 msgid ""
@@ -1104,6 +1116,12 @@ msgid ""
 "item, and because of this, `NVDAObjects.behaviors.RowWithFakeNavigation` "
 "class can be employed to add this functionality."
 msgstr ""
+"* Correo (hxmail.py): al tener el foco en la lista de mensajes, se pueden "
+"usar órdenes de navegación de tablas (ctrl+alt+flechas) para revisar los "
+"encabezados del mensaje. Esto es posible gracias a dos cosas: los "
+"encabezados son objetos hijo del elemento del mensaje, y por esto, se puede "
+"emplear la clase `NVDAObjects.behaviors.RowWithFakeNavigation` para añadir "
+"esta funcionalidad."
 
 #: ..\python_docs\w10addoninternals.py:120
 msgid ""
@@ -1112,6 +1130,10 @@ msgid ""
 "information, achieved by calling corresponding review cursor movement "
 "commands to move by line."
 msgstr ""
+"* El tiempo (Microsoft_msn_weather.py): este módulo de aplicación, aportado "
+"por Derek Riemer, permite a los usuarios pulsar las flechas arriba y abajo "
+"para leer información meteorológica, llamando a las órdenes correspondientes "
+"de movimiento del cursor de revisión para moverse por línea."
 
 #: ..\python_docs\w10addoninternals.py:121
 msgid ""
@@ -1120,10 +1142,15 @@ msgid ""
 "+NVDA+number row to announce recent messages. How NVDA filters texts from "
 "messages is discussed below in UIA workarounds section."
 msgstr ""
+"* Skype (Skype_app.py): este módulo de aplicación responde a eventos de "
+"cambio de nombre, útil para verbalizar nuevos mensajes, y define "
+"procedimientos para verbalizar los mensajes recientes pulsando ctrl+NVDA"
+"+números de la fila superior. Más adelante se expone cómo filtra NVDA el "
+"texto de los mensajes, en la sección soluciones de UIA."
 
 #: ..\python_docs\w10addoninternals.py:122
 msgid "### A note on modern keyboard"
-msgstr ""
+msgstr "### Una nota sobre el teclado moderno"
 
 #: ..\python_docs\w10addoninternals.py:123
 msgid ""
