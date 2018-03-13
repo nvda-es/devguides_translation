@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: December 2017
+Revision: March 2018
 
 ## Introduction
 
@@ -31,7 +31,7 @@ There is another, more personal reason for calling October 2014 release a maiden
 Windows 10 App Essentials add-on is built on top of four pillars:
 
 * New features support: part of making sure screen reader users were treated with respect was showcasing new Windows 10 features early through this NVDA add-on. These include support for really old versions of Feedback Hub app, emoji panel in Fall Creators Update and so on.
-* Essential features and announcements: Until early 2017, NVDA did not announce important information such as status of Windows Update installations in Settings app. This is about to change (see notes on live region change event for details).
+* Essential features and announcements: Until early 2017, NVDA did not announce important information such as status of Windows Update installations in Settings app. This has changed significantly in 2017 (see notes on live region change event for details).
 * UI Automation and accessibility workarounds: every day, new features and bug fixes are added to various universal apps or Windows 10 itself. At the same time, there is at least one app where accessibility, particularly UI Automation, gets broken. Some of the add-on code is devoted to providing workarounds for odd UIA implementations.
 * Demonstrating commitment to accessibility advocacy: some accessibility champions, including I, have recently stressed that accessibility is important in app designs, and that developers should take accessibility feedback seriously. Through workarounds and features, the add-on provides a way to demonstrate this commitment and advocacy.
 
@@ -53,7 +53,7 @@ UI Automation (UIA), released in 2007, is an accessibility API based on Componen
 
 In UIA world, an object on screen is termed an "element". Just like any accessibility API's, UIA exposes various elements to assistive technologies, which are termed "clients", with programs with the set elements termed "servers". These elements are organized into a UI tree, with the Windows Shell (desktop) object being the root, with tree being pruned and new leafs springing constantly whenever apps are started and closed, elements are created and destroyed, controls are shown and hidden on screen and so on.
 
-Although UIA is meant to replace MSAA due to modernized accessibility information that can be gathered, screen reader vendors such as NV Access publishes workarounds for poor or odd UIA implementations. One such case is UIA issues in older versions of Microsoft Office, such as label problem in various combo boxes. Certain areas in Windows 10 and universal apps still has UIA issues, such as odd or badly applied control labels, generic XAML (eXtensible Application Markup Language)/UI labels, expected events not being fired and so on. This is one of the reasons for creating Windows 10 App Essentials add-on: to provide workarounds for issues like these.
+Although UIA is meant to replace MSAA due to modernized accessibility information that can be gathered, screen reader vendors such as NV Access publishes workarounds for poor or odd UIA implementations. One such case is UIA issues in older versions of Microsoft Office, such as label problem in various combo boxes. Certain areas in Windows 10 and universal apps still have UIA issues, such as odd or badly applied control labels, generic XAML (eXtensible Application Markup Language)/UI labels, expected events not being fired and so on. This is one of the reasons for creating Windows 10 App Essentials add-on: to provide workarounds for issues like these.
 
 ### Automation ID and other interfaces and properties
 
@@ -68,7 +68,7 @@ Other useful information exposed by UIA elements are:
 
 ### UIA events
 
-In addition to standard events expected from accessibility API's such as focus manipulation and object property (such as name and state) changes, UIA comes with some interesting events, including controller for, live region changed and many others. Due to performance reasons, NVDA ignores certain events such as structure change and others. How NVDA and Windows 10 App Essentials deals with certain UIA events is covered later in this article.
+In addition to standard events expected from accessibility API's such as focus manipulation and object property (such as name and state) changes, UIA comes with some interesting events, including controller for, live region changed, notification and many others. Due to performance reasons, NVDA ignores certain events such as structure change and others. How NVDA and Windows 10 App Essentials deals with certain UIA events is covered later in this article.
 
 ### UIA-related additions, fixes and workarounds
 
@@ -77,19 +77,21 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
 * Floating suggestions such as Emoji panel in Fall Creators Update and hardware keyboard suggestions in Redstone 4.
+* Support for UIA notification event introduced in Fall Creators Update.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
 ## Windows 10 Objects
 
-Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, looping selectors for time pickers and so on. It also includes configuration and update facility for the add-on.
+Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, looping selectors for time pickers and so on. It also includes additional UIA handling routines and configuration and update facility for the add-on.
 
 ### Source code layout
 
 The global plugin consists of the following:
 
 * winTenObjs/__init__.py: the base global plugin.
+* winTenObjs/_UIAHandlerEx.py: additional UIA routines.
 * winTenObjs/w10config.py: configuration and updates. As of June 2017, the only thing configurable from Windows 10 App Essentials settings dialog is update facility, which includes whether update check should be performed automatically, update check interval and channel.
 
 The main global plugin file is laid out thus:
@@ -101,11 +103,12 @@ The main global plugin file is laid out thus:
 
 ### Startup and shutdown
 
-When the add-on loads, it performs three things:
+When the add-on loads, it performs four things:
 
 1. Enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
-2. Adds user interface elements for this add-on, specifically add-on settings.
-3. Checks for add-on updates if told to do so.
+2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support yet.
+3. Adds user interface elements for this add-on, specifically add-on settings.
+4. Checks for add-on updates if told to do so.
 
 The only thing done at shutdown is terminating the update check facility and removing user interface elements.
 
@@ -133,6 +136,22 @@ In addition, in some cases, it is helpful to announce how many suggestions have 
 
 Since NVDA 2017.3, suggestion announcement (not the count) is part of the screen reader.
 
+#### Announcing notifications
+
+Windows 10 Fall Creators Update introduces a new event to let apps send text to be announced by UIA clients such as NVDA. One of the jobs of Windows 10 Objects is to catch this and announce notifications.
+
+Because NVDA does not support the new notification event natively, a trick is included with the add-on to allow NVDA to detect and handle notifications. This is done by extending UIA support subsystem through an internal module that takes over the NVDA's own routines. Among other things, this extended subsystem includes definitions for UIA notification event handler, and this subsystem takes over if NVDA 2018.1 or later is running on Windows 10 Fall Creators Update.
+
+The notification event handler takes five keyword arguments:
+
+* Sender: the UIA element that raised the event.
+* Notification kind: the kind of notification.
+* Notification processing: how NVDA shold process incoming notification.
+* Display string: notification text.
+* Activity ID: the unique identifier for the notification.
+
+As of March 2018, NVDA announces notifications for all apps except one or two apps where this would cause issues.
+
 #### Tracking UIA events for controls
 
 The Windows 10 Objects global plugin also has ability to track UIA events for controls and log info  about them, executed via `uiaDebugLogging` function that takes an object and the event name. This function records the following if NVDA is started with debug logging enabled:
@@ -143,6 +162,8 @@ The Windows 10 Objects global plugin also has ability to track UIA events for co
 * Automation ID.
 * UIA class name.
 * For controller for event, the list of objects the given control depends on.
+
+In case of notification events, NVDA records event parameters from the event handler method itself.
 
 #### Looping selectors
 
@@ -186,7 +207,7 @@ The modules and enhancers/fixers applied are:
 The following app modules add functionality unique to NVDA and/or commands that are used to improve user experience when using apps:
 
 * Maps (maps.py): when using object navigation to examine a map, a tone will be played to indicate where things are located on the map. This is achieved by defining a custom handler for `event_becomeNavigatorObject` that'll take the coordinates of the object (in pixels) and play a tone, essentially emulating mouse coordinate beeps in NVDA. The app module also allows users to hear new locations when using street view to navigate the map, and this is done through handlers for live region changed event.
-* Mail (hxmail.py): when focused on messages list, one can use table navigation commands (Control+Alt+arrow keys) to review message headers. This is possible thanks to two things: headers are child objects of the message item, and because of this, `NVDAObjects.behaviors.RowWithFakeNavigation` class can be employed to add this functionality.
+* Mail (hxoutlook.py): when focused on messages list, one can use table navigation commands (Control+Alt+arrow keys) to review message headers. This is possible thanks to two things: headers are child objects of the message item, and because of this, `NVDAObjects.behaviors.RowWithFakeNavigation` class can be employed to add this functionality.
 * MSN Weather (microsoft_msn_weather.py): this app module, contributed by Derek Riemer, allows users to use up and down arrow keys to read forecast information, achieved by calling corresponding review cursor movement commands to move by line.
 * Skype (skype_app.py): this app module responds to name change events, useful for announcing new messages, as well as defining routines for Control+NVDA+number row to announce recent messages. How NVDA filters texts from messages is discussed below in UIA workarounds section.
 
@@ -208,7 +229,7 @@ The app modules in question are:
 
 * Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared.
 * Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in recent add-on releases.
-* Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases0/
+* Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
 * Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
 
 ### Hunting for UIA implementation issues
@@ -249,7 +270,7 @@ As noted above, some add-on features are being integrated into NVDA. These inclu
 Typically, when a feature from an add-on is integrated into NVDA, it goes through a typical issue-review-test-documentation cycle. To illustrate this, let us go through steps involved in getting search suggestions into NVDA:
 
 1. Issue: an issue regarding search suggestions was filed in 2016.
-2. Review: I and NV Access went through a review phase where implementation detials were discussed and test cases written.
+2. Review: I and NV Access went through a review phase where implementation detail were discussed and test cases written.
 3. Test: in 2017, search suggestion feature made its debut in an NVDA next snapshod. This resulted in feedback from users regarding braille support, sounds and others. After several weeks, this feature was made available to master snapshot users, thus ready for NVDA 2017.3.
 4. Documentation: the search suggestion feature was documented in the user guide. Discussion of this feature in this article is a special case of documentation step.
 
@@ -301,3 +322,4 @@ In terms of NVDA, what made Windows 10 usability possible was not only changes m
 * UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx
 * UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx
 * Auto-suggest accessibility, part of Accessible Text Requirements (Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/accessible-text-requirements
+* IUIAutomationNotificationEventHandler::HandleNotificationEvent (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/mt814955(v=vs.85).aspx
