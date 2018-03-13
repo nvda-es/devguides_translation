@@ -1,0 +1,258 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Complementos de NVDA vistos por dentro: Windows 10 App Essentials</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Complementos de NVDA vistos por dentro: Windows 10 App Essentials</h1></header>
+  <p>Autor: Joseph Lee</p>
+<p>Revisión: marzo de 2018</p>
+<h2 id="introduccion">Introducción</h2>
+<p>Dar soporte a nuevas tecnologías puede ser un reto divertido, especialmente si hablamos de la nueva versión de un sistema operativo que cambia el modo que tiene la gente de realizar ciertas tareas y presenta nuevas formas de mantenerse al día. Este reto es aún mayor cuando se centra en dar soporte a los lectores de pantalla para que funcionen en nuevos sistemas operativos tales como Windows 10, que trae nuevas formas de interactuar con el ordenador, un nuevo conjunto de aplicaciones y tecnologías, y mejoras y retos de accesibilidad. NVDA viene con un soporte sólido para Windows 10, incluyendo Microsoft Edge, el nuevo menú de inicio, navegación en aplicaciones universales y mucho más, todo hecho posible gracias a la colaboración entre los usuarios, Microsoft, NV Access y otros. Parte de este soporte se da gracias al complemento que encontraremos en este artículo.</p>
+<p>En Complementos de NVDA vistos por dentro: Windows 10 App Essentials, veremos cómo se creó este complemento, cómo funciona, y algunas recomendaciones de su autor (yo) relacionadas con prácticas de accesibilidad. También estudiaremos cómo funciona UI Automation a alto nivel, cómo algunas funciones empiezan en forma de complemento y acaban integradas en NVDA, y mucho más.</p>
+<p>Para descargar este complemento, visita la sección correspondiente, que encontrarás en el menú superior de nuestra web. El código fuente puede encontrarse en https://github.com/josephsl/wintenApps. Ya que Windows 10 y las aplicaciones universales pertenecen al mundo de UI Automation, es esencial que sepas algunas cosas sobre UIA, que se cubren más adelante.</p>
+<p>Descargo de responsabilidad: a pesar del texto del artículo y los conocimientos que contiene, yo (Joseph Lee, el creador del complemento) no trabajo para NV Access ni Microsoft.</p>
+<p>Derechos de copia: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) y otras tecnologías relacionadas tienen copyright de Microsoft Corporation. NVDA tiene copyright de NV Access.</p>
+<h2 id="presentacion-de-windows-10">Presentación de Windows 10</h2>
+<p>Windows 10 es la "última" gran versión de Windows previsiblemente para el futuro. Nos presenta una forma completamente nueva de mantener un seguimiento de los cambios a través del Windows Insider Program y Windows como servicio (WAAS, un término fantástico para hablar de entrega continua), un nuevo marco de trabajo de desarrollo de aplicaciones, estrategias de unificación en términos de experiencia de usuario a través de dispositivos y un nuevo explorador web. Además, destacan el regreso del viejo estilo del menú inicio, los escritorios virtuales, el centro de actividades para centralizar las notificaciones, una nueva forma de ejecutar utilidades de consola de Linux, y un renovado narrador que sigue introduciendo mejoras.</p>
+<p>Windows 10 hizo su vuelo inaugural en octubre de 2014. Antes de eso, era conocido como Windows Technical Preview, y tras varias semanas, su nombre cambió al de programa Windows Insider. Entre octubre de 2014 y julio de 2015, cuando se liberó la versión 1507 (compilación 10240), más de cinco millones de usuarios se convirtieron en insiders, probando nuevas compilaciones y aplicaciones, enviando retroalimentación, etc.</p>
+<p>Llamo a la beta de octubre de 2014 (compilación 9841) vuelo inaugural por varias razones. En primer lugar, es la primera vez donde Microsoft mostró interés en las opiniones de los usuarios. Aunque existieron betas para versiones anteriores de Windows, como Windows 7 y 8.1, Windows 10 es el primer intento de Microsoft de conectar con los usuarios y tomar los comentarios en serio. En segundo lugar, la compilación 9841 (la primera compilación para insiders) marcó el comienzo de Windows como un servicio, un enfoque completamente diferente para mejorar Windows en el que Microsoft quería ofrecer dos cosas: entrega continua y bucle de realimentación, y una configuración unificada que funcione bien con la mayoría de dispositivos. Hubo contratiempos, como las preocupaciones que se generaron en privacidad debido a la telemetría, pero en la mayoría de los casos Windows 10 fue recibido positivamente.</p>
+<p>Hay otra razón más personal para llamar a la compilación de octubre de 2014 el vuelo inaugural: yo fui uno de los primeros insiders, y debido a mis trabajos con NVDA, decidí que los usuarios de lectores de pantalla debíamos ser tratados con respeto. Esto incluía enviar retroalimentación relacionada con la accesibilidad, conseguir que otros usuarios de lectores de pantalla subieran a bordo del programa Windows Insider, y liberar versiones de desarrollo de NVDA que resolvieran problemas importantes para los Windows insiders. Esto culminó con la publicación del complemento Windows 10 App Essentials en noviembre de 2015 (justo a tiempo de que se liberara la versión 1511 / compilación 10586) que traía soporte para el centro de Windows Insider (actualmente centro de comentarios) y otras soluciones, que se tradujeron en una experiencia magnífica para los usuarios de NVDA al usar Windows 10 y diversas aplicaciones universales. Mi trabajo de la defensa de la accesibilidad continúa hoy en día, especialmente cuando toca asegurarse de que las aplicaciones de terceros son usables para muchos.</p>
+<h2 id="propositos-de-windows-10-app-essentials">Propósitos de Windows 10 App Essentials</h2>
+<p>El complemento Windows 10 App Essentials se ha construido sobre cuatro pilares:</p>
+<ul>
+<li>Soporte de nuevas características: una forma de asegurarse de que los usuarios de lectores de pantalla eran tratados con respeto era adaptando características de Windows 10 según aparecían a través de este complemento. Entre ellas se incluyen un soporte para la antigua aplicación del centro de comentarios, y el panel de emojis en Windows 10 creators update.</li>
+<li>Características esenciales y verbalización: hasta principios del 2017, NVDA no verbalizaba información importante, como el estado de la instalación de actualizaciones en Windows Update en la aplicación de configuración. Esto está a punto de cambiar (mira las notas del evento de cambio en región activa para más detalles).</li>
+<li>Solución de problemas de accesibilidad y UI Automation: cada día se añaden nuevas funciones y se solucionan fallos en diversas aplicaciones universales y en el propio Windows 10. Al mismo tiempo, hay al menos una aplicación donde la accesibilidad, particularmente la de UI Automation, se rompe. Parte del código del complemento se destina a solucionar implementaciones defectuosas de UIA.</li>
+<li>Demostración de compromiso y promoción de la accesibilidad: algunos defensores de la accesibilidad, incluyéndome a mí, hemos subrayado recientemente que la accesibilidad es importante en los diseños de aplicaciones, y que los desarrolladores deberían tomarse los comentarios de accesibilidad en serio. A través de características y solución de errores, el complemento ofrece una forma de demostrar este compromiso y promoción.</li>
+</ul>
+<h2 id="contenidos-del-complemento">Contenidos del complemento</h2>
+<p>El complemento Windows 10 App Essentials está formado por una extensión global y módulos de aplicación para diversas aplicaciones universales que vienen con Windows 10. Los objetos de Windows 10 (abreviados como WinTenObjs), la porción de extensión global de este complemento, ofrecen soluciones como clases de superposición para controles que se encuentran frecuentemente en Windows 10 y las aplicaciones universales, rastreo de eventos UIA y registro, así como el mecanismo de actualización del complemento. Se puede encontrar más información sobre cómo funciona el actualizador del complemento en el artículo sobre el complemento para Station Playlist Studio, ya que ambos complementos usan el mismo sistema de actualizaciones.</p>
+<p>En cuanto a los módulos de aplicación, se han incluido para ofrecer solución de errores o mejorar la experiencia de usuario. Por ejemplo, el módulo de aplicación para la aplicación de configuración (systemsettings) permite a NVDA anunciar el progreso de descarga e instalación en Windows Update, y el módulo de aplicación para UWP Frame Host (shellexperiencehost) incluye una solución a un problema de estado de menú expandido en el menú de inicio. Conoceremos estos módulos de aplicación con detalle en las siguientes secciones.</p>
+<h3 id="nota-relacionada-con-la-paridad-de-caracteristicas-en-el-lector-de-pantalla-nvda">Nota relacionada con la paridad de características en el lector de pantalla NVDA</h3>
+<p>Algunas características discutidas en este artículo (tales como la reproducción de un sonido de sugerencias y el manejador de evento para el cambio en regiones vivas) se han integrado en las últimas versiones de NVDA. Voy a señalar algunas de ellas y explicar cómo se han integrado, incluyendo la planificación involucrada y algunos consejos para modificar las características del complemento para que encajen bien en el código base de NVDA.</p>
+<h2 id="introduccion-a-ui-automation">Introducción a UI Automation</h2>
+<p>Antes de pasar a explicar cómo funciona el complemento, es útil entender cómo es UIA y por qué es importante. Sólo entonces el resto del artículo tiene sentido, ya que Windows 10 y las aplicaciones universales se apoyan en UIA.</p>
+<p>UI Automation (UIA), publicada en 2007, es una api de accesibilidad basada en el modelo de componentes y objetos (COM) que permite a las ayudas técnicas y otros programas comunicarse con los demás transmitiendo información de accesibilidad sobre un control. En algunos ámbitos, esta api reemplaza a Microsoft Active Accessibility (MSAA), a veces llamada IAccessible, y que se publicó en los años 90. Siendo una api basada en COM, permite a los programas y objetos exponer información esencial sin importar el lenguaje de programación que se use, ya que cada objeto expone rutinas documentadas que cualquier otro programa puede usar.</p>
+<p>En el mundo UIA, un objeto en pantalla se denomina "elemento". Como en cualquier api de accesibilidad, UIA expone varios elementos a las ayudas técnicas, llamadas "clientes", siendo el programa que ofrece estos elementos un "servidor". Estos elementos se organizan en un árbol de interfaz, con la Shell de Windows (Escritorio) como raíz, y con el árbol podado y nuevas hojas brotando constantemente cada vez que las aplicaciones se inician y se cierran, los elementos son creados y destruidos, los controles se muestran y se ocultan en la pantalla y así sucesivamente.</p>
+<p>Aunque UIA se ha diseñado para reemplazar a MSAA debido a la información de accesibilidad modernizada que puede recuperarse, los fabricantes de lectores de pantalla como NV Access publican solución de errores para implementaciones UIA pobres o defectuosas. Un caso conocido se encuentra en los problemas de UIA en versiones antiguas de Microsoft Office, tales como problemas de etiquetado en algunos cuadros combinados. Ciertas áreas en Windows 10 y las aplicaciones universales todavía tienen problemas con UIA, tales como etiquetas de controles defectuosas o mal aplicadas, etiquetas genéricas de interfaz o de XAML (lenguaje de marcas extensible para aplicaciones), eventos que se esperan y que nunca llegan a dispararse, y así sucesivamente. Esta es una de las razones para crear el complemento Windows 10 App Essentials: ofrecer soluciones para problemas como estos.</p>
+<h3 id="id-de-automatizacion-y-otras-interfaces-y-propiedades">ID de automatización y otras interfaces y propiedades</h3>
+<p>Una pieza clave de información que UIA expone (o intenta exponer) es el ID de automatización, una cadena que identifica unívocamente un elemento. Por ejemplo, algunos campos de búsqueda exponen "SearchEditBox" como ID de automatización, que permite a lectores de pantalla como NVDA detectar estos controles. Aunque la mayoría de los controles exponen identificadores de automatización únicos, algunos utilizan identificadores genéricos o generados automáticamente (como por ejemplo el historial de actualizaciones en la aplicación de configuración).</p>
+<p>Otra información útil expuesta por los elementos UIA es la siguiente:</p>
+<ul>
+<li>Nombre de clase: el nombre de la clase para este control, una cadena que identifica la clase de este elemento (no debe confundirse con el ID de automatización, que identifica unívocamente un elemento).</li>
+<li>Marco de trabajo: el marco de trabajo subyacente usado para crear un control dado, por ejemplo XAML, Direct UI y otros.</li>
+<li>Tipo de control localizado: un texto con el tipo de rol que debería ser verbalizado por los lectores de pantalla en diferentes idiomas.</li>
+<li>Controlador para: una lista (array) de controles que este elemento manipula cuando realiza acciones tales como sugerencias de búsqueda (se explica más abajo).</li>
+</ul>
+<h3 id="eventos-uia">Eventos UIA</h3>
+<p>Además de los eventos estándar esperados de las apis de accesibilidad, tales como manipulación de foco y cambios en las propiedades de un objeto (como nombre y estado), UIA viene con algunos eventos interesantes, incluyendo controlador para (Controller for), cambios en región viva (live región changed), notificación y muchos otros. Por razones de rendimiento, NVDA ignora ciertos eventos como cambio de estructura y algunos más. Más adelante en este artículo se explica cómo trabajan NVDA y Windows 10 App Essentials con ciertos eventos UIA.</p>
+<h3 id="solucion-de-fallos-y-caracteristicas-anadidas-relacionadas-con-uia">Solución de fallos y características añadidas relacionadas con UIA</h3>
+<p>El complemento Windows 10 App Essentials incluye los siguientes extras, parches y soluciones para problemas de UIA y controles:</p>
+<ul>
+<li>Sugerencias de búsqueda: NVDA ahora reproduce un sonido para indicar la aparición de sugerencias de búsqueda. Más detalles sobre esto más adelante.</li>
+<li>Verbalización de cambio de regiones vivas en diversas aplicaciones. En la parte de extensión global se incluye una forma de definir y rastrear este evento.</li>
+<li>Sugerencias flotantes como el panel de emojis en la actualización Fall Creators y sugerencias del teclado hardware en Redstone 4.</li>
+<li>Soporte para el evento de notificación de UIA introducido en la actualización Fall Creators.</li>
+<li>Se ofrecen etiquetas más significativas para ciertos controles, como el historial de actualizaciones en configuración / actualización y seguridad / Windows Update.</li>
+</ul>
+<p>Conoceremos varios controles y soluciones a lo largo de este artículo.</p>
+<h2 id="objetos-para-windows-10">Objetos para Windows 10</h2>
+<p>El complemento Windows 10 App Essentials viene con Objetos para Windows 10, una extensión global que contiene definiciones de controles comunes que se encuentran en Windows 10 y diversas aplicaciones universales. Aquí se incluyen el manejo de sugerencias de búsqueda, repetición para selectores de tiempo y así sucesivamente. También incluye procedimientos de manejo adicionales para UIA, y las características de configuración y actualización del complemento.</p>
+<h3 id="estructura-del-codigo-fuente">Estructura del código fuente</h3>
+<p>La extensión global está formada por lo siguiente:</p>
+<ul>
+<li>winTenObjs/<strong>init</strong>.py: la extensión global básica.</li>
+<li>winTenObjs/_UIAHandlerEx.py: procedimientos adicionales de UIA.</li>
+<li>winTenObjs/w10config.py: configuración y actualizaciones. A partir de junio de 2017, lo único que se puede configurar desde el diálogo de ajustes de Windows 10 App Essentials es el sistema de actualizaciones: si deberían buscarse actualizaciones automáticamente o no, el intervalo de búsqueda de actualizaciones y el canal.</li>
+</ul>
+<p>El archivo con la extensión global principal se presenta así:</p>
+<ol>
+<li>Cabecera típica de cualquier complemento con información de derechos de copia, autor, etc.</li>
+<li>Constantes UIA no incluidas en NVDA, incluyendo identificadores de propiedades tales como los del evento controlador para (controller for). La mayoría ya forman parte de NVDA.</li>
+<li>Clases que definen diversos controles de Windows 10 y las aplicaciones universales, incluyendo sugerencias de búsqueda, selectores en bucle y así sucesivamente.</li>
+<li>La clase real de la extensión global, formada por un buscador de clases de superposición y procedimientos de rastreo para diversos eventos UIA (sólo disponibles si NVDA se reinicia con el registro de depuración habilitado).</li>
+</ol>
+<h3 id="inicio-y-apagado">Inicio y apagado</h3>
+<p>Cuando el complemento se carga, hace cuatro cosas:</p>
+<ol>
+<li>Activa el rastreo de eventos UIA ausentes. Por ejemplo, hasta mayo de 2017, el controlador para evento (un evento producido por un control que depende de otro control, como un campo de texto con sugerencias de búsqueda) no estaba disponible en el lector de pantalla NVDA, pero la verbalización de sugerencias de búsqueda se hizo posible cuando este complemento añadió este evento.</li>
+<li>Extiende o reemplaza el subsistema de soporte UIA de NVDA si NVDA no viene con soporte para las nuevas interfaces UIA. Es el caso del evento de notificación, que NVDA no soporta todavía de forma nativa.</li>
+<li>Añade elementos de interfaz de usuario para este complemento, y más concretamente su diálogo de ajustes.</li>
+<li>Comprueba actualizaciones del complemento si le hemos indicado que lo haga.</li>
+</ol>
+<p>Lo único que se hace al apagarlo es desactivar su sistema de comprobación de actualizaciones y eliminar los elementos de interfaz de usuario.</p>
+<h3 id="objetos-de-windows-10-y-caracteristicas-destacables">Objetos de Windows 10 y características destacables</h3>
+<h4 id="sonidos-para-indicar-la-aparicion-de-sugerencias-de-busqueda">Sonidos para indicar la aparición de sugerencias de búsqueda</h4>
+<p>En algunos cuadros de edición, como el de búsqueda del menú inicio, aparecerá una lista de sugerencias mientras se escribe texto. En implementaciones más nuevas, se lanza el evento controlador para de UIA si esto ocurre, con los distintos lectores de pantalla reaccionando de forma diferente. Por ejemplo, al escribir texto en el cuadro de búsqueda del menú inicio mientras se usa el narrador, este reproducirá un sonido indicando la aparición de sugerencias, mientras que las versiones viejas de NVDA verbalizarán la sugerencia superior.</p>
+<p>Ya que sentía que lo mejor era notificar a los usuarios cuando las sugerencias aparecen y desaparecen (y en algunos aspectos seguir los pasos del narrador), he implementado código para manejar las sugerencias de búsqueda. Este código se divide en cuatro componentes:</p>
+<ul>
+<li>Una o más clases usadas para identificar cuadros de edición que lanzan el evento de UIA controlador para, y formas de identificarlas. El motivo por el que se usan clases para el mismo objeto tiene que ver con la compatibilidad, ya que las versiones antiguas de NVDA no vienen con una clase para los cuadros de búsqueda. Estas clases incluyen dos eventos relacionados con el evento controlador para:<ul>
+<li><code>event_suggestionsOpened</code>: llamado cuando aparecen sugerencias.</li>
+<li><code>event_suggestionsClosed</code>: llamado cuando desaparecen las sugerencias. Hay controles que no lanzan estos eventos, como la barra de direcciones de Microsoft Edge.</li>
+</ul>
+</li>
+<li>Una clase que representa los elementos de sugerencia en sí.</li>
+<li>Un conjunto de sonidos para indicar la aparición y desaparición de sugerencias.</li>
+<li>Una capa de compatibilidad para versiones de NVDA antiguas y futuras, tal y como se ha resaltado arriba.</li>
+</ul>
+<p>Además, en algunos casos, es útil verbalizar cuántas sugerencias han aparecido, y por ello se ha añadido un procedimiento para hacerlo. Con esto añadido, el cuadro completo es el siguiente:</p>
+<ol>
+<li>El usuario escribe texto en un cuadro de búsqueda.</li>
+<li>NVDA recibirá el evento controlador para y buscará la lista de sugerencias. Si dicha lista se encuentra, NVDA reproducirá el sonido de sugerencias llamando al evento suggestionsOpened.</li>
+<li>Si se encuentran sugerencias, NVDA verbalizará la sugerencia superior o la cantidad de sugerencias. Lo primero se hace en el menú inicio, mientras que lo último se hace en los demás cuadros de búsqueda.</li>
+<li>Se pueden usar las flechas arriba y abajo para moverse por las sugerencias, y pulsar intro para seleccionar o escape para cerrar la lista de sugerencias. Al cerrar la lista de sugerencias, NVDA reproducirá el sonido de desaparición de sugerencias.</li>
+</ol>
+<p>Desde NVDA 2017.3, la verbalización de sugerencias de búsqueda (y no el total) es parte del lector de pantalla.</p>
+<h4 id="verbalizando-notificaciones">Verbalizando notificaciones</h4>
+<p>La actualización Windows 10 Fall Creators introduce un nuevo evento para permitir a las aplicaciones enviar texto que sea verbalizado por clientes UIA como NVDA. Una de las tareas de Objetos de Windows 10 es capturarlo y verbalizar notificaciones.</p>
+<p>Como NVDA no soporta el nuevo evento de notificación de forma nativa, se incluye una solución con este complemento para permitir a NVDA detectar y procesar notificaciones. Esto se hace extendiendo el subsistema de soporte UIA a través de un módulo interno que tiene prioridad sobre los procedimientos de NVDA. Entre otras cosas, este subsistema extendido incluye definiciones para el manejador del evento de notificación de UIA, y tiene en cuenta si se está ejecutando NVDA 2018.1 o una versión posterior en Windows 10 Fall Creators.</p>
+<p>El manejador de eventos de notificación recibe cinco argumentos clave:</p>
+<ul>
+<li>Remitente: el elemento UIA que ha lanzado el evento.</li>
+<li>Tipo de notificación: el tipo de notificación.</li>
+<li>Procesado de notificación: cómo debería NVDA procesar la notificación entrante.</li>
+<li>Cadena a mostrar: texto de la notificación.</li>
+<li>ID de actividad: el identificador único de la notificación.</li>
+</ul>
+<p>Desde marzo de 2018, NVDA verbaliza notificaciones para todas las aplicaciones, excepto una o dos donde esto daría problemas.</p>
+<h4 id="rastreo-de-eventos-uia-en-controles">Rastreo de eventos UIA en controles</h4>
+<p>La extensión global Objetos de Windows 10 tiene también la capacidad de rastrear eventos UIA para controles y registrar información sobre ellos, ejecutando la función <code>uiaDebugLogging</code>, que recibe el objeto y el nombre del evento. Esta función registra lo siguiente si NVDA se ha iniciado con el registro de depuración habilitado:</p>
+<ul>
+<li>Nombre del objeto.</li>
+<li>Nombre del evento que se registra.</li>
+<li>Aplicación donde puede encontrarse el control (específicamente, el módulo de aplicación).</li>
+<li>ID de automatización.</li>
+<li>Nombre de clase UIA.</li>
+<li>Para el evento controlador para, la lista de objetos de la que depende el control dado.</li>
+</ul>
+<p>En caso de que haya eventos de notificación, NVDA registra los parámetros del evento desde el mismo método manejador del evento.</p>
+<h4 id="selectores-en-bucle">Selectores en bucle</h4>
+<p>Un selector en bucle es un control similar a un cuadro combinado, donde la selección está en bucle y se repite. Se emplea en lugares como Reloj y alarmas, Configuración / Actualización y seguridad / Windows Update / Horas activas y así sucesivamente.</p>
+<p>En versiones antiguas de Windows 10 y las aplicaciones universales, al cambiar los valores del selector, no se disparaba el evento UIA elemento seleccionado. Para solucionar esto, el complemento examinará los estados para cada elemento y verbalizará si un elemento tiene el estado seleccionado. Este no es el caso para implementaciones más nuevas, pero se conservan los procedimientos para garantizar compatibilidad hacia atrás.</p>
+<h4 id="eventos-de-cambio-de-region-viva">Eventos de cambio de región viva</h4>
+<p>Algunos controles son regiones vivas, o lo que es lo mismo: un control cuyo contenido denota texto vivo, como el progreso de algo, alertas y demás. Debido a implementaciones defectuosas del evento de cambio de región viva, las versiones más antiguas de NVDA no soportan este evento de forma nativa, pero en NVDA 2017.3 y versiones posteriores se incluye una implementación trivial donde NVDA verbalizará el texto de la región viva, como el nombre del objeto.</p>
+<p>Objetos de Windows 10 va un paso más allá registrando instancias de este evento y ofreciendo soluciones para casos específicos. Aquí se incluye la verbalización correcta de texto para las alertas en Edge (mira más abajo), la prevención de verbalizaciones repetidas en algunas aplicaciones, etc.</p>
+<h2 id="modulos-de-aplicacion-para-aplicaciones-universales">Módulos de aplicación para aplicaciones universales</h2>
+<p>Además de la extensión global Objetos de Windows 10, el complemento viene con módulos de aplicación diseñados para proporcionar soporte extra para diversas aplicaciones universales que vienen con Windows 10. Estos módulos incluyen mejoras y/o solución de problemas, principalmente divididas en cinco categorías:</p>
+<ol>
+<li>Añadir funciones extra.</li>
+<li>Dar soporte a nuevas tecnologías.</li>
+<li>Verbalizar (o, más recientemente, suprimir verbalización sobrante de) información en diversas situaciones.</li>
+<li>Solución a problemas de UIA.</li>
+<li>Respuesta a cambios en aplicaciones, y en al menos tres ocasiones, añadir algunos alias para aplicaciones con el nombre del ejecutable cambiado.</li>
+</ol>
+<p>Los módulos, mejoras y soluciones aplicadas son:</p>
+<ul>
+<li>Calculadora: verbaliza la pantalla de manera selectiva.</li>
+<li>Calendario: suprime el anunciado del estado de sólo lectura en múltiples controles.</li>
+<li>Cortana / Menú inicio: suprime la verbalización doble del elemento de sugerencia de resultado en algunos casos, y permanece en silencio cuando el usuario dicta a Cortana.</li>
+<li>Correo: órdenes de navegación de tablas en la lista de mensajes, elimina la verbalización de sólo lectura en el contenido del correo, alias de aplicación para hxmail.exe y hxoutlook.exe (el más reciente para actualizaciones publicadas después de mayo del 2017).</li>
+<li>Mapas: reproduce coordenadas de eventos para elementos en el mapa, se suprime la verbalización repetida en el cambio de regiones vivas, alias para dar soporte a versiones viejas y nuevas de la aplicación (el alias viejo, maps_windows, ya no está).</li>
+<li>Microsoft Edge: verbaliza el texto correcto en alertas, soporta el proceso de Edge y el proceso de contenido (microsoftedgecp.exe).</li>
+<li>Teclado moderno: soporte para el panel de emojis y las sugerencias de entrada por hardware.</li>
+<li>El tiempo: usa las flechas arriba o abajo para leer la información meteorológica.</li>
+<li>Configuración: verbaliza de forma selectiva diversa información de estado, proporciona etiquetas correctas para ciertos controles.</li>
+<li>Host de experiencia con la Shell (Shell Experience Host): soluciona pequeñas pérdidas de información de estado de UIA.</li>
+<li>Skype (moderno): órdenes para moverse a ciertos controles de Skype, órdenes para leer los mensajes recientes, se suprime texto extraño en los nuevos mensajes.</li>
+<li>Tienda: verbaliza información necesaria cuando se dispara el evento de cambio de región viva en algunos controles, alias para soportar versiones antiguas y nuevas de la tienda (el alias antiguo, winstore_mobile, ya no está).</li>
+</ul>
+<h3 id="anadiendo-funciones-utiles-en-aplicaciones">Añadiendo funciones útiles en aplicaciones</h3>
+<p>Los siguientes módulos de aplicación añaden funcionalidad específica de NVDA y / o órdenes utilizadas exclusivamente para mejorar la experiencia de usuario al utilizar aplicaciones:</p>
+<ul>
+<li>Mapas (maps.py): al usar navegación de objetos para examinar un mapa, se reproducirá un tono para indicar dónde se ubican las cosas en el mapa. Esto se hace definiendo un manejador personalizado para <code>event_becomeNavigatorObject</code> que tomará las coordenadas del objeto (en píxeles) y reproducirá un tono, emulando esencialmente los pitidos de coordenadas del ratón de NVDA. El módulo de aplicación también permite a los usuarios oír nuevas ubicaciones al usar la vista de calle para navegar por el mapa, y esto se ha realizado a través de manejadores para el evento de región viva cambiada.</li>
+<li>Correo (hxmail.py): al tener el foco en la lista de mensajes, se pueden usar órdenes de navegación de tablas (ctrl+alt+flechas) para revisar los encabezados del mensaje. Esto es posible gracias a dos cosas: los encabezados son objetos hijo del elemento del mensaje, y por esto, se puede emplear la clase <code>NVDAObjects.behaviors.RowWithFakeNavigation</code> para añadir esta funcionalidad.</li>
+<li>El tiempo (Microsoft_msn_weather.py): este módulo de aplicación, aportado por Derek Riemer, permite a los usuarios pulsar las flechas arriba y abajo para leer información meteorológica, llamando a las órdenes correspondientes de movimiento del cursor de revisión para moverse por línea.</li>
+<li>Skype (Skype_app.py): este módulo de aplicación responde a eventos de cambio de nombre, útil para verbalizar nuevos mensajes, y define procedimientos para verbalizar los mensajes recientes pulsando ctrl+NVDA+números de la fila superior. Más adelante se expone cómo filtra NVDA el texto de los mensajes, en la sección soluciones de UIA.</li>
+</ul>
+<h3 id="una-nota-sobre-el-teclado-moderno">Una nota sobre el teclado moderno</h3>
+<p>Teclado moderno (windowsinternal_composableshell_experiences_textinput_inputapp.py) es el nombre de la aplicación que proporciona diversas características, incluyendo el panel de emojis y las sugerencias de entrada por hardware. No se trata exactamente de una aplicación, sino que está más enfocado hacia una capa flotante, similar a los teclados en pantalla que se muestran en dispositivos táctiles. Para potenciarlos, hay un teclado táctil rediseñado donde se usa el panel táctil basado en XAML (con su propio proceso).</p>
+<p>En Windows 10 Insider Preview compilación 16215 y posteriores, se da la posibilidad a los usuarios de explorar y seleccionar emojis para insertar en un cuadro de edición. Esto se hace pulsando Windows+punto (.) o Windows+punto y coma (;). Se mostrará un panel flotante con emojis y categorías de emojis. A partir de ahí se pueden usar las flechas para desplazarse entre los emojis, o tab y shift+tab para saltar por las categorías. En la compilación 16226, se pueden teclear descripciones de emojis para acotar el emoji deseado.</p>
+<p>Cuando este panel se abre, el panel de emojis dispara un evento de apertura de menú, un evento que NVDA no detecta por razones de rendimiento. Según se van seleccionando elementos, se dispara un evento de elemento seleccionado, al que NVDA responde recorriendo el panel como si fuera un árbol hasta ubicar el elemento seleccionado. La verbalización real de caracteres emoji depende de los sintetizadores; actualmente, sólo las voces recientes de Sapi 5 y OneCore (Sapi Mobile) vienen con definiciones de caracteres emoji.</p>
+<p>De manera similar al panel de emojis, en la compilación 17025 y posteriores, el teclado moderno también puede proporcionar sugerencias de entrada. Esto se hace marcando una nueva opción en Configuración / Dispositivos / Escritura, y que se activa también al pulsar flecha arriba mientras se escribe (sólo se soporta la distribución de teclado en inglés de Estados Unidos). Al igual que en el panel de emojis, aparece una ventana flotante, y en este caso se pueden pulsar flechas izquierda y derecha para navegar entre sugerencias y pulsar intro para aceptar el elemento ofrecido.</p>
+<h3 id="que-verbalizar-que-callar">Qué verbalizar, qué callar</h3>
+<p>En ocasiones es útil hacer que los usuarios sepan qué está pasando anunciando información de diversos estados, mientras que otras veces es igualmente importante no anunciar mensajes extra. El primero era el caso para la mayoría de los siguientes módulos de aplicación en el pasado, pero desde mediados de 2017 se está evolucionando precisamente hacia lo contrario.</p>
+<p>Los módulos de aplicación en cuestión son:</p>
+<ul>
+<li>Calculadora (calculator.py): mientras se introducen cálculos, se anuncia la expresión introducida mediante el manejador de evento de cambio de nombre. Como esto puede interferir con la verbalización de caracteres introducidos en NVDA, sólo se verbalizará el contenido de la pantalla de la calculadora cuando aparezcan los resultados reales o cuando se limpie.</li>
+<li>Cortana (searchui.py): Cortana usa eventos de cambio de nombre e identificadores de automatización específicos para transmitir mensajes de texto. El evento de cambio de nombre también se emplea cuando Cortana intenta entender el texto dictado por un usuario, lo que en las versiones antiguas del complemento se traducía en que NVDA podía verbalizar galimatías. Esto se ha resuelto en las versiones recientes del complemento.</li>
+<li>Configuración (systemsettings.py): NVDA verbalizará mensajes tales como las notificaciones de Windows Update, y esto se hace mediante el evento de región viva cambiada (evento de cambio de nombre en versiones del complemento más antiguas).</li>
+<li>Tienda (winstore_app.py): al igual que en la aplicación de configuración, se verbalizan mensajes de estado, en esta ocasión relacionados con la descarga de productos como aplicaciones o contenido multimedia.</li>
+</ul>
+<h3 id="cazando-problemas-de-implementacion-de-uia">Cazando problemas de implementación de UIA</h3>
+<p>Como se ha explicado arriba, algunos controles vienen con implementaciones UIA malas o defectuosas, y las aplicaciones universales no son una excepción (al menos para los módulos de aplicación que vienen en el complemento). Por este motivo, los siguientes módulos de aplicación incluyen soluciones para diversos problemas de UIA:</p>
+<ul>
+<li>Calendario (hxcalendarappimm.py) y Correo (hxmail.py): algunos cuadros de edición, como el título de la cita y otros, se muestran como de sólo lectura cuando en realidad no lo son, y eliminando este estado del conjunto de estados para estos controles resolvía este problema.</li>
+<li>Cortana: algunas sugerencias de búsqueda exponen el mismo texto en su nombre y descripción, lo que resulta en repeticiones del texto con el resultado de la sugerencia. Esto fue corregido comparando nombre y descripción, y anulando la descripción (obj.description=None).</li>
+<li>Mapas: a pesar de que no hay cambios en la aplicación, el control con el título del mapa dispara el evento de región viva cambiada, por lo que NVDA incluye una forma de suprimir repeticiones.</li>
+<li>Microsoft Edge (microsoftedge.py y microsoftedgecp.py): para algunas alertas, el nombre del control que dispara el evento de región viva cambiada es "alert", siendo su texto real el último hijo, por lo que NVDA buscará el texto real al verbalizar alertas.</li>
+<li>Configuración y tienda: para algunos controles (como por ejemplo al descargar contenido de la tienda), un control de estado específico dispara el evento de región viva cambiada. Por desgracia, su texto es genérico (por ejemplo, "descargando algo por ciento", en lugar de verbalizar el producto que se está descargando), por lo que NVDA ubicará información como los nombres de producto cuando esto pase para hacer más fácil el seguimiento. También, en la aplicación de configuración, algunos controles en versiones más antiguas de la aplicación no tienen etiqueta, por lo que se pide a NVDA que busque etiquetas viajando por los objetos hermano (siguiente / anterior).</li>
+<li>Host de experiencia con la Shell (shellexperiencehost.py): para algunos submenús, NVDA no sabe que está en un submenú, esto se solucionó enseñándole a reconocer el rol y estado adecuados para ellos.</li>
+<li>Skype: un mensaje típico de Skype incluye nombre del autor, canal del mensaje, el contenido del mensaje, fecha de envío y así sucesivamente. Esto es debido a las implementaciones de vista de lista, donde se recuperan los nombres de los hijos. Por desgracia, al contrario no pasa: aunque algunos elementos exponen el autor del mensaje y su contenido como queremos, otros sólo exponen el contenido al mirar en los objetos hijo. Por tanto, se proporciona una expresión regular para eliminar información innecesaria hasta que se encuentre una solución mejor.</li>
+</ul>
+<h3 id="un-cuento-sobre-los-nombres-de-ejecutables-y-modulos-de-aplicacion">Un cuento sobre los nombres de ejecutables y módulos de aplicación</h3>
+<p>Uno de los efectos colaterales de la entrega continua es la aparición de cambios no previstos con antelación. Este efecto es más notable cuando una solución para una aplicación se rompe simplemente porque el nombre del ejecutable o la aplicación ha cambiado. Además, algunas aplicaciones vinieron con un ejecutable cuyo nombre rompía los nombres de módulo de Python y los procedimientos de importación.</p>
+<p>Los problemas específicos que se encontraron fueron:</p>
+<ul>
+<li>Correo, mapas y tienda: los nombres de los ejecutables han cambiado en los últimos meses. Por ejemplo, en mayo de 2017, las soluciones para la aplicación de correo se rompieron cuando Microsoft cambió el nombre de hxmail a hxoutlook. Microsoft Edge es un caso especial, ya que necesita que se usen dos módulos de aplicación: microsoftedge.exe para la administración del explorador web, y microsoftedgecp.exe (proceso de contenido) para mostrar el contenido de una forma más segura. Por este motivo, es común la creación de alias (un módulo de aplicación que importa todo lo de otro módulo).</li>
+<li>El tiempo, tienda, teclado moderno y otros: algunos nombres de ejecutable tienen un punto (.) a la mitad, que rompe los procedimientos de importación de módulos. Esto se soluciona reemplazando puntos por guiones bajos (_). Por ejemplo, para Skype, el auténtico nombre del ejecutable es Skype.app.exe, mientras que su módulo de aplicación se llama Skype_app.py. Esta solución ya forma parte de las últimas versiones de NVDA.</li>
+</ul>
+<h2 id="unas-pocas-notas">Unas pocas notas</h2>
+<h3 id="rendimiento-de-uia">Rendimiento de UIA</h3>
+<p>En la página de GitHub de NVDA se crearon bastantes incidencias relacionadas con problemas de rendimiento de UIA. Aquí se incluyen incidencias de los primeros días en los que se daba soporte a Edge en las que se decía que la navegación por el documento era lenta (resueltas en NVDA 2017.2), problemas en la vista de lista del explorador de archivos mientras se usaba un programa que consumía mucha CPU (GoldWave, por ejemplo) y así sucesivamente. Mientras que algunos son específicos de NVDA, otros pueden reproducirse mientras se usa el narrador, por lo que NV Access y Microsoft están colaborando activamente para identificar y escribir correcciones para problemas de rendimiento e implementación de controles (como los que se han listado arriba).</p>
+<h3 id="narrador-es-la-nueva-referencia-en-lectura-de-pantalla-en-windows-10-y-las-aplicaciones-universales">Narrador es la nueva referencia en lectura de pantalla en Windows 10 y las aplicaciones universales</h3>
+<p>Hasta hace unos pocos años, cualquier lector de pantalla que quisiera dar soporte a una aplicación o añadir nuevas funciones utilizaba Jaws for Windows como guía. Ese ya no es el caso para Windows 10 y las aplicaciones universales, ya que Narrador proporciona un punto de referencia útil (al menos una implementación base a la que otros fabricantes de lectores de pantalla deberían responder) al leer texto en pantalla, un conjunto de características para dar soporte a las aplicaciones universales, e investigar problemas de UIA. Algunas de las características expuestas arriba, como la notificación de sugerencias de búsqueda, estuvieron inspiradas en la forma que tiene Narrador de manejar diversos eventos de UIA, y gracias a que Narrador lee lo que hay que leer, NVDA viene con soluciones para implementaciones UIA defectuosas para hacer frente a algunos problemas.</p>
+<h3 id="integracion-de-caracteristicas-de-este-complemento-en-el-lector-de-pantalla-nvda">Integración de características de este complemento en el lector de pantalla NVDA</h3>
+<p>Como se ha explicado arriba, algunas funciones del complemento se están integrando en NVDA. Aquí se incluyen la notificación de sugerencias de búsqueda, solución al problema de los cuadros combinados, rastreo y verbalización del evento de región viva cambiada y así sucesivamente.</p>
+<p>Normalmente, cuando se integra la función de un complemento en NVDA, sigue el típico ciclo de incidencia-revisión-pruebas-documentación. Para ilustrarlo, vayamos por los pasos implicados en la integración de sugerencias de búsqueda en NVDA:</p>
+<ol>
+<li>Incidencia: se creó una incidencia relacionada con las sugerencias de búsqueda en 2016.</li>
+<li>Revisión: NV Access y yo iniciamos una fase de revisión donde se discutieron detalles de implementación y se escribieron casos de prueba.</li>
+<li>Prueba: en 2017, se estrenó la función de sugerencias de búsqueda en la versión next de desarrollo de NVDA. Esto dio como resultado retroalimentación de los usuarios relacionada con el soporte Braille, sonidos y otros. Después de varias semanas, esta característica se puso a disposición de los usuarios de la versión de desarrollo master, y por tanto estuvo lista para NVDA 2017.3.</li>
+<li>Documentación: la característica de sugerencias de búsqueda se documentó en la guía de usuario. La exposición de esta función en este artículo es un caso especial del paso de documentación.</li>
+</ol>
+<p>Además, cuando se considera que se puede incluir en NVDA alguna función de un complemento, modifico el código fuente del complemento para que cumpla las pautas del código fuente de NVDA, como el estilo de comentarios, cabecera de copyright y así sucesivamente.</p>
+<h3 id="como-dar-retroalimentacion-a-los-desarrolladores-de-aplicaciones">Cómo dar retroalimentación a los desarrolladores de aplicaciones</h3>
+<p>La retroalimentación dirige a Windows 10 y las aplicaciones universales. Una de las razones para crear el programa Windows Insider, como han indicado Microsoft y otros, es recopilar comentarios de millones de usuarios, con la esperanza de hacer Windows 10 mejor a largo plazo. Por tanto, enviar retroalimentación sobre Windows 10 y las aplicaciones universales preinstaladas, así como de las aplicaciones de terceros, es crucial en la era del desarrollo dirigido por comentarios.</p>
+<p>Aquí hay algunos consejos que se pueden poner en práctica a la hora de enviar comentarios a los desarrolladores de aplicaciones:</p>
+<ol>
+<li>Compromiso: ten la disposición para comprometerte a usar y probar la aplicación en cuestión.</li>
+<li>Documenta: si algo pasa, documenta qué ha pasado, pasos para reproducirlo, y posibles soluciones.</li>
+<li>Envía: envía tu retroalimentación a los desarrolladores (centro de comentarios, contacto con desarrolladores de aplicaciones universales de terceros, fabricantes de lectores de pantalla, etc.).</li>
+<li>Seguimiento: seguimiento con los desarrolladores para ver si tienen preguntas para ti o para saber qué ocurre con tu retroalimentación.</li>
+</ol>
+<h3 id="buenas-practicas-de-accesibilidad-para-aplicaciones-universales">Buenas prácticas de accesibilidad para aplicaciones universales</h3>
+<p>Como Windows insider, contribuyente con un lector de pantalla y autor de un complemento para Windows 10 y las aplicaciones universales, me he encontrado numerosos ejemplos donde las aplicaciones eran inaccesibles al principio, o su usabilidad se veía ensombrecida por problemas al trabajar con los controles, la navegación y así sucesivamente.</p>
+<p>Aquí hay algunos consejos que espero sirvan para hacer las aplicaciones universales verdaderamente accesibles y usables:</p>
+<ul>
+<li>Escucha la retroalimentación, especialmente los comentarios que vengan de usuarios con discapacidad, como por ejemplo usuarios de lectores de pantalla.</li>
+<li>No pongas la accesibilidad como un pensamiento de último momento, ni como algo que quieras dejar para trabajar en el futuro (digamos, versión 3). La investigación proactiva de la accesibilidad y sus problemas es algo que los desarrolladores de aplicaciones deberían aprender según las desarrollan.</li>
+<li>Haz pruebas con lectores de pantalla y otras ayudas técnicas: una forma de validar problemas de accesibilidad reportados por usuarios con discapacidad es usar las ayudas técnicas en la vida real. Usa las herramientas ofrecidas por los lectores de pantalla, como la consola Python de NVDA, el modo desarrollador en Narrador, etc. para localizar dónde se encuentra la raíz del problema.</li>
+<li>Intenta usar teclados y otros métodos de entrada ofrecidos por diversas ayudas técnicas: la pantalla táctil no es el único método de entrada usado en las aplicaciones universales. Muchos usuarios de lectores de pantalla usan un teclado para interactuar con aplicaciones, y otros usan gestos en sus pantallas táctiles ofrecidos por los lectores de pantalla para navegar por la aplicación y reaccionar a los cambios. Intenta usarlos para asegurarte de que las funciones de la aplicación funcionan como se espera al utilizar teclados y otros métodos de entrada.</li>
+<li>Usa etiquetas útiles: en caso de que el lector de pantalla te informe de que tu control no tiene etiqueta, asegúrate de ofrecerla. Un buen caso histórico es el centro de seguridad de Windows Defender, donde no había etiquetas para diversos botones en 2016, y que se solucionó en 2017 con la actualización Creators. Además, evita etiquetas XAML genéricas, como clase.otraclase.algo (especialmente en listas y elementos de lista), ya que no proporcionan un cuadro preciso que permita conocer al usuario su ubicación. Un caso clásico es la aplicación del centro de comentarios, donde las etiquetas genéricas para listas estaban presentes en las versiones más antiguas, problema que se ha solucionado en las actualizaciones más recientes.</li>
+<li>Lanza eventos UIA apropiados: los lectores de pantalla escuchan los eventos UIA para detectar qué está ocurriendo con las aplicaciones. Por ejemplo, si existe la necesidad de verbalizar sugerencias, debería dispararse el evento controlador para. Un ejemplo es la tienda, donde las antiguas versiones no disparaban el evento controlador para cuando aparecían las sugerencias de contenido. Las versiones más recientes ya lanzan este evento.</li>
+</ul>
+<h2 id="conclusion">Conclusión</h2>
+<p>Con la introducción de Windows 10 y la plataforma Windows Universal ha emergido una nueva forma de conectar a usuarios y desarrolladores: desarrollo dirigido por retroalimentación. Esto permite a los usuarios enviar retroalimentación relacionada con características y fallos, incluyendo los de accesibilidad. Aunque la accesibilidad de Windows 10 y las aplicaciones universales era irregular al principio, esta situación está mejorando, dirigida por el compromiso de Microsoft hacia la accesibilidad, la retroalimentación continuada, y la colaboración entre Microsoft y los fabricantes de ayudas técnicas.</p>
+<p>Ya centrándonos en NVDA, lo que hizo posible la usabilidad de Windows 10 no fueron solamente los cambios introducidos en Windows y las aplicaciones universales, sino también la investigación proactiva para asegurarse de que los usuarios de NVDA disfrutan de una experiencia fantástica con Windows 10. El complemento Windows 10 App Essentials es parte de ese trabajo, como se ha expuesto en este artículo al hablar sobre las soluciones de UIA, el soporte mejorado de aplicaciones, controles y demás. Sin embargo, hay límites que el complemento no puede superar, y las otras piezas del puzle deben ponerlas los desarrolladores (especialmente los desarrolladores UWP de aplicaciones de terceros) para establecer la accesibilidad como un pilar en sus desarrollos, y los usuarios que envían retroalimentación sobre accesibilidad. Aunque algunas funciones del complemento se están integrando en NVDA, hay algunas áreas donde el complemento es necesario (especialmente al introducir funciones nuevas en las compilaciones de Windows Insider Preview), y mientras no llegue el día en que la accesibilidad esté en todas partes en el ecosistema de Windows 10 y las aplicaciones universales, el complemento seguirá aquí.</p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li>Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10</li>
+<li>Windows Insider Program (Microsoft): https://insider.windows.com/</li>
+<li>Descripción de Windows como servicio (Microsoft Docs): https://docs.microsoft.com/en-us/windows/deployment/update/waas-overview</li>
+<li>Qué es una aplicación de la plataforma de Windows universal (UWP) (desarrollador de aplicaciones Microsoft UWP): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-uwp</li>
+<li>Descripción de UI Automation (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee684076(v=vs.85).aspx</li>
+<li>Descripción de MSAA (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx</li>
+<li>UI Automation y Active Accessibility (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671585(v=vs.85).aspx</li>
+<li>Descripción de Component Object Model (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ms680573(v=vs.85).aspx</li>
+<li>La interfaz IUIAutomationElement (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671425(v=vs.85).aspx</li>
+<li>cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671434(v=vs.85).aspx</li>
+<li>Descripción de las propiedades de UI Automation (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671594(v=vs.85).aspx</li>
+<li>Descripción de los eventos de UI Automation (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx</li>
+<li>Identificadores de eventos en UI Automation (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx</li>
+<li>Accesibilidad de sugerencias automáticas, parte de los requisitos de textos accesibles (Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/accessible-text-requirements</li>
+<li>IUIAutomationNotificationEventHandler::HandleNotificationEvent (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/mt814955(v=vs.85).aspx</li>
+</ul>
+</body>
+</html>
