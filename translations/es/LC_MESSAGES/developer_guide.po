@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-14 15:30+0100\n"
+"PO-Revision-Date: 2018-03-14 16:55+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,208 +19,222 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:3
 msgid "# NVDA 2018.1 Developer Guide"
-msgstr ""
+msgstr "# Guía del desarrollador de NVDA 2018.1"
 
 #: ..\python_docs\developer_guide.py:4
 msgid "## Table of Contents"
-msgstr ""
+msgstr "## Tabla de contenidos"
 
 #: ..\python_docs\developer_guide.py:5
 msgid "  * 1\\. Introduction"
-msgstr ""
+msgstr "  * 1\\. Introducción"
 
 #: ..\python_docs\developer_guide.py:6
 msgid "    * 1.1. A Note About Python"
-msgstr ""
+msgstr "    * 1.1. Una nota sobre Python"
 
 #: ..\python_docs\developer_guide.py:7
 msgid "  * 2\\. Translation"
-msgstr ""
+msgstr "  * 2\\. Traducción"
 
 #: ..\python_docs\developer_guide.py:8
 msgid "    * 2.1. Character Descriptions"
-msgstr ""
+msgstr "    * 2.1. Descripción de caracteres"
 
 #: ..\python_docs\developer_guide.py:9
 msgid "    * 2.2. Symbol Pronunciation"
-msgstr ""
+msgstr "    * 2.2. Pronunciación de símbolos"
 
 #: ..\python_docs\developer_guide.py:10
 msgid "      * 2.2.1. Defining Complex Symbols"
-msgstr ""
+msgstr "      * 2.2.1. Definición de símbolos complejos"
 
 #: ..\python_docs\developer_guide.py:11
 msgid "      * 2.2.2. Defining Symbol Information"
-msgstr ""
+msgstr "      * 2.2.2. Definición de información de símbolos"
 
 #: ..\python_docs\developer_guide.py:12
 msgid "  * 3\\. Plugins"
-msgstr ""
+msgstr "  * 3\\. Extensiones"
 
 #: ..\python_docs\developer_guide.py:13
 msgid "    * 3.1. Overview"
-msgstr ""
+msgstr "    * 3.1. Descripción"
 
 #: ..\python_docs\developer_guide.py:14
 msgid "    * 3.2. Types of Plugins"
-msgstr ""
+msgstr "    * 3.2. Tipos de extensiones"
 
 #: ..\python_docs\developer_guide.py:15
 msgid "    * 3.3. Basics of an App Module"
-msgstr ""
+msgstr "    * 3.3. Lo básico de un módulo de aplicación"
 
 #: ..\python_docs\developer_guide.py:16
 msgid "    * 3.4. Example 1: An App Module that Beeps on Focus Change Events"
 msgstr ""
+"    * 3.4. Ejemplo 1: un módulo de aplicación que pita en los eventos de "
+"cambio del foco"
 
 #: ..\python_docs\developer_guide.py:17
 msgid "    * 3.5. Basics of a Global Plugin"
-msgstr ""
+msgstr "    * 3.5. Lo básico de una extensión global"
 
 #: ..\python_docs\developer_guide.py:18
 msgid ""
 "    * 3.6. Example 2: a Global Plugin Providing a Script to Announce the "
 "NVDA Version"
 msgstr ""
+"    * 3.6. Ejemplo 2: una extensión global que proporciona un script para "
+"verbalizar la versión de NVDA"
 
 #: ..\python_docs\developer_guide.py:19
 msgid "    * 3.7. NVDA Objects"
-msgstr ""
+msgstr "    * 3.7. Objetos de NVDA"
 
 #: ..\python_docs\developer_guide.py:20
 msgid "    * 3.8. Scripts and Gesture Bindings"
-msgstr ""
+msgstr "    * 3.8. Scripts y vinculación de gestos"
 
 #: ..\python_docs\developer_guide.py:21
 msgid ""
 "    * 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
 msgstr ""
+"    * 3.9. Ejemplo 3: una extensión global para encontrar la clase de la "
+"ventana y el identificador del control"
 
 #: ..\python_docs\developer_guide.py:22
 msgid "    * 3.10. Events"
-msgstr ""
+msgstr "    * 3.10. Eventos"
 
 #: ..\python_docs\developer_guide.py:23
 msgid "    * 3.11. the App Module SleepMode variable"
-msgstr ""
+msgstr "    * 3.11. La variable SleepMode en módulos de aplicación"
 
 #: ..\python_docs\developer_guide.py:24
 msgid "    * 3.12. Example 4: A Sleep Mode App Module"
-msgstr ""
+msgstr "    * 3.12. Ejemplo 4: un módulo de aplicación en modo latente"
 
 #: ..\python_docs\developer_guide.py:25
 msgid "    * 3.13. Providing Custom NVDA Object Classes"
-msgstr ""
+msgstr "    * 3.13. Proporcionar clases de objetos personalizados de NVDA"
 
 #: ..\python_docs\developer_guide.py:26
 msgid ""
 "    * 3.14. Example 5: Command to Retrieve the Length of Text in an Edit "
 "Field Using a Custom NVDA Object"
 msgstr ""
+"    * 3.14. Ejemplo 5: orden para recuperar la longitud del texto en un "
+"cuadro de edición usando un objeto de NVDA personalizado"
 
 #: ..\python_docs\developer_guide.py:27
 msgid "    * 3.15. Making Small Changes to an NVDA Object in App Modules"
 msgstr ""
+"    * 3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de "
+"aplicación"
 
 #: ..\python_docs\developer_guide.py:28
 msgid ""
 "    * 3.16. Example 6: Labelling the Notepad Edit Field Using event"
 "\\_NVDAObject\\_init"
 msgstr ""
+"    * 3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas "
+"usando event\\_NVDAObject\\_init"
 
 #: ..\python_docs\developer_guide.py:29
 msgid "  * 4\\. Packaging Code as NVDA Add-ons"
-msgstr ""
+msgstr "  *4\\. Empaquetado de código como complementos de NVDA"
 
 #: ..\python_docs\developer_guide.py:30
 msgid "    * 4.1. Non-ASCII File Names in Zip Archives"
-msgstr ""
+msgstr "    * 4.1. Nombres de fichero no ASCII en archivos Zip"
 
 #: ..\python_docs\developer_guide.py:31
 msgid "    * 4.2. Manifest Files"
-msgstr ""
+msgstr "    * 4.2. Archivos de manifiesto"
 
 #: ..\python_docs\developer_guide.py:32
 msgid "      * 4.2.1. Available Fields"
-msgstr ""
+msgstr "      * 4.2.1. Campos disponibles"
 
 #: ..\python_docs\developer_guide.py:33
 msgid "      * 4.2.2. An Example Manifest File"
-msgstr ""
+msgstr "      * 4.2.2. Un archivo de manifiesto de ejemplo"
 
 #: ..\python_docs\developer_guide.py:34
 msgid "    * 4.3. Plugins and Drivers"
-msgstr ""
+msgstr "    * 4.3. Extensiones y controladores"
 
 #: ..\python_docs\developer_guide.py:35
 msgid "    * 4.4. Optional install / Uninstall code"
-msgstr ""
+msgstr "    * 4.4. Código opcional de instalación y desinstalación"
 
 #: ..\python_docs\developer_guide.py:36
 msgid "      * 4.4.1. the onInstall function"
-msgstr ""
+msgstr "      * 4.4.1. La función onInstall"
 
 #: ..\python_docs\developer_guide.py:37
 msgid "      * 4.4.2. The onUninstall Function"
-msgstr ""
+msgstr "      * 4.4.2. La función onUninstall"
 
 #: ..\python_docs\developer_guide.py:38
 msgid "    * 4.5. Localizing Add-ons"
-msgstr ""
+msgstr "    * 4.5. Traducción de complementos"
 
 #: ..\python_docs\developer_guide.py:39
 msgid "      * 4.5.1. Locale-specific Manifest Files"
-msgstr ""
+msgstr "      * 4.5.1. Archivos de manifiesto específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:40
 msgid "      * 4.5.2. Locale-specific Messages"
-msgstr ""
+msgstr "      * 4.5.2. Mensajes específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:41
 msgid "    * 4.6. Add-on Documentation"
-msgstr ""
+msgstr "    * 4.6. Documentación del complemento"
 
 #: ..\python_docs\developer_guide.py:42
 msgid "  * 5\\. NVDA Python Console"
-msgstr ""
+msgstr "  * 5\\. La consola Python de NVDA"
 
 #: ..\python_docs\developer_guide.py:43
 msgid "    * 5.1. Usage"
-msgstr ""
+msgstr "    * 5.1. Modo de uso"
 
 #: ..\python_docs\developer_guide.py:44
 msgid "    * 5.2. Namespace"
-msgstr ""
+msgstr "    * 5.2. Espacio de nombres"
 
 #: ..\python_docs\developer_guide.py:45
 msgid "      * 5.2.1. Automatic Imports"
-msgstr ""
+msgstr "      * 5.2.1. Importaciones automáticas"
 
 #: ..\python_docs\developer_guide.py:46
 msgid "      * 5.2.2. Snapshot Variables"
-msgstr ""
+msgstr "      * 5.2.2. Variables instantáneas"
 
 #: ..\python_docs\developer_guide.py:47
 msgid "  * 6\\. Remote Python Console"
-msgstr ""
+msgstr "  * 6\\. La consola Python remota"
 
 #: ..\python_docs\developer_guide.py:48
 msgid "    * 6.1. Usage "
-msgstr ""
+msgstr "    * 6.1. Modo de uso "
 
 #: ..\python_docs\developer_guide.py:49
 msgid "## 1\\. Introduction"
-msgstr ""
+msgstr "## 1\\. Introducción"
 
 #: ..\python_docs\developer_guide.py:50
 msgid ""
 "This guide provides information concerning NVDA development, including "
 "translation and the development of components for NVDA. "
 msgstr ""
+"Esta guía proporciona información relacionada con el desarrollo de NVDA, "
+"incluyendo traducción y desarrollo de componentes para este lector. "
 
 #: ..\python_docs\developer_guide.py:51
 msgid "### 1.1. A Note About Python"
-msgstr ""
+msgstr "### 1.1. Una nota sobre Python"
 
 #: ..\python_docs\developer_guide.py:52
 msgid ""
@@ -230,10 +244,16 @@ msgid ""
 "you with the Python syntax. Documentation and other resources related to the "
 "Python language can be found at [www.python.org/](http://www.python.org/)"
 msgstr ""
+"NVDA y sus componentes están escritos principalmente en el lenguaje de "
+"programación Python. El propósito de esta guía no es enseñarte Python, "
+"aunque se proporcionan ejemplos a lo largo de la guía que te ayudarán a "
+"familiarizarte con la sintaxis Python. Se pueden encontrar documentación y "
+"otros recursos relacionados con el lenguaje de programación Python en [www."
+"python.org/](http://www.python.org/)"
 
 #: ..\python_docs\developer_guide.py:53
 msgid "## 2\\. Translation"
-msgstr ""
+msgstr "##2\\. Traducción"
 
 #: ..\python_docs\developer_guide.py:54
 msgid ""
@@ -245,10 +265,18 @@ msgid ""
 "documentation about translating NVDA, please see <https://github.com/"
 "nvaccess/nvda/wiki/Translating>"
 msgstr ""
+"Para dar soporte a múltiples idiomas / regiones, NVDA debe traducirse y "
+"deben proporcionarse datos específicos de la región. Esta sección sólo "
+"incluye información sobre formatos de archivo personalizados de NVDA "
+"necesarios para la traducción. Es necesario traducir otros elementos, como "
+"la interfaz de usuario de NVDA y la documentación, pero aquí se usan "
+"formatos de archivo estándar. Para acceder a la documentación completa sobre "
+"la traducción de NVDA, visita la sección correspondiente en el área de "
+"desarrollo de nuestra web."
 
 #: ..\python_docs\developer_guide.py:55
 msgid "### 2.1. Character Descriptions"
-msgstr ""
+msgstr "### 2.1. Descripción de caracteres"
 
 #: ..\python_docs\developer_guide.py:56
 msgid ""
@@ -270,7 +298,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:58
 msgid "For example: "
-msgstr ""
+msgstr "Por ejemplo: "
 
 #: ..\python_docs\developer_guide.py:59 ..\python_docs\developer_guide.py:64
 #: ..\python_docs\developer_guide.py:74 ..\python_docs\developer_guide.py:77
@@ -287,7 +315,7 @@ msgstr ""
 #: ..\python_docs\developer_guide.py:384 ..\python_docs\developer_guide.py:396
 #: ..\python_docs\developer_guide.py:413 ..\python_docs\developer_guide.py:423
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: ..\python_docs\developer_guide.py:60 ..\python_docs\developer_guide.py:75
 #: ..\python_docs\developer_guide.py:80 ..\python_docs\developer_guide.py:87
@@ -310,23 +338,25 @@ msgstr ""
 #: ..\python_docs\developer_guide.py:385 ..\python_docs\developer_guide.py:389
 #: ..\python_docs\developer_guide.py:391 ..\python_docs\developer_guide.py:414
 msgid "    \n"
-msgstr ""
+msgstr "    \n"
 
 #: ..\python_docs\developer_guide.py:61
 msgid "    # This is a comment.\n"
-msgstr ""
+msgstr "    # Esto es un comentario\n"
 
 #: ..\python_docs\developer_guide.py:62
 msgid "    a\talpha\n"
-msgstr ""
+msgstr "    a\talpha\n"
 
 #: ..\python_docs\developer_guide.py:63
 msgid "    b\tbravo\n"
-msgstr ""
+msgstr "    b\tbravo\n"
 
 #: ..\python_docs\developer_guide.py:65
 msgid "See the file locale\\en\\characterDescriptions.dic for a full example. "
 msgstr ""
+"Mira el archivo locale\\en\\characterDescriptions.dic para ver un ejemplo "
+"completo. "
 
 #: ..\python_docs\developer_guide.py:66
 msgid ""
@@ -335,6 +365,10 @@ msgid ""
 "regardless of their case, so upper case characters are converted to lower "
 "case before looking up their character descriptions. "
 msgstr ""
+"En la mayoría de casos, los caracteres en este archivo deberían de constar "
+"de una única letra minúscula. Se asume que los caracteres tendrán la misma "
+"descripción independientemente de su estado, por lo que los que están en "
+"mayúscula se convierten a minúscula antes de mirar sus descripciones."
 
 #: ..\python_docs\developer_guide.py:67
 msgid "### 2.2. Symbol Pronunciation"
@@ -432,11 +466,11 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:92
 msgid "    * \\0: null "
-msgstr ""
+msgstr "    * \\0: nulo"
 
 #: ..\python_docs\developer_guide.py:93
 msgid "    * \\t: tab "
-msgstr ""
+msgstr "    * \\t: tabulador "
 
 #: ..\python_docs\developer_guide.py:94
 msgid "    * \\n: line feed "
@@ -481,11 +515,11 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:101
 msgid "    * never: Never preserve the symbol. "
-msgstr ""
+msgstr "    * never: nunca preservar el símbolo. "
 
 #: ..\python_docs\developer_guide.py:102
 msgid "    * always: Always preserve the symbol. "
-msgstr ""
+msgstr "    * always: preservar el símbolo siempre. "
 
 #: ..\python_docs\developer_guide.py:103
 msgid ""
@@ -509,11 +543,11 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:106
 msgid "Here are some examples: "
-msgstr ""
+msgstr "Aquí hay algunos ejemplos: "
 
 #: ..\python_docs\developer_guide.py:109
 msgid "    (\tleft paren\tmost\n"
-msgstr ""
+msgstr "    (\tparéntesis izquierdo\tmost\n"
 
 #: ..\python_docs\developer_guide.py:111
 msgid ""
@@ -1742,7 +1776,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:401
 msgid "### 4.2. Manifest Files"
-msgstr ""
+msgstr "### 4.2. Archivos de manifiesto"
 
 #: ..\python_docs\developer_guide.py:402
 msgid ""
@@ -1750,10 +1784,14 @@ msgid ""
 "must be a UTF-8 encoded text file. This manifest file contains key = value "
 "pares declaring info such as the add-on's name, version and description. "
 msgstr ""
+"Cada paquete de complementos debe contener un archivo de manifiesto llamado "
+"manifest.ini. Debe ser un archivo de texto codificado en UTF-8. Este archivo "
+"de manifiesto contiene pares clave=valor que declaran información como el "
+"nombre del complemento, versión y descripción. "
 
 #: ..\python_docs\developer_guide.py:403
 msgid "#### 4.2.1. Available Fields"
-msgstr ""
+msgstr "#### 4.2.1. Campos disponibles"
 
 #: ..\python_docs\developer_guide.py:404
 msgid ""
@@ -1801,60 +1839,69 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:412
 msgid "#### 4.2.2. An Example Manifest File"
-msgstr ""
+msgstr "#### 4.2.2. Un ejemplo de archivo de manifiesto"
 
 #: ..\python_docs\developer_guide.py:416
 msgid "    name = MyTestAddon\n"
-msgstr ""
+msgstr "    name = MyTestAddon\n"
 
 #: ..\python_docs\developer_guide.py:417
 msgid "    summary = Cool Test Add-on\n"
-msgstr ""
+msgstr "    summary = Cool Test Add-on\n"
 
 #: ..\python_docs\developer_guide.py:418
 msgid "    version = 1.0\n"
-msgstr ""
+msgstr "    version = 1.0\n"
 
 #: ..\python_docs\developer_guide.py:419
 msgid "    description = An example add-on showing how to create add-ons!\n"
-msgstr ""
+msgstr "    description = An example add-on showing how to create add-ons!\n"
 
 #: ..\python_docs\developer_guide.py:420
 msgid "    author = Michael Curran <mick@kulgan.net>\n"
-msgstr ""
+msgstr "    author = Michael Curran <mick@kulgan.net>\n"
 
 #: ..\python_docs\developer_guide.py:421
 msgid "    url = http://www.nvda-project.org/wiki/Development\n"
-msgstr ""
+msgstr "    url = http://www.nvda-project.org/wiki/Development\n"
 
 #: ..\python_docs\developer_guide.py:424
 msgid "### 4.3. Plugins and Drivers"
-msgstr ""
+msgstr "### 4.3. Extensiones y controladores"
 
 #: ..\python_docs\developer_guide.py:425
 msgid "The following plugins and drivers can be included in an add-on: "
 msgstr ""
+"Se pueden incluir las siguientes extensiones y controladores en un "
+"complemento: "
 
 #: ..\python_docs\developer_guide.py:426
 msgid "  * App modules: Place them in an appModules directory in the archive. "
 msgstr ""
+"  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. "
 
 #: ..\python_docs\developer_guide.py:427
 msgid ""
 "  * Braille display drivers: Place them in a brailleDisplayDrivers directory "
 "in the archive. "
 msgstr ""
+"  * Controladores de pantallas braille: sitúalos en una carpeta "
+"brailleDisplayDrivers en tu archivo. "
 
 #: ..\python_docs\developer_guide.py:428
 msgid ""
 "  * Global plugins: Place them in a globalPlugins directory in the archive. "
 msgstr ""
+"  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu "
+"archivo. "
 
 #: ..\python_docs\developer_guide.py:429
 msgid ""
 "  * Synthesizer drivers: Place them in a synthDrivers directory in the "
 "archive. "
 msgstr ""
+"  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en "
+"tu archivo. "
 
 #: ..\python_docs\developer_guide.py:430
 msgid "### 4.4. Optional install / Uninstall code"
@@ -1968,7 +2015,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:445
 msgid "## 5\\. NVDA Python Console"
-msgstr ""
+msgstr "##5\\. La consola Python de NVDA"
 
 #: ..\python_docs\developer_guide.py:446
 msgid ""
@@ -1980,7 +2027,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:447
 msgid "### 5.1. Usage"
-msgstr ""
+msgstr "### 5.1. Modo de uso"
 
 #: ..\python_docs\developer_guide.py:448
 msgid "The console can be activated in two ways: "
@@ -2022,11 +2069,11 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:454
 msgid "### 5.2. Namespace"
-msgstr ""
+msgstr "### 5.2. Espacio de nombres"
 
 #: ..\python_docs\developer_guide.py:455
 msgid "#### 5.2.1. Automatic Imports"
-msgstr ""
+msgstr "#### 5.2.1. Importaciones automáticas"
 
 #: ..\python_docs\developer_guide.py:456
 msgid ""
@@ -2037,7 +2084,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:457
 msgid "#### 5.2.2. Snapshot Variables"
-msgstr ""
+msgstr "#### 5.2.2. Variables instantáneas"
 
 #: ..\python_docs\developer_guide.py:458
 msgid ""
@@ -2045,40 +2092,45 @@ msgid ""
 "console will be assigned according to the current state of NVDA. These "
 "variables are: "
 msgstr ""
+"Cada vez que se pulse NVDA+ctrl+z, se asignarán ciertas variables en la "
+"consola basándose en el estado actual de NVDA. Estas variables son: "
 
 #: ..\python_docs\developer_guide.py:459
 msgid "  * focus: The current focus object "
-msgstr ""
+msgstr "  * focus: el objeto actual con el foco "
 
 #: ..\python_docs\developer_guide.py:460
 msgid "  * focusAnc: The ancestors of the current focus object "
-msgstr ""
+msgstr "  * focusAnc: los antepasados del objeto actual con el foco "
 
 #: ..\python_docs\developer_guide.py:461
 msgid ""
 "  * fdl: Focus difference level; i.e. the level at which the ancestors for "
 "the current and previous focus differ "
 msgstr ""
+"  * fdl: nivel de diferencia del foco; es decir, el nivel al que los "
+"antepasados difieren entre el objeto que tenía previamente el foco y el "
+"actual "
 
 #: ..\python_docs\developer_guide.py:462
 msgid "  * fg: The current foreground object "
-msgstr ""
+msgstr "  * fg: el objeto actual en primer plano "
 
 #: ..\python_docs\developer_guide.py:463
 msgid "  * nav: The current navigator object "
-msgstr ""
+msgstr "  * nav: el navegador de objetos actual "
 
 #: ..\python_docs\developer_guide.py:464
 msgid "  * mouse: The current mouse object "
-msgstr ""
+msgstr "  * mouse: el objeto actual del ratón "
 
 #: ..\python_docs\developer_guide.py:465
 msgid "  * brlRegions: The braille regions from the active braille buffer "
-msgstr ""
+msgstr "  * brlRegions: las regiones braille del buffer braille activo "
 
 #: ..\python_docs\developer_guide.py:466
 msgid "## 6\\. Remote Python Console"
-msgstr ""
+msgstr "## 6\\. La consola Python remota"
 
 #: ..\python_docs\developer_guide.py:467
 msgid ""
@@ -2095,7 +2147,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:469
 msgid "### 6.1. Usage"
-msgstr ""
+msgstr "### 6.1. Modo de uso"
 
 #: ..\python_docs\developer_guide.py:470
 msgid ""
