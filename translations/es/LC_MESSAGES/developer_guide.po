@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-14 16:55+0100\n"
+"PO-Revision-Date: 2018-03-14 17:57+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -286,6 +286,11 @@ msgid ""
 "when this occurs, character descriptions can be provided which describe the "
 "character in a unique way. "
 msgstr ""
+"En ocasiones, puede ser muy difícil o incluso imposible distinguir un "
+"carácter de otro. Por ejemplo, se podrían pronunciar dos caracteres de la "
+"misma manera, incluso aunque sean caracteres realmente diferentes. Para "
+"ayudar a los usuarios cuando esto ocurre, pueden proporcionarse "
+"descripciones de caracteres que describen el carácter de una forma única. "
 
 #: ..\python_docs\developer_guide.py:57
 msgid ""
@@ -295,6 +300,12 @@ msgid ""
 "are ignored. All other lines should contain a character, followed by a tab, "
 "then one or more descriptions separated by tabs. "
 msgstr ""
+"Se pueden ofrecer descripciones de caracteres para un idioma en un archivo "
+"llamado characterDescriptions.dic en el directorio del idioma. Se trata de "
+"un archivo de texto codificado en UTF-8. Las líneas en blanco o las líneas "
+"que comienzan con el carácter \"\\#\" se ignoran. Todas las demás líneas "
+"deberían contener un carácter, seguido de un tabulador, y una o más "
+"descripciones separadas por tabuladores. "
 
 #: ..\python_docs\developer_guide.py:58
 msgid "For example: "
@@ -368,11 +379,11 @@ msgstr ""
 "En la mayoría de casos, los caracteres en este archivo deberían de constar "
 "de una única letra minúscula. Se asume que los caracteres tendrán la misma "
 "descripción independientemente de su estado, por lo que los que están en "
-"mayúscula se convierten a minúscula antes de mirar sus descripciones."
+"mayúscula se convierten a minúscula antes de mirar sus descripciones. "
 
 #: ..\python_docs\developer_guide.py:67
 msgid "### 2.2. Symbol Pronunciation"
-msgstr ""
+msgstr "### 2.2. Pronunciación de símbolos"
 
 #: ..\python_docs\developer_guide.py:68
 msgid ""
@@ -395,7 +406,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:70
 msgid "The file contains two sections. "
-msgstr ""
+msgstr "El archivo contiene dos secciones. "
 
 #: ..\python_docs\developer_guide.py:71
 msgid "#### 2.2.1. Defining Complex Symbols"
@@ -466,7 +477,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:92
 msgid "    * \\0: null "
-msgstr "    * \\0: nulo"
+msgstr "    * \\0: nulo "
 
 #: ..\python_docs\developer_guide.py:93
 msgid "    * \\t: tab "
@@ -748,48 +759,48 @@ msgstr ""
 #: ..\python_docs\developer_guide.py:352 ..\python_docs\developer_guide.py:386
 #: ..\python_docs\developer_guide.py:415
 msgid "    --- start ---\n"
-msgstr ""
+msgstr "    --- inicio ---\n"
 
 #: ..\python_docs\developer_guide.py:151
 msgid "    # Notepad App Module for NVDA\n"
-msgstr ""
+msgstr "    # Módulo de aplicación del bloc de notas para NVDA\n"
 
 #: ..\python_docs\developer_guide.py:152
 msgid "    # Developer guide example 1\n"
-msgstr ""
+msgstr "    # Ejemplo 1 de la guía del desarrollador\n"
 
 #: ..\python_docs\developer_guide.py:154 ..\python_docs\developer_guide.py:328
 #: ..\python_docs\developer_guide.py:353 ..\python_docs\developer_guide.py:387
 msgid "    import appModuleHandler\n"
-msgstr ""
+msgstr "    import appModuleHandler\n"
 
 #: ..\python_docs\developer_guide.py:156 ..\python_docs\developer_guide.py:330
 #: ..\python_docs\developer_guide.py:358 ..\python_docs\developer_guide.py:390
 msgid "    class AppModule(appModuleHandler.AppModule):\n"
-msgstr ""
+msgstr "    class AppModule(appModuleHandler.AppModule):\n"
 
 #: ..\python_docs\developer_guide.py:158
 msgid "    \tdef event_gainFocus(self, obj, nextHandler):\n"
-msgstr ""
+msgstr "    \tdef event_gainFocus(self, obj, nextHandler):\n"
 
 #: ..\python_docs\developer_guide.py:159
 msgid "    \t\timport tones\n"
-msgstr ""
+msgstr "    \t\timport tones\n"
 
 #: ..\python_docs\developer_guide.py:160
 msgid "    \t\ttones.beep(550, 50)\n"
-msgstr ""
+msgstr "    \t\ttones.beep(550, 50)\n"
 
 #: ..\python_docs\developer_guide.py:161
 msgid "    \t\tnextHandler()\n"
-msgstr ""
+msgstr "    \t\tnextHandler()\n"
 
 #: ..\python_docs\developer_guide.py:163 ..\python_docs\developer_guide.py:199
 #: ..\python_docs\developer_guide.py:291 ..\python_docs\developer_guide.py:334
 #: ..\python_docs\developer_guide.py:373 ..\python_docs\developer_guide.py:395
 #: ..\python_docs\developer_guide.py:422
 msgid "    --- end ---\n"
-msgstr ""
+msgstr "    --- fin ---\n"
 
 #: ..\python_docs\developer_guide.py:165
 msgid ""
