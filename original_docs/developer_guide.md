@@ -1,4 +1,4 @@
-# NVDA 2017.4 Developer Guide
+# NVDA 2018.1 Developer Guide
 
 ## Table of Contents
 
