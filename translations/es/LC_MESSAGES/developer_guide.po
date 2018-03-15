@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-15 16:13+0100\n"
+"PO-Revision-Date: 2018-03-15 16:58+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -2003,7 +2003,7 @@ msgstr "    \t\t\tobj.name = \"Contenido\"\n"
 
 #: ..\python_docs\developer_guide.py:397
 msgid "## 4\\. Packaging Code as NVDA Add-ons"
-msgstr ""
+msgstr "## 4\\. Empaquetado de código como complementos de NVDA"
 
 #: ..\python_docs\developer_guide.py:398
 msgid ""
@@ -2015,10 +2015,19 @@ msgid ""
 "nvda-addon which contains a manifest file, optional install/uninstall code "
 "and one or more directories containing plugins and/or drivers. "
 msgstr ""
+"Para ponerle fácil a los usuarios la tarea de instalar extensiones y "
+"controladores, estos pueden empaquetarse en un único paquete de complemento "
+"de NVDA que el usuario puede instalar en una copia de NVDA a través del "
+"administrador de complementos que se encuentra en herramientas en el menú de "
+"NVDA. Los paquetes de complementos se soportan sólo en NVDA 2012.2 y "
+"posterior. Un complemento de NVDA es simplemente un archivo Zip estándar con "
+"la extensión de archivo nvda-addon, que contiene un archivo de manifiesto, "
+"código opcional de instalación y desinstalación, y uno o más directorios con "
+"extensiones y / o controladores. "
 
 #: ..\python_docs\developer_guide.py:399
 msgid "### 4.1. Non-ASCII File Names in Zip Archives"
-msgstr ""
+msgstr "### 4.1. Nombres de fichero no ASCII en archivos Zip"
 
 #: ..\python_docs\developer_guide.py:400
 msgid ""
