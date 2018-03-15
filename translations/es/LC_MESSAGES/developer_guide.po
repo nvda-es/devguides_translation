@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-14 17:57+0100\n"
+"PO-Revision-Date: 2018-03-15 13:33+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -394,6 +394,12 @@ msgid ""
 "what symbols are spoken. Therefore, NVDA allows information about symbol "
 "pronunciation to be provided. "
 msgstr ""
+"Con frecuencia es útil oír la puntuación y otros símbolos pronunciados como "
+"palabras al leer texto, particularmente al moverse por caracteres. "
+"Desafortunadamente, la pronunciación de símbolos es inconsistente entre "
+"sintetizadores de voz, y muchos de ellos no pronuncian muchos símbolos y / o "
+"no permiten controlar qué símbolos se pronuncian. En consecuencia, NVDA "
+"permite ofrecer información sobre la pronunciación de símbolos. "
 
 #: ..\python_docs\developer_guide.py:69
 msgid ""
@@ -403,6 +409,11 @@ msgid ""
 "inherit the symbol information for English, though any of this information "
 "can be overridden. "
 msgstr ""
+"Esto se hace para un idioma proporcionando un archivo llamado symbols.dic en "
+"el directorio del idioma. Se trata de un archivo de texto plano codificado "
+"en UTF-8. Las líneas en blanco y aquellas que empiecen con un carácter \"\\#"
+"\" se ignoran. Todos los idiomas heredan de forma implícita la información "
+"de símbolos del inglés, aunque toda esta información puede sobreescribirse. "
 
 #: ..\python_docs\developer_guide.py:70
 msgid "The file contains two sections. "
@@ -410,7 +421,7 @@ msgstr "El archivo contiene dos secciones. "
 
 #: ..\python_docs\developer_guide.py:71
 msgid "#### 2.2.1. Defining Complex Symbols"
-msgstr ""
+msgstr "#### 2.2.1. Definición de símbolos complejos"
 
 #: ..\python_docs\developer_guide.py:72
 msgid ""
@@ -421,44 +432,58 @@ msgid ""
 "used for multiple purposes, so a more complicated check is required to "
 "determine whether this refers to the end of a sentence. "
 msgstr ""
+"La primera sección es opcional y define patrones de expresiones regulares "
+"para símbolos complejos. Los símbolos complejos son símbolos que que no "
+"constan simplemente de un carácter o secuencia de caracteres, sino que en su "
+"lugar necesitan una expresión más complicada. Un ejemplo es el punto \\(.\\) "
+"de fin de frase en inglés. El \".\" se usa con múltiples propósitos, por lo "
+"que se necesita una comprobación más complicada para determinar si se trata "
+"al punto final de una frase. "
 
 #: ..\python_docs\developer_guide.py:73
 msgid "The complex symbols section begins with the line: "
-msgstr ""
+msgstr "La sección de símbolos complejos comienza con la línea: "
 
 #: ..\python_docs\developer_guide.py:76
 msgid "    complexSymbols:\n"
-msgstr ""
+msgstr "    complexSymbols:\n"
 
 #: ..\python_docs\developer_guide.py:78
 msgid ""
 "Subsequent lines contain a textual identifier used to identify the symbol, a "
 "tab and the regular expression pattern for that symbol. For example: "
 msgstr ""
+"Las siguientes líneas contienen un identificador textual usado para "
+"identificar el símbolo, un tabulador y un patrón de expresión regular para "
+"ese símbolo. Por ejemplo: "
 
 #: ..\python_docs\developer_guide.py:81
 msgid "    . sentence ending\t(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)\n"
-msgstr ""
+msgstr "    . final de frase\t(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)\n"
 
 #: ..\python_docs\developer_guide.py:83
 msgid ""
 "Again, the English symbols are inherited by all other locales, so you need "
 "not include any complex symbols already defined for English. "
 msgstr ""
+"Una vez más, todos los idiomas heredan los símbolos del inglés, por lo que "
+"no es necesario que incluyas símbolos complejos ya definidos en inglés. "
 
 #: ..\python_docs\developer_guide.py:84
 msgid "#### 2.2.2. Defining Symbol Information"
-msgstr ""
+msgstr "#### 2.2.2. Definición de la información de símbolos"
 
 #: ..\python_docs\developer_guide.py:85
 msgid ""
 "The second section provides information about when and how to pronounce all "
 "symbols. It begins with the line: "
 msgstr ""
+"La segunda sección proporciona información sobre cuándo y cómo pronunciar "
+"todos los símbolos. Comienza con la línea: "
 
 #: ..\python_docs\developer_guide.py:88
 msgid "    symbols:\n"
-msgstr ""
+msgstr "    symbols:\n"
 
 #: ..\python_docs\developer_guide.py:90
 msgid ""
@@ -466,6 +491,10 @@ msgid ""
 "mandatory fields are the identifier and replacement. The default will be "
 "used for omitted fields. The fields are as follows: "
 msgstr ""
+"Las siguientes líneas deberían contener varios campos separados por "
+"tabuladores. Los únicos campos obligatorios son el identificador y el "
+"reemplazo. El valor por defecto se aplicará en los campos omitidos. Los "
+"campos son los siguientes: "
 
 #: ..\python_docs\developer_guide.py:91
 msgid ""
@@ -474,6 +503,11 @@ msgid ""
 "identifier of a complex symbol. Certain characters cannot be typed into the "
 "file, so the following special sequences can be used: "
 msgstr ""
+"  * Identificador: el identificador del símbolo. En la mayoría de casos, se "
+"trata del carácter o caracteres del símbolo. Sin embargo, también puede ser "
+"el identificador de un símbolo complejo. Ciertos caracteres no pueden "
+"escribirse en el archivo, por lo que deben usarse las siguientes secuencias "
+"especiales en estos casos: "
 
 #: ..\python_docs\developer_guide.py:92
 msgid "    * \\0: null "
@@ -485,25 +519,27 @@ msgstr "    * \\t: tabulador "
 
 #: ..\python_docs\developer_guide.py:94
 msgid "    * \\n: line feed "
-msgstr ""
+msgstr "    * \\n: salto de línea "
 
 #: ..\python_docs\developer_guide.py:95
 msgid "    * \\r: carriage return "
-msgstr ""
+msgstr "    * \\r: retorno de carro "
 
 #: ..\python_docs\developer_guide.py:96
 msgid "    * \\f: form feed "
-msgstr ""
+msgstr "    * \\f: salto de página "
 
 #: ..\python_docs\developer_guide.py:97
 msgid ""
 "    * \\\\\\#: \\# character \\(needed because \\# at the start of a line "
 "denotes a comment\\) "
 msgstr ""
+"    * \\\\\\#: el carácter \\# \\(necesario porque \\# al comienzo de una "
+"línea la convierte en comentario\\) "
 
 #: ..\python_docs\developer_guide.py:98
 msgid "  * replacement: The text which should be spoken for the symbol. "
-msgstr ""
+msgstr "  * Reemplazo: el texto que debería verbalizarse para el símbolo. "
 
 #: ..\python_docs\developer_guide.py:99
 msgid ""
@@ -515,6 +551,13 @@ msgid ""
 "The default is to inherit the value or \"all\" if there is nothing to "
 "inherit. "
 msgstr ""
+"  * Nivel: el nivel de símbolos en el que el símbolo debería verbalizarse. "
+"El usuario configura el nivel de símbolos, que especifica la cantidad de "
+"símbolos que deberían verbalizarse. Este campo debería contener uno de los "
+"niveles \"none\", \"some\", \"most\", \"all\" o \"char\", o \"-\" para usar "
+"el predeterminado. \"char\" significa que el símbolo sólo debería "
+"pronunciarse al moverse por caracteres. Por defecto se hereda el valor o "
+"\"all\" si no hay nada que heredar. "
 
 #: ..\python_docs\developer_guide.py:100
 msgid ""
@@ -523,6 +566,10 @@ msgid ""
 "pauses or inflection \\(such as the comma in English\\) should be preserved. "
 "This field should be one of the following: "
 msgstr ""
+"  * Preservar: indica si el símbolo debería preservarse para facilitar la "
+"correcta pronunciación en el sintetizador. Por ejemplo, los símbolos que "
+"causan pausas o inflexiones \\(como la coma en inglés\\) deberían "
+"preservarse. Este campo debería contener los siguientes valores: "
 
 #: ..\python_docs\developer_guide.py:101
 msgid "    * never: Never preserve the symbol. "
@@ -537,12 +584,17 @@ msgid ""
 "    * norep: Only preserve the symbol if it is not being replaced; i.e. the "
 "user has set symbol level lower than the level of this symbol. "
 msgstr ""
+"    * norep: preservar el símbolo sólo si no se reemplaza; es decir, el "
+"usuario ha configurado el nivel de símbolos por debajo del nivel de este "
+"símbolo. "
 
 #: ..\python_docs\developer_guide.py:104
 msgid ""
 "    * -: Use the default.  The default is to inherit the value or \"never\" "
 "if there is nothing to inherit. "
 msgstr ""
+"    * -: usar valor por defecto. Por defecto se hereda el valor o \"never\" "
+"si no hay nada que heredar. "
 
 #: ..\python_docs\developer_guide.py:105
 msgid ""
@@ -551,6 +603,11 @@ msgid ""
 "symbol information and is especially useful for translators to define "
 "translated names for English complex symbols. "
 msgstr ""
+"Finalmente, se puede proporcionar un nombre para mostrar el símbolo en un "
+"comentario tras un tabulador al final de la línea. Este se mostrará a los "
+"usuarios cuando editen la información del símbolo y es especialmente útil "
+"para los traductores para definir nombres traducidos para los símbolos "
+"complejos en inglés. "
 
 #: ..\python_docs\developer_guide.py:106
 msgid "Here are some examples: "
@@ -565,10 +622,13 @@ msgid ""
 "This means that the \"\\(\" character should be spoken as \"left paren\" "
 "only when the symbol level is set to most or higher; i.e. most or all. "
 msgstr ""
+"Esto significa que el carácter \"\\(\" debería verbalizarse como "
+"\"paréntesis izquierdo\" sólo cuando el nivel de símbolos esté establecido "
+"en la mayoría o más alto; es decir, la mayoría o todo. "
 
 #: ..\python_docs\developer_guide.py:114
 msgid "    ,\tcomma\tall\talways\n"
-msgstr ""
+msgstr "    ,\tcoma\tall\talways\n"
 
 #: ..\python_docs\developer_guide.py:116
 msgid ""
@@ -576,10 +636,14 @@ msgid ""
 "symbol level is set to all and that the character itself should always be "
 "preserved so that the synthesiser will pause appropriately. "
 msgstr ""
+"Esto significa que el carácter \",\" debería verbalizarse como \"coma\" "
+"cuando el nivel de símbolos esté establecido en todo y que el carácter en sí "
+"mismo debería preservarse siempre para que el sintetizador pause de forma "
+"apropiada. "
 
 #: ..\python_docs\developer_guide.py:119
 msgid "    . sentence ending\tpoint\t# . fin de phrase\n"
-msgstr ""
+msgstr "    . sentence ending\tpoint\t# . fin de phrase\n"
 
 #: ..\python_docs\developer_guide.py:121
 msgid ""
@@ -588,63 +652,84 @@ msgid ""
 "preserve are not specified, so they will be taken from English. A display "
 "name is provided so that French users will know what the symbol represents. "
 msgstr ""
+"Esta línea aparece en el archivo symbols.dic francés. Significa que el "
+"símbolo complejo \". sentence ending\" debería verbalizarse como \"point\". "
+"Nivel y preservar no se han especificado, por lo que se tomarán del inglés. "
+"Se ofrece un nombre para mostrar, por lo que los usuarios franceses sabrán "
+"lo que representa el símbolo. "
 
 #: ..\python_docs\developer_guide.py:122
 msgid ""
 "Please see the file locale\\en\\symbols.dic for the English definitions "
 "which are inherited for all locales. This is also a good full example. "
 msgstr ""
+"Por favor, consulta el archivo locale\\en\\symbols.dic para ver las "
+"definiciones inglesas que heredan todos los idiomas. También representa un "
+"buen ejemplo completo. "
 
 #: ..\python_docs\developer_guide.py:123
 msgid "## 3\\. Plugins"
-msgstr ""
+msgstr "## 3\\. Extensiones"
 
 #: ..\python_docs\developer_guide.py:124
 msgid "### 3.1. Overview"
-msgstr ""
+msgstr "### 3.1. Descripción"
 
 #: ..\python_docs\developer_guide.py:125
 msgid ""
 "Plugins allow you to customize the way NVDA behaves overall or within a "
 "particular application. They are able to: "
 msgstr ""
+"Los complementos permiten personalizar la forma en que NVDA se comporta en "
+"general o dentro de una aplicación en particular. Son capaces de: "
 
 #: ..\python_docs\developer_guide.py:126
 msgid ""
 "  * Respond to particular events such as focus and object property changes; "
 "e.g. when a control changes its name. "
 msgstr ""
+"  * Responder a eventos particulares como cambios de propiedades de objetos "
+"o del foco; por ejemplo, cuando un control cambia su nombre. "
 
 #: ..\python_docs\developer_guide.py:127
 msgid ""
 "  * Implement commands which are bound to particular key presses or other "
 "input. "
 msgstr ""
+"  * Implementar órdenes que se asocian a ciertas pulsaciones de teclado u "
+"otra entrada. "
 
 #: ..\python_docs\developer_guide.py:128
 msgid ""
 "  * Customise the behaviour of and implement additional functionality for "
 "particular controls. "
 msgstr ""
+"  * Personalizar el comportamiento e implementar funcionalidad adicional "
+"para controles concretos. "
 
 #: ..\python_docs\developer_guide.py:129
 msgid ""
 "  * Customise or add new support for text content and complex documents. "
 msgstr ""
+"  * Personalizar o añadir nuevo soporte para contenido textual y documentos "
+"complejos. "
 
 #: ..\python_docs\developer_guide.py:130
 msgid ""
 "This section provides an introduction to developing plugins. Developers "
 "should consult the code documentation for a complete reference. "
 msgstr ""
+"Esta sección ofrece una introducción al desarrollo de extensiones. Los "
+"desarrolladores deberían consultar la documentación del código para tener "
+"una referencia completa. "
 
 #: ..\python_docs\developer_guide.py:131
 msgid "### 3.2. Types of Plugins"
-msgstr ""
+msgstr "### 3.2. Tipos de extensiones"
 
 #: ..\python_docs\developer_guide.py:132
 msgid "There are two types of plugins. These are: "
-msgstr ""
+msgstr "Hay dos tipos de extensiones. Son los siguientes: "
 
 #: ..\python_docs\developer_guide.py:133
 msgid ""
@@ -654,6 +739,12 @@ msgid ""
 "the App Module has bound to key presses or other input can be executed by "
 "the user. "
 msgstr ""
+"  * Módulos de aplicación: código específico para una aplicación concreta. "
+"El módulo recibe todos los eventos de la aplicación, incluso si esa "
+"aplicación no se encuentra activa actualmente. Cuando la aplicación está "
+"activa, cualquier orden que el módulo de aplicación haya asociado a "
+"pulsaciones de teclado y otro tipo de entrada puede ser ejecutada por el "
+"usuario. "
 
 #: ..\python_docs\developer_guide.py:134
 msgid ""
@@ -663,6 +754,11 @@ msgid ""
 "the user wherever they are in the operating system, regardless of "
 "application. "
 msgstr ""
+"  * Extensiones globales: código global para NVDA; es decir, se usa en todas "
+"las aplicaciones. Las extensiones reciben eventos para todos los controles "
+"del sistema operativo. Cualquier orden vinculada a una extensión global "
+"puede ser ejecutada por el usuario independientemente de dónde esté en el "
+"sistema operativo, sin importar la aplicación. "
 
 #: ..\python_docs\developer_guide.py:135
 msgid ""
@@ -672,6 +768,11 @@ msgid ""
 "Wireless network strength while in any application\\), then a Global Plugin "
 "is what you want. "
 msgstr ""
+"Si quieres mejorar el acceso de NVDA a una aplicación en particular, lo más "
+"probable es que necesites escribir un módulo de aplicación. En contraste, si "
+"quisieras añadir alguna funcionalidad general a NVDA \\(por ejemplo, un "
+"script que verbalice la fuerza de la señal de la red wi-fi desde cualquier "
+"aplicación\\), lo que necesitas entonces es una extensión global. "
 
 #: ..\python_docs\developer_guide.py:136
 msgid ""
@@ -681,12 +782,21 @@ msgid ""
 "define custom classes to access controls, text content and complex "
 "documents. However, they do differ in some ways. "
 msgstr ""
+"Tanto los módulos de aplicación como las extensiones globales tienen mucho "
+"en común. Ambos son archivos con código fuente Python \\(con una extensión ."
+"py\\), ambos definen una clase especial que contiene todos los eventos, "
+"scripts y asociaciones, y ambos pueden definir clases personalizadas para "
+"acceder a controles, contenido textual y documentos complejos. Sin embargo, "
+"difieren en algunos aspectos. "
 
 #: ..\python_docs\developer_guide.py:137
 msgid ""
 "The following few sections will talk separately about App Modules and Global "
 "Plugins. After this point, discussion is again more general. "
 msgstr ""
+"Las siguientes secciones hablarán por separado de módulos de aplicación y "
+"extensiones globales. Después de este punto, la discusión volverá a ser más "
+"general. "
 
 #: ..\python_docs\developer_guide.py:138
 msgid "### 3.3. Basics of an App Module"
@@ -894,70 +1004,78 @@ msgid ""
 "Once saved in the right place, either restart NVDA or choose Reload Plugins "
 "found under Tools in the NVDA menu. "
 msgstr ""
+"Una vez guardado en el lugar correcto, reinicia NVDA o bien elige recargar "
+"plugins en el submenú herramientas del menú de NVDA. "
 
 #: ..\python_docs\developer_guide.py:179
 msgid ""
 "From anywhere, you can now press NVDA+shift+v to have NVDA's version spoken "
 "and brailled. "
 msgstr ""
+"Desde cualquier sitio, ahora puedes pulsar NVDA+shift+v para que NVDA "
+"verbalice y muestre en braille su versión. "
 
 #: ..\python_docs\developer_guide.py:183
 msgid "    # Version announcement plugin for NVDA\n"
-msgstr ""
+msgstr "    # Extensión de verbalización de versión de NVDA\n"
 
 #: ..\python_docs\developer_guide.py:184
 msgid "    # Developer guide example 2\n"
-msgstr ""
+msgstr "    # Ejemplo 2 de la guía del desarrollador\n"
 
 #: ..\python_docs\developer_guide.py:186 ..\python_docs\developer_guide.py:268
 msgid "    import globalPluginHandler\n"
-msgstr ""
+msgstr "    import globalPluginHandler\n"
 
 #: ..\python_docs\developer_guide.py:187 ..\python_docs\developer_guide.py:269
 #: ..\python_docs\developer_guide.py:356
 msgid "    import ui\n"
-msgstr ""
+msgstr "    import ui\n"
 
 #: ..\python_docs\developer_guide.py:188
 msgid "    import versionInfo\n"
-msgstr ""
+msgstr "    import versionInfo\n"
 
 #: ..\python_docs\developer_guide.py:190 ..\python_docs\developer_guide.py:272
 msgid "    class GlobalPlugin(globalPluginHandler.GlobalPlugin):\n"
-msgstr ""
+msgstr "    class GlobalPlugin(globalPluginHandler.GlobalPlugin):\n"
 
 #: ..\python_docs\developer_guide.py:192
 msgid "    \tdef script_announceNVDAVersion(self, gesture):\n"
-msgstr ""
+msgstr "    \tdef script_announceNVDAVersion(self, gesture):\n"
 
 #: ..\python_docs\developer_guide.py:193
 msgid "    \t\tui.message(versionInfo.version)\n"
-msgstr ""
+msgstr "    \t\tui.message(versionInfo.version)\n"
 
 #: ..\python_docs\developer_guide.py:195
 msgid "    \t__gestures={\n"
-msgstr ""
+msgstr "    \t__gestures={\n"
 
 #: ..\python_docs\developer_guide.py:196
 msgid "    \t\t\"kb:NVDA+shift+v\": \"announceNVDAVersion\",\n"
-msgstr ""
+msgstr "    \t\t\"kb:NVDA+shift+v\": \"announceNVDAVersion\",\n"
 
 #: ..\python_docs\developer_guide.py:197 ..\python_docs\developer_guide.py:289
 #: ..\python_docs\developer_guide.py:371
 msgid "    \t}\n"
-msgstr ""
+msgstr "    \t}\n"
 
 #: ..\python_docs\developer_guide.py:201
 msgid ""
 "This Global Plugin file starts with two comment lines, which describe what "
 "the file is for. "
 msgstr ""
+"Este archivo de extensión global comienza con dos líneas de comentarios, que "
+"describen para qué sirve el archivo. "
 
 #: ..\python_docs\developer_guide.py:202
 msgid ""
 "It then imports the globalPluginHandler module, so that the Global Plugin "
 "has access to the base GlobalPlugin class. "
 msgstr ""
+"A continuación importa el módulo globalPluginHandler, de manera que la "
+"extensión global tiene acceso a la clase base GlobalPlugin. "
 
 #: ..\python_docs\developer_guide.py:203
 msgid ""
@@ -965,12 +1083,17 @@ msgid ""
 "specific plugin needs in order for it to perform the necessary actions to "
 "announce the version. "
 msgstr ""
+"También importa otros módulos, llamados ui y versionInfo, necesarios para "
+"que esta extensión concreta haga las acciones adecuadas para verbalizar la "
+"versión de NVDA. "
 
 #: ..\python_docs\developer_guide.py:204
 msgid ""
 "Next, it defines a class called GlobalPlugin, which is inherited from "
 "globalPluginHandler.GlobalPlugin. "
 msgstr ""
+"Después, define una clase llamada GlobalPlugin, que hereda de "
+"globalPluginHandler.GlobalPlugin. "
 
 #: ..\python_docs\developer_guide.py:205
 msgid ""
@@ -2035,6 +2158,10 @@ msgid ""
 "inspection of NVDA internals or inspection of the accessibility hierarchy of "
 "an application. "
 msgstr ""
+"La consola Python de NVDA emula el intérprete interactivo de Python desde "
+"NVDA. Es una herramienta de desarrollo útil para depurar, inspección interna "
+"general de NVDA, o inspección de la jerarquía de accesibilidad de una "
+"aplicación. "
 
 #: ..\python_docs\developer_guide.py:447
 msgid "### 5.1. Usage"
@@ -2042,7 +2169,7 @@ msgstr "### 5.1. Modo de uso"
 
 #: ..\python_docs\developer_guide.py:448
 msgid "The console can be activated in two ways: "
-msgstr ""
+msgstr "La consola puede activarse de dos formas: "
 
 #: ..\python_docs\developer_guide.py:449
 msgid ""
@@ -2051,11 +2178,17 @@ msgid ""
 "saved in certain variables available in the console. See Snapshot Variables "
 "for more details. "
 msgstr ""
+"  * Pulsando NVDA+ctrl+z. Si se activa de este modo, se tomará una "
+"instantánea de NVDA en el momento en que se pulsaron las teclas y se "
+"guardará en ciertas variables disponibles en la consola. Mira la sección de "
+"variables instantáneas para más detalles. "
 
 #: ..\python_docs\developer_guide.py:450
 msgid ""
 "  * By selecting Tools -> Python console from the NVDA system tray menu. "
 msgstr ""
+"  * Seleccionando Herramientas -> Consola Python desde el menú de NVDA de la "
+"bandeja del sistema. "
 
 #: ..\python_docs\developer_guide.py:451
 msgid ""
@@ -2064,12 +2197,18 @@ msgid ""
 "pressed. You can navigate through the history of previously entered lines "
 "using the up and down arrow keys. "
 msgstr ""
+"La consola es similar al intérprete estándar de Python. La entrada sólo "
+"acepta una línea cada vez. La línea actual se procesa al pulsar intro. "
+"Puedes navegar por el historial de líneas introducidas anteriormente usando "
+"flechas arriba y abajo. "
 
 #: ..\python_docs\developer_guide.py:452
 msgid ""
 "Output \\(responses from the interpreter\\) will be spoken when enter is "
 "pressed. The f6 key toggles between the input and output controls. "
 msgstr ""
+"La salida \\(respuestas del intérprete\\) se verbalizará al pulsar intro. La "
+"tecla f6 permite desplazarse entre los controles de entrada y salida. "
 
 #: ..\python_docs\developer_guide.py:453
 msgid ""
@@ -2077,6 +2216,9 @@ msgid ""
 "to the session as it was left when it was closed, including history and "
 "variables. "
 msgstr ""
+"Cerrar la ventana de la consola simplemente la oculta. Esto permite al "
+"usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo "
+"historial y variables. "
 
 #: ..\python_docs\developer_guide.py:454
 msgid "### 5.2. Namespace"
@@ -2092,6 +2234,9 @@ msgid ""
 "imported in the console: sys, os, wx, log \\(from logHandler\\), api, "
 "queueHandler, speech, braille "
 msgstr ""
+"Los siguientes módulos y variables se importan automáticamente en la consola "
+"por conveniencia: sys, os, wx, log \\(de logHandler\\), api, queueHandler, "
+"speech, braille "
 
 #: ..\python_docs\developer_guide.py:457
 msgid "#### 5.2.2. Snapshot Variables"
@@ -2149,12 +2294,17 @@ msgid ""
 "of NVDA is useful. It is similar to the local Python console discussed "
 "above, but is accessed via TCP. "
 msgstr ""
+"NVDA dispone de una consola Python remota para situaciones donde la "
+"depuración remota de NVDA es útil. Es similar a la consola Python local "
+"expuesta arriba, pero se accede a ella a través de tcp. "
 
 #: ..\python_docs\developer_guide.py:468
 msgid ""
 "Please be aware that this is a huge security risk. You should only enable it "
 "if you are connected to trusted networks. "
 msgstr ""
+"Por favor, sé consciente de que supone un enorme riesgo de seguridad. Sólo "
+"deberías activarla si estás conectado a una red de confianza. "
 
 #: ..\python_docs\developer_guide.py:469
 msgid "### 6.1. Usage"
@@ -2166,26 +2316,31 @@ msgid ""
 "remotePythonConsole and call remotePythonConsole.initialize\\(\\). You can "
 "then connect to it via TCP port 6832. "
 msgstr ""
+"Para activar la consola Python remota, usa la consola Python local para "
+"importar remotePythonConsole y llama a remotePythonConsole.initialize\\(\\). "
+"A continuación puedes conectarte a ella por el puerto tcp 6832. "
 
 #: ..\python_docs\developer_guide.py:471
 msgid "History of previously entered lines is not supported. "
-msgstr ""
+msgstr "No se soporta el historial de líneas introducidas previamente. "
 
 #: ..\python_docs\developer_guide.py:472
 msgid ""
 "The namespace is the same as the namespace in the local Python console. "
-msgstr ""
+msgstr "El espacio de nombres es el mismo que el de la consola Python local. "
 
 #: ..\python_docs\developer_guide.py:473
 msgid "There are some special functions: "
-msgstr ""
+msgstr "Hay algunas funciones especiales: "
 
 #: ..\python_docs\developer_guide.py:474
 msgid ""
 "  * snap\\(\\): Takes a snapshot of the current state of NVDA and saves it "
 "in the snapshot variables. "
 msgstr ""
+"  * snap\\(\\): toma una instantánea del estado actual de NVDA y la guarda "
+"en las variables instantáneas. "
 
 #: ..\python_docs\developer_guide.py:475
 msgid "  * rmSnap\\(\\): Removes all snapshot variables. "
-msgstr ""
+msgstr "  * rmSnap\\(\\): elimina todas las variables instantáneas. "
