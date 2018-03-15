@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-15 13:33+0100\n"
+"PO-Revision-Date: 2018-03-15 13:59+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -800,7 +800,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:138
 msgid "### 3.3. Basics of an App Module"
-msgstr ""
+msgstr "### 3.3. Lo básico de un módulo de aplicación"
 
 #: ..\python_docs\developer_guide.py:139
 msgid ""
@@ -809,6 +809,11 @@ msgid ""
 "example, an App Module for notepad would be called notepad.py, as notepad's "
 "main executable is called notepad.exe. "
 msgstr ""
+"Los archivos de módulo de aplicación tienen una extensión .py, y tienen el "
+"mismo nombre del archivo ejecutable de la aplicación para la que quieras que "
+"se usen. Por ejemplo, un módulo de aplicación para el bloc de notas se "
+"llamaría notepad.py, ya que el ejecutable principal del bloc de notas se "
+"llama notepad.exe. "
 
 #: ..\python_docs\developer_guide.py:140
 msgid ""
@@ -816,6 +821,10 @@ msgid ""
 "NVDA user configuration directory. For more information on where to find the "
 "user configuration directory, please see the NVDA user guide. "
 msgstr ""
+"Los archivos de módulo de aplicación deben situarse en el subdirectorio "
+"appModules del directorio de configuración de usuario de NVDA. Para más "
+"información sobre dónde encontrar el directorio de configuración de usuario, "
+"por favor consulta la guía de usuario de NVDA. "
 
 #: ..\python_docs\developer_guide.py:141
 msgid ""
@@ -824,6 +833,10 @@ msgid ""
 "methods, gesture bindings and other code. This will all be covered in depth "
 "later. "
 msgstr ""
+"Los módulos de aplicación deben definir una clase llamada AppModule, que "
+"hereda de appModuleHandler.AppModule. Esta clase puede definir métodos de "
+"eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá más "
+"tarde en profundidad. "
 
 #: ..\python_docs\developer_guide.py:142
 msgid ""
@@ -831,10 +844,15 @@ msgid ""
 "application is running. The App Module is unloaded once the application is "
 "closed or when NVDA is exiting. "
 msgstr ""
+"NVDA carga el módulo de aplicación para una aplicación dada tan pronto como "
+"se da cuenta de que esa aplicación se está ejecutando. El módulo de "
+"aplicación se descarga una vez se cierra la aplicación o se sale de NVDA. "
 
 #: ..\python_docs\developer_guide.py:143
 msgid "### 3.4. Example 1: An App Module that Beeps on Focus Change Events"
 msgstr ""
+"### 3.4. Ejemplo 1: un módulo de aplicación que pita ante eventos de cambio "
+"de foco"
 
 #: ..\python_docs\developer_guide.py:144
 msgid ""
@@ -842,6 +860,9 @@ msgid ""
 "within the notepad application. This example shows you the basic layout of "
 "an App Module. "
 msgstr ""
+"El siguiente módulo de aplicación de ejemplo hace que NVDA pite cada vez que "
+"cambia el foco en la aplicación bloc de notas. Este ejemplo te muestra la "
+"estructura básica de un módulo de aplicación. "
 
 #: ..\python_docs\developer_guide.py:145
 msgid ""
@@ -849,12 +870,18 @@ msgid ""
 "markers into a new text file called notepad.py, which should be saved in the "
 "AppModules subdirectory. Be very careful to keep all tabs and spaces intact. "
 msgstr ""
+"Copia y pega el código entre \\(pero sin incluir\\) los marcadores de inicio "
+"y fin en un nuevo archivo de texto llamado notepad.py, que debería guardarse "
+"en el subdirectorio appModules. Ten mucho cuidado, debes conservar intactos "
+"todos los tabuladores y espacios. "
 
 #: ..\python_docs\developer_guide.py:146
 msgid ""
 "Once saved in the correct location, either restart NVDA or choose Reload "
 "Plugins found under Tools in the NVDA menu. "
 msgstr ""
+"Una vez guardado en la ubicación correcta, reinicia NVDA o bien elige "
+"Recargar plugins en el submenú herramientas del menú de NVDA. "
 
 #: ..\python_docs\developer_guide.py:147
 msgid ""
@@ -863,6 +890,11 @@ msgid ""
 "time the focus changes. Note though that if you move outside of Notepad - "
 "for instance, to Windows Explorer - you do not hear beeps. "
 msgstr ""
+"Finalmente, abre el bloc de notas y mueve el foco por la aplicación; por "
+"ejemplo muévete a lo largo de la barra de menú, abre algunos cuadros de "
+"diálogo, etc. Deberías oír pitidos cada vez que cambie el foco. Date cuenta "
+"de que si te mueves fuera del bloc de notas - por ejemplo, al explorador de "
+"Windows - no oirás pitidos. "
 
 #: ..\python_docs\developer_guide.py:150 ..\python_docs\developer_guide.py:182
 #: ..\python_docs\developer_guide.py:264 ..\python_docs\developer_guide.py:327
@@ -917,18 +949,24 @@ msgid ""
 "This App Module file starts with two comment lines, which describe what the "
 "file is for. "
 msgstr ""
+"Este archivo de módulo de aplicación empieza con dos líneas de comentarios, "
+"que describen para qué es el archivo. "
 
 #: ..\python_docs\developer_guide.py:166
 msgid ""
 "It then imports the appModuleHandler module, so that the App Module then has "
 "access to the base AppModule class. "
 msgstr ""
+"Después importa el módulo appModuleHandler, lo que le da al módulo de "
+"aplicación acceso a la clase base AppModule. "
 
 #: ..\python_docs\developer_guide.py:167
 msgid ""
 "Next, it defines a class called AppModule, which is inherited from "
 "appModuleHandler.AppModule. "
 msgstr ""
+"Después, define una clase AppModule, que hereda de appModuleHandler."
+"AppModule. "
 
 #: ..\python_docs\developer_guide.py:168
 msgid ""
@@ -946,16 +984,21 @@ msgid ""
 "module when you are finished testing and then restart NVDA or reload "
 "plugins, so that original functionality is restored. "
 msgstr ""
+"Como se pide con otros ejemplos de esta guía, recuerda eliminar el módulo de "
+"aplicación creado cuando termines de hacer pruebas y reinicia NVDA o recarga "
+"las extensiones para que se restaure la funcionalidad original. "
 
 #: ..\python_docs\developer_guide.py:170
 msgid "### 3.5. Basics of a Global Plugin"
-msgstr ""
+msgstr "### 3.5. Lo básico de una extensión global"
 
 #: ..\python_docs\developer_guide.py:171
 msgid ""
 "Global Plugin files have a .py extension, and should have a short unique "
 "name which identifies what they do. "
 msgstr ""
+"Los archivos de extensión global tienen la extensión .py, y deberían tener "
+"un nombre corto y único que identifique lo que hacen. "
 
 #: ..\python_docs\developer_guide.py:172
 msgid ""
@@ -963,6 +1006,10 @@ msgid ""
 "user's NVDA user configuration directory. For more information on where to "
 "find the user configuration directory, please see the NVDA user guide. "
 msgstr ""
+"Los archivos de extensión global deben situarse en la subcarpeta "
+"globalPlugins del directorio de configuración de usuario de NVDA. Para más "
+"información sobre cómo encontrar el directorio de configuración de usuario, "
+"por favor consulta la guía de usuario de NVDA. "
 
 #: ..\python_docs\developer_guide.py:173
 msgid ""
@@ -971,12 +1018,18 @@ msgid ""
 "script methods, gesture bindings and other code. This will all be covered in "
 "depth later. "
 msgstr ""
+"Las extensiones globales deben definir una clase llamada GlobalPlugin, que "
+"hereda de globalPluginHandler.GlobalPlugin. Esta clase puede definir a "
+"continuación métodos de eventos y scripts, asociaciones de gestos y otro "
+"código. Esto se cubrirá en profundidad más tarde. "
 
 #: ..\python_docs\developer_guide.py:174
 msgid ""
 "NVDA loads all global plugins as soon as it starts, and unloads them on "
 "exit. "
 msgstr ""
+"NVDA carga todas las extensiones globales tan pronto como se inicia, y las "
+"descarga al salir. "
 
 #: ..\python_docs\developer_guide.py:175
 msgid ""
@@ -1110,6 +1163,9 @@ msgid ""
 "Plugin when finished testing and then restart NVDA or reload plugins, so "
 "that original functionality is restored. "
 msgstr ""
+"Como se pide con otros ejemplos de esta guía, recuerda eliminar la extensión "
+"global creada cuando termines de hacer pruebas y reinicia NVDA o recarga las "
+"extensiones para que se restaure la funcionalidad original. "
 
 #: ..\python_docs\developer_guide.py:207
 msgid "### 3.7. NVDA Objects"
