@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-15 13:59+0100\n"
+"PO-Revision-Date: 2018-03-15 16:13+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -93,7 +93,7 @@ msgstr "    * 3.7. Objetos de NVDA"
 
 #: ..\python_docs\developer_guide.py:20
 msgid "    * 3.8. Scripts and Gesture Bindings"
-msgstr "    * 3.8. Scripts y vinculación de gestos"
+msgstr "    * 3.8. Scripts y asociación de gestos"
 
 #: ..\python_docs\developer_guide.py:21
 msgid ""
@@ -977,6 +977,12 @@ msgid ""
 "example. The most important part is the class itself. Events will be covered "
 "in greater detail later. "
 msgstr ""
+"Dentro de esta clase, define uno o más eventos, scripts o asociaciones de "
+"gestos. En este ejemplo, define un método de evento para los eventos "
+"gainFocus \\(event\\_gainFocus\\), que reproduce un pitido corto cada vez "
+"que se ejecuta. La implementación de este evento no es importante para los "
+"propósitos de este ejemplo. La parte más importante es la clase en sí. Los "
+"eventos se cubrirán con mucho más detalle más adelante. "
 
 #: ..\python_docs\developer_guide.py:169
 msgid ""
@@ -1036,6 +1042,8 @@ msgid ""
 "### 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA "
 "Version"
 msgstr ""
+"### 3.6. Ejemplo 2: una extensión global que proporciona un script para "
+"verbalizar la versión de NVDA"
 
 #: ..\python_docs\developer_guide.py:176
 msgid ""
@@ -1043,6 +1051,10 @@ msgid ""
 "anywhere in the Operating System to find out NVDA's version. This example is "
 "only to show you the basic layout of a Global Plugin. "
 msgstr ""
+"La siguiente extensión global de ejemplo te permite pulsar NVDA+shift+v en "
+"cualquier sitio del sistema operativo para obtener la versión de NVDA. Este "
+"ejemplo sólo sirve para mostrarte la estructura básica de una extensión "
+"global. "
 
 #: ..\python_docs\developer_guide.py:177
 msgid ""
@@ -1051,6 +1063,10 @@ msgid ""
 "saved in the globalPlugins subdirectory. Be very careful to keep all tabs "
 "and spaces intact. "
 msgstr ""
+"Copia el código entre \\(pero sin incluir\\) los marcadores de inicio y fin "
+"en un nuevo archivo de texto con el nombre example2.py, y guárdalo en el "
+"subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los "
+"tabuladores y espacios intactos. "
 
 #: ..\python_docs\developer_guide.py:178 ..\python_docs\developer_guide.py:261
 msgid ""
@@ -1156,6 +1172,11 @@ msgid ""
 "However, the details of the script and its binding are not important for the "
 "purposes of this example. The most important part is the class itself. "
 msgstr ""
+"En esta clase, define uno o más eventos, scripts o asociaciones de gestos. "
+"En este ejemplo, define un método de script que realiza la verbalización de "
+"versión, y ofrece una asociación de NVDA+shift+v a este script. Sin embargo, "
+"los detalles del script y su asociación no son importantes para los "
+"propósitos de este ejemplo. La parte más importante es la clase en sí. "
 
 #: ..\python_docs\developer_guide.py:206
 msgid ""
@@ -1169,7 +1190,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:207
 msgid "### 3.7. NVDA Objects"
-msgstr ""
+msgstr "### 3.7. Objetos de NVDA"
 
 #: ..\python_docs\developer_guide.py:208
 msgid ""
@@ -1182,6 +1203,15 @@ msgid ""
 "have a name of \"I agree\", a role of checkbox, and if currently checked, a "
 "state of checked. "
 msgstr ""
+"NVDA representa controles y otros elementos gráficos como objetos NVDA. "
+"Estos objetos NVDA contienen propiedades estandarizadas, como nombre, rol, "
+"valor, estados y descripción, que permiten a otras partes de NVDA consultar "
+"o presentar información sobre un control de una manera generalizada. Por "
+"ejemplo, el botón Aceptar en un diálogo sería representado como un objeto "
+"NVDA con un nombre como \"Aceptar\" y un rol de botón. De forma similar, una "
+"casilla de verificación con una etiqueta de \"Acepto\" tendría un nombre de "
+"\"Acepto\", un rol de casilla de verificación, y si actualmente está "
+"marcada, un estado de marcada. "
 
 #: ..\python_docs\developer_guide.py:209
 msgid ""
@@ -1192,20 +1222,29 @@ msgid ""
 "application, an MSAA object, an IAccessible2 object or a UI Automation "
 "element. "
 msgstr ""
+"Como hay muchos kits de herramientas gráficos y apis de accesibilidad y "
+"plataforma, los objetos NVDA abstraen sus diferencias de una forma estándar "
+"que NVDA pueda usar, sin importar la api o motor gráfico con el que un "
+"control esté hecho. Por ejemplo, el botón aceptar del que acabamos de hablar "
+"podría ser un widget en una aplicación Java, un objeto MSAA, un objeto "
+"IAccessible2 o un elemento de UI Automation. "
 
 #: ..\python_docs\developer_guide.py:210
 msgid "NVDA Objects have many properties. Some of the most useful are: "
 msgstr ""
+"Los objetos NVDA tienen muchas propiedades. Algunas de las más útiles son: "
 
 #: ..\python_docs\developer_guide.py:211
 msgid "  * name: the label of the control. "
-msgstr ""
+msgstr "  * name: la etiqueta del control. "
 
 #: ..\python_docs\developer_guide.py:212
 msgid ""
 "  * role: one of the ROLE\\_\\* constants from NVDA's controlTypes module. "
 "Button, dialog, editableText, window and checkbox are examples of roles. "
 msgstr ""
+"  * role: una de las constantes ROLE\\_\\* del módulo controlTypes de NVDA. "
+"Button, dialog, editableText, window y checkbox son ejemplos de roles. "
 
 #: ..\python_docs\developer_guide.py:213
 msgid ""
@@ -1213,30 +1252,41 @@ msgid ""
 "controlTypes module. Focusable, focused, selected, selectable, expanded, "
 "collapsed and checked are some examples of states. "
 msgstr ""
+"  * states: un conjunto de 0 o más constantes STATE\\_\\* del módulo "
+"controlTypes de NVDA. Focusable, focused, selected, selectable, expanded, "
+"collapsed y checked son algunos ejemplos de estados. "
 
 #: ..\python_docs\developer_guide.py:214
 msgid ""
 "  * value: the value of the control; e.g. the percentage of a scroll bar or "
 "the current setting of a combo box. "
 msgstr ""
+"  * value: el valor del control; por ejemplo, el porcentaje de una barra "
+"deslizante o el ajuste actual de un cuadro combinado. "
 
 #: ..\python_docs\developer_guide.py:215
 msgid ""
 "  * description: a sentence or two describing what the control does "
 "\\(usually the same as its tooltip\\). "
 msgstr ""
+"  * description: una o dos frases describiendo lo que hace el control "
+"\\(generalmente lo mismo que su descripción visual\\). "
 
 #: ..\python_docs\developer_guide.py:216
 msgid ""
 "  * location: the object's left, top, width and height positions in screen "
 "coordinates. "
 msgstr ""
+"  * location: la posición horizontal, vertical, anchura y altura en "
+"coordenadas de la pantalla. "
 
 #: ..\python_docs\developer_guide.py:217
 msgid ""
 "  * parent: this object's parent object. For example, a list item object's "
 "parent would be the list containing it. "
 msgstr ""
+"  * parent: el objeto padre de este objeto. Por ejemplo, el padre de un "
+"objeto de elemento de lista sería la lista que lo contiene. "
 
 #: ..\python_docs\developer_guide.py:218
 msgid ""
@@ -1244,26 +1294,33 @@ msgid ""
 "order. For example, a menu item NVDA Object's next object is most likely "
 "another menu item within the same menu. "
 msgstr ""
+"  * next: el objeto directamente después de este en orden lógico en el mismo "
+"nivel. Por ejemplo, el siguiente objeto de un objeto NVDA elemento de menú "
+"es muy probablemente otro elemento de menú en el mismo menú. "
 
 #: ..\python_docs\developer_guide.py:219
 msgid "  * previous: like next but in reverse. "
-msgstr ""
+msgstr "  * previous: como next pero al revés. "
 
 #: ..\python_docs\developer_guide.py:220
 msgid ""
 "  * firstChild: the first direct child object of this object. For example, a "
 "list's first child would be the first list item. "
 msgstr ""
+"  * firstChild: el primer objeto hijo directo de este objeto. Por ejemplo, "
+"el primer hijo de una lista sería el primer elemento de lista. "
 
 #: ..\python_docs\developer_guide.py:221
 msgid "  * lastChild: the last direct child of this object. "
-msgstr ""
+msgstr "  * lastChild: el último hijo directo de este objeto. "
 
 #: ..\python_docs\developer_guide.py:222
 msgid ""
 "  * children: a list of all the direct children of this object; e.g. all the "
 "menu items in a menu. "
 msgstr ""
+"  * children: una lista de todos los hijos directos de este objeto; por "
+"ejemplo, todos los elementos de menú en un menú. "
 
 #: ..\python_docs\developer_guide.py:223
 msgid ""
@@ -1290,6 +1347,7 @@ msgstr ""
 #: ..\python_docs\developer_guide.py:225
 msgid "Plugins make use of NVDA Objects in three particular ways: "
 msgstr ""
+"Las extensiones hacen uso de los objetos de NVDA de tres formas concretas: "
 
 #: ..\python_docs\developer_guide.py:226
 msgid ""
@@ -1384,39 +1442,39 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:240
 msgid "Some examples of gesture string identifiers are: "
-msgstr ""
+msgstr "Algunos ejemplos de cadenas identificadoras de gestos son: "
 
 #: ..\python_docs\developer_guide.py:241
 msgid "  * \"kb:NVDA+shift+v\" "
-msgstr ""
+msgstr "  * \"kb:NVDA+shift+v\" "
 
 #: ..\python_docs\developer_guide.py:242
 msgid "  * \"br\\(freedomScientific\\):leftWizWheelUp\" "
-msgstr ""
+msgstr "  * \"br\\(freedomScientific\\):leftWizWheelUp\" "
 
 #: ..\python_docs\developer_guide.py:243
 msgid "  * \"kb\\(laptop\\):NVDA+t\" "
-msgstr ""
+msgstr "  * \"kb\\(laptop\\):NVDA+t\" "
 
 #: ..\python_docs\developer_guide.py:244
 msgid "Currently, the input sources in NVDA are: "
-msgstr ""
+msgstr "Actualmente, las fuentes de entrada en NVDA son: "
 
 #: ..\python_docs\developer_guide.py:245
 msgid "  * kb: system keyboard input "
-msgstr ""
+msgstr "  * kb: entrada desde el teclado del sistema "
 
 #: ..\python_docs\developer_guide.py:246
 msgid "  * br: braille display controls "
-msgstr ""
+msgstr "  * br: controles de la pantalla braille "
 
 #: ..\python_docs\developer_guide.py:247
 msgid "  * ts: touch screen "
-msgstr ""
+msgstr "  * ts: pantalla táctil "
 
 #: ..\python_docs\developer_guide.py:248
 msgid "  * bk: braille keyboard input "
-msgstr ""
+msgstr "  * bk: entrada por teclado braille "
 
 #: ..\python_docs\developer_guide.py:249
 msgid ""
@@ -1428,31 +1486,35 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:250
 msgid "The order for gesture binding lookup is: "
-msgstr ""
+msgstr "El orden de búsqueda de asociación de gestos es: "
 
 #: ..\python_docs\developer_guide.py:251 ..\python_docs\developer_guide.py:297
 msgid "  * Loaded Global Plugins "
-msgstr ""
+msgstr "  * Extensiones globales cargadas "
 
 #: ..\python_docs\developer_guide.py:252
 msgid "  * App Module of the active application "
-msgstr ""
+msgstr "  * Módulo de aplicación de la aplicación activa "
 
 #: ..\python_docs\developer_guide.py:253
 msgid ""
 "  * Tree Interceptor of the NVDA Object with focus if any; e.g. a "
 "virtualBuffer "
 msgstr ""
+"  * Interceptor de árbol del objeto NVDA con el foco si lo hubiera; por "
+"ejemplo un virtualBuffer "
 
 #: ..\python_docs\developer_guide.py:254
 msgid "  * NVDA Object with focus "
-msgstr ""
+msgstr "  * Objeto NVDA con el foco "
 
 #: ..\python_docs\developer_guide.py:255
 msgid ""
 "  * Global Commands \\(built in commands like quitting NVDA, object "
 "navigation commands, etc.\\) "
 msgstr ""
+"  * Órdenes globales \\(órdenes incorporadas como salir de NVDA, órdenes de "
+"navegación por objetos, etc.\\) "
 
 #: ..\python_docs\developer_guide.py:256
 msgid ""
@@ -1503,66 +1565,69 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:265
 msgid "    #Window utility scripts for NVDA\n"
-msgstr ""
+msgstr "    #Scripts de utilidades de ventana para NVDA\n"
 
 #: ..\python_docs\developer_guide.py:266
 msgid "    #Developer guide example 3\n"
-msgstr ""
+msgstr "    # Ejemplo 3 de la guía del desarrollador\n"
 
 #: ..\python_docs\developer_guide.py:270
 msgid "    import api\n"
-msgstr ""
+msgstr "    import api\n"
 
 #: ..\python_docs\developer_guide.py:274
 msgid "    \tdef script_announceWindowClassName(self, gesture):\n"
-msgstr ""
+msgstr "    \tdef script_announceWindowClassName(self, gesture):\n"
 
 #: ..\python_docs\developer_guide.py:275 ..\python_docs\developer_guide.py:281
 msgid "    \t\tfocusObj = api.getFocusObject()\n"
-msgstr ""
+msgstr "    \t\tfocusObj = api.getFocusObject()\n"
 
 #: ..\python_docs\developer_guide.py:276 ..\python_docs\developer_guide.py:282
 msgid "    \t\tname = focusObj.name\n"
-msgstr ""
+msgstr "    \t\tname = focusObj.name\n"
 
 #: ..\python_docs\developer_guide.py:277
 msgid "    \t\twindowClassName = focusObj.windowClassName\n"
-msgstr ""
+msgstr "    \t\twindowClassName = focusObj.windowClassName\n"
 
 #: ..\python_docs\developer_guide.py:278
 msgid ""
 "    \t\tui.message(\"class for %s window: %s\" % (name, windowClassName))\n"
 msgstr ""
+"    \t\tui.message(\"clase para ventana %s: %s\" % (name, windowClassName))\n"
 
 #: ..\python_docs\developer_guide.py:280
 msgid "    \tdef script_announceWindowControlID(self, gesture):\n"
-msgstr ""
+msgstr "    \tdef script_announceWindowControlID(self, gesture):\n"
 
 #: ..\python_docs\developer_guide.py:283
 msgid "    \t\twindowControlID = focusObj.windowControlID\n"
-msgstr ""
+msgstr "    \t\twindowControlID = focusObj.windowControlID\n"
 
 #: ..\python_docs\developer_guide.py:284
 msgid ""
 "    \t\tui.message(\"Control ID for %s window: %d\" % (name, "
 "windowControlID))\n"
 msgstr ""
+"    \t\tui.message(\"Identificador de control para la ventana %s: %d\" % "
+"(name, windowControlID))\n"
 
 #: ..\python_docs\developer_guide.py:286 ..\python_docs\developer_guide.py:369
 msgid "    \t__gestures = {\n"
-msgstr ""
+msgstr "    \t__gestures = {\n"
 
 #: ..\python_docs\developer_guide.py:287
 msgid "    \t\t\"kb:NVDA+leftArrow\": \"announceWindowClassName\",\n"
-msgstr ""
+msgstr "    \t\t\"kb:NVDA+leftArrow\": \"announceWindowClassName\",\n"
 
 #: ..\python_docs\developer_guide.py:288
 msgid "    \t\t\"kb:NVDA+rightArrow\": \"announceWindowControlID\",\n"
-msgstr ""
+msgstr "    \t\t\"kb:NVDA+rightArrow\": \"announceWindowControlID\",\n"
 
 #: ..\python_docs\developer_guide.py:293
 msgid "### 3.10. Events"
-msgstr ""
+msgstr "### 3.10. Eventos"
 
 #: ..\python_docs\developer_guide.py:294
 msgid ""
@@ -1835,41 +1900,43 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:354
 msgid "    from NVDAObjects.IAccessible import IAccessible\n"
-msgstr ""
+msgstr "    from NVDAObjects.IAccessible import IAccessible\n"
 
 #: ..\python_docs\developer_guide.py:355
 msgid "    import controlTypes\n"
-msgstr ""
+msgstr "    import controlTypes\n"
 
 #: ..\python_docs\developer_guide.py:360
 msgid "    \tdef chooseNVDAObjectOverlayClasses(self, obj, clsList):\n"
-msgstr ""
+msgstr "    \tdef chooseNVDAObjectOverlayClasses(self, obj, clsList):\n"
 
 #: ..\python_docs\developer_guide.py:361
 msgid ""
 "    \t\tif obj.windowClassName == \"Edit\" and obj.role == controlTypes."
 "ROLE_EDITABLETEXT:\n"
 msgstr ""
+"    \t\tif obj.windowClassName == \"Edit\" and obj.role == controlTypes."
+"ROLE_EDITABLETEXT:\n"
 
 #: ..\python_docs\developer_guide.py:362
 msgid "    \t\t\tclsList.insert(0, EnhancedEditField)\n"
-msgstr ""
+msgstr "    \t\t\tclsList.insert(0, EnhancedEditField)\n"
 
 #: ..\python_docs\developer_guide.py:364
 msgid "    class EnhancedEditField(IAccessible):\n"
-msgstr ""
+msgstr "    class EnhancedEditField(IAccessible):\n"
 
 #: ..\python_docs\developer_guide.py:366
 msgid "    \tdef script_reportLength(self, gesture):\n"
-msgstr ""
+msgstr "    \tdef script_reportLength(self, gesture):\n"
 
 #: ..\python_docs\developer_guide.py:367
 msgid "    \t\tui.message(\"%d\" % len(self.value))\n"
-msgstr ""
+msgstr "    \t\tui.message(\"%d\" % len(self.value))\n"
 
 #: ..\python_docs\developer_guide.py:370
 msgid "    \t\t\"kb:NVDA+l\": \"reportLength\",\n"
-msgstr ""
+msgstr "    \t\t\"kb:NVDA+l\": \"reportLength\",\n"
 
 #: ..\python_docs\developer_guide.py:375
 msgid "### 3.15. Making Small Changes to an NVDA Object in App Modules"
@@ -1916,21 +1983,23 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:388
 msgid "    from NVDAObjects.window import Window\n"
-msgstr ""
+msgstr "    from NVDAObjects.window import Window\n"
 
 #: ..\python_docs\developer_guide.py:392
 msgid "    \tdef event_NVDAObject_init(self, obj):\n"
-msgstr ""
+msgstr "    \tdef event_NVDAObject_init(self, obj):\n"
 
 #: ..\python_docs\developer_guide.py:393
 msgid ""
 "    \t\tif isinstance(obj, Window) and obj.windowClassName == \"Edit\" and "
 "obj.windowControlID == 15:\n"
 msgstr ""
+"    \t\tif isinstance(obj, Window) and obj.windowClassName == \"Edit\" and "
+"obj.windowControlID == 15:\n"
 
 #: ..\python_docs\developer_guide.py:394
 msgid "    \t\t\tobj.name = \"Content\"\n"
-msgstr ""
+msgstr "    \t\t\tobj.name = \"Contenido\"\n"
 
 #: ..\python_docs\developer_guide.py:397
 msgid "## 4\\. Packaging Code as NVDA Add-ons"
