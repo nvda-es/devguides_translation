@@ -88,7 +88,7 @@ b   bravo
 <p>Esto se hace para un idioma proporcionando un archivo llamado symbols.dic en el directorio del idioma. Se trata de un archivo de texto plano codificado en UTF-8. Las líneas en blanco y aquellas que empiecen con un carácter "#" se ignoran. Todos los idiomas heredan de forma implícita la información de símbolos del inglés, aunque toda esta información puede sobreescribirse. </p>
 <p>El archivo contiene dos secciones. </p>
 <h4 id="221-definicion-de-simbolos-complejos">2.2.1. Definición de símbolos complejos</h4>
-<p>La primera sección es opcional y define patrones de expresiones regulares para símbolos complejos. Los símbolos complejos son símbolos que no constan simplemente de un carácter o secuencia de caracteres, sino que en su lugar necesitan una expresión más complicada. Un ejemplo es el punto (.) de fin de frase en inglés. El "." se usa con múltiples propósitos, por lo que se necesita una comprobación más complicada para determinar si se trata al punto final de una frase. </p>
+<p>La primera sección es opcional y define patrones de expresiones regulares para símbolos complejos. Los símbolos complejos son símbolos que no constan simplemente de un carácter o secuencia de caracteres, sino que en su lugar necesitan una expresión más complicada. Un ejemplo es el punto (.) de fin de frase en inglés. El "." se usa con múltiples propósitos, por lo que se necesita una comprobación más complicada para determinar si se trata del punto final de una frase. </p>
 <p>La sección de símbolos complejos comienza con la línea: </p>
 <pre><code>complexSymbols:
 </code></pre>
@@ -135,7 +135,7 @@ b   bravo
 <p>Por favor, consulta el archivo locale\en\symbols.dic para ver las definiciones inglesas que heredan todos los idiomas. También representa un buen ejemplo completo. </p>
 <h2 id="346-extensiones">3. Extensiones</h2>
 <h3 id="31-descripcion">3.1. Descripción</h3>
-<p>Los complementos permiten personalizar la forma en que NVDA se comporta en general o dentro de una aplicación en particular. Son capaces de: </p>
+<p>Las extensiones permiten personalizar la forma en que NVDA se comporta en general o dentro de una aplicación en particular. Son capaces de: </p>
 <ul>
 <li>Responder a eventos particulares como cambios de propiedades de objetos o del foco; por ejemplo, cuando un control cambia su nombre. </li>
 <li>Implementar órdenes que se asocian a ciertas pulsaciones de teclado u otra entrada. </li>
@@ -283,7 +283,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>gesture: un objeto de gesto de entrada, que representa el gesto que provocó la llamada al script. </li>
 </ul>
 <p>Además del método del script, se debe definir alguna forma de asociación del gesto, de tal forma que NVDA sepa qué entrada debería ejecutarlo. </p>
-<p>Para asociar un gesto a un script, puede definirse un diccionario Python llamado "__gestures" como una variable de clase en el módulo de aplicación, extensión global u objeto de NVDA. Estos diccionarios deberían contener cadenas identificadoras de gestos que apunten al nombre del script solicitado, sin el prefijo "_script". </p>
+<p>Para asociar un gesto a un script, puede definirse un diccionario Python llamado "__gestures" como una variable de clase en el módulo de aplicación, extensión global u objeto de NVDA. Estos diccionarios deberían contener cadenas identificadoras de gestos que apunten al nombre del script solicitado, sin el prefijo "script_". </p>
 <p>Hay formas más avanzadas de asociar gestos a scripts de forma más dinámica, aunque el diccionario __gestures es la manera más simple. </p>
 <p>Una cadena identificadora de gesto es una representación en forma de cadena de una unidad de entrada simple. Consiste en un código de dos caracteres que identifica la fuente de la entrada, un dispositivo opcional entre paréntesis, dos puntos (:) y uno o más nombres separados por el signo más (+) que identifican las teclas o valores de entrada. </p>
 <p>Algunos ejemplos de cadenas identificadoras de gestos son: </p>
@@ -529,7 +529,7 @@ class AppModule(appModuleHandler.AppModule):
 <li>name: un nombre corto y único para el complemento. Se usa para diferenciar a los complementos internamente y no se muestra al usuario. (Obligatorio) </li>
 <li>summary: el nombre del complemento tal como se muestra al usuario. (Obligatorio) </li>
 <li>version: la versión del complemento, por ejemplo 2.0. (Obligatorio) </li>
-<li>author: el autor del complemento, preferiblemente en la forma nombre completo <dirección de correo>; por ejemplo Michael Curran &lt;<a href="mailto:mick@kulgan.net">mick@kulgan.net</a>&gt;. (Obligatorio) </li>
+<li>author: el autor del complemento, preferiblemente en la forma nombre completo &lt;dirección de correo&gt;; por ejemplo Michael Curran &lt;<a href="mailto:mick@kulgan.net">mick@kulgan.net</a>&gt;. (Obligatorio) </li>
 <li>description: una o dos frases que describan qué hace el complemento. </li>
 <li>url: una URL donde pueda encontrarse este complemento, sus actualizaciones y más información sobre él. </li>
 <li>docFileName: el nombre del archivo de documentación principal para el complemento; por ejemplo readme.html. Mira la sección de documentación de complementos para más detalles. </li>
@@ -570,12 +570,12 @@ url = http://www.nvda-project.org/wiki/Development
 <h4 id="451-archivos-de-manifiesto-especificos-del-idioma">4.5.1. Archivos de manifiesto específicos del idioma</h4>
 <p>Cada uno de estos directorios de idioma puede contener un archivo de manifiesto específico del idioma llamado manifest.ini, que puede tener un pequeño subconjunto de los campos de manifiesto para traducir. Estos campos son summary y description. Todos los demás campos se ignoran. </p>
 <h4 id="452-mensajes-especificos-del-idioma">4.5.2. Mensajes específicos del idioma</h4>
-<p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web. </p>
+<p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web. </p>
 <h3 id="46-documentacion-del-complemento">4.6. Documentación del complemento</h3>
 <p>La documentación para un complemento debería situarse en un directorio doc en el archivo. De forma similar al directorio locale, este directorio debería contener carpetas para cada idioma en el que haya disponible documentación. </p>
-<p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionado el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
+<p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionando el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
 <h2 id="546-la-consola-python-de-nvda">5. La consola Python de NVDA</h2>
-<p>La consola Python de NVDA emula el intérprete interactivo de Python desde NVDA. Es una herramienta de desarrollo útil para depurar, inspección interna general de NVDA, o inspección de la jerarquía de accesibilidad de una aplicación. </p>
+<p>La consola Python de NVDA emula el intérprete interactivo de Python desde NVDA. Es una herramienta de desarrollo útil para depuración, inspección interna general de NVDA, o inspección de la jerarquía de accesibilidad de una aplicación. </p>
 <h3 id="51-modo-de-uso">5.1. Modo de uso</h3>
 <p>La consola puede activarse de dos formas: </p>
 <ul>
