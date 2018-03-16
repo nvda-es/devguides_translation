@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-16 18:32+0100\n"
+"PO-Revision-Date: 2018-03-16 18:36+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -142,7 +142,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:29
 msgid "  * 4\\. Packaging Code as NVDA Add-ons"
-msgstr "  *4\\. Empaquetado de código como complementos de NVDA"
+msgstr "  * 4\\. Empaquetado de código como complementos de NVDA"
 
 #: ..\python_docs\developer_guide.py:30
 msgid "    * 4.1. Non-ASCII File Names in Zip Archives"
