@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-16 12:05+0100\n"
+"PO-Revision-Date: 2018-03-16 13:38+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1910,6 +1910,12 @@ msgid ""
 "reading functionality, or perhaps even some games that need full use of the "
 "keyboard. "
 msgstr ""
+"Los módulos de aplicación tienen una propiedad muy útil llamada \"sleepMode"
+"\", que si se establece a True deshabilita casi completamente NVDA en la "
+"aplicación correspondiente. El modo latente es muy útil para aplicaciones "
+"con respuesta de voz propia o funciones internas de lectura de pantalla, o "
+"quizás incluso algunos juegos que necesitan disponer completamente del "
+"teclado. "
 
 #: ..\python_docs\developer_guide.py:322
 msgid ""
@@ -1918,10 +1924,15 @@ msgid ""
 "default for an application. This is done by providing an App Module for that "
 "application which simply sets sleepMode to True in the AppModule class. "
 msgstr ""
+"Aunque el modo latente puede ser activado y desactivado por el usuario con "
+"la orden de teclado NVDA+shift+s, un desarrollador puede elegir tener el "
+"modo latente activado por defecto para una aplicación. Esto se hace "
+"proporcionando un módulo de aplicación para esa aplicación que simplemente "
+"establezca sleepMode a True en la clase AppModule. "
 
 #: ..\python_docs\developer_guide.py:323
 msgid "### 3.12. Example 4: A Sleep Mode App Module"
-msgstr ""
+msgstr "### 3.12. Ejemplo 4: un módulo de aplicación en modo latente"
 
 #: ..\python_docs\developer_guide.py:324
 msgid ""
@@ -1929,14 +1940,18 @@ msgid ""
 "the appModules directory with the name of the application you wish to enable "
 "sleep mode for. As always, the file must have a .py extension. "
 msgstr ""
+"El siguiente código se puede copiar y pegar en un archivo de texto, y "
+"guardarse en el directorio appModules con el nombre de la aplicación para la "
+"que quieras activar el modo latente. Como siempre, el archivo debe tener "
+"extensión .py. "
 
 #: ..\python_docs\developer_guide.py:332
 msgid "    \tsleepMode = True\n"
-msgstr ""
+msgstr "    \tsleepMode = True\n"
 
 #: ..\python_docs\developer_guide.py:336
 msgid "### 3.13. Providing Custom NVDA Object Classes"
-msgstr ""
+msgstr "### 3.13. Proporcionar clases de objetos personalizados de NVDA"
 
 #: ..\python_docs\developer_guide.py:337
 msgid ""
@@ -1946,22 +1961,34 @@ msgid ""
 "control altogether in one NVDA Object class for that control, rather than "
 "scattering code for many controls across a plugin's events. "
 msgstr ""
+"Ofrecer clases personalizadas de objetos NVDA es probablemente la forma más "
+"potente y útil de mejorar la experiencia para una aplicación en una "
+"extensión de NVDA. Este método te permite situar toda la lógica necesaria "
+"para un control en particular junta en una única clase de objeto de NVDA "
+"para ese control, en vez de crear código para muchos controles a través de "
+"los eventos de la extensión. "
 
 #: ..\python_docs\developer_guide.py:338
 msgid "There are two steps to providing a custom NVDA Object class: "
 msgstr ""
+"Hay dos pasos para proporcionar una clase de objeto de NVDA personalizado: "
 
 #: ..\python_docs\developer_guide.py:339
 msgid ""
 "  * Define the NVDA Object class and its events, scripts, gesture bindings "
 "and overridden properties. "
 msgstr ""
+"  * Definir la clase del objeto NVDA y sus eventos, scripts, asociaciones de "
+"gestos y propiedades sobreescritas. "
 
 #: ..\python_docs\developer_guide.py:340
 msgid ""
 "  * Tell NVDA to use this NVDA Object class in specific situations by "
 "handling it in the plugin's chooseNVDAObjectOverlayClasses method. "
 msgstr ""
+"  * Decirle a NVDA que use esta clase de objeto de NVDA en situaciones "
+"específicas manejándola en el método chooseNVDAObjectOverlayClasses de la "
+"extensión. "
 
 #: ..\python_docs\developer_guide.py:341
 msgid ""
@@ -1981,25 +2008,45 @@ msgid ""
 "such as shouldAllowIAccessibleFocusEvent, then you need to inherit from "
 "NVDAObjects.IAccessible.IAccessible. "
 msgstr ""
+"Al definir una clase de objeto NVDA personalizado, tienes muchas clases base "
+"de objetos NVDA para elegir. Estas clases base contienen el soporte básico "
+"para la api de accesibilidad o del sistema operativo subyacente al control, "
+"como por ejemplo Win32, MSAA, o Java Access Bridge. Deberías hacer que tu "
+"clase de objeto NVDA personalizado herede de la clase base más alta que "
+"necesites para elegir tu clase en primer lugar. Por ejemplo, si eliges usar "
+"tu clase de objeto NVDA personalizada cuando el nombre de clase de ventana "
+"sea \"Edit\" y el identificador de control de la ventana sea 15, "
+"probablemente deberías heredar de NVDAObjects.window.Window, ya que "
+"claramente eres consciente de que este es un objeto Window. De forma "
+"similar, si te fijas en la propiedad accRole de MSAA, probablemente deberías "
+"heredar de NVDAObjects.IAccessible.IAccessible. También deberías considerar "
+"qué propiedades vas a sobreescribir en el objeto NVDA personalizado. Por "
+"ejemplo, si vas a sobreescribir una propiedad específica de IAccessible, "
+"como shouldAllowIAccessibleFocusEvent, entonces debes heredar de NVDAObjects."
+"IAccessible.IAccessible. "
 
 #: ..\python_docs\developer_guide.py:342
 msgid ""
 "the chooseNVDAObjectOverlayClasses method can be implemented on app modules "
 "or global plugin classes. It takes 3 arguments: "
 msgstr ""
+"el método chooseNVDAObjectOverlayClasses puede implementarse en en clases de "
+"módulos de aplicación o extensiones globales. Recibe 3 argumentos: "
 
 #: ..\python_docs\developer_guide.py:343
 msgid "  1. self: the app module or global plugin instance. "
-msgstr ""
+msgstr "  1. self: la instancia del módulo de aplicación o extensión global. "
 
 #: ..\python_docs\developer_guide.py:344
 msgid "  2. obj: the NVDAObject for which classes are being chosen. "
-msgstr ""
+msgstr "  2. obj: el objeto de NVDA para el que se van a elegir clases. "
 
 #: ..\python_docs\developer_guide.py:345
 msgid ""
 "  3. clsList: a Python list of NVDAObject classes that will be used for obj. "
 msgstr ""
+"  3. clsList: una lista Python de clases de objetos NVDA que se usarán con "
+"obj. "
 
 #: ..\python_docs\developer_guide.py:346
 msgid ""
@@ -2009,12 +2056,20 @@ msgid ""
 "usually at the beginning. You can also remove classes chosen by NVDA from "
 "the class list, although this is rarely required. "
 msgstr ""
+"Dentro de este método, deberías decidir qué clase o clases de objeto NVDA "
+"personalizado (si las hay) debería usar este objeto NVDA comprobando sus "
+"propiedades, etc. Si debiera usarse una clase personalizada, debe insertarse "
+"en la lista de clases, normalmente al principio. También puedes eliminar "
+"clases elegidas por NVDA de la lista de clases, aunque esto rara vez hace "
+"falta. "
 
 #: ..\python_docs\developer_guide.py:347
 msgid ""
 "### 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field "
 "Using a Custom NVDA Object"
 msgstr ""
+"### 3.14. Ejemplo 5: orden para recuperar la longitud del texto en un cuadro "
+"de edición usando un objeto de NVDA personalizado"
 
 #: ..\python_docs\developer_guide.py:348
 msgid ""
@@ -2023,12 +2078,19 @@ msgid ""
 "command is specific to edit fields; i.e. it only works while you are focused "
 "in an edit field, rather than anywhere in the application. "
 msgstr ""
+"Este módulo de aplicación para el bloc de notas proporciona una orden para "
+"informar sobre el número de caracteres en los cuadros de edición. Puedes "
+"activarlo usando NVDA+l. Ten en cuenta que la orden es específica para "
+"cuadros de edición; sólo funciona si el foco está en uno, en vez de "
+"funcionar en cualquier lugar de la aplicación. "
 
 #: ..\python_docs\developer_guide.py:349 ..\python_docs\developer_guide.py:383
 msgid ""
 "The following code can be copied and pasted in to a text file, then saved in "
 "the appModules directory with the name of notepad.py. "
 msgstr ""
+"El siguiente código puede copiarse y pegarse en un archivo de texto, y "
+"guardarse en el directorio appModules con el nombre notepad.py. "
 
 #: ..\python_docs\developer_guide.py:354
 msgid "    from NVDAObjects.IAccessible import IAccessible\n"
@@ -2073,6 +2135,7 @@ msgstr "    \t\t\"kb:NVDA+l\": \"reportLength\",\n"
 #: ..\python_docs\developer_guide.py:375
 msgid "### 3.15. Making Small Changes to an NVDA Object in App Modules"
 msgstr ""
+"### 3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación"
 
 #: ..\python_docs\developer_guide.py:376
 msgid ""
@@ -2081,30 +2144,39 @@ msgid ""
 "need the full power of a custom NVDA Object class. To do this, you can use "
 "the NVDAObject\\_init event available only on App Modules. "
 msgstr ""
+"En ocasiones, puedes querer hacer solamente pequeños cambios a un objeto de "
+"NVDA en una aplicación, tales como sobreescribir su nombre o su rol. En "
+"estos casos, no necesitas el poder completo de una clase de objeto NVDA "
+"personalizada. Para hacerlo, puedes usar el evento NVDAObject\\_init, "
+"disponible únicamente en módulos de aplicación. "
 
 #: ..\python_docs\developer_guide.py:377
 msgid "The event\\_NVDAObject\\_init method takes two arguments: "
-msgstr ""
+msgstr "El método event\\_NVDAObject\\_init recibe dos argumentos: "
 
 #: ..\python_docs\developer_guide.py:378
 msgid "  1. self: the AppModule instance. "
-msgstr ""
+msgstr "  1. self: la instancia del módulo de aplicación. "
 
 #: ..\python_docs\developer_guide.py:379
 msgid "  2. obj: the NVDAObject being initialized. "
-msgstr ""
+msgstr "  2. obj: el objeto de NVDA que se inicializa. "
 
 #: ..\python_docs\developer_guide.py:380
 msgid ""
 "Inside this method, you can check whether this object is relevant and then "
 "override properties accordingly. "
 msgstr ""
+"Dentro de este método, puedes comprobar si este objeto es relevante y "
+"sobreescribir propiedades en consecuencia. "
 
 #: ..\python_docs\developer_guide.py:381
 msgid ""
 "### 3.16. Example 6: Labelling the Notepad Edit Field Using event"
 "\\_NVDAObject\\_init"
 msgstr ""
+"### 3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas "
+"usando event\\_NVDAObject\\_init"
 
 #: ..\python_docs\developer_guide.py:382
 msgid ""
@@ -2112,6 +2184,10 @@ msgid ""
 "having a name of \"content\". That is, when it receives focus, NVDA will say "
 "\"Content edit\". "
 msgstr ""
+"Este módulo de aplicación para el bloc de notas hace que NVDA indique el "
+"cuadro de edición principal del bloc de notas como si tuviera el nombre "
+"\"contenido\". Es decir, cuando recibe el foco, NVDA dirá \"contenido edición"
+"\". "
 
 #: ..\python_docs\developer_guide.py:388
 msgid "    from NVDAObjects.window import Window\n"
@@ -2324,7 +2400,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:432
 msgid "#### 4.4.1. the onInstall function"
-msgstr ""
+msgstr "#### 4.4.1. La función onInstall"
 
 #: ..\python_docs\developer_guide.py:433
 msgid ""
@@ -2339,7 +2415,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:434
 msgid "#### 4.4.2. The onUninstall Function"
-msgstr ""
+msgstr "#### 4.4.2. La función onUninstall"
 
 #: ..\python_docs\developer_guide.py:435
 msgid ""
@@ -2352,7 +2428,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:436
 msgid "### 4.5. Localizing Add-ons"
-msgstr ""
+msgstr "### 4.5. Traducción de complementos"
 
 #: ..\python_docs\developer_guide.py:437
 msgid ""
@@ -2365,7 +2441,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:438
 msgid "#### 4.5.1. Locale-specific Manifest Files"
-msgstr ""
+msgstr "#### 4.5.1. Archivos de manifiesto específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:439
 msgid ""
@@ -2377,7 +2453,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:440
 msgid "#### 4.5.2. Locale-specific Messages"
-msgstr ""
+msgstr "#### 4.5.2. Mensajes específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:441
 msgid ""
@@ -2394,7 +2470,7 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:442
 msgid "### 4.6. Add-on Documentation"
-msgstr ""
+msgstr "### 4.6. Documentación del complemento"
 
 #: ..\python_docs\developer_guide.py:443
 msgid ""
