@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-15 16:58+0100\n"
+"PO-Revision-Date: 2018-03-16 12:05+0100\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1334,6 +1334,16 @@ msgid ""
 "NVDA as improvements are made to simple review, so they should generally be "
 "avoided when programmatically locating specific objects. "
 msgstr ""
+"También hay unas pocas propiedades de navegación simplificada, como "
+"simpleParent, simpleNext, simpleFirstChild y simpleLastChild. Son como sus "
+"respectivas propiedades de navegación descritas más arriba, pero NVDA filtra "
+"y desecha objetos inútiles. Estas propiedades se usan cuando el modo de "
+"revisión simple de NVDA está activado, lo que viene así por defecto. Estas "
+"propiedades simples pueden ser más fáciles de utilizar, pero las propiedades "
+"de navegación real reflejan de forma más cercana la estructura subyacente "
+"del sistema operativo. Además, también pueden cambiar en versiones futuras "
+"de NVDA según se hagan mejoras a la revisión simple, por lo que generalmente "
+"deberían evitarse al ubicar mediante programación los objetos. "
 
 #: ..\python_docs\developer_guide.py:224
 msgid ""
@@ -1343,6 +1353,13 @@ msgid ""
 "advanced, it is certainly possible to delve deeper into NVDA Objects to find "
 "out toolkit or API specific information if required. "
 msgstr ""
+"Al desarrollar extensiones, en la mayoría de los casos, no es importante el "
+"kit de herramientas o la api que hay tras un objeto de NVDA, ya que la "
+"extensión normalmente sólo accederá a propiedades estándar como name, role y "
+"value. Sin embargo, según las extensiones se vuelven más avanzadas, es "
+"ciertamente posible tener que profundizar en los objetos de NVDA para "
+"obtener información específica de la api o kit de herramientas si es "
+"necesario. "
 
 #: ..\python_docs\developer_guide.py:225
 msgid "Plugins make use of NVDA Objects in three particular ways: "
@@ -1355,6 +1372,10 @@ msgid ""
 "Object on which the event occurred. For example, event\\_gainFocus takes the "
 "NVDA Object that represents the control gaining focus. "
 msgstr ""
+"  * La mayoría de eventos que las extensiones reciben tienen un argumento "
+"que es el objeto en el que ha ocurrido el evento. Por ejemplo, event"
+"\\_gainFocus recibe el objeto de NVDA que representa el control que obtiene "
+"el foco. "
 
 #: ..\python_docs\developer_guide.py:227
 msgid ""
@@ -1364,6 +1385,12 @@ msgid ""
 "or perhaps even retreave another object related to it \\(e.g. its parent, "
 "first child, etc.\\). "
 msgstr ""
+"  * Los eventos, scripts u otro código pueden tomar objetos de interés como "
+"el objeto NVDA que tiene el foco, el objeto NVDA actual del navegador de "
+"objetos, o tal vez el objeto NVDA del escritorio. El código puede a "
+"continuación recuperar información de ese objeto o tal vez incluso recuperar "
+"otro objeto relacionado con él \\(por ejemplo su padre, primer hijo, etc."
+"\\). "
 
 #: ..\python_docs\developer_guide.py:228
 msgid ""
@@ -1371,16 +1398,21 @@ msgid ""
 "used to wrap a specific control to give it extra functionality, mutate its "
 "properties, etc. "
 msgstr ""
+"  * La extensión puede definir sus propias clases de objetos de NVDA "
+"personalizadas, que se usarán para envolver un control específico para darle "
+"funcionalidad extra, modificar sus propiedades, etc. "
 
 #: ..\python_docs\developer_guide.py:229
 msgid ""
 "Just like App Modules and Global Plugins, NVDA Objects can also define "
 "events, scripts and gesture bindings. "
 msgstr ""
+"Al igual que los módulos de aplicación o las extensiones, los objetos de "
+"NVDA también pueden definir eventos, scripts y asociaciones de gestos. "
 
 #: ..\python_docs\developer_guide.py:230
 msgid "### 3.8. Scripts and Gesture Bindings"
-msgstr ""
+msgstr "### 3.8. Scripts y asociación de gestos"
 
 #: ..\python_docs\developer_guide.py:231
 msgid ""
@@ -1388,34 +1420,46 @@ msgid ""
 "which can be bound to a particular piece of input such as a key press. NVDA "
 "refers to these methods as scripts. "
 msgstr ""
+"Los módulos de aplicación, extensiones globales y objetos de NVDA pueden "
+"definir métodos especiales que pueden asociarse a una unidad de entrada "
+"particular como una pulsación de teclado. NVDA se refiere a estos métodos "
+"llamándolos scripts. "
 
 #: ..\python_docs\developer_guide.py:232
 msgid ""
 "A script is a standard Python instance method with a name starting with "
 "\"script\\_\"; e.g. \"script\\_sayDateTime\". "
 msgstr ""
+"Un script es un método de instancia de Python estándar con un nombre que "
+"empieza por \"script\\_\"; por ejemplo, \"script\\_sayDateTime\". "
 
 #: ..\python_docs\developer_guide.py:233
 msgid "A script method takes two arguments: "
-msgstr ""
+msgstr "Un método de script recibe dos argumentos: "
 
 #: ..\python_docs\developer_guide.py:234
 msgid ""
 "  * self: a reference to the App Module, Global Plugin or NVDA Object "
 "instance the script was called on. "
 msgstr ""
+"  * self: una referencia a la instancia del módulo de aplicación, extensión "
+"global u objeto de NVDA donde se ha llamado al script. "
 
 #: ..\python_docs\developer_guide.py:235
 msgid ""
 "  * gesture: an Input Gesture object, which represents the input that caused "
 "the script to run. "
 msgstr ""
+"  * gesture: un objeto de gesto de entrada, que representa el gesto que "
+"provocó la llamada al script. "
 
 #: ..\python_docs\developer_guide.py:236
 msgid ""
 "As well as the actual script method, some form of gesture binding must be "
 "defined, so that NVDA knows what input should execute the script. "
 msgstr ""
+"Además del método del script, se debe definir alguna forma de asociación del "
+"gesto, de tal forma que NVDA sepa qué entrada debería ejecutarlo. "
 
 #: ..\python_docs\developer_guide.py:237
 msgid ""
@@ -1425,12 +1469,19 @@ msgid ""
 "strings pointing to the name of the requested script, without the \"script\\_"
 "\" prefix. "
 msgstr ""
+"Para asociar un gesto a un script, puede definirse un diccionario Python "
+"llamado \"\\_\\_gestures\" como una variable de clase en el módulo de "
+"aplicación, extensión global u objeto de NVDA. Estos diccionarios deberían "
+"contener cadenas identificadoras de gestos que apunten al nombre del script "
+"solicitado, sin el prefijo \"\\_script\". "
 
 #: ..\python_docs\developer_guide.py:238
 msgid ""
 "There are more advanced ways of binding gestures in a more dynamic fashion, "
 "though the \\_\\_gestures dictionary is the simplest. "
 msgstr ""
+"Hay formas más avanzadas de asociar gestos a scripts de forma más dinámica, "
+"aunque el diccionario \\_\\_gestures es la manera más simple. "
 
 #: ..\python_docs\developer_guide.py:239
 msgid ""
@@ -1439,6 +1490,11 @@ msgid ""
 "input, an optional device in brackets, a colon \\(:\\) and one or more names "
 "separated by a plus \\(+\\) denoting the actual keys or input values. "
 msgstr ""
+"Una cadena identificadora de gesto es una representación en forma de cadena "
+"de una unidad de entrada simple. Consiste en un código de dos caracteres que "
+"identifica la fuente de la entrada, un dispositivo opcional entre "
+"paréntesis, dos puntos \\(:\\) y uno o más nombres separados por el signo "
+"más \\(+\\) que identifican las teclas o valores de entrada. "
 
 #: ..\python_docs\developer_guide.py:240
 msgid "Some examples of gesture string identifiers are: "
@@ -1483,6 +1539,10 @@ msgid ""
 "and no further bindings are used, nore is that particular gesture passed on "
 "automatically to the Operating System. "
 msgstr ""
+"Cuando NVDA recibe entrada, busca una asociación de gesto que encaje con "
+"ella en un orden particular. Una vez se encuentra una asociación de gesto, "
+"se ejecuta el script y no se usan otras asociaciones, ni se pasa el gesto "
+"automáticamente al sistema operativo. "
 
 #: ..\python_docs\developer_guide.py:250
 msgid "The order for gesture binding lookup is: "
@@ -1525,6 +1585,13 @@ msgid ""
 "function. The script will not appear in the Input Gestures dialog unless "
 "this is specified. "
 msgstr ""
+"Deberías especificar una descripción del script en la cadena de "
+"documentación de la función que describa la orden a los usuarios. Por "
+"ejemplo, esto se informa a los usuarios en el modo de ayuda de entrada y se "
+"muestra en el diálogo Gestos de entrada. Para especificar la cadena de "
+"documentación se establece un atributo \"__doc\" en la función del script. "
+"El script no aparecerá en el diálogo Gestos de entrada a menos que esta se "
+"especifique. "
 
 #: ..\python_docs\developer_guide.py:257
 msgid ""
@@ -1540,11 +1607,25 @@ msgid ""
 "category in the Input Gestures dialog. If no category is specified, the "
 "script will be categorized under \"Miscellaneous\". "
 msgstr ""
+"También puedes especificar una categoría para un script de tal forma que se "
+"agrupe con otros scripts similares. Por ejemplo, un script en una extensión "
+"global que añade teclas rápidas de navegación en el modo exploración puede "
+"meterse bajo la categoría \"Modo exploración\". Para scripts individuales, "
+"esto se hace estableciendo un atributo \"category\" en la función del script "
+"con una cadena que contenga el nombre de la categoría. También puedes "
+"establecer el atributo \"scriptCategory\" en la clase de la extensión, que "
+"se usará para scripts que no especifiquen una categoría. Hay constantes para "
+"categorías comunes, prefijadas con SCRCAT\\_ en los módulos inputCore y "
+"globalCommands. El script se listará en la categoría especificada en el "
+"diálogo Gestos de entrada. Si no se especifica categoría, el script se "
+"meterá en \"Miscelánea\". "
 
 #: ..\python_docs\developer_guide.py:258
 msgid ""
 "### 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
 msgstr ""
+"### 3.9. Ejemplo 3: una extensión global para encontrar la clase de la "
+"ventana y el identificador del control"
 
 #: ..\python_docs\developer_guide.py:259
 msgid ""
@@ -1554,6 +1635,12 @@ msgid ""
 "to define one or more scripts and gesture bindings on a class such as an App "
 "Module, Global Plugin or NVDA Object. "
 msgstr ""
+"La siguiente extensión global te permite pulsar NVDA+flecha izquierda para "
+"verbalizar la clase de ventana del objeto con el foco; y NVDA+flecha derecha "
+"para anunciar el identificador de ventana del control actual con el foco. "
+"Este ejemplo te muestra cómo definir uno o más scripts y asociaciones de "
+"gestos en una clase tal como un módulo de aplicación, extensión global u "
+"objeto de NVDA. "
 
 #: ..\python_docs\developer_guide.py:260
 msgid ""
@@ -1562,6 +1649,10 @@ msgid ""
 "saved in the globalPlugins subdirectory. Be very careful to keep all tabs "
 "and spaces intact. "
 msgstr ""
+"Copia el código entre \\(pero sin incluir\\) los marcadores de inicio y fin "
+"en un nuevo archivo de texto con el nombre example3.py, y guárdalo en el "
+"subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los "
+"tabuladores y espacios intactos. "
 
 #: ..\python_docs\developer_guide.py:265
 msgid "    #Window utility scripts for NVDA\n"
@@ -1635,6 +1726,9 @@ msgid ""
 "abstracts these and fires its own internal events on plugins and NVDA "
 "Objects. "
 msgstr ""
+"Cuando NVDA detecta eventos particulares del kit de herramientas, api o "
+"sistema operativo, los abstrae y dispara sus propios eventos en extensiones "
+"y objetos NVDA. "
 
 #: ..\python_docs\developer_guide.py:295
 msgid ""
@@ -1644,40 +1738,57 @@ msgid ""
 "down the chain. However, code inside the event can choose to propagate it "
 "further if needed. "
 msgstr ""
+"Aunque la mayoría de eventos están relacionados con un objeto de NVDA "
+"específico \\(por ejemplo cambio de nombre, obtención de foco, cambio de "
+"estado, etc.\\), estos eventos pueden manejarse a varios niveles. Cuando un "
+"evento se captura, se impide que pase al siguiente punto de la cadena. Sin "
+"embargo, el código dentro del evento puede elegir si se propaga más "
+"adelante. "
 
 #: ..\python_docs\developer_guide.py:296
 msgid ""
 "The order of levels through which the event passes until an event method is "
 "found is: "
 msgstr ""
+"El orden de niveles por los que pasa el evento hasta que se encuentra un "
+"método de evento es: "
 
 #: ..\python_docs\developer_guide.py:298
 msgid ""
 "  * The App Module associated with the NVDA Object on which the event was "
 "fired "
 msgstr ""
+"  * El módulo de aplicación asociado con el objeto de NVDA en el que se ha "
+"disparado el evento "
 
 #: ..\python_docs\developer_guide.py:299
 msgid ""
 "  * The Tree Interceptor \\(if any\\) associated with the NVDAObject on "
 "which the event was fired "
 msgstr ""
+"  * El interceptor de árbol \\(si lo hay\\) asociado con el objeto de NVDA "
+"donde se ha disparado el evento "
 
 #: ..\python_docs\developer_guide.py:300
 msgid "  * the NVDAObject itself. "
-msgstr ""
+msgstr "  * El propio objeto de NVDA. "
 
 #: ..\python_docs\developer_guide.py:301
 msgid ""
 "Events are Python instance methods, with a name starting with \"event\\_\" "
 "followed by the actual name of the event \\(e.g. gainFocus\\). "
 msgstr ""
+"Los eventos son métodos Python de instancia, con un nombre que empieza por "
+"\"event\\_\" seguido del nombre real del evento \\(por ejemplo, gainFocus"
+"\\). "
 
 #: ..\python_docs\developer_guide.py:302
 msgid ""
 "These event methods take slightly different arguments depending at what "
 "level they are defined. "
 msgstr ""
+"Estos métodos de evento reciben argumentos ligeramente diferentes "
+"dependiendo del nivel en el que se definan. "
 
 #: ..\python_docs\developer_guide.py:303
 msgid ""
@@ -1686,89 +1797,110 @@ msgid ""
 "the NVDA Object instance\\). Some events may take extra arguments, though "
 "this is quite rare. "
 msgstr ""
+"Si se define un evento para un objeto de NVDA en ese objeto, el método sólo "
+"recibe un argumento obligatorio, el argumento 'self'; es decir, la instancia "
+"del objeto de NVDA. Algunos eventos pueden recibir argumentos extra, aunque "
+"es bastante raro. "
 
 #: ..\python_docs\developer_guide.py:304
 msgid ""
 "If an event for an NVDA Object is defined on a Global Plugin, App Module or "
 "Tree Interceptor, the event takes the following arguments: "
 msgstr ""
+"Si se define un evento para un objeto de NVDA en una extensión global, "
+"módulo de aplicación o interceptor de árbol, el evento recibe los siguientes "
+"argumentos: "
 
 #: ..\python_docs\developer_guide.py:305
 msgid ""
 "  * self: the instance of the Global Plugin, App Module or Tree Interceptor "
 msgstr ""
+"  * self: la instancia de la extensión global, módulo de aplicación o "
+"interceptor de árbol "
 
 #: ..\python_docs\developer_guide.py:306
 msgid "  * obj: the NVDA Object on which the event was fired "
-msgstr ""
+msgstr "  * obj: el objeto de NVDA en el que se ha disparado el evento "
 
 #: ..\python_docs\developer_guide.py:307
 msgid ""
 "  * nextHandler: a function that when called will propagate the event "
 "further down the chain. "
 msgstr ""
+"  * nextHandler: una función que al ser llamada propaga el evento al "
+"siguiente punto de la cadena. "
 
 #: ..\python_docs\developer_guide.py:308
 msgid "Some common NVDA Object events are: "
-msgstr ""
+msgstr "Algunos eventos comunes de objetos de NVDA son: "
 
 #: ..\python_docs\developer_guide.py:309
 msgid ""
 "  * foreground: this NVDA Object has become the new foreground object; i.e. "
 "active top-level object "
 msgstr ""
+"  * foreground: este objeto de NVDA se ha convertido en el nuevo objeto en "
+"primer plano; es decir, el objeto activo de nivel superior. "
 
 #: ..\python_docs\developer_guide.py:310
 msgid "  * gainFocus "
-msgstr ""
+msgstr "  * gainFocus "
 
 #: ..\python_docs\developer_guide.py:311
 msgid ""
 "  * focusEntered: Focus has moved inside this object; i.e. it is an ancestor "
 "of the focus object "
 msgstr ""
+"  * focusEntered: el foco se ha movido dentro de este objeto; es decir, es "
+"un antepasado del objeto con el foco "
 
 #: ..\python_docs\developer_guide.py:312
 msgid "  * loseFocus "
-msgstr ""
+msgstr "  * loseFocus "
 
 #: ..\python_docs\developer_guide.py:313
 msgid "  * nameChange "
-msgstr ""
+msgstr "  * nameChange "
 
 #: ..\python_docs\developer_guide.py:314
 msgid "  * valueChange "
-msgstr ""
+msgstr "  * valueChange "
 
 #: ..\python_docs\developer_guide.py:315
 msgid "  * stateChange "
-msgstr ""
+msgstr "  * stateChange "
 
 #: ..\python_docs\developer_guide.py:316
 msgid ""
 "  * caret: when the caret \\(insertion point\\) within this NVDA Object "
 "moves "
 msgstr ""
+"  * caret: cuando el caret \\(punto de inserción\\) se mueve dentro de este "
+"objeto de NVDA "
 
 #: ..\python_docs\developer_guide.py:317
 msgid "  * locationChange: physical screen location changes "
-msgstr ""
+msgstr "  * locationChange: la ubicación en la pantalla física cambia "
 
 #: ..\python_docs\developer_guide.py:318
 msgid ""
 "There are many other events, though those listed above are usually the most "
 "useful. "
 msgstr ""
+"Hay muchos otros eventos, aunque los que se han listado arriba son "
+"normalmente los más útiles. "
 
 #: ..\python_docs\developer_guide.py:319
 msgid ""
 "For an example of an event handled by an App Module, please refer to example "
 "1 \\(focus beeps in notepad\\). "
 msgstr ""
+"Para ver un ejemplo de un evento manejado por un módulo de aplicación, mira "
+"el ejemplo 1 \\(pitidos del foco en el bloc de notas\\). "
 
 #: ..\python_docs\developer_guide.py:320
 msgid "### 3.11. the App Module SleepMode variable"
-msgstr ""
+msgstr "### 3.11. La variable SleepMode en módulos de aplicación"
 
 #: ..\python_docs\developer_guide.py:321
 msgid ""
