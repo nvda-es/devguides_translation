@@ -1,0 +1,613 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Guía del desarrollador de NVDA 2018.1</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Guía del desarrollador de NVDA 2018.1</h1></header>
+  <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
+<ul>
+<li>1. Introducción<ul>
+<li>1.1. Una nota sobre Python</li>
+</ul>
+</li>
+<li>2. Traducción<ul>
+<li>2.1. Descripción de caracteres</li>
+<li>2.2. Pronunciación de símbolos</li>
+<li>2.2.1. Definición de símbolos complejos</li>
+<li>2.2.2. Definición de información de símbolos</li>
+</ul>
+</li>
+<li>3. Extensiones<ul>
+<li>3.1. Descripción</li>
+<li>3.2. Tipos de extensiones</li>
+<li>3.3. Lo básico de un módulo de aplicación</li>
+<li>3.4. Ejemplo 1: un módulo de aplicación que pita en los eventos de cambio del foco</li>
+<li>3.5. Lo básico de una extensión global</li>
+<li>3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</li>
+<li>3.7. Objetos de NVDA</li>
+<li>3.8. Scripts y asociación de gestos</li>
+<li>3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</li>
+<li>3.10. Eventos</li>
+<li>3.11. La variable SleepMode en módulos de aplicación</li>
+<li>3.12. Ejemplo 4: un módulo de aplicación en modo latente</li>
+<li>3.13. Proporcionar clases de objetos personalizados de NVDA</li>
+<li>3.14. Ejemplo 5: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</li>
+<li>3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</li>
+<li>3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init
+  *4. Empaquetado de código como complementos de NVDA</li>
+<li>4.1. Nombres de fichero no ASCII en archivos Zip</li>
+<li>4.2. Archivos de manifiesto</li>
+<li>4.2.1. Campos disponibles</li>
+<li>4.2.2. Un archivo de manifiesto de ejemplo</li>
+<li>4.3. Extensiones y controladores</li>
+<li>4.4. Código opcional de instalación y desinstalación</li>
+<li>4.4.1. La función onInstall</li>
+<li>4.4.2. La función onUninstall</li>
+<li>4.5. Traducción de complementos</li>
+<li>4.5.1. Archivos de manifiesto específicos del idioma</li>
+<li>4.5.2. Mensajes específicos del idioma</li>
+<li>4.6. Documentación del complemento</li>
+</ul>
+</li>
+<li>5. La consola Python de NVDA<ul>
+<li>5.1. Modo de uso</li>
+<li>5.2. Espacio de nombres</li>
+<li>5.2.1. Importaciones automáticas</li>
+<li>5.2.2. Variables instantáneas</li>
+</ul>
+</li>
+<li>6. La consola Python remota<ul>
+<li>6.1. Modo de uso </li>
+</ul>
+</li>
+</ul>
+<h2 id="146-introduccion">1. Introducción</h2>
+<p>Esta guía proporciona información relacionada con el desarrollo de NVDA, incluyendo traducción y desarrollo de componentes para este lector. </p>
+<h3 id="11-una-nota-sobre-python">1.1. Una nota sobre Python</h3>
+<p>NVDA y sus componentes están escritos principalmente en el lenguaje de programación Python. El propósito de esta guía no es enseñarte Python, aunque se proporcionan ejemplos a lo largo de la guía que te ayudarán a familiarizarte con la sintaxis Python. Se pueden encontrar documentación y otros recursos relacionados con el lenguaje de programación Python en <a href="http://www.python.org/">www.python.org/</a></p>
+<h2 id="246-traduccion">2. Traducción</h2>
+<p>Para dar soporte a múltiples idiomas / regiones, NVDA debe traducirse y deben proporcionarse datos específicos de la región. Esta sección sólo incluye información sobre formatos de archivo personalizados de NVDA necesarios para la traducción. Es necesario traducir otros elementos, como la interfaz de usuario de NVDA y la documentación, pero aquí se usan formatos de archivo estándar. Para acceder a la documentación completa sobre la traducción de NVDA, visita la sección correspondiente en el área de desarrollo de nuestra web.</p>
+<h3 id="21-descripcion-de-caracteres">2.1. Descripción de caracteres</h3>
+<p>En ocasiones, puede ser muy difícil o incluso imposible distinguir un carácter de otro. Por ejemplo, se podrían pronunciar dos caracteres de la misma manera, incluso aunque sean caracteres realmente diferentes. Para ayudar a los usuarios cuando esto ocurre, pueden proporcionarse descripciones de caracteres que describen el carácter de una forma única. </p>
+<p>Se pueden ofrecer descripciones de caracteres para un idioma en un archivo llamado characterDescriptions.dic en el directorio del idioma. Se trata de un archivo de texto codificado en UTF-8. Las líneas en blanco o las líneas que comienzan con el carácter "#" se ignoran. Todas las demás líneas deberían contener un carácter, seguido de un tabulador, y una o más descripciones separadas por tabuladores. </p>
+<p>Por ejemplo: </p>
+<pre><code># Esto es un comentario
+
+a   alpha
+
+b   bravo
+</code></pre>
+<p>Mira el archivo locale\en\characterDescriptions.dic para ver un ejemplo completo. </p>
+<p>En la mayoría de casos, los caracteres en este archivo deberían de constar de una única letra minúscula. Se asume que los caracteres tendrán la misma descripción independientemente de su estado, por lo que los que están en mayúscula se convierten a minúscula antes de mirar sus descripciones. </p>
+<h3 id="22-pronunciacion-de-simbolos">2.2. Pronunciación de símbolos</h3>
+<p>Con frecuencia es útil oír la puntuación y otros símbolos pronunciados como palabras al leer texto, particularmente al moverse por caracteres. Desafortunadamente, la pronunciación de símbolos es inconsistente entre sintetizadores de voz, y muchos de ellos no pronuncian muchos símbolos y / o no permiten controlar qué símbolos se pronuncian. En consecuencia, NVDA permite ofrecer información sobre la pronunciación de símbolos. </p>
+<p>Esto se hace para un idioma proporcionando un archivo llamado symbols.dic en el directorio del idioma. Se trata de un archivo de texto plano codificado en UTF-8. Las líneas en blanco y aquellas que empiecen con un carácter "#" se ignoran. Todos los idiomas heredan de forma implícita la información de símbolos del inglés, aunque toda esta información puede sobreescribirse. </p>
+<p>El archivo contiene dos secciones. </p>
+<h4 id="221-definicion-de-simbolos-complejos">2.2.1. Definición de símbolos complejos</h4>
+<p>La primera sección es opcional y define patrones de expresiones regulares para símbolos complejos. Los símbolos complejos son símbolos que que no constan simplemente de un carácter o secuencia de caracteres, sino que en su lugar necesitan una expresión más complicada. Un ejemplo es el punto (.) de fin de frase en inglés. El "." se usa con múltiples propósitos, por lo que se necesita una comprobación más complicada para determinar si se trata al punto final de una frase. </p>
+<p>La sección de símbolos complejos comienza con la línea: </p>
+<pre><code>complexSymbols:
+</code></pre>
+<p>Las siguientes líneas contienen un identificador textual usado para identificar el símbolo, un tabulador y un patrón de expresión regular para ese símbolo. Por ejemplo: </p>
+<pre><code>. final de frase    (?&lt;=[^\s.])\.(?=[\"')\s]|$)
+</code></pre>
+<p>Una vez más, todos los idiomas heredan los símbolos del inglés, por lo que no es necesario que incluyas símbolos complejos ya definidos en inglés. </p>
+<h4 id="222-definicion-de-la-informacion-de-simbolos">2.2.2. Definición de la información de símbolos</h4>
+<p>La segunda sección proporciona información sobre cuándo y cómo pronunciar todos los símbolos. Comienza con la línea: </p>
+<pre><code>symbols:
+</code></pre>
+<p>Las siguientes líneas deberían contener varios campos separados por tabuladores. Los únicos campos obligatorios son el identificador y el reemplazo. El valor por defecto se aplicará en los campos omitidos. Los campos son los siguientes: </p>
+<ul>
+<li>Identificador: el identificador del símbolo. En la mayoría de casos, se trata del carácter o caracteres del símbolo. Sin embargo, también puede ser el identificador de un símbolo complejo. Ciertos caracteres no pueden escribirse en el archivo, por lo que deben usarse las siguientes secuencias especiales en estos casos: <ul>
+<li>\0: nulo </li>
+<li>\t: tabulador </li>
+<li>\n: salto de línea </li>
+<li>\r: retorno de carro </li>
+<li>\f: salto de página </li>
+<li>\#: el carácter # (necesario porque # al comienzo de una línea la convierte en comentario) </li>
+</ul>
+</li>
+<li>Reemplazo: el texto que debería verbalizarse para el símbolo. </li>
+<li>Nivel: el nivel de símbolos en el que el símbolo debería verbalizarse. El usuario configura el nivel de símbolos, que especifica la cantidad de símbolos que deberían verbalizarse. Este campo debería contener uno de los niveles "none", "some", "most", "all" o "char", o "-" para usar el predeterminado. "char" significa que el símbolo sólo debería pronunciarse al moverse por caracteres. Por defecto se hereda el valor o "all" si no hay nada que heredar. </li>
+<li>Preservar: indica si el símbolo debería preservarse para facilitar la correcta pronunciación en el sintetizador. Por ejemplo, los símbolos que causan pausas o inflexiones (como la coma en inglés) deberían preservarse. Este campo debería contener los siguientes valores: <ul>
+<li>never: nunca preservar el símbolo. </li>
+<li>always: preservar el símbolo siempre. </li>
+<li>norep: preservar el símbolo sólo si no se reemplaza; es decir, el usuario ha configurado el nivel de símbolos por debajo del nivel de este símbolo. </li>
+<li>-: usar valor por defecto. Por defecto se hereda el valor o "never" si no hay nada que heredar. </li>
+</ul>
+</li>
+</ul>
+<p>Finalmente, se puede proporcionar un nombre para mostrar el símbolo en un comentario tras un tabulador al final de la línea. Este se mostrará a los usuarios cuando editen la información del símbolo y es especialmente útil para los traductores para definir nombres traducidos para los símbolos complejos en inglés. </p>
+<p>Aquí hay algunos ejemplos: </p>
+<pre><code>(   paréntesis izquierdo    most
+</code></pre>
+<p>Esto significa que el carácter "(" debería verbalizarse como "paréntesis izquierdo" sólo cuando el nivel de símbolos esté establecido en la mayoría o más alto; es decir, la mayoría o todo. </p>
+<pre><code>,   coma    all always
+</code></pre>
+<p>Esto significa que el carácter "," debería verbalizarse como "coma" cuando el nivel de símbolos esté establecido en todo y que el carácter en sí mismo debería preservarse siempre para que el sintetizador pause de forma apropiada. </p>
+<pre><code>. sentence ending   point   # . fin de phrase
+</code></pre>
+<p>Esta línea aparece en el archivo symbols.dic francés. Significa que el símbolo complejo ". sentence ending" debería verbalizarse como "point". Nivel y preservar no se han especificado, por lo que se tomarán del inglés. Se ofrece un nombre para mostrar, por lo que los usuarios franceses sabrán lo que representa el símbolo. </p>
+<p>Por favor, consulta el archivo locale\en\symbols.dic para ver las definiciones inglesas que heredan todos los idiomas. También representa un buen ejemplo completo. </p>
+<h2 id="346-extensiones">3. Extensiones</h2>
+<h3 id="31-descripcion">3.1. Descripción</h3>
+<p>Los complementos permiten personalizar la forma en que NVDA se comporta en general o dentro de una aplicación en particular. Son capaces de: </p>
+<ul>
+<li>Responder a eventos particulares como cambios de propiedades de objetos o del foco; por ejemplo, cuando un control cambia su nombre. </li>
+<li>Implementar órdenes que se asocian a ciertas pulsaciones de teclado u otra entrada. </li>
+<li>Personalizar el comportamiento e implementar funcionalidad adicional para controles concretos. </li>
+<li>Personalizar o añadir nuevo soporte para contenido textual y documentos complejos. </li>
+</ul>
+<p>Esta sección ofrece una introducción al desarrollo de extensiones. Los desarrolladores deberían consultar la documentación del código para tener una referencia completa. </p>
+<h3 id="32-tipos-de-extensiones">3.2. Tipos de extensiones</h3>
+<p>Hay dos tipos de extensiones. Son los siguientes: </p>
+<ul>
+<li>Módulos de aplicación: código específico para una aplicación concreta. El módulo recibe todos los eventos de la aplicación, incluso si esa aplicación no se encuentra activa actualmente. Cuando la aplicación está activa, cualquier orden que el módulo de aplicación haya asociado a pulsaciones de teclado y otro tipo de entrada puede ser ejecutada por el usuario. </li>
+<li>Extensiones globales: código global para NVDA; es decir, se usa en todas las aplicaciones. Las extensiones reciben eventos para todos los controles del sistema operativo. Cualquier orden vinculada a una extensión global puede ser ejecutada por el usuario independientemente de dónde esté en el sistema operativo, sin importar la aplicación. </li>
+</ul>
+<p>Si quieres mejorar el acceso de NVDA a una aplicación en particular, lo más probable es que necesites escribir un módulo de aplicación. En contraste, si quisieras añadir alguna funcionalidad general a NVDA (por ejemplo, un script que verbalice la fuerza de la señal de la red wi-fi desde cualquier aplicación), lo que necesitas entonces es una extensión global. </p>
+<p>Tanto los módulos de aplicación como las extensiones globales tienen mucho en común. Ambos son archivos con código fuente Python (con una extensión .py), ambos definen una clase especial que contiene todos los eventos, scripts y asociaciones, y ambos pueden definir clases personalizadas para acceder a controles, contenido textual y documentos complejos. Sin embargo, difieren en algunos aspectos. </p>
+<p>Las siguientes secciones hablarán por separado de módulos de aplicación y extensiones globales. Después de este punto, la discusión volverá a ser más general. </p>
+<h3 id="33-lo-basico-de-un-modulo-de-aplicacion">3.3. Lo básico de un módulo de aplicación</h3>
+<p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. </p>
+<p>Los archivos de módulo de aplicación deben situarse en el subdirectorio appModules del directorio de configuración de usuario de NVDA. Para más información sobre dónde encontrar el directorio de configuración de usuario, por favor consulta la guía de usuario de NVDA. </p>
+<p>Los módulos de aplicación deben definir una clase llamada AppModule, que hereda de appModuleHandler.AppModule. Esta clase puede definir métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá más tarde en profundidad. </p>
+<p>NVDA carga el módulo de aplicación para una aplicación dada tan pronto como se da cuenta de que esa aplicación se está ejecutando. El módulo de aplicación se descarga una vez se cierra la aplicación o se sale de NVDA. </p>
+<h3 id="34-ejemplo-1-un-modulo-de-aplicacion-que-pita-ante-eventos-de-cambio-de-foco">3.4. Ejemplo 1: un módulo de aplicación que pita ante eventos de cambio de foco</h3>
+<p>El siguiente módulo de aplicación de ejemplo hace que NVDA pite cada vez que cambia el foco en la aplicación bloc de notas. Este ejemplo te muestra la estructura básica de un módulo de aplicación. </p>
+<p>Copia y pega el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto llamado notepad.py, que debería guardarse en el subdirectorio appModules. Ten mucho cuidado, debes conservar intactos todos los tabuladores y espacios. </p>
+<p>Una vez guardado en la ubicación correcta, reinicia NVDA o bien elige Recargar plugins en el submenú herramientas del menú de NVDA. </p>
+<p>Finalmente, abre el bloc de notas y mueve el foco por la aplicación; por ejemplo muévete a lo largo de la barra de menú, abre algunos cuadros de diálogo, etc. Deberías oír pitidos cada vez que cambie el foco. Date cuenta de que si te mueves fuera del bloc de notas - por ejemplo, al explorador de Windows - no oirás pitidos. </p>
+<pre><code>--- inicio ---
+
+# Módulo de aplicación del bloc de notas para NVDA
+
+# Ejemplo 1 de la guía del desarrollador
+
+
+
+import appModuleHandler
+
+
+
+class AppModule(appModuleHandler.AppModule):
+
+
+
+    def event_gainFocus(self, obj, nextHandler):
+
+        import tones
+
+        tones.beep(550, 50)
+
+        nextHandler()
+
+
+
+--- fin ---
+</code></pre>
+<p>Este archivo de módulo de aplicación empieza con dos líneas de comentarios, que describen para qué es el archivo. </p>
+<p>Después importa el módulo appModuleHandler, lo que le da al módulo de aplicación acceso a la clase base AppModule. </p>
+<p>Después, define una clase AppModule, que hereda de appModuleHandler.AppModule. </p>
+<p>Dentro de esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de evento para los eventos gainFocus (event_gainFocus), que reproduce un pitido corto cada vez que se ejecuta. La implementación de este evento no es importante para los propósitos de este ejemplo. La parte más importante es la clase en sí. Los eventos se cubrirán con mucho más detalle más adelante. </p>
+<p>Como se pide con otros ejemplos de esta guía, recuerda eliminar el módulo de aplicación creado cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
+<h3 id="35-lo-basico-de-una-extension-global">3.5. Lo básico de una extensión global</h3>
+<p>Los archivos de extensión global tienen la extensión .py, y deberían tener un nombre corto y único que identifique lo que hacen. </p>
+<p>Los archivos de extensión global deben situarse en la subcarpeta globalPlugins del directorio de configuración de usuario de NVDA. Para más información sobre cómo encontrar el directorio de configuración de usuario, por favor consulta la guía de usuario de NVDA. </p>
+<p>Las extensiones globales deben definir una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. Esta clase puede definir a continuación métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá en profundidad más tarde. </p>
+<p>NVDA carga todas las extensiones globales tan pronto como se inicia, y las descarga al salir. </p>
+<h3 id="36-ejemplo-2-una-extension-global-que-proporciona-un-script-para-verbalizar-la-version-de-nvda">3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</h3>
+<p>La siguiente extensión global de ejemplo te permite pulsar NVDA+shift+v en cualquier sitio del sistema operativo para obtener la versión de NVDA. Este ejemplo sólo sirve para mostrarte la estructura básica de una extensión global. </p>
+<p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example2.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
+<p>Una vez guardado en el lugar correcto, reinicia NVDA o bien elige recargar plugins en el submenú herramientas del menú de NVDA. </p>
+<p>Desde cualquier sitio, ahora puedes pulsar NVDA+shift+v para que NVDA verbalice y muestre en braille su versión. </p>
+<pre><code>--- inicio ---
+
+# Extensión de verbalización de versión de NVDA
+
+# Ejemplo 2 de la guía del desarrollador
+
+
+
+import globalPluginHandler
+
+import ui
+
+import versionInfo
+
+
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+
+
+    def script_announceNVDAVersion(self, gesture):
+
+        ui.message(versionInfo.version)
+
+
+
+    __gestures={
+
+        "kb:NVDA+shift+v": "announceNVDAVersion",
+
+    }
+
+
+
+--- fin ---
+</code></pre>
+<p>Este archivo de extensión global comienza con dos líneas de comentarios, que describen para qué sirve el archivo. </p>
+<p>A continuación importa el módulo globalPluginHandler, de manera que la extensión global tiene acceso a la clase base GlobalPlugin. </p>
+<p>También importa otros módulos, llamados ui y versionInfo, necesarios para que esta extensión concreta haga las acciones adecuadas para verbalizar la versión de NVDA. </p>
+<p>Después, define una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. </p>
+<p>En esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de script que realiza la verbalización de versión, y ofrece una asociación de NVDA+shift+v a este script. Sin embargo, los detalles del script y su asociación no son importantes para los propósitos de este ejemplo. La parte más importante es la clase en sí. </p>
+<p>Como se pide con otros ejemplos de esta guía, recuerda eliminar la extensión global creada cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
+<h3 id="37-objetos-de-nvda">3.7. Objetos de NVDA</h3>
+<p>NVDA representa controles y otros elementos gráficos como objetos NVDA. Estos objetos NVDA contienen propiedades estandarizadas, como nombre, rol, valor, estados y descripción, que permiten a otras partes de NVDA consultar o presentar información sobre un control de una manera generalizada. Por ejemplo, el botón Aceptar en un diálogo sería representado como un objeto NVDA con un nombre como "Aceptar" y un rol de botón. De forma similar, una casilla de verificación con una etiqueta de "Acepto" tendría un nombre de "Acepto", un rol de casilla de verificación, y si actualmente está marcada, un estado de marcada. </p>
+<p>Como hay muchos kits de herramientas gráficos y apis de accesibilidad y plataforma, los objetos NVDA abstraen sus diferencias de una forma estándar que NVDA pueda usar, sin importar la api o motor gráfico con el que un control esté hecho. Por ejemplo, el botón aceptar del que acabamos de hablar podría ser un widget en una aplicación Java, un objeto MSAA, un objeto IAccessible2 o un elemento de UI Automation. </p>
+<p>Los objetos NVDA tienen muchas propiedades. Algunas de las más útiles son: </p>
+<ul>
+<li>name: la etiqueta del control. </li>
+<li>role: una de las constantes ROLE_* del módulo controlTypes de NVDA. Button, dialog, editableText, window y checkbox son ejemplos de roles. </li>
+<li>states: un conjunto de 0 o más constantes STATE_* del módulo controlTypes de NVDA. Focusable, focused, selected, selectable, expanded, collapsed y checked son algunos ejemplos de estados. </li>
+<li>value: el valor del control; por ejemplo, el porcentaje de una barra deslizante o el ajuste actual de un cuadro combinado. </li>
+<li>description: una o dos frases describiendo lo que hace el control (generalmente lo mismo que su descripción visual). </li>
+<li>location: la posición horizontal, vertical, anchura y altura en coordenadas de la pantalla. </li>
+<li>parent: el objeto padre de este objeto. Por ejemplo, el padre de un objeto de elemento de lista sería la lista que lo contiene. </li>
+<li>next: el objeto directamente después de este en orden lógico en el mismo nivel. Por ejemplo, el siguiente objeto de un objeto NVDA elemento de menú es muy probablemente otro elemento de menú en el mismo menú. </li>
+<li>previous: como next pero al revés. </li>
+<li>firstChild: el primer objeto hijo directo de este objeto. Por ejemplo, el primer hijo de una lista sería el primer elemento de lista. </li>
+<li>lastChild: el último hijo directo de este objeto. </li>
+<li>children: una lista de todos los hijos directos de este objeto; por ejemplo, todos los elementos de menú en un menú. </li>
+</ul>
+<p>También hay unas pocas propiedades de navegación simplificada, como simpleParent, simpleNext, simpleFirstChild y simpleLastChild. Son como sus respectivas propiedades de navegación descritas más arriba, pero NVDA filtra y desecha objetos inútiles. Estas propiedades se usan cuando el modo de revisión simple de NVDA está activado, lo que viene así por defecto. Estas propiedades simples pueden ser más fáciles de utilizar, pero las propiedades de navegación real reflejan de forma más cercana la estructura subyacente del sistema operativo. Además, también pueden cambiar en versiones futuras de NVDA según se hagan mejoras a la revisión simple, por lo que generalmente deberían evitarse al ubicar mediante programación los objetos. </p>
+<p>Al desarrollar extensiones, en la mayoría de los casos, no es importante el kit de herramientas o la api que hay tras un objeto de NVDA, ya que la extensión normalmente sólo accederá a propiedades estándar como name, role y value. Sin embargo, según las extensiones se vuelven más avanzadas, es ciertamente posible tener que profundizar en los objetos de NVDA para obtener información específica de la api o kit de herramientas si es necesario. </p>
+<p>Las extensiones hacen uso de los objetos de NVDA de tres formas concretas: </p>
+<ul>
+<li>La mayoría de eventos que las extensiones reciben tienen un argumento que es el objeto en el que ha ocurrido el evento. Por ejemplo, event_gainFocus recibe el objeto de NVDA que representa el control que obtiene el foco. </li>
+<li>Los eventos, scripts u otro código pueden tomar objetos de interés como el objeto NVDA que tiene el foco, el objeto NVDA actual del navegador de objetos, o tal vez el objeto NVDA del escritorio. El código puede a continuación recuperar información de ese objeto o tal vez incluso recuperar otro objeto relacionado con él (por ejemplo su padre, primer hijo, etc.). </li>
+<li>La extensión puede definir sus propias clases de objetos de NVDA personalizadas, que se usarán para envolver un control específico para darle funcionalidad extra, modificar sus propiedades, etc. </li>
+</ul>
+<p>Al igual que los módulos de aplicación o las extensiones, los objetos de NVDA también pueden definir eventos, scripts y asociaciones de gestos. </p>
+<h3 id="38-scripts-y-asociacion-de-gestos">3.8. Scripts y asociación de gestos</h3>
+<p>Los módulos de aplicación, extensiones globales y objetos de NVDA pueden definir métodos especiales que pueden asociarse a una unidad de entrada particular como una pulsación de teclado. NVDA se refiere a estos métodos llamándolos scripts. </p>
+<p>Un script es un método de instancia de Python estándar con un nombre que empieza por "script_"; por ejemplo, "script_sayDateTime". </p>
+<p>Un método de script recibe dos argumentos: </p>
+<ul>
+<li>self: una referencia a la instancia del módulo de aplicación, extensión global u objeto de NVDA donde se ha llamado al script. </li>
+<li>gesture: un objeto de gesto de entrada, que representa el gesto que provocó la llamada al script. </li>
+</ul>
+<p>Además del método del script, se debe definir alguna forma de asociación del gesto, de tal forma que NVDA sepa qué entrada debería ejecutarlo. </p>
+<p>Para asociar un gesto a un script, puede definirse un diccionario Python llamado "__gestures" como una variable de clase en el módulo de aplicación, extensión global u objeto de NVDA. Estos diccionarios deberían contener cadenas identificadoras de gestos que apunten al nombre del script solicitado, sin el prefijo "_script". </p>
+<p>Hay formas más avanzadas de asociar gestos a scripts de forma más dinámica, aunque el diccionario __gestures es la manera más simple. </p>
+<p>Una cadena identificadora de gesto es una representación en forma de cadena de una unidad de entrada simple. Consiste en un código de dos caracteres que identifica la fuente de la entrada, un dispositivo opcional entre paréntesis, dos puntos (:) y uno o más nombres separados por el signo más (+) que identifican las teclas o valores de entrada. </p>
+<p>Algunos ejemplos de cadenas identificadoras de gestos son: </p>
+<ul>
+<li>"kb:NVDA+shift+v" </li>
+<li>"br(freedomScientific):leftWizWheelUp" </li>
+<li>"kb(laptop):NVDA+t" </li>
+</ul>
+<p>Actualmente, las fuentes de entrada en NVDA son: </p>
+<ul>
+<li>kb: entrada desde el teclado del sistema </li>
+<li>br: controles de la pantalla braille </li>
+<li>ts: pantalla táctil </li>
+<li>bk: entrada por teclado braille </li>
+</ul>
+<p>Cuando NVDA recibe entrada, busca una asociación de gesto que encaje con ella en un orden particular. Una vez se encuentra una asociación de gesto, se ejecuta el script y no se usan otras asociaciones, ni se pasa el gesto automáticamente al sistema operativo. </p>
+<p>El orden de búsqueda de asociación de gestos es: </p>
+<ul>
+<li>Extensiones globales cargadas </li>
+<li>Módulo de aplicación de la aplicación activa </li>
+<li>Interceptor de árbol del objeto NVDA con el foco si lo hubiera; por ejemplo un virtualBuffer </li>
+<li>Objeto NVDA con el foco </li>
+<li>Órdenes globales (órdenes incorporadas como salir de NVDA, órdenes de navegación por objetos, etc.) </li>
+</ul>
+<p>Deberías especificar una descripción del script en la cadena de documentación de la función que describa la orden a los usuarios. Por ejemplo, esto se informa a los usuarios en el modo de ayuda de entrada y se muestra en el diálogo Gestos de entrada. Para especificar la cadena de documentación se establece un atributo "__doc" en la función del script. El script no aparecerá en el diálogo Gestos de entrada a menos que esta se especifique. </p>
+<p>También puedes especificar una categoría para un script de tal forma que se agrupe con otros scripts similares. Por ejemplo, un script en una extensión global que añade teclas rápidas de navegación en el modo exploración puede meterse bajo la categoría "Modo exploración". Para scripts individuales, esto se hace estableciendo un atributo "category" en la función del script con una cadena que contenga el nombre de la categoría. También puedes establecer el atributo "scriptCategory" en la clase de la extensión, que se usará para scripts que no especifiquen una categoría. Hay constantes para categorías comunes, prefijadas con SCRCAT_ en los módulos inputCore y globalCommands. El script se listará en la categoría especificada en el diálogo Gestos de entrada. Si no se especifica categoría, el script se meterá en "Miscelánea". </p>
+<h3 id="39-ejemplo-3-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>
+<p>La siguiente extensión global te permite pulsar NVDA+flecha izquierda para verbalizar la clase de ventana del objeto con el foco; y NVDA+flecha derecha para anunciar el identificador de ventana del control actual con el foco. Este ejemplo te muestra cómo definir uno o más scripts y asociaciones de gestos en una clase tal como un módulo de aplicación, extensión global u objeto de NVDA. </p>
+<p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example3.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
+<p>Una vez guardado en el lugar correcto, reinicia NVDA o bien elige recargar plugins en el submenú herramientas del menú de NVDA. </p>
+<pre><code>--- inicio ---
+
+#Scripts de utilidades de ventana para NVDA
+
+# Ejemplo 3 de la guía del desarrollador
+
+
+
+import globalPluginHandler
+
+import ui
+
+import api
+
+
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+
+
+    def script_announceWindowClassName(self, gesture):
+
+        focusObj = api.getFocusObject()
+
+        name = focusObj.name
+
+        windowClassName = focusObj.windowClassName
+
+        ui.message("clase para ventana %s: %s" % (name, windowClassName))
+
+
+
+    def script_announceWindowControlID(self, gesture):
+
+        focusObj = api.getFocusObject()
+
+        name = focusObj.name
+
+        windowControlID = focusObj.windowControlID
+
+        ui.message("Identificador de control para la ventana %s: %d" % (name, windowControlID))
+
+
+
+    __gestures = {
+
+        "kb:NVDA+leftArrow": "announceWindowClassName",
+
+        "kb:NVDA+rightArrow": "announceWindowControlID",
+
+    }
+
+
+
+--- fin ---
+</code></pre>
+<h3 id="310-eventos">3.10. Eventos</h3>
+<p>Cuando NVDA detecta eventos particulares del kit de herramientas, api o sistema operativo, los abstrae y dispara sus propios eventos en extensiones y objetos NVDA. </p>
+<p>Aunque la mayoría de eventos están relacionados con un objeto de NVDA específico (por ejemplo cambio de nombre, obtención de foco, cambio de estado, etc.), estos eventos pueden manejarse a varios niveles. Cuando un evento se captura, se impide que pase al siguiente punto de la cadena. Sin embargo, el código dentro del evento puede elegir si se propaga más adelante. </p>
+<p>El orden de niveles por los que pasa el evento hasta que se encuentra un método de evento es: </p>
+<ul>
+<li>Extensiones globales cargadas </li>
+<li>El módulo de aplicación asociado con el objeto de NVDA en el que se ha disparado el evento </li>
+<li>El interceptor de árbol (si lo hay) asociado con el objeto de NVDA donde se ha disparado el evento </li>
+<li>El propio objeto de NVDA. </li>
+</ul>
+<p>Los eventos son métodos Python de instancia, con un nombre que empieza por "event_" seguido del nombre real del evento (por ejemplo, gainFocus). </p>
+<p>Estos métodos de evento reciben argumentos ligeramente diferentes dependiendo del nivel en el que se definan. </p>
+<p>Si se define un evento para un objeto de NVDA en ese objeto, el método sólo recibe un argumento obligatorio, el argumento 'self'; es decir, la instancia del objeto de NVDA. Algunos eventos pueden recibir argumentos extra, aunque es bastante raro. </p>
+<p>Si se define un evento para un objeto de NVDA en una extensión global, módulo de aplicación o interceptor de árbol, el evento recibe los siguientes argumentos: </p>
+<ul>
+<li>self: la instancia de la extensión global, módulo de aplicación o interceptor de árbol </li>
+<li>obj: el objeto de NVDA en el que se ha disparado el evento </li>
+<li>nextHandler: una función que al ser llamada propaga el evento al siguiente punto de la cadena. </li>
+</ul>
+<p>Algunos eventos comunes de objetos de NVDA son: </p>
+<ul>
+<li>foreground: este objeto de NVDA se ha convertido en el nuevo objeto en primer plano; es decir, el objeto activo de nivel superior. </li>
+<li>gainFocus </li>
+<li>focusEntered: el foco se ha movido dentro de este objeto; es decir, es un antepasado del objeto con el foco </li>
+<li>loseFocus </li>
+<li>nameChange </li>
+<li>valueChange </li>
+<li>stateChange </li>
+<li>caret: cuando el caret (punto de inserción) se mueve dentro de este objeto de NVDA </li>
+<li>locationChange: la ubicación en la pantalla física cambia </li>
+</ul>
+<p>Hay muchos otros eventos, aunque los que se han listado arriba son normalmente los más útiles. </p>
+<p>Para ver un ejemplo de un evento manejado por un módulo de aplicación, mira el ejemplo 1 (pitidos del foco en el bloc de notas). </p>
+<h3 id="311-la-variable-sleepmode-en-modulos-de-aplicacion">3.11. La variable SleepMode en módulos de aplicación</h3>
+<p>Los módulos de aplicación tienen una propiedad muy útil llamada "sleepMode", que si se establece a True deshabilita casi completamente NVDA en la aplicación correspondiente. El modo latente es muy útil para aplicaciones con respuesta de voz propia o funciones internas de lectura de pantalla, o quizás incluso algunos juegos que necesitan disponer completamente del teclado. </p>
+<p>Aunque el modo latente puede ser activado y desactivado por el usuario con la orden de teclado NVDA+shift+s, un desarrollador puede elegir tener el modo latente activado por defecto para una aplicación. Esto se hace proporcionando un módulo de aplicación para esa aplicación que simplemente establezca sleepMode a True en la clase AppModule. </p>
+<h3 id="312-ejemplo-4-un-modulo-de-aplicacion-en-modo-latente">3.12. Ejemplo 4: un módulo de aplicación en modo latente</h3>
+<p>El siguiente código se puede copiar y pegar en un archivo de texto, y guardarse en el directorio appModules con el nombre de la aplicación para la que quieras activar el modo latente. Como siempre, el archivo debe tener extensión .py. </p>
+<pre><code>--- inicio ---
+
+import appModuleHandler
+
+
+
+class AppModule(appModuleHandler.AppModule):
+
+
+
+    sleepMode = True
+
+
+
+--- fin ---
+</code></pre>
+<h3 id="313-proporcionar-clases-de-objetos-personalizados-de-nvda">3.13. Proporcionar clases de objetos personalizados de NVDA</h3>
+<p>Ofrecer clases personalizadas de objetos NVDA es probablemente la forma más potente y útil de mejorar la experiencia para una aplicación en una extensión de NVDA. Este método te permite situar toda la lógica necesaria para un control en particular junta en una única clase de objeto de NVDA para ese control, en vez de crear código para muchos controles a través de los eventos de la extensión. </p>
+<p>Hay dos pasos para proporcionar una clase de objeto de NVDA personalizado: </p>
+<ul>
+<li>Definir la clase del objeto NVDA y sus eventos, scripts, asociaciones de gestos y propiedades sobreescritas. </li>
+<li>Decirle a NVDA que use esta clase de objeto de NVDA en situaciones específicas manejándola en el método chooseNVDAObjectOverlayClasses de la extensión. </li>
+</ul>
+<p>Al definir una clase de objeto NVDA personalizado, tienes muchas clases base de objetos NVDA para elegir. Estas clases base contienen el soporte básico para la api de accesibilidad o del sistema operativo subyacente al control, como por ejemplo Win32, MSAA, o Java Access Bridge. Deberías hacer que tu clase de objeto NVDA personalizado herede de la clase base más alta que necesites para elegir tu clase en primer lugar. Por ejemplo, si eliges usar tu clase de objeto NVDA personalizada cuando el nombre de clase de ventana sea "Edit" y el identificador de control de la ventana sea 15, probablemente deberías heredar de NVDAObjects.window.Window, ya que claramente eres consciente de que este es un objeto Window. De forma similar, si te fijas en la propiedad accRole de MSAA, probablemente deberías heredar de NVDAObjects.IAccessible.IAccessible. También deberías considerar qué propiedades vas a sobreescribir en el objeto NVDA personalizado. Por ejemplo, si vas a sobreescribir una propiedad específica de IAccessible, como shouldAllowIAccessibleFocusEvent, entonces debes heredar de NVDAObjects.IAccessible.IAccessible. </p>
+<p>el método chooseNVDAObjectOverlayClasses puede implementarse en en clases de módulos de aplicación o extensiones globales. Recibe 3 argumentos: </p>
+<ol>
+<li>self: la instancia del módulo de aplicación o extensión global. </li>
+<li>obj: el objeto de NVDA para el que se van a elegir clases. </li>
+<li>clsList: una lista Python de clases de objetos NVDA que se usarán con obj. </li>
+</ol>
+<p>Dentro de este método, deberías decidir qué clase o clases de objeto NVDA personalizado (si las hay) debería usar este objeto NVDA comprobando sus propiedades, etc. Si debiera usarse una clase personalizada, debe insertarse en la lista de clases, normalmente al principio. También puedes eliminar clases elegidas por NVDA de la lista de clases, aunque esto rara vez hace falta. </p>
+<h3 id="314-ejemplo-5-orden-para-recuperar-la-longitud-del-texto-en-un-cuadro-de-edicion-usando-un-objeto-de-nvda-personalizado">3.14. Ejemplo 5: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</h3>
+<p>Este módulo de aplicación para el bloc de notas proporciona una orden para informar sobre el número de caracteres en los cuadros de edición. Puedes activarlo usando NVDA+l. Ten en cuenta que la orden es específica para cuadros de edición; sólo funciona si el foco está en uno, en vez de funcionar en cualquier lugar de la aplicación. </p>
+<p>El siguiente código puede copiarse y pegarse en un archivo de texto, y guardarse en el directorio appModules con el nombre notepad.py. </p>
+<pre><code>--- inicio ---
+
+import appModuleHandler
+
+from NVDAObjects.IAccessible import IAccessible
+
+import controlTypes
+
+import ui
+
+
+
+class AppModule(appModuleHandler.AppModule):
+
+
+
+    def chooseNVDAObjectOverlayClasses(self, obj, clsList):
+
+        if obj.windowClassName == "Edit" and obj.role == controlTypes.ROLE_EDITABLETEXT:
+
+            clsList.insert(0, EnhancedEditField)
+
+
+
+class EnhancedEditField(IAccessible):
+
+
+
+    def script_reportLength(self, gesture):
+
+        ui.message("%d" % len(self.value))
+
+
+
+    __gestures = {
+
+        "kb:NVDA+l": "reportLength",
+
+    }
+
+
+
+--- fin ---
+</code></pre>
+<h3 id="315-hacer-pequenos-cambios-a-un-objeto-de-nvda-en-modulos-de-aplicacion">3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</h3>
+<p>En ocasiones, puedes querer hacer solamente pequeños cambios a un objeto de NVDA en una aplicación, tales como sobreescribir su nombre o su rol. En estos casos, no necesitas el poder completo de una clase de objeto NVDA personalizada. Para hacerlo, puedes usar el evento NVDAObject_init, disponible únicamente en módulos de aplicación. </p>
+<p>El método event_NVDAObject_init recibe dos argumentos: </p>
+<ol>
+<li>self: la instancia del módulo de aplicación. </li>
+<li>obj: el objeto de NVDA que se inicializa. </li>
+</ol>
+<p>Dentro de este método, puedes comprobar si este objeto es relevante y sobreescribir propiedades en consecuencia. </p>
+<h3 id="316-ejemplo-6-etiquetando-el-cuadro-de-edicion-del-bloc-de-notas-usando-event95nvdaobject95init">3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init</h3>
+<p>Este módulo de aplicación para el bloc de notas hace que NVDA indique el cuadro de edición principal del bloc de notas como si tuviera el nombre "contenido". Es decir, cuando recibe el foco, NVDA dirá "contenido edición". </p>
+<p>El siguiente código puede copiarse y pegarse en un archivo de texto, y guardarse en el directorio appModules con el nombre notepad.py. </p>
+<pre><code>--- inicio ---
+
+import appModuleHandler
+
+from NVDAObjects.window import Window
+
+
+
+class AppModule(appModuleHandler.AppModule):
+
+
+
+    def event_NVDAObject_init(self, obj):
+
+        if isinstance(obj, Window) and obj.windowClassName == "Edit" and obj.windowControlID == 15:
+
+            obj.name = "Contenido"
+
+--- fin ---
+</code></pre>
+<h2 id="446-empaquetado-de-codigo-como-complementos-de-nvda">4. Empaquetado de código como complementos de NVDA</h2>
+<p>Para ponerle fácil a los usuarios la tarea de instalar extensiones y controladores, estos pueden empaquetarse en un único paquete de complemento de NVDA que el usuario puede instalar en una copia de NVDA a través del administrador de complementos que se encuentra en herramientas en el menú de NVDA. Los paquetes de complementos se soportan sólo en NVDA 2012.2 y posterior. Un complemento de NVDA es simplemente un archivo Zip estándar con la extensión de archivo nvda-addon, que contiene un archivo de manifiesto, código opcional de instalación y desinstalación, y uno o más directorios con extensiones y / o controladores. </p>
+<h3 id="41-nombres-de-fichero-no-ascii-en-archivos-zip">4.1. Nombres de fichero no ASCII en archivos Zip</h3>
+<p>Si tu complemento incluye archivos que contienen caracteres no ASCII (no ingleses), deberías crear el archivo Zip de tal manera que use nombres de archivo UTF-8. Esto significa que estos archivos pueden extraerse adecuadamente en todos los sistemas, independientemente del idioma configurado en el sistema. Por desgracia, muchos compresores zip no soportan esta característica, incluido el explorador de Windows. Generalmente, tiene que habilitarse de forma explícita incluso en compresores que sí lo soportan. <a href="http://www.7-zip.org">7-zip</a> lo soporta, aunque hay que activarlo especificando el parámetro de método "cu=on". </p>
+<h3 id="42-archivos-de-manifiesto">4.2. Archivos de manifiesto</h3>
+<p>Cada paquete de complementos debe contener un archivo de manifiesto llamado manifest.ini. Debe ser un archivo de texto codificado en UTF-8. Este archivo de manifiesto contiene pares clave=valor que declaran información como el nombre del complemento, versión y descripción. </p>
+<h4 id="421-campos-disponibles">4.2.1. Campos disponibles</h4>
+<p>Aunque se sugiere encarecidamente que los manifiestos tengan todos los campos, basta con incluir sólo aquellos marcados como obligatorios. De cualquier otro modo, el complemento no se instalará. </p>
+<ul>
+<li>name: un nombre corto y único para el complemento. Se usa para diferenciar a los complementos internamente y no se muestra al usuario. (Obligatorio) </li>
+<li>summary: el nombre del complemento tal como se muestra al usuario. (Obligatorio) </li>
+<li>version: la versión del complemento, por ejemplo 2.0. (Obligatorio) </li>
+<li>author: el autor del complemento, preferiblemente en la forma nombre completo <dirección de correo>; por ejemplo Michael Curran &lt;<a href="mailto:mick@kulgan.net">mick@kulgan.net</a>&gt;. (Obligatorio) </li>
+<li>description: una o dos frases que describan qué hace el complemento. </li>
+<li>url: una URL donde pueda encontrarse este complemento, sus actualizaciones y más información sobre él. </li>
+<li>docFileName: el nombre del archivo de documentación principal para el complemento; por ejemplo readme.html. Mira la sección de documentación de complementos para más detalles. </li>
+</ul>
+<h4 id="422-un-ejemplo-de-archivo-de-manifiesto">4.2.2. Un ejemplo de archivo de manifiesto</h4>
+<pre><code>--- inicio ---
+
+name = MyTestAddon
+
+summary = Cool Test Add-on
+
+version = 1.0
+
+description = An example add-on showing how to create add-ons!
+
+author = Michael Curran &lt;mick@kulgan.net&gt;
+
+url = http://www.nvda-project.org/wiki/Development
+
+--- fin ---
+</code></pre>
+<h3 id="43-extensiones-y-controladores">4.3. Extensiones y controladores</h3>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: </p>
+<ul>
+<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
+<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
+<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
+<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
+</ul>
+<h3 id="44-codigo-opcional-de-instalacion-y-desinstalacion">4.4. Código opcional de instalación y desinstalación</h3>
+<p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
+<h4 id="441-la-funcion-oninstall">4.4.1. La función onInstall</h4>
+<p>NVDA buscará y ejecutará una función onInstall en installTasks.py después de que termine de extraer el complemento en NVDA. Ten en cuenta que aunque el complemento haya sido extraído en ese momento, su directorio tendrá el sufijo .pendingInstall hasta que NVDA se reinicie, el directorio sea renombrado y el complemento realmente cargado por primera vez. Si esta función eleva una excepción, la instalación del complemento fallará y su directorio será eliminado. </p>
+<h4 id="442-la-funcion-onuninstall">4.4.2. La función onUninstall</h4>
+<p>NVDA buscará y ejecutará una función onUninstall en installTasks.py cuando se reinicie después de que el usuario haya elegido eliminar el complemento. Después de que esta función complete su ejecución, se eliminará automáticamente el directorio del complemento. Como esto pasa en la inicialización de NVDA antes de que se carguen otros componentes, esta función no puede solicitar entrada del usuario. </p>
+<h3 id="45-traduccion-de-complementos">4.5. Traducción de complementos</h3>
+<p>Es posible proporcionar información y mensajes específicos del idioma para tu complemento. La información traducida puede almacenarse en un directorio locale en el archivo. Este directorio debería contener directorios para cada idioma que soporte, usando el mismo formato de código de idioma que el resto de NVDA; por ejemplo en para inglés, fr_ca para francés de Canadá. </p>
+<h4 id="451-archivos-de-manifiesto-especificos-del-idioma">4.5.1. Archivos de manifiesto específicos del idioma</h4>
+<p>Cada uno de estos directorios de idioma puede contener un archivo de manifiesto específico del idioma llamado manifest.ini, que puede tener un pequeño subconjunto de los campos de manifiesto para traducir. Estos campos son summary y description. Todos los demás campos se ignoran. </p>
+<h4 id="452-mensajes-especificos-del-idioma">4.5.2. Mensajes específicos del idioma</h4>
+<p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web. </p>
+<h3 id="46-documentacion-del-complemento">4.6. Documentación del complemento</h3>
+<p>La documentación para un complemento debería situarse en un directorio doc en el archivo. De forma similar al directorio locale, este directorio debería contener carpetas para cada idioma en el que haya disponible documentación. </p>
+<p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionado el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
+<h2 id="546-la-consola-python-de-nvda">5. La consola Python de NVDA</h2>
+<p>La consola Python de NVDA emula el intérprete interactivo de Python desde NVDA. Es una herramienta de desarrollo útil para depurar, inspección interna general de NVDA, o inspección de la jerarquía de accesibilidad de una aplicación. </p>
+<h3 id="51-modo-de-uso">5.1. Modo de uso</h3>
+<p>La consola puede activarse de dos formas: </p>
+<ul>
+<li>Pulsando NVDA+ctrl+z. Si se activa de este modo, se tomará una instantánea de NVDA en el momento en que se pulsaron las teclas y se guardará en ciertas variables disponibles en la consola. Mira la sección de variables instantáneas para más detalles. </li>
+<li>Seleccionando Herramientas -&gt; Consola Python desde el menú de NVDA de la bandeja del sistema. </li>
+</ul>
+<p>La consola es similar al intérprete estándar de Python. La entrada sólo acepta una línea cada vez. La línea actual se procesa al pulsar intro. Puedes navegar por el historial de líneas introducidas anteriormente usando flechas arriba y abajo. </p>
+<p>La salida (respuestas del intérprete) se verbalizará al pulsar intro. La tecla f6 permite desplazarse entre los controles de entrada y salida. </p>
+<p>Cerrar la ventana de la consola simplemente la oculta. Esto permite al usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo historial y variables. </p>
+<h3 id="52-espacio-de-nombres">5.2. Espacio de nombres</h3>
+<h4 id="521-importaciones-automaticas">5.2.1. Importaciones automáticas</h4>
+<p>Los siguientes módulos y variables se importan automáticamente en la consola por conveniencia: sys, os, wx, log (de logHandler), api, queueHandler, speech, braille </p>
+<h4 id="522-variables-instantaneas">5.2.2. Variables instantáneas</h4>
+<p>Cada vez que se pulse NVDA+ctrl+z, se asignarán ciertas variables en la consola basándose en el estado actual de NVDA. Estas variables son: </p>
+<ul>
+<li>focus: el objeto actual con el foco </li>
+<li>focusAnc: los antepasados del objeto actual con el foco </li>
+<li>fdl: nivel de diferencia del foco; es decir, el nivel al que los antepasados difieren entre el objeto que tenía previamente el foco y el actual </li>
+<li>fg: el objeto actual en primer plano </li>
+<li>nav: el navegador de objetos actual </li>
+<li>mouse: el objeto actual del ratón </li>
+<li>brlRegions: las regiones braille del buffer braille activo </li>
+</ul>
+<h2 id="646-la-consola-python-remota">6. La consola Python remota</h2>
+<p>NVDA dispone de una consola Python remota para situaciones donde la depuración remota de NVDA es útil. Es similar a la consola Python local expuesta arriba, pero se accede a ella a través de tcp. </p>
+<p>Por favor, sé consciente de que supone un enorme riesgo de seguridad. Sólo deberías activarla si estás conectado a una red de confianza. </p>
+<h3 id="61-modo-de-uso">6.1. Modo de uso</h3>
+<p>Para activar la consola Python remota, usa la consola Python local para importar remotePythonConsole y llama a remotePythonConsole.initialize(). A continuación puedes conectarte a ella por el puerto tcp 6832. </p>
+<p>No se soporta el historial de líneas introducidas previamente. </p>
+<p>El espacio de nombres es el mismo que el de la consola Python local. </p>
+<p>Hay algunas funciones especiales: </p>
+<ul>
+<li>snap(): toma una instantánea del estado actual de NVDA y la guarda en las variables instantáneas. </li>
+<li>rmSnap(): elimina todas las variables instantáneas. </li>
+</ul>
+</body>
+</html>
