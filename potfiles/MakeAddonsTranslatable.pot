@@ -1,0 +1,117 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-03-28 16:35+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\MakeAddonsTranslatable.py:3
+msgid "# Make add-ons translatable throught the NVDA's translation system #"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:4
+msgid "## Steps ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:5
+msgid "1. Authors request the inclusion of an add-on in the translation system via the [NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons)."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:6
+msgid "2. A member of the NVDA add-on team creates a repo for the add-on at"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:7
+msgid "<https://bitbucket.org/nvdaaddonteam>"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:8
+msgid "\t- If the author has a Bitbucket account, s/he can request admin access to the add-on repo, and write access to [add-on files](https://bitbucket.org/nvdaaddonteam/addonFiles)."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:9
+msgid "\t- The add-on repo must contain a branch named stable, where authors or other people with write access to the repo should merge code considered stable when the add-on is updated. This branch is used to send translatable messages to, and receive l10n updates from, the [NVDA translation repo](http://subversion.assembla.com/svn/screenReaderTranslations)."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:10
+msgid "3. Admins register the add-on and commit settings for translators from Exbi server (nvdal10n@exbi.nvaccess.org):"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:11
+msgid "\t- cd into mr"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:12
+msgid "\t- mr up"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:13
+msgid "\t- cd available.d"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:14
+msgid "\t- mr registerAddon addonRepoName"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:15
+msgid "\t- git push"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:16
+msgid "\t- cd into mr/addons/addonRepoName"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:17
+msgid "\t- mr addon2settings"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:18
+msgid "\t- cd ~/mr/srt"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:19
+msgid "\t- svn commit */settings -m \"Make blah add-on available for translation.\""
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:20
+msgid "4. edit addonFiles/automatic.crontab, so that l10n updates are merged into the stable branch, and translators receive new messages automatically."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:21
+msgid "\t- Copy one of the lines for one of the existing addons, just change the addon name and paste it in the correct section, commit and push."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:22
+msgid "\t- Note: Admins can perform the above process manually, running mr addon2svn and mr svn2addon from Exbi."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:23
+msgid "## Related links ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:24
+msgid "- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:25
+msgid "## Aknowledgements ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:26
+msgid "This document is based on work and information provided by Mesar Hameed and James Teh."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:27
+msgid "Thanks for making this possible."
+msgstr ""
+
