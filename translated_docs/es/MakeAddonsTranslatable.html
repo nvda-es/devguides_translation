@@ -1,0 +1,50 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Hacer complementos traducibles mediante el sistema de traducciones de NVDA #</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Hacer complementos traducibles mediante el sistema de traducciones de NVDA #</h1></header>
+  <h2 id="pasos">Pasos</h2>
+<ol>
+<li>Los autores solicitan la inclusión de un complemento en el sistema de traducciones mediante la <a href="https://nvda-addons.groups.io/g/nvda-addons">lista de correo de complementos de NVDA</a>.</li>
+<li>
+<p>Un miembro del equipo de complementos de NVDA crea un repositorio para el complemento en
+<a href="https://bitbucket.org/nvdaaddonteam">https://bitbucket.org/nvdaaddonteam</a></p>
+<ul>
+<li>Si el autor tiene una cuenta en Bitbucket, el/ella puede solicitar acceso de administrador al repositorio del complemento, y acceso de escritura a <a href="https://bitbucket.org/nvdaaddonteam/addonFiles">add-on files</a>.</li>
+<li>El repositorio del complemento debe contener una rama llamada stable, donde los autores u otras personas con acceso de escritura al repositorio deberían enviar código considerado estable cuando el complemento se actualice. Esta rama se usa para enviar mensajes traducibles a, y recibir mensajes traducidos desde, <a href="http://subversion.assembla.com/svn/screenReaderTranslations">el repositorio de traducción de NVDA</a>.</li>
+</ul>
+</li>
+<li>
+<p>Los administradores registran el complemento y envían los ajustes para traductores desde el servidor exbi (nvdal10n@exbi.nvaccess.org):</p>
+<ul>
+<li>cd a mr</li>
+<li>mr up</li>
+<li>cd available.d</li>
+<li>mr registerAddon addonRepoName</li>
+<li>git push</li>
+<li>cd a mr/addons/addonRepoName</li>
+<li>mr addon2settings</li>
+<li>cd ~/mr/srt</li>
+<li>svn commit */settings -m "Make blah add-on available for translation." ("se hace al complemento blah disponible para traducción", mensaje a enviar a los traductores)</li>
+</ul>
+</li>
+<li>
+<p>Editar addonfiles/automatic.crontab, a fin de que los mensajes se añadan a la rama stable, y de que los traductores reciban nuevos mensajes automáticamente.</p>
+<ul>
+<li>Copia una de las líneas para un complemento existente, cambia el nombre del complemento y pégala en cada sección, commit y push.</li>
+<li>Nota: Los administradores pueden realizar el proceso arriba manualmente, ejecutando mr svn2addon y mr addon2svn desde exbi.</li>
+</ul>
+</li>
+</ol>
+<h2 id="enlaces-relacionados">Enlaces relacionados</h2>
+<ul>
+<li><a href="https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki">Añadiendo un Nuevo Idioma a Ikiwiki (en inglés)</a></li>
+</ul>
+<h2 id="agradecimientos">Agradecimientos</h2>
+<p>Este documento está basado en el trabajo e información proporcionados por Mesar Hameed y James Teh.</p>
+<p>Gracias por hacer esto posible.</p>
+</body>
+</html>
