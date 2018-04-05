@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-20 13:23+0100\n"
+"PO-Revision-Date: 2018-04-05 15:39+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:3
 msgid "# NVDA Add-on internals: StationPlaylist Studio"
-msgstr ""
+msgstr "# Complementos de NVDA vistos por dentro: StationPlaylist Studio"
 
 #: ..\python_docs\spladdoninternals.py:4
 msgid "Author: Joseph Lee"
-msgstr ""
+msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\spladdoninternals.py:5
 msgid "Based on StationPlaylist Studio Add-on for NvDA 18.02"
-msgstr ""
+msgstr "Basado en el complemento StationPlaylist Studio 18.02 para NVDA"
 
 #: ..\python_docs\spladdoninternals.py:6
 msgid "## Introduction"
-msgstr ""
+msgstr "## Introducción"
 
 #: ..\python_docs\spladdoninternals.py:7
 msgid ""
@@ -42,6 +42,13 @@ msgid ""
 "automation program is used, and one of the popular apps is called "
 "StationPlaylist Studio."
 msgstr ""
+"Si eres locutor de radio, podrías estar acostumbrado a las actividades "
+"involucradas al producir un programa. Aquí se pueden incluir la selección de "
+"la lista de reproducción, programación de notas de interrupción, respuesta a "
+"peticiones, monitorización del número de oyentes y estado de la "
+"codificación, entre otras. Para asistir a un locutor, se usa un programa de "
+"automatización de la emisión, y uno de los más populares se llama "
+"StationPlaylist Studio."
 
 #: ..\python_docs\spladdoninternals.py:8
 msgid ""
@@ -53,10 +60,17 @@ msgid ""
 "in front of you as you navigate this article). So let's get started by "
 "learning more about SPL Studio."
 msgstr ""
+"En Complementos de NVDA vistos por dentro: StationPlaylist Studio, "
+"aprenderemos qué es Studio y cómo funciona este complemento de NVDA. No "
+"tienes que instalar o utilizar este potente complemento para entender sus "
+"peculiaridades, (usar el complemento podría ayudarte a apreciar la "
+"importancia de este material; para una experiencia más completa, es útil que "
+"tengas el código fuente del complemento ante ti mientras navegas por este "
+"artículo). Ahora, empecemos aprendiendo más sobre SPL Studio."
 
 #: ..\python_docs\spladdoninternals.py:9
 msgid "### Introducing StationPlaylist Studio and the NVDA add-on"
-msgstr ""
+msgstr "### Presentación de StationPlaylist Studio y el complemento para NVDA"
 
 #: ..\python_docs\spladdoninternals.py:10
 msgid ""
@@ -66,6 +80,13 @@ msgid ""
 "with tools to manage track playback such as setting track intros. In studio "
 "5.00 and later, it includes its own stream encoder."
 msgstr ""
+"[StationPlaylist Studio](www.stationplaylist.com) es un software de "
+"automatización de emisiones que ayuda a los locutores a planificar pistas, "
+"reproducir jingles y más. Incluye soporte para notas de interrupción, listas "
+"de reproducción por cada hora, etiquetado de pistas y viene con herramientas "
+"para gestionar la reproducción de pistas, como establecer la introducción de "
+"pista. En Studio 5.00 y posteriores, se incluye un codificador de flujos "
+"propio."
 
 #: ..\python_docs\spladdoninternals.py:11
 msgid ""
@@ -76,10 +97,17 @@ msgid ""
 "and so on, and NVDA add-on for StationPlaylist Studio (usually refered to as "
 "SPL) accomplishes this well."
 msgstr ""
+"¿Es Studio accesible? Sorprendentemente, sí. Es posible utilizar las "
+"funciones de Studio sin usar scripts para lectores de pantalla y "
+"complementos. Sin embargo, hay veces en las que un locutor usaría scripts, "
+"como el anunciado de cambios de estado, monitorización de inicio y fin de "
+"pistas, soporte mejorado para codificadores y demás, y el complemento de "
+"NVDA para StationPlaylist Studio (al que nos referiremos normalmente como "
+"SPL) resuelve todo esto bien."
 
 #: ..\python_docs\spladdoninternals.py:12
 msgid "### Studio add-on: a history"
-msgstr ""
+msgstr "### Complemento para Studio: una historia"
 
 #: ..\python_docs\spladdoninternals.py:13
 msgid ""
@@ -90,6 +118,13 @@ msgid ""
 "NVDA screen reader) was considered a quick project, and further development "
 "ceased until 2013."
 msgstr ""
+"En 2011, Geoff Shang, un locutor ciego experimentado, comenzó a trabajar en "
+"el complemento para SPL Studio. Esta versión temprana (numerada como 0.01) "
+"fue desarrollada para hacer que NVDA verbalizara diversos cambios de estado, "
+"como la alternancia de automatización y así. Esta versión inicial, co-"
+"desarrollada con James Teh (uno de los principales desarrolladores del "
+"lector de pantalla NVDA) se consideró como un proyecto rápido, y el "
+"desarrollo cesó hasta 2013."
 
 #: ..\python_docs\spladdoninternals.py:14
 msgid ""
@@ -103,6 +138,16 @@ msgid ""
 "suggestions from SPL users. After little over a month of development and "
 "preview releases, I released Studio add-on 1.0 in January 2014."
 msgstr ""
+"En 2013, yo (Joseph Lee) recibí varios correos relacionados con el soporte "
+"de NVDA para SPL Studio con una petición de que alguien escribiera un "
+"complemento para él. Como todavía era nuevo en el desarrollo de complementos "
+"(esto vino después de que desarrollara Control Usage Assistant y GoldWave), "
+"decidí aceptar este reto para aprender más sobre Python y practicar lo "
+"aprendido en los laboratorios de ciencias de la computación en UC Riverside. "
+"Primero descargué el complemento existente (0.01) e instalé Studio 5.01 en "
+"mi ordenador para aprender más sobre este programa y recopilar sugerencias "
+"de otros usuarios de SPL. Después de un mes de desarrollo y versiones de "
+"prueba, liberé el complemento para Studio 1.0 en enero de 2014."
 
 #: ..\python_docs\spladdoninternals.py:15
 msgid ""
@@ -121,27 +166,56 @@ msgid ""
 "follow this model after receiving comments from the NVDA community. As of "
 "time of writing, add-on 17.06 just hit the air."
 msgstr ""
+"La mayoría de las primeras versiones (1.x, 2.x, 3.x, publicadas a lo largo "
+"de 2014) fueron principalmente proyectos rápidos que reducían la brecha "
+"entre NVDA y otros lectores de pantalla (los scripts para JAWS de Brian "
+"Hartgen fueron mi fuente de inspiración y he estudiado la documentación de "
+"los scripts para Window Eyes creados por Jeff Bishop). Estas primeras "
+"versiones, que daban soporte a Studio 4.33 y versiones posteriores, se "
+"utilizaron también para solucionar fallos encontrados por usuarios de Studio "
+"- por ejemplo, un locutor subió un vídeo a YouTube explicando que NVDA no "
+"estaba leyendo los cuadros de edición, cosa que se solucionó rápidamente. "
+"Las siguientes versiones (4.x, 5.x, 6.x, publicadas a lo largo de 2015), "
+"profundizaron en reducir las diferencias con otros lectores de pantalla e "
+"introdujeron características únicas (por ejemplo, el complemento 5.0 vino "
+"con un diálogo de configuración, y el 6.0 introdujo el concepto de perfil de "
+"emisión). Ya avanzado 2016, viendo que algunos de mis complementos estaban "
+"adoptando el esquema año.mes para las versiones, decidí cambiar SPL para que "
+"siguiera este modelo tras recibir comentarios de la comunidad de NVDA. En el "
+"momento en que escribo este artículo, la versión 17.06 de este complemento "
+"acaba de ser liberada."
 
 #: ..\python_docs\spladdoninternals.py:16
 msgid ""
 "Highlights of past major releases and subsequent maintenance releases "
 "include:"
 msgstr ""
+"Lo reseñable de las versiones pasadas principales y de mantenimiento es lo "
+"siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:17
 msgid "* 1.x: Initial release, added end of track alarm and other features."
 msgstr ""
+"* 1.x: versión inicial, añadida alarma de fin de pista y otras "
+"características."
 
 #: ..\python_docs\spladdoninternals.py:18
 msgid "* 2.x: Track Finder and better routines to recognize Studio versions."
 msgstr ""
+"* 2.x: buscador de pista y procedimientos mejores para reconocer versiones "
+"de Studio."
 
 #: ..\python_docs\spladdoninternals.py:19
+#, fuzzy
 msgid ""
 "* 3.x: first long-term support (LTS) release, Cart Explorer, support for SAM "
 "Encoder and no need to stay on the encoder window during connection "
 "attempts. This was the last version to support Studio 4.33."
 msgstr ""
+"* 3.x: primera versión de soporte extendido (lts), explorador del Cart, "
+"soporte para el codificador SAM y eliminación de la necesidad de permanecer "
+"en la ventana del codificador durante los intentos de conexión. Esta fue la "
+"última versión que dio soporte a Studio 4.33."
 
 #: ..\python_docs\spladdoninternals.py:20
 msgid "* 4.x: Library scan, support for SPL encoder and studio 5.10."
@@ -204,6 +278,8 @@ msgid ""
 "To download the add-on, go to http://addons.nvda-project.org/addons/"
 "StationPlaylist.en.html."
 msgstr ""
+"Para descargar el complemento, ve a la sección de complementos que se "
+"encuentra en nuestra web."
 
 #: ..\python_docs\spladdoninternals.py:30
 msgid ""
@@ -253,7 +329,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:35
 msgid "Some definitions:"
-msgstr ""
+msgstr "Algunas definiciones:"
 
 #: ..\python_docs\spladdoninternals.py:36
 msgid ""
