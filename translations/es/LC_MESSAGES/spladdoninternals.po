@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-05 15:39+0200\n"
+"PO-Revision-Date: 2018-04-05 16:52+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,13 +206,12 @@ msgstr ""
 "de Studio."
 
 #: ..\python_docs\spladdoninternals.py:19
-#, fuzzy
 msgid ""
 "* 3.x: first long-term support (LTS) release, Cart Explorer, support for SAM "
 "Encoder and no need to stay on the encoder window during connection "
 "attempts. This was the last version to support Studio 4.33."
 msgstr ""
-"* 3.x: primera versión de soporte extendido (lts), explorador del Cart, "
+"* 3.x: primera versión de soporte extendido (lts), explorador de Cart, "
 "soporte para el codificador SAM y eliminación de la necesidad de permanecer "
 "en la ventana del codificador durante los intentos de conexión. Esta fue la "
 "última versión que dio soporte a Studio 4.33."
@@ -220,16 +219,20 @@ msgstr ""
 #: ..\python_docs\spladdoninternals.py:20
 msgid "* 4.x: Library scan, support for SPL encoder and studio 5.10."
 msgstr ""
+"* 4.x: escaneo de biblioteca, soporte para el codificador de SPL y Studio "
+"5.10."
 
 #: ..\python_docs\spladdoninternals.py:21
 msgid "* 5.x: Track Dial, dedicated configuration dialog."
-msgstr ""
+msgstr "* 5.x: dial de pista, diálogo de configuración dedicado."
 
 #: ..\python_docs\spladdoninternals.py:22
 msgid ""
 "* 6.x: Broadcast profiles, metadata streaming, column search and "
 "announcement reordering."
 msgstr ""
+"* 6.x: perfiles de emisión, flujo de metadatos, búsqueda de columnas y "
+"reordenado de verbalizaciones."
 
 #: ..\python_docs\spladdoninternals.py:23
 msgid ""
@@ -237,18 +240,26 @@ msgid ""
 "Track Columns Explorer and others. This is the last version to support "
 "Studio 5.01. Renamed to 15.x in late 2016."
 msgstr ""
+"* 7.x: segunda versión lts, actualizaciones del complemento, cambio de "
+"perfiles basado en tiempo, explorador de columnas de pista y otros. Esta es "
+"la última versión que da soporte a Studio 5.01. Se renombró a 15.x ya "
+"entrado el 2016."
 
 #: ..\python_docs\spladdoninternals.py:24
 msgid ""
 "* 16.10 (formerly 8.0): Columns explorer for Track Tool, selective data "
 "resets."
 msgstr ""
+"* 16.10 (también conocida como 8.0): explorador de columnas para la "
+"herramienta de pista, restablecimientos selectivos de datos."
 
 #: ..\python_docs\spladdoninternals.py:25
 msgid ""
 "* 17.04 (formerly 9.0: vertical column navigation, playlist snapshots, "
 "support for Studio 5.20."
 msgstr ""
+"* 17.04 (conocida como 9.0): navegación vertical por columnas, instantáneas "
+"de listas de reproducción, soporte para Studio 5.20."
 
 #: ..\python_docs\spladdoninternals.py:26
 msgid ""
@@ -256,12 +267,17 @@ msgid ""
 "suppression. This is the last major version, with subsequent versions using "
 "continuous delivery."
 msgstr ""
+"* 17.08 (10.0): notificación de solicitud de oyente, supresión de la "
+"verbalización de cabeceras de columna. Esta es la última versión principal, "
+"con las siguientes versiones usando entrega continua."
 
 #: ..\python_docs\spladdoninternals.py:27
 msgid ""
 "* 17.12: end of support for old Windows releases, add-on settings "
 "reorganization, extension points."
 msgstr ""
+"* 17.12: fin de soporte para versiones antiguas de Windows, reorganización "
+"de los ajustes del complemento, puntos de extensión."
 
 #: ..\python_docs\spladdoninternals.py:28
 msgid ""
@@ -272,6 +288,14 @@ msgid ""
 "workings of this add-on, and for developers to use this add-on as an example "
 "of how an add-on is planned, implemented, tested, released and maintained."
 msgstr ""
+"A lo largo de este artículo, tendrás una oportunidad para ver cómo funciona "
+"el complemento, la filosofía de diseño y cómo cómo se desarrolla el "
+"complemento, con vistas al pasado y al futuro. Espero que este artículo de "
+"complementos vistos por dentro sea una referencia valiosa para usuarios y "
+"desarrolladores - para los usuarios, que vean los trabajos internos de este "
+"complemento, y para los desarrolladores, que usen este complemento como un "
+"ejemplo a la hora de planear, implementar, probar, publicar y mantener un "
+"complemento."
 
 #: ..\python_docs\spladdoninternals.py:29
 msgid ""
@@ -286,6 +310,8 @@ msgid ""
 "## Design, code layout, layer sets and importance of Studio API and Studio "
 "window handle"
 msgstr ""
+"## Diseño, estructura del código, conjuntos de capas e importancia de la api "
+"de Studio y el manejador de ventana de Studio"
 
 #: ..\python_docs\spladdoninternals.py:31
 msgid ""
@@ -295,10 +321,16 @@ msgid ""
 "we get into that, there are some things we need to go over such as "
 "programming background, user experience and a few definitions."
 msgstr ""
+"Hasta ahora, hemos hablado de cómo fue concebido este complemento y leído "
+"sobre su historia. Empezando con esta sección, recorreremos los auténticos "
+"interiores de este complemento, empezando con el diseño general y unas pocas "
+"notas importantes. Pero antes de que vayamos a eso, hay algunas cosas de las "
+"que debemos hablar, como el fondo de programación, la experiencia de usuario "
+"y algunas definiciones."
 
 #: ..\python_docs\spladdoninternals.py:32
 msgid "### A place to start: reader questions and definitions"
-msgstr ""
+msgstr "### Un lugar en el que empezar: preguntas del lector y definiciones"
 
 #: ..\python_docs\spladdoninternals.py:33
 msgid ""
@@ -336,6 +368,8 @@ msgid ""
 "* Add-on: An add-on is a module for a program that adds additional features "
 "or changes the behavior of a program (3)."
 msgstr ""
+"* Complemento: un complemento es un módulo para un programa que añade "
+"funciones adicionales o cambia el comportamiento del programa (3)."
 
 #: ..\python_docs\spladdoninternals.py:37
 msgid ""
