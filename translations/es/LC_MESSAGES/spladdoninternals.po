@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-06 13:06+0200\n"
+"PO-Revision-Date: 2018-04-09 17:36+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:39
 msgid "### Overall design and source code layout"
-msgstr ""
+msgstr "### Diseño general y del código fuente"
 
 #: ..\python_docs\spladdoninternals.py:40
 msgid ""
@@ -425,6 +425,11 @@ msgid ""
 "add-on includes an app module for Track Tool in addition to the main app "
 "module for Studio, as well as an app module for StationPlaylsit Creator."
 msgstr ""
+"El complemento de NVDA para StationPlaylist Studio consta de tres módulos de "
+"aplicación y una extensión global. Ya que Studio viene con la herramienta de "
+"pista para gestionar pistas, el complemento incluye un módulo de aplicación "
+"para la herramienta de pista además del módulo de aplicación principal para "
+"Studio, así como un módulo de aplicación para StationPlaylist Creator."
 
 #: ..\python_docs\spladdoninternals.py:41
 msgid ""
@@ -439,16 +444,31 @@ msgid ""
 "plugin requires Studio to be running to unlock some features (here, unlock "
 "means using layer commands and encoder support)."
 msgstr ""
+"El diseño general es una relación entre el módulo de aplicación principal de "
+"Studio y la extensión global de utilidades de Studio (SPLUtils). El módulo "
+"de aplicación de Studio hace cosas que se esperan de los scripts, como "
+"reaccionar a pulsaciones de teclado, anunciar información de estado, gestión "
+"de configuración y todo eso, mientras que la extensión global es responsable "
+"de ejecutar órdenes de Studio desde cualquier sitio y del soporte de los "
+"codificadores (el complemento soporta los codificadores SAM y SPL). En "
+"realidad, la extensión global es subordinada del módulo de aplicación, ya "
+"que el módulo de aplicación controla la funcionalidad general del "
+"complemento y la extensión global necesita que Studio esté en funcionamiento "
+"para desbloquear algunas funciones (aquí, desbloquear significa usar la capa "
+"de órdenes y el soporte de codificadoresÇ)."
 
 #: ..\python_docs\spladdoninternals.py:42
 msgid "The source code consists of:"
-msgstr ""
+msgstr "El código fuente consta de:"
 
 #: ..\python_docs\spladdoninternals.py:43
 msgid ""
 "* appModules: This folder contains the main splstudio (app module) package "
 "and the app modules for Track Tool and Creator."
 msgstr ""
+"* appModules: esta carpeta contiene el paquete (módulo de aplicación) "
+"principal splstudio y los módulos de aplicación para la herramienta de pista "
+"y Creator."
 
 #: ..\python_docs\spladdoninternals.py:44
 msgid ""
