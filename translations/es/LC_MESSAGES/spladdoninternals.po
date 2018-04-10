@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-10 13:29+0200\n"
+"PO-Revision-Date: 2018-04-10 17:37+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -681,7 +681,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:60
 msgid "### The \"magic\" behind layer commands"
-msgstr ""
+msgstr "### La \"magia\" tras las órdenes de capa"
 
 #: ..\python_docs\spladdoninternals.py:61
 msgid ""
@@ -690,6 +690,10 @@ msgid ""
 "various formatting announcement settings via a layer command set. It works "
 "like this:"
 msgstr ""
+"Para que las órdenes de capa funcionaran, tomé prestado código de otro "
+"complemento: Toggle y ToggleX, de Tyler Spivey. Toggle / ToggleX permite "
+"alternar varios ajustes de verbalización de formato a través de un conjunto "
+"de capa de órdenes. Trabaja de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:62
 msgid ""
@@ -700,6 +704,13 @@ msgid ""
 "container). To remove gesture map dynamically, the main/layer gestures combo "
 "was cleared, then the main gestures were bound."
 msgstr ""
+"* Orden dinámica: asociación y eliminación de script: es posible asociar "
+"gestos dinámicamente a través del método bindGesture / bindGestures para un "
+"módulo de aplicación o una extensión global (bindGesture asocia una única "
+"orden a un script, mientras que bindGestures asocia órdenes a scripts desde "
+"un mapa de gestos u otro contenedor). Para eliminar el mapa de gestos "
+"dinámicamente, se limpiaba la combinación de gestos principales / de capa, y "
+"después se asociaban los gestos principales."
 
 #: ..\python_docs\spladdoninternals.py:63
 msgid ""
@@ -710,6 +721,13 @@ msgid ""
 "layers to work, a second gestures map was provided to store layer commands "
 "(command and the bound script of the form \"command\":\"script\")."
 msgstr ""
+"* Uso de dos o más mapas de gestos en el módulo de aplicación / extensión "
+"global: normalmente, un módulo de aplicación o extensión global que que "
+"acepta entrada por teclado usa un mapa de gestos único (llamado __gestures; "
+"un mapa es otro término para diccionarios o arrays asociativos donde hay un "
+"valor asociado a una clave). Pero para que las capas funcionen, se ofrecía "
+"un segundo mapa de gestos para almacenar las órdenes de capa (la orden y el "
+"script asociado de la forma \"orden\":\"script\")."
 
 #: ..\python_docs\spladdoninternals.py:64
 msgid ""
@@ -720,10 +738,16 @@ msgid ""
 "used to return either the main script of the layer version depending on "
 "context."
 msgstr ""
+"* Funciones envueltas: Tyler usaba el decorador \"wraps\" de functools para "
+"encapsular cómo se llama a la función \"finalmente\" en el conjunto de capa "
+"(esto era necesario para eliminar asociaciones de órdenes de capa después de "
+"ejecutarse). Además, se usó una implementación personalizada de la función "
+"getScript (módulo de aplicación / extensión global) para devolver el script "
+"principal de la versión de la capa dependiendo del contexto."
 
 #: ..\python_docs\spladdoninternals.py:65
 msgid "A typical layer command execution is as follows:"
-msgstr ""
+msgstr "La ejecución típica de las órdenes de capa es como sigue:"
 
 #: ..\python_docs\spladdoninternals.py:66
 msgid ""
@@ -732,12 +756,18 @@ msgid ""
 "Assistant layer; removed in 2.0 to prevent conflicts with language-specific "
 "gestures)."
 msgstr ""
+"1. Primero, se asigna una orden a una capa (entrada) orden (complemento 2.0 "
+"y posterior; el complemento 1.x usaba NVDA+` para el controlador de SPL y "
+"ctrl+NVDA+` para la capa del asistente; se eliminó en la 2.0 para prevenir "
+"conflictos con gestos específicos del idioma)."
 
 #: ..\python_docs\spladdoninternals.py:67
 msgid ""
 "2. You press the layer entry command. This causes the app module/global "
 "plugin to perform the following:"
 msgstr ""
+"2. Pulsas la orden de entrada de la capa. Esto causa que el módulo de "
+"aplicación o extensión global haga lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:68
 msgid ""
@@ -745,11 +775,17 @@ msgid ""
 "to see if you are in the Playlist Viewer (relaxed in add-on 7.0), and for "
 "the global plugin, checks if Studio is running."
 msgstr ""
+"\t1. Se comprueban las condiciones de capa. Hasta el complemento 6.x, el "
+"módulo de aplicación quería ver si estabas en el visor de listas de "
+"reproducción (se relajó en el complemento 7.0), y para la extensión global, "
+"comprueba si Studio está en ejecución."
 
 #: ..\python_docs\spladdoninternals.py:69
 msgid ""
 "\t2. Sets a flag telling NVDA that the Assistant/Controller layer is active."
 msgstr ""
+"\t2. Se establece un indicador para decirle a NVDA que la capa del "
+"asistente / controlador está activa."
 
 #: ..\python_docs\spladdoninternals.py:70
 msgid ""
@@ -757,6 +793,10 @@ msgid ""
 "bindGestures function. In case of screen reader emulation in SPL Assistant, "
 "the appropriate gestures map is selected."
 msgstr ""
+"\t3. Se añaden los gestos del conjunto de la capa al mapa principal de "
+"gestos a través de la función bindGestures. En el caso de la emulación de "
+"lector de pantalla en el asistente de SPL, se selecciona el mapa apropiado "
+"de gestos."
 
 #: ..\python_docs\spladdoninternals.py:71
 msgid ""
@@ -768,32 +808,50 @@ msgid ""
 "In the app module, for performance reasons, the object is cached. More "
 "details on mechanics of this procedure in subsequent sections."
 msgstr ""
+"3. Pulsas una orden en el conjunto de la capa (como la A de asistente para "
+"oír el estado de la automatización, o la A para activar la automatización si "
+"se usa la capa del controlador de SPL). Dependiendo de cómo esté "
+"implementado el script de capa, llama a la api de Studio (para la capa de "
+"controlador de SPL y algunas órdenes del asistente) o bien simula navegación "
+"de objetos para recuperar la información necesaria (capa del asistente). En "
+"el módulo de aplicación, por razones de rendimiento, el objeto se mete en "
+"caché. Hay más detalles de los mecanismos de este procedimiento en las "
+"siguientes secciones."
 
 #: ..\python_docs\spladdoninternals.py:72
 msgid ""
 "4. After the layer command is done, it calls \"finish\" function (app module/"
 "global plugin) to perform clean up actions such as:"
 msgstr ""
+"4. Después de que se haya hecho la orden de capa, se llama a la función "
+"\"finish\" (módulo de aplicación / extensión global) para realizar acciones "
+"de limpieza tales como:"
 
 #: ..\python_docs\spladdoninternals.py:73
 msgid "\t* Clears layer flags."
-msgstr ""
+msgstr "\t* Limpiar los indicadores de capa."
 
 #: ..\python_docs\spladdoninternals.py:74
 msgid ""
 "\t* Removes the \"current\" gestures (main gestures and layer commands) and "
 "reassigns it to the main gestures map (this is dynamic binding removal)."
 msgstr ""
+"\t* eliminar los gestos \"actuales\" (gestos principales y gestos de capa) y "
+"reasignarlos al mapa principal de gestos (esto se llama eliminación dinámica "
+"de asociaciones)."
 
 #: ..\python_docs\spladdoninternals.py:75
 msgid ""
 "\t* Performs additional actions depending on context (for example, if Cart "
 "Explorer was in use)."
 msgstr ""
+"\t* Realizar acciones adicionales dependiendo del contexto (por ejemplo, si "
+"el explorador cart estaba en uso)."
 
 #: ..\python_docs\spladdoninternals.py:76
 msgid "### The importance of Studio window handle and Studio API"
 msgstr ""
+"### La importancia del manejador de ventana de Studio y la api de Studio"
 
 #: ..\python_docs\spladdoninternals.py:77
 msgid ""
@@ -5854,7 +5912,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:790
 msgid "### Important notices and credits"
-msgstr ""
+msgstr "### Avisos importantes y créditos"
 
 #: ..\python_docs\spladdoninternals.py:791
 msgid ""
@@ -5865,6 +5923,13 @@ msgid ""
 "biggest thanks goes to you, the users of SPL add-on for your continued "
 "feedback and teaching me new things about studio."
 msgstr ""
+"Me gustaría dar las gracias al personal de StationPlaylist Studio por su "
+"colaboración continua con usuarios de lectores de pantalla en cuanto a la "
+"accesibilidad de Studio. Va un agradecimiento especial para Jamie Teh de NV "
+"Access y Geoff Shang (el autor original del complemento) por darme a mí y a "
+"otros una base de la que partir. Y como siempre, el mayor agradecimiento es "
+"para vosotros, los usuarios del complemento para SPL, por vuestros continuos "
+"comentarios y por enseñarme cosas nuevas sobre Studio."
 
 #: ..\python_docs\spladdoninternals.py:792
 msgid ""
@@ -5872,6 +5937,10 @@ msgid ""
 "documented. Also, source code discussed throughout this series may change as "
 "future add-on versions are developed."
 msgstr ""
+"Aviso del código fuente: para proteger los derechos de copia, no se han "
+"documentado algunas partes de la api de Studio. Además, el código fuente "
+"expuesto a lo largo de este artículo puede cambiar según se desarrollen "
+"versiones futuras del complemento."
 
 #: ..\python_docs\spladdoninternals.py:793
 msgid ""
