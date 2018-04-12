@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-10 17:37+0200\n"
+"PO-Revision-Date: 2018-04-12 16:02+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -863,6 +863,14 @@ msgid ""
 "messages to communicate with the outside program in question via user32."
 "dll's SendMessage function)."
 msgstr ""
+"Para usar los servicios que ofrece Studio, se debe utilizar la api de "
+"Studio, que básicamente necesita que tengamos vigilado el manejador de "
+"ventana de Studio (en la api de Windows, un manejador de ventana "
+"(simplemente llamado manejador) es una referencia a algo, como a una "
+"ventana, un archivo, procedimientos de conexión y así sucesivamente). Es "
+"importante si se desean ejecutar órdenes de Studio desde otros programas "
+"(Studio usa mensajes para comunicarse con el programa externo en cuestión "
+"mediante la función SendMessage de user32.dll)."
 
 #: ..\python_docs\spladdoninternals.py:78
 msgid ""
@@ -877,10 +885,22 @@ msgid ""
 "I do whenver new versions of Studio is released is to ask for the latest "
 "Studio API and modify the app module and/or global plugin accordingly."
 msgstr ""
+"Desde el complemento 7.0, una de las actividades que realiza el módulo de "
+"aplicación cuando se inicia (además de verbalizar la versión de Studio que "
+"estás usando) es buscar el manejador de la ventana principal de Studio hasta "
+"que lo encuentra (esto se hace mediante un hilo que llama a la función "
+"FindWindowA (y no FindWindowW) de user32.dll cada segundo), y una vez que lo "
+"encuentra, el módulo de aplicación guarda esta información para uso futuro. "
+"El controlador SPL realiza una comprobación similar, ya que sin el "
+"manejador, el controlador de SPL es inútil (como se ha explicado antes). "
+"Debido a la importancia de la api de Studio y el manejador de ventana, una "
+"de las primeras cosas que hago cada vez que se publica una nueva versión de "
+"Studio es pedir la última api de Studio y modificar ell módulo de aplicación "
+"y / o la extensión global en consecuencia."
 
 #: ..\python_docs\spladdoninternals.py:79
 msgid "## Life of the SPL app module"
-msgstr ""
+msgstr "## Vida del módulo de aplicación de SPL"
 
 #: ..\python_docs\spladdoninternals.py:80
 msgid ""
@@ -890,6 +910,12 @@ msgid ""
 "everything in between. We'll cover more specific features of the app module "
 "throughout this article."
 msgstr ""
+"Ahora ya tienes un poquito de la descripción del complemento, buceemos en "
+"sus componentes principales: el módulo de aplicación de SPL y los módulos de "
+"soporte. En esta sección, iremos a través de la vida del módulo de "
+"aplicación de SPL Studio: desde el principio hasta el final y todo lo que "
+"hay entre medias. Cubriremos funciones más específicas del módulo de "
+"aplicación a lo largo de este artículo."
 
 #: ..\python_docs\spladdoninternals.py:81
 msgid ""
@@ -899,16 +925,24 @@ msgid ""
 "Core (the screen reader itself) works (so you'll learn several things at "
 "once)."
 msgstr ""
+"Nota: durante el resto de este artículo, verás algunas porciones del código "
+"fuente para hacerte entender mejor cómo funciona algo (mayoritariamente se "
+"proporcionará pseudocódigo). Además, para algunas cosas será necesario "
+"explicar cómo funciona el núcleo de NVDA (el lector de pantalla en sí) (por "
+"lo que aprenderás muchas cosas de una vez)."
 
 #: ..\python_docs\spladdoninternals.py:82
 msgid "### SPL Studio app module: design and code overview"
 msgstr ""
+"### Módulo de aplicación de SPL Studio: descripción del diseño y del código"
 
 #: ..\python_docs\spladdoninternals.py:83
 msgid ""
 "As noted previously, the SPL Studio app module (splstudio/__init__.py) "
 "consists of several sections. These include (from top to bottom):"
 msgstr ""
+"Como se ha indicado antes, el módulo de aplicación de SPL Studio (splstudio/"
+"__init__.py) consta de varias secciones. Estas incluyen (de arriba a abajo):"
 
 #: ..\python_docs\spladdoninternals.py:84
 msgid ""
@@ -916,6 +950,9 @@ msgid ""
 "imported here, including IAccessible controls support, configuration manager "
 "and so on."
 msgstr ""
+"* Importaciones: aquí se importan muchos módulos de diversos paquetes Python "
+"y del lector de pantalla NVDA, incluyendo soporte para controles de "
+"IAccessible, gestor de configuración y así sucesivamente."
 
 #: ..\python_docs\spladdoninternals.py:85
 msgid ""
@@ -923,6 +960,9 @@ msgid ""
 "previous chapter, and the \"finally\" function at the top is the one that "
 "makes this possible."
 msgstr ""
+"* Envoltura de orden de capa: ya dije en un capítulo anterior cómo "
+"funcionaban las órdenes de capa, y la función \"finally\" al principio es la "
+"que hace esto posible."
 
 #: ..\python_docs\spladdoninternals.py:86
 msgid ""
@@ -933,6 +973,13 @@ msgid ""
 "\"messageSound\" (displays a message on a braille display and plays a wave "
 "file) and other helper functions."
 msgstr ""
+"* Unas pocas comprobaciones y funciones auxiliares: aquí se incluye un "
+"indicador que especifica la mínima versión de Studio requerida, el valor "
+"almacenado para el manejador de ventana de Studio (SPLWin), y referencias "
+"para hilos como el temporizador de alarma del micrófono (más sobre esto en "
+"la sección de hilos). Esta sección también incluye funciones auxiliares como "
+"\"messageSound\" (muestra un mensaje en una pantalla Braille y reproduce un "
+"archivo wav) y otras funciones auxiliares."
 
 #: ..\python_docs\spladdoninternals.py:87
 msgid ""
@@ -940,6 +987,9 @@ msgid ""
 "Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back to these "
 "objects later."
 msgstr ""
+"* Clases de superposición del elemento de pista: se ofrecen dos clases para "
+"dar soporte a elementos del visor de lista de reproducción en Studio 5.0x y "
+"5.1x, respectivamente. Volveremos a estos objetos más tarde."
 
 #: ..\python_docs\spladdoninternals.py:88
 msgid ""
@@ -947,6 +997,10 @@ msgid ""
 "entire add-on package. The app module class (appModules.splstudio.AppModule) "
 "is further divided into sections as described in add-on design chapter."
 msgstr ""
+"* Clase del módulo de aplicación: este es el núcleo no sólo del módulo de "
+"aplicación, sino del paquete del complemento entero. La clase del módulo de "
+"aplicación (appModules.splstudio.AppModule) está a su vez dividida en "
+"secciones como se describe en el capítulo de diseño del complemento."
 
 #: ..\python_docs\spladdoninternals.py:89
 msgid ""
@@ -954,10 +1008,16 @@ msgid ""
 "and during app module initialization, activities performed while the app "
 "module is active, death and add-on updates."
 msgstr ""
+"Recorramos ahora el ciclo de vida del objeto del módulo de aplicación en "
+"cuestión: antes y durante la inicialización del módulo de aplicación, "
+"actividades realizadas mientras el módulo de aplicación está activo, muerte "
+"y actualizaciones del complemento."
 
 #: ..\python_docs\spladdoninternals.py:90
 msgid "### Before birth: NVDA's app module import routines"
 msgstr ""
+"### Antes de nacer: procedimientos de importación del módulo de aplicación "
+"de NVDA"
 
 #: ..\python_docs\spladdoninternals.py:91
 msgid ""
@@ -965,12 +1025,17 @@ msgid ""
 "loads various app modules. This routine, available from source/"
 "appModuleHandler.py (NVDA Core), can be summarized as follows:"
 msgstr ""
+"Antes de que profundicemos más, es importante que entiendas cómo carga NVDA "
+"distintos módulos de aplicación. Este procedimiento, disponible en source/"
+"appModuleHandler.py (núcleo de NVDA) puede resumirse de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:92
 msgid ""
 "1. If a new process (program) runs, NVDA will try to obtain the process ID "
 "(PID) for the newly loaded process."
 msgstr ""
+"1. Si se ejecuta un nuevo proceso (programa), NVDA intentará obtener el "
+"identificador de proceso (PID) para el proceso recién cargado."
 
 #: ..\python_docs\spladdoninternals.py:93
 msgid ""
@@ -980,6 +1045,12 @@ msgid ""
 "appModules, then resorting to the default app module if no app module with "
 "the given name is found."
 msgstr ""
+"2. A continuación, NVDA buscará un módulo de aplicación que encaje con el "
+"nombre del ejecutable del proceso recién creado. Mira en varios lugares, "
+"entre ellos source/appModules, directorio de configuración de usuario/"
+"appModules y complemento/appModules, luego vuelve al módulo de aplicación "
+"por defecto si no encuentra ningún módulo de aplicación con el nombre "
+"especificado."
 
 #: ..\python_docs\spladdoninternals.py:94
 msgid ""
@@ -987,6 +1058,9 @@ msgid ""
 "load the app module, raising errors if necessary. No errors means the app "
 "module is ready for use."
 msgstr ""
+"3. Después, NVDA intentará usar la función __import__ integrada en Python "
+"para cargar el módulo de aplicación, lanzando errores si es necesario. Si no "
+"hay errores significa que el módulo de aplicación está listo para usarse."
 
 #: ..\python_docs\spladdoninternals.py:95
 msgid ""
@@ -995,6 +1069,10 @@ msgid ""
 "defined, Python (not NVDA) will call the app module constructor (more on "
 "this below)."
 msgstr ""
+"4. Una vez esté listo el módulo recién cargado, NVDA instanciará la clase "
+"appModule.AppModule (la pondrá disponible). Si se define un constructor "
+"(método __init__), Python (y no NVDA) llamará al constructor del módulo de "
+"aplicación (más sobre esto debajo)."
 
 #: ..\python_docs\spladdoninternals.py:96
 msgid ""
@@ -1003,20 +1081,27 @@ msgid ""
 "performing app module specific constructor routines, it is important to call "
 "the constructor for the default app module first as in the following code:"
 msgstr ""
+"En caso de que la clase AppModule del módulo de aplicación tenga un "
+"constructor definido, Python seguirá las órdenes especificadas en ese "
+"constructor. Antes de hacer los procedimientos de inicialización específicos "
+"del módulo de aplicación, es importante llamar primero al constructor del "
+"módulo de aplicación por defecto como en el siguiente código:"
 
 #: ..\python_docs\spladdoninternals.py:97
 msgid "\tdef __init__(self, *args, **kwargs):"
-msgstr ""
+msgstr "\tdef __init__(self, *args, **kwargs):"
 
 #: ..\python_docs\spladdoninternals.py:98
 msgid "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
-msgstr ""
+msgstr "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 
 #: ..\python_docs\spladdoninternals.py:99
 msgid ""
 "This is a must because the default app module constructor performs important "
 "activities, including:"
 msgstr ""
+"Esto es obligatorio porque el constructor del módulo de aplicación por "
+"defecto realiza actividades importantes, incluyendo:"
 
 #: ..\python_docs\spladdoninternals.py:100
 msgid ""
@@ -1024,6 +1109,9 @@ msgid ""
 "(this time, it is baseObject.ScriptableObject, containing gestures support "
 "among other important properties)."
 msgstr ""
+"1. El constructor del módulo de aplicación por defecto llamará a otro "
+"constructor base (en esta ocasión, se trata de baseObject.ScriptableObject, "
+"que contiene soporte de gestos entre otras propiedades importantes)."
 
 #: ..\python_docs\spladdoninternals.py:101
 msgid ""
@@ -1032,12 +1120,20 @@ msgid ""
 "kernel32.dll's OpenProcess function (XP/Server 2003 and Vista/Server 2008 "
 "and later requires different arguments)."
 msgstr ""
+"2. Inicializa diversas propiedades, como PID (identificador de proceso), "
+"nombre del módulo de aplicación (si está definido), nombre de la aplicación "
+"y manejador hacia la aplicación en cuestión mediante la función OpenProcess "
+"de kernel32.dll (XP/Server 2003 y Vista/Server 2008 y posterior necesitan "
+"argumentos distintos)."
 
 #: ..\python_docs\spladdoninternals.py:102
 msgid ""
 "3. Lastly, the constructor initializes process injection handle and helper "
 "binding handle in case such routines are required."
 msgstr ""
+"3. Por último, el constructor inicializa el manejador de inyección de "
+"proceso y el manejador de asociación auxiliar en caso de que se necesiten "
+"estos procedimientos."
 
 #: ..\python_docs\spladdoninternals.py:103
 msgid "### Birth: SPL Studio app module construction"
@@ -1874,7 +1970,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:224
 msgid "\tevent_gainFocus(self, obj, nextHandler)"
-msgstr ""
+msgstr "\tevent_gainFocus(self, obj, nextHandler)"
 
 #: ..\python_docs\spladdoninternals.py:225
 msgid ""
@@ -1924,7 +2020,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:233
 msgid "\tevent_nameChange(self, obj, nextHandler)"
-msgstr ""
+msgstr "\tevent_nameChange(self, obj, nextHandler)"
 
 #: ..\python_docs\spladdoninternals.py:234
 msgid "When this event is fired by Studio, NVDA performs following operations:"
@@ -5882,7 +5978,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:787
 msgid "### Final thoughts"
-msgstr ""
+msgstr "### Consideraciones finales"
 
 #: ..\python_docs\spladdoninternals.py:788
 msgid ""
