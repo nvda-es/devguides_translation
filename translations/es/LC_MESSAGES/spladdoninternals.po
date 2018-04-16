@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-13 13:26+0200\n"
+"PO-Revision-Date: 2018-04-16 13:50+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1229,6 +1229,13 @@ msgid ""
 "SPLConfig object. In add-on 17.10 and later, if the add-on is told to use "
 "normal profile only, this step will not occur."
 msgstr ""
+"\t2. Para el complemento 6.0 y posteriores, se cargan los perfiles de "
+"emisión desde la carpeta rutaDelComplemento/profiles. Son archivos .ini y se "
+"procesan como se hace con el perfil normal salvo porque los ajustes globales "
+"se toman desde el perfil normal. En el complemento 8.0, al igual que con el "
+"perfil normal, esto se hace al construir el objeto SPLConfig. En el "
+"complemento 17.10 y posteriores, si decimos al complemento que use solamente "
+"el perfil normal, no se hará este paso."
 
 #: ..\python_docs\spladdoninternals.py:110
 msgid ""
@@ -1240,6 +1247,14 @@ msgid ""
 "be used (17.10 and later), there is (or will be) just one profile so append "
 "step is skipped)."
 msgstr ""
+"\t3. A continuación, cada perfil se anexa a un contenedor encargado de los "
+"registros (splconfig.SPLConfigPool para 6.x y 7.x, splconfig.SPLConfig."
+"profiles en 8.0 y posteriores). Después se establece el perfil activo y "
+"splconfig.SPLConfig (mapa de configuración del usuario) se establece al "
+"primer perfil en el contenedor de configuración (perfil normal; para el "
+"complemento 5.x y anteriores o si sólo va a usarse el perfil normal (17.10 y "
+"posteriores), hay (o habrá) simplemente un perfil, por lo que el paso de "
+"anexar se omite)."
 
 #: ..\python_docs\spladdoninternals.py:111
 msgid ""
@@ -1250,12 +1265,22 @@ msgid ""
 "comparing values when saving profiles. See profile caching section in "
 "broadcast profiles for details and reasons."
 msgstr ""
+"\t4. Empezando con el complemento 7.0 y mejorándolo en 17.10, a menos que "
+"guardar los ajustes en disco esté prohibido o se solicite la configuración "
+"en memoria, el diccionario del perfil normal (y no otros) se guarda. Esto es "
+"útil para conservar un registro de ajustes cargados de disco contra la "
+"configuración en tiempo de ejecución, y se emplea al comparar valores al "
+"guardar perfiles. Mira la sección de guardado de perfiles en perfiles de "
+"emisión para más detalles y razones."
 
 #: ..\python_docs\spladdoninternals.py:112
 msgid ""
 "\t5. If an instant profile is defined (a cached instant profile name is "
 "present), the instant profile variable is set accordingly."
 msgstr ""
+"\t5. Si se define un perfil instantáneo (hay presente un nombre de perfil "
+"instantáneo en la caché) se establece de forma apropiada la variable de "
+"perfil instantáneo."
 
 #: ..\python_docs\spladdoninternals.py:113
 msgid ""
@@ -1267,6 +1292,14 @@ msgid ""
 "profile are invalid or ConfigObj threw parse errors, commonly seen when file "
 "content doesn't make sense)."
 msgstr ""
+"\t6. Si se encuentran errores, NVDA muestra un diálogo de error (5.x y "
+"anteriores) o bien un diálogo de estado (6.0 y posteriores) detallando el "
+"error en cuestión y lo que ha hecho NVDA a los perfiles fallidos. Esto puede "
+"pasar por aplicar valores por defecto a algunos ajustes para restablecer los "
+"ajustes por defecto (lo último ocurrirá si el validador informa de que todos "
+"los ajustes en el perfil normal son inválidos o onfigObj lanzó errores de "
+"interpretación, vistos comúnmente cuando el contenido del archivo no tiene "
+"sentido)."
 
 #: ..\python_docs\spladdoninternals.py:114
 msgid ""
@@ -1275,6 +1308,11 @@ msgid ""
 "check metadata. We'll meet add-on update routines (housed in splstudio/"
 "splupdate.py) later in this article."
 msgstr ""
+"\t7. En el complemento 7.0, se inicializa la característica de "
+"actualizaciones (splupdate.initialize). Entre otras cosas, el procedimiento "
+"de inicialización carga los metadatos de búsqueda de actualizaciones. "
+"Encontraremos los procedimientos de actualización del complemento (alojados "
+"en splstudio/splupdate.py) más adelante en este artículo."
 
 #: ..\python_docs\spladdoninternals.py:115
 msgid ""
@@ -1283,18 +1321,27 @@ msgid ""
 "(this is done if the show associated with the given profile hasn't ended "
 "yet). See time-based profile section for details."
 msgstr ""
+"\t8. Se preparan los procedimientos usados por la característica de cambio "
+"de perfil basado en tiempo cargando un mapa de disparadores y comprobando si "
+"NVDA debería cambiar al siguiente perfil (esto se hace si el programa "
+"asociado con el perfil dado no ha terminado todavía). Mira la sección de "
+"perfiles basados en tiempo para más detalles."
 
 #: ..\python_docs\spladdoninternals.py:116
 msgid ""
 "\t9. Encoder settings file is loaded, and if ConfigObj throws errors, "
 "encoder settings will be reset to defaults."
 msgstr ""
+"\t9. Se carga el archivo de ajustes del codificador, y si ConfigObj lanza "
+"errores, los ajustes del codificador se restablecen por defecto."
 
 #: ..\python_docs\spladdoninternals.py:117
 msgid ""
 "\t10. In add-on 8.0, track comments are loaded (if any). See track items "
 "section for details."
 msgstr ""
+"\t10. En el complemento 8.0, se cargan los comentarios de pista (si los "
+"hay). Mira la sección de elementos de pista para más detalles."
 
 #: ..\python_docs\spladdoninternals.py:118
 msgid ""
@@ -1302,6 +1349,10 @@ msgid ""
 "modules register one or more functions for action notifications. See "
 "extension points section for details."
 msgstr ""
+"\t11. Aunque no es parte del procedimiento de inicialización, empezando con "
+"el complemento 17.12, diversos módulos registran una o más funciones para "
+"notificaciones de acción. Mira la sección de puntos de extensión para más "
+"detalles."
 
 #: ..\python_docs\spladdoninternals.py:119
 msgid ""
@@ -1314,6 +1365,15 @@ msgid ""
 "background status monitor flag is then set accordingly. We'll discuss event "
 "handling throughout this article."
 msgstr ""
+"4. Empezando con NVDA 2015.3, es posible para un módulo de aplicación "
+"pedirle a NVDA que monitorice ciertos eventos para ciertos controles incluso "
+"si no se está usando la app. Esto se hace llamando a la función eventHandler."
+"requestEvents con tres argumentos: identificador del proceso, clase de "
+"ventana para el control en cuestión y el evento a monitorizar. Para "
+"versiones más antiguas de NVDA (comprobadas mediante la función incorporada "
+"hasattr), se salta este paso, y el indicador de monitorización del estado en "
+"segundo plano se establece de forma apropiada. Hablaremos del procesamiento "
+"de eventos a lo largo de este artículo."
 
 #: ..\python_docs\spladdoninternals.py:120
 msgid ""
@@ -1321,12 +1381,17 @@ msgid ""
 "adds an entry in NVDA's preferences menu entitled \"SPL Studio Settings\", "
 "the add-on configuration dialog."
 msgstr ""
+"5. Después, se inicializa el subsistema gráfico (NVDA usa WXPython). Este "
+"procedimiento añade una entrada en el menú de preferencias de NVDA, titulada "
+"\"Ajustes de SPL Studio\", el diálogo de configuración del complemento."
 
 #: ..\python_docs\spladdoninternals.py:121
 msgid ""
 "6. As described above, the app module will look for the window handle for "
 "the Studio app."
 msgstr ""
+"6. Como se describe arriba, el módulo de aplicación buscará el manejador de "
+"ventana de la aplicación Studio."
 
 #: ..\python_docs\spladdoninternals.py:122
 msgid ""
@@ -1338,16 +1403,28 @@ msgid ""
 "handled by NVDA (queueHandler.queueFunction). More on internals of metadata "
 "announcement and related components in the SPL Assistant chapter."
 msgstr ""
+"7. Si le decimos al módulo de aplicación que verbalice el estado del flujo "
+"de metadatos y conexión a URLs predefinidas, NVDA hará todo eso en este "
+"punto. Esto se hace en la misma función que busca el manejador de Studio. "
+"Para verbalizar mensajes de estado como últimos mensajes después de conectar "
+"a los servidores de metadatos, el módulo de aplicación de Studio sitúa ui."
+"message en la cola de eventos para que sea procesada por NVDA (queueHandler."
+"queueFunction). Hay más información sobre el interior de la verbalización de "
+"metadatos y sus componentes relacionados en el capítulo del asistente de SPL."
 
 #: ..\python_docs\spladdoninternals.py:123
 msgid ""
 "8. In add-on 7.0, if automatic update check is enabled, update check timer "
 "is started."
 msgstr ""
+"8. En el complemento 7.0, si está activada la búsqueda automática de "
+"actualizaciones, se inicia el temporizador asociado."
 
 #: ..\python_docs\spladdoninternals.py:124
 msgid "#### Changes introduced in 17.10 due to volatile configuration flags"
 msgstr ""
+"#### Cambios introducidos en 17.10 debido a indicadores de configuración "
+"volátil"
 
 #: ..\python_docs\spladdoninternals.py:125
 msgid ""
@@ -1357,10 +1434,16 @@ msgid ""
 "and saved. These flags should be used when instructed by the add-on "
 "developer, as they are used for troubleshooting or experimenting purposes."
 msgstr ""
+"En el complemento 17.10, se introducen varios indicadores internos y "
+"argumentos de línea de órdenes asociados para controlar cómo se cargan y se "
+"tratan los ajustes del complemento. La presencia de estos indicadores "
+"alterará significativamente la forma en que se cargan y guardan los ajustes. "
+"Estos indicadores deberían usarse cuando lo indique el desarrollador del "
+"complemento, ya que su propósito es experimentar o solucionar problemas."
 
 #: ..\python_docs\spladdoninternals.py:126
 msgid "The flags are as follows:"
-msgstr ""
+msgstr "Los indicadores son los siguientes:"
 
 #: ..\python_docs\spladdoninternals.py:127
 msgid ""
@@ -1369,6 +1452,10 @@ msgid ""
 "will not be saved. With this flag turned on, profile caching will not occur, "
 "including normal profile."
 msgstr ""
+"1. No guardar cambios a disco (configNoSave/--spl-confignosave): todos los "
+"perfiles (incluyendo los perfiles de emisión) se cargarán desde disco, pero "
+"sus cambios no se guardarán. Con este indicador activado, la conservación de "
+"perfiles no ocurrirá, incluso para el perfil normal."
 
 #: ..\python_docs\spladdoninternals.py:128
 msgid ""
@@ -1378,6 +1465,12 @@ msgid ""
 "section for details). Combining this with configIsVolatile flag effectively "
 "makes normal profile a read-only config store."
 msgstr ""
+"2. Cargar solamente el perfil normal (normalProfileOnly/--spl-"
+"confignormalonly): no se usarán perfiles de emisión, desactivando incluso la "
+"capacidad de crear nuevos perfiles y usar cambios de perfil basados en "
+"tiempo (mira la sección de perfiles basados en tiempo para más detalles). "
+"Combinando este indicador con configIsVolatile, el perfil normal se "
+"convierte de forma efectiva en un almacén de configuración de sólo lectura."
 
 #: ..\python_docs\spladdoninternals.py:129
 msgid ""
@@ -1386,28 +1479,38 @@ msgid ""
 "memory version with default settings applied will be used with no caching at "
 "all."
 msgstr ""
+"3. Usar configuración en memoria (configInMemory/--spl-configinmemory): sólo "
+"se usará el perfil normal, pero en lugar de cargar los ajustes desde disco, "
+"se usará una versión en memoria con los ajustes por defecto aplicados y la "
+"conservación no funcionará del todo."
 
 #: ..\python_docs\spladdoninternals.py:130
 msgid ""
 "Using flags that specify the use of normal profile only will restrict "
 "ability to create new broadcast profiles."
 msgstr ""
+"Usar indicadores que especifiquen la utilización solamente del perfil normal "
+"restringirá la habilidad de crear nuevos perfiles de emisión."
 
 #: ..\python_docs\spladdoninternals.py:131
 msgid "### Life of the app module: events, commands and output"
-msgstr ""
+msgstr "### Vida del módulo de aplicación: eventos, órdenes y salida"
 
 #: ..\python_docs\spladdoninternals.py:132
 msgid ""
 "Once the Studio app module is ready, you can then move to Studio window and "
 "perform activities such as:"
 msgstr ""
+"Una vez el módulo de Studio está listo, puedes moverte a la ventana de "
+"Studio y realizar actividades como estas:"
 
 #: ..\python_docs\spladdoninternals.py:133
 msgid ""
 "* Press commands, and NVDA will respond by either opening a dialog or "
 "speaking what it did."
 msgstr ""
+"* Pulsar órdenes, y NVDA responderá abriendo un diálogo o bien diciendo lo "
+"que ha hecho."
 
 #: ..\python_docs\spladdoninternals.py:134
 msgid ""
@@ -1419,39 +1522,54 @@ msgid ""
 "for which object navigation is employed. This is necessary due to a broken "
 "option in Studio itself."
 msgstr ""
+"* Verbalizar cambios de estado, como estado del micrófono. La longitud y "
+"formato de estos mensajes (y otros mensajes del complemento) están "
+"controlados por el indicador de verbosidad de mensajes (en el caso de que la "
+"verbosidad se establezca en avanzada, NVDA acortará estos anuncios, que "
+"vienen de un contenedor de mensajes). Un caso especial es la verbalización "
+"automática de título y artista de la pista que se está reproduciendo "
+"actualmente, para el que se emplea navegación por objetos. Esto es necesario "
+"por culpa de una opción rota en el propio Studio."
 
 #: ..\python_docs\spladdoninternals.py:135
 msgid "* Find tracks."
-msgstr ""
+msgstr "* Buscar pistas."
 
 #: ..\python_docs\spladdoninternals.py:136
 msgid ""
 "* Examine information in columns via Track Dial and/or Columns Explorer "
 "(Track Dial was deprecated in 2017)."
 msgstr ""
+"* Examinar la información en columnas mediante el dial de pista y / o el "
+"explorador de columnas (el dial de pista quedó obsoleto en 2017)."
 
 #: ..\python_docs\spladdoninternals.py:137
 msgid "* Listen to progress of a library scan in the background."
 msgstr ""
+"* Escuchar el progreso de escaneado de una biblioteca en segundo plano."
 
 #: ..\python_docs\spladdoninternals.py:138
 msgid "* Perform SPL Assistant gestures."
-msgstr ""
+msgstr "* Realizar gestos del asistente de SPL."
 
 #: ..\python_docs\spladdoninternals.py:139
 msgid ""
 "* For 6.0 and later, manage broadcast profiles (we'll talk about broadcast "
 "profiles in configuration management section)."
 msgstr ""
+"* Para 6.0 y posteriores, gestionar perfiles de emisión (hablaremos de los "
+"perfiles de emisión en la sección de gestión de la configuración)."
 
 #: ..\python_docs\spladdoninternals.py:140
 msgid ""
 "* For 17.12 and later, respond to actions such as broadcast profile switches."
 msgstr ""
+"* Para 17.12 y posteriores, responder ante acciones como cambios de perfil "
+"de emisión."
 
 #: ..\python_docs\spladdoninternals.py:141
 msgid "#### Extension points"
-msgstr ""
+msgstr "#### Puntos de extensión"
 
 #: ..\python_docs\spladdoninternals.py:142
 msgid ""
@@ -1462,10 +1580,16 @@ msgid ""
 "synthesizer can filter certain text from spoken messages before announcing "
 "it to users."
 msgstr ""
+"Introducido en NVDA 2017.4, un punto de extensión es un sistema de "
+"notificaciones de NVDA que dice a los módulos y funciones que realicen "
+"tareas cuando algo ocurra. Por ejemplo, el subsistema braille cargará una "
+"pantalla braille diferente si los perfiles de configuración especifican este "
+"cambio, o un sintetizador de voz puede filtrar cierto texto de los mensajes "
+"hablados antes de verbalizarlos a los usuarios."
 
 #: ..\python_docs\spladdoninternals.py:143
 msgid "There are three extension point types:"
-msgstr ""
+msgstr "Hay tres tipos de puntos de extensión:"
 
 #: ..\python_docs\spladdoninternals.py:144
 msgid ""
@@ -1473,18 +1597,27 @@ msgid ""
 "profiles, loading and saving settings and others, and act accordingly once "
 "an action takes place."
 msgstr ""
+"* Acción: una función puede esperar a que ocurra algo, como un cambio de "
+"perfiles, que se cargue o guarde la configuración y otros, y actuar en "
+"consecuencia cuando una de estas acciones tiene lugar."
 
 #: ..\python_docs\spladdoninternals.py:145
 msgid ""
 "* Decider: A data processor inside a script or a function can tell NVDA to "
 "continue processing data, such as passing a keystroke to remote system."
 msgstr ""
+"* Decisión: un procesador de datos dentro de un script o una función puede "
+"decirle a NVDA que continúe procesando datos, tales como enviar una "
+"pulsación de teclas a un sistema remoto."
 
 #: ..\python_docs\spladdoninternals.py:146
 msgid ""
 "* Filter: a speech processor can add, change, or remove texts before letting "
 "synthesizers announce the would-be spoken text."
 msgstr ""
+"* Filtro: un procesador de voz puede añadir, cambiar o eliminar textos antes "
+"de dejar que los sintetizadores verbalicen el texto que debería ser "
+"verbalizado."
 
 #: ..\python_docs\spladdoninternals.py:147
 msgid ""
@@ -1492,6 +1625,10 @@ msgid ""
 "when Studio exits, broadcast profile switches and so on. There are two "
 "actions defined (in splactions module):"
 msgstr ""
+"En el complemento de Studio, las acciones se usan para notificar a los "
+"módulos de alguna acción, como cuando salimos de Studio, cambia el perfil de "
+"emisión y así sucesivamente. Hay dos acciones definidas (en el módulo "
+"splactions):"
 
 #: ..\python_docs\spladdoninternals.py:148
 msgid ""
@@ -1499,15 +1636,20 @@ msgid ""
 "streaming configuration to switch streams or turn off the alarm (see below "
 "for details)."
 msgstr ""
+"* Cambio de perfil de emisión: notifica al hilo de alarma del micrófono y a "
+"la configuración del flujo de metadatos para que cambie los flujos o apague "
+"la alarma (mira más abajo para más detalles)."
 
 #: ..\python_docs\spladdoninternals.py:149
 msgid ""
 "* Studio exiting: tells add-on dialogs to close without saving settings."
 msgstr ""
+"* Saliendo de Studio: indica a los diálogos del complemento que se cierren "
+"sin guardar los ajustes."
 
 #: ..\python_docs\spladdoninternals.py:150
 msgid "### Death: termination routines"
-msgstr ""
+msgstr "### Muerte: procedimientos de finalización"
 
 #: ..\python_docs\spladdoninternals.py:151
 msgid ""
@@ -1516,12 +1658,19 @@ msgid ""
 "off or closing Studio. Just like initialization routines, the Studio app "
 "module has specific directions to follow when add-on is closed."
 msgstr ""
+"Mientras se usa el complemento de Studio, puedes dejar de usar este "
+"complemento de varias maneras, que incluyen salir o reiniciar NVDA, apagar "
+"tu ordenador o cerrar sesión, o cerrar Studio. Al igual que pasa con los "
+"procedimientos de inicialización, el módulo de aplicación de Studio tiene "
+"instrucciones que seguir cuando el complemento se cierra."
 
 #: ..\python_docs\spladdoninternals.py:152
 msgid ""
 "Here is a list of steps Studio app module performs when it is about to leave "
 "this world:"
 msgstr ""
+"Aquí hay una lista de pasos que sigue el módulo de aplicación de Studio "
+"cuando está a punto de abandonar este mundo:"
 
 #: ..\python_docs\spladdoninternals.py:153
 msgid ""
@@ -1529,6 +1678,10 @@ msgid ""
 "routine, this method first calls the terminate method defined in the default "
 "app module, which closes handles and performs other closing routines."
 msgstr ""
+"1. Se llama al método \"terminate\". Al igual que el procedimiento de "
+"inicialización (constructor), este método primero llama al método terminate "
+"definido en el módulo de aplicación por defecto, que cierra manejadores y "
+"realiza otros procedimientos de cierre."
 
 #: ..\python_docs\spladdoninternals.py:154
 msgid ""
@@ -1536,12 +1689,18 @@ msgid ""
 "shutdown routines for some features. This function goes through following "
 "steps in add-on 7.0:"
 msgstr ""
+"2. Se llama a la función splconfig.terminate() para guardar los ajustes del "
+"complemento y realizar tareas de apagado de algunas características. Esta "
+"función sigue los siguientes pasos en el complemento 7.0:"
 
 #: ..\python_docs\spladdoninternals.py:155
 msgid ""
 "\t1. In add-on 7.0, if update check timer is running, the timer is told to "
 "stop, and update metadata is copied back to normal profile."
 msgstr ""
+"\t1. En el complemento 7.0, si el temporizador de búsqueda de "
+"actualizaciones está funcionando, recibe la orden de detenerse, y se copian "
+"los metadatos de actualización de vuelta en el perfil normal."
 
 #: ..\python_docs\spladdoninternals.py:156
 msgid ""
@@ -1551,30 +1710,45 @@ msgid ""
 "loaded is kept for this purpose). This step will not occur if an in-memory "
 "version of normal profile is in use."
 msgstr ""
+"\t2. A menos que se desactive con indicadores en 17.10, se guardan los "
+"perfiles (empezando con el perfil normal) en disco si y sólo si se cambian "
+"ajustes específicos del perfil (con este propósito se conserva una caché en "
+"línea usada para almacenar ajustes de los perfiles cuando estos se cargan). "
+"Este paso no ocurrirá si está en uso una versión en memoria del perfil "
+"normal."
 
 #: ..\python_docs\spladdoninternals.py:157
 msgid ""
 "\t3. If there is an instant switch profile defined, this is recorded in the "
 "normal profile, otherwise it is removed from the profile database."
 msgstr ""
+"\t3. Si hay un perfil de cambio instantáneo definido, este se registra en el "
+"perfil normal, de cualquier otro modo se elimina de la base de datos de "
+"perfiles."
 
 #: ..\python_docs\spladdoninternals.py:158
 msgid ""
 "\t4. Once all profiles are saved, various flags, active profile and config "
 "pool is cleared."
 msgstr ""
+"\t4. Una vez se guardan todos los perfiles, se limpian diversos indicadores, "
+"el perfil activo y el contenedor de configuración."
 
 #: ..\python_docs\spladdoninternals.py:159
 msgid ""
 "\t5. For add-on 5.x and earlier, there is only one broadcast profile to "
 "worry about, and this profile is saved at this point."
 msgstr ""
+"\t5. Para el complemento 5.x y anteriores, hay sólo un perfil de emisión del "
+"que preocuparse, y este perfil se guarda en este punto."
 
 #: ..\python_docs\spladdoninternals.py:160
 msgid ""
 "\t6. These steps are part of splconfig.SPLConfig.save method in add-on 8.0 "
 "and later."
 msgstr ""
+"\t6. Estos pasos son parte del método splconfig.SPLConfig.save en el "
+"complemento 8.0 y posteriores."
 
 #: ..\python_docs\spladdoninternals.py:161
 msgid ""
@@ -1582,6 +1756,9 @@ msgid ""
 "action. As noted above, this will cause add-on dialogs to close without "
 "saving settings."
 msgstr ""
+"3. En 17.12 y posteriores, NVDA notifica a los manejadores registrados la "
+"acción de finalización de aplicación. Como se explica arriba, esto causará "
+"que los diálogos del complemento se cierren sin guardar los ajustes."
 
 #: ..\python_docs\spladdoninternals.py:162
 msgid ""
@@ -1589,6 +1766,9 @@ msgid ""
 "preferences menu, then various maps used by Studio add-on (such as Cart "
 "Explorer map) are cleared."
 msgstr ""
+"4. A continuación NVDA intenta eliminar la entrada de ajustes de SPL Studio "
+"del menú de preferencias de NVDA, después se limpian diversos mapas usados "
+"por el complemento de Studio (como el mapa del explorador cart)."
 
 #: ..\python_docs\spladdoninternals.py:163
 msgid ""
@@ -1597,6 +1777,11 @@ msgid ""
 "Studio runs. At this point, NVDA removes splstudio (Studio app module) from "
 "list of app modules in use."
 msgstr ""
+"5. Como el módulo de aplicación se sienta a descansar, el valor del "
+"manejador de ventana para la ventana de Studio se limpia. Esto es "
+"obligatorio, ya que el manejador será diferente la próxima vez que se inicie "
+"Studio. En este punto, NVDA elimina splstudio (el móodulo de aplicación de "
+"Studio) de la lista de módulos de aplicación en uso."
 
 #: ..\python_docs\spladdoninternals.py:164
 msgid "### Add-on updates: updating to latest and greatest version"
