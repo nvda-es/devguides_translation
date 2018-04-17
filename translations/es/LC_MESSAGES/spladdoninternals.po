@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-16 16:30+0200\n"
+"PO-Revision-Date: 2018-04-17 13:20+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1901,7 +1901,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:175
 msgid "## Time announcements, alarms and adjusting basic settings"
-msgstr ""
+msgstr "## Anuncios de tiempo, alarmas y modificación de ajustes básicos"
 
 #: ..\python_docs\spladdoninternals.py:176
 msgid ""
@@ -1910,10 +1910,15 @@ msgid ""
 "with how Studio add-on announces time, work with alarms and uses basic "
 "settings."
 msgstr ""
+"Ahora que sabemos cómo nace y muere el módulo de aplicación de Studio, es el "
+"momento para que miremos qué pasa mientras el complemento de Studio está "
+"vivo, y empezaremos por ver cómo anuncia la hora el complemento de Studio, "
+"cómo trabaja con las alarmas y usa ajustes básicos."
 
 #: ..\python_docs\spladdoninternals.py:177
 msgid "### Time announcement routines: a tale of four brothers"
 msgstr ""
+"### Procedimientos de anunciado de tiempo: un cuento de cuatro hermanos"
 
 #: ..\python_docs\spladdoninternals.py:178
 msgid ""
@@ -1923,30 +1928,40 @@ msgid ""
 "information, while others use a combination of Python routines and Windows "
 "API functions."
 msgstr ""
+"El módulo de aplicación de SPL Studio para NVDA viene con cuatro órdenes de "
+"verbalización de tiempo. Estas son tiempo transcurrido, tiempo restante, "
+"hora del locutor y hora completa incluyendo segundos. Los dos primeros usan "
+"la api de Studio para obtener la información necesaria, mientras que los "
+"otros usan una combinación de procedimientos Python y funciones de la api de "
+"Windows."
 
 #: ..\python_docs\spladdoninternals.py:179
 msgid ""
 "Three of these routines are assigned to commands (sometimes termed "
 "gestures). These are:"
 msgstr ""
+"Tres de estos procedimientos tienen órdenes asignadas (a veces llamadas "
+"gestos). Estas son:"
 
 #: ..\python_docs\spladdoninternals.py:180
 msgid "* Control+Alt+T: Remaining time"
-msgstr ""
+msgstr "* Ctrl+alt+t: tiempo restante"
 
 #: ..\python_docs\spladdoninternals.py:181
 msgid "* Alt+Shift+T: Elapsed time"
-msgstr ""
+msgstr "* Alt+shift+t: tiempo transcurrido"
 
 #: ..\python_docs\spladdoninternals.py:182
 msgid "* NVDA+Shift+F12: Broadcaster time"
-msgstr ""
+msgstr "* NVDA+shift+f12: tiempo del locutor"
 
 #: ..\python_docs\spladdoninternals.py:183
 msgid ""
 "One can then use Input Gestures dialog (part of NVDA screen reader) to "
 "change them or assign a command to complete time routine."
 msgstr ""
+"Se puede usar el diálogo de gestos de entrada (parte del lector de pantalla "
+"NVDA) para cambiarlas o asignar una orden a la función de hora completa."
 
 #: ..\python_docs\spladdoninternals.py:184
 msgid ""
@@ -1965,7 +1980,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:186
 msgid "\tstudioAPI(arg, command)"
-msgstr ""
+msgstr "\tstudioAPI(arg, command)"
 
 #: ..\python_docs\spladdoninternals.py:187
 msgid ""
