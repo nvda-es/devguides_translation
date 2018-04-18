@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-18 12:48+0200\n"
+"PO-Revision-Date: 2018-04-18 13:54+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2129,7 +2129,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:197
 msgid "### Setting alarms"
-msgstr ""
+msgstr "### Establecimiento de alarmas"
 
 #: ..\python_docs\spladdoninternals.py:198
 msgid ""
@@ -2138,12 +2138,18 @@ msgid ""
 "when talking about microphone alarm, we'll just tour the routine used when "
 "setting up the intro and outro alarms."
 msgstr ""
+"El módulo de aplicación de Studio viene con tres alarmas: fin de canción, "
+"introducción y alarma de micrófono activo. Ya que tenemos que hablar de "
+"cosas importantes al explicar la alarma del micrófono, recorreremos el "
+"procedimiento usado al establecer las alarmas de introducción y fin."
 
 #: ..\python_docs\spladdoninternals.py:199
 msgid ""
 "When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song intro "
 "alarm dialogs, the dialog will display two controls:"
 msgstr ""
+"Cuando pulses NVDA+alt+1 o NVDA+alt+2 para abrir los diálogos de alarma de "
+"fin de pista o introducción de canción, el diálogo mostrará dos controles:"
 
 #: ..\python_docs\spladdoninternals.py:200
 msgid ""
@@ -6235,7 +6241,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:773
 msgid "#### Long-term support release"
-msgstr ""
+msgstr "#### Versión de soporte extendido"
 
 #: ..\python_docs\spladdoninternals.py:774
 msgid ""
@@ -6247,22 +6253,35 @@ msgid ""
 "changes are expected in future NVDA releases such as ending support for a "
 "Windows version."
 msgstr ""
+"Una versión típica de un complemento se soporta hasta que se publica la "
+"siguiente versión del complemento (actualmente varias semanas o meses). Sin "
+"embargo, hay veces en las que una versión de un complemento recibe soporte "
+"extendido (llamadas versiones lts). Esto pasa si se publica la siguiente "
+"versión de Studio, se publica una versión de Studio con cambios en la "
+"interfaz de usuario, o se esperan cambios críticos en versiones futuras de "
+"NVDA tales como finalización de soporte para una versión de Windows."
 
 #: ..\python_docs\spladdoninternals.py:775
 msgid ""
 "A LTS version is a major version or a major periodic release of the SPL add-"
 "on with some notable differences:"
 msgstr ""
+"Una versión lts es una versión mayor o una versión periódica del complemento "
+"de SPL con algunas diferencias destacables:"
 
 #: ..\python_docs\spladdoninternals.py:776
 msgid "* Support duration: A LTS version is supported for at least a year."
 msgstr ""
+"* Duración del soporte: una versión LTS recibe soporte durante al menos un "
+"año."
 
 #: ..\python_docs\spladdoninternals.py:777
 msgid ""
 "* Features: A LTS version may contain some features from future add-on "
 "releases provided that they can be safely backported."
 msgstr ""
+"* Características: una versión lts puede contener algunas características de "
+"versiones futuras del complemento que pueden agregarse de forma segura."
 
 #: ..\python_docs\spladdoninternals.py:778
 msgid ""
@@ -6270,6 +6289,10 @@ msgid ""
 "oldest supported Studio version. This is designed to give people plenty of "
 "time to upgrade to newer Studio releases."
 msgstr ""
+"* Versión soportada de Studio: una versión lts es la última versión en dar "
+"soporte a la versión de Studio más antigua soportada. Esto se diseña así "
+"para dar a la gente todo el tiempo posible para actualizarse a una nueva "
+"versión de Studio."
 
 #: ..\python_docs\spladdoninternals.py:779
 msgid ""
@@ -6280,6 +6303,12 @@ msgid ""
 "result of NVDA's end of support for Windows XP, Vista and 7 without Service "
 "Pack 1."
 msgstr ""
+"* Última versión que usa tecnología de NVDA antigua: en algunos casos, las "
+"versiones lts están hechas para dar soporte a usuarios de versiones antiguas "
+"de NVDA. Después de crear la versión lts, el código fuente del complemento "
+"cambiará para usar el código más reciente de NVDA. Este criterio primero se "
+"aplicará a una versión lts prevista para 2018 como resultado del fin de "
+"soporte de NVDA para Windows XP, Vista y 7 sin Service Pack 1."
 
 #: ..\python_docs\spladdoninternals.py:780
 msgid ""
@@ -6288,16 +6317,24 @@ msgid ""
 "(and so far the only unsupported LTS by far) was 3.x (September 2014 to June "
 "2015). For example, add-on 3.x was maintained thus:"
 msgstr ""
+"En diciembre de 2017, la versión lts más reciente del complemento es la 15."
+"x, conocida como 7.x hasta octubre de 2016 (de octubre de 2016 a diciembre "
+"de 2017). La versión lts anterior (y hasta ahora la única versión sin "
+"soporte por el momento) era la 3.x (de septiembre de 2014 a junio de 2015). "
+"Por ejemplo, el complemento 3.x se mantuvo de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:781
 msgid "1. Add-on 3.0 was released in September 2014."
-msgstr ""
+msgstr "1. El complemento 3.0 fue publicado en 2014."
 
 #: ..\python_docs\spladdoninternals.py:782
 msgid ""
 "2. Add-on 3.5 (December 2014) could have been the last maintenance version "
 "for add-on 3.x if it was not a LTS version."
 msgstr ""
+"2. El complemento 3.5 (diciembre de 2014) podría haber sido la última "
+"versión de mantenimiento del complemento 3.x si no hubiera sido una versión "
+"lts."
 
 #: ..\python_docs\spladdoninternals.py:783
 msgid ""
@@ -6307,6 +6344,11 @@ msgid ""
 "time on, add-on 3.x was taken off the stable branch and was moved to an "
 "internal branch."
 msgstr ""
+"3. Cuando se publicó el complemento 4.0 (enero de 2015), se liberó el "
+"complemento 3.6, que traía algunas características del 4.0. Se dijo a los "
+"usuarios que el complemento 3.x sería el último en dar soporte a versiones "
+"de Studio anteriores a la 5.00. A partir de entonces, el complemento 3.x se "
+"trasladó desde la rama stable a una rama interna."
 
 #: ..\python_docs\spladdoninternals.py:784
 msgid ""
@@ -6314,12 +6356,17 @@ msgid ""
 "available then) entered end of support countdown (no more maintenance "
 "releases)."
 msgstr ""
+"4. Cuando se publicó la beta del complemento 5.0 (mayo de 2015), el "
+"complemento 3.x (3.9 por entonces) entró en la cuenta atrás de fin de "
+"soporte (sin más versiones de mantenimiento)."
 
 #: ..\python_docs\spladdoninternals.py:785
 msgid ""
 "5. A few weeks later, when add-on 5.0 came out (June 2015), add-on 3.x "
 "became unsupported."
 msgstr ""
+"5. Unas semanas más tardes, cuando llegó el complemento 5.0 (junio de 2015), "
+"el complemento 3.x se quedó sin soporte."
 
 #: ..\python_docs\spladdoninternals.py:786
 msgid ""
@@ -6328,6 +6375,11 @@ msgid ""
 "with Windows releases prior to Windows 7 Service Pack 1 (due to announcement "
 "from NV Access that 2017.3 will be the last version to support old releases)."
 msgstr ""
+"La próxima versión lts está prevista para principios del 2019, no sólo "
+"porque será la última versión que soporte Studio 5.10 (y no 5.11), sino "
+"porque también dejará atrás las versiones de Windows anteriores a Windows 7 "
+"con Service Pack 1 (debido al anuncio de NV Access que decía que la 2017.3 "
+"sería la última versión en dar soporte a versiones antiguas)."
 
 #: ..\python_docs\spladdoninternals.py:787
 msgid "### Final thoughts"
