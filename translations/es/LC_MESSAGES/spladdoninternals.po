@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-18 16:06+0200\n"
+"PO-Revision-Date: 2018-04-19 12:25+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2189,12 +2189,17 @@ msgid ""
 "settings dialog is opened, and if so, NVDA will ask you to close the "
 "previously opened dialog first."
 msgstr ""
+"1. Antes de que el diálogo se abra, se comprueba si otro diálogo o el "
+"diálogo de configuración del complemento está abierto, y si es así, NVDA te "
+"pedirá que cierres el diálogo previamente abierto primero."
 
 #: ..\python_docs\spladdoninternals.py:204
 msgid ""
 "2. Tells NVDA that an alarm dialog is opened. This is meant to prevent the "
 "same dialog from being opened repeatedly."
 msgstr ""
+"2. Se le dice a NVDA que hay un diálogo de alarma abierto. Esto se hace para "
+"evitar que se abra el mismo diálogo repetidamente."
 
 #: ..\python_docs\spladdoninternals.py:205
 msgid ""
@@ -2202,6 +2207,9 @@ msgid ""
 "Cancel), NVDA clears the alarm opened flag, thereby letting other dialogs to "
 "be shown. "
 msgstr ""
+"3. Después de cerrar el diálogo (bien porque se establece un nuevo valor o "
+"se pulsa en cancelar), NVDA limpia el indicador de alarma abierta, "
+"permitiendo que otros diálogos se muestren. "
 
 #: ..\python_docs\spladdoninternals.py:206
 msgid ""
@@ -2209,10 +2217,13 @@ msgid ""
 "configuration management section, and you'll get to meet how intro and outro "
 "alarms work in the next chapter."
 msgstr ""
+"Aprenderemos cómo se almacenan y recuperan los valores de la alarma en la "
+"sección de gestión de configuración, y sabrás cómo funcionan las alarmas de "
+"introducción y fin de pista en el próoximo capítulo."
 
 #: ..\python_docs\spladdoninternals.py:207
 msgid "#### Alarms Center"
-msgstr ""
+msgstr "#### Centro de alarmas"
 
 #: ..\python_docs\spladdoninternals.py:208
 msgid ""
@@ -2225,26 +2236,35 @@ msgid ""
 "configuration), all alarm controls will be shown (level = 0), with different "
 "levels controlling what controls should be shown as follows:"
 msgstr ""
+"Este diálogo único que presenta diferentes controles de alarma se conoce "
+"como 'Centro de alarmas'. De hecho, este diálogo no sólo aloja la alarma de "
+"fin de pista y la de introducción, sino también los controles de la alarma "
+"del micrófono, y todo lo que se necesita para modificar su aspecto es un "
+"único entero que especifica qué parte del diálogo debería mostrarse. En el "
+"caso del diálogo del centro de alarmas presentado desde los ajustes del "
+"complemento (mira el capítulo de la configuración del complemento), se "
+"mostrarán todos los controles de alarma (level=0), con diferentes niveles "
+"controlando qué controles deberían mostrarse de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:209
 msgid "* 0: Alarms Center, displays all controls."
-msgstr ""
+msgstr "* 0: centro de alarmas, muestra todos los controles."
 
 #: ..\python_docs\spladdoninternals.py:210
 msgid "* 1: End of track alarm."
-msgstr ""
+msgstr "* 1: alarma de fin de pista."
 
 #: ..\python_docs\spladdoninternals.py:211
 msgid "* 2: Track intro alarm."
-msgstr ""
+msgstr "* 2: alarma de introducción de pista."
 
 #: ..\python_docs\spladdoninternals.py:212
 msgid "* 3: Microphone alarm controls."
-msgstr ""
+msgstr "* 3: controles de la alarma del micrófono."
 
 #: ..\python_docs\spladdoninternals.py:213
 msgid "### Toggle settings"
-msgstr ""
+msgstr "### Conmutar ajustes"
 
 #: ..\python_docs\spladdoninternals.py:214
 msgid ""
@@ -2254,6 +2274,12 @@ msgid ""
 "setting script, NVDA will first check the current value, change the value "
 "and announce the new value."
 msgstr ""
+"El complemento de Studio viene con algunos ajustes conmutables que afectan a "
+"la forma de operar del módulo de aplicación. Estos incluyen anuncios de "
+"estado (ctrl+NVDA+1), anuncio de escaneo de biblioteca (alt+NVDA+r) y "
+"temporizador braille (ctrl+shift+x). Para cada script de configuración, NVDA "
+"primero comprobará el valor actual, cambiará el valor y anunciará el nuevo "
+"valor."
 
 #: ..\python_docs\spladdoninternals.py:215
 msgid ""
@@ -2263,11 +2289,18 @@ msgid ""
 "we'll continue our discussion of the Studio app module with how alarms come "
 "into play and how status changes are announced."
 msgstr ""
+"Ahora ya sabes cómo funcionan los diálogos de alarma, qué pasa cuando "
+"conmutas algunos ajustes y has recorrido el interior de diversas órdenes de "
+"verbalización de tiempo. Hay otras cosas de las que debemos hablar, así que "
+"continuaremos nuestra exposición del módulo de aplicación de Studio viendo "
+"cómo entran en juego las alarmas y cómo se verbalizan los cambios de estado."
 
 #: ..\python_docs\spladdoninternals.py:216
 msgid ""
 "## Event handling: announcing status changes, activating alarms and more"
 msgstr ""
+"## Procesamiento de eventos: verbalización de cambios de estado, activación "
+"de alarmas y más"
 
 #: ..\python_docs\spladdoninternals.py:217
 msgid ""
@@ -2278,10 +2311,16 @@ msgid ""
 "changes, activating alarms and more. In this section, we'll learn the magic "
 "behind this expertise: handling events."
 msgstr ""
+"Cuando produces un programa en vivo, es importante que tu lector de pantalla "
+"verbalice diversos cambios de estado y sucesos como número de oyentes, "
+"notificación de fin de pista, estado de la reproducción, alertas sobre "
+"peticiones de oyentes y demás. NVDA es un experto cuando se trata de manejar "
+"cambios de estado, activar alarmas y más. En esta sección, conoceremos la "
+"magia que hay tras esta profesionalidad: el procesamiento de eventos."
 
 #: ..\python_docs\spladdoninternals.py:218
 msgid "### NVDA is event-driven"
-msgstr ""
+msgstr "### NVDA está dirigido por eventos"
 
 #: ..\python_docs\spladdoninternals.py:219
 msgid ""
@@ -2292,6 +2331,13 @@ msgid ""
 "various purposes, ranging from announcing new chat notification in Skype to "
 "ignoring it completely."
 msgstr ""
+"Las aplicaciones de Windows (especialmente aquellas que usan la api de "
+"Windows) son programas dirigidos por eventos. En algún lugar de la "
+"aplicación hay un bucle que responde a diversos eventos, tales como cuando "
+"se hace clic en una casilla de verificación, el ordenador se está apagando y "
+"demás. NVDA, al ser un lector de pantalla, usa los eventos con diversos "
+"propósitos, desde verbalizar una notificación de nuevo chat en Skype hasta "
+"ignorarlo completamente."
 
 #: ..\python_docs\spladdoninternals.py:220
 msgid ""
@@ -2304,20 +2350,35 @@ msgid ""
 "and app modules), NVDA is eager to listen to certain events and let controls "
 "fire events."
 msgstr ""
+"Para manejar distintos eventos, NVDA usa una cola de eventos (queueHandler) "
+"y un manejador de eventos para procesarlos. Cuando un evento se dispara "
+"desde NVDA o desde otros programas, NVDA primero comprueba si dicho evento "
+"es digno de su atención. A continuación realiza acciones asociadas con el "
+"evento, como verbalizar los cambios de un control (nombre, valor, etc.), "
+"reproducir pitidos y sonidos (actualizaciones de una barra de progreso) y "
+"así sucesivamente. Para los complementos (mayoritariamente extensiones "
+"globales y módulos de aplicación), NVDA tiene ganas de escuchar ciertos "
+"eventos y dejar que los controles los disparen."
 
 #: ..\python_docs\spladdoninternals.py:221
 msgid "Typically, an event handling routine is declared like this:"
 msgstr ""
+"Normalmente, un procedimiento para manejar un evento se declara de la "
+"siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:222
 msgid "\tevent_eventname(module, object in question, next handler)"
 msgstr ""
+"\tevent_nombredeevento(módulo, objeto en cuestión, siguiente manejador)"
 
 #: ..\python_docs\spladdoninternals.py:223
 msgid ""
 "For example, for Studio app module, one event handler declared is gain focus "
 "(you have moved to a different control), and is written as follows:"
 msgstr ""
+"Por ejemplo, para el módulo de aplicación de Studio, un manejador de eventos "
+"declarado es gainFocus (te has movido a un control diferente), y está "
+"escrito así:"
 
 #: ..\python_docs\spladdoninternals.py:224
 msgid "\tevent_gainFocus(self, obj, nextHandler)"
@@ -2329,6 +2390,9 @@ msgid ""
 "routine called nextHandler function at the end to allow other controls to "
 "respond to events."
 msgstr ""
+"El procedimiento es como cualquier otra función (llamable) salvo porque se "
+"llama al procedimiento nextHandler al final para permitir a otros controles "
+"responder a eventos."
 
 #: ..\python_docs\spladdoninternals.py:226
 msgid "### What does events have to do with Studio app module?"
