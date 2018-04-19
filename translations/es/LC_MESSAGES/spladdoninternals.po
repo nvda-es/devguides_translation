@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-19 12:25+0200\n"
+"PO-Revision-Date: 2018-04-19 13:50+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2397,6 +2397,7 @@ msgstr ""
 #: ..\python_docs\spladdoninternals.py:226
 msgid "### What does events have to do with Studio app module?"
 msgstr ""
+"### ¿Qué tienen que hacer los eventos con el módulo de aplicación de Studio?"
 
 #: ..\python_docs\spladdoninternals.py:227
 msgid ""
@@ -2405,33 +2406,49 @@ msgid ""
 "are used to perform bulk of the work required to allow the app module to "
 "function. These include:"
 msgstr ""
+"Los eventos y los manejadores de eventos son cruciales en el funcionamiento "
+"del módulo de aplicación de Studio, descrita como \"los latidos del corazón"
+"\" del complemento. Los eventos y sus manejadores se usan para hacer la "
+"mayoría del trabajo necesario para que el módulo de aplicación funcione. "
+"Entre ellos se incluyen:"
 
 #: ..\python_docs\spladdoninternals.py:228
 msgid ""
 "* Announcing status changes such as when microphone is turned on or off."
 msgstr ""
+"* Verbalización de cambios de estado tales como cuando el micrófono se "
+"enciende o se apaga."
 
 #: ..\python_docs\spladdoninternals.py:229
 msgid "* Alarm notification, such as when end of intro is approaching."
 msgstr ""
+"* Notificación de alarma, como la que hay cuando se acerca el final de una "
+"pista."
 
 #: ..\python_docs\spladdoninternals.py:230
 msgid ""
 "* Activating certain announcement and background tasks such as activating "
 "microphone alarm, announcing library scan progress and more."
 msgstr ""
+"* Activación de ciertas verbalizaciones y tareas en segundo plano como la "
+"alarma del micrófono, el anunciado del progreso de escaneado de la "
+"biblioteca y más."
 
 #: ..\python_docs\spladdoninternals.py:231
 msgid ""
 "* Perform workarounds for issues such as focus problems when deleting a "
 "track."
 msgstr ""
+"* Aplicar solución a algunos problemas como los que da el foco al eliminar "
+"una pista."
 
 #: ..\python_docs\spladdoninternals.py:232
 msgid ""
 "Of all the event handlers declared, the most important one is name change "
 "event. It is declared as follows:"
 msgstr ""
+"De todos los manejadores de eventos declarados, el más importante es el "
+"evento de cambio de nombre. Se declara de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:233
 msgid "\tevent_nameChange(self, obj, nextHandler)"
@@ -2440,14 +2457,16 @@ msgstr "\tevent_nameChange(self, obj, nextHandler)"
 #: ..\python_docs\spladdoninternals.py:234
 msgid "When this event is fired by Studio, NVDA performs following operations:"
 msgstr ""
+"Cuando Studio dispara este evento, NVDA hace las siguientes operaciones:"
 
 #: ..\python_docs\spladdoninternals.py:235
 msgid "1. Various checks are performed. These include, but are not limited to:"
 msgstr ""
+"1. Se realizan diversas comprobaciones. Estas incluyen, pero no se limitan a:"
 
 #: ..\python_docs\spladdoninternals.py:236
 msgid "A. Make sure there is something to announce."
-msgstr ""
+msgstr "A. Asegurarse de que hay algo que verbalizar."
 
 #: ..\python_docs\spladdoninternals.py:237
 msgid ""
@@ -2455,6 +2474,10 @@ msgid ""
 "set (see the discussion on app module constructor in previous articles for "
 "more details)."
 msgstr ""
+"B. Si se está usando otra aplicación, NVDA se asegurará de que el indicador "
+"de monitorización en segundo plano esté establecido (mira la exposición en "
+"el constructor del módulo de aplicación en artículos anteriores para más "
+"detalles)."
 
 #: ..\python_docs\spladdoninternals.py:238
 msgid ""
@@ -2462,22 +2485,29 @@ msgid ""
 "schedule and cart playback status, NVDA will check if it is permited to "
 "announce them."
 msgstr ""
+"C. Si el estado a ser verbalizado es un estado común, como número de "
+"oyentes, estado de la programación y reproducción del cart, NVDA comprobará "
+"si tiene permitido verbalizarlo."
 
 #: ..\python_docs\spladdoninternals.py:239
 msgid ""
 "2. Depending on the type of control (mostly window class name), NVDA "
 "performs different operations (see below)."
 msgstr ""
+"2. Dependiendo del tipo de control (mayoritariamente nombre de la clase de "
+"ventana), NVDA realiza distintas operaciones (mira más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:240
 msgid ""
 "3. Lastly, NVDA calls nextHandler() to let other controls respond to name "
 "change event."
 msgstr ""
+"3. Finalmente, NVDA llama a nextHandler() para dejar que otros controles "
+"respondan al evento de cambio de nombre."
 
 #: ..\python_docs\spladdoninternals.py:241
 msgid "### Status announcements versus alarm notification"
-msgstr ""
+msgstr "### Anuncios de estado comparados con notificaciones de alarma"
 
 #: ..\python_docs\spladdoninternals.py:242
 msgid ""
@@ -2486,10 +2516,14 @@ msgid ""
 "respectively (Studio is a Delphi application). Depending on which control "
 "fired the event, NVDA will respond differently."
 msgstr ""
+"Hay dos grupos de controles en los que NVDA está interesado: la barra de "
+"estado y el texto de estado, con nombres de clase de ventana TStatusBar y "
+"TStaticText, respectivamente (Studio es una aplicación Delphy). Dependiendo "
+"del control que dispare el evento, NVDA reaccionará de forma diferente."
 
 #: ..\python_docs\spladdoninternals.py:243
 msgid "For status announcements (TStatusBar), NVDA:"
-msgstr ""
+msgstr "Para anuncios de estado (TStatusBar), NVDA:"
 
 #: ..\python_docs\spladdoninternals.py:244
 msgid ""
@@ -2497,12 +2531,17 @@ msgid ""
 "parent control as exposed by MSAA (Microsoft Active Accessibility)/"
 "IAccessible)."
 msgstr ""
+"1. Comprueba el ID del hijo de IAccessible (posición del control relativa al "
+"control padre tal y como expone MSAA (Microsoft Active Accessibility) / "
+"IAccessible)."
 
 #: ..\python_docs\spladdoninternals.py:245
 msgid ""
 "2. If IAccessible child ID is 1, it either announces library scan progress "
 "or playback status."
 msgstr ""
+"2. Si el identificador del hijo de IAccessible es 1, se verbaliza el "
+"progreso del escaneo de la biblioteca o bien el estado de la reproducción."
 
 #: ..\python_docs\spladdoninternals.py:246
 msgid ""
@@ -2510,12 +2549,17 @@ msgid ""
 "it is a toggle change (ends with \"On\" or \"Off\"), and if so, it does the "
 "following:"
 msgstr ""
+"3. Para otros objetos de la barra de estado (controles o ventanas), NVDA "
+"primero comprueba si es un cambio de conmutación (acaba en \"on\" o \"off"
+"\"), y si es así, hace lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:247
 msgid ""
 "A. If you set status announcement to words (Control+NVDA+1), NVDA announces "
 "toggle change notification via speech."
 msgstr ""
+"A. Si estableces la verbalización de estado en palabras (ctrl+NVDA+1), NVDA "
+"verbaliza la notificación de cambio de estado mediante voz."
 
 #: ..\python_docs\spladdoninternals.py:248
 msgid ""
@@ -2523,10 +2567,15 @@ msgid ""
 "selected for playback via NVWave module (nvwave.playWaveFile; this is done "
 "via messageSound function)."
 msgstr ""
+"B. Si la verbalización de estado se ha establecido en pitidos, se selecciona "
+"un archivo wav adecuado y se reproduce mediante el módulo NVWave (nvwave."
+"playWaveFile; esto se hace mediante la función messageSound)."
 
 #: ..\python_docs\spladdoninternals.py:249
 msgid "C. Braille output is not affected - it'll announce toggle changes."
 msgstr ""
+"C. La salida braille no se ve afectada, se anunciarán los cambios de "
+"conmutación."
 
 #: ..\python_docs\spladdoninternals.py:250
 msgid ""
@@ -2536,6 +2585,11 @@ msgid ""
 "(if this is the case). We'll come back to how this works in future "
 "installments."
 msgstr ""
+"D. Para el modo de edición de cart o la conmutación del micrófono, se "
+"realizan pasos extra, (llamando al método extraAction con la cadena de "
+"estado como argumento), como activar la alarma del micrófono o indicar que "
+"estás usando el explorador cart (si es el caso). Volveremos a explicar cómo "
+"funciona esto en futuras entregas."
 
 #: ..\python_docs\spladdoninternals.py:251
 msgid ""
@@ -2543,22 +2597,31 @@ msgid ""
 "announcement, to prevent itself from repeating the same message, NVDA checks "
 "if a cached name is the same as the just changed name."
 msgstr ""
+"4. Para todos los demás anuncios, NVDA los verbaliza. En el caso del anuncio "
+"de programación, para evitar que se repita el mismo mensaje, NVDA comprueba "
+"si el nombre cambiado es igual que un nombre guardado que ya tenía."
 
 #: ..\python_docs\spladdoninternals.py:252
 msgid "For static text controls (mostly used for alarm notifications):"
 msgstr ""
+"Para controles de texto estático (mayormente usados para notificaciones de "
+"alarma):"
 
 #: ..\python_docs\spladdoninternals.py:253
 msgid ""
 "1. Checks whether NVDA is looking at remaining time for the intro or the "
 "whole track."
 msgstr ""
+"1. Comprueba si NVDA está mirando el tiempo restante para la introducción o "
+"para la pista entera."
 
 #: ..\python_docs\spladdoninternals.py:254
 msgid ""
 "2. For both cases, NVDA checks if it can braille this (braille timer is not "
 "off)."
 msgstr ""
+"2. En ambos casos, comprueba si NVDA puede emitirlo por braille (el "
+"temporizador braille no está apagado)."
 
 #: ..\python_docs\spladdoninternals.py:255
 msgid ""
@@ -2567,6 +2630,11 @@ msgid ""
 "middle C (512 hertz) for intro), or if told to do so, warns you that end of "
 "track or intro is approaching (add-on 6.0 and later)."
 msgstr ""
+"3. Si NVDA está configurado para verbalizar o reproducir alarmas (para "
+"introducción y fin), NVDA reproduce los tonos apropiados (la mitad de (440 "
+"hz) para fin de pista, y una octava por encima de la mitad (512 hz) para la "
+"introducción), o si se le pide hacerlo, te avisa de que el fin de pista o la "
+"introducción está llegando (complemento 6.0 y posteriores)."
 
 #: ..\python_docs\spladdoninternals.py:256
 msgid ""
@@ -2577,6 +2645,13 @@ msgid ""
 "other add-ons that define event handling routines, name change event calls "
 "nextHandler()."
 msgstr ""
+"La estructura de la función event_nameChange definida en el módulo de "
+"aplicación de Studio está hecha de tal manera que puede extenderse para "
+"manejar el evento de cambio de nombre para otros controles (es una "
+"estructura en árbol, siendo la raíz el evento y dos subárboles, uno para la "
+"barra de estado y otro para el texto estático). Al igual que en otros "
+"complementos que definen procedimientos para manejar eventos, el evento de "
+"cambio de nombre llama a nextHandler()."
 
 #: ..\python_docs\spladdoninternals.py:257
 msgid "### Other events defined in the Studio app module"
