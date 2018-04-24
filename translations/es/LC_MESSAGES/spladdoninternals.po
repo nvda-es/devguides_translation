@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-24 15:31+0200\n"
+"PO-Revision-Date: 2018-04-24 16:48+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4677,7 +4677,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:418
 msgid "## The magic behind Cart Explorer"
-msgstr ""
+msgstr "## La magia que hay tras el explorador cart"
 
 #: ..\python_docs\spladdoninternals.py:419
 msgid ""
@@ -4689,6 +4689,14 @@ msgid ""
 "played when cart keys are pressed, announcing the name of the playing cart "
 "and saving uer specific carts to a safe location."
 msgstr ""
+"Una emisión de radio en directo no estaría completa sin jingles. Estos "
+"pueden ir desde promociones de radio (a veces llamadas \"promos\"), "
+"anuncios, jingles para transmitir el estado de ánimo en un programa, jingles "
+"de segmento y más. Muchos programas de automatización de emisoras, incluido "
+"StationPlaylist Studio, incluyen formas de gestionar jingles (a veces "
+"llamados carts), incluyendo la definición de un cart para que sea "
+"reproducido al pulsar las teclas de cart, verbalizar el nombre del cart en "
+"reproducción y guardar nuestros carts específicos en una ubicación segura."
 
 #: ..\python_docs\spladdoninternals.py:420
 msgid ""
@@ -4705,10 +4713,24 @@ msgid ""
 "Cart Explorer (NVDA's version of cart learn mode) draws its power and why it "
 "is very important."
 msgstr ""
+"Una de las cosas que preocupa a los locutores ciegos es pulsar una tecla de "
+"jingle incorrecta por accidente, por lo que se pidió a los desarrolladores "
+"de scripts que implementaran una forma para que los locutores aprendieran "
+"qué carts están asignados a las teclas cart. En el momento en que escribo "
+"este artículo, los tres lectores de pantalla (JAWS for Windows (autor de los "
+"scripts: Brian Hartgen), Window Eyes (autor de los scripts: Jeff Bishop) y "
+"NVDA (autor de los scripts: Joseph Lee (yo, el autor de este artículo)) "
+"incluyen una función para aprender las asignaciones de jingles. Como esta es "
+"una serie de artículos sobre el interior de un complemento de NVDA, te daré "
+"una descripción de lo que pasa cuando activas y exploras las asignaciones "
+"cart (de hecho, esta sección fue la porción más interesante y dirigida por "
+"comentarios del complemento). A lo largo del camino aprenderás de dónde coge "
+"su poder el explorador cart (la versión de NVDA del modo de aprendizaje de "
+"cart) y por qué es muy importante."
 
 #: ..\python_docs\spladdoninternals.py:421
 msgid "### Carts in StationPlaylist Studio"
-msgstr ""
+msgstr "### Carts en StationPlaylist Studio"
 
 #: ..\python_docs\spladdoninternals.py:422
 msgid ""
@@ -4732,7 +4754,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:424
 msgid "### Where does Studio store carts?"
-msgstr ""
+msgstr "### ¿Dónde almacena Studio los carts?"
 
 #: ..\python_docs\spladdoninternals.py:425
 msgid ""
@@ -4742,6 +4764,11 @@ msgid ""
 "with these four banks unless told by a broadcaster to load carts from a "
 "different cart bank file."
 msgstr ""
+"Los \"carts\" de Studio se alojan en la carpeta de instalación de Studio. "
+"Hay cuatro archivos de cart (llamados bancos) en uso: un archivo .cart por "
+"cada uno de los bancos de carts (principal, shift, control, alt). Durante "
+"las horas laborables, Studio funcionará con estos cuatro bancos a menos que "
+"un locutor cargue otros carts desde un archivo de banco de carts diferente."
 
 #: ..\python_docs\spladdoninternals.py:426
 msgid "### Cart Explorer: my own Summer of Code"
