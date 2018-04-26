@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-26 13:45+0200\n"
+"PO-Revision-Date: 2018-04-26 17:01+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6976,21 +6976,23 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:721
 msgid "### Encoder-specific routines"
-msgstr ""
+msgstr "### Procedimientos específicos del codificador"
 
 #: ..\python_docs\spladdoninternals.py:722
 msgid ""
 "In addition to basic services, each encoder routine has its own goodies, "
 "including:"
 msgstr ""
+"Además de los servicios básicos, cada procedimiento de codificación tiene "
+"sus propias ventajas, incluyendo:"
 
 #: ..\python_docs\spladdoninternals.py:723
 msgid "For SAM encoders:"
-msgstr ""
+msgstr "Para los codificadores SAM:"
 
 #: ..\python_docs\spladdoninternals.py:724
 msgid "* To disconnect, press F10."
-msgstr ""
+msgstr "* Para desconectar, pulsa f10."
 
 #: ..\python_docs\spladdoninternals.py:725
 msgid ""
@@ -6999,24 +7001,30 @@ msgid ""
 "A workaround was developed to fix this problem (opens context menu and "
 "activates the correct item on its own)."
 msgstr ""
+"* Puedes pulsar ctrl+f9 o ctrl+f10 para conectar y desconectar todos los "
+"codificadores (no funciona bien en versiones recientes de SAM, según mis "
+"pruebas). Se desarrolló un parche para solucionar este problema (abre el "
+"menú contextual y activa el elemento correspondiente por sí mismo)."
 
 #: ..\python_docs\spladdoninternals.py:726
 msgid "For SPL encoders:"
-msgstr ""
+msgstr "Para los codificadores SPL:"
 
 #: ..\python_docs\spladdoninternals.py:727
 msgid "* When you press F9 to connect, NVDA does the following:"
-msgstr ""
+msgstr "* Cuando pulsas f9 para conectar, NVDA hace lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:728
 msgid ""
 "\t1. Locates \"connect\" button, and if it says \"Connect\", clicks it (obj."
 "doAction)."
 msgstr ""
+"\t1. Ubica el botón conectar, y si está etiquetado como \"connect\", hace "
+"clic en él (obj.doAction)."
 
 #: ..\python_docs\spladdoninternals.py:729
 msgid "\t2. Moves focus back to the entry (self.SetFocus)."
-msgstr ""
+msgstr "\t2. Mueve el foco de vuelta a la entrada (self.setFocus)."
 
 #: ..\python_docs\spladdoninternals.py:730
 msgid ""
@@ -7080,7 +7088,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:736
 msgid "### Git: a \"smart\" source code manager"
-msgstr ""
+msgstr "### Git: un gestor de código fuente inteligente"
 
 #: ..\python_docs\spladdoninternals.py:737
 msgid ""
@@ -7091,6 +7099,14 @@ msgid ""
 "and fetch updates). For example, using just my local copy of the SPL add-on "
 "source code, I can view commit history and generate older add-on releases."
 msgstr ""
+"Al igual que los desarrolladores de NVDA y muchos creadores de complementos, "
+"uso Git para gestionar el código fuente (contrariamente a su lema, Git es "
+"muy inteligente). Se trata de un sistema distribuido, lo que significa que "
+"un repositorio local contiene el registro completo de cómo se gestiona el "
+"código fuente (sin necesidad de conectarse a un servidor para confirmar y "
+"obtener actualizaciones). Por ejemplo, si uso simplemente mi copia local del "
+"código fuente del complemento de SPL, puedo ver el historial de commits y "
+"generar versiones antiguas del complemento."
 
 #: ..\python_docs\spladdoninternals.py:738
 msgid ""
@@ -7105,6 +7121,16 @@ msgid ""
 "or \"next\" is used to gather all work done on branches under one roof for "
 "testing purposes."
 msgstr ""
+"Otra ventaja de Git es su extenso soporte para ramas. Una rama es un flujo "
+"de trabajo separado de otras ramas. Por ejemplo, el lector de pantalla NVDA "
+"usa al menos tres ramas para su flujo de trabajo: next (alfa), master (beta) "
+"y rc (candidata a liberación, usada para construir versiones oficiales). El "
+"complemento de SPL usa este enfoque así: hay al menos dos ramas en uso, "
+"llamadas master y stable, usadas para desarrollo activo y publicación y "
+"mantenimiento, respectivamente (volveremos a las ramas en un segundo). Con "
+"la llegada del programa de pruebas dirigido (mira debajo), se usa una "
+"tercera rama llamada \"staging\" o \"next\" para recopilar todo el trabajo "
+"hecho en ramas bajo un techo con propósitos de prueba."
 
 #: ..\python_docs\spladdoninternals.py:739
 msgid "### How an add-on feature is born"
@@ -7116,6 +7142,10 @@ msgid ""
 "looking at how broadcast profiles was developed (for more information on "
 "broadcast profiles, refer to configuration management section above)."
 msgstr ""
+"Recorramos el proceso típico de desarrollo de una característica de un "
+"complemento viendo cómo se desarrollaron los perfiles de emisión (para más "
+"información sobre los perfiles de emisión, consulta la sección de gestión de "
+"la configuración de arriba)."
 
 #: ..\python_docs\spladdoninternals.py:741
 msgid ""
@@ -7125,6 +7155,13 @@ msgid ""
 "profile, I thought it might be a good idea to allow multiple profiles to be "
 "defined and to let the settings dialog respond to profile changes."
 msgstr ""
+"Comencé a trabajar en los perfiles de emisión en marzo de 2015 mientras "
+"desarrollaba el complemento 5.0. Se trataba de una extensión natural del "
+"diálogo de configuración del complemento: mientras que este cuadro de "
+"diálogo (y la base de datos de configuración que usa) sólo se ocupa de un "
+"único perfil, pensé que sería una buena idea permitir que se definan varios "
+"perfiles y hacer que el diálogo de configuración reaccione ante el cambio de "
+"perfiles."
 
 #: ..\python_docs\spladdoninternals.py:742
 msgid ""
@@ -7135,6 +7172,12 @@ msgid ""
 "primarily by people hosting multiple shows, with each show defined as a "
 "profile."
 msgstr ""
+"Había una razón importante para crear esta característica: ya que NVDA "
+"soporta varios perfiles de configuración y ya que algunos locutores "
+"presentan varios programas, pensé que sería una buena idea implementar una "
+"característica similar en el complemento. Por lo tanto, preví que los "
+"perfiles de emisión serían usados principalmente por gente que tuviera "
+"varios programas, definiendo un perfil para cada programa."
 
 #: ..\python_docs\spladdoninternals.py:743
 msgid ""
@@ -7209,13 +7252,15 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:749
 msgid "### Add-on development process"
-msgstr ""
+msgstr "### El proceso de desarrollo del complemento"
 
 #: ..\python_docs\spladdoninternals.py:750
 msgid ""
 "Follow me as I show you how a typical SPL add-on version is developed, "
 "released and maintained:"
 msgstr ""
+"Sígueme mientras te muestro cómo se desarrolla, publica y mantiene una "
+"versión típica del complemento para SPL:"
 
 #: ..\python_docs\spladdoninternals.py:751
 msgid ""
@@ -7224,18 +7269,28 @@ msgid ""
 "and so on. With changes to the process in 2017, a feature development may "
 "span multiple versions."
 msgstr ""
+"1. Antes de comenzar a trabajar en la nueva versión del complemento, apunto "
+"algunos objetivos que el complemento debería alcanzar, incluyendo ideas de "
+"características, sugerencias del usuario (tuyas) y demás. Con los cambios "
+"del proceso en 2017, el desarrollo de una característica puede hacerse a lo "
+"largo de varias versiones."
 
 #: ..\python_docs\spladdoninternals.py:752
 msgid ""
 "2. I then hold a conference call with add-on users to see what they think "
 "about some ideas and gather feedback (these are also written down)."
 msgstr ""
+"2. A continuación hago una conferencia por llamada con usuarios del "
+"complemento para ver qué piensan de algunas ideas y recopilar comentarios "
+"(que también me apunto)."
 
 #: ..\python_docs\spladdoninternals.py:753
 msgid ""
 "3. I then create separate branches for each feature in order to isolate  "
 "code and not to break existing code."
 msgstr ""
+"3. Después creo ramas separadas para cada característica para aislar código "
+"y no romper el código existente."
 
 #: ..\python_docs\spladdoninternals.py:754
 msgid ""
@@ -7244,6 +7299,11 @@ msgid ""
 "developed, I do mental simulations as to how you might use the feature under "
 "development, such as possible errors, messages spoken and so on."
 msgstr ""
+"4. Después, escribo comentarios para recordarme a mí mismo cómo debería ser "
+"la característica, luego empiezo a trabajar en ella. Según se va "
+"desarrollando cada característica, hago simulaciones mentales sobre cómo "
+"podrías usar la característica en desarrollo, posibles errores, mensajes "
+"verbalizados y así."
 
 #: ..\python_docs\spladdoninternals.py:755
 msgid ""
@@ -7253,6 +7313,12 @@ msgid ""
 "to make sure it works across versions (if not, I go back and modify the code "
 "to recognize differences between Studio versions)."
 msgstr ""
+"5. Una vez la característica está bastante estable, la pruebo para descubrir "
+"fallos y rellenar los huecos que faltan. Cuando pasa a pruebas, pruebo la "
+"nueva rama de características en mis dos ordenadores, que ejecutan versiones "
+"distintas de Studio, para asegurarme de que funciona entre versiones (si no, "
+"vuelvo atrás y modifico el código para reconocer las diferencias entre "
+"versiones de Studio)."
 
 #: ..\python_docs\spladdoninternals.py:756
 msgid ""
@@ -7261,12 +7327,19 @@ msgid ""
 "Drive program) builds so those who've signed up for early access program can "
 "leave feedback (try builds are generated about once a week)."
 msgstr ""
+"6. Empezando a finales del 2015, he mezclado las ramas de desarrollo en una "
+"única rama con propósitos de prueba. Esta rama también se usa para generar "
+"compilaciones de prueba (programa de pruebas dirigidas), así que todo el que "
+"se ha registrado para el programa de acceso previo puede dejar comentarios "
+"(las compilaciones de prueba se generan aproximadamente una vez a la semana)."
 
 #: ..\python_docs\spladdoninternals.py:757
 msgid ""
 "7. After testing the feature for a while and if the feature is stable, I "
 "merge the feature branch into master."
 msgstr ""
+"7. Después de probar la característica durante un rato y si esta es estable, "
+"mezclo la rama de la característica en master."
 
 #: ..\python_docs\spladdoninternals.py:758
 msgid ""
@@ -7277,6 +7350,13 @@ msgid ""
 "branch; for example, if one is using master snapshots, updates will be "
 "fetched from master branch only)."
 msgstr ""
+"8. Cada pocas semanas, publico versiones de desarrollo de la rama master "
+"para recopilar comentarios de los usuarios que estén dispuestos a probar "
+"versiones de desarrollo dirigidas. Con la llegada de las actualizaciones del "
+"complemento en la versión 7.0, cualquiera puede actualizar entre versiones "
+"estables o de prueba (la rama en uso será utilizada por el actualizador; por "
+"ejemplo, si alguien usa las versiones de desarrollo master, las "
+"actualizaciones sólo se recuperarán desde la rama master)."
 
 #: ..\python_docs\spladdoninternals.py:759
 msgid ""
@@ -7287,6 +7367,13 @@ msgid ""
 "refinements and bug fixes. This has changed significnatly in 2017 (see "
 "below)."
 msgstr ""
+"9. En algún momento, establezco la fecha de la publicación de la próxima "
+"versión del complemento (para la versión 6.0, fue en diciembre del 2015). "
+"Esto determina cuándo debería ser la congelación de características y la "
+"fecha de liberación de la beta (para el 6.0, la beta 1 se publicó en octubre "
+"del 2015). Entre la congelación de características y la primera liberación "
+"beta, me concentro en refinar el código y arreglar fallos. Esto ha cambiado "
+"significativamente en 2017 (mira más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:760
 msgid ""
@@ -7295,6 +7382,10 @@ msgid ""
 "release during the release window (this is done by merging master branch "
 "into stable branch)."
 msgstr ""
+"10. Después de hacer varios ciclos beta (generalmente dos), pido a los "
+"revisores de la comunidad de NVDA que revisen el código de mi complemento y "
+"pidan su publicación en las fechas apropiadas (esto se hace mezclando la "
+"rama master en la rama stable)."
 
 #: ..\python_docs\spladdoninternals.py:761
 msgid ""
@@ -7303,6 +7394,10 @@ msgid ""
 "stable branch, with the master branch containing the code for the next major "
 "version."
 msgstr ""
+"11. Una vez se publica la versión del complemento, las siguientes versiones "
+"de mantenimiento (actualización de traducciones, solución de fallos, "
+"retoques menores) se liberarán desde la rama stable, con la rama master "
+"conteniendo el código para la siguiente gran versión."
 
 #: ..\python_docs\spladdoninternals.py:762
 msgid ""
@@ -7310,10 +7405,13 @@ msgid ""
 "may or may not happen (an exception is long-term support release, described "
 "below)."
 msgstr ""
+"12. Una vez la siguiente versión entra en el ciclo de betas, podría haber o "
+"podría no haber más versiones de mantenimiento (una excepción son las "
+"versiones de soporte extendido, descritas más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:763
 msgid "#### Changes in 2017"
-msgstr ""
+msgstr "#### Cambios en 2017"
 
 #: ..\python_docs\spladdoninternals.py:764
 msgid ""
@@ -7325,6 +7423,14 @@ msgid ""
 "the final major version of the Studio add-on, with future updates being byte-"
 "sized chunks."
 msgstr ""
+"Ya entrado 2016, algunos usuarios y yo tuvimos una conferencia por llamada "
+"relacionada con la dirección futura del complemento. Durante esta llamada, "
+"los participantes sentían que el complemento ya incluye todas las funciones "
+"que la gente necesita, por lo que se decidió dejar de escalar en "
+"características y enfocarse en la compatibilidad con nuevas versiones de "
+"Studio. Al final, se decidió que una versión del complemento que se "
+"publicaría en 2017 sería la versión final principal del complemento de "
+"Studio, con las futuras actualizaciones siendo muy pequeñas."
 
 #: ..\python_docs\spladdoninternals.py:765
 msgid ""
@@ -7333,10 +7439,15 @@ msgid ""
 "for most add-ons. The new regular update schedule for SPL add-on was "
 "implemented as of June 2017."
 msgstr ""
+"Esta decisión también se alineó con mis otros complementos, donde las nuevas "
+"versiones se liberaban cada mes o así, junto al hecho de que las "
+"características están completas en la mayoría de complementos. La nueva "
+"programación regular de actualizaciones del complemento de SPL se implementó "
+"en junio de 2017."
 
 #: ..\python_docs\spladdoninternals.py:766
 msgid "There were two more implications of this decision:"
-msgstr ""
+msgstr "Esta decisión implicaba dos cosas más:"
 
 #: ..\python_docs\spladdoninternals.py:767
 msgid ""
@@ -7344,6 +7455,9 @@ msgid ""
 "months if it is ready for the public, thus updates include both new features "
 "and bug fixes."
 msgstr ""
+"* No más esperas: una nueva característica estable no debería retenerse "
+"hasta dentro de seis meses si está lista para el público, y por tanto las "
+"actualizaciones incluyen nuevas características y solución de fallos."
 
 #: ..\python_docs\spladdoninternals.py:768
 msgid ""
@@ -7351,22 +7465,31 @@ msgid ""
 "anymore, but an opt-in process, as I felt early feedback loop is crucial to "
 "success of a product such as this add-on."
 msgstr ""
+"* El programa de pruebas dirigidas (mira más abajo) no debería ser algo "
+"exclusivo nunca más, sino un proceso al que se pueda optar, ya que yo sentía "
+"que el bucle de retroalimentación temprana es crucial para el éxito de un "
+"producto como este complemento."
 
 #: ..\python_docs\spladdoninternals.py:769
 msgid "With this in mind, the following things were changed in 2017:"
-msgstr ""
+msgstr "Con esto en mente, las siguientes cosas cambiaron en 2017:"
 
 #: ..\python_docs\spladdoninternals.py:770
 msgid ""
 "* No more betas: the development branch (now called slow ring) is considered "
 "live beta branch."
 msgstr ""
+"* No más betas: la rama de desarrollo (ahora llamada anillo lento) se "
+"considera como rama de betas."
 
 #: ..\python_docs\spladdoninternals.py:771
 msgid ""
 "* Anyone can switch to try build branch (now called fast ring snapshots) "
 "provided that they are willing to provide early feedback."
 msgstr ""
+"* Cualquiera puede cambiar a la rama de compilaciones de prueba (ahora "
+"llamada anillo rápido de instantáneas) suponiendo que estén interesados en "
+"proporcionar retroalimentación temprana."
 
 #: ..\python_docs\spladdoninternals.py:772
 msgid ""
@@ -7374,6 +7497,9 @@ msgid ""
 "criteria was extended in late 2017 to include critical changes to NVDA (see "
 "below)."
 msgstr ""
+"* Las actualizaciones de soporte extendido ahora están atadas a las nuevas "
+"versiones principales de Studio. Este criterio se extendió entrado 2017 para "
+"incluir cambios críticos en NVDA (mira más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:773
 msgid "#### Long-term support release"
@@ -7534,6 +7660,18 @@ msgid ""
 "code (including SPL Studio add-on) will be free and anyone is welcome to "
 "study and improve upon it."
 msgstr ""
+"Según termino este artículo sobre los interiores del complemento de "
+"StationPlaylist Studio, siento que es el momento de que revele por qué mis "
+"complementos son gratuitos: es porque amo a los usuarios como un servicio "
+"para la comunidad de usuarios y desarrolladores de NVDA (y en extensión, a "
+"todos los locutores que usan SPL Studio). Lo que me trae alegría como "
+"escritor de complementos es el hecho de que este complemento (y la "
+"documentación que lo acompaña) haya impactado en vuestras vidas y las vidas "
+"de los oyentes de vuestros programas, así como a otros usuarios y "
+"desarrolladores de NVDA por todo el mundo. Gracias a vosotros, usuarios, por "
+"vuestro soporte continuo y vuestros comentarios, prometo una vez más que "
+"todo el código de mis complementos (incluido el complemento de SPL Studio) "
+"será libre y cualquiera es bienvenido para estudiarlo y mejorarlo."
 
 #: ..\python_docs\spladdoninternals.py:789
 msgid ""
@@ -7546,6 +7684,16 @@ msgid ""
 "documentation or use it as a blueprint, you are more than welcome to do so. "
 "Thank you community add-on reviewers for your continued support and reviews."
 msgstr ""
+"Para creadores de complementos que buscan documentación de calidad, espero "
+"que este artículo os haya inspirado para escribir buena documentación en "
+"vuestros proyectos futuros. Para la gente nueva en el desarrollo de "
+"complementos o para aquellos interesados en desarrollar un complemento, "
+"espero que este artículo de complementos de NVDA vistos por dentro haya "
+"servido como un recurso útil para vuestros proyectos, y extensión, os haya "
+"dado una idea de cómo funcionan ciertas funciones de NVDA. Si queréis hacer "
+"referencia a esta documentación o usarla como un modelo, os invito a "
+"hacerlo. Gracias a los revisores de la comunidad de complementos por vuestro "
+"soporte continuo y vuestras revisiones."
 
 #: ..\python_docs\spladdoninternals.py:790
 msgid "### Important notices and credits"
