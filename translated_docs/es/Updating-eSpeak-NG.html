@@ -1,0 +1,50 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title>### Introducción</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1>### Introducción</h1></header>
+  <p>La autoridad principal en requisitos de construcción debería ser <code>&lt;raíz del repo de nvda&gt;/include/espeak/Makefile.am</code>. Los archivos <code>*.vcxproj</code>
+en <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/</code> pueden tenerse también en cuenta. Sin embargo, no siempre se mantienen actualizados.</p>
+<p>NVAccess no usa los archivos de automake o los archivos de Visual Studio, ellos mantienen su propio método para construir Espeak. Las modificaciones tendrán que hacerse en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak</code></p>
+<ul>
+<li><code>sconscript</code> para el proceso de construcción.</li>
+<li><code>config.h</code> para establecer la versión de eSpeak-NG que NVDA muestra en el archivo de registro.</li>
+</ul>
+<h3 id="como-hacer-la-actualizacion">Cómo hacer la actualización</h3>
+<ol>
+<li>Comienza desde una rama limpia de NVDA <code>master</code><ol>
+<li>Haz checkout a la rama <code>origin/master</code> más reciente y crea una nueva rama.</li>
+<li>Ejecuta git clean para asegurarte de que el directorio de trabajo está limpio.</li>
+</ol>
+</li>
+<li>Asegúrate de que los submódulos están actualizados<ol>
+<li>Sincroniza los submódulos con <code>git submodule sync</code></li>
+<li>Actualiza los submódulos con <code>git submodule update --init --recursive</code></li>
+</ol>
+</li>
+<li>Haz checkout en la nueva revisión de eSpeak-NG a probar.<ol>
+<li>Navega al directorio <code>include/espeak/</code></li>
+<li>Haz <code>git fetch</code> para obtener lo último del repositorio de espeak-ng</li>
+<li>Haz <code>git checkout origin/master</code> o cualquier otra referencia de espeak-ng  en la que estés interesado.</li>
+</ol>
+</li>
+<li>Actualiza el registro de versión de NVAccess y construye.<ol>
+<li>Vuelve de nuevo a la raíz del repositorio de NVDA</li>
+<li>Actualiza la versión del paquete en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak/config.h</code>. Puedes usar <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/config.h</code> para comprobar doblemente que es la versión que esperas.</li>
+<li>Construye NVDA</li>
+</ol>
+</li>
+<li>Ejecuta NVDA (establece eSpeak-ng como sintetizador) y prueba.</li>
+<li>Asegúrate de que el archivo de registro contiene el nuevo número de versión para eSpeak-NG</li>
+</ol>
+<h3 id="resolucion-de-problemas">Resolución de problemas</h3>
+<p>Si Python falla durante la construcción, comprueba el registro. Si la última cosa que se hacía era compilar un diccionario, intenta excluirlo. Esto
+puede hacerse en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak/sconscript</code>. Recuerda informar sobre el fallo al proyecto eSpeak-ng.</p>
+<p>Si la construcción falla, toma nota del error, compara las diferencias con el archivo <code>makefile.am</code> y refleja cualquier cambio en el archivo <code>sconscript</code>.</p>
+<h3 id="problemas-conocidos">Problemas conocidos</h3>
+<p>Debido a problemas con el soporte de emojis (que causaba errores fatales), los archivos de diccionarios de emojis se están excluyendo de la construcción, se eliminan antes de compilar los diccionarios en el archivo <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak/sconscript</code>.</p>
+</body>
+</html>

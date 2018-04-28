@@ -79,6 +79,7 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Floating suggestions such as Emoji panel in Fall Creators Update and hardware keyboard suggestions in Redstone 4.
 * Support for UIA notification event introduced in Fall Creators Update.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
+* Announcing tooltips from universal apps.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
@@ -146,7 +147,7 @@ The notification event handler takes five keyword arguments:
 
 * Sender: the UIA element that raised the event.
 * Notification kind: the kind of notification.
-* Notification processing: how NVDA shold process incoming notification.
+* Notification processing: how NVDA should process incoming notification.
 * Display string: notification text.
 * Activity ID: the unique identifier for the notification.
 
@@ -162,6 +163,7 @@ The Windows 10 Objects global plugin also has ability to track UIA events for co
 * Automation ID.
 * UIA class name.
 * For controller for event, the list of objects the given control depends on.
+* For tooltip open event, the GUI framework that powers the element.
 
 In case of notification events, NVDA records event parameters from the event handler method itself.
 
