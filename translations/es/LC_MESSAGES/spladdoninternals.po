@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-26 17:58+0200\n"
+"PO-Revision-Date: 2018-04-30 13:54+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5261,7 +5261,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:460
 msgid "## All about StationPlaylist Assistant layer"
-msgstr ""
+msgstr "## Todo sobre la capa del asistente de SPL"
 
 #: ..\python_docs\spladdoninternals.py:461
 msgid ""
@@ -5271,10 +5271,16 @@ msgid ""
 "throughout this series that we'll tour these layer sets, and we'll start "
 "with SPL Assistant layer."
 msgstr ""
+"Como recordarás, en un artículo anterior hablamos de dos conjuntos de "
+"órdenes de capa: el controlador de SPL y el asistente de SPL, el primero "
+"usado para realizar funciones de Studio desde cualquier programa y el otro "
+"para anuncios de estado. He mencionado a lo largo de este artículo que "
+"visitaríamos estos conjuntos de capa, así que empezaremos con la capa del "
+"asistente de SPL."
 
 #: ..\python_docs\spladdoninternals.py:462
 msgid "### Talk about layer commands"
-msgstr ""
+msgstr "### Charla sobre las órdenes de capa"
 
 #: ..\python_docs\spladdoninternals.py:463
 msgid ""
@@ -5284,10 +5290,15 @@ msgid ""
 "saving keyboard commands, reminding users as to commands available in Studio "
 "and so on."
 msgstr ""
+"Una de las características que tienen en común los scripts de Jaws, Window "
+"Eyes y NVDA es el uso extenso de órdenes de capa. Jaws popularizó este "
+"concepto y su capa de Studio (la tecla grave). Algunos beneficios de este "
+"enfoque incluyen ahorrar órdenes de teclado, recordar a los usuarios las "
+"órdenes de Studio y así sucesivamente."
 
 #: ..\python_docs\spladdoninternals.py:464
 msgid "### Birth of SPL Assistant layer"
-msgstr ""
+msgstr "### Nacimiento de la capa del asistente de SPL"
 
 #: ..\python_docs\spladdoninternals.py:465
 msgid ""
@@ -5297,6 +5308,13 @@ msgid ""
 "I borrowed some commands from both JAWS and Window-Eyes scripts with some "
 "notable differences, namely some commands and how things were announced."
 msgstr ""
+"Como mencioné antes, desde la versión 1.0 en enero de 2014, el complemento "
+"de Studio viene con dos órdenes de capa para representar a la extensión "
+"global y al módulo de aplicación de Studio. En el caso del módulo de "
+"aplicación de Studio y su conjunto de capa (asistente de SPL), tomé "
+"prestadas algunas órdenes de los scripts de Jaws y Window Eyes con algunas "
+"diferencias destacables, entre ellas algunas órdenes y cómo se verbalizaban "
+"las cosas."
 
 #: ..\python_docs\spladdoninternals.py:466
 msgid ""
@@ -5309,6 +5327,15 @@ msgid ""
 "whether this mode is on or off (the reason for assigning T for Cart Edit "
 "Mode status will be discussed later)."
 msgstr ""
+"Cuando me senté a diseñar este conjunto de capa, sentí que sería útil para "
+"los locutores que la mayoría de las órdenes de la capa del asistente "
+"vinieran de las órdenes asignadas a Studio. Por ejemplo, un locutor pulsará "
+"la m para encender o apagar el micrófono, y en la capa del asistente del "
+"SPL, pulsar la m hace que se verbalice el estado del micrófono. Otro ejemplo "
+"fue el modo de edición de cart - pulsar ctrl+t en Studio lo conmutará, y "
+"pulsar asistente de SPL, t indicará si este modo está encendido o apagado "
+"(más tarde se discutirá la razón por la que se asignó la t al estado del "
+"modo de edición de carts)."
 
 #: ..\python_docs\spladdoninternals.py:467
 msgid ""
@@ -5323,6 +5350,17 @@ msgid ""
 "I told Studio add-on to let SPL Controller layer command (discussed later) "
 "to invoke Assistant layer)."
 msgstr ""
+"Originalmente se podía invocar la capa del asistente de SPL pulsando ctrl"
+"+NVDA+grave desde Studio. Sin embargo, algunos traductores de NVDA me "
+"dijeron que esta combinación de teclas se usa para algunas órdenes de NVDA "
+"en su idioma. Por tanto, en el complemento 2.0 (a finales de la primavera de "
+"2014), decidí eliminar esta orden, lo que se traduce en que para que podáis "
+"invocar la capa del asistente de SPL (locutores), debéis ir al diálogo "
+"gestos de entrada mientras tengáis el foco en Studio, expandir la categoría "
+"StationPlaylist y buscar la entrada del asistente (personalmente uso ctrl"
+"+NVDA+grave, y en compilaciones recientes de desarrollo del complemento, "
+"hice que el complemento de Studio dejara a la orden de capa del controlador "
+"de SPL (explicada más tarde) invocara la capa del asistente)."
 
 #: ..\python_docs\spladdoninternals.py:468
 msgid ""
@@ -5332,39 +5370,53 @@ msgid ""
 "when entering SPL Assistant layer. Currently, in addition to default NVDA "
 "layout, the add-on supports JAWS for Windows and Window-Eyes layer commands."
 msgstr ""
+"Otro extra añadido a la capa del asistente de SPL es la capacidad de emular "
+"órdenes de capa proporcionadas por otros lectores de pantalla. Esto se "
+"consigue usando un mapa de gestos para cada lector de pantalla (incluido "
+"NVDA), con el mapa de gestos correcto elegido al entrar en la capa del "
+"asistente de SPL. Actualmente, además de la distribución por defecto de "
+"NVDA, el complemento tiene soporte para las órdenes de capa de Jaws for "
+"Windows y Window Eyes."
 
 #: ..\python_docs\spladdoninternals.py:469
 msgid "### Categorizing SPL Assistant commands"
-msgstr ""
+msgstr "### Categorización de las órdenes del asistente de SPL"
 
 #: ..\python_docs\spladdoninternals.py:470
 msgid ""
 "Once you invoke SPL Assistant layer (a beep will be heard), you can perform "
 "one of the following operations:"
 msgstr ""
+"Una vez que invoques a la capa del asistente de SPL (se escuchará un "
+"pitido), podrás hacer una de las siguientes operaciones:"
 
 #: ..\python_docs\spladdoninternals.py:471
 msgid "* Status announcements (automation, microphone, etc.)."
-msgstr ""
+msgstr "* Indicaciones de estado (automatización, micrófono, etc.)."
 
 #: ..\python_docs\spladdoninternals.py:472
 msgid ""
 "* Tools (library scan, track time analysis, obtaining playlist snapshots, "
 "columns explorer and so on)."
 msgstr ""
+"* Herramientas (escaneo de biblioteca, análisis de tiempo de pista, "
+"obtención de instantáneas de listas de reproducción, explorador de columnas "
+"y demás)."
 
 #: ..\python_docs\spladdoninternals.py:473
 msgid "* Configuration (switching broadcast profiles)."
-msgstr ""
+msgstr "* Configuración (alternar perfiles de emisión)."
 
 #: ..\python_docs\spladdoninternals.py:474
 msgid ""
 "* Ask for help (opening SPL Assistant help dialog or the online user guide)."
 msgstr ""
+"* Pedir ayuda (abriendo el diálogo de ayuda del asistente de Spl o la guía "
+"de usuario en línea)."
 
 #: ..\python_docs\spladdoninternals.py:475
 msgid "* Checking for add-on updates (manually)."
-msgstr ""
+msgstr "* Buscar actualizaciones del complemento (manualmente)."
 
 #: ..\python_docs\spladdoninternals.py:476
 msgid ""
@@ -5374,10 +5426,16 @@ msgid ""
 "object navigation (multiple components are involved and is sensitive to user "
 "interface changes). We'll go through each of these categories in turn."
 msgstr ""
+"Las primeras dos categorías pueden subdividirse en órdenes que usan la api "
+"de Studio (mediante la función statusApi de la que hablamos en un artículo "
+"anterior), las que usan la api de Windows (explorador de columnas) y las que "
+"se apoyan en la navegación por objetos (varios componentes están implicados "
+"y son sensibles a los cambios en la interfaz de usuario). Vamos a ir "
+"recorriendo estas categorías de una en una."
 
 #: ..\python_docs\spladdoninternals.py:477
 msgid "#### SPL Assistant 1: status announcements"
-msgstr ""
+msgstr "#### Asistente de SPL 1: indicaciones de estado"
 
 #: ..\python_docs\spladdoninternals.py:478
 msgid ""
@@ -5387,34 +5445,44 @@ msgid ""
 "API (new style) commands. In some cases, both methods are available and the "
 "appropriate version is chosen based on Studio version in use."
 msgstr ""
+"Estas órdenes te permiten obtener diversa información de estado como el "
+"título y duración de la próxima pista, el estado del modo de edición de "
+"carts y demás. Pueden dividirse en aquellos que usan la navegación por "
+"objetos (el viejo estilo) y órdenes que usan la api de Studio (el nuevo "
+"estilo). En algunos casos ambos métodos están disponibles, y se elige la "
+"versión apropiada basándose en la versión de Studio en uso."
 
 #: ..\python_docs\spladdoninternals.py:479
 msgid ""
 "The following commands (sorted alphabetically) utilize Studio API to perform "
 "needed functions:"
 msgstr ""
+"Las siguientes órdenes (ordenadas alfabéticamente) utilizan la api de Studio "
+"para llevar a cabo las funciones necesarias:"
 
 #: ..\python_docs\spladdoninternals.py:480
 msgid "* E: Announces if any metadata streaming URL's are defined."
-msgstr ""
+msgstr "* E: indica si se ha definido alguna URL de flujo de metadatos."
 
 #: ..\python_docs\spladdoninternals.py:481
 msgid "* H: Duration of tracks in the selected hour."
-msgstr ""
+msgstr "* H: duración de pistas en la hora seleccionada."
 
 #: ..\python_docs\spladdoninternals.py:482
 msgid "* Shift+H: Duration of the remaining tracks in the hour slot."
-msgstr ""
+msgstr "* Shift+h: duración de las pistas restantes en la hora."
 
 #: ..\python_docs\spladdoninternals.py:483
 msgid "* P: Playback status."
-msgstr ""
+msgstr "* P: estado de la reproducción."
 
 #: ..\python_docs\spladdoninternals.py:484
 msgid ""
 "* Shift+1 through Shift+4 and Shift+0: Checks metadata streaming status for "
 "each URL (0 is DSP encoder). See below for details."
 msgstr ""
+"* Shift+1 a shift+4 y shift+0: comprueba el estado de los metadatos del "
+"flujo de cada URL (0 es el codificador DSP). Mira debajo para más detalles."
 
 #: ..\python_docs\spladdoninternals.py:485
 msgid ""
@@ -5422,10 +5490,14 @@ msgid ""
 "this category until add-on 6.x. In add-on 7.0, due to refactoring work "
 "surrounding this command, it has been moved to tools category."
 msgstr ""
+"Ten en cuenta que la indicación del recordatorio de lista de reproducción "
+"(asistente de SPL, D) era parte de esta categoría hasta el complemento 6.x. "
+"En el complemento 7.0, debido a los trabajos de refactorización que "
+"afectaban a esta orden, se ha movido a la categoría de herramientas."
 
 #: ..\python_docs\spladdoninternals.py:486
 msgid "##### A step sideways: Metadata streaming"
-msgstr ""
+msgstr "##### Un paso a un lado: flujo de metadatos"
 
 #: ..\python_docs\spladdoninternals.py:487
 msgid ""
@@ -5433,6 +5505,10 @@ msgid ""
 "address and four additional URL's (Options/Now Playing). By default, DSP "
 "encoder address is used to send metadata information."
 msgstr ""
+"Se puede pedir a Studio que emita en tiempo real los metadatos de una pista "
+"a cinco URLS: la dirección del codificador DSP y cuatro URLS adicionales "
+"(Opciones / Reproducción en curso). Por defecto, se usa la dirección del "
+"codificador DSP para enviar información de metadatos."
 
 #: ..\python_docs\spladdoninternals.py:488
 msgid ""
@@ -5445,10 +5521,19 @@ msgid ""
 "status messages and connects to predefined servers if you tell Studio to "
 "connect to streaming servers."
 msgstr ""
+"Una de las actividades que realiza el módulo de aplicación de Studio al "
+"iniciar es comprobar si la emisión de metadatos está activada en alguna URL. "
+"Además, NVDA te puede informar del estado del flujo de metadatos para todas "
+"las URLS (asistente de SPL, E) o para direcciones individuales (asistente de "
+"SPL, shift+1 a shift+4 y shift+0). Esto se hace mediante una función de "
+"indicación y administración de metadatos (metadataAnnouncer) que recopila "
+"indicadores de flujo de las URLS y presenta mensajes de estado y se conecta "
+"a los servidores por defecto si le pides a Studio que se conecte a "
+"servidores en tiempo real."
 
 #: ..\python_docs\spladdoninternals.py:489
 msgid "When the metadata announcer is called, NVDA does the following:"
-msgstr ""
+msgstr "Cuando se llama al indicador de metadatos, NVDA hace lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:490
 msgid ""
@@ -5456,16 +5541,23 @@ msgid ""
 "is mostly used as the connection flag), and if the flag is set, connects to "
 "a predefined set of streaming URL's."
 msgstr ""
+"1. NVDA mirará el indicador de conexión (reminder=True, pero en realidad, "
+"esto se usa mayoritariamente como el indicador de conexión), y si el "
+"indicador está activo, se conecta a un conjunto predefinido de URLS de flujo."
 
 #: ..\python_docs\spladdoninternals.py:491
 msgid "2. Gathers metadata streaming flags, starting with the DSP encoder."
 msgstr ""
+"2. Recopila indicadores de emisión de metadatos, empezando por el "
+"codificador DSP."
 
 #: ..\python_docs\spladdoninternals.py:492
 msgid ""
 "3. The announcer will count number of metadata enabled URL's used to format "
 "the status message."
 msgstr ""
+"3. El anunciador contará el número de URLS de metadatos activas usadas para "
+"dar formato al mensaje de estado."
 
 #: ..\python_docs\spladdoninternals.py:493
 msgid ""
@@ -5475,6 +5567,11 @@ msgid ""
 "is done to make sure this message is the last message to be announced when "
 "Studio starts."
 msgstr ""
+"4. Se verbaliza el mensaje de estado. Este mensaje no se verbaliza en el "
+"momento si se llama a la función cuando el módulo de aplicación se inicia - "
+"se verbalizará el mensaje y se reproducirá un sonido de alarma tras una "
+"breve pausa. Esto se hace para asegurarse de que este mensaje es el último "
+"que se verbaliza cuando arranca Studio."
 
 #: ..\python_docs\spladdoninternals.py:494
 msgid "##### Revisiting the past: object navigation"
