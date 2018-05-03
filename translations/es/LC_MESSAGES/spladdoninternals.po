@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-30 13:54+0200\n"
+"PO-Revision-Date: 2018-04-30 15:40+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5584,6 +5584,11 @@ msgid ""
 "map to locate the needed object and will announce what you are looking for "
 "(typically obj.name or an error message). The process was as follows:"
 msgstr ""
+"Antes de escribir los procedimientos del nuevo estilo, todas las órdenes "
+"usaban navegación por objetos. Normalmente, el comando usará una función "
+"auxiliar y un mapa de objetos para ubicar el objeto que necesita y "
+"verbalizará lo que estás buscando (normalmente obj.name o un mensaje de "
+"error). El proceso era como se describe a continuación:"
 
 #: ..\python_docs\spladdoninternals.py:496
 msgid ""
@@ -5593,6 +5598,12 @@ msgid ""
 "object. Technically, it is a dictionary of lists, with each list item "
 "(indecies) corresponding to the version of Studio the add-on supports."
 msgstr ""
+"1. El módulo de aplicación de Studio contiene un mapa de índices donde el "
+"objeto reside en relación con la ventana en primer plano. Por ejemplo, para "
+"un objeto dado, si el índice es 0, NVDA sabe que el objeto es el primer hijo "
+"del objeto en primer plano. Técnicamente, es un diccionario de listas, "
+"correspondiendo cada elemento de lista (índice) con cada versión de Studio a "
+"la que el complemento da soporte."
 
 #: ..\python_docs\spladdoninternals.py:497
 msgid ""
@@ -5600,12 +5611,18 @@ msgid ""
 "constants are defined in the app module (all integers, denoting what you "
 "wish to hear). These constants serve as keys to the object index map."
 msgstr ""
+"2. Para recuperar los objetos necesarios y registrar el tipo de orden, se "
+"definen una serie de constantes en el módulo de aplicación (todas enteras, "
+"indicando lo que quieres oír). Estas constantes sirven como claves al mapa "
+"de índices de objeto."
 
 #: ..\python_docs\spladdoninternals.py:498
 msgid ""
 "3. After entering SPL Assistant layer and once you press one of the commands "
 "below, NVDA will do the following:"
 msgstr ""
+"3. Después de entrar en la capa del asistente de SPL y una vez que pulses "
+"una de las siguientes órdenes, NVDA hará lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:499
 msgid ""
@@ -5614,6 +5631,11 @@ msgid ""
 "(status(SPLConstant; for example, for cart edit mode, the signature is self."
 "status(self.SPLPlayStatus), with the constant denoting a status bar)."
 msgstr ""
+"\t1. Cada orden obtendrá el objeto en cuestión llamando al recuperador de "
+"objetos (función de estado) pasando como parámetro el tipo de anuncio "
+"(estado (SPLConstant; por ejemplo, para el modo de edición de carts, la "
+"llamada sería self.status(self.SPLPlayStatus), con la constante indicando "
+"una barra de estado)."
 
 #: ..\python_docs\spladdoninternals.py:500
 msgid ""
@@ -5621,6 +5643,9 @@ msgid ""
 "(part of the Studio app module) hoping that the needed object is ready for "
 "use (for performance reasons)."
 msgstr ""
+"\t2. El recuperador de objetos (función de estado) consultará primero una "
+"caché de objetos (parte del módulo de aplicación de Studio) esperando que el "
+"objeto necesario esté listo para usarse (por razones de rendimiento)."
 
 #: ..\python_docs\spladdoninternals.py:501
 msgid ""
@@ -5630,6 +5655,12 @@ msgid ""
 "different values are returned based on Studio version) to locate, cache and "
 "return the object in question (in that order)."
 msgstr ""
+"\t3. Si el objeto no está en la caché, el recuperador anotará primero la "
+"ventana en primer plano, luego usará las directrices especificadas en el "
+"mapa de índices de objeto (la constante pasada a la función de estado es la "
+"clave de este mapa y se devuelven valores diferentes según la versión de "
+"Studio) para ubicar, meter en caché y devolver el objeto en cuestión (en ese "
+"orden)."
 
 #: ..\python_docs\spladdoninternals.py:502
 msgid ""
@@ -5637,18 +5668,23 @@ msgid ""
 "to do with it (sometimes, the actual object is a child of the just returned "
 "object)."
 msgstr ""
+"\t4. De vuelta en el procedimiento para esa orden, se hará una cosa u otra "
+"con el objeto en función del procedimiento elegido (a veces, el objeto real "
+"es hijo del objeto devuelto)."
 
 #: ..\python_docs\spladdoninternals.py:503
 msgid "The commands which utilizes object navigation steps above include:"
 msgstr ""
+"Las órdenes que utilizan los pasos anteriores con navegación por objetos "
+"incluyen:"
 
 #: ..\python_docs\spladdoninternals.py:504
 msgid "* A. Automation."
-msgstr ""
+msgstr "* A. Automatización."
 
 #: ..\python_docs\spladdoninternals.py:505
 msgid "* C: Title of the currently playing track."
-msgstr ""
+msgstr "* C: título de la pista actualmente en reproducción."
 
 #: ..\python_docs\spladdoninternals.py:506
 msgid ""
@@ -5656,51 +5692,56 @@ msgid ""
 "information, but after experimenting with it, object navigation routine was "
 "more stable)."
 msgstr ""
+"* I: número de oyentes (he intentado usar la api de Studio para obtener esta "
+"información, pero después de experimentar con ella, el procedimiento de "
+"navegación por objetos resultó más estable)."
 
 #: ..\python_docs\spladdoninternals.py:507
 msgid "* L: Line in."
-msgstr ""
+msgstr "* L: línea de entrada."
 
 #: ..\python_docs\spladdoninternals.py:508
 msgid "* M: Microphone."
-msgstr ""
+msgstr "* M: micrófono."
 
 #: ..\python_docs\spladdoninternals.py:509
 msgid "* N: Title and duration for the next track."
-msgstr ""
+msgstr "* N: título y duración de la siguiente pista."
 
 #: ..\python_docs\spladdoninternals.py:510
 msgid "* Shift+P: Track pitch."
-msgstr ""
+msgstr "* Shift+p: tono de pista."
 
 #: ..\python_docs\spladdoninternals.py:511
 msgid "* R: Record to file."
-msgstr ""
+msgstr "* R: grabar a archivo."
 
 #: ..\python_docs\spladdoninternals.py:512
 msgid "* S: Track scheduled for."
-msgstr ""
+msgstr "* S: pista programada."
 
 #: ..\python_docs\spladdoninternals.py:513
 msgid "* Shift+S: Duration of selected tracks in the current hour slot."
-msgstr ""
+msgstr "* Shift+s: duración de las pistas seleccionadas en la hora actual."
 
 #: ..\python_docs\spladdoninternals.py:514
 msgid ""
 "* T: Cart Edit Mode (I assigned T to this command for efficiency reasons)."
 msgstr ""
+"* T: modo de edición de carts (asigné la t a esta orden por razones de "
+"eficiencia)."
 
 #: ..\python_docs\spladdoninternals.py:515
 msgid "* U: Studio up time."
-msgstr ""
+msgstr "* U: tiempo de funcionamiento de Studio."
 
 #: ..\python_docs\spladdoninternals.py:516
 msgid "* W: Weather and temperature (if configured)."
-msgstr ""
+msgstr "* W: tiempo atmosférico y temperatura (si se han configurado)."
 
 #: ..\python_docs\spladdoninternals.py:517
 msgid "* Y: Playlist modification."
-msgstr ""
+msgstr "* Y: modificación de lista de reproducción."
 
 #: ..\python_docs\spladdoninternals.py:518
 msgid ""
@@ -5757,7 +5798,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:526
 msgid "In Studio 5.20 and later:"
-msgstr ""
+msgstr "En Studio 5.20 y posteriores:"
 
 #: ..\python_docs\spladdoninternals.py:528
 msgid ""
