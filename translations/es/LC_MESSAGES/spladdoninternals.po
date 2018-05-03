@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-05-03 11:04+0200\n"
+"PO-Revision-Date: 2018-05-03 13:43+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6069,7 +6069,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:554
 msgid "#### SPL Assistant 3: configuration"
-msgstr ""
+msgstr "#### Asistente de SPL 3: configuración"
 
 #: ..\python_docs\spladdoninternals.py:555
 msgid ""
@@ -6078,10 +6078,14 @@ msgid ""
 "meant by \"instant switch profile\" and the mechanics of it (and internals "
 "of SPL Assistant, F12) in the next article."
 msgstr ""
+"Hay otra tecla de función asignada al asistente de SPL: pulsar f12 cambiará "
+"a un perfil de cambio instantáneo (si está definido). Volveremos a explicar "
+"qué se entiende por \"perfil de cambio instantáneo\" y sus mecanismos (y el "
+"interior del asistente de SPL, f12) en el próximo artículo."
 
 #: ..\python_docs\spladdoninternals.py:556
 msgid "#### SPL Assistant 4: getting help"
-msgstr ""
+msgstr "#### Asistente de SPL 4: conseguir ayuda"
 
 #: ..\python_docs\spladdoninternals.py:557
 msgid ""
@@ -6089,19 +6093,25 @@ msgid ""
 "documentation. For this reason, SPL Assistant provides two commands to help "
 "you use the layer commands or the add-on itself. They are:"
 msgstr ""
+"Yo creo que un producto no está completo sin una buena documentación de "
+"calidad. Por esta razón, el asistente de SPL proporciona dos órdenes para "
+"ayudarte a usar la capa de órdenes o el complemento en sí. Son las "
+"siguientes:"
 
 #: ..\python_docs\spladdoninternals.py:558
 msgid ""
 "* F1: Displays a dialog presenting a list of SPL Assistant layer commands."
 msgstr ""
+"* F1: muestra un diálogo que presenta una lista de órdenes de la capa del "
+"asistente de SPL."
 
 #: ..\python_docs\spladdoninternals.py:559
 msgid "* Shift+F1: Opens the online user guide (os.startfile)."
-msgstr ""
+msgstr "* Shift+f1: abre la guía de usuario en línea (os.startfile)."
 
 #: ..\python_docs\spladdoninternals.py:560
 msgid "#### SPL Assistant 5: Checking for add-on updates"
-msgstr ""
+msgstr "#### Asistente de SPL 5: búsqueda de actualizaciones"
 
 #: ..\python_docs\spladdoninternals.py:561
 msgid ""
@@ -6113,12 +6123,23 @@ msgid ""
 "display a results dialog if there are no updates or other errors are "
 "encountered, whereas in automatic check mode, they are not shown."
 msgstr ""
+"Si pulsas ctrl+shift+u después de entrar en la capa del asistente de SPL "
+"hará que el complemento busque actualizaciones de sí mismo. A diferencia del "
+"proceso automático de búsqueda de actualizaciones descrito anteriormente, "
+"esta es una búsqueda manual, y por tanto llevará a cabo acciones adicionales "
+"como detener el temporizador de búsqueda automática de actualizaciones antes "
+"de buscar actualizaciones realmente. Otra diferencia es que esta orden "
+"mostrará un diálogo de resultados si no hay actualizaciones o se encuentran "
+"otros errores, mientras que en el modo de búsqueda automática, no se "
+"muestran."
 
 #: ..\python_docs\spladdoninternals.py:562
 msgid ""
 "### A surprise: some Assistant layer commands can be invoked without "
 "entering the layer first"
 msgstr ""
+"### Una sorpresa: pueden invocarse algunas órdenes de la capa del asistente "
+"sin entrar a ella primero"
 
 #: ..\python_docs\spladdoninternals.py:563
 msgid ""
@@ -6127,30 +6148,35 @@ msgid ""
 "without first invoking Assistant layer?\" Yes, you can assign a custom "
 "command for the following Assistant commands:"
 msgstr ""
+"Hay veces en las que un locutor querrá obtener cierta información "
+"rápidamente. Por eso nos hacemos la siguiente pregunta: \"¿Hay forma de "
+"verbalizar algo sin tener que invocar primero la capa del asistente?\". Sí, "
+"se puede asignar una orden personalizada a las siguientes funciones del "
+"asistente:"
 
 #: ..\python_docs\spladdoninternals.py:564
 msgid "* Name of the next track."
-msgstr ""
+msgstr "* Nombre de la próxima pista."
 
 #: ..\python_docs\spladdoninternals.py:565
 msgid "* Name of the current track."
-msgstr ""
+msgstr "* Nombre de la pista actual."
 
 #: ..\python_docs\spladdoninternals.py:566
 msgid "* Weather and temperature."
-msgstr ""
+msgstr "* Tiempo y temperatura."
 
 #: ..\python_docs\spladdoninternals.py:567
 msgid "* Playlist snapshots."
-msgstr ""
+msgstr "* Instantáneas de lista de reproducción."
 
 #: ..\python_docs\spladdoninternals.py:568
 msgid "* Track time analysis marker."
-msgstr ""
+msgstr "* Marcador de análisis de tiempo de pista."
 
 #: ..\python_docs\spladdoninternals.py:569
 msgid "* Track time analysis."
-msgstr ""
+msgstr "* Análisis de tiempo de pista."
 
 #: ..\python_docs\spladdoninternals.py:570
 msgid ""
@@ -6159,16 +6185,22 @@ msgid ""
 "routines are pressed. Without this step, you might end up with a situation "
 "like the following:"
 msgstr ""
+"En estos procedimientos, se lleva a cabo un paso adicional para asegurarse "
+"de que el indicador del asistente de SPL se apaga automáticamente tras "
+"pulsar el atajo de teclado en cuestión. Sin este paso, podrías acabar en una "
+"situación como la siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:571
 msgid "1. You invoke Assistant layer."
-msgstr ""
+msgstr "1. Invocas la capa del asistente."
 
 #: ..\python_docs\spladdoninternals.py:572
 msgid ""
 "2. You then press the shortcut key (not the layer counterpart) for the layer "
 "command you wish to use."
 msgstr ""
+"2. Después pulsas la tecla rápida para la orden de capa que quieras usar "
+"(sin activar la capa antes)."
 
 #: ..\python_docs\spladdoninternals.py:573
 msgid ""
@@ -6178,12 +6210,18 @@ msgid ""
 "one sitting (the purpose of the layer set is to let you hear one "
 "announcement at a time)."
 msgstr ""
+"3. Pulsas otra tecla que puede verbalizar algo más, o incluso oyes lo mismo "
+"dos veces si pulsas el atajo de la capa homólogo a la orden que has pulsado. "
+"En efecto, has invocado dos órdenes de capa de una vez (el propósito del "
+"conjunto de capas es dejarte oír un mensaje a la vez)."
 
 #: ..\python_docs\spladdoninternals.py:574
 msgid ""
 "## Introducing configuration facilities: add-on settings dialog and "
 "broadcast profiles"
 msgstr ""
+"## Presentación de las funciones de configuración: diálogo de ajustes del "
+"complemento y perfiles de emisión"
 
 #: ..\python_docs\spladdoninternals.py:575
 msgid ""
@@ -6195,6 +6233,14 @@ msgid ""
 "settings, what happens if something goes wrong and get into internals of how "
 "broadcast profiles work."
 msgstr ""
+"Hemos llegado a nuestra última parada del módulo de aplicación de Studio "
+"visto por dentro: gestión de la configuración. Esta característica permite "
+"que un locutor configure diversas opciones, como alarmas, orden de "
+"verbalización de columnas y demás, así como empaquetar ajustes para un "
+"programa como un perfil de emisión para invocarlo durante el programa. "
+"Durante el camino aprenderás cómo almacena el lector de pantalla NVDA "
+"diversos ajustes, qué pasa si algo va mal y verás cómo están hechos por "
+"dentro los perfiles de emisión."
 
 #: ..\python_docs\spladdoninternals.py:576
 msgid "### ConfigObj: NVDA's configuration manager assistant"
@@ -6207,6 +6253,11 @@ msgid ""
 "file, read and interpret settings and validate options against default "
 "configuration options."
 msgstr ""
+"NVDA usa la biblioteca ConfigObj para gestionar sus ajustes. Este módulo "
+"Python, inspirado en el propio intérprete de configuración de Python, "
+"permite que los desarrolladores almacenen ajustes en un fichero de texto, "
+"leer e interpretar ajustes y validar opciones basándose en opciones de "
+"configuración por defecto."
 
 #: ..\python_docs\spladdoninternals.py:578
 msgid ""
@@ -6929,10 +6980,16 @@ msgid ""
 "implemented, how NVDA can detect stream labels and a behind the scenes "
 "overview of what happens when you connect to a streaming server."
 msgstr ""
+"Ahora hemos llegado al penúltimo capítulo en este artículo de complementos "
+"vistos por dentro para el complemento de StationPlaylist: soporte del "
+"codificador, el segundo pilar de la extensión global de utilidades para SPL. "
+"Hablaremos sobre cómo ha sido implementado el soporte del codificador, cómo "
+"puede NVDA detectar las etiquetas de flujo y una descripción tras el "
+"escenario de lo que pasa cuando te conectas a un servidor de emisión."
 
 #: ..\python_docs\spladdoninternals.py:680
 msgid "### Encoder support: From suggestion to implementation"
-msgstr ""
+msgstr "### Soporte del codificador: de la sugerencia a la implementación"
 
 #: ..\python_docs\spladdoninternals.py:681
 msgid ""
@@ -6941,6 +6998,11 @@ msgid ""
 "and seeing how other screen readers supported it, I decided to investigate "
 "SAM encoder support in summer 2014."
 msgstr ""
+"Originalmente, no tenía planeado incluir soporte para el codificador en el "
+"complemento de SPL. Sin embargo, tras hablar con varios usuarios de Studio "
+"que utilizaban los codificadores SAM y viendo cómo les daban soporte otros "
+"lectores de pantalla, decidí investigar el soporte para el codificador SAM "
+"en verano del 2014."
 
 #: ..\python_docs\spladdoninternals.py:682
 msgid ""
