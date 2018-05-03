@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-04-30 15:40+0200\n"
+"PO-Revision-Date: 2018-05-03 11:04+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5575,7 +5575,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:494
 msgid "##### Revisiting the past: object navigation"
-msgstr ""
+msgstr "##### Volviendo al pasado: navegación por objetos"
 
 #: ..\python_docs\spladdoninternals.py:495
 msgid ""
@@ -5748,28 +5748,38 @@ msgid ""
 "Note that in Studio 5.20 and later, some of these (such as automation) uses "
 "Studio API."
 msgstr ""
+"Ten en cuenta que en Studio 5.20 y versiones posteriores, algunas de ellas "
+"(como la automatización) usan la api de Studio."
 
 #: ..\python_docs\spladdoninternals.py:519
 msgid ""
 "For example, if you press A to obtain automation status from Studio 5.10:"
 msgstr ""
+"Por ejemplo, si pulsas la A para obtener el estado de la automatización en "
+"Studio 5.10:"
 
 #: ..\python_docs\spladdoninternals.py:520
 #: ..\python_docs\spladdoninternals.py:527
 msgid "1. Invoke SPL Assistant, then press A."
-msgstr ""
+msgstr "1. Se invoca al asistente de SPL, y luego se pulsa la A."
 
 #: ..\python_docs\spladdoninternals.py:521
 msgid ""
 "2. The status function (object fetcher) is called, taking the status bar "
 "constant (SPLPlayStatus, which is 0) as the key to the index map."
 msgstr ""
+"2. Se llama a la función de estado (recuperador de objetos), tomando la "
+"constante de la barra de estado (SPLPlayStatus, que es 0) como clave para el "
+"mapa de índices."
 
 #: ..\python_docs\spladdoninternals.py:522
 msgid ""
 "3. Object fetcher will see if the status bar object (cache dictionary with "
 "the key of 0) has been cached. For this example, it isn't."
 msgstr ""
+"3. El recuperador de objetos comprobará si el objeto de la barra de estado "
+"(diccionario de la caché, clave 0) está cacheado. En este ejemplo, no lo "
+"está."
 
 #: ..\python_docs\spladdoninternals.py:523
 msgid ""
@@ -5779,6 +5789,11 @@ msgid ""
 "relative to the foreground window (in our case, index is 6 or the seventh "
 "child)."
 msgstr ""
+"4. Al ver que la barra de estado no está en caché, el recuperador de objetos "
+"mirará ahora el mapa de índices y decidirá qué columna va a leer (en este "
+"ejemplo, es la columna 2 (índice 1)). La columna registra la posición de la "
+"barra de estado hija relativa a la ventana en primer plano (en nuestro caso, "
+"se trata del séptimo hijo con índice 6)."
 
 #: ..\python_docs\spladdoninternals.py:524
 msgid ""
@@ -5787,6 +5802,10 @@ msgid ""
 "fg.children[statusObj]), then returns the object to the automation "
 "announcement routine."
 msgstr ""
+"5. Una vez se obtiene el índice de la posición del objeto hijo, el "
+"recuperador de objetos ubicará el objeto real y lo meterá en caché (self."
+"_cachedStatusObjs[infoIndex] = fg.children[statusObj]), y luego devolverá "
+"este objeto a la función de verbalización de automatización."
 
 #: ..\python_docs\spladdoninternals.py:525
 msgid ""
@@ -5795,6 +5814,11 @@ msgid ""
 "exposed by accessibility API's), then will announce one of it's contents "
 "(second child object, which records automation status)."
 msgstr ""
+"6. De vuelta en la función del script, se le recordará a NVDA que debe mirar "
+"uno de los objetos hijo (las barras de estado pueden contener objetos hijos "
+"si las apis de accesibilidad lo exponen así), y luego verbalizará uno de sus "
+"contenidos (segundo objeto hijo, que registra el estado de la "
+"automatización)."
 
 #: ..\python_docs\spladdoninternals.py:526
 msgid "In Studio 5.20 and later:"
@@ -5805,6 +5829,8 @@ msgid ""
 "2. Calls Studio API to retrieve the given status flag (in this case, 1, "
 "which records automation status)."
 msgstr ""
+"2. Se llama a la api de Studio para recuperar el indicador de estado dado "
+"(en este caso es el 1, que registra el estado de automatización)."
 
 #: ..\python_docs\spladdoninternals.py:529
 msgid ""
@@ -5812,6 +5838,9 @@ msgid ""
 "the appropriate message based on status flag and value is retrieved and "
 "announced."
 msgstr ""
+"3. Después, se consulta una tabla de búsqueda con posibles mensajes de la "
+"barra de estado, y se recupera y verbaliza el mensaje apropiado basándose en "
+"el indicador de estado y el valor."
 
 #: ..\python_docs\spladdoninternals.py:530
 msgid ""
@@ -5820,32 +5849,43 @@ msgid ""
 "values returned by Studio to construct the actual announcement (cart edit "
 "mode on/off and whether cart insert mode is active)."
 msgstr ""
+"No todos los mensajes de la barra de estado usarán la api de Studio y la "
+"tabla de mensajes de estado. Una excepción es el estado del modo de carts, "
+"para el que es necesario consultar dos valores devueltos por Studio para "
+"construir el mensaje verbalizado finalmente (modo de edición de carts "
+"activado o desactivado y si el modo de edición de carts está activado)."
 
 #: ..\python_docs\spladdoninternals.py:531
 msgid "#### SPL Assistant 2: tools"
-msgstr ""
+msgstr "#### Asistente de SPL 2: herramientas"
 
 #: ..\python_docs\spladdoninternals.py:532
 msgid ""
 "These are miscellaneous commands in SPL Assistant, and three of them use "
 "Studio API:"
 msgstr ""
+"Aquí hay órdenes varias del asistente de SPL, tres de ellas usan la api de "
+"Studio:"
 
 #: ..\python_docs\spladdoninternals.py:533
 msgid "* D: Remaining time for the opened playlist."
-msgstr ""
+msgstr "* D: tiempo restante de la lista de reproducción abierta."
 
 #: ..\python_docs\spladdoninternals.py:534
 msgid ""
 "* K: Moves to a marked track. This was discussed in column routines and "
 "place marker sections."
 msgstr ""
+"* K: se mueve a una pista marcada. Ya se habló de esto en las secciones de "
+"procedimientos de columna y marcadores."
 
 #: ..\python_docs\spladdoninternals.py:535
 msgid ""
 "* Control+K: Sets track place marker. Consult the place marker section to "
 "learn how it works."
 msgstr ""
+"* Ctrl+k: sitúa un marcador de pista. Consulta la sección de marcadores para "
+"aprender cómo funciona."
 
 #: ..\python_docs\spladdoninternals.py:536
 msgid ""
@@ -5854,32 +5894,46 @@ msgid ""
 "folders via Studio Options dialog. Consult a previous article on library "
 "scan for details on library scan internals."
 msgstr ""
+"* Shift+r: escaneo de biblioteca. Esta es una función útil para iniciar un "
+"escaneo de biblioteca en segundo plano, viene bien si has añadido nuevas "
+"pistas desde una serie de carpetas mediante el diálogo de opciones de "
+"Studio. Consulta un artículo anterior sobre el escaneo de biblioteca para "
+"más detalles sobre el interior de esta característica."
 
 #: ..\python_docs\spladdoninternals.py:537
 msgid ""
 "* 1 through 0 (6 for studio 5.0x): Columns Explorer (discussed earlier). "
 "Unlike other commands in this set, this routine uses Windows API only."
 msgstr ""
+"* Números del 1 al 0 (6 en Studio 5.0x): explorador de columnas (expuesto "
+"anteriormente). Al contrario que otras órdenes de este conjunto, este "
+"procedimiento usa sólo la api de Windows."
 
 #: ..\python_docs\spladdoninternals.py:538
 msgid ""
 "* F8: Obtains playlist snapshot information for the currently loaded track. "
 "This feature uses a combination of Windows and Studio API's."
 msgstr ""
+"* F8: obtiene una instantánea con información de la lista de reproducción "
+"para la pista cargada actualmente. Esta función usa una combinación de las "
+"apis de Windows y Studio."
 
 #: ..\python_docs\spladdoninternals.py:539
 msgid ""
 "* F9: Marks the current position of the playlist as start of track time "
 "analysis (more on this feature below)."
 msgstr ""
+"* F9: marca la posición actual de la lista de reproducción como inicio del "
+"análisis de tiempo de pista (se explica más sobre esto debajo)."
 
 #: ..\python_docs\spladdoninternals.py:540
 msgid "* F10: Performs track time analysis (add-on 6.0)."
-msgstr ""
+msgstr "* F10: realiza el análisis de tiempo de pista (complemento 6.0)."
 
 #: ..\python_docs\spladdoninternals.py:541
 msgid "##### Track time analysis: Duration of \"selected\" tracks"
 msgstr ""
+"##### Análisis de tiempo de pista: duración de las pistas seleccionadas"
 
 #: ..\python_docs\spladdoninternals.py:542
 msgid ""
@@ -5888,28 +5942,40 @@ msgid ""
 "selected tracks. Since I was familiar with this concept from JAWS scripts, I "
 "decided to work on it as part of add-on 6.0."
 msgstr ""
+"Hace unos meses, mientras conversaba en un chat de Skype con algunos "
+"usuarios del complemento, alguien sugirió una característica que permitiera "
+"a NVDA decir cuánto tiempo llevaría reproducir las pistas seleccionadas. Ya "
+"que este concepto era familiar para mí porque lo conocía de los scripts de "
+"Jaws, decidí trabajar en ello como parte del complemento 6.0."
 
 #: ..\python_docs\spladdoninternals.py:543
 msgid ""
 "The resulting routine (which is available if you are focused on the main "
 "playlist viewer with the playlist loaded) is as follows:"
 msgstr ""
+"El procedimiento resultante (que está disponible si tienes el foco en el "
+"visor principal de la lista de reproducción con la lista de reproducción "
+"cargada) es el siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:544
 msgid ""
 "1. Move to the position in a playlist to mark as start of track time "
 "analysis."
 msgstr ""
+"1. Te mueves a una posición en la lista de reproducción para marcarla como "
+"punto de inicio del análisis de tiempo de pista."
 
 #: ..\python_docs\spladdoninternals.py:545
 msgid "2. Enter SPL assistant, then press F9."
-msgstr ""
+msgstr "2. Entras al asistente de SPL y pulsas f9."
 
 #: ..\python_docs\spladdoninternals.py:546
 msgid ""
 "3. Move to another track in the playlist, open SPL Assistant then press F10. "
 "NVDA will then:"
 msgstr ""
+"3. Te mueves a otra pista en la lista de reproducción, abres el asistente de "
+"SPL y pulsas f10. A partir de ahí, NVDA:"
 
 #: ..\python_docs\spladdoninternals.py:547
 msgid ""
@@ -5917,6 +5983,9 @@ msgid ""
 "analysis, but in some cases, it could be reverse (bottom to top). Also, a "
 "variable to hold total duration will be prepared."
 msgstr ""
+"A. Determina el rango del análisis. En la mayoría de casos será un análisis "
+"de arriba a abajo, pero en otros casos podría invertirse (de abajo a "
+"arriba). Además, se preparará una variable para almacenar la duración total."
 
 #: ..\python_docs\spladdoninternals.py:548
 msgid ""
@@ -5924,12 +5993,19 @@ msgid ""
 "track duration via Studio API. Once the track duration is received, it is "
 "then added to the total duration variable."
 msgstr ""
+"B. Para cada pista en el rango de análisis, NVDA obtendrá el nombre de "
+"archivo y la duración de la pista mediante la api de Studio. Una vez se "
+"reciba la duración de la pista, se añadirá a la variable con la duración "
+"total."
 
 #: ..\python_docs\spladdoninternals.py:549
 msgid ""
 "C. Once time analysis (calculating total duration) is done, NVDA will "
 "announce number of tracks selected and the total duration using mm:ss format."
 msgstr ""
+"C. Una vez se hace el análisis de tiempo (cálculo de la duración total), "
+"NVDA verbalizará el número de pistas seleccionadas y la duración total "
+"usando el formato mm:ss."
 
 #: ..\python_docs\spladdoninternals.py:550
 msgid ""
@@ -5942,10 +6018,19 @@ msgid ""
 "function keys to provide consistent experience and to reenforce concepts "
 "used in NVDA screen reader: review cursor."
 msgstr ""
+"Si eres un usuario experto de NVDA, puedes haberte dado cuenta de un patrón "
+"familiar: la orden para situar un marcador para copiar texto del cursor de "
+"revisión es NVDA+f9, y te moverías a una ubicación diferente y pulsarías NVDA"
+"+f10 para copiar el texto seleccionado al portapapeles. Reemplazando la "
+"tecla modificadora de NVDA con el asistente de SPL produce un resultado "
+"parecido: f9 marca la posición inicial del análisis de tiempo, y f10 realiza "
+"el cálculo. Elegí estas dos teclas de función intencionadamente para "
+"proporcionar una experiencia consistente y reforzar conceptos usados en el "
+"lector de pantalla NVDA: el cursor de revisión."
 
 #: ..\python_docs\spladdoninternals.py:551
 msgid "##### Playlist remainder announcement"
-msgstr ""
+msgstr "##### Anuncio de tiempo restante de la lista de reproducción"
 
 #: ..\python_docs\spladdoninternals.py:552
 msgid ""
@@ -5955,6 +6040,12 @@ msgid ""
 "routine was rewritten to take advantage of Track Dial introduced in add-on "
 "5.0 (see Track Dial section above)."
 msgstr ""
+"Hasta el complemento 6.x, el anuncio de tiempo restante de la lista de "
+"reproducción estaba basado en la api de Studio. Sin embargo, nos dimos "
+"cuenta de que este \"tiempo restante\" era el de la hora actual. Para "
+"solucionarlo, en el complemento 7.0 se reescribió este procedimiento para "
+"aprovechar la ventaja que daba el dial de pista introducido en el "
+"complemento 5.0 (mira la sección de más arriba sobre el dial de pista)."
 
 #: ..\python_docs\spladdoninternals.py:553
 msgid ""
@@ -5966,6 +6057,15 @@ msgid ""
 "sent to time announcement routine (see above) for processing (converted to "
 "hours, minutes and seconds format)."
 msgstr ""
+"Técnicamente, se aplica una combinación de de recuperación de contenido de "
+"columnas y procedimientos de navegación por pistas para solucionar el "
+"problema. Al pulsar asistente de SPL, D, NVDA anotará la pista con el foco y "
+"se moverá hacia abajo en la lista de reproducción (empezando desde la pista "
+"con el foco), registrando la secuencia (duración total de pista menos "
+"transición). En cuanto se completa la navegación por la lista de "
+"reproducción, se envía la duración total al procedimiento de verbalización "
+"de tiempo (mira arriba) para su procesamiento (conversión al formato de "
+"horas, minutos y segundos)."
 
 #: ..\python_docs\spladdoninternals.py:554
 msgid "#### SPL Assistant 3: configuration"
