@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-05-05 11:58+0200\n"
+"PO-Revision-Date: 2018-05-05 17:46+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -6976,6 +6976,8 @@ msgstr ""
 msgid ""
 "## Introduction to SPL Utilities: SPLController and focusing to Studio window"
 msgstr ""
+"## Introducción a las utilidades de SPL: SPLController y cómo llevar el foco "
+"a la ventana de Studio"
 
 #: ..\python_docs\spladdoninternals.py:639
 msgid ""
@@ -6985,10 +6987,18 @@ msgid ""
 "introduce you to inner workings of SPL Controller layer and tour how encoder "
 "support is implemented."
 msgstr ""
+"Ahora que hemos cubierto el \"kernel\" (la parte más íntima) del complemento "
+"de Studio, es hora de hablar sobre la extensión global de utilidades de SPL "
+"Studio y sus contenidos. Los siguientes artículos explicarán qué hace la "
+"extensión global, te introducirán en el funcionamiento interno de la capa "
+"del controlador de SPL y harán un recorrido explicando cómo se ha "
+"implementado el soporte del codificador."
 
 #: ..\python_docs\spladdoninternals.py:640
 msgid "### Studio app module versus SPL Utilities global plugin"
 msgstr ""
+"### Comparación del módulo de aplicación de Studio y la extensión global de "
+"utilidades de SPL"
 
 #: ..\python_docs\spladdoninternals.py:641
 msgid ""
@@ -7000,14 +7010,24 @@ msgid ""
 "took on an important role: working as an encoders manager to report "
 "connection status and to perform other routines."
 msgstr ""
+"Como se ha descrito en el artículo de diseño del complemento, el complemento "
+"de SPL Studio viene con dos módulos de aplicación y una extensión global. "
+"Esto era necesario no sólo para diferenciar entre tipos de módulos y "
+"experiencias, sino también para permitir que las funciones de Studio puedan "
+"invocarse desde otros programas. Con la llegada del soporte para el "
+"codificador en el complemento 3.0 (finales de 2014), la parte de extensión "
+"global del complemento (utilidades de SPL) tomó un rol importante: funcionar "
+"como un gestor de codificadores para informar del estado de la conexión y "
+"llevar a cabo otras acciones."
 
 #: ..\python_docs\spladdoninternals.py:642
 msgid "### SPL Utilities package contents"
-msgstr ""
+msgstr "### Contenidos del paquete de utilidades de SPL"
 
 #: ..\python_docs\spladdoninternals.py:643
 msgid "The SPL Utilities global plugin consists of the following modules:"
 msgstr ""
+"La extensión global de utilidades de SPL consta de los siguientes módulos:"
 
 #: ..\python_docs\spladdoninternals.py:644
 msgid ""
@@ -7017,6 +7037,13 @@ msgid ""
 "messages, a function to focus to Studio window and the global plugin class "
 "containing definitions for SPL Controller layer commands."
 msgstr ""
+"* Código principal de la extensión (__init__.py), que contiene "
+"procedimientos globales esenciales como el controlador de SPL (descrito "
+"debajo) y un procedimiento para enfocar la ventana de Studio a petición. "
+"Este módulo define constantes usadas por Studio para recibir mensajes, una "
+"función para llevar el foco a la ventana de Studio y la clase de extensión "
+"global que contiene definiciones para las órdenes de la capa del controlador "
+"de SPL."
 
 #: ..\python_docs\spladdoninternals.py:645
 msgid ""
@@ -7025,10 +7052,14 @@ msgid ""
 "important part in helping the encoder module as you'll see in the next "
 "article)."
 msgstr ""
+"* Soporte del codificador (encoders.py), que contiene el soporte de NVDA "
+"para varios codificadores (mira el próximo artículo; el módulo principal de "
+"la extensión global es una pieza importante a la hora de ayudar al módulo "
+"del codificador, como podrás comprobar)."
 
 #: ..\python_docs\spladdoninternals.py:646
 msgid "### SPL Controller layer"
-msgstr ""
+msgstr "### La capa del controlador de SPL"
 
 #: ..\python_docs\spladdoninternals.py:647
 msgid ""
@@ -7037,6 +7068,11 @@ msgid ""
 "anywhere. The entry routine is similar to the app module counterpart (SPL "
 "Assistant) except for the following:"
 msgstr ""
+"La capa del controlador de SPL (orden de entrada sin asignar, mismo motivo "
+"que el de la orden de entrada al asistente de SPL) se usa para invocar "
+"funciones de Studio desde cualquier sitio. El procedimiento de entrada es "
+"similar a su homólogo del módulo de aplicación (el asistente de SPL) salvo "
+"por lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:648
 msgid ""
@@ -7044,60 +7080,77 @@ msgid ""
 "handle value just as in the Studio app module), otherwise it cannot enter "
 "SPL Controller layer."
 msgstr ""
+"* NVDA se asegurará de que Studio esté en ejecución (si es así, almacenará "
+"en caché el valor del manejador de ventana al igual que en el módulo de "
+"aplicación de Studio), en cualquier otro caso no se puede entrar en la capa "
+"del controlador de SPL."
 
 #: ..\python_docs\spladdoninternals.py:649
 msgid ""
 "* All commands (except two) use Studio API (Studio API and use of user32."
 "dll's SendMessage was described in a previous article)."
 msgstr ""
+"* Todas las órdenes (excepto dos) usan la api de Studio (en un artículo "
+"anterior se describió el funcionamiento de la api de Studio y la función "
+"SendMessage de user32.dll)."
 
 #: ..\python_docs\spladdoninternals.py:650
 msgid ""
 "For mechanics of layer commands, see a previous article on add-on design "
 "where layer commands were discussed."
 msgstr ""
+"Para ver los mecanismos de las órdenes de capa, consulta un artículo "
+"anterior que hablaba del diseño del complemento, donde se expusieron estas "
+"órdenes."
 
 #: ..\python_docs\spladdoninternals.py:651
 msgid "The following commands utilize Studio API:"
-msgstr ""
+msgstr "Las siguientes órdenes utilizan la api de Studio:"
 
 #: ..\python_docs\spladdoninternals.py:652
 msgid "* A/Shift+A: Automation on/off."
-msgstr ""
+msgstr "* A/Shift+A: activar o desactivar automatización."
 
 #: ..\python_docs\spladdoninternals.py:653
 msgid "* L/Shift+L: Line in on/off."
-msgstr ""
+msgstr "* L/Shift+L: activar o desactivar entrada de línea."
 
 #: ..\python_docs\spladdoninternals.py:654
 msgid "* M/Shift+M/N: Microphone on/off/instant on/off toggle."
 msgstr ""
+"* M/Shift+M/N: activar o desactivar micrófono, o conmutador instantáneo para "
+"encenderlo y apagarlo."
 
 #: ..\python_docs\spladdoninternals.py:655
 msgid "* P: Play."
-msgstr ""
+msgstr "* P: reproducir."
 
 #: ..\python_docs\spladdoninternals.py:656
 msgid ""
 "* Q: Obtain various status information. Due to API changes, this command "
 "works better in studio 5.20 and later.)"
 msgstr ""
+"* Q: obtener diversa información de estado (debido a cambios en la api, esta "
+"orden funciona mejor en Studio 5.20 y posteriores.)"
 
 #: ..\python_docs\spladdoninternals.py:657
 msgid "* R: Remaining time for the currently playing track (if any)."
 msgstr ""
+"* R: tiempo restante de la pista actualmente en reproducción (si la hay)."
 
 #: ..\python_docs\spladdoninternals.py:658
 msgid "* Shift+R: Library scan progress and umber of items scanned."
 msgstr ""
+"* Shift+r: progreso del escaneo de biblioteca y cantidad de elementos "
+"escaneados."
 
 #: ..\python_docs\spladdoninternals.py:659
 msgid "* S/T: Stop with fade/instant stop."
-msgstr ""
+msgstr "* S/T: parar progresivamente o parar de forma instantánea."
 
 #: ..\python_docs\spladdoninternals.py:660
 msgid "* U: Play/pause."
-msgstr ""
+msgstr "* U: reproducir / pausar."
 
 #: ..\python_docs\spladdoninternals.py:661
 msgid ""
@@ -7107,10 +7160,16 @@ msgid ""
 "from Insert Tracks dialog). The letter \"Q\" stands for \"query Studio status"
 "\"."
 msgstr ""
+"Los lectores familiarizados con las órdenes te teclado de Studio se sentirán "
+"como en casa (en cierto modo estas son órdenes de Studio, salvo porque shift "
+"se usa para desactivar algunas características, y shift+r te recordará al "
+"ctrl+shift+r que se usa para escanear desde el diálogo de inserción de "
+"pistas). La letra Q se queda para \"Consultar el estado de Studio"
+"\" (consultar, en inglés, es query)."
 
 #: ..\python_docs\spladdoninternals.py:662
 msgid "Here are the two exceptions"
-msgstr ""
+msgstr "Estas son las dos excepciones"
 
 #: ..\python_docs\spladdoninternals.py:663
 msgid ""
@@ -7118,16 +7177,21 @@ msgid ""
 "this command will announce number of encoders being monitored (see the next "
 "aritlce on the format of this message)."
 msgstr ""
+"* E: si pides a NVDA que monitorice uno o más codificadores en segundo "
+"plano, esta orden verbalizará la cantidad de codificadores monitorizados "
+"(mira el siguiente artículo para conocer el formato de este mensaje)."
 
 #: ..\python_docs\spladdoninternals.py:664
 msgid ""
 "* F1: Opens a dialog displaying Controller layer commands (does this sound "
 "familiar?)."
 msgstr ""
+"* F1: abre un diálogo que muestra las órdenes de la capa del controlador "
+"(¿Te suena familiar?)."
 
 #: ..\python_docs\spladdoninternals.py:665
 msgid "### Focusing to Studio window from anywhere"
-msgstr ""
+msgstr "### Cómo llevar el foco a la ventana de Studio desde cualquier parte"
 
 #: ..\python_docs\spladdoninternals.py:666
 msgid ""
@@ -7138,6 +7202,12 @@ msgid ""
 "programs opened). For this reason, screen reader scripts for Studio includes "
 "a command to switch to Studio upon request (unassigned in NVDA)."
 msgstr ""
+"Según estás emitiendo un programa en Studio, puedes encontrarte en una "
+"situación donde necesitas pasar rápidamente a Studio para cambiar la "
+"automatización, insertar nuevas pistas y demás. Una situación ideal es pasar "
+"a Studio al pulsar alt+tab (no es el caso si tienes más de dos programas "
+"abiertos). Por esta razón, los scripts de lectores de pantalla para Studio "
+"incluyen una orden para pasar a Studio a petición (sin asignar en NVDA)."
 
 #: ..\python_docs\spladdoninternals.py:667
 msgid ""
@@ -7147,6 +7217,11 @@ msgid ""
 "window), but also used in encoders for various functions. The routine was as "
 "follows:"
 msgstr ""
+"Hasta 2016, esto se llevaba a cabo con una función en el módulo de "
+"utilidades de SPL (SPLStudioUtils.fetchSPLForegroundWindow). No sólo la "
+"empleaba el módulo principal de la extensión global (llamada desde un script "
+"para llevar el foco a la ventana de Studio), sino que se usaba en los "
+"codificadores para diversos propósitos. El procedimiento era el siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:668
 msgid ""
@@ -7154,6 +7229,10 @@ msgid ""
 "it'll call the fetch window function, which in turn locates the desktop "
 "(shell) window to serve as the starting point for locating Studio window."
 msgstr ""
+"1. El script que lleva el foco a Studio comprobará si Studio está en "
+"ejecución, y si es así, llamará a la función de recuperación de ventana, que "
+"primero localiza la ventana del escritorio (shell) para usarla como punto de "
+"partida para encontrar la ventana de Studio."
 
 #: ..\python_docs\spladdoninternals.py:669
 msgid ""
@@ -7161,6 +7240,10 @@ msgid ""
 "Studio window (where the window's app module is the Studio app module) is "
 "found, and if found, NVDA will increment a Studio window candidate counter."
 msgstr ""
+"2. NVDA escaneará las ventanas de nivel superior (hijas del objeto del "
+"escritorio) hasta que se encuentre la ventana de Studio (donde el módulo de "
+"aplicación de la ventana sea el de Studio), y si la encuentra, incrementará "
+"un contador de ventanas de Studio candidatas."
 
 #: ..\python_docs\spladdoninternals.py:670
 msgid ""
@@ -7168,24 +7251,35 @@ msgid ""
 "on what the Studio window candidate counter says before passing the "
 "foreground object back to the main script. It can do one of the following:"
 msgstr ""
+"3. Una vez se haya completado el escaneo de ventanas de alto nivel, NVDA "
+"tomará acciones en base a lo que diga el contador de ventanas candidatas de "
+"Studio antes de devolver el objeto en primer plano al script principal. "
+"Puede hacer una de las siguientes cosas:"
 
 #: ..\python_docs\spladdoninternals.py:671
 msgid ""
 "A. If counter is 0 (fg is None), NVDA will know that you have minimized "
 "Studio, so it'll tell you that Studio is minimized."
 msgstr ""
+"A. Si el contador es 0 (fg es None), NVDA sabrá que has minimizado Studio, "
+"por lo que te lo dirá."
 
 #: ..\python_docs\spladdoninternals.py:672
 msgid ""
 "B. If counter is 1, NVDA will locate the Studio window by looking for the "
 "main Studio window (user32.dll is involved)."
 msgstr ""
+"B. Si el contador es 1, NVDA localizará la ventana de Studio buscándola "
+"(user32.dll está implicada)."
 
 #: ..\python_docs\spladdoninternals.py:673
 msgid ""
 "C. For all other values, NVDA will assume the last window found is the "
 "Studio window (held in fg variable) and return it."
 msgstr ""
+"C. Para el resto de valores, NVDA asumirá que la última ventana que ha "
+"encontrado es la ventana de Studio (contenida en la variable fg) y la "
+"devolverá."
 
 #: ..\python_docs\spladdoninternals.py:674
 msgid ""
@@ -7193,6 +7287,9 @@ msgid ""
 "is minimized or switch to the foreground window returned by the fetch window "
 "function (fg.SetFocus)."
 msgstr ""
+"4. De vuelta al script que lleva el foco a Studio, NVDA indicará que Studio "
+"está minimizado o pasará a la ventana en primer plano devuelta por la "
+"función de recuperación de ventana (fg.SetFocus)."
 
 #: ..\python_docs\spladdoninternals.py:675
 msgid ""
@@ -7204,10 +7301,18 @@ msgid ""
 "this if NVDA says \"unavailable\" when trying to switch to Studio. One can "
 "then go to system tray and restore Studio window."
 msgstr ""
+"En 2017, eso se ha simplificado para usar la función SetForegroundWindow de "
+"la api de Windows, siendo el manejador de la ventana de Studio el único "
+"parámetro necesario que se pasaba. Esto no sólo simplificó la función "
+"significativamente, sino que también aumentó el rendimiento de esta orden. "
+"Un efecto colateral es que ya no es posible detectar Studio cuando está "
+"minimizado, pero nos podemos hacer una idea de ello cuando NVDA dice \"No "
+"disponible\" al intentar cambiar a Studio. Si esto ocurre, se puede ir a la "
+"bandeja del sistema y restaurar la ventana de Studio."
 
 #: ..\python_docs\spladdoninternals.py:676
 msgid "### Conclusion"
-msgstr ""
+msgstr "### Conclusión"
 
 #: ..\python_docs\spladdoninternals.py:677
 msgid ""
@@ -7221,6 +7326,16 @@ msgid ""
 "maintainer of the add-on to learn about how he (I) develop new add-on "
 "features."
 msgstr ""
+"Los procedimientos explicados arriba (el controlador de SPL y la orden para "
+"pasar a la ventana de Studio) constituyen uno de los dos pilares de la "
+"extensión global de utilidades de SPL (el otro es el soporte del "
+"codificador). Con estos procedimientos, se hizo posible realizar operaciones "
+"de reproducción sin llevar el foco a Studio y pasar a Studio desde cualquier "
+"parte, en cualquier momento. Visitaremos el otro lado de la historia de esta "
+"extensión global en el siguiente artículo del complemento de Studio para "
+"NVDA visto por dentro, y después de eso, concluiremos con una entrevista con "
+"el responsable del mantenimiento del complemento para aprender cómo él (yo) "
+"desarrolla nuevas características del complemento."
 
 #: ..\python_docs\spladdoninternals.py:678
 msgid "## Encoder support"
@@ -7324,34 +7439,45 @@ msgstr ""
 #: ..\python_docs\spladdoninternals.py:689
 msgid "All encoder classes provide the following common services:"
 msgstr ""
+"Todas las clases de codificadores proporcionan los siguientes servicios "
+"comunes:"
 
 #: ..\python_docs\spladdoninternals.py:690
 msgid "* Configuring settings: four settings can be configured:"
-msgstr ""
+msgstr "* Configuración de ajustes: se pueden configurar cuatro ajustes:"
 
 #: ..\python_docs\spladdoninternals.py:691
 msgid ""
 "\t* Pressing F11 will tell NVDA if NVDA should switch to Studio when the "
 "encoder is connected."
 msgstr ""
+"\t* Al pulsar f11 indicaremos a NVDA si este debería pasar a Studio cuando "
+"el codificador esté conectado."
 
 #: ..\python_docs\spladdoninternals.py:692
 msgid ""
 "\t*Pressing Shift+F11 will ask Studio will play the next track when "
 "connected."
 msgstr ""
+"\t* Al pulsar shift+f11 se pedirá a Studio que reproduzca la siguiente pista "
+"al conectarse."
 
 #: ..\python_docs\spladdoninternals.py:693
 msgid ""
 "\t* Pressing Control+F11 will enable background encoder monitoring (more on "
 "this in a second)."
 msgstr ""
+"\t* Al pulsar ctrl+f11 se activará la monitorización del codificador en "
+"segundo plano (más sobre esto en un segundo)."
 
 #: ..\python_docs\spladdoninternals.py:694
 msgid ""
 "\t* Enabling or disabling connection progress tones (add-on 7.0, "
 "configurable from encoder settings dialog described below)."
 msgstr ""
+"\t* Activar o desactivar la reproducción de tonos que indiquen el progreso "
+"de la conexión (complemento 7.0, configurable desde el diálogo de ajustes "
+"del codificador que se describe más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:695
 msgid ""
@@ -7359,6 +7485,9 @@ msgid ""
 "appropriate flag in the encoder entry, which in turn are saved in the "
 "configuration map."
 msgstr ""
+"\t* Una vez se cambien estos ajustes, los nuevos valores se almacenarán en "
+"el indicador apropiado de la entrada del codificador, que eventualmente se "
+"guarda en el mapa de configuración."
 
 #: ..\python_docs\spladdoninternals.py:696
 msgid ""
