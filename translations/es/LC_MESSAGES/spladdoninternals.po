@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-05-04 10:07+0200\n"
+"PO-Revision-Date: 2018-05-05 11:58+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.0.7\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
@@ -6738,7 +6738,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:615
 msgid "#### How does profile switching work"
-msgstr ""
+msgstr "#### Cómo funciona el cambio de perfiles"
 
 #: ..\python_docs\spladdoninternals.py:616
 msgid ""
@@ -6746,6 +6746,9 @@ msgid ""
 "activation or deactivation of instant switch profile, and when it is time to "
 "switch to a time-based profile."
 msgstr ""
+"Hay dos ocasiones en las que puede dispararse un cambio de perfil "
+"automático: al activar o desactivar un perfil de cambio instantáneo, o "
+"cuando es hora de cambiar a un perfil basado en tiempo."
 
 #: ..\python_docs\spladdoninternals.py:617
 msgid ""
@@ -6755,6 +6758,12 @@ msgid ""
 "as an instant switch profile; to define this profile, select a profile to be "
 "used as a show, then go to profile switching button and select it)."
 msgstr ""
+"Un perfil de cambio instantáneo es un perfil al que se cambia si así lo "
+"indica el usuario. Se suelen usar antes de conectar a un servidor de emisión "
+"para cargar los ajustes apropiados para un programa (en el momento en que se "
+"escribe esto, sólo puede elegirse un único perfil como perfil de cambio "
+"instantáneo; para definirlo, selecciona el perfil de tu programa, ve al "
+"botón de cambio de perfil y selecciónalo)."
 
 #: ..\python_docs\spladdoninternals.py:618
 msgid ""
@@ -6765,6 +6774,13 @@ msgid ""
 "settings (see the next section for an overview of this dialog and the "
 "configuration format for this map)."
 msgstr ""
+"En contraste, un perfil basado en tiempo es un tipo especial de perfil de "
+"cambio instantáneo que se activará en la fecha y hora especificadas. Se "
+"emplea un mapa separado (un mapa pickle) para almacenar los ajustes "
+"relativos a estos perfiles, sus opciones de interfaz de usuario pueden "
+"encontrarse en el diálogo de disparadores situado en los ajustes del "
+"complemento (mira la siguiente sección para ver una descripción de este "
+"diálogo y el formato de configuración de este mapa)."
 
 #: ..\python_docs\spladdoninternals.py:619
 msgid ""
@@ -6773,24 +6789,35 @@ msgid ""
 "from a countdown timer located in splmisc module). In ither case, the "
 "switching procedure is as follows:"
 msgstr ""
+"Para activar un perfil de cambio instantáneo, pulsa asistente de SPL, f12. "
+"Los perfiles basados en tiempo se activarán por sí solos cuando sea hora de "
+"hacerlo (con la ayuda de un temporizador de cuenta atrás situado en el "
+"módulo splmisc). En ambos casos, el procedimiento para cambiar el perfil es "
+"el siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:620
 msgid "1. Performs some checks, including:"
-msgstr ""
+msgstr "1. Se hacen varias comprobaciones, entre ellas:"
 
 #: ..\python_docs\spladdoninternals.py:621
 msgid "\t* Checks if a switch profile (instant or time-based) is defined."
 msgstr ""
+"\t* Se comprueba si se ha definido un perfil de cambio (instantáneo o basado "
+"en tiempo)."
 
 #: ..\python_docs\spladdoninternals.py:622
 msgid ""
 "\t* For instant switch profiles, if a profile is defined, it'll make sure "
 "you are not using the instant switch profile yet."
 msgstr ""
+"\t* Para los perfiles de cambio instantáneo, si hay alguno definido, se "
+"comprueba que no lo estás usando todavía."
 
 #: ..\python_docs\spladdoninternals.py:623
 msgid "2. For add-on 7.x and earlier, saves the index of the active profile."
 msgstr ""
+"2. En los complementos 7.x y anteriores, se guarda el índice del perfil "
+"activo."
 
 #: ..\python_docs\spladdoninternals.py:624
 msgid ""
@@ -6802,6 +6829,15 @@ msgid ""
 "simpler through an action extension point notifier that tells appropriate "
 "functions to respond to profile switch action."
 msgstr ""
+"3. Se ubica el nombre del perfil de cambio y el perfil asociado a él, y se "
+"cambia al perfil seleccionado (en el complemento 7.x, se reasigna SPLConfig "
+"para que use el perfil de cambio; en el 8.0 y posteriores, se intercambian "
+"los mapas del perfil normal y el perfil instantáneo). En ese momento, NVDA "
+"puede verbalizar el estado de los metadatos del flujo si está configurado "
+"para hacerlo al cambiar de perfil. En la versión 17.12, esto se ha "
+"simplificado a través de un notificador de punto de extensión de acción que "
+"indica a las funciones apropiadas que reaccionen ante la acción de cambio de "
+"perfil."
 
 #: ..\python_docs\spladdoninternals.py:625
 msgid ""
@@ -6809,6 +6845,9 @@ msgid ""
 "switch time and date by calling splconfig.setNextTrigger, otherwise this is "
 "delayed until the show is complete."
 msgstr ""
+"4. Si un perfil basado en tiempo no tiene una duración especificada, NVDA "
+"establecerá la siguiente fecha y hora de cambio llamando a splconfig."
+"setNextTrigger, en cualquier otro caso se espera a que el programa termine."
 
 #: ..\python_docs\spladdoninternals.py:626
 msgid ""
@@ -6817,22 +6856,30 @@ msgid ""
 "profile is located and is used to pull the profile with the given index from "
 "the config pool)."
 msgstr ""
+"5. Si se indica que hay que volver al perfil previamente activo, SPLConfig "
+"recibirá la orden de usar el perfil anterior (el índice para el perfil "
+"activo anteriormente ya se había guardado y se usa para recuperar el perfil "
+"de la pool de perfiles)."
 
 #: ..\python_docs\spladdoninternals.py:627
 msgid ""
 "6. When deactivating a time-based profile, NVDA will now find out when the "
 "next switch date and time will be."
 msgstr ""
+"6. Al desactivar un perfil basado en tiempo, NVDA averiguará cuándo serán "
+"las próximas fecha y hora de activación."
 
 #: ..\python_docs\spladdoninternals.py:628
 msgid "#### Time-based switching fields and triggers dialog"
-msgstr ""
+msgstr "#### El diálogo de disparadores y campos del cambio basado en tiempo"
 
 #: ..\python_docs\spladdoninternals.py:629
 msgid ""
 "For each time-based profile, a list with seven fields is employed to "
 "describe trigger (switch) date and time. These are:"
 msgstr ""
+"Para cada perfil basado en tiempo, se emplea una lista con siete campos para "
+"describir la fecha y hora del disparador (cambio). Son los siguientes:"
 
 #: ..\python_docs\spladdoninternals.py:630
 msgid ""
@@ -6842,6 +6889,11 @@ msgid ""
 "means the profile should not be activated, and if so, it is removed from the "
 "triggers map."
 msgstr ""
+"* Fecha del disparador (entero entre 0 y 127): un entero de 7 bits, "
+"indicando en cuántos días debería activarse un perfil. Este campo se usa en "
+"el diálogo de disparadores de perfil para marcar o desmarcar las casillas de "
+"verificación de días de activación. El valor 0 significa que el perfil no "
+"debería activarse, y si es así, se elimina del mapa de disparadores."
 
 #: ..\python_docs\spladdoninternals.py:631
 msgid ""
@@ -6849,6 +6901,9 @@ msgid ""
 "constructing datetime.datetime object (year, month, day, hour, minute) are "
 "stored. This is used to let NVDA know when to switch profiles."
 msgstr ""
+"* Fecha y hora del cambio (cinco enteros): los cinco primeros campos usados "
+"para construir datetime. El objeto datetime (año, mes, día, hora, minuto) se "
+"almacena. Se usa para que NVDA sepa cuándo cambiar de perfil."
 
 #: ..\python_docs\spladdoninternals.py:632
 msgid ""
@@ -6857,24 +6912,36 @@ msgid ""
 "becomes active when the profile in question becomes active, and the only job "
 "of this timer is to switch back to another profile when the show is complete."
 msgstr ""
+"* Duración (entero entre 0 y 1439): un entero que especifica la duración de "
+"este perfil (programa) en minutos. Lo usa principalmente un temporizador que "
+"se activa al activarse el perfil en cuestión, y cuya única función es volver "
+"a otro perfil cuando el programa se acabe."
 
 #: ..\python_docs\spladdoninternals.py:633
 msgid ""
 "The triggers dialog, used to configure these fields for the selected "
 "profile, consists of two groups of controls:"
 msgstr ""
+"El diálogo de disparadores, usado para configurar estos campos en el perfil "
+"seleccionado, consta de dos grupos de controles:"
 
 #: ..\python_docs\spladdoninternals.py:634
 msgid ""
 "* Trigger days: seven checkboxes, one for each day of the week. Checking or "
 "clearing these boxes sets corresponding bits in the trigger date field."
 msgstr ""
+"* Días del disparador: siete casillas de verificación, una para cada día de "
+"la semana. Al marcarlas o desmarcarlas se cambian los bits correspondientes "
+"en el campo de fecha del disparador."
 
 #: ..\python_docs\spladdoninternals.py:635
 msgid ""
 "* Switch time: three number entry fields denoting when to switch to this "
 "profile (hour and minute) and the duration of this show (minutes)."
 msgstr ""
+"* Hora del cambio: tres campos de entrada numérica que indican cuándo se "
+"debe cambiar al perfil (hora y minuto) y la duración del programa (en "
+"minutos)."
 
 #: ..\python_docs\spladdoninternals.py:636
 msgid ""
@@ -6884,6 +6951,13 @@ msgid ""
 "will proceed to store the next trigger date and time (will not be saved "
 "until OK button is clicked from the main add-on settings dialog)."
 msgstr ""
+"Una vez que se recopilan los datos, NVDA primero comprobará si están "
+"marcadas las casillas de verificación de fecha del disparador (si no hay "
+"ninguna marcada, se elimina el perfil). A continuación, NVDA comprobará si "
+"otro perfil tiene asignada la misma franja de tiempo, y si no es así, "
+"procederá a alamcenar la fecha y hora del disparador (no se guardarán hasta "
+"que se haga clic en el botón aceptar en el diálogo principal de ajustes del "
+"complemento)."
 
 #: ..\python_docs\spladdoninternals.py:637
 msgid ""
@@ -6892,6 +6966,11 @@ msgid ""
 "encoder support and a few thoughts on how the add-on is developed, starting "
 "with a tour of SPL Controller layer commands."
 msgstr ""
+"Así concluye un recorrido detallado por el interior del módulo de aplicación "
+"de Studio. El resto de los capítulos se enfocarán en la extensión global de "
+"utilidades de SPL, soporte del codificador y unas cuantas consideraciones "
+"sobre cómo se desarrolla el complemento, comenzando con un recorrido por las "
+"órdenes del controlador de SPL."
 
 #: ..\python_docs\spladdoninternals.py:638
 msgid ""
