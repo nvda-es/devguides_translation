@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-03-20 10:42+Hora estándar romance\n"
-"PO-Revision-Date: 2018-05-04 10:07+0200\n"
+"PO-Revision-Date: 2018-05-06 19:56+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.0.7\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
@@ -289,13 +289,12 @@ msgid ""
 "of how an add-on is planned, implemented, tested, released and maintained."
 msgstr ""
 "A lo largo de este artículo, tendrás una oportunidad para ver cómo funciona "
-"el complemento, la filosofía de diseño y cómo cómo se desarrolla el "
-"complemento, con vistas al pasado y al futuro. Espero que este artículo de "
-"complementos vistos por dentro sea una referencia valiosa para usuarios y "
-"desarrolladores - para los usuarios, que vean los trabajos internos de este "
-"complemento, y para los desarrolladores, que usen este complemento como un "
-"ejemplo a la hora de planear, implementar, probar, publicar y mantener un "
-"complemento."
+"el complemento, la filosofía de diseño y cómo se desarrolla el complemento, "
+"con vistas al pasado y al futuro. Espero que este artículo de complementos "
+"vistos por dentro sea una referencia valiosa para usuarios y desarrolladores "
+"- para los usuarios, que vean los trabajos internos de este complemento, y "
+"para los desarrolladores, que usen este complemento como un ejemplo a la "
+"hora de planear, implementar, probar, publicar y mantener un complemento."
 
 #: ..\python_docs\spladdoninternals.py:29
 msgid ""
@@ -6738,7 +6737,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:615
 msgid "#### How does profile switching work"
-msgstr ""
+msgstr "#### Cómo funciona el cambio de perfiles"
 
 #: ..\python_docs\spladdoninternals.py:616
 msgid ""
@@ -6746,6 +6745,9 @@ msgid ""
 "activation or deactivation of instant switch profile, and when it is time to "
 "switch to a time-based profile."
 msgstr ""
+"Hay dos ocasiones en las que puede dispararse un cambio de perfil "
+"automático: al activar o desactivar un perfil de cambio instantáneo, o "
+"cuando es hora de cambiar a un perfil basado en tiempo."
 
 #: ..\python_docs\spladdoninternals.py:617
 msgid ""
@@ -6755,6 +6757,12 @@ msgid ""
 "as an instant switch profile; to define this profile, select a profile to be "
 "used as a show, then go to profile switching button and select it)."
 msgstr ""
+"Un perfil de cambio instantáneo es un perfil al que se cambia si así lo "
+"indica el usuario. Se suelen usar antes de conectar a un servidor de emisión "
+"para cargar los ajustes apropiados para un programa (en el momento en que se "
+"escribe esto, sólo puede elegirse un único perfil como perfil de cambio "
+"instantáneo; para definirlo, selecciona el perfil de tu programa, ve al "
+"botón de cambio de perfil y selecciónalo)."
 
 #: ..\python_docs\spladdoninternals.py:618
 msgid ""
@@ -6765,6 +6773,13 @@ msgid ""
 "settings (see the next section for an overview of this dialog and the "
 "configuration format for this map)."
 msgstr ""
+"En contraste, un perfil basado en tiempo es un tipo especial de perfil de "
+"cambio instantáneo que se activará en la fecha y hora especificadas. Se "
+"emplea un mapa separado (un mapa pickle) para almacenar los ajustes "
+"relativos a estos perfiles, sus opciones de interfaz de usuario pueden "
+"encontrarse en el diálogo de disparadores situado en los ajustes del "
+"complemento (mira la siguiente sección para ver una descripción de este "
+"diálogo y el formato de configuración de este mapa)."
 
 #: ..\python_docs\spladdoninternals.py:619
 msgid ""
@@ -6773,24 +6788,35 @@ msgid ""
 "from a countdown timer located in splmisc module). In ither case, the "
 "switching procedure is as follows:"
 msgstr ""
+"Para activar un perfil de cambio instantáneo, pulsa asistente de SPL, f12. "
+"Los perfiles basados en tiempo se activarán por sí solos cuando sea hora de "
+"hacerlo (con la ayuda de un temporizador de cuenta atrás situado en el "
+"módulo splmisc). En ambos casos, el procedimiento para cambiar el perfil es "
+"el siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:620
 msgid "1. Performs some checks, including:"
-msgstr ""
+msgstr "1. Se hacen varias comprobaciones, entre ellas:"
 
 #: ..\python_docs\spladdoninternals.py:621
 msgid "\t* Checks if a switch profile (instant or time-based) is defined."
 msgstr ""
+"\t* Se comprueba si se ha definido un perfil de cambio (instantáneo o basado "
+"en tiempo)."
 
 #: ..\python_docs\spladdoninternals.py:622
 msgid ""
 "\t* For instant switch profiles, if a profile is defined, it'll make sure "
 "you are not using the instant switch profile yet."
 msgstr ""
+"\t* Para los perfiles de cambio instantáneo, si hay alguno definido, se "
+"comprueba que no lo estás usando todavía."
 
 #: ..\python_docs\spladdoninternals.py:623
 msgid "2. For add-on 7.x and earlier, saves the index of the active profile."
 msgstr ""
+"2. En los complementos 7.x y anteriores, se guarda el índice del perfil "
+"activo."
 
 #: ..\python_docs\spladdoninternals.py:624
 msgid ""
@@ -6802,6 +6828,15 @@ msgid ""
 "simpler through an action extension point notifier that tells appropriate "
 "functions to respond to profile switch action."
 msgstr ""
+"3. Se ubica el nombre del perfil de cambio y el perfil asociado a él, y se "
+"cambia al perfil seleccionado (en el complemento 7.x, se reasigna SPLConfig "
+"para que use el perfil de cambio; en el 8.0 y posteriores, se intercambian "
+"los mapas del perfil normal y el perfil instantáneo). En ese momento, NVDA "
+"puede verbalizar el estado de los metadatos del flujo si está configurado "
+"para hacerlo al cambiar de perfil. En la versión 17.12, esto se ha "
+"simplificado a través de un notificador de punto de extensión de acción que "
+"indica a las funciones apropiadas que reaccionen ante la acción de cambio de "
+"perfil."
 
 #: ..\python_docs\spladdoninternals.py:625
 msgid ""
@@ -6809,6 +6844,9 @@ msgid ""
 "switch time and date by calling splconfig.setNextTrigger, otherwise this is "
 "delayed until the show is complete."
 msgstr ""
+"4. Si un perfil basado en tiempo no tiene una duración especificada, NVDA "
+"establecerá la siguiente fecha y hora de cambio llamando a splconfig."
+"setNextTrigger, en cualquier otro caso se espera a que el programa termine."
 
 #: ..\python_docs\spladdoninternals.py:626
 msgid ""
@@ -6817,22 +6855,30 @@ msgid ""
 "profile is located and is used to pull the profile with the given index from "
 "the config pool)."
 msgstr ""
+"5. Si se indica que hay que volver al perfil previamente activo, SPLConfig "
+"recibirá la orden de usar el perfil anterior (el índice para el perfil "
+"activo anteriormente ya se había guardado y se usa para recuperar el perfil "
+"de la pool de perfiles)."
 
 #: ..\python_docs\spladdoninternals.py:627
 msgid ""
 "6. When deactivating a time-based profile, NVDA will now find out when the "
 "next switch date and time will be."
 msgstr ""
+"6. Al desactivar un perfil basado en tiempo, NVDA averiguará cuándo serán "
+"las próximas fecha y hora de activación."
 
 #: ..\python_docs\spladdoninternals.py:628
 msgid "#### Time-based switching fields and triggers dialog"
-msgstr ""
+msgstr "#### El diálogo de disparadores y campos del cambio basado en tiempo"
 
 #: ..\python_docs\spladdoninternals.py:629
 msgid ""
 "For each time-based profile, a list with seven fields is employed to "
 "describe trigger (switch) date and time. These are:"
 msgstr ""
+"Para cada perfil basado en tiempo, se emplea una lista con siete campos para "
+"describir la fecha y hora del disparador (cambio). Son los siguientes:"
 
 #: ..\python_docs\spladdoninternals.py:630
 msgid ""
@@ -6842,6 +6888,11 @@ msgid ""
 "means the profile should not be activated, and if so, it is removed from the "
 "triggers map."
 msgstr ""
+"* Fecha del disparador (entero entre 0 y 127): un entero de 7 bits, "
+"indicando en cuántos días debería activarse un perfil. Este campo se usa en "
+"el diálogo de disparadores de perfil para marcar o desmarcar las casillas de "
+"verificación de días de activación. El valor 0 significa que el perfil no "
+"debería activarse, y si es así, se elimina del mapa de disparadores."
 
 #: ..\python_docs\spladdoninternals.py:631
 msgid ""
@@ -6849,6 +6900,9 @@ msgid ""
 "constructing datetime.datetime object (year, month, day, hour, minute) are "
 "stored. This is used to let NVDA know when to switch profiles."
 msgstr ""
+"* Fecha y hora del cambio (cinco enteros): los cinco primeros campos usados "
+"para construir datetime. El objeto datetime (año, mes, día, hora, minuto) se "
+"almacena. Se usa para que NVDA sepa cuándo cambiar de perfil."
 
 #: ..\python_docs\spladdoninternals.py:632
 msgid ""
@@ -6857,24 +6911,36 @@ msgid ""
 "becomes active when the profile in question becomes active, and the only job "
 "of this timer is to switch back to another profile when the show is complete."
 msgstr ""
+"* Duración (entero entre 0 y 1439): un entero que especifica la duración de "
+"este perfil (programa) en minutos. Lo usa principalmente un temporizador que "
+"se activa al activarse el perfil en cuestión, y cuya única función es volver "
+"a otro perfil cuando el programa se acabe."
 
 #: ..\python_docs\spladdoninternals.py:633
 msgid ""
 "The triggers dialog, used to configure these fields for the selected "
 "profile, consists of two groups of controls:"
 msgstr ""
+"El diálogo de disparadores, usado para configurar estos campos en el perfil "
+"seleccionado, consta de dos grupos de controles:"
 
 #: ..\python_docs\spladdoninternals.py:634
 msgid ""
 "* Trigger days: seven checkboxes, one for each day of the week. Checking or "
 "clearing these boxes sets corresponding bits in the trigger date field."
 msgstr ""
+"* Días del disparador: siete casillas de verificación, una para cada día de "
+"la semana. Al marcarlas o desmarcarlas se cambian los bits correspondientes "
+"en el campo de fecha del disparador."
 
 #: ..\python_docs\spladdoninternals.py:635
 msgid ""
 "* Switch time: three number entry fields denoting when to switch to this "
 "profile (hour and minute) and the duration of this show (minutes)."
 msgstr ""
+"* Hora del cambio: tres campos de entrada numérica que indican cuándo se "
+"debe cambiar al perfil (hora y minuto) y la duración del programa (en "
+"minutos)."
 
 #: ..\python_docs\spladdoninternals.py:636
 msgid ""
@@ -6884,6 +6950,13 @@ msgid ""
 "will proceed to store the next trigger date and time (will not be saved "
 "until OK button is clicked from the main add-on settings dialog)."
 msgstr ""
+"Una vez que se recopilan los datos, NVDA primero comprobará si están "
+"marcadas las casillas de verificación de fecha del disparador (si no hay "
+"ninguna marcada, se elimina el perfil). A continuación, NVDA comprobará si "
+"otro perfil tiene asignada la misma franja de tiempo, y si no es así, "
+"procederá a alamcenar la fecha y hora del disparador (no se guardarán hasta "
+"que se haga clic en el botón aceptar en el diálogo principal de ajustes del "
+"complemento)."
 
 #: ..\python_docs\spladdoninternals.py:637
 msgid ""
@@ -6892,11 +6965,18 @@ msgid ""
 "encoder support and a few thoughts on how the add-on is developed, starting "
 "with a tour of SPL Controller layer commands."
 msgstr ""
+"Así concluye un recorrido detallado por el interior del módulo de aplicación "
+"de Studio. El resto de los capítulos se enfocarán en la extensión global de "
+"utilidades de SPL, soporte del codificador y unas cuantas consideraciones "
+"sobre cómo se desarrolla el complemento, comenzando con un recorrido por las "
+"órdenes del controlador de SPL."
 
 #: ..\python_docs\spladdoninternals.py:638
 msgid ""
 "## Introduction to SPL Utilities: SPLController and focusing to Studio window"
 msgstr ""
+"## Introducción a las utilidades de SPL: SPLController y cómo llevar el foco "
+"a la ventana de Studio"
 
 #: ..\python_docs\spladdoninternals.py:639
 msgid ""
@@ -6906,10 +6986,18 @@ msgid ""
 "introduce you to inner workings of SPL Controller layer and tour how encoder "
 "support is implemented."
 msgstr ""
+"Ahora que hemos cubierto el \"kernel\" (la parte más íntima) del complemento "
+"de Studio, es hora de hablar sobre la extensión global de utilidades de SPL "
+"Studio y sus contenidos. Los siguientes artículos explicarán qué hace la "
+"extensión global, te introducirán en el funcionamiento interno de la capa "
+"del controlador de SPL y harán un recorrido explicando cómo se ha "
+"implementado el soporte del codificador."
 
 #: ..\python_docs\spladdoninternals.py:640
 msgid "### Studio app module versus SPL Utilities global plugin"
 msgstr ""
+"### Comparación del módulo de aplicación de Studio y la extensión global de "
+"utilidades de SPL"
 
 #: ..\python_docs\spladdoninternals.py:641
 msgid ""
@@ -6921,14 +7009,24 @@ msgid ""
 "took on an important role: working as an encoders manager to report "
 "connection status and to perform other routines."
 msgstr ""
+"Como se ha descrito en el artículo de diseño del complemento, el complemento "
+"de SPL Studio viene con dos módulos de aplicación y una extensión global. "
+"Esto era necesario no sólo para diferenciar entre tipos de módulos y "
+"experiencias, sino también para permitir que las funciones de Studio puedan "
+"invocarse desde otros programas. Con la llegada del soporte para el "
+"codificador en el complemento 3.0 (finales de 2014), la parte de extensión "
+"global del complemento (utilidades de SPL) tomó un rol importante: funcionar "
+"como un gestor de codificadores para informar del estado de la conexión y "
+"llevar a cabo otras acciones."
 
 #: ..\python_docs\spladdoninternals.py:642
 msgid "### SPL Utilities package contents"
-msgstr ""
+msgstr "### Contenidos del paquete de utilidades de SPL"
 
 #: ..\python_docs\spladdoninternals.py:643
 msgid "The SPL Utilities global plugin consists of the following modules:"
 msgstr ""
+"La extensión global de utilidades de SPL consta de los siguientes módulos:"
 
 #: ..\python_docs\spladdoninternals.py:644
 msgid ""
@@ -6938,6 +7036,13 @@ msgid ""
 "messages, a function to focus to Studio window and the global plugin class "
 "containing definitions for SPL Controller layer commands."
 msgstr ""
+"* Código principal de la extensión (__init__.py), que contiene "
+"procedimientos globales esenciales como el controlador de SPL (descrito "
+"debajo) y un procedimiento para enfocar la ventana de Studio a petición. "
+"Este módulo define constantes usadas por Studio para recibir mensajes, una "
+"función para llevar el foco a la ventana de Studio y la clase de extensión "
+"global que contiene definiciones para las órdenes de la capa del controlador "
+"de SPL."
 
 #: ..\python_docs\spladdoninternals.py:645
 msgid ""
@@ -6946,10 +7051,14 @@ msgid ""
 "important part in helping the encoder module as you'll see in the next "
 "article)."
 msgstr ""
+"* Soporte del codificador (encoders.py), que contiene el soporte de NVDA "
+"para varios codificadores (mira el próximo artículo; el módulo principal de "
+"la extensión global es una pieza importante a la hora de ayudar al módulo "
+"del codificador, como podrás comprobar)."
 
 #: ..\python_docs\spladdoninternals.py:646
 msgid "### SPL Controller layer"
-msgstr ""
+msgstr "### La capa del controlador de SPL"
 
 #: ..\python_docs\spladdoninternals.py:647
 msgid ""
@@ -6958,6 +7067,11 @@ msgid ""
 "anywhere. The entry routine is similar to the app module counterpart (SPL "
 "Assistant) except for the following:"
 msgstr ""
+"La capa del controlador de SPL (orden de entrada sin asignar, mismo motivo "
+"que el de la orden de entrada al asistente de SPL) se usa para invocar "
+"funciones de Studio desde cualquier sitio. El procedimiento de entrada es "
+"similar a su homólogo del módulo de aplicación (el asistente de SPL) salvo "
+"por lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:648
 msgid ""
@@ -6965,60 +7079,77 @@ msgid ""
 "handle value just as in the Studio app module), otherwise it cannot enter "
 "SPL Controller layer."
 msgstr ""
+"* NVDA se asegurará de que Studio esté en ejecución (si es así, almacenará "
+"en caché el valor del manejador de ventana al igual que en el módulo de "
+"aplicación de Studio), en cualquier otro caso no se puede entrar en la capa "
+"del controlador de SPL."
 
 #: ..\python_docs\spladdoninternals.py:649
 msgid ""
 "* All commands (except two) use Studio API (Studio API and use of user32."
 "dll's SendMessage was described in a previous article)."
 msgstr ""
+"* Todas las órdenes (excepto dos) usan la api de Studio (en un artículo "
+"anterior se describió el funcionamiento de la api de Studio y la función "
+"SendMessage de user32.dll)."
 
 #: ..\python_docs\spladdoninternals.py:650
 msgid ""
 "For mechanics of layer commands, see a previous article on add-on design "
 "where layer commands were discussed."
 msgstr ""
+"Para ver los mecanismos de las órdenes de capa, consulta un artículo "
+"anterior que hablaba del diseño del complemento, donde se expusieron estas "
+"órdenes."
 
 #: ..\python_docs\spladdoninternals.py:651
 msgid "The following commands utilize Studio API:"
-msgstr ""
+msgstr "Las siguientes órdenes utilizan la api de Studio:"
 
 #: ..\python_docs\spladdoninternals.py:652
 msgid "* A/Shift+A: Automation on/off."
-msgstr ""
+msgstr "* A/Shift+A: activar o desactivar automatización."
 
 #: ..\python_docs\spladdoninternals.py:653
 msgid "* L/Shift+L: Line in on/off."
-msgstr ""
+msgstr "* L/Shift+L: activar o desactivar entrada de línea."
 
 #: ..\python_docs\spladdoninternals.py:654
 msgid "* M/Shift+M/N: Microphone on/off/instant on/off toggle."
 msgstr ""
+"* M/Shift+M/N: activar o desactivar micrófono, o conmutador instantáneo para "
+"encenderlo y apagarlo."
 
 #: ..\python_docs\spladdoninternals.py:655
 msgid "* P: Play."
-msgstr ""
+msgstr "* P: reproducir."
 
 #: ..\python_docs\spladdoninternals.py:656
 msgid ""
 "* Q: Obtain various status information. Due to API changes, this command "
 "works better in studio 5.20 and later.)"
 msgstr ""
+"* Q: obtener diversa información de estado (debido a cambios en la api, esta "
+"orden funciona mejor en Studio 5.20 y posteriores.)"
 
 #: ..\python_docs\spladdoninternals.py:657
 msgid "* R: Remaining time for the currently playing track (if any)."
 msgstr ""
+"* R: tiempo restante de la pista actualmente en reproducción (si la hay)."
 
 #: ..\python_docs\spladdoninternals.py:658
 msgid "* Shift+R: Library scan progress and umber of items scanned."
 msgstr ""
+"* Shift+r: progreso del escaneo de biblioteca y cantidad de elementos "
+"escaneados."
 
 #: ..\python_docs\spladdoninternals.py:659
 msgid "* S/T: Stop with fade/instant stop."
-msgstr ""
+msgstr "* S/T: parar progresivamente o parar de forma instantánea."
 
 #: ..\python_docs\spladdoninternals.py:660
 msgid "* U: Play/pause."
-msgstr ""
+msgstr "* U: reproducir / pausar."
 
 #: ..\python_docs\spladdoninternals.py:661
 msgid ""
@@ -7028,10 +7159,16 @@ msgid ""
 "from Insert Tracks dialog). The letter \"Q\" stands for \"query Studio status"
 "\"."
 msgstr ""
+"Los lectores familiarizados con las órdenes te teclado de Studio se sentirán "
+"como en casa (en cierto modo estas son órdenes de Studio, salvo porque shift "
+"se usa para desactivar algunas características, y shift+r te recordará al "
+"ctrl+shift+r que se usa para escanear desde el diálogo de inserción de "
+"pistas). La letra Q se queda para \"Consultar el estado de Studio"
+"\" (consultar, en inglés, es query)."
 
 #: ..\python_docs\spladdoninternals.py:662
 msgid "Here are the two exceptions"
-msgstr ""
+msgstr "Estas son las dos excepciones"
 
 #: ..\python_docs\spladdoninternals.py:663
 msgid ""
@@ -7039,16 +7176,21 @@ msgid ""
 "this command will announce number of encoders being monitored (see the next "
 "aritlce on the format of this message)."
 msgstr ""
+"* E: si pides a NVDA que monitorice uno o más codificadores en segundo "
+"plano, esta orden verbalizará la cantidad de codificadores monitorizados "
+"(mira el siguiente artículo para conocer el formato de este mensaje)."
 
 #: ..\python_docs\spladdoninternals.py:664
 msgid ""
 "* F1: Opens a dialog displaying Controller layer commands (does this sound "
 "familiar?)."
 msgstr ""
+"* F1: abre un diálogo que muestra las órdenes de la capa del controlador "
+"(¿Te suena familiar?)."
 
 #: ..\python_docs\spladdoninternals.py:665
 msgid "### Focusing to Studio window from anywhere"
-msgstr ""
+msgstr "### Cómo llevar el foco a la ventana de Studio desde cualquier parte"
 
 #: ..\python_docs\spladdoninternals.py:666
 msgid ""
@@ -7059,6 +7201,12 @@ msgid ""
 "programs opened). For this reason, screen reader scripts for Studio includes "
 "a command to switch to Studio upon request (unassigned in NVDA)."
 msgstr ""
+"Según estás emitiendo un programa en Studio, puedes encontrarte en una "
+"situación donde necesitas pasar rápidamente a Studio para cambiar la "
+"automatización, insertar nuevas pistas y demás. Una situación ideal es pasar "
+"a Studio al pulsar alt+tab (no es el caso si tienes más de dos programas "
+"abiertos). Por esta razón, los scripts de lectores de pantalla para Studio "
+"incluyen una orden para pasar a Studio a petición (sin asignar en NVDA)."
 
 #: ..\python_docs\spladdoninternals.py:667
 msgid ""
@@ -7068,6 +7216,11 @@ msgid ""
 "window), but also used in encoders for various functions. The routine was as "
 "follows:"
 msgstr ""
+"Hasta 2016, esto se llevaba a cabo con una función en el módulo de "
+"utilidades de SPL (SPLStudioUtils.fetchSPLForegroundWindow). No sólo la "
+"empleaba el módulo principal de la extensión global (llamada desde un script "
+"para llevar el foco a la ventana de Studio), sino que se usaba en los "
+"codificadores para diversos propósitos. El procedimiento era el siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:668
 msgid ""
@@ -7075,6 +7228,10 @@ msgid ""
 "it'll call the fetch window function, which in turn locates the desktop "
 "(shell) window to serve as the starting point for locating Studio window."
 msgstr ""
+"1. El script que lleva el foco a Studio comprobará si Studio está en "
+"ejecución, y si es así, llamará a la función de recuperación de ventana, que "
+"primero localiza la ventana del escritorio (shell) para usarla como punto de "
+"partida para encontrar la ventana de Studio."
 
 #: ..\python_docs\spladdoninternals.py:669
 msgid ""
@@ -7082,6 +7239,10 @@ msgid ""
 "Studio window (where the window's app module is the Studio app module) is "
 "found, and if found, NVDA will increment a Studio window candidate counter."
 msgstr ""
+"2. NVDA escaneará las ventanas de nivel superior (hijas del objeto del "
+"escritorio) hasta que se encuentre la ventana de Studio (donde el módulo de "
+"aplicación de la ventana sea el de Studio), y si la encuentra, incrementará "
+"un contador de ventanas de Studio candidatas."
 
 #: ..\python_docs\spladdoninternals.py:670
 msgid ""
@@ -7089,24 +7250,35 @@ msgid ""
 "on what the Studio window candidate counter says before passing the "
 "foreground object back to the main script. It can do one of the following:"
 msgstr ""
+"3. Una vez se haya completado el escaneo de ventanas de alto nivel, NVDA "
+"tomará acciones en base a lo que diga el contador de ventanas candidatas de "
+"Studio antes de devolver el objeto en primer plano al script principal. "
+"Puede hacer una de las siguientes cosas:"
 
 #: ..\python_docs\spladdoninternals.py:671
 msgid ""
 "A. If counter is 0 (fg is None), NVDA will know that you have minimized "
 "Studio, so it'll tell you that Studio is minimized."
 msgstr ""
+"A. Si el contador es 0 (fg es None), NVDA sabrá que has minimizado Studio, "
+"por lo que te lo dirá."
 
 #: ..\python_docs\spladdoninternals.py:672
 msgid ""
 "B. If counter is 1, NVDA will locate the Studio window by looking for the "
 "main Studio window (user32.dll is involved)."
 msgstr ""
+"B. Si el contador es 1, NVDA localizará la ventana de Studio buscándola "
+"(user32.dll está implicada)."
 
 #: ..\python_docs\spladdoninternals.py:673
 msgid ""
 "C. For all other values, NVDA will assume the last window found is the "
 "Studio window (held in fg variable) and return it."
 msgstr ""
+"C. Para el resto de valores, NVDA asumirá que la última ventana que ha "
+"encontrado es la ventana de Studio (contenida en la variable fg) y la "
+"devolverá."
 
 #: ..\python_docs\spladdoninternals.py:674
 msgid ""
@@ -7114,6 +7286,9 @@ msgid ""
 "is minimized or switch to the foreground window returned by the fetch window "
 "function (fg.SetFocus)."
 msgstr ""
+"4. De vuelta al script que lleva el foco a Studio, NVDA indicará que Studio "
+"está minimizado o pasará a la ventana en primer plano devuelta por la "
+"función de recuperación de ventana (fg.SetFocus)."
 
 #: ..\python_docs\spladdoninternals.py:675
 msgid ""
@@ -7125,10 +7300,18 @@ msgid ""
 "this if NVDA says \"unavailable\" when trying to switch to Studio. One can "
 "then go to system tray and restore Studio window."
 msgstr ""
+"En 2017, eso se ha simplificado para usar la función SetForegroundWindow de "
+"la api de Windows, siendo el manejador de la ventana de Studio el único "
+"parámetro necesario que se pasaba. Esto no sólo simplificó la función "
+"significativamente, sino que también aumentó el rendimiento de esta orden. "
+"Un efecto colateral es que ya no es posible detectar Studio cuando está "
+"minimizado, pero nos podemos hacer una idea de ello cuando NVDA dice \"No "
+"disponible\" al intentar cambiar a Studio. Si esto ocurre, se puede ir a la "
+"bandeja del sistema y restaurar la ventana de Studio."
 
 #: ..\python_docs\spladdoninternals.py:676
 msgid "### Conclusion"
-msgstr ""
+msgstr "### Conclusión"
 
 #: ..\python_docs\spladdoninternals.py:677
 msgid ""
@@ -7142,10 +7325,20 @@ msgid ""
 "maintainer of the add-on to learn about how he (I) develop new add-on "
 "features."
 msgstr ""
+"Los procedimientos explicados arriba (el controlador de SPL y la orden para "
+"pasar a la ventana de Studio) constituyen uno de los dos pilares de la "
+"extensión global de utilidades de SPL (el otro es el soporte del "
+"codificador). Con estos procedimientos, se hizo posible realizar operaciones "
+"de reproducción sin llevar el foco a Studio y pasar a Studio desde cualquier "
+"parte, en cualquier momento. Visitaremos el otro lado de la historia de esta "
+"extensión global en el siguiente artículo del complemento de Studio para "
+"NVDA visto por dentro, y después de eso, concluiremos con una entrevista con "
+"el responsable del mantenimiento del complemento para aprender cómo él (yo) "
+"desarrolla nuevas características del complemento."
 
 #: ..\python_docs\spladdoninternals.py:678
 msgid "## Encoder support"
-msgstr ""
+msgstr "## Soporte del codificador"
 
 #: ..\python_docs\spladdoninternals.py:679
 msgid ""
@@ -7186,6 +7379,11 @@ msgid ""
 "error messages, which led to figuring out how SAM encoders react when "
 "connected to a streaming server."
 msgstr ""
+"El primer problema que tenía que resolver era hacer que NVDA reconociera las "
+"entradas de codificador en sí mismas. Una vez estuvo resuelto, la siguiente "
+"tarea era verbalizar los mensajes de error de conexión, lo que llevó a "
+"averiguar cómo reaccionaban los codificadores SAM al conectarse a un "
+"servidor de emisión."
 
 #: ..\python_docs\spladdoninternals.py:683
 msgid ""
@@ -7197,6 +7395,14 @@ msgid ""
 "this routine below), which also eliminated a need to stay on the encoders "
 "window until connected."
 msgstr ""
+"Originalmente, manipulaba el texto escrito en pantalla para obtener los "
+"mensajes de estado necesarios (mediante text infos). Este procedimiento "
+"causaba que algunos usuarios experimentaran problemas de parpadeo al "
+"conectarse a un servidor de emisión. Esto se resolvió usando la descripción "
+"del codificador (obj.description), que abría una posibilidad de monitorizar "
+"cambios en el texto mediante un hilo en segundo plano (más sobre este "
+"procedimiento debajo), lo que también eliminó la necesidad de permanecer en "
+"la ventana de codificadores hasta estar conectado."
 
 #: ..\python_docs\spladdoninternals.py:684
 msgid ""
@@ -7208,10 +7414,20 @@ msgid ""
 "present similar interfaces and commands, including a common encoder "
 "configuration dialog (add-on 7.0)."
 msgstr ""
+"Mientras estaba resolviendo problemas con los codificadores SAM, trabajé "
+"también en refactorizar el código de soporte del codificador para dar "
+"compatibilidad con los codificadores de StationPlaylist (complemento 4.0). "
+"Inicialmente, el código de soporte para el codificador se optimizó para los "
+"codificadores SAM, pero la estructura actual del código (explicada debajo) "
+"se escribió para extender fácilmente el soporte básico de codificadores, y "
+"como resultado, las entradas del codificador de SAM y SPL presentan "
+"interfaces y órdenes similares, incluyendo un diálogo común de configuración "
+"del codificador (complemento 7.0)."
 
 #: ..\python_docs\spladdoninternals.py:685
 msgid "### Encoder entries: Yet another overlay class family"
 msgstr ""
+"### Entradas del codificador: otra familia más de clases de superposición"
 
 #: ..\python_docs\spladdoninternals.py:686
 msgid ""
@@ -7226,6 +7442,18 @@ msgid ""
 "to store stream labels and basic settings, a routine to obtain encoder ID "
 "(encoder string and the IAccessible child ID) and so on."
 msgstr ""
+"Al igual que los elementos de pista de Studio (mira la sección de elementos "
+"de pista), las entradas del codificador son clases de superposición. Cada "
+"tipo de codificador (SAM o SPL) hereda de un único objeto codificador "
+"(SPLStudioUtils.encoders.EncoderWindow) que proporciona servicios básicos "
+"como órdenes de ajustes, verbalización de etiquetas de flujo y demás. Cada "
+"tipo de codificador agrega procedimientos específicos del codificador como "
+"diferentes funciones de detección de conexión, formas de obtener etiquetas "
+"de flujo y demás. Hablando de etiquetas de flujo y ajustes, la clase base "
+"del codificador recibe ayuda de algunos amigos del módulo del codificador en "
+"sí, incluido un mapa de configuración para almacenar etiquetas de flujo y "
+"ajustes básicos, una función para obtener el identificador del codificador "
+"(cadena del codificador e identificador del hijo de IAccessible) y demás."
 
 #: ..\python_docs\spladdoninternals.py:687
 msgid ""
@@ -7237,42 +7465,64 @@ msgid ""
 "information). Both classes provide similar routines, with the only "
 "difference being how connection messages are handled."
 msgstr ""
+"Construidas sobre la clase base del codificador hay dos clases de "
+"codificadores, representando las entradas del codificador SAM y del "
+"codificador SPL. Las entradas del codificador SAM (SPLStudioUtils.encoders."
+"SAMEncoderWindow) se presentan como los elementos de pista de Studio, "
+"mientras que las entradas del codificador SPL (SPLStudioUtils.encoders."
+"SPLEncoderWindow) es un control SysListView32 típico (mira el artículo sobre "
+"procedimientos de columna para más información). Ambas clases proporcionan "
+"procedimientos similares, siendo su única diferencia cómo se capturan los "
+"mensajes de conexión."
 
 #: ..\python_docs\spladdoninternals.py:688
 msgid "### Common services: basic settings, stream labels and related methods"
 msgstr ""
+"### Servicios comunes: ajustes básicos, etiquetas de flujo y métodos "
+"relacionados"
 
 #: ..\python_docs\spladdoninternals.py:689
 msgid "All encoder classes provide the following common services:"
 msgstr ""
+"Todas las clases de codificadores proporcionan los siguientes servicios "
+"comunes:"
 
 #: ..\python_docs\spladdoninternals.py:690
 msgid "* Configuring settings: four settings can be configured:"
-msgstr ""
+msgstr "* Configuración de ajustes: se pueden configurar cuatro ajustes:"
 
 #: ..\python_docs\spladdoninternals.py:691
 msgid ""
 "\t* Pressing F11 will tell NVDA if NVDA should switch to Studio when the "
 "encoder is connected."
 msgstr ""
+"\t* Al pulsar f11 indicaremos a NVDA si este debería pasar a Studio cuando "
+"el codificador esté conectado."
 
 #: ..\python_docs\spladdoninternals.py:692
 msgid ""
 "\t*Pressing Shift+F11 will ask Studio will play the next track when "
 "connected."
 msgstr ""
+"\t* Al pulsar shift+f11 se pedirá a Studio que reproduzca la siguiente pista "
+"al conectarse."
 
 #: ..\python_docs\spladdoninternals.py:693
 msgid ""
 "\t* Pressing Control+F11 will enable background encoder monitoring (more on "
 "this in a second)."
 msgstr ""
+"\t* Al pulsar ctrl+f11 se activará la monitorización del codificador en "
+"segundo plano (más sobre esto en un segundo)."
 
 #: ..\python_docs\spladdoninternals.py:694
 msgid ""
 "\t* Enabling or disabling connection progress tones (add-on 7.0, "
 "configurable from encoder settings dialog described below)."
 msgstr ""
+"\t* Activar o desactivar la reproducción de tonos que indiquen el progreso "
+"de la conexión (complemento 7.0, configurable desde el diálogo de ajustes "
+"del codificador que se describe más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:695
 msgid ""
@@ -7280,6 +7530,9 @@ msgid ""
 "appropriate flag in the encoder entry, which in turn are saved in the "
 "configuration map."
 msgstr ""
+"\t* Una vez se cambien estos ajustes, los nuevos valores se almacenarán en "
+"el indicador apropiado de la entrada del codificador, que eventualmente se "
+"guarda en el mapa de configuración."
 
 #: ..\python_docs\spladdoninternals.py:696
 msgid ""
@@ -7287,6 +7540,10 @@ msgid ""
 "called, these methods will look up various settings for the encoder from the "
 "configuration map (key is the setting flag, value is the encoder ID)."
 msgstr ""
+"* Recuperación de ajustes. Esto se hace con diversos métodos de propiedad - "
+"una vez llamados, estos métodos recuperarán diversos ajustes para el "
+"codificador desde el mapa de configuración (la clave es el indicador del "
+"ajuste, y el valor es el identificador del codificador)."
 
 #: ..\python_docs\spladdoninternals.py:697
 msgid ""
@@ -7294,6 +7551,10 @@ msgid ""
 "(onConnection method) attempts to set focus to Studio and/or play the first "
 "checked track if configured to do so."
 msgstr ""
+"* Monitorización y reacción ante cambios de estado de la conexión. El "
+"procedimiento de respuesta (método onConnection) intenta llevar el foco a "
+"Studio y / o reproducir la primera pista marcada si está configurado para "
+"hacerlo."
 
 #: ..\python_docs\spladdoninternals.py:698
 msgid ""
@@ -7301,12 +7562,18 @@ msgid ""
 "earlier, it could be a waste of space, especially if encoders are never "
 "used)."
 msgstr ""
+"* Carga de etiquetas del flujo cuando un codificador obtiene el foco por "
+"primera vez (si se habían cargado antes, podría suponer un gasto de espacio, "
+"especialmente si nunca se usan los codificadores)."
 
 #: ..\python_docs\spladdoninternals.py:699
 msgid ""
 "* Announces stream labels (if defined) via reportFocus method. In contrast "
 "with the Studio track item version, an encoder's reportFocus routine:"
 msgstr ""
+"* Verbalización de etiquetas de flujo (si están definidas) mediante el "
+"método reportFocus. En contraste con la versión del elemento de pista de "
+"Studio, una función reportFocus de un codificador:"
 
 #: ..\python_docs\spladdoninternals.py:700
 msgid ""
@@ -7316,12 +7583,20 @@ msgid ""
 "the label; each encoder, when told to look up stream labels, will consult "
 "its own labels dictionary)."
 msgstr ""
+"\t1. Ubica las etiquetas de flujo del codificador actual (el mapa de "
+"configuración almacena las etiquetas de flujo como diccionarios (secciones), "
+"donde en cada diccionario se representa el tipo de codificador, la clave es "
+"la posición del codificador y el valor es la etiqueta; cada codificador, al "
+"pedirle que busque las etiquetas de flujo, consultará su propio diccionario "
+"de etiquetas)."
 
 #: ..\python_docs\spladdoninternals.py:701
 msgid ""
 "\t2. If a label is found, NVDA will announce the label (in braille, "
 "surrounded by parentheses)."
 msgstr ""
+"\t2. Si se encuentra una etiqueta, NVDA la anunciará (en braille la rodeará "
+"con paréntesis)."
 
 #: ..\python_docs\spladdoninternals.py:702
 msgid ""
@@ -7329,6 +7604,10 @@ msgid ""
 "(F12) that'll make sure you entered a label (if not, the encoder position is "
 "removed from the encoder-specific stream labels dictionary)."
 msgstr ""
+"* Definición y eliminación de etiquetas de flujo. Esto se hace mediante el "
+"diálogo de etiquetas de flujo (f12) que se asegurará de que has introducido "
+"una etiqueta (si no, la posición del codificador se elimina del diccionario "
+"específico de etiquetas de flujo del codificador)."
 
 #: ..\python_docs\spladdoninternals.py:703
 msgid ""
@@ -7337,6 +7616,11 @@ msgid ""
 "may hear stream label for an encoder that no longer exists. This is "
 "implemented as a variation of find predecessor algorithm."
 msgstr ""
+"* Actualización de la posición de etiquetas de flujo a petición (mediante un "
+"diálogo, que se activa pulsando ctrl+f12). Esto es necesario si se han "
+"eliminado codificadores, ya que puedes oír una etiqueta de flujo para un "
+"codificador que ya no existe. Esto se implementa como una variación del "
+"algoritmo de búsqueda anterior."
 
 #: ..\python_docs\spladdoninternals.py:704
 msgid ""
@@ -7345,6 +7629,11 @@ msgid ""
 "encoder format, status and description and SPL allows one to hear encoder "
 "format and transfer rate/connection status."
 msgstr ""
+"* Verbalización de las columnas del codificador. La clase base puede "
+"verbalizar la posición del codificador (ctrl+NVDA+1) y la etiqueta de flujo "
+"(ctrl+NVDA+2), mientras que SAM puede verbalizar el formato del codificador, "
+"estado y descripción. SPL permite oír el formato del codificador y la "
+"velocidad de transferencia / el estado de la conexión."
 
 #: ..\python_docs\spladdoninternals.py:705
 msgid ""
@@ -7353,10 +7642,14 @@ msgid ""
 "settings described above) has been added. Press Control+NVDA+0 to open this "
 "dialog."
 msgstr ""
+"* En el complemento 7.0, se ha añadido un diálogo de configuración central "
+"para configurar los ajustes del codificador seleccionado (incluye las "
+"etiquetas de flujo y los cuatro ajustes descritos más arriba). Pulsa ctrl"
+"+NVDA+0 para abrir este diálogo."
 
 #: ..\python_docs\spladdoninternals.py:706
 msgid "### Encoder ID's"
-msgstr ""
+msgstr "### Identificadores de codificador"
 
 #: ..\python_docs\spladdoninternals.py:707
 msgid ""
@@ -7367,12 +7660,21 @@ msgid ""
 "to look up stream labels, configure settings and to identify encoders being "
 "monitored (SPL Controller, E)."
 msgstr ""
+"Un identificador de codificador es una cadena que identifica unívocamente un "
+"codificador. Consta de una cadena que indica el tipo de codificador (SAM "
+"para el codificador SAM, por ejemplo), seguida de la posición del "
+"codificador (separada por un espacio). Por ejemplo, el primer codificador "
+"SAM tiene el identificador \"SAM 1\". Los identificadores se usan para "
+"buscar etiquetas de flujo, configurar ajustes e identificar codificadores "
+"monitorizados (controlador de SPL, E)."
 
 #: ..\python_docs\spladdoninternals.py:708
 msgid ""
 "### More and more threads: connection messages and background encoder "
 "monitoring"
 msgstr ""
+"### Más y más hilos: mensajes de conexión y monitorización del codificador "
+"en segundo plano"
 
 #: ..\python_docs\spladdoninternals.py:709
 msgid ""
@@ -7381,6 +7683,11 @@ msgid ""
 "are employed for various tasks, including connection message announcement "
 "and background encoder monitoring."
 msgstr ""
+"Como vimos en un capítulo anterior, los hilos permiten a los desarrolladores "
+"hacer que los programas realicen ciertas tareas en segundo plano. Incluso en "
+"el soporte de codificadores, los hilos se emplean para diversas tareas, "
+"incluyendo la verbalización del mensaje de conexión y la monitorización del "
+"codificador en segundo plano."
 
 #: ..\python_docs\spladdoninternals.py:710
 msgid ""
@@ -7388,6 +7695,10 @@ msgid ""
 "connection handling routines (reportConnectionStatus). Depending on how you "
 "invoke this, it starts up as follows:"
 msgstr ""
+"Cada clase de superposición para cada codificador (y no el codificador base) "
+"incluye procedimientos dedicados para la gestión de conexión "
+"(reportConnectionStatus). Dependiendo de cómo los invoques, se pueden "
+"iniciar como sigue:"
 
 #: ..\python_docs\spladdoninternals.py:711
 msgid ""
@@ -7396,6 +7707,11 @@ msgid ""
 "after sending F9 to the application, and for SPL, this is done after "
 "clicking \"connect\" button (manipulates focus in the process)."
 msgstr ""
+"* Si la monitorización del codificador en segundo plano está desactivada y "
+"pulsas f9 para conectar, NVDA ejecutará este procedimiento en un hilo "
+"separado. En SAM, se hace la comprobación justo después de enviar f9 a la "
+"aplicación, y en SPL se hace después de hacer click en el botón Conectar (se "
+"manipula el foco en el proceso)."
 
 #: ..\python_docs\spladdoninternals.py:712
 msgid ""
@@ -7404,10 +7720,15 @@ msgid ""
 "press F9, NvDA knows that the background monitoring thread is active, thus "
 "skipping the above step."
 msgstr ""
+"* Si la monitorización del codificador en segundo plano está activada antes "
+"de pulsar f9, el procedimiento se ejecutará desde otro hilo cuando este "
+"ajuste se active. Cuando pulses f9, NVDA ya sabe que el hilo de "
+"monitorización en segundo plano está activo, por lo que se saltará el paso "
+"de arriba."
 
 #: ..\python_docs\spladdoninternals.py:713
 msgid "The connection handling routine performs the following:"
-msgstr ""
+msgstr "El procedimiento encargado de gestionar la conexión hace lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:714
 msgid ""
@@ -7416,38 +7737,53 @@ msgid ""
 "(columns). This will be done as long as Studio and/or NVDA is live (that is, "
 "if the thread is running)."
 msgstr ""
+"1. Ubica el mensaje de estado para la entrada del codificador. En Sam es el "
+"texto de descripción, y en SPL es uno de los objetos hijo de la entrada "
+"(columns). Esto se hará mientras Studio y / o NVDA estén en ejecución (o lo "
+"que es lo mismo, si el hilo está en ejecución)."
 
 #: ..\python_docs\spladdoninternals.py:715
 msgid ""
 "2. Announces error messages if any and will try again after waiting a little "
 "while (fraction of a second)."
 msgstr ""
+"2. Verbaliza mensajes de error si los hay y lo intenta otra vez después de "
+"esperar un ratito (una fracción de segundo)."
 
 #: ..\python_docs\spladdoninternals.py:716
 msgid "3. If connected, NvDA will play a tone, then:"
-msgstr ""
+msgstr "3. Si está conectado, NVDA reproducirá un tono, y entonces:"
 
 #: ..\python_docs\spladdoninternals.py:717
 msgid "\t* Do nothing if not told to focus to studio nor play the next track."
 msgstr ""
+"\t* No hará nada si no se le indica que lleve el foco a Studio o reproduzca "
+"la siguiente pista."
 
 #: ..\python_docs\spladdoninternals.py:718
 msgid ""
 "\t* Focuses to studio and/or plays the next track if no tracks are playing "
 "by calling onConnect method."
 msgstr ""
+"\t* Lleva el foco a Studio y / o reproduce la siguiente pista si no hay "
+"pistas reproduciéndose llamando al método onConnect."
 
 #: ..\python_docs\spladdoninternals.py:719
 msgid ""
 "4. For other messages, NVDA will periodically play a progress tone and "
 "announce connection status so far as reported by the encoder."
 msgstr ""
+"4. Para otros mensajes, NVDA reproducirá periódicamente un tono de progreso "
+"y verbalizará el estado de la conexión tan pronto como lo informe el "
+"codificador."
 
 #: ..\python_docs\spladdoninternals.py:720
 msgid ""
 "5. This loop repeats as long as this encoder is being monitored in the "
 "background."
 msgstr ""
+"5. Este bucle se repite mientras el codificador esté siendo monitorizado en "
+"segundo plano."
 
 #: ..\python_docs\spladdoninternals.py:721
 msgid "### Encoder-specific routines"
