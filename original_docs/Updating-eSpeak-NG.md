@@ -3,28 +3,27 @@ The main authority on build requirements should be `<nvda repo root>/include/esp
 in `<nvda repo root>/include/espeak/src/windows/` can also be considered, however these are not always kept up to date.
 
 We dont use the auto make files or the visual studio files, we maintain our own method of building espeak. Modifications will need to be made in `<nvda repo root>/nvdaHelper/espeak`
-
 * `sconscript` for the build process.
 * `config.h` to set the eSpeak-ng version that NVDA outputs to the log file.
 
 ### Doing the update
 
 1. Start from a clean branch off of NVDA `master`
-	1. Check out the latest NVDA `origin/master` and create a new branch.
-	2. Do a git clean to ensure the working directory is clean.
-2. Ensure submodules are up to date
-	1. Synchronize submodules with `git submodule sync`
-	2. Update submodules with `git submodule update --init --recursive`
-3. Checkout the new eSpeak-ng revision to try.
-	1. Change to the `include/espeak/` directory
-	2. Do `git fetch` to get the latest from the espeak-ng repo
-	3. Do `git checkout origin/master` or whichever espeak-ng ref you wish.
-4. Update our record of the version number and build.
-	1. Change back to the NVDA repo root
-	2. Update the package version in `<nvda repo root>/nvdaHelper/espeak/config.h` you can use `<nvda repo root>/include/espeak/src/windows/config.h` to double check this is what you expect.
-	3. Do a build of NVDA
-5. Run NVDA (set eSpeak-ng as the synthesizer) and test.
-6. Ensure that the log file contains the new version number for eSpeak-NG
+   1. Check out the latest NVDA `origin/master` and create a new branch.
+   1. Do a git clean to ensure the working directory is clean.
+1. Ensure submodules are up to date
+   1. Synchronize submodules with `git submodule sync`
+   1. Update submodules with `git submodule update --init --recursive`
+1. Checkout the new eSpeak-ng revision to try.
+   1. Change to the `include/espeak/` directory
+   1. Do `git fetch` to get the latest from the espeak-ng repo
+   1. Do `git checkout origin/master` or whichever espeak-ng ref you wish.
+1. Update our record of the version number and build.
+   1. Change back to the NVDA repo root
+   1. Update the package version in `<nvda repo root>/nvdaHelper/espeak/config.h` you can use `<nvda repo root>/include/espeak/src/windows/config.h` to double check this is what you expect.
+   1. Do a build of NVDA
+1. Run NVDA (set eSpeak-ng as the synthesizer) and test.
+1. Ensure that the log file contains the new version number for eSpeak-NG
 
 ### Troubleshooting
 
