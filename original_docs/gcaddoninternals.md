@@ -12,7 +12,7 @@ Simply speaking, Golden Cursor is an add-on that allows NVDA users to manipulate
 
 To download this add-on, visit https://addons.nvda-project.org/addons/goldenCursor.en.html. The source code repository can be found at https://github.com/josephsl/goldenCursor.
 
-Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor add-on is copyright 2015-2017 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation.
+Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor add-on is copyright 2015-2018 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation.
 
 ## Golden Cursor: A History
 
@@ -22,13 +22,13 @@ Although the add-on had potential, it had numerous coding problems. for example,
 
 	if something == False: #code
 
-Eventually some serious issues were resolved, and after working closely with the original add-on developer, Golden Cursor was submitted to the add-ons website for community testing, wihch resulted in positive feedback. Thus in January 2016, Golden Cursor became na official NVDA add-on.
+Eventually some serious issues were resolved, and after working closely with the original add-on developer, Golden Cursor was submitted to the add-ons website for community testing, wihch resulted in positive feedback. Thus in January 2016, Golden Cursor became an official NVDA add-on.
 
-In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releaes, as well as ongoing modernization work.
+In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done in early 2018.
 
 ## Add-on mechanics
 
-Simply put, the add-on serves as a "keyboard wheel" for a computer mouse. This is made more intuitive by the fact that Control+Windows+arrow keys were assigned to move the mouse. In addition, hotspot functionality is available where a mouse coordinate (xy) is tagged with a label and jumped to, as well as giving users ability to move to a specific mouse coordinate location. The coordinate tag is then stored in a file that looks like a typical ini file, allowing easy sharing between systems.
+Simply put, the add-on serves as a "keyboard wheel" for a computer mouse. This is made more intuitive by the fact that Windows+NvDA+arrow keys (or just arrow keys with mouse arrows layer turned on) were assigned to move the mouse. In addition, hotspot functionality is available where a mouse coordinate (xy) is tagged with a label and jumped to, as well as giving users ability to move to a specific mouse coordinate location. The coordinate tag is then stored in a file that looks like a typical ini file, allowing easy sharing between systems.
 
 The "wheel" is actually a call to SetCursorPos Windows API function, wrapped inside winUser module (as winUser module wraps user32.dll), ultimately controlled by moveMouse method in the add-on. The moveMouse method takes the mouse direction flag, and based on cursor location, direction given and mouse restriction flag, positions the mouse cursor on the new location. The direction flags are:
 
@@ -54,7 +54,7 @@ For people familiar with mathematical representation of a 2D graph or a plane, t
 
 When we apply this to mouse movement, the X coordinate increases when the mouse moves to the right, while the Y coordinate decreases as the mouse moves up. For sake of completeness, mouse movement expressions are:
 
-* Mouse moving right: new X = currnet X + movmenet unit
+* Mouse moving right: new X = currnet X + movement unit
 * Mouse moving left: new X = current X - movement unit
 * Mouse moving down: new Y = current Y + movement unit
 * Mouse moving up: new Y = current Y - movement unit
