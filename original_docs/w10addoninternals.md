@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: March 2018
+Revision: May 2018
 
 ## Introduction
 
@@ -14,17 +14,19 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access.
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of May 2018 revision, one or two features from upcoming NVDA 2018.2 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+
+Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2018 Joseph Lee and others, released under GPL 2.
 
 ## Introducing Windows 10
 
 Windows 10 is the "last major" version of Windows for the foreseeable future. It introduces a completely new way of keeping track of changes through Windows Insider Program and Windows as a Service (WaaS, a fancy term for continuous delivery), new application development framework, unification strategy in terms of user experience across devices and a new web browser. In addition, it features the return of an older style of Start menu, virtual desktops, Action Center to centralize notifications, a way to run command-line Linux utilities, and revamped Narrator that continues to receive refinements.
 
-Windows 10 made its maiden flight in October 2014. Back then, it was called Windows Technical Preview, and after several weeks, it was renamed to Windows Insider Program. Between October 2014 and July 2015 when Windows 10 Version 1507 (build 10240) shipped, more than five million users became Insiders, testing new builds and apps, submitting feedback and so on.
+Windows 10 made its maiden flight in October 2014. Back then, it was called Windows Technical Preview, and after several weeks, it was renamed to Windows Insider Preview. Between October 2014 and July 2015 when Windows 10 Version 1507 (build 10240) shipped, more than five million users became Insiders, testing new builds and apps, submitting feedback and so on.
 
 I call the October 2014 preview (build 9841) a maiden flight for several reasons. First, this is the first time where Microsoft did show interest in user-level feedback. Although betas existed for earlier versions such as Windows 7 and 8.1, Windows 10 is the first attempt from Microsoft at connecting with users and taking comments seriously. Second, build 9841 (the first Insider Preview build) hailed the start of Windows as a Service, a completely different approach to upgrading Windows where Microsoft wanted to provide two things: continuous delivery and feedback loop, and a unified configuration that works well with most devices. There were setbacks, such as privacy concerns due to telemetry, but for the most part, Windows 10 was received positively.
 
-There is another, more personal reason for calling October 2014 release a maiden flight: I became one of the first Windows Insiders, and due to my work on NVDA, I have decided to make sure screen reader users were treated with respect. This included sending accessibility-related feedback, getting other screen reader users onboard as Insiders, and releasing NVDA try builds that resolved important issues for Windows Insiders. This culminated in the release of Windows 10 App Essentials add-on in November 2015 (in time for Windows 10 Version 1511/build 10586 release) that provided basic support for Insider Hub (now Feedback Hub) and other workarounds, which translated to superb user experience for NVDA users when it comes to using Windows 10 and various universal apps. My work on championing accessibility continues today, especially when it comes to making sure third-party universal apps are usable by many.
+There is another, more personal reason for calling October 2014 release a maiden flight: I became one of the first Windows Insiders, and due to my work on NVDA, I have decided to make sure screen reader users were treated with respect. This included sending accessibility-related feedback, getting other screen reader users onboard as Insiders, and releasing NVDA try builds that resolved important issues for Windows Insiders. This culminated in the release of Windows 10 App Essentials add-on in November 2015 (in time for Windows 10 Version 1511/build 10586 release) that provided basic support for Insider Hub (now Feedback Hub) and other workarounds, which translated to superb user experience for NVDA users when it comes to using Windows 10 and various universal apps. My work on championing accessibility continues today, especially when it comes to making sure third-party universal apps are usable by many, supporting features such as Sets and so on.
 
 ## Purposes of Windows 10 App Essentials
 
@@ -43,7 +45,7 @@ In regards to app modules, these were included to either provide workarounds or 
 
 ### A note on feature parity with NVDA screen reader
 
-Some features discussed in this article (such as suggestion sound playback and live region change event handler) were integrated into recent NVDA releases. I will point out some of these, as well as provide how these were integrated, including planning involved and some tips on modifying add-on features to fit into NVDA's code base.
+Some features discussed in this article (such as suggestion sound playback and UIA notification event handler) were integrated into recent NVDA releases. I will point out some of these, as well as provide how these were integrated, including planning involved and some tips on modifying add-on features to fit into NVDA's code base.
 
 ## Fun with UI Automation
 
@@ -76,10 +78,11 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 
 * Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
-* Floating suggestions such as Emoji panel in Fall Creators Update and hardware keyboard suggestions in Redstone 4.
-* Support for UIA notification event introduced in Fall Creators Update.
+* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update).
+* Support for UIA notification event introduced in Version 1709.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 * Announcing tooltips from universal apps.
+* Handling tab switches in Sets in Redstone 5.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
@@ -92,7 +95,7 @@ Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin 
 The global plugin consists of the following:
 
 * winTenObjs/__init__.py: the base global plugin.
-* winTenObjs/_UIAHandlerEx.py: additional UIA routines.
+* winTenObjs/_UIAHandlerEx.py: additional UIA routines for ones NVDA does not support natively (mostly for old NVDA releases).
 * winTenObjs/w10config.py: configuration and updates. As of June 2017, the only thing configurable from Windows 10 App Essentials settings dialog is update facility, which includes whether update check should be performed automatically, update check interval and channel.
 
 The main global plugin file is laid out thus:
@@ -107,7 +110,7 @@ The main global plugin file is laid out thus:
 When the add-on loads, it performs four things:
 
 1. Enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
-2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support yet.
+2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support prior to 2018.2.
 3. Adds user interface elements for this add-on, specifically add-on settings.
 4. Checks for add-on updates if told to do so.
 
@@ -122,7 +125,7 @@ In some edit fields such as search box in Start menu, a list of suggestions will
 Because I felt it would be best to let users be notified when suggestions appear and disappear (and in some respects, follow Narrator's footsteps), I have implemented code to handle search suggestions. This is divided into four components:
 
 * One or more classes used to identify edit fields that does raise UIA controller for event and ways to identify them. The reason for using several classes for the same object is due to compatibility reasons, as older NVDA releases does not come with a search field class. These classes include two events related to controller for event:
-	* `event_suggestionsOpened`: called when suggestions appear.
+	* `event_suggestionsOpened`: called when suggestions appear. Some controls, notably embedded Cortana search box when opening a new Sets tab, does not fire this event properly.
 	* `event_suggestionsClosed`: called when suggestions disappear. There are controls that does not raise this, including Edge's address omnibar.
 * A class representing the suggestion items themselves.
 * A set of sounds to indicate appearance/disappearance of suggestions.
@@ -139,9 +142,9 @@ Since NVDA 2017.3, suggestion announcement (not the count) is part of the screen
 
 #### Announcing notifications
 
-Windows 10 Fall Creators Update introduces a new event to let apps send text to be announced by UIA clients such as NVDA. One of the jobs of Windows 10 Objects is to catch this and announce notifications.
+Windows 10 Version 1709 (Fall Creators Update) introduces a new event to let apps send text to be announced by UIA clients such as NVDA. One of the jobs of Windows 10 Objects is to catch this and announce notifications for NVDA releases which does not support this natively.
 
-Because NVDA does not support the new notification event natively, a trick is included with the add-on to allow NVDA to detect and handle notifications. This is done by extending UIA support subsystem through an internal module that takes over the NVDA's own routines. Among other things, this extended subsystem includes definitions for UIA notification event handler, and this subsystem takes over if NVDA 2018.1 or later is running on Windows 10 Fall Creators Update.
+Because old NVDA releases do not support the new notification event natively, a trick is included with the add-on to allow NVDA to detect and handle notifications. This is done by extending UIA support subsystem through an internal module that takes over the NVDA's own routines. Among other things, this extended subsystem includes definitions for UIA notification event handler, and this subsystem takes over if NVDA 2018.1.x is running on Windows 10 Version 1709 and later.
 
 The notification event handler takes five keyword arguments:
 
@@ -151,7 +154,7 @@ The notification event handler takes five keyword arguments:
 * Display string: notification text.
 * Activity ID: the unique identifier for the notification.
 
-As of March 2018, NVDA announces notifications for all apps except one or two apps where this would cause issues.
+As of May 2018, NVDA announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues.
 
 #### Tracking UIA events for controls
 
@@ -165,7 +168,7 @@ The Windows 10 Objects global plugin also has ability to track UIA events for co
 * For controller for event, the list of objects the given control depends on.
 * For tooltip open event, the GUI framework that powers the element.
 
-In case of notification events, NVDA records event parameters from the event handler method itself.
+For notification events, NVDA records event parameters from the event handler method itself.
 
 #### Looping selectors
 
@@ -193,12 +196,13 @@ The modules and enhancers/fixers applied are:
 
 * Calculator: selectively announce calculator display.
 * Calendar: suppress read-only state announcement in various controls.
-* Cortana/Start menu: suppress double announcement of suggestion result item in some cases, staying silent when user is dictating to Cortana.
+* Cortana/Start menu/Cortana search box for new Sets tab screen: suppress double announcement of suggestion result item in some cases, staying silent when user is dictating to Cortana, handling bad UIA implementations.
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
 * Microsoft Edge: announce correct alert text, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
 * Modern keyboard: support for emoji panel and hardware input suggestions.
 * MSN Weather: use up or down arrow keys to read forecast information.
+* Sets: announcing currently active tab and its position when switching between app tabs.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
 * Shell Experience Host: work around some UIA state information mismatch.
 * Skype (modern): commands to move to various Skype controls, commands to read recent messages, suppress extraneous text from new messages.
@@ -213,33 +217,49 @@ The following app modules add functionality unique to NVDA and/or commands that 
 * MSN Weather (microsoft_msn_weather.py): this app module, contributed by Derek Riemer, allows users to use up and down arrow keys to read forecast information, achieved by calling corresponding review cursor movement commands to move by line.
 * Skype (skype_app.py): this app module responds to name change events, useful for announcing new messages, as well as defining routines for Control+NVDA+number row to announce recent messages. How NVDA filters texts from messages is discussed below in UIA workarounds section.
 
-### A note on modern keyboard
+#### A note about modern keyboard
 
-Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel and hardware input suggestions. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
+Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
 
 In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field.
 
-When this panel opens, a menu open event is fired by the emoji panel, an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, only recent SAPI5 and OneCore (aka SAPI Mobile) voices ships with definitions of emoji characters.
+In build 17666 and later, this panel has been redesigned. Instead of using Tab key to move between categories, one would press Tab to move between emoji grid and categories. In case of People category, pressing Tab will let you move to skin tones list where you can use arrow keys to select a skin tone, then press Tab to move to emoji grid.
+
+When this panel opens, a menu open event is fired by the emoji panel, an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters.
 
 Similar to emoji panel, in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item.
+
+The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows=V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item.
 
 ### What to announce, what not to announce
 
 It is sometimes helpful to let users know what's going on by announcing various status information, while at other times it is equally important to not announce extraneous messages. The former was the case for majority of app modules below in the past, but since mid-2017, reverse is happening more frequently.
 
-The app modules in question are:
+The app modules (and for one in particular, more than an app module) in question are:
 
 * Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared.
-* Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in recent add-on releases.
+* Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
-* Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
+* Sets interface (tabexperiencehost.py) on Redstone 5: when switching between app tabs, NVDA will announce name and position of the new tab.
+* Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
+
+#### Sets
+
+Many Windows Insiders running build 17627 and later are testing Sets, a way to group related activities together. This is done by allowing apps to display their interface elements inside Microsoft Edge tabs, so that when one tab is restored (app is run), related activities will resume alongside it. For this reason, I tend to call this "app tabs", and the name of this feature may change in the future.
+
+The commands used to work with Sets is similar to tabbed browsing commands in web browsers, except one would add the Windows key. For example, in web browsers, one can press Control+T to open a new tab, and with Sets turned on, while using one app, one can press Control+Windows+T to open a new Sets tab. Switching between app tabs can be done by pressing Control+Windows+Tab or Control+Windows+Shift+Tab, and to close an app tab (and close the app in question), press Control+Windows+W. If one knows the app tab positions, one can switch to apps quickly by pressing Control+Windows+number row keys.
+
+NVDA already supports Sets simply because it supports Microsoft Edge. However, due to ongoing developments, some workarounds and enhancements are included in the add-on. These include:
+
+* Searching for things: when searching for things from new Sets tab, wrong controller for event is fired. This resulted in search results and context menus not being announced, but luckily, search results fire element selected event when moving between items. As a result, NvDA will be able to announce results.
+* Announcing tabs: when switching between tabs, NVDA will announce name and position of the new tab. This is in response to an element selected event coming from tab entries themselves.
 
 ### Hunting for UIA implementation issues
 
 As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules include workarounds for various UIA problems:
 
-* Calendar (hxcalendarappimm.py) and Mail (hxmail.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
-* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None).
+* Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
+* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (Redstone 5), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
 * Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed event has the name of "alert", with the actual text as the last child, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects.

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-04-16 15:48+Hora de verano romance\n"
+"POT-Creation-Date: 2018-05-18 21:29+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid "To download this add-on, visit https://addons.nvda-project.org/addons/gol
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:10
-msgid "Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor add-on is copyright 2015-2017 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation."
+msgid "Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor add-on is copyright 2015-2018 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:11
@@ -64,11 +64,11 @@ msgid "\tif something == False: #code"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:15
-msgid "Eventually some serious issues were resolved, and after working closely with the original add-on developer, Golden Cursor was submitted to the add-ons website for community testing, wihch resulted in positive feedback. Thus in January 2016, Golden Cursor became na official NVDA add-on."
+msgid "Eventually some serious issues were resolved, and after working closely with the original add-on developer, Golden Cursor was submitted to the add-ons website for community testing, wihch resulted in positive feedback. Thus in January 2016, Golden Cursor became an official NVDA add-on."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:16
-msgid "In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releaes, as well as ongoing modernization work."
+msgid "In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done in early 2018."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:17
@@ -76,7 +76,7 @@ msgid "## Add-on mechanics"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:18
-msgid "Simply put, the add-on serves as a \"keyboard wheel\" for a computer mouse. This is made more intuitive by the fact that Control+Windows+arrow keys were assigned to move the mouse. In addition, hotspot functionality is available where a mouse coordinate (xy) is tagged with a label and jumped to, as well as giving users ability to move to a specific mouse coordinate location. The coordinate tag is then stored in a file that looks like a typical ini file, allowing easy sharing between systems."
+msgid "Simply put, the add-on serves as a \"keyboard wheel\" for a computer mouse. This is made more intuitive by the fact that Windows+NvDA+arrow keys (or just arrow keys with mouse arrows layer turned on) were assigned to move the mouse. In addition, hotspot functionality is available where a mouse coordinate (xy) is tagged with a label and jumped to, as well as giving users ability to move to a specific mouse coordinate location. The coordinate tag is then stored in a file that looks like a typical ini file, allowing easy sharing between systems."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:19
@@ -140,7 +140,7 @@ msgid "When we apply this to mouse movement, the X coordinate increases when the
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:34
-msgid "* Mouse moving right: new X = currnet X + movmenet unit"
+msgid "* Mouse moving right: new X = currnet X + movement unit"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:35
