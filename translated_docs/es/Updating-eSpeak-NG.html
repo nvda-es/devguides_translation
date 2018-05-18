@@ -8,9 +8,11 @@
   <header><h1>### Introducción</h1></header>
   <p>La autoridad principal en requisitos de construcción debería ser <code>&lt;raíz del repo de nvda&gt;/include/espeak/Makefile.am</code>. Los archivos <code>*.vcxproj</code>
 en <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/</code> pueden tenerse también en cuenta. Sin embargo, no siempre se mantienen actualizados.</p>
-<p>NVAccess no usa los archivos de automake o los archivos de Visual Studio, ellos mantienen su propio método para construir Espeak. Las modificaciones tendrán que hacerse en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak</code>
-<em> <code>sconscript</code> para el proceso de construcción.
-</em> <code>config.h</code> para establecer la versión de eSpeak-NG que NVDA muestra en el archivo de registro.</p>
+<p>NVAccess no usa los archivos de automake o los archivos de Visual Studio, ellos mantienen su propio método para construir Espeak. Las modificaciones tendrán que hacerse en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak</code></p>
+<ul>
+<li><code>sconscript</code> para el proceso de construcción.</li>
+<li><code>config.h</code> para establecer la versión de eSpeak-NG que NVDA muestra en el archivo de registro.</li>
+</ul>
 <h3 id="como-hacer-la-actualizacion">Cómo hacer la actualización</h3>
 <ol>
 <li>Comienza desde una rama limpia de NVDA <code>master</code><ol>
@@ -31,7 +33,7 @@ en <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/</code> puede
 </li>
 <li>Actualiza el registro de versión de NVAccess y construye.<ol>
 <li>Vuelve de nuevo a la raíz del repositorio de NVDA</li>
-<li>Actualiza la versión del paquete en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak/config.h</code>. Puedes usar <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/config.h</code> para comprobar dos veces que es la versión que esperas.</li>
+<li>Actualiza la versión del paquete en <code>&lt;raíz del repo de nvda&gt;/nvdaHelper/espeak/config.h</code>. Puedes usar <code>&lt;raíz del repo de nvda&gt;/include/espeak/src/windows/config.h</code> para comprobar doblemente que es la versión que esperas.</li>
 <li>Construye NVDA</li>
 </ol>
 </li>

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-17 16:30+Hora de verano romance\n"
-"PO-Revision-Date: 2018-05-17 16:34+0200\n"
+"POT-Creation-Date: 2018-04-16 15:48+Hora de verano romance\n"
+"PO-Revision-Date: 2018-04-16 15:49+0200\n"
 "Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:3
@@ -67,80 +67,79 @@ msgid "1. Start from a clean branch off of NVDA `master`"
 msgstr "1. Comienza desde una rama limpia de NVDA `master`"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:11
-msgid ""
-"   1. Check out the latest NVDA `origin/master` and create a new branch."
+msgid "\t1. Check out the latest NVDA `origin/master` and create a new branch."
 msgstr ""
 "\t1. Haz checkout a la rama `origin/master` más reciente y crea una nueva "
 "rama."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:12
-msgid "   1. Do a git clean to ensure the working directory is clean."
+msgid "\t2. Do a git clean to ensure the working directory is clean."
 msgstr ""
 "\t2. Ejecuta git clean para asegurarte de que el directorio de trabajo está "
 "limpio."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:13
-msgid "1. Ensure submodules are up to date"
+msgid "2. Ensure submodules are up to date"
 msgstr "2. Asegúrate de que los submódulos están actualizados"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:14
-msgid "   1. Synchronize submodules with `git submodule sync`"
+msgid "\t1. Synchronize submodules with `git submodule sync`"
 msgstr "\t1. Sincroniza los submódulos con `git submodule sync`"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:15
-msgid "   1. Update submodules with `git submodule update --init --recursive`"
+msgid "\t2. Update submodules with `git submodule update --init --recursive`"
 msgstr ""
 "\t2. Actualiza los submódulos con `git submodule update --init --recursive`"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:16
-msgid "1. Checkout the new eSpeak-ng revision to try."
+msgid "3. Checkout the new eSpeak-ng revision to try."
 msgstr "3. Haz checkout en la nueva revisión de eSpeak-NG a probar."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:17
-msgid "   1. Change to the `include/espeak/` directory"
+msgid "\t1. Change to the `include/espeak/` directory"
 msgstr "\t1. Navega al directorio `include/espeak/`"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:18
-msgid "   1. Do `git fetch` to get the latest from the espeak-ng repo"
+msgid "\t2. Do `git fetch` to get the latest from the espeak-ng repo"
 msgstr ""
 "\t2. Haz `git fetch` para obtener lo último del repositorio de espeak-ng"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:19
 msgid ""
-"   1. Do `git checkout origin/master` or whichever espeak-ng ref you wish."
+"\t3. Do `git checkout origin/master` or whichever espeak-ng ref you wish."
 msgstr ""
 "\t3. Haz `git checkout origin/master` o cualquier otra referencia de espeak-"
 "ng  en la que estés interesado."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:20
-msgid "1. Update our record of the version number and build."
+msgid "4. Update our record of the version number and build."
 msgstr "4. Actualiza el registro de versión de NVAccess y construye."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:21
-msgid "   1. Change back to the NVDA repo root"
+msgid "\t1. Change back to the NVDA repo root"
 msgstr "\t1. Vuelve de nuevo a la raíz del repositorio de NVDA"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:22
 msgid ""
-"   1. Update the package version in `<nvda repo root>/nvdaHelper/espeak/"
+"\t2. Update the package version in `<nvda repo root>/nvdaHelper/espeak/"
 "config.h` you can use `<nvda repo root>/include/espeak/src/windows/config.h` "
 "to double check this is what you expect."
 msgstr ""
 "\t2. Actualiza la versión del paquete en `<raíz del repo de nvda>/nvdaHelper/"
 "espeak/config.h`. Puedes usar `<raíz del repo de nvda>/include/espeak/src/"
-"windows/config.h` para comprobar dos veces que es la versión que esperas."
+"windows/config.h` para comprobar doblemente que es la versión que esperas."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:23
-msgid "   1. Do a build of NVDA"
+msgid "\t3. Do a build of NVDA"
 msgstr "\t3. Construye NVDA"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:24
-msgid "1. Run NVDA (set eSpeak-ng as the synthesizer) and test."
+msgid "5. Run NVDA (set eSpeak-ng as the synthesizer) and test."
 msgstr "5. Ejecuta NVDA (establece eSpeak-ng como sintetizador) y prueba."
 
 #: ..\python_docs\Updating-eSpeak-NG.py:25
 msgid ""
-"1. Ensure that the log file contains the new version number for eSpeak-NG"
+"6. Ensure that the log file contains the new version number for eSpeak-NG"
 msgstr ""
 "6. Asegúrate de que el archivo de registro contiene el nuevo número de "
 "versión para eSpeak-NG"
