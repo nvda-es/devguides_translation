@@ -5,16 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-18 20:43+Hora de verano romance\n"
-"PO-Revision-Date: 2018-05-18 20:45+0100\n"
-"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"POT-Creation-Date: 2018-02-11 16:45+Hora estándar romance\n"
+"PO-Revision-Date: 2018-02-17 11:20+0100\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\gcaddoninternals.py:3
@@ -108,10 +108,9 @@ msgstr ""
 "github.com/josephsl/goldenCursor."
 
 #: ..\python_docs\gcaddoninternals.py:10
-#, fuzzy
 msgid ""
 "Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden "
-"Cursor add-on is copyright 2015-2018 Salah Atair, Wafeeq Taher, Joseph Lee "
+"Cursor add-on is copyright 2015-2017 Salah Atair, Wafeeq Taher, Joseph Lee "
 "and contributors. Microsoft Windows, Windows API and related technologies "
 "are copyright Microsoft Corporation."
 msgstr ""
@@ -155,12 +154,11 @@ msgid "\tif something == False: #code"
 msgstr "\tif algo == False: #código"
 
 #: ..\python_docs\gcaddoninternals.py:15
-#, fuzzy
 msgid ""
 "Eventually some serious issues were resolved, and after working closely with "
 "the original add-on developer, Golden Cursor was submitted to the add-ons "
 "website for community testing, wihch resulted in positive feedback. Thus in "
-"January 2016, Golden Cursor became an official NVDA add-on."
+"January 2016, Golden Cursor became na official NVDA add-on."
 msgstr ""
 "Eventualmente se resolvieron varias incidencias serias, y después de "
 "trabajar mano a mano con el desarrollador del complemento, se envió Golden "
@@ -169,14 +167,13 @@ msgstr ""
 "Golden Cursor se convirtió en un complemento oficial."
 
 #: ..\python_docs\gcaddoninternals.py:16
-#, fuzzy
 msgid ""
 "In 2017, I (Joseph Lee) announced an initiative to modernize community add-"
 "ons by making them work well under Python 3, and naturally Golden Cursor was "
 "one of those add-ons that needed modernization. The problem was that the "
 "community lost contact with the original developers of this add-on, thus I "
 "volunteered to modernize this add-on. Thus the below notes are based on old "
-"add-on releases, as well as results of modernization work done in early 2018."
+"add-on releaes, as well as ongoing modernization work."
 msgstr ""
 "En 2017, yo (Joseph Lee) anuncié una iniciativa para modernizar los "
 "complementos de la comunidad haciéndolos compatibles con Python 3, y "
@@ -192,14 +189,12 @@ msgid "## Add-on mechanics"
 msgstr "## Mecanismos del complemento"
 
 #: ..\python_docs\gcaddoninternals.py:18
-#, fuzzy
 msgid ""
 "Simply put, the add-on serves as a \"keyboard wheel\" for a computer mouse. "
-"This is made more intuitive by the fact that Windows+NvDA+arrow keys (or "
-"just arrow keys with mouse arrows layer turned on) were assigned to move the "
-"mouse. In addition, hotspot functionality is available where a mouse "
-"coordinate (xy) is tagged with a label and jumped to, as well as giving "
-"users ability to move to a specific mouse coordinate location. The "
+"This is made more intuitive by the fact that Control+Windows+arrow keys were "
+"assigned to move the mouse. In addition, hotspot functionality is available "
+"where a mouse coordinate (xy) is tagged with a label and jumped to, as well "
+"as giving users ability to move to a specific mouse coordinate location. The "
 "coordinate tag is then stored in a file that looks like a typical ini file, "
 "allowing easy sharing between systems."
 msgstr ""
@@ -381,8 +376,7 @@ msgstr ""
 "movimiento del ratón son:"
 
 #: ..\python_docs\gcaddoninternals.py:34
-#, fuzzy
-msgid "* Mouse moving right: new X = currnet X + movement unit"
+msgid "* Mouse moving right: new X = currnet X + movmenet unit"
 msgstr ""
 "* Se mueve el ratón a la derecha: nueva x = x actual + unidad de movimiento"
 
