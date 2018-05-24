@@ -23,7 +23,7 @@ examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_mo
 3. A stable release (such as 1.0, 2.0, 2.1, etc.) should be posted as a stable add-on, provided that there are no critical bugs reported within the past two weeks after the last commit. An add-on (or a version of an add-on) under active development and for which regular commits are made should be listed as a development add-on for testing by users.
 4. Stable releases should be made no closer than 2 weeks apart, to allow translators to do their work, unless fixing a chritical/showstopper bug.
 5. Announce the availibility of the new version on various NVDA mailing lists (e.g. NVDA add-ons list).
-6. If possible, add-on authors should release the add-on and responsible for pulling in translations via translations workflow.
+6. If possible, add-on authors should release the add-on and responsible for pulling in translations via translations workflow. For more information, see the [Make add-ons translatable](https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/MakeAddonsTranslatable)) article.
 
 ## Coding Style ##
 
@@ -33,12 +33,12 @@ examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_mo
 "%(name)s .. %(name2)s" should be rewritten to _("{name1} .. {name2}").format(name1=v1, name2=v2)
 4. Translatable messages should have a translator comment to explain where/when the message is presented, so that the translator can test the  message easily when s/he installs the addon. If the translatable string is similar to main NvDA messages, indicate this as well.
 5. If your addon needs to store any configuration:
-    # dont use:
+    - dont use:
     config_file = os.path.join(config.getUserDefaultConfigPath(),"addonName.ini")
-    # do use:
+    - do use:
     config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")
 6. Unless there is a good reason for it, it is recommended to use config.conf so add-on settings (particularly for global plugins) can be made available to configuration profiles.
-	7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily.
+7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily.
 
 ## Documentation and key bindings ##
 
