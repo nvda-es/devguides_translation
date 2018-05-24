@@ -5,16 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-02-10 11:53+Hora estándar romance\n"
-"PO-Revision-Date: 2018-02-10 12:04+0100\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"POT-Creation-Date: 2018-05-24 21:28+Hora de verano romance\n"
+"PO-Revision-Date: 2018-05-24 22:54+0100\n"
+"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.6.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\guideLines.py:3
@@ -180,10 +180,16 @@ msgstr ""
 #: ..\python_docs\guideLines.py:21
 msgid ""
 "6. If possible, add-on authors should release the add-on and responsible for "
-"pulling in translations via translations workflow."
+"pulling in translations via translations workflow. For more information, see "
+"the [Make add-ons translatable](https://github.com/nvdaaddons/nvdaaddons."
+"github.io/wiki/MakeAddonsTranslatable)) article."
 msgstr ""
 "6. Si es posible, los creadores de complementos deberían utilizar el flujo "
-"de trabajo oficial de NVDA para gestionar sus traducciones."
+"de trabajo oficial de NVDA para gestionar sus traducciones. Para más "
+"información, consulta el artículo [hacer un complemento traducible mediante "
+"el sistema de traducciones de la comunidad](https://nvda.es/documentacion/"
+"desarrollo/desarrollo-de-complementos/hacer-un-complemento-traducible-"
+"mediante-el-sistema-de-traducciones-de-la-comunidad)."
 
 #: ..\python_docs\guideLines.py:22
 msgid "## Coding Style ##"
@@ -238,8 +244,8 @@ msgstr ""
 "5. Si tu complemento necesita guardar cualquier ajuste de configuración:"
 
 #: ..\python_docs\guideLines.py:29
-msgid "    # dont use:"
-msgstr "    \\# no uses:"
+msgid "    - dont use:"
+msgstr "    - no uses:"
 
 #: ..\python_docs\guideLines.py:30
 msgid ""
@@ -250,8 +256,8 @@ msgstr ""
 "ini\")"
 
 #: ..\python_docs\guideLines.py:31
-msgid "    # do use:"
-msgstr "    \\# usa en su lugar:"
+msgid "    - do use:"
+msgstr "    - usa en su lugar:"
 
 #: ..\python_docs\guideLines.py:32
 msgid ""
@@ -273,11 +279,11 @@ msgstr ""
 
 #: ..\python_docs\guideLines.py:34
 msgid ""
-"\t7. When working on a new or modifying a major feature, create/use branches "
+"7. When working on a new or modifying a major feature, create/use branches "
 "other than master branch, as it helps merging and code review (via pull "
 "request) process and to find bugs easily."
 msgstr ""
-"\t7. Cuando trabajes en una nueva característica importante o modifiques una "
+"7. Cuando trabajes en una nueva característica importante o modifiques una "
 "existente, crea o utiliza ramas distintas a la rama master, ya que ayudan en "
 "el proceso de mezcla y revisión de código (a través de solicitudes de "
 "cambio) y a encontrar fallos fácilmente."
