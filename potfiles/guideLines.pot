@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-06-06 12:41+Hora de verano romance\n"
+"POT-Creation-Date: 2018-06-06 13:26+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgid "5. Announce the availibility of the new version on various NVDA mailing l
 msgstr ""
 
 #: ..\python_docs\guideLines.py:21
-msgid "6. If possible, add-on authors should release the add-on and responsible for pulling in translations via translations workflow."
+msgid "6. If possible, add-on authors should release the add-on and responsible for pulling in translations via translations workflow. For more information, see the [Make add-ons translatable](https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/MakeAddonsTranslatable)) article."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:22
@@ -120,7 +120,7 @@ msgid "5. If your addon needs to store any configuration:"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:29
-msgid "    # dont use:"
+msgid "    - dont use:"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:30
@@ -128,7 +128,7 @@ msgid "    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonN
 msgstr ""
 
 #: ..\python_docs\guideLines.py:31
-msgid "    # do use:"
+msgid "    - do use:"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:32
@@ -140,7 +140,7 @@ msgid "6. Unless there is a good reason for it, it is recommended to use config.
 msgstr ""
 
 #: ..\python_docs\guideLines.py:34
-msgid "\t7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily."
+msgid "7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:35

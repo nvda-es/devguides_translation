@@ -11,7 +11,7 @@
 <ol>
 <li>Usa la plantilla de complemento que se encuentra en https://github.com/nvdaaddons/addonTemplate</li>
 <li>El nombre del complemento no debería contener palabras tales como "nvda", "plugin", "appmodule", "globalPlugin" en su composición, el usuario no debería tener que preocuparse de detalles de la implementación.</li>
-<li>El nombre del complemento debería tener la forma "nombre", o "primeroSegundo", o "primero_segundo" 
+<li>El nombre del complemento debería tener la forma "nombre", o "primeroSegundo", o "primero_segundo"
 ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_monitor". El sistema automatizado no soporta guiones en el nombre.</li>
 </ol>
 <h2 id="versionado">Versionado</h2>
@@ -28,20 +28,22 @@ ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_mon
 <li>Una versión estable (tales como 1.0, 2.0, 2.1, etc.) debería publicarse como tal sólo si no se ha informado de fallos graves en las últimas dos semanas después del commit más reciente. Un complemento (o la versión de un complemento) bajo desarrollo activo y para el que se hacen commits regularmente debería listarse como un complemento en desarrollo para que los usuarios hagan pruebas.</li>
 <li>Las versiones estables no deben hacerse con menos de dos semanas de diferencia, para que los traductores puedan trabajar en ellas, a menos que se solucione un fallo crítico y de altísima prioridad.</li>
 <li>Informa de la disponibilidad de esta nueva versión en distintas listas de correo de NVDA, como la lista de complementos.</li>
-<li>Si es posible, los creadores de complementos deberían utilizar el flujo de trabajo oficial de NVDA para gestionar sus traducciones.</li>
+<li>Si es posible, los creadores de complementos deberían utilizar el flujo de trabajo oficial de NVDA para gestionar sus traducciones. Para más información, consulta el artículo <a href="https://nvda.es/documentacion/desarrollo/desarrollo-de-complementos/hacer-un-complemento-traducible-mediante-el-sistema-de-traducciones-de-la-comunidad">hacer un complemento traducible mediante el sistema de traducciones de la comunidad</a>.</li>
 </ol>
 <h2 id="estilo-del-codigo">Estilo del código</h2>
 <ol>
 <li>Haz el indentado o bien con cuatro espacios, o con un tabulador. La segunda opción es la más recomendada.</li>
 <li>Todos los mensajes presentados al usuario deberían ser traducibles (salvo excepciones), si somos los creadores del mensaje.</li>
 <li>Los mensajes que contengan varios comodines '%s' o '%d' o siguen el formato
- "%(name)s .. %(name2)s" deberían reescribirse como _("{name1} .. {name2}").format(name1=v1, name2=v2)</li>
+"%(name)s .. %(name2)s" deberían reescribirse como _("{name1} .. {name2}").format(name1=v1, name2=v2)</li>
 <li>Los mensajes traducibles deberían tener un comentario para traductores para explicar dónde o cuándo se presentarán al usuario, para que los traductores puedan probar el resultado de su traducción fácilmente al instalar el complemento. Si la cadena traducible es similar a alguna contenida en los mensajes principales de NVDA, indícalo también.</li>
-<li>Si tu complemento necesita guardar cualquier ajuste de configuración:
-    # no uses:
-    config_file = os.path.join(config.getUserDefaultConfigPath(),"addonName.ini")
-    # usa en su lugar:
-    config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")</li>
+<li>Si tu complemento necesita guardar cualquier ajuste de configuración:<ul>
+<li>no uses:
+config_file = os.path.join(config.getUserDefaultConfigPath(),"addonName.ini")</li>
+<li>usa en su lugar:
+config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")</li>
+</ul>
+</li>
 <li>A menos que haya una buena razón para lo contrario, se recomienda usar config.conf para que los ajustes del complemento (especialmente si lleva extensiones globales) estén disponibles al usar perfiles de configuración.</li>
 <li>Cuando trabajes en una nueva característica importante o modifiques una existente, crea o utiliza ramas distintas a la rama master, ya que ayudan en el proceso de mezcla y revisión de código (a través de solicitudes de cambio) y a encontrar fallos fácilmente.</li>
 </ol>
