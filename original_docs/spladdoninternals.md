@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Studio Add-on for NvDA 18.02
+Based on StationPlaylist Studio Add-on for NvDA 18.06
 
 ## Introduction
 
@@ -37,6 +37,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 17.04 (formerly 9.0: vertical column navigation, playlist snapshots, support for Studio 5.20.
 * 17.08 (10.0: listener request notification, column header announcement suppression. This is the last major version, with subsequent versions using continuous delivery.
 * 17.12: end of support for old Windows releases, add-on settings reorganization, extension points.
+* 18.06: responding to recent NVDA features, playlist transcripts, wxPython 4 support, partial playlist snapshots.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -959,7 +960,7 @@ What if settings had errors? As part of the startup routine (portions of main fu
 
 ### All about Studio add-on Configuration Manager
 
-Until recently, Studio app module handled all add-on configuration routines. With the advent of add-on 5.0 which introduced add-on settings dialog, configuration management routines were split into a dedicated Configuration Manager (splstudio.splconfig). The new module takes care of configuration routines, including validating the user configuration, presenting add-on settings dialog and other dialogs inside it, handling broadcast profiles and more. In add-on 7.0, routines pertaining to configuration dialog were split into splconfui module. We'll cover each routine in this article.
+Until recently, Studio app module handled all add-on configuration routines. With the advent of add-on 5.0 which introduced add-on settings dialog, configuration management routines were split into a dedicated Configuration Manager (splstudio.splconfig). The new module takes care of configuration routines, including validating the user configuration, presenting add-on settings dialog and other dialogs inside it, handling broadcast profiles and more. In add-on 7.0, routines pertaining to configuration dialog were split into splconfui module, with the main add-on settings listed under NVDA preferences menu.
 
 ### How settings are loaded, used and saved
 
@@ -973,25 +974,35 @@ After you are done using Studio, close Studio so settings can be saved to disk. 
 
 Studio app module allows you to configure various settings in two ways: via a shortcut key (discussed in an article on configuring basic settings) or via the settings dialog. When you use a shortcut key to change settings, NVDA will look up the value for the setting, change it, announce the new setting and store the newly changed value in the settings map.
 
-Alternatively, you can configure settings via the add-on settings dialog (Control+NVDA+0). As it is a settings dialog (powered by gui.SettingsDialog), it will look just like any NVDA preferences dialog. For some advanced options, this dialog is the only gateway to access them (covered below).
+Alternatively, you can configure settings via the add-on settings dialog (Alt+NVDA+0). As it is a settings dialog (powered by gui.SettingsDialog), it will look just like any NVDA preferences dialog. For some advanced options, this dialog is the only gateway to access them (covered below).
 
 The add-on settings dialog (splconfui.SPLConfigDialog) contains following options:
 
 * Broadcast profile controls (add-on 6.0 and later): inspired by NVDA screen reader's configuration profiles dialog, this group of controls shows a list of profiles loaded and buttons to create a brand new profile or a copy of an existing profile, rename and delete profiles. It also contains a button (really a toggle button) that tells NVDA to switch to the selected profile upon request (more on this in a second).
-* Global settings: these are settings not affected by profiles. These include status announcements, announcing listener count, toggling Track Dial, library scan options and so on.
+* Global settings: these are settings not affected by profiles. These include status announcements, announcing listener count, library scan options and so on.
 * Profile-specific settings: Currently alarms, metadata streaming and column announcement settings are profile-specific. These are end of track alarm and the option to use this alarm, song ramp (intro) time and the setting to use this alarm, microphone alarm and microphone alarm interval. It also includes URL's for metadata streaming and column announcement order and inclusion. For numeric settings such as alarm value, it is a spin control (wx.SpinCtrl; use up or down arrow keys to change them).
 * Reset settings: NVDA will ask if you wish to reset settings in the currently active profile back to factory defaults. This is done by using a function in splconfig module (splconfig.resetConfig) that will set current profile values to defaults (a default configuration map is included for this purpose; this map uses a configuration specification (confspec, part of defining validation routine via validator module (a close friend of ConfigObj), and this confspec is defined in the splconfig module).
 
-When you press Control+NVDA+0 from Studio to open this dialog, the following will happen:
+When you press Alt+NVDA+0 from Studio to open this dialog, the following will happen:
 
-1. Just like alarm dialogs (see previous articles), NVDA will make sure no other dialogs are opened.
+1. Just like alarm dialogs (see above), NVDA will make sure no other dialogs are open.
 2. It'll then call a function in splconfui module, which in turn will prepare the dialog to be shown.
 3. The preparation routine (SettingsDialog.makeSettings) will populate the dialog with controls and options associated with each control, with current options coming from configuration values stored in the active profile.
-4. Once the dialog is ready, it'll pop up and you'll land on the status message checkbox or list of active profiles depending on the add-on version (former is 5.x, latter is 6.0). You can then use typical dialog navigation commands to navigate through various options.
+4. Once the dialog is ready, it'll pop up and you'll land on "General add-on settings" button (formerly status message checkbox) or list of active profiles depending on the add-on version and add-on command-line switches (former is 5.x or restrictions on loading profiles is in place, latter is 6.0 and no restrictions). You can then use typical dialog navigation commands to navigate through various options.
 
-After configuring some settings, click OK. NVDA will then locate the selected profile and tell SPLConfig to use this profile, then store options from the settings dialog into the configuration map.
+After configuring some settings, click OK or Apply. NVDA will then locate the selected profile and tell SPLConfig to use this profile, then store options from the settings dialog into the configuration map. If Apply button is pressed and if the selected profile is not the active one, NVDA will present a message reminding users that settings will be saved to the profile selected from settings dialog, not the active one at the moment. After that, changes will be saved and add-on settings will reappear.
 
 In case you discard new settings (clicking Cancel), NVDA will check to see if an instant switch profile is defined, and if so, it'll perform various operations depending on whether the instant profile has been renamed or deleted.
+
+#### Multi-category settings
+
+The description above refers to the current add-on settings interface, which was based on old NVDA settings routines. In the past, there were discussions between add-on users regarding changing the current add-on interface to that of a multi-category settings interface so all add-on settings can be found under one roof.
+
+In the old days, if one wanted to change settings in NVDA, one would open NVDA's preferences menu and hunt for correct dialog. For instance, when changing browse mode related settings, the place to go was NVDA menu/Preferences/Browse Mode. This meant settings were scattered throughout different dialogs.
+
+In 2018, a major paradigm shift occurred in NVDA's own user interface: multi-category settings screen. In NVDA 2018.2, a new settings screen, combining various dialogs into a panel, launched. For many settings, one can now open NVDA Menu/Preferences/Settings, select the desired settings category, then change settings. This also had the benefit of moving many settings under one roof.
+
+As a follow-up to this development, Studio add-on settings is undergoing a major facelift. As noted throughout this article, add-on settings are housed under various dialogs, with the main add-on settings dialog serving as a gateway to these dialogs. In the fall of 2018, this will change into a multi-category settings screen, and this work is housed in splstudio.splconfui2, located in a discrete branch of the add-on source code. As this is under development, this article focused on old-style configuration interface.
 
 ### All about broadcast profiles
 
@@ -1055,7 +1066,7 @@ Now that we've covered the "kernel" (innermost parts) of the Studio add-on, it i
 
 ### Studio app module versus SPL Utilities global plugin
 
-As described in the add-on design article, SPL Studio add-on comes with two app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs. With the introduction of encoder support in add-on 3.0 (fall 2014), the global plugin portion of the add-on (SPL Utilities) took on an important role: working as an encoders manager to report connection status and to perform other routines.
+As described in the add-on design section, SPL Studio add-on comes with two app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs. With the introduction of encoder support in add-on 3.0 (fall 2014), the global plugin portion of the add-on (SPL Utilities) took on an important role: working as an encoders manager to report connection status and to perform other routines.
 
 ### SPL Utilities package contents
 
@@ -1110,7 +1121,7 @@ In 2017, this has been simplified to use SetForegroundWindow Windows API functio
 
 ### Conclusion
 
-The routines discussed above (SPL Controller and the command to switch to Studio window) is one of the two pillars of the SPL Studio Utilities global plugin (the other is encoder support). With these routines, it became possible to perform playback operations without focusing to studio, and you can switch to Studio window from anywhere, anytime. We'll visit the other side of this global plugin story in the next StationPlaylist Add-on Internals article, and after that, we'll conclude with an interview with the maintainer of the add-on to learn about how he (I) develop new add-on features.
+The routines discussed above (SPL Controller and the command to switch to Studio window) is one of the two pillars of the SPL Studio Utilities global plugin (the other is encoder support). With these routines, it became possible to perform playback operations without focusing to studio, and you can switch to Studio window from anywhere, anytime. This "other side" of the lgobal plugin is discussed below, and after that, we'll conclude with an interview with the maintainer of the add-on to learn about how he (I) develop new add-on features.
 
 
 ## Encoder support
@@ -1152,7 +1163,7 @@ All encoder classes provide the following common services:
 * Define and remove stream labels. This is done via stream labels dialog (F12) that'll make sure you entered a label (if not, the encoder position is removed from the encoder-specific stream labels dictionary).
 * Updates stream label position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
 * Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL allows one to hear encoder format and transfer rate/connection status.
-* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the four settings described above) has been added. Press Control+NVDA+0 to open this dialog.
+* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the four settings described above) has been added. Press Alt+NVDA+0 to open this dialog.
 
 ### Encoder ID's
 
@@ -1269,12 +1280,12 @@ A typical add-on version is supported until the next add-on version is released 
 
 A LTS version is a major version or a major periodic release of the SPL add-on with some notable differences:
 
-* Support duration: A LTS version is supported for at least a year.
+* Support duration: A LTS version is supported for at least twelve months.
 * Features: A LTS version may contain some features from future add-on releases provided that they can be safely backported.
 * Studio version supported: A LTS version is the last version to support the oldest supported Studio version. This is designed to give people plenty of time to upgrade to newer Studio releases.
 * Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria will first be applied to an LTS release scheduled for 2018 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1.
 
-As of December 2017, the most recent LTS version is add-on 15.x, formerly 7.x until October 2016 (October 2016 to December 2017). Previous LTS release (and so far the only unsupported LTS by far) was 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
+As of June 2018, the most recent LTS version is add-on 15.x, formerly 7.x until October 2016 (October 2016 to April 2018). Previous LTS release (and so far the only unsupported LTS by far) was 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
 
 1. Add-on 3.0 was released in September 2014.
 2. Add-on 3.5 (December 2014) could have been the last maintenance version for add-on 3.x if it was not a LTS version.
@@ -1282,7 +1293,7 @@ As of December 2017, the most recent LTS version is add-on 15.x, formerly 7.x un
 4. When add-on 5.0 beta was released (May 2015), add-on 3.x (3.9 was available then) entered end of support countdown (no more maintenance releases).
 5. A few weeks later, when add-on 5.0 came out (June 2015), add-on 3.x became unsupported.
 
-The next LTS release is scheduled for early 2019 not only because it will be the last version to support Studio 5.10 (not 5.11), and also to part ways with Windows releases prior to Windows 7 Service Pack 1 (due to announcement from NV Access that 2017.3 will be the last version to support old releases).
+The next LTS release is scheduled for late 2018 not only because it will be the last version to support Studio 5.10 (not 5.11), and also to part ways with Python 2, as NVDA developers are planning to switch to Python 3 in the near future, hence future stable releases after the next LTS will be based mostly on Python 3 code.
 
 ### Final thoughts
 
