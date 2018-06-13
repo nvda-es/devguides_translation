@@ -5,21 +5,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-03-14 15:28+Hora estándar romance\n"
-"PO-Revision-Date: 2018-03-16 19:51+0100\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"POT-Creation-Date: 2018-06-13 12:27+Hora de verano romance\n"
+"PO-Revision-Date: 2018-06-13 12:29+0200\n"
+"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\developer_guide.py:3
-msgid "# NVDA 2018.1 Developer Guide"
-msgstr "# Guía del desarrollador de NVDA 2018.1"
+msgid "# NVDA 2018.2 Developer Guide"
+msgstr "# Guía del desarrollador de NVDA 2018.2"
 
 #: ..\python_docs\developer_guide.py:4
 msgid "## Table of Contents"
@@ -2539,7 +2539,7 @@ msgstr ""
 "principio de cada módulo Python llamando a addonHandler.initTranslation"
 "\\(\\). Para más información sobre Gettext y la traducción de NVDA en "
 "general, lee la documentación para traductores que se encuentra en nuestra "
-"web. "
+"web."
 
 #: ..\python_docs\developer_guide.py:442
 msgid "### 4.6. Add-on Documentation"
