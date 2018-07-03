@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-07-03 16:24+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:3
+msgid "# Creating PR's on the NVDA project"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:4
+msgid "This page is meant to serve as an explanation for how to fill out [our Github pull request template](https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md)"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:5
+msgid "## The template"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:6
+msgid "At the start of the template there is a HTML comment block which points to this wiki page, it can be left in place and will not appear once the issue is saved. Feel free to delete it."
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:7
+msgid "### Link to issue number:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:8
+msgid "Please include the issue number here. This helps us to keep the information linked together. If this is a minor/trivial change an issue does not need to be created. If in doubt, please create one."
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:9
+msgid "### Summary of the issue:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:10
+msgid "A quick summary of the problem you are trying to solve."
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:11
+msgid "### Description of how this pull request fixes the issue:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:12
+msgid "Please include a quick discussion of how this change addresses the issue. Please also include any links or external information you may have used in order to address the issue. This helps others to have the same background as you and learn from this work."
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:13
+msgid "### Testing performed:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:14
+msgid "How have you tested to ensure that your change works as intended, across all supported operating systems, without introducing regressions? Please use this section as an opportunity to try to convince us (and yourself) that your proposed change should be merged. "
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:15
+msgid "### Known issues with pull request:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:16
+msgid "Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:17
+msgid "### Change log entry:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:18
+msgid "The section and description of this change to use for the changes file. The valid sections are:"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:19
+msgid " "
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:20
+msgid "* New features"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:21
+msgid "* Changes"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:22
+msgid "* Bug fixes"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:23
+msgid "For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t)"
+msgstr ""
+
