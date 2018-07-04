@@ -6,20 +6,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-07-03 16:24+Hora de verano romance\n"
-"PO-Revision-Date: 2018-07-03 16:26+0200\n"
+"PO-Revision-Date: 2018-07-04 22:42+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.0.8\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:3
 msgid "# Creating PR's on the NVDA project"
-msgstr ""
+msgstr "# Creación de solicitudes de cambio en el proyecto NVDA"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:4
 msgid ""
@@ -27,10 +27,14 @@ msgid ""
 "Github pull request template](https://github.com/nvaccess/nvda/blob/master/."
 "github/PULL_REQUEST_TEMPLATE.md)"
 msgstr ""
+"Esta página está creada con la intención de servir como explicación para "
+"rellenar [la plantilla de solicitud de cambios de NVDA en GitHub (en inglés)]"
+"(https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE."
+"md)"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:5
 msgid "## The template"
-msgstr ""
+msgstr "## La plantilla"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:6
 msgid ""
@@ -38,10 +42,13 @@ msgid ""
 "this wiki page, it can be left in place and will not appear once the issue "
 "is saved. Feel free to delete it."
 msgstr ""
+"Al principio de la plantilla hay un bloque de comentarios en HTML que apunta "
+"a la versión inglesa de esta página en la wiki, se puede dejar donde está y "
+"no aparecerá cuando se guarde la incidencia. Puedes eliminarlo sin problema."
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:7
 msgid "### Link to issue number:"
-msgstr ""
+msgstr "### Enlace al número de incidencia:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:8
 msgid ""
@@ -49,18 +56,23 @@ msgid ""
 "linked together. If this is a minor/trivial change an issue does not need to "
 "be created. If in doubt, please create one."
 msgstr ""
+"Por favor, incluye aquí el número de la incidencia. Esto ayuda a los "
+"desarrolladores a mantener la información relacionada entre sí junta. Si se "
+"trata de un cambio menor o trivial, no es necesario crear una incidencia. En "
+"caso de dudas, crea una."
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:9
 msgid "### Summary of the issue:"
-msgstr ""
+msgstr "### Resumen de la incidencia:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:10
 msgid "A quick summary of the problem you are trying to solve."
-msgstr ""
+msgstr "Un breve resumen del problema que intentas resolver."
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:11
 msgid "### Description of how this pull request fixes the issue:"
 msgstr ""
+"### Descripción de cómo resuelve la incidencia esta solicitud de cambios:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:12
 msgid ""
@@ -69,10 +81,14 @@ msgid ""
 "order to address the issue. This helps others to have the same background as "
 "you and learn from this work."
 msgstr ""
+"Incluye una breve exposición indicando cómo resuelve la incidencia este "
+"cambio. Incluye también cualquier enlace o información externa que hayas "
+"usado para solucionar el problema. Esto ayuda a que otros tengan la misma "
+"base que tú y aprendan de este trabajo."
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:13
 msgid "### Testing performed:"
-msgstr ""
+msgstr "### Pruebas realizadas:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:14
 msgid ""
@@ -81,45 +97,56 @@ msgid ""
 "this section as an opportunity to try to convince us (and yourself) that "
 "your proposed change should be merged. "
 msgstr ""
+"¿Cómo has hecho las pruebas para asegurarte de que tus cambios funcionan "
+"como quieres, a través de los distintos sistemas operativos soportados, sin "
+"introducir regresiones? Emplea esta sección como una oportunidad para "
+"intentar convencer a los desarrolladores (y a ti mismo) de que debería "
+"mezclarse tu cambio. "
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:15
 msgid "### Known issues with pull request:"
-msgstr ""
+msgstr "### Problemas conocidos con la solicitud de cambio:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:16
 msgid ""
 "Are there any known issues or downsides of this approach. For instance: "
 "_Will not work with python 3_"
 msgstr ""
+"¿Hay problemas o desventajas con este enfoque? Por ejemplo: \"No funcionará "
+"en Python 3\""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:17
 msgid "### Change log entry:"
-msgstr ""
+msgstr "### Entrada en el registro de cambios:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:18
 msgid ""
 "The section and description of this change to use for the changes file. The "
 "valid sections are:"
 msgstr ""
+"La descripción de este cambio y la sección en la que irá, para incluirlo en "
+"el archivo de novedades. Las secciones válidas son:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:19
 msgid " "
-msgstr ""
+msgstr " "
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:20
 msgid "* New features"
-msgstr ""
+msgstr "* Nuevas características"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:21
 msgid "* Changes"
-msgstr ""
+msgstr "* Cambios"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:22
 msgid "* Bug fixes"
-msgstr ""
+msgstr "* Fallos solucionados"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:23
 msgid ""
 "For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/"
 "blob/master/user_docs/en/changes.t2t)"
 msgstr ""
+"Por ejemplo, consulta el [archivo changes.t2t](https://github.com/nvaccess/"
+"nvda/blob/master/user_docs/en/changes.t2t)"
