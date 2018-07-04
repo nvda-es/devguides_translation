@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-07-03 16:24+Hora de verano romance\n"
-"PO-Revision-Date: 2018-07-03 16:27+0200\n"
+"PO-Revision-Date: 2018-07-04 09:47+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:3
 msgid "# Log Files and Crash Dumps"
-msgstr ""
+msgstr "# Archivos de registro y volcado de errores"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:4
 msgid "## Log Files"
-msgstr ""
+msgstr "## Archivos de registro"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:5
 msgid ""
@@ -33,6 +33,12 @@ msgid ""
 "other systems, so the log file can act as a further description or recording "
 "of the problem as it happened."
 msgstr ""
+"Al informar de fallos, con frecuencia es útil aportar un archivo de "
+"registro. Este archivo muestra qué estaba haciendo NVDA cuando el error "
+"ocurrió. Algunas veces, el problema es particularmente difícil de reproducir "
+"o no es totalmente reproducible en otros sistemas, por lo que un archivo de "
+"registro puede valer como una descripción más en profundidad de un fallo o "
+"un registro del problema mientras estaba ocurriendo."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:6
 msgid ""
@@ -41,10 +47,14 @@ msgid ""
 "files in to an issue comment, as this clutters the issue and may mangle "
 "certain information needed from the log."
 msgstr ""
+"El archivo de registro se debería adjuntar a la incidencia de GitHub "
+"mientras la creamos, o justo después. Es importante no pegar fragmentos del "
+"archivo o el texto completo como comentario en la incidencia, ya que esto la "
+"satura y puede hacer que se pierda información necesaria del registro."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:7
 msgid "### Log levels"
-msgstr ""
+msgstr "### Niveles de registro"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:8
 msgid ""
@@ -60,31 +70,51 @@ msgid ""
 "please be aware that because key presses and spoken messages are logged, the "
 "log may contain personal information."
 msgstr ""
+"Por defecto, NVDA tiene el nivel de registro puesto en `información`. Esto "
+"significa que sólo se registran mensajes informativos, advertencias y "
+"errores graves. Este nivel de registro puede ser útil cuando NVDA da un "
+"error fatal o cuando no se dispone de nada mejor. Sin embargo, para aportar "
+"más información detallada, puedes establecer el nivel de registro en "
+"`depuración` (en los ajustes generales de NVDA, submenú preferencias del "
+"menú NVDA) antes de que el error ocurra. Al establecer el nivel de registro "
+"en `depuración`, se registran cosas tales como qué teclas se han pulsado, "
+"qué mensajes ha verbalizado NVDA y otra información útil que puede ayudar a "
+"los desarrolladores a realizar un diagnóstico. Por favor, ten en cuenta que "
+"aunque se aporta una gran cantidad de información para resolver la "
+"incidencia, el hecho de que se registren mensajes hablados y pulsaciones de "
+"teclado hace que el registro pueda contener información personal."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:9
 msgid "### Collecting the log file"
-msgstr ""
+msgstr "### Recuperar el archivo de registro"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:10
 msgid ""
 "To retrieve a log file to be attached to an issue, after the problem occurs "
 "and before closing NVDA, do the following:"
 msgstr ""
+"Para recuperar un archivo de registro para después adjuntarlo a una "
+"incidencia, después de que ocurra el problema y antes de cerrar NVDA, haz lo "
+"siguiente:"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:11
 msgid "1. Open the log viewer found under Tools in the NVDA menu. "
 msgstr ""
+"1. Abre el visualizador de registro de NVDA. Lo encontrarás en el menú "
+"herramientas. "
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:12
 msgid ""
 "2. In the log viewer, choose Save As from the Log menu, and save the file to "
 "a place of your choice."
 msgstr ""
+"2. En el visualizador de registro, ve al menú registro y pulsa en Guardar "
+"como. Guarda el archivo de registro en el lugar que prefieras."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:13
 msgid ""
 "3. Finally, this file you have saved can be attached to an issue on GitHub."
-msgstr ""
+msgstr "3. Finalmente, adjunta el archivo en la incidencia de GitHub."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:14
 msgid ""
@@ -96,16 +126,27 @@ msgid ""
 "have started NVDA since it last exited, the file you want is `nvda-old.log`. "
 "For those running from source, these files are in the source directory."
 msgstr ""
+"Si ya habías cerrado NVDA o se ha cerrado por culpa de un error fatal, "
+"siempre puedes encontrar el registro de la última vez que NVDA estaba "
+"funcionando. Para la mayoría de usuarios, este archivo se puede encontrar en "
+"la carpeta temporal de usuario (%temp%). Si no has iniciado NVDA desde la "
+"última vez que se cerró (por ejemplo, porque tienes vista o usas otro lector "
+"de pantalla), el archivo que quieres es nvda.log. Si has vuelto a iniciar "
+"NVDA, el archivo que buscas se llama nvda-old.log. Para aquellos que usan "
+"NVDA desde el código fuente, los archivos de registro están en la carpeta "
+"source."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:15
 msgid "## Crash Dumps"
-msgstr ""
+msgstr "## Volcado de errores"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:16
 msgid ""
 "This applies to NVDA 2014.1 and later. Earlier versions do not generate "
 "crash dumps."
 msgstr ""
+"Esta sección se aplica a NVDA 2014.1 y versiones posteriores. Las versiones "
+"anteriores no generan volcado de errores."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:17
 msgid ""
@@ -114,10 +155,14 @@ msgid ""
 "also be generated on request for other applications which crash if NVDA is "
 "suspected as the cause of the crash."
 msgstr ""
+"Si NVDA sufre un error fatal, genera un archivo llamado minivolcado "
+"(minidump) que ayudará a los desarrolladores a saber la causa del error. "
+"Además, se pueden generar minivolcados a petición para otras aplicaciones si "
+"se sospecha que NVDA es el causante de sus errores."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:18
 msgid "### Minidumps for NVDA Itself"
-msgstr ""
+msgstr "### Minivolcados para NVDA en sí"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:19
 msgid ""
@@ -128,10 +173,16 @@ msgid ""
 "users running from source, `nvda_crash.dmp` will be placed in the source "
 "directory."
 msgstr ""
+"Si NVDA sufre un error fatal, se reinicia a sí mismo en la mayoría de las "
+"ocasiones. En algunas circunstancias extrañas, esto puede no funcionar.\n"
+"Si NVDA sufre un error fatal, se genera un minivolcado en un archivo llamado "
+"nvda_crash.dmp. La mayoría de usuarios podrán encontrarlo en el directorio "
+"temporal del usuario (%temp%). Para aquellos que usen NVDA desde el código "
+"fuente, el archivo aparecerá en la carpeta source."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:20
 msgid "### Minidumps for Other Applications"
-msgstr ""
+msgstr "### Minivolcados para otras aplicaciones"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:21
 msgid ""
@@ -142,39 +193,49 @@ msgid ""
 "for each application after it is started. To enable it for a given "
 "application:"
 msgstr ""
+"Si una aplicación que estás usando falla y sospechas que NVDA es la causa, "
+"puedes solicitar que se genere un minivolcado cuando esa aplicación falle. "
+"Sólo deberías hacer esto si un desarrollador te lo pide o si eres un usuario "
+"avanzado. Por defecto no está habilitado y debes habilitarlo en cada "
+"aplicación de la que quieras obtener un minivolcado una vez comiences el "
+"proceso de reproducción del error. Para habilitar el volcado para una "
+"aplicación específica:"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:22
 msgid "1. Switch to the application."
-msgstr ""
+msgstr "1. Navega hasta la aplicación."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:23
 msgid "2. Press `NVDA+control+z` to open the NVDA Python console."
-msgstr ""
+msgstr "2. Pulsa `NVDA+ctrl+z` para abrir la consola Python."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:24
 msgid ""
 "3. Type the following command exactly as it appears (you will probably want "
 "to copy and paste it):"
 msgstr ""
+"3. Escribe este comando tal y como aparece (o copia y pega si lo prefieres):"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:25
 #: ..\python_docs\LogFilesAndCrashDumps.py:27
 msgid "    ```"
-msgstr ""
+msgstr "    ```"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:26
 msgid "    focus.appModule.dumpOnCrash()"
-msgstr ""
+msgstr "    focus.appModule.dumpOnCrash()"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:28
 msgid "4. Press enter."
-msgstr ""
+msgstr "4. Pulsa intro."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:29
 msgid ""
 "5. The path to the file that will be generated will be presented. If you "
 "wish to copy it, you can press `F6` to move to the console output."
 msgstr ""
+"5. La ruta donde se generará el archivo aparecerá en la consola. Si quieres "
+"copiarla, pulsa f6 para moverte al panel de salida de la consola."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:30
 msgid ""
@@ -183,10 +244,13 @@ msgid ""
 "nvda_crash_appName_processId.dmp, where appName is the name of the "
 "application's executable file."
 msgstr ""
+"Estos volcados se almacenarán siempre en el directorio temporal del usuario "
+"(%temp%). Su nombre sigue la forma nvda_crash_appname_processid.dmp, donde "
+"appname es el nombre del archivo ejecutable de la aplicación."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:31
 msgid "### Alternative Way to Get Minidumps for Other Applications"
-msgstr ""
+msgstr "### Forma alternativa de obtener minivolcados para otras aplicaciones"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:32
 msgid ""
@@ -195,6 +259,10 @@ msgid ""
 "can configure Windows to collect minidumps when any application crashes. To "
 "do this:"
 msgstr ""
+"A veces, el método descrito arriba (haciendo que NVDA genere un minivolcado "
+"cuando una aplicación falla) no funciona; no se genera un minivolcado. En "
+"vez de esto, puedes configurar Windows para que recopile minivolcados cuando "
+"falle cualquier aplicación. Para hacerlo:"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:33
 msgid ""
@@ -202,6 +270,9 @@ msgid ""
 "`HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting"
 "\\LocalDumps`"
 msgstr ""
+"Para usuarios con experiencia manejando el registro: crea la siguiente clave "
+"vacía: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error "
+"Reporting\\LocalDumps`"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:34
 msgid ""
@@ -209,38 +280,49 @@ msgid ""
 "(though this should generally not be attempted by users without some "
 "technical knowledge of Windows):"
 msgstr ""
+"Instrucciones más detalladas para usuarios que no saben manejar el registro "
+"(y que no deberían hacerse si no tienes conocimientos técnicos de Windows):"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:35
 msgid "1. Press Windows+r and type `regedit` to open the Registry Editor."
 msgstr ""
+"1. Pulsa `windows+r` y escribe regedit para abrir el editor del registro."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:36
 msgid ""
 "2. Move to the following key: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft"
 "\\Windows\\Windows Error Reporting`"
 msgstr ""
+"2. Desplázate hasta esta clave: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft"
+"\\Windows\\Windows Error Reporting`"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:37
 msgid ""
 "    - If you're running Windows 10, you can simply paste this into the "
 "address bar in the Registry Editor and press enter."
 msgstr ""
+"    - Si tienes Windows 10, copia la clave en la barra de direcciones del "
+"editor del registro y pulsa intro."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:38
 msgid ""
 "    - Otherwise, use the tree to locate the key, where the backslashes "
 "indicate deeper levels of the tree."
 msgstr ""
+"    - En cualquier otro caso, desplázate por el árbol, donde cada barra "
+"invertida representa un nivel que debes desplegar."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:39
 msgid ""
 "3. Open the context menu for the `Windows Error Reporting` key and select "
 "New -> Key."
 msgstr ""
+"3. Abre el menú de contexto sobre la clave `Windows Error Reporting` y elige "
+"nuevo, clave."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:40
 msgid "4. Type `LocalDumps` exactly as it appears and press enter."
-msgstr ""
+msgstr "4. Escribe `LocalDumps` tal y como aparece y pulsa intro."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:41
 msgid ""
@@ -248,6 +330,9 @@ msgid ""
 "application crash dialog. Once that dialog is closed, the crash dump will be "
 "placed in `%localappdata%\\CrashDumps`."
 msgstr ""
+"Cuando una aplicación falle, se mostrará el típico diálogo de envío de "
+"informe de errores. Al cerrar este diálogo, el archivo de volcado aparecerá "
+"en `%localappdata%\\crashDumps`."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:42
 msgid ""
@@ -256,6 +341,11 @@ msgid ""
 "disk space. To disable this, just delete the `LocalDumps` key you created "
 "earlier."
 msgstr ""
+"Deberías desactivar la generación de volcados tan pronto como tengas el de "
+"la aplicación que te interesa, o de lo contrario se generarán archivos para "
+"todos los fallos que haya en el futuro, consumiendo espacio en disco. Para "
+"desactivarla, simplemente borra la clave LocalDumps que creaste "
+"anteriormente."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:43
 msgid ""
@@ -263,10 +353,12 @@ msgid ""
 "en-us/library/windows/desktop/bb787181(v=vs.85).aspx) for more information "
 "about this functionality."
 msgstr ""
+"Consulta [este artículo de MSDN](https://msdn.microsoft.com/en-us/library/"
+"windows/desktop/bb787181(v=vs.85).aspx) para más información."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:44
 msgid "### Attaching Minidumps to Issues"
-msgstr ""
+msgstr "### Cómo adjuntar minivolcados a incidencias"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:45
 msgid ""
@@ -275,10 +367,14 @@ msgid ""
 "Explorer, activating the context menu, selecting Send to and then selecting "
 "Compressed (zipped) folder."
 msgstr ""
+"Para adjuntar un archivo de volcado a una incidencia de GitHub, necesitarás "
+"situarlo en un archivo zip. Puedes hacer esto buscando el archivo en el "
+"explorador de Windows, activando el menú de contexto, seleccionando \"Enviar "
+"a\" y a continuación \"Carpetas comprimidas (en zip)\"."
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:46
 msgid "## User Temporary Folder"
-msgstr ""
+msgstr "## Carpeta temporal del usuario"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:47
 msgid ""
@@ -287,3 +383,8 @@ msgid ""
 "address bar of File Explorer, the Run dialog accessed by pressing `Windows "
 "key+r` or a file open or browse dialog."
 msgstr ""
+"Se puede acceder a la carpeta temporal del usuario escribiendo `%temp%` en "
+"casi cualquier sitio donde se pueda escribir un nombre de carpeta. Por "
+"ejemplo, puedes escribir en la barra de direcciones del explorador de "
+"Windows, en el diálogo ejecutar que se abre pulsando windows+r, o un diálogo "
+"de abrir archivo / examinar."

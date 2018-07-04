@@ -1,0 +1,65 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Archivos de registro y volcado de errores</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Archivos de registro y volcado de errores</h1></header>
+  <h2 id="archivos-de-registro">Archivos de registro</h2>
+<p>Al informar de fallos, con frecuencia es útil aportar un archivo de registro. Este archivo muestra qué estaba haciendo NVDA cuando el error ocurrió. Algunas veces, el problema es particularmente difícil de reproducir o no es totalmente reproducible en otros sistemas, por lo que un archivo de registro puede valer como una descripción más en profundidad de un fallo o un registro del problema mientras estaba ocurriendo.</p>
+<p>El archivo de registro se debería adjuntar a la incidencia de GitHub mientras la creamos, o justo después. Es importante no pegar fragmentos del archivo o el texto completo como comentario en la incidencia, ya que esto la satura y puede hacer que se pierda información necesaria del registro.</p>
+<h3 id="niveles-de-registro">Niveles de registro</h3>
+<p>Por defecto, NVDA tiene el nivel de registro puesto en <code>información</code>. Esto significa que sólo se registran mensajes informativos, advertencias y errores graves. Este nivel de registro puede ser útil cuando NVDA da un error fatal o cuando no se dispone de nada mejor. Sin embargo, para aportar más información detallada, puedes establecer el nivel de registro en <code>depuración</code> (en los ajustes generales de NVDA, submenú preferencias del menú NVDA) antes de que el error ocurra. Al establecer el nivel de registro en <code>depuración</code>, se registran cosas tales como qué teclas se han pulsado, qué mensajes ha verbalizado NVDA y otra información útil que puede ayudar a los desarrolladores a realizar un diagnóstico. Por favor, ten en cuenta que aunque se aporta una gran cantidad de información para resolver la incidencia, el hecho de que se registren mensajes hablados y pulsaciones de teclado hace que el registro pueda contener información personal.</p>
+<h3 id="recuperar-el-archivo-de-registro">Recuperar el archivo de registro</h3>
+<p>Para recuperar un archivo de registro para después adjuntarlo a una incidencia, después de que ocurra el problema y antes de cerrar NVDA, haz lo siguiente:</p>
+<ol>
+<li>Abre el visualizador de registro de NVDA. Lo encontrarás en el menú herramientas. </li>
+<li>En el visualizador de registro, ve al menú registro y pulsa en Guardar como. Guarda el archivo de registro en el lugar que prefieras.</li>
+<li>Finalmente, adjunta el archivo en la incidencia de GitHub.</li>
+</ol>
+<p>Si ya habías cerrado NVDA o se ha cerrado por culpa de un error fatal, siempre puedes encontrar el registro de la última vez que NVDA estaba funcionando. Para la mayoría de usuarios, este archivo se puede encontrar en la carpeta temporal de usuario (%temp%). Si no has iniciado NVDA desde la última vez que se cerró (por ejemplo, porque tienes vista o usas otro lector de pantalla), el archivo que quieres es nvda.log. Si has vuelto a iniciar NVDA, el archivo que buscas se llama nvda-old.log. Para aquellos que usan NVDA desde el código fuente, los archivos de registro están en la carpeta source.</p>
+<h2 id="volcado-de-errores">Volcado de errores</h2>
+<p>Esta sección se aplica a NVDA 2014.1 y versiones posteriores. Las versiones anteriores no generan volcado de errores.</p>
+<p>Si NVDA sufre un error fatal, genera un archivo llamado minivolcado (minidump) que ayudará a los desarrolladores a saber la causa del error. Además, se pueden generar minivolcados a petición para otras aplicaciones si se sospecha que NVDA es el causante de sus errores.</p>
+<h3 id="minivolcados-para-nvda-en-si">Minivolcados para NVDA en sí</h3>
+<p>Si NVDA sufre un error fatal, se reinicia a sí mismo en la mayoría de las ocasiones. En algunas circunstancias extrañas, esto puede no funcionar.
+Si NVDA sufre un error fatal, se genera un minivolcado en un archivo llamado nvda_crash.dmp. La mayoría de usuarios podrán encontrarlo en el directorio temporal del usuario (%temp%). Para aquellos que usen NVDA desde el código fuente, el archivo aparecerá en la carpeta source.</p>
+<h3 id="minivolcados-para-otras-aplicaciones">Minivolcados para otras aplicaciones</h3>
+<p>Si una aplicación que estás usando falla y sospechas que NVDA es la causa, puedes solicitar que se genere un minivolcado cuando esa aplicación falle. Sólo deberías hacer esto si un desarrollador te lo pide o si eres un usuario avanzado. Por defecto no está habilitado y debes habilitarlo en cada aplicación de la que quieras obtener un minivolcado una vez comiences el proceso de reproducción del error. Para habilitar el volcado para una aplicación específica:</p>
+<ol>
+<li>Navega hasta la aplicación.</li>
+<li>Pulsa <code>NVDA+ctrl+z</code> para abrir la consola Python.</li>
+<li>
+<p>Escribe este comando tal y como aparece (o copia y pega si lo prefieres):</p>
+<p><code>focus.appModule.dumpOnCrash()</code></p>
+</li>
+<li>
+<p>Pulsa intro.</p>
+</li>
+<li>La ruta donde se generará el archivo aparecerá en la consola. Si quieres copiarla, pulsa f6 para moverte al panel de salida de la consola.</li>
+</ol>
+<p>Estos volcados se almacenarán siempre en el directorio temporal del usuario (%temp%). Su nombre sigue la forma nvda_crash_appname_processid.dmp, donde appname es el nombre del archivo ejecutable de la aplicación.</p>
+<h3 id="forma-alternativa-de-obtener-minivolcados-para-otras-aplicaciones">Forma alternativa de obtener minivolcados para otras aplicaciones</h3>
+<p>A veces, el método descrito arriba (haciendo que NVDA genere un minivolcado cuando una aplicación falla) no funciona; no se genera un minivolcado. En vez de esto, puedes configurar Windows para que recopile minivolcados cuando falle cualquier aplicación. Para hacerlo:</p>
+<p>Para usuarios con experiencia manejando el registro: crea la siguiente clave vacía: <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps</code></p>
+<p>Instrucciones más detalladas para usuarios que no saben manejar el registro (y que no deberían hacerse si no tienes conocimientos técnicos de Windows):</p>
+<ol>
+<li>Pulsa <code>windows+r</code> y escribe regedit para abrir el editor del registro.</li>
+<li>Desplázate hasta esta clave: <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting</code><ul>
+<li>Si tienes Windows 10, copia la clave en la barra de direcciones del editor del registro y pulsa intro.</li>
+<li>En cualquier otro caso, desplázate por el árbol, donde cada barra invertida representa un nivel que debes desplegar.</li>
+</ul>
+</li>
+<li>Abre el menú de contexto sobre la clave <code>Windows Error Reporting</code> y elige nuevo, clave.</li>
+<li>Escribe <code>LocalDumps</code> tal y como aparece y pulsa intro.</li>
+</ol>
+<p>Cuando una aplicación falle, se mostrará el típico diálogo de envío de informe de errores. Al cerrar este diálogo, el archivo de volcado aparecerá en <code>%localappdata%\crashDumps</code>.</p>
+<p>Deberías desactivar la generación de volcados tan pronto como tengas el de la aplicación que te interesa, o de lo contrario se generarán archivos para todos los fallos que haya en el futuro, consumiendo espacio en disco. Para desactivarla, simplemente borra la clave LocalDumps que creaste anteriormente.</p>
+<p>Consulta <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb787181(v=vs.85).aspx">este artículo de MSDN</a> para más información.</p>
+<h3 id="como-adjuntar-minivolcados-a-incidencias">Cómo adjuntar minivolcados a incidencias</h3>
+<p>Para adjuntar un archivo de volcado a una incidencia de GitHub, necesitarás situarlo en un archivo zip. Puedes hacer esto buscando el archivo en el explorador de Windows, activando el menú de contexto, seleccionando "Enviar a" y a continuación "Carpetas comprimidas (en zip)".</p>
+<h2 id="carpeta-temporal-del-usuario">Carpeta temporal del usuario</h2>
+<p>Se puede acceder a la carpeta temporal del usuario escribiendo <code>%temp%</code> en casi cualquier sitio donde se pueda escribir un nombre de carpeta. Por ejemplo, puedes escribir en la barra de direcciones del explorador de Windows, en el diálogo ejecutar que se abre pulsando windows+r, o un diálogo de abrir archivo / examinar.</p>
+</body>
+</html>
