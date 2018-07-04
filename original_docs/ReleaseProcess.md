@@ -6,6 +6,7 @@ This document provides rough guidelines for the process of developing NVDA relea
 The process outlined later in this document has only been implemented very recently. Therefore this first section talks specifically about the changes from the older process. 
 ### Goals and reasoning
 The main goal of these changes is to remove the need for a "next" branch and pr incubation. Reasons for this are:
+
 * The next branch required manual merging of prs. This did not fit in well with Github's infrastructure in that these incubation merges were not tracked very well, reverts were messy and sometimes required next to be totally re-created, prs on next would frequently become conflicted with other prs, which meant manually fixing conflicts in both next and master.
  * Up until recently incubation was the only way we could guarantee some kind of code quality. Now we have a growing number of unit tests, system testing is well under way, and Github's management of prs (including mandatory code reviews) ensure a minimum code quality we did not have before.
 ### Changes for developers

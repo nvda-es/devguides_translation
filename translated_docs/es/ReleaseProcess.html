@@ -1,0 +1,105 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># El proceso de liberación de versiones</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># El proceso de liberación de versiones</h1></header>
+  <p>Este documento ofrece pautas generales para el desarrollo de versiones de NVDA. Todos los desarrolladores y traductores, tanto actuales como aquellos que potencialmente puedan serlo, deberían leer y seguir este documento. Estas pautas pueden romperse en circunstancias especiales. Cualquier detalle relacionado con este documento debe discutirse con los desarrolladores principales: Mick Curran (@MichaelDCurran) y Reef Turner (@feerrenrut).</p>
+<h2 id="cambios-al-proceso-existente">Cambios al proceso existente</h2>
+<p>El proceso descrito más adelante en este documento ha sido implementado hace muy poco. Por lo tanto, esta primera sección habla de los cambios específicos del proceso antiguo. </p>
+<h3 id="objetivos-y-razones">Objetivos y razones</h3>
+<p>El objetivo principal de estos cambios es suprimir la necesidad de una rama "next" e incubación de solicitudes de cambio. Las principales razones son:</p>
+<ul>
+<li>En la rama next era necesario mezclar manualmente las solicitudes de cambio. Esto no encajaba bien en la infraestructura de Github, y por tanto las mezclas incubadas no se rastreaban muy bien, las reversiones estaban desordenadas y en ocasiones era necesario recrear la rama next, las solicitudes de cambios generalmente hacían conflictos en next con otras solicitudes, lo que significaba que había que solucionar los conflictos tanto en next como en master.</li>
+<li>Hasta hace poco, la incubación era la única forma de garantizar algún tipo de calidad en el código. Ahora hay un número creciente de pruebas unitarias, las pruebas del sistema van por buen camino, y la gestión de solicitudes de cambio de Github (incluidas las revisiones obligatorias del código) aseguran una calidad mínima del código que antes no existía.</li>
+</ul>
+<h3 id="cambios-para-desarrolladores">Cambios para desarrolladores</h3>
+<ul>
+<li>Una vez que los revisores aprueben una solicitud de cambios y se superen todas las comprobaciones de compilación, la solicitud se mezclará directamente en master. Ya no hay incubación en next.</li>
+<li>Si una solicitud de cambios mezclada incluye una regresión, un fallo nuevo o no funciona como se indica, los desarrolladores principales serán un poco más estrictos que antes al revertirla.</li>
+</ul>
+<h3 id="cambios-para-evaluadores">Cambios para evaluadores</h3>
+<ul>
+<li>La rama next y las versiones de desarrollo next ya no existirán. Cualquiera que esté usando una versión de desarrollo next recibirá automáticamente nuevas versiones de master.</li>
+<li>Cualquiera que use versiones de desarrollo master permanecerá en master. Sin embargo, es importante tener en cuenta que estas versiones de desarrollo deberían considerarse menos estables de lo que eran antes, ya que el código no se incuba primero. Habiendo dicho esto, y ya que también se han situado ahora pruebas automáticas para el código, se puede garantizar que estas versiones de desarrollo siempre arrancarán. Se aconseja a aquellos que prefieran algo un poco más estable que prueben las nuevas versiones beta, que comenzarán a salir aproximadamente cinco semanas antes de la liberación oficial.</li>
+</ul>
+<h2 id="flujo-de-trabajo-de-versiones">Flujo de trabajo de versiones</h2>
+<p>Este es el flujo de trabajo general de publicación de versiones. En las siguientes secciones se ofrece información para grupos específicos de la comunidad.</p>
+<h3 id="fase-de-desarrollo">Fase de desarrollo</h3>
+<ul>
+<li>El trabajo debería hacerse en ramas independientes según el tema del que traten.</li>
+<li>Una rama de un tema concreto debería ser enviada para incluirla mediante una solicitud de cambios (pull request).</li>
+<li>Todas las solicitudes de cambio deben ser revisadas por uno de los desarrolladores principales.</li>
+<li>"master" es la rama principal de desarrollo de NVDA. Una vez que uno de los desarrolladores principales revisa y aprueba una solicitud de cambios y se superan todas las comprobaciones de compilación, esta se mezcla en master.</li>
+<li>Si la mezcla de una solicitud de cambios en master causa que falle cualquier comprobación de compilación en master, la solicitud se revierte sin preguntar. Sin embargo, esto probablemente no será un problema, ya que las comprobaciones de compilación en la solicitud en sí deben haberse superado.</li>
+<li>Si una solicitud de cambios mezclada se ha identificado como causante de un fallo nuevo, una regresión, o no funciona como se informó originalmente, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
+<li>La solicitud de cambios fue enviada por un colaborador activo y se sabe con certeza que volverá con otra solicitud de cambios para solucionar los problemas.</li>
+<li>El fallo es suficientemente trivial como para que un colaborador lo solucione.</li>
+</ul>
+</li>
+<li>Las versiones de desarrollo compiladas de master quedarán a disposición del público para pruebas tempranas. Su código es muy inestable y nunca deberían utilizarse en entornos de producción.</li>
+<li>Hasta siete semanas antes de una liberación, se mezclará en una rama "beta" un commit reciente que se sepa que funciona bien de master (es decir, que supera las pruebas de compilación), dejando el código disponible para su traducción. La rama beta en ese momento debería seguir considerándose inestable, y no se recomienda para gente que no vaya a probar las traducciones.</li>
+</ul>
+<h3 id="la-fase-beta">La fase beta</h3>
+<ul>
+<li>Siete semanas antes de la liberación, dejarán de hacerse mezclas de master a beta. Se deberían plantear las nuevas solicitudes de cambios para mezclarse directamente en beta, sy y sólo si solucionan un fallo introducido en el ciclo actual de liberación o hay un cambio crítico en el sistema operativo fuera del control de los desarrolladores. </li>
+<li>Si se hace cualquier cambio a beta, como la mezcla de solicitudes de cambios críticas o mezclas de traducciones, beta se mezclará periódicamente en master. </li>
+<li>Empezando cinco semanas antes de la liberación final, se publicarán periódicamente versiones etiquetadas como beta, permitiendo que la mayor parte de la comunidad las pruebe. En este punto, el código introducido mediante master habrá sido probado durante al menos dos semanas, por lo que las compilaciones beta tienen calidad de beta.</li>
+<li>Si una solicitud de cambios que llega a beta se identifica como causante de una regresión, nuevo fallo o no funciona como se indicó, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
+<li>El fallo es suficientemente trivial como para que un colaborador lo solucione.</li>
+</ul>
+</li>
+<li>Si se revierte una solicitud de cambios en beta, es más que probable que las solicitudes de cambio que la sustituyan no entren en la versión actual.</li>
+</ul>
+<h3 id="congelacion-de-cadenas-traducibles">Congelación de cadenas traducibles</h3>
+<ul>
+<li>Tres semanas antes de que se libere la versión definitiva, la rama beta entrará en modo congelación de cadenas traducibles durante dos semanas. Esto significa que no se permitirán los cambios que afecten al texto de las traducciones. Los errores de ortografía y gramática que estén en la documentación pueden arreglarse, pero no hay que cambiar las cadenas traducibles con Gettext del código.</li>
+<li>Sólo se deben enviar a la rama beta actualizaciones de traducciones y solucionar pequeños errores.</li>
+</ul>
+<h3 id="candidata-a-liberacion-release-candidate">Candidata a liberación (release candidate)</h3>
+<ul>
+<li>Después de la congelación de cadenas traducibles, se actualizará la rama "rc" basándose en la rama beta.</li>
+<li>Se liberará la primera versión candidata inmediatamente desde la rama rc.</li>
+<li>Después de esto, sólo se pueden enviar commits a la rama rc para solucionar problemas muy graves.</li>
+<li>Pueden publicarse más versiones candidatas.</li>
+<li>La versión final sólo puede crearse si no ha habido commits durante una semana desde la última versión candidata.</li>
+</ul>
+<h3 id="representacion-en-github">Representación en GitHub</h3>
+<ul>
+<li>Para la mayoría de elementos, se abrirá una incidencia y se discutirán los cambios antes de enviar una solicitud de cambios.</li>
+<li>Si se debería dar prioridad a una incidencia para que se incluya en una versión específica, su hito (milestone) debe establecerse a la versión deseada (por ejemplo, 2014.4).</li>
+<li>Una vez se mezcle una solicitud de cambios en la rama master, el hito para la incidencia (si lo hay) y el de la solicitud de cambios deberían establecerse en el hito de la siguiente versión (por ejemplo, 2013.2) y el problema debería cerrarse y marcarse como resuelto.</li>
+<li>Las incidencias y solicitudes de cambio para arreglar fallos en una versión candidata deberían tener el hito de dicha versión (por ejemplo, 2013.2).</li>
+</ul>
+<h3 id="programacion-de-liberaciones">Programación de liberaciones</h3>
+<ul>
+<li>Generalmente, las versiones finales saldrán alrededor del 22 de febrero, 22 de mayo, 22 de agosto y 22 de noviembre. La fecha exacta para cada versión será determinada por los desarrolladores principales.</li>
+</ul>
+<h3 id="versiones-de-mantenimiento">Versiones de mantenimiento</h3>
+<ul>
+<li>Bajo extrañas circunstancias, se puede crear una versión de mantenimiento (por ejemplo, 2013.1.1).</li>
+<li>Una versión de mantenimiento sólo puede incluir solución a fallos muy graves o problemas de seguridad.</li>
+<li>Las versiones de mantenimiento se crean desde la rama rc.</li>
+</ul>
+<h2 id="para-desarrolladores">Para desarrolladores</h2>
+<ul>
+<li>En la mayoría de los casos, se debe crear una incidencia en GitHub para cada problema existente y discutirla antes de enviar una solicitud de cambios. Sin embargo, aquellos cambios que sean triviales no necesitan una incidencia. Mira el artículo sobre cómo contribuir con NVDA para más información.</li>
+<li>El trabajo debería hacerse en una rama separada y relacionada con el tema sobre el que se trabaja.</li>
+<li>Se debe incluir cualquier documentación relevante en la rama temática en cuestión.</li>
+<li>Las nuevas órdenes, controladores, ajustes, diálogos, etc. deben documentarse en la guía de usuario.</li>
+<li>Las ramas temáticas deberían enviarse como solicitudes de cambio hacia master, a menos que un desarrollador principal haya solicitado específicamente que la solicitud de cambios se haga hacia beta o rc en caso de que se solucionen fallos introducidos en el ciclo de la versión actual. </li>
+</ul>
+<h2 id="para-traductores">Para traductores</h2>
+<ul>
+<li>Todas las traducciones deben basarse en la rama beta.</li>
+<li>Los traductores deben asegurarse de que su traducción esté lista un día antes de que finalice la congelación de cadenas de traducción para que sus cambios sean incluidos en la versión final. Los desarrolladores principales anunciarán la fecha límite cuando la congelación comience, pero generalmente estará cerca de las 00:00 UTC el 14 de febrero, 14 de mayo, 14 de agosto y 14 de noviembre. Cualquier trabajo que se envíe tras estas fechas no se incluirá en la próxima versión, quedará para la siguiente.</li>
+</ul>
+<h2 id="para-evaluadores">Para evaluadores</h2>
+<ul>
+<li>Las liberaciones beta están en estado beta. Incluyen código que irá en la próxima versión, y que se ha evaluado sin informar de problemas durante al menos una semana.</li>
+<li>La rama master tiene código que se está probando para ver si se incluye en próximas versiones. Este código podría no haberse probado mucho, y podría contener fallos importantes.</li>
+</ul>
+</body>
+</html>
