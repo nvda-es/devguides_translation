@@ -43,7 +43,7 @@ _(u"""The version of NVDA that you are using when demonstrating the issue. This 
 _(u"""> next-15370,21fd217a"""),
 "",_(u"""#### Windows version:"""),
 _(u"""The version of Windows that you are using. You can copy this from the \"System Information\" application:"""),
-_(u"""1. Press `Windows+r` to open the run dialog"""),
+"",_(u"""1. Press `Windows+r` to open the run dialog"""),
 _(u"""1. Type `msinfo32` and press enter"""),
 _(u"""1. From the \"System summary\" treeview item, press tab to get to the right pane."""),
 _(u"""1. Press down arrow twice to get to \"Version\""""),

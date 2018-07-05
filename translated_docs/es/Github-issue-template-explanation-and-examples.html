@@ -1,0 +1,102 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Creación de nuevas incidencias en el proyecto NVDA</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Creación de nuevas incidencias en el proyecto NVDA</h1></header>
+  <p>Esta página se ha creado para servir como explicación al rellenar la <a href="https://github.com/nvaccess/nvda/blob/master/.github/issue_template.md">la plantilla de incidencias de NVDA en GitHub (en inglés)</a>.</p>
+<p>La plantilla usa markdown de Github, para proporcionar formato en los encabezados, listas, citas, etc. Si no estás familiarizado con esto, tómate algo de tiempo para aprender sobre <a href="https://guides.github.com/features/mastering-markdown/">el markdown de Github (en inglés)</a></p>
+<p><strong>Advertencia</strong>: salvo en raras circunstancias, es necesario completar toda la plantilla. Probablemente se cerrará tu incidencia si no se ha seguido esta plantilla.</p>
+<h2 id="adjuntos-e-imagenes">Adjuntos e imágenes</h2>
+<p>Es importante incluir cualquier archivo necesario para reproducir la incidencia. Este podría ser un archivo necesario para una suite ofimática, o un enlace a un recreador de código como CodePen o JSFiddle, o tal vez un archivo HTML independiente. Github no permite adjuntar todos los <a href="https://help.github.com/articles/file-attachments-on-issues-and-pull-requests/">tipos de archivos</a>. Sin embargo, sí se permiten los archivos zip, por lo que puedes comprimir tu archivo y adjuntar el resultado.</p>
+<h3 id="registros">Registros</h3>
+<p>En la mayor parte de los casos, un archivo de registro de NVDA es increíblemente útil cuando se intenta comprender o resolver un problema, así que no olvides adjuntarlo. Hay instrucciones al respecto en los documentos para desarrolladores de esta web. Si lo que obtienes es un archivo de minivolcado (nvda_crash.dmp), inclúyelo también.</p>
+<h3 id="capturas-de-pantalla">Capturas de pantalla</h3>
+<p>Aunque las <strong>imágenes / capturas de pantalla</strong> son bienvenidas para ayudar a explicar un problema, ten en cuenta que muchos de los desarrolladores de NVDA son ciegos y apreciarán mejor la imagen si está descrita como texto. La mayoría de las herramientas te permiten copiar texto fuera de ellas.</p>
+<h2 id="consejos">Consejos</h2>
+<ul>
+<li>Plantéate ir a la pestaña Preview para leer tu incidencia en cualquier momento y confirmar que queda como esperas.</li>
+<li>Si tienes problemas siguiendo esta plantilla, o con la investigación inicial necesaria, pide educadamente asistencia a la fantástica comunidad que se encuentra en la <a href="https://groups.google.com/group/nvda-es">lista de correo de NVDA en español</a></li>
+</ul>
+<h2 id="la-plantilla">La plantilla</h2>
+<p>Al principio de la plantilla hay un bloque de comentarios en HTML que apunta hacia la versión inglesa de esta página en la wiki de NVDA. Se puede dejar como está, y no aparecerá una vez que se guarde la incidencia. Elimínalo si lo deseas.</p>
+<p>Después del comentario en HTML, puedes proporcionar una breve descripción de la incidencia. A continuación, rellena cada una de las siguientes secciones:</p>
+<h3 id="pasos-para-reproducir">Pasos para reproducir:</h3>
+<p>Esta sección debería contener una lista de los pasos que realizas para demostrar el problema. Mientras los estés realizando, haz una copia de tu registro de NVDA para adjuntarla a la incidencia.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<ol>
+<li>Abrir Chrome</li>
+<li>Navegar a www.google.com</li>
+<li>Escribir "Hola"</li>
+<li>Pulsar intro</li>
+</ol>
+</blockquote>
+<h3 id="comportamiento-actual">Comportamiento actual:</h3>
+<p>Esta sección debería explicar qué sucede realmente al llevar a cabo los pasos anteriores.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>Se oye un sonido de error de NVDA.</p>
+</blockquote>
+<h3 id="comportamiento-esperado">Comportamiento esperado:</h3>
+<p>En esta sección deberías explicar qué esperas que pase al seguir los pasos anteriores.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>No debería haber sonido de error, y la página debería cambiar para mostrar los resultados de la búsqueda.</p>
+</blockquote>
+<h3 id="configuracion-del-sistema">Configuración del sistema:</h3>
+<p>Esta sección tiene varias subsecciones. Estas van sobre el sistema que estás usando al encontrar el fallo. Si encuentras el fallo con diversas configuraciones diferentes, lístalas. Esto ayuda a los desarrolladores a reproducir el problema, o investigar por qué el problema les ocurre a algunos usuarios y a otros no.</p>
+<h4 id="nvda-instalado-portable-o-ejecutandose-desde-el-codigo-fuente">NVDA Instalado, portable o ejecutándose desde el código fuente:</h4>
+<p>Esto indica a los desarrolladores cómo estás utilizando NVDA.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>Instalado</p>
+</blockquote>
+<h4 id="version-de-nvda">Versión de NVDA:</h4>
+<p>La versión de NVDA que estás utilizando para demostrar el problema. Se puede copiar desde la opción Acerca de, en el menú Ayuda de NVDA.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>next-15370,21fd217a</p>
+</blockquote>
+<h4 id="version-de-windows">Versión de Windows:</h4>
+<p>La versión de Windows que estás usando. Puedes copiarla desde la aplicación "Información del sistema":</p>
+<ol>
+<li>Pulsa <code>Windows+r</code> para abrir el diálogo ejecutar</li>
+<li>Escribe <code>msinfo32</code> y pulsa intro</li>
+<li>Desde el elemento de árbol "Resumen del sistema", pulsa tab para llegar al panel derecho.</li>
+<li>Pulsa flecha abajo dos veces para llegar a "Versión"</li>
+<li>Pulsa <code>control+c</code> para copiar la información de versión.</li>
+</ol>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>Windows 10 Versión 1607, Compilación 14393.1066</p>
+</blockquote>
+<h4 id="nombre-y-version-de-otro-software-en-uso-al-reproducir-el-problema">Nombre y versión de otro software en uso al reproducir el problema:</h4>
+<p>Normalmente puedes obtener información desde el diálogo "Acerca de" del software.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>Chrome versión: 67.0.3396.87</p>
+</blockquote>
+<h4 id="otra-informacion-de-tu-sistema">Otra información de tu sistema:</h4>
+<p>Se trata de otra información sobre tu configuración que crees que podría ser importante para los desarrolladores.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<p>Ejecuto Windows 10 desde una máquina virtual</p>
+</blockquote>
+<h3 id="otras-preguntas">Otras preguntas:</h3>
+<p>Esta sección tiene subsecciones que preguntan sobre los pasos básicos de la investigación que puedes haber completado. Si quieres, añade más información aquí para contarle a los desarrolladores qué pruebas has hecho.</p>
+<h4 id="el-problema-todavia-ocurre-despues-de-reiniciar-tu-pc">¿El problema todavía ocurre después de reiniciar tu PC?</h4>
+<p>Reiniciar tu ordenador ayudará a asegurar que el software se encuentra en un estado más fresco.</p>
+<h4 id="has-probado-otras-versiones-de-nvda">¿Has probado otras versiones de NVDA?</h4>
+<p>Saber si el problema ocurre en versiones anteriores ayuda a los desarrolladores a entender si es un problema recién introducido, y les da una pista sobre si es un cambio en NVDA o el responsable del problema es otro programa.</p>
+<p><em>Ejemplo:</em></p>
+<blockquote>
+<ul>
+<li>NVDA 2018.1 - no hay sonido de error</li>
+<li>NVDA 2018.2 - tiene el sonido de error</li>
+</ul>
+</blockquote>
+</body>
+</html>

@@ -66,6 +66,7 @@ The version of NVDA that you are using when demonstrating the issue. This can be
 
 #### Windows version:
 The version of Windows that you are using. You can copy this from the "System Information" application:
+
 1. Press `Windows+r` to open the run dialog
 1. Type `msinfo32` and press enter
 1. From the "System summary" treeview item, press tab to get to the right pane.
