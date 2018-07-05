@@ -5,16 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-04 15:05+Hora de verano romance\n"
-"PO-Revision-Date: 2018-07-04 15:05+0200\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"POT-Creation-Date: 2018-07-06 00:24+Hora de verano romance\n"
+"PO-Revision-Date: 2018-07-06 00:52+0100\n"
+"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 1.6.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\ReleaseProcess.py:3
@@ -57,18 +57,19 @@ msgstr "### Objetivos y razones"
 #: ..\python_docs\ReleaseProcess.py:8
 msgid ""
 "The main goal of these changes is to remove the need for a \"next\" branch "
-"and pr incubation. Reasons for this are:"
+"and pull request incubation. Reasons for this are:"
 msgstr ""
 "El objetivo principal de estos cambios es suprimir la necesidad de una rama "
 "\"next\" e incubación de solicitudes de cambio. Las principales razones son:"
 
 #: ..\python_docs\ReleaseProcess.py:9
 msgid ""
-"* The next branch required manual merging of prs. This did not fit in well "
-"with Github's infrastructure in that these incubation merges were not "
-"tracked very well, reverts were messy and sometimes required next to be "
-"totally re-created, prs on next would frequently become conflicted with "
-"other prs, which meant manually fixing conflicts in both next and master."
+"* The next branch required manual merging of pull requests. This did not fit "
+"in well with Github's infrastructure in that these incubation merges were "
+"not tracked very well, reverts were messy and sometimes required next to be "
+"totally re-created, pull requests on next would frequently become conflicted "
+"with other pull requests, which meant manually fixing conflicts in both next "
+"and master."
 msgstr ""
 "* En la rama next era necesario mezclar manualmente las solicitudes de "
 "cambio. Esto no encajaba bien en la infraestructura de Github, y por tanto "
@@ -82,8 +83,9 @@ msgstr ""
 msgid ""
 " * Up until recently incubation was the only way we could guarantee some "
 "kind of code quality. Now we have a growing number of unit tests, system "
-"testing is well under way, and Github's management of prs (including "
-"mandatory code reviews) ensure a minimum code quality we did not have before."
+"testing is well under way, and Github's management of pull requests "
+"(including mandatory code reviews) ensure a minimum code quality we did not "
+"have before."
 msgstr ""
 " * Hasta hace poco, la incubación era la única forma de garantizar algún "
 "tipo de calidad en el código. Ahora hay un número creciente de pruebas "
@@ -97,8 +99,9 @@ msgstr "### Cambios para desarrolladores"
 
 #: ..\python_docs\ReleaseProcess.py:12
 msgid ""
-"* Once a pr is approved by reviewers and all build checks pass, the pr will "
-"be merged straight to master. There is no longer incubation on next."
+"* Once a pull request is approved by reviewers and all build checks pass, "
+"the pull request will be merged straight to master. There is no longer "
+"incubation on next."
 msgstr ""
 "* Una vez que los revisores aprueben una solicitud de cambios y se superen "
 "todas las comprobaciones de compilación, la solicitud se mezclará "
@@ -106,9 +109,9 @@ msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:13
 msgid ""
-"* If a merged pr results in a regression, new bug or does not work as "
-"advertised, the lead developers will be a little more strict on reverting "
-"the pr than in the past."
+"* If a merged pull request results in a regression, new bug or does not work "
+"as advertised, the lead developers will be a little more strict on reverting "
+"the pull request than in the past."
 msgstr ""
 "* Si una solicitud de cambios mezclada incluye una regresión, un fallo nuevo "
 "o no funciona como se indica, los desarrolladores principales serán un poco "
@@ -121,38 +124,50 @@ msgstr "### Cambios para evaluadores"
 #: ..\python_docs\ReleaseProcess.py:15
 msgid ""
 "* The next branch and next snapshots will no longer exist. Anyone currently "
-"on a next snapshot will be automatically updated to master snapshots."
+"on a next snapshot will be automatically updated to new \"alpha\" snapshots. "
+"Alpha snapshots are created directly from Master each time it changes (I.e. "
+"when a pull request is merged).  As the name suggests, these snapshots are "
+"alpha quality. And although automated tests pass, these builds have had no "
+"user testing."
 msgstr ""
-"* La rama next y las versiones de desarrollo next ya no existirán. "
-"Cualquiera que esté usando una versión de desarrollo next recibirá "
-"automáticamente nuevas versiones de master."
+"* La rama next y las versiones instantáneas de desarrollo next dejarán de "
+"existir. Se actualizarán automáticamente a las nuevas versiones \"alfa\" "
+"todas las next. Las versiones alfa se crean a partir de master cada vez que "
+"ésta cambia (p.ej. cuando se mezcla una solicitud de cambio). Como su nombre "
+"sugiere, estas snapshots son de calidad alfa. Y aunque pasen las pruebas "
+"automáticas, estas versiones no han tenido probadores humanos."
 
 #: ..\python_docs\ReleaseProcess.py:16
 msgid ""
-" * Anyone currently on master snapshots will stay on master snapshots, "
-"however it is important to note that these snapshots should now be "
-"considered less stable than they were previously as code is no longer "
-"incubated first. Having said this though, as we have also now put in place "
-"automated checks testing the code, we should be able to guarantee these "
-"snapshots will always run. We do advise though if you would prefer something "
-"a little more stable, to consider testing our new beta releases, that will "
-"start coming out about 5 weeks before the official release."
+" * Anyone currently on master snapshots will be upgraded to the first "
+"available tagged beta for the current release. Beta builds, as the name "
+"implies, are beta quality and have had some testing by users. Note that as "
+"new betas are made available you will keep automatically upgrading, and then "
+"also upgrade to the final stable release. To get back to beta testing for "
+"the next release you will need to manually download a new beta for that "
+"release."
 msgstr ""
-" * Cualquiera que use versiones de desarrollo master permanecerá en master. "
-"Sin embargo, es importante tener en cuenta que estas versiones de desarrollo "
-"deberían considerarse menos estables de lo que eran antes, ya que el código "
-"no se incuba primero. Habiendo dicho esto, y ya que también se han situado "
-"ahora pruebas automáticas para el código, se puede garantizar que estas "
-"versiones de desarrollo siempre arrancarán. Se aconseja a aquellos que "
-"prefieran algo un poco más estable que prueben las nuevas versiones beta, "
-"que comenzarán a salir aproximadamente cinco semanas antes de la liberación "
-"oficial."
+" * Se actualizará a cualquiera utilizando instantáneas de master a la "
+"primera versión beta etiquetada para la versión actual que esté disponible."
 
 #: ..\python_docs\ReleaseProcess.py:17
+msgid ""
+" * The snapshots page at https://www.nvaccess.org/files/nvda/snapshots/ now "
+"lists both alpha snapshots and all beta releases. "
+msgstr ""
+" * La página de versiones de desarrollo en https://www.nvaccess.org/files/"
+"nvda/snapshots/ ahora lista tanto todas las versiones alfa como las "
+"versiones beta."
+
+#: ..\python_docs\ReleaseProcess.py:18
+msgid " "
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:19
 msgid "## Release Workflow"
 msgstr "## Flujo de trabajo de versiones"
 
-#: ..\python_docs\ReleaseProcess.py:18
+#: ..\python_docs\ReleaseProcess.py:20
 msgid ""
 "This is the general release workflow. Information for specific community "
 "groups is provided in later sections."
@@ -161,30 +176,30 @@ msgstr ""
 "siguientes secciones se ofrece información para grupos específicos de la "
 "comunidad."
 
-#: ..\python_docs\ReleaseProcess.py:19
+#: ..\python_docs\ReleaseProcess.py:21
 msgid "### Development Phase"
 msgstr "### Fase de desarrollo"
 
-#: ..\python_docs\ReleaseProcess.py:20
+#: ..\python_docs\ReleaseProcess.py:22
 msgid "* Work should be done in topic branches."
 msgstr ""
 "* El trabajo debería hacerse en ramas independientes según el tema del que "
 "traten."
 
-#: ..\python_docs\ReleaseProcess.py:21
+#: ..\python_docs\ReleaseProcess.py:23
 msgid ""
 "* A topic branch should be submitted for inclusion using a pull request."
 msgstr ""
 "* Una rama de un tema concreto debería ser enviada para incluirla mediante "
 "una solicitud de cambios (pull request)."
 
-#: ..\python_docs\ReleaseProcess.py:22
+#: ..\python_docs\ReleaseProcess.py:24
 msgid "* All pull requests must be reviewed by one of the lead developers."
 msgstr ""
 "* Todas las solicitudes de cambio deben ser revisadas por uno de los "
 "desarrolladores principales."
 
-#: ..\python_docs\ReleaseProcess.py:23
+#: ..\python_docs\ReleaseProcess.py:25
 msgid ""
 "* \"master\" is the mainline branch for NVDA development. Once a pull "
 "request has been reviewed and approved by at least one lead developer and "
@@ -194,56 +209,58 @@ msgstr ""
 "los desarrolladores principales revisa y aprueba una solicitud de cambios y "
 "se superan todas las comprobaciones de compilación, esta se mezcla en master."
 
-#: ..\python_docs\ReleaseProcess.py:24
+#: ..\python_docs\ReleaseProcess.py:26
 msgid ""
-"* If the merging of a pr to master causes any build checks on master to "
-"fail, the pr is reverted without question. This is however unlikely to be an "
-"issue as build checks on the PR itself must have already passed."
+"* If the merging of a pull request to master causes any build checks on "
+"master to fail, the pull request is reverted without question. This is "
+"however unlikely to be an issue as build checks on the pull request itself "
+"must have already passed."
 msgstr ""
 "* Si la mezcla de una solicitud de cambios en master causa que falle "
 "cualquier comprobación de compilación en master, la solicitud se revierte "
 "sin preguntar. Sin embargo, esto probablemente no será un problema, ya que "
-"las comprobaciones de compilación en la solicitud en sí deben haberse "
+"las comprobaciones de compilación en la solicitud en sí deberían haberse "
 "superado."
 
-#: ..\python_docs\ReleaseProcess.py:25
+#: ..\python_docs\ReleaseProcess.py:27
 msgid ""
-"* If a merged pr has been identified as causing a regression, new bug, or "
-"does not work as originally reported, the pr may be reverted at the "
-"discretion of the lead developers. Reasons in favor of not reverting the pr "
-"may be: "
+"* If a merged pull request has been identified as causing a regression, new "
+"bug, or does not work as originally reported, the pull request may be "
+"reverted at the discretion of the lead developers. Reasons in favor of not "
+"reverting the pull request may be: "
 msgstr ""
 "* Si una solicitud de cambios mezclada se ha identificado como causante de "
 "un fallo nuevo, una regresión, o no funciona como se informó originalmente, "
 "los desarrolladores principales pueden revertir la solicitud. Las razones a "
 "favor de no revertir la solicitud de cambios pueden ser: "
 
-#: ..\python_docs\ReleaseProcess.py:26
+#: ..\python_docs\ReleaseProcess.py:28
 msgid ""
-"    * The PR was submitted by an active collaborator and it is inevitable "
-"that they will follow through with a suitable pr to address the issues."
+"    * The pull request was submitted by an active collaborator and it is "
+"inevitable that they will follow through with a suitable pull request to "
+"address the issues."
 msgstr ""
 "    * La solicitud de cambios fue enviada por un colaborador activo y se "
 "sabe con certeza que volverá con otra solicitud de cambios para solucionar "
 "los problemas."
 
-#: ..\python_docs\ReleaseProcess.py:27 ..\python_docs\ReleaseProcess.py:35
+#: ..\python_docs\ReleaseProcess.py:29 ..\python_docs\ReleaseProcess.py:37
 msgid "    * The bug is trivial enough to be fixed by a collaborator."
 msgstr ""
 "    * El fallo es suficientemente trivial como para que un colaborador lo "
 "solucione."
 
-#: ..\python_docs\ReleaseProcess.py:28
+#: ..\python_docs\ReleaseProcess.py:30
 msgid ""
-"* Compiled snapshots of master will be made available to the public for very "
-"early testing. This is bleeding-edge code and should never be run in "
-"production environments."
+"*  Builds of  master (known as alpha snapshots) will be made available to "
+"the public for very early testing. This is bleeding-edge code and should "
+"never be run in production environments."
 msgstr ""
-"* Las versiones de desarrollo compiladas de master quedarán a disposición "
-"del público para pruebas tempranas. Su código es muy inestable y nunca "
-"deberían utilizarse en entornos de producción."
+"* Versiones de desarrollo compiladas de master (conocidas como instantáneas "
+"alfa)  quedarán a disposición del público para pruebas tempranas. Su código "
+"es muy inestable y nunca deberían utilizarse en entornos de producción."
 
-#: ..\python_docs\ReleaseProcess.py:29
+#: ..\python_docs\ReleaseProcess.py:31
 msgid ""
 "* Up until 7 weeks before a release, a last known good commit of master (I."
 "e. one that passes build checks) will be periodically merged into a \"beta\" "
@@ -258,11 +275,11 @@ msgstr ""
 "inestable, y no se recomienda para gente que no vaya a probar las "
 "traducciones."
 
-#: ..\python_docs\ReleaseProcess.py:30
+#: ..\python_docs\ReleaseProcess.py:32
 msgid "### Beta phase"
 msgstr "### La fase beta"
 
-#: ..\python_docs\ReleaseProcess.py:31
+#: ..\python_docs\ReleaseProcess.py:33
 msgid ""
 "* From 7 weeks before the release, merges from master to beta will no longer "
 "occur. New pull requests may be now considered for squash merging straight "
@@ -275,16 +292,17 @@ msgstr ""
 "en el ciclo actual de liberación o hay un cambio crítico en el sistema "
 "operativo fuera del control de los desarrolladores. "
 
-#: ..\python_docs\ReleaseProcess.py:32
+#: ..\python_docs\ReleaseProcess.py:34
 msgid ""
-"* If any changes are made to beta, such as the merging of critical prs or "
-"translation merges, beta will be periodically merged back to master. "
+"* If any changes are made to beta, such as the merging of critical pull "
+"requests or translation merges, beta will be periodically merged back to "
+"master. "
 msgstr ""
-"* Si se hace cualquier cambio a beta, como la mezcla de solicitudes de "
-"cambios críticas o mezclas de traducciones, beta se mezclará periódicamente "
-"en master. "
+"* If any changes are made to beta, such as the merging of critical pull "
+"requests or translation merges, beta will be periodically merged back to "
+"master. "
 
-#: ..\python_docs\ReleaseProcess.py:33
+#: ..\python_docs\ReleaseProcess.py:35
 msgid ""
 "* Starting from 5 weeks before final release, tagged beta releases will be "
 "published periodically, allowing the wider community to try out the betas. "
@@ -298,19 +316,19 @@ msgstr ""
 "mediante master habrá sido probado durante al menos dos semanas, por lo que "
 "las compilaciones beta tienen calidad de beta."
 
-#: ..\python_docs\ReleaseProcess.py:34
+#: ..\python_docs\ReleaseProcess.py:36
 msgid ""
-"* If a merged pr that reached beta has been identified as causing a "
-"regression, new bug, or does not work as originally reported, the pr may be "
-"reverted at the discretion of the lead developers. Reasons in favor of not "
-"reverting the pr may be: "
+"* If a merged pull request that reached beta has been identified as causing "
+"a regression, new bug, or does not work as originally reported, the pull "
+"request may be reverted at the discretion of the lead developers. Reasons in "
+"favor of not reverting the pull request may be: "
 msgstr ""
 "* Si una solicitud de cambios que llega a beta se identifica como causante "
-"de una regresión, nuevo fallo o no funciona como se indicó, los "
-"desarrolladores principales pueden revertir la solicitud. Las razones a "
-"favor de no revertir la solicitud de cambios pueden ser: "
+"de una regresión, un nuevo fallo o no funciona como se había indicado "
+"originalmente, los desarrolladores principales pueden revertir la solicitud. "
+"Las razones a favor de no revertir la solicitud de cambios pueden ser: "
 
-#: ..\python_docs\ReleaseProcess.py:36
+#: ..\python_docs\ReleaseProcess.py:38
 msgid ""
 "* If a pull request is reverted from beta, it is more than likely any new "
 "pull request replacing it will not get into the current release."
@@ -318,11 +336,11 @@ msgstr ""
 "* Si se revierte una solicitud de cambios en beta, es más que probable que "
 "las solicitudes de cambio que la sustituyan no entren en la versión actual."
 
-#: ..\python_docs\ReleaseProcess.py:37
+#: ..\python_docs\ReleaseProcess.py:39
 msgid "### Translatable String Freeze"
 msgstr "### Congelación de cadenas traducibles"
 
-#: ..\python_docs\ReleaseProcess.py:38
+#: ..\python_docs\ReleaseProcess.py:40
 msgid ""
 "* 3 weeks before the release is due, the beta branch will enter a "
 "translatable string freeze for 2 weeks. That is, no changes to text strings "
@@ -337,7 +355,7 @@ msgstr ""
 "documentación pueden arreglarse, pero no hay que cambiar las cadenas "
 "traducibles con Gettext del código."
 
-#: ..\python_docs\ReleaseProcess.py:39
+#: ..\python_docs\ReleaseProcess.py:41
 msgid ""
 "* Only critical bug fixes and translation updates should be committed to the "
 "beta branch at this stage."
@@ -345,11 +363,11 @@ msgstr ""
 "* Sólo se deben enviar a la rama beta actualizaciones de traducciones y "
 "solucionar pequeños errores."
 
-#: ..\python_docs\ReleaseProcess.py:40
+#: ..\python_docs\ReleaseProcess.py:42
 msgid "### Release Candidate"
 msgstr "### Candidata a liberación (release candidate)"
 
-#: ..\python_docs\ReleaseProcess.py:41
+#: ..\python_docs\ReleaseProcess.py:43
 msgid ""
 "* After the translatable string freeze, the \"rc\" branch will be created "
 "based on the beta branch."
@@ -357,25 +375,25 @@ msgstr ""
 "* Después de la congelación de cadenas traducibles, se actualizará la rama "
 "\"rc\" basándose en la rama beta."
 
-#: ..\python_docs\ReleaseProcess.py:42
+#: ..\python_docs\ReleaseProcess.py:44
 msgid ""
 "* The first release candidate will immediately be released from the rc "
 "branch."
 msgstr ""
 "* Se liberará la primera versión candidata inmediatamente desde la rama rc."
 
-#: ..\python_docs\ReleaseProcess.py:43
+#: ..\python_docs\ReleaseProcess.py:45
 msgid ""
 "* After this, only critical bug fixes should be committed to the rc branch."
 msgstr ""
 "* Después de esto, sólo se pueden enviar commits a la rama rc para "
 "solucionar problemas muy graves."
 
-#: ..\python_docs\ReleaseProcess.py:44
+#: ..\python_docs\ReleaseProcess.py:46
 msgid "* Subsequent release candidates may be released."
 msgstr "* Pueden publicarse más versiones candidatas."
 
-#: ..\python_docs\ReleaseProcess.py:45
+#: ..\python_docs\ReleaseProcess.py:47
 msgid ""
 "* The final release can only be made if there have been no commits and at "
 "least 1 week since the last release candidate."
@@ -383,11 +401,11 @@ msgstr ""
 "* La versión final sólo puede crearse si no ha habido commits durante una "
 "semana desde la última versión candidata."
 
-#: ..\python_docs\ReleaseProcess.py:46
+#: ..\python_docs\ReleaseProcess.py:48
 msgid "### Representation on GitHub"
 msgstr "### Representación en GitHub"
 
-#: ..\python_docs\ReleaseProcess.py:47
+#: ..\python_docs\ReleaseProcess.py:49
 msgid ""
 "* For most items, an issue will be filed and discussed before a pull request "
 "is submitted."
@@ -395,7 +413,7 @@ msgstr ""
 "* Para la mayoría de elementos, se abrirá una incidencia y se discutirán los "
 "cambios antes de enviar una solicitud de cambios."
 
-#: ..\python_docs\ReleaseProcess.py:48
+#: ..\python_docs\ReleaseProcess.py:50
 msgid ""
 "* If priority should be given to an issue for inclusion in a specific "
 "release, its milestone should be set to the appropriate release milestone (e."
@@ -405,7 +423,7 @@ msgstr ""
 "versión específica, su hito (milestone) debe establecerse a la versión "
 "deseada (por ejemplo, 2014.4)."
 
-#: ..\python_docs\ReleaseProcess.py:49
+#: ..\python_docs\ReleaseProcess.py:51
 msgid ""
 "* Once a pull request is squash merged to the master branch, the milestone "
 "for the issue (if any) and pull request should be set to the next release "
@@ -416,7 +434,7 @@ msgstr ""
 "establecerse en el hito de la siguiente versión (por ejemplo, 2013.2) y el "
 "problema debería cerrarse y marcarse como resuelto."
 
-#: ..\python_docs\ReleaseProcess.py:50
+#: ..\python_docs\ReleaseProcess.py:52
 msgid ""
 "* Issues/pull requests for bug fixes for an rc should have their milestone "
 "set to the relevant release (e.g. 2013.2)."
@@ -425,11 +443,11 @@ msgstr ""
 "versión candidata deberían tener el hito de dicha versión (por ejemplo, "
 "2013.2)."
 
-#: ..\python_docs\ReleaseProcess.py:51
+#: ..\python_docs\ReleaseProcess.py:53
 msgid "### Scheduled Releases"
 msgstr "### Programación de liberaciones"
 
-#: ..\python_docs\ReleaseProcess.py:52
+#: ..\python_docs\ReleaseProcess.py:54
 msgid ""
 "* Generally, final releases will be due around 22 February, 22 May, 22 "
 "August and 22 November. The exact date for each release will be determined "
@@ -439,11 +457,11 @@ msgstr ""
 "22 de mayo, 22 de agosto y 22 de noviembre. La fecha exacta para cada "
 "versión será determinada por los desarrolladores principales."
 
-#: ..\python_docs\ReleaseProcess.py:53
+#: ..\python_docs\ReleaseProcess.py:55
 msgid "### Maintenance Release"
 msgstr "### Versiones de mantenimiento"
 
-#: ..\python_docs\ReleaseProcess.py:54
+#: ..\python_docs\ReleaseProcess.py:56
 msgid ""
 "* Under rare circumstances, a maintenance release (e.g. 2013.1.1) may be "
 "made."
@@ -451,7 +469,7 @@ msgstr ""
 "* Bajo extrañas circunstancias, se puede crear una versión de mantenimiento "
 "(por ejemplo, 2013.1.1)."
 
-#: ..\python_docs\ReleaseProcess.py:55
+#: ..\python_docs\ReleaseProcess.py:57
 msgid ""
 "* A maintenance release may only include fixes for crashes and major "
 "security issues."
@@ -459,15 +477,15 @@ msgstr ""
 "* Una versión de mantenimiento sólo puede incluir solución a fallos muy "
 "graves o problemas de seguridad."
 
-#: ..\python_docs\ReleaseProcess.py:56
+#: ..\python_docs\ReleaseProcess.py:58
 msgid "* Maintenance releases are made from the rc branch."
 msgstr "* Las versiones de mantenimiento se crean desde la rama rc."
 
-#: ..\python_docs\ReleaseProcess.py:57
+#: ..\python_docs\ReleaseProcess.py:59
 msgid "## For Developers"
 msgstr "## Para desarrolladores"
 
-#: ..\python_docs\ReleaseProcess.py:58
+#: ..\python_docs\ReleaseProcess.py:60
 msgid ""
 "* GitHub issues should be created for most issues and discussed first before "
 "submitting a pull request. However, some trivial changes might not require "
@@ -479,19 +497,19 @@ msgstr ""
 "incidencia. Mira el artículo sobre cómo contribuir con NVDA para más "
 "información."
 
-#: ..\python_docs\ReleaseProcess.py:59
+#: ..\python_docs\ReleaseProcess.py:61
 msgid "* Work should be done in a separate topic branch."
 msgstr ""
 "* El trabajo debería hacerse en una rama separada y relacionada con el tema "
 "sobre el que se trabaja."
 
-#: ..\python_docs\ReleaseProcess.py:60
+#: ..\python_docs\ReleaseProcess.py:62
 msgid "* Any relevant documentation should be included in the topic branch."
 msgstr ""
 "* Se debe incluir cualquier documentación relevante en la rama temática en "
 "cuestión."
 
-#: ..\python_docs\ReleaseProcess.py:61
+#: ..\python_docs\ReleaseProcess.py:63
 msgid ""
 "* New commands, drivers, settings, dialogs, etc. must be documented in the "
 "User Guide."
@@ -499,7 +517,7 @@ msgstr ""
 "* Las nuevas órdenes, controladores, ajustes, diálogos, etc. deben "
 "documentarse en la guía de usuario."
 
-#: ..\python_docs\ReleaseProcess.py:62
+#: ..\python_docs\ReleaseProcess.py:64
 msgid ""
 "* Topic branches should be submitted as pull requests against master, unless "
 "a lead developer has specifically requested  the pull request be made "
@@ -511,15 +529,15 @@ msgstr ""
 "específicamente que la solicitud de cambios se haga hacia beta o rc en caso "
 "de que se solucionen fallos introducidos en el ciclo de la versión actual. "
 
-#: ..\python_docs\ReleaseProcess.py:63
+#: ..\python_docs\ReleaseProcess.py:65
 msgid "## For Translators"
 msgstr "## Para traductores"
 
-#: ..\python_docs\ReleaseProcess.py:64
+#: ..\python_docs\ReleaseProcess.py:66
 msgid "* All translation should be based on the beta branch."
 msgstr "* Todas las traducciones deben basarse en la rama beta."
 
-#: ..\python_docs\ReleaseProcess.py:65
+#: ..\python_docs\ReleaseProcess.py:67
 msgid ""
 "* Translators should ensure their translation is up to date a day before the "
 "translatable string freeze ends in order for it to be included in the "
@@ -536,11 +554,11 @@ msgstr ""
 "14 de noviembre. Cualquier trabajo que se envíe tras estas fechas no se "
 "incluirá en la próxima versión, quedará para la siguiente."
 
-#: ..\python_docs\ReleaseProcess.py:66
+#: ..\python_docs\ReleaseProcess.py:68
 msgid "## For Testers"
 msgstr "## Para evaluadores"
 
-#: ..\python_docs\ReleaseProcess.py:67
+#: ..\python_docs\ReleaseProcess.py:69
 msgid ""
 "* beta releases are beta quality. They include code that will be in the next "
 "release and has been tested without reported issues for at least a week."
@@ -549,7 +567,7 @@ msgstr ""
 "próxima versión, y que se ha evaluado sin informar de problemas durante al "
 "menos una semana."
 
-#: ..\python_docs\ReleaseProcess.py:68
+#: ..\python_docs\ReleaseProcess.py:70
 msgid ""
 "* The master branch is bleeding edge. It includes code that is being tested "
 "for possible inclusion in upcoming releases, but it may not yet be tested "
@@ -558,3 +576,33 @@ msgstr ""
 "* La rama master tiene código que se está probando para ver si se incluye en "
 "próximas versiones. Este código podría no haberse probado mucho, y podría "
 "contener fallos importantes."
+
+#~ msgid ""
+#~ "* The next branch and next snapshots will no longer exist. Anyone "
+#~ "currently on a next snapshot will be automatically updated to master "
+#~ "snapshots."
+#~ msgstr ""
+#~ "* La rama next y las versiones de desarrollo next ya no existirán. "
+#~ "Cualquiera que esté usando una versión de desarrollo next recibirá "
+#~ "automáticamente nuevas versiones de master."
+
+#~ msgid ""
+#~ " * Anyone currently on master snapshots will stay on master snapshots, "
+#~ "however it is important to note that these snapshots should now be "
+#~ "considered less stable than they were previously as code is no longer "
+#~ "incubated first. Having said this though, as we have also now put in "
+#~ "place automated checks testing the code, we should be able to guarantee "
+#~ "these snapshots will always run. We do advise though if you would prefer "
+#~ "something a little more stable, to consider testing our new beta "
+#~ "releases, that will start coming out about 5 weeks before the official "
+#~ "release."
+#~ msgstr ""
+#~ " * Cualquiera que use versiones de desarrollo master permanecerá en "
+#~ "master. Sin embargo, es importante tener en cuenta que estas versiones de "
+#~ "desarrollo deberían considerarse menos estables de lo que eran antes, ya "
+#~ "que el código no se incuba primero. Habiendo dicho esto, y ya que también "
+#~ "se han situado ahora pruebas automáticas para el código, se puede "
+#~ "garantizar que estas versiones de desarrollo siempre arrancarán. Se "
+#~ "aconseja a aquellos que prefieran algo un poco más estable que prueben "
+#~ "las nuevas versiones beta, que comenzarán a salir aproximadamente cinco "
+#~ "semanas antes de la liberación oficial."

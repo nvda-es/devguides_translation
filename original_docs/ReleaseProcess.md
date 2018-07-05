@@ -5,17 +5,17 @@ This document provides rough guidelines for the process of developing NVDA relea
 ## Changes to the existing process
 The process outlined later in this document has only been implemented very recently. Therefore this first section talks specifically about the changes from the older process. 
 ### Goals and reasoning
-The main goal of these changes is to remove the need for a "next" branch and pr incubation. Reasons for this are:
-
-* The next branch required manual merging of prs. This did not fit in well with Github's infrastructure in that these incubation merges were not tracked very well, reverts were messy and sometimes required next to be totally re-created, prs on next would frequently become conflicted with other prs, which meant manually fixing conflicts in both next and master.
- * Up until recently incubation was the only way we could guarantee some kind of code quality. Now we have a growing number of unit tests, system testing is well under way, and Github's management of prs (including mandatory code reviews) ensure a minimum code quality we did not have before.
+The main goal of these changes is to remove the need for a "next" branch and pull request incubation. Reasons for this are:
+* The next branch required manual merging of pull requests. This did not fit in well with Github's infrastructure in that these incubation merges were not tracked very well, reverts were messy and sometimes required next to be totally re-created, pull requests on next would frequently become conflicted with other pull requests, which meant manually fixing conflicts in both next and master.
+ * Up until recently incubation was the only way we could guarantee some kind of code quality. Now we have a growing number of unit tests, system testing is well under way, and Github's management of pull requests (including mandatory code reviews) ensure a minimum code quality we did not have before.
 ### Changes for developers
-* Once a pr is approved by reviewers and all build checks pass, the pr will be merged straight to master. There is no longer incubation on next.
-* If a merged pr results in a regression, new bug or does not work as advertised, the lead developers will be a little more strict on reverting the pr than in the past.
+* Once a pull request is approved by reviewers and all build checks pass, the pull request will be merged straight to master. There is no longer incubation on next.
+* If a merged pull request results in a regression, new bug or does not work as advertised, the lead developers will be a little more strict on reverting the pull request than in the past.
 ### Changes for testers
-* The next branch and next snapshots will no longer exist. Anyone currently on a next snapshot will be automatically updated to master snapshots.
- * Anyone currently on master snapshots will stay on master snapshots, however it is important to note that these snapshots should now be considered less stable than they were previously as code is no longer incubated first. Having said this though, as we have also now put in place automated checks testing the code, we should be able to guarantee these snapshots will always run. We do advise though if you would prefer something a little more stable, to consider testing our new beta releases, that will start coming out about 5 weeks before the official release.
-
+* The next branch and next snapshots will no longer exist. Anyone currently on a next snapshot will be automatically updated to new "alpha" snapshots. Alpha snapshots are created directly from Master each time it changes (I.e. when a pull request is merged).  As the name suggests, these snapshots are alpha quality. And although automated tests pass, these builds have had no user testing.
+ * Anyone currently on master snapshots will be upgraded to the first available tagged beta for the current release. Beta builds, as the name implies, are beta quality and have had some testing by users. Note that as new betas are made available you will keep automatically upgrading, and then also upgrade to the final stable release. To get back to beta testing for the next release you will need to manually download a new beta for that release.
+ * The snapshots page at https://www.nvaccess.org/files/nvda/snapshots/ now lists both alpha snapshots and all beta releases. 
+ 
 ## Release Workflow
 This is the general release workflow. Information for specific community groups is provided in later sections.
 
@@ -24,18 +24,18 @@ This is the general release workflow. Information for specific community groups 
 * A topic branch should be submitted for inclusion using a pull request.
 * All pull requests must be reviewed by one of the lead developers.
 * "master" is the mainline branch for NVDA development. Once a pull request has been reviewed and approved by at least one lead developer and all build checks have passed, it will be squash merged into master.
-* If the merging of a pr to master causes any build checks on master to fail, the pr is reverted without question. This is however unlikely to be an issue as build checks on the PR itself must have already passed.
-* If a merged pr has been identified as causing a regression, new bug, or does not work as originally reported, the pr may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pr may be: 
-    * The PR was submitted by an active collaborator and it is inevitable that they will follow through with a suitable pr to address the issues.
+* If the merging of a pull request to master causes any build checks on master to fail, the pull request is reverted without question. This is however unlikely to be an issue as build checks on the pull request itself must have already passed.
+* If a merged pull request has been identified as causing a regression, new bug, or does not work as originally reported, the pull request may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pull request may be: 
+    * The pull request was submitted by an active collaborator and it is inevitable that they will follow through with a suitable pull request to address the issues.
     * The bug is trivial enough to be fixed by a collaborator.
-* Compiled snapshots of master will be made available to the public for very early testing. This is bleeding-edge code and should never be run in production environments.
+*  Builds of  master (known as alpha snapshots) will be made available to the public for very early testing. This is bleeding-edge code and should never be run in production environments.
 * Up until 7 weeks before a release, a last known good commit of master (I.e. one that passes build checks) will be periodically merged into a "beta" branch, making that code available for early translation. The beta branch at this stage should still be considered bleeding-edge, and is not recommended for people than other to check early translation work.
 
 ### Beta phase
 * From 7 weeks before the release, merges from master to beta will no longer occur. New pull requests may be now considered for squash merging straight to beta, if and only if they are addressing a bug introduced in the current release cycle or a critical Operating System change out of our control. 
-* If any changes are made to beta, such as the merging of critical prs or translation merges, beta will be periodically merged back to master. 
+* If any changes are made to beta, such as the merging of critical pull requests or translation merges, beta will be periodically merged back to master. 
 * Starting from 5 weeks before final release, tagged beta releases will be published periodically, allowing the wider community to try out the betas. At this stage code originally introduced through master will have been tested for at least 2 weeks, thus the beta builds can be seen as beta quality.
-* If a merged pr that reached beta has been identified as causing a regression, new bug, or does not work as originally reported, the pr may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pr may be: 
+* If a merged pull request that reached beta has been identified as causing a regression, new bug, or does not work as originally reported, the pull request may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pull request may be: 
     * The bug is trivial enough to be fixed by a collaborator.
 * If a pull request is reverted from beta, it is more than likely any new pull request replacing it will not get into the current release.
 

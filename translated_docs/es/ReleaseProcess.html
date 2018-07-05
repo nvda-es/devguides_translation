@@ -22,8 +22,9 @@
 </ul>
 <h3 id="cambios-para-evaluadores">Cambios para evaluadores</h3>
 <ul>
-<li>La rama next y las versiones de desarrollo next ya no existirán. Cualquiera que esté usando una versión de desarrollo next recibirá automáticamente nuevas versiones de master.</li>
-<li>Cualquiera que use versiones de desarrollo master permanecerá en master. Sin embargo, es importante tener en cuenta que estas versiones de desarrollo deberían considerarse menos estables de lo que eran antes, ya que el código no se incuba primero. Habiendo dicho esto, y ya que también se han situado ahora pruebas automáticas para el código, se puede garantizar que estas versiones de desarrollo siempre arrancarán. Se aconseja a aquellos que prefieran algo un poco más estable que prueben las nuevas versiones beta, que comenzarán a salir aproximadamente cinco semanas antes de la liberación oficial.</li>
+<li>La rama next y las versiones instantáneas de desarrollo next dejarán de existir. Se actualizarán automáticamente a las nuevas versiones "alfa" todas las next. Las versiones alfa se crean a partir de master cada vez que ésta cambia (p.ej. cuando se mezcla una solicitud de cambio). Como su nombre sugiere, estas snapshots son de calidad alfa. Y aunque pasen las pruebas automáticas, estas versiones no han tenido probadores humanos.</li>
+<li>Se actualizará a cualquiera utilizando instantáneas de master a la primera versión beta etiquetada para la versión actual que esté disponible.</li>
+<li>La página de versiones de desarrollo en https://www.nvaccess.org/files/nvda/snapshots/ ahora lista tanto todas las versiones alfa como las versiones beta.</li>
 </ul>
 <h2 id="flujo-de-trabajo-de-versiones">Flujo de trabajo de versiones</h2>
 <p>Este es el flujo de trabajo general de publicación de versiones. En las siguientes secciones se ofrece información para grupos específicos de la comunidad.</p>
@@ -33,21 +34,21 @@
 <li>Una rama de un tema concreto debería ser enviada para incluirla mediante una solicitud de cambios (pull request).</li>
 <li>Todas las solicitudes de cambio deben ser revisadas por uno de los desarrolladores principales.</li>
 <li>"master" es la rama principal de desarrollo de NVDA. Una vez que uno de los desarrolladores principales revisa y aprueba una solicitud de cambios y se superan todas las comprobaciones de compilación, esta se mezcla en master.</li>
-<li>Si la mezcla de una solicitud de cambios en master causa que falle cualquier comprobación de compilación en master, la solicitud se revierte sin preguntar. Sin embargo, esto probablemente no será un problema, ya que las comprobaciones de compilación en la solicitud en sí deben haberse superado.</li>
+<li>Si la mezcla de una solicitud de cambios en master causa que falle cualquier comprobación de compilación en master, la solicitud se revierte sin preguntar. Sin embargo, esto probablemente no será un problema, ya que las comprobaciones de compilación en la solicitud en sí deberían haberse superado.</li>
 <li>Si una solicitud de cambios mezclada se ha identificado como causante de un fallo nuevo, una regresión, o no funciona como se informó originalmente, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
 <li>La solicitud de cambios fue enviada por un colaborador activo y se sabe con certeza que volverá con otra solicitud de cambios para solucionar los problemas.</li>
 <li>El fallo es suficientemente trivial como para que un colaborador lo solucione.</li>
 </ul>
 </li>
-<li>Las versiones de desarrollo compiladas de master quedarán a disposición del público para pruebas tempranas. Su código es muy inestable y nunca deberían utilizarse en entornos de producción.</li>
+<li>Versiones de desarrollo compiladas de master (conocidas como instantáneas alfa)  quedarán a disposición del público para pruebas tempranas. Su código es muy inestable y nunca deberían utilizarse en entornos de producción.</li>
 <li>Hasta siete semanas antes de una liberación, se mezclará en una rama "beta" un commit reciente que se sepa que funciona bien de master (es decir, que supera las pruebas de compilación), dejando el código disponible para su traducción. La rama beta en ese momento debería seguir considerándose inestable, y no se recomienda para gente que no vaya a probar las traducciones.</li>
 </ul>
 <h3 id="la-fase-beta">La fase beta</h3>
 <ul>
 <li>Siete semanas antes de la liberación, dejarán de hacerse mezclas de master a beta. Se deberían plantear las nuevas solicitudes de cambios para mezclarse directamente en beta, sy y sólo si solucionan un fallo introducido en el ciclo actual de liberación o hay un cambio crítico en el sistema operativo fuera del control de los desarrolladores. </li>
-<li>Si se hace cualquier cambio a beta, como la mezcla de solicitudes de cambios críticas o mezclas de traducciones, beta se mezclará periódicamente en master. </li>
+<li>If any changes are made to beta, such as the merging of critical pull requests or translation merges, beta will be periodically merged back to master. </li>
 <li>Empezando cinco semanas antes de la liberación final, se publicarán periódicamente versiones etiquetadas como beta, permitiendo que la mayor parte de la comunidad las pruebe. En este punto, el código introducido mediante master habrá sido probado durante al menos dos semanas, por lo que las compilaciones beta tienen calidad de beta.</li>
-<li>Si una solicitud de cambios que llega a beta se identifica como causante de una regresión, nuevo fallo o no funciona como se indicó, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
+<li>Si una solicitud de cambios que llega a beta se identifica como causante de una regresión, un nuevo fallo o no funciona como se había indicado originalmente, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
 <li>El fallo es suficientemente trivial como para que un colaborador lo solucione.</li>
 </ul>
 </li>
