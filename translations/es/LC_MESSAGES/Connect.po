@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-07-09 14:53+Hora de verano romance\n"
+"PO-Revision-Date: 2018-07-09 15:27+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.8\n"
+"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\connect.py:3
+msgid "# Connect with the NVDA Community"
+msgstr "# Comunidades en otros idiomas"
+
+#: ..\python_docs\connect.py:4
+msgid "## Official project resources"
+msgstr ""
+"La comunidad de NVDA es enorme. De hecho no podríamos hablar de una "
+"comunidad propiamente dicha, sino de un enorme conjunto de comunidades "
+"alrededor de todo el mundo, interconectadas entre sí en mayor o menor grado, "
+"en varios idiomas y con opiniones muy diversas.\n"
+"\n"
+"## Recursos oficiales"
+
+#: ..\python_docs\connect.py:5
+msgid "### Gitter Chat Room"
+msgstr "### Sala de chat en Jitter"
+
+#: ..\python_docs\connect.py:6
+msgid ""
+"If you would like to text chat with the developers or other NVDA users "
+"directly, other than sending -emails, you may wish to join the [NVDA chat "
+"room on Gitter](https://gitter.im/nvaccess/NVDA). It is the chat room that "
+"has been set up for discussions of all issues related to NVDA. Also, you may "
+"share tips and personal stories about using NVDA, and you may ask relevant "
+"questions after reviewing the website and product documentation, or feel "
+"free to chat about more expected features and/or bug fixes."
+msgstr ""
+"Si quieres intercambiar mensajes de texto con los desarrolladores de NVDA, o "
+"directamente con otros usuarios, en vez de enviar correos puedes unirte a la "
+"[sala de chat de NVDA en Jitter](https://gitter.im/nvaccess/NVDA). Se trata "
+"del canal que se ha creado para debatir sobre los problemas de NVDA. También "
+"puedes compartir consejos y experiencias personales sobre NVDA, y hacer "
+"preguntas relevantes después de leer toda la documentación y explorar el "
+"sitio web, o hablar de sugerencias y nuevas características que se podrían "
+"añadir al lector de pantalla (en inglés)."
+
+#: ..\python_docs\connect.py:7
+msgid ""
+"If you prefer using IRC, you can also [connect to Gitter using an IRC client]"
+"(https://irc.gitter.im/)."
+msgstr ""
+"Si prefieres utilizar IRC, también puedes [conectarte a Jitter usando un "
+"cliente IRC](https://irc.gitter.im/)."
+
+#: ..\python_docs\connect.py:8
+msgid "## Other Community Sites, Blogs and Email Lists"
+msgstr "## Webs de otras comunidades, blogs y listas de correo"
+
+#: ..\python_docs\connect.py:9
+msgid "### International users' mailing List (English)"
+msgstr "### Lista de correo internacional para usuarios (en inglés)"
+
+#: ..\python_docs\connect.py:10
+msgid "To join the users' list, send a blank email to: "
+msgstr ""
+"Para unirte a la lista de usuarios, envía un correo vacío a la dirección: "
+
+#: ..\python_docs\connect.py:11
+msgid "nvda+subscribe@groups.io."
+msgstr "nvda+subscribe@groups.io."
+
+#: ..\python_docs\connect.py:12
+msgid ""
+"You can also visit [the homepage](https://nvda.groups.io/g/nvda) of the "
+"users' email list where you can subscribe, search and read list archives."
+msgstr ""
+"También puedes visitar la [web de la lista de correo](https://nvda.groups.io/"
+"g/nvda), donde podrás suscribirte, buscar y leer los mensajes de la lista."
+
+#: ..\python_docs\connect.py:13
+msgid "### Resources for specific languages"
+msgstr "### Recursos en idiomas específicos"
+
+#: ..\python_docs\connect.py:14
+msgid ""
+"Since the creation of NVDA, the community has created a number of "
+"independent websites, blogs and mailing lists to discuss all issues related "
+"to NVDA in their native languages. The following list shows those web "
+"resources in alphabetical order."
+msgstr ""
+"Desde el nacimiento de NVDA, la comunidad ha creado un gran número de sitios "
+"web independientes, blogs y listas de correo para debatir sobre todos los "
+"problemas relacionados con NVDA en sus idiomas nativos. La siguiente lista "
+"muestra esos recursos web."
+
+#: ..\python_docs\connect.py:15
+msgid "Note:"
+msgstr "Nota:"
+
+#: ..\python_docs\connect.py:16
+msgid ""
+"The web resources mentioned in the following list are published "
+"independently; that's to say, they are written entirely by NVDA community "
+"around the world and thus the information/opinions expressed may not be the "
+"same as that held by the NVDA project team."
+msgstr ""
+"Los recursos web mencionados en la siguiente lista han sido publicados de "
+"manera independiente; es decir, han sido aportados por miembros de la "
+"comunidad de NVDA de todo el mundo. Por tanto, las opiniones expresadas y la "
+"información disponible puede no ser la misma que maneja el equipo del "
+"proyecto NVDA."
+
+#: ..\python_docs\connect.py:17
+msgid " * Arabic website: https://www.nvda-ar.org"
+msgstr " * Sitio web árabe: https://www.nvda-ar.org"
+
+#: ..\python_docs\connect.py:18
+msgid "* Arabic discussion list: https://groups.io/g/nvda-ar"
+msgstr " * Lista de debate árabe: https://groups.io/g/nvda-ar"
+
+#: ..\python_docs\connect.py:19
+msgid " * Czech/Slovak Blog: http://nvda-project.cz"
+msgstr " * Blog checo y eslovaco: http://nvda-project.cz"
+
+#: ..\python_docs\connect.py:20
+msgid " * Danish website: http://www.nvda.dk"
+msgstr " * Sitio web danés: http://www.nvda.dk"
+
+#: ..\python_docs\connect.py:21
+msgid " * Dutch website: https://www.nvda-nl.org"
+msgstr " * Sitio web neerlandés: https://www.nvda-nl.org"
+
+#: ..\python_docs\connect.py:22
+msgid " * Dutch wiki: https://wiki.nvda-nl.org"
+msgstr " * Wiki neerlandesa: https://wiki.nvda-nl.org"
+
+#: ..\python_docs\connect.py:23
+msgid ""
+" * Dutch Email List: to subscribe, send a blank email to nvdadutch"
+"+subscribe@groups.io and reply to the received message."
+msgstr ""
+" * Lista de correo en neerlandés: para suscribirte, envía un correo vacío a "
+"nvdadutch+subscribe@groups.io y responde al mensaje recibido."
+
+#: ..\python_docs\connect.py:24
+msgid " * Finnish: http://groups.yahoo.com/group/nvda-finland"
+msgstr " * Finés: http://groups.yahoo.com/group/nvda-finland"
+
+#: ..\python_docs\connect.py:25
+msgid " * French: http://www.nvda-fr.org"
+msgstr " * Francés: http://www.nvda-fr.org"
+
+#: ..\python_docs\connect.py:26
+msgid " * German: https://www.facebook.com/groups/1899444343635975/?fref=nf"
+msgstr " * Alemán: https://www.facebook.com/groups/1899444343635975/?fref=nf"
+
+#: ..\python_docs\connect.py:27
+msgid ""
+" * German Email List: to subscribe, send a blank email to nvda-german-"
+"subscribe@ml4free.de with \"subscribe\" in the subject line."
+msgstr ""
+" * Lista de correo en alemán: para suscribirte, envía un correo vacío a nvda-"
+"german-subscribe@ml4free.de con el asunto \"subscribe\""
+
+#: ..\python_docs\connect.py:28
+msgid " * Hungarian: http://www.nvda.hu"
+msgstr " * Húngaro: http://www.nvda.hu"
+
+#: ..\python_docs\connect.py:29
+msgid " * Hungarian Email List: http://nvda.hu/mailman/listinfo/lista_nvda.hu"
+msgstr ""
+" * Lista de correo en húngaro: http://nvda.hu/mailman/listinfo/lista_nvda.hu"
+
+#: ..\python_docs\connect.py:30
+msgid " * Italian: http://www.nvda.it"
+msgstr " * Italiano: http://www.nvda.it"
+
+#: ..\python_docs\connect.py:31
+msgid " * Japanese website: http://www.nvda.jp/"
+msgstr " * Sitio web japonés: http://www.nvda.jp/"
+
+#: ..\python_docs\connect.py:32
+msgid ""
+" * Japanese mailing list: Send a blank message to nvda-japanese-users"
+"+subscribe@googlegroups.com with subscribe as the subject line."
+msgstr ""
+" * Lista de correo en japonés: envía un correo vacío a nvda-japanese-users"
+"+subscribe@googlegroups.com con la palabra subscribe en el asunto."
+
+#: ..\python_docs\connect.py:33
+msgid ""
+" * Korean users forum on Facebook: https://www.facebook.com/groups/nvdakr"
+msgstr ""
+" * Foro coreano de usuarios en Facebook: https://www.facebook.com/groups/"
+"nvdakr"
+
+#: ..\python_docs\connect.py:34
+msgid " * Polish: http://www.nvda.pl"
+msgstr " * Polaco: http://www.nvda.pl"
+
+#: ..\python_docs\connect.py:35
+msgid ""
+" * Portuguese mailing list: to subscribe, send a blank email to "
+"nvdaemportugues+subscribe@googlegroups.com. Note that this list was formerly "
+"on Yahoo Groups."
+msgstr ""
+" * Lista de correo en portugués: para suscribirte, envía un correo vacío a "
+"nvdaemportugues+subscribe@googlegroups.com. Esta lista se encontraba antes "
+"en grupos de Yahoo."
+
+#: ..\python_docs\connect.py:36
+msgid " * Romanian website: http://www.ro-nvda.tk"
+msgstr " * Sitio web rumano: http://www.ro-nvda.tk"
+
+#: ..\python_docs\connect.py:37
+msgid ""
+" * Romanian mailing list: To subscribe, send an e-mail to NVDA-romanian-"
+"comunity+subscribe@googlegroups.com or you can access the link https://"
+"groups.google.com/forum/#!forum/nvda-romanian-comunity to subscribe via web."
+msgstr ""
+" * Lista de correo en rumano: para suscribirte, envía un correo vacío a NVDA-"
+"romanian-comunity+subscribe@googlegroups.com o entra en el siguiente enlace: "
+"https://groups.google.com/forum/#!forum/nvda-romanian-comunity para "
+"suscribirte vía web."
+
+#: ..\python_docs\connect.py:38
+msgid ""
+" * Russian mailing list: To subscribe, send a blank email to nvda-rus-"
+"subscribe@tiflo.info and reply to the received message."
+msgstr ""
+" * Lista de correo en ruso: para suscribirte, envía un correo vacío a nvda-"
+"rus-subscribe@tiflo.info y responde al mensaje recibido."
+
+#: ..\python_docs\connect.py:39
+msgid " * Spanish website: https://nvda.es"
+msgstr " * Sitio web en español: https://nvda.es"
+
+#: ..\python_docs\connect.py:40
+msgid " * Spanish Github website: https://nvdaes.github.io"
+msgstr " * Sitio web en español en Github: https://nvdaes.github.io"
+
+#: ..\python_docs\connect.py:41
+msgid ""
+" * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es"
+"+subscribe@googlegroups.com"
+msgstr ""
+" * Lista de correo en español: para suscribirte, envía un correo vacío a "
+"nvda-es+subscribe@googlegroups.com"
+
+#: ..\python_docs\connect.py:42
+msgid ""
+" * Swedish mailing list: To subscribe send a blank email to nvda-"
+"request@smartlist.nu putting subscribe in the subject line."
+msgstr ""
+" * Lista de correo en sueco: para suscribirte, envía un correo vacío a nvda-"
+"request@smartlist.nu poniendo la palabra subscribe en el asunto."
+
+#: ..\python_docs\connect.py:43
+msgid " * Turkish mailing list: http://groups.yahoo.com/group/nvda_tr"
+msgstr " * Lista de correo en turco: http://groups.yahoo.com/group/nvda_tr"
+
+#: ..\python_docs\connect.py:44
+msgid " * NVDA Simplified Chinese website: http://www.nvdacn.com"
+msgstr " * Web de NVDA en chino simplificado: http://www.nvdacn.com"
+
+#: ..\python_docs\connect.py:45
+msgid ""
+" * NVDA Simplified Chinese Website is the official website of NVDA China "
+"Mainland. It provides the latest tutorials on "
+msgstr ""
+" * El sitio web de NVDA en chino simplificado es el sitio web oficial de "
+"NVDA en China. Proporciona los tutoriales más actualizados,"
+
+#: ..\python_docs\connect.py:46
+msgid "NVDA Simplified Chinese news and plugins."
+msgstr "noticias y complementos de NVDA en chino simplificado."

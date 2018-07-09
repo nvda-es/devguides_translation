@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-07-09 14:53+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\connect.py:3
+msgid "# Connect with the NVDA Community"
+msgstr ""
+
+#: ..\python_docs\connect.py:4
+msgid "## Official project resources"
+msgstr ""
+
+#: ..\python_docs\connect.py:5
+msgid "### Gitter Chat Room"
+msgstr ""
+
+#: ..\python_docs\connect.py:6
+msgid "If you would like to text chat with the developers or other NVDA users directly, other than sending -emails, you may wish to join the [NVDA chat room on Gitter](https://gitter.im/nvaccess/NVDA). It is the chat room that has been set up for discussions of all issues related to NVDA. Also, you may share tips and personal stories about using NVDA, and you may ask relevant questions after reviewing the website and product documentation, or feel free to chat about more expected features and/or bug fixes."
+msgstr ""
+
+#: ..\python_docs\connect.py:7
+msgid "If you prefer using IRC, you can also [connect to Gitter using an IRC client](https://irc.gitter.im/)."
+msgstr ""
+
+#: ..\python_docs\connect.py:8
+msgid "## Other Community Sites, Blogs and Email Lists"
+msgstr ""
+
+#: ..\python_docs\connect.py:9
+msgid "### International users' mailing List (English)"
+msgstr ""
+
+#: ..\python_docs\connect.py:10
+msgid "To join the users' list, send a blank email to: "
+msgstr ""
+
+#: ..\python_docs\connect.py:11
+msgid "nvda+subscribe@groups.io."
+msgstr ""
+
+#: ..\python_docs\connect.py:12
+msgid "You can also visit [the homepage](https://nvda.groups.io/g/nvda) of the users' email list where you can subscribe, search and read list archives."
+msgstr ""
+
+#: ..\python_docs\connect.py:13
+msgid "### Resources for specific languages"
+msgstr ""
+
+#: ..\python_docs\connect.py:14
+msgid "Since the creation of NVDA, the community has created a number of independent websites, blogs and mailing lists to discuss all issues related to NVDA in their native languages. The following list shows those web resources in alphabetical order."
+msgstr ""
+
+#: ..\python_docs\connect.py:15
+msgid "Note:"
+msgstr ""
+
+#: ..\python_docs\connect.py:16
+msgid "The web resources mentioned in the following list are published independently; that's to say, they are written entirely by NVDA community around the world and thus the information/opinions expressed may not be the same as that held by the NVDA project team."
+msgstr ""
+
+#: ..\python_docs\connect.py:17
+msgid " * Arabic website: https://www.nvda-ar.org"
+msgstr ""
+
+#: ..\python_docs\connect.py:18
+msgid "* Arabic discussion list: https://groups.io/g/nvda-ar"
+msgstr ""
+
+#: ..\python_docs\connect.py:19
+msgid " * Czech/Slovak Blog: http://nvda-project.cz"
+msgstr ""
+
+#: ..\python_docs\connect.py:20
+msgid " * Danish website: http://www.nvda.dk"
+msgstr ""
+
+#: ..\python_docs\connect.py:21
+msgid " * Dutch website: https://www.nvda-nl.org"
+msgstr ""
+
+#: ..\python_docs\connect.py:22
+msgid " * Dutch wiki: https://wiki.nvda-nl.org"
+msgstr ""
+
+#: ..\python_docs\connect.py:23
+msgid " * Dutch Email List: to subscribe, send a blank email to nvdadutch+subscribe@groups.io and reply to the received message."
+msgstr ""
+
+#: ..\python_docs\connect.py:24
+msgid " * Finnish: http://groups.yahoo.com/group/nvda-finland"
+msgstr ""
+
+#: ..\python_docs\connect.py:25
+msgid " * French: http://www.nvda-fr.org"
+msgstr ""
+
+#: ..\python_docs\connect.py:26
+msgid " * German: https://www.facebook.com/groups/1899444343635975/?fref=nf"
+msgstr ""
+
+#: ..\python_docs\connect.py:27
+msgid " * German Email List: to subscribe, send a blank email to nvda-german-subscribe@ml4free.de with \"subscribe\" in the subject line."
+msgstr ""
+
+#: ..\python_docs\connect.py:28
+msgid " * Hungarian: http://www.nvda.hu"
+msgstr ""
+
+#: ..\python_docs\connect.py:29
+msgid " * Hungarian Email List: http://nvda.hu/mailman/listinfo/lista_nvda.hu"
+msgstr ""
+
+#: ..\python_docs\connect.py:30
+msgid " * Italian: http://www.nvda.it"
+msgstr ""
+
+#: ..\python_docs\connect.py:31
+msgid " * Japanese website: http://www.nvda.jp/"
+msgstr ""
+
+#: ..\python_docs\connect.py:32
+msgid " * Japanese mailing list: Send a blank message to nvda-japanese-users+subscribe@googlegroups.com with subscribe as the subject line."
+msgstr ""
+
+#: ..\python_docs\connect.py:33
+msgid " * Korean users forum on Facebook: https://www.facebook.com/groups/nvdakr"
+msgstr ""
+
+#: ..\python_docs\connect.py:34
+msgid " * Polish: http://www.nvda.pl"
+msgstr ""
+
+#: ..\python_docs\connect.py:35
+msgid " * Portuguese mailing list: to subscribe, send a blank email to nvdaemportugues+subscribe@googlegroups.com. Note that this list was formerly on Yahoo Groups."
+msgstr ""
+
+#: ..\python_docs\connect.py:36
+msgid " * Romanian website: http://www.ro-nvda.tk"
+msgstr ""
+
+#: ..\python_docs\connect.py:37
+msgid " * Romanian mailing list: To subscribe, send an e-mail to NVDA-romanian-comunity+subscribe@googlegroups.com or you can access the link https://groups.google.com/forum/#!forum/nvda-romanian-comunity to subscribe via web."
+msgstr ""
+
+#: ..\python_docs\connect.py:38
+msgid " * Russian mailing list: To subscribe, send a blank email to nvda-rus-subscribe@tiflo.info and reply to the received message."
+msgstr ""
+
+#: ..\python_docs\connect.py:39
+msgid " * Spanish website: https://nvda.es"
+msgstr ""
+
+#: ..\python_docs\connect.py:40
+msgid " * Spanish Github website: https://nvdaes.github.io"
+msgstr ""
+
+#: ..\python_docs\connect.py:41
+msgid " * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es+subscribe@googlegroups.com"
+msgstr ""
+
+#: ..\python_docs\connect.py:42
+msgid " * Swedish mailing list: To subscribe send a blank email to nvda-request@smartlist.nu putting subscribe in the subject line."
+msgstr ""
+
+#: ..\python_docs\connect.py:43
+msgid " * Turkish mailing list: http://groups.yahoo.com/group/nvda_tr"
+msgstr ""
+
+#: ..\python_docs\connect.py:44
+msgid " * NVDA Simplified Chinese website: http://www.nvdacn.com"
+msgstr ""
+
+#: ..\python_docs\connect.py:45
+msgid " * NVDA Simplified Chinese Website is the official website of NVDA China Mainland. It provides the latest tutorials on "
+msgstr ""
+
+#: ..\python_docs\connect.py:46
+msgid "NVDA Simplified Chinese news and plugins."
+msgstr ""
+
