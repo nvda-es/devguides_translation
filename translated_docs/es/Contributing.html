@@ -1,0 +1,80 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Cómo contribuir con NVDA</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Cómo contribuir con NVDA</h1></header>
+  <p>Si quieres contribuir con código o documentación al proyecto NVDA, sigue estas pautas. También puedes hacer contribuciones que no sean de código, ayudando a procesar las incidencias entrantes en GitHub.</p>
+<h2 id="como-enviar-cambios">Cómo enviar cambios</h2>
+<p>Para cualquier cosa distinta a la reparación de problemas pequeños, por favor comenta en una incidencia existente o crea una incidencia nueva exponiendo los detalles del cambio que propones.
+Los cambios no relacionados se deben gestionar en incidencias separadas.
+Incluye información sobre casos de uso, diseño, experiencia de usuario, etc.
+Eso permitirá a los desarrolladores discutir los aspectos y consecuencias derivadas del cambio, y potencialmente evitará gastar tiempo inútilmente.
+Deberías esperar a que se acepte tu propuesta antes de empezar a programar. Ten en cuenta que NV Access no aceptará cambios que no se hayan discutido previamente.</p>
+<p>Si es un cambio pequeñito que no incluye modificaciones en diseño, discusiones sobre la implementación o experiencia de usuario (por ejemplo, arreglar un error que se ve claramente en el código o en la documentación, o un nuevo controlador para un sintetizador o pantalla braille), puedes crear una nueva solicitud de cambios sin tener que abrir una incidencia antes. Sin embargo, esto es muy raro. En caso de duda, abre una incidencia.</p>
+<p>Si esta es tu primera contribución, deberás hacer una "bifurcación" del repositorio oficial en tu cuenta de GitHub.</p>
+<p>Cuando hagas una bifurcación, GitHub copiará la rama master. Sin embargo, esta rama no se actualizará cuando lo haga la oficial. Para asegurarte de que tu trabajo siempre se basa en el último commit de la rama master oficial, se recomienda que vincules la copia de tu rama a la oficial en vez de la que hay en tu cuenta. Si ya has clonado tu bifurcación de GitHub, puedes hacer algo como esto desde la línea de órdenes:</p>
+<pre><code>#Añadir un origen remoto con el repositorio de NVDA.
+git remote add nvaccess https://github.com/nvaccess/nvda.git
+# Descargar las ramas de NV Access.
+git fetch nvaccess
+# Cambiar a la rama master local.
+git checkout master
+# configurar la rama master local para que utilice por defecto el origen remoto de NVDA.
+git branch -u nvaccess/master
+# Actualizar la rama master local.
+git pull
+</code></pre>
+
+<p>Deberías usar una rama "temática" distinta para cada incidencia.
+Todo el código debería basarse en el commit más reciente de la rama master oficial que hay en el momento en que empiezas a trabajar, a no ser que el código oficial sufra cambios drásticos que afecten a tu trabajo o dependa del código de otra incidencia.
+Las nuevas ramas <em>nunca</em> deberán crearse a partir de la rama "next".</p>
+<p>Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías actualizar la guía de usuario convenientemente para reflejar tu cambio.</p>
+<p>Antes de abrir tu solicitud de cambios, ejecuta la orden <code>scons tests</code> y asegúrate de que se superan todas las pruebas unitarias. Si es posible, crea un conjunto de unidades de prueba adicionales para probar tus cambios.</p>
+<p>Cuando sea hora de enviar el código, abre una nueva solicitud de cambios haciendo referencia a la incidencia que describe tu cambio.
+El equipo de NV Access pasará a revisar tu código.</p>
+<h2 id="estilo-del-codigo">Estilo del código</h2>
+<h3 id="codificacion">Codificación</h3>
+<ul>
+<li>
+<p>Cuando los archivos Python contengan caracteres que no sean Ascii, deberán estar codificados en UTF-8.</p>
+<ul>
+<li>Para evitar errores con las herramientas de traducción, incluye esta línea al principio del código si lo haces. Las marcas Unicode al principio del archivo hacen que Gettext falle:</li>
+</ul>
+<p><code># -*- coding: UTF-8 -*-</code></p>
+<ul>
+<li>Deberás incluir esta línea incluso si no planeas que las cadenas se puedan traducir, o si tienen secuencias de escape que producen caracteres no Ascii, tales como <code>"\xff"</code>. Esto es particularmente importante para controladores de pantallas braille. El responsable del fallo es Gettext, como se puede ver en https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.</li>
+<li>La mayoría de los archivos deben contener saltos de línea en formato Windows (crlf). Este es un proyecto hecho exclusivamente para Windows, y no se puede usar en sistemas operativos derivados de Unix.</li>
+</ul>
+</li>
+</ul>
+<h3 id="indentado">Indentado</h3>
+<ul>
+<li>La indentación se debe hacer con tabuladores (uno por nivel) y no con espacios.</li>
+<li>Al dividir una instrucción en varias líneas, indéntala con uno o más niveles. No uses alineación vertical del tipo “alinear con el corchete de la línea superior”.</li>
+</ul>
+<h3 id="nombres-de-identificadores">Nombres de identificadores</h3>
+<ul>
+<li>Las funciones, propiedades, variables, etc. deberían usar mayúsculas para separar palabras, pero empezar con una letra minúscula; por ejemplo, <code>speakText</code>.</li>
+<li>El caso anterior también se aplica para las clases, pero en vez de empezar en minúscula lo hacen en mayúscula; por ejemplo, <code>BrailleHandler</code>.</li>
+<li>Las constantes siempre deben estar en mayúscula, separando las palabras con guiones bajos. Por ejemplo, <code>LANGS_WITH_CONJUNCT_CHARS</code>.</li>
+<li>Los manejadores de eventos tienen el prefijo "event_", y tienen la forma "event_ACTION" o "event_OBJECT_ACTION", donde OBJECT hace referencia al tipo de clase a la que se refiere la acción.</li>
+<li>Puntos de extensión:<ul>
+<li><code>Action</code>: lleva el prefijo <code>pre_</code> o <code>post_</code> para especificar que se notifica a los manejadores antes o después de que la acción tenga lugar.</li>
+<li><code>Decider</code>: lleva el prefijo <code>should_</code> para mostrarlo como una pregunta. Por ejemplo, <code>should_doSomething</code></li>
+<li><code>Filter</code>: lo ideal es que siga el mismo estilo que los otros, y comunicar si el filtro ocurre antes o después de la acción. Sería estupendo tener también un esquema de nombres que lo diferencie de los otros.</li>
+</ul>
+</li>
+</ul>
+<h3 id="cadenas-traducibles">Cadenas traducibles</h3>
+<ul>
+<li>Todas las cadenas que se puedan mostrar al usuario deberían marcarse como traducibles usando la función <code>_()</code>. Por ejemplo, en vez de poner <code>"text review"</code> pondríamos en su lugar <code>_("text review")</code>.
+Todas las cadenas traducibles deberían estar precedidas por un comentario en inglés para traductores que describa claramente su propósito. Por ejemplo:</li>
+</ul>
+<pre><code># Translators: The name of a category of NVDA commands.
+SCRCAT_TEXTREVIEW = _(&quot;Text review&quot;)
+</code></pre>
+</body>
+</html>

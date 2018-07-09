@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-07-09 10:34+Hora de verano romance\n"
+"PO-Revision-Date: 2018-07-09 10:34+0200\n"
+"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.0.8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ..\python_docs\Contributing.py:3
+msgid "# Contributing to NVDA"
+msgstr "# Cómo contribuir con NVDA"
+
+#: ..\python_docs\Contributing.py:4
+msgid ""
+"If you would like to contribute code or documentation to NVDA, please follow "
+"these guidelines. You can also make non-code contributions by helping "
+"process incoming Github issues. For information on this please see the "
+"[triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and "
+"[issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) "
+"on the wiki."
+msgstr ""
+"Si quieres contribuir con código o documentación al proyecto NVDA, sigue "
+"estas pautas. También puedes hacer contribuciones que no sean de código, "
+"ayudando a procesar las incidencias entrantes en GitHub."
+
+#: ..\python_docs\Contributing.py:5
+msgid "## Submitting Changes"
+msgstr "## Cómo enviar cambios"
+
+#: ..\python_docs\Contributing.py:6
+msgid ""
+"For anything other than minor bug fixes, please comment on an existing issue "
+"or create a new issue providing details about your proposed change."
+msgstr ""
+"Para cualquier cosa distinta a la reparación de problemas pequeños, por "
+"favor comenta en una incidencia existente o crea una incidencia nueva "
+"exponiendo los detalles del cambio que propones."
+
+#: ..\python_docs\Contributing.py:7
+msgid "Unrelated changes should be addressed in separate issues."
+msgstr ""
+"Los cambios no relacionados se deben gestionar en incidencias separadas."
+
+#: ..\python_docs\Contributing.py:8
+msgid "Include information about use cases, design, user experience, etc."
+msgstr ""
+"Incluye información sobre casos de uso, diseño, experiencia de usuario, etc."
+
+#: ..\python_docs\Contributing.py:9
+msgid ""
+"This allows us to discuss these aspects and any other concerns that might "
+"arise, thus potentially avoiding a great deal of wasted time."
+msgstr ""
+"Eso permitirá a los desarrolladores discutir los aspectos y consecuencias "
+"derivadas del cambio, y potencialmente evitará gastar tiempo inútilmente."
+
+#: ..\python_docs\Contributing.py:10
+msgid ""
+"You should generally wait for acceptance of your proposal before you start "
+"coding. Please understand that we very likely will not accept changes that "
+"are not discussed first."
+msgstr ""
+"Deberías esperar a que se acepte tu propuesta antes de empezar a programar. "
+"Ten en cuenta que NV Access no aceptará cambios que no se hayan discutido "
+"previamente."
+
+#: ..\python_docs\Contributing.py:11
+msgid ""
+"If this is a minor/trivial change which definitely wouldn't require design, "
+"user experience or implementation discussion (e.g. a fix for a typo/obvious "
+"coding error or a simple synthesizer/braille display driver), you can just "
+"create a pull request rather than using an issue first. However, this should "
+"be fairly rare. If in doubt, use an issue first."
+msgstr ""
+"Si es un cambio pequeñito que no incluye modificaciones en diseño, "
+"discusiones sobre la implementación o experiencia de usuario (por ejemplo, "
+"arreglar un error que se ve claramente en el código o en la documentación, o "
+"un nuevo controlador para un sintetizador o pantalla braille), puedes crear "
+"una nueva solicitud de cambios sin tener que abrir una incidencia antes. Sin "
+"embargo, esto es muy raro. En caso de duda, abre una incidencia."
+
+#: ..\python_docs\Contributing.py:12
+msgid ""
+"If this is your first contribution, you will first need to \"fork\" the NVDA "
+"repository on GitHub."
+msgstr ""
+"Si esta es tu primera contribución, deberás hacer una \"bifurcación\" del "
+"repositorio oficial en tu cuenta de GitHub."
+
+#: ..\python_docs\Contributing.py:13
+msgid ""
+"When you fork the repository, GitHub will create a copy of the master "
+"branch. However, this branch will not be updated when the official master "
+"branch is updated. To ensure your work is always based on the latest commit "
+"in the official master branch, it is recommended that your master branch be "
+"linked to the official master branch, rather than the master branch in your "
+"GitHub fork. If you have cloned your GitHub fork, you can do this from the "
+"command line as follows:"
+msgstr ""
+"Cuando hagas una bifurcación, GitHub copiará la rama master. Sin embargo, "
+"esta rama no se actualizará cuando lo haga la oficial. Para asegurarte de "
+"que tu trabajo siempre se basa en el último commit de la rama master "
+"oficial, se recomienda que vincules la copia de tu rama a la oficial en vez "
+"de la que hay en tu cuenta. Si ya has clonado tu bifurcación de GitHub, "
+"puedes hacer algo como esto desde la línea de órdenes:"
+
+#: ..\python_docs\Contributing.py:14 ..\python_docs\Contributing.py:25
+#: ..\python_docs\Contributing.py:57 ..\python_docs\Contributing.py:60
+msgid "```"
+msgstr "```"
+
+#: ..\python_docs\Contributing.py:15
+msgid "# Add a remote for the NV Access repository."
+msgstr "#Añadir un origen remoto con el repositorio de NVDA."
+
+#: ..\python_docs\Contributing.py:16
+msgid "git remote add nvaccess https://github.com/nvaccess/nvda.git"
+msgstr "git remote add nvaccess https://github.com/nvaccess/nvda.git"
+
+#: ..\python_docs\Contributing.py:17
+msgid "# Fetch the nvaccess branches."
+msgstr "# Descargar las ramas de NV Access."
+
+#: ..\python_docs\Contributing.py:18
+msgid "git fetch nvaccess"
+msgstr "git fetch nvaccess"
+
+#: ..\python_docs\Contributing.py:19
+msgid "# Switch to the local master branch."
+msgstr "# Cambiar a la rama master local."
+
+#: ..\python_docs\Contributing.py:20
+msgid "git checkout master"
+msgstr "git checkout master"
+
+#: ..\python_docs\Contributing.py:21
+msgid "# Set the local master to use the nvaccess master as its upstream."
+msgstr ""
+"# configurar la rama master local para que utilice por defecto el origen "
+"remoto de NVDA."
+
+#: ..\python_docs\Contributing.py:22
+msgid "git branch -u nvaccess/master"
+msgstr "git branch -u nvaccess/master"
+
+#: ..\python_docs\Contributing.py:23
+msgid "# Update the local master."
+msgstr "# Actualizar la rama master local."
+
+#: ..\python_docs\Contributing.py:24
+msgid "git pull"
+msgstr "git pull"
+
+#: ..\python_docs\Contributing.py:26
+msgid "You should use a separate \"topic\" branch for each issue."
+msgstr "Deberías usar una rama \"temática\" distinta para cada incidencia."
+
+#: ..\python_docs\Contributing.py:27
+msgid ""
+"All code should usually be based on the latest commit in the official master "
+"branch at the time you start the work unless the code is entirely dependent "
+"on the code for another issue."
+msgstr ""
+"Todo el código debería basarse en el commit más reciente de la rama master "
+"oficial que hay en el momento en que empiezas a trabajar, a no ser que el "
+"código oficial sufra cambios drásticos que afecten a tu trabajo o dependa "
+"del código de otra incidencia."
+
+#: ..\python_docs\Contributing.py:28
+msgid "Branches should *never* be based on the \"next\" branch."
+msgstr "Las nuevas ramas *nunca* deberán crearse a partir de la rama \"next\"."
+
+#: ..\python_docs\Contributing.py:29
+msgid ""
+"If you are adding a feature or changing something that will be noticeable to "
+"the user, you should update the User Guide accordingly."
+msgstr ""
+"Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías "
+"actualizar la guía de usuario convenientemente para reflejar tu cambio."
+
+#: ..\python_docs\Contributing.py:30
+msgid ""
+"For anything touching code, Please run `scons tests` before you open your "
+"Pull Request, and make sure all the unit tests pass. If possible for your "
+"PR, please consider creating a set of unit tests to test your changes."
+msgstr ""
+"Antes de abrir tu solicitud de cambios, ejecuta la orden `scons tests` y "
+"asegúrate de que se superan todas las pruebas unitarias. Si es posible, crea "
+"un conjunto de unidades de prueba adicionales para probar tus cambios."
+
+#: ..\python_docs\Contributing.py:31
+msgid ""
+"When it is time to submit your code, you should open a pull request "
+"referring to the original issue."
+msgstr ""
+"Cuando sea hora de enviar el código, abre una nueva solicitud de cambios "
+"haciendo referencia a la incidencia que describe tu cambio."
+
+#: ..\python_docs\Contributing.py:32
+msgid "Code review will then be done on this pull request."
+msgstr "El equipo de NV Access pasará a revisar tu código."
+
+#: ..\python_docs\Contributing.py:33
+msgid "## Code Style"
+msgstr "## Estilo del código"
+
+#: ..\python_docs\Contributing.py:34
+msgid "### Encoding"
+msgstr "### Codificación"
+
+#: ..\python_docs\Contributing.py:35
+msgid ""
+"* Where Python files contain non-ASCII characters, they should be encoded in "
+"UTF-8."
+msgstr ""
+"* Cuando los archivos Python contengan caracteres que no sean Ascii, deberán "
+"estar codificados en UTF-8."
+
+#: ..\python_docs\Contributing.py:36
+msgid ""
+"    * There should be no Unicode BOM at the start of the file, as this "
+"unfortunately breaks one of the translation tools we use (xgettext). "
+"Instead, include this as the first line of the file (only if the file "
+"contains non-ASCII characters):"
+msgstr ""
+"    * Para evitar errores con las herramientas de traducción, incluye esta "
+"línea al principio del código si lo haces. Las marcas Unicode al principio "
+"del archivo hacen que Gettext falle:"
+
+#: ..\python_docs\Contributing.py:37 ..\python_docs\Contributing.py:39
+msgid "        ```"
+msgstr "        ```"
+
+#: ..\python_docs\Contributing.py:38
+msgid "        # -*- coding: UTF-8 -*-"
+msgstr "        # -*- coding: UTF-8 -*-"
+
+#: ..\python_docs\Contributing.py:40
+msgid ""
+"    * This coding comment must also be included if strings in the code (even "
+"strings that aren't translatable) contain escape sequences that produce non-"
+"ASCII characters; e.g. `\"\\xff\"`. This is particularly relevant for "
+"braille display drivers. This is due to a gettext bug; see https://github."
+"com/nvaccess/nvda/issues/2592#issuecomment-155299911."
+msgstr ""
+"    * Deberás incluir esta línea incluso si no planeas que las cadenas se "
+"puedan traducir, o si tienen secuencias de escape que producen caracteres no "
+"Ascii, tales como `\"\\xff\"`. Esto es particularmente importante para "
+"controladores de pantallas braille. El responsable del fallo es Gettext, "
+"como se puede ver en https://github.com/nvaccess/nvda/"
+"issues/2592#issuecomment-155299911."
+
+#: ..\python_docs\Contributing.py:41
+msgid ""
+"* Most files should contain CRLF line endings, as this is a Windows project "
+"and can't be used on Unix-like operating systems."
+msgstr ""
+"* La mayoría de los archivos deben contener saltos de línea en formato "
+"Windows (crlf). Este es un proyecto hecho exclusivamente para Windows, y no "
+"se puede usar en sistemas operativos derivados de Unix."
+
+#: ..\python_docs\Contributing.py:42
+msgid "### Indentation"
+msgstr "### Indentado"
+
+#: ..\python_docs\Contributing.py:43
+msgid "* Indentation must be done with tabs (one per level), not spaces."
+msgstr ""
+"* La indentación se debe hacer con tabuladores (uno por nivel) y no con "
+"espacios."
+
+#: ..\python_docs\Contributing.py:44
+msgid ""
+"* When splitting a single statement over multiple lines, just indent one or "
+"more additional levels. Don't use vertical alignment; e.g. lining up with "
+"the bracket on the previous line."
+msgstr ""
+"* Al dividir una instrucción en varias líneas, indéntala con uno o más "
+"niveles. No uses alineación vertical del tipo “alinear con el corchete de la "
+"línea superior”."
+
+#: ..\python_docs\Contributing.py:45
+msgid "### Identifier Names"
+msgstr "### Nombres de identificadores"
+
+#: ..\python_docs\Contributing.py:46
+msgid ""
+"* Functions, variables, properties, etc. should use mixed case to separate "
+"words, starting with a lower case letter; e.g. `speakText`."
+msgstr ""
+"* Las funciones, propiedades, variables, etc. deberían usar mayúsculas para "
+"separar palabras, pero empezar con una letra minúscula; por ejemplo, "
+"`speakText`."
+
+#: ..\python_docs\Contributing.py:47
+msgid ""
+"* Classes should use mixed case to separate words, starting with an upper "
+"case letter; e.g. `BrailleHandler`."
+msgstr ""
+"* El caso anterior también se aplica para las clases, pero en vez de empezar "
+"en minúscula lo hacen en mayúscula; por ejemplo, `BrailleHandler`."
+
+#: ..\python_docs\Contributing.py:48
+msgid ""
+"* Constants should be all upper case, separating words with underscores; e."
+"g. `LANGS_WITH_CONJUNCT_CHARS`."
+msgstr ""
+"* Las constantes siempre deben estar en mayúscula, separando las palabras "
+"con guiones bajos. Por ejemplo, `LANGS_WITH_CONJUNCT_CHARS`."
+
+#: ..\python_docs\Contributing.py:49
+msgid ""
+"* Event handlers are prefixed with \"event_\", and are often in the form "
+"\"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the "
+"class type that the ACTION refers to."
+msgstr ""
+"* Los manejadores de eventos tienen el prefijo \"event_\", y tienen la forma "
+"\"event_ACTION\" o \"event_OBJECT_ACTION\", donde OBJECT hace referencia al "
+"tipo de clase a la que se refiere la acción."
+
+#: ..\python_docs\Contributing.py:50
+msgid "* Extension points:"
+msgstr "* Puntos de extensión:"
+
+#: ..\python_docs\Contributing.py:51
+msgid ""
+"    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are "
+"being notified before / after the action has taken place."
+msgstr ""
+"    * `Action`: lleva el prefijo `pre_` o `post_` para especificar que se "
+"notifica a los manejadores antes o después de que la acción tenga lugar."
+
+#: ..\python_docs\Contributing.py:52
+msgid ""
+"    * `Decider`: Prefixed with `should_` to turn them into a question eg "
+"`should_doSomething`"
+msgstr ""
+"    * `Decider`: lleva el prefijo `should_` para mostrarlo como una "
+"pregunta. Por ejemplo, `should_doSomething`"
+
+#: ..\python_docs\Contributing.py:53
+msgid ""
+"    * `Filter`: TBD. Ideally follows a similar style the others, and "
+"communicates if the filtering happens before or after some action. It would "
+"also be nice to have a naming scheme that differentiates it from the others."
+msgstr ""
+"    * `Filter`: lo ideal es que siga el mismo estilo que los otros, y "
+"comunicar si el filtro ocurre antes o después de la acción. Sería estupendo "
+"tener también un esquema de nombres que lo diferencie de los otros."
+
+#: ..\python_docs\Contributing.py:54
+msgid "### Translatable Strings"
+msgstr "### Cadenas traducibles"
+
+#: ..\python_docs\Contributing.py:55
+msgid ""
+"* All strings that could be presented to the user should be marked as "
+"translatable using the `_()` function; e.g. `_(\"Text review\")`."
+msgstr ""
+"* Todas las cadenas que se puedan mostrar al usuario deberían marcarse como "
+"traducibles usando la función `_()`. Por ejemplo, en vez de poner `\"text "
+"review\"` pondríamos en su lugar `_(\"text review\")`."
+
+#: ..\python_docs\Contributing.py:56
+msgid ""
+"* All translatable strings should have a preceding translators comment "
+"describing the purpose of the string for translators. For example:"
+msgstr ""
+"Todas las cadenas traducibles deberían estar precedidas por un comentario en "
+"inglés para traductores que describa claramente su propósito. Por ejemplo:"
+
+#: ..\python_docs\Contributing.py:58
+msgid "# Translators: The name of a category of NVDA commands."
+msgstr "# Translators: The name of a category of NVDA commands."
+
+#: ..\python_docs\Contributing.py:59
+msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
+msgstr "SCRCAT_TEXTREVIEW = _(\"Text review\")"
