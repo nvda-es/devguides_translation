@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-07-11 12:28+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\Copyright-headers.py:3
+msgid "In most files (covered by the GNU GPL) use the following copyright header:"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:4
+msgid "Replacing:"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:5
+msgid "- `<YOUR NAME>` with your name."
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:6
+msgid "- `<CREATED YEAR>` the year the file was created"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:7
+msgid "- `<LAST UPDATED YEAR>`when the file was last updated. For new files this can be missing. E.g. a file created in 2017 might have `#Copyright (C) 2017`"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:8
+#: ..\python_docs\Copyright-headers.py:13
+#: ..\python_docs\Copyright-headers.py:15
+#: ..\python_docs\Copyright-headers.py:20
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:9
+#: ..\python_docs\Copyright-headers.py:16
+msgid "# A part of NonVisual Desktop Access (NVDA)"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:10
+#: ..\python_docs\Copyright-headers.py:17
+msgid "# Copyright (C) <CREATED YEAR>-<LAST UPDATED YEAR> NV Access Limited, <YOUR NAME>"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:11
+msgid "# This file may be used under the terms of the GNU General Public License, version 2 or later."
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:12
+msgid "# For more details see: https://www.gnu.org/licenses/gpl-2.0.html"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:14
+msgid "Some files are covered by the GNU LGPL, for example the the controller client, and the examples. This allows someone to use them (or parts of them) as-is. In this case use the following header:"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:18
+msgid "# This file may be used under the terms of the GNU Lesser General Public License, version 2.1."
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:19
+msgid "# For more details see: https://www.gnu.org/licenses/lgpl-2.1.html"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:21
+msgid "In some files an older style of referring to the contributors is used. The contributors is not a list of names and may just say something like:"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:22
+msgid "`Copyright (C) 2006-2016 NVDA Contributors`. We are in the process of trying to convert these to the new style of explicit contributors. That process is a bit tricky. You have to use the git logs to figure out when the file was created and who touched it and then build a copyright line accordingly."
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:23
+msgid "**Note:**"
+msgstr ""
+
+#: ..\python_docs\Copyright-headers.py:24
+msgid "We decided to remove the filename comment from the top of the file, since it doesn't really add anything, and is a source of error on file rename / copying copyright headers between files."
+msgstr ""
+
