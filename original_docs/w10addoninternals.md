@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: May 2018
+Revision: August 2018
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of May 2018 revision, one or two features from upcoming NVDA 2018.2 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of August 2018 revision, one or two features from NVDA 2018.2 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2018 Joseph Lee and others, released under GPL 2.
 
@@ -67,6 +67,7 @@ Other useful information exposed by UIA elements are:
 * Framework: the underlying framework used to create a given control such as XAML, Direct UI and others.
 * Localized control type: a role type text that should be spoken by screen readers in different languages.
 * Controller for: a list (array) of controls that this element manipulates when performing actions such as search suggestions (explained below).
+* ARIA properties: a map of ARIA properties such as role description, mostly encountered in Microsoft Edge element.s
 
 ### UIA events
 
@@ -82,7 +83,8 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Support for UIA notification event introduced in Version 1709.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 * Announcing tooltips from universal apps.
-* Handling tab switches in Sets in Redstone 5.
+* Handling tab switches in Sets in Redstone 5 (builds 17627 through 17692)
+* Recognizing dialogs powered by XAML and various frameworks.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
@@ -154,12 +156,13 @@ The notification event handler takes five keyword arguments:
 * Display string: notification text.
 * Activity ID: the unique identifier for the notification.
 
-As of May 2018, NVDA announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues.
+As of August 2018, NVDA announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues.
 
 #### Tracking UIA events for controls
 
 The Windows 10 Objects global plugin also has ability to track UIA events for controls and log info  about them, executed via `uiaDebugLogging` function that takes an object and the event name. This function records the following if NVDA is started with debug logging enabled:
 
+* What the object actually is.
 * Object name.
 * Name of the event being logged.
 * App where the control can be found (specifically, the app module).
@@ -182,6 +185,12 @@ Some controls are live regions - that is, a control whose content denotes live t
 
 The Windows 10 Objects goes one step further by recording instances of this event and providing workarounds for specific cases. These include announcing correct text for Edge alerts (see below), preventing repeat announcements in some apps and so on.
 
+#### Recognizing various dialogs
+
+Some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
+
+In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Redstone 5, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear.
+
 ## App modules for universal apps
 
 In addition to Windows 10 Objects global plugin, the add-on comes with app modules designed to provide extra support for various universal apps that comes with Windows 10. These modules include enhancers and/or fixers, broadly divided into five categories:
@@ -200,7 +209,7 @@ The modules and enhancers/fixers applied are:
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
 * Microsoft Edge: announce correct alert text, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
-* Modern keyboard: support for emoji panel and hardware input suggestions.
+* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Redstone 5).
 * MSN Weather: use up or down arrow keys to read forecast information.
 * Sets: announcing currently active tab and its position when switching between app tabs.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
@@ -229,7 +238,7 @@ When this panel opens, a menu open event is fired by the emoji panel, an event N
 
 Similar to emoji panel, in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item.
 
-The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows=V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item.
+The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows+V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item.
 
 ### What to announce, what not to announce
 
@@ -245,7 +254,7 @@ The app modules (and for one in particular, more than an app module) in question
 
 #### Sets
 
-Many Windows Insiders running build 17627 and later are testing Sets, a way to group related activities together. This is done by allowing apps to display their interface elements inside Microsoft Edge tabs, so that when one tab is restored (app is run), related activities will resume alongside it. For this reason, I tend to call this "app tabs", and the name of this feature may change in the future.
+Many Windows Insiders running builds 17627 through 17692 tested Sets, a way to group related activities together. This is done by allowing apps to display their interface elements inside Microsoft Edge tabs, so that when one tab is restored (app is run), related activities will resume alongside it. For this reason, I tend to call this "app tabs", and the name of this feature may change in the future.
 
 The commands used to work with Sets is similar to tabbed browsing commands in web browsers, except one would add the Windows key. For example, in web browsers, one can press Control+T to open a new tab, and with Sets turned on, while using one app, one can press Control+Windows+T to open a new Sets tab. Switching between app tabs can be done by pressing Control+Windows+Tab or Control+Windows+Shift+Tab, and to close an app tab (and close the app in question), press Control+Windows+W. If one knows the app tab positions, one can switch to apps quickly by pressing Control+Windows+number row keys.
 
@@ -261,9 +270,9 @@ As noted above, some controls ship with odd or bad UIA implementations, and univ
 * Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
 * Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (Redstone 5), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
-* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed event has the name of "alert", with the actual text as the last child, thus NVDA will look for actual alert text when announcing alerts.
+* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed event has the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects.
-* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teachying NVDA to recognize the proper role and state for these.
+* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these.
 * Skype: a typical Skype message includes author name, message channel, the message content, sent date and so on. This is due to list view item implementations where it gathers names of children. Unfortunately, the reverse isn't true: although some items do expose the needed message author and content, some only exposes content when looking at child objects. Thus a regular expression is provided to remove extraneous information until a suitable workaround is found.
 
 ### A tale on app module and executable names
@@ -272,7 +281,7 @@ One of the side-effects of continuous delivery is appearance of unanticipated ch
 
 The specific issues encountered were:
 
-* Mail, Maps and Store: executable names have changed in recent months. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more securie way. Due to this, aliasing (a new app module importing everything from an old version) is common.
+* Mail, Maps and Store: executable names have changed in recent months. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common.
 * MSN Weather, Store, modern keyboard and others: some executable names have a dot (.) in the middle, which breaks app module import routines. This is countered by replacing dots with underscores (_). For example, for Skype, the actual executable name is skype.app.exe, while the app module for this app is named skype_app.py. This fix is now part of recent NVDA releases.
 
 ## Few remarks

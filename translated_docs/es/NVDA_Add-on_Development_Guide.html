@@ -893,6 +893,12 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Sí</td>
 </tr>
 <tr>
+<td>Definir acciones personalizadas a realizarse cuando ocurran cambios de perfil y otros eventos</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
 <td>Puede modificar atributos de objeto en tiempo de ejecución</td>
 <td>No</td>
 <td>Sí</td>
@@ -1064,7 +1070,17 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <tr>
 <td>Posición de un elemento de lista MSAA</td>
 <td>item.IAccessibleChildID</td>
-<td>Siempre y cuando esto se aplique correctamente. El valor predeterminado para los controles que no sean elementos de lista o elementos de vista de árbol es 0.</td>
+<td>Siempre y cuando esto se implemente correctamente. El valor predeterminado para los controles que no sean elementos de lista o elementos de vista de árbol es 0.</td>
+</tr>
+<tr>
+<td>Necesito trabajar con métodos de un objeto IAccessible directamente</td>
+<td>obj.IAccessibleObject.method</td>
+<td>primero, descubre cómo usar el método MSAA dado para un control, y después recupera el propio objeto IAccessible y llama al método.</td>
+</tr>
+<tr>
+<td>Dame el elemento UIA que proporciona un control UIA</td>
+<td>obj.UIAElement</td>
+<td>útil si quieres realizar operaciones de cliente UIA en este elemento.</td>
 </tr>
 <tr>
 <td>ID de automatización para un elemento UIA</td>
@@ -1075,6 +1091,11 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Framework utilizado para generar este objeto UIA</td>
 <td>obj.UIAElement.cachedFrameworkID</td>
 <td>El framework GUI utilizado para programar este objeto. Los frameworks más comunes son Direct UI, Windows Presentation Foundation (WPF) con UIA habilitado, XAML (lenguaje extensible de programación de aplicaciones) y Microsoft Edge.</td>
+</tr>
+<tr>
+<td>Quiero pedirle a UIA los valores de una propiedad específica</td>
+<td>obj._getUIACacheablePropertyValue(propertyID)</td>
+<td>asumiendo que el objeto es un control UIA, pásale el identificador de la propiedad que quieres conocer como argumento de esta función. Si la propiedad está soportada, se devolverá un valor válido. Si no, se lanzará un error COM.</td>
 </tr>
 <tr>
 <td>Nombre ejecutable de cualquier objeto</td>
@@ -1129,12 +1150,12 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <tr>
 <td>Necesito indicadores para proporcionar soporte mejorado para una aplicación Java</td>
 <td>NVDAObjects.JAB y módulo JABHandler</td>
-<td>Java Access Bridge debería instalarse.</td>
+<td>Java Access Bridge (de 32 y 64 bits) debería instalarse.</td>
 </tr>
 <tr>
 <td>Añadir soporte para una aplicación con funcionalidad similar a la de otra aplicación</td>
-<td>Importar contenidos del app module fuente a través de from nombremódulo import *</td>
-<td></td>
+<td>Importar contenidos del módulo de aplicación fuente a través de from nombremódulo import *</td>
+<td>Se conoce con el nombre de "Aliasing".</td>
 </tr>
 <tr>
 <td>Reproducir un tono</td>
@@ -1180,6 +1201,21 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Obtener la versión de NVDA</td>
 <td>versionInfo.version</td>
 <td></td>
+</tr>
+<tr>
+<td>Quiero hacer algo cada vez que cambien los perfiles de configuración</td>
+<td>config.configProfileSwitch</td>
+<td>debes registrar una función que escuche esta acción, y hacer que haga algo cada vez que los perfiles cambien.</td>
+</tr>
+<tr>
+<td>Hazme saber si esta es una versión de desarrollo</td>
+<td><strong>debug</strong></td>
+<td>Si esta variable es True, la versión actual es de desarrollo. En cualquier otro caso, es una liberación oficial.</td>
+</tr>
+<tr>
+<td>Necesito ciertas características para que mi código funcione mejor</td>
+<td>hasattr(módulo, algo)</td>
+<td>esto te permite comprobar la existencia de una característica o atributo que puedas necesitar, de tal forma que puedas dar soporte a versiones antiguas y nuevas del código.</td>
 </tr>
 <tr>
 <td>Versión de Windows</td>
@@ -1265,6 +1301,26 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Abrir, analizar y guardar archivos de configuración</td>
 <td>módulo config o módulo configobj</td>
 <td></td>
+</tr>
+<tr>
+<td>Quiero que mi código se ejecute más rápido y sin errores</td>
+<td>¡No lo hagas a menos que sea necesario!</td>
+<td>Citando a un conocido programador, "No optimices si no quieres tener dolores de cabeza".</td>
+</tr>
+<tr>
+<td>Quiero liberar la versión 1.0 de mi código con todo incluido</td>
+<td>¡Nunca lo hagas a menos que sepas por qué, sepas qué estás haciendo o lo especifique un contrato que hayas firmado!</td>
+<td></td>
+</tr>
+<tr>
+<td>Me gustaría traer una función de otro lector de pantalla a NVDA</td>
+<td>Justifica por qué y planéalo adecuadamente</td>
+<td></td>
+</tr>
+<tr>
+<td>Quiero integrar funciones de mi complemento en el lector de pantalla NVDA</td>
+<td>Envía una solicitud de cambios y prepárate para responder a las preguntas de los revisores</td>
+<td>A veces, una o dos características de un complemento aterrizan en el lector de pantalla NVDA, pero después de pasar por un proceso de revisión en una solicitud de cambios. Para más información, mira las pautas de contribución de NV Access.</td>
 </tr>
 </tbody>
 </table>

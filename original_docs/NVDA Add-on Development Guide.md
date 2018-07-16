@@ -938,7 +938,7 @@ For speech synthesizers, they need to have:
 
 For braille displays:
 
-* Input handlers: if input from the braille display is desirable, the driver author must implement resonders for commands such as braille keys, routing buttons and additional hardware.
+* Input handlers: if input from the braille display is desirable, the driver author must implement responders for commands such as braille keys, routing buttons and additional hardware.
 * Command set: a map that identifies NVDA command assignments for various display hardware buttons.
 
 ### Few important things to remember before, during and after driver development
@@ -1042,6 +1042,7 @@ The following table compares various add-on types and when to use them.
 | Handle events such as focus changes | Yes | Yes | No |
 | Define custom objects to represent controls | Yes | Yes | No |
 | Define custom actions to be performed when the module loads and unloads | Yes | Yes | Yes |
+| Perform actions when profile switching occurs and other actions | Yes | Yes | Yes |
 | Can modify object attributes at runtime | No | Yes | No |
 | Modify speech and other output routines and presentation experience (i.e. speech.cancelSpeech, braille.handler.update, etc.) | Yes | yes | No |
 | Include custom settings | Yes | Yes | Speech synthesizers only |
@@ -1079,9 +1080,12 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | How many items are in a list | someList.childCount | Provided that the list provides correct underlying implementation to obtain item count. |
 | Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shelel (desktop) object with screne resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |
 | Is this an MSAA control | isinstance(obj, NVDAObjects.IAccessible.IAccessible) | A typical implementation is to import IAccessible from NVDAObjects.IAccessible and doing isinstance(obj, IAccessible). |
-| Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for contorls other than list items, treeview items and what not is 0. |
-| Automation ID for a UIA element | obj.UIAElement.cachedAutomationID | First, check if the object is a UIA contorl. |
+| Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for controls other than list items, treeview items and what not is 0. |
+| I need to work with IAccessible object methods directly | obj.IAccessibleObject.method | First, find out how to use the given MSAA method for a control, then retrieve the IAccessible object itself and call the needed method. |
+| Give me the UIA element that powers a certain UIA control | obj.UIAElement | Useful if you wish to perform UIA client operations on this element. |
+| Automation ID for a UIA element | obj.UIAElement.cachedAutomationID | First, check if the object is a UIA control . |
 | Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Programming Language) and Microsoft Edge. |
+| I want to ask UIA about values of a specific property | obj._getUIACacheablePropertyValue(propertyID) | Provided that the object is a UIA control, pass in the property ID you wish to know as an argument to this function. If the property is supported, a valid value will be returned, otherwise a COM error exception will be thrown. |
 | Executable name of any object | obj.appModule.appName | appModule is the attribute of any object that can be represented within an app such as focused control. |
 | Send keystrokes | gesture.send() | This is to be called from a script with the desired keystroke bound to it. |
 | Handling multiple presses of a keystroke | scriptHandler.getLastScriptRepeatCount() | 0 means the command was pressed once. |
@@ -1092,8 +1096,8 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contesnts of this "dialog" will be announced automatically. |
 | I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |
 | I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). \
-| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge should be installed. |
-| Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | |
+| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |
+| Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | Commonly called "aliasing". |
 | Play a tone | tones.beep(hertz, duration) | Duration in milliseconds. |
 | Play a tone on the left speaker | tones.beep(hertz, duration, leftVolume=100, rightVolume=0) | |
 | Play a wave file | nvwave.playWaveFile(path) | For example, nvwave.playWaveFile(r"test.wav") |
@@ -1103,6 +1107,9 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Is focus mode/forms mode active | obj.treeInterceptor.passThrough | If True, focus/forms mode is on while using browse mode documents. |
 | Is touchscreen support available | touchHandler.handler is not None | If it is not None, touch support is active and available. |
 | Get NVDA version | versionInfo.version | |
+| I wish to do something whenever configuration profiles are changed | config.configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |
+| Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |
+| I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |
 | Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |
 | Is 64-bit Windows | os.environ["PROCESSOR_ARCHITEW6432"] in ("AMD64", "ARM64") or os.path.exists(r"C:\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |
 | Registry access | _winreg module | Changed to "winreg" in Python 3. |
@@ -1120,6 +1127,10 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Create a dynamic array | list object | Python's list object ([]) is a dynamic array. \
 | Work with associative arrays | dict object | Python's dictionary ({}) object is another name for associative array, sometimes called a map. |
 | Open, parse, and save config files | config module or configobj module | |
+| I wish to make my code run faster and error-free | DO NOT DO IT UNLESS YOU REALLY NEED TO! | To paraphrase a quote from a famous programmer, "don't optimize unless you want to go through headaches". |
+| I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |
+| I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |
+| I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |
 
 [1]: https://community.nvda-project.org/wiki/Developme
 [2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html

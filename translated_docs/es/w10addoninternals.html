@@ -7,13 +7,13 @@
   <body>
   <header><h1># Complementos de NVDA vistos por dentro: Windows 10 App Essentials</h1></header>
   <p>Autor: Joseph Lee</p>
-<p>Revisión: mayo de 2018</p>
+<p>Revisión: agosto de 2018</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Dar soporte a nuevas tecnologías puede ser un reto divertido, especialmente si hablamos de la nueva versión de un sistema operativo que cambia el modo que tiene la gente de realizar ciertas tareas y presenta nuevas formas de mantenerse al día. Este reto es aún mayor cuando se centra en dar soporte a los lectores de pantalla para que funcionen en nuevos sistemas operativos tales como Windows 10, que trae nuevas formas de interactuar con el ordenador, un nuevo conjunto de aplicaciones y tecnologías, y mejoras y retos de accesibilidad. NVDA viene con un soporte sólido para Windows 10, incluyendo Microsoft Edge, el nuevo menú de inicio, navegación en aplicaciones universales y mucho más, todo hecho posible gracias a la colaboración entre los usuarios, Microsoft, NV Access y otros. Parte de este soporte se da gracias al complemento que encontraremos en este artículo.</p>
 <p>En Complementos de NVDA vistos por dentro: Windows 10 App Essentials, veremos cómo se creó este complemento, cómo funciona, y algunas recomendaciones de su autor (yo) relacionadas con prácticas de accesibilidad. También estudiaremos cómo funciona UI Automation a alto nivel, cómo algunas funciones empiezan en forma de complemento y acaban integradas en NVDA, y mucho más.</p>
 <p>Para descargar este complemento, visita la sección correspondiente, que encontrarás en el menú superior de nuestra web. El código fuente puede encontrarse en https://github.com/josephsl/wintenApps. Ya que Windows 10 y las aplicaciones universales pertenecen al mundo de UI Automation, es esencial que sepas algunas cosas sobre UIA, que se cubren más adelante.</p>
 <p>Descargo de responsabilidad: a pesar del texto del artículo y los conocimientos que contiene, yo (Joseph Lee, el creador del complemento) no trabajo para NV Access ni Microsoft.</p>
-<p>Nota: algunas de las funciones descritas pueden cambiar según progresen el desarrollo de NVDA y Windows 10. En la revisión de mayo del 2018, se han documentado una o dos características que están por venir en NVDA 2018.2 y las compilaciones de Windows Insider Preview con propósitos de referencia. Además, al referirse a las actualizaciones de Windows 10, se usa el identificador de la versión (aamm) en lugar de la etiqueta de mercado a menos que se especifique (por ejemplo, versión 1709 en vez de actualización Fall Creators).</p>
+<p>Nota: algunas de las funciones descritas pueden cambiar según progresen el desarrollo de NVDA y Windows 10. En la revisión de agosto del 2018, se han documentado una o dos características de NVDA 2018.2 y las compilaciones de Windows Insider Preview con propósitos de referencia. Además, al referirse a las actualizaciones de Windows 10, se usa el identificador de la versión (aamm) en lugar de la etiqueta de mercado a menos que se especifique (por ejemplo, versión 1709 en vez de actualización Fall Creators).</p>
 <p>Derechos de copia: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) y otras tecnologías relacionadas tienen copyright de Microsoft Corporation. NVDA tiene copyright de NV Access. El complemento Windows 10 App Essentials tiene copyright 2015-2018 de Joseph Lee y otros, y está liberado bajo la GPL versión 2.</p>
 <h2 id="presentacion-de-windows-10">Presentación de Windows 10</h2>
 <p>Windows 10 es la "última" gran versión de Windows previsiblemente para el futuro. Nos presenta una forma completamente nueva de mantener un seguimiento de los cambios a través del Windows Insider Program y Windows como servicio (WAAS, un término fantástico para hablar de entrega continua), un nuevo marco de trabajo de desarrollo de aplicaciones, estrategias de unificación en términos de experiencia de usuario a través de dispositivos y un nuevo explorador web. Además, destacan el regreso del viejo estilo del menú inicio, los escritorios virtuales, el centro de actividades para centralizar las notificaciones, una nueva forma de ejecutar utilidades de consola de Linux, y un renovado narrador que sigue introduciendo mejoras.</p>
@@ -46,6 +46,7 @@
 <li>Marco de trabajo: el marco de trabajo subyacente usado para crear un control dado, por ejemplo XAML, Direct UI y otros.</li>
 <li>Tipo de control localizado: un texto con el tipo de rol que debería ser verbalizado por los lectores de pantalla en diferentes idiomas.</li>
 <li>Controlador para: una lista (array) de controles que este elemento manipula cuando realiza acciones tales como sugerencias de búsqueda (se explica más abajo).</li>
+<li>Propiedades ARIA: un mapa de propiedades ARIA tales como descripción del rol, situadas mayoritariamente en elementos de Microsoft Edge.</li>
 </ul>
 <h3 id="eventos-uia">Eventos UIA</h3>
 <p>Además de los eventos estándar esperados de las apis de accesibilidad, tales como manipulación de foco y cambios en las propiedades de un objeto (como nombre y estado), UIA viene con algunos eventos interesantes, incluyendo controlador para (Controller for), cambios en región viva (live región changed), notificación y muchos otros. Por razones de rendimiento, NVDA ignora ciertos eventos como cambio de estructura y algunos más. Más adelante en este artículo se explica cómo trabajan NVDA y Windows 10 App Essentials con ciertos eventos UIA.</p>
@@ -58,7 +59,8 @@
 <li>Soporte para el evento de notificación de UIA introducido en la versión 1709.</li>
 <li>Se ofrecen etiquetas más significativas para ciertos controles, como el historial de actualizaciones en configuración / actualización y seguridad / Windows Update.</li>
 <li>verbalización de consejos en aplicaciones universales.</li>
-<li>Procesamiento de cambios de pestaña en los conjuntos en Redstone 5.</li>
+<li>Procesamiento de cambios de pestaña en los conjuntos en Redstone 5 (compilaciones 17627 a 17692)</li>
+<li>Reconocimiento de diálogos proporcionados por XAML y diversos marcos de trabajo.</li>
 </ul>
 <p>Conoceremos varios controles y soluciones a lo largo de este artículo.</p>
 <h2 id="objetos-para-windows-10">Objetos para Windows 10</h2>
@@ -119,10 +121,11 @@
 <li>Cadena a mostrar: texto de la notificación.</li>
 <li>ID de actividad: el identificador único de la notificación.</li>
 </ul>
-<p>Desde mayo de 2018, NVDA verbaliza notificaciones para todas las aplicaciones, excepto una o dos donde esto daría problemas.</p>
+<p>Desde agosto de 2018, NVDA verbaliza notificaciones para todas las aplicaciones, excepto una o dos donde esto daría problemas.</p>
 <h4 id="rastreo-de-eventos-uia-en-controles">Rastreo de eventos UIA en controles</h4>
 <p>La extensión global Objetos de Windows 10 tiene también la capacidad de rastrear eventos UIA para controles y registrar información sobre ellos, ejecutando la función <code>uiaDebugLogging</code>, que recibe el objeto y el nombre del evento. Esta función registra lo siguiente si NVDA se ha iniciado con el registro de depuración habilitado:</p>
 <ul>
+<li>Qué es realmente el objeto.</li>
 <li>Nombre del objeto.</li>
 <li>Nombre del evento que se registra.</li>
 <li>Aplicación donde puede encontrarse el control (específicamente, el módulo de aplicación).</li>
@@ -138,6 +141,9 @@
 <h4 id="eventos-de-cambio-de-region-viva">Eventos de cambio de región viva</h4>
 <p>Algunos controles son regiones vivas, o lo que es lo mismo: un control cuyo contenido denota texto vivo, como el progreso de algo, alertas y demás. Debido a implementaciones defectuosas del evento de cambio de región viva, las versiones más antiguas de NVDA no soportan este evento de forma nativa, pero en NVDA 2017.3 y versiones posteriores se incluye una implementación trivial donde NVDA verbalizará el texto de la región viva, como el nombre del objeto.</p>
 <p>Objetos de Windows 10 va un paso más allá registrando instancias de este evento y ofreciendo soluciones para casos específicos. Aquí se incluye la verbalización correcta de texto para las alertas en Edge (mira más abajo), la prevención de verbalizaciones repetidas en algunas aplicaciones, etc.</p>
+<h4 id="reconocimiento-de-diversos-dialogos">Reconocimiento de diversos diálogos</h4>
+<p>Algunas ventanas son realmente diálogos. Estos incluyen los diálogos emergentes para desinstalar aplicaciones, diversos diálogos que se encuentran en la aplicación de configuración y demás.</p>
+<p>En versiones antiguas del complemento, NVDA habría consultado una lista de nombres de clases conocidas de diálogos con la esperanza de detectar alguno. En las nuevas versiones, especialmente si se ejecutan en Windows 10 Redstone 5, la propiedad UIA IsDialog se usa para detectar elementos de diálogo. Una vez se reconocen los diálogos, NVDA leerá su contenido automáticamente tan pronto como aparezcan.</p>
 <h2 id="modulos-de-aplicacion-para-aplicaciones-universales">Módulos de aplicación para aplicaciones universales</h2>
 <p>Además de la extensión global Objetos de Windows 10, el complemento viene con módulos de aplicación diseñados para proporcionar soporte extra para diversas aplicaciones universales que vienen con Windows 10. Estos módulos incluyen mejoras y/o solución de problemas, principalmente divididas en cinco categorías:</p>
 <ol>
@@ -155,7 +161,7 @@
 <li>Correo: órdenes de navegación de tablas en la lista de mensajes, elimina la verbalización de sólo lectura en el contenido del correo, alias de aplicación para hxmail.exe y hxoutlook.exe (el más reciente para actualizaciones publicadas después de mayo del 2017).</li>
 <li>Mapas: reproduce coordenadas de eventos para elementos en el mapa, se suprime la verbalización repetida en el cambio de regiones vivas, alias para dar soporte a versiones viejas y nuevas de la aplicación (el alias viejo, maps_windows, ya no está).</li>
 <li>Microsoft Edge: verbaliza el texto correcto en alertas, soporta el proceso de Edge y el proceso de contenido (microsoftedgecp.exe).</li>
-<li>Teclado moderno: soporte para el panel de emojis y las sugerencias de entrada por hardware.</li>
+<li>Teclado moderno: soporte para el panel de emojis, las sugerencias de entrada por hardware y pegar elementos desde el portapapeles (Redstone 5).</li>
 <li>El tiempo: usa las flechas arriba o abajo para leer la información meteorológica.</li>
 <li>Sets: verbalización de la pestaña activa actualmente y su posición al cambiar entre pestañas de aplicación.</li>
 <li>Configuración: verbaliza de forma selectiva diversa información de estado, proporciona etiquetas correctas para ciertos controles.</li>
@@ -189,7 +195,7 @@
 <li>Tienda de Microsoft (winstore_app.py): al igual que en la aplicación de configuración, se verbalizan mensajes de estado, en esta ocasión relacionados con la descarga de productos como aplicaciones o contenido multimedia.</li>
 </ul>
 <h4 id="conjuntos">Conjuntos</h4>
-<p>Muchos participantes del programa Windows Insider que ejecutan la compilación 17627 o posterior están probando los conjuntos, una forma de agrupar actividades relacionadas entre sí. Esto se hace permitiendo a las aplicaciones mostrar sus elementos de interfaz dentro de pestañas de Microsoft Edge, de tal forma que al restaurar una pestaña (una aplicación que se ejecuta), las actividades relacionadas se reanudarán junto a ella. Por esta razón, tiendo a llamar a esto "pestañas de aplicación", pero el nombre de esta característica puede cambiar en el futuro.</p>
+<p>Muchos participantes del programa Windows Insider que ejecutan las compilaciones 17627 a 17692 probaron los conjuntos, una forma de agrupar actividades relacionadas entre sí. Esto se hace permitiendo a las aplicaciones mostrar sus elementos de interfaz dentro de pestañas de Microsoft Edge, de tal forma que al restaurar una pestaña (una aplicación que se ejecuta), las actividades relacionadas se reanudarán junto a ella. Por esta razón, tiendo a llamar a esto "pestañas de aplicación", pero el nombre de esta característica puede cambiar en el futuro.</p>
 <p>Las órdenes utilizadas para trabajar con conjuntos son similares a las órdenes de navegación por pestañas en los navegadores web, salvo porque hay que añadir la tecla Windows. Por ejemplo, en los navegadores web, se puede pulsar ctrl+t para abrir una nueva pestaña, y al activar los conjuntos, mientras se usa una aplicación, se puede pulsar ctrl+windows+t para abrir una nueva pestaña de conjuntos. Se puede cambiar entre pestañas de aplicación pulsando ctrl+windows+tab o ctrl+windows+shift+tab, y para cerrar una pestaña de aplicación (y cerrar la aplicación en cuestión), se puede pulsar ctrl+windows+w. Si se conocen las posiciones de las pestañas de aplicación, se puede pasar rápidamente entre aplicaciones pulsando ctrl+windows+teclas de la fila de números.</p>
 <p>NVDA ya soporta los conjuntos simplemente porque tiene soporte para Microsoft Edge. Sin embargo, debido a los desarrollos en curso, se incluyen diversas mejoras y parches en el complemento. Entre ellos se incluyen:</p>
 <ul>
@@ -202,7 +208,7 @@
 <li>Calendario (hxcalendarappimm.py) y Correo (hxoutlook.py): algunos cuadros de edición, como el título de la cita y otros, se muestran como de sólo lectura cuando en realidad no lo son, y eliminando este estado del conjunto de estados para estos controles resolvía este problema.</li>
 <li>Cortana: algunas sugerencias de búsqueda exponen el mismo texto en su nombre y descripción, lo que resulta en repeticiones del texto con el resultado de la sugerencia. Esto fue corregido comparando nombre y descripción, y anulando la descripción (obj.description=None). Además, al abrir la versión de conjuntos del cuadro de búsqueda de Cortana (Redstone 5), se dispara el controlador para evento equivocado, lo que evita que NVDA verbalice las sugerencias. Esto ya ha sido corregido.</li>
 <li>Mapas: a pesar de que no hay cambios en la aplicación, el control con el título del mapa dispara el evento de región viva cambiada, por lo que NVDA incluye una forma de suprimir repeticiones.</li>
-<li>Microsoft Edge (microsoftedge.py y microsoftedgecp.py): para algunas alertas, el nombre del control que dispara el evento de región viva cambiada es "alert", siendo su texto real el último hijo, por lo que NVDA buscará el texto real al verbalizar alertas.</li>
+<li>Microsoft Edge (microsoftedge.py y microsoftedgecp.py): para algunas alertas, el nombre del control que dispara el evento de región viva cambiada es "alert", siendo su texto real el último hijo o el texto disperso por los hijos, por lo que NVDA buscará el texto real al verbalizar alertas.</li>
 <li>Configuración y tienda: para algunos controles (como por ejemplo al descargar contenido de la tienda), un control de estado específico dispara el evento de región viva cambiada. Por desgracia, su texto es genérico (por ejemplo, "descargando algo por ciento", en lugar de verbalizar el producto que se está descargando), por lo que NVDA ubicará información como los nombres de producto cuando esto pase para hacer más fácil el seguimiento. También, en la aplicación de configuración, algunos controles en versiones más antiguas de la aplicación no tienen etiqueta, por lo que se pide a NVDA que busque etiquetas viajando por los objetos hermano (siguiente / anterior).</li>
 <li>Host de experiencia con la Shell (shellexperiencehost.py): para algunos submenús, NVDA no sabe que está en un submenú, esto se solucionó enseñándole a reconocer el rol y estado adecuados para ellos.</li>
 <li>Skype: un mensaje típico de Skype incluye nombre del autor, canal del mensaje, el contenido del mensaje, fecha de envío y así sucesivamente. Esto es debido a las implementaciones de vista de lista, donde se recuperan los nombres de los hijos. Por desgracia, al contrario no pasa: aunque algunos elementos exponen el autor del mensaje y su contenido como queremos, otros sólo exponen el contenido al mirar en los objetos hijo. Por tanto, se proporciona una expresión regular para eliminar información innecesaria hasta que se encuentre una solución mejor.</li>
