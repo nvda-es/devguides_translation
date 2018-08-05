@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-07-16 09:37+Hora de verano romance\n"
+"POT-Creation-Date: 2018-08-06 00:44+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgid "A graphical user interface isn't complete without means of moving around 
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:7
-msgid "For many blind people, the concept of using a mouse (or touch interaction) may sound foreign, especially for people used to textual interfaces. For some people, using the mouse as a blind person was only a dream. Recent advancements in screen reading has bridged the gap somewhat, although there are areas that still need work, including describing cursor colors, more accuracy in mouse cursor shape announcement and so on, as well as ability to move the mouse with a keyboard. Fortunately, the last advancement is now a reality thanks to an add-on we'll be examining in this aricle: Golden Cursor."
+msgid "For many blind people, the concept of using a mouse (or touch interaction) may sound foreign, especially for people used to textual interfaces. For some people, using the mouse as a blind person was only a dream. Recent advancements in screen reading has bridged the gap somewhat, although there are areas that still need work, including describing cursor colors, more accuracy in mouse cursor shape announcement and so on, as well as ability to move the mouse with a keyboard. Fortunately, the last advancement is now a reality thanks to an add-on we'll be examining in this article: Golden Cursor."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:8
@@ -52,7 +52,7 @@ msgid "## Golden Cursor: A History"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:12
-msgid "Towards end of 2015, an Arabic-speaking NVDA translator contacted NVDA add-ons team and introduced the community to an add-on a friend of the translator was developing. Called \"Golden Cursor\", the add-on came with keyboard commands to manipulate the mouse. Since the community has shown interest in this add-on, I decided to contact the devleoper and review the new add-on."
+msgid "Towards end of 2015, an Arabic-speaking NVDA translator contacted NVDA add-ons team and introduced the community to an add-on a friend of the translator was developing. Called \"Golden Cursor\", the add-on came with keyboard commands to manipulate the mouse. Since the community has shown interest in this add-on, I decided to contact the developer and review the new add-on."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:13
@@ -68,7 +68,7 @@ msgid "Eventually some serious issues were resolved, and after working closely w
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:16
-msgid "In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done in early 2018."
+msgid "In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done throughout 2018."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:17
@@ -140,7 +140,7 @@ msgid "When we apply this to mouse movement, the X coordinate increases when the
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:34
-msgid "* Mouse moving right: new X = currnet X + movement unit"
+msgid "* Mouse moving right: new X = current X + movement unit"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:35
@@ -156,26 +156,34 @@ msgid "* Mouse moving up: new Y = current Y - movement unit"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:38
-msgid "## Conclusion"
+msgid "## Golden Cursor Settings"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:39
-msgid "It is said that the simple something is, the better. The Golden Cursor add-on fits this definition perfectly: a simple add-on that is surprisingly powerful and useful. The ability to use the keyboard to move the mouse has been a dream for many, and now, thanks to this add-on, it has become a reality. Time will tell how this add-on will evolve to meet people's needs, and some useful ideas are already being planned by the community."
+msgid "Besides shortcut keys to set various Golden Cursor add-on settings on the fly, the add-on comes with a settings screen class. Depending on NVDA version in use, it will appear as a standalone dialog or part of multi-page settings screen as a settings panel. The former is the case for NVDA 2018.1, while the latter is used in NVDA 2018.2 and later."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:40
-msgid "## References"
+msgid "## Conclusion"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:41
-msgid "* Pixel (Wikipedia): https://en.wikipedia.org/wiki/Pixel"
+msgid "It is said that the simple something is, the better. The Golden Cursor add-on fits this definition perfectly: a simple add-on that is surprisingly powerful and useful. The ability to use the keyboard to move the mouse has been a dream for many, and now, thanks to this add-on, it has become a reality. Time will tell how this add-on will evolve to meet people's needs, and some useful ideas are already being planned by the community."
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:42
-msgid "* GetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx"
+msgid "## References"
 msgstr ""
 
 #: ..\python_docs\gcaddoninternals.py:43
+msgid "* Pixel (Wikipedia): https://en.wikipedia.org/wiki/Pixel"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:44
+msgid "* GetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms648390(v=vs.85).aspx"
+msgstr ""
+
+#: ..\python_docs\gcaddoninternals.py:45
 msgid "* SetCursorPos (user32.dll) reference (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms648394(v=vs.85).aspx"
 msgstr ""
 

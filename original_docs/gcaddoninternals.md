@@ -6,7 +6,7 @@ Author: Joseph Lee
 
 A graphical user interface isn't complete without means of moving around the screen and interacting with various elements. For years, a computer mouse was a handy tool for working with graphical elements, with touchscreens and mixed reality replacing functions of the mouse for some people. Even with the introduction of the mouse in the 1970's and move towards touch interaction in the 21st century, one input device has stil remained king of computer interaction: keyboards.
 
-For many blind people, the concept of using a mouse (or touch interaction) may sound foreign, especially for people used to textual interfaces. For some people, using the mouse as a blind person was only a dream. Recent advancements in screen reading has bridged the gap somewhat, although there are areas that still need work, including describing cursor colors, more accuracy in mouse cursor shape announcement and so on, as well as ability to move the mouse with a keyboard. Fortunately, the last advancement is now a reality thanks to an add-on we'll be examining in this aricle: Golden Cursor.
+For many blind people, the concept of using a mouse (or touch interaction) may sound foreign, especially for people used to textual interfaces. For some people, using the mouse as a blind person was only a dream. Recent advancements in screen reading has bridged the gap somewhat, although there are areas that still need work, including describing cursor colors, more accuracy in mouse cursor shape announcement and so on, as well as ability to move the mouse with a keyboard. Fortunately, the last advancement is now a reality thanks to an add-on we'll be examining in this article: Golden Cursor.
 
 Simply speaking, Golden Cursor is an add-on that allows NVDA users to manipulate the mouse via keyboard. Although Windows does have mouse keys, a keyboard with a physical numpad is required to take full advantage of this. On the other hand, Golden Cursor does not require a physical numpad, thus making it a bit more universal. Even though the add-on has seen little development activity, it is still an interesting add-on to study, as it showcases the enthusiasm the NVDA community has shown for this add-on, and a chance for the author of this article to improve the add-on and present its inner workings. In "NVDA Add-on Internals: Golden Cursor", we'll learn the history behind this add-on, recent developments, and dive into how this add-on improves mouse usability for blind people around the world.
 
@@ -16,7 +16,7 @@ Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor a
 
 ## Golden Cursor: A History
 
-Towards end of 2015, an Arabic-speaking NVDA translator contacted NVDA add-ons team and introduced the community to an add-on a friend of the translator was developing. Called "Golden Cursor", the add-on came with keyboard commands to manipulate the mouse. Since the community has shown interest in this add-on, I decided to contact the devleoper and review the new add-on.
+Towards end of 2015, an Arabic-speaking NVDA translator contacted NVDA add-ons team and introduced the community to an add-on a friend of the translator was developing. Called "Golden Cursor", the add-on came with keyboard commands to manipulate the mouse. Since the community has shown interest in this add-on, I decided to contact the developer and review the new add-on.
 
 Although the add-on had potential, it had numerous coding problems. for example, in early drafts, it used Python's boolean statements like this:
 
@@ -24,7 +24,7 @@ Although the add-on had potential, it had numerous coding problems. for example,
 
 Eventually some serious issues were resolved, and after working closely with the original add-on developer, Golden Cursor was submitted to the add-ons website for community testing, wihch resulted in positive feedback. Thus in January 2016, Golden Cursor became an official NVDA add-on.
 
-In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done in early 2018.
+In 2017, I (Joseph Lee) announced an initiative to modernize community add-ons by making them work well under Python 3, and naturally Golden Cursor was one of those add-ons that needed modernization. The problem was that the community lost contact with the original developers of this add-on, thus I volunteered to modernize this add-on. Thus the below notes are based on old add-on releases, as well as results of modernization work done throughout 2018.
 
 ## Add-on mechanics
 
@@ -54,10 +54,14 @@ For people familiar with mathematical representation of a 2D graph or a plane, t
 
 When we apply this to mouse movement, the X coordinate increases when the mouse moves to the right, while the Y coordinate decreases as the mouse moves up. For sake of completeness, mouse movement expressions are:
 
-* Mouse moving right: new X = currnet X + movement unit
+* Mouse moving right: new X = current X + movement unit
 * Mouse moving left: new X = current X - movement unit
 * Mouse moving down: new Y = current Y + movement unit
 * Mouse moving up: new Y = current Y - movement unit
+
+## Golden Cursor Settings
+
+Besides shortcut keys to set various Golden Cursor add-on settings on the fly, the add-on comes with a settings screen class. Depending on NVDA version in use, it will appear as a standalone dialog or part of multi-page settings screen as a settings panel. The former is the case for NVDA 2018.1, while the latter is used in NVDA 2018.2 and later.
 
 ## Conclusion
 
