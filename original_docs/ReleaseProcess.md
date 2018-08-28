@@ -6,7 +6,6 @@ This document provides rough guidelines for the process of developing NVDA relea
 The process outlined later in this document has only been implemented very recently. Therefore this first section talks specifically about the changes from the older process. 
 ### Goals and reasoning
 The main goal of these changes is to remove the need for a "next" branch and pull request incubation. Reasons for this are:
-
 * The next branch required manual merging of pull requests. This did not fit in well with Github's infrastructure in that these incubation merges were not tracked very well, reverts were messy and sometimes required next to be totally re-created, pull requests on next would frequently become conflicted with other pull requests, which meant manually fixing conflicts in both next and master.
  * Up until recently incubation was the only way we could guarantee some kind of code quality. Now we have a growing number of unit tests, system testing is well under way, and Github's management of pull requests (including mandatory code reviews) ensure a minimum code quality we did not have before.
 ### Changes for developers
@@ -23,8 +22,11 @@ This is the general release workflow. Information for specific community groups 
 ### Development Phase
 * Work should be done in topic branches.
 * A topic branch should be submitted for inclusion using a pull request.
-* All pull requests must be reviewed by one of the lead developers.
-* "master" is the mainline branch for NVDA development. Once a pull request has been reviewed and approved by at least one lead developer and all build checks have passed, it will be squash merged into master.
+* All Pull requests must follow the Pull Request template provided.
+* Pull requests must be based on NVDA's master branch unless explicitly instructed to do otherwise by a lead developer.
+* Submitted pull requests should not contain edits to changes.t2t. Instead, change log entries should be placed in the pull request description, under the appropriate section in the template.
+* All pull requests submitted must have their "Allow edits from maintainers" checkbox ticked. This is usually the case for all new pull requests. 
+* Once a pull request has been reviewed and approved by at least one NVDA Collaborator and all build checks have passed, a lead developer will make a final commit to the pull request which updates changes.t2t, and then will squash merge the pull request into master.
 * If the merging of a pull request to master causes any build checks on master to fail, the pull request is reverted without question. This is however unlikely to be an issue as build checks on the pull request itself must have already passed.
 * If a merged pull request has been identified as causing a regression, new bug, or does not work as originally reported, the pull request may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pull request may be: 
     * The pull request was submitted by an active collaborator and it is inevitable that they will follow through with a suitable pull request to address the issues.
