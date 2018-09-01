@@ -10,11 +10,9 @@
 <h2 id="cambios-al-proceso-existente">Cambios al proceso existente</h2>
 <p>El proceso descrito más adelante en este documento ha sido implementado hace muy poco. Por lo tanto, esta primera sección habla de los cambios específicos del proceso antiguo. </p>
 <h3 id="objetivos-y-razones">Objetivos y razones</h3>
-<p>El objetivo principal de estos cambios es suprimir la necesidad de una rama "next" e incubación de solicitudes de cambio. Las principales razones son:</p>
-<ul>
-<li>En la rama next era necesario mezclar manualmente las solicitudes de cambio. Esto no encajaba bien en la infraestructura de Github, y por tanto las mezclas incubadas no se rastreaban muy bien, las reversiones estaban desordenadas y en ocasiones era necesario recrear la rama next, las solicitudes de cambios generalmente hacían conflictos en next con otras solicitudes, lo que significaba que había que solucionar los conflictos tanto en next como en master.</li>
-<li>Hasta hace poco, la incubación era la única forma de garantizar algún tipo de calidad en el código. Ahora hay un número creciente de pruebas unitarias, las pruebas del sistema van por buen camino, y la gestión de solicitudes de cambio de Github (incluidas las revisiones obligatorias del código) aseguran una calidad mínima del código que antes no existía.</li>
-</ul>
+<p>El objetivo principal de estos cambios es suprimir la necesidad de una rama "next" e incubación de solicitudes de cambio. Las principales razones son:
+* En la rama next era necesario mezclar manualmente las solicitudes de cambio. Esto no encajaba bien en la infraestructura de Github, y por tanto las mezclas incubadas no se rastreaban muy bien, las reversiones estaban desordenadas y en ocasiones era necesario recrear la rama next, las solicitudes de cambios generalmente hacían conflictos en next con otras solicitudes, lo que significaba que había que solucionar los conflictos tanto en next como en master.
+ * Hasta hace poco, la incubación era la única forma de garantizar algún tipo de calidad en el código. Ahora hay un número creciente de pruebas unitarias, las pruebas del sistema van por buen camino, y la gestión de solicitudes de cambio de Github (incluidas las revisiones obligatorias del código) aseguran una calidad mínima del código que antes no existía.</p>
 <h3 id="cambios-para-desarrolladores">Cambios para desarrolladores</h3>
 <ul>
 <li>Una vez que los revisores aprueben una solicitud de cambios y se superen todas las comprobaciones de compilación, la solicitud se mezclará directamente en master. Ya no hay incubación en next.</li>
@@ -32,8 +30,11 @@
 <ul>
 <li>El trabajo debería hacerse en ramas independientes según el tema del que traten.</li>
 <li>Una rama de un tema concreto debería ser enviada para incluirla mediante una solicitud de cambios (pull request).</li>
-<li>Todas las solicitudes de cambio deben ser revisadas por uno de los desarrolladores principales.</li>
-<li>"master" es la rama principal de desarrollo de NVDA. Una vez que uno de los desarrolladores principales revisa y aprueba una solicitud de cambios y se superan todas las comprobaciones de compilación, esta se mezcla en master.</li>
+<li>Todas las solicitudes de cambio deben seguir la plantilla proporcionada.</li>
+<li>Las solicitudes de cambio deben basarse en la rama master de NVDA a menos que un desarrollador principal especifique lo contrario.</li>
+<li>Las solicitudes de cambios enviadas no deberían contener cambios en changes.t2t. En su lugar, las entradas del registro de cambios deberían situarse en la descripción de la solicitud de cambios, bajo la sección apropiada de la plantilla.</li>
+<li>Todas las solicitudes de cambio enviadas deben tener la casilla de verificación "Allow edits from maintainers" marcada. Generalmente, este es el caso para todas las nuevas solicitudes de cambio. </li>
+<li>Una vez que una solicitud de cambio ha sido revisada y aprobada por al menos un colaborador de NVDA y todas las comprobaciones de compilación se han superado, un desarrollador principal hará un commit final a la solicitud de cambio que actualice changes.t2t, y después mezclará la solicitud de cambio en master.</li>
 <li>Si la mezcla de una solicitud de cambios en master causa que falle cualquier comprobación de compilación en master, la solicitud se revierte sin preguntar. Sin embargo, esto probablemente no será un problema, ya que las comprobaciones de compilación en la solicitud en sí deberían haberse superado.</li>
 <li>Si una solicitud de cambios mezclada se ha identificado como causante de un fallo nuevo, una regresión, o no funciona como se informó originalmente, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
 <li>La solicitud de cambios fue enviada por un colaborador activo y se sabe con certeza que volverá con otra solicitud de cambios para solucionar los problemas.</li>
@@ -46,7 +47,7 @@
 <h3 id="la-fase-beta">La fase beta</h3>
 <ul>
 <li>Siete semanas antes de la liberación, dejarán de hacerse mezclas de master a beta. Se deberían plantear las nuevas solicitudes de cambios para mezclarse directamente en beta, sy y sólo si solucionan un fallo introducido en el ciclo actual de liberación o hay un cambio crítico en el sistema operativo fuera del control de los desarrolladores. </li>
-<li>If any changes are made to beta, such as the merging of critical pull requests or translation merges, beta will be periodically merged back to master. </li>
+<li>Si se realiza algún cambio a beta, como la fusión de pull requests o la integración de traducciones, se fusionará beta de vuelta a master periódicamente. </li>
 <li>Empezando cinco semanas antes de la liberación final, se publicarán periódicamente versiones etiquetadas como beta, permitiendo que la mayor parte de la comunidad las pruebe. En este punto, el código introducido mediante master habrá sido probado durante al menos dos semanas, por lo que las compilaciones beta tienen calidad de beta.</li>
 <li>Si una solicitud de cambios que llega a beta se identifica como causante de una regresión, un nuevo fallo o no funciona como se había indicado originalmente, los desarrolladores principales pueden revertir la solicitud. Las razones a favor de no revertir la solicitud de cambios pueden ser: <ul>
 <li>El fallo es suficientemente trivial como para que un colaborador lo solucione.</li>

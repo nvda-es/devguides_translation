@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-08-28 22:09+Hora de verano romance\n"
-"PO-Revision-Date: 2018-08-28 22:17+0100\n"
-"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"PO-Revision-Date: 2018-09-01 20:39+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\ReleaseProcess.py:3
@@ -196,12 +196,15 @@ msgstr ""
 #: ..\python_docs\ReleaseProcess.py:24
 msgid "* All Pull requests must follow the Pull Request template provided."
 msgstr ""
+"* Todas las solicitudes de cambio deben seguir la plantilla proporcionada."
 
 #: ..\python_docs\ReleaseProcess.py:25
 msgid ""
 "* Pull requests must be based on NVDA's master branch unless explicitly "
 "instructed to do otherwise by a lead developer."
 msgstr ""
+"* Las solicitudes de cambio deben basarse en la rama master de NVDA a menos "
+"que un desarrollador principal especifique lo contrario."
 
 #: ..\python_docs\ReleaseProcess.py:26
 msgid ""
@@ -209,12 +212,19 @@ msgid ""
 "change log entries should be placed in the pull request description, under "
 "the appropriate section in the template."
 msgstr ""
+"* Las solicitudes de cambios enviadas no deberían contener cambios en "
+"changes.t2t. En su lugar, las entradas del registro de cambios deberían "
+"situarse en la descripción de la solicitud de cambios, bajo la sección "
+"apropiada de la plantilla."
 
 #: ..\python_docs\ReleaseProcess.py:27
 msgid ""
 "* All pull requests submitted must have their \"Allow edits from maintainers"
 "\" checkbox ticked. This is usually the case for all new pull requests. "
 msgstr ""
+"* Todas las solicitudes de cambio enviadas deben tener la casilla de "
+"verificación \"Allow edits from maintainers\" marcada. Generalmente, este es "
+"el caso para todas las nuevas solicitudes de cambio. "
 
 #: ..\python_docs\ReleaseProcess.py:28
 msgid ""
@@ -223,6 +233,11 @@ msgid ""
 "final commit to the pull request which updates changes.t2t, and then will "
 "squash merge the pull request into master."
 msgstr ""
+"* Una vez que una solicitud de cambio ha sido revisada y aprobada por al "
+"menos un colaborador de NVDA y todas las comprobaciones de compilación se "
+"han superado, un desarrollador principal hará un commit final a la solicitud "
+"de cambio que actualice changes.t2t, y después mezclará la solicitud de "
+"cambio en master."
 
 #: ..\python_docs\ReleaseProcess.py:29
 msgid ""
