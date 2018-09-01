@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-08-28 22:09+Hora de verano romance\n"
+"POT-Creation-Date: 2018-07-16 09:37+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,218 +16,219 @@ msgstr ""
 
 
 #: ..\python_docs\Contributing.py:3
-msgid "# Contributing documentation"
+msgid "# Contributing to NVDA"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:4
-msgid "We welcome community contributions for documentation collection repository. Please read this document to learn about how you can contribute your article(s)."
+msgid "If you would like to contribute code or documentation to NVDA, please follow these guidelines. You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:5
-msgid "## Requirements"
+msgid "## Submitting Changes"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:6
-msgid "It is recommended that you have practical knowledge of programming and Python (NVDA is a Python application). For certain topics, you'll need a detailed knowledge of NVDA source code. We accept documentation written using Markdown syntax."
+msgid "For anything other than minor bug fixes, please comment on an existing issue or create a new issue providing details about your proposed change."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:7
-msgid "## Contribution steps"
+msgid "Unrelated changes should be addressed in separate issues."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:8
-msgid "### If you have Git and;or have commit access to NVDA Add-ons organization repository on GitHub"
+msgid "Include information about use cases, design, user experience, etc."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:9
-msgid "1. Clone the following two repos:"
+msgid "This allows us to discuss these aspects and any other concerns that might arise, thus potentially avoiding a great deal of wasted time."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:10
-msgid "git clone https://github.com/nvdaaddons/devguide"
+msgid "You should generally wait for acceptance of your proposal before you start coding. Please understand that we very likely will not accept changes that are not discussed first."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:11
-msgid "git clone https://github.com/nvdaaddons/devguide.wiki.git"
+msgid "If this is a minor/trivial change which definitely wouldn't require design, user experience or implementation discussion (e.g. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver), you can just create a pull request rather than using an issue first. However, this should be fairly rare. If in doubt, use an issue first."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:12
-msgid "The first repo is the home page (readme.md), and the second is the wiki where the pages will be stored."
+msgid "If this is your first contribution, you will first need to \"fork\" the NVDA repository on GitHub."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:13
-msgid "2. When wikifying your documentation, use Markdown syntax (not Txt2Tags (T2T) syntax)."
+msgid "When you fork the repository, GitHub will create a copy of the master branch. However, this branch will not be updated when the official master branch is updated. To ensure your work is always based on the latest commit in the official master branch, it is recommended that your master branch be linked to the official master branch, rather than the master branch in your GitHub fork. If you have cloned your GitHub fork, you can do this from the command line as follows:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:14
-msgid "3. You need your GitHub credentials (user name and password) to commit changes."
+#: ..\python_docs\Contributing.py:14 ..\python_docs\Contributing.py:25
+#: ..\python_docs\Contributing.py:57 ..\python_docs\Contributing.py:60
+msgid "```"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:15
-msgid "4. When adding a new documentation into the wiki repo, use git add command. Push to the wiki repo first, then modify the main readme.md (first repo) to point to the wiki link then do a git push."
+msgid "# Add a remote for the NV Access repository."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:16
-msgid "5. When adding a new documentation entry for an add-on, please write the following information:"
+msgid "git remote add nvaccess https://github.com/nvaccess/nvda.git"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:17
-msgid "\t* Add-on author name."
+msgid "# Fetch the nvaccess branches."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:18
-msgid "\t* Where to download the add-on and/or its source code"
+msgid "git fetch nvaccess"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:19
-msgid "\t* Link to the add-on wiki documentation in the wiki repo."
+msgid "# Switch to the local master branch."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:20
-msgid "### If you don\342\200\231t have access to Git or don\342\200\231t have commit access to NVDA Add-ons organization"
+msgid "git checkout master"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:21
-msgid "1. Write your documentation using a text editor. Try using Markdown syntax."
+msgid "# Set the local master to use the nvaccess master as its upstream."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:22
-msgid "2. Send your documentation to the NVDA Add-ons list (nvda-addons@groups.io). You can send it as an attachment to that list or you can leave the URL from where add-ons list members can read your documentation (if you have a website; in case you\342\200\231ve uploaded your docs to a service such as Dropbox or OneDrive, please let the add-ons list know the URL to download your file)."
+msgid "git branch -u nvaccess/master"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:23
-msgid "### If you want to submit pull requests"
+msgid "# Update the local master."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:24
-msgid "1. Fork the one or both repositories from above (if you want to work on the wiki, it is best to modify the wiki directly via the web interface)."
-msgstr ""
-
-#: ..\python_docs\Contributing.py:25
-msgid "2. After writing changes, send a pull request for review."
+msgid "git pull"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:26
-msgid "## Documentation guidelines"
+msgid "You should use a separate \"topic\" branch for each issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:27
-msgid "Following are some guidelines when submitting your contributions (you don\342\200\231t have to follow all of them and we\342\200\231ll leave room for exceptions):"
+msgid "All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:28
-msgid "1. If you are writing an add-on internals article (or a series of articles), please write your name (so that we can give you authorship credit) and the version of the add-on you are writing about. Don\342\200\231t forget to include copyright notices (for the add-on and any libraries it uses) and disclaimer (if you are writing about an add-on that isn\342\200\231t yours)."
+msgid "Branches should *never* be based on the \"next\" branch."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:29
-msgid "2. If you\342\200\231ll be documenting NVDA Core modules or functions, please base it from the latest official release or master branch at the time of your writing, and please give the full signature of the function you\342\200\231re writing about (example, if writing about message function in the UI module, please use ui.message; similarly , if documenting various UIA objects, please use NVDAObjects.UIA.ClassName e.g. NVDAObjects.UIA.Toast). Let us not forget that Mick and Jamie are the real experts of NVDA source code."
+msgid "If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:30
-msgid "3. If your article references Windows API functions, please specify which DLL exposes this function (e.g. FindWindow is exposed by user32.dll). This is a must, as NVDA provides wrappers for various Windows API functions, housed in wrapper modules (for example, various wrappers for user32.dll functions live in winUser.py)."
+msgid "For anything touching code, Please run `scons tests` before you open your Pull Request, and make sure all the unit tests pass. If possible for your PR, please consider creating a set of unit tests to test your changes."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:31
-msgid "4. Please provide references at the end of articles (you don\342\200\231t have to, but it is encouraged). References may include links to MSDN entry for a particular Windows API function, documentation to third-party libraries mentioned and third-party resources. This helps readers learn more about how certain functions work, read more about libraries used and so on (to research them further)."
+msgid "When it is time to submit your code, you should open a pull request referring to the original issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:32
-msgid "5. Note that this may change based on community feedback. Please let me (Joseph Lee) and other add-ons list members know if you find some flaws with these and things that need changing."
+msgid "Code review will then be done on this pull request."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:33
-msgid "## Frequently Asked Questions"
+msgid "## Code Style"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:34
-msgid "### Add-on readme"
+msgid "### Encoding"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:35
-msgid "Q. What information should I include in my add-on readme?"
+msgid "* Where Python files contain non-ASCII characters, they should be encoded in UTF-8."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:36
-msgid "The readme should include name of the author, download links if any, a brief description of the add-on, command summary, and if needed, a changelog."
+msgid "    * There should be no Unicode BOM at the start of the file, as this unfortunately breaks one of the translation tools we use (xgettext). Instead, include this as the first line of the file (only if the file contains non-ASCII characters):"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:37
-msgid "Q. What language should I write my readme in?"
+#: ..\python_docs\Contributing.py:37 ..\python_docs\Contributing.py:39
+msgid "    ```"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:38
-msgid "It is up to you, but English is prefered."
-msgstr ""
-
-#: ..\python_docs\Contributing.py:39
-msgid "Q. Should I write my readme with translations in mind?"
+msgid "        # -*- coding: UTF-8 -*-"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:40
-msgid "Again this is up to you."
+msgid "    * This coding comment must also be included if strings in the code (even strings that aren't translatable) contain escape sequences that produce non-ASCII characters; e.g. `\"\\xff\"`. This is particularly relevant for braille display drivers. This is due to a gettext bug; see https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:41
-msgid "### NVDA Core internals articles"
+msgid "* Most files should contain CRLF line endings, as this is a Windows project and can't be used on Unix-like operating systems."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:42
-msgid "Q. Do I have to be a programmer or an employee of nV Access to write articles?"
+msgid "### Indentation"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:43
-msgid "No, although a background in programming may help you organize your thoughts better."
+msgid "* Indentation must be done with tabs (one per level), not spaces."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:44
-msgid "Q. Should I include examples people can try out in Python Console?"
+msgid "* When splitting a single statement over multiple lines, just indent one or more additional levels. Don't use vertical alignment; e.g. lining up with the bracket on the previous line."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:45
-msgid "Yes if you can. Note that not all NVDA functions can be tested in Python Console."
+msgid "### Identifier Names"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:46
-msgid "Q. What if I want to write about something incubating in next snapshots?"
+msgid "* Functions, variables, properties, etc. should use mixed case to separate words, starting with a lower case letter; e.g. `speakText`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:47
-msgid "You are welcome to do so, provided that you add a disclaimer that says features may change. Once the feature you are talking about graduates to master, make a note about which stable NVDA build the feature will be included in."
+msgid "* Classes should use mixed case to separate words, starting with an upper case letter; e.g. `BrailleHandler`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:48
-msgid "### Add-on internals articles"
+msgid "* Constants should be all upper case, separating words with underscores; e.g. `LANGS_WITH_CONJUNCT_CHARS`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:49
-msgid "Q. Do I have to be the author of the add-on in order to write these articles?"
+msgid "* Event handlers are prefixed with \"event_\", and are often in the form \"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the class type that the ACTION refers to."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:50
-msgid "No. If you are a user though, then yes, it may help you with organizing your writings."
+msgid "* Extension points:"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:51
-msgid "Q. What is the difference between add-on readme and internals articles?"
+msgid "    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are being notified before / after the action has taken place."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:52
-msgid "Add-on readme is mostly meant for users to get to know the add-on. Add-on internals is mostly meant for developers (inside and outside the NVDA community) and other people who are curious about internal workings of an add-on."
+msgid "    * `Decider`: Prefixed with `should_` to turn them into a question eg `should_doSomething`"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:53
-msgid "Q. I found a bug with the add-on I'm writing an internals article about. What should I do?"
+msgid "    * `Filter`: TBD. Ideally follows a similar style the others, and communicates if the filtering happens before or after some action. It would also be nice to have a naming scheme that differentiates it from the others."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:54
-msgid "First, report the bug to the add-on author and the add-ons community. Then once the bug is fixed, write a note explaining what happened in the article."
+msgid "### Translatable Strings"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:55
-msgid "Thanks, and we look forward to your contributions."
+msgid "* All strings that could be presented to the user should be marked as translatable using the `_()` function; e.g. `_(\"Text review\")`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:56
-msgid "The NVDA Community Add-ons Team"
+msgid "* All translatable strings should have a preceding translators comment describing the purpose of the string for translators. For example:"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:58
+msgid "# Translators: The name of a category of NVDA commands."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:59
+msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
 msgstr ""
 

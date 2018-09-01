@@ -1,91 +1,75 @@
-# Contributing documentation
+# Contributing to NVDA
 
-We welcome community contributions for documentation collection repository. Please read this document to learn about how you can contribute your article(s).
+If you would like to contribute code or documentation to NVDA, please follow these guidelines. You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
 
-## Requirements
+## Submitting Changes
 
-It is recommended that you have practical knowledge of programming and Python (NVDA is a Python application). For certain topics, you'll need a detailed knowledge of NVDA source code. We accept documentation written using Markdown syntax.
+For anything other than minor bug fixes, please comment on an existing issue or create a new issue providing details about your proposed change.
+Unrelated changes should be addressed in separate issues.
+Include information about use cases, design, user experience, etc.
+This allows us to discuss these aspects and any other concerns that might arise, thus potentially avoiding a great deal of wasted time.
+You should generally wait for acceptance of your proposal before you start coding. Please understand that we very likely will not accept changes that are not discussed first.
 
-## Contribution steps
+If this is a minor/trivial change which definitely wouldn't require design, user experience or implementation discussion (e.g. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver), you can just create a pull request rather than using an issue first. However, this should be fairly rare. If in doubt, use an issue first.
 
-### If you have Git and;or have commit access to NVDA Add-ons organization repository on GitHub
+If this is your first contribution, you will first need to "fork" the NVDA repository on GitHub.
 
-1. Clone the following two repos:
-git clone https://github.com/nvdaaddons/devguide
-git clone https://github.com/nvdaaddons/devguide.wiki.git
-The first repo is the home page (readme.md), and the second is the wiki where the pages will be stored.
-2. When wikifying your documentation, use Markdown syntax (not Txt2Tags (T2T) syntax).
-3. You need your GitHub credentials (user name and password) to commit changes.
-4. When adding a new documentation into the wiki repo, use git add command. Push to the wiki repo first, then modify the main readme.md (first repo) to point to the wiki link then do a git push.
-5. When adding a new documentation entry for an add-on, please write the following information:
-	* Add-on author name.
-	* Where to download the add-on and/or its source code
-	* Link to the add-on wiki documentation in the wiki repo.
+When you fork the repository, GitHub will create a copy of the master branch. However, this branch will not be updated when the official master branch is updated. To ensure your work is always based on the latest commit in the official master branch, it is recommended that your master branch be linked to the official master branch, rather than the master branch in your GitHub fork. If you have cloned your GitHub fork, you can do this from the command line as follows:
+```
+# Add a remote for the NV Access repository.
+git remote add nvaccess https://github.com/nvaccess/nvda.git
+# Fetch the nvaccess branches.
+git fetch nvaccess
+# Switch to the local master branch.
+git checkout master
+# Set the local master to use the nvaccess master as its upstream.
+git branch -u nvaccess/master
+# Update the local master.
+git pull
+```
 
-### If you don’t have access to Git or don’t have commit access to NVDA Add-ons organization
+You should use a separate "topic" branch for each issue.
+All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue.
+Branches should *never* be based on the "next" branch.
 
-1. Write your documentation using a text editor. Try using Markdown syntax.
-2. Send your documentation to the NVDA Add-ons list (nvda-addons@groups.io). You can send it as an attachment to that list or you can leave the URL from where add-ons list members can read your documentation (if you have a website; in case you’ve uploaded your docs to a service such as Dropbox or OneDrive, please let the add-ons list know the URL to download your file).
+If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly.
 
-### If you want to submit pull requests
+For anything touching code, Please run `scons tests` before you open your Pull Request, and make sure all the unit tests pass. If possible for your PR, please consider creating a set of unit tests to test your changes.
 
-1. Fork the one or both repositories from above (if you want to work on the wiki, it is best to modify the wiki directly via the web interface).
-2. After writing changes, send a pull request for review.
+When it is time to submit your code, you should open a pull request referring to the original issue.
+Code review will then be done on this pull request.
 
-## Documentation guidelines
+## Code Style
 
-Following are some guidelines when submitting your contributions (you don’t have to follow all of them and we’ll leave room for exceptions):
+### Encoding
+* Where Python files contain non-ASCII characters, they should be encoded in UTF-8.
+    * There should be no Unicode BOM at the start of the file, as this unfortunately breaks one of the translation tools we use (xgettext). Instead, include this as the first line of the file (only if the file contains non-ASCII characters):
 
-1. If you are writing an add-on internals article (or a series of articles), please write your name (so that we can give you authorship credit) and the version of the add-on you are writing about. Don’t forget to include copyright notices (for the add-on and any libraries it uses) and disclaimer (if you are writing about an add-on that isn’t yours).
-2. If you’ll be documenting NVDA Core modules or functions, please base it from the latest official release or master branch at the time of your writing, and please give the full signature of the function you’re writing about (example, if writing about message function in the UI module, please use ui.message; similarly , if documenting various UIA objects, please use NVDAObjects.UIA.ClassName e.g. NVDAObjects.UIA.Toast). Let us not forget that Mick and Jamie are the real experts of NVDA source code.
-3. If your article references Windows API functions, please specify which DLL exposes this function (e.g. FindWindow is exposed by user32.dll). This is a must, as NVDA provides wrappers for various Windows API functions, housed in wrapper modules (for example, various wrappers for user32.dll functions live in winUser.py).
-4. Please provide references at the end of articles (you don’t have to, but it is encouraged). References may include links to MSDN entry for a particular Windows API function, documentation to third-party libraries mentioned and third-party resources. This helps readers learn more about how certain functions work, read more about libraries used and so on (to research them further).
-5. Note that this may change based on community feedback. Please let me (Joseph Lee) and other add-ons list members know if you find some flaws with these and things that need changing.
+    ```
+        # -*- coding: UTF-8 -*-
+    ```
 
-## Frequently Asked Questions
+    * This coding comment must also be included if strings in the code (even strings that aren't translatable) contain escape sequences that produce non-ASCII characters; e.g. `"\xff"`. This is particularly relevant for braille display drivers. This is due to a gettext bug; see https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.
+* Most files should contain CRLF line endings, as this is a Windows project and can't be used on Unix-like operating systems.
 
-### Add-on readme
+### Indentation
+* Indentation must be done with tabs (one per level), not spaces.
+* When splitting a single statement over multiple lines, just indent one or more additional levels. Don't use vertical alignment; e.g. lining up with the bracket on the previous line.
 
-Q. What information should I include in my add-on readme?
+### Identifier Names
+* Functions, variables, properties, etc. should use mixed case to separate words, starting with a lower case letter; e.g. `speakText`.
+* Classes should use mixed case to separate words, starting with an upper case letter; e.g. `BrailleHandler`.
+* Constants should be all upper case, separating words with underscores; e.g. `LANGS_WITH_CONJUNCT_CHARS`.
+* Event handlers are prefixed with "event_", and are often in the form "event_ACTION" or "event_OBJECT_ACTION". Where OBJECT refers to the class type that the ACTION refers to.
+* Extension points:
+    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are being notified before / after the action has taken place.
+    * `Decider`: Prefixed with `should_` to turn them into a question eg `should_doSomething`
+    * `Filter`: TBD. Ideally follows a similar style the others, and communicates if the filtering happens before or after some action. It would also be nice to have a naming scheme that differentiates it from the others.
 
-The readme should include name of the author, download links if any, a brief description of the add-on, command summary, and if needed, a changelog.
-
-Q. What language should I write my readme in?
-
-It is up to you, but English is prefered.
-
-Q. Should I write my readme with translations in mind?
-
-Again this is up to you.
-
-### NVDA Core internals articles
-
-Q. Do I have to be a programmer or an employee of nV Access to write articles?
-
-No, although a background in programming may help you organize your thoughts better.
-
-Q. Should I include examples people can try out in Python Console?
-
-Yes if you can. Note that not all NVDA functions can be tested in Python Console.
-
-Q. What if I want to write about something incubating in next snapshots?
-
-You are welcome to do so, provided that you add a disclaimer that says features may change. Once the feature you are talking about graduates to master, make a note about which stable NVDA build the feature will be included in.
-
-### Add-on internals articles
-
-Q. Do I have to be the author of the add-on in order to write these articles?
-
-No. If you are a user though, then yes, it may help you with organizing your writings.
-
-Q. What is the difference between add-on readme and internals articles?
-
-Add-on readme is mostly meant for users to get to know the add-on. Add-on internals is mostly meant for developers (inside and outside the NVDA community) and other people who are curious about internal workings of an add-on.
-
-Q. I found a bug with the add-on I'm writing an internals article about. What should I do?
-
-First, report the bug to the add-on author and the add-ons community. Then once the bug is fixed, write a note explaining what happened in the article.
-
-Thanks, and we look forward to your contributions.
-
-The NVDA Community Add-ons Team
+### Translatable Strings
+* All strings that could be presented to the user should be marked as translatable using the `_()` function; e.g. `_("Text review")`.
+* All translatable strings should have a preceding translators comment describing the purpose of the string for translators. For example:
+```
+# Translators: The name of a category of NVDA commands.
+SCRCAT_TEXTREVIEW = _("Text review")
+```
