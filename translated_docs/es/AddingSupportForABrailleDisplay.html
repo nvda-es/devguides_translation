@@ -1,0 +1,57 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Cómo añadir soporte para una pantalla braille</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Cómo añadir soporte para una pantalla braille</h1></header>
+  <p>Hay dos opciones para conseguir que una pantalla braille se soporte en NVDA:</p>
+<ol>
+<li>Solicitar a NVAccess que haga un controlador o</li>
+<li>Escribir un controlador por ti mismo.</li>
+</ol>
+<h2 id="solicitar-que-nvaccess-desarrolle-un-controlador">Solicitar que NVAccess desarrolle un controlador</h2>
+<p>NVAccess tiene recursos muy limitados, y pueden pasar meses hasta que consideren tu petición.
+Sin embargo, este tipo de solicitudes son bienvenidas.</p>
+<p>Para que NVAccess pueda desarrollar un controlador, necesitan:</p>
+<ul>
+<li>Acceso físicamente a la pantalla braille en las oficinas de Queensland, Australia, durante aproximadamente un mes y sin coste para NVAccess (el interesado corre con los gastos de envío desde y hacia Australia);</li>
+<li>Documentación técnica del fabricante sobre cómo comunicarse con la pantalla;</li>
+<li>Permiso del fabricante para distribuir el controlador de NVDA como software libre;</li>
+<li>Cualquier controlador, biblioteca o documentación del fabricante para comunicarse con la pantalla;</li>
+<li>Permiso del fabricante para distribuir los controladores y bibliotecas necesarios con NVDA; y</li>
+<li>Información de atajos de teclado y comandos de la pantalla que sean comunes a todos los lectores de pantalla.</li>
+</ul>
+<p>Ten en cuenta que si después del desarrollo hay cambios importantes en el controlador o el núcleo de NVDA, habrá que repetir otra vez el proceso con la pantalla física como antes.</p>
+<p>Si estás interesado en que se añada soporte para una nueva pantalla Braille, <a href="https://github.com/nvaccess/nvda/issues/new">abre una incidencia en GitHub (en inglés)</a> aportando toda la información posible.
+También puedes facilitar el contacto entre el fabricante y NVAccess.</p>
+<h2 id="escribe-un-controlador-por-ti-mismo">Escribe un controlador por ti mismo</h2>
+<p>NVDA es de código abierto, y acepta controladores para pantallas braille escritos por la comunidad.
+Como todos los demás componentes, los controladores para pantallas braille deben programarse en Python y liberarse bajo la GNU General Public License, versión 2.</p>
+<p>Un controlador para pantalla braille es un módulo Python con una clase <code>BrailleDisplayDriver</code> que hereda de la clase <code>braille.BrailleDisplayDriver</code>.
+Mira <a href="https://github.com/nvaccess/nvda/blob/master/source/braille.py#L1751">la documentación del código de la clase <code>braille.BrailleDisplayDriver</code></a> para más detalles.</p>
+<p>Para aquellos controladores que deberían integrarse en el marco de trabajo de detección automática de pantallas braille, hay que añadir metadatos específicos del controlador al <a href="https://github.com/nvaccess/nvda/blob/master/source/bdDetect.py">módulo <code>bdDetect</code></a>. Ten en cuenta que, para que se soporte la detección automática de la pantalla braille, el controlador debe tener seguridad de hilos. Los datos se escriben en los controladores de pantallas braille con seguridad de hilos en segundo plano, mejorando así el rendimiento.</p>
+<p>Estos son algunos consejos rápidos que te guiarán en el desarrollo:</p>
+<ul>
+<li>Si quieres comunicarte con la pantalla mediante puerto serie en bruto, Hid o Bulk, mira el <a href="https://github.com/nvaccess/nvda/blob/master/source/hwIo.py">módulo <code>hwIo</code></a>.
+ Esta es la forma preferida de comunicación, ya que se pueden garantizar el soporte para la detección automática de pantallas y la seguridad de hilos usando este método.
+Los siguientes controladores se consideran buenos ejemplos.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/baum.py"><code>baum</code></a></li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/brailliantB.py"><code>brailliantB</code></a></li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/eurobraille.py"><code>eurobraille</code></a></li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/hims.py"><code>hims</code></a></li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/superBrl.py"><code>superBrl</code></a></li>
+</ul>
+<p>El controlador de <a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/handyTech.py"><code>handyTech</code></a> podría ser un buen ejemplo de controlador que debería soportar varios modelos o protocolos.
+<em> Si necesitas usar una dll para comunicarte con la pantalla, utiliza el módulo <code>ctypes</code> de Python.
+ Sin embargo, generalmente NV Access no aceptará dlls, a no ser que sea estrictamente necesario.
+ Además, las dlls que ocupen más de 300 KB no se aceptan generalmente a la hora de distribuirlas con NVDA.
+ Además, ten en cuenta que los problemas en las dlls son más difíciles de depurar, e implementar el soporte para el marco de trabajo de detección automática podría ser imposible debido a la falta de seguridad de hilos en la dll.
+ El controlador de <a href="https://github.com/nvaccess/nvda/blob/master/source/brailleDisplayDrivers/freedomScientific.py"><code>freedomScientific</code></a> es un buen ejemplo.
+</em> Si necesitas un objeto com para comunicarte con la pantalla, puedes usar el módulo <code>comtypes</code>.
+ Hay que tener en cuenta lo mismo que con las dlls.</p>
+<p>Lee el documento sobre cómo contribuir con NVDA para obtener información sobre el estilo del código, etc.
+Una vez termines tu controlador, puedes enviar una solicitud de cambios.</p>
+</body>
+</html>

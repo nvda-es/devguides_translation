@@ -6,53 +6,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-08-28 22:09+Hora de verano romance\n"
-"PO-Revision-Date: 2018-08-28 22:13+0100\n"
-"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"PO-Revision-Date: 2018-09-01 19:34+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:3
 msgid "# Adding Support for a Braille Display"
-msgstr ""
+msgstr "# Cómo añadir soporte para una pantalla braille"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:4
 msgid ""
 "There are two options if you'd like to see an additional braille display "
 "supported by NVDA:"
 msgstr ""
+"Hay dos opciones para conseguir que una pantalla braille se soporte en NVDA:"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:5
 msgid "1. Request that NV Access develops a driver; or"
-msgstr ""
+msgstr "1. Solicitar a NVAccess que haga un controlador o"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:6
 msgid "2. Write a driver yourself."
-msgstr ""
+msgstr "2. Escribir un controlador por ti mismo."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:7
 msgid "## Request that NV Access Develops a Driver"
-msgstr ""
+msgstr "## Solicitar que NVAccess desarrolle un controlador"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:8
 msgid ""
 "Given our extremely limited resources and other priorities, it may be months "
 "before we can consider such a request."
 msgstr ""
+"NVAccess tiene recursos muy limitados, y pueden pasar meses hasta que "
+"consideren tu petición."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:9
 msgid ""
 "However, we will endeavour to support additional displays if we are able."
-msgstr ""
+msgstr "Sin embargo, este tipo de solicitudes son bienvenidas."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:10
 msgid "In order for NV Access to develop a driver, we will need:"
-msgstr ""
+msgstr "Para que NVAccess pueda desarrollar un controlador, necesitan:"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:11
 msgid ""
@@ -60,36 +63,49 @@ msgid ""
 "at least a month at no cost to NV Access (which means we will not cover the "
 "cost of any shipping to or from Australia);"
 msgstr ""
+"* Acceso físicamente a la pantalla braille en las oficinas de Queensland, "
+"Australia, durante aproximadamente un mes y sin coste para NVAccess (el "
+"interesado corre con los gastos de envío desde y hacia Australia);"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:12
 msgid ""
 "* Technical documentation from the braille display vendor regarding how to "
 "communicate with the display;"
 msgstr ""
+"* Documentación técnica del fabricante sobre cómo comunicarse con la "
+"pantalla;"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:13
 msgid ""
 "* Permission from the vendor to distribute the NVDA driver as open source "
 "code;"
 msgstr ""
+"* Permiso del fabricante para distribuir el controlador de NVDA como "
+"software libre;"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:14
 msgid ""
 "* Any drivers, libraries, etc. from the vendor necessary to communicate with "
 "the display;"
 msgstr ""
+"* Cualquier controlador, biblioteca o documentación del fabricante para "
+"comunicarse con la pantalla;"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:15
 msgid ""
 "* Permission from the vendor to freely redistribute any drivers, libraries, "
 "etc. with NVDA; and"
 msgstr ""
+"* Permiso del fabricante para distribuir los controladores y bibliotecas "
+"necesarios con NVDA; y"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:16
 msgid ""
 "* Information about any key commands, etc. for the display that are common "
 "across screen raeders."
 msgstr ""
+"* Información de atajos de teclado y comandos de la pantalla que sean "
+"comunes a todos los lectores de pantalla."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:17
 msgid ""
@@ -97,6 +113,9 @@ msgid ""
 "after the driver is initially developed, we may need further access to a "
 "physical display as above."
 msgstr ""
+"Ten en cuenta que si después del desarrollo hay cambios importantes en el "
+"controlador o el núcleo de NVDA, habrá que repetir otra vez el proceso con "
+"la pantalla física como antes."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:18
 msgid ""
@@ -104,28 +123,36 @@ msgid ""
 "GitHub](https://github.com/nvaccess/nvda/issues/new) including as much of "
 "the above as you can."
 msgstr ""
+"Si estás interesado en que se añada soporte para una nueva pantalla Braille, "
+"[abre una incidencia en GitHub (en inglés)](https://github.com/nvaccess/nvda/"
+"issues/new) aportando toda la información posible."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:19
 msgid ""
 "At the very least, you should contact the braille display vendor and "
 "facilitate contact between them and us."
-msgstr ""
+msgstr "También puedes facilitar el contacto entre el fabricante y NVAccess."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:20
 msgid "## Write a Driver Yourself"
-msgstr ""
+msgstr "## Escribe un controlador por ti mismo"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:21
 msgid ""
 "Since NVDA is open source, we will gladly accept braille display drivers "
 "written by others."
 msgstr ""
+"NVDA es de código abierto, y acepta controladores para pantallas braille "
+"escritos por la comunidad."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:22
 msgid ""
 "As with most of the rest of NVDA, braille display drivers are written in "
 "Python and must be licensed under the GNU General Public License version 2."
 msgstr ""
+"Como todos los demás componentes, los controladores para pantallas braille "
+"deben programarse en Python y liberarse bajo la GNU General Public License, "
+"versión 2."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:23
 msgid ""
@@ -133,6 +160,8 @@ msgid ""
 "`BrailleDisplayDriver` class which inherits from the `braille."
 "BrailleDisplayDriver` base class."
 msgstr ""
+"Un controlador para pantalla braille es un módulo Python con una clase "
+"`BrailleDisplayDriver` que hereda de la clase `braille.BrailleDisplayDriver`."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:24
 msgid ""
@@ -140,6 +169,9 @@ msgid ""
 "(https://github.com/nvaccess/nvda/blob/master/source/braille.py#L1751) for "
 "further details."
 msgstr ""
+"Mira [la documentación del código de la clase `braille.BrailleDisplayDriver`]"
+"(https://github.com/nvaccess/nvda/blob/master/source/braille.py#L1751) para "
+"más detalles."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:25
 msgid ""
@@ -150,10 +182,18 @@ msgid ""
 "supported, a driver has to be thread safe. Data is written to thread-safe "
 "braille display drivers in the background, thus improving performance."
 msgstr ""
+"Para aquellos controladores que deberían integrarse en el marco de trabajo "
+"de detección automática de pantallas braille, hay que añadir metadatos "
+"específicos del controlador al [módulo `bdDetect`](https://github.com/"
+"nvaccess/nvda/blob/master/source/bdDetect.py). Ten en cuenta que, para que "
+"se soporte la detección automática de la pantalla braille, el controlador "
+"debe tener seguridad de hilos. Los datos se escriben en los controladores de "
+"pantallas braille con seguridad de hilos en segundo plano, mejorando así el "
+"rendimiento."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:26
 msgid "Here are some quick tips:"
-msgstr ""
+msgstr "Estos son algunos consejos rápidos que te guiarán en el desarrollo:"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:27
 msgid ""
@@ -161,6 +201,9 @@ msgid ""
 "see the [`hwIo` module](https://github.com/nvaccess/nvda/blob/master/source/"
 "hwIo.py)."
 msgstr ""
+"* Si quieres comunicarte con la pantalla mediante puerto serie en bruto, Hid "
+"o Bulk, mira el [módulo `hwIo`](https://github.com/nvaccess/nvda/blob/master/"
+"source/hwIo.py)."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:28
 msgid ""
@@ -168,40 +211,53 @@ msgid ""
 "support for automatic detection of displays can be guaranteed using this "
 "method."
 msgstr ""
+" Esta es la forma preferida de comunicación, ya que se pueden garantizar el "
+"soporte para la detección automática de pantallas y la seguridad de hilos "
+"usando este método."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:29
 msgid "The following drivers are considered good examples."
-msgstr ""
+msgstr "Los siguientes controladores se consideran buenos ejemplos."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:30
 msgid ""
 " * [`baum`](https://github.com/nvaccess/nvda/blob/master/source/"
 "brailleDisplayDrivers/baum.py)"
 msgstr ""
+" * [`baum`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleDisplayDrivers/baum.py)"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:31
 msgid ""
 " * [`brailliantB`](https://github.com/nvaccess/nvda/blob/master/source/"
 "brailleDisplayDrivers/brailliantB.py)"
 msgstr ""
+" * [`brailliantB`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleDisplayDrivers/brailliantB.py)"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:32
 msgid ""
 " * [`eurobraille`](https://github.com/nvaccess/nvda/blob/master/source/"
 "brailleDisplayDrivers/eurobraille.py)"
 msgstr ""
+" * [`eurobraille`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleDisplayDrivers/eurobraille.py)"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:33
 msgid ""
 " * [`hims`](https://github.com/nvaccess/nvda/blob/master/source/"
 "brailleDisplayDrivers/hims.py)"
 msgstr ""
+" * [`hims`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleDisplayDrivers/hims.py)"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:34
 msgid ""
 " * [`superBrl`](https://github.com/nvaccess/nvda/blob/master/source/"
 "brailleDisplayDrivers/superBrl.py)"
 msgstr ""
+" * [`superBrl`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleDisplayDrivers/superBrl.py)"
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:35
 msgid ""
@@ -209,24 +265,33 @@ msgid ""
 "brailleDisplayDrivers/handyTech.py) driver might be a good example of a "
 "driver that should support multiple models or protocols."
 msgstr ""
+" El controlador de [`handyTech`](https://github.com/nvaccess/nvda/blob/"
+"master/source/brailleDisplayDrivers/handyTech.py) podría ser un buen ejemplo "
+"de controlador que debería soportar varios modelos o protocolos."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:36
 msgid ""
 "* If you need to use a dll to communicate with the display, you can use the "
 "Python `ctypes` module."
 msgstr ""
+"* Si necesitas usar una dll para comunicarte con la pantalla, utiliza el "
+"módulo `ctypes` de Python."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:37
 msgid ""
 " However, we will generally not accept dlls, unless it is strictly necessary "
 "to use them."
 msgstr ""
+" Sin embargo, generalmente NV Access no aceptará dlls, a no ser que sea "
+"estrictamente necesario."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:38
 msgid ""
 " Also, dlls larger than 300 kb are generally not accepted for distribution "
 "with NVDA."
 msgstr ""
+" Además, las dlls que ocupen más de 300 KB no se aceptan generalmente a la "
+"hora de distribuirlas con NVDA."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:39
 msgid ""
@@ -234,29 +299,41 @@ msgid ""
 "implementing support for the braille display auto detection framework might "
 "be impossible due to the non thread safety of the dll."
 msgstr ""
+" Además, ten en cuenta que los problemas en las dlls son más difíciles de "
+"depurar, e implementar el soporte para el marco de trabajo de detección "
+"automática podría ser imposible debido a la falta de seguridad de hilos en "
+"la dll."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:40
 msgid ""
 " The [`freedomScientific`](https://github.com/nvaccess/nvda/blob/master/"
 "source/brailleDisplayDrivers/freedomScientific.py) driver is a good example."
 msgstr ""
+" El controlador de [`freedomScientific`](https://github.com/nvaccess/nvda/"
+"blob/master/source/brailleDisplayDrivers/freedomScientific.py) es un buen "
+"ejemplo."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:41
 msgid ""
 "* If you need to use a COM object to communicate with the display, you can "
 "use the `comtypes` module."
 msgstr ""
+"* Si necesitas un objeto com para comunicarte con la pantalla, puedes usar "
+"el módulo `comtypes`."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:42
 msgid " The same notes as for dlls apply."
-msgstr ""
+msgstr " Hay que tener en cuenta lo mismo que con las dlls."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:43
 msgid ""
 "See the [Contributing to NVDA](https://github.com/nvaccess/nvda/wiki/"
 "Contributing) document for information about code style, etc."
 msgstr ""
+"Lee el documento sobre cómo contribuir con NVDA para obtener información "
+"sobre el estilo del código, etc."
 
 #: ..\python_docs\AddingSupportForABrailleDisplay.py:44
 msgid "Once you have completed your driver, you can submit a pull request."
 msgstr ""
+"Una vez termines tu controlador, puedes enviar una solicitud de cambios."
