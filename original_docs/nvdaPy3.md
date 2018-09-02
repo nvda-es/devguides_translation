@@ -22,7 +22,7 @@ When NVDA began in 2006, it used python 2.4. Over the years, NvDA and its add-on
 
 * Many add-ons not updated will no longer work.
 * Renamed modules.
-* Being careful about syntax differences.
+* Being careful about syntax and internal differences.
 
 ## Transition workflow
 
@@ -50,6 +50,11 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 	* This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
 * Removed modules, including new.instancemethod.
 	* Either find a Python 3 equivalent, or use built-in Python features.
+* Provide __hash__ method for classes implementing __eq__ method (NVDAObjects.NVDAObject, for instance).
+	* This is required due to hash randomization in python 3.3 and later.
+	* One of the simplest solutions is to use the parent object's __hash__ method (__hash__ = parentClass.__hash__).
+* Object methods of the form _get_property does not work, noticeable when trying to set initial synthesizer, braille display, focus object and so on.
+	* Either tweak autoProperty* or use @property decorator.
 
 ### Needed dependencies:
 
@@ -78,8 +83,8 @@ Ideal completion: between NVDA 2018.4 and 2019.1 releases.
 ### Transition:
 
 1. A group of developers (code contributors, add-on developers, Python programmers outside of NVDA project and others) should work on transforming NVDA's source code to Python 3.
-	* Do not run 2to3 and tell the script to replace files, as further tweaking will be required.
-	* For each transformation iteration, test the source code to make sure functionality are identical (or almost identical) with older NVDA releases.
+	* Do not run 2to3 and tell the script to replace files, as further tweaking is required for some files.
+	* For each transformation iteration, test the source code to make sure features are identical (or almost identical) with older NVDA releases.
 2. Issues related to transition must be documented.
 	* Issues must be labeled as "Python 3" in GitHub.
 	* If needed, proposed solutions and workarounds should be documented in the issue tracker.
@@ -117,7 +122,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 
 ### For code contributors:
 
-* Document potential and actual issues when working with Python 3, including changed modules, attribute name chnages, internal changes and so on.
+* Document potential and actual issues when working with Python 3, including changed modules, attribute name changes, internal changes and so on.
 * When importing a built-in Python module, use try/except when importing modules.
 	* Try importing Python 2 names as Python 3 name, switching to Python 3 version when Python 2 module is not found or renamed.
 	* See NVDA source code for implementation steps.
@@ -135,13 +140,15 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 
 ### For testers:
 
-Nothing yet, as transitoin hasn hasn't begun.
+Nothing yet, as transition hasn't begun.
 
 ### For translators:
 
 Nothing yet.
 
 ### For users:
+
+nothin yet.
 
 ### For organizations:
 

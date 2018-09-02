@@ -20,7 +20,7 @@ def generate_document(language, sourceModule):
  f, p, d=imp.find_module(moduleName, searchpath)
  strings=imp.load_module(moduleName, f, p, d)
  f.close()
- markdown_file = markdown.markdown("\n".join(strings.documentation[1:]), extensions=["markdown.extensions.toc", "markdown.extensions.wikilinks", "markdown.extensions.tables", "markdown.extensions.fenced_code"])
+ markdown_file = markdown.markdown("\n".join(strings.documentation), extensions=["markdown.extensions.toc", "markdown.extensions.wikilinks", "markdown.extensions.tables", "markdown.extensions.fenced_code"])
  title = strings.documentation[0]
  filename = moduleName+".html"
  first_html_block = """<!doctype html>

@@ -6,7 +6,8 @@
   </head>
   <body>
   <header><h1>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</h1></header>
-  <p>Importante: este documento es un borrador y puede cambiar periódicamente.</p>
+  <p>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</p>
+<p>Importante: este documento es un borrador y puede cambiar periódicamente.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Python es uno de los lenguajes de programación más populares para diversos proyectos. Es fácil de aprender, tiene muchísimos módulos en su biblioteca estándar y extensiones de terceros, así como una documentación muy completa y una sintaxis clara. Todo esto hace que sea la opción ideal a la hora de elaborar scripts.</p>
 <p>Actualmente hay dos ramas principales en Python: 2.x, liberada a principios del año 2000, y 3.x, liberada por primera vez en 2008. A primera vista, Python 3 puede parecer similar a Python 2, pero hay numerosas diferencias profundas, incluyendo el soporte extenso de Unicode en Python 3, módulos renombrados y más.</p>
@@ -22,7 +23,7 @@
 <ul>
 <li>Muchos complementos sin actualizar dejarán de funcionar.</li>
 <li>Módulos renombrados.</li>
-<li>Tener cuidado con las diferencias de sintaxis.</li>
+<li>Tener cuidado con las diferencias internas y de sintaxis.</li>
 </ul>
 <h2 id="flujo-de-trabajo-para-la-transicion">Flujo de trabajo para la transición</h2>
 <p>La siguiente es una descripción general de la transición del lector de pantalla NVDA desde Python 2 a Python 3. Al encontrarse como un borrador, está sujeta a cambios.</p>
@@ -64,6 +65,15 @@
 </li>
 <li>Módulos eliminados, incluyendo new.instancemethod.<ul>
 <li>Encontrar un equivalente en Python 3, o usar las características incorporadas en Python.</li>
+</ul>
+</li>
+<li>Proporciona un método <strong>hash</strong> para las clases que implementen el método <strong>eq</strong> (NVDAObjects.NVDAObject, por ejemplo).<ul>
+<li>Esto es necesario debido a la aleatorización de hashes en Python 3.3 y posterior.</li>
+<li>Una de las soluciones más simples es usar el método <strong>hash</strong> de la clase padre (<strong>hash</strong> = clasePadre.<strong>hash</strong>).</li>
+</ul>
+</li>
+<li>Los métodos de objeto de la forma _get_property no funcionan, observable al intentar establecer el sintetizador inicial, la pantalla braille, el objeto con el foco y demás.<ul>
+<li>Retocar autoProperty* o bien usar el decorador @property.</li>
 </ul>
 </li>
 </ul>
@@ -164,6 +174,7 @@
 <h3 id="para-traductores">Para traductores:</h3>
 <p>Nada todavía.</p>
 <h3 id="para-usuarios">Para usuarios:</h3>
+<p>nada todavía.</p>
 <h3 id="para-organizaciones">Para organizaciones:</h3>
 <ul>
 <li>Permanece informado sobre el flujo de trabajo de la transición a Python 3.</li>
