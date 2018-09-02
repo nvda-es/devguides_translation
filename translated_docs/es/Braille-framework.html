@@ -1,0 +1,52 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title>El siguiente borrador proporciona una introducción al marco de trabajo braille de NVDA. Para más información sobre las pantallas braille, lee la página que describe el proceso de añadir soporte para una pantalla braille.</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1>El siguiente borrador proporciona una introducción al marco de trabajo braille de NVDA. Para más información sobre las pantallas braille, lee la página que describe el proceso de añadir soporte para una pantalla braille.</h1></header>
+  <h2 id="introduccion-basica-a-los-modulos">Introducción básica a los módulos</h2>
+<p>El marco de trabajo braille de NVDA depende de los siguientes módulos:</p>
+<ul>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/braille.py"><code>braille.py</code></a>: contiene la base del código de NVDA relacionado con el braille, incluyendo el manejador braille y un controlador base de pantalla braille del que todas las pantallas braille heredan. Además contiene clases para regiones, buffers braille y gestos de pantallas braille, descritos con más detalle después.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleTables.py"><code>brailleTables.py</code></a>: contiene definiciones de las tablas braille de Liblouis empleadas por NVDA.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/brailleInput.py"><code>brailleInput.py</code></a>: código responsable de la entrada braille y las pulsaciones de teclado en teclados braille.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/bdDetect.py"><code>bdDetect.py</code></a>: contiene definiciones de datos de detección para pantallas braille e implementa una clase Detector que facilita la detección automática de pantallas braille conectadas por USB o bluetooth.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/hwIo.py"><code>hwIo.py</code></a>: contiene clases que hacen posible la comunicación sincronizada en hilos con las pantallas braille, usando los protocolos HID, de puerto serie o Bulk.</li>
+<li><a href="https://github.com/nvaccess/nvda/blob/master/source/hwPortUtils.py"><code>hwPortUtils.py</code></a>: contiene funciones que facilitan la detección de hardware HID, USB o conectado por puerto serie.</li>
+</ul>
+<h2 id="el-modulo-braille">El módulo <code>braille</code></h2>
+<h3 id="la-clase-braillehandler">La clase <code>BrailleHandler</code></h3>
+<p>La clase <code>BrailleHandler</code> es el jugador estrella del marco de trabajo braille. Recibe solicitudes desde el núcleo de NVDA para controlar qué se debe mostrar en una pantalla braille, haciendo uso de clases y técnicas subyacentes, incluidas BrailleBuffers y BrailleRegions. Cuando se inicializa el módulo braille llamando a la función initialize, se instancia un único objeto BrailleHandler como braille.handler. Básicamente, el manejador braille hace lo siguiente:</p>
+<ul>
+<li>Realiza un seguimiento de la pantalla braille usada actualmente y activa o desactiva la detección automática si procede.</li>
+<li>Realiza un seguimiento de varios ajustes braille, incluyendo el seguimiento, presentación del contexto del foco, parpadeo del cursor, tiempo de espera del mensaje, tablas de salida braille, etc.</li>
+<li>Permite la interacción con las pantallas usando gestos de desplazamiento y movimiento del cursor</li>
+<li>Realiza acciones basadas en varios eventos de NVDA relacionados con objetos, incluyendo cuando un objeto recibe el foco o el navegador de objetos.</li>
+</ul>
+<h3 id="las-clases-region-y-braillebuffer">Las clases <code>Region</code> y <code>BrailleBuffer</code></h3>
+<p>Las clases <code>Region</code> y <code>BrailleBuffer</code> están fuertemente relacionadas entre sí. Una <code>Region</code> puede verse como la entidad más pequeña dentro del marco de trabajo braille, y presenta información sobre un objeto NVDA. Un BrailleBuffer puede verse como una caja de regiones que pueden ser relevantes para el objeto actual con el foco, el navegador de objetos o la posición de revisión.</p>
+<p>Hay básicamente tres tipos de regiones:</p>
+<ol>
+<li><code>TextRegion</code>: una región simple que contiene algo de texto y no está relacionada con un objeto NVDA.
+ Se puede usar para mostrar mensajes braille, tales como los que se muestran al recuperar la fecha y hora actuales, el estado actual de la batería o al cambiar una opción de NVDA con un gesto.</li>
+<li><code>NVDAObjectRegion</code>: una región que muestra información sobre un objeto NVDA, tal como su nombre (Acepto), su rol (casilla de verificación o cv) y sus estados (no marcada o ( )).
+ Ten en cuenta que los objetos NVDAObjectRegion <strong>no muestran</strong> el texto de un cuadro de edición, como el que puede haber en un editor de texto.</li>
+<li><code>TextInfoRegion</code>: estas regiones tienen el contenido de los objetos TextInfo. La posición del cursor de revisión en revisión de pantalla, el texto bajo el cursor en un editor de texto o la línea seleccionada actualmente en el modo exploración de NVDA se muestran usando un objeto TextInfoRegion o una de sus subclases.</li>
+</ol>
+<p>Un <code>BrailleBuffer</code> es responsable de concatenar varias instancias <code>Region</code> juntas. Al ver un objeto que ha sido seleccionado mediante navegación de objetos, el búfer normalmente contiene uno o dos objetos; un NVDAObjectRegion con las propiedades del objeto y un TextInfoRegion opcional para mostrar el texto del objeto cuando es un control de texto. Al mostrar el objeto con el foco, sin embargo, el búfer también puede contener varios objetos que forman lo que se conoce como ascendencia del foco de un objeto.</p>
+<p>La estructura de un búfer puede probablemente describirse mejor con un ejemplo.</p>
+<ol>
+<li>Usando el menú NVDA, ve a <code>Preferencias</code> &gt; <code>Opciones</code> y selecciona la categorúia <code>Voz</code>. Alternativamente, puedes pulsar control+NVDA+v para abrir esta categoría en el diálogo de opciones.</li>
+<li>Lleva el foco al cuadro de edición que contiene el nombre del sintetizador actual.</li>
+<li>En este caso particular, el búfer braille contiene 4 regiones:</li>
+<li>Un NVDAObjectRegion para el diálogo, representado por el texto "NVDA: Voz (configuración normal) dlg"</li>
+<li>Un NVDAObjectRegion para el grupo sintetizador, representado por el texto "Sintetizador grp Alt+s"</li>
+<li>Un NVDAObjectRegion para el control de texto del sintetizador, representado con el texto "Sintetizadorsl mln ce Alt+s"</li>
+<li>Un TextInfoRegion para los contenidos del control de texto del sintetizador, que contiene el texto "Voces Windows OneCore"
+ Estas regiones o partes del búfer forman el texto en bruto del búfer: 'NVDA: Voz (configuración normal) dlg Sintetizador grp Alt+s Sintetizador sl mln ce Alt+s Voces Windows OneCore'</li>
+</ol>
+<p>Observa que este búfer tiene un tamaño de aproximadamente casi 200 caracteres, y en caracteres braille podrían ser más, dependiendo de la tabla braille en uso. Sin embargo, una pantalla braille puede contener sólo 40 celdas braille. Aquí es donde NVDA hace una distinción entre un búfer braille y una ventana braille. La ventana braille es la parte del búfer que se encuentra actualmente visible en tu pantalla braille. Como puedes esperar, la ventana braille tiene un tamaño máximo equivalente a la medida de la pantalla braille actual. En caso que la ventana braille contenga menos caracteres, el resto de la pantalla braille se rellena con espacios. Puedes cambiar tu posición en un búfer con los botones de desplazamiento de la pantalla braille, en cuyo caso la posición de la ventana braille cambia, cambiando efectivamente lo que es visible en tu pantalla braille.</p>
+</body>
+</html>

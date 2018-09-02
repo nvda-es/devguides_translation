@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-08-28 22:09+Hora de verano romance\n"
-"PO-Revision-Date: 2018-08-28 22:15+0100\n"
-"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"PO-Revision-Date: 2018-09-02 13:42+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
@@ -24,14 +24,17 @@ msgid ""
 "describes the process of [Adding Support for a Braille Display](https://"
 "github.com/nvaccess/nvda/wiki/AddingSupportForABrailleDisplay)."
 msgstr ""
+"El siguiente borrador proporciona una introducción al marco de trabajo "
+"braille de NVDA. Para más información sobre las pantallas braille, lee la "
+"página que describe el proceso de añadir soporte para una pantalla braille."
 
 #: ..\python_docs\Braille-framework.py:4
 msgid "## Basic introduction to Modules"
-msgstr ""
+msgstr "## Introducción básica a los módulos"
 
 #: ..\python_docs\Braille-framework.py:5
 msgid "NVDA\"s braille framework depends on the following modules:"
-msgstr ""
+msgstr "El marco de trabajo braille de NVDA depende de los siguientes módulos:"
 
 #: ..\python_docs\Braille-framework.py:6
 msgid ""
@@ -41,6 +44,12 @@ msgid ""
 "drivers inherit from. Also, it contains classes for  regions, braille "
 "buffers and braille display gestures, described in greater detail below."
 msgstr ""
+"* [`braille.py`](https://github.com/nvaccess/nvda/blob/master/source/braille."
+"py): contiene la base del código de NVDA relacionado con el braille, "
+"incluyendo el manejador braille y un controlador base de pantalla braille "
+"del que todas las pantallas braille heredan. Además contiene clases para "
+"regiones, buffers braille y gestos de pantallas braille, descritos con más "
+"detalle después."
 
 #: ..\python_docs\Braille-framework.py:7
 msgid ""
@@ -48,6 +57,9 @@ msgid ""
 "brailleTables.py): contains definitions of liblouis braille tables used "
 "within NVDA."
 msgstr ""
+"* [`brailleTables.py`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleTables.py): contiene definiciones de las tablas braille de Liblouis "
+"empleadas por NVDA."
 
 #: ..\python_docs\Braille-framework.py:8
 msgid ""
@@ -55,6 +67,9 @@ msgid ""
 "brailleInput.py): the code that is responsible for the processing of braille "
 "input and kkey presses from braille keyboards."
 msgstr ""
+"* [`brailleInput.py`](https://github.com/nvaccess/nvda/blob/master/source/"
+"brailleInput.py): código responsable de la entrada braille y las pulsaciones "
+"de teclado en teclados braille."
 
 #: ..\python_docs\Braille-framework.py:9
 msgid ""
@@ -63,6 +78,10 @@ msgid ""
 "and implements a Detector class that facilitates automatic detection of "
 "braille displays over USB or Bluetooth."
 msgstr ""
+"* [`bdDetect.py`](https://github.com/nvaccess/nvda/blob/master/source/"
+"bdDetect.py): contiene definiciones de datos de detección para pantallas "
+"braille e implementa una clase Detector que facilita la detección automática "
+"de pantallas braille conectadas por USB o bluetooth."
 
 #: ..\python_docs\Braille-framework.py:10
 msgid ""
@@ -70,6 +89,9 @@ msgid ""
 "contains classes that streamline thread safe communication with braille "
 "displays using HID, Serial or Bulk protocols."
 msgstr ""
+"* [`hwIo.py`](https://github.com/nvaccess/nvda/blob/master/source/hwIo.py): "
+"contiene clases que hacen posible la comunicación sincronizada en hilos con "
+"las pantallas braille, usando los protocolos HID, de puerto serie o Bulk."
 
 #: ..\python_docs\Braille-framework.py:11
 msgid ""
@@ -77,14 +99,17 @@ msgid ""
 "hwPortUtils.py): contains fucntions that ease detection of HID, USB or "
 "Serial based hardware."
 msgstr ""
+"* [`hwPortUtils.py`](https://github.com/nvaccess/nvda/blob/master/source/"
+"hwPortUtils.py): contiene funciones que facilitan la detección de hardware "
+"HID, USB o conectado por puerto serie."
 
 #: ..\python_docs\Braille-framework.py:12
 msgid "## The `braille` module"
-msgstr ""
+msgstr "## El módulo `braille`"
 
 #: ..\python_docs\Braille-framework.py:13
 msgid "### The `BrailleHandler` class"
-msgstr ""
+msgstr "### La clase `BrailleHandler`"
 
 #: ..\python_docs\Braille-framework.py:14
 msgid ""
@@ -96,12 +121,21 @@ msgid ""
 "instantiated as braille.handler. Basically, the braille handler does the "
 "following:"
 msgstr ""
+"La clase `BrailleHandler` es el jugador estrella del marco de trabajo "
+"braille. Recibe solicitudes desde el núcleo de NVDA para controlar qué se "
+"debe mostrar en una pantalla braille, haciendo uso de clases y técnicas "
+"subyacentes, incluidas BrailleBuffers y BrailleRegions. Cuando se inicializa "
+"el módulo braille llamando a la función initialize, se instancia un único "
+"objeto BrailleHandler como braille.handler. Básicamente, el manejador "
+"braille hace lo siguiente:"
 
 #: ..\python_docs\Braille-framework.py:15
 msgid ""
 "* It keeps track of the current braille display in use and enables or "
 "disables automatic detection if appropriate."
 msgstr ""
+"* Realiza un seguimiento de la pantalla braille usada actualmente y activa o "
+"desactiva la detección automática si procede."
 
 #: ..\python_docs\Braille-framework.py:16
 msgid ""
@@ -109,22 +143,30 @@ msgid ""
 "context presentation, cursor blinking, message timeout, braille output "
 "tables, etc."
 msgstr ""
+"* Realiza un seguimiento de varios ajustes braille, incluyendo el "
+"seguimiento, presentación del contexto del foco, parpadeo del cursor, tiempo "
+"de espera del mensaje, tablas de salida braille, etc."
 
 #: ..\python_docs\Braille-framework.py:17
 msgid ""
 "* it allows interaction with displays using gestures for scrolling and "
 "cursor routing"
 msgstr ""
+"* Permite la interacción con las pantallas usando gestos de desplazamiento y "
+"movimiento del cursor"
 
 #: ..\python_docs\Braille-framework.py:18
 msgid ""
 "* it performs actions based on several NVDA events related to objects, "
 "including when an object gains focus or becomes the navigator object."
 msgstr ""
+"* Realiza acciones basadas en varios eventos de NVDA relacionados con "
+"objetos, incluyendo cuando un objeto recibe el foco o el navegador de "
+"objetos."
 
 #: ..\python_docs\Braille-framework.py:19
 msgid "### The `Region` and `BrailleBuffer` classes"
-msgstr ""
+msgstr "### Las clases `Region` y `BrailleBuffer`"
 
 #: ..\python_docs\Braille-framework.py:20
 msgid ""
@@ -134,16 +176,24 @@ msgid ""
 "a box of regions that are relevant for the current focus object, navigator "
 "object or review position."
 msgstr ""
+"Las clases `Region` y `BrailleBuffer` están fuertemente relacionadas entre "
+"sí. Una `Region` puede verse como la entidad más pequeña dentro del marco de "
+"trabajo braille, y presenta información sobre un objeto NVDA. Un "
+"BrailleBuffer puede verse como una caja de regiones que pueden ser "
+"relevantes para el objeto actual con el foco, el navegador de objetos o la "
+"posición de revisión."
 
 #: ..\python_docs\Braille-framework.py:21
 msgid "There are basically three types of regions:"
-msgstr ""
+msgstr "Hay básicamente tres tipos de regiones:"
 
 #: ..\python_docs\Braille-framework.py:22
 msgid ""
 "1. `TextRegion`: A simple region that just contains some text and isn't "
 "related to an NVDA object."
 msgstr ""
+"1. `TextRegion`: una región simple que contiene algo de texto y no está "
+"relacionada con un objeto NVDA."
 
 #: ..\python_docs\Braille-framework.py:23
 msgid ""
@@ -151,6 +201,9 @@ msgid ""
 "retrieving the current time or date, the current battery status or when "
 "changing an NVDA setting using a gesture."
 msgstr ""
+" Se puede usar para mostrar mensajes braille, tales como los que se muestran "
+"al recuperar la fecha y hora actuales, el estado actual de la batería o al "
+"cambiar una opción de NVDA con un gesto."
 
 #: ..\python_docs\Braille-framework.py:24
 msgid ""
@@ -158,12 +211,17 @@ msgid ""
 "such as its name (I agree), its role (checkbox or chk) and states (not "
 "checked or ⣏⣀⣹)."
 msgstr ""
+"2. `NVDAObjectRegion`: una región que muestra información sobre un objeto "
+"NVDA, tal como su nombre (Acepto), su rol (casilla de verificación o cv) y "
+"sus estados (no marcada o ( ))."
 
 #: ..\python_docs\Braille-framework.py:25
 msgid ""
 " Note that NVDAObjectRegions *do not** show the text within an edit control, "
 "such as a text editor."
 msgstr ""
+" Ten en cuenta que los objetos NVDAObjectRegion **no muestran** el texto de "
+"un cuadro de edición, como el que puede haber en un editor de texto."
 
 #: ..\python_docs\Braille-framework.py:26
 msgid ""
@@ -172,6 +230,11 @@ msgid ""
 "the caret in a text editor or the currently selected line within NVDA\"s "
 "browse mode are all shown using a TextInfoRegion or one of its subclasses."
 msgstr ""
+"3. `TextInfoRegion`: estas regiones tienen el contenido de los objetos "
+"TextInfo. La posición del cursor de revisión en revisión de pantalla, el "
+"texto bajo el cursor en un editor de texto o la línea seleccionada "
+"actualmente en el modo exploración de NVDA se muestran usando un objeto "
+"TextInfoRegion o una de sus subclases."
 
 #: ..\python_docs\Braille-framework.py:27
 msgid ""
@@ -183,10 +246,19 @@ msgid ""
 "focused object however, the buffer may also contain several objects that "
 "form the so called focus ancestry of an object."
 msgstr ""
+"Un `BrailleBuffer` es responsable de concatenar varias instancias `Region` "
+"juntas. Al ver un objeto que ha sido seleccionado mediante navegación de "
+"objetos, el búfer normalmente contiene uno o dos objetos; un "
+"NVDAObjectRegion con las propiedades del objeto y un TextInfoRegion opcional "
+"para mostrar el texto del objeto cuando es un control de texto. Al mostrar "
+"el objeto con el foco, sin embargo, el búfer también puede contener varios "
+"objetos que forman lo que se conoce como ascendencia del foco de un objeto."
 
 #: ..\python_docs\Braille-framework.py:28
 msgid "The structure of a buffer is probably best described using an example."
 msgstr ""
+"La estructura de un búfer puede probablemente describirse mejor con un "
+"ejemplo."
 
 #: ..\python_docs\Braille-framework.py:29
 msgid ""
@@ -194,40 +266,53 @@ msgid ""
 "`Speech` category. Alternatively, you can press control+NVDA+v to open this "
 "category within the settings dialog."
 msgstr ""
+"1. Usando el menú NVDA, ve a `Preferencias` > `Opciones` y selecciona la "
+"categorúia `Voz`. Alternativamente, puedes pulsar control+NVDA+v para abrir "
+"esta categoría en el diálogo de opciones."
 
 #: ..\python_docs\Braille-framework.py:30
 msgid ""
 "2. Focus the synthesizer edit control that contains the name of the current "
 "synthesizer."
 msgstr ""
+"2. Lleva el foco al cuadro de edición que contiene el nombre del "
+"sintetizador actual."
 
 #: ..\python_docs\Braille-framework.py:31
 msgid "3. In this particular case, the braille buffer contains 4 regions:"
-msgstr ""
+msgstr "3. En este caso particular, el búfer braille contiene 4 regiones:"
 
 #: ..\python_docs\Braille-framework.py:32
 msgid ""
 " 1. An NVDAObjectRegion for the dialog, represented by the text \"'NVDA: "
 "Speech (normal configuration) dlg\""
 msgstr ""
+" 1. Un NVDAObjectRegion para el diálogo, representado por el texto \"NVDA: "
+"Voz (configuración normal) dlg\""
 
 #: ..\python_docs\Braille-framework.py:33
 msgid ""
 " 2. An NVDAObjectRegion for the synthesizer grouping, represented by the "
 "text \"'Synthesizer grp Alt+s\""
 msgstr ""
+" 2. Un NVDAObjectRegion para el grupo sintetizador, representado por el "
+"texto \"Sintetizador grp Alt+s\""
 
 #: ..\python_docs\Braille-framework.py:34
 msgid ""
 "3. An NVDAObjectRegion for the synthesizer text control, represented by the "
 "text \"Synthesizer ro mln edt Alt+s\""
 msgstr ""
+" 3. Un NVDAObjectRegion para el control de texto del sintetizador, "
+"representado con el texto \"Sintetizadorsl mln ce Alt+s\""
 
 #: ..\python_docs\Braille-framework.py:35
 msgid ""
 "4. A TextInfoRegion for the contents of the synthesizer text control, which "
 "contains the text \"Windows OneCore voices\""
 msgstr ""
+" 4. Un TextInfoRegion para los contenidos del control de texto del "
+"sintetizador, que contiene el texto \"Voces Windows OneCore\""
 
 #: ..\python_docs\Braille-framework.py:36
 msgid ""
@@ -235,6 +320,9 @@ msgid ""
 "'NVDA: Speech (normal configuration) dlg Synthesizer grp Alt+s Synthesizer "
 "ro mln edt Alt+s Windows OneCore voices"
 msgstr ""
+" Estas regiones o partes del búfer forman el texto en bruto del búfer: "
+"'NVDA: Voz (configuración normal) dlg Sintetizador grp Alt+s Sintetizador sl "
+"mln ce Alt+s Voces Windows OneCore'"
 
 #: ..\python_docs\Braille-framework.py:37
 msgid ""
@@ -251,3 +339,15 @@ msgid ""
 "window is changed, effectively changing what is currently visible on your "
 "braille display."
 msgstr ""
+"Observa que este búfer tiene un tamaño de aproximadamente casi 200 "
+"caracteres, y en caracteres braille podrían ser más, dependiendo de la tabla "
+"braille en uso. Sin embargo, una pantalla braille puede contener sólo 40 "
+"celdas braille. Aquí es donde NVDA hace una distinción entre un búfer "
+"braille y una ventana braille. La ventana braille es la parte del búfer que "
+"se encuentra actualmente visible en tu pantalla braille. Como puedes "
+"esperar, la ventana braille tiene un tamaño máximo equivalente a la medida "
+"de la pantalla braille actual. En caso que la ventana braille contenga menos "
+"caracteres, el resto de la pantalla braille se rellena con espacios. Puedes "
+"cambiar tu posición en un búfer con los botones de desplazamiento de la "
+"pantalla braille, en cuyo caso la posición de la ventana braille cambia, "
+"cambiando efectivamente lo que es visible en tu pantalla braille."
