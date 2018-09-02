@@ -5,16 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-05-24 21:28+Hora de verano romance\n"
-"PO-Revision-Date: 2018-05-24 22:54+0100\n"
-"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"POT-Creation-Date: 2018-09-02 19:57+Hora de verano romance\n"
+"PO-Revision-Date: 2018-09-02 20:08+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\guideLines.py:3
@@ -36,7 +36,7 @@ msgstr "## General ##"
 
 #: ..\python_docs\guideLines.py:6
 msgid ""
-"1. Use the addonTemplate from http://github.com/nvdaaddons/addonTemplate"
+"1. Use the addonTemplate from https://github.com/nvdaaddons/addonTemplate"
 msgstr ""
 "1. Usa la plantilla de complemento que se encuentra en https://github.com/"
 "nvdaaddons/addonTemplate"
@@ -70,10 +70,19 @@ msgstr ""
 "nombre."
 
 #: ..\python_docs\guideLines.py:10
+msgid ""
+"4. Make sure that your add-on is released under GPL license or an equivalent "
+"that is GPL compatible, as NVDA itself is GPL and add-ons are hosted by NVDA."
+msgstr ""
+"4. Asegúrate de que tu complemento se libera bajo la licencia GPL o una "
+"equivalente compatible con ella, ya que el propio NVDA es GPL y el "
+"alojamiento de los complementos corre a cargo de NVDA."
+
+#: ..\python_docs\guideLines.py:11
 msgid "## Versioning ##"
 msgstr "## Versionado ##"
 
-#: ..\python_docs\guideLines.py:11
+#: ..\python_docs\guideLines.py:12
 msgid ""
 "1. Use major dot minor revision, example: 1.0, 1.1 etc. A date-based "
 "versioning such as 2016.1 or 16.07 are also supported (termed continuous "
@@ -83,7 +92,7 @@ msgstr ""
 "versionado basado en fecha como 2016.1 o 16.07 también sirve  (lo que se "
 "denomina una entrega continua)."
 
-#: ..\python_docs\guideLines.py:12
+#: ..\python_docs\guideLines.py:13
 msgid ""
 "2. When new functionality is added, update major revision, i.e. 2.0, 3.0. "
 "For date-based version, designate a version as a major version."
@@ -92,7 +101,7 @@ msgstr ""
 "etc. Para versiones basadas en fecha, simplemente elige una como versión "
 "mayor."
 
-#: ..\python_docs\guideLines.py:13
+#: ..\python_docs\guideLines.py:14
 msgid ""
 "3. When making a release that has only translation updates, update the minor "
 "revision, 3.1, 3.2 etc. Making sure that the new languages are mensioned in "
@@ -103,17 +112,17 @@ msgstr ""
 "idiomas se mencionan en el mensaje de un commit. No hay necesidad de "
 "añadirlos al archivo readme.md."
 
-#: ..\python_docs\guideLines.py:14
+#: ..\python_docs\guideLines.py:15
 msgid "4. git tag the release, note special git push for tags."
 msgstr ""
 "4. Añade un tag a cada versión en git, y recuerda que los cambios de tags "
 "(etiquetas) se envían de una forma especial al repositorio al hacer push."
 
-#: ..\python_docs\guideLines.py:15
+#: ..\python_docs\guideLines.py:16
 msgid "## Release process ##"
 msgstr "## Proceso de liberación ##"
 
-#: ..\python_docs\guideLines.py:16
+#: ..\python_docs\guideLines.py:17
 msgid ""
 "1. After releasing an add-on version, if you know that you will be making "
 "changes to both old and new major versions, use a separate maintenance "
@@ -129,7 +138,7 @@ msgstr ""
 "sistema de entrega continua o versiones basadas en fecha, realiza el "
 "desarrollo desde master."
 
-#: ..\python_docs\guideLines.py:17
+#: ..\python_docs\guideLines.py:18
 msgid ""
 "2. After making a stable release (and generating the add-on installation "
 "package), update the version to indicate that its under development for the "
@@ -145,7 +154,7 @@ msgstr ""
 "minutos, y debería cambiarse a 3.1-dev para indicar que hay un desarrollo en "
 "curso."
 
-#: ..\python_docs\guideLines.py:18
+#: ..\python_docs\guideLines.py:19
 msgid ""
 "3. A stable release (such as 1.0, 2.0, 2.1, etc.) should be posted as a "
 "stable add-on, provided that there are no critical bugs reported within the "
@@ -160,7 +169,7 @@ msgstr ""
 "regularmente debería listarse como un complemento en desarrollo para que los "
 "usuarios hagan pruebas."
 
-#: ..\python_docs\guideLines.py:19
+#: ..\python_docs\guideLines.py:20
 msgid ""
 "4. Stable releases should be made no closer than 2 weeks apart, to allow "
 "translators to do their work, unless fixing a chritical/showstopper bug."
@@ -169,7 +178,7 @@ msgstr ""
 "diferencia, para que los traductores puedan trabajar en ellas, a menos que "
 "se solucione un fallo crítico y de altísima prioridad."
 
-#: ..\python_docs\guideLines.py:20
+#: ..\python_docs\guideLines.py:21
 msgid ""
 "5. Announce the availibility of the new version on various NVDA mailing "
 "lists (e.g. NVDA add-ons list)."
@@ -177,7 +186,7 @@ msgstr ""
 "5. Informa de la disponibilidad de esta nueva versión en distintas listas de "
 "correo de NVDA, como la lista de complementos."
 
-#: ..\python_docs\guideLines.py:21
+#: ..\python_docs\guideLines.py:22
 msgid ""
 "6. If possible, add-on authors should release the add-on and responsible for "
 "pulling in translations via translations workflow. For more information, see "
@@ -191,11 +200,11 @@ msgstr ""
 "desarrollo/desarrollo-de-complementos/hacer-un-complemento-traducible-"
 "mediante-el-sistema-de-traducciones-de-la-comunidad)."
 
-#: ..\python_docs\guideLines.py:22
+#: ..\python_docs\guideLines.py:23
 msgid "## Coding Style ##"
 msgstr "## Estilo del código ##"
 
-#: ..\python_docs\guideLines.py:23
+#: ..\python_docs\guideLines.py:24
 msgid ""
 "1. Indent with either 4 spaces or 1 tab. Tab-based indentation is strongly "
 "encouraged."
@@ -203,7 +212,7 @@ msgstr ""
 "1. Haz el indentado o bien con cuatro espacios, o con un tabulador. La "
 "segunda opción es la más recomendada."
 
-#: ..\python_docs\guideLines.py:24
+#: ..\python_docs\guideLines.py:25
 msgid ""
 "2. All messages presented to the user should be translatable (with some "
 "exceptions), if we are the creator of the message."
@@ -211,13 +220,13 @@ msgstr ""
 "2. Todos los mensajes presentados al usuario deberían ser traducibles (salvo "
 "excepciones), si somos los creadores del mensaje."
 
-#: ..\python_docs\guideLines.py:25
+#: ..\python_docs\guideLines.py:26
 msgid "3. Messages containing multiple '%s' or %'d' or are of the form"
 msgstr ""
 "3. Los mensajes que contengan varios comodines '%s' o '%d' o siguen el "
 "formato"
 
-#: ..\python_docs\guideLines.py:26
+#: ..\python_docs\guideLines.py:27
 msgid ""
 "\"%(name)s .. %(name2)s\" should be rewritten to _(\"{name1} .. {name2}\")."
 "format(name1=v1, name2=v2)"
@@ -225,7 +234,7 @@ msgstr ""
 "\"%(name)s .. %(name2)s\" deberían reescribirse como _(\"{name1} .. "
 "{name2}\").format(name1=v1, name2=v2)"
 
-#: ..\python_docs\guideLines.py:27
+#: ..\python_docs\guideLines.py:28
 msgid ""
 "4. Translatable messages should have a translator comment to explain where/"
 "when the message is presented, so that the translator can test the  message "
@@ -238,16 +247,16 @@ msgstr ""
 "instalar el complemento. Si la cadena traducible es similar a alguna "
 "contenida en los mensajes principales de NVDA, indícalo también."
 
-#: ..\python_docs\guideLines.py:28
+#: ..\python_docs\guideLines.py:29
 msgid "5. If your addon needs to store any configuration:"
 msgstr ""
 "5. Si tu complemento necesita guardar cualquier ajuste de configuración:"
 
-#: ..\python_docs\guideLines.py:29
+#: ..\python_docs\guideLines.py:30
 msgid "    - dont use:"
 msgstr "    - no uses:"
 
-#: ..\python_docs\guideLines.py:30
+#: ..\python_docs\guideLines.py:31
 msgid ""
 "    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
 "ini\")"
@@ -255,11 +264,11 @@ msgstr ""
 "    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
 "ini\")"
 
-#: ..\python_docs\guideLines.py:31
+#: ..\python_docs\guideLines.py:32
 msgid "    - do use:"
 msgstr "    - usa en su lugar:"
 
-#: ..\python_docs\guideLines.py:32
+#: ..\python_docs\guideLines.py:33
 msgid ""
 "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini"
 "\")"
@@ -267,7 +276,7 @@ msgstr ""
 "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini"
 "\")"
 
-#: ..\python_docs\guideLines.py:33
+#: ..\python_docs\guideLines.py:34
 msgid ""
 "6. Unless there is a good reason for it, it is recommended to use config."
 "conf so add-on settings (particularly for global plugins) can be made "
@@ -277,7 +286,7 @@ msgstr ""
 "config.conf para que los ajustes del complemento (especialmente si lleva "
 "extensiones globales) estén disponibles al usar perfiles de configuración."
 
-#: ..\python_docs\guideLines.py:34
+#: ..\python_docs\guideLines.py:35
 msgid ""
 "7. When working on a new or modifying a major feature, create/use branches "
 "other than master branch, as it helps merging and code review (via pull "
@@ -288,11 +297,11 @@ msgstr ""
 "el proceso de mezcla y revisión de código (a través de solicitudes de "
 "cambio) y a encontrar fallos fácilmente."
 
-#: ..\python_docs\guideLines.py:35
+#: ..\python_docs\guideLines.py:36
 msgid "## Documentation and key bindings ##"
 msgstr "## Documentación y órdenes de teclado ##"
 
-#: ..\python_docs\guideLines.py:36
+#: ..\python_docs\guideLines.py:37
 msgid ""
 "1. If you are adding new keyboard commands as part of your add-on, be sure "
 "to consult NVDA Command Quick Reference and other community supported add-on "
@@ -302,7 +311,7 @@ msgstr ""
 "consulta la referencia rápida de órdenes de NVDA y las órdenes de otros "
 "complementos oficiales de la comunidad antes de asignarlas."
 
-#: ..\python_docs\guideLines.py:37
+#: ..\python_docs\guideLines.py:38
 msgid ""
 "2. For NvDA 2013.3 or later: If you wish to categorize your keyboard "
 "bindings (for easier identification so the user can change it), either "
@@ -319,7 +328,7 @@ msgstr ""
 "complemento ofrece otras características como el soporte para funciones "
 "avanzadas de un programa)."
 
-#: ..\python_docs\guideLines.py:38
+#: ..\python_docs\guideLines.py:39
 msgid ""
 "3. Please provide a readme.md file listing changes between versions, "
 "shortcut keys (if any) and usage notes and other information, see one of the "
@@ -330,7 +339,7 @@ msgstr ""
 "información relevante. Inspírate en cualquiera de los complementos oficiales "
 "ya existentes."
 
-#: ..\python_docs\guideLines.py:39
+#: ..\python_docs\guideLines.py:40
 msgid ""
 "4. Files addon/doc/*/readme.md should not be translated by hand and "
 "committed to the repository, but should be generated and committed from the "
@@ -340,7 +349,7 @@ msgstr ""
 "enviarse al repositorio, sino que deberían generarse y enviarse desde el "
 "sistema oficial de traducciones."
 
-#: ..\python_docs\guideLines.py:40
+#: ..\python_docs\guideLines.py:41
 msgid ""
 "5. If you translate an addon to your language and commit to git, please "
 "inform your nvda translation maintainer for your language so that work is "
@@ -351,3 +360,61 @@ msgstr ""
 "notifícaselo al responsable de traducción de NVDA en tu idioma para que no "
 "se duplique el trabajo. En cualquier caso, siempre es mejor mantener las "
 "traducciones en el sistema oficial de traducciones."
+
+#: ..\python_docs\guideLines.py:42
+msgid "## Sharing and add-on reviews ##"
+msgstr "## Revisiones al compartir un complemento ##"
+
+#: ..\python_docs\guideLines.py:43
+msgid "1. If you haven't, subscribe to NVDA Add-ons list located at Groups.IO."
+msgstr ""
+"1. Si todavía no lo has hecho, suscríbete a la lista de complementos situada "
+"en groups.IO."
+
+#: ..\python_docs\guideLines.py:44
+msgid ""
+"2. Request a basic review (license and copyright, documentation, basic user "
+"experience, security, etc.). When doing so, be sure to provide the link to "
+"the add-on source code along with installers if any."
+msgstr ""
+"2. Solicita una revisión básica (licencia y derechos de autor, "
+"documentación, experiencia de usuario básica, seguridad, etc.). Al hacerlo, "
+"asegúrate de proporcionar el enlace al código fuente del complemento, junto "
+"con instaladores, si los hay."
+
+#: ..\python_docs\guideLines.py:45
+msgid ""
+"3. If the basic review passes, you can declare the add-on stable or wait a "
+"while so you can work on addressing review comments before releasing a "
+"stable version. If you choose to wait, you have an option of releasing a "
+"development version for wider testing."
+msgstr ""
+"3. Si se supera la revisión básica, puedes declarar el complemento estable o "
+"esperar un tiempo para resolver comentarios expuestos durante la revisión "
+"antes de liberar una versión estable. Si decides esperar, tienes la opción "
+"de liberar una versión de desarrollo para que se hagan pruebas más extensas."
+
+#: ..\python_docs\guideLines.py:46
+msgid ""
+"4. If the review does not pass, you are asked to address comments from "
+"reviewers. Once you address review comments, ask the reviewer to go over "
+"your add-on once more. This is done until the add-on passes basic review, "
+"and this is rare."
+msgstr ""
+"4. Si la revisión no se supera, se te pedirá que sigas las instrucciones de "
+"los revisores. Una vez soluciones sus comentarios, pide a tu revisor que "
+"haga la revisión una vez más. Esto se hace hasta que el complemento supere "
+"la revisión básica, pero es extraño."
+
+#: ..\python_docs\guideLines.py:47
+msgid ""
+"5. If your add-on passes basic review, you have an option of asking for a "
+"more thorough review. These may involve looking at add-on messages, GUI "
+"widget toolkit compatibility, potential bugs and so on. It is up to you to "
+"respond to comments on thorough reviews and address them when you have time."
+msgstr ""
+"5. Si tu complemento supera la revisión básica, puedes pedir una revisión "
+"más profunda. Esta implica mirar los mensajes del complemento, "
+"compatibilidad con los controles del motor de interfaz gráfica, fallos "
+"potenciales y demás. Es decisión tuya reaccionar a los comentarios de la "
+"revisión en profundidad y solucionarlos cuando tengas tiempo."

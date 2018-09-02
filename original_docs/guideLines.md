@@ -4,10 +4,11 @@ The following is a set of guidelines that current and potential add-on authors s
 
 ## General ##
 
-1. Use the addonTemplate from http://github.com/nvdaaddons/addonTemplate
+1. Use the addonTemplate from https://github.com/nvdaaddons/addonTemplate
 2. Addon name should not contain "nvda", "plugin", "appmodule", "globalPlugin" as part of its name, the user should not have to worry about implementational issues.
 3. Addon name should be of the form "name", or "firstSecond" or "first_second"
 examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_monitor". Dashes in names are currently not supported by the automated system.
+4. Make sure that your add-on is released under GPL license or an equivalent that is GPL compatible, as NVDA itself is GPL and add-ons are hosted by NVDA.
 
 ## Versioning ##
 
@@ -47,3 +48,11 @@ examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_mo
 3. Please provide a readme.md file listing changes between versions, shortcut keys (if any) and usage notes and other information, see one of the other git repos for examples.
 4. Files addon/doc/*/readme.md should not be translated by hand and committed to the repository, but should be generated and committed from the translation system.
 5. If you translate an addon to your language and commit to git, please inform your nvda translation maintainer for your language so that work is not duplicated, in any case it is better to keep translations on the translation system.
+
+## Sharing and add-on reviews ##
+
+1. If you haven't, subscribe to NVDA Add-ons list located at Groups.IO.
+2. Request a basic review (license and copyright, documentation, basic user experience, security, etc.). When doing so, be sure to provide the link to the add-on source code along with installers if any.
+3. If the basic review passes, you can declare the add-on stable or wait a while so you can work on addressing review comments before releasing a stable version. If you choose to wait, you have an option of releasing a development version for wider testing.
+4. If the review does not pass, you are asked to address comments from reviewers. Once you address review comments, ask the reviewer to go over your add-on once more. This is done until the add-on passes basic review, and this is rare.
+5. If your add-on passes basic review, you have an option of asking for a more thorough review. These may involve looking at add-on messages, GUI widget toolkit compatibility, potential bugs and so on. It is up to you to respond to comments on thorough reviews and address them when you have time.

@@ -6,13 +6,15 @@
   </head>
   <body>
   <header><h1># Pautas de complementos #</h1></header>
-  <p>En el siguiente documento se presenta un conjunto de pautas que deberían seguir tanto los desarrolladores actuales de complementos como aquellos que potencialmente pueden serlo:</p>
+  <h1 id="pautas-de-complementos">Pautas de complementos</h1>
+<p>En el siguiente documento se presenta un conjunto de pautas que deberían seguir tanto los desarrolladores actuales de complementos como aquellos que potencialmente pueden serlo:</p>
 <h2 id="general">General</h2>
 <ol>
 <li>Usa la plantilla de complemento que se encuentra en https://github.com/nvdaaddons/addonTemplate</li>
 <li>El nombre del complemento no debería contener palabras tales como "nvda", "plugin", "appmodule", "globalPlugin" en su composición, el usuario no debería tener que preocuparse de detalles de la implementación.</li>
 <li>El nombre del complemento debería tener la forma "nombre", o "primeroSegundo", o "primero_segundo"
 ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_monitor". El sistema automatizado no soporta guiones en el nombre.</li>
+<li>Asegúrate de que tu complemento se libera bajo la licencia GPL o una equivalente compatible con ella, ya que el propio NVDA es GPL y el alojamiento de los complementos corre a cargo de NVDA.</li>
 </ol>
 <h2 id="versionado">Versionado</h2>
 <ol>
@@ -54,6 +56,14 @@ config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")</li>
 <li>Por favor, ofrece un archivo readme.md en el que se listen los cambios entre versiones, atajos de teclado (si los hay), notas de uso y otra información relevante. Inspírate en cualquiera de los complementos oficiales ya existentes.</li>
 <li>Los archivos addon/doc/*/readme.md no deberían traducirse a mano y enviarse al repositorio, sino que deberían generarse y enviarse desde el sistema oficial de traducciones.</li>
 <li>Si traduces un complemento a tu idioma y lo envías a Git, por favor notifícaselo al responsable de traducción de NVDA en tu idioma para que no se duplique el trabajo. En cualquier caso, siempre es mejor mantener las traducciones en el sistema oficial de traducciones.</li>
+</ol>
+<h2 id="revisiones-al-compartir-un-complemento">Revisiones al compartir un complemento</h2>
+<ol>
+<li>Si todavía no lo has hecho, suscríbete a la lista de complementos situada en groups.IO.</li>
+<li>Solicita una revisión básica (licencia y derechos de autor, documentación, experiencia de usuario básica, seguridad, etc.). Al hacerlo, asegúrate de proporcionar el enlace al código fuente del complemento, junto con instaladores, si los hay.</li>
+<li>Si se supera la revisión básica, puedes declarar el complemento estable o esperar un tiempo para resolver comentarios expuestos durante la revisión antes de liberar una versión estable. Si decides esperar, tienes la opción de liberar una versión de desarrollo para que se hagan pruebas más extensas.</li>
+<li>Si la revisión no se supera, se te pedirá que sigas las instrucciones de los revisores. Una vez soluciones sus comentarios, pide a tu revisor que haga la revisión una vez más. Esto se hace hasta que el complemento supere la revisión básica, pero es extraño.</li>
+<li>Si tu complemento supera la revisión básica, puedes pedir una revisión más profunda. Esta implica mirar los mensajes del complemento, compatibilidad con los controles del motor de interfaz gráfica, fallos potenciales y demás. Es decisión tuya reaccionar a los comentarios de la revisión en profundidad y solucionarlos cuando tengas tiempo.</li>
 </ol>
 </body>
 </html>
