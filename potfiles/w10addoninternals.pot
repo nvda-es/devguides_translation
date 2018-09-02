@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-02 20:14+Hora de verano romance\n"
+"POT-Creation-Date: 2018-09-02 20:23+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,11 +196,11 @@ msgid "* Live region change announcements in various apps. In the global plugin 
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:48
-msgid "* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update)."
+msgid "* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into upcoming NVDA 2018.3 release."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:49
-msgid "* Support for UIA notification event introduced in Version 1709."
+msgid "* Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:50
@@ -216,7 +216,7 @@ msgid "* Handling tab switches in Sets in Redstone 5 (builds 17627 through 17692
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:53
-msgid "* Recognizing dialogs powered by XAML and various frameworks."
+msgid "* Recognizing dialogs powered by XAML and various frameworks. In NVDA 2018.3, NVDA itself will take care of this."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:54
@@ -400,7 +400,7 @@ msgid "* Activity ID: the unique identifier for the notification."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:99
-msgid "As of August 2018, NVDA announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues."
+msgid "As of August 2018, NVDA itself announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues, thus the add-on is no longer involved in announcing many notifications except those that could cause issues."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:100
@@ -480,7 +480,7 @@ msgid "Some windows are actually dialogs. These include pop-up dialog for uninst
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:119
-msgid "In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Redstone 5, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear."
+msgid "In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Redstone 5, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Redstone 5."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:120
@@ -540,7 +540,7 @@ msgid "* Microsoft Edge: announce correct alert text, supports both the overall 
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:134
-msgid "* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Redstone 5)."
+msgid "* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Redstone 5), part of NVDA since 2018.3."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:135
@@ -548,378 +548,394 @@ msgid "* MSN Weather: use up or down arrow keys to read forecast information."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:136
-msgid "* Sets: announcing currently active tab and its position when switching between app tabs."
+msgid "* People: announcing first suggestion when looking for a contact."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:137
-msgid "* Settings: selectively announce various status information, provide correct labels for certain controls."
+msgid "* Sets: announcing currently active tab and its position when switching between app tabs."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:138
-msgid "* Shell Experience Host: work around some UIA state information mismatch."
+msgid "* Settings: selectively announce various status information, provide correct labels for certain controls."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:139
-msgid "* Skype (modern): commands to move to various Skype controls, commands to read recent messages, suppress extraneous text from new messages."
+msgid "* Shell Experience Host: work around some UIA state information mismatch."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:140
-msgid "* Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more)."
+msgid "* Skype (modern): commands to move to various Skype controls, commands to read recent messages, suppress extraneous text from new messages."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:141
-msgid "### Adding useful features in apps"
+msgid "* Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more)."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:142
-msgid "The following app modules add functionality unique to NVDA and/or commands that are used to improve user experience when using apps:"
+msgid "### Adding useful features in apps"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:143
-msgid "* Maps (maps.py): when using object navigation to examine a map, a tone will be played to indicate where things are located on the map. This is achieved by defining a custom handler for `event_becomeNavigatorObject` that'll take the coordinates of the object (in pixels) and play a tone, essentially emulating mouse coordinate beeps in NVDA. The app module also allows users to hear new locations when using street view to navigate the map, and this is done through handlers for live region changed event."
+msgid "The following app modules add functionality unique to NVDA and/or commands that are used to improve user experience when using apps:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:144
-msgid "* Mail (hxoutlook.py): when focused on messages list, one can use table navigation commands (Control+Alt+arrow keys) to review message headers. This is possible thanks to two things: headers are child objects of the message item, and because of this, `NVDAObjects.behaviors.RowWithFakeNavigation` class can be employed to add this functionality."
+msgid "* Maps (maps.py): when using object navigation to examine a map, a tone will be played to indicate where things are located on the map. This is achieved by defining a custom handler for `event_becomeNavigatorObject` that'll take the coordinates of the object (in pixels) and play a tone, essentially emulating mouse coordinate beeps in NVDA. The app module also allows users to hear new locations when using street view to navigate the map, and this is done through handlers for live region changed event."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:145
-msgid "* MSN Weather (microsoft_msn_weather.py): this app module, contributed by Derek Riemer, allows users to use up and down arrow keys to read forecast information, achieved by calling corresponding review cursor movement commands to move by line."
+msgid "* Mail (hxoutlook.py): when focused on messages list, one can use table navigation commands (Control+Alt+arrow keys) to review message headers. This is possible thanks to two things: headers are child objects of the message item, and because of this, `NVDAObjects.behaviors.RowWithFakeNavigation` class can be employed to add this functionality."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:146
-msgid "* Skype (skype_app.py): this app module responds to name change events, useful for announcing new messages, as well as defining routines for Control+NVDA+number row to announce recent messages. How NVDA filters texts from messages is discussed below in UIA workarounds section."
+msgid "* MSN Weather (microsoft_msn_weather.py): this app module, contributed by Derek Riemer, allows users to use up and down arrow keys to read forecast information, achieved by calling corresponding review cursor movement commands to move by line."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:147
-msgid "#### A note about modern keyboard"
+msgid "* Skype (skype_app.py): this app module responds to name change events, useful for announcing new messages, as well as defining routines for Control+NVDA+number row to announce recent messages. How NVDA filters texts from messages is discussed below in UIA workarounds section."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:148
-msgid "Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used."
+msgid "#### A note about modern keyboard"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:149
-msgid "In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field."
+msgid "Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:150
-msgid "In build 17666 and later, this panel has been redesigned. Instead of using Tab key to move between categories, one would press Tab to move between emoji grid and categories. In case of People category, pressing Tab will let you move to skin tones list where you can use arrow keys to select a skin tone, then press Tab to move to emoji grid."
+msgid "In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:151
-msgid "When this panel opens, a menu open event is fired by the emoji panel, an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters."
+msgid "In build 17666 and later, this panel has been redesigned. Instead of using Tab key to move between categories, one would press Tab to move between emoji grid and categories. In case of People category, pressing Tab will let you move to skin tones list where you can use arrow keys to select a skin tone, then press Tab to move to emoji grid."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:152
-msgid "Similar to emoji panel, in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item."
+msgid "When this panel opens, a menu open event is fired by the emoji panel, an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:153
-msgid "The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows+V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item."
+msgid "Similar to emoji panel, in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:154
-msgid "### What to announce, what not to announce"
+msgid "The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows+V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:155
-msgid "It is sometimes helpful to let users know what's going on by announcing various status information, while at other times it is equally important to not announce extraneous messages. The former was the case for majority of app modules below in the past, but since mid-2017, reverse is happening more frequently."
+msgid "In NVDA 2018.3, support for all of these (modern keyboard features) have become part of NVDA."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:156
-msgid "The app modules (and for one in particular, more than an app module) in question are:"
+msgid "### What to announce, what not to announce"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:157
-msgid "* Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared."
+msgid "It is sometimes helpful to let users know what's going on by announcing various status information, while at other times it is equally important to not announce extraneous messages. The former was the case for majority of app modules below in the past, but since mid-2017, reverse is happening more frequently."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:158
-msgid "* Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases."
+msgid "The app modules (and for one in particular, more than an app module) in question are:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:159
-msgid "* Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases)."
+msgid "* Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:160
-msgid "* Sets interface (tabexperiencehost.py) on Redstone 5: when switching between app tabs, NVDA will announce name and position of the new tab."
+msgid "* People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:161
-msgid "* Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content."
+msgid "* Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:162
-msgid "#### Sets"
+msgid "* Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases)."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:163
-msgid "Many Windows Insiders running builds 17627 through 17692 tested Sets, a way to group related activities together. This is done by allowing apps to display their interface elements inside Microsoft Edge tabs, so that when one tab is restored (app is run), related activities will resume alongside it. For this reason, I tend to call this \"app tabs\", and the name of this feature may change in the future."
+msgid "* Sets interface (tabexperiencehost.py) on Redstone 5: when switching between app tabs, NVDA will announce name and position of the new tab."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:164
-msgid "The commands used to work with Sets is similar to tabbed browsing commands in web browsers, except one would add the Windows key. For example, in web browsers, one can press Control+T to open a new tab, and with Sets turned on, while using one app, one can press Control+Windows+T to open a new Sets tab. Switching between app tabs can be done by pressing Control+Windows+Tab or Control+Windows+Shift+Tab, and to close an app tab (and close the app in question), press Control+Windows+W. If one knows the app tab positions, one can switch to apps quickly by pressing Control+Windows+number row keys."
+msgid "* Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:165
-msgid "NVDA already supports Sets simply because it supports Microsoft Edge. However, due to ongoing developments, some workarounds and enhancements are included in the add-on. These include:"
+msgid "#### Sets"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:166
-msgid "* Searching for things: when searching for things from new Sets tab, wrong controller for event is fired. This resulted in search results and context menus not being announced, but luckily, search results fire element selected event when moving between items. As a result, NvDA will be able to announce results."
+msgid "Many Windows Insiders running builds 17627 through 17692 tested Sets, a way to group related activities together. This is done by allowing apps to display their interface elements inside Microsoft Edge tabs, so that when one tab is restored (app is run), related activities will resume alongside it. For this reason, I tend to call this \"app tabs\", and the name of this feature may change in the future."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:167
-msgid "* Announcing tabs: when switching between tabs, NVDA will announce name and position of the new tab. This is in response to an element selected event coming from tab entries themselves."
+msgid "The commands used to work with Sets is similar to tabbed browsing commands in web browsers, except one would add the Windows key. For example, in web browsers, one can press Control+T to open a new tab, and with Sets turned on, while using one app, one can press Control+Windows+T to open a new Sets tab. Switching between app tabs can be done by pressing Control+Windows+Tab or Control+Windows+Shift+Tab, and to close an app tab (and close the app in question), press Control+Windows+W. If one knows the app tab positions, one can switch to apps quickly by pressing Control+Windows+number row keys."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:168
-msgid "### Hunting for UIA implementation issues"
+msgid "NVDA already supports Sets simply because it supports Microsoft Edge. However, due to ongoing developments, some workarounds and enhancements are included in the add-on. These include:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:169
-msgid "As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules include workarounds for various UIA problems:"
+msgid "* Searching for things: when searching for things from new Sets tab, wrong controller for event is fired. This resulted in search results and context menus not being announced, but luckily, search results fire element selected event when moving between items. As a result, NvDA will be able to announce results."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:170
-msgid "* Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem."
+msgid "* Announcing tabs: when switching between tabs, NVDA will announce name and position of the new tab. This is in response to an element selected event coming from tab entries themselves."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:171
-msgid "* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (Redstone 5), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected."
+msgid "### Hunting for UIA implementation issues"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:172
-msgid "* Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions."
+msgid "As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules (and in case of two, taken care of by Windows 10 Objects global plugin itself) include workarounds for various UIA problems:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:173
-msgid "* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed event has the name of \"alert\", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts."
+msgid "* Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:174
-msgid "* Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, \"downloading some percent\" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects."
+msgid "* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (Redstone 5), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:175
-msgid "* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these."
+msgid "* Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:176
-msgid "* Skype: a typical Skype message includes author name, message channel, the message content, sent date and so on. This is due to list view item implementations where it gathers names of children. Unfortunately, the reverse isn't true: although some items do expose the needed message author and content, some only exposes content when looking at child objects. Thus a regular expression is provided to remove extraneous information until a suitable workaround is found."
+msgid "* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed and system alert events have the name of \"alert\", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:177
-msgid "### A tale on app module and executable names"
+msgid "* Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, \"downloading some percent\" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:178
-msgid "One of the side-effects of continuous delivery is appearance of unanticipated changes. This is more so when a workaround for an app broke simply because the name of the executable or the app has changed. In addition, some apps shipped with an executable whose name broke Python's module name and import routines."
+msgid "* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:179
-msgid "The specific issues encountered were:"
+msgid "* Skype: a typical Skype message includes author name, message channel, the message content, sent date and so on. This is due to list view item implementations where it gathers names of children. Unfortunately, the reverse isn't true: although some items do expose the needed message author and content, some only exposes content when looking at child objects. Thus a regular expression is provided to remove extraneous information until a suitable workaround is found."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:180
-msgid "* Mail, Maps and Store: executable names have changed in recent months. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common."
+msgid "### A tale on app module and executable names"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:181
-msgid "* MSN Weather, Store, modern keyboard and others: some executable names have a dot (.) in the middle, which breaks app module import routines. This is countered by replacing dots with underscores (_). For example, for Skype, the actual executable name is skype.app.exe, while the app module for this app is named skype_app.py. This fix is now part of recent NVDA releases."
+msgid "One of the side-effects of continuous delivery is appearance of unanticipated changes. This is more so when a workaround for an app broke simply because the name of the executable or the app has changed. In addition, some apps shipped with an executable whose name broke Python's module name and import routines."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:182
-msgid "## Few remarks"
+msgid "The specific issues encountered were:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:183
-msgid "### UIA performance"
+msgid "* Mail, Maps and Store: executable names have changed in recent months. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:184
-msgid "Numerous issues were filed on NVDA's GitHub page regarding UIA performnace issues. These include issues in early days of Edge support where navigating the document was slow (resolved in NVDA 2017.2), list view issues in File Explorer while using a program with high CPU usage (GoldWave, for example) and so on. While some are specific to NVDA, others are reproducible while using Narrator, hence NV Access and Microsoft are actively collaborating on identifying and writing fixes for performance and control implementation problems (such as some of the ones listed above)."
+msgid "* MSN Weather, Store, modern keyboard and others: some executable names have a dot (.) in the middle, which breaks app module import routines. This is countered by replacing dots with underscores (_). For example, for Skype, the actual executable name is skype.app.exe, while the app module for this app is named skype_app.py. This fix is now part of recent NVDA releases."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:185
-msgid "### Narrator is the new reference in screen reading in Windows 10 and universal apps"
+msgid "## Few remarks"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:186
-msgid "Until a few years ago, any screen reader wishing to support an app or add features would look up to JAWS for Windows for guidance. This is no longer the case with Windows 10 and universal apps, as Narrator provides a useful yardstick (at least a base implementation other screen reader vendors should respond to) when it comes to reading text on screen, feature set for supporting universal apps, and investigate UIA issues. Some of the features discussed above, such as search suggestion notification, were inspired by Narrator's handling of various UIA events, and because Narrator reads what is told to read, NVDA ships with workarounds for odd UIA implementations to get around some poblems."
+msgid "### UIA performance"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:187
-msgid "### Integrating features from this add-on to NVDA screen reader"
+msgid "Numerous issues were filed on NVDA's GitHub page regarding UIA performnace issues. These include issues in early days of Edge support where navigating the document was slow (resolved in NVDA 2017.2), list view issues in File Explorer while using a program with high CPU usage (GoldWave, for example) and so on. While some are specific to NVDA, others are reproducible while using Narrator, hence NV Access and Microsoft are actively collaborating on identifying and writing fixes for performance and control implementation problems (such as some of the ones listed above)."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:188
-msgid "As noted above, some add-on features are being integrated into NVDA. These include search suggestion notification, combo box workaround, live region changed event tracking and announcement and so on."
+msgid "### Narrator is the new reference in screen reading in Windows 10 and universal apps"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:189
-msgid "Typically, when a feature from an add-on is integrated into NVDA, it goes through a typical issue-review-test-documentation cycle. To illustrate this, let us go through steps involved in getting search suggestions into NVDA:"
+msgid "Until a few years ago, any screen reader wishing to support an app or add features would look up to JAWS for Windows for guidance. This is no longer the case with Windows 10 and universal apps, as Narrator provides a useful yardstick (at least a base implementation other screen reader vendors should respond to) when it comes to reading text on screen, feature set for supporting universal apps, and investigate UIA issues. Some of the features discussed above, such as search suggestion notification, were inspired by Narrator's handling of various UIA events, and because Narrator reads what is told to read, NVDA ships with workarounds for odd UIA implementations to get around some poblems."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:190
-msgid "1. Issue: an issue regarding search suggestions was filed in 2016."
+msgid "### Integrating features from this add-on to NVDA screen reader"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:191
-msgid "2. Review: I and NV Access went through a review phase where implementation detail were discussed and test cases written."
+msgid "As noted above, some add-on features are being (or have been) integrated into NVDA. These include search suggestion notification, modern keyboard support, live region changed event tracking and announcement and so on."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:192
-msgid "3. Test: in 2017, search suggestion feature made its debut in an NVDA next snapshod. This resulted in feedback from users regarding braille support, sounds and others. After several weeks, this feature was made available to master snapshot users, thus ready for NVDA 2017.3."
+msgid "Typically, when a feature from an add-on is integrated into NVDA, it goes through a typical issue-review-test-documentation cycle. To illustrate this, let us go through steps involved in getting search suggestions into NVDA:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:193
-msgid "4. Documentation: the search suggestion feature was documented in the user guide. Discussion of this feature in this article is a special case of documentation step."
+msgid "1. Issue: an issue regarding search suggestions was filed in 2016."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:194
-msgid "In addition, when a feature from an add-on is under consideration for inclusion in NVDA, I modify the add-on source code to make it compliant with NVDA source code guidelines, such as commenting style, copyright header and so on."
+msgid "2. Review: I and NV Access went through a review phase where implementation detail were discussed and test cases written."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:195
-msgid "### Giving feedback to app developers"
+msgid "3. Test: in 2017, search suggestion feature made its debut in an NVDA next snapshod. This resulted in feedback from users regarding braille support, sounds and others. After several weeks, this feature was made available to master snapshot users, thus ready for NVDA 2017.3."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:196
-msgid "Feedback drives Windows 10 and universal apps. one of the reasons for instituting Windows Insider Program, as noted by Microsoft and others, is to gather feedback from millions of users in hopes of making Windows 10 better in the long run. As such, sending feedback regarding Windows 10 and preinstalled universal apps, as well as third-party apps is crucial at the age of feedback-driven development."
+msgid "4. Documentation: the search suggestion feature was documented in the user guide. Discussion of this feature in this article is a special case of documentation step."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:197
-msgid "Here are some tips regarding sending feedback to app writers:"
+msgid "Due to changes to release process in 2018, testing occurs via pull requests."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:198
-msgid "1. Embrace: have willingness to embrace (use and test) the app in question."
+msgid "In addition, when a feature from an add-on is under consideration for inclusion in NVDA, I modify the add-on source code to make it compliant with NVDA source code guidelines, such as commenting style, copyright header and so on."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:199
-msgid "2. Document: if something happens, document what happened, steps to reproduce, and possible workarounds."
+msgid "### Giving feedback to app developers"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:200
-msgid "3. Send: send feedback to developers (Feedback Hub, contacting developers of third-party universal apps, screen reader vendors and so on)."
+msgid "Feedback drives Windows 10 and universal apps. one of the reasons for instituting Windows Insider Program, as noted by Microsoft and others, is to gather feedback from millions of users in hopes of making Windows 10 better in the long run. As such, sending feedback regarding Windows 10 and preinstalled universal apps, as well as third-party apps is crucial at the age of feedback-driven development."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:201
-msgid "4. Follow-up: follow-up with developers if they have questions for you or you want to know what's going on with your feedback."
+msgid "Here are some tips regarding sending feedback to app writers:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:202
-msgid "### Accessibility best practices for universal apps"
+msgid "1. Embrace: have willingness to embrace (use and test) the app in question."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:203
-msgid "As a Windows Insider, a screen reader contributor and the author of a screen reader add-on for Windows 10 and universal apps, I came across numerous examples where apps were inaccessible at first, or usability was overshadowed by issues when working with controls, navigation and so on."
+msgid "2. Document: if something happens, document what happened, steps to reproduce, and possible workarounds."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:204
-msgid "Here are some tips in hopes of making universal apps truly universally accessible and usable:"
+msgid "3. Send: send feedback to developers (Feedback Hub, contacting developers of third-party universal apps, screen reader vendors and so on)."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:205
-msgid "* Listen to feedback, especially feedback coming from users with disabilities such as screen reader users."
+msgid "4. Follow-up: follow-up with developers if they have questions for you or you want to know what's going on with your feedback."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:206
-msgid "* Do not put accessibility as an afterthought, nor something you want to work in the future (say, version 3). Proactive accessibility and investigations into issues is something app developers should learn as they develop apps."
+msgid "### Accessibility best practices for universal apps"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:207
-msgid "* Test with screen readers and other assistive technologies: one way to validate accessibility issues raised by users with disabilities is using assistive technologies in real life. Use facilities offered by screen readers such as Python console in NVDA, developer mode in Narator and so on in hopes of locating where the root of the issue lies."
+msgid "As a Windows Insider, a screen reader contributor and the author of a screen reader add-on for Windows 10 and universal apps, I came across numerous examples where apps were inaccessible at first, or usability was overshadowed by issues when working with controls, navigation and so on."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:208
-msgid "* Try using keyboards and other input methods offered by various assistive technologies: touchscreen isn't the only input method used in universal apps. Many screen reader users use a keyboard to interact with apps, and some use touchscreen gestures offered by screen readers to navigate an app and respond to changes. Try using them to make sure app features are working as advertised when using keyboards and other input methods."
+msgid "Here are some tips in hopes of making universal apps truly universally accessible and usable:"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:209
-msgid "* Use useful labels: in case the control has no label as reported by screen readers, be sure to provide labels. A good historical case is Windows Defender Security Center where there was no label for various buttons in 2016, which was fixed in 2017 with Creators Update. Also, avoid generic XAML labels such as someclass.someotherclass.such (especialy lists and list items), as it does not provide an accurate picture as to where one is located. A classic case is Feedback Hub app where generic labels for lists were presnet in older versions, subsequently fixed in recent updates."
+msgid "* Listen to feedback, especially feedback coming from users with disabilities such as screen reader users."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:210
-msgid "* Raise appropriate UIA events: screen readers listen to UIA events to detect what's happening with apps. For example, if there's a need to anounce suggestions, controller for event should be fired. An example is Store where old releases did not raise controller for event when content suggestions appeared, with recent versions raising this event."
+msgid "* Do not put accessibility as an afterthought, nor something you want to work in the future (say, version 3). Proactive accessibility and investigations into issues is something app developers should learn as they develop apps."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:211
-msgid "## Conclusion"
+msgid "* Test with screen readers and other assistive technologies: one way to validate accessibility issues raised by users with disabilities is using assistive technologies in real life. Use facilities offered by screen readers such as Python console in NVDA, developer mode in Narator and so on in hopes of locating where the root of the issue lies."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:212
-msgid "With the introduction of Windows 10 and Universal Windows Platform, a new way of connecting users and developers has emerged: feedback-driven development. This allows users to send feedback regarding features and bugs, including that of accessibility feedback. Although accessibility of Windows 10 and universal apps were spotty at first, this situation is improving, driven by Microsoft's commitment to accessibility, continued feedback, and collaboration between Microsoft and assistive technology vendors."
+msgid "* Try using keyboards and other input methods offered by various assistive technologies: touchscreen isn't the only input method used in universal apps. Many screen reader users use a keyboard to interact with apps, and some use touchscreen gestures offered by screen readers to navigate an app and respond to changes. Try using them to make sure app features are working as advertised when using keyboards and other input methods."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:213
-msgid "In terms of NVDA, what made Windows 10 usability possible was not only changes made from within Windows and universal apps, but also proactive investigations into making sure NVDA users have a great time with Windows 10. Windows 10 App Essentials add-on is part of that work, as discussed throughout this article when talking about UIA workarounds, improving support for apps and controls and others. But there are limits as to what the add-on can do, as the other puzzle pieces are willingness from developers (especially third-party UWP developers) to embrace accessibility as a pillar in their apps, and willingness from users to send accessibility feedback. Although some add-on features are being integrated into NVDA, there are some areas where the add-on is needed (especially when supporting features introduced in Windows Insider Preview builds), and until the day accessibility is everywhere in Windows 10 ecosystem and universal apps, the add-on will still be here."
+msgid "* Use useful labels: in case the control has no label as reported by screen readers, be sure to provide labels. A good historical case is Windows Defender Security Center where there was no label for various buttons in 2016, which was fixed in 2017 with Creators Update. Also, avoid generic XAML labels such as someclass.someotherclass.such (especialy lists and list items), as it does not provide an accurate picture as to where one is located. A classic case is Feedback Hub app where generic labels for lists were presnet in older versions, subsequently fixed in recent updates."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:214
-msgid "## References"
+msgid "* Raise appropriate UIA events: screen readers listen to UIA events to detect what's happening with apps. For example, if there's a need to anounce suggestions, controller for event should be fired. An example is Store where old releases did not raise controller for event when content suggestions appeared, with recent versions raising this event."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:215
-msgid "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
+msgid "## Conclusion"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:216
-msgid "* Windows Insider Program (Microsoft): https://insider.windows.com/"
+msgid "With the introduction of Windows 10 and Universal Windows Platform, a new way of connecting users and developers has emerged: feedback-driven development. This allows users to send feedback regarding features and bugs, including that of accessibility feedback. Although accessibility of Windows 10 and universal apps were spotty at first, this situation is improving, driven by Microsoft's commitment to accessibility, continued feedback, and collaboration between Microsoft and assistive technology vendors."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:217
-msgid "* Windows as a Service Overview (Microsoft Docs): https://docs.microsoft.com/en-us/windows/deployment/update/waas-overview"
+msgid "In terms of NVDA, what made Windows 10 usability possible was not only changes made from within Windows and universal apps, but also proactive investigations into making sure NVDA users have a great time with Windows 10. Windows 10 App Essentials add-on is part of that work, as discussed throughout this article when talking about UIA workarounds, improving support for apps and controls and others. But there are limits as to what the add-on can do, as the other puzzle pieces are willingness from developers (especially third-party UWP developers) to embrace accessibility as a pillar in their apps, and willingness from users to send accessibility feedback. Although some add-on features are being integrated into NVDA, there are some areas where the add-on is needed (especially when supporting features introduced in Windows Insider Preview builds), and until the day accessibility is everywhere in Windows 10 ecosystem and universal apps, the add-on will still be here."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:218
-msgid "* What's a Universal Windows Platform (UWP) App (Microsoft UWP App Developer): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-uwp"
+msgid "## References"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:219
-msgid "* UI Automation Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee684076(v=vs.85).aspx"
+msgid "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:220
-msgid "* MSAA overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx"
+msgid "* Windows Insider Program (Microsoft): https://insider.windows.com/"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:221
-msgid "* UI Automation and Active Accessibility (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671585(v=vs.85).aspx"
+msgid "* Windows as a Service Overview (Microsoft Docs): https://docs.microsoft.com/en-us/windows/deployment/update/waas-overview"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:222
-msgid "* Component Object Model Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ms680573(v=vs.85).aspx"
+msgid "* What's a Universal Windows Platform (UWP) App (Microsoft UWP App Developer): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-uwp"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:223
-msgid "* IUIAutomationElement interface (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671425(v=vs.85).aspx"
+msgid "* UI Automation Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee684076(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:224
-msgid "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671434(v=vs.85).aspx"
+msgid "* MSAA overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/dd373592(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:225
-msgid "* UI Automation Properties Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671594(v=vs.85).aspx"
+msgid "* UI Automation and Active Accessibility (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671585(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:226
-msgid "* UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx"
+msgid "* Component Object Model Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ms680573(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:227
-msgid "* UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx"
+msgid "* IUIAutomationElement interface (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671425(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:228
-msgid "* Auto-suggest accessibility, part of Accessible Text Requirements (Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/accessible-text-requirements"
+msgid "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671434(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:229
+msgid "* UI Automation Properties Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671594(v=vs.85).aspx"
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:230
+msgid "* UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx"
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:231
+msgid "* UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx"
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:232
+msgid "* Auto-suggest accessibility, part of Accessible Text Requirements (Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/accessible-text-requirements"
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:233
 msgid "* IUIAutomationNotificationEventHandler::HandleNotificationEvent (MSDN): https://msdn.microsoft.com/en-us/library/windows/desktop/mt814955(v=vs.85).aspx"
 msgstr ""
 

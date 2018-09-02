@@ -79,12 +79,12 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 
 * Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
-* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update).
-* Support for UIA notification event introduced in Version 1709.
+* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into upcoming NVDA 2018.3 release.
+* Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 * Announcing tooltips from universal apps.
 * Handling tab switches in Sets in Redstone 5 (builds 17627 through 17692)
-* Recognizing dialogs powered by XAML and various frameworks.
+* Recognizing dialogs powered by XAML and various frameworks. In NVDA 2018.3, NVDA itself will take care of this.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
@@ -156,7 +156,7 @@ The notification event handler takes five keyword arguments:
 * Display string: notification text.
 * Activity ID: the unique identifier for the notification.
 
-As of August 2018, NVDA announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues.
+As of August 2018, NVDA itself announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues, thus the add-on is no longer involved in announcing many notifications except those that could cause issues.
 
 #### Tracking UIA events for controls
 
@@ -189,7 +189,7 @@ The Windows 10 Objects goes one step further by recording instances of this even
 
 Some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
 
-In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Redstone 5, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear.
+In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Redstone 5, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Redstone 5.
 
 ## App modules for universal apps
 
@@ -209,8 +209,9 @@ The modules and enhancers/fixers applied are:
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
 * Microsoft Edge: announce correct alert text, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
-* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Redstone 5).
+* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Redstone 5), part of NVDA since 2018.3.
 * MSN Weather: use up or down arrow keys to read forecast information.
+* People: announcing first suggestion when looking for a contact.
 * Sets: announcing currently active tab and its position when switching between app tabs.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
 * Shell Experience Host: work around some UIA state information mismatch.
@@ -240,6 +241,8 @@ Similar to emoji panel, in build 17025 and later, modern keyboard can also provi
 
 The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows+V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item.
 
+In NVDA 2018.3, support for all of these (modern keyboard features) have become part of NVDA.
+
 ### What to announce, what not to announce
 
 It is sometimes helpful to let users know what's going on by announcing various status information, while at other times it is equally important to not announce extraneous messages. The former was the case for majority of app modules below in the past, but since mid-2017, reverse is happening more frequently.
@@ -247,6 +250,7 @@ It is sometimes helpful to let users know what's going on by announcing various 
 The app modules (and for one in particular, more than an app module) in question are:
 
 * Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared.
+* People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event.
 * Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
 * Sets interface (tabexperiencehost.py) on Redstone 5: when switching between app tabs, NVDA will announce name and position of the new tab.
@@ -265,14 +269,14 @@ NVDA already supports Sets simply because it supports Microsoft Edge. However, d
 
 ### Hunting for UIA implementation issues
 
-As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules include workarounds for various UIA problems:
+As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules (and in case of two, taken care of by Windows 10 Objects global plugin itself) include workarounds for various UIA problems:
 
 * Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
 * Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (Redstone 5), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
-* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed event has the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
+* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects.
-* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these.
+* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018.
 * Skype: a typical Skype message includes author name, message channel, the message content, sent date and so on. This is due to list view item implementations where it gathers names of children. Unfortunately, the reverse isn't true: although some items do expose the needed message author and content, some only exposes content when looking at child objects. Thus a regular expression is provided to remove extraneous information until a suitable workaround is found.
 
 ### A tale on app module and executable names
@@ -296,7 +300,7 @@ Until a few years ago, any screen reader wishing to support an app or add featur
 
 ### Integrating features from this add-on to NVDA screen reader
 
-As noted above, some add-on features are being integrated into NVDA. These include search suggestion notification, combo box workaround, live region changed event tracking and announcement and so on.
+As noted above, some add-on features are being (or have been) integrated into NVDA. These include search suggestion notification, modern keyboard support, live region changed event tracking and announcement and so on.
 
 Typically, when a feature from an add-on is integrated into NVDA, it goes through a typical issue-review-test-documentation cycle. To illustrate this, let us go through steps involved in getting search suggestions into NVDA:
 
@@ -304,6 +308,8 @@ Typically, when a feature from an add-on is integrated into NVDA, it goes throug
 2. Review: I and NV Access went through a review phase where implementation detail were discussed and test cases written.
 3. Test: in 2017, search suggestion feature made its debut in an NVDA next snapshod. This resulted in feedback from users regarding braille support, sounds and others. After several weeks, this feature was made available to master snapshot users, thus ready for NVDA 2017.3.
 4. Documentation: the search suggestion feature was documented in the user guide. Discussion of this feature in this article is a special case of documentation step.
+
+Due to changes to release process in 2018, testing occurs via pull requests.
 
 In addition, when a feature from an add-on is under consideration for inclusion in NVDA, I modify the add-on source code to make it compliant with NVDA source code guidelines, such as commenting style, copyright header and so on.
 
