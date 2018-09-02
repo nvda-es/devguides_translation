@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-09-02 20:23+Hora de verano romance\n"
-"PO-Revision-Date: 2018-09-02 20:35+0200\n"
+"PO-Revision-Date: 2018-09-02 21:03+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -1260,7 +1260,7 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:136
 msgid "* People: announcing first suggestion when looking for a contact."
-msgstr ""
+msgstr "* Personas: se anuncia la primera sugerencia al buscar un contacto."
 
 #: ..\python_docs\w10addoninternals.py:137
 msgid ""
@@ -1496,6 +1496,8 @@ msgid ""
 "In NVDA 2018.3, support for all of these (modern keyboard features) have "
 "become part of NVDA."
 msgstr ""
+"En NVDA 2018.3, el soporte para todas estas características (funciones del "
+"teclado moderno) ahora forman parte del propio NVDA."
 
 #: ..\python_docs\w10addoninternals.py:156
 msgid "### What to announce, what not to announce"
@@ -1543,6 +1545,10 @@ msgid ""
 "for a contact. Unlike other search fields, there is no controller for event. "
 "However, the suggestion raises item selected event."
 msgstr ""
+"* Personas (peopleapp.py): NVDA anunciará la primera sugerencia al buscar un "
+"contacto. A diferencia de otros campos de búsqueda, no hay un controlador "
+"para evento. Sin embargo, la sugerencia lanza un evento de elemento "
+"seleccionado."
 
 #: ..\python_docs\w10addoninternals.py:161
 msgid ""
@@ -1989,6 +1995,8 @@ msgstr ""
 msgid ""
 "Due to changes to release process in 2018, testing occurs via pull requests."
 msgstr ""
+"Debido a los cambios del proceso de liberación en 2018, las pruebas se hacen "
+"mediante solicitudes de cambio."
 
 #: ..\python_docs\w10addoninternals.py:198
 msgid ""

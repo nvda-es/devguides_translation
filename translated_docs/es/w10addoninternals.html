@@ -6,7 +6,8 @@
   </head>
   <body>
   <header><h1># Complementos de NVDA vistos por dentro: Windows 10 App Essentials</h1></header>
-  <p>Autor: Joseph Lee</p>
+  <h1 id="complementos-de-nvda-vistos-por-dentro-windows-10-app-essentials">Complementos de NVDA vistos por dentro: Windows 10 App Essentials</h1>
+<p>Autor: Joseph Lee</p>
 <p>Revisión: agosto de 2018</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Dar soporte a nuevas tecnologías puede ser un reto divertido, especialmente si hablamos de la nueva versión de un sistema operativo que cambia el modo que tiene la gente de realizar ciertas tareas y presenta nuevas formas de mantenerse al día. Este reto es aún mayor cuando se centra en dar soporte a los lectores de pantalla para que funcionen en nuevos sistemas operativos tales como Windows 10, que trae nuevas formas de interactuar con el ordenador, un nuevo conjunto de aplicaciones y tecnologías, y mejoras y retos de accesibilidad. NVDA viene con un soporte sólido para Windows 10, incluyendo Microsoft Edge, el nuevo menú de inicio, navegación en aplicaciones universales y mucho más, todo hecho posible gracias a la colaboración entre los usuarios, Microsoft, NV Access y otros. Parte de este soporte se da gracias al complemento que encontraremos en este artículo.</p>
@@ -55,12 +56,12 @@
 <ul>
 <li>Sugerencias de búsqueda: NVDA ahora reproduce un sonido para indicar la aparición de sugerencias de búsqueda. Más detalles sobre esto más adelante.</li>
 <li>Verbalización de cambio de regiones vivas en diversas aplicaciones. En la parte de extensión global se incluye una forma de definir y rastrear este evento.</li>
-<li>Sugerencias flotantes como el panel de emojis en la versión 1709 (actualización Fall Creators) y sugerencias del teclado hardware en la versión 1803 (actualización de abril de 2018).</li>
-<li>Soporte para el evento de notificación de UIA introducido en la versión 1709.</li>
+<li>Sugerencias flotantes como el panel de emojis en la versión 1709 (actualización Fall Creators) y sugerencias del teclado hardware en la versión 1803 (actualización de abril de 2018). Esto se ha incorporado en la versión 2018.3 de NVDA que está por venir.</li>
+<li>Soporte para el evento de notificación de UIA introducido en la versión 1709. Esto pasó a formar parte de NVDA en la versión 2018.2.</li>
 <li>Se ofrecen etiquetas más significativas para ciertos controles, como el historial de actualizaciones en configuración / actualización y seguridad / Windows Update.</li>
 <li>verbalización de consejos en aplicaciones universales.</li>
 <li>Procesamiento de cambios de pestaña en los conjuntos en Redstone 5 (compilaciones 17627 a 17692)</li>
-<li>Reconocimiento de diálogos proporcionados por XAML y diversos marcos de trabajo.</li>
+<li>Reconocimiento de diálogos proporcionados por XAML y diversos marcos de trabajo. En NVDA 2018.3, el propio NVDA se encarga de esto.</li>
 </ul>
 <p>Conoceremos varios controles y soluciones a lo largo de este artículo.</p>
 <h2 id="objetos-para-windows-10">Objetos para Windows 10</h2>
@@ -121,7 +122,7 @@
 <li>Cadena a mostrar: texto de la notificación.</li>
 <li>ID de actividad: el identificador único de la notificación.</li>
 </ul>
-<p>Desde agosto de 2018, NVDA verbaliza notificaciones para todas las aplicaciones, excepto una o dos donde esto daría problemas.</p>
+<p>Desde agosto de 2018, NVDA verbaliza notificaciones para todas las aplicaciones (especialmente la aplicación activa), excepto una o dos donde esto daría problemas, por lo que el complemento ya no está implicado en el anuncio de muchas notificaciones salvo aquellas que podrían causar problemas.</p>
 <h4 id="rastreo-de-eventos-uia-en-controles">Rastreo de eventos UIA en controles</h4>
 <p>La extensión global Objetos de Windows 10 tiene también la capacidad de rastrear eventos UIA para controles y registrar información sobre ellos, ejecutando la función <code>uiaDebugLogging</code>, que recibe el objeto y el nombre del evento. Esta función registra lo siguiente si NVDA se ha iniciado con el registro de depuración habilitado:</p>
 <ul>
@@ -143,7 +144,7 @@
 <p>Objetos de Windows 10 va un paso más allá registrando instancias de este evento y ofreciendo soluciones para casos específicos. Aquí se incluye la verbalización correcta de texto para las alertas en Edge (mira más abajo), la prevención de verbalizaciones repetidas en algunas aplicaciones, etc.</p>
 <h4 id="reconocimiento-de-diversos-dialogos">Reconocimiento de diversos diálogos</h4>
 <p>Algunas ventanas son realmente diálogos. Estos incluyen los diálogos emergentes para desinstalar aplicaciones, diversos diálogos que se encuentran en la aplicación de configuración y demás.</p>
-<p>En versiones antiguas del complemento, NVDA habría consultado una lista de nombres de clases conocidas de diálogos con la esperanza de detectar alguno. En las nuevas versiones, especialmente si se ejecutan en Windows 10 Redstone 5, la propiedad UIA IsDialog se usa para detectar elementos de diálogo. Una vez se reconocen los diálogos, NVDA leerá su contenido automáticamente tan pronto como aparezcan.</p>
+<p>En versiones antiguas del complemento, NVDA habría consultado una lista de nombres de clases conocidas de diálogos con la esperanza de detectar alguno. En las nuevas versiones, especialmente si se ejecutan en Windows 10 Redstone 5, la propiedad UIA IsDialog se usa para detectar elementos de diálogo. Una vez se reconocen los diálogos, NVDA leerá su contenido automáticamente tan pronto como aparezcan. Esto se ha simplificado en NVDA 2018.3, ya que el propio NVDA dará lo mejor de sí mismo para reconocer más diálogos, incluyendo aquellos marcados como diálogos mediante UIA en Redstone 5.</p>
 <h2 id="modulos-de-aplicacion-para-aplicaciones-universales">Módulos de aplicación para aplicaciones universales</h2>
 <p>Además de la extensión global Objetos de Windows 10, el complemento viene con módulos de aplicación diseñados para proporcionar soporte extra para diversas aplicaciones universales que vienen con Windows 10. Estos módulos incluyen mejoras y/o solución de problemas, principalmente divididas en cinco categorías:</p>
 <ol>
@@ -161,8 +162,9 @@
 <li>Correo: órdenes de navegación de tablas en la lista de mensajes, elimina la verbalización de sólo lectura en el contenido del correo, alias de aplicación para hxmail.exe y hxoutlook.exe (el más reciente para actualizaciones publicadas después de mayo del 2017).</li>
 <li>Mapas: reproduce coordenadas de eventos para elementos en el mapa, se suprime la verbalización repetida en el cambio de regiones vivas, alias para dar soporte a versiones viejas y nuevas de la aplicación (el alias viejo, maps_windows, ya no está).</li>
 <li>Microsoft Edge: verbaliza el texto correcto en alertas, soporta el proceso de Edge y el proceso de contenido (microsoftedgecp.exe).</li>
-<li>Teclado moderno: soporte para el panel de emojis, las sugerencias de entrada por hardware y pegar elementos desde el portapapeles (Redstone 5).</li>
+<li>Teclado moderno: soporte para el panel de emojis, las sugerencias de entrada por hardware y pegar elementos desde el portapapeles (Redstone 5), parte de NVDA desde la versión 2018.3.</li>
 <li>El tiempo: usa las flechas arriba o abajo para leer la información meteorológica.</li>
+<li>Personas: se anuncia la primera sugerencia al buscar un contacto.</li>
 <li>Sets: verbalización de la pestaña activa actualmente y su posición al cambiar entre pestañas de aplicación.</li>
 <li>Configuración: verbaliza de forma selectiva diversa información de estado, proporciona etiquetas correctas para ciertos controles.</li>
 <li>Host de experiencia con la Shell (Shell Experience Host): soluciona pequeñas pérdidas de información de estado de UIA.</li>
@@ -184,11 +186,13 @@
 <p>Cuando este panel se abre, el panel de emojis dispara un evento de apertura de menú, un evento que NVDA no detecta por razones de rendimiento. Según se van seleccionando elementos, se dispara un evento de elemento seleccionado, al que NVDA responde recorriendo el panel como si fuera un árbol hasta ubicar el elemento seleccionado. La verbalización real de caracteres emoji depende de los sintetizadores; actualmente, Espeak NG y las voces recientes de Sapi 5 y OneCore (Sapi Mobile) vienen con definiciones de caracteres emoji.</p>
 <p>De manera similar al panel de emojis, en la compilación 17025 y posteriores, el teclado moderno también puede proporcionar sugerencias de entrada. Esto se hace marcando una nueva opción en Configuración / Dispositivos / Escritura, y que se activa también al pulsar flecha arriba mientras se escribe (sólo se soporta la distribución de teclado en inglés de Estados Unidos). Al igual que en el panel de emojis, aparece una ventana flotante, y en este caso se pueden pulsar flechas izquierda y derecha para navegar entre sugerencias y pulsar intro para aceptar el elemento ofrecido.</p>
 <p>El mecanismo anterior para seleccionar sugerencias de entrada también se emplea al pegar elementos desde el portapapeles en la nube. En la compilación 17666 y posteriores, se pueden copiar textos y pequeñas imágenes al portapapeles para pegarlos más tarde. Windows conservará un historial de elementos copiados al portapapeles. Al pulsar Windows+v, se mostrará una lista de elementos del portapapeles, y en ella se pueden pulsar flechas izquierda y derecha para seleccionar el elemento deseado.</p>
+<p>En NVDA 2018.3, el soporte para todas estas características (funciones del teclado moderno) ahora forman parte del propio NVDA.</p>
 <h3 id="que-verbalizar-que-callar">Qué verbalizar, qué callar</h3>
 <p>En ocasiones es útil hacer que los usuarios sepan qué está pasando anunciando información de diversos estados, mientras que otras veces es igualmente importante no anunciar mensajes extra. El primero era el caso para la mayoría de los siguientes módulos de aplicación en el pasado, pero desde mediados de 2017 se está evolucionando precisamente hacia lo contrario.</p>
 <p>Los módulos de aplicación (y para uno en particular, más de un módulo de aplicación) en cuestión son:</p>
 <ul>
 <li>Calculadora (calculator.py): mientras se introducen cálculos, se anuncia la expresión introducida mediante el manejador de evento de cambio de nombre. Como esto puede interferir con la verbalización de caracteres introducidos en NVDA, sólo se verbalizará el contenido de la pantalla de la calculadora cuando aparezcan los resultados reales o cuando se limpie.</li>
+<li>Personas (peopleapp.py): NVDA anunciará la primera sugerencia al buscar un contacto. A diferencia de otros campos de búsqueda, no hay un controlador para evento. Sin embargo, la sugerencia lanza un evento de elemento seleccionado.</li>
 <li>Cortana (searchui.py): Cortana usa eventos de cambio de nombre e identificadores de automatización específicos para transmitir mensajes de texto. El evento de cambio de nombre también se emplea cuando Cortana intenta entender el texto dictado por un usuario, lo que en las versiones antiguas del complemento se traducía en que NVDA podía verbalizar galimatías. Esto se ha resuelto en las versiones recientes del complemento.</li>
 <li>Configuración (systemsettings.py): NVDA verbalizará mensajes tales como las notificaciones de Windows Update, y esto se hace mediante el evento de región viva cambiada (evento de cambio de nombre en versiones del complemento más antiguas).</li>
 <li>Interfaz de conjuntos (tabexperiencehost.py) en Redstone 5: al cambiar entre pestañas de aplicación, NVDA verbalizará el nombre y posición de la nueva pestaña.</li>
@@ -203,14 +207,14 @@
 <li>Verbalización de pestañas: al cambiar entre pestañas, NVDA verbalizará el nombre y posición de la nueva pestaña. Esto se hace en respuesta a un evento de elemento seleccionado procedente de las entradas de pestaña en sí mismas.</li>
 </ul>
 <h3 id="cazando-problemas-de-implementacion-de-uia">Cazando problemas de implementación de UIA</h3>
-<p>Como se ha explicado arriba, algunos controles vienen con implementaciones UIA malas o defectuosas, y las aplicaciones universales no son una excepción (al menos para los módulos de aplicación que vienen en el complemento). Por este motivo, los siguientes módulos de aplicación incluyen soluciones para diversos problemas de UIA:</p>
+<p>Como se ha explicado arriba, algunos controles vienen con implementaciones UIA malas o defectuosas, y las aplicaciones universales no son una excepción (al menos para los módulos de aplicación que vienen en el complemento). Por este motivo, los siguientes módulos de aplicación (y en dos casos, la extensión global Objetos de Windows 10) incluyen soluciones para diversos problemas de UIA:</p>
 <ul>
 <li>Calendario (hxcalendarappimm.py) y Correo (hxoutlook.py): algunos cuadros de edición, como el título de la cita y otros, se muestran como de sólo lectura cuando en realidad no lo son, y eliminando este estado del conjunto de estados para estos controles resolvía este problema.</li>
 <li>Cortana: algunas sugerencias de búsqueda exponen el mismo texto en su nombre y descripción, lo que resulta en repeticiones del texto con el resultado de la sugerencia. Esto fue corregido comparando nombre y descripción, y anulando la descripción (obj.description=None). Además, al abrir la versión de conjuntos del cuadro de búsqueda de Cortana (Redstone 5), se dispara el controlador para evento equivocado, lo que evita que NVDA verbalice las sugerencias. Esto ya ha sido corregido.</li>
 <li>Mapas: a pesar de que no hay cambios en la aplicación, el control con el título del mapa dispara el evento de región viva cambiada, por lo que NVDA incluye una forma de suprimir repeticiones.</li>
-<li>Microsoft Edge (microsoftedge.py y microsoftedgecp.py): para algunas alertas, el nombre del control que dispara el evento de región viva cambiada es "alert", siendo su texto real el último hijo o el texto disperso por los hijos, por lo que NVDA buscará el texto real al verbalizar alertas.</li>
+<li>Microsoft Edge (microsoftedge.py y microsoftedgecp.py): para algunas alertas, el nombre del control que dispara los eventos de región viva cambiada y alerta del sistema es "alert", siendo su texto real el último hijo o el texto disperso por los hijos, por lo que NVDA buscará el texto real al verbalizar alertas.</li>
 <li>Configuración y tienda: para algunos controles (como por ejemplo al descargar contenido de la tienda), un control de estado específico dispara el evento de región viva cambiada. Por desgracia, su texto es genérico (por ejemplo, "descargando algo por ciento", en lugar de verbalizar el producto que se está descargando), por lo que NVDA ubicará información como los nombres de producto cuando esto pase para hacer más fácil el seguimiento. También, en la aplicación de configuración, algunos controles en versiones más antiguas de la aplicación no tienen etiqueta, por lo que se pide a NVDA que busque etiquetas viajando por los objetos hermano (siguiente / anterior).</li>
-<li>Host de experiencia con la Shell (shellexperiencehost.py): para algunos submenús, NVDA no sabe que está en un submenú, esto se solucionó enseñándole a reconocer el rol y estado adecuados para ellos.</li>
+<li>Host de experiencia con la Shell (shellexperiencehost.py): para algunos submenús, NVDA no sabe que está en un submenú, esto se solucionó enseñándole a reconocer el rol y estado adecuados para ellos. Este procedimiento se limitó a esta aplicación en 2018, pero se expandió para cubrir los submenús en el menú de aplicación de Edge en agosto del 2018.</li>
 <li>Skype: un mensaje típico de Skype incluye nombre del autor, canal del mensaje, el contenido del mensaje, fecha de envío y así sucesivamente. Esto es debido a las implementaciones de vista de lista, donde se recuperan los nombres de los hijos. Por desgracia, al contrario no pasa: aunque algunos elementos exponen el autor del mensaje y su contenido como queremos, otros sólo exponen el contenido al mirar en los objetos hijo. Por tanto, se proporciona una expresión regular para eliminar información innecesaria hasta que se encuentre una solución mejor.</li>
 </ul>
 <h3 id="un-cuento-sobre-los-nombres-de-ejecutables-y-modulos-de-aplicacion">Un cuento sobre los nombres de ejecutables y módulos de aplicación</h3>
@@ -226,7 +230,7 @@
 <h3 id="narrador-es-la-nueva-referencia-en-lectura-de-pantalla-en-windows-10-y-las-aplicaciones-universales">Narrador es la nueva referencia en lectura de pantalla en Windows 10 y las aplicaciones universales</h3>
 <p>Hasta hace unos pocos años, cualquier lector de pantalla que quisiera dar soporte a una aplicación o añadir nuevas funciones utilizaba Jaws for Windows como guía. Ese ya no es el caso para Windows 10 y las aplicaciones universales, ya que Narrador proporciona un punto de referencia útil (al menos una implementación base a la que otros fabricantes de lectores de pantalla deberían responder) al leer texto en pantalla, un conjunto de características para dar soporte a las aplicaciones universales, e investigar problemas de UIA. Algunas de las características expuestas arriba, como la notificación de sugerencias de búsqueda, estuvieron inspiradas en la forma que tiene Narrador de manejar diversos eventos de UIA, y gracias a que Narrador lee lo que hay que leer, NVDA viene con soluciones para implementaciones UIA defectuosas para hacer frente a algunos problemas.</p>
 <h3 id="integracion-de-caracteristicas-de-este-complemento-en-el-lector-de-pantalla-nvda">Integración de características de este complemento en el lector de pantalla NVDA</h3>
-<p>Como se ha explicado arriba, algunas funciones del complemento se están integrando en NVDA. Aquí se incluyen la notificación de sugerencias de búsqueda, solución al problema de los cuadros combinados, rastreo y verbalización del evento de región viva cambiada y así sucesivamente.</p>
+<p>Como se ha explicado arriba, algunas funciones del complemento se están (o se han) integrando en NVDA. Aquí se incluyen la notificación de sugerencias de búsqueda, soporte del teclado moderno, rastreo y verbalización del evento de región viva cambiada y así sucesivamente.</p>
 <p>Normalmente, cuando se integra la función de un complemento en NVDA, sigue el típico ciclo de incidencia-revisión-pruebas-documentación. Para ilustrarlo, vayamos por los pasos implicados en la integración de sugerencias de búsqueda en NVDA:</p>
 <ol>
 <li>Incidencia: se creó una incidencia relacionada con las sugerencias de búsqueda en 2016.</li>
@@ -234,6 +238,7 @@
 <li>Prueba: en 2017, se estrenó la función de sugerencias de búsqueda en la versión next de desarrollo de NVDA. Esto dio como resultado retroalimentación de los usuarios relacionada con el soporte Braille, sonidos y otros. Después de varias semanas, esta característica se puso a disposición de los usuarios de la versión de desarrollo master, y por tanto estuvo lista para NVDA 2017.3.</li>
 <li>Documentación: la característica de sugerencias de búsqueda se documentó en la guía de usuario. La exposición de esta función en este artículo es un caso especial del paso de documentación.</li>
 </ol>
+<p>Debido a los cambios del proceso de liberación en 2018, las pruebas se hacen mediante solicitudes de cambio.</p>
 <p>Además, cuando se considera que se puede incluir en NVDA alguna función de un complemento, modifico el código fuente del complemento para que cumpla las pautas del código fuente de NVDA, como el estilo de comentarios, cabecera de copyright y así sucesivamente.</p>
 <h3 id="como-dar-retroalimentacion-a-los-desarrolladores-de-aplicaciones">Cómo dar retroalimentación a los desarrolladores de aplicaciones</h3>
 <p>La retroalimentación dirige a Windows 10 y las aplicaciones universales. Una de las razones para crear el programa Windows Insider, como han indicado Microsoft y otros, es recopilar comentarios de millones de usuarios, con la esperanza de hacer Windows 10 mejor a largo plazo. Por tanto, enviar retroalimentación sobre Windows 10 y las aplicaciones universales preinstaladas, así como de las aplicaciones de terceros, es crucial en la era del desarrollo dirigido por comentarios.</p>
