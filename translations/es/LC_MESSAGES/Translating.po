@@ -1,0 +1,654 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-09-04 12:30+Hora de verano romance\n"
+"PO-Revision-Date: 2018-09-04 13:38+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.1.1\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\Translating.py:3
+msgid "# NVDA Translation and Localization"
+msgstr "# Traducción y localización de NVDA"
+
+#: ..\python_docs\Translating.py:4
+msgid ""
+"Thank you for considering to localize NVDA to your language, or improving an "
+"existing translation."
+msgstr ""
+"Gracias por plantearte mejorar alguna traducción de NVDA o llevar NVDA a tu "
+"idioma."
+
+#: ..\python_docs\Translating.py:5
+msgid ""
+"In order to support multiple languages/locales, NVDA must be translated and "
+"data specific to the locale must be provided."
+msgstr ""
+"A fin de soportar diferentes idiomas/hablas locales, NVDA debe traducirse y "
+"deben proporcionarse datos específicos para el idioma al que se traduce."
+
+#: ..\python_docs\Translating.py:6
+msgid ""
+"There are several tasks to be done, and this document hopes to give you an "
+"overview and guide you through the process."
+msgstr ""
+"Hay varias tareas que hay que realizar, y este documento pretende "
+"proporcionar una vista general y guiar a través del proceso."
+
+#: ..\python_docs\Translating.py:7
+msgid "## Translation Mailing List"
+msgstr "## Lista de correo de traducciones"
+
+#: ..\python_docs\Translating.py:8
+msgid ""
+"You can subscribe to NVDA translations mailing list [here](https://groups.io/"
+"g/nvda-translations)"
+msgstr ""
+"Te puedes suscribir a la lista de traducciones de NVDA [desde aqí](https://"
+"groups.io/g/nvda-translations)"
+
+#: ..\python_docs\Translating.py:9
+msgid "hosted at Groups.IO."
+msgstr "hospedada en Groups.IO."
+
+#: ..\python_docs\Translating.py:10
+msgid ""
+"It is an English low trafic list devoted for the discussion of translation. "
+msgstr ""
+"Esta es una lista en inglés de bajo tráfico e ideada para hablar sobre "
+"traducciones. "
+
+#: ..\python_docs\Translating.py:11
+msgid ""
+"Important messages that relate to translators will also be sent here, i.e. "
+"before NVDA official releases, to remind translators to make sure their "
+"localization is up to date."
+msgstr ""
+"También se enviarán aquí mensajes importantes relacionados con los "
+"traductores, por ejemplo, antes de liberaciones oficiales de NVDA, para "
+"recordar a los traductores que verifiquen si su traducción está actualizada."
+
+#: ..\python_docs\Translating.py:12
+msgid "## Important Dates"
+msgstr "## Fechas importantes"
+
+#: ..\python_docs\Translating.py:13
+msgid ""
+"Translators should ensure their translation is up to date by (UTC 00:00 on "
+"14 February, 14 May, 14 August and 14 November) in order for it to be "
+"included in the upcoming final release, with this being delayed up to three "
+"days for some releases. Work submitted after this time will not be included "
+"in the upcoming release.  A reminder will be sent three to five days prior "
+"to end of this period. For further information please see the ReleaseProcess "
+"page."
+msgstr ""
+"Los traductores deberían asegurarse de que sus traducciones están "
+"actualizadas a las 00.00h UTC de los días 14 de febrero, mayo, agosto y "
+"noviembre para que éstas se incluyan en la liberación oficial próxima. Este "
+"límite se retrasa hasta 3 días en algunas liberaciones. Cualquier trabajo "
+"enviado después de esta fecha no será incluido en la versión próxima. Se "
+"enviará un recordatorio a la lista de traducciones desde 3 hasta 5 días "
+"antes del evento. Para mayor información, visita la página sobre elProceso "
+"de Liberación (sección documentación para desarrolladores)."
+
+#: ..\python_docs\Translating.py:14
+msgid "## Translation Status"
+msgstr "## Estado de las traducciones"
+
+#: ..\python_docs\Translating.py:15
+msgid ""
+"Status for existing NVDA localizations are provided below. If you would like "
+"to improve or would like to work on a new language, please write to NVDA "
+"translations email list."
+msgstr ""
+"Se puede acceder al estado de las traducciones existentes de NVDA en la "
+"tabla siguiente. Si quisieras mejorar o crear una traducción escribe a la "
+"lista de correo de traducciones de NVDA."
+
+#: ..\python_docs\Translating.py:16
+msgid "Information updated as of August 2017 (2017.3)."
+msgstr "Información actualizada en agosto de 2018 (2018.3)."
+
+#: ..\python_docs\Translating.py:17
+msgid ""
+"When 2017.3 is listed in the last updated column, it means that the "
+"localization is fully up to date and will be ready for the next release. For "
+"the purposes of the information below, \"up to date\" refers to interface "
+"translation of at least 90%."
+msgstr ""
+"Cuando se indica 2018.3 en la columna Actualizada por última vez, significa "
+"que la traducción está completamente actualizada y lista para ser incluida "
+"en la próxima liberación. A los efectos de esta tabla, se entiende por "
+"“actualizada” una traducción con como mínimo el 90% de la interfaz traducida."
+
+#: ..\python_docs\Translating.py:18
+msgid "| Language | Status | Last updated |"
+msgstr "| Idioma | Estado | Actualizada por última vez |"
+
+#: ..\python_docs\Translating.py:19
+msgid "|------------|----------|----------------|"
+msgstr "|------------|----------|----------------|"
+
+#: ..\python_docs\Translating.py:20
+msgid ""
+"| af_ZA: Afrikaans | Not complete/out of date, maintainer needed. | Oct 2009 "
+"|"
+msgstr ""
+"| af_ZA: africano | Incompleta / obsoleta, se necesita un responsable. | Oct "
+"2009 |"
+
+#: ..\python_docs\Translating.py:21
+msgid ""
+"| am: Amharic | Not complete/out of date, maintainer needed. | Jul 2012 |"
+msgstr ""
+"| am: amárico | Incompleta / obsoleta, se necesita un responsable. | Jul "
+"2012 |"
+
+#: ..\python_docs\Translating.py:22
+msgid "| an: Aragonese | Up to date. | 2018.3 |"
+msgstr "| an: aragonés | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:23
+msgid "| ar: Arabic | Up to date. | 2018.3 |"
+msgstr "| ar: árabe | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:24
+msgid "| bg: Bulgarian | Up to date. | 2018.3 |"
+msgstr "| bg: búlgaro | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:25
+msgid "| CA: Catalan | Up to date. | 2018.2 |"
+msgstr "| CA: catalán | Actualizada. | 2018.2 |"
+
+#: ..\python_docs\Translating.py:26
+msgid "| CKB: Central Kurdish | In progress. | N/A |"
+msgstr "| CKB: curdo central | En progreso. | N/A |"
+
+#: ..\python_docs\Translating.py:27
+msgid "| cs: Czech | Up to date. | 2018.3 | "
+msgstr "| cs: Checo | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:28
+msgid "| da: Danish | Up to date. | 2018.3 | "
+msgstr "| da: danés | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:29
+msgid "| de: German | Up to date. | 2018.3 | "
+msgstr "| de: alemán | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:30
+msgid "| de_CH: Swiss German | Up to date. | 2018.3 | "
+msgstr "| de_CH: alemán de Suiza | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:31
+msgid ""
+"| el: Greek | The NVDA interface is up to date. There is work to be done on "
+"the user's guide. | 2018.3 |"
+msgstr ""
+"| el: griego | La interfaz de NVDA está completa, pero se debe trabajar en "
+"la guía de usuario. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:32
+msgid "| es: Spanish | Up to date. | 2018.3 | "
+msgstr "| es: español | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:33
+msgid ""
+"| es_CO: Spanish (Columbia) | NVDA interface needs updating. There is work "
+"to be done on the user's guide. | July 2016 |"
+msgstr ""
+"| es_CO: español (Colombia) | La interfaz de NVDA debe actualizarse. Hay "
+"trabajo que hacer en la guía de usuario. | Julio 2016 |"
+
+#: ..\python_docs\Translating.py:34
+msgid "| fa: Farsi | Up to date. | 2017.3 |"
+msgstr "| fa: farsi | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:35
+msgid "| fi: Finnish | Up to date. | 2018.3 | "
+msgstr "| fi: finés | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:36
+msgid "| fr: French | Up to date. | 2018.3 | "
+msgstr "| fr: francés | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:37
+msgid "| ga: Gaeilge (Ireland) | Update in progress. | 2016.3 |"
+msgstr "| ga: gaélico (Irlanda) | Actualización en progreso. | 2016.3 |"
+
+#: ..\python_docs\Translating.py:38
+msgid "| gl: Galician | Up to date. | 2018.3 | "
+msgstr "| gl: gallego | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:39
+msgid "| he: Hebrew | Up to date. | 2018.2 |"
+msgstr "| he: hebreo | Actualizada. | 2018.2 |"
+
+#: ..\python_docs\Translating.py:40
+msgid "| hi: Hindi | Not complete, intermittent, help needed. | Jan 2015 |"
+msgstr ""
+"| hi: hindi | Incompleta, intermitente, se necesita ayuda. | Enero 2015 |"
+
+#: ..\python_docs\Translating.py:41
+msgid "| hr: Croatian | Up to date. | 2018.3 |"
+msgstr "| hr: croata | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:42
+msgid "| hu: Hungarian | Up to date. | 2018.3 |"
+msgstr "| hu: húngaro | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:43
+msgid "| is: Icelandic | Not complete, intermittent, help needed. | Apr 2013 |"
+msgstr ""
+"| is: islandés | Incompleta, intermitente, se necesita ayuda. | Abril 2013 |"
+
+#: ..\python_docs\Translating.py:44
+msgid "| it: Italian | Up to date. | 2018.3 | "
+msgstr "| it: italiano | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:45
+msgid "| ja: Japanese | Up to date. | 2018.3 | "
+msgstr "| ja: japonés | Actualizada. | 2018.3 | "
+
+#: ..\python_docs\Translating.py:46
+msgid ""
+"| ka: Georgian | Not complete/out of date, maintainer needed. | May 2015 |"
+msgstr ""
+"| ka: georgiano | Incompleta / obsoleta, se necesita un responsable. | Mayo "
+"2015 |"
+
+#: ..\python_docs\Translating.py:47
+msgid "| kmr: Northern Kurdish | In progress. | N/A |"
+msgstr "| kmr: curdo del norte | En progreso. | N/A |"
+
+#: ..\python_docs\Translating.py:48
+msgid "| kn: Kannada | Out of date, help needed. | Date unknown |"
+msgstr "| kn: canarés | Obsoleta, se necesita ayuda. | Fecha desconocida |"
+
+#: ..\python_docs\Translating.py:49
+msgid "| ko: Korean | Up to date. | 2018.3 |"
+msgstr "| ko: coreano | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:50
+msgid "| ky: Kyrgyz | Up to date. | 2018.3 |"
+msgstr "| ky: kirguís | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:51
+msgid "| lt: Lithuanian | Out of date, help needed. | 2016 |"
+msgstr "| lt: lituano | Obsoleta, se necesita ayuda. | 2016 |"
+
+#: ..\python_docs\Translating.py:52
+msgid "| lv: Latvian | Out of date, help needed. | 2016 |"
+msgstr "| lv: letón | Obsoleta, se necesita ayuda. | 2016 |"
+
+#: ..\python_docs\Translating.py:53
+msgid "| mk: Macedonian | Up to date. | 2017.4 |"
+msgstr "| mk: macedonio | Actualizada. | 2017.4 |"
+
+#: ..\python_docs\Translating.py:54
+msgid "| mn: Mongolian | Up to date. | 2018.2 |"
+msgstr "| mn: mongol | Actualizada. | 2018.2 |"
+
+#: ..\python_docs\Translating.py:55
+msgid "| my: Burmese | Up to date. | 2018.3 |"
+msgstr "| my: birmano | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:56
+msgid "| nb_NO: Norwegian | Out of date. | 2012 |"
+msgstr "| nb_NO: noruego | Obsoleta. | 2012 |"
+
+#: ..\python_docs\Translating.py:57
+msgid "| ne: Nepali  | Translator deceased. | 2016 |"
+msgstr "| ne: nepalí  | Traductor fallecido. | 2016 |"
+
+#: ..\python_docs\Translating.py:58
+msgid "| nl: Dutch | Up to date. | 2018.3 |"
+msgstr "| nl: holandés | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:59
+msgid "| Pa: Punjabi | Not complete, help needed. | Nov 2014 |"
+msgstr "| Pa: punyabí | Incompleta, se necesita ayuda. | Noviembre 2014 |"
+
+#: ..\python_docs\Translating.py:60
+msgid "| pl: Polish | Up to date. | 2018.3 |"
+msgstr "| pl: polaco | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:61
+msgid "| pt_BR: Portuguese (Brazil) | Up to date. | 2018.3 |"
+msgstr "| pt_BR: portugués (Brasil) | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:62
+msgid "| pt_PT: Portuguese (Portugal) | Up to date. | 2018.3 |"
+msgstr "| pt_PT: portugués (Portugal) | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:63
+msgid "| ro: Romanian | Up to date. | 2018.3 |"
+msgstr "| ro: rumano | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:64
+msgid "| ru: Russian | Up to date. | 2018.3 |"
+msgstr "| ru: ruso | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:65
+msgid "| sk: Slovak | Up to date. | 2018.2 |"
+msgstr "| sk: Eslovaco | Actualizada. | 2018.2 |"
+
+#: ..\python_docs\Translating.py:66
+msgid "| sl: Slovenian | Up to date. | 2018.3 |"
+msgstr "| sl: esloveno | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:67
+msgid ""
+"| sq: Albanian | Not complete/out of date, maintainer needed. | Jul 2011 |"
+msgstr ""
+"| sq: albanés | Incompleta / Obsoleta, se necesita un responsable. | Jul "
+"2011 |"
+
+#: ..\python_docs\Translating.py:68
+msgid ""
+"| sr: Serbian | Interface Up to date, documentation not complete. | 2018.3 |"
+msgstr ""
+"| sr: serbio | Interfaz actualizada, documentación incompleta. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:69
+msgid "| sv: Swedish | Not complete/out of date. | May 2015 |"
+msgstr "| sv: sueco | Incompleta / obsoleta. | Mayo 2015 |"
+
+#: ..\python_docs\Translating.py:70
+msgid "| ta: Tamil | Up to date. | 2018.3 |"
+msgstr "| ta: Tamil | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:71
+msgid "| th: Tai | Out of date. | Feb 2011 |"
+msgstr "| th: tailandés | Obsoleta. | Febrero 2011 |"
+
+#: ..\python_docs\Translating.py:72
+msgid "| tr: Turkish | Up to date. | 2018.3 |"
+msgstr "| tr: turco | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:73
+msgid "| uk: Ukranian | Up to date. | 2018.3 |"
+msgstr "| uk: ucraniano | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:74
+msgid "| ur: Urdu | Incomplete, barely translated. | 2016 |"
+msgstr "| ur: urdu | incompleta, apenas traducido. | 2016 |"
+
+#: ..\python_docs\Translating.py:75
+msgid "| vi: Vietnamese | Up to date. | 2018.3 |"
+msgstr "| vi: Vietnamita | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:76
+msgid "| zh_CN: Simplified Chinese | Up to date. | 2018.3 |"
+msgstr "| zh_CN: Chino simplificado | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:77
+msgid "| zh_HK: Traditional Chinese Hong Kong | Up to date. | 2018.3 |"
+msgstr "| zh_HK: chino tradicional de Hong Kong | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:78
+msgid "| zh_TW: Traditional Chinese Taiwan | Up to date. | 2018.3 |"
+msgstr "| zh_TW: Chino tradicional de Taiguán | Actualizada. | 2018.3 |"
+
+#: ..\python_docs\Translating.py:79
+msgid "## New Localization"
+msgstr "## Nueva traducción"
+
+#: ..\python_docs\Translating.py:80
+msgid ""
+"Start by subscribing to the translation list above, so that you can get help "
+"and advice."
+msgstr ""
+"Empieza por suscribirte a la lista de traducciones arriba, de forma que "
+"puedas obtener ayuda y consejos."
+
+#: ..\python_docs\Translating.py:81
+msgid ""
+"It is recommended that you use our new more automated workflow, which will "
+"allow you to focus only on translation. See [the automated workflow section]"
+"(#advantages-of-the-automatic-workflow-process ) below."
+msgstr ""
+"Se recomienda que uses el nuevo flujo de trabajo automático de NVDA, que te "
+"permite centrarte solo en traducir. Consulta la sección “Método de trabajo "
+"automático” más abajo."
+
+#: ..\python_docs\Translating.py:82
+msgid ""
+"If you still wish to go through the manual process, then follow the "
+"instructions on the [[TranslatingUsingManualProcess]] page after first "
+"reading [Files to be Localized](#files-to-be-localized) below."
+msgstr ""
+"Si aun así deseas continuar utilizando el proceso manual, lee la página "
+"“Traduciendo usando el proceso manual” enlazada en la parte inferior de este "
+"artículo después de leer [la sección “Archivos para ser traducidos”]"
+"(#infopmanual)."
+
+#: ..\python_docs\Translating.py:83
+msgid "## Improving an Existing Localization"
+msgstr "## Mejorar una traducción existente"
+
+#: ..\python_docs\Translating.py:84
+msgid ""
+"You should contact the existing maintainer of your language, and discuss "
+"your suggestions and changes. Together you should be able to agree on the "
+"best translation and terms to be used, and the necessary changes can be made."
+msgstr ""
+"Deberías contactar al responsable de la traducción en tu idioma y discutir "
+"con él tus sugerencias o cambios. Juntos deberíais ser capaces de poneros de "
+"acuerdo acerca de la mejor traducción y los términos que usar, de forma que "
+"se pueda proceder a la realización de los cambios oportunos."
+
+#: ..\python_docs\Translating.py:85
+msgid ""
+"You can send an email to the translation mailing list to find out the "
+"correct person. "
+msgstr ""
+"Puedes enviar un correo a la lista de traducciones para encontrar a la "
+"persona correcta. "
+
+#: ..\python_docs\Translating.py:86
+msgid ""
+"If your language is no longer maintained, you can request to be the new "
+"maintainer for the language."
+msgstr ""
+"Si tu idioma ya no tiene mantenimiento, puedes solicitar ser el nuevo "
+"traductor para esa lengua."
+
+#: ..\python_docs\Translating.py:87
+msgid "## Files to be Localized"
+msgstr "## Archivos a ser traducidos"
+
+#: ..\python_docs\Translating.py:88
+msgid "These files are listed in order of importance."
+msgstr "Los archivos se listan por orden de importancia."
+
+#: ..\python_docs\Translating.py:89
+msgid ""
+"- nvda.po: NVDA's interface messages, see [[TranslatingTheInterface]] page "
+"for more info."
+msgstr ""
+"- nvda.po: mensajes de la interfaz de NVDA, consulta la página “Traduciendo "
+"la interfaz” enlazada abajo para más información."
+
+#: ..\python_docs\Translating.py:90
+msgid ""
+"- characterDescriptions.dic: names of characters in your language, see "
+"[[TranslatingCharacterDescriptions]] for more info."
+msgstr ""
+"- characterDescriptions.dic: nombres de los caracteres en tu idioma. "
+"Consulta la página “Traduciendo descripciones de caracteres” enlazada abajo "
+"para más información."
+
+#: ..\python_docs\Translating.py:91
+msgid ""
+"- symbols.dic: names of symbols and punctuation in your language, see "
+"[[TranslatingSymbols]] for more information."
+msgstr ""
+"- symbols.dic: Nombres de los símbolos y signos de puntuación en tu idioma. "
+"Consulta la página “Traduciendo símbolos” enlazada abajo para más "
+"información."
+
+#: ..\python_docs\Translating.py:92
+msgid ""
+"- userGuide.t2t: the User Guide, see [[TranslatingUserGuide]] for more "
+"information."
+msgstr ""
+"- userGuide.t2t: La guía del usuario. Consulta la página “Traduciendo la "
+"guía del usuario” enlazada abajo para más información."
+
+#: ..\python_docs\Translating.py:93
+msgid ""
+"- changes.t2t (optional): a list of changes between releases, see "
+"[[TranslatingChanges]] for more information."
+msgstr ""
+"- changes.t2t (opcional): lista de cambios entre las diferentes versiones. "
+"Consulta la página “traduciendo registro de cambios” enlazada abajo para más "
+"información."
+
+#: ..\python_docs\Translating.py:94
+msgid ""
+"- Add-ons (optional): a set of optional features that users can install, see "
+"[[TranslatingAddons]] for more information."
+msgstr ""
+"- Complementos (opcional): un conjunto de características que los usuarios "
+"pueden instalar. Consulta la página “Traduciendo complementos” enlazada "
+"abajo para más información."
+
+#: ..\python_docs\Translating.py:95
+msgid "## Advantages of the Automatic Workflow Process"
+msgstr "## Ventajas del método de trabajo automático"
+
+#: ..\python_docs\Translating.py:96
+msgid "- No need of a full NVDA development environment."
+msgstr "- No es necesario un entorno de desarrollo completo de NVDA."
+
+#: ..\python_docs\Translating.py:97
+msgid ""
+"- You will be sent an email or twitter message when your po file needs "
+"updating."
+msgstr ""
+"- Recibirás un correo electrónico o un mensaje en Twitter cuando tengas que "
+"actualizar tus archivos .po."
+
+#: ..\python_docs\Translating.py:98
+msgid ""
+"- You will be sent an email or twitter message when your userGuide or "
+"changes file needs to be updated."
+msgstr ""
+"- Recibirás un correo electrónico o un mensaje en Twitter cuando los "
+"archivos de la guía del usuario o el registro de cambios tengan que "
+"actualizarse."
+
+#: ..\python_docs\Translating.py:99
+msgid ""
+"- Automatic generation of html from t2t files, so that you can check the "
+"correctness of your t2t markup."
+msgstr ""
+"- Generación automática de archivos HTML a partir de T2T, de forma que "
+"puedes verificar si la sintaxis T2T de tu traducción es correcta."
+
+#: ..\python_docs\Translating.py:100
+msgid ""
+"- Automatically generated difference and word difference between previous "
+"and new versions, to help you quickly find the changes."
+msgstr ""
+"- Generación automática de diferencia (diff) y diferencia por palabras entre "
+"la versión antigua y la nueva, de forma que puedas buscar rápidamente los "
+"cambios para traducirlos."
+
+#: ..\python_docs\Translating.py:101
+msgid ""
+"- A higher quality User Guide since the difference files encourage you to "
+"keep the English and your localization closely updated."
+msgstr ""
+"- Guía del usuario de alta calidad, ya que los archivos de diferencias te "
+"permiten tener tu traducción actualizada con mayor precisión con respecto a "
+"la versión inglesa."
+
+#: ..\python_docs\Translating.py:102
+msgid ""
+"- Translation becomes many small tasks instead a big rush near a deadline. "
+"Maybe 10 minutes per week on average."
+msgstr ""
+"- La traducción se convierte en un conjunto de pequeñas tareas en lugar deun "
+"gran trabajo cuando se acerca la fecha límite. De media unos 10 minutos a la "
+"semana."
+
+#: ..\python_docs\Translating.py:103
+msgid "- It is easier to contribute, since each work unit is self contained."
+msgstr ""
+"- Es fácil contribuir, debido a que cada unidad de trabajo es autónoma."
+
+#: ..\python_docs\Translating.py:104
+msgid ""
+"- Your translation is regularly and automatically included into NVDA "
+"snapshots."
+msgstr ""
+"- Tu traducción se incluye regular y automáticamente en las versiones de "
+"desarrollo de NVDA."
+
+#: ..\python_docs\Translating.py:105
+msgid ""
+"- Instead of following nvda-dev mailing list emails, you can just subscribe "
+"to nvda translations and important messages related to translation will be "
+"sent there."
+msgstr ""
+"- En lugar de seguir la lista de desarrollo de NVDA, puedes suscribirte al "
+"grupo de traducciones, donde se enviarán noticias importantes para los "
+"traductores."
+
+#: ..\python_docs\Translating.py:106
+msgid ""
+"- Auto generated structure difference between the English and your localized "
+"user guide, to quickly spot missing paragraphs, tables and lists."
+msgstr ""
+"- Se genera automáticamente una diferencia estructural entre las versiones "
+"inglesa y de tu idioma de la guía del usuario, de forma que puedes localizar "
+"y corregir párrafos, tablas o listas que falten."
+
+#: ..\python_docs\Translating.py:107
+msgid ""
+"- Automatic checking of po files, making sure that there are no mistakes "
+"that could cause any runtime errors."
+msgstr ""
+"- Verificación automática de los archivos po, para asegurarse de que no haya "
+"fallos que puedan generar errores en tiempo de ejecución."
+
+#: ..\python_docs\Translating.py:108
+msgid ""
+"If you want to follow the automatic workflow process, visit the "
+"[[TranslatingUsingAutomaticProcess]] page."
+msgstr ""
+"Si deseas usar el método de trabajo automático, consulta la página "
+"“Traduciendo mediante el método de trabajo automático” enlazada abajo."
+
+#: ..\python_docs\Translating.py:109
+msgid "## Missing information"
+msgstr "## Información faltante"
+
+#: ..\python_docs\Translating.py:110
+msgid ""
+"Please feel free to update this or any subsequent page with any tips or "
+"hints that you feel may be of use to other translators."
+msgstr ""
+"Siéntete libre de pedir que se actualice esta página o cualquiera subyacente "
+"con aquellos trucos y consejos que creas que pueden venir bien a los "
+"traductores."
+
+#: ..\python_docs\Translating.py:111
+msgid "### Missing Sections"
+msgstr "### Secciones que faltan"
+
+#: ..\python_docs\Translating.py:112
+msgid "If someone could add Sites for Gestures.ini, it'll be done."
+msgstr "Se necesita a alguien que haga una página para gestures.ini."

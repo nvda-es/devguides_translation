@@ -73,7 +73,17 @@
 </ul>
 </li>
 <li>Los métodos de objeto de la forma _get_property no funcionan, observable al intentar establecer el sintetizador inicial, la pantalla braille, el objeto con el foco y demás.<ul>
-<li>Retocar autoProperty* o bien usar el decorador @property.</li>
+<li>Causado por las diferencias de sintaxis de metaclase entre Python 2 y 3.</li>
+<li>Usar el especificador de metaclase de la forma "metaclase=algunaclase".</li>
+</ul>
+</li>
+<li>Métodos de diccionario incompatibles.<ul>
+<li>dict.has_key(clave): usar "clave en dict".</li>
+<li>dict.iter*: usar atributos directamente (por ejemplo, usar "dict.items()" en vez de "dict.iteritems()").</li>
+</ul>
+</li>
+<li>Ya no existe unichr.<ul>
+<li>Estandarizarse alredecor de "chr".</li>
 </ul>
 </li>
 </ul>

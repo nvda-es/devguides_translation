@@ -54,7 +54,13 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 	* This is required due to hash randomization in python 3.3 and later.
 	* One of the simplest solutions is to use the parent object's __hash__ method (__hash__ = parentClass.__hash__).
 * Object methods of the form _get_property does not work, noticeable when trying to set initial synthesizer, braille display, focus object and so on.
-	* Either tweak autoProperty* or use @property decorator.
+	* Caused by metaclass syntax differences between Python 2 and 3.
+	* Use metaclass specifier of the form "metaclass=someclass".
+* Incompatible dictionary methods.
+	* dict.has_key(key): use "key in dict".
+	* dict.iter*: use attributes directly (e.g. "dict.items()" instead of "dict.iteritems()").
+* No more unichr.
+	* Standardize around "chr".
 
 ### Needed dependencies:
 

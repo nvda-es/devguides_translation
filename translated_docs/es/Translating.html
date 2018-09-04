@@ -1,0 +1,369 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Traducción y localización de NVDA</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Traducción y localización de NVDA</h1></header>
+  <h1 id="traduccion-y-localizacion-de-nvda">Traducción y localización de NVDA</h1>
+<p>Gracias por plantearte mejorar alguna traducción de NVDA o llevar NVDA a tu idioma.
+A fin de soportar diferentes idiomas/hablas locales, NVDA debe traducirse y deben proporcionarse datos específicos para el idioma al que se traduce.
+Hay varias tareas que hay que realizar, y este documento pretende proporcionar una vista general y guiar a través del proceso.</p>
+<h2 id="lista-de-correo-de-traducciones">Lista de correo de traducciones</h2>
+<p>Te puedes suscribir a la lista de traducciones de NVDA <a href="https://groups.io/g/nvda-translations">desde aqí</a>
+hospedada en Groups.IO.</p>
+<p>Esta es una lista en inglés de bajo tráfico e ideada para hablar sobre traducciones. 
+También se enviarán aquí mensajes importantes relacionados con los traductores, por ejemplo, antes de liberaciones oficiales de NVDA, para recordar a los traductores que verifiquen si su traducción está actualizada.</p>
+<h2 id="fechas-importantes">Fechas importantes</h2>
+<p>Los traductores deberían asegurarse de que sus traducciones están actualizadas a las 00.00h UTC de los días 14 de febrero, mayo, agosto y noviembre para que éstas se incluyan en la liberación oficial próxima. Este límite se retrasa hasta 3 días en algunas liberaciones. Cualquier trabajo enviado después de esta fecha no será incluido en la versión próxima. Se enviará un recordatorio a la lista de traducciones desde 3 hasta 5 días antes del evento. Para mayor información, visita la página sobre elProceso de Liberación (sección documentación para desarrolladores).</p>
+<h2 id="estado-de-las-traducciones">Estado de las traducciones</h2>
+<p>Se puede acceder al estado de las traducciones existentes de NVDA en la tabla siguiente. Si quisieras mejorar o crear una traducción escribe a la lista de correo de traducciones de NVDA.
+Información actualizada en agosto de 2018 (2018.3).
+Cuando se indica 2018.3 en la columna Actualizada por última vez, significa que la traducción está completamente actualizada y lista para ser incluida en la próxima liberación. A los efectos de esta tabla, se entiende por “actualizada” una traducción con como mínimo el 90% de la interfaz traducida.</p>
+<table>
+<thead>
+<tr>
+<th>Idioma</th>
+<th>Estado</th>
+<th>Actualizada por última vez</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>af_ZA: africano</td>
+<td>Incompleta / obsoleta, se necesita un responsable.</td>
+<td>Oct 2009</td>
+</tr>
+<tr>
+<td>am: amárico</td>
+<td>Incompleta / obsoleta, se necesita un responsable.</td>
+<td>Jul 2012</td>
+</tr>
+<tr>
+<td>an: aragonés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ar: árabe</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>bg: búlgaro</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>CA: catalán</td>
+<td>Actualizada.</td>
+<td>2018.2</td>
+</tr>
+<tr>
+<td>CKB: curdo central</td>
+<td>En progreso.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>cs: Checo</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>da: danés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>de: alemán</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>de_CH: alemán de Suiza</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>el: griego</td>
+<td>La interfaz de NVDA está completa, pero se debe trabajar en la guía de usuario.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>es: español</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>es_CO: español (Colombia)</td>
+<td>La interfaz de NVDA debe actualizarse. Hay trabajo que hacer en la guía de usuario.</td>
+<td>Julio 2016</td>
+</tr>
+<tr>
+<td>fa: farsi</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>fi: finés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>fr: francés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ga: gaélico (Irlanda)</td>
+<td>Actualización en progreso.</td>
+<td>2016.3</td>
+</tr>
+<tr>
+<td>gl: gallego</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>he: hebreo</td>
+<td>Actualizada.</td>
+<td>2018.2</td>
+</tr>
+<tr>
+<td>hi: hindi</td>
+<td>Incompleta, intermitente, se necesita ayuda.</td>
+<td>Enero 2015</td>
+</tr>
+<tr>
+<td>hr: croata</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>hu: húngaro</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>is: islandés</td>
+<td>Incompleta, intermitente, se necesita ayuda.</td>
+<td>Abril 2013</td>
+</tr>
+<tr>
+<td>it: italiano</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ja: japonés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ka: georgiano</td>
+<td>Incompleta / obsoleta, se necesita un responsable.</td>
+<td>Mayo 2015</td>
+</tr>
+<tr>
+<td>kmr: curdo del norte</td>
+<td>En progreso.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>kn: canarés</td>
+<td>Obsoleta, se necesita ayuda.</td>
+<td>Fecha desconocida</td>
+</tr>
+<tr>
+<td>ko: coreano</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ky: kirguís</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>lt: lituano</td>
+<td>Obsoleta, se necesita ayuda.</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>lv: letón</td>
+<td>Obsoleta, se necesita ayuda.</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>mk: macedonio</td>
+<td>Actualizada.</td>
+<td>2017.4</td>
+</tr>
+<tr>
+<td>mn: mongol</td>
+<td>Actualizada.</td>
+<td>2018.2</td>
+</tr>
+<tr>
+<td>my: birmano</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>nb_NO: noruego</td>
+<td>Obsoleta.</td>
+<td>2012</td>
+</tr>
+<tr>
+<td>ne: nepalí</td>
+<td>Traductor fallecido.</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>nl: holandés</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>Pa: punyabí</td>
+<td>Incompleta, se necesita ayuda.</td>
+<td>Noviembre 2014</td>
+</tr>
+<tr>
+<td>pl: polaco</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>pt_BR: portugués (Brasil)</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>pt_PT: portugués (Portugal)</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ro: rumano</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ru: ruso</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>sk: Eslovaco</td>
+<td>Actualizada.</td>
+<td>2018.2</td>
+</tr>
+<tr>
+<td>sl: esloveno</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>sq: albanés</td>
+<td>Incompleta / Obsoleta, se necesita un responsable.</td>
+<td>Jul 2011</td>
+</tr>
+<tr>
+<td>sr: serbio</td>
+<td>Interfaz actualizada, documentación incompleta.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>sv: sueco</td>
+<td>Incompleta / obsoleta.</td>
+<td>Mayo 2015</td>
+</tr>
+<tr>
+<td>ta: Tamil</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>th: tailandés</td>
+<td>Obsoleta.</td>
+<td>Febrero 2011</td>
+</tr>
+<tr>
+<td>tr: turco</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>uk: ucraniano</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>ur: urdu</td>
+<td>incompleta, apenas traducido.</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>vi: Vietnamita</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>zh_CN: Chino simplificado</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>zh_HK: chino tradicional de Hong Kong</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+<tr>
+<td>zh_TW: Chino tradicional de Taiguán</td>
+<td>Actualizada.</td>
+<td>2018.3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nueva-traduccion">Nueva traducción</h2>
+<p>Empieza por suscribirte a la lista de traducciones arriba, de forma que puedas obtener ayuda y consejos.</p>
+<p>Se recomienda que uses el nuevo flujo de trabajo automático de NVDA, que te permite centrarte solo en traducir. Consulta la sección “Método de trabajo automático” más abajo.</p>
+<p>Si aun así deseas continuar utilizando el proceso manual, lee la página “Traduciendo usando el proceso manual” enlazada en la parte inferior de este artículo después de leer <a href="#infopmanual">la sección “Archivos para ser traducidos”</a>.</p>
+<h2 id="mejorar-una-traduccion-existente">Mejorar una traducción existente</h2>
+<p>Deberías contactar al responsable de la traducción en tu idioma y discutir con él tus sugerencias o cambios. Juntos deberíais ser capaces de poneros de acuerdo acerca de la mejor traducción y los términos que usar, de forma que se pueda proceder a la realización de los cambios oportunos.</p>
+<p>Puedes enviar un correo a la lista de traducciones para encontrar a la persona correcta. </p>
+<p>Si tu idioma ya no tiene mantenimiento, puedes solicitar ser el nuevo traductor para esa lengua.</p>
+<h2 id="archivos-a-ser-traducidos">Archivos a ser traducidos</h2>
+<p>Los archivos se listan por orden de importancia.</p>
+<ul>
+<li>nvda.po: mensajes de la interfaz de NVDA, consulta la página “Traduciendo la interfaz” enlazada abajo para más información.</li>
+<li>characterDescriptions.dic: nombres de los caracteres en tu idioma. Consulta la página “Traduciendo descripciones de caracteres” enlazada abajo para más información.</li>
+<li>symbols.dic: Nombres de los símbolos y signos de puntuación en tu idioma. Consulta la página “Traduciendo símbolos” enlazada abajo para más información.</li>
+<li>userGuide.t2t: La guía del usuario. Consulta la página “Traduciendo la guía del usuario” enlazada abajo para más información.</li>
+<li>changes.t2t (opcional): lista de cambios entre las diferentes versiones. Consulta la página “traduciendo registro de cambios” enlazada abajo para más información.</li>
+<li>Complementos (opcional): un conjunto de características que los usuarios pueden instalar. Consulta la página “Traduciendo complementos” enlazada abajo para más información.</li>
+</ul>
+<h2 id="ventajas-del-metodo-de-trabajo-automatico">Ventajas del método de trabajo automático</h2>
+<ul>
+<li>No es necesario un entorno de desarrollo completo de NVDA.</li>
+<li>Recibirás un correo electrónico o un mensaje en Twitter cuando tengas que actualizar tus archivos .po.</li>
+<li>Recibirás un correo electrónico o un mensaje en Twitter cuando los archivos de la guía del usuario o el registro de cambios tengan que actualizarse.</li>
+<li>Generación automática de archivos HTML a partir de T2T, de forma que puedes verificar si la sintaxis T2T de tu traducción es correcta.</li>
+<li>Generación automática de diferencia (diff) y diferencia por palabras entre la versión antigua y la nueva, de forma que puedas buscar rápidamente los cambios para traducirlos.</li>
+<li>Guía del usuario de alta calidad, ya que los archivos de diferencias te permiten tener tu traducción actualizada con mayor precisión con respecto a la versión inglesa.</li>
+<li>La traducción se convierte en un conjunto de pequeñas tareas en lugar deun gran trabajo cuando se acerca la fecha límite. De media unos 10 minutos a la semana.</li>
+<li>Es fácil contribuir, debido a que cada unidad de trabajo es autónoma.</li>
+<li>Tu traducción se incluye regular y automáticamente en las versiones de desarrollo de NVDA.</li>
+<li>En lugar de seguir la lista de desarrollo de NVDA, puedes suscribirte al grupo de traducciones, donde se enviarán noticias importantes para los traductores.</li>
+<li>Se genera automáticamente una diferencia estructural entre las versiones inglesa y de tu idioma de la guía del usuario, de forma que puedes localizar y corregir párrafos, tablas o listas que falten.</li>
+<li>Verificación automática de los archivos po, para asegurarse de que no haya fallos que puedan generar errores en tiempo de ejecución.</li>
+</ul>
+<p>Si deseas usar el método de trabajo automático, consulta la página “Traduciendo mediante el método de trabajo automático” enlazada abajo.</p>
+<h2 id="informacion-faltante">Información faltante</h2>
+<p>Siéntete libre de pedir que se actualice esta página o cualquiera subyacente con aquellos trucos y consejos que creas que pueden venir bien a los traductores.</p>
+<h3 id="secciones-que-faltan">Secciones que faltan</h3>
+<p>Se necesita a alguien que haga una página para gestures.ini.</p>
+</body>
+</html>
