@@ -53,5 +53,5 @@ Vamos a convertir el documento home.md, que corresponde a una sencilla página d
 
 En ocasiones hay documentos que están en formato t2t. Este formato no es ideal para trabajar. Afortunadamente estos documentos se convierten a html, como la guía del desarrollador. Para convertirlos a markdown y procesarlos como en el apartado anterior, necesitamos un paquete como html2text. Se puede instalar usando pip: pip install html2text. Una vez instalado, hacemos lo siguiente:
 
-1. Ejecutamos el siguiente comando desde la raíz del repositorio: html2text -b 0 --escape-all https://www.nvaccess.org/files/nvda/documentation/developerGuide.html > original_docs/developer_guide.md
+1. Ejecutamos el siguiente comando desde la raíz del repositorio: `html2text -b 0 --escape-all https://www.nvaccess.org/files/nvda/documentation/developerGuide.html > original_docs/developer_guide.md`
 2. El documento convertido aparecerá en original_docs. La opción --escape-all escapa todos aquellos caracteres que podrían afectar de forma no deseada al resultado en Markdown, y la opción -b 0 elimina el límite de caracteres por línea, que puede dificultar la traducción.

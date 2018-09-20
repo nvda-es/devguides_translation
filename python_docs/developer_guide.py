@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# NVDA 2018.2 Developer Guide"""),
+_(u"""# NVDA 2018.3.1 Developer Guide"""),
 "",_(u"""## Table of Contents"""),
 "",_(u"""  * 1\\. Introduction"""),
 _(u"""    * 1.1. A Note About Python"""),
@@ -18,6 +18,7 @@ _(u"""    * 3.5. Basics of a Global Plugin"""),
 _(u"""    * 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA Version"""),
 _(u"""    * 3.7. NVDA Objects"""),
 _(u"""    * 3.8. Scripts and Gesture Bindings"""),
+_(u"""      * 3.8.1. Defining script properties"""),
 _(u"""    * 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"""),
 _(u"""    * 3.10. Events"""),
 _(u"""    * 3.11. the App Module SleepMode variable"""),
@@ -184,25 +185,23 @@ _(u"""    # Version announcement plugin for NVDA"""),
 _(u"""    # Developer guide example 2"""),
 _(u"""    """),
 _(u"""    import globalPluginHandler"""),
+_(u"""    from scriptHandler import script"""),
 _(u"""    import ui"""),
 _(u"""    import versionInfo"""),
 _(u"""    """),
 _(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
 _(u"""    """),
+_(u"""    	@scriptHandler.script(gesture=\"kb:NVDA+shift+v\")"""),
 _(u"""    	def script_announceNVDAVersion(self, gesture):"""),
 _(u"""    		ui.message(versionInfo.version)"""),
-_(u"""    """),
-_(u"""    	__gestures={"""),
-_(u"""    		\"kb:NVDA+shift+v\": \"announceNVDAVersion\","""),
-_(u"""    	}"""),
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),
 "",_(u"""This Global Plugin file starts with two comment lines, which describe what the file is for. """),
 "",_(u"""It then imports the globalPluginHandler module, so that the Global Plugin has access to the base GlobalPlugin class. """),
-"",_(u"""It also imports a few other modules, namely ui and versionInfo, which this specific plugin needs in order for it to perform the necessary actions to announce the version. """),
+"",_(u"""It also imports a few other modules, namely ui, versionInfo and scriptHandler, which this specific plugin needs in order for it to perform the necessary actions to announce the version. """),
 "",_(u"""Next, it defines a class called GlobalPlugin, which is inherited from globalPluginHandler.GlobalPlugin. """),
-"",_(u"""Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines a script method that performs the version announcement, and provides a binding from NVDA+shift+v to this script. However, the details of the script and its binding are not important for the purposes of this example. The most important part is the class itself. """),
+"",_(u"""Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines a script method that performs the version announcement. The script decorator from the scriptHandler module is used to assign the NVDA+shift+v shortcut to this script. However, the details of the script and its binding are not important for the purposes of this example. The most important part is the class itself. More information about scripts and the script decorator can be found in the Defining script properties section of this guide. """),
 "",_(u"""As with other examples in this guide, remember to delete the created Global Plugin when finished testing and then restart NVDA or reload plugins, so that original functionality is restored. """),
 "",_(u"""### 3.7. NVDA Objects"""),
 "",_(u"""NVDA represents controls and other GUI elements as NVDA Objects. These NVDA Objects contain standardised properties, such as name, role, value, states and description, which allow other parts of NVDA to query or present information about a control in a generalised way. For example, the OK button in a dialog would be represented as an NVDA Object with a name of \"OK\" and a role of button. Similarly, a checkbox with a label of \"I agree\" would have a name of \"I agree\", a role of checkbox, and if currently checked, a state of checked. """),
@@ -234,12 +233,11 @@ _(u"""  * the Plugin may define its own custom NVDA Object classes which will be
 "",_(u"""  * self: a reference to the App Module, Global Plugin or NVDA Object instance the script was called on. """),
 _(u"""  * gesture: an Input Gesture object, which represents the input that caused the script to run. """),
 "","",_(u"""As well as the actual script method, some form of gesture binding must be defined, so that NVDA knows what input should execute the script. """),
-"",_(u"""To bind a gesture to a script, a special \"\\_\\_gestures\" Python dictionary can be defined as a class variable on the App Module, Global Plugin or NVDA Object. These dictionaries should contain gesture identifier strings pointing to the name of the requested script, without the \"script\\_\" prefix. """),
-"",_(u"""There are more advanced ways of binding gestures in a more dynamic fashion, though the \\_\\_gestures dictionary is the simplest. """),
-"",_(u"""A gesture identifier string is a simple string representation of a piece of input. It consists of a two leter character code denoting the source of the input, an optional device in brackets, a colon \\(:\\) and one or more names separated by a plus \\(+\\) denoting the actual keys or input values. """),
+"",_(u"""A gesture identifier string is a simple string representation of a piece of input. It consists of a two letter character code denoting the source of the input, an optional device in brackets, a colon \\(:\\) and one or more names separated by a plus \\(+\\) denoting the actual keys or input values. """),
 "",_(u"""Some examples of gesture string identifiers are: """),
 "",_(u"""  * \"kb:NVDA+shift+v\" """),
 _(u"""  * \"br\\(freedomScientific\\):leftWizWheelUp\" """),
+_(u"""  * \"br\\(alva.BC640\\):t3\" """),
 _(u"""  * \"kb\\(laptop\\):NVDA+t\" """),
 "","",_(u"""Currently, the input sources in NVDA are: """),
 "",_(u"""  * kb: system keyboard input """),
@@ -248,13 +246,43 @@ _(u"""  * ts: touch screen """),
 _(u"""  * bk: braille keyboard input """),
 "","",_(u"""When NVDA receives input, it looks for a matching gesture binding in a particular order. Once a gesture binding is found, the script is executed and no further bindings are used, nore is that particular gesture passed on automatically to the Operating System. """),
 "",_(u"""The order for gesture binding lookup is: """),
-"",_(u"""  * Loaded Global Plugins """),
+"",_(u"""  * The user specific gesture map """),
+_(u"""  * The locale specific gesture map """),
+_(u"""  * The braille display driver specific gesture map """),
+_(u"""  * Loaded Global Plugins """),
 _(u"""  * App Module of the active application """),
 _(u"""  * Tree Interceptor of the NVDA Object with focus if any; e.g. a virtualBuffer """),
 _(u"""  * NVDA Object with focus """),
 _(u"""  * Global Commands \\(built in commands like quitting NVDA, object navigation commands, etc.\\) """),
-"","",_(u"""You should specify a description of the script in the function's docstring which describes the command for users. For example, this is reported to users when in Input Help mode and shown in the Input Gestures dialog. You specify the docstring by setting a \" _doc_ \" attribute on the script function. The script will not appear in the Input Gestures dialog unless this is specified. """),
-"",_(u"""You can also specify a category for a script so that it can be grouped with other similar scripts. For example, a script in a global plugin which adds browse mode quick navigation keys may be categorized under the \"Browse mode\" category. For individual scripts, this is done by setting a \"category\" attribute on the script function to a string containing the name of the category. You can also set the \"scriptCategory\" attribute on the plugin class, which will be used for scripts which do not specify a category. There are constants for common categories prefixed with SCRCAT\\_ in the inputCore and globalCommands modules. The script will be listed under the specified category in the Input Gestures dialog. If no category is specified, the script will be categorized under \"Miscellaneous\". """),
+"","",_(u"""#### 3.8.1. Defining script properties"""),
+"",_(u"""For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. """),
+"",_(u"""In order for you to use the script decorator, you will have to import it from the scriptHandler module. """),
+_(u"""    """),
+_(u"""    """),
+_(u"""    from scriptHandler import script"""),
+_(u"""    """),
+"",_(u"""After that, just above your script definition, add the script decorator, providing it the desired arguments. For example: """),
+_(u"""    """),
+_(u"""    """),
+_(u"""    --- start ---"""),
+_(u"""    	@script("""),
+_(u"""    		description=_(\"Speaks the date and time\"),"""),
+_(u"""    		category=inputCore.SCRCAT_MISC,"""),
+_(u"""    		gestures=[\"kb:NVDA+shift+t\", \"kb:NVDA+alt+r\"]"""),
+_(u"""    	)"""),
+_(u"""    	def script_sayDateTime(self, gesture):"""),
+_(u"""    """),
+_(u"""    --- end ---"""),
+_(u"""    """),
+"",_(u"""In this example, your script will be listed in the input gestures dialog under the \"Miscellaneous\" category. It will have the description \"Speaks the date and time\", and will be bound to the \"NVDA+shift+t\" and \"NVDA+alt+r\" key combinations on the keyboard. """),
+"",_(u"""The following keyword arguments can be used when applying the script decorator: """),
+"",_(u"""  * description: A short, translatable string which describes the command for users. This is reported to users when in Input Help mode and shown in the input gestures dialog. The script will not appear in the Input Gestures dialog unless you specify a description. """),
+_(u"""  * category: The category of the script in order for it to be grouped with other similar scripts. For example, a script in a global plugin which adds browse mode quick navigation keys may be categorized under the \"Browse mode\" category. The category can be set for individual scripts, but you can also set the \"scriptCategory\" attribute on the plugin class, which will be used for scripts which do not specify a category. There are constants for common categories prefixed with SCRCAT\\_ in the inputCore and globalCommands modules, which can also be specified. The script will be listed under the specified category in the Input Gestures dialog. If no category is specified, the script will be categorized under \"Miscellaneous\". """),
+_(u"""  * gesture: A string containing a single gesture associated with this script, e.g. \"kb:NVDA+shift+r\". """),
+_(u"""  * gestures: A string list of multiple gestures associated with this script, e.g. \\[\"kb:NVDA+shift+r\", \"kb:NVDA+alt+t\"\\]. When both gesture and gestures are specified, they are combined. Either gesture, or any item in gestures can be used to trigger the script. """),
+_(u"""  * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. """),
+_(u"""  * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. """),
+"","",_(u"""Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special \"\\_\\_gestures\" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the \"script\\_\" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a \"category\" attribute on the script function to a string containing the name of the category. """),
 "",_(u"""### 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"""),
 "",_(u"""The following Global Plugin allows you to press NVDA+leftArrow to have the window class of the current focus announced, and NVDA+rightArrow to have the window control ID of the current focus announced. This example shows you how to define one or more scripts and gesture bindings on a class such as an App Module, Global Plugin or NVDA Object. """),
 "",_(u"""Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example3.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. """),
@@ -266,27 +294,31 @@ _(u"""    #Window utility scripts for NVDA"""),
 _(u"""    #Developer guide example 3"""),
 _(u"""    """),
 _(u"""    import globalPluginHandler"""),
+_(u"""    from scriptHandler import script"""),
 _(u"""    import ui"""),
 _(u"""    import api"""),
 _(u"""    """),
 _(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
 _(u"""    """),
+_(u"""    	@script("""),
+_(u"""    		description=_(\"Announces the window class name of the current focus object\"),"""),
+_(u"""    		gesture=\"kb:NVDA+leftArrow\""""),
+_(u"""    	)"""),
 _(u"""    	def script_announceWindowClassName(self, gesture):"""),
 _(u"""    		focusObj = api.getFocusObject()"""),
 _(u"""    		name = focusObj.name"""),
 _(u"""    		windowClassName = focusObj.windowClassName"""),
 _(u"""    		ui.message(\"class for %s window: %s\" % (name, windowClassName))"""),
 _(u"""    """),
+_(u"""    	@script("""),
+_(u"""    		description=_(\"Announces the window control ID of the current focus object\"),"""),
+_(u"""    		gesture=\"kb:NVDA+rightArrow\""""),
+_(u"""    	)"""),
 _(u"""    	def script_announceWindowControlID(self, gesture):"""),
 _(u"""    		focusObj = api.getFocusObject()"""),
 _(u"""    		name = focusObj.name"""),
 _(u"""    		windowControlID = focusObj.windowControlID"""),
 _(u"""    		ui.message(\"Control ID for %s window: %d\" % (name, windowControlID))"""),
-_(u"""    """),
-_(u"""    	__gestures = {"""),
-_(u"""    		\"kb:NVDA+leftArrow\": \"announceWindowClassName\","""),
-_(u"""    		\"kb:NVDA+rightArrow\": \"announceWindowControlID\","""),
-_(u"""    	}"""),
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),
@@ -351,6 +383,7 @@ _(u"""    """),
 _(u"""    """),
 _(u"""    --- start ---"""),
 _(u"""    import appModuleHandler"""),
+_(u"""    from scriptHandler import script"""),
 _(u"""    from NVDAObjects.IAccessible import IAccessible"""),
 _(u"""    import controlTypes"""),
 _(u"""    import ui"""),
@@ -363,12 +396,9 @@ _(u"""    			clsList.insert(0, EnhancedEditField)"""),
 _(u"""    """),
 _(u"""    class EnhancedEditField(IAccessible):"""),
 _(u"""    """),
+_(u"""    	@script(gesture=\"kb:NVDA+l\")"""),
 _(u"""    	def script_reportLength(self, gesture):"""),
 _(u"""    		ui.message(\"%d\" % len(self.value))"""),
-_(u"""    """),
-_(u"""    	__gestures = {"""),
-_(u"""    		\"kb:NVDA+l\": \"reportLength\","""),
-_(u"""    	}"""),
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),

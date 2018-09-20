@@ -1248,7 +1248,7 @@ In case of SPL add-on, I have different Studio versions installed: 5.11 on my la
 
 Like other NVDA developers and many add-on writers, I use Git for source code management (contrary to its slogan, Git is very smart). This is a distributed system, meaning a local repository contains the complete record of how the source code is managed (no need to connect to a server to commit and fetch updates). For example, using just my local copy of the SPL add-on source code, I can view commit history and generate older add-on releases.
 
-Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: next (alpha), master (live beta) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a secon). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes.
+Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: alpha (master branch), beta (beta branch) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a second). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes (in 2018, this has changed significanlty).
 
 ### How an add-on feature is born
 
@@ -1304,6 +1304,21 @@ With this in mind, the following things were changed in 2017:
 * Anyone can switch to try build branch (now called fast ring snapshots) provided that they are willing to provide early feedback.
 * Long-term support updates are now tied to new major Studio releases. This criteria was extended in late 2017 to include critical changes to NVDA (see below).
 
+#### Further changes in 2018
+
+In July 2018, NV Access announced changes to NVDA's release process in order to make testing and integration easier. Prior to this, an NVDA feature was incubated in the next snapshot for at least two weeks, and this meant having to deal with increasing number of pull requests which sometimes produced conflicts. To avoid this, and to let features come to master branch directly, what used to be live beta (master) branch became "alpha" snapshots. People who wanted more stability were moved to beta releases.
+
+On the SPL add-on side, Test Drive Fast and Slow ring builds have become identical in late July 2018. I also felt that add-on development has slowed down considerably, as well as preparing for the next long-term support release (18.09), thus I felt an overhaul of Test Drive Program was in order.
+
+Then in August 2018, I released Add-on Updater, a proof of concept add-on that allows NVDA to check for add-on updates for all add-ons registered with NVDA Community Add-ons website. In its early days, SPL add-on was excluded because it interfered with Add-on Updater's own update check facility. In reality, I generalized SPL add-on's update check code and transfered it to the new Add-on Updater, hence almost identical internals.
+
+Given that my long-term goal is to let NVDA itself check for SPL add-on updates, coupled with observations from above, I asked the community if it would be better to change the nature of Test Drive Fast ring and to let Add-on Updater check for all add-on updates. The community agreed, hence the following changes were made in August 2018 prior to release of 18.09:
+
+* Test Drive Fast and Slow rings were combined into a single "development" channel. Consequently, there is no more update channel selection capability, with users encouraged to obtain the right releases from add-ons website. This was extended in September 2018 to cover long-term support releases.
+* A new concept of "pilot features" replaced Test Drive Fast, configurable via a checkbox and internal flags.
+* New features under development will be enabled if pilot features facility is turned on, otherwise content is identical to regular development build.
+* Add-on update checking facility is now taken care of by Add-on Updater, and in the future, to be done by NVDA itself.
+
 #### Long-term support release
 
 A typical add-on version is supported until the next add-on version is released (currently several weeks to months). However, there are times when an add-on version receives extended support (termed long-term support (LTS) release). This happens if the next major version of Studio is released, a version of Studio with user interface changes is released, or critical changes are expected in future NVDA releases such as ending support for a Windows version.
@@ -1315,15 +1330,13 @@ A LTS version is a major version or a major periodic release of the SPL add-on w
 * Studio version supported: A LTS version is the last version to support the oldest supported Studio version. This is designed to give people plenty of time to upgrade to newer Studio releases.
 * Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria will first be applied to an LTS release scheduled for 2018 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1, as well as planned transition to Python 3.
 
-As of June 2018, the most recent LTS version is add-on 15.x, formerly 7.x until October 2016 (October 2016 to April 2018). Previous LTS release (and so far the only unsupported LTS by far) was 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
+As of September 2018, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019 at the earliest). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
 
 1. Add-on 3.0 was released in September 2014.
 2. Add-on 3.5 (December 2014) could have been the last maintenance version for add-on 3.x if it was not a LTS version.
 3. When add-on 4.0 was released (January 2015), add-on 3.6 was released, backporting some features from 4.0. Users were told that add-on 3.x will be the last version to support Studio versions earlier than 5.00. From that time on, add-on 3.x was taken off the stable branch and was moved to an internal branch.
 4. When add-on 5.0 beta was released (May 2015), add-on 3.x (3.9 was available then) entered end of support countdown (no more maintenance releases).
 5. A few weeks later, when add-on 5.0 came out (June 2015), add-on 3.x became unsupported.
-
-The next LTS release is scheduled for late 2018 not only because it will be the last version to support Studio 5.10 (not 5.11), and also to part ways with Python 2, as NVDA developers are planning to switch to Python 3 in the near future, hence future stable releases after the next LTS will be based mostly on Python 3 code.
 
 ### Final thoughts
 

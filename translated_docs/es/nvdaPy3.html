@@ -54,7 +54,7 @@
 <li>Renombrar la palabra clave a "asynchronous".</li>
 </ul>
 </li>
-<li>Diferencias de división (operadores / y //), que afectan especialmente a nvwave.WavePlayer.<ul>
+<li>Diferencias de división (operadores / y //), que afectan especialmente a nvwave.WavePlayer y a la manipulación del cursor del ratón.<ul>
 <li>Estandarizar la división redondeando a la baja (//) para enteros, división regular (/) para números reales.</li>
 </ul>
 </li>
@@ -63,8 +63,9 @@
 <li>Esto se complica al trabajar con funciones en C (la dll de Espeak, por ejemplo), donde esperan cadenas ANSI pero Python las envía como Unicode.</li>
 </ul>
 </li>
-<li>Módulos eliminados, incluyendo new.instancemethod.<ul>
+<li>Módulos eliminados e incompatibles, incluyendo new.instancemethod.<ul>
 <li>Encontrar un equivalente en Python 3, o usar las características incorporadas en Python.</li>
+<li>Se puede decir lo mismo de las dependencias (txt2tags, por ejemplo).</li>
 </ul>
 </li>
 <li>Proporciona un método <strong>hash</strong> para las clases que implementen el método <strong>eq</strong> (NVDAObjects.NVDAObject, por ejemplo).<ul>
@@ -89,7 +90,7 @@
 </ul>
 <h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
 <ul>
-<li>Python 3.7.0 de 32 bits</li>
+<li>Python 3.7.x de 32 bits</li>
 <li>Visual Studio 2017 (Community, Professional, Enterprise)</li>
 <li>Windows 10 SDK (compilación 17134)</li>
 <li>wxPython 4.0.3 para Python 3.x</li>
@@ -101,18 +102,33 @@
 <li>Configobj 5.1.0</li>
 <li>Cualquier otra dependencia anunciando soporte para Python 2.x en un paquete o con una versión distinta para Python 3.x</li>
 <li>Un reemplazo para py2exe para la distribución binaria</li>
+<li>Un reemplazo para txt2tags para generar la documentación</li>
 </ul>
 <h3 id="antes-de-la-transicion">Antes de la transición:</h3>
+<p>Fecha de inicio: 17 de septiembre de 2018 (designación provisional)</p>
 <ol>
-<li>Se debe liberar una versión de NVDA que funcione con WXPython 4. Esto es necesario, ya que WXPython 4 soporta Python 3, lo que supone un paso en la transición.</li>
-<li>Las dependencias a nivel de código fuente deben satisfacerse. Esto no sólo incluye WXPython 4, sino también ConfigObj, Comtypes, Pyserial, Pywin32 y otras.</li>
-<li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas).</li>
-<li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).</li>
+<li>Se debe liberar una versión de NVDA que funcione con WXPython 4. Esto es necesario, ya que WXPython 4 soporta Python 3, lo que supone un paso en la transición.<ul>
+<li>Requisito satisfecho el 17 de septiembre de 2018 con la liberación de NVDA 2018.3.</li>
+</ul>
+</li>
+<li>Las dependencias a nivel de código fuente deben satisfacerse. Esto no sólo incluye WXPython 4, sino también ConfigObj, Comtypes, Pyserial, Pywin32 y otras.<ul>
+<li>Es necesario editar la configuración de los submódulos Git.</li>
+</ul>
+</li>
+<li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas). Usa la etiqueta "python 3".<ul>
+<li>A fecha de 20 de septiembre de 2018, se han identificado 15 problemas, que llevan asociadas sus respectivas solicitudes de cambio.</li>
+</ul>
+</li>
+<li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).<ul>
+<li>Con fecha 20 de septiembre de 2018, se ha enviado e integrado al menos una solicitud de cambio relacionada con la transición en la rama master.</li>
+</ul>
+</li>
 </ol>
-<p>Finalización ideal: entre las versiones 2018.4 y 2019.1 de NVDA.</p>
+<p>Finalización ideal: entre las versiones 2018.4 y 2019.1 de NVDA (provisionalmente el 31 de marzo de 2019).</p>
 <h3 id="transicion">Transición:</h3>
+<p>Fecha de inicio: no especificada</p>
 <ol>
-<li>Un grupo de desarrolladores (contribuyentes del código, desarrolladores de complementos, programadores Python de fuera del proyecto NVDA y otros) deberían trabajar en transformar el código fuente de NVDA a Python 3.<ul>
+<li>Un grupo de desarrolladores (colaboradores de código, desarrolladores de complementos, programadores Python de fuera del proyecto NVDA y otros) deberían trabajar en transformar el código fuente de NVDA a Python 3.<ul>
 <li>No ejecutar el script 2to3 diciéndole que reemplace archivos, ya que se deben hacer retoques adicionales.</li>
 <li>Para cada transformación en la iteración, probar el código para asegurarse de que la funcionalidad es idéntica (o casi idéntica) a la de versiones de NVDA antiguas.</li>
 </ul>
@@ -137,6 +153,7 @@
 </ol>
 <p>Finalización estimada: de cuatro a seis meses después de que se completen los pasos previos a la transición.</p>
 <h3 id="despues-de-la-transicion">Después de la transición:</h3>
+<p>Fecha de inicio: no especificada</p>
 <ol>
 <li>Se debe liberar una beta de NVDA que funcione con Python 3.</li>
 <li>Los miembros del público deberían proporcionar comentarios a nivel de beta.</li>
@@ -151,20 +168,23 @@
 <li>17 de julio de 2018: se liberó una alpha de NVDA con WXPython 4.0.3 integrado.</li>
 <li>17 de agosto de 2018: se liberó NVDA 2018.3 beta 3, la primera versión beta que funciona con WXPython 4.0.3.</li>
 <li>21 de agosto de 2018: las versiones de desarrollo alpha incluyen importaciones editadas para Python 3. El código fuente cambia para utilizar nombres de módulos de Python 3 en la mayor parte de los casos.</li>
+<li>17 de septiembre de 2018: se libera NVDA 2018.3 con WXPython 4.0.3, con una versión que le sigue (2018.3.1) 48 horas después.</li>
 </ol>
 </li>
 <li>Transición: todavía no ha empezado.</li>
 <li>Después de la transición: todavía no ha empezado.</li>
 </ol>
 <h2 id="notas-para-diversas-audiencias">Notas para diversas audiencias</h2>
-<h3 id="para-contribuyentes-de-codigo">Para contribuyentes de código:</h3>
+<h3 id="para-colaboradores-de-codigo">Para colaboradores de código:</h3>
 <ul>
 <li>Documenta problemas reales y potenciales al trabajar con Python 3, incluyendo módulos cambiados, cambios en nombres de atributos, cambios internos y demás.</li>
 <li>Al importar un módulo incorporado en Python, debes usar try / except mientras se importa.<ul>
 <li>Intenta importar el nombre Python 2 como nombre Python 3, cambiando a la versión de Python 3 cuando el módulo de Python 2 haya sido renombrado o no se encuentre.</li>
 <li>Mira el código fuente de NVDA para ver los pasos de la implementación.</li>
+<li>Esto se hace para el trabajo previo a la transición. Durante la transición, se debería intentar primero la importación con Python 3.</li>
 </ul>
 </li>
+<li>Se deben etiquetar las incidencias con la etiqueta "Python 3" en GitHub.</li>
 <li>Las solicitudes de cambio deberían estar basadas en la rama master a menos que los desarrolladores principales especifiquen lo contrario.</li>
 <li>Intenta usar un nombre de rama de la forma "py3<em>", donde "</em>" indique una característica de Python 3. Por ejemplo, py3socketserver para cambios en el módulo del servidor de sockets.</li>
 <li>Si trabajas con módulos Python incorporados, asegúrate de probar tu código con los intérpretes Python 2.7 y 3.7 antes de hacer cambios al código fuente de NVDA.<ul>

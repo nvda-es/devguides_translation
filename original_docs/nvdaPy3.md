@@ -43,13 +43,14 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 	* Investigate streaming/file handler/redirection issue.
 * Use of "async" in Python 3, which affects nvwave.playWaveFile(async=True) as this raises syntax error.
 	* Rename the keyword to "asynchronous".
-* Division differences (/ versus //), most notably in nvwave.WavePlayer.
+* Division differences (/ versus //), most notably in nvwave.WavePlayer and manipulating mouse cursor.
 	* Standardize around floor division (//) for integer values, regular division (/) for floats.
 * Bytes versus strings caused by encoding.
 	* Try unifying under Unicode.
 	* This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
-* Removed modules, including new.instancemethod.
+* Removed and incompatible modules, including new.instancemethod.
 	* Either find a Python 3 equivalent, or use built-in Python features.
+	* Same can be said about dependencies (txt2tags, for example).
 * Provide __hash__ method for classes implementing __eq__ method (NVDAObjects.NVDAObject, for instance).
 	* This is required due to hash randomization in python 3.3 and later.
 	* One of the simplest solutions is to use the parent object's __hash__ method (__hash__ = parentClass.__hash__).
@@ -64,7 +65,7 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 
 ### Needed dependencies:
 
-* Python 3.7.0 32-bit
+* Python 3.7.x 32-bit
 * Visual Studio 2017 (Community, Professional, Enterprise)
 * Windows 10 SDK (build 17134)
 * wxPython 4.0.3 for Python 3.x
@@ -76,17 +77,26 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 * Configobj 5.1.0
 * Any other dependencies advertising support for Python 2.x in one package or a separate release for Python 3.x
 * A replacement for py2exe for binary distribution
+* A replacement for txt2tags for generating documentation
 
-### Before the transition:
+### Before transition:
+
+Start date: September 17, 2018 (tentative designation)
 
 1. An NVDA version with wxPython 4 must be released. This is needed, as wxPython 4 supports Python 3, which is a stepping stone for Python 3 transition.
+	* Requirement met on September 17, 2018 with release of NVDA 2018.3.
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
-3. Transition issues must be researched and documented (see above for known issues and proposed workarounds).
+	* Requires editing Git submodule config.
+3. Transition issues must be researched and documented (see above for known issues and proposed workarounds). Use "python 3" label.
+	* As of September 20, 2018, at least 15 issues were identified, along with several pull requests.
 4. If needed, create pull requests dealing with pre-transition workflow such as making NVDA source code Python 2 and 3 aware (imports, for instance).
+	* As of September 20, 2018, at least one transition related pull request was submitted and merged into master branch.
 
-Ideal completion: between NVDA 2018.4 and 2019.1 releases.
+Ideal completion: between NVDA 2018.4 and 2019.1 releases (tentatively by March 31, 2019)
 
 ### Transition:
+
+Start date: TBD
 
 1. A group of developers (code contributors, add-on developers, Python programmers outside of NVDA project and others) should work on transforming NVDA's source code to Python 3.
 	* Do not run 2to3 and tell the script to replace files, as further tweaking is required for some files.
@@ -107,6 +117,8 @@ Estimated completion: four to six months after pre-transition steps are complete
 
 ### After transition:
 
+Start date: TBD
+
 1. A beta of NVDA powered by python 3 must be released.
 2. Members of the public should provide beta-level feedback.
 3. Add-on developers are asked to start porting their add-ons to Python 3.
@@ -121,6 +133,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	1. July 17, 2018: NVDA alpha snapshot powered by wxPython 4.0.3 was released.
 	2. August 17, 2018: NVDA 2018.3 beta 3, the first beta release powered by wxPython 4.0.3, was released.
 	3. August 21, 2018: alpha snapshots include Python 3 import edits. Source code changed to use Python 3 module names in most cases.
+	4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later.
 2. Transition: Not yet begun.
 3. After transition: not yet begun.
 
@@ -132,6 +145,8 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 * When importing a built-in Python module, use try/except when importing modules.
 	* Try importing Python 2 names as Python 3 name, switching to Python 3 version when Python 2 module is not found or renamed.
 	* See NVDA source code for implementation steps.
+	* This is for work prior to transition. During transition, Python 3 import should be attempted first.
+* Issues should be labeled as "python 3".
 * Pull requests should be based on master branch unless specified by lead developers.
 * Try using branch name of the form "py3*" where "*" denotes Python 3 feature e.g. py3socketserver for changes to socket server module.
 * If working with built-in Python modules, be sure to test your code via Python 2.7 and 3.7 interpreter before making changes to NVDA source code.
@@ -154,7 +169,7 @@ Nothing yet.
 
 ### For users:
 
-nothin yet.
+nothing yet.
 
 ### For organizations:
 

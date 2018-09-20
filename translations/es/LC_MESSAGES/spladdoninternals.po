@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-09-02 20:14+Hora de verano romance\n"
-"PO-Revision-Date: 2018-09-04 12:07+0200\n"
+"POT-Creation-Date: 2018-09-20 13:29+Hora de verano romance\n"
+"PO-Revision-Date: 2018-09-20 13:50+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -8222,17 +8222,30 @@ msgstr ""
 "generar versiones antiguas del complemento."
 
 #: ..\python_docs\spladdoninternals.py:760
+#, fuzzy
+#| msgid ""
+#| "Another advantage of Git is extensive support for branches. A branch is a "
+#| "development workflow separate from other branches. For example, NVDA "
+#| "screen reader uses at least three branches for its workflow: next "
+#| "(alpha), master (live beta) and rc (release candidate, used to build "
+#| "official releases). SPL add-on uses this approach as well: there are at "
+#| "least two branches in use, called master and stable used for ongoing "
+#| "development or release and maintenance, respectively (we'll come back to "
+#| "branches in a secon). With the advent of Test Drive program (see below), "
+#| "a third branch named \"staging\" or \"next\" is used to gather all work "
+#| "done on branches under one roof for testing purposes."
 msgid ""
 "Another advantage of Git is extensive support for branches. A branch is a "
 "development workflow separate from other branches. For example, NVDA screen "
-"reader uses at least three branches for its workflow: next (alpha), master "
-"(live beta) and rc (release candidate, used to build official releases). SPL "
-"add-on uses this approach as well: there are at least two branches in use, "
-"called master and stable used for ongoing development or release and "
-"maintenance, respectively (we'll come back to branches in a secon). With the "
-"advent of Test Drive program (see below), a third branch named \"staging\" "
-"or \"next\" is used to gather all work done on branches under one roof for "
-"testing purposes."
+"reader uses at least three branches for its workflow: alpha (master branch), "
+"beta (beta branch) and rc (release candidate, used to build official "
+"releases). SPL add-on uses this approach as well: there are at least two "
+"branches in use, called master and stable used for ongoing development or "
+"release and maintenance, respectively (we'll come back to branches in a "
+"second). With the advent of Test Drive program (see below), a third branch "
+"named \"staging\" or \"next\" is used to gather all work done on branches "
+"under one roof for testing purposes (in 2018, this has changed "
+"significanlty)."
 msgstr ""
 "Otra ventaja de Git es su extenso soporte para ramas. Una rama es un flujo "
 "de trabajo separado de otras ramas. Por ejemplo, el lector de pantalla NVDA "
@@ -8667,10 +8680,78 @@ msgstr ""
 "incluir cambios críticos en NVDA (mira más abajo)."
 
 #: ..\python_docs\spladdoninternals.py:795
+msgid "#### Further changes in 2018"
+msgstr "#### Más cambios en 2018"
+
+#: ..\python_docs\spladdoninternals.py:796
+msgid ""
+"In July 2018, NV Access announced changes to NVDA's release process in order "
+"to make testing and integration easier. Prior to this, an NVDA feature was "
+"incubated in the next snapshot for at least two weeks, and this meant having "
+"to deal with increasing number of pull requests which sometimes produced "
+"conflicts. To avoid this, and to let features come to master branch "
+"directly, what used to be live beta (master) branch became \"alpha\" "
+"snapshots. People who wanted more stability were moved to beta releases."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:797
+msgid ""
+"On the SPL add-on side, Test Drive Fast and Slow ring builds have become "
+"identical in late July 2018. I also felt that add-on development has slowed "
+"down considerably, as well as preparing for the next long-term support "
+"release (18.09), thus I felt an overhaul of Test Drive Program was in order."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:798
+msgid ""
+"Then in August 2018, I released Add-on Updater, a proof of concept add-on "
+"that allows NVDA to check for add-on updates for all add-ons registered with "
+"NVDA Community Add-ons website. In its early days, SPL add-on was excluded "
+"because it interfered with Add-on Updater's own update check facility. In "
+"reality, I generalized SPL add-on's update check code and transfered it to "
+"the new Add-on Updater, hence almost identical internals."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:799
+msgid ""
+"Given that my long-term goal is to let NVDA itself check for SPL add-on "
+"updates, coupled with observations from above, I asked the community if it "
+"would be better to change the nature of Test Drive Fast ring and to let Add-"
+"on Updater check for all add-on updates. The community agreed, hence the "
+"following changes were made in August 2018 prior to release of 18.09:"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:800
+msgid ""
+"* Test Drive Fast and Slow rings were combined into a single \"development\" "
+"channel. Consequently, there is no more update channel selection capability, "
+"with users encouraged to obtain the right releases from add-ons website. "
+"This was extended in September 2018 to cover long-term support releases."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:801
+msgid ""
+"* A new concept of \"pilot features\" replaced Test Drive Fast, configurable "
+"via a checkbox and internal flags."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:802
+msgid ""
+"* New features under development will be enabled if pilot features facility "
+"is turned on, otherwise content is identical to regular development build."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:803
+msgid ""
+"* Add-on update checking facility is now taken care of by Add-on Updater, "
+"and in the future, to be done by NVDA itself."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:804
 msgid "#### Long-term support release"
 msgstr "#### Versión de soporte extendido"
 
-#: ..\python_docs\spladdoninternals.py:796
+#: ..\python_docs\spladdoninternals.py:805
 msgid ""
 "A typical add-on version is supported until the next add-on version is "
 "released (currently several weeks to months). However, there are times when "
@@ -8688,7 +8769,7 @@ msgstr ""
 "interfaz de usuario, o se esperan cambios críticos en versiones futuras de "
 "NVDA tales como finalización de soporte para una versión de Windows."
 
-#: ..\python_docs\spladdoninternals.py:797
+#: ..\python_docs\spladdoninternals.py:806
 msgid ""
 "A LTS version is a major version or a major periodic release of the SPL add-"
 "on with some notable differences:"
@@ -8696,14 +8777,14 @@ msgstr ""
 "Una versión lts es una versión mayor o una versión periódica del complemento "
 "de SPL con algunas diferencias destacables:"
 
-#: ..\python_docs\spladdoninternals.py:798
+#: ..\python_docs\spladdoninternals.py:807
 msgid ""
 "* Support duration: A LTS version is supported for at least twelve months."
 msgstr ""
 "* Duración del soporte: una versión LTS recibe soporte durante al menos doce "
 "meses."
 
-#: ..\python_docs\spladdoninternals.py:799
+#: ..\python_docs\spladdoninternals.py:808
 msgid ""
 "* Features: A LTS version may contain some features from future add-on "
 "releases provided that they can be safely backported."
@@ -8711,7 +8792,7 @@ msgstr ""
 "* Características: una versión lts puede contener algunas características de "
 "versiones futuras del complemento que pueden agregarse de forma segura."
 
-#: ..\python_docs\spladdoninternals.py:800
+#: ..\python_docs\spladdoninternals.py:809
 msgid ""
 "* Studio version supported: A LTS version is the last version to support the "
 "oldest supported Studio version. This is designed to give people plenty of "
@@ -8722,7 +8803,7 @@ msgstr ""
 "para dar a la gente todo el tiempo posible para actualizarse a una nueva "
 "versión de Studio."
 
-#: ..\python_docs\spladdoninternals.py:801
+#: ..\python_docs\spladdoninternals.py:810
 msgid ""
 "* Last version with old NVDA technology in use: in some cases, LTS releases "
 "are made to support users of old NVDA releases. After the LTS release is "
@@ -8739,24 +8820,26 @@ msgstr ""
 "soporte de NVDA para Windows XP, Vista y 7 sin Service Pack 1, así como para "
 "la transición planeada a Python 3."
 
-#: ..\python_docs\spladdoninternals.py:802
+#: ..\python_docs\spladdoninternals.py:811
 msgid ""
-"As of June 2018, the most recent LTS version is add-on 15.x, formerly 7.x "
-"until October 2016 (October 2016 to April 2018). Previous LTS release (and "
-"so far the only unsupported LTS by far) was 3.x (September 2014 to June "
-"2015). For example, add-on 3.x was maintained thus:"
+"As of September 2018, the most recent LTS version is add-on 18.09.x "
+"(September 2018 to December 2019 at the earliest). Previous LTS releases "
+"have included 15.x (formerly 7.x until October 2016; October 2016 to April "
+"2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was "
+"maintained thus:"
 msgstr ""
-"En junio de 2018, la versión lts más reciente del complemento es la 15.x, "
-"conocida como 7.x hasta octubre de 2016 (de octubre de 2016 a abril de "
-"2018). La versión lts anterior (y hasta ahora la única versión sin soporte "
-"por el momento) era la 3.x (de septiembre de 2014 a junio de 2015). Por "
-"ejemplo, el complemento 3.x se mantuvo de la siguiente manera:"
+"A fecha de septiembre de 2018, la versión LTS más reciente es la 18.09.x "
+"(desde septiembre de 2018 hasta diciembre de 2019 como muy pronto). Entre "
+"las versiones LTS anteriores se incluyen la 15.x, conocida como 7.x hasta "
+"octubre de 2016 (de octubre de 2016 a abril de 2018). La versión lts "
+"anterior era la 3.x (de septiembre de 2014 a junio de 2015). Por ejemplo, el "
+"complemento 3.x se mantuvo de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:803
+#: ..\python_docs\spladdoninternals.py:812
 msgid "1. Add-on 3.0 was released in September 2014."
 msgstr "1. El complemento 3.0 fue publicado en 2014."
 
-#: ..\python_docs\spladdoninternals.py:804
+#: ..\python_docs\spladdoninternals.py:813
 msgid ""
 "2. Add-on 3.5 (December 2014) could have been the last maintenance version "
 "for add-on 3.x if it was not a LTS version."
@@ -8765,7 +8848,7 @@ msgstr ""
 "versión de mantenimiento del complemento 3.x si no hubiera sido una versión "
 "lts."
 
-#: ..\python_docs\spladdoninternals.py:805
+#: ..\python_docs\spladdoninternals.py:814
 msgid ""
 "3. When add-on 4.0 was released (January 2015), add-on 3.6 was released, "
 "backporting some features from 4.0. Users were told that add-on 3.x will be "
@@ -8779,7 +8862,7 @@ msgstr ""
 "de Studio anteriores a la 5.00. A partir de entonces, el complemento 3.x se "
 "trasladó desde la rama stable a una rama interna."
 
-#: ..\python_docs\spladdoninternals.py:806
+#: ..\python_docs\spladdoninternals.py:815
 msgid ""
 "4. When add-on 5.0 beta was released (May 2015), add-on 3.x (3.9 was "
 "available then) entered end of support countdown (no more maintenance "
@@ -8789,7 +8872,7 @@ msgstr ""
 "complemento 3.x (3.9 por entonces) entró en la cuenta atrás de fin de "
 "soporte (sin más versiones de mantenimiento)."
 
-#: ..\python_docs\spladdoninternals.py:807
+#: ..\python_docs\spladdoninternals.py:816
 msgid ""
 "5. A few weeks later, when add-on 5.0 came out (June 2015), add-on 3.x "
 "became unsupported."
@@ -8797,26 +8880,11 @@ msgstr ""
 "5. Unas semanas más tardes, cuando llegó el complemento 5.0 (junio de 2015), "
 "el complemento 3.x se quedó sin soporte."
 
-#: ..\python_docs\spladdoninternals.py:808
-msgid ""
-"The next LTS release is scheduled for late 2018 not only because it will be "
-"the last version to support Studio 5.10 (not 5.11), and also to part ways "
-"with Python 2, as NVDA developers are planning to switch to Python 3 in the "
-"near future, hence future stable releases after the next LTS will be based "
-"mostly on Python 3 code."
-msgstr ""
-"La próxima versión lts está prevista para finales del 2018, no sólo porque "
-"será la última versión que soporte Studio 5.10 (y no 5.11), sino porque "
-"también dejará atrás Python 2, ya que los desarrolladores de NVDA están "
-"planeando pasar a Python 3 en el futuro cercano, por lo que las futuras "
-"versiones estables después de la próxima LTS estarán basadas en su mayoría "
-"en código de Python 3."
-
-#: ..\python_docs\spladdoninternals.py:809
+#: ..\python_docs\spladdoninternals.py:817
 msgid "### Final thoughts"
 msgstr "### Consideraciones finales"
 
-#: ..\python_docs\spladdoninternals.py:810
+#: ..\python_docs\spladdoninternals.py:818
 msgid ""
 "As I end this article on StationPlaylist Studio Add-on Internals, I feel it "
 "is time I reveal why my add-ons are free: it is because I love you users and "
@@ -8842,7 +8910,7 @@ msgstr ""
 "todo el código de mis complementos (incluido el complemento de SPL Studio) "
 "será libre y cualquiera es bienvenido para estudiarlo y mejorarlo."
 
-#: ..\python_docs\spladdoninternals.py:811
+#: ..\python_docs\spladdoninternals.py:819
 msgid ""
 "For add-on writers looking for quality add-on documentation, I hope this "
 "series gave you an inspiration as to how to write amazing documentation in "
@@ -8864,11 +8932,11 @@ msgstr ""
 "hacerlo. Gracias a los revisores de la comunidad de complementos por vuestro "
 "soporte continuo y vuestras revisiones."
 
-#: ..\python_docs\spladdoninternals.py:812
+#: ..\python_docs\spladdoninternals.py:820
 msgid "### Important notices and credits"
 msgstr "### Avisos importantes y créditos"
 
-#: ..\python_docs\spladdoninternals.py:813
+#: ..\python_docs\spladdoninternals.py:821
 msgid ""
 "I'd like to thank StationPlaylist staff for continued collaboration with "
 "screen reader users in regards to accessibility of Studio. A special thanks "
@@ -8885,7 +8953,7 @@ msgstr ""
 "para vosotros, los usuarios del complemento para SPL, por vuestros continuos "
 "comentarios y por enseñarme cosas nuevas sobre Studio."
 
-#: ..\python_docs\spladdoninternals.py:814
+#: ..\python_docs\spladdoninternals.py:822
 msgid ""
 "Source code notice: to protect copyrights, parts of Studio API has not been "
 "documented. Also, source code discussed throughout this series may change as "
@@ -8896,7 +8964,7 @@ msgstr ""
 "expuesto a lo largo de este artículo puede cambiar según se desarrollen "
 "versiones futuras del complemento."
 
-#: ..\python_docs\spladdoninternals.py:815
+#: ..\python_docs\spladdoninternals.py:823
 msgid ""
 "Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders "
 "are copyright StationPlaylist.com. NonVisual Desktop Access is copyright "
@@ -8918,11 +8986,11 @@ msgstr ""
 "mencionados tienen copyright de sus respectivos propietarios (las licencias "
 "varían)."
 
-#: ..\python_docs\spladdoninternals.py:816
+#: ..\python_docs\spladdoninternals.py:824
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\spladdoninternals.py:817
+#: ..\python_docs\spladdoninternals.py:825
 msgid ""
 "1. JAWS scripts for StationPlaylist Studio (Hartgen Consultancy): http://www."
 "hartgen.org/studio.html"
@@ -8930,7 +8998,7 @@ msgstr ""
 "1. Scripts de JAWS para StationPlaylist Studio (Hartgen Consultancy): http://"
 "www.hartgen.org/studio.html"
 
-#: ..\python_docs\spladdoninternals.py:818
+#: ..\python_docs\spladdoninternals.py:826
 msgid ""
 "2. Window-Eyes app for StationPlaylist (Jeff Bishop/AI Squared): https://www."
 "gwmicro.com/App_Central/Apps/App_Details/index.php?"
@@ -8940,13 +9008,13 @@ msgstr ""
 "https://www.gwmicro.com/App_Central/Apps/App_Details/index.php?"
 "scriptid=1268&readMore&media=print"
 
-#: ..\python_docs\spladdoninternals.py:819
+#: ..\python_docs\spladdoninternals.py:827
 msgid ""
 "3. Plug-in (Wikipedia): https://en.wikipedia.org/wiki/Plug-in_(computing)"
 msgstr ""
 "3. Plug-in (Wikipedia): https://en.wikipedia.org/wiki/Plug-in_(computing)"
 
-#: ..\python_docs\spladdoninternals.py:820
+#: ..\python_docs\spladdoninternals.py:828
 msgid ""
 "4. Application Programming Interface (Wikipedia): https://en.wikipedia.org/"
 "wiki/Application_programming_interface"
@@ -8954,7 +9022,7 @@ msgstr ""
 "4. Application Programming Interface (Wikipedia): https://en.wikipedia.org/"
 "wiki/Application_programming_interface"
 
-#: ..\python_docs\spladdoninternals.py:821
+#: ..\python_docs\spladdoninternals.py:829
 msgid ""
 "5. Python 2.7.13 documentation overview (Python Software Foundation): "
 "https://docs.python.org/2/"
@@ -8962,12 +9030,12 @@ msgstr ""
 "5. Descripción de la documentación de Python 2.7.13 (Python Software "
 "Foundation): https://docs.python.org/2/"
 
-#: ..\python_docs\spladdoninternals.py:822
+#: ..\python_docs\spladdoninternals.py:830
 msgid "6. Handle (Wikipedia): https://en.wikipedia.org/wiki/Handle_(computing)"
 msgstr ""
 "6. Handle (Wikipedia): https://en.wikipedia.org/wiki/Handle_(computing)"
 
-#: ..\python_docs\spladdoninternals.py:823
+#: ..\python_docs\spladdoninternals.py:831
 msgid ""
 "7. What is a Windows handle (Stack Overflow): http://stackoverflow.com/"
 "questions/902967/what-is-a-windows-handle"
@@ -8975,7 +9043,7 @@ msgstr ""
 "7. Qué es un manejador de Windows (Stack Overflow): http://stackoverflow.com/"
 "questions/902967/what-is-a-windows-handle"
 
-#: ..\python_docs\spladdoninternals.py:824
+#: ..\python_docs\spladdoninternals.py:832
 msgid ""
 "8. FindWindow (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx"
@@ -8983,7 +9051,7 @@ msgstr ""
 "8. Referencia de FindWindow (user32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:825
+#: ..\python_docs\spladdoninternals.py:833
 msgid ""
 "9. SendMessage (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms644950(v=vs.85).aspx"
@@ -8991,7 +9059,7 @@ msgstr ""
 "9. Referencia de SendMessage (user32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms644950(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:826
+#: ..\python_docs\spladdoninternals.py:834
 msgid ""
 "10. NVDA Developer Guide (NV Access): http://www.nvaccess.org/files/nvda/"
 "documentation/developerGuide.html"
@@ -8999,7 +9067,7 @@ msgstr ""
 "10. Guía del desarrollador de NVDA (NV Access): http://www.nvaccess.org/"
 "files/nvda/documentation/developerGuide.html"
 
-#: ..\python_docs\spladdoninternals.py:827
+#: ..\python_docs\spladdoninternals.py:835
 msgid ""
 "11. OpenProcess (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms684320(v=vs.85).aspx"
@@ -9007,13 +9075,13 @@ msgstr ""
 "11. Referencia de OpenProcess (kernel32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms684320(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:828
+#: ..\python_docs\spladdoninternals.py:836
 msgid "12. wxPython online docs: http://www.wxpython.org/onlinedocs.php"
 msgstr ""
 "12. Documentación en línea de wxPython: http://www.wxpython.org/onlinedocs."
 "php"
 
-#: ..\python_docs\spladdoninternals.py:829
+#: ..\python_docs\spladdoninternals.py:837
 msgid ""
 "13. Higher order functions (How do you make a higher order function): http://"
 "effbot.org/pyfaq/how-do-you-make-a-higher-order-function-in-python.htm"
@@ -9021,7 +9089,7 @@ msgstr ""
 "13. Funciones de alto nivel (cómo hacer una función de alto nivel): http://"
 "effbot.org/pyfaq/how-do-you-make-a-higher-order-function-in-python.htm"
 
-#: ..\python_docs\spladdoninternals.py:830
+#: ..\python_docs\spladdoninternals.py:838
 msgid ""
 "14. Time (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/time.html"
@@ -9029,7 +9097,7 @@ msgstr ""
 "14. Time (Documentación de Python, Python Software Foundation): https://docs."
 "python.org/2/library/time.html"
 
-#: ..\python_docs\spladdoninternals.py:831
+#: ..\python_docs\spladdoninternals.py:839
 msgid ""
 "15. GetTimeFormat (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/dd318130(v=vs.85).aspx"
@@ -9037,12 +9105,12 @@ msgstr ""
 "15. Referencia de GetTimeFormat (kernel32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/dd318130(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:832
+#: ..\python_docs\spladdoninternals.py:840
 msgid "16. Event loop (Wikipedia): https://en.wikipedia.org/wiki/Event_loop"
 msgstr ""
 "16. Bucle de eventos (Wikipedia): https://en.wikipedia.org/wiki/Event_loop"
 
-#: ..\python_docs\spladdoninternals.py:833
+#: ..\python_docs\spladdoninternals.py:841
 msgid ""
 "17. Event-driven programming (Wikipedia): https://en.wikipedia.org/wiki/"
 "Event-driven_programming"
@@ -9050,7 +9118,7 @@ msgstr ""
 "17. Programación dirigida por eventos (Wikipedia): https://en.wikipedia.org/"
 "wiki/Event-driven_programming"
 
-#: ..\python_docs\spladdoninternals.py:834
+#: ..\python_docs\spladdoninternals.py:842
 msgid ""
 "18. Sinclair, Rob. Microsoft Active Accessibility architecture, Microsoft "
 "Developer Network, August 2000. https://msdn.microsoft.com/en-us/library/"
@@ -9060,7 +9128,7 @@ msgstr ""
 "Developer Network, Agosto del 2000. https://msdn.microsoft.com/en-us/library/"
 "ms971310.aspx"
 
-#: ..\python_docs\spladdoninternals.py:835
+#: ..\python_docs\spladdoninternals.py:843
 msgid ""
 "19. UI Automation Overview, Microsoft Developer Network. https://msdn."
 "microsoft.com/en-us/library/ms747327(v=vs.110).aspx"
@@ -9068,7 +9136,7 @@ msgstr ""
 "19. Descripción de UI Automation, Microsoft Developer Network. https://msdn."
 "microsoft.com/en-us/library/ms747327(v=vs.110).aspx"
 
-#: ..\python_docs\spladdoninternals.py:836
+#: ..\python_docs\spladdoninternals.py:844
 msgid ""
 "20. Java Access Bridge overview, Java SE Desktop Accessibility, Oracle. "
 "http://www.oracle.com/technetwork/articles/javase/index-jsp-136191.html"
@@ -9077,7 +9145,7 @@ msgstr ""
 "Oracle. http://www.oracle.com/technetwork/articles/javase/index-jsp-136191."
 "html"
 
-#: ..\python_docs\spladdoninternals.py:837
+#: ..\python_docs\spladdoninternals.py:845
 msgid ""
 "21. Introduction to OOP (Object-Oriented Programming) with Python, "
 "Voidspace. http://www.voidspace.org.uk/python/articles/OOP.shtml"
@@ -9085,7 +9153,7 @@ msgstr ""
 "21. Introducción a la POO (programación orientada a objetos) con Python, "
 "Voidspace. http://www.voidspace.org.uk/python/articles/OOP.shtml"
 
-#: ..\python_docs\spladdoninternals.py:838
+#: ..\python_docs\spladdoninternals.py:846
 msgid ""
 "22. Non-Programmer's Tutorial for Python 3/Intro to Object Oriented "
 "Programming in Python 3 - Wikibooks. https://en.wikibooks.org/wiki/Non-"
@@ -9097,7 +9165,7 @@ msgstr ""
 "wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3/"
 "Intro_to_Object_Oriented_Programming_in_Python_3"
 
-#: ..\python_docs\spladdoninternals.py:839
+#: ..\python_docs\spladdoninternals.py:847
 msgid ""
 "23. Method Resolution Order, The History of Python, june 23, 2010. http://"
 "python-history.blogspot.com/2010/06/method-resolution-order.html"
@@ -9105,7 +9173,7 @@ msgstr ""
 "23. Orden de resolución de métodos, la historia de Python, 23 de junio de "
 "2010. http://python-history.blogspot.com/2010/06/method-resolution-order.html"
 
-#: ..\python_docs\spladdoninternals.py:840
+#: ..\python_docs\spladdoninternals.py:848
 msgid ""
 "24. List View, Microsoft Developer Network: https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/bb774737(v=vs.85).aspx"
@@ -9113,7 +9181,7 @@ msgstr ""
 "24. Vista de lista, Microsoft Developer Network: https://msdn.microsoft.com/"
 "en-us/library/windows/desktop/bb774737(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:841
+#: ..\python_docs\spladdoninternals.py:849
 msgid ""
 "25. List View Messages, Microsoft Developer Network: https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ff485961(v=vs.85).aspx"
@@ -9121,7 +9189,7 @@ msgstr ""
 "25. Mensajes de vista de lista, Microsoft Developer Network: https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ff485961(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:842
+#: ..\python_docs\spladdoninternals.py:850
 msgid ""
 "26. List View Item structure, Microsoft Developer Network: https://msdn."
 "microsoft.com/en-us/library/windows/desktop/bb774760(v=vs.85).aspx"
@@ -9130,7 +9198,7 @@ msgstr ""
 "Network: https://msdn.microsoft.com/en-us/library/windows/desktop/"
 "bb774760(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:843
+#: ..\python_docs\spladdoninternals.py:851
 msgid ""
 "27. VirtualAllocEx (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366890(v=vs.85).aspx"
@@ -9138,7 +9206,7 @@ msgstr ""
 "27. Referencia de VirtualAllocEx (kernel32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366890(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:844
+#: ..\python_docs\spladdoninternals.py:852
 msgid ""
 "28. VirtualFreeEx (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366894(v=vs.85).aspx"
@@ -9146,7 +9214,7 @@ msgstr ""
 "28. Referencia de VirtualFreeEx (kernel32.dll) (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366894(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:845
+#: ..\python_docs\spladdoninternals.py:853
 msgid ""
 "29. WriteProcessMemory (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms681674(v=vs.85).aspx"
@@ -9154,7 +9222,7 @@ msgstr ""
 "29. Referencia de WriteProcessMemory (kernel32.dll) (Windows API): https://"
 "msdn.microsoft.com/en-us/library/windows/desktop/ms681674(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:846
+#: ..\python_docs\spladdoninternals.py:854
 msgid ""
 "30. ReadProcessMemory (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms680553(v=vs.85).aspx"
@@ -9162,7 +9230,7 @@ msgstr ""
 "30. Referencia de ReadProcessMemory (kernel32.dll) (Windows API): https://"
 "msdn.microsoft.com/en-us/library/windows/desktop/ms680553(v=vs.85).aspx"
 
-#: ..\python_docs\spladdoninternals.py:847
+#: ..\python_docs\spladdoninternals.py:855
 msgid ""
 "31. Ctypes (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/ctypes.html"
@@ -9170,13 +9238,13 @@ msgstr ""
 "31. Ctypes (Documentación de Python, Python Software Foundation): https://"
 "docs.python.org/2/library/ctypes.html"
 
-#: ..\python_docs\spladdoninternals.py:848
+#: ..\python_docs\spladdoninternals.py:856
 msgid ""
 "32. Thread (Wikipedia): https://en.wikipedia.org/wiki/Thread_(computing)"
 msgstr ""
 "32. Thread (Wikipedia): https://en.wikipedia.org/wiki/Thread_(computing)"
 
-#: ..\python_docs\spladdoninternals.py:849
+#: ..\python_docs\spladdoninternals.py:857
 msgid ""
 "33. Multi-core processor (wikipedia): https://en.wikipedia.org/wiki/Multi-"
 "core_processor"
@@ -9184,7 +9252,7 @@ msgstr ""
 "33. Procesadores de múltiples núcleos (wikipedia): https://en.wikipedia.org/"
 "wiki/Multi-core_processor"
 
-#: ..\python_docs\spladdoninternals.py:850
+#: ..\python_docs\spladdoninternals.py:858
 msgid ""
 "34. Multi-core introduction, Intel Developer Zone, March 5, 2012: https://"
 "software.intel.com/en-us/articles/multi-core-introduction"
@@ -9193,7 +9261,7 @@ msgstr ""
 "marzo de 2012: https://software.intel.com/en-us/articles/multi-core-"
 "introduction"
 
-#: ..\python_docs\spladdoninternals.py:851
+#: ..\python_docs\spladdoninternals.py:859
 msgid ""
 "35. Intel Core I7-5960X specifications (Intel ARK): http://ark.intel.com/"
 "products/82930/Intel-Core-i7-5960X-Processor-Extreme-Edition-20M-Cache-up-"
@@ -9203,7 +9271,7 @@ msgstr ""
 "com/products/82930/Intel-Core-i7-5960X-Processor-Extreme-Edition-20M-Cache-"
 "up-to-3_50-GHz"
 
-#: ..\python_docs\spladdoninternals.py:852
+#: ..\python_docs\spladdoninternals.py:860
 msgid ""
 "36. Intel Xeon E7-8895V3 specifications (Intel ARK): http://ark.intel.com/"
 "products/84689/Intel-Xeon-Processor-E7-8895-v3-45M-Cache-2_60-GHz"
@@ -9211,7 +9279,7 @@ msgstr ""
 "36. Especificaciones de Intel Xeon E7-8895V3 (Intel ARK): http://ark.intel."
 "com/products/84689/Intel-Xeon-Processor-E7-8895-v3-45M-Cache-2_60-GHz"
 
-#: ..\python_docs\spladdoninternals.py:853
+#: ..\python_docs\spladdoninternals.py:861
 msgid ""
 "37. Global Interpreter Lock (Python Wiki): https://wiki.python.org/moin/"
 "GlobalInterpreterLock"
@@ -9219,7 +9287,7 @@ msgstr ""
 "37. Global Interpreter Lock (Python Wiki): https://wiki.python.org/moin/"
 "GlobalInterpreterLock"
 
-#: ..\python_docs\spladdoninternals.py:854
+#: ..\python_docs\spladdoninternals.py:862
 msgid ""
 "38. Threading (Python documentation, Python Software Foundation): https://"
 "docs.python.org/2/library/threading.html"
@@ -9227,7 +9295,7 @@ msgstr ""
 "38. Threading (Documentación de Python, Python Software Foundation): https://"
 "docs.python.org/2/library/threading.html"
 
-#: ..\python_docs\spladdoninternals.py:855
+#: ..\python_docs\spladdoninternals.py:863
 msgid ""
 "39. Multiprocessing (Python documentation, Python Software Foundation): "
 "https://docs.python.org/2/library/multiprocessing.html#module-multiprocessing"
@@ -9235,7 +9303,7 @@ msgstr ""
 "39. Multiprocessing (Documentación de Python, Python Software Foundation): "
 "https://docs.python.org/2/library/multiprocessing.html#module-multiprocessing"
 
-#: ..\python_docs\spladdoninternals.py:856
+#: ..\python_docs\spladdoninternals.py:864
 msgid ""
 "40. Comma-separated values (Wikipedia): https://en.wikipedia.org/wiki/Comma-"
 "separated_values"
@@ -9243,7 +9311,7 @@ msgstr ""
 "40. Valores separados por coma (Wikipedia): https://en.wikipedia.org/wiki/"
 "Comma-separated_values"
 
-#: ..\python_docs\spladdoninternals.py:857
+#: ..\python_docs\spladdoninternals.py:865
 msgid ""
 "41. RFC 4180 (Common Format and MIME Type for Comma-Separated Values (CSV) "
 "Files), Internet Engineering Task Force: https://tools.ietf.org/html/rfc4180"
@@ -9252,7 +9320,7 @@ msgstr ""
 "por coma (CSV)), Internet Engineering Task Force: https://tools.ietf.org/"
 "html/rfc4180"
 
-#: ..\python_docs\spladdoninternals.py:858
+#: ..\python_docs\spladdoninternals.py:866
 msgid ""
 "42. Import or export text (.txt or .csv) files, Microsoft Office Support for "
 "Microsoft Excel: https://support.office.com/en-za/article/Import-or-export-"
@@ -9262,7 +9330,7 @@ msgstr ""
 "Office para Microsoft Excel: https://support.office.com/en-za/article/Import-"
 "or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba"
 
-#: ..\python_docs\spladdoninternals.py:859
+#: ..\python_docs\spladdoninternals.py:867
 msgid ""
 "43. CSV (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/csv.html"
@@ -9270,11 +9338,11 @@ msgstr ""
 "43. CSV (Documentación de Python, Python Software Foundation): https://docs."
 "python.org/2/library/csv.html"
 
-#: ..\python_docs\spladdoninternals.py:860
+#: ..\python_docs\spladdoninternals.py:868
 msgid "44. Cache (Wikipedia): https://en.wikipedia.org/wiki/Cache_(computing)"
 msgstr "44. Caché (Wikipedia): https://en.wikipedia.org/wiki/Cache_(computing)"
 
-#: ..\python_docs\spladdoninternals.py:861
+#: ..\python_docs\spladdoninternals.py:869
 msgid ""
 "45. Os (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/os.html"
@@ -9282,7 +9350,7 @@ msgstr ""
 "45. Os (Documentación de Python, Python Software Foundation): https://docs."
 "python.org/2/library/os.html"
 
-#: ..\python_docs\spladdoninternals.py:862
+#: ..\python_docs\spladdoninternals.py:870
 msgid ""
 "46. Configparser (Python documentation, Python Software Foundation): https://"
 "docs.python.org/2/library/configparser.html"
@@ -9290,7 +9358,7 @@ msgstr ""
 "46. Configparser (Documentación de Python, Python Software Foundation): "
 "https://docs.python.org/2/library/configparser.html"
 
-#: ..\python_docs\spladdoninternals.py:863
+#: ..\python_docs\spladdoninternals.py:871
 msgid ""
 "47. ConfigObj documentation: http://www.voidspace.org.uk/python/configobj."
 "html"
@@ -9298,7 +9366,7 @@ msgstr ""
 "47. Documentación de ConfigObj: http://www.voidspace.org.uk/python/configobj."
 "html"
 
-#: ..\python_docs\spladdoninternals.py:864
+#: ..\python_docs\spladdoninternals.py:872
 msgid ""
 "48. Validate module documentation: http://www.voidspace.org.uk/python/"
 "validate.html"
@@ -9306,7 +9374,7 @@ msgstr ""
 "48. Documentación del módulo Validate: http://www.voidspace.org.uk/python/"
 "validate.html"
 
-#: ..\python_docs\spladdoninternals.py:865
+#: ..\python_docs\spladdoninternals.py:873
 msgid ""
 "49. Spin control (wx.SpinCtrl) documentation (WXPython): http://wxpython.org/"
 "Phoenix/docs/html/SpinCtrl.html"
@@ -9314,13 +9382,27 @@ msgstr ""
 "49. Documentación de Spin control (wx.SpinCtrl) (WXPython): http://wxpython."
 "org/Phoenix/docs/html/SpinCtrl.html"
 
-#: ..\python_docs\spladdoninternals.py:866
+#: ..\python_docs\spladdoninternals.py:874
 msgid ""
 "50. SetForegroundWindow (user32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms633539(v=vs.85).aspx"
 msgstr ""
 "50. Referencia de SetForegroundWindow (user32.dll) (Windows API): https://"
 "msdn.microsoft.com/en-us/library/windows/desktop/ms633539(v=vs.85).aspx"
+
+#~ msgid ""
+#~ "The next LTS release is scheduled for late 2018 not only because it will "
+#~ "be the last version to support Studio 5.10 (not 5.11), and also to part "
+#~ "ways with Python 2, as NVDA developers are planning to switch to Python 3 "
+#~ "in the near future, hence future stable releases after the next LTS will "
+#~ "be based mostly on Python 3 code."
+#~ msgstr ""
+#~ "La próxima versión lts está prevista para finales del 2018, no sólo "
+#~ "porque será la última versión que soporte Studio 5.10 (y no 5.11), sino "
+#~ "porque también dejará atrás Python 2, ya que los desarrolladores de NVDA "
+#~ "están planeando pasar a Python 3 en el futuro cercano, por lo que las "
+#~ "futuras versiones estables después de la próxima LTS estarán basadas en "
+#~ "su mayoría en código de Python 3."
 
 #~ msgid ""
 #~ "So far, we talked about how the add-on was conceived and read about its "

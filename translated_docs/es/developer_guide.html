@@ -1,12 +1,13 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># NVDA 2018.2 Developer Guide</title>
+  <title># Guía del desarrollador de NVDA 2018.3.1</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># NVDA 2018.2 Developer Guide</h1></header>
-  <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
+  <header><h1># Guía del desarrollador de NVDA 2018.3.1</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-201831">Guía del desarrollador de NVDA 2018.3.1</h1>
+<h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
 <li>1.1. Una nota sobre Python</li>
@@ -28,6 +29,7 @@
 <li>3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</li>
 <li>3.7. Objetos de NVDA</li>
 <li>3.8. Scripts y asociación de gestos</li>
+<li>3.8.1. Definición de propiedades de los scripts</li>
 <li>3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</li>
 <li>3.10. Eventos</li>
 <li>3.11. La variable SleepMode en módulos de aplicación</li>
@@ -215,6 +217,8 @@ class AppModule(appModuleHandler.AppModule):
 
 import globalPluginHandler
 
+from scriptHandler import script
+
 import ui
 
 import versionInfo
@@ -225,17 +229,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 
 
+    @scriptHandler.script(gesture="kb:NVDA+shift+v")
+
     def script_announceNVDAVersion(self, gesture):
 
         ui.message(versionInfo.version)
-
-
-
-    __gestures={
-
-        "kb:NVDA+shift+v": "announceNVDAVersion",
-
-    }
 
 
 
@@ -243,9 +241,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 </code></pre>
 <p>Este archivo de extensión global comienza con dos líneas de comentarios, que describen para qué sirve el archivo. </p>
 <p>A continuación importa el módulo globalPluginHandler, de manera que la extensión global tiene acceso a la clase base GlobalPlugin. </p>
-<p>También importa otros módulos, llamados ui y versionInfo, necesarios para que esta extensión concreta haga las acciones adecuadas para verbalizar la versión de NVDA. </p>
+<p>También importa otros módulos llamados ui, versionInfo y scriptHandler, necesarios para que esta extensión concreta haga las acciones adecuadas para verbalizar la versión de NVDA. </p>
 <p>Después, define una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. </p>
-<p>En esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de script que realiza la verbalización de versión, y ofrece una asociación de NVDA+shift+v a este script. Sin embargo, los detalles del script y su asociación no son importantes para los propósitos de este ejemplo. La parte más importante es la clase en sí. </p>
+<p>En esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de script que realiza la verbalización de versión, y ofrece una asociación de NVDA+shift+v a este script utilizando el decorador script del módulo scriptHandler. Sin embargo, los detalles del script y su asociación no son importantes para los propósitos de este ejemplo. La parte más importante es la clase en sí. Se puede encontrar más información sobre los scripts y el decorador de scripts en en la sección Definición de propiedades de scripts en esta guía. </p>
 <p>Como se pide con otros ejemplos de esta guía, recuerda eliminar la extensión global creada cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
 <h3 id="37-objetos-de-nvda">3.7. Objetos de NVDA</h3>
 <p>NVDA representa controles y otros elementos gráficos como objetos NVDA. Estos objetos NVDA contienen propiedades estandarizadas, como nombre, rol, valor, estados y descripción, que permiten a otras partes de NVDA consultar o presentar información sobre un control de una manera generalizada. Por ejemplo, el botón Aceptar en un diálogo sería representado como un objeto NVDA con un nombre como "Aceptar" y un rol de botón. De forma similar, una casilla de verificación con una etiqueta de "Acepto" tendría un nombre de "Acepto", un rol de casilla de verificación, y si actualmente está marcada, un estado de marcada. </p>
@@ -283,13 +281,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>gesture: un objeto de gesto de entrada, que representa el gesto que provocó la llamada al script. </li>
 </ul>
 <p>Además del método del script, se debe definir alguna forma de asociación del gesto, de tal forma que NVDA sepa qué entrada debería ejecutarlo. </p>
-<p>Para asociar un gesto a un script, puede definirse un diccionario Python llamado "__gestures" como una variable de clase en el módulo de aplicación, extensión global u objeto de NVDA. Estos diccionarios deberían contener cadenas identificadoras de gestos que apunten al nombre del script solicitado, sin el prefijo "script_". </p>
-<p>Hay formas más avanzadas de asociar gestos a scripts de forma más dinámica, aunque el diccionario __gestures es la manera más simple. </p>
 <p>Una cadena identificadora de gesto es una representación en forma de cadena de una unidad de entrada simple. Consiste en un código de dos caracteres que identifica la fuente de la entrada, un dispositivo opcional entre paréntesis, dos puntos (:) y uno o más nombres separados por el signo más (+) que identifican las teclas o valores de entrada. </p>
 <p>Algunos ejemplos de cadenas identificadoras de gestos son: </p>
 <ul>
 <li>"kb:NVDA+shift+v" </li>
 <li>"br(freedomScientific):leftWizWheelUp" </li>
+<li>"br(alva.BC640):t3" </li>
 <li>"kb(laptop):NVDA+t" </li>
 </ul>
 <p>Actualmente, las fuentes de entrada en NVDA son: </p>
@@ -302,14 +299,50 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <p>Cuando NVDA recibe entrada, busca una asociación de gesto que encaje con ella en un orden particular. Una vez se encuentra una asociación de gesto, se ejecuta el script y no se usan otras asociaciones, ni se pasa el gesto automáticamente al sistema operativo. </p>
 <p>El orden de búsqueda de asociación de gestos es: </p>
 <ul>
+<li>El mapa de gestos específico del usuario </li>
+<li>El mapa de gestos específico del idioma </li>
+<li>El mapa de gestos específico del controlador de la pantalla braille </li>
 <li>Extensiones globales cargadas </li>
 <li>Módulo de aplicación de la aplicación activa </li>
 <li>Interceptor de árbol del objeto NVDA con el foco si lo hubiera; por ejemplo un virtualBuffer </li>
 <li>Objeto NVDA con el foco </li>
 <li>Órdenes globales (órdenes incorporadas como salir de NVDA, órdenes de navegación por objetos, etc.) </li>
 </ul>
-<p>Deberías especificar una descripción del script en la cadena de documentación de la función que describa la orden a los usuarios. Por ejemplo, esto se informa a los usuarios en el modo de ayuda de entrada y se muestra en el diálogo Gestos de entrada. Para especificar la cadena de documentación se establece un atributo "__doc" en la función del script. El script no aparecerá en el diálogo Gestos de entrada a menos que esta se especifique. </p>
-<p>También puedes especificar una categoría para un script de tal forma que se agrupe con otros scripts similares. Por ejemplo, un script en una extensión global que añade teclas rápidas de navegación en el modo exploración puede meterse bajo la categoría "Modo exploración". Para scripts individuales, esto se hace estableciendo un atributo "category" en la función del script con una cadena que contenga el nombre de la categoría. También puedes establecer el atributo "scriptCategory" en la clase de la extensión, que se usará para scripts que no especifiquen una categoría. Hay constantes para categorías comunes, prefijadas con SCRCAT_ en los módulos inputCore y globalCommands. El script se listará en la categoría especificada en el diálogo Gestos de entrada. Si no se especifica categoría, el script se meterá en "Miscelánea". </p>
+<h4 id="381-definicion-de-propiedades-de-los-scripts">3.8.1. Definición de propiedades de los scripts</h4>
+<p>En NVDA 2018.3 y versiones posteriores, la forma recomendada de establecer las propiedades de un script se conoce como el decorador de scripts. En resumen, un decorador es una función que modifica el comportamiento de otra función concreta. El decorador de script modifica el script de tal manera que se asocie adecuadamente a los gestos deseados. Además, garantiza que el script se liste con la descripción especificada, y se incluya bajo la categoría deseada en el diálogo Gestos de entrada. </p>
+<p>Para que puedas usar el decorador de scripts, deberás importarlo desde el módulo scriptHandler. </p>
+<pre><code>from scriptHandler import script
+</code></pre>
+<p>Después, justo encima de la definición de tu script, añade el decorador para scripts, proporcionándole los argumentos deseados. Por ejemplo: </p>
+<pre><code>--- inicio ---
+
+    @script(
+
+        description=_("Speaks the date and time"),
+
+        category=inputCore.SCRCAT_MISC,
+
+        gestures=["kb:NVDA+shift+t", "kb:NVDA+alt+r"]
+
+    )
+
+    def script_sayDateTime(self, gesture):
+
+
+
+--- fin ---
+</code></pre>
+<p>En este ejemplo, tu script se listará en el diálogo Gestos de entrada bajo la categoría "Miscelánea". Tendrá la descripción "Speaks the date and time", y estará asociado a las combinaciones de teclado "NVDA+shift+t" y "NVDA+alt+r". </p>
+<p>Se pueden usar los siguientes argumentos al aplicar el decorador de script: </p>
+<ul>
+<li>description: una cadena corta y traducible que describa la orden a los usuarios. Los usuarios escucharán esta información en el modo ayuda de entrada y la verán en el diálogo Gestos de entrada. El script no aparecerá en el diálogo Gestos de entrada a menos que se especifique una descripción. </li>
+<li>category: categoría del script para agruparlo con otros scripts similares. Por ejemplo, un script en una extensión global que añade teclas rápidas de navegación en el modo exploración puede meterse bajo la categoría "Modo exploración". Se puede establecer la categoría de cada script individualmente, pero también puedes establecer el atributo "scriptCategory" en la clase de la extensión, que se usará para scripts que no especifiquen una categoría. Hay constantes para categorías comunes, prefijadas con SCRCAT_ en los módulos inputCore y globalCommands. El script se listará en la categoría especificada en el diálogo Gestos de entrada. Si no se especifica categoría, el script se meterá en "Miscelánea". </li>
+<li>gesture: una cadena que contiene un único gesto asociado con este script, por ejemplo "kb:NVDA+shift+r". </li>
+<li>gestures: una lista de cadenas con varios gestos asociados a este script, por ejemplo ["kb:NVDA+shift+r", "kb:NVDA+alt+t"]. Cuando se especifican tanto gesture como gestures, se combinan. Cualquier elemento de gesture o gestures se puede usar para activar el script. </li>
+<li>canPropagate: un booleano que indica si este script debería aplicarse también a los antecesores del objeto con el foco. Por ejemplo, se puede usar cuando quieres especificar un script en particular para un objeto en primer plano, o en cualquier objeto en la ascendencia del foco que no sea el objeto actualmente enfocado. Esta opción es por defecto False. </li>
+<li>bypassInputHelp: un booleano que indica si este script debería ejecutarse con el modo de ayuda de entrada activado. Por defecto esta opción es False. </li>
+</ul>
+<p>Aunque el decorador script hace mucho más fácil el proceso de definición de scripts, hay más formas de asociar scripts y establecer sus propiedades. Por ejemplo, se puede definir como variable de clase un diccionario Python llamado "__gestures" en un módulo de aplicación, extensión global u objeto NVDA. Este diccionario debería contener cadenas con identificadores de gestos apuntando al nombre del script solicitado, sin el prefijo "script_". También se puede especificar una descripción para el script en la cadena de documentación (docstring) de la función. Además, una forma alternativa de especificar la categoría del script es crear un atributo "category" en la función del script que contenga una cadena con el nombre de la categoría. </p>
 <h3 id="39-ejemplo-3-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>
 <p>La siguiente extensión global te permite pulsar NVDA+flecha izquierda para verbalizar la clase de ventana del objeto con el foco; y NVDA+flecha derecha para anunciar el identificador de ventana del control actual con el foco. Este ejemplo te muestra cómo definir uno o más scripts y asociaciones de gestos en una clase tal como un módulo de aplicación, extensión global u objeto de NVDA. </p>
 <p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example3.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
@@ -324,6 +357,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 import globalPluginHandler
 
+from scriptHandler import script
+
 import ui
 
 import api
@@ -333,6 +368,14 @@ import api
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 
+
+    @script(
+
+        description=_("Announces the window class name of the current focus object"),
+
+        gesture="kb:NVDA+leftArrow"
+
+    )
 
     def script_announceWindowClassName(self, gesture):
 
@@ -346,6 +389,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 
 
+    @script(
+
+        description=_("Announces the window control ID of the current focus object"),
+
+        gesture="kb:NVDA+rightArrow"
+
+    )
+
     def script_announceWindowControlID(self, gesture):
 
         focusObj = api.getFocusObject()
@@ -355,16 +406,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         windowControlID = focusObj.windowControlID
 
         ui.message("Identificador de control para la ventana %s: %d" % (name, windowControlID))
-
-
-
-    __gestures = {
-
-        "kb:NVDA+leftArrow": "announceWindowClassName",
-
-        "kb:NVDA+rightArrow": "announceWindowControlID",
-
-    }
 
 
 
@@ -446,6 +487,8 @@ class AppModule(appModuleHandler.AppModule):
 
 import appModuleHandler
 
+from scriptHandler import script
+
 from NVDAObjects.IAccessible import IAccessible
 
 import controlTypes
@@ -470,17 +513,11 @@ class EnhancedEditField(IAccessible):
 
 
 
+    @script(gesture="kb:NVDA+l")
+
     def script_reportLength(self, gesture):
 
         ui.message("%d" % len(self.value))
-
-
-
-    __gestures = {
-
-        "kb:NVDA+l": "reportLength",
-
-    }
 
 
 
@@ -570,7 +607,7 @@ url = http://www.nvda-project.org/wiki/Development
 <h4 id="451-archivos-de-manifiesto-especificos-del-idioma">4.5.1. Archivos de manifiesto específicos del idioma</h4>
 <p>Cada uno de estos directorios de idioma puede contener un archivo de manifiesto específico del idioma llamado manifest.ini, que puede tener un pequeño subconjunto de los campos de manifiesto para traducir. Estos campos son summary y description. Todos los demás campos se ignoran. </p>
 <h4 id="452-mensajes-especificos-del-idioma">4.5.2. Mensajes específicos del idioma</h4>
-<p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web. </p>
+<p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web.</p>
 <h3 id="46-documentacion-del-complemento">4.6. Documentación del complemento</h3>
 <p>La documentación para un complemento debería situarse en un directorio doc en el archivo. De forma similar al directorio locale, este directorio debería contener carpetas para cada idioma en el que haya disponible documentación. </p>
 <p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionando el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
