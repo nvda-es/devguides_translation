@@ -7,7 +7,7 @@
   <body>
   <header><h1>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</h1></header>
   <p>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</p>
-<p>Importante: este documento es un borrador y puede cambiar periódicamente.</p>
+<p>Importante: debido a las actividades previas a la transición que están en curso, este documento se encuentra sujeto a cambios sin previo aviso.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Python es uno de los lenguajes de programación más populares para diversos proyectos. Es fácil de aprender, tiene muchísimos módulos en su biblioteca estándar y extensiones de terceros, así como una documentación muy completa y una sintaxis clara. Todo esto hace que sea la opción ideal a la hora de elaborar scripts.</p>
 <p>Actualmente hay dos ramas principales en Python: 2.x, liberada a principios del año 2000, y 3.x, liberada por primera vez en 2008. A primera vista, Python 3 puede parecer similar a Python 2, pero hay numerosas diferencias profundas, incluyendo el soporte extenso de Unicode en Python 3, módulos renombrados y más.</p>
@@ -25,13 +25,55 @@
 <li>Módulos renombrados.</li>
 <li>Tener cuidado con las diferencias internas y de sintaxis.</li>
 </ul>
+<h2 id="para-comenzar">Para comenzar</h2>
+<p>Primero, aprende más sobre las diferencias entre Python 2 y 3 leyendo la siguiente página: https://wiki.python.org/moin/Python2orPython3.</p>
+<p>Después, instala Python 3.7 y familiarízate con el intérprete o escribiendo scripts externos. Así sabrás qué hacer cuando empiece la transición y cómo adaptar tu código (solicitudes de cambio, complementos, etc.) a Python 3.</p>
+<p>Ten en cuenta que debido a problemas con Espeak, el flujo de trabajo de la transición debe hacerse desde Windows 10. Una vez Espeak esté listo, este requisito se relajará. Además, a fecha de septiembre de 2018, los complementos no funcionan, así que no instales ninguno de ellos en la copia de código fuente de NVDA.</p>
+<h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
+<p>La mayoría de dependencias Python se pueden instalar mediante pip mientras se ejecuta como un módulo en Python 3 de la siguiente manera:</p>
+<p>py -3 -m pip install nombreDeDependencia</p>
+<p>Lo anterior funcionará si Python launcher está instalado y la única versión de Python 3 disponible es la 3.7 de 32 bits.</p>
+<p>Antes de instalar cualquier dependencia de las listadas a continuación, asegúrate de instalar Python 3.7 de 32 bits. Se deben instalar aquellas dependencias marcadas como "obligatoria".</p>
+<ul>
+<li>Python 3.7.x de 32 bits (obligatoria)</li>
+<li>Visual Studio 2017 (Community, Professional, Enterprise) (obligatoria)</li>
+<li>Windows 10 SDK (compilación 17134) (obligatoria)</li>
+<li>wxPython 4.0.3 para Python 3.7 (obligatoria para la interfaz gráfica y otros subsistemas cruciales)</li>
+<li>Six 1.11.0 (obligatoria)</li>
+<li>SCons 3.0.1 (obligatoria)</li>
+<li>comtypes 1.1.7 (obligatoria)</li>
+<li>Extensiones Pywin32, compilación 223 para Python 3.7 (obligatoria)</li>
+<li>pyserial para Python 3.7 (obligatoria para depurar pantallas braille)</li>
+<li>Configobj 5.1.0 (obligatoria)</li>
+<li>Cualquier otra dependencia anunciando soporte para Python 2.x en un paquete o con una versión distinta para Python 3.x</li>
+<li>Un reemplazo para py2exe para la distribución binaria (no es obligatoria hasta que no se encuentren listas para su construcción las distribuciones binarias)</li>
+<li>Un reemplazo para txt2tags para generar la documentación (no es obligatoria hasta que las distribuciones binarias no estén listas para construirse)</li>
+</ul>
+<h3 id="ejecucion-de-la-version-de-nvda-para-python-3">Ejecución de la versión de NVDA para Python 3</h3>
+<p>Una vez esté instalado Python 3.7 junto con las dependencias, asumiendo que las dlls están compiladas y la versión del código fuente de NVDA cumple con Python 3, ejecuta NVDA para Python 3 desde el símbolo del sistema o Windows PowerShell de la siguiente manera:</p>
+<ol>
+<li>Cambia al directorio raíz del código fuente de NVDA.</li>
+<li>Después teclea una de las siguientes órdenes:<ul>
+<li>Si sólo está instalado Python 3.7 de 32 bits: py -3 source/nvda.pyw</li>
+<li>Si tanto Python 3.7 de 32 como de 64 bits están instalados: py -3-32 source/nvda.pyw</li>
+<li>Hay una versión diferente de Python 3.x instalada: py -3.7-32 source/nvda.pyw</li>
+</ul>
+</li>
+</ol>
+<h3 id="depuracion-del-trabajo-de-transicion-a-python-3">Depuración del trabajo de transición a Python 3</h3>
+<p>Hay dos formas de depurar el flujo de trabajo de transición a Python 3:</p>
+<ol>
+<li>Post-mortem (NVDA falla al iniciarse o deseas ver la información de depuración a voluntad): lee el archivo nvda.log que se encuentra en el directorio "source".</li>
+<li>Consola (para probar una idea o descubrir cómo funcionan los módulos de Python 3): se puede usar la consola Python.</li>
+</ol>
 <h2 id="flujo-de-trabajo-para-la-transicion">Flujo de trabajo para la transición</h2>
-<p>La siguiente es una descripción general de la transición del lector de pantalla NVDA desde Python 2 a Python 3. Al encontrarse como un borrador, está sujeta a cambios.</p>
+<p>La siguiente es una descripción general de la transición del lector de pantalla NVDA desde Python 2 a Python 3. Ten en cuenta que la información que hay a continuación puede cambiar sin aviso previo.</p>
 <h3 id="problemas-destacables-y-soluciones">Problemas destacables y soluciones:</h3>
 <ul>
 <li>Módulos renombrados en Python 3 como _winreg -&gt; winreg, SocketServer -&gt; socketserver, Queue -&gt; queue y otros.<ul>
 <li>Intentar usar la versión de Python 3 antes de volver a los nombres de Python 2.</li>
 <li>Para ciertos módulos (especialmente aquellos escritos en C), asegurarse de que los nuevos módulos no rompen la funcionalidad.</li>
+<li>En al menos un caso (sintetizador de voz Espeak NG), se importa un módulo Python pero nunca se usa.</li>
 </ul>
 </li>
 <li>Módulos reorganizados en Python 3, incluyendo urllib e io.<ul>
@@ -59,7 +101,7 @@
 </ul>
 </li>
 <li>Bytes contra cadenas, causado por Unicode.<ul>
-<li>Intentar unificar bajo Unicode.</li>
+<li>Intentar unificar bajo Unicode tanto como sea posible.</li>
 <li>Esto se complica al trabajar con funciones en C (la dll de Espeak, por ejemplo), donde esperan cadenas ANSI pero Python las envía como Unicode.</li>
 </ul>
 </li>
@@ -88,26 +130,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
-<ul>
-<li>Python 3.7.x de 32 bits</li>
-<li>Visual Studio 2017 (Community, Professional, Enterprise)</li>
-<li>Windows 10 SDK (compilación 17134)</li>
-<li>wxPython 4.0.3 para Python 3.x</li>
-<li>Six 1.11.0</li>
-<li>SCons 3.0.1</li>
-<li>comtypes 1.1.7</li>
-<li>Extensiones Pywin32, compilación 223 para Python 3.x</li>
-<li>pyserial para Python 3.x</li>
-<li>Configobj 5.1.0</li>
-<li>Cualquier otra dependencia anunciando soporte para Python 2.x en un paquete o con una versión distinta para Python 3.x</li>
-<li>Un reemplazo para py2exe para la distribución binaria</li>
-<li>Un reemplazo para txt2tags para generar la documentación</li>
-</ul>
 <h3 id="antes-de-la-transicion">Antes de la transición:</h3>
 <p>Fecha de inicio: 17 de septiembre de 2018 (designación provisional)</p>
 <ol>
-<li>Se debe liberar una versión de NVDA que funcione con WXPython 4. Esto es necesario, ya que WXPython 4 soporta Python 3, lo que supone un paso en la transición.<ul>
+<li>Se debe liberar una versión de NVDA que funcione con WXPython 4. Esto es obligatorio, ya que WXPython 4 soporta Python 3, lo que supone un paso en la transición.<ul>
 <li>Requisito satisfecho el 17 de septiembre de 2018 con la liberación de NVDA 2018.3.</li>
 </ul>
 </li>

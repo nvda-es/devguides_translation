@@ -1,6 +1,6 @@
 This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.x.
 
-IMPORTANT: this document is a draft document that can change periodically.
+IMPORTANT: due to ongoing pre-transition activities, this document is subject to change without notice.
 
 ## Background
 
@@ -24,15 +24,65 @@ When NVDA began in 2006, it used python 2.4. Over the years, NvDA and its add-on
 * Renamed modules.
 * Being careful about syntax and internal differences.
 
+## Getting started
+
+First, learn more about differences between Python 2 and 3 by reading the following page: https://wiki.python.org/moin/Python2orPython3.
+
+Next, install and become familiar with Python 3.7 through the interpreter or writing external scripts. This is so that you will know what to do when transition starts and port your code (pull requests, add-ons, etc.) to Python 3.
+
+Note that due to Espeak issues, transition workflow must be done from Windows 10. Once Espeak is ready, this requirement will be relaxed. Also, as of September 2018, add-ons won't work, so do NOT install any of them into the source code copy of NVDA.
+
+### Needed dependencies:
+
+Most Python dependencies can be installed via PIP while running as a module in Python 3.7 like so:
+
+py -3 -m pip install dependencyName
+
+The above will work if Python Launcher is installed and the only Python 3 installed is 3.7 32-bit.
+
+Before installing any dependencies listed below, be sure to install Python 3.7 32-bit. Dependencies marked "mandatory" must be installed.
+
+* Python 3.7.x 32-bit (mandatory)
+* Visual Studio 2017 (Community, Professional, Enterprise) (mandatory)
+* Windows 10 SDK (build 17134) (mandatory)
+* wxPython 4.0.3 for Python 3.7 (mandatory for GUI and other crucial subsystems)
+* Six 1.11.0 (mandatory)
+* SCons 3.0.1 (mandatory)
+* comtypes 1.1.7 (mandatory)
+* Pywin32 extensions build 223 for Python 3.7 (mandatory)
+* pyserial for Python 3.7 (mandatory for debugging braille displays)
+* Configobj 5.1.0 (mandatory)
+* Any other dependencies advertising support for Python 2.x in one package or a separate release for Python 3.x
+* A replacement for py2exe for binary distribution (not mandatory until binary distributions are ready to be built)
+* A replacement for txt2tags for generating documentation (not mandatory until binary distributions are to be built)
+
+### Running Python 3 version of NvDA
+
+Once Python 3.7 and dependencies are installed, provided that DLL's are compiled and the version of NVDA in source code form complies with Python 3, run the Python 3 NVDA from Command Prompt or Windows PowerShell as follows:
+
+1. Change to the root directory of NVDA's source code.
+2. Then type one of the following:
+	* Only Python 3.7 32-bit is installed: py -3 source/nvda.pyw
+	* Python 3.7 32-bit and 64-bit are installed: py -3-32 source/nvda.pyw
+	* A different Python 3.x version is installed: py -3.7-32 source/nvda.pyw
+
+### Debuggin Python 3 transition work
+
+There are two ways of debugging Python 3 transition workflow:
+
+1. Post-mortem (NVDA crashes at startup or wish to view debug information at your leisure): read nvda.log located at "source" directory.
+2. Console (testing an idea or find out how Python 3 modules work): Python Console can be used.
+
 ## Transition workflow
 
-The following is a roughh overview of Python 2 to 3 transition for NVDA screen reader. As this is in draft stage, this is subject to change.
+The following is a roughh overview of Python 2 to 3 transition for NVDA screen reader. Note that information below can change without notice.
 
 ### Notable issues and solutions:
 
 * Renamed modules in Python 3 such as _winreg -> winreg, SocketServer -> socketserver, Queue -> queue and so forth.
 	* Try using Python 3 version before falling back to Python 2 names.
 	* For certain modules (especially those written in C), make sure new modules won't break functionality.
+	* For at least one case (Espeak NG speech synthesizer), a Python module is imported but never used.
 * Reorganized modules in Python 3, including urllib and io.
 	* Try loading specific attributes from reorganized modules.
 * Absolute versus relative imports, especially when aliasing is involved (imports of the form 'from mod import *", observed mostly in app modules).
@@ -46,7 +96,7 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 * Division differences (/ versus //), most notably in nvwave.WavePlayer and manipulating mouse cursor.
 	* Standardize around floor division (//) for integer values, regular division (/) for floats.
 * Bytes versus strings caused by encoding.
-	* Try unifying under Unicode.
+	* Try unifying under Unicode as much as possible.
 	* This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
 * Removed and incompatible modules, including new.instancemethod.
 	* Either find a Python 3 equivalent, or use built-in Python features.
@@ -63,27 +113,11 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 * No more unichr.
 	* Standardize around "chr".
 
-### Needed dependencies:
-
-* Python 3.7.x 32-bit
-* Visual Studio 2017 (Community, Professional, Enterprise)
-* Windows 10 SDK (build 17134)
-* wxPython 4.0.3 for Python 3.x
-* Six 1.11.0
-* SCons 3.0.1
-* comtypes 1.1.7
-* Pywin32 extensions build 223 for Python 3.x
-* pyserial for Python 3.x
-* Configobj 5.1.0
-* Any other dependencies advertising support for Python 2.x in one package or a separate release for Python 3.x
-* A replacement for py2exe for binary distribution
-* A replacement for txt2tags for generating documentation
-
 ### Before transition:
 
 Start date: September 17, 2018 (tentative designation)
 
-1. An NVDA version with wxPython 4 must be released. This is needed, as wxPython 4 supports Python 3, which is a stepping stone for Python 3 transition.
+1. An NVDA version with wxPython 4 must be released. This is a must, as wxPython 4 supports Python 3, which is a stepping stone for Python 3 transition.
 	* Requirement met on September 17, 2018 with release of NVDA 2018.3.
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
 	* Requires editing Git submodule config.
