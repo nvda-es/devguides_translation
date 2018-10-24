@@ -1,4 +1,4 @@
-# Using AppVeyor to release NVDA add-ons 
+# Using AppVeyor to manage NVDA add-ons 
 
 ## Procedure to build and attach nvda-addon files to releases on GitHub
 
@@ -55,6 +55,26 @@ git push origin 1.0
 ```
 
 Now, the release will be created and binary-1.0.nvda-addon will be attached on GitHub.
+
+## Procedure to receive notifications about commits
+
+
+1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features).
+
+2. In the appveyor.yml file, add these lines:
+
+```
+
+notifications:
+  - provider: Email
+    to:
+      - notificationsEmailAddress.example.com
+
+```
+
+Replace notificationsEmailAddress.example.com with a valid email address.
+
+Here is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767).
 
 ## References
 

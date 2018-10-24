@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-24 00:18+Hora de verano romance\n"
+"POT-Creation-Date: 2018-10-24 23:03+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 
 #: ..\python_docs\appveyor.py:3
-msgid "# Using AppVeyor to release NVDA add-ons "
+msgid "# Using AppVeyor to manage NVDA add-ons "
 msgstr ""
 
 #: ..\python_docs\appveyor.py:4
@@ -47,6 +47,7 @@ msgstr ""
 #: ..\python_docs\appveyor.py:17 ..\python_docs\appveyor.py:20
 #: ..\python_docs\appveyor.py:21 ..\python_docs\appveyor.py:24
 #: ..\python_docs\appveyor.py:32 ..\python_docs\appveyor.py:35
+#: ..\python_docs\appveyor.py:40 ..\python_docs\appveyor.py:45
 msgid "```"
 msgstr ""
 
@@ -127,34 +128,70 @@ msgid "Now, the release will be created and binary-1.0.nvda-addon will be attach
 msgstr ""
 
 #: ..\python_docs\appveyor.py:37
-msgid "## References"
+msgid "## Procedure to receive notifications about commits"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:38
-msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
+msgid "1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:39
-msgid "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
-msgstr ""
-
-#: ..\python_docs\appveyor.py:40
-msgid "- [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)"
+msgid "2. In the appveyor.yml file, add these lines:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:41
-msgid "- [mesa/appveyor.yml at master \302\267 anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)"
+msgid "notifications:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:42
-msgid "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
+msgid "  - provider: Email"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:43
-msgid "## Aknowledgements"
+msgid "    to:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:44
+msgid "      - notificationsEmailAddress.example.com"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:46
+msgid "Replace notificationsEmailAddress.example.com with a valid email address."
+msgstr ""
+
+#: ..\python_docs\appveyor.py:47
+msgid "Here is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
+msgstr ""
+
+#: ..\python_docs\appveyor.py:48
+msgid "## References"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:49
+msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:50
+msgid "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:51
+msgid "- [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:52
+msgid "- [mesa/appveyor.yml at master \302\267 anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:53
+msgid "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:54
+msgid "## Aknowledgements"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:55
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr ""
 

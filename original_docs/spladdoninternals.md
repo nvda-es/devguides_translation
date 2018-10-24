@@ -129,7 +129,18 @@ A typical layer command execution is as follows:
 
 In order to use services offered by Studio, one has to use Studio API, which in turn requires one to keep an eye on window handle to Studio (in Windows API, a window handle (just called handle) is a reference to something, such as a window, a file, connection routines and so on). This is important if one wishes to perform Studio commands from other programs (Studio uses messages to communicate with the outside program in question via user32.dll's SendMessage function).
 
-Starting from add-on 7.0, one of the activities the app module performs when started (besides announcing the version of Studio you are using) is to look for the handle to Studio's main window until it is found (this is done via a thread which calls user32.dll's FindWindowA (not FindWindowW) function every second), and once found, the app module caches this information for later use. A similar check is performed by SPL Controller command, as without this, SPL Controller is useless (as noted earlier). Because of the prominence of the Studio API and the window handle, one of the first things I do whenver new versions of Studio is released is to ask for the latest Studio API and modify the app module and/or global plugin accordingly.
+Starting from add-on 7.0, one of the activities the app module performs when started (besides announcing the version of Studio you are using) is to look for the handle to Studio's main window until it is found (this is done via a thread which calls user32.dll's FindWindowW (FindWindowA until late 2018 as explained below) function every second), and once found, the app module caches this information for later use. A similar check is performed by SPL Controller command, as without this, SPL Controller is useless (as noted earlier). Because of the prominence of the Studio API and the window handle, one of the first things I do whenver new versions of Studio is released is to ask for the latest Studio API and modify the app module and/or global plugin accordingly.
+
+#### FindWindowA versus FindWindowW
+
+In the old days of Windows (1990's), programs were not ready to support Unicode when Windows itself did. To support programs that are not Unicode-aware, Microsoft defined two versions of a given Windows API function. For example, there were two versions of FindWindow function, the difference being the final character as follows:
+
+* A: ANSI version meant for legacy programs (e.g. FindWindowA).
+* W: Widechar (Unicode) character version (e.g. FindWindowW).
+
+In reality, programs call FindWindow function, and the appropriate "version" was chosen based on overall character representation macro as specified by the program. For example, if the program was unicode-aware, when FindWindow is called, Windows internally calls FindWindowW.
+
+Until 2018, Studio app module and other components of the add-on called FindWindowA due to the fact that, in Python 2, a string is a read-only array of ANSI characters. Python 3 (and if a string is prefixed with "u" in Python 2) uses immutable array of Unicode characters for strings. Internally, NVDA expects Unicode strings for the function that wraps FindWindow function (located in winUser module), thus mimicking Python 3 behavior. Studio add-on adopted FindWindowW behavior in late 2018, but the wrapper provided by NVDA is not used due to incorrect error checking behavior in NVDA (if window handle is 0 (NULL), success error is raised, which goes against specifications from Windows API).
 
 ## Life of the SPL app module
 
@@ -173,9 +184,9 @@ This is a must because the default app module constructor performs important act
 
 Certain app module add-ons shipts with an app module with a constructor define, and SPL Studio is one of them; in 2018, constructors were added to Creator and Track Tool for various purposes. After calling the base constructor as described above, SPL app module's constructor (__init__ method that runs when the app module starts) does the following:
 
-1. Checks whether a supported version of Studio is running, and if not, raises RuntimeError exception, preventing you from using the app module while an unsupported version of Studio is in use (as of add-on 7.0, you need to use Studio 5.00 and later).
+1. Checks whether a supported version of Studio is running, and if not, raises RuntimeError exception, preventing you from using the app module while an unsupported version of Studio is in use (as of add-on 17.04, you need to use Studio 5.10 and later).
 2. Unless silenced by `globalVars.appArgs.minimal` being True, NVDA announces, "Using SPL Studio version 5.01" if Studio 5.01 is in use (of course, NVDA will say 5.10 when Studio 5.10 is in use). This is done via ui.message function (part of NVDA Core) which lets you hear spoken messages or read the message on a braille display. In reality, ui.message function calls two functions serially (one after the other): speech.speakMessage (speaking something via a synthesizer) and braille.handler.message (brailling messages on a braille display if connected).
-3. Next, add-on settings and related subsystems are initialized by calling splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are performed by the init (formerly initConfig) function itself, while in 8.0 it is handled by SPLConfig ConfigHub class constructor. Add-on 17.10 changes this significantly (see the next section). This is done as follows:
+3. Next, add-on settings and related subsystems are initialized by calling splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are performed by the init (formerly initConfig) function itself, while in 8.0 it is handled by SPLConfig ConfigHub class constructor. Add-on 17.10 changes this significantly, and in 18.07 and later, some steps are skipped if another STudio app is in use (see the next few sections). This is done as follows:
 	1. For add-on 6.x and 7.x, loads a predefined configuration file named userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "normal profile). In add-on 6.x and 7.x, this is done by calling splconfig.unlockConfig() function that handles configuration validation via ConfigObj and Validator, and in 8.0 and later, this is part of SPLConfig constructor. In add-on 17.10 and later, this step will not take place if NVDA is told to use an in-memory config, and in 18.07 and later, any SPL app module that opens SPLConfig (splconfig.openConfig) will register its app name to indicate which app is starting.
 	2. For add-on 6.0 and later, loads broadcast profiles from addonDir/profiles folder. These are .ini files and are processed just like the normal profile except that global settings are pulled in from the normal profile. In add-on 8.0, just like normal profile, this is done when constructing SPLConfig object. In add-on 17.10 and later, if the add-on is told to use normal profile only, this step will not occur.
 	3. Each profile is then appended to a record keeper container (splconfig.SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and later). Then the active profile is set and splconfig.SPLConfig (user configuration map) is set to the first profile in the configuration pool (normal profile; for add-on 5.x and earlier or if only normal profile is to be used (17.10 and later), there is (or will be) just one profile so append step is skipped).
@@ -183,16 +194,18 @@ Certain app module add-ons shipts with an app module with a constructor define, 
 	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NvDA+C) is invoked.
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
-	8. In add-on 7.0, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
+	8. In add-on 7.0, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, update initialization is done as part of app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
 	9. Prepares routines used by time-based profile switching facility by loading triggers map and checking if NVDA should switch to the next profile (this is done if the show associated with the given profile hasn't ended yet). See time-based profile section for details.
 	10. Encoder settings file is loaded, and if ConfigObj throws errors, encoder settings will be reset to defaults.
 	11. In add-on 8.0, track comments are loaded (if any). See track items section for details.
 	12. Although not part of the init routine, starting from 17.12, various modules register one or more functions for action notifications. See extension points section for details.
 4. Starting with NVDA 2015.3, it became possible for an app module to request NVDA to monitor certain events for certain controls even if the app is not being used. This is done by calling eventHandler.requestEvents function with three arguments: process ID, window class for the control in question and the event to be monitored. For earlier versions of NVDA (checked via built-in hasattr function), this step is skipped, and background status monitor flag is then set accordingly. We'll discuss event handling throughout this article.
 5. Next, GUI subsystem is initialized (NVDA uses wxPython). This routine adds an entry in NVDA's preferences menu entitled "SPL Studio Settings", the add-on configuration dialog.
-6. As described above, the app module will look for the window handle for the Studio app.
-7. If the app module is told to announce status of metadata streaming and connect to predefined URL's, NVDA will do it at this point. This is done in the same function that looks for the Studio handle. In order to announce status messages as the last announcement after connecting to metadata servers, Studio app module places ui.message in the event queue to be handled by NVDA (queueHandler.queueFunction). More on internals of metadata announcement and related components in the SPL Assistant chapter.
-8. In add-on 7.0, if automatic update check is enabled, update check timer is started.
+6. As described above, the app module will look for the window handle for the Studio app. In order to avoid this routine consuming resources and making NVDA not responsive, this is done in a separate thread. The thread performs the following:
+	1. Studio window handle is searched via a loop. If Studio exits for whatever reason, an event flag is raised by the app module, causing this thread to exit.
+	2. If the handle is found, its value is recorded in a flag found in base services module (splbase).
+	3. If the app module is told to announce status of metadata streaming and connect to predefined URL's, NVDA will do it at this point provided that Studio's playlist viewer (discussed later) is loaded. In order to announce status messages as the last announcement after connecting to metadata servers, Studio app module places ui.message in the event queue to be handled by NVDA (queueHandler.queueFunction). More on internals of metadata announcement and related components in the SPL Assistant chapter.
+7. In add-on 7.0, if automatic update check is enabled, update check timer is started.
 
 #### Changes introduced in 17.10 due to volatile configuration flags
 
@@ -263,16 +276,18 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 
 ### Add-on updates: updating to latest and greatest version
 
+Note: this feature is being transfered from Studio add-on to other modules. This section will discuss standalone update method (checking for Studio add-on update from Studio window).
+
 In add-on 7.0 and later, it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
 
-The Studio add-on uses a combination of urllib library and development branches (explained later) to fetch the needed update metadata. The user can tell the add-on to check for updates automatically or one can perform this check manually.
+The Studio add-on uses a combination of urllib library and update channels (explained later) to fetch the needed update metadata. The user can tell the add-on to check for updates automatically or one can perform this check manually.
 
 The update check is performed as follows:
 
 1. If the add-on is told to check for updates, the Studio app module constructor will start a timer whose purpose is to call a function when it is time to check for an update.
 2. If automatic update check is enabled, the update manager (splconfig.updateInit) will determine when the update was checked last. This is done in order to perform update checks every 24 hours.
 3. Once the timer kicks in (automatic update check is on), the update check function (splupdate.updateChecker) will be called. This function uses two parameters to determine if a status progress tone should be played and to schedule the next update check.
-4. The update check function first connects to the URL for the current development branch (more on branches at the end of this article) and compares the filename returned by the server. If the file names does not match, the add-on will interpret this as presence of an update and will return a dictionary containing current add-on version, new version (parsed as a regular expression) and URL for the file, and if not, it returns nothing.
+4. The update check function first connects to the URL for the current update channel (more on channels at the end of this article) and compares the filename returned by the server. If the file names does not match, the add-on will interpret this as presence of an update and will return a dictionary containing current add-on version, new version (parsed as a regular expression) and URL for the file, and if not, it returns nothing.
 5. If a new version is available and if the user said "yes" to update prompt, the update metadata (update timestamp) will be cached to be retrieved by the app module later.
 6. This process repeats if automatic check is enabled (a timer will be set to call this function again after 24 hours).
 
@@ -630,9 +645,9 @@ Once you drop a place marker, Studio app module will record the filename of the 
 
 Ever since implementing Track Dial, some broadcasters requested adding support for moving through tracks vertically (as in reading specific columns just like moving to a different row in a table). This also resolved an issue where pressing Control+Alt+up/down arrow keys caused the monitor to flip upside down. This is achieved by asking SPLTrackItem.reportFocus to announce just the column the user wants when Control+Alt+up/down arrow is pressed, all controlled by a hidden class variable. This feature not only works for vertical column navigation - it is also used when a broadcaster requests only one column be announced, and the column to be announced can be customed (not to be confused with column announcement order routine discussed above).
 
-#### Track Tool: one routine, multiple app modules
+#### Track Tool and Creator: one routine, multiple app modules
 
-Column retriever routine is not only employed by Studio app module, but is also used in Track Tool app module (part of the studio add-on). Track Tool's use of column retriever include Track Dial for Track Tool (same routine as the Studio app module and Studio must be running to use it) and announcing column information (Control+NVDA+1  through 0, now termed Columns Explorer for Track Tool).
+Column retriever routine is not only employed by Studio app module, but is also used in Track Tool and Creator app modules (part of the studio add-on). These app modules (specifically, track item classes) uses column retriever for reviewing column data via table navigation commands and announcing column information (Control+NVDA+1  through 0, now termed Columns Explorer for Track Tool/SPL Creator).
 
 ### Few remarks
 
@@ -819,7 +834,7 @@ Another addition to SPL Assistant layer is ability to emulate layer commands pro
 Once you invoke SPL Assistant layer (a beep will be heard), you can perform one of the following operations:
 
 * Status announcements (automation, microphone, etc.).
-* Tools (library scan, track time analysis, obtaining playlist snapshots, columns explorer and so on).
+* Tools (library scan, track time analysis, obtaining playlist snapshots and transcripts, columns explorer and so on).
 * Configuration (switching broadcast profiles).
 * Ask for help (opening SPL Assistant help dialog or the online user guide).
 * Checking for add-on updates (manually).
@@ -910,7 +925,8 @@ These are miscellaneous commands in SPL Assistant, and three of them use Studio 
 * Control+K: Sets track place marker. Consult the place marker section to learn how it works.
 * Shift+R: Library scan. This is a convenience function to start library scan in the background, useful if you have added new tracks from a number of folders via Studio Options dialog. Consult a previous article on library scan for details on library scan internals.
 * 1 through 0 (6 for studio 5.0x): Columns Explorer (discussed earlier). Unlike other commands in this set, this routine uses Windows API only.
-* F8: Obtains playlist snapshot information for the currently loaded track. This feature uses a combination of Windows and Studio API's.
+* F8: Obtains playlist snapshot information for the currently loaded track, including track count, shortest and longest tracks and top artists. This feature uses a combination of Windows and Studio API's.
+* Shift+F8: requests a playlist transcript (data about loaded playlist). Just like playlist snapshots, it uses a combination of object navigation and Windows API.
 * F9: Marks the current position of the playlist as start of track time analysis (more on this feature below).
 * F10: Performs track time analysis (add-on 6.0).
 
@@ -923,10 +939,9 @@ The resulting routine (which is available if you are focused on the main playlis
 1. Move to the position in a playlist to mark as start of track time analysis.
 2. Enter SPL assistant, then press F9.
 3. Move to another track in the playlist, open SPL Assistant then press F10. NVDA will then:
-
-A. Determine analysis range. For most cases, it'll be top to bottom analysis, but in some cases, it could be reverse (bottom to top). Also, a variable to hold total duration will be prepared.
-B. For each track in the analysis range, NVDA will obtain file name and track duration via Studio API. Once the track duration is received, it is then added to the total duration variable.
-C. Once time analysis (calculating total duration) is done, NVDA will announce number of tracks selected and the total duration using mm:ss format.
+	1. Determine analysis range. For most cases, it'll be top to bottom analysis, but in some cases, it could be reverse (bottom to top). Also, a variable to hold total duration will be prepared.
+	2. For each track in the analysis range, NVDA will obtain file name and track duration (in reality, segue) via Studio API. Once the track duration is received, it is then added to the total duration variable.
+	3. Once time analysis (calculating total duration) is done, NVDA will announce number of tracks selected and the total duration using mm:ss format.
 
 If you are a seasoned NVDA user, you may have noticed a familiar pattern: the command to set a marker to copy review cursor text is NVDA+F9, and you would move to a different location and press NVDA+F10 to copy the selected text to the clipboard. Replacing the NVDA modifier key with SPL Assistant produces the commands above: F9 to mark current position for time analysis, and F10 to perform the actual calculation. I intentionally chose these two function keys to provide consistent experience and to reenforce concepts used in NVDA screen reader: review cursor.
 
@@ -935,6 +950,14 @@ If you are a seasoned NVDA user, you may have noticed a familiar pattern: the co
 Until add-on 6.x, playlist remainder announcement was based on Studio API. However, it was found that this "remainder" was actually the remaining time within the selected hour slot. To get around this, in add-on 7.0, this routine was rewritten to take advantage of Track Dial introduced in add-on 5.0 (see Track Dial section above).
 
 Technically, a combination of column content fetching and track navigation routines are used to accomplish this. When SPL Assistant, D is pressed, NvDA will write down the focused track and will move down the playlist (starting from the focused track), recording the segue (total track duration minus crossfade). Once playlist navigation is complete, the total duration is then sent to time announcement routine (see above) for processing (converted to hours, minutes and seconds format).
+
+##### Playlist snapshots and transcripts
+
+Although similar in appearance, playlist snapshots and transcripts are two different things. Both uses a combination of object navigation and Windows API, work by retrieving and analyzing column content for tracks, and involve SPL Assistant followed by F8 with or without modifiers. Whereas a snapshot is used to gather statistics about the loaded playlist, a transcript is the entire playlist formatted in different ways. Also, after invoking SPL Assistant layer, just pressing F8 will launch snapshots, whereas you need to press Shift+F8 to obtain a playlist transcript and choose appropriate action such as transcript range, output format and so on via the dialog that appears afterwards.
+
+A playlist snapshot presents statistics about the currently loaded playlist (or parts of it). Information gathered include how many items (including hour markers) are loaded, longest and shortest tracks, and average track duration. Also, if asked to do so, up to top ten artists, categories, and/or track genres are recorded. This information is presented either via speech and braille, or if the command is pressed twice, in a browse mode window.
+
+In contrast, a playlist transcript is the complete overview of the loaded playlist (or parts of it) presented in various formats. This complete overview includes data from all columns (not just the ones examined by playlist snapshots). Once data from all columns are gathered for a track, NVDA will convert this information into various formats, including plain text, HTML table, comma-separated values (CSV) and so on for viewing in a browse mode window, copying to clipboard (for some formats), or saving to a file.
 
 #### SPL Assistant 3: configuration
 
@@ -1240,7 +1263,7 @@ Now that we've visited internals of StationPlaylist Studio add-on, I'd like to g
 
 ### Lab setup, development equipment and software
 
-For all my software development, I use two computers: a touchscreen laptop and a desktop, both running Windows 10 and latest NVDA next branch snapshots. Both also run Cygwin and/or Windows Subsystem for Linux (WSL, otherwise known as BASH on Ubuntu on Windows)to run various command-line tools (Git, SCons, etc.), and in case I need to compile NVDA from source code, installed Visual Studio 2015 with latest update and other dependencies.
+For all my software development, I use two computers: a touchscreen laptop and a desktop, both running Windows 10 and latest NVDA alpha snapshots. Both also run Cygwin and/or Windows Subsystem for Linux (WSL, otherwise known as BASH on Ubuntu on Windows)to run various command-line tools (Git, SCons, etc.), and in case I need to compile NVDA from source code, installed Visual Studio 2017 with latest update and other dependencies.
 
 In case of SPL add-on, I have different Studio versions installed: 5.11 on my laptop and 5.20 on the desktop. This allows me to work on both versions at once (both computers have the full source code of the add-on, though I tend to write bug fixes on my laptop and experiment with new things on my desktop).
 
@@ -1248,7 +1271,7 @@ In case of SPL add-on, I have different Studio versions installed: 5.11 on my la
 
 Like other NVDA developers and many add-on writers, I use Git for source code management (contrary to its slogan, Git is very smart). This is a distributed system, meaning a local repository contains the complete record of how the source code is managed (no need to connect to a server to commit and fetch updates). For example, using just my local copy of the SPL add-on source code, I can view commit history and generate older add-on releases.
 
-Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: alpha (master branch), beta (beta branch) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a second). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes (in 2018, this has changed significanlty).
+Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: alpha (master branch), beta (beta branch) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a second). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes (in 2018, this has changed significantly).
 
 ### How an add-on feature is born
 
@@ -1301,7 +1324,7 @@ There were two more implications of this decision:
 With this in mind, the following things were changed in 2017:
 
 * No more betas: the development branch (now called slow ring) is considered live beta branch.
-* Anyone can switch to try build branch (now called fast ring snapshots) provided that they are willing to provide early feedback.
+* Anyone can switch to try build branch (called fast ring snapshots) provided that they are willing to provide early feedback.
 * Long-term support updates are now tied to new major Studio releases. This criteria was extended in late 2017 to include critical changes to NVDA (see below).
 
 #### Further changes in 2018

@@ -1,12 +1,13 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Usar AppVeyor para liberar complementos de NVDA</title>
+  <title># Usar AppVeyor para gestionar complementos de NVDA </title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Usar AppVeyor para liberar complementos de NVDA</h1></header>
-  <h2 id="procedimiento-para-compilar-y-adjuntar-nvda-addon-a-releases-liberacionesen-github">Procedimiento para compilar y adjuntar nvda-addon a Releases (liberaciones)en GitHub</h2>
+  <header><h1># Usar AppVeyor para gestionar complementos de NVDA </h1></header>
+  <h1 id="usar-appveyor-para-gestionar-complementos-de-nvda">Usar AppVeyor para gestionar complementos de NVDA</h1>
+<h2 id="procedimiento-para-compilar-y-adjuntar-archivos-nvda-addon-a-releases-liberaciones-en-github">Procedimiento para compilar y adjuntar archivos nvda-addon a Releases (liberaciones) en GitHub</h2>
 <p>Este método se puede usar para automatizar la compilación de complementos de NVDA (binarios con la extensión .nvda-addon), los cuales van a ser subidos luego a Github y añadidos como adjuntos a la release (liberación) creada..</p>
 <p>Funciona para complementos basados en la <a href="https://github.com/nvdaaddons/addontemplate">Plantilla para complementos</a>.</p>
 <h3 id="configurando-appveyor-para-complementos">Configurando AppVeyor para complementos</h3>
@@ -14,10 +15,11 @@
 <li>Consigue el código de un complemento.</li>
 </ol>
 <p>Ejemplo:</p>
-<p>```
-git clone https://github.com/nombreusuario/repo</p>
-<p>git pull
-```</p>
+<pre><code>git clone https://github.com/nombreusuario/repo
+
+git pull
+</code></pre>
+
 <ol>
 <li>
 <p>En la raíz de la carpeta del complemento (la misma en la que está el archivo sconstruct), pega este <a href="https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml">archivo de configuración de AppVeyor</a> (appveyor.yml).</p>
@@ -29,10 +31,14 @@ git clone https://github.com/nombreusuario/repo</p>
 <p>En el archivo appveyor.yml, reemplaza el valor proporcionado para la clave segura por tu token cifrado. Por ejemplo, en lugar de</p>
 </li>
 </ol>
-<p><code>auth_token:
-    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH</code></p>
-<p><code>auth_token:
-    secure: tuTokenCifrado</code></p>
+<pre><code>  auth_token:
+    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH
+</code></pre>
+
+<pre><code>auth_token:
+    secure: tuTokenCifrado
+</code></pre>
+
 <p>Ahora puedes publicar el archivo appveyor.yml en cualquier repositorio de complemento en tu cuenta de GitHub.</p>
 <ol>
 <li>
@@ -48,11 +54,31 @@ git clone https://github.com/nombreusuario/repo</p>
 <h3 id="liberando">Liberando</h3>
 <p>Para publicar una nueva versión de un complemento, puedes crear una etiqueta y enviarla a GitHub:</p>
 <p>Ejemplo</p>
-<p>```
-git tag 1.0</p>
-<p>git push origin 1.0
-```</p>
+<pre><code>git tag 1.0
+
+git push origin 1.0
+</code></pre>
+
 <p>Entonces la release (versión) se creará y binario-1.0.nvda-addon se añadirá como adjunto a ella en GitHub.</p>
+<h2 id="procedimiento-para-recibir-notificaciones-sobre-los-commits">Procedimiento para recibir notificaciones sobre los commits</h2>
+<ol>
+<li>
+<p>Crea una dirección de correo para recibir notificaciones. Por ejemplo, puedes usar la <a href="https://groups.io/static/features">integración de correo electrónico de groups.io</a>.</p>
+</li>
+<li>
+<p>En el archivo appveyor.impl, añade las siguientes líneas:</p>
+</li>
+</ol>
+<pre><code>
+notifications:
+  - provider: Email
+    to:
+      - notificationsEmailAddress.example.com
+
+</code></pre>
+
+<p>Reemplaza notificationsEmailAddress.example.com por una dirección de correo electrónico válida.</p>
+<p>Hay un <a href="https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767">tema en la lista de correo de groups.io que sirve como ejemplo real</a>.</p>
 <h2 id="referencias">Referencias</h2>
 <ul>
 <li><a href="https://www.appveyor.com/docs/appveyor-yml/">Referencia Appveyor.yml</a></li>
