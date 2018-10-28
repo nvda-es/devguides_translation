@@ -58,6 +58,10 @@ Now, the release will be created and binary-1.0.nvda-addon will be attached on G
 
 ## Procedure to receive notifications about commits
 
+For notifications about push events (recommended for add-ons review), please see:
+https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks
+
+Anyway, if you want to use AppVeyor: 
 
 1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features).
 
