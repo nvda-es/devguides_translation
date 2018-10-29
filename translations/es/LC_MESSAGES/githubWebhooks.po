@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-10-28 21:51+Hora estándar romance\n"
+"PO-Revision-Date: 2018-10-29 10:53+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\githubWebhooks.py:3
+msgid "# Using GitHub webhooks to receive notifications"
+msgstr "# Usar Github webhooks para recibir notificaciones"
+
+#: ..\python_docs\githubWebhooks.py:4
+msgid "## Purpose"
+msgstr "## Propósito"
+
+#: ..\python_docs\githubWebhooks.py:5
+msgid ""
+"This can be helpful to receive notifications, for example on a mailing list, "
+"when Gitub repos trigger push events, i.e., when new code or tags are pushed "
+"in the add-ons development process."
+msgstr ""
+"Esto puede ser útil para recibir notificaciones, por ejemplo en una lista de "
+"correo, cuando los repositorios de Github disparan eventos push, por ejemplo "
+"al enviar nuevas etiquetas o código en el proceso de desarrollo de "
+"complementos."
+
+#: ..\python_docs\githubWebhooks.py:6
+msgid "## Procedure"
+msgstr "## Procedimiento"
+
+#: ..\python_docs\githubWebhooks.py:7
+msgid "### Create a Google web app "
+msgstr "### Crear una aplicación web de Google "
+
+#: ..\python_docs\githubWebhooks.py:8
+msgid ""
+"1. Copy this [script sample](https://gist.github.com/nvdaes/"
+"c5cb65b148e6e989d3e243b61719a80a/"
+"raw/4f5129705fa49b01ff5434535492870ac2c750e5/githubPushNotifier.gs) in an "
+"accessible editor, such as Notepadd++ or Notepad:"
+msgstr ""
+"1. Copia este [script de ejemplo](https://gist.github.com/nvdaes/"
+"c5cb65b148e6e989d3e243b61719a80a/"
+"raw/4f5129705fa49b01ff5434535492870ac2c750e5/githubPushNotifier.gs) en un "
+"editor accesible, como el bloc de notas o Notepad++:"
+
+#: ..\python_docs\githubWebhooks.py:9
+msgid ""
+"2. Replace email@example.com with the email address you want to use, for "
+"instance, using the [groups.io email integration](https://groups.io/static/"
+"features)."
+msgstr ""
+"2. Reemplaza email@example.com por la dirección de correo que quieras usar, "
+"por ejemplo el servicio de [integración de correo electrónico de groups.io]"
+"(https://groups.io/static/features)."
+
+#: ..\python_docs\githubWebhooks.py:10
+msgid "3. Create a project at"
+msgstr "3. Crea un proyecto en"
+
+#: ..\python_docs\githubWebhooks.py:11
+msgid "https://script.google.com"
+msgstr "https://script.google.com"
+
+#: ..\python_docs\githubWebhooks.py:12
+msgid ""
+"\t- In the multi-line edit box, copy your modified script and press control"
+"+s to save."
+msgstr ""
+"\t- En el cuadro de edición multilínea, copia tu script modificado y pulsa "
+"ctrl+s para guardar."
+
+#: ..\python_docs\githubWebhooks.py:13
+msgid "\t- Select Publish > Deploy as web app."
+msgstr "\t- Selecciona Publicar > Desplegar como aplicación web."
+
+#: ..\python_docs\githubWebhooks.py:14
+msgid "\t- Under Execute the app as, select run with your account."
+msgstr ""
+"\t- Bajo Ejecutar la app como, selecciona ejecutar con tu propia cuenta."
+
+#: ..\python_docs\githubWebhooks.py:15
+msgid "\t- Under Who has access to the app, select Anyone, even anonymous."
+msgstr ""
+"\t- Bajo Quién tiene acceso a la app, selecciona Cualquiera, incluso si es "
+"anónimo."
+
+#: ..\python_docs\githubWebhooks.py:16
+msgid "\t- Click Deploy."
+msgstr "\t- Haz clic en desplegar."
+
+#: ..\python_docs\githubWebhooks.py:17
+msgid "\t- Copy the Current web app URL."
+msgstr "\t- Copia la URL actual de la aplicación web."
+
+#: ..\python_docs\githubWebhooks.py:18
+msgid "\t"
+msgstr "\t"
+
+#: ..\python_docs\githubWebhooks.py:19
+msgid "\tFor more details, please see"
+msgstr "Para más detalles, consulta"
+
+#: ..\python_docs\githubWebhooks.py:20
+msgid ""
+"\t[Web Apps \\302\\240|\\302\\240 Apps Script \\302\\240|\\302\\240 Google "
+"Developers](https://developers.google.com/apps-script/guides/web)."
+msgstr ""
+"\t[Web Apps \\302\\240|\\302\\240 Apps Script \\302\\240|\\302\\240 Google "
+"Developers](https://developers.google.com/apps-script/guides/web)."
+
+#: ..\python_docs\githubWebhooks.py:21
+msgid "### Configure a webhook on GitHub"
+msgstr "### Configurar un webhook en GitHub"
+
+#: ..\python_docs\githubWebhooks.py:22
+msgid "1. From a GitHub repo, go to Settings > Webhooks > Add webhook."
+msgstr "1. Desde un repositorio git, ve a Settings > Webhooks > Add webhook."
+
+#: ..\python_docs\githubWebhooks.py:23
+msgid "2. In the Payload URL edit box, copy the URL for your web app."
+msgstr ""
+"2. En el cuadro de edición Payload URL, copia la URL de tu aplicación web."
+
+#: ..\python_docs\githubWebhooks.py:24
+msgid "3. In the Content type combo box, select application/json."
+msgstr "3. En el cuadro combinado Content type, selecciona application/json."
+
+#: ..\python_docs\githubWebhooks.py:25
+msgid ""
+"4. In the Enable SSL verification set of radio buttons, disable this option."
+msgstr ""
+"4. En el conjunto de botones de opción Enable SSL verification, deshabilita "
+"esta opción."
+
+#: ..\python_docs\githubWebhooks.py:26
+msgid "5. Press Add webhook."
+msgstr "5. Pulsa en Add webhook."
+
+#: ..\python_docs\githubWebhooks.py:27
+msgid ""
+"Note: In the above process, you may need to confirm your GitHub password."
+msgstr ""
+"Nota: en este proceso, puede ser necesario que confirmes tu contraseña de "
+"Github."
+
+#: ..\python_docs\githubWebhooks.py:28
+msgid "## References"
+msgstr "## Referencias"
+
+#: ..\python_docs\githubWebhooks.py:29
+msgid ""
+"- [Class MailApp \\302\\240|\\302\\240 Apps Script \\302\\240|\\302\\240 "
+"Google Developers](https://developers.google.com/apps-script/reference/mail/"
+"mail-app)"
+msgstr ""
+"- [Class MailApp \\302\\240|\\302\\240 Apps Script \\302\\240|\\302\\240 "
+"Google Developers](https://developers.google.com/apps-script/reference/mail/"
+"mail-app)"
+
+#: ..\python_docs\githubWebhooks.py:30
+msgid ""
+"- [Webhooks | GitHub Developer Guide](https://developer.github.com/webhooks/)"
+msgstr ""
+"- [Webhooks | GitHub Developer Guide](https://developer.github.com/webhooks/)"

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-10-24 22:45+Hora de verano romance\n"
-"PO-Revision-Date: 2018-10-24 22:54+0200\n"
+"POT-Creation-Date: 2018-10-28 21:51+Hora estándar romance\n"
+"PO-Revision-Date: 2018-10-29 10:37+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: Iván Novegil Cancelas - nvda.es <ivan.novegil@nvda.es>, "
 "<contacto@nvda.es>\n"
@@ -62,7 +62,7 @@ msgstr "Ejemplo:"
 #: ..\python_docs\appveyor.py:17 ..\python_docs\appveyor.py:20
 #: ..\python_docs\appveyor.py:21 ..\python_docs\appveyor.py:24
 #: ..\python_docs\appveyor.py:32 ..\python_docs\appveyor.py:35
-#: ..\python_docs\appveyor.py:40 ..\python_docs\appveyor.py:45
+#: ..\python_docs\appveyor.py:43 ..\python_docs\appveyor.py:48
 msgid "```"
 msgstr "```"
 
@@ -189,6 +189,22 @@ msgstr "## Procedimiento para recibir notificaciones sobre los commits"
 
 #: ..\python_docs\appveyor.py:38
 msgid ""
+"For notifications about push events (recommended for add-ons review), please "
+"see:"
+msgstr ""
+"Para las notificaciones sobre eventos push (recomendadas a la hora de "
+"revisar complementos), visita:"
+
+#: ..\python_docs\appveyor.py:39
+msgid "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
+msgstr "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
+
+#: ..\python_docs\appveyor.py:40
+msgid "Anyway, if you want to use AppVeyor: "
+msgstr "En cualquier caso, si quieres usar AppVeyor: "
+
+#: ..\python_docs\appveyor.py:41
+msgid ""
 "1. Create an email address to receive notifications. For instance, you may "
 "use the [groups.io email integration](https://groups.io/static/features)."
 msgstr ""
@@ -196,34 +212,34 @@ msgstr ""
 "puedes usar la [integración de correo electrónico de groups.io](https://"
 "groups.io/static/features)."
 
-#: ..\python_docs\appveyor.py:39
+#: ..\python_docs\appveyor.py:42
 msgid "2. In the appveyor.yml file, add these lines:"
 msgstr "2. En el archivo appveyor.impl, añade las siguientes líneas:"
 
-#: ..\python_docs\appveyor.py:41
+#: ..\python_docs\appveyor.py:44
 msgid "notifications:"
 msgstr "notifications:"
 
-#: ..\python_docs\appveyor.py:42
+#: ..\python_docs\appveyor.py:45
 msgid "  - provider: Email"
 msgstr "  - provider: Email"
 
-#: ..\python_docs\appveyor.py:43
+#: ..\python_docs\appveyor.py:46
 msgid "    to:"
 msgstr "    to:"
 
-#: ..\python_docs\appveyor.py:44
+#: ..\python_docs\appveyor.py:47
 msgid "      - notificationsEmailAddress.example.com"
 msgstr "      - notificationsEmailAddress.example.com"
 
-#: ..\python_docs\appveyor.py:46
+#: ..\python_docs\appveyor.py:49
 msgid ""
 "Replace notificationsEmailAddress.example.com with a valid email address."
 msgstr ""
 "Reemplaza notificationsEmailAddress.example.com por una dirección de correo "
 "electrónico válida."
 
-#: ..\python_docs\appveyor.py:47
+#: ..\python_docs\appveyor.py:50
 msgid ""
 "Here is a [topic in groups.io mailing list as a real example](https://nvdaes."
 "groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
@@ -232,16 +248,16 @@ msgstr ""
 "(https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/"
 "build_completed/27377767)."
 
-#: ..\python_docs\appveyor.py:48
+#: ..\python_docs\appveyor.py:51
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\appveyor.py:49
+#: ..\python_docs\appveyor.py:52
 msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
 msgstr ""
 "- [Referencia Appveyor.yml](https://www.appveyor.com/docs/appveyor-yml/)"
 
-#: ..\python_docs\appveyor.py:50
+#: ..\python_docs\appveyor.py:53
 msgid ""
 "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor."
 "com/docs/deployment/github/#configuring-in-appveyoryml)"
@@ -249,7 +265,7 @@ msgstr ""
 "- [Publicando artifacts en releases de GitHub | AppVeyor](https://www."
 "appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
 
-#: ..\python_docs\appveyor.py:51
+#: ..\python_docs\appveyor.py:54
 msgid ""
 "- [Syntax of the release name value in the deploy section of the appveyor."
 "yml configuration file](http://help.appveyor.com/discussions/questions/9221-"
@@ -261,7 +277,7 @@ msgstr ""
 "questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-"
 "appveyoryml-configuration-file)"
 
-#: ..\python_docs\appveyor.py:52
+#: ..\python_docs\appveyor.py:55
 msgid ""
 "- [mesa/appveyor.yml at master \\302\\267 anholt/mesa](https://github.com/"
 "anholt/mesa/blob/master/appveyor.yml)"
@@ -269,7 +285,7 @@ msgstr ""
 "- [mesa/appveyor.yml en master \\302\\267 anholt/mesa](https://github.com/"
 "anholt/mesa/blob/master/appveyor.yml)"
 
-#: ..\python_docs\appveyor.py:53
+#: ..\python_docs\appveyor.py:56
 msgid ""
 "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups."
 "io/g/nvda-addons/topic/6220467)"
@@ -277,10 +293,10 @@ msgstr ""
 "- [Discusión en la lista de correo de NVDA-Addons (complementos de NVDA)]"
 "(https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
 
-#: ..\python_docs\appveyor.py:54
+#: ..\python_docs\appveyor.py:57
 msgid "## Aknowledgements"
 msgstr "## Agradecimientos"
 
-#: ..\python_docs\appveyor.py:55
+#: ..\python_docs\appveyor.py:58
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr "Gracias a @abdel792, @derekriemer y @tuukao por hacer esto posible."

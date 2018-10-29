@@ -1,0 +1,51 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Usar Github webhooks para recibir notificaciones</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Usar Github webhooks para recibir notificaciones</h1></header>
+  <h1 id="usar-github-webhooks-para-recibir-notificaciones">Usar Github webhooks para recibir notificaciones</h1>
+<h2 id="proposito">Propósito</h2>
+<p>Esto puede ser útil para recibir notificaciones, por ejemplo en una lista de correo, cuando los repositorios de Github disparan eventos push, por ejemplo al enviar nuevas etiquetas o código en el proceso de desarrollo de complementos.</p>
+<h2 id="procedimiento">Procedimiento</h2>
+<h3 id="crear-una-aplicacion-web-de-google">Crear una aplicación web de Google</h3>
+<ol>
+<li>
+<p>Copia este <a href="https://gist.github.com/nvdaes/c5cb65b148e6e989d3e243b61719a80a/raw/4f5129705fa49b01ff5434535492870ac2c750e5/githubPushNotifier.gs">script de ejemplo</a> en un editor accesible, como el bloc de notas o Notepad++:</p>
+</li>
+<li>
+<p>Reemplaza email@example.com por la dirección de correo que quieras usar, por ejemplo el servicio de <a href="https://groups.io/static/features">integración de correo electrónico de groups.io</a>.</p>
+</li>
+<li>
+<p>Crea un proyecto en
+https://script.google.com</p>
+<ul>
+<li>En el cuadro de edición multilínea, copia tu script modificado y pulsa ctrl+s para guardar.</li>
+<li>Selecciona Publicar &gt; Desplegar como aplicación web.</li>
+<li>Bajo Ejecutar la app como, selecciona ejecutar con tu propia cuenta.</li>
+<li>Bajo Quién tiene acceso a la app, selecciona Cualquiera, incluso si es anónimo.</li>
+<li>Haz clic en desplegar.</li>
+<li>Copia la URL actual de la aplicación web.</li>
+</ul>
+</li>
+</ol>
+<p>Para más detalles, consulta
+    <a href="https://developers.google.com/apps-script/guides/web">Web Apps  |  Apps Script  |  Google Developers</a>.</p>
+<h3 id="configurar-un-webhook-en-github">Configurar un webhook en GitHub</h3>
+<ol>
+<li>Desde un repositorio git, ve a Settings &gt; Webhooks &gt; Add webhook.</li>
+<li>En el cuadro de edición Payload URL, copia la URL de tu aplicación web.</li>
+<li>En el cuadro combinado Content type, selecciona application/json.</li>
+<li>En el conjunto de botones de opción Enable SSL verification, deshabilita esta opción.</li>
+<li>Pulsa en Add webhook.</li>
+</ol>
+<p>Nota: en este proceso, puede ser necesario que confirmes tu contraseña de Github.</p>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://developers.google.com/apps-script/reference/mail/mail-app">Class MailApp  |  Apps Script  |  Google Developers</a></li>
+<li><a href="https://developer.github.com/webhooks/">Webhooks | GitHub Developer Guide</a></li>
+</ul>
+</body>
+</html>
