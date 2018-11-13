@@ -6,11 +6,11 @@ There are several tasks to be done, and this document hopes to give you an overv
 
 
 ## Translation Mailing List
-You can subscribe to NVDA translations mailing list [here](https://groups.io/g/nvda-translations)
+Translators should subscribe to the [NVDA translations mailing list](https://groups.io/g/nvda-translations)
 hosted at Groups.IO.
 
 It is an English low trafic list devoted for the discussion of translation. 
-Important messages that relate to translators will also be sent here, i.e. before NVDA official releases, to remind translators to make sure their localization is up to date.
+Important messages that relate to translators will also be sent here, i.e. before official NVDA releases, to remind translators to make sure their localization is up to date.
 
 ## Important Dates
 
@@ -18,7 +18,7 @@ Translators should ensure their translation is up to date by (UTC 00:00 on 14 Fe
 
 ## Translation Status
 
-Status for existing NVDA localizations are provided below. If you would like to improve or would like to work on a new language, please write to NVDA translations email list.
+Status for existing NVDA localizations are provided below. If you would like to improve or would like to work on a new language, please write to the NVDA translations email list.
 Information updated as of August 2017 (2017.3).
 When 2017.3 is listed in the last updated column, it means that the localization is fully up to date and will be ready for the next release. For the purposes of the information below, "up to date" refers to interface translation of at least 90%.
 

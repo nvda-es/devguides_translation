@@ -1,0 +1,97 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Traducir utilizando el proceso de flujo de trabajo automático</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Traducir utilizando el proceso de flujo de trabajo automático</h1></header>
+  <h1 id="traducir-utilizando-el-proceso-de-flujo-de-trabajo-automatico">Traducir utilizando el proceso de flujo de trabajo automático</h1>
+<p>Esta página describe el proceso de traducción de NVDA y los ficheros relacionados usando el proceso de flujo de trabajo automático. Para obtener más información sobre el proceso de traducción en general, lee la página de introducción a la traducción.</p>
+<p>El proceso de flujo de trabajo automático consiste en recibir archivos de traducción, trabajar en tus traducciones y luego enviarlas al servidor de traducciones. Esto se hace a través de un sistema de control de versiones llamado Subversion (SVN). De vez en cuando, recibirás nuevas traducciones (junto con nuevos avisos de traducción por correo electrónico o por Twitter (opcional, sigue a “@SRT_” para recibir tuits), y tus traducciones se incluirán en NVDA periódicamente para que puedas probarlas.</p>
+<p>Ten en cuenta que necesitas mantener las traducciones actualizadas y probar tu trabajo de traducción para asegurarte de que funciona de la manera prevista. Además, lee el documento del proceso de publicación para recordar las fechas de publicación.</p>
+<p>Los detalles del flujo de trabajo se describen a continuación.</p>
+<h2 id="creando-una-cuenta">Creando una cuenta</h2>
+<p>Para comenzar el proceso de flujo automático subscríbete a la lista de correos de traducciones de NVDA y solicita una invitación para unirte al flujo de trabajo. Una vez recibas tu invitación en <a href="http://www.assembla.com">assembla</a>, puedes proceder creando un nombre de usuario/clave de acceso tal que puedas utilizar el servidor svn. Una vez te hayas autentificado, necesitas aceptar la invitación al equipo screenReaderTranslations. Después de eso, no necesitaremos regresar al sitio web.</p>
+<h2 id="descargar-e-instalar-subversion">Descargar e instalar subversion</h2>
+<p>Actualmente recomendamos Tortoise svn. Descárgalo de http://tortoisesvn.net e instálalo.</p>
+<p>La configuración y propiedades predeterminadas de TortoiseSVN están bien, así que no necesitas cambiar nada.</p>
+<h2 id="la-primera-vez-que-se-hace-checkout-para-descargar-el-repositorio">La primera vez que se hace checkout (para descargar el repositorio)</h2>
+<p>Para descargar el repositorio de screenreader translations crea un directorio, por ejemplo llamado Traducciones, haz clic derecho o pulsa Aplicaciones y desde el menú de Contexto selecciona SVN chekout… Copia y pega la siguiente dirección web en el cuadro de edición de dirección de repositorio:<br />
+<code>http://subversion.assembla.com/svn/screenReaderTranslations</code></p>
+<p>Puedes mirar si ha sido correcto cuando la última línea que se imprima diga algo como <code>Completed; Path: At revision: 1234</code></p>
+<h2 id="estructura-del-repositorio">Estructura del Repositorio</h2>
+<p>El diseño del repositorio es como sigue:</p>
+<ul>
+<li>Carpetas de dos caracteres de códigos del idioma (como es para español o fr para francés), según se utilizan por nvda, conteniendo todos los documentos de traducción para este idioma.</li>
+<li>scripts: los scripts que se ejecutan en el servidor, generalmente no deberían cambiarse.</li>
+<li>Algunos ficheros t2tconf, ficheros de configuración estándar que no deberían cambiarse.</li>
+</ul>
+<p>Cada directorio de idioma contiene:</p>
+<ul>
+<li>add-ons, los mensajes traducibles para varios complementos (si están habilitados para tu idioma).</li>
+<li>changes-newRevisions, directorio que contiene las actualizaciones que deben traducirse para el fichero changes.t2t (solo lectura).</li>
+<li>userGuide-newRevisions, directorio que contiene las actualizaciones que deben traducirse para el fichero userGuide.t2t (solo lectura).</li>
+<li>symbols-newRevisions, directorio que contiene actualizaciones que deben traducirse para el fichero symbols.dic (solo lectura).</li>
+<li>changes.t2t, lista localizada de cambios (debes editarlo).</li>
+<li>changes.html, html generado automáticamente desde t2t, para que puedas verificar la sintaxis.</li>
+<li>userGuide.t2t, manual localizado (debe editarse).</li>
+<li>userGuide.html, html generado automáticamente desde tu t2t, para que puedas verificar la sintaxis.</li>
+<li>userGuide-structureDifferences.txt, genera automáticamente la diferencia entre las estadísticas de la guía de usuario en inglés y las estadísticas de la guía de usuario traducida (muy útil).</li>
+<li>nvda.po, el archivo de interfaz de NVDA, los nuevos mensajes del pot se fusionan automáticamente, y se te enviará un correo electrónico (o un tuit) cuando haya nuevos mensajes para traducir.</li>
+<li>characterDescriptions.dic, tu archivo de descripciones de caracteres traducido (debe editarse).</li>
+<li>symbols.dic, tu archivo de símbolos traducido (debe editarse).</li>
+<li>Settings, metainformación variada para ayudar al sistema de traducción automática, también se utiliza para indicar cuándo se desea traducir un complemento específico.</li>
+</ul>
+<h2 id="flujo-de-trabajo">Flujo de trabajo</h2>
+<p>Para minimizar los problemas de combinación, y permitir que el sistema funcione automáticamente con 
+efectividad se recomienda encarecidamente que se haga:</p>
+<ul>
+<li>svn update antes de comenzar el trabajo.</li>
+<li>svn commit cuando finalices el trabajo con una sección.</li>
+</ul>
+<p>El flujo de trabajo es algo como esto:</p>
+<ol>
+<li>Recibes un correo electrónico diciéndote que nvda.po ha sido actualizado, y te dirá cuántos mensajes están sin traducir, y cuántos están provisionales.<ol>
+<li>svn update para recibir las modificaciones</li>
+<li>Traducir los mensajes nuevos/mensajes provisionales.</li>
+<li>Commit, en el mensaje del commit dí si el trabajo se finalizó o no.</li>
+</ol>
+</li>
+<li>Recibes un correo electrónico (o un tuit) que te informa que hay nuevas revisiones para los cambios o que se deben traducir los documentos de la Guía del usuario<ol>
+<li>svn update, ves un directorio nuevo en changes-newRevisions, por ejemplo 10289.</li>
+<li>Dentro de 10289 puedes ver el changes.t2t, el differences.txt, el wordDifferences.txt y el log.txt</li>
+<li>En differences.txt deberían estar exactamente las líneas que debes añadir/cambiar/eliminar.</li>
+<li>Si tu traducción está completa, los números de línea de cada bloque differences deberían estar cerca de donde necesites realizar tus cambios.</li>
+<li>Si differences.txt te mostró una línea que se modificó, y no te resulta sencillo ver qué cambió, (por ejemplo, un signo de puntuación insertado o una ortografía corregida), entonces encuentra la misma línea en wordDifferences.txt , y te mostrará palabra por palabra el cambio.</li>
+<li>log.txt, útil en ocasiones para ver el mensaje de commit de  los autores de NVDA, por lo que se proporciona en caso de que sea útil.</li>
+<li>Cuando finalicemos con todos los bloques de differences para 10289, verificamos para asegurarnos de que nada se haya perdido (consulta svn diff, svn status)</li>
+<li>hacemos un svn commit, y en el mensaje decimos que completamos la traducción de 10289.</li>
+</ol>
+</li>
+</ol>
+<h2 id="ordenes-utiles-de-svn">Órdenes útiles de svn</h2>
+<h3 id="descargar-nuevos-cambios-desde-el-servidor">Descargar nuevos cambios desde el servidor</h3>
+<p>Para actualizar el repositorio simplemente selecciona la carpeta Traducciones en tu explorador haciendo clic derecho sobre ella y activa SVN update.
+La última línea de la ventana de salida debería ser algo como updated to revision 1234.</p>
+<p>Las otras líneas mostrarán una lista de ficheros que hayan sido afectados.</p>
+<pre><code>    added file1.txt # significa que file.txt ha sido añadido a svn, y estás opteniendo tu copia.
+    updated file2.txt # significa que file2.txt ha sido actualizado
+    deleted file3.txt # significa que alguien eliminó el fichero y svn también está eliminando tu copia del fichero.
+    g file4.txt # significa que se ha cambiado el fichero, y también se cambió por alguien más, pero svn combinó los cambios correctamente.
+    c file5.txt # significa que se ha modificado el fichero y ha sido modificado por alguien más, pero svn no pudo combinar automáticamente, esto causa un problema, así que pide ayuda si te ocurre esto.
+</code></pre>
+<h3 id="haciendo-commit-enviando-las-modificaciones-al-servidor">Haciendo commit (enviando las modificaciones al servidor)</h3>
+<p>Si tradujiste nuevas revisiones, cambiaste la guía de usuario, etc, puedes enviar los cambios
+haciendo clic derecho sobre tu código de idioma dentro de la carpeta Traducciones y seleccionando SVN commit desde el menú.</p>
+<p>En el diálogo deberías escribir un mensaje de Commit con tu código de idioma y una descripción del trabajo que has hecho.
+Puedes marcar/desmarcar los ficheros a ser enviados.
+Los ficheros con cambios están marcados automáticamente.
+Si eliminaste un fichero o carpeta en windows, 
+por omisión está desmarcado en este diálogo, así que tienes que marcarlo para que sea eliminado del repositorio en el servidor.</p>
+<h3 id="modificacion-involuntaria-de-un-fichero">Modificación involuntaria de un fichero</h3>
+<p>Si eliminaste un fichero por error o algo como eso puedes revertir los cambios haciendo click derecho sobre la carpeta Traducciones, y seleccionando TortoiseSVN -&gt; revert del menú.</p>
+<h2 id="informacion-que-falta">Información que falta</h2>
+<p>Si tienes cualquier consejo o información adicional porfavor actualiza este archivo.</p>
+</body>
+</html>
