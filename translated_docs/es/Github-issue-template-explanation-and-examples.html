@@ -6,23 +6,38 @@
   </head>
   <body>
   <header><h1># Creación de nuevas incidencias en el proyecto NVDA</h1></header>
-  <p>Esta página se ha creado para servir como explicación al rellenar la <a href="https://github.com/nvaccess/nvda/blob/master/.github/issue_template.md">la plantilla de incidencias de NVDA en GitHub (en inglés)</a>.</p>
+  <h1 id="creacion-de-nuevas-incidencias-en-el-proyecto-nvda">Creación de nuevas incidencias en el proyecto NVDA</h1>
+<p>Esta página se ha creado para servir como explicación al rellenar las <a href="https://github.com/nvaccess/nvda/blob/master/.github/ISSUE_TEMPLATE/">plantillas de incidencia en GitHub (en inglés)</a>.</p>
 <p>La plantilla usa markdown de Github, para proporcionar formato en los encabezados, listas, citas, etc. Si no estás familiarizado con esto, tómate algo de tiempo para aprender sobre <a href="https://guides.github.com/features/mastering-markdown/">el markdown de Github (en inglés)</a></p>
 <p><strong>Advertencia</strong>: salvo en raras circunstancias, es necesario completar toda la plantilla. Probablemente se cerrará tu incidencia si no se ha seguido esta plantilla.</p>
-<h2 id="adjuntos-e-imagenes">Adjuntos e imágenes</h2>
+<p>Actualmente tenemos dos plantillas, ambas se describen en esta página:
+- para informes de fallos
+- para solicitud de características.</p>
+<h2 id="informacion-general">Información general</h2>
+<p>La siguiente información se aplica a todas las incidencias (informes de fallos, solicitudes de características, e incluso solicitudes de cambio). Al principio de la plantilla hay un bloque de comentarios en HTML que apunta hacia la versión inglesa de esta página en la wiki de NVDA. Se puede dejar como está, y no aparecerá una vez que se guarde la incidencia. Elimínalo si lo deseas.</p>
+<h3 id="adjuntos-e-imagenes">Adjuntos e imágenes</h3>
 <p>Es importante incluir cualquier archivo necesario para reproducir la incidencia. Este podría ser un archivo necesario para una suite ofimática, o un enlace a un recreador de código como CodePen o JSFiddle, o tal vez un archivo HTML independiente. Github no permite adjuntar todos los <a href="https://help.github.com/articles/file-attachments-on-issues-and-pull-requests/">tipos de archivos</a>. Sin embargo, sí se permiten los archivos zip, por lo que puedes comprimir tu archivo y adjuntar el resultado.</p>
-<h3 id="registros">Registros</h3>
+<h4 id="registros">Registros</h4>
 <p>En la mayor parte de los casos, un archivo de registro de NVDA es increíblemente útil cuando se intenta comprender o resolver un problema, así que no olvides adjuntarlo. Hay instrucciones al respecto en los documentos para desarrolladores de esta web. Si lo que obtienes es un archivo de minivolcado (nvda_crash.dmp), inclúyelo también.</p>
-<h3 id="capturas-de-pantalla">Capturas de pantalla</h3>
+<h4 id="capturas-de-pantalla">Capturas de pantalla</h4>
 <p>Aunque las <strong>imágenes / capturas de pantalla</strong> son bienvenidas para ayudar a explicar un problema, ten en cuenta que muchos de los desarrolladores de NVDA son ciegos y apreciarán mejor la imagen si está descrita como texto. La mayoría de las herramientas te permiten copiar texto fuera de ellas.</p>
-<h2 id="consejos">Consejos</h2>
+<h3 id="consejos">Consejos</h3>
 <ul>
 <li>Plantéate ir a la pestaña Preview para leer tu incidencia en cualquier momento y confirmar que queda como esperas.</li>
 <li>Si tienes problemas siguiendo esta plantilla, o con la investigación inicial necesaria, pide educadamente asistencia a la fantástica comunidad que se encuentra en la <a href="https://groups.google.com/group/nvda-es">lista de correo de NVDA en español</a></li>
 </ul>
-<h2 id="la-plantilla">La plantilla</h2>
-<p>Al principio de la plantilla hay un bloque de comentarios en HTML que apunta hacia la versión inglesa de esta página en la wiki de NVDA. Se puede dejar como está, y no aparecerá una vez que se guarde la incidencia. Elimínalo si lo deseas.</p>
-<p>Después del comentario en HTML, puedes proporcionar una breve descripción de la incidencia. A continuación, rellena cada una de las siguientes secciones:</p>
+<h2 id="plantilla-de-solicitud-de-caracteristicas">Plantilla de solicitud de características</h2>
+<p>Después del comentario en HTML (<a href="#general-information">explicado antes</a>), puedes proporcionar una breve descripción de la incidencia. A continuación, rellena cada uno de los siguientes encabezados, correspondientes con los que hay en la plantilla, con una breve descripción de cómo rellenar cada sección.</p>
+<h3 id="esta-tu-solicitud-de-caracteristicas-relacionada-con-un-problema-por-favor-describelo">¿Está tu solicitud de características relacionada con un problema? Por favor, descríbelo.</h3>
+<p>Esta sección debería proporcionar una descripción clara y concisa de cuál es el problema. Por ejemplo: siempre me frustro cuando [...]</p>
+<h3 id="describe-la-solucion-que-te-gustaria">Describe la solución que te gustaría</h3>
+<p>Una descripción clara y concisa de lo que quieres que pase. Si puedes proporcionar detalles técnicos para solucionar el problema, no dudes en hacerlo. Puedes añadir un subencabezado si quieres.</p>
+<h3 id="describe-alternativas-en-las-que-has-pensado">Describe alternativas en las que has pensado</h3>
+<p>Una descripción clara y concisa de soluciones o características alternativas que te hayas planteado.</p>
+<h3 id="contexto-adicional">Contexto adicional</h3>
+<p>Añade cualquier otro contexto para la solicitud de características aquí. Podría ser las otras aplicaciones y versiones de las mismas con las que se espera que funcione la característica (por ejemplo, Firefox o Microsoft Word). Además, plantéate si puedes subir un documento adjunto que ayude como caso de prueba para la característica.</p>
+<h2 id="plantilla-de-informe-de-fallos">Plantilla de informe de fallos</h2>
+<p>Después del comentario en HTML (<a href="#general-information">explicado antes</a>), puedes proporcionar una breve descripción de la incidencia. A continuación, rellena cada uno de los siguientes encabezados, correspondientes con los que hay en la plantilla, con una breve descripción de cómo rellenar cada sección.</p>
 <h3 id="pasos-para-reproducir">Pasos para reproducir:</h3>
 <p>Esta sección debería contener una lista de los pasos que realizas para demostrar el problema. Mientras los estés realizando, haz una copia de tu registro de NVDA para adjuntarla a la incidencia.</p>
 <p><em>Ejemplo:</em></p>
@@ -48,7 +63,7 @@
 </blockquote>
 <h3 id="configuracion-del-sistema">Configuración del sistema:</h3>
 <p>Esta sección tiene varias subsecciones. Estas van sobre el sistema que estás usando al encontrar el fallo. Si encuentras el fallo con diversas configuraciones diferentes, lístalas. Esto ayuda a los desarrolladores a reproducir el problema, o investigar por qué el problema les ocurre a algunos usuarios y a otros no.</p>
-<h4 id="nvda-instalado-portable-o-ejecutandose-desde-el-codigo-fuente">NVDA Instalado, portable o ejecutándose desde el código fuente:</h4>
+<h4 id="nvda-instaladoportableejecutandose-desde-el-codigo-fuente">NVDA Instalado/portable/ejecutándose desde el código fuente:</h4>
 <p>Esto indica a los desarrolladores cómo estás utilizando NVDA.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
@@ -61,14 +76,12 @@
 <p>next-15370,21fd217a</p>
 </blockquote>
 <h4 id="version-de-windows">Versión de Windows:</h4>
-<p>La versión de Windows que estás usando. Puedes copiarla desde la aplicación "Información del sistema":</p>
-<ol>
-<li>Pulsa <code>Windows+r</code> para abrir el diálogo ejecutar</li>
-<li>Escribe <code>msinfo32</code> y pulsa intro</li>
-<li>Desde el elemento de árbol "Resumen del sistema", pulsa tab para llegar al panel derecho.</li>
-<li>Pulsa flecha abajo dos veces para llegar a "Versión"</li>
-<li>Pulsa <code>control+c</code> para copiar la información de versión.</li>
-</ol>
+<p>La versión de Windows que estás usando. Puedes copiarla desde la aplicación "Información del sistema":
+1. Pulsa <code>Windows+r</code> para abrir el diálogo ejecutar
+2. Escribe <code>msinfo32</code> y pulsa intro
+3. Desde el elemento de árbol "Resumen del sistema", pulsa tab para llegar al panel derecho.
+4. Pulsa flecha abajo dos veces para llegar a "Versión"
+5. Pulsa <code>control+c</code> para copiar la información de versión.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <p>Windows 10 Versión 1607, Compilación 14393.1066</p>

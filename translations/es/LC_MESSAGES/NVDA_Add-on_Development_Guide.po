@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-12-07 16:24+Hora estándar romance\n"
-"PO-Revision-Date: 2018-12-07 16:25+0100\n"
+"PO-Revision-Date: 2018-12-07 18:13+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -22,10 +22,8 @@ msgid "# NVDA Add-on Development Guide"
 msgstr "# Guía de Desarrollo de Complementos de NVDA"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:4
-#, fuzzy
-#| msgid "* Latest version: February 2018 for NVDA 2018.1"
 msgid "* Latest version: December 2018 for NVDA 2018.4/2019.1"
-msgstr "* Última versión: febrero de 2018 para NVDA 2018.1"
+msgstr "* Última versión: diciembre de 2018 para NVDA 2018.4/2019.1"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:5
 msgid "## Authors, Contributions, and Copyright"
@@ -3501,12 +3499,6 @@ msgstr ""
 "sus propios complementos. He aquí algunos de ellos:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:464
-#, fuzzy
-#| msgid ""
-#| "* Get to know NVDA: it is important that you become familiar with NVDA "
-#| "commands, concepts and tips. Subscribe to NVDA users groups to learn more "
-#| "about NVDA and learn about how NVDA works, as you'll be extending it via "
-#| "your add-ons."
 msgid ""
 "* Get to know NVDA: it is important that you become familiar with NVDA "
 "commands, concepts and tips. Subscribe to NVDA users groups to learn more "
@@ -3514,8 +3506,8 @@ msgid ""
 msgstr ""
 "* Conocer a NVDA: es importante que te familiarices con las órdenes, "
 "conceptos y consejos de NVDA. Suscríbete a los grupos de usuarios de NVDA "
-"para obtener más información sobre NVDA y conocer cómo funciona, ya que lo "
-"ampliarás a través de tus complementos."
+"para aprender más sobre NVDA y conocer cómo funciona, ya que lo ampliarás a "
+"través de tus complementos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:465
 msgid ""
@@ -3797,27 +3789,22 @@ msgstr ""
 "utilizarlo como un complemento de NVDA."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:496
-#, fuzzy
-#| msgid ""
-#| "This cannot be done easily. One handy module for this purpose is six, "
-#| "which allows running Python 2 and 3 code. NvDA itself uses Python 2 as "
-#| "WXPython uses Python 2, and until WXPython is rewritten to support Python "
-#| "3, you cannot run Python 3 code in NVDA."
 msgid ""
 "This cannot be done easily. One handy module for this purpose is six, which "
 "allows running Python 2 and 3 code. NvDA itself uses Python 2, and work is "
 "under way to transition to Python 3."
 msgstr ""
 "Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es "
-"six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2 porque "
-"WXPython utiliza Python 2, y hasta que WXPython no sea reescrito para "
-"soportar Python 3, no se puede ejecutar el código Python 3 en NVDA."
+"six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2, pero ya "
+"se están haciendo trabajos de transición a Python 3."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:497
 msgid ""
 "Q. My add-on uses GUI facility, and after installing NVDA 2018.3, I get "
 "errors related to wxPython."
 msgstr ""
+"P. Mi complemento usa componentes de interfaz gráfica, y después de instalar "
+"NVDA 2018.3, obtengo errores relacionados con WXPython."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:498
 msgid ""
@@ -3826,17 +3813,26 @@ msgid ""
 "conditional statements (if/else) and version checks so the appropriate code "
 "path can be used."
 msgstr ""
+"NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una "
+"versión más antigua de WXPython. Si quieres dar soporte a versiones "
+"anteriores de NVDA, debes emplear sentencias condicionales (if/else) y "
+"comprobaciones de versión, de tal forma que se elija el camino correcto al "
+"ejecutar el código."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:499
 msgid ""
 "Q. After installing NVDA 2019.1, users say my add-ons are not compatible."
 msgstr ""
+"P. Tras instalar NVDA 2019.1, los usuarios dicen que mis complementos no son "
+"compatibles."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:500
 msgid ""
 "NVDA 2019.1 introduces add-on compatibility flags that tells NVDA the "
 "following information:"
 msgstr ""
+"NVDA 2019.1 introduce indicadores de compatibilidad de complementos que le "
+"dan la siguiente información:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:501
 msgid ""
@@ -3845,6 +3841,10 @@ msgid ""
 "features introduced or changed in a given NVDA release without supporting "
 "older NVDA releases."
 msgstr ""
+"* Versión mínima de NVDA (minimumNVDAVersion): un complemento puede "
+"especificar la versión mínima de NVDA necesaria para funcionar. Esto viene "
+"bien si necesitas utilizar funciones introducidas o modificadas en una "
+"versión dada de NVDA sin dar soporte a versiones de NVDA más antiguas."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:502
 msgid ""
@@ -3852,12 +3852,19 @@ msgid ""
 "supported release for the add-on. Without this flag being set, NVDA will "
 "treat your add-ons as incompatible with the latest release."
 msgstr ""
+"* Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): le "
+"dice a NVDA la versión más alta soportada por el complemento. Si no se "
+"establece este indicador, NVDA tratará tus complementos como incompatibles "
+"con la versión más reciente."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:503
 msgid ""
 "Words in parentheses are manifest keys. Starting in NVDA 2019.1, these "
 "compatibility flags are mandatory for all add-ons."
 msgstr ""
+"Las palabras entre paréntesis son claves de manifest. Con la llegada de NVDA "
+"2019.1, estos indicadores de compatibilidad son obligatorios en todos los "
+"complementos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:504
 msgid ""
@@ -4818,16 +4825,12 @@ msgstr ""
 "pantallas braille que pueden implementar diferentes protocolos)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:653
-#, fuzzy
-#| msgid ""
-#| "* Make sure you know how to communicate with your equipment - ports, USB "
-#| "ID's, Bluetooth addresses, serial port settings and so on."
 msgid ""
 "* Make sure you know how to communicate with your equipment or software - "
 "ports, USB ID's, Bluetooth addresses, serial port settings, DLL's and so on."
 msgstr ""
-"* Asegúrate de saber cómo comunicarte con el equipo: puertos, IDs USB, "
-"direcciones Bluetooth, configuración del puerto serie, etc."
+"* Asegúrate de saber cómo comunicarte con el equipo o software: puertos, IDs "
+"USB, direcciones Bluetooth, configuración del puerto serie, dlls, etc."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:654
 msgid ""
@@ -5228,11 +5231,6 @@ msgstr ""
 "el seguimiento, la reacción y el manejo de eventos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:704
-#, fuzzy
-#| msgid ""
-#| "* Exception: one or more runtime circumstances that prevent normal "
-#| "operation of a program such as being denied access to a resource, name "
-#| "usage problem in code and other cases."
 msgid ""
 "* Exception: one or more runtime circumstances that prevents normal "
 "operation of a program such as being denied access to a resource, name usage "
@@ -5793,13 +5791,6 @@ msgstr ""
 "braillificado. |"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:774
-#, fuzzy
-#| msgid ""
-#| "| Instantly transform a window into a dialog | In "
-#| "chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the "
-#| "window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be "
-#| "sure to identify this window that is really a dialog. If done correctly, "
-#| "contesnts of this \"dialog\" will be announced automatically. |"
 msgid ""
 "| Instantly transform a window into a dialog | In "
 "chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window "
@@ -5927,12 +5918,6 @@ msgid "| Get NVDA version | versionInfo.version | |"
 msgstr "| Obtener la versión de NVDA | versionInfo.version | |"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:788
-#, fuzzy
-#| msgid ""
-#| "| I wish to do something whenever configuration profiles are changed | "
-#| "config.configProfileSwitch | You need to register a function to listen to "
-#| "this action, then let this function do something when profiles are "
-#| "changed. |"
 msgid ""
 "| I wish to do something whenever configuration profiles are changed | "
 "config.post_configProfileSwitch | You need to register a function to listen "
@@ -5940,8 +5925,8 @@ msgid ""
 "changed. |"
 msgstr ""
 "| Quiero hacer algo cada vez que cambien los perfiles de configuración | "
-"config.configProfileSwitch | debes registrar una función que escuche esta "
-"acción, y hacer que haga algo cada vez que los perfiles cambien. |"
+"config.post_configProfileSwitch | debes registrar una función que escuche "
+"esta acción, y hacer que haga algo cada vez que los perfiles cambien. |"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:789
 msgid ""

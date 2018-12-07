@@ -6,8 +6,9 @@
   </head>
   <body>
   <header><h1># Guía de Desarrollo de Complementos de NVDA</h1></header>
-  <ul>
-<li>Última versión: febrero de 2018 para NVDA 2018.1</li>
+  <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
+<ul>
+<li>Última versión: diciembre de 2018 para NVDA 2018.4/2019.1</li>
 </ul>
 <h2 id="autores-colaboraciones-y-copyright">Autores, Colaboraciones y Copyright</h2>
 <p>Esta guía fue escrita originalmente por Joseph Lee, y está diseñada por la comunidad de usuarios y de desarrolladores de NVDA. Agradecemos vuestros comentarios y contribuciones.</p>
@@ -412,7 +413,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>Otro  componente crucial de los complementos es manejar órdenes del usuario y mostrar qué está haciendo el complemento. Esto se realiza a través de scripts (en la entrada) y  mensajes IU (en la salida).</p>
 <p>Un script es un método que se ejecuta cuando el usuario lleva a cabo ciertas órdenes. Por ejemplo, cuando pulsas NVDA+T, NVDA ejecuta un script en el módulo de órdenes globales llamado SayTitle. En Poedit, por ejemplo, cuando un traductor pulsa Control+Shift+A, NVDA leerá los comentarios para el traductor añadidos por el programador para ayudar a clarificar una cadena traducible dada. Esta orden no es una orden nativa de NVDA, pero se definió en el módulo de aplicación de Poedit para llevar a cabo esta función.</p>
 <p>Normalmente, un complemento  que acepte scripts tendrá un mapa de lista orden:función en algún lugar en el módulo. El más simple es un diccionario de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) que posee órdenes como teclas y scripts como valores para estas teclas (más de una tecla, u orden que puede vincularse a los scripts). Estos diccionarios se cargan cuando el complemento se carga y se borran cuando se sale de NVDA o cuando la aplicación para la que es el módulo de aplicación pierde el foco(es decir, el usuario ha cambiado a otro programa).</p>
-<p>Otro modo de enlazar scripts es a través de inserción en tiempo de ejecución. Esto se hace creando otro diccionario de gestos diferente del diccionario <strong>gestures que posea gestos sensibles al contexto tales como la manipulación de un sólo control. Entonces el desarrollador podría utilizar inputCore.bindGesture (o inputCore.bindGestures si se ha definido más de un gesto/script) para definir ciertos gestos a la vez, entonces utilizar inputCore.clearGestures luego inputCore.bindGestures(</strong>gestures) para eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts para objetos específicos, se tratará cuando hablemos sobre módulos de aplicación y cómo asignar gestos a partes específicas de un programa.</p>
+<p>Otro modo de enlazar scripts es a través de inserción en tiempo de ejecución. Esto se hace creando otro diccionario de gestos diferente del diccionario __gestures que posea gestos sensibles al contexto tales como la manipulación de un sólo control. Entonces el desarrollador podría utilizar inputCore.bindGesture (o inputCore.bindGestures si se ha definido más de un gesto/script) para definir ciertos gestos a la vez, entonces utilizar inputCore.clearGestures luego inputCore.bindGestures(__gestures) para eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts para objetos específicos, se tratará cuando hablemos sobre módulos de aplicación y cómo asignar gestos a partes específicas de un programa.</p>
 <p>Para la mayoría de los scripts, no tienes que preocuparte por enviar el comando a la aplicación. Sin embargo, en caso de que el script realice tareas adicionales mientras envía la tecla a la aplicación activa, puedes utilizar <code>gesture.send()</code> para enviar el comando primero antes de realizar trabajo adicional.</p>
 <p>De manera similar a los scripts, el módulo UI permite verbalizar o braillificar lo que tu complemento está haciendo. Esto se hace usando el mensaje <code>ui.message(algo que decir)</code> donde <code>algo que decir</code> se reemplaza por una cadena para que NVDA la diga. Alternativamente, puedes llamar a los métodos de manejo del habla y del braille directamente si deseas que el habla diga una cosa y la pantalla braille muestre otra. No repasaremos `ui.message' aquí (verás ejemplos de esos), pero lo más importante son los scripts, así que nos enfocaremos en eso en esta sección.</p>
 <p>En el momento de escritura de esta guía, NVDA soporta entrada desde el teclado, pantallas braille con o sin teclado braille y pantallas táctiles. Estos tipos de entrada tienen un prefijo de gesto correspondiente (kb para teclado, br para braille y ts para pantalla táctil) que identifica el tipo de gesto. La salida puede enviarse vía voz y/o braille.</p>
@@ -538,7 +539,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <li>
 <p>Para módulos de aplicación:
     def <strong>init</strong>(self, *args, <strong>kwargs):
-        super(AppModule, self).__init__(*args, </strong>kwargs)
+        super(AppModule, self).<strong>init</strong>(*args, </strong>kwargs)
         # Lo que debería hacer NVDA cuando el app module se cargue.</p>
 </li>
 <li>
@@ -553,7 +554,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <h3 id="consejos-para-planificacion-y-desarrollo-de-complementos">Consejos para planificación y desarrollo de complementos</h3>
 <p>A lo largo de los años, la comunidad de NVDA ha creado una serie de potentes complementos para los usuarios. Durante estos años, los redactores de complementos recopilaron algunos consejos útiles cuando se trata de escribir sus propios complementos. He aquí algunos de ellos:</p>
 <ul>
-<li>Conocer a NVDA: es importante que te familiarices con las órdenes, conceptos y consejos de NVDA. Suscríbete a los grupos de usuarios de NVDA para obtener más información sobre NVDA y conocer cómo funciona, ya que lo ampliarás a través de tus complementos.</li>
+<li>Conocer a NVDA: es importante que te familiarices con las órdenes, conceptos y consejos de NVDA. Suscríbete a los grupos de usuarios de NVDA para aprender más sobre NVDA y conocer cómo funciona, ya que lo ampliarás a través de tus complementos.</li>
 <li>Conocer el producto que tienes a mano: como se mencionó anteriormente, es importante que conozcas el software para el que estás escribiendo el módulo de aplicación, los sintetizadores y las pantallas braille para los que vas a escribir el controlador, etcétera.</li>
 <li>Planificar con anticipación: si sabes que mantendrás tu complemento durante varios meses o años, es útil tener un plan y escribir el código del complemento para prepararte para futuras extensiones. Por ejemplo, trabajando en las características que necesitas implementar ahora, dividiendo partes de un programa en objetos y así sucesivamente.</li>
 <li>Listo para depurar y probar tu complemento: escribir tu código de complemento es sólo una parte del desarrollo global del complemento. La otra parte es probar y depurar tu complemento para asegurarte de que los usuarios lo utilizan con errores mínimos. A medida que escribas tus complementos, asegúrate de probar tu código con regularidad.</li>
@@ -569,26 +570,35 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <li>Mantente al día con los cambios básicos de NVDA: a veces, puede que descubras que tu complemento no funcione debido a los cambios en el código del núcleo de NVDA. Asegúrate de leer la sección "Cambios para desarrolladores" en el documento Novedades de NVDA para mantenerte al día con los cambios de código que puedan afectar a tu complemento.</li>
 </ol>
 <h3 id="preguntas-frecuentes-sobre-componentes-de-complementos-y-desarrollo">Preguntas frecuentes sobre componentes de complementos y desarrollo</h3>
-<p>P. Cuando trato de obtener un objeto usando un índice, éste obtiene uno después del índice que escribí.<br />
-Este es el efecto colateral de la indexación basada en cero (el recuento comienza en 0).</p>
-<p>P. Al importar un módulo, NVDA dice que no puede localizar el módulo.<br />
-¿Escribiste el nombre correcto del módulo? ¿Extrajiste los archivos del módulo en la ubicación correcta? Intenta corregir el error tipográfico, observa la ruta de importación y vuelve a intentar importar.</p>
-<p>P. ¿Cuál es la diferencia entre la revisión simple y la revisión normal y cuál debo usar?<br />
-La revisión simple excluye los objetos de diseño como ventanas, agrupaciones, etc. que se colocan para propósitos de diseño. La revisión normal también incluye esto. La elección de usar la revisión simple versus la revisión normal depende de tu situación.</p>
-<p>P. La orden para mi app module no funciona en mi app module, sino que NVDA hace otra cosa.<br />
-Comprueba si está instalada una extensión global que utiliza la orden. Primero, quita la extensión global e inténtalo de nuevo.</p>
-<p>P. ¿Cómo puedo utilizar Win32 API en mi complemento u objeto?
-Existe un documento escrito por un desarrollador de complementos que habla sobre el uso de Win32 API en su complemento. Selecciona <a href="http://www.zlotowicz.pl/nvda/winapi.mdwn">este enlace</a> para ver este documento.</p>
-<p>P. ¿Cómo puedo crear diálogos en mi complemento?
-Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx).</p>
-<p>P. ¿Puedo crear funciones y asignar variables fuera de las clases de módulo?
-Sí. Esto es útil si necesitas hacer referencia a ellos desde dentro de la clase del complemento. Por ejemplo, es posible que tengas una función definida fuera de tu clase que necesitarás utilizar desde más de un método en una clase de extensión global.</p>
-<p>P. Quiero guardar la configuración de usuario para mi complemento. ¿Se puede hacer esto?
-Sí. Deberás utilizar la biblioteca ConfigObj(configObj) para administrar la configuración. Algunos complementos (como OCR) que utilizan archivos de configuración almacenan su configuración como un archivo ini en la carpeta de configuración de usuario de NVDA. En el caso de las extensiones globales, puedes cargar y guardar la configuración de usuario desde el complemento cuando se crea el complemento (<strong>init</strong>) o se finaliza (terminate), respectivamente. Esto no se puede hacer fácilmente con los módulos de aplicación. Además, tendrás que proporcionar una alternativa (órdenes, diálogos, etc.) en la que los usuarios puedan configurar opciones adicionales.</p>
-<p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.
-Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
-<p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.
-Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2 porque WXPython utiliza Python 2, y hasta que WXPython no sea reescrito para soportar Python 3, no se puede ejecutar el código Python 3 en NVDA.</p>
+<p>P. Cuando trato de obtener un objeto usando un índice, éste obtiene uno después del índice que escribí.  </p>
+<p>Este es el efecto colateral de la indexación basada en cero (el recuento comienza en 0).</p>
+<p>P. Al importar un módulo, NVDA dice que no puede localizar el módulo.  </p>
+<p>¿Escribiste el nombre correcto del módulo? ¿Extrajiste los archivos del módulo en la ubicación correcta? Intenta corregir el error tipográfico, observa la ruta de importación y vuelve a intentar importar.</p>
+<p>P. ¿Cuál es la diferencia entre la revisión simple y la revisión normal y cuál debo usar?  </p>
+<p>La revisión simple excluye los objetos de diseño como ventanas, agrupaciones, etc. que se colocan para propósitos de diseño. La revisión normal también incluye esto. La elección de usar la revisión simple versus la revisión normal depende de tu situación.</p>
+<p>P. La orden para mi app module no funciona en mi app module, sino que NVDA hace otra cosa.  </p>
+<p>Comprueba si está instalada una extensión global que utiliza la orden. Primero, quita la extensión global e inténtalo de nuevo.</p>
+<p>P. ¿Cómo puedo utilizar Win32 API en mi complemento u objeto?</p>
+<p>Existe un documento escrito por un desarrollador de complementos que habla sobre el uso de Win32 API en su complemento. Selecciona <a href="http://www.zlotowicz.pl/nvda/winapi.mdwn">este enlace</a> para ver este documento.</p>
+<p>P. ¿Cómo puedo crear diálogos en mi complemento?</p>
+<p>Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx).</p>
+<p>P. ¿Puedo crear funciones y asignar variables fuera de las clases de módulo?</p>
+<p>Sí. Esto es útil si necesitas hacer referencia a ellos desde dentro de la clase del complemento. Por ejemplo, es posible que tengas una función definida fuera de tu clase que necesitarás utilizar desde más de un método en una clase de extensión global.</p>
+<p>P. Quiero guardar la configuración de usuario para mi complemento. ¿Se puede hacer esto?</p>
+<p>Sí. Deberás utilizar la biblioteca ConfigObj(configObj) para administrar la configuración. Algunos complementos (como OCR) que utilizan archivos de configuración almacenan su configuración como un archivo ini en la carpeta de configuración de usuario de NVDA. En el caso de las extensiones globales, puedes cargar y guardar la configuración de usuario desde el complemento cuando se crea el complemento (<strong>init</strong>) o se finaliza (terminate), respectivamente. Esto no se puede hacer fácilmente con los módulos de aplicación. Además, tendrás que proporcionar una alternativa (órdenes, diálogos, etc.) en la que los usuarios puedan configurar opciones adicionales.</p>
+<p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.</p>
+<p>Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
+<p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.</p>
+<p>Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2, pero ya se están haciendo trabajos de transición a Python 3.</p>
+<p>P. Mi complemento usa componentes de interfaz gráfica, y después de instalar NVDA 2018.3, obtengo errores relacionados con WXPython.</p>
+<p>NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una versión más antigua de WXPython. Si quieres dar soporte a versiones anteriores de NVDA, debes emplear sentencias condicionales (if/else) y comprobaciones de versión, de tal forma que se elija el camino correcto al ejecutar el código.</p>
+<p>P. Tras instalar NVDA 2019.1, los usuarios dicen que mis complementos no son compatibles.</p>
+<p>NVDA 2019.1 introduce indicadores de compatibilidad de complementos que le dan la siguiente información:</p>
+<ul>
+<li>Versión mínima de NVDA (minimumNVDAVersion): un complemento puede especificar la versión mínima de NVDA necesaria para funcionar. Esto viene bien si necesitas utilizar funciones introducidas o modificadas en una versión dada de NVDA sin dar soporte a versiones de NVDA más antiguas.</li>
+<li>Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): le dice a NVDA la versión más alta soportada por el complemento. Si no se establece este indicador, NVDA tratará tus complementos como incompatibles con la versión más reciente.</li>
+</ul>
+<p>Las palabras entre paréntesis son claves de manifest. Con la llegada de NVDA 2019.1, estos indicadores de compatibilidad son obligatorios en todos los complementos.</p>
 <p>No incluimos preguntas frecuentes de programación relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación y controladores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
@@ -769,7 +779,7 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <ul>
 <li>Antes de escribir un controlador, asegúrate de tener el software y/o hardware necesarios.</li>
 <li>Asegúrate de estudiar los protocolos y las API's utilizadas por un sintetizador de voz o una pantalla braille (esto es más importante para las pantallas braille que pueden implementar diferentes protocolos).</li>
-<li>Asegúrate de saber cómo comunicarte con el equipo: puertos, IDs USB, direcciones Bluetooth, configuración del puerto serie, etc.</li>
+<li>Asegúrate de saber cómo comunicarte con el equipo o software: puertos, IDs USB, direcciones Bluetooth, configuración del puerto serie, dlls, etc.</li>
 <li>Trabaja con otra persona que utilice el equipo o el software para el que estás escribiendo el (los) controlador (es).</li>
 </ul>
 <h3 id="pasos-tipicos-de-desarrollo-de-un-controlador">Pasos típicos de desarrollo de un controlador</h3>
@@ -1204,7 +1214,7 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 </tr>
 <tr>
 <td>Quiero hacer algo cada vez que cambien los perfiles de configuración</td>
-<td>config.configProfileSwitch</td>
+<td>config.post_configProfileSwitch</td>
 <td>debes registrar una función que escuche esta acción, y hacer que haga algo cada vez que los perfiles cambien.</td>
 </tr>
 <tr>
