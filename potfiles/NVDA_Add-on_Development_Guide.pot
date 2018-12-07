@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-11-13 09:50+Hora estándar romance\n"
+"POT-Creation-Date: 2018-12-07 16:24+Hora estándar romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgid "# NVDA Add-on Development Guide"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:4
-msgid "* Latest version: February 2018 for NVDA 2018.1"
+msgid "* Latest version: December 2018 for NVDA 2018.4/2019.1"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:5
@@ -373,17 +373,17 @@ msgstr ""
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:371
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:375
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:379
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:528
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:531
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:573
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:589
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:598
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:601
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:535
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:538
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:580
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:596
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:605
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:608
 msgid "\t"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:88
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:530
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:537
 msgid "\timport globalPluginHandler"
 msgstr ""
 
@@ -392,7 +392,7 @@ msgid "\timport tones # We want to hear beeps."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:91
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:532
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:539
 msgid "\tclass GlobalPlugin(globalPluginHandler.GlobalPlugin):"
 msgstr ""
 
@@ -401,8 +401,8 @@ msgstr ""
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:127
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:292
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:294
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:534
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:580
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:541
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:587
 msgid "\t\t"
 msgstr ""
 
@@ -416,8 +416,8 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:96
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:376
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:538
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:581
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:545
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:588
 msgid "\t\t__gestures={"
 msgstr ""
 
@@ -427,8 +427,8 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:98
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:378
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:540
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:583
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:547
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:590
 msgid "\t\t}"
 msgstr ""
 
@@ -527,9 +527,9 @@ msgstr ""
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:123
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:247
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:289
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:570
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:588
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:599
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:577
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:595
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:606
 msgid "\timport appModuleHandler"
 msgstr ""
 
@@ -540,9 +540,9 @@ msgstr ""
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:126
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:251
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:291
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:574
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:590
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:602
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:581
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:597
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:609
 msgid "\tclass AppModule(appModuleHandler.AppModule):"
 msgstr ""
 
@@ -896,7 +896,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:215
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:288
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:571
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:578
 msgid "\timport api"
 msgstr ""
 
@@ -904,7 +904,7 @@ msgstr ""
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:225
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:231
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:354
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:572
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:579
 msgid "\timport ui"
 msgstr ""
 
@@ -1771,7 +1771,7 @@ msgid "Over the years, the NVDA community built a number of powerful add-ons for
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:464
-msgid "* Get to know NVDA: it is important that you become familiar with NVDA commands, concepts and tips. Subscribe to NVDA users groups to learn more about NVDA and learn about how NVDA works, as you'll be extending it via your add-ons."
+msgid "* Get to know NVDA: it is important that you become familiar with NVDA commands, concepts and tips. Subscribe to NVDA users groups to learn more about NVDA and how NVDA works, as you'll be extending it via your add-ons."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:465
@@ -1899,1174 +1899,1202 @@ msgid "Q. I would like to port a module written in Python 3 syntax for use as an
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:496
-msgid "This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NvDA itself uses Python 2 as WXPython uses Python 2, and until WXPython is rewritten to support Python 3, you cannot run Python 3 code in NVDA."
+msgid "This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NvDA itself uses Python 2, and work is under way to transition to Python 3."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:497
-msgid "We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code."
+msgid "Q. My add-on uses GUI facility, and after installing NVDA 2018.3, I get errors related to wxPython."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:498
-msgid "Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules and drivers."
+msgid "NVDA 2018.3 uses wxPython 4, whereas earlier versions use older wxPython releases. If you want to support older NVDA releases, you need to use conditional statements (if/else) and version checks so the appropriate code path can be used."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:499
-msgid "## Introduction to global plugins"
+msgid "Q. After installing NVDA 2019.1, users say my add-ons are not compatible."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:500
-msgid "A global plugin adds features available everywhere. For example, if there is a control that will be used in many applications, then you can write a global plugin to handle them throughout NVDA. Another example is adding additional features to NVDA that can be used in all programs, such as OCR capability, place marker management and so on."
+msgid "NVDA 2019.1 introduces add-on compatibility flags that tells NVDA the following information:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:501
-msgid "A global plugin is a Python source code (.py) file with the name of your plugin. For example, if you're adding support for rich edit fields in many applications, you can name your plugin as richEditSupport.py. When naming them, try be brief so you can see what your plugin does."
+msgid "* Minimum NVDA version (minimumNVDAVersion): an add-on can specify minimum NVDA version required for the add-on. This is useful if you need to use features introduced or changed in a given NVDA release without supporting older NVDA releases."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:502
-msgid "### Typical development plan for global plugins"
+msgid "* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest supported release for the add-on. Without this flag being set, NVDA will treat your add-ons as incompatible with the latest release."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:503
-msgid "Typically, a global plugin is developed thus:"
+msgid "Words in parentheses are manifest keys. Starting in NVDA 2019.1, these compatibility flags are mandatory for all add-ons."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:504
-msgid "1. You or someone suggests a feature or support for a particular control across different programs."
+msgid "We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:505
-msgid "2. You plan your global plugin (see the section on when to write or not write global plugins)."
+msgid "Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules and drivers."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:506
-msgid "3. You write your global plugin and test it. Once it is done and tested, you release the plugin."
+msgid "## Introduction to global plugins"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:507
-msgid "Since global plugins are Python files, you can use the full power of python in your add-on code. Also, since global plugins have access to full power of NVDA code such as events, scripts and objects, you can use the concepts you learned from previous sections."
+msgid "A global plugin adds features available everywhere. For example, if there is a control that will be used in many applications, then you can write a global plugin to handle them throughout NVDA. Another example is adding additional features to NVDA that can be used in all programs, such as OCR capability, place marker management and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:508
-msgid "### The global plugin code"
+msgid "A global plugin is a Python source code (.py) file with the name of your plugin. For example, if you're adding support for rich edit fields in many applications, you can name your plugin as richEditSupport.py. When naming them, try be brief so you can see what your plugin does."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:509
-msgid "As shown earlier, the procedure for writing global plugins is same as writing any Python program, except that you import globalPluginHandler and put your add-on code in a class called `GlobalPlugin` which inherits from `globalPluginHandler.GlobalPlugin` (see the example in the firse intro chapter). If you need to use third-party modules, you need to place the package in the same folder as the global plugin file and import the external module(s). Then define objects (usually overlay objects), methods and so on in your code."
+msgid "### Typical development plan for global plugins"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:510
-msgid "### When to write or not write global plugins"
+msgid "Typically, a global plugin is developed thus:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:511
-msgid "Since global plugins are used everywhere, you might be tempted to write support for a single application using global plugin alone. However, this is not the case. There are other guidelines to keep in mind when deciding whether to write a global plugin or not:"
+msgid "1. You or someone suggests a feature or support for a particular control across different programs."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:512
-msgid "You might consider writing a global plugin if:"
+msgid "2. You plan your global plugin (see the section on when to write or not write global plugins)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:513
-msgid "1. You or a user wishes to use a certain feature everywhere."
+msgid "3. You write your global plugin and test it. Once it is done and tested, you release the plugin."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:514
-msgid "2. You need to support same controls across different applications, provided that the control behaves the same in these programs."
+msgid "Since global plugins are Python files, you can use the full power of python in your add-on code. Also, since global plugins have access to full power of NVDA code such as events, scripts and objects, you can use the concepts you learned from previous sections."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:515
-msgid "You should not write a global plugin if:"
+msgid "### The global plugin code"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:516
-msgid "1. If you wish to enhance support for a single application."
+msgid "As shown earlier, the procedure for writing global plugins is same as writing any Python program, except that you import globalPluginHandler and put your add-on code in a class called `GlobalPlugin` which inherits from `globalPluginHandler.GlobalPlugin` (see the example in the firse intro chapter). If you need to use third-party modules, you need to place the package in the same folder as the global plugin file and import the external module(s). Then define objects (usually overlay objects), methods and so on in your code."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:517
-msgid "2. You are writing support for speech synthesizers or braille displays."
+msgid "### When to write or not write global plugins"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:518
-msgid "### Few more things to remember about global plugins"
+msgid "Since global plugins are used everywhere, you might be tempted to write support for a single application using global plugin alone. However, this is not the case. There are other guidelines to keep in mind when deciding whether to write a global plugin or not:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:519
-msgid "* When you write scripts in your global plugin, the commands you assign to them will take precedence (looked up first). Therefore it is important to consult the NVDA user guide and help for other add-ons to minimize command conflicts."
+msgid "You might consider writing a global plugin if:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:520
-msgid "* Each global plugin must be placed in globalPlugins directory in your add-on folder structure."
+msgid "1. You or a user wishes to use a certain feature everywhere."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:521
-msgid "* It is possible to use more than one Python file in your global plugin. If this is the case, you need to put them in a folder (name must be the name of the plugin) inside globalPlugins folder, with the main plugin file named __init__.py."
+msgid "2. You need to support same controls across different applications, provided that the control behaves the same in these programs."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:522
-msgid "* If you need to do something when the global plugin is loaded (such as loading the user configuration), you need to write an __init__ method in your plugin class. In this method, you need to call the __init__ method in the super (globalPluginHandler.GlobalPlugin) first before doing other startup work. Also, if you need to do something when the global plugin ends, define terminate method."
+msgid "You should not write a global plugin if:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:523
-msgid "Let's go through some examples and exercises."
+msgid "1. If you wish to enhance support for a single application."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:524
-msgid "### Example 1: Writing computer braille using QWERTY keyboard"
+msgid "2. You are writing support for speech synthesizers or braille displays."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:525
-msgid "You are meeting with a client who uses Duxbury braille translator (a popular braille document production program). This client is working with another user of NVDA who wishes to write computer braille from his computer keyboard everywhere. Based on this, you decide to write a global plugin, and found a module that allows the computer keyboard to act like a braille keyboard using a function."
+msgid "### Few more things to remember about global plugins"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:526
-msgid "The global plugin, named brailleWrite.py, would look like this:"
+msgid "* When you write scripts in your global plugin, the commands you assign to them will take precedence (looked up first). Therefore it is important to consult the NVDA user guide and help for other add-ons to minimize command conflicts."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:527
-msgid "\t# An example global plugin."
+msgid "* Each global plugin must be placed in globalPlugins directory in your add-on folder structure."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:528
+msgid "* It is possible to use more than one Python file in your global plugin. If this is the case, you need to put them in a folder (name must be the name of the plugin) inside globalPlugins folder, with the main plugin file named __init__.py."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:529
-msgid "\timport qtbrl # The braille entry module."
+msgid "* If you need to do something when the global plugin is loaded (such as loading the user configuration), you need to write an __init__ method in your plugin class. In this method, you need to call the __init__ method in the super (globalPluginHandler.GlobalPlugin) first before doing other startup work. Also, if you need to do something when the global plugin ends, define terminate method."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:530
+msgid "Let's go through some examples and exercises."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:531
+msgid "### Example 1: Writing computer braille using QWERTY keyboard"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:532
+msgid "You are meeting with a client who uses Duxbury braille translator (a popular braille document production program). This client is working with another user of NVDA who wishes to write computer braille from his computer keyboard everywhere. Based on this, you decide to write a global plugin, and found a module that allows the computer keyboard to act like a braille keyboard using a function."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:533
-msgid "\t\tbrlentry = False # Braille entry is not active."
+msgid "The global plugin, named brailleWrite.py, would look like this:"
 msgstr ""
 
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:535
-msgid "\t\tdef script_toggleBrailleEntry(self, gesture):"
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:534
+msgid "\t# An example global plugin."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:536
-msgid "\t\t\tself.brlentry = True if not self.brlentry else False # Toggle braille entry mode."
+msgid "\timport qtbrl # The braille entry module."
 msgstr ""
 
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:537
-msgid "\t\tscript_toggleBrailleEntry.__doc__=\"Toggles braille entry on or off.\""
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:539
-msgid "\t\t\t\"kb:NVDA+X\":\"toggleBrailleEntry\""
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:541
-msgid "With this background in mind, try some of the short exercises below."
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:540
+msgid "\t\tbrlentry = False # Braille entry is not active."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:542
-msgid "### Exercises"
+msgid "\t\tdef script_toggleBrailleEntry(self, gesture):"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:543
-msgid "1. Write a global plugin named nvdaVersion.py to say the current NVDA version when NVDA+Shift+V is pressed."
+msgid "\t\t\tself.brlentry = True if not self.brlentry else False # Toggle braille entry mode."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:544
-msgid "2. A user wants to hear the time announced every minute. Using the clock on the system tray, write a global plugin to announce when the time changes (hint: you need to use an event and check the role of the clock object)."
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:545
-msgid "## Introduction to app modules"
+msgid "\t\tscript_toggleBrailleEntry.__doc__=\"Toggles braille entry on or off.\""
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:546
-msgid "An app module enhances support for a particular program. For example, you can write an app module which adds convenience commands for reading various parts of the screen, or you can define how a particular control should behave in a program."
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:547
-msgid "An app module is a Python (.py) file with the name corresponding to the executable name of a program. For example, an app module for Winamp is named winamp.py since Winamp's executable name is winamp.exe."
+msgid "\t\t\t\"kb:NVDA+X\":\"toggleBrailleEntry\""
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:548
-msgid "NVDA itself comes with several app modules, such as Winamp, Adobe Reader, Microsoft Office programs and so on."
+msgid "With this background in mind, try some of the short exercises below."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:549
-msgid "### Differences between app modules and global plugins"
+msgid "### Exercises"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:550
-msgid "At first glance, app modules may look the same as any global plugin. However, app modules have additional properties that global plugins lack, including:"
+msgid "1. Write a global plugin named nvdaVersion.py to say the current NVDA version when NVDA+Shift+V is pressed."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:551
-msgid "* Instead of `globalPluginHandler`, you need to import `appModuleHandler`. The class to implement is `AppModule(appModuleHandler.AppModule)`."
+msgid "2. A user wants to hear the time announced every minute. Using the clock on the system tray, write a global plugin to announce when the time changes (hint: you need to use an event and check the role of the clock object)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:552
-msgid "* App modules are stored in appModules folder in your add-on directory structure and is named the same as the executable name of the program."
+msgid "## Introduction to app modules"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:553
-msgid "* You can ask NVDA to enter sleep mode in a program where NVDA will not speak or braille anything while using the program, and any keyboard commands you press will be handled by the program directly. This is done by setting `sleepMode` attribute in the AppModule class to True."
+msgid "An app module enhances support for a particular program. For example, you can write an app module which adds convenience commands for reading various parts of the screen, or you can define how a particular control should behave in a program."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:554
-msgid "* The `event_NVDAObject_init` routine is only available in app modules."
+msgid "An app module is a Python (.py) file with the name corresponding to the executable name of a program. For example, an app module for Winamp is named winamp.py since Winamp's executable name is winamp.exe."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:555
-msgid "* You can ask NVDA to keep an eye on an object to handle events for them even if the user is using another app."
+msgid "NVDA itself comes with several app modules, such as Winamp, Adobe Reader, Microsoft Office programs and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:556
-msgid "### App module development process and strategies"
+msgid "### Differences between app modules and global plugins"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:557
-msgid "A typical app module is developed thus:"
+msgid "At first glance, app modules may look the same as any global plugin. However, app modules have additional properties that global plugins lack, including:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:558
-msgid "1. You or a user requests enhanced support for a program."
+msgid "* Instead of `globalPluginHandler`, you need to import `appModuleHandler`. The class to implement is `AppModule(appModuleHandler.AppModule)`."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:559
-msgid "2. If possible, contact the app vendor (programmer) to ask accessibility improvements for the program from their end."
+msgid "* App modules are stored in appModules folder in your add-on directory structure and is named the same as the executable name of the program."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:560
-msgid "3. With or without cooperation from app vendor, you would examine how the program works and areas on the screen that needs to be read out."
+msgid "* You can ask NVDA to enter sleep mode in a program where NVDA will not speak or braille anything while using the program, and any keyboard commands you press will be handled by the program directly. This is done by setting `sleepMode` attribute in the AppModule class to True."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:561
-msgid "4. Write and test the app module (with users) until the app module is ready for release."
+msgid "* The `event_NVDAObject_init` routine is only available in app modules."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:562
-msgid "As you write app modules, try these tips:"
+msgid "* You can ask NVDA to keep an eye on an object to handle events for them even if the user is using another app."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:563
-msgid "1. Use objects to represent parts of a program. This is done in two steps: define the control for parts of a program via objects (inheriting from some object such as IAccessible), then use `chooseNVDAObjectOverlayClasses` routine to tell NVDA to work with your custom object when working with that control. See overlay classes section for tips."
+msgid "### App module development process and strategies"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:564
-msgid "2. If possible, test your app module using two or more versions of the program to make sure your app module works with those versions."
+msgid "A typical app module is developed thus:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:565
-msgid "3. You should not incorporate all desired features in version 1.0 - leave some of them for a future release."
+msgid "1. You or a user requests enhanced support for a program."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:566
-msgid "### Example 2: Simple app module in Notepad"
+msgid "2. If possible, contact the app vendor (programmer) to ask accessibility improvements for the program from their end."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:567
-msgid "Suppose you wish to find out which line you're editing in Notepad. Assuming that Notepad will show status bar at all times, you wish to assign a key combination to read the current line number."
+msgid "3. With or without cooperation from app vendor, you would examine how the program works and areas on the screen that needs to be read out."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:568
-msgid "The app module for Notepad would look like this:"
+msgid "4. Write and test the app module (with users) until the app module is ready for release."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:569
-msgid "\t# The example app module for Notepad, notepad.py."
+msgid "As you write app modules, try these tips:"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:570
+msgid "1. Use objects to represent parts of a program. This is done in two steps: define the control for parts of a program via objects (inheriting from some object such as IAccessible), then use `chooseNVDAObjectOverlayClasses` routine to tell NVDA to work with your custom object when working with that control. See overlay classes section for tips."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:571
+msgid "2. If possible, test your app module using two or more versions of the program to make sure your app module works with those versions."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:572
+msgid "3. You should not incorporate all desired features in version 1.0 - leave some of them for a future release."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:573
+msgid "### Example 2: Simple app module in Notepad"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:574
+msgid "Suppose you wish to find out which line you're editing in Notepad. Assuming that Notepad will show status bar at all times, you wish to assign a key combination to read the current line number."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:575
-msgid "\t\tdef script_sayLineNumber(self, gesture):"
+msgid "The app module for Notepad would look like this:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:576
-msgid "\t\t\t# Suppose line number is in the form \"  ln 1\"."
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:577
-msgid "\t\t\tlineNumList = api.getStatusBar().name.split()"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:578
-msgid "\t\t\tlineNum = lineNumLisst[2]+linenumList[3]"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:579
-msgid "\t\t\tui.message(lineNum)"
+msgid "\t# The example app module for Notepad, notepad.py."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:582
-msgid "\t\t\t\"kb:NVDA+S\":\"sayLineNumber\""
+msgid "\t\tdef script_sayLineNumber(self, gesture):"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:583
+msgid "\t\t\t# Suppose line number is in the form \"  ln 1\"."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:584
-msgid "So whenever you run Notepad, when you press NVDA+S, NVDA will say line number."
+msgid "\t\t\tlineNumList = api.getStatusBar().name.split()"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:585
-msgid "### Example 3: Silencing NVDA in Openbook"
+msgid "\t\t\tlineNum = lineNumLisst[2]+linenumList[3]"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:586
-msgid "Openbook is a scanning and reading program from Freedom scientific. Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:"
+msgid "\t\t\tui.message(lineNum)"
 msgstr ""
 
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:587
-msgid "\t# Silencing NVDA in openbook, openbook.py."
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:589
+msgid "\t\t\t\"kb:NVDA+S\":\"sayLineNumber\""
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:591
-msgid "\t\tsleepMode = True"
+msgid "So whenever you run Notepad, when you press NVDA+S, NVDA will say line number."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:592
-msgid "With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own)."
+msgid "### Example 3: Silencing NVDA in Openbook"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:593
-msgid "### Example 4: Announcing control property changes while using another app"
+msgid "Openbook is a scanning and reading program from Freedom scientific. Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:594
-msgid "You can ask NVDA to handle specific events while focused on another app. This is done by calling eventHandler.requestEvents in app module's __init__ method. In order to invoke this, you need process ID (PID) for the application, window class name for the object and the name of the event to be handled."
+msgid "\t# Silencing NVDA in openbook, openbook.py."
 msgstr ""
 
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:595
-msgid "The below code allows NVDA to announce value changes while focused on another application."
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:598
+msgid "\t\tsleepMode = True"
 msgstr ""
 
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:596
-msgid "\t# The example app module for a messenger app."
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:597
-msgid "\t# The object we wish to track has window class name of \"MessengerWindow\"."
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:599
+msgid "With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:600
-msgid "\timport eventHandler"
+msgid "### Example 4: Announcing control property changes while using another app"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:601
+msgid "You can ask NVDA to handle specific events while focused on another app. This is done by calling eventHandler.requestEvents in app module's __init__ method. In order to invoke this, you need process ID (PID) for the application, window class name for the object and the name of the event to be handled."
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:602
+msgid "The below code allows NVDA to announce value changes while focused on another application."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:603
-msgid "\t\tdef __init__(self, *args, **kwargs):"
+msgid "\t# The example app module for a messenger app."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:604
-msgid "\t\t\tsuper(AppModule, self).__init__(*args, **kwards)"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:605
-msgid "\t\t\teventHandler.requestEvents(self.processID, \"MessengerWindow\", \"valueChange\")"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:606
-msgid "Once defined, even if focused in another app, new messages (values) will be announced."
+msgid "\t# The object we wish to track has window class name of \"MessengerWindow\"."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:607
-msgid "### Useful app module properties and methods"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:608
-msgid "`sleepMode` and `processID` are just two of many attributes that app modules have. Other useful properties and methods used in app modules include the following:"
-msgstr ""
-
-#: ..\python_docs\NVDA_Add-on_Development_Guide.py:609
-msgid "* appName: the name of the app (usually the name of the executable)."
+msgid "\timport eventHandler"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:610
-msgid "* productName: Records the actual product name for the app."
+msgid "\t\tdef __init__(self, *args, **kwargs):"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:611
-msgid "* productVersion: Records the version of the app."
+msgid "\t\t\tsuper(AppModule, self).__init__(*args, **kwards)"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:612
-msgid "* is64BitProcess: if true, the app is a 64-bit process (only true if you're using a 64-bit app under 64-bit Windows versions)."
+msgid "\t\t\teventHandler.requestEvents(self.processID, \"MessengerWindow\", \"valueChange\")"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:613
-msgid "* dumpOnCrash: if you are debugging apps that crashes often, you can call this function to let NVDA save a crash dump of this app in the temp files directory so you can retrieve it later."
+msgid "Once defined, even if focused in another app, new messages (values) will be announced."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:614
-msgid "And other properties. Type dir(obj.appModule) from Python Console for the complete list."
+msgid "### Useful app module properties and methods"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:615
-msgid "### Other remarks on app modules"
+msgid "`sleepMode` and `processID` are just two of many attributes that app modules have. Other useful properties and methods used in app modules include the following:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:616
-msgid "Here are other remarks regarding app modules:"
+msgid "* appName: the name of the app (usually the name of the executable)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:617
-msgid "* If you find that different versions of the program are laid out differently e.g. locations for controls are different, then you can write code which can handle these cases. There are a number of options you can choose from: adding some constants in your app module to handle different object locations, writing code for these controls (one per version) in custom objects which will be chosen in overlay class method and so on."
+msgid "* productName: Records the actual product name for the app."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:618
-msgid "* If possible, try working with services that the app provides, such as COM (Component Object Model) methods (for example, Outlook app module), API's the app provides (such as Winamp) and so on."
+msgid "* productVersion: Records the version of the app."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:619
-msgid "* To support an application that works the same as another program (especially if you're writing app module for a 64-bit version of a 32-bit program for which you wrote an app module for), use the following code fragment (called aliasing):"
+msgid "* is64BitProcess: if true, the app is a 64-bit process (only true if you're using a 64-bit app under 64-bit Windows versions)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:620
-msgid "\tfrom appName import *"
+msgid "* dumpOnCrash: if you are debugging apps that crashes often, you can call this function to let NVDA save a crash dump of this app in the temp files directory so you can retrieve it later."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:621
-msgid "where appName is the name of the app module and * (asterisk or star) means import everything. For an example of this, look at NVDA's app modules for Miranda32 and Miranda64."
+msgid "And other properties. Type dir(obj.appModule) from Python Console for the complete list."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:622
-msgid "* If you wish to extend an app module that comes with NVDA, use the following code fragment (this is called overriding the built-in module):"
+msgid "### Other remarks on app modules"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:623
-msgid "\tfrom nvdaBuiltin.appModules.appName import *"
+msgid "Here are other remarks regarding app modules:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:624
-msgid "Where appName is the app module you wish to extend. For example, if you wish to support different controls in Windows calculator (calc.py), use:  "
+msgid "* If you find that different versions of the program are laid out differently e.g. locations for controls are different, then you can write code which can handle these cases. There are a number of options you can choose from: adding some constants in your app module to handle different object locations, writing code for these controls (one per version) in custom objects which will be chosen in overlay class method and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:625
-msgid "\tfrom nvdaBuiltin.appModules.calc import *"
+msgid "* If possible, try working with services that the app provides, such as COM (Component Object Model) methods (for example, Outlook app module), API's the app provides (such as Winamp) and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:626
-msgid "* Many app modules (both built-in and third-party ones) uses app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants starts with \"PP\". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with \"SPL\". This is used to remind you where this constants are used."
+msgid "* To support an application that works the same as another program (especially if you're writing app module for a 64-bit version of a 32-bit program for which you wrote an app module for), use the following code fragment (called aliasing):"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:627
-msgid "## Drivers"
+msgid "\tfrom appName import *"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:628
-msgid "A driver allows a software such as NvDA to communicate with hardware or use functionality provided by another software. Typically, when people speak of drivers, they usually refer to a program installed on a computer that allows software to communicate with a specific hardware, such as video cards, keyboards and so on."
+msgid "where appName is the name of the app module and * (asterisk or star) means import everything. For an example of this, look at NVDA's app modules for Miranda32 and Miranda64."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:629
-msgid "In NVDA, drivers refer to modules that NVDA can use to communicate with a speech synthesizer or a braille display. For instance, you can write a braille display driver that sends braille output to your braille display, or ask your synthesizer to switch languages and provide configurable settings."
+msgid "* If you wish to extend an app module that comes with NVDA, use the following code fragment (this is called overriding the built-in module):"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:630
-msgid "### Driver components"
+msgid "\tfrom nvdaBuiltin.appModules.appName import *"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:631
-msgid "All drivers (regardless of target device or software to be supported) imports appropriate modules such as `synthDriverHandler`. For most drivers, majority of the driver code deals with communicating with the target device or software, and all drivers must define the driver class (synthDriverHandler.SynthDriver or braille.BrailleDisplayDriver)."
+msgid "Where appName is the app module you wish to extend. For example, if you wish to support different controls in Windows calculator (calc.py), use:  "
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:632
-msgid "All driver classes, at a minimum, must contain:"
+msgid "\tfrom nvdaBuiltin.appModules.calc import *"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:633
-msgid "* Driver identifier: a camel-case string such as \"oneCore\" that uniquely identifies a given driver."
+msgid "* Many app modules (both built-in and third-party ones) uses app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants starts with \"PP\". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with \"SPL\". This is used to remind you where this constants are used."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:634
-msgid "* Friendly name: the name that'll appear under synthesizer or braille settings dialogs."
+msgid "## Drivers"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:635
-msgid "* Availability flag: a class method named `check` that tells NVDA that the driver is ready for use."
+msgid "A driver allows a software such as NvDA to communicate with hardware or use functionality provided by another software. Typically, when people speak of drivers, they usually refer to a program installed on a computer that allows software to communicate with a specific hardware, such as video cards, keyboards and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:636
-msgid "* Connection manager: a set of routines that instructs NVDA as to how to locate a given synthesizer or a braille display."
+msgid "In NVDA, drivers refer to modules that NVDA can use to communicate with a speech synthesizer or a braille display. For instance, you can write a braille display driver that sends braille output to your braille display, or ask your synthesizer to switch languages and provide configurable settings."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:637
-msgid "* Output handler: a function that'll perform the actual output processing. For synthesizers, `speak` method must be present; for braille displays, `display` method is needed."
+msgid "### Driver components"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:638
-msgid "For speech synthesizers, they need to have:"
+msgid "All drivers (regardless of target device or software to be supported) imports appropriate modules such as `synthDriverHandler`. For most drivers, majority of the driver code deals with communicating with the target device or software, and all drivers must define the driver class (synthDriverHandler.SynthDriver or braille.BrailleDisplayDriver)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:639
-msgid "* Synth settings ring options: a list of synthesizer settings users can adjust via synth settings ring."
+msgid "All driver classes, at a minimum, must contain:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:640
-msgid "For braille displays:"
+msgid "* Driver identifier: a camel-case string such as \"oneCore\" that uniquely identifies a given driver."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:641
-msgid "* Input handlers: if input from the braille display is desirable, the driver author must implement responders for commands such as braille keys, routing buttons and additional hardware."
+msgid "* Friendly name: the name that'll appear under synthesizer or braille settings dialogs."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:642
-msgid "* Command set: a map that identifies NVDA command assignments for various display hardware buttons."
+msgid "* Availability flag: a class method named `check` that tells NVDA that the driver is ready for use."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:643
-msgid "### Few important things to remember before, during and after driver development"
+msgid "* Connection manager: a set of routines that instructs NVDA as to how to locate a given synthesizer or a braille display."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:644
-msgid "* Before writing a driver, make sure you have the needed software and/or hardware."
+msgid "* Output handler: a function that'll perform the actual output processing. For synthesizers, `speak` method must be present; for braille displays, `display` method is needed."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:645
-msgid "* Be sure to study protocols and API's used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols)."
+msgid "For speech synthesizers, they need to have:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:646
-msgid "* Make sure you know how to communicate with your equipment - ports, USB ID's, Bluetooth addresses, serial port settings and so on."
+msgid "* Synth settings ring options: a list of synthesizer settings users can adjust via synth settings ring."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:647
-msgid "* Work with another person who happens to use the equipment or software you are writing driver(s) for."
+msgid "For braille displays:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:648
-msgid "### Typical driver development steps"
+msgid "* Input handlers: if input from the braille display is desirable, the driver author must implement responders for commands such as braille keys, routing buttons and additional hardware."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:649
-msgid "When writing drivers, you may wish to follow the recommended steps for app module development (planning, talking to vendors, user test, etc.). However, since drivers require intimate knowledge of hardware and/or software, you should spend more time on testing your driver. This is more so if you are writing a driver for a braille display which can send arbitrary commands (braille commands, routing buttons, etc.)."
+msgid "* Command set: a map that identifies NVDA command assignments for various display hardware buttons."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:650
-msgid "## Sharing your add-on and experience with others"
+msgid "### Few important things to remember before, during and after driver development"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:651
-msgid "Once you've finished developing your add-ons, you might want to share your code with others. Along the way, you might contribute your know-how so others may benefit from your experiences."
+msgid "* Before writing a driver, make sure you have the needed software and/or hardware."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:652
-msgid "This chapter is designed to give some guidance on add-on release and maintenance, as well as connecting with your add-on users and other NVDA core and add-on developers around the world."
+msgid "* Be sure to study protocols and API's used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:653
-msgid "### The NVDA Add-ons list"
+msgid "* Make sure you know how to communicate with your equipment or software - ports, USB ID's, Bluetooth addresses, serial port settings, DLL's and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:654
-msgid "If you want to keep in touch with your add-on users or want to learn from or contribute your add-on to others, please subscribe to [NVDA add-ons list][4]. This is a low traffic list devoted to discussing current and future add-ons, as well as to review other add-ons created by members of the community or have your add-on reviewed by other add-on developers around the world."
+msgid "* Work with another person who happens to use the equipment or software you are writing driver(s) for."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:655
-msgid "### The NVDA Community Add-ons web site and code repository"
+msgid "### Typical driver development steps"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:656
-msgid "To download or learn more about various add-ons created by NVDA users, visit [NVDA Community Add-ons web site][5]. You can browse currently available add-ons, view add-ons under development and read add-on development guidelines."
+msgid "When writing drivers, you may wish to follow the recommended steps for app module development (planning, talking to vendors, user test, etc.). However, since drivers require intimate knowledge of hardware and/or software, you should spend more time on testing your driver. This is more so if you are writing a driver for a braille display which can send arbitrary commands (braille commands, routing buttons, etc.)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:657
-msgid "For developers wishing to read the code that powers various add-ons, you can search for add-on repositories stored on GitHub. The NVDA community add-on developers use [Git][6] for version control."
+msgid "## Sharing your add-on and experience with others"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:658
-msgid "Some of the useful and educational add-on repositories are:"
+msgid "Once you've finished developing your add-ons, you might want to share your code with others. Along the way, you might contribute your know-how so others may benefit from your experiences."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:659
-msgid "* [Add-on template](https://github.com/nvdaaddons/addonTemplate): this is the source code repository for the community add-on template."
+msgid "This chapter is designed to give some guidance on add-on release and maintenance, as well as connecting with your add-on users and other NVDA core and add-on developers around the world."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:660
-msgid "* [Place markers by Noelia Martinez](https://github.com/nvdaes/placeMarkers): adds place marker functionality and provides a good example on using text infos."
+msgid "### The NVDA Add-ons list"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:661
-msgid "* [Windows 10 App Essentials by Joseph Lee](https://github.com/josephsl/wintenApps): provides improved support for Windows 10 and various universal apps, considered a classic in how global plugins and app modules work together and includes examples of overlay classes and control behaviors that derives from UI Automation objects."
+msgid "If you want to keep in touch with your add-on users or want to learn from or contribute your add-on to others, please subscribe to [NVDA add-ons list][4]. This is a low traffic list devoted to discussing current and future add-ons, as well as to review other add-ons created by members of the community or have your add-on reviewed by other add-on developers around the world."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:662
-msgid "* [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings."
+msgid "### The NVDA Community Add-ons web site and code repository"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:663
-msgid "* [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used."
+msgid "To download or learn more about various add-ons created by NVDA users, visit [NVDA Community Add-ons web site][5]. You can browse currently available add-ons, view add-ons under development and read add-on development guidelines."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:664
-msgid "* [StationPlaylist Studio by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces."
+msgid "For developers wishing to read the code that powers various add-ons, you can search for add-on repositories stored on GitHub. The NVDA community add-on developers use [Git][6] for version control."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:665
-msgid "## Miscellaneous information"
+msgid "Some of the useful and educational add-on repositories are:"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:666
-msgid "Please add additional material to this guide. We at NVDA Add-on Team welcome contributions from other add-on developers and users around the world."
+msgid "* [Add-on template](https://github.com/nvdaaddons/addonTemplate): this is the source code repository for the community add-on template."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:667
-msgid "## Appendicies"
+msgid "* [Place markers by Noelia Martinez](https://github.com/nvdaes/placeMarkers): adds place marker functionality and provides a good example on using text infos."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:668
-msgid "### Appendix A: add-on terms dictionary"
+msgid "* [Windows 10 App Essentials by Joseph Lee](https://github.com/josephsl/wintenApps): provides improved support for Windows 10 and various universal apps, considered a classic in how global plugins and app modules work together and includes examples of overlay classes and control behaviors that derives from UI Automation objects."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:669
-msgid "The below terms are used throughout this development guide as well as in the add-ons community to refer to add-ons, development processes and so on."
+msgid "* [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:670
-msgid "* Add-on: an extension for a program. In NVDA world, an add-on refers to additional packages users can install to extend NVDA's functionality, improve support for an app, or add new speech synthesizers or braille displays."
+msgid "* [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:671
-msgid "* Application: synonymous with program."
+msgid "* [StationPlaylist Studio by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:672
-msgid "* App module: a module that adds or improves support for a program."
+msgid "## Miscellaneous information"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:673
-msgid "* API: Application Programming Interface."
+msgid "Please add additional material to this guide. We at NVDA Add-on Team welcome contributions from other add-on developers and users around the world."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:674
-msgid "* Base class: parent class of an object."
+msgid "## Appendicies"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:675
-msgid "* Braille display: a hardware or software that outputs text via tactile braille output and/or allows users to enter text via a braille keyboard or other input mechanisms."
+msgid "### Appendix A: add-on terms dictionary"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:676
-msgid "* Built-in module: a module that comes with NVDA that add-ons can optionally override or extend."
+msgid "The below terms are used throughout this development guide as well as in the add-ons community to refer to add-ons, development processes and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:677
-msgid "* Caret: cursor shown on screen, usually seen when editing text or navigating documents."
+msgid "* Add-on: an extension for a program. In NVDA world, an add-on refers to additional packages users can install to extend NVDA's functionality, improve support for an app, or add new speech synthesizers or braille displays."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:678
-msgid "* Class: definition of an object."
+msgid "* Application: synonymous with program."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:679
-msgid "* Event: a routine called when certain things happen such as character input, changes to text on screen, a checkbox being checked and so on."
+msgid "* App module: a module that adds or improves support for a program."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:680
-msgid "* Function: a piece of code that performs something given one or more input parameters and optionally returns something."
+msgid "* API: Application Programming Interface."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:681
-msgid "* Gesture: a piece of input such as key presses, touchscreen flicks, braille keys and so on."
+msgid "* Base class: parent class of an object."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:682
-msgid "* Global plugin: a module that adds features everywhere."
+msgid "* Braille display: a hardware or software that outputs text via tactile braille output and/or allows users to enter text via a braille keyboard or other input mechanisms."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:683
-msgid "* Module: collection of variables, functions, classes and others inside a file."
+msgid "* Built-in module: a module that comes with NVDA that add-ons can optionally override or extend."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:684
-msgid "* Object: a class definition coming to life."
+msgid "* Caret: cursor shown on screen, usually seen when editing text or navigating documents."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:685
-msgid "* Script: a function that is attached (assigned) to a gesture."
+msgid "* Class: definition of an object."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:686
-msgid "* Speech synthesizer: a software or hardware that converts text and various speech commands sent to it into voice output."
+msgid "* Event: a routine called when certain things happen such as character input, changes to text on screen, a checkbox being checked and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:687
-msgid "* Variable: a temporary placeholder for some data."
+msgid "* Function: a piece of code that performs something given one or more input parameters and optionally returns something."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:688
-msgid "### Appendix B: Programming and Python concepts every add-on developer needs to know"
+msgid "* Gesture: a piece of input such as key presses, touchscreen flicks, braille keys and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:689
-msgid "The below list summarizes concepts all add-on developers will need to know when writing add-ons."
+msgid "* Global plugin: a module that adds features everywhere."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:690
-msgid "* API: a set of documentation and code samples used to let a program or hardware interface with other software or hardware."
+msgid "* Module: collection of variables, functions, classes and others inside a file."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:691
-msgid "* Base class: a class that provides base methods, attributes and properties for other objects to inherit and extend. Synonymous with superclass and parent class."
+msgid "* Object: a class definition coming to life."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:692
-msgid "* Child class: a class that derives its power from one or more base classes."
+msgid "* Script: a function that is attached (assigned) to a gesture."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:693
-msgid "* Class: definition of objects, including methods, attributes and expected behaviors. All Python classes and attributes are public; they can \"ecome private\" through use of naming conventions such as prefixing a variable name with underscores (_)."
+msgid "* Speech synthesizer: a software or hardware that converts text and various speech commands sent to it into voice output."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:694
-msgid "* Code block: collection of code."
+msgid "* Variable: a temporary placeholder for some data."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:695
-msgid "* Compiling: translating a high-level programming language into a low-level language suitable for machine execution."
+msgid "### Appendix B: Programming and Python concepts every add-on developer needs to know"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:696
-msgid "* Event-driven programming: a programming paradigm based on following, reacting to and handling events."
+msgid "The below list summarizes concepts all add-on developers will need to know when writing add-ons."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:697
-msgid "* Exception: one or more runtime circumstances that prevent normal operation of a program such as being denied access to a resource, name usage problem in code and other cases."
+msgid "* API: a set of documentation and code samples used to let a program or hardware interface with other software or hardware."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:698
-msgid "* GUI: Graphical User Interface."
+msgid "* Base class: a class that provides base methods, attributes and properties for other objects to inherit and extend. Synonymous with superclass and parent class."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:699
-msgid "* Handle: an opaque reference to a resource such as a file, TCP socket, window and so on."
+msgid "* Child class: a class that derives its power from one or more base classes."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:700
-msgid "* Has versus is relationship: former refering to attributes of a single class, the latter refering to inherited classes."
+msgid "* Class: definition of objects, including methods, attributes and expected behaviors. All Python classes and attributes are public; they can \"ecome private\" through use of naming conventions such as prefixing a variable name with underscores (_)."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:701
-msgid "* Indentation-based syntax: use of indentations such as tabs to denote code blocks."
+msgid "* Code block: collection of code."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:702
-msgid "* Inheritance: ability for one or more parent classes to provide base methods and attributes for child classes to override or extend as the need arises."
+msgid "* Compiling: translating a high-level programming language into a low-level language suitable for machine execution."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:703
-msgid "* Interpreting: running a program written in a high-level language without compiling it first."
+msgid "* Event-driven programming: a programming paradigm based on following, reacting to and handling events."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:704
-msgid "* Object: runtime instance of one or more classes."
+msgid "* Exception: one or more runtime circumstances that prevents normal operation of a program such as being denied access to a resource, name usage problem in code and other cases."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:705
-msgid "* Object hierarchy: how screen elements are organized via parent-child (container-contained) relationship."
+msgid "* GUI: Graphical User Interface."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:706
-msgid "* Object-oriented programming: a programming paradigm that defines solutions to problems or represent real-life things via classes and objects."
+msgid "* Handle: an opaque reference to a resource such as a file, TCP socket, window and so on."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:707
-msgid "* Scope: where variables, functions, classes and objects are defined in code."
+msgid "* Has versus is relationship: former refering to attributes of a single class, the latter refering to inherited classes."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:708
-msgid "### Appendix C: Add-on type comparison"
+msgid "* Indentation-based syntax: use of indentations such as tabs to denote code blocks."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:709
-msgid "The following table compares various add-on types and when to use them."
+msgid "* Inheritance: ability for one or more parent classes to provide base methods and attributes for child classes to override or extend as the need arises."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:710
-msgid "| Task or feature | Global plugin | App module | Driver |"
+msgid "* Interpreting: running a program written in a high-level language without compiling it first."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:711
-msgid "| ------- | --------- | -------- | -------- |"
+msgid "* Object: runtime instance of one or more classes."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:712
-msgid "| Can be used everywhere | Yes | No | Yes |"
+msgid "* Object hierarchy: how screen elements are organized via parent-child (container-contained) relationship."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:713
-msgid "| Naming restrictions | No (limited by Windows file naming conventions) | Must be name of the executable | No (limited by Windows file naming conventions) |"
+msgid "* Object-oriented programming: a programming paradigm that defines solutions to problems or represent real-life things via classes and objects."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:714
-msgid "| Retrieve various controls, including focused control | Yes | Yes | No |"
+msgid "* Scope: where variables, functions, classes and objects are defined in code."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:715
-msgid "| Commands can be used everywhere | Yes | No | Braille display drivers only if defined |"
+msgid "### Appendix C: Add-on type comparison"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:716
-msgid "| Handle events such as focus changes | Yes | Yes | No |"
+msgid "The following table compares various add-on types and when to use them."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:717
-msgid "| Define custom objects to represent controls | Yes | Yes | No |"
+msgid "| Task or feature | Global plugin | App module | Driver |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:718
-msgid "| Define custom actions to be performed when the module loads and unloads | Yes | Yes | Yes |"
+msgid "| ------- | --------- | -------- | -------- |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:719
-msgid "| Perform actions when profile switching occurs and other actions | Yes | Yes | Yes |"
+msgid "| Can be used everywhere | Yes | No | Yes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:720
-msgid "| Can modify object attributes at runtime | No | Yes | No |"
+msgid "| Naming restrictions | No (limited by Windows file naming conventions) | Must be name of the executable | No (limited by Windows file naming conventions) |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:721
-msgid "| Modify speech and other output routines and presentation experience (i.e. speech.cancelSpeech, braille.handler.update, etc.) | Yes | yes | No |"
+msgid "| Retrieve various controls, including focused control | Yes | Yes | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:722
-msgid "| Include custom settings | Yes | Yes | Speech synthesizers only |"
+msgid "| Commands can be used everywhere | Yes | No | Braille display drivers only if defined |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:723
-msgid "| Can patch NVDA functions, classes and modules at will | Yes | Not advised | No |"
+msgid "| Handle events such as focus changes | Yes | Yes | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:724
-msgid "| Subject to configuration profile switches | No | Yes | Yes |"
+msgid "| Define custom objects to represent controls | Yes | Yes | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:725
-msgid "| Can call external libraries written in C and other languages and bundled as DLL's | Yes | Yes | Yes |"
+msgid "| Define custom actions to be performed when the module loads and unloads | Yes | Yes | Yes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:726
-msgid "### Appendix D: notes and references for scripters of other screen readers"
+msgid "| Perform actions when profile switching occurs and other actions | Yes | Yes | Yes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:727
-msgid "If you write scripts for screen readers such as JAWS for Windows or Window-Eyes, be sure to go over this section as it introduces you to common tasks you can do with NVDA and other notes."
+msgid "| Can modify object attributes at runtime | No | Yes | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:728
-msgid "| Task | NVDA or Python function/class/module | Notes |"
+msgid "| Modify speech and other output routines and presentation experience (i.e. speech.cancelSpeech, braille.handler.update, etc.) | Yes | yes | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:729
-msgid "| -------- | -------- | -------- |"
+msgid "| Include custom settings | Yes | Yes | Speech synthesizers only |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:730
-msgid "| Cancel speech | speech.cancelSpeech() | Stops speech. |"
+msgid "| Can patch NVDA functions, classes and modules at will | Yes | Not advised | No |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:731
-msgid "| Speak something | speech.speakMessage(message) or as part of ui.message(message) | the ui.message function also performs braille output. |"
+msgid "| Subject to configuration profile switches | No | Yes | Yes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:732
-msgid "| Braille something | braille.handler.message(message) or ui.message(message) | Same as above. |"
+msgid "| Can call external libraries written in C and other languages and bundled as DLL's | Yes | Yes | Yes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:733
-msgid "| Show an HTML window | ui.browseableMessage(message, title, isHTML = True) | Mimics virtual viewer except it'll be shown on screen. |"
+msgid "### Appendix D: notes and references for scripters of other screen readers"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:734
-msgid "| Retrieve focused object | something = api.getFocusObject() | |"
+msgid "If you write scripts for screen readers such as JAWS for Windows or Window-Eyes, be sure to go over this section as it introduces you to common tasks you can do with NVDA and other notes."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:735
-msgid "| Retrieve foreground window | foreground = api.getForegroundObject() |  |"
+msgid "| Task | NVDA or Python function/class/module | Notes |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:736
-msgid "| Title of the active window (if present) | foreground.name | |"
+msgid "| -------- | -------- | -------- |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:737
-msgid "| Find out what object is navigator object | obj = api.getNavigatorObject() | This may or may not be the focused control. |"
+msgid "| Cancel speech | speech.cancelSpeech() | Stops speech. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:738
-msgid "| Retrieve window handle for a given object | hwnd = obj.windowHandle | Obtain object via api.get*Object() functions. |"
+msgid "| Speak something | speech.speakMessage(message) or as part of ui.message(message) | the ui.message function also performs braille output. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:739
-msgid "| Check the name of the window class | obj.windowClassName == somename | |"
+msgid "| Braille something | braille.handler.message(message) or ui.message(message) | Same as above. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:740
-msgid "| Making sure the parent object has the correct window control ID | if obj.parent.windowControlID == something: statement | |"
+msgid "| Show an HTML window | ui.browseableMessage(message, title, isHTML = True) | Mimics virtual viewer except it'll be shown on screen. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:741
-msgid "| The parent object does not provide what I want, but the grandparent does | something = obj.parent.parent.attribute | |"
+msgid "| Retrieve focused object | something = api.getFocusObject() | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:742
-msgid "| The label of a list item is the name of its first child object | obj.name = obj.firstChild.name | |"
+msgid "| Retrieve foreground window | foreground = api.getForegroundObject() |  |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:743
-msgid "| I want the control label of the focused object and description of the previous object to be announced when I press NVDA+Tab | In reportFocus(self): obj.name += \" \" + obj.previous.description | |"
+msgid "| Title of the active window (if present) | foreground.name | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:744
-msgid "| Announce state changes if and only if the next object is the toolbar I'm looking for | In event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute = whatYouAreLookingFor and additional conditions ...: statement | For better readability, place each statement on separate lines with correct indents applied. |"
+msgid "| Find out what object is navigator object | obj = api.getNavigatorObject() | This may or may not be the focused control. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:745
-msgid "| Announcing the name of an object on screen (provided that object navigation can be used) | obj = api.getForegroundObject().route...; ui.message(obj.name) | Try placing each statement on its own line with correct indents applied. Route refers to obj.next/previous/parent/firstChild/lastChild/children[index]/getChild(index) and so on. |"
+msgid "| Retrieve window handle for a given object | hwnd = obj.windowHandle | Obtain object via api.get*Object() functions. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:746
-msgid "| Check if the object's role is what you want | obj.role == controlTypes.ROLE_* | ROLE_* can be any role you are looking for. |"
+msgid "| Check the name of the window class | obj.windowClassName == somename | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:747
-msgid "| Looking for a specific text in the object's name | sometext in obj.name | This is a typical string membership task. |"
+msgid "| Making sure the parent object has the correct window control ID | if obj.parent.windowControlID == something: statement | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:748
-msgid "| Does the control's label start with a specific text | obj.name.startswith(sometext) | |"
+msgid "| The parent object does not provide what I want, but the grandparent does | something = obj.parent.parent.attribute | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:749
-msgid "| Length of a text field with easily retrievable value | len(obj.value) | This works if the value of the field can be found. |"
+msgid "| The label of a list item is the name of its first child object | obj.name = obj.firstChild.name | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:750
-msgid "| Is a checkbox checked | controlTypes.STATE_CHECKED in obj.states | obj.states is a set. First, verify that the role is a checkbox. |"
+msgid "| I want the control label of the focused object and description of the previous object to be announced when I press NVDA+Tab | In reportFocus(self): obj.name += \" \" + obj.previous.description | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:751
-msgid "| How many items are in a list | someList.childCount | Provided that the list provides correct underlying implementation to obtain item count. |"
+msgid "| Announce state changes if and only if the next object is the toolbar I'm looking for | In event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute = whatYouAreLookingFor and additional conditions ...: statement | For better readability, place each statement on separate lines with correct indents applied. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:752
-msgid "| Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shelel (desktop) object with screne resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |"
+msgid "| Announcing the name of an object on screen (provided that object navigation can be used) | obj = api.getForegroundObject().route...; ui.message(obj.name) | Try placing each statement on its own line with correct indents applied. Route refers to obj.next/previous/parent/firstChild/lastChild/children[index]/getChild(index) and so on. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:753
-msgid "| Is this an MSAA control | isinstance(obj, NVDAObjects.IAccessible.IAccessible) | A typical implementation is to import IAccessible from NVDAObjects.IAccessible and doing isinstance(obj, IAccessible). |"
+msgid "| Check if the object's role is what you want | obj.role == controlTypes.ROLE_* | ROLE_* can be any role you are looking for. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:754
-msgid "| Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for controls other than list items, treeview items and what not is 0. |"
+msgid "| Looking for a specific text in the object's name | sometext in obj.name | This is a typical string membership task. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:755
-msgid "| I need to work with IAccessible object methods directly | obj.IAccessibleObject.method | First, find out how to use the given MSAA method for a control, then retrieve the IAccessible object itself and call the needed method. |"
+msgid "| Does the control's label start with a specific text | obj.name.startswith(sometext) | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:756
-msgid "| Give me the UIA element that powers a certain UIA control | obj.UIAElement | Useful if you wish to perform UIA client operations on this element. |"
+msgid "| Length of a text field with easily retrievable value | len(obj.value) | This works if the value of the field can be found. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:757
-msgid "| Automation ID for a UIA element | obj.UIAElement.cachedAutomationID | First, check if the object is a UIA control . |"
+msgid "| Is a checkbox checked | controlTypes.STATE_CHECKED in obj.states | obj.states is a set. First, verify that the role is a checkbox. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:758
-msgid "| Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Programming Language) and Microsoft Edge. |"
+msgid "| How many items are in a list | someList.childCount | Provided that the list provides correct underlying implementation to obtain item count. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:759
-msgid "| I want to ask UIA about values of a specific property | obj._getUIACacheablePropertyValue(propertyID) | Provided that the object is a UIA control, pass in the property ID you wish to know as an argument to this function. If the property is supported, a valid value will be returned, otherwise a COM error exception will be thrown. |"
+msgid "| Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shelel (desktop) object with screne resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:760
-msgid "| Executable name of any object | obj.appModule.appName | appModule is the attribute of any object that can be represented within an app such as focused control. |"
+msgid "| Is this an MSAA control | isinstance(obj, NVDAObjects.IAccessible.IAccessible) | A typical implementation is to import IAccessible from NVDAObjects.IAccessible and doing isinstance(obj, IAccessible). |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:761
-msgid "| Send keystrokes | gesture.send() | This is to be called from a script with the desired keystroke bound to it. |"
+msgid "| Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for controls other than list items, treeview items and what not is 0. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:762
-msgid "| Handling multiple presses of a keystroke | scriptHandler.getLastScriptRepeatCount() | 0 means the command was pressed once. |"
+msgid "| I need to work with IAccessible object methods directly | obj.IAccessibleObject.method | First, find out how to use the given MSAA method for a control, then retrieve the IAccessible object itself and call the needed method. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:763
-msgid "| I want to assign Control+Alt+number row to a script | In initOverlayClass(self): for key in range(10): self.bindGesture(\"control+alt+%s\"%(key), \"somescript\") | For Python 2, use xrange instead. For ease of readability, indent each statement on separate lines. |"
+msgid "| Give me the UIA element that powers a certain UIA control | obj.UIAElement | Useful if you wish to perform UIA client operations on this element. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:764
-msgid "| providing input help message | script_somescript.__doc__ | Effectivley, a script's docstring is treated as its input help message. |"
+msgid "| Automation ID for a UIA element | obj.UIAElement.cachedAutomationID | First, check if the object is a UIA control . |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:765
-msgid "| Handle name changes | event_nameChange(self, obj, nextHandler) | The body should consist of what should be done, ending with a call -to nextHandler() function. |"
+msgid "| Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Programming Language) and Microsoft Edge. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:766
-msgid "| Live region change announcements | event_liveRegionChange(self, obj, nextHandler) | By default, new text will be spoken and/or brailled. |"
+msgid "| I want to ask UIA about values of a specific property | obj._getUIACacheablePropertyValue(propertyID) | Provided that the object is a UIA control, pass in the property ID you wish to know as an argument to this function. If the property is supported, a valid value will be returned, otherwise a COM error exception will be thrown. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:767
-msgid "| Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contesnts of this \"dialog\" will be announced automatically. |"
+msgid "| Executable name of any object | obj.appModule.appName | appModule is the attribute of any object that can be represented within an app such as focused control. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:768
-msgid "| I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |"
+msgid "| Send keystrokes | gesture.send() | This is to be called from a script with the desired keystroke bound to it. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:769
-msgid "| I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). \\"
+msgid "| Handling multiple presses of a keystroke | scriptHandler.getLastScriptRepeatCount() | 0 means the command was pressed once. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:770
-msgid "| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |"
+msgid "| I want to assign Control+Alt+number row to a script | In initOverlayClass(self): for key in range(10): self.bindGesture(\"control+alt+%s\"%(key), \"somescript\") | For Python 2, use xrange instead. For ease of readability, indent each statement on separate lines. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:771
-msgid "| Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | Commonly called \"aliasing\". |"
+msgid "| providing input help message | script_somescript.__doc__ | Effectivley, a script's docstring is treated as its input help message. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:772
-msgid "| Play a tone | tones.beep(hertz, duration) | Duration in milliseconds. |"
+msgid "| Handle name changes | event_nameChange(self, obj, nextHandler) | The body should consist of what should be done, ending with a call -to nextHandler() function. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:773
-msgid "| Play a tone on the left speaker | tones.beep(hertz, duration, leftVolume=100, rightVolume=0) | |"
+msgid "| Live region change announcements | event_liveRegionChange(self, obj, nextHandler) | By default, new text will be spoken and/or brailled. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:774
-msgid "| Play a wave file | nvwave.playWaveFile(path) | For example, nvwave.playWaveFile(r\"test.wav\") |"
+msgid "| Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contents of this \"dialog\" will be announced automatically. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:775
-msgid "| Obtain text info for a given object | obj.TextInfo | Note the uppercase \"T\". |"
+msgid "| I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:776
-msgid "| Check if keyboard echo (typed characters) is on | config.conf[\"keyboard\"][\"speakTypedCharacters\"] | |"
+msgid "| I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). \\"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:777
-msgid "| turn speak command keys on without opening a settings dialog | config.conf[\"keyboard\"][\"speakCommandKeys\"] = True | The user should toggle this on via keyboard settings dialog. |"
+msgid "| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:778
-msgid "| Is focus mode/forms mode active | obj.treeInterceptor.passThrough | If True, focus/forms mode is on while using browse mode documents. |"
+msgid "| Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | Commonly called \"aliasing\". |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:779
-msgid "| Is touchscreen support available | touchHandler.handler is not None | If it is not None, touch support is active and available. |"
+msgid "| Play a tone | tones.beep(hertz, duration) | Duration in milliseconds. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:780
-msgid "| Get NVDA version | versionInfo.version | |"
+msgid "| Play a tone on the left speaker | tones.beep(hertz, duration, leftVolume=100, rightVolume=0) | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:781
-msgid "| I wish to do something whenever configuration profiles are changed | config.configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |"
+msgid "| Play a wave file | nvwave.playWaveFile(path) | For example, nvwave.playWaveFile(r\"test.wav\") |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:782
-msgid "| Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |"
+msgid "| Obtain text info for a given object | obj.TextInfo | Note the uppercase \"T\". |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:783
-msgid "| I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |"
+msgid "| Check if keyboard echo (typed characters) is on | config.conf[\"keyboard\"][\"speakTypedCharacters\"] | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:784
-msgid "| Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |"
+msgid "| turn speak command keys on without opening a settings dialog | config.conf[\"keyboard\"][\"speakCommandKeys\"] = True | The user should toggle this on via keyboard settings dialog. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:785
-msgid "| Is 64-bit Windows | os.environ[\"PROCESSOR_ARCHITEW6432\"] in (\"AMD64\", \"ARM64\") or os.path.exists(r\"C:\\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |"
+msgid "| Is focus mode/forms mode active | obj.treeInterceptor.passThrough | If True, focus/forms mode is on while using browse mode documents. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:786
-msgid "| Registry access | _winreg module | Changed to \"winreg\" in Python 3. |"
+msgid "| Is touchscreen support available | touchHandler.handler is not None | If it is not None, touch support is active and available. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:787
-msgid "| Open a website with the default web browser | os.startfile(URL) | |"
+msgid "| Get NVDA version | versionInfo.version | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:788
-msgid "| Download headers for a file on the web | resource = urllib.urlopen(URL) | |"
+msgid "| I wish to do something whenever configuration profiles are changed | config.post_configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:789
-msgid "| Work with JSON data | json module | |"
+msgid "| Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:790
-msgid "| Allocate some memory somewhere | ctypes.windll.kernel32.VirtualAllocEx() | The faster way to do this is winKernel.virtualAllocEx function. |"
+msgid "| I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:791
-msgid "| Send a message to another process | ctypes.windll.user32.SendMessageW() | The shorter way is winUser.sendMessage() function."
+msgid "| Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:792
-msgid "| Current time in seconds | time.time() | This returns seconds elapsed from January 1, 1970 at midnight. |"
+msgid "| Is 64-bit Windows | os.environ[\"PROCESSOR_ARCHITEW6432\"] in (\"AMD64\", \"ARM64\") or os.path.exists(r\"C:\\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:793
-msgid "| Create a message box | gui.messageBox | A thin wrapper around wx.MessageBox class. |"
+msgid "| Registry access | _winreg module | Changed to \"winreg\" in Python 3. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:794
-msgid "| Create a custom dialog | wx.Dialog | |"
+msgid "| Open a website with the default web browser | os.startfile(URL) | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:795
-msgid "| Run multiple background tasks at once | threading.Thread | In reality, due to internal issues, Python will run one thread after another. This approach is useful if you want to run a background task while making NVDA remain responsive. |"
+msgid "| Download headers for a file on the web | resource = urllib.urlopen(URL) | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:796
-msgid "| Run something periodically | wx.PyTimer or threading.Timer | |"
+msgid "| Work with JSON data | json module | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:797
-msgid "| Tally occurrence of text in a document | collections.Counter | Be sure to have a list of words from a text file before running a tally on it. |"
+msgid "| Allocate some memory somewhere | ctypes.windll.kernel32.VirtualAllocEx() | The faster way to do this is winKernel.virtualAllocEx function. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:798
-msgid "| Create a dynamic array | list object | Python's list object ([]) is a dynamic array. \\"
+msgid "| Send a message to another process | ctypes.windll.user32.SendMessageW() | The shorter way is winUser.sendMessage() function."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:799
-msgid "| Work with associative arrays | dict object | Python's dictionary ({}) object is another name for associative array, sometimes called a map. |"
+msgid "| Current time in seconds | time.time() | This returns seconds elapsed from January 1, 1970 at midnight. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:800
-msgid "| Open, parse, and save config files | config module or configobj module | |"
+msgid "| Create a message box | gui.messageBox | A thin wrapper around wx.MessageBox class. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:801
-msgid "| I wish to make my code run faster and error-free | DO NOT DO IT UNLESS YOU REALLY NEED TO! | To paraphrase a quote from a famous programmer, \"don't optimize unless you want to go through headaches\". |"
+msgid "| Create a custom dialog | wx.Dialog | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:802
-msgid "| I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |"
+msgid "| Run multiple background tasks at once | threading.Thread | In reality, due to internal issues, Python will run one thread after another. This approach is useful if you want to run a background task while making NVDA remain responsive. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:803
-msgid "| I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |"
+msgid "| Run something periodically | wx.PyTimer or threading.Timer | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:804
-msgid "| I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |"
+msgid "| Tally occurrence of text in a document | collections.Counter | Be sure to have a list of words from a text file before running a tally on it. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:805
-msgid "[1]: https://community.nvda-project.org/wiki/Developme"
+msgid "| Create a dynamic array | list object | Python's list object ([]) is a dynamic array. \\"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:806
-msgid "[2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html"
+msgid "| Work with associative arrays | dict object | Python's dictionary ({}) object is another name for associative array, sometimes called a map. |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:807
-msgid "[3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip"
+msgid "| Open, parse, and save config files | config module or configobj module | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:808
-msgid "[4]: http://www.zlotowicz.pl/nvda/winapi.mdwn"
+msgid "| I wish to make my code run faster and error-free | DO NOT DO IT UNLESS YOU REALLY NEED TO! | To paraphrase a quote from a famous programmer, \"don't optimize unless you want to go through headaches\". |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:809
-msgid "[5]: https://addons.nvda-project.org"
+msgid "| I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:810
+msgid "| I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:811
+msgid "| I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:812
+msgid "[1]: https://community.nvda-project.org/wiki/Developme"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:813
+msgid "[2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:814
+msgid "[3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:815
+msgid "[4]: http://www.zlotowicz.pl/nvda/winapi.mdwn"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:816
+msgid "[5]: https://addons.nvda-project.org"
+msgstr ""
+
+#: ..\python_docs\NVDA_Add-on_Development_Guide.py:817
 msgid "[6]: https://www.git-scm.com/josephsl/stationPlaylist"
 msgstr ""
 

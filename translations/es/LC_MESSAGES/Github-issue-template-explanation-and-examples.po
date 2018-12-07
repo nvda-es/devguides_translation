@@ -5,27 +5,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-03 16:24+Hora de verano romance\n"
-"PO-Revision-Date: 2018-07-05 10:25+0200\n"
+"POT-Creation-Date: 2018-12-07 16:24+Hora estándar romance\n"
+"PO-Revision-Date: 2018-12-07 16:26+0100\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.8\n"
-"Last-Translator: José Manuel Delicado Alcolea <josemanuel.delicado@urjc.es>\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:3
 msgid "# Creating new issues on the NVDA project"
 msgstr "# Creación de nuevas incidencias en el proyecto NVDA"
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:4
+#, fuzzy
+#| msgid ""
+#| "This page is meant to serve as an explanation for how to fill out [our "
+#| "Github issue template](https://github.com/nvaccess/nvda/blob/master/."
+#| "github/issue_template.md)."
 msgid ""
-"This page is meant to serve as an explanation for how to fill out [our "
-"Github issue template](https://github.com/nvaccess/nvda/blob/master/.github/"
-"issue_template.md)."
+"This page is meant to serve as an explanation for how to fill out our "
+"[Github issue templates](https://github.com/nvaccess/nvda/blob/master/."
+"github/ISSUE_TEMPLATE/)."
 msgstr ""
 "Esta página se ha creado para servir como explicación al rellenar la [la "
 "plantilla de incidencias de NVDA en GitHub (en inglés)](https://github.com/"
@@ -54,10 +59,45 @@ msgstr ""
 "esta plantilla."
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:7
-msgid "## Attachments / Images"
-msgstr "## Adjuntos e imágenes"
+msgid "We currently have two templates, both are described on this page:"
+msgstr ""
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:8
+msgid "- for bug reports"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:9
+msgid "- for feature requests."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:10
+msgid "## General information"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:11
+#, fuzzy
+#| msgid ""
+#| "At the start of the template there is a HTML comment block which points "
+#| "to this wiki page, it can be left in place and will not appear once the "
+#| "issue is saved. Feel free to delete it."
+msgid ""
+"The following information applies to all issues (bug reports, new features, "
+"even pull requests). At the start of the template there is a HTML comment "
+"block which points to this wiki page, it can be left in place and will not "
+"appear once the issue is saved. Feel free to delete it."
+msgstr ""
+"Al principio de la plantilla hay un bloque de comentarios en HTML que apunta "
+"hacia la versión inglesa de esta página en la wiki de NVDA. Se puede dejar "
+"como está, y no aparecerá una vez que se guarde la incidencia. Elimínalo si "
+"lo deseas."
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:12
+#, fuzzy
+#| msgid "## Attachments / Images"
+msgid "### Attachments / Images"
+msgstr "## Adjuntos e imágenes"
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:13
 msgid ""
 "It's important to include any files that are required to reproduce an issue. "
 "This might be a required file for an office suite, or a link to a code "
@@ -74,11 +114,13 @@ msgstr ""
 "pull-requests/). Sin embargo, sí se permiten los archivos zip, por lo que "
 "puedes comprimir tu archivo y adjuntar el resultado."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:9
-msgid "### Logs"
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:14
+#, fuzzy
+#| msgid "### Logs"
+msgid "#### Logs"
 msgstr "### Registros"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:10
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:15
 msgid ""
 "In most cases an NVDA log file is incredibly helpful when trying to "
 "understand/fix an issue, please remember to attach one. More [instructions "
@@ -92,11 +134,13 @@ msgstr ""
 "para desarrolladores de esta web. Si lo que obtienes es un archivo de "
 "minivolcado (nvda_crash.dmp), inclúyelo también."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:11
-msgid "### Screenshots"
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:16
+#, fuzzy
+#| msgid "### Screenshots"
+msgid "#### Screenshots"
 msgstr "### Capturas de pantalla"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:12
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:17
 msgid ""
 "While we welcome **images/screenshots** to help explain a problem, be aware "
 "that many of the developers of NVDA are blind and will greatly appreciate "
@@ -108,11 +152,13 @@ msgstr ""
 "NVDA son ciegos y apreciarán mejor la imagen si está descrita como texto. La "
 "mayoría de las herramientas te permiten copiar texto fuera de ellas."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:13
-msgid "## Tips"
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:18
+#, fuzzy
+#| msgid "## Tips"
+msgid "### Tips"
 msgstr "## Consejos"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:14
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:19
 msgid ""
 "* Consider swapping to the preview tab in order to read through your issue "
 "at any stage to confirm the issue reads as expected."
@@ -120,7 +166,7 @@ msgstr ""
 "* Plantéate ir a la pestaña Preview para leer tu incidencia en cualquier "
 "momento y confirmar que queda como esperas."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:15
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:20
 msgid ""
 "* If you have trouble following this template, or with the initial "
 "investigation that is required, please politely ask for assistance from the "
@@ -133,34 +179,94 @@ msgstr ""
 "que se encuentra en la [lista de correo de NVDA en español](https://groups."
 "google.com/group/nvda-es)"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:16
-msgid "## The template"
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:21
+#, fuzzy
+#| msgid "## The template"
+msgid "## Feature Request template"
 msgstr "## La plantilla"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:17
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:22
+#, fuzzy
+#| msgid ""
+#| "After the HTML comment, you may provide a brief overview of the issue. "
+#| "Then fill in each of the following sections:"
 msgid ""
-"At the start of the template there is a HTML comment block which points to "
-"this wiki page, it can be left in place and will not appear once the issue "
-"is saved. Feel free to delete it."
-msgstr ""
-"Al principio de la plantilla hay un bloque de comentarios en HTML que apunta "
-"hacia la versión inglesa de esta página en la wiki de NVDA. Se puede dejar "
-"como está, y no aparecerá una vez que se guarde la incidencia. Elimínalo si "
-"lo deseas."
-
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:18
-msgid ""
-"After the HTML comment, you may provide a brief overview of the issue. Then "
-"fill in each of the following sections:"
+"After the HTML comment ([discussed earlier](#General_information)), you may "
+"provide a brief overview of the issue. Then fill in each of the following "
+"headings which match those that are found in the template, with a short "
+"description of how to fill in each section."
 msgstr ""
 "Después del comentario en HTML, puedes proporcionar una breve descripción de "
 "la incidencia. A continuación, rellena cada una de las siguientes secciones:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:19
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:23
+msgid "### Is your feature request related to a problem? Please describe."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:24
+msgid ""
+"This section should provide a clear and concise description of what the "
+"problem is. Ex. I'm always frustrated when [...]"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:25
+msgid "### Describe the solution you'd like"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:26
+msgid ""
+"A clear and concise description of what you want to happen. If you can "
+"provide technical details about how to address the problem, please do so. "
+"Feel free to add a subheading."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:27
+msgid "### Describe alternatives you've considered"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:28
+msgid ""
+"A clear and concise description of any alternative solutions or features "
+"you've considered."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:29
+msgid "### Additional context"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:30
+msgid ""
+"Add any other context for the feature request here. This might be the other "
+"applications and their versions that the feature is expected to work with "
+"(EG Firefox or Microsoft Word). Also consider whether you can upload an "
+"attachment document that will help to serve as a test case for the feature."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:31
+#, fuzzy
+#| msgid "## The template"
+msgid "## Bug report template"
+msgstr "## La plantilla"
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:32
+#, fuzzy
+#| msgid ""
+#| "After the HTML comment, you may provide a brief overview of the issue. "
+#| "Then fill in each of the following sections:"
+msgid ""
+"After the HTML comment ([discussed earlier](#general-information)), you may "
+"provide a brief overview of the issue. Then fill in each of the following "
+"headings which match those that are found in the template, with a short "
+"description of how to fill in each section."
+msgstr ""
+"Después del comentario en HTML, puedes proporcionar una breve descripción de "
+"la incidencia. A continuación, rellena cada una de las siguientes secciones:"
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:33
 msgid "### Steps to reproduce:"
 msgstr "### Pasos para reproducir:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:20
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:34
 msgid ""
 "This section should contain a list of the steps you take to demonstrate the "
 "problem. While you are working out the steps required, please make a copy of "
@@ -171,54 +277,54 @@ msgstr ""
 "demostrar el problema. Mientras los estés realizando, haz una copia de tu "
 "registro de NVDA para adjuntarla a la incidencia."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:21
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:28
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:32
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:38
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:35
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:42
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:51
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:55
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:59
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:67
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:46
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:52
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:56
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:65
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:69
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:73
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:81
 msgid "*Example:*"
 msgstr "*Ejemplo:*"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:22
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:36
 msgid "> 1. Open Chrome"
 msgstr "> 1. Abrir Chrome"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:23
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:37
 msgid "> 1. Browse to www.google.com"
 msgstr "> 2. Navegar a www.google.com"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:24
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:38
 msgid "> 1. Type \"Hello\""
 msgstr "> 3. Escribir \"Hola\""
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:25
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:39
 msgid "> 1. Press Enter"
 msgstr "> 4. Pulsar intro"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:26
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:40
 msgid "### Actual behavior:"
 msgstr "### Comportamiento actual:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:27
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:41
 msgid ""
 "This section should tell us what actually happens when these steps are taken."
 msgstr ""
 "Esta sección debería explicar qué sucede realmente al llevar a cabo los "
 "pasos anteriores."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:29
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:43
 msgid "> An NVDA error sound is heard."
 msgstr "> Se oye un sonido de error de NVDA."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:30
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:44
 msgid "### Expected behavior:"
 msgstr "### Comportamiento esperado:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:31
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:45
 msgid ""
 "This section should tell us what you expect to happen when these steps are "
 "taken."
@@ -226,7 +332,7 @@ msgstr ""
 "En esta sección deberías explicar qué esperas que pase al seguir los pasos "
 "anteriores."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:33
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:47
 msgid ""
 "> There should be no error sound, and the page should change to show the "
 "search results."
@@ -234,11 +340,11 @@ msgstr ""
 "> No debería haber sonido de error, y la página debería cambiar para mostrar "
 "los resultados de la búsqueda."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:34
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:48
 msgid "### System configuration:"
 msgstr "### Configuración del sistema:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:35
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:49
 msgid ""
 "This section has several sub-sections. These are all about the system you "
 "are using when encountering the issue. If you are encountering the issue "
@@ -252,23 +358,25 @@ msgstr ""
 "reproducir el problema, o investigar por qué el problema les ocurre a "
 "algunos usuarios y a otros no."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:36
-msgid "#### NVDA Installed/portable/running from source:"
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:50
+#, fuzzy
+#| msgid "#### NVDA Installed/portable/running from source:"
+msgid "#### NVDA installed/portable/running from source:"
 msgstr "#### NVDA Instalado, portable o ejecutándose desde el código fuente:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:37
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:51
 msgid "This tells us how you are using NVDA."
 msgstr "Esto indica a los desarrolladores cómo estás utilizando NVDA."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:39
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:53
 msgid "> Installed"
 msgstr "> Instalado"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:40
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:54
 msgid "#### NVDA version:"
 msgstr "#### Versión de NVDA:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:41
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:55
 msgid ""
 "The version of NVDA that you are using when demonstrating the issue. This "
 "can be copied from the about option, in the NVDA help menu."
@@ -276,15 +384,15 @@ msgstr ""
 "La versión de NVDA que estás utilizando para demostrar el problema. Se puede "
 "copiar desde la opción Acerca de, en el menú Ayuda de NVDA."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:43
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:57
 msgid "> next-15370,21fd217a"
 msgstr "> next-15370,21fd217a"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:44
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:58
 msgid "#### Windows version:"
 msgstr "#### Versión de Windows:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:45
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:59
 msgid ""
 "The version of Windows that you are using. You can copy this from the "
 "\"System Information\" application:"
@@ -292,15 +400,15 @@ msgstr ""
 "La versión de Windows que estás usando. Puedes copiarla desde la aplicación "
 "\"Información del sistema\":"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:46
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:60
 msgid "1. Press `Windows+r` to open the run dialog"
 msgstr "1. Pulsa `Windows+r` para abrir el diálogo ejecutar"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:47
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:61
 msgid "1. Type `msinfo32` and press enter"
 msgstr "2. Escribe `msinfo32` y pulsa intro"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:48
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:62
 msgid ""
 "1. From the \"System summary\" treeview item, press tab to get to the right "
 "pane."
@@ -308,25 +416,25 @@ msgstr ""
 "3. Desde el elemento de árbol \"Resumen del sistema\", pulsa tab para llegar "
 "al panel derecho."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:49
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:63
 msgid "1. Press down arrow twice to get to \"Version\""
 msgstr "4. Pulsa flecha abajo dos veces para llegar a \"Versión\""
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:50
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:64
 msgid "1. Press `Control+C` to copy the version information."
 msgstr "5. Pulsa `control+c` para copiar la información de versión."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:52
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:66
 msgid "> Windows 10 Version 1607 Build 14393.1066"
 msgstr "> Windows 10 Versión 1607, Compilación 14393.1066"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:53
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:67
 msgid ""
 "#### Name and version of other software in use when reproducing the issue:"
 msgstr ""
 "#### Nombre y versión de otro software en uso al reproducir el problema:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:54
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:68
 msgid ""
 "Typically you can get this information from the \"About\" dialog of the "
 "software."
@@ -334,15 +442,15 @@ msgstr ""
 "Normalmente puedes obtener información desde el diálogo \"Acerca de\" del "
 "software."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:56
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:70
 msgid "> Chrome version: 67.0.3396.87"
 msgstr "> Chrome versión: 67.0.3396.87"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:57
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:71
 msgid "#### Other information about your system:"
 msgstr "#### Otra información de tu sistema:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:58
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:72
 msgid ""
 "This is other information about your setup that you think might be relevant "
 "to us."
@@ -350,15 +458,15 @@ msgstr ""
 "Se trata de otra información sobre tu configuración que crees que podría ser "
 "importante para los desarrolladores."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:60
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:74
 msgid "> Running Windows 10 in a VM"
 msgstr "> Ejecuto Windows 10 desde una máquina virtual"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:61
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:75
 msgid "### Other questions:"
 msgstr "### Otras preguntas:"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:62
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:76
 msgid ""
 "This section has sub-sections, asking about the basic investigation steps "
 "you may have completed. Please feel free to add more information here to "
@@ -368,11 +476,11 @@ msgstr ""
 "investigación que puedes haber completado. Si quieres, añade más información "
 "aquí para contarle a los desarrolladores qué pruebas has hecho."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:63
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:77
 msgid "#### Does the issue still occur after restarting your PC?"
 msgstr "#### ¿El problema todavía ocurre después de reiniciar tu PC?"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:64
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:78
 msgid ""
 "Restarting your computer will help to ensure that software is in a fresh "
 "state."
@@ -380,11 +488,11 @@ msgstr ""
 "Reiniciar tu ordenador ayudará a asegurar que el software se encuentra en un "
 "estado más fresco."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:65
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:79
 msgid "#### Have you tried any other versions of NVDA?"
 msgstr "#### ¿Has probado otras versiones de NVDA?"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:66
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:80
 msgid ""
 "Knowing whether this issue occurs in previous releases helps us to "
 "understand if this is a newly introduced issue, and gives us an indication "
@@ -396,10 +504,10 @@ msgstr ""
 "una pista sobre si es un cambio en NVDA o el responsable del problema es "
 "otro programa."
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:68
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:82
 msgid "> * NVDA 2018.1 - no error sound"
 msgstr "> * NVDA 2018.1 - no hay sonido de error"
 
-#: ..\python_docs\Github-issue-template-explanation-and-examples.py:69
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:83
 msgid "> * NVDA 2018.2 - has error sound"
 msgstr "> * NVDA 2018.2 - tiene el sonido de error"

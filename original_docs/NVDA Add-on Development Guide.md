@@ -1,6 +1,6 @@
 # NVDA Add-on Development Guide
 
-* Latest version: February 2018 for NVDA 2018.1
+* Latest version: December 2018 for NVDA 2018.4/2019.1
 
 ## Authors, Contributions, and Copyright
 
@@ -676,7 +676,7 @@ Now we have a basic overview of components of add-ons, we're ready to build some
 
 Over the years, the NVDA community built a number of powerful add-ons for NVDA users. Over the course of these years, the add-on writers gathered some useful tips when it comes to writing your own add-ons. Here are a number of them:
 
-* Get to know NVDA: it is important that you become familiar with NVDA commands, concepts and tips. Subscribe to NVDA users groups to learn more about NVDA and learn about how NVDA works, as you'll be extending it via your add-ons.
+* Get to know NVDA: it is important that you become familiar with NVDA commands, concepts and tips. Subscribe to NVDA users groups to learn more about NVDA and how NVDA works, as you'll be extending it via your add-ons.
 * Get to know the product at hand: as noted earlier, it is important that you get to know the software you're writing the app module for, synthesizers and braille displays you'll be writing the driver for and so on.
 * Plan ahead: if you know you'll be maintaining your add-on for a number of months or years, it is useful to have a plan and write the add-on code to prepare for future extensions. For example, working on features that you need to implement now, dividing parts of a program to objects and so on.
 * Ready to debug and test your add-on: writing your add-on code is just one part of the overall add-on development. The other part is testing and debugging your add-on to make sure that users use your add-on with minimal errors. As you write your add-ons, be sure to test your code regularly.
@@ -695,34 +695,57 @@ Here are a few things you should do and not do throughout add-on development:
 ### Frequently Asked Questions about add-on components and development
 
 Q. When I try to obtain an object using an index, it fetches an object one after the index I wrote.  
+
 This is the side effect of zero-based indexing (count starts at 0).
 
 Q. When importing a module, NVDA says it cannot locate the module.  
+
 Did you type the correct name of the module? Did you extract the module files in the correct location? Try fixing the typo, look at the import path and try importing again.
 
 Q. What is difference between simple review and normal review and which one should I use?  
+
 Simple review excludes layout objects such as windows, grouping and so on which are placed for layout purposes. Normal review includes these as well. The choice of using simple review versus normal review depends on your situation.
 
 Q. The command for my app module does not work in my app module; instead, NVDA does something else.  
+
 Check if a global plugin which uses the command is installed. First, remove the global plugin and try again.
 
 Q. How can I use Win32 API in my add-on or object?
+
 There is a document written by an add-on developer which talks about using Win32 API in your add-on. Select [this link][4] to view this document.
 
 Q. How can I create dialogs in my add-on?
+
 You need to import two modules: GUI (import gui) and WXPython (import wx).
 
 Q. Can I create functions and assign variables outside the module classes?
+
 Yes. This is useful if you need to reference them from inside the add-on class. For example, you may have a function that's defined outside your class that you'll need to use from more than one method in a global plugin class.
 
 Q. I want to save user settings for my add-on. Can this be done?
+
 Yes. You'll need to use ConfigObj library (configObj) to manage configuration. Some add-ons (such as OCR) which uses configuration files store their configuration as an ini file in NVDA's user configuration folder. For global plugins, you can load and save user configuration from the add-on when the add-on is created (__init__) or finished (terminate), respectively. You cannot do this easily with app modules. Also, you'll need to provide a facility (commands, dialogs, etc.) where users can configure add-on settings.
 
 Q. I have a script which calls a function that runs for a long time, and I cannot run NVDA commands when my script runs.
+
 One way to fix this is using threads (separate, independent  operations in a program) via Python's threading module. In order to do this, create a method which you know will run for a long time, then from the script which calls this method, create a new thread (see Python's threading module documentation) that'll be in charge of running this method. This way other NVDA commands can be performed while the add-on method does its work (see Google Speech Recognition module for an example code).
 
 Q. I would like to port a module written in Python 3 syntax for use as an NVDA add-on.
-This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NvDA itself uses Python 2 as WXPython uses Python 2, and until WXPython is rewritten to support Python 3, you cannot run Python 3 code in NVDA.
+
+This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NvDA itself uses Python 2, and work is under way to transition to Python 3.
+
+Q. My add-on uses GUI facility, and after installing NVDA 2018.3, I get errors related to wxPython.
+
+NVDA 2018.3 uses wxPython 4, whereas earlier versions use older wxPython releases. If you want to support older NVDA releases, you need to use conditional statements (if/else) and version checks so the appropriate code path can be used.
+
+Q. After installing NVDA 2019.1, users say my add-ons are not compatible.
+
+NVDA 2019.1 introduces add-on compatibility flags that tells NVDA the following information:
+
+* Minimum NVDA version (minimumNVDAVersion): an add-on can specify minimum NVDA version required for the add-on. This is useful if you need to use features introduced or changed in a given NVDA release without supporting older NVDA releases.
+* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest supported release for the add-on. Without this flag being set, NVDA will treat your add-ons as incompatible with the latest release.
+
+Words in parentheses are manifest keys. Starting in NVDA 2019.1, these compatibility flags are mandatory for all add-ons.
 
 We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
@@ -945,7 +968,7 @@ For braille displays:
 
 * Before writing a driver, make sure you have the needed software and/or hardware.
 * Be sure to study protocols and API's used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols).
-* Make sure you know how to communicate with your equipment - ports, USB ID's, Bluetooth addresses, serial port settings and so on.
+* Make sure you know how to communicate with your equipment or software - ports, USB ID's, Bluetooth addresses, serial port settings, DLL's and so on.
 * Work with another person who happens to use the equipment or software you are writing driver(s) for.
 
 ### Typical driver development steps
@@ -1017,7 +1040,7 @@ The below list summarizes concepts all add-on developers will need to know when 
 * Code block: collection of code.
 * Compiling: translating a high-level programming language into a low-level language suitable for machine execution.
 * Event-driven programming: a programming paradigm based on following, reacting to and handling events.
-* Exception: one or more runtime circumstances that prevent normal operation of a program such as being denied access to a resource, name usage problem in code and other cases.
+* Exception: one or more runtime circumstances that prevents normal operation of a program such as being denied access to a resource, name usage problem in code and other cases.
 * GUI: Graphical User Interface.
 * Handle: an opaque reference to a resource such as a file, TCP socket, window and so on.
 * Has versus is relationship: former refering to attributes of a single class, the latter refering to inherited classes.
@@ -1093,7 +1116,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | providing input help message | script_somescript.__doc__ | Effectivley, a script's docstring is treated as its input help message. |
 | Handle name changes | event_nameChange(self, obj, nextHandler) | The body should consist of what should be done, ending with a call -to nextHandler() function. |
 | Live region change announcements | event_liveRegionChange(self, obj, nextHandler) | By default, new text will be spoken and/or brailled. |
-| Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contesnts of this "dialog" will be announced automatically. |
+| Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contents of this "dialog" will be announced automatically. |
 | I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |
 | I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). \
 | I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |
@@ -1107,7 +1130,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Is focus mode/forms mode active | obj.treeInterceptor.passThrough | If True, focus/forms mode is on while using browse mode documents. |
 | Is touchscreen support available | touchHandler.handler is not None | If it is not None, touch support is active and available. |
 | Get NVDA version | versionInfo.version | |
-| I wish to do something whenever configuration profiles are changed | config.configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |
+| I wish to do something whenever configuration profiles are changed | config.post_configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |
 | Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |
 | I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |
 | Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |
