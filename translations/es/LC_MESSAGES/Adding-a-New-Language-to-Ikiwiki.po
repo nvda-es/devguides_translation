@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-12-12 23:39+Hora estándar romance\n"
+"PO-Revision-Date: 2018-12-12 23:45+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:3
+msgid "# Adding a New Language to Ikiwiki"
+msgstr "# Cómo añadir un nuevo idioma a Ikiwiki"
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:4
+msgid ""
+"Following are instructions for adding a new language to the addons.nvda-"
+"project.org website, which uses Ikiwiki."
+msgstr ""
+"A continuación se muestran instrucciones para añadir un nuevo idioma al "
+"sitio web addons.nvda-project.org, que usa Ikiwiki."
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:5
+msgid ""
+"1. Edit the `ikiwiki.setup` file in the `ikiwiki-ctl` repository. The Git "
+"repository URL is: git@bitbucket.org:nvdaaddonteam/ikiwiki-ctl"
+msgstr ""
+"1. Edita el archivo `ikiwiki.setup` en el repositorio `ikiwiki-ctl`. La "
+"URL del repositorio Git es: git@bitbucket.org:nvdaaddonteam/ikiwiki-ctl"
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:6
+msgid ""
+"2. Add a new entry under the `po_slave_languages` option for the new "
+"language, following the format of the other entries."
+msgstr ""
+"2. Añade una nueva entrada bajo la opción `po_slave_languages` con el "
+"nuevo idioma, siguiendo el formato de las otras entradas."
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:7
+msgid "3. Save, commit and push."
+msgstr "3. Guarda, haz commit y luego push."
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:8
+msgid "4. Log into `exbi` and su to `nvdal10n`."
+msgstr ""
+"4. Inicia sesión en `exbi` y cambia a la cuenta de usuario `nvdal10n`."
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:9
+msgid "5. `cd ~/ikiwiki/ctl`"
+msgstr "5. `cd ~/ikiwiki/ctl`"
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:10
+msgid "6. `git pull`"
+msgstr "6. `git pull`"
+
+#: ..\python_docs\Adding-a-New-Language-to-Ikiwiki.py:11
+msgid "7. `ikiwiki --setup ikiwiki.setup --verbose`"
+msgstr "7. `ikiwiki --setup ikiwiki.setup --verbose`"

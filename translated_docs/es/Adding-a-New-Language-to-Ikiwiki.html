@@ -1,0 +1,21 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Cómo añadir un nuevo idioma a Ikiwiki</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Cómo añadir un nuevo idioma a Ikiwiki</h1></header>
+  <h1 id="como-anadir-un-nuevo-idioma-a-ikiwiki">Cómo añadir un nuevo idioma a Ikiwiki</h1>
+<p>A continuación se muestran instrucciones para añadir un nuevo idioma al sitio web addons.nvda-project.org, que usa Ikiwiki.</p>
+<ol>
+<li>Edita el archivo <code>ikiwiki.setup</code> en el repositorio <code>ikiwiki-ctl</code>. La URL del repositorio Git es: git@bitbucket.org:nvdaaddonteam/ikiwiki-ctl</li>
+<li>Añade una nueva entrada bajo la opción <code>po_slave_languages</code> con el nuevo idioma, siguiendo el formato de las otras entradas.</li>
+<li>Guarda, haz commit y luego push.</li>
+<li>Inicia sesión en <code>exbi</code> y cambia a la cuenta de usuario <code>nvdal10n</code>.</li>
+<li><code>cd ~/ikiwiki/ctl</code></li>
+<li><code>git pull</code></li>
+<li><code>ikiwiki --setup ikiwiki.setup --verbose</code></li>
+</ol>
+</body>
+</html>
