@@ -28,7 +28,7 @@
 <h2 id="para-comenzar">Para comenzar</h2>
 <p>Primero, aprende más sobre las diferencias entre Python 2 y 3 leyendo la siguiente página: https://wiki.python.org/moin/Python2orPython3.</p>
 <p>Después, instala Python 3.7 y familiarízate con el intérprete o escribiendo scripts externos. Así sabrás qué hacer cuando empiece la transición y cómo adaptar tu código (solicitudes de cambio, complementos, etc.) a Python 3.</p>
-<p>Ten en cuenta que debido a problemas con Espeak, el flujo de trabajo de la transición debe hacerse desde Windows 10. Una vez Espeak esté listo, este requisito se relajará. Además, a fecha de septiembre de 2018, los complementos no funcionan, así que no instales ninguno de ellos en la copia de código fuente de NVDA.</p>
+<p>Ten en cuenta que debido a problemas con Espeak, el flujo de trabajo de la transición debe hacerse desde Windows 10. Una vez Espeak esté listo, este requisito se relajará. Además, a fecha de diciembre de 2018, la mayoría de complementos no funcionan, así que se recomienda no instalar ninguno de ellos en la copia de código fuente de NVDA a menos que quieras probar tus complementos y conozcas los riesgos que implica.</p>
 <h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
 <p>La mayoría de dependencias Python se pueden instalar mediante pip mientras se ejecuta como un módulo en Python 3 de la siguiente manera:</p>
 <p>py -3 -m pip install nombreDeDependencia</p>
@@ -37,7 +37,7 @@
 <ul>
 <li>Python 3.7.x de 32 bits (obligatoria)</li>
 <li>Visual Studio 2017 (Community, Professional, Enterprise) (obligatoria)</li>
-<li>Windows 10 SDK (compilación 17134) (obligatoria)</li>
+<li>Windows 10 SDK (compilación 17763) (obligatoria)</li>
 <li>wxPython 4.0.3 para Python 3.7 (obligatoria para la interfaz gráfica y otros subsistemas cruciales)</li>
 <li>Six 1.11.0 (obligatoria)</li>
 <li>SCons 3.0.1 (obligatoria)</li>
@@ -64,7 +64,7 @@
 <p>Hay dos formas de depurar el flujo de trabajo de transición a Python 3:</p>
 <ol>
 <li>Post-mortem (NVDA falla al iniciarse o deseas ver la información de depuración a voluntad): lee el archivo nvda.log que se encuentra en el directorio "source".</li>
-<li>Consola (para probar una idea o descubrir cómo funcionan los módulos de Python 3): se puede usar la consola Python.</li>
+<li>Consola (para probar una idea o descubrir cómo funcionan los módulos de Python 3): se puede usar la consola Python. Ten en cuenta que no todos los mensajes de error se imprimirán en la consola, pero se pueden encontrar en el registro.</li>
 </ol>
 <h2 id="flujo-de-trabajo-para-la-transicion">Flujo de trabajo para la transición</h2>
 <p>La siguiente es una descripción general de la transición del lector de pantalla NVDA desde Python 2 a Python 3. Ten en cuenta que la información que hay a continuación puede cambiar sin aviso previo.</p>
@@ -118,11 +118,13 @@
 <li>Los métodos de objeto de la forma _get_property no funcionan, observable al intentar establecer el sintetizador inicial, la pantalla braille, el objeto con el foco y demás.<ul>
 <li>Causado por las diferencias de sintaxis de metaclase entre Python 2 y 3.</li>
 <li>Usar el especificador de metaclase de la forma "metaclase=algunaclase".</li>
+<li>Resuelto en diciembre de 2018 (mira debajo).</li>
 </ul>
 </li>
 <li>Métodos de diccionario incompatibles.<ul>
 <li>dict.has_key(clave): usar "clave en dict".</li>
 <li>dict.iter*: usar atributos directamente (por ejemplo, usar "dict.items()" en vez de "dict.iteritems()").</li>
+<li>Ciertos fragmentos de código esperan una lista, por lo que se envuelve la llamada al iterador dentro de un constructor de lista.</li>
 </ul>
 </li>
 <li>Ya no existe unichr.<ul>
@@ -131,7 +133,7 @@
 </li>
 </ul>
 <h3 id="antes-de-la-transicion">Antes de la transición:</h3>
-<p>Fecha de inicio: 17 de septiembre de 2018 (designación provisional)</p>
+<p>Fecha de inicio: 17 de septiembre de 2018</p>
 <ol>
 <li>Se debe liberar una versión de NVDA que funcione con WXPython 4. Esto es obligatorio, ya que WXPython 4 soporta Python 3, lo que supone un paso en la transición.<ul>
 <li>Requisito satisfecho el 17 de septiembre de 2018 con la liberación de NVDA 2018.3.</li>
@@ -142,11 +144,11 @@
 </ul>
 </li>
 <li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas). Usa la etiqueta "python 3".<ul>
-<li>A fecha de 20 de septiembre de 2018, se han identificado 15 problemas, que llevan asociadas sus respectivas solicitudes de cambio.</li>
+<li>A fecha de 14 de diciembre de 2018, se han identificado al menos 20 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
 </ul>
 </li>
 <li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).<ul>
-<li>Con fecha 20 de septiembre de 2018, se ha enviado e integrado al menos una solicitud de cambio relacionada con la transición en la rama master.</li>
+<li>Con fecha 14 de diciembre de 2018, se han enviado e integrado al menos dos solicitudes de cambio relacionada con la transición en la rama master.</li>
 </ul>
 </li>
 </ol>
@@ -195,6 +197,7 @@
 <li>17 de agosto de 2018: se liberó NVDA 2018.3 beta 3, la primera versión beta que funciona con WXPython 4.0.3.</li>
 <li>21 de agosto de 2018: las versiones de desarrollo alpha incluyen importaciones editadas para Python 3. El código fuente cambia para utilizar nombres de módulos de Python 3 en la mayor parte de los casos.</li>
 <li>17 de septiembre de 2018: se libera NVDA 2018.3 con WXPython 4.0.3, con una versión que le sigue (2018.3.1) 48 horas después.</li>
+<li>13 de diciembre de 2018: se mezcla en la rama master una solicitud importante de cambios que introduce clases base abstractas. Esta solicitud de cambio también resuelve el problema de sintaxis de metaclase mediante el uso del módulo six.</li>
 </ol>
 </li>
 <li>Transición: todavía no ha empezado.</li>
