@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# NVDA 2018.3.1 Developer Guide"""),
+_(u"""# NVDA 2018.4 Developer Guide"""),
 "",_(u"""## Table of Contents"""),
 "",_(u"""  * 1\\. Introduction"""),
 _(u"""    * 1.1. A Note About Python"""),
