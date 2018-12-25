@@ -27,8 +27,8 @@
 </ul>
 <h2 id="para-comenzar">Para comenzar</h2>
 <p>Primero, aprende más sobre las diferencias entre Python 2 y 3 leyendo la siguiente página: https://wiki.python.org/moin/Python2orPython3.</p>
-<p>Después, instala Python 3.7 y familiarízate con el intérprete o escribiendo scripts externos. Así sabrás qué hacer cuando empiece la transición y cómo adaptar tu código (solicitudes de cambio, complementos, etc.) a Python 3.</p>
-<p>Ten en cuenta que debido a problemas con Espeak, el flujo de trabajo de la transición debe hacerse desde Windows 10. Una vez Espeak esté listo, este requisito se relajará. Además, a fecha de diciembre de 2018, la mayoría de complementos no funcionan, así que se recomienda no instalar ninguno de ellos en la copia de código fuente de NVDA a menos que quieras probar tus complementos y conozcas los riesgos que implica.</p>
+<p>Después, instala Python 3.7 y familiarízate con el intérprete o escribiendo scripts externos. Así sabrás qué hacer cuando empiece la transición y cómo adaptar tu código (solicitudes de cambio, complementos, etc.) a Python 3. Aunque se pueden usar las versiones de 32 y 64 bits de Python 3.7 con propósitos de prueba, la transición debe hacerse mediante Python de 32 bits.</p>
+<p>A fecha de diciembre de 2018, la mayoría de complementos no funcionan, así que se recomienda no instalar ninguno de ellos en la copia de código fuente de NVDA a menos que quieras probar tus complementos y conozcas los riesgos que implica. Como Espeak NG ya se ha llevado a Python 3, el requisito de usar Windows 10 se relaja.</p>
 <h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
 <p>La mayoría de dependencias Python se pueden instalar mediante pip mientras se ejecuta como un módulo en Python 3 de la siguiente manera:</p>
 <p>py -3 -m pip install nombreDeDependencia</p>
@@ -100,7 +100,7 @@
 <li>Estandarizar la división redondeando a la baja (//) para enteros, división regular (/) para números reales.</li>
 </ul>
 </li>
-<li>Bytes contra cadenas, causado por Unicode.<ul>
+<li>Bytes contra cadenas causado por la codificación, o en algunos casos, obligatorio para las dlls que esperan caracteres ANSI.<ul>
 <li>Intentar unificar bajo Unicode tanto como sea posible.</li>
 <li>Esto se complica al trabajar con funciones en C (la dll de Espeak, por ejemplo), donde esperan cadenas ANSI pero Python las envía como Unicode.</li>
 </ul>
@@ -144,11 +144,11 @@
 </ul>
 </li>
 <li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas). Usa la etiqueta "python 3".<ul>
-<li>A fecha de 14 de diciembre de 2018, se han identificado al menos 20 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
+<li>A fecha de 18 de diciembre de 2018, se han identificado al menos 20 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
 </ul>
 </li>
 <li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).<ul>
-<li>Con fecha 14 de diciembre de 2018, se han enviado e integrado al menos dos solicitudes de cambio relacionada con la transición en la rama master.</li>
+<li>Con fecha 18 de diciembre de 2018, se han enviado e integrado al menos dos solicitudes de cambio relacionadas con la transición en la rama master.</li>
 </ul>
 </li>
 </ol>
@@ -188,6 +188,7 @@
 <li>Se solicita a los desarrolladores de complementos que migren su código a Python 3.</li>
 <li>Se libera una versión estable de NVDA que funcione con Python 3.</li>
 <li>Debería tener lugar una evaluación tras la transición, que incluya problemas documentados durante las pruebas de campo, más extensión a la comunidad y otras actividades.</li>
+<li>Si es necesario, se deberían hacer intentos para utilizar las características nativas de Python 3.</li>
 </ol>
 <p>Fecha estimada de finalización: no más tarde de doce a quince meses después de que se completen las actividades previas a la transición.</p>
 <h2 id="progreso-de-la-transicion">Progreso de la transición</h2>
@@ -198,6 +199,7 @@
 <li>21 de agosto de 2018: las versiones de desarrollo alpha incluyen importaciones editadas para Python 3. El código fuente cambia para utilizar nombres de módulos de Python 3 en la mayor parte de los casos.</li>
 <li>17 de septiembre de 2018: se libera NVDA 2018.3 con WXPython 4.0.3, con una versión que le sigue (2018.3.1) 48 horas después.</li>
 <li>13 de diciembre de 2018: se mezcla en la rama master una solicitud importante de cambios que introduce clases base abstractas. Esta solicitud de cambio también resuelve el problema de sintaxis de metaclase mediante el uso del módulo six.</li>
+<li>17 de diciembre de 2018: liberada la versión estable de NVDA 2018.4.</li>
 </ol>
 </li>
 <li>Transición: todavía no ha empezado.</li>

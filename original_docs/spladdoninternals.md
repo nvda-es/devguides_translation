@@ -2,13 +2,15 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Studio Add-on for NvDA 18.09
+Based on StationPlaylist Studio Add-on for NvDA 19.01
 
 ## 2018 Preface and notes
 
 This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2018, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2018.
 
 Also in 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps.
+
+Lastly, at the end of 2018, add-on update feature was removed in favor of Add-on Updater add-on. Although the source code for this feature is gone, information pertaining to it will be documented here for sake of completeness (after all, Add-on Updater's update checking mechanism can trace its roots to Studio add-on).
 
 ## Introduction
 
@@ -51,6 +53,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 17.12: end of support for old Windows releases, add-on settings reorganization, extension points.
 * 18.06: responding to recent NVDA features, playlist transcripts, wxPython 4 support, partial playlist snapshots, expanding the scope of the add-on.
 * 18.09: third LTS release, add-on settings panels, checkable list, wxPython 4.
+* 19.01: add-on update feature removed, compatibility flags with future NVDA releases.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -158,7 +161,9 @@ As noted previously, the SPL Studio app module (splstudio/__init__.py) and frien
 
 For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified.
 
-Let's now tour the lifecycle of the app module object in question: before and during app module initialization, activities performed while the app module is active, death and add-on updates.
+Let's now tour the lifecycle of the app module object in question: before and during app module initialization, activities performed while the app module is active, death and (until 2018) add-on updates.
+
+Note: although standalone add-on update feature is gone, the mechanism behind add-on update feature will be documented for sake of completeness.
 
 ### Before birth: NVDA's app module import routines
 
@@ -194,7 +199,7 @@ Certain app module add-ons shipts with an app module with a constructor define, 
 	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NvDA+C) is invoked.
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
-	8. In add-on 7.0, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, update initialization is done as part of app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
+	8. Between add-on 7.0 and 18.12, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, prior to being removed, update initialization was moved to app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
 	9. Prepares routines used by time-based profile switching facility by loading triggers map and checking if NVDA should switch to the next profile (this is done if the show associated with the given profile hasn't ended yet). See time-based profile section for details.
 	10. Encoder settings file is loaded, and if ConfigObj throws errors, encoder settings will be reset to defaults.
 	11. In add-on 8.0, track comments are loaded (if any). See track items section for details.
@@ -205,7 +210,7 @@ Certain app module add-ons shipts with an app module with a constructor define, 
 	1. Studio window handle is searched via a loop. If Studio exits for whatever reason, an event flag is raised by the app module, causing this thread to exit.
 	2. If the handle is found, its value is recorded in a flag found in base services module (splbase).
 	3. If the app module is told to announce status of metadata streaming and connect to predefined URL's, NVDA will do it at this point provided that Studio's playlist viewer (discussed later) is loaded. In order to announce status messages as the last announcement after connecting to metadata servers, Studio app module places ui.message in the event queue to be handled by NVDA (queueHandler.queueFunction). More on internals of metadata announcement and related components in the SPL Assistant chapter.
-7. In add-on 7.0, if automatic update check is enabled, update check timer is started.
+7. Between add-on 7.0 and 18.12, if automatic update check is enabled, update check timer is started.
 
 #### Changes introduced in 17.10 due to volatile configuration flags
 
@@ -262,8 +267,8 @@ While using Studio add-on, you can stop using the add-on in various ways, includ
 Here is a list of steps Studio app module performs when it is about to leave this world:
 
 1. The "terminate" method is called. Just like the startup (constructor) routine, this method first calls the terminate method defined in the default app module, which closes handles and performs other closing routines.
-2. Calls splconfig.terminate() function to save add-on settings and perform shutdown routines for some features. This function goes through following steps in add-on 7.0:
-	1. In add-on 7.0, if update check timer is running, the timer is told to stop, and update metadata is copied back to normal profile.
+2. Calls splconfig.terminate() function to save add-on settings and perform shutdown routines for some features. This function goes through following steps in add-on 19.01:
+	1. In add-on 7.0, if update check timer is running, the timer is told to stop, and update metadata is copied back to normal profile. This step is gone in 19.01.
 	2. Starting with add-on 18.07, active SPL component is unregistered via splconfig.closeConfig function. If there are other components running, the below steps will not occur, otherwise add-on settings will be closed.
 	3. Unless disabled through flags in 17.10, profiles are saved (beginning with normal profile) to disk if and only if profile-specific settings were changed (an online cache used for storing profile settings when they are loaded is kept for this purpose). This step will not occur if an in-memory version of normal profile is in use or other SPL components are active.
 	4. If there is an instant switch profile defined, this is recorded in the normal profile, otherwise it is removed from the profile database.
@@ -276,7 +281,7 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 
 ### Add-on updates: updating to latest and greatest version
 
-Note: this feature is being transfered from Studio add-on to other modules. This section will discuss standalone update method (checking for Studio add-on update from Studio window).
+Note: this feature, recently dubbed "standalone add-on update", is gone in 19.01, although the mechanism behind it is documented here for sake of completeness. Standalone add-on update refers to using SPL Assistant to check for updates from Studio.
 
 In add-on 7.0 and later, it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
 
@@ -837,7 +842,7 @@ Once you invoke SPL Assistant layer (a beep will be heard), you can perform one 
 * Tools (library scan, track time analysis, obtaining playlist snapshots and transcripts, columns explorer and so on).
 * Configuration (switching broadcast profiles).
 * Ask for help (opening SPL Assistant help dialog or the online user guide).
-* Checking for add-on updates (manually).
+* Until 18.12, checking for add-on updates (manually).
 
 For the first two categories, they can be divided further into commands which uses studio API (via statusAPI function discussed in a previous article), ones using Windows API (Columns explorer) and those relying on object navigation (multiple components are involved and is sensitive to user interface changes). We'll go through each of these categories in turn.
 
@@ -972,7 +977,7 @@ I believe that a product isn't complete without a good quality documentation. Fo
 
 #### SPL Assistant 5: Checking for add-on updates
 
-Pressing Control+Shift+U after entering SPL Assistant layer will cause the add-on to check for add-on updates. Unlike the automatic update check process described earlier, this one is a manual check, thus it'll perform additional actions such as stopping the automatic update check timer before actually checking for updates. Another difference is that this command will display a results dialog if there are no updates or other errors are encountered, whereas in automatic check mode, they are not shown.
+If using add-on 18.12 and earlier, pressing Control+Shift+U after entering SPL Assistant layer will cause the add-on to check for add-on updates. Unlike the automatic update check process described earlier, this one is a manual check, thus it'll perform additional actions such as stopping the automatic update check timer before actually checking for updates. Another difference is that this command will display a results dialog if there are no updates or other errors are encountered, whereas in automatic check mode, they are not shown.
 
 ### A surprise: some Assistant layer commands can be invoked without entering the layer first
 
@@ -1340,7 +1345,7 @@ Given that my long-term goal is to let NVDA itself check for SPL add-on updates,
 * Test Drive Fast and Slow rings were combined into a single "development" channel. Consequently, there is no more update channel selection capability, with users encouraged to obtain the right releases from add-ons website. This was extended in September 2018 to cover long-term support releases.
 * A new concept of "pilot features" replaced Test Drive Fast, configurable via a checkbox and internal flags.
 * New features under development will be enabled if pilot features facility is turned on, otherwise content is identical to regular development build.
-* Add-on update checking facility is now taken care of by Add-on Updater, and in the future, to be done by NVDA itself.
+* Add-on update checking facility is now taken care of by Add-on Updater, and in the future, to be done by NVDA itself. Consequently, add-on update feature and the source code that controlled it has been removed in December 2018.
 
 #### Long-term support release
 
@@ -1353,7 +1358,7 @@ A LTS version is a major version or a major periodic release of the SPL add-on w
 * Studio version supported: A LTS version is the last version to support the oldest supported Studio version. This is designed to give people plenty of time to upgrade to newer Studio releases.
 * Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria will first be applied to an LTS release scheduled for 2018 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1, as well as planned transition to Python 3.
 
-As of September 2018, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019 at the earliest). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
+As of December 2018, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019 at the earliest). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
 
 1. Add-on 3.0 was released in September 2014.
 2. Add-on 3.5 (December 2014) could have been the last maintenance version for add-on 3.x if it was not a LTS version.

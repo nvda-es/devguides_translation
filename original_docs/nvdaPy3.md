@@ -28,9 +28,9 @@ When NVDA began in 2006, it used python 2.4. Over the years, NvDA and its add-on
 
 First, learn more about differences between Python 2 and 3 by reading the following page: https://wiki.python.org/moin/Python2orPython3.
 
-Next, install and become familiar with Python 3.7 through the interpreter or writing external scripts. This is so that you will know what to do when transition starts and port your code (pull requests, add-ons, etc.) to Python 3.
+Next, install and become familiar with Python 3.7 through the interpreter or writing external scripts. This is so that you will know what to do when transition starts and port your code (pull requests, add-ons, etc.) to Python 3. Although both 32-bit and 64-bit Python 3.7 can be used for testing purposes, porting must be done against 32-bit Python.
 
-Note that due to Espeak issues, transition workflow must be done from Windows 10. Once Espeak is ready, this requirement will be relaxed. Also, as of December 2018, most add-ons won't work, so it is advised not to install any of them into the source code copy of NVDA unless you need to test your add-ons know the risks involved.
+Note: as of December 2018, most add-ons won't work, so it is advised not to install any of them into the source code copy of NVDA unless you need to test your add-ons know the risks involved. The requirement to use Windows 10 has been lifted as eSpeak NG has been ported.
 
 ### Needed dependencies:
 
@@ -71,7 +71,7 @@ Once Python 3.7 and dependencies are installed, provided that DLL's are compiled
 There are two ways of debugging Python 3 transition workflow:
 
 1. Post-mortem (NVDA crashes at startup or wish to view debug information at your leisure): read nvda.log located at "source" directory.
-2. Console (testing an idea or find out how Python 3 modules work): Python Console can be used. Note that not all error messages will be printed to the console but can be found in the log.
+2. Interactive (testing an idea or find out how Python 3 modules work): Python Console can be used. Note that not all error messages will be printed to the console but can be found in the log.
 
 ## Transition workflow
 
@@ -95,7 +95,7 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 	* Rename the keyword to "asynchronous".
 * Division differences (/ versus //), most notably in nvwave.WavePlayer and manipulating mouse cursor.
 	* Standardize around floor division (//) for integer values, regular division (/) for floats.
-* Bytes versus strings caused by encoding.
+* Bytes versus strings caused by encoding, or in some cases, mandated by DLL's where ANSI characters are expected.
 	* Try unifying under Unicode as much as possible.
 	* This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
 * Removed and incompatible modules, including new.instancemethod.
@@ -111,7 +111,7 @@ The following is a roughh overview of Python 2 to 3 transition for NVDA screen r
 * Incompatible dictionary methods.
 	* dict.has_key(key): use "key in dict".
 	* dict.iter*: use attributes directly (e.g. "dict.items()" instead of "dict.iteritems()").
-	* Certain code fragments expect a list, so wrap the iterator clal inside a list constructor.
+	* Certain code fragments expect a list, so wrap the iterator call inside a list constructor.
 * No more unichr.
 	* Standardize around "chr".
 
@@ -124,9 +124,9 @@ Start date: September 17, 2018
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
 	* Requires editing Git submodule config.
 3. Transition issues must be researched and documented (see above for known issues and proposed workarounds). Use "python 3" label.
-	* As of December 14, 2018, at least 20 issues were identified, along with several pull requests, some of which are resolved.
+	* As of December 18, 2018, at least 20 issues were identified, along with several pull requests, some of which are resolved.
 4. If needed, create pull requests dealing with pre-transition workflow such as making NVDA source code Python 2 and 3 aware (imports, for instance).
-	* As of December 14, 2018, at least two transition related pull request was submitted and merged into master branch.
+	* As of December 18, 2018, at least two transition related pull request were submitted and merged into master branch.
 
 Ideal completion: between NVDA 2018.4 and 2019.1 releases (tentatively by March 31, 2019)
 
@@ -160,6 +160,7 @@ Start date: TBD
 3. Add-on developers are asked to start porting their add-ons to Python 3.
 4. A stable version of NVDA powered by Python 3 is released.
 5. Post-transition evaluation should take place, including documenting issues found during field testing, more community outreach and other activities.
+6. If needed, attempts to use Python 3 native features should be attempted.
 
 Estimated completion date: no later than twelve to fifteen months after pre-transition activities are completed.
 
@@ -171,6 +172,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	3. August 21, 2018: alpha snapshots include Python 3 import edits. Source code changed to use Python 3 module names in most cases.
 	4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later.
 	5. December 13, 2018: a major pull request that introduces abstract base classes is merged into master branch. This pull request also resolves metaclass syntax problem through use of six module.
+	6. December 17, 2018: NVDA 2018.4 stable version released.
 2. Transition: Not yet begun.
 3. After transition: not yet begun.
 

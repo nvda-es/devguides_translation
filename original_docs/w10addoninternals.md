@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: October 2018
+Revision: December 2018
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of October 2018 revision, one or two features from NVDA 2018.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of December 2018 revision, one or two features from NVDA 2018.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2018 Joseph Lee and others, released under GPL 2.
 
@@ -39,7 +39,7 @@ Windows 10 App Essentials add-on is built on top of four pillars:
 
 ## Add-on contents
 
-The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps that comes with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, UIA event tracking and logger, as well as the add-on update facility. Details of how the add-on updater works is covered in the article on StationPlaylist Studio add-on, as both add-ons use the same update facility.
+The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps that comes with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, along with UIA event tracking and logger facility. Until 2018, the global plugin was also responsible for add-on update feature, documented here for sake of completeness.
 
 In regards to app modules, these were included to either provide workarounds or enhance the user experience. For example, the app module for Settings app (systemsettings) allows NVDA to announce Windows Update download and installation progress, and app module for UWP frame host (shellexperiencehost) includes a workaround for menu expanded status problem in Start menu. We'll meet some of these app modules in subsequent sections.
 
@@ -47,9 +47,13 @@ In regards to app modules, these were included to either provide workarounds or 
 
 Some features discussed in this article (such as suggestion sound playback and UIA notification event handler) were integrated into recent NVDA releases. I will point out some of these, as well as provide how these were integrated, including planning involved and some tips on modifying add-on features to fit into NVDA's code base.
 
+### Information on add-on update feature
+
+This article will sometimes reference add-on update feature, which is gone in 2019. The information about it is kept here for reference purposes. An add-on appropriately named "Add-on Updater" is used to update windows 10 App Essentials and other add-ons.
+
 ## Fun with UI Automation
 
-Before we dive into how the add-on works, it is helpful to understand what UIA is and wy it is important. Only then the rest of the article makes sense, as Windows 10 and universal apps are UIA universes.
+Before we dive into how the add-on works, it is helpful to understand what UIA is and wy it is important. Only then the rest of the article makes sense, as Windows 10 and universal apps are UIA universes (exceptions exist, including desktop apps converted for distribution in Microsoft Store).
 
 UI Automation (UIA), released in 2007, is an accessibility API based on Component Object Model (COM) that allows assistive technologies and other programs to communicate with each other regarding accessibility information about a control. In some respects, this API is a replacement for Microsoft Active Accessibility (MSAA), sometimes called IAccessible that was released in the 1990's. Being a COM-based API set, it allows programs and objects to expose essential information regardless of programming language in use as long as an object exposes documented routines that other programs can use.
 
@@ -79,26 +83,26 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 
 * Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
-* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into NVDA 2018.3 release.
+* Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into NVDA 2018.3 release, but more recent changes do require support from this add-on.
 * Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 * Announcing tooltips from universal apps.
-* Handling tab switches in Sets in Redstone 5 (builds 17627 through 17692)
-* Recognizing dialogs powered by XAML and various frameworks. In NVDA 2018.3, NVDA itself will take care of this.
+* Handling tab switches in Sets in Redstone 5 (builds 17627 through 17692).
+* Recognizing dialogs powered by XAML and various frameworks. In NVDA 2018.3, NVDA itself will take care of this in most situations.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
 ## Windows 10 Objects
 
-Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, looping selectors for time pickers and so on. It also includes additional UIA handling routines and configuration and update facility for the add-on.
+Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, looping selectors for time pickers and so on. It also includes additional UIA handling routines and configuration and update facility for the add-on (the latter was removed in 2019).
 
 ### Source code layout
 
 The global plugin consists of the following:
 
 * winTenObjs/__init__.py: the base global plugin.
-* winTenObjs/_UIAHandlerEx.py: additional UIA routines for ones NVDA does not support natively (mostly for old NVDA releases).
-* winTenObjs/w10config.py: configuration and updates. As of June 2017, the only thing configurable from Windows 10 App Essentials settings dialog is update facility, which includes whether update check should be performed automatically, update check interval and channel.
+* winTenObjs/_UIAHandlerEx.py: additional UIA routines for ones NVDA does not support natively (mostly for old NVDA releases). This module can come and go without notice.
+* winTenObjs/w10config.py: configuration and updates. As of June 2017, the only thing configurable from Windows 10 App Essentials settings dialog is update facility, which includes whether update check should be performed automatically, update check interval and channel. This module is gone in 2019.
 
 The main global plugin file is laid out thus:
 
@@ -109,14 +113,14 @@ The main global plugin file is laid out thus:
 
 ### Startup and shutdown
 
-When the add-on loads, it performs four things:
+When the add-on loads, it performs up to four tasks:
 
 1. Enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
 2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support prior to 2018.2.
 3. Adds user interface elements for this add-on, specifically add-on settings.
 4. Checks for add-on updates if told to do so.
 
-The only thing done at shutdown is terminating the update check facility and removing user interface elements.
+The only thing done at shutdown is terminating the update check facility and removing user interface elements. This method, along with last two steps from the list above, no longer exists as of 2019.
 
 ### Notable Windows 10 objects and features
 
@@ -190,7 +194,7 @@ The Windows 10 Objects goes one step further by recording instances of this even
 
 Some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
 
-In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Version 1809, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Version 1809.
+In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Version 1809 and later, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Version 1809.
 
 ## App modules for universal apps
 
@@ -215,7 +219,7 @@ The modules and enhancers/fixers applied are:
 * People: announcing first suggestion when looking for a contact.
 * Sets: announcing currently active tab and its position when switching between app tabs.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
-* Shell Experience Host: work around some UIA state information mismatch.
+* Shell Experience Host: work around some UIA state information mismatch and announce item status in Action Center.
 * Skype (modern): commands to move to various Skype controls, commands to read recent messages, suppress extraneous text from new messages.
 * Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more).
 
@@ -236,13 +240,15 @@ In Windows 10 Insider Preview build 16215 and later, it is possible for users to
 
 In build 17666 and later, this panel has been redesigned. Instead of using Tab key to move between categories, one would press Tab to move between emoji grid and categories. In case of People category, pressing Tab will let you move to skin tones list where you can use arrow keys to select a skin tone, then press Tab to move to emoji grid.
 
-When this panel opens, a menu open event is fired by the emoji panel, an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters.
+Build 18305 and later brought another design change to this panel. In addition to selecting emojis, it also hosts two new grand categories named kaomoji ("face characters" in Japanese) and symbols. When one presses Tab, one will eventually reach category list with three items: emoji, kaomoji, and symbols. Just like selecting emoji categories, pressing Enter will switch the panel among these modes.
 
-Similar to emoji panel, in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item.
+When this panel opens, a menu open event is fired by the emoji panel (File Explorer in build 18305 and later), an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters, expanded to cover other synthesizers in NVDA 2018.4
+
+Similar to emoji panel (or expanded input panel in build 18305 and later), in build 17025 and later, modern keyboard can also provide input suggestions. This is done by checking a new option in Settings/Devices/Typing, and activated when one presses up arrow while typing (only United States English keyboard layout is supported). Just like emoji panel, a floating window appears, and in this case, one can press left or right arrow to navigate between suggestions and press Enter to accept the offered item.
 
 The above mechanism for selecting input suggestions is also employed when pasting items from cloud clipboard. In build 17666 and later, one can copy text and small images to the clipboard to be pasted later, and Windows will keep a history of items copied to the clipboard. When Windows+V is pressed, a list of clipboard items will be displayed, and one can use left or right arrows to select the desired item.
 
-In NVDA 2018.3, support for all of these (modern keyboard features) have become part of NVDA.
+In NVDA 2018.3, support for all of these (modern keyboard features) plus dictation window (also part of modern keyboard) have become part of NVDA. The add-on is still required in order to support more recent panel redesigns (see above).
 
 ### What to announce, what not to announce
 
@@ -254,7 +260,8 @@ The app modules (and for one in particular, more than an app module) in question
 * People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event.
 * Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
-* Sets interface (tabexperiencehost.py) on Redstone 5: when switching between app tabs, NVDA will announce name and position of the new tab.
+* Sets interface (tabexperiencehost.py) on select Redstone 5 preview builds: when switching between app tabs, NVDA will announce name and position of the new tab.
+* Shell Experience Host (shellexperiencehost.py): in Action Center, toggling some quick actions causes item status change event to be logged. NVDA will announce the new status if appropriate.
 * Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
 
 #### Sets
@@ -277,7 +284,7 @@ As noted above, some controls ship with odd or bad UIA implementations, and univ
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
 * Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects.
-* Shell Experience Host (shellexperiencehost.py): for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018.
+* Shell Experience Host: for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018.
 * Skype: a typical Skype message includes author name, message channel, the message content, sent date and so on. This is due to list view item implementations where it gathers names of children. Unfortunately, the reverse isn't true: although some items do expose the needed message author and content, some only exposes content when looking at child objects. Thus a regular expression is provided to remove extraneous information until a suitable workaround is found.
 
 ### A tale on app module and executable names
@@ -286,14 +293,14 @@ One of the side-effects of continuous delivery is appearance of unanticipated ch
 
 The specific issues encountered were:
 
-* Mail, Maps and Store: executable names have changed in recent months. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common.
+* Mail, Maps and Store: executable names have changed throughout Windows 10 development. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common.
 * MSN Weather, Store, modern keyboard and others: some executable names have a dot (.) in the middle, which breaks app module import routines. This is countered by replacing dots with underscores (_). For example, for Skype, the actual executable name is skype.app.exe, while the app module for this app is named skype_app.py. This fix is now part of recent NVDA releases.
 
 ## Few remarks
 
 ### UIA performance
 
-Numerous issues were filed on NVDA's GitHub page regarding UIA performnace issues. These include issues in early days of Edge support where navigating the document was slow (resolved in NVDA 2017.2), list view issues in File Explorer while using a program with high CPU usage (GoldWave, for example) and so on. While some are specific to NVDA, others are reproducible while using Narrator, hence NV Access and Microsoft are actively collaborating on identifying and writing fixes for performance and control implementation problems (such as some of the ones listed above).
+Numerous issues were filed on NVDA's GitHub page regarding UIA performnace issues. These include issues in early days of Edge support where navigating the document was slow (resolved in NVDA 2017.2), list view issues in File Explorer while using a program with high CPU usage (GoldWave, for example, resolved in NVDA 2018.4) and so on. While some are specific to NVDA, others are reproducible while using Narrator, hence NV Access and Microsoft are actively collaborating on identifying and writing fixes for performance and control implementation problems (such as some of the ones listed above).
 
 ### Narrator is the new reference in screen reading in Windows 10 and universal apps
 
