@@ -8,10 +8,11 @@
   <header><h1># Complementos de NVDA vistos por dentro: StationPlaylist Studio</h1></header>
   <h1 id="complementos-de-nvda-vistos-por-dentro-stationplaylist-studio">Complementos de NVDA vistos por dentro: StationPlaylist Studio</h1>
 <p>Autor: Joseph Lee</p>
-<p>Basado en el complemento StationPlaylist Studio 18.09 para NVDA</p>
+<p>Basado en el complemento StationPlaylist Studio 19.01 para NVDA</p>
 <h2 id="prologo-y-notas-de-2018">Prólogo y notas de 2018</h2>
 <p>Esta guía ha pasado por muchas revisiones, cambios de estilo, y se ha actualizado para incluir características de las últimas versiones del complemento. Cuando se publicó por primera vez en 2015, se elaboró como una serie de entradas de blog. Ahora en 2018, se está editando para eliminar las huellas del estilo anterior y actualizándose para reflejar las últimas características del 2018.</p>
 <p>En 2018 también se ha expandido el ámbito del complemento para cubrir StationPlaylist Creator y la herramienta de pista. En su mayor parte, esta guía todavía cubrirá StationPlaylist Studio únicamente, pero hay cambios importantes que se han hecho en las versiones más recientes que nos harán plantearnos añadir otros programas de la suite StationPlaylist. En particular, la jerarquía de herencia de la clase de elemento de pista ha cambiado, por lo que muchas órdenes de navegación por columnas están disponibles al tratar con pistas en las aplicaciones de SPL.</p>
+<p>Finalmente, a finales de 2018, la función de búsqueda de actualizaciones se ha eliminado en favor del complemento Add-on Updater. Aunque el código fuente de esta función ya se ha ido, la información relacionada con él permanecerá aquí con motivos de completitud (a fin de cuentas, el complemento Add-on Updater tiene sus raíces en el complemento de Studio).</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Si eres locutor de radio, podrías estar acostumbrado a las actividades involucradas al producir un programa. Aquí se pueden incluir la selección de la lista de reproducción, programación de notas de interrupción, respuesta a peticiones, monitorización del número de oyentes y estado de la codificación, entre otras. Para asistir a un locutor, se usa un programa de automatización de la emisión, y uno de los más populares se llama StationPlaylist Studio.</p>
 <p>En Complementos de NVDA vistos por dentro: StationPlaylist Studio, aprenderemos qué es Studio (y la suite de aplicaciones de SPL) y cómo funciona este complemento de NVDA. No tienes que instalar o utilizar este potente complemento para entender sus peculiaridades, (usar el complemento podría ayudarte a apreciar la importancia de este material; para una experiencia más completa, es útil que tengas el código fuente del complemento ante ti mientras navegas por este artículo). Ahora, empecemos aprendiendo más sobre SPL Studio.</p>
@@ -40,6 +41,7 @@
 <li>17.12: fin de soporte para versiones antiguas de Windows, reorganización de los ajustes del complemento, puntos de extensión.</li>
 <li>18.06: respuesta ante nuevas características de NVDA, transcripción de listas de reproducción, soporte para WXPython 4, instantáneas parciales de la lista de reproducción, expansión del ámbito del complemento.</li>
 <li>18.09: tercera versión LTS, paneles de configuración del complemento, lista con casillas de verificación, WXPython 4.</li>
+<li>19.01: función de actualización del complemento eliminada, indicadores de compatibilidad para versiones futuras de NVDA.</li>
 </ul>
 <p>A lo largo de este artículo, tendrás una oportunidad para ver cómo funciona el complemento, la filosofía de diseño y cómo se desarrolla el complemento, con vistas al pasado y al futuro. Espero que este artículo de complementos vistos por dentro sea una referencia valiosa para usuarios y desarrolladores - para los usuarios, que vean los trabajos internos de este complemento, y para los desarrolladores, que usen este complemento como un ejemplo a la hora de planear, implementar, probar, publicar y mantener un complemento.</p>
 <p>Para descargar el complemento, ve a la sección de complementos que se encuentra en nuestra web.</p>
@@ -127,7 +129,8 @@
 <li>Clase del módulo de aplicación: este es el núcleo no sólo del módulo de aplicación, sino del paquete del complemento entero. La clase del módulo de aplicación (appModules.splstudio.AppModule) está a su vez dividida en secciones como se describe en el capítulo de diseño del complemento.</li>
 </ul>
 <p>Los compañeros de Studio (Creator y herramienta de pista) se explican en las secciones listadas arriba excepto la capa de envoltura de órdenes, y se han simplificado las clases de elemento de pista.</p>
-<p>Recorramos ahora el ciclo de vida del objeto del módulo de aplicación en cuestión: antes y durante la inicialización del módulo de aplicación, actividades realizadas mientras el módulo de aplicación está activo, muerte y actualizaciones del complemento.</p>
+<p>Recorramos ahora el ciclo de vida del objeto del módulo de aplicación en cuestión: antes y durante la inicialización del módulo de aplicación, actividades realizadas mientras el módulo de aplicación está activo, muerte y (hasta 2018) actualizaciones del complemento.</p>
+<p>Nota: aunque la función independiente de búsqueda de actualizaciones se ha ido, el mecanismo detrás de la actualización de complementos se documentará para dar completitud.</p>
 <h3 id="antes-de-nacer-procedimientos-de-importacion-del-modulo-de-aplicacion-de-nvda">Antes de nacer: procedimientos de importación del módulo de aplicación de NVDA</h3>
 <p>Antes de que profundicemos más, es importante que entiendas cómo carga NVDA distintos módulos de aplicación. Este procedimiento, disponible en source/appModuleHandler.py (núcleo de NVDA) puede resumirse de la siguiente manera:</p>
 <ol>
@@ -159,7 +162,7 @@
 <li>Comenzando con el complemento 18.08, si NVDA lo soporta, SPLConfig escuchará la acción de guardar configuración para guardar los ajustes del complemento cuando se invoque la orden para guardar la configuración (control+NVDA+c).</li>
 <li>Si se define un perfil instantáneo (hay presente un nombre de perfil instantáneo en la caché) se establece de forma apropiada la variable de perfil instantáneo.</li>
 <li>Si se encuentran errores, NVDA muestra un diálogo de error (5.x y anteriores) o bien un diálogo de estado (6.0 y posteriores) detallando el error en cuestión y lo que ha hecho NVDA a los perfiles fallidos. Esto puede pasar por aplicar valores por defecto a algunos ajustes para restablecer los ajustes por defecto (lo último ocurrirá si el validador informa de que todos los ajustes en el perfil normal son inválidos o configObj lanzó errores de interpretación, vistos comúnmente cuando el contenido del archivo no tiene sentido).</li>
-<li>En el complemento 7.0, se inicializa la característica de actualizaciones (splupdate.initialize). Entre otras cosas, el procedimiento de inicialización carga los metadatos de búsqueda de actualizaciones. En 2018, la inicialización de las actualizaciones se hace como parte del constructor del módulo de aplicación. Encontraremos los procedimientos de actualización del complemento (alojados en splstudio/splupdate.py) más adelante en este artículo.</li>
+<li>Entre los complementos 7.0 y 18.12, se inicializa la característica de actualizaciones (splupdate.initialize). Entre otras cosas, el procedimiento de inicialización carga los metadatos de búsqueda de actualizaciones. En 2018, la inicialización de las actualizaciones se hace como parte del constructor del módulo de aplicación. Encontraremos los procedimientos de actualización del complemento (alojados en splstudio/splupdate.py) más adelante en este artículo.</li>
 <li>Se preparan los procedimientos usados por la característica de cambio de perfil basado en tiempo cargando un mapa de disparadores y comprobando si NVDA debería cambiar al siguiente perfil (esto se hace si el programa asociado con el perfil dado no ha terminado todavía). Mira la sección de perfiles basados en tiempo para más detalles.</li>
 <li>Se carga el archivo de ajustes del codificador, y si ConfigObj lanza errores, los ajustes del codificador se restablecen por defecto.</li>
 <li>En el complemento 8.0, se cargan los comentarios de pista (si los hay). Mira la sección de elementos de pista para más detalles.</li>
@@ -174,7 +177,7 @@
 <li>Si le decimos al módulo de aplicación que verbalice el estado del flujo de metadatos y conexión a URLs predefinidas, NVDA hará todo eso en este punto, asumiendo que el visor de listas de reproducción de Studio (explicado más tarde) está cargado. Para verbalizar mensajes de estado en último lugar después de conectar a los servidores de metadatos, el módulo de aplicación de Studio sitúa ui.message en la cola de eventos para que NVDA la procese (queueHandler.queueFunction). Hay más información sobre el interior del anuncio de metadatos y sus componentes relacionados en el capítulo sobre el asistente de SPL.</li>
 </ol>
 </li>
-<li>En el complemento 7.0, si está activada la búsqueda automática de actualizaciones, se inicia el temporizador asociado.</li>
+<li>Entre los complementos 7.0 y 18.12, si está activada la búsqueda automática de actualizaciones, se inicia el temporizador asociado.</li>
 </ol>
 <h4 id="cambios-introducidos-en-1710-debido-a-indicadores-de-configuracion-volatil">Cambios introducidos en 17.10 debido a indicadores de configuración volátil</h4>
 <p>En el complemento 17.10, se introducen varios indicadores internos y argumentos de línea de órdenes asociados para controlar cómo se cargan y se tratan los ajustes del complemento. La presencia de estos indicadores alterará significativamente la forma en que se cargan y guardan los ajustes. Estos indicadores deberían usarse cuando lo indique el desarrollador del complemento, ya que su propósito es experimentar o solucionar problemas.</p>
@@ -219,8 +222,8 @@
 <p>Aquí hay una lista de pasos que sigue el módulo de aplicación de Studio cuando está a punto de abandonar este mundo:</p>
 <ol>
 <li>Se llama al método "terminate". Al igual que el procedimiento de inicialización (constructor), este método primero llama al método terminate definido en el módulo de aplicación por defecto, que cierra manejadores y realiza otros procedimientos de cierre.</li>
-<li>Se llama a la función splconfig.terminate() para guardar los ajustes del complemento y realizar tareas de apagado de algunas características. Esta función sigue los siguientes pasos en el complemento 7.0:<ol>
-<li>En el complemento 7.0, si el temporizador de búsqueda de actualizaciones está funcionando, recibe la orden de detenerse, y se copian los metadatos de actualización de vuelta en el perfil normal.</li>
+<li>Se llama a la función splconfig.terminate() para guardar los ajustes del complemento y realizar tareas de apagado de algunas características. Esta función sigue los siguientes pasos en el complemento 19.01:<ol>
+<li>En el complemento 7.0, si el temporizador de búsqueda de actualizaciones está funcionando, recibe la orden de detenerse, y se copian los metadatos de actualización de vuelta en el perfil normal. Este paso se elimina en la versión 19.01.</li>
 <li>Empezando con el complemento 18.07, se elimina el componente activo del registro mediante la función splconfig.closeConfig. Si hay otros componentes en ejecución, los siguientes pasos no ocurrirán, y en cualquier otro caso las opciones del complemento se cerrarán.</li>
 <li>A menos que se desactive con indicadores en 17.10, se guardan los perfiles (empezando con el perfil normal) en disco si y sólo si se cambian ajustes específicos del perfil (con este propósito se conserva una caché en línea usada para almacenar ajustes de los perfiles cuando estos se cargan). Este paso no ocurrirá si está en uso una versión en memoria del perfil normal o hay otros componentes de SPL activos.</li>
 <li>Si hay un perfil de cambio instantáneo definido, este se registra en el perfil normal, de cualquier otro modo se elimina de la base de datos de perfiles.</li>
@@ -234,7 +237,7 @@
 <li>Como el módulo de aplicación se sienta a descansar, el valor del manejador de ventana para la ventana de Studio se limpia. Esto es obligatorio, ya que el manejador será diferente la próxima vez que se inicie Studio. En este punto, NVDA elimina splstudio (el móodulo de aplicación de Studio) de la lista de módulos de aplicación en uso.</li>
 </ol>
 <h3 id="actualizaciones-del-complemento-actualizar-a-la-ultima-y-mas-fantastica-version">Actualizaciones del complemento: actualizar a la última y más fantástica versión</h3>
-<p>Nota: esta función se está transfiriendo del complemento de Studio a otros módulos. Esta sección hablará sobre el método de actualización independiente (buscar actualizaciones del complemento de Studio desde la ventana de Studio).</p>
+<p>Nota: esta función, reciemtemente llamada "actualización independiente del complemento", se ha ido en la versión 19.01, aunque el mecanismo que hay tras ella se documenta aquí para dar completitud. La actualización independiente hace referencia a usar el asistente de SPL para buscar actualizaciones desde Studio.</p>
 <p>En el complemento 7.0 y posteriores, es posible actualizar a la última versión del complemento usando la característica de comprobación de actualizaciones del complemento. Esto se hace conectando a un servidor donde se alojan los archivos de actualización del complemento.</p>
 <p>El complemento de Studio usa una combinación de la biblioteca urllib y canales de actualización (explicados más tarde) para recuperar los metadatos necesarios de actualización. El usuario puede decirle al complemento que busque actualizaciones automáticamente o puede comprobarlas de forma manual.</p>
 <p>La búsqueda de actualizaciones se hace de la siguiente manera:</p>
@@ -599,7 +602,7 @@ C. A continuación, el procedimiento auxiliar intentará ubicar el nombre del ji
 <li>Herramientas (escaneo de biblioteca, análisis de tiempo de pista, obtención de instantáneas y transcripciones de listas de reproducción, explorador de columnas y demás).</li>
 <li>Configuración (alternar perfiles de emisión).</li>
 <li>Pedir ayuda (abriendo el diálogo de ayuda del asistente de Spl o la guía de usuario en línea).</li>
-<li>Buscar actualizaciones del complemento (manualmente).</li>
+<li>Hasta la versión 18.12, buscar actualizaciones del complemento (manualmente).</li>
 </ul>
 <p>Las primeras dos categorías pueden subdividirse en órdenes que usan la api de Studio (mediante la función statusApi de la que hablamos en un artículo anterior), las que usan la api de Windows (explorador de columnas) y las que se apoyan en la navegación por objetos (varios componentes están implicados y son sensibles a los cambios en la interfaz de usuario). Vamos a ir recorriendo estas categorías de una en una.</p>
 <h4 id="asistente-de-spl-1-indicaciones-de-estado">Asistente de SPL 1: indicaciones de estado</h4>
@@ -713,7 +716,7 @@ C. A continuación, el procedimiento auxiliar intentará ubicar el nombre del ji
 <li>Shift+f1: abre la guía de usuario en línea (os.startfile).</li>
 </ul>
 <h4 id="asistente-de-spl-5-busqueda-de-actualizaciones">Asistente de SPL 5: búsqueda de actualizaciones</h4>
-<p>Si pulsas ctrl+shift+u después de entrar en la capa del asistente de SPL hará que el complemento busque actualizaciones de sí mismo. A diferencia del proceso automático de búsqueda de actualizaciones descrito anteriormente, esta es una búsqueda manual, y por tanto llevará a cabo acciones adicionales como detener el temporizador de búsqueda automática de actualizaciones antes de buscar actualizaciones realmente. Otra diferencia es que esta orden mostrará un diálogo de resultados si no hay actualizaciones o se encuentran otros errores, mientras que en el modo de búsqueda automática, no se muestran.</p>
+<p>Al usar el complemento 18.12 o anterior, si pulsas ctrl+shift+u después de entrar en la capa del asistente de SPL hará que el complemento busque actualizaciones de sí mismo. A diferencia del proceso automático de búsqueda de actualizaciones descrito anteriormente, esta es una búsqueda manual, y por tanto llevará a cabo acciones adicionales como detener el temporizador de búsqueda automática de actualizaciones antes de buscar actualizaciones realmente. Otra diferencia es que esta orden mostrará un diálogo de resultados si no hay actualizaciones o se encuentran otros errores, mientras que en el modo de búsqueda automática, no se muestran.</p>
 <h3 id="una-sorpresa-pueden-invocarse-algunas-ordenes-de-la-capa-del-asistente-sin-entrar-a-ella-primero">Una sorpresa: pueden invocarse algunas órdenes de la capa del asistente sin entrar a ella primero</h3>
 <p>Hay veces en las que un locutor querrá obtener cierta información rápidamente. Por eso nos hacemos la siguiente pregunta: "¿Hay forma de verbalizar algo sin tener que invocar primero la capa del asistente?". Sí, se puede asignar una orden personalizada a las siguientes funciones del asistente:</p>
 <ul>
@@ -992,7 +995,7 @@ C. Para el resto de valores, NVDA asumirá que la última ventana que ha encontr
 <li>Los anillos rápido y lento de la unidad de pruebas se combinaron en un único canal de "desarrollo". Como consecuencia ya no existe la posibilidad de elegir el canal de actualización, siendo los usuarios los encargados de obtener la versión correcta desde la web de complementos. Esto se extendió en septiembre de 2018 para cubrir las versiones de soporte extendido.</li>
 <li>Un nuevo concepto de "funciones piloto" reemplazó al anillo rápido de la unidad de pruebas, configurable mediante una casilla de verificación e indicadores internos.</li>
 <li>Las nuevas funciones en desarrollo se activarán si la opción de funciones piloto se activa, en cualquier otro caso el contenido es idéntico al de las versiones de desarrollo regulares.</li>
-<li>La función de búsqueda de actualizaciones del complemento la lleva a cabo Add-on Updater, y en el futuro, el propio NVDA.</li>
+<li>La función de búsqueda de actualizaciones del complemento la lleva a cabo Add-on Updater, y en el futuro, el propio NVDA. Como consecuencia, la función de búsqueda de actualizaciones y el código fuente que la controlaba se han eliminado en diciembre de 2018.</li>
 </ul>
 <h4 id="version-de-soporte-extendido">Versión de soporte extendido</h4>
 <p>Una versión típica de un complemento se soporta hasta que se publica la siguiente versión del complemento (actualmente varias semanas o meses). Sin embargo, hay veces en las que una versión de un complemento recibe soporte extendido (llamadas versiones lts). Esto pasa si se publica la siguiente versión de Studio, se publica una versión de Studio con cambios en la interfaz de usuario, o se esperan cambios críticos en versiones futuras de NVDA tales como finalización de soporte para una versión de Windows.</p>
@@ -1003,7 +1006,7 @@ C. Para el resto de valores, NVDA asumirá que la última ventana que ha encontr
 <li>Versión soportada de Studio: una versión lts es la última versión en dar soporte a la versión de Studio más antigua soportada. Esto se diseña así para dar a la gente todo el tiempo posible para actualizarse a una nueva versión de Studio.</li>
 <li>Última versión que usa tecnología de NVDA antigua: en algunos casos, las versiones lts están hechas para dar soporte a usuarios de versiones antiguas de NVDA. Después de crear la versión lts, el código fuente del complemento cambiará para usar el código más reciente de NVDA. Este criterio primero se aplicará a una versión lts prevista para 2018 como resultado del fin de soporte de NVDA para Windows XP, Vista y 7 sin Service Pack 1, así como para la transición planeada a Python 3.</li>
 </ul>
-<p>A fecha de septiembre de 2018, la versión LTS más reciente es la 18.09.x (desde septiembre de 2018 hasta diciembre de 2019 como muy pronto). Entre las versiones LTS anteriores se incluyen la 15.x, conocida como 7.x hasta octubre de 2016 (de octubre de 2016 a abril de 2018). La versión lts anterior era la 3.x (de septiembre de 2014 a junio de 2015). Por ejemplo, el complemento 3.x se mantuvo de la siguiente manera:</p>
+<p>A fecha de diciembre de 2018, la versión LTS más reciente es la 18.09.x (desde septiembre de 2018 hasta diciembre de 2019 como muy pronto). Entre las versiones LTS anteriores se incluyen la 15.x, conocida como 7.x hasta octubre de 2016 (de octubre de 2016 a abril de 2018). La versión lts anterior era la 3.x (de septiembre de 2014 a junio de 2015). Por ejemplo, el complemento 3.x se mantuvo de la siguiente manera:</p>
 <ol>
 <li>El complemento 3.0 fue publicado en 2014.</li>
 <li>El complemento 3.5 (diciembre de 2014) podría haber sido la última versión de mantenimiento del complemento 3.x si no hubiera sido una versión lts.</li>

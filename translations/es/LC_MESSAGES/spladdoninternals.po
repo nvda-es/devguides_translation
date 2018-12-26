@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-12-25 19:43+Hora estándar romance\n"
-"PO-Revision-Date: 2018-12-25 19:43+0100\n"
+"PO-Revision-Date: 2018-12-26 19:33+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -26,10 +26,8 @@ msgid "Author: Joseph Lee"
 msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\spladdoninternals.py:5
-#, fuzzy
-#| msgid "Based on StationPlaylist Studio Add-on for NvDA 18.09"
 msgid "Based on StationPlaylist Studio Add-on for NvDA 19.01"
-msgstr "Basado en el complemento StationPlaylist Studio 18.09 para NVDA"
+msgstr "Basado en el complemento StationPlaylist Studio 19.01 para NVDA"
 
 #: ..\python_docs\spladdoninternals.py:6
 msgid "## 2018 Preface and notes"
@@ -77,6 +75,11 @@ msgid ""
 "completeness (after all, Add-on Updater's update checking mechanism can "
 "trace its roots to Studio add-on)."
 msgstr ""
+"Finalmente, a finales de 2018, la función de búsqueda de actualizaciones se "
+"ha eliminado en favor del complemento Add-on Updater. Aunque el código "
+"fuente de esta función ya se ha ido, la información relacionada con él "
+"permanecerá aquí con motivos de completitud (a fin de cuentas, el "
+"complemento Add-on Updater tiene sus raíces en el complemento de Studio)."
 
 #: ..\python_docs\spladdoninternals.py:10
 msgid "## Introduction"
@@ -382,6 +385,8 @@ msgid ""
 "* 19.01: add-on update feature removed, compatibility flags with future NVDA "
 "releases."
 msgstr ""
+"* 19.01: función de actualización del complemento eliminada, indicadores de "
+"compatibilidad para versiones futuras de NVDA."
 
 #: ..\python_docs\spladdoninternals.py:38
 msgid ""
@@ -1163,11 +1168,6 @@ msgstr ""
 "simplificado las clases de elemento de pista."
 
 #: ..\python_docs\spladdoninternals.py:104
-#, fuzzy
-#| msgid ""
-#| "Let's now tour the lifecycle of the app module object in question: before "
-#| "and during app module initialization, activities performed while the app "
-#| "module is active, death and add-on updates."
 msgid ""
 "Let's now tour the lifecycle of the app module object in question: before "
 "and during app module initialization, activities performed while the app "
@@ -1176,13 +1176,16 @@ msgstr ""
 "Recorramos ahora el ciclo de vida del objeto del módulo de aplicación en "
 "cuestión: antes y durante la inicialización del módulo de aplicación, "
 "actividades realizadas mientras el módulo de aplicación está activo, muerte "
-"y actualizaciones del complemento."
+"y (hasta 2018) actualizaciones del complemento."
 
 #: ..\python_docs\spladdoninternals.py:105
 msgid ""
 "Note: although standalone add-on update feature is gone, the mechanism "
 "behind add-on update feature will be documented for sake of completeness."
 msgstr ""
+"Nota: aunque la función independiente de búsqueda de actualizaciones se ha "
+"ido, el mecanismo detrás de la actualización de complementos se documentará "
+"para dar completitud."
 
 #: ..\python_docs\spladdoninternals.py:106
 msgid "### Before birth: NVDA's app module import routines"
@@ -1494,13 +1497,6 @@ msgstr ""
 "sentido)."
 
 #: ..\python_docs\spladdoninternals.py:131
-#, fuzzy
-#| msgid ""
-#| "\t8. In add-on 7.0, add-on update facility is initialized (splupdate."
-#| "initialize). among other things, the initialization routine loads update "
-#| "check metadata. In 2018, update initialization is done as part of app "
-#| "module constructor. We'll meet add-on update routines (housed in "
-#| "splstudio/splupdate.py) later in this article."
 msgid ""
 "\t8. Between add-on 7.0 and 18.12, add-on update facility is initialized "
 "(splupdate.initialize). among other things, the initialization routine loads "
@@ -1508,7 +1504,7 @@ msgid ""
 "initialization was moved to app module constructor. We'll meet add-on update "
 "routines (housed in splstudio/splupdate.py) later in this article."
 msgstr ""
-"\t8. En el complemento 7.0, se inicializa la característica de "
+"\t8. Entre los complementos 7.0 y 18.12, se inicializa la característica de "
 "actualizaciones (splupdate.initialize). Entre otras cosas, el procedimiento "
 "de inicialización carga los metadatos de búsqueda de actualizaciones. En "
 "2018, la inicialización de las actualizaciones se hace como parte del "
@@ -1638,16 +1634,12 @@ msgstr ""
 "asistente de SPL."
 
 #: ..\python_docs\spladdoninternals.py:142
-#, fuzzy
-#| msgid ""
-#| "7. In add-on 7.0, if automatic update check is enabled, update check "
-#| "timer is started."
 msgid ""
 "7. Between add-on 7.0 and 18.12, if automatic update check is enabled, "
 "update check timer is started."
 msgstr ""
-"7. En el complemento 7.0, si está activada la búsqueda automática de "
-"actualizaciones, se inicia el temporizador asociado."
+"7. Entre los complementos 7.0 y 18.12, si está activada la búsqueda "
+"automática de actualizaciones, se inicia el temporizador asociado."
 
 #: ..\python_docs\spladdoninternals.py:143
 msgid "#### Changes introduced in 17.10 due to volatile configuration flags"
@@ -1964,11 +1956,6 @@ msgstr ""
 "realiza otros procedimientos de cierre."
 
 #: ..\python_docs\spladdoninternals.py:177
-#, fuzzy
-#| msgid ""
-#| "2. Calls splconfig.terminate() function to save add-on settings and "
-#| "perform shutdown routines for some features. This function goes through "
-#| "following steps in add-on 7.0:"
 msgid ""
 "2. Calls splconfig.terminate() function to save add-on settings and perform "
 "shutdown routines for some features. This function goes through following "
@@ -1976,13 +1963,9 @@ msgid ""
 msgstr ""
 "2. Se llama a la función splconfig.terminate() para guardar los ajustes del "
 "complemento y realizar tareas de apagado de algunas características. Esta "
-"función sigue los siguientes pasos en el complemento 7.0:"
+"función sigue los siguientes pasos en el complemento 19.01:"
 
 #: ..\python_docs\spladdoninternals.py:178
-#, fuzzy
-#| msgid ""
-#| "\t1. In add-on 7.0, if update check timer is running, the timer is told "
-#| "to stop, and update metadata is copied back to normal profile."
 msgid ""
 "\t1. In add-on 7.0, if update check timer is running, the timer is told to "
 "stop, and update metadata is copied back to normal profile. This step is "
@@ -1990,7 +1973,8 @@ msgid ""
 msgstr ""
 "\t1. En el complemento 7.0, si el temporizador de búsqueda de "
 "actualizaciones está funcionando, recibe la orden de detenerse, y se copian "
-"los metadatos de actualización de vuelta en el perfil normal."
+"los metadatos de actualización de vuelta en el perfil normal. Este paso se "
+"elimina en la versión 19.01."
 
 #: ..\python_docs\spladdoninternals.py:179
 msgid ""
@@ -2097,6 +2081,11 @@ msgid ""
 "completeness. Standalone add-on update refers to using SPL Assistant to "
 "check for updates from Studio."
 msgstr ""
+"Nota: esta función, reciemtemente llamada \"actualización independiente del "
+"complemento\", se ha ido en la versión 19.01, aunque el mecanismo que hay "
+"tras ella se documenta aquí para dar completitud. La actualización "
+"independiente hace referencia a usar el asistente de SPL para buscar "
+"actualizaciones desde Studio."
 
 #: ..\python_docs\spladdoninternals.py:190
 msgid ""
@@ -5775,10 +5764,10 @@ msgstr ""
 "de usuario en línea)."
 
 #: ..\python_docs\spladdoninternals.py:503
-#, fuzzy
-#| msgid "* Checking for add-on updates (manually)."
 msgid "* Until 18.12, checking for add-on updates (manually)."
-msgstr "* Buscar actualizaciones del complemento (manualmente)."
+msgstr ""
+"* Hasta la versión 18.12, buscar actualizaciones del complemento "
+"(manualmente)."
 
 #: ..\python_docs\spladdoninternals.py:504
 msgid ""
@@ -6560,16 +6549,6 @@ msgid "#### SPL Assistant 5: Checking for add-on updates"
 msgstr "#### Asistente de SPL 5: búsqueda de actualizaciones"
 
 #: ..\python_docs\spladdoninternals.py:594
-#, fuzzy
-#| msgid ""
-#| "Pressing Control+Shift+U after entering SPL Assistant layer will cause "
-#| "the add-on to check for add-on updates. Unlike the automatic update check "
-#| "process described earlier, this one is a manual check, thus it'll perform "
-#| "additional actions such as stopping the automatic update check timer "
-#| "before actually checking for updates. Another difference is that this "
-#| "command will display a results dialog if there are no updates or other "
-#| "errors are encountered, whereas in automatic check mode, they are not "
-#| "shown."
 msgid ""
 "If using add-on 18.12 and earlier, pressing Control+Shift+U after entering "
 "SPL Assistant layer will cause the add-on to check for add-on updates. "
@@ -6580,15 +6559,15 @@ msgid ""
 "no updates or other errors are encountered, whereas in automatic check mode, "
 "they are not shown."
 msgstr ""
-"Si pulsas ctrl+shift+u después de entrar en la capa del asistente de SPL "
-"hará que el complemento busque actualizaciones de sí mismo. A diferencia del "
-"proceso automático de búsqueda de actualizaciones descrito anteriormente, "
-"esta es una búsqueda manual, y por tanto llevará a cabo acciones adicionales "
-"como detener el temporizador de búsqueda automática de actualizaciones antes "
-"de buscar actualizaciones realmente. Otra diferencia es que esta orden "
-"mostrará un diálogo de resultados si no hay actualizaciones o se encuentran "
-"otros errores, mientras que en el modo de búsqueda automática, no se "
-"muestran."
+"Al usar el complemento 18.12 o anterior, si pulsas ctrl+shift+u después de "
+"entrar en la capa del asistente de SPL hará que el complemento busque "
+"actualizaciones de sí mismo. A diferencia del proceso automático de búsqueda "
+"de actualizaciones descrito anteriormente, esta es una búsqueda manual, y "
+"por tanto llevará a cabo acciones adicionales como detener el temporizador "
+"de búsqueda automática de actualizaciones antes de buscar actualizaciones "
+"realmente. Otra diferencia es que esta orden mostrará un diálogo de "
+"resultados si no hay actualizaciones o se encuentran otros errores, mientras "
+"que en el modo de búsqueda automática, no se muestran."
 
 #: ..\python_docs\spladdoninternals.py:595
 msgid ""
@@ -9024,10 +9003,6 @@ msgstr ""
 "versiones de desarrollo regulares."
 
 #: ..\python_docs\spladdoninternals.py:820
-#, fuzzy
-#| msgid ""
-#| "* Add-on update checking facility is now taken care of by Add-on Updater, "
-#| "and in the future, to be done by NVDA itself."
 msgid ""
 "* Add-on update checking facility is now taken care of by Add-on Updater, "
 "and in the future, to be done by NVDA itself. Consequently, add-on update "
@@ -9035,7 +9010,9 @@ msgid ""
 "2018."
 msgstr ""
 "* La función de búsqueda de actualizaciones del complemento la lleva a cabo "
-"Add-on Updater, y en el futuro, el propio NVDA."
+"Add-on Updater, y en el futuro, el propio NVDA. Como consecuencia, la "
+"función de búsqueda de actualizaciones y el código fuente que la controlaba "
+"se han eliminado en diciembre de 2018."
 
 #: ..\python_docs\spladdoninternals.py:821
 msgid "#### Long-term support release"
@@ -9111,13 +9088,6 @@ msgstr ""
 "la transición planeada a Python 3."
 
 #: ..\python_docs\spladdoninternals.py:828
-#, fuzzy
-#| msgid ""
-#| "As of September 2018, the most recent LTS version is add-on 18.09.x "
-#| "(September 2018 to December 2019 at the earliest). Previous LTS releases "
-#| "have included 15.x (formerly 7.x until October 2016; October 2016 to "
-#| "April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3."
-#| "x was maintained thus:"
 msgid ""
 "As of December 2018, the most recent LTS version is add-on 18.09.x "
 "(September 2018 to December 2019 at the earliest). Previous LTS releases "
@@ -9125,7 +9095,7 @@ msgid ""
 "2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was "
 "maintained thus:"
 msgstr ""
-"A fecha de septiembre de 2018, la versión LTS más reciente es la 18.09.x "
+"A fecha de diciembre de 2018, la versión LTS más reciente es la 18.09.x "
 "(desde septiembre de 2018 hasta diciembre de 2019 como muy pronto). Entre "
 "las versiones LTS anteriores se incluyen la 15.x, conocida como 7.x hasta "
 "octubre de 2016 (de octubre de 2016 a abril de 2018). La versión lts "
