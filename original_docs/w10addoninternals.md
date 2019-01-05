@@ -116,7 +116,7 @@ The main global plugin file is laid out thus:
 When the add-on loads, it performs up to four tasks:
 
 1. Enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
-2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support prior to 2018.2.
+2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA did not support prior to 2018.2.
 3. Adds user interface elements for this add-on, specifically add-on settings.
 4. Checks for add-on updates if told to do so.
 
@@ -192,7 +192,7 @@ The Windows 10 Objects goes one step further by recording instances of this even
 
 #### Recognizing various dialogs
 
-Some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
+Despite not being identified as such, some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
 
 In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Version 1809 and later, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Version 1809.
 
@@ -234,7 +234,7 @@ The following app modules add functionality unique to NVDA and/or commands that 
 
 #### A note about modern keyboard
 
-Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
+Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
 
 In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field.
 

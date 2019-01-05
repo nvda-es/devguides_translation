@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-25 19:43+Hora estándar romance\n"
+"POT-Creation-Date: 2019-01-05 11:51+Hora estándar romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,7 +292,7 @@ msgid "1. Enables tracking of missing UIA events. For example, until May 2017, c
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:72
-msgid "2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA natively does not support prior to 2018.2."
+msgid "2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA did not support prior to 2018.2."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:73
@@ -488,7 +488,7 @@ msgid "#### Recognizing various dialogs"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:121
-msgid "Some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on."
+msgid "Despite not being identified as such, some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:122
@@ -612,7 +612,7 @@ msgid "#### A note about modern keyboard"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:152
-msgid "Modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used."
+msgid "Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:153
