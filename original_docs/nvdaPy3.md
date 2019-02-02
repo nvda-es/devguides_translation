@@ -75,7 +75,7 @@ There are two ways of debugging Python 3 transition workflow:
 
 ## Transition workflow
 
-The following is a roughh overview of Python 2 to 3 transition for NVDA screen reader. Note that information below can change without notice.
+The following is an overview of Python 2 to 3 transition for NVDA screen reader. Note that information below can change without notice.
 
 ### Notable issues and solutions:
 
@@ -160,7 +160,7 @@ Start date: TBD
 3. Add-on developers are asked to start porting their add-ons to Python 3.
 4. A stable version of NVDA powered by Python 3 is released.
 5. Post-transition evaluation should take place, including documenting issues found during field testing, more community outreach and other activities.
-6. If needed, attempts to use Python 3 native features should be attempted.
+6. If needed, attempts to use Python 3 native features should be attempted (see below for a list of possible features and their impact on NVDA).
 
 Estimated completion date: no later than twelve to fifteen months after pre-transition activities are completed.
 
@@ -170,11 +170,20 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	1. July 17, 2018: NVDA alpha snapshot powered by wxPython 4.0.3 was released.
 	2. August 17, 2018: NVDA 2018.3 beta 3, the first beta release powered by wxPython 4.0.3, was released.
 	3. August 21, 2018: alpha snapshots include Python 3 import edits. Source code changed to use Python 3 module names in most cases.
-	4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later.
+	4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later, pre-transition workflow officially begins.
 	5. December 13, 2018: a major pull request that introduces abstract base classes is merged into master branch. This pull request also resolves metaclass syntax problem through use of six module.
 	6. December 17, 2018: NVDA 2018.4 stable version released.
 2. Transition: Not yet begun.
 3. After transition: not yet begun.
+4. Python 3 native features:
+	* Asyncio: not important at this stage.
+	* Collections.ChainMap: eases implementation of config.ConfigManager.
+	* pyz: no impact unless use cases emerge.
+	* Formatted string literals (the "f" strings): makes translatable messages more readable.
+	* Gettext.pgettext (Python 3.8): long sought answer to message contexts (see GitHub issue 1524 for details).
+	* Assignment expression (the ":=" operator in Python 3.8): may allow improved readability of some if and while statements.
+	* sys.breakpointhook: allow Visual Studio debugger and friends to help debug NVDA (if installed).
+	* Enum: may improve certain listings.
 
 ## Notes for various audiences
 
@@ -218,3 +227,4 @@ nothing yet.
 
 * During pre-transition period, please help NVDA project spot potential issues with Python 3 transition so they can be noted.
 * During transition, please help write and test Python 3 code and provide additional comments.
+* During post-transition, please help NV Access review transition work, as well as suggest Python 3 features NVDA should adopt,

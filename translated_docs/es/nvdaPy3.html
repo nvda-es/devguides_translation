@@ -188,7 +188,7 @@
 <li>Se solicita a los desarrolladores de complementos que migren su código a Python 3.</li>
 <li>Se libera una versión estable de NVDA que funcione con Python 3.</li>
 <li>Debería tener lugar una evaluación tras la transición, que incluya problemas documentados durante las pruebas de campo, más extensión a la comunidad y otras actividades.</li>
-<li>Si es necesario, se deberían hacer intentos para utilizar las características nativas de Python 3.</li>
+<li>Si es necesario, se deberían hacer intentos para utilizar las características nativas de Python 3 (a continuación se muestra una lista de características y su posible impacto en NVDA).</li>
 </ol>
 <p>Fecha estimada de finalización: no más tarde de doce a quince meses después de que se completen las actividades previas a la transición.</p>
 <h2 id="progreso-de-la-transicion">Progreso de la transición</h2>
@@ -197,13 +197,24 @@
 <li>17 de julio de 2018: se liberó una alpha de NVDA con WXPython 4.0.3 integrado.</li>
 <li>17 de agosto de 2018: se liberó NVDA 2018.3 beta 3, la primera versión beta que funciona con WXPython 4.0.3.</li>
 <li>21 de agosto de 2018: las versiones de desarrollo alpha incluyen importaciones editadas para Python 3. El código fuente cambia para utilizar nombres de módulos de Python 3 en la mayor parte de los casos.</li>
-<li>17 de septiembre de 2018: se libera NVDA 2018.3 con WXPython 4.0.3, con una versión que le sigue (2018.3.1) 48 horas después.</li>
+<li>17 de septiembre de 2018: se libera NVDA 2018.3 con WXPython 4.0.3, con una versión que le sigue (2018.3.1) 48 horas después. Comienza oficialmente el flujo de trabajo previo a la transición.</li>
 <li>13 de diciembre de 2018: se mezcla en la rama master una solicitud importante de cambios que introduce clases base abstractas. Esta solicitud de cambio también resuelve el problema de sintaxis de metaclase mediante el uso del módulo six.</li>
 <li>17 de diciembre de 2018: liberada la versión estable de NVDA 2018.4.</li>
 </ol>
 </li>
 <li>Transición: todavía no ha empezado.</li>
 <li>Después de la transición: todavía no ha empezado.</li>
+<li>Características nativas de Python 3:<ul>
+<li>Asyncio: no es importante en esta fase.</li>
+<li>Collections.ChainMap: facilita la implementación de config.ConfigManager.</li>
+<li>pyz: no tiene impacto a menos que aparezcan casos de uso.</li>
+<li>Literales de cadenas formateadas (las cadenas "f"): hace más legibles los mensajes traducibles.</li>
+<li>Gettext.pgettext (Python 3.8): la respuesta buscada durante tanto tiempo para los contextos de un mensaje (mira la incidencia 1524 de GitHub para más detalles).</li>
+<li>Expresión de asignación (el operador := en Python 3.8): puede permitir una lectura mejorada de algunas instrucciones if y while.</li>
+<li>sys.breakpointhook: ayuda al depurador de Visual Studio y compañía a depurar NVDA (si está instalado).</li>
+<li>Enum: puede mejorar ciertas listas.</li>
+</ul>
+</li>
 </ol>
 <h2 id="notas-para-diversas-audiencias">Notas para diversas audiencias</h2>
 <h3 id="para-colaboradores-de-codigo">Para colaboradores de código:</h3>
@@ -244,6 +255,7 @@
 <ul>
 <li>Durante el periodo previo a la transición, por favor ayudad al proyecto NVDA a detectar problemas potenciales con la transición a Python 3 para que puedan documentarse.</li>
 <li>Durante la transición, por favor ayudad a escribir y probar código en Python 3 y proporcionad comentarios adicionales.</li>
+<li>Durante la fase posterior a la transición, ayuda a NV Access a revisar los trabajos de transición, y sugiere funciones de Python 3 que NVDA debería adoptar,</li>
 </ul>
 </body>
 </html>

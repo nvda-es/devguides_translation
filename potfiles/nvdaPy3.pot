@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-05 11:51+Hora estándar romance\n"
+"POT-Creation-Date: 2019-02-02 11:45+Hora estándar romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -212,7 +212,7 @@ msgid "## Transition workflow"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:52
-msgid "The following is a roughh overview of Python 2 to 3 transition for NVDA screen reader. Note that information below can change without notice."
+msgid "The following is an overview of Python 2 to 3 transition for NVDA screen reader. Note that information below can change without notice."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:53
@@ -496,7 +496,7 @@ msgid "5. Post-transition evaluation should take place, including documenting is
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:124
-msgid "6. If needed, attempts to use Python 3 native features should be attempted."
+msgid "6. If needed, attempts to use Python 3 native features should be attempted (see below for a list of possible features and their impact on NVDA)."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:125
@@ -524,7 +524,7 @@ msgid "\t3. August 21, 2018: alpha snapshots include Python 3 import edits. Sour
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:131
-msgid "\t4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later."
+msgid "\t4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later, pre-transition workflow officially begins."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:132
@@ -544,114 +544,154 @@ msgid "3. After transition: not yet begun."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:136
-msgid "## Notes for various audiences"
+msgid "4. Python 3 native features:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:137
-msgid "### For code contributors:"
+msgid "\t* Asyncio: not important at this stage."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:138
-msgid "* Document potential and actual issues when working with Python 3, including changed modules, attribute name changes, internal changes and so on."
+msgid "\t* Collections.ChainMap: eases implementation of config.ConfigManager."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:139
-msgid "* When importing a built-in Python module, use try/except when importing modules."
+msgid "\t* pyz: no impact unless use cases emerge."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:140
-msgid "\t* Try importing Python 2 names as Python 3 name, switching to Python 3 version when Python 2 module is not found or renamed."
+msgid "\t* Formatted string literals (the \"f\" strings): makes translatable messages more readable."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:141
-msgid "\t* See NVDA source code for implementation steps."
+msgid "\t* Gettext.pgettext (Python 3.8): long sought answer to message contexts (see GitHub issue 1524 for details)."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:142
-msgid "\t* This is for work prior to transition. During transition, Python 3 import should be attempted first."
+msgid "\t* Assignment expression (the \":=\" operator in Python 3.8): may allow improved readability of some if and while statements."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:143
-msgid "* Issues should be labeled as \"python 3\"."
+msgid "\t* sys.breakpointhook: allow Visual Studio debugger and friends to help debug NVDA (if installed)."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:144
-msgid "* Pull requests should be based on master branch unless specified by lead developers."
+msgid "\t* Enum: may improve certain listings."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:145
-msgid "* Try using branch name of the form \"py3*\" where \"*\" denotes Python 3 feature e.g. py3socketserver for changes to socket server module."
+msgid "## Notes for various audiences"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:146
-msgid "* If working with built-in Python modules, be sure to test your code via Python 2.7 and 3.7 interpreter before making changes to NVDA source code."
+msgid "### For code contributors:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:147
-msgid "\t* Create a standalone script that'll use features from Python 2 and/or 3."
+msgid "* Document potential and actual issues when working with Python 3, including changed modules, attribute name changes, internal changes and so on."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:148
-msgid "\t* After testing this script and if it works in Python 3, make changes to NVDA source code and add comments regarding differences between Python 2 and 3."
+msgid "* When importing a built-in Python module, use try/except when importing modules."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:149
-msgid "\t* Source code should target both Python 2 and 3 unless the pull request is submitted during active transition period."
+msgid "\t* Try importing Python 2 names as Python 3 name, switching to Python 3 version when Python 2 module is not found or renamed."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:150
-msgid "* Edit this page whenever major changes are committed to master branch or pull request is merged, including import changes and such."
+msgid "\t* See NVDA source code for implementation steps."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:151
-msgid "### For add-on developers:"
+msgid "\t* This is for work prior to transition. During transition, Python 3 import should be attempted first."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:152
-msgid "* Try using Python modules that are known to be compatible with both Python 2 and 3."
+msgid "* Issues should be labeled as \"python 3\"."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:153
-msgid "### For testers:"
+msgid "* Pull requests should be based on master branch unless specified by lead developers."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:154
-msgid "Nothing yet, as transition hasn't begun."
+msgid "* Try using branch name of the form \"py3*\" where \"*\" denotes Python 3 feature e.g. py3socketserver for changes to socket server module."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:155
-msgid "### For translators:"
+msgid "* If working with built-in Python modules, be sure to test your code via Python 2.7 and 3.7 interpreter before making changes to NVDA source code."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:156
-msgid "Nothing yet."
+msgid "\t* Create a standalone script that'll use features from Python 2 and/or 3."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:157
-msgid "### For users:"
+msgid "\t* After testing this script and if it works in Python 3, make changes to NVDA source code and add comments regarding differences between Python 2 and 3."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:158
-msgid "nothing yet."
+msgid "\t* Source code should target both Python 2 and 3 unless the pull request is submitted during active transition period."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:159
-msgid "### For organizations:"
+msgid "* Edit this page whenever major changes are committed to master branch or pull request is merged, including import changes and such."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:160
-msgid "* Stay informed on Python 3 transition workflow."
+msgid "### For add-on developers:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:161
-msgid "### For Python community:"
+msgid "* Try using Python modules that are known to be compatible with both Python 2 and 3."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:162
-msgid "* During pre-transition period, please help NVDA project spot potential issues with Python 3 transition so they can be noted."
+msgid "### For testers:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:163
+msgid "Nothing yet, as transition hasn't begun."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:164
+msgid "### For translators:"
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:165
+msgid "Nothing yet."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:166
+msgid "### For users:"
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:167
+msgid "nothing yet."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:168
+msgid "### For organizations:"
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:169
+msgid "* Stay informed on Python 3 transition workflow."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:170
+msgid "### For Python community:"
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:171
+msgid "* During pre-transition period, please help NVDA project spot potential issues with Python 3 transition so they can be noted."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:172
 msgid "* During transition, please help write and test Python 3 code and provide additional comments."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:173
+msgid "* During post-transition, please help NV Access review transition work, as well as suggest Python 3 features NVDA should adopt,"
 msgstr ""
 
