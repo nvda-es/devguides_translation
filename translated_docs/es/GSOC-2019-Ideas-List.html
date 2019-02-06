@@ -31,9 +31,9 @@ Se podría también plantear la posibilidad de usar apis nuevas incluidas en Win
 Hay una posibilidad de que se hayan producido varios fallos de sistema informados por algunos usuarios al abrir y cerrar el dispositivo de forma demasiado agresiva. De forma similar, algunos usuarios con hardware de gama baja informan de retrasos generales y malos tiempos de respuesta. Posiblemente, esto puede ser debido a que el controlador de audio se toma su tiempo para abrir el dispositivo cada vez que se emite voz.
 También se pueden tener varias partes del código que abren, cierran y escriben en el dispositivo de audio al mismo tiempo. Por ejemplo, el módulo tones que emite pitidos puede mantener abierto el dispositivo de audio todo el tiempo. Puede ser una buena idea trabajar en un único fragmento de código que integre todo esto y serialice el acceso al dispositivo de audio.
 Actualmente hay en juego varios cerrojos, pero habría que revisar esa parte.
-Mira el módulo <a href="https://github.com/nvaccess/nvda/blob/master/source/nvwave.py">nvWave</a> en el código fuente de NVDA.
- #### Impacto
-Mejorar el audio en NVDA mejorará la estabilidad y el rendimiento del lector. NVDA podrá usarse de forma eficiente en un rango más amplio de dispositivos de audio, lo que significa que podrá utilizarse en más situaciones y posiblemente en dispositivos de gama más baja, ayudando así al mayor número de personas ciegas y deficientes visuales posible.</p>
+Mira el módulo <a href="https://github.com/nvaccess/nvda/blob/master/source/nvwave.py">nvWave</a> en el código fuente de NVDA.</p>
+<h4 id="impacto_1">Impacto</h4>
+<p>Mejorar el audio en NVDA mejorará la estabilidad y el rendimiento del lector. NVDA podrá usarse de forma eficiente en un rango más amplio de dispositivos de audio, lo que significa que podrá utilizarse en más situaciones y posiblemente en dispositivos de gama más baja, ayudando así al mayor número de personas ciegas y deficientes visuales posible.</p>
 <h3 id="rendimiento-y-estabilidad-en-las-consolas-de-comandos-de-windows">Rendimiento y estabilidad en las consolas de comandos de Windows</h3>
 <p><a href="https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aopen+label%3A%22Windows+Command+Console%22">Incidencias relacionadas</a></p>
 <p>NVDA permite al usuario leer el contenido de las consolas de comandos de Windows (cmd, bash, etc) con las órdenes del cursor de revisión. También anuncia el texto tecleado mientras lo escribimos en la consola.
