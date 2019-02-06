@@ -1,0 +1,104 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title>## Introducción</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1>## Introducción</h1></header>
+  <h2 id="introduccion">Introducción</h2>
+<p>Como parte del proceso de solicitud del Google Summer of Code, NV Access está obligada a proporcionar una lista de ideas de proyecto, que ayudará a los estudiantes mientras planean y redactan sus propuestas de proyecto.
+El <a href="https://github.com/nvaccess/nvda/">proyecto NVDA</a> tiene actualmente más de 2000 <a href="https://github.com/nvaccess/nvda/issues/">incidencias abiertas</a> en Github y plantearán propuestas de proyecto para todas ellas asumiendo que su tamaño y complejidad son adecuados para GSOC. Sin embargo, la siguiente lista contiene algunas de las incidencias más prioritarias que los estudiantes podrían plantearse resolver.</p>
+<h2 id="ideas">Ideas</h2>
+<h3 id="mejorar-el-rendimiento-de-la-navegacion-edicion-en-microsoft-excel-haciendo-llamadas-com-por-lotes-en-el-proceso">Mejorar el rendimiento de la navegación / edición en Microsoft Excel haciendo llamadas COM por lotes en el proceso</h3>
+<p>Incidencia relacionada: <a href="https://github.com/nvaccess/nvda/issues/7348">#7348</a></p>
+<h4 id="el-problema">El problema</h4>
+<p>NVDA proporciona un amplio apoyo para la lectura y la interacción con hojas de cálculo en Microsoft Excel. Este soporte se implementa utilizando <a href="https://docs.microsoft.com/en-us/office/vba/api/overview/excel/object-model">el modelo de objetos COM de Excel</a> utilizando un enfoque de proceso cruzado.
+El acceso de NVDA a Microsoft Excel se está volviendo más lento, y en ocasiones impracticable, en parte por la cantidad de información que NVDA debe recuperar y en parte por la ralentización del propio modelo. Aunque NV Access trabaja mano a mano con el equipo de Excel en Microsoft para rectificar las últimas relentizaciones, deberíamos definitivamente plantear acciones que se puedan aplicar a NVDA para limitar o procesar por lotes las llamadas al modelo de objetos para proporcionar el mejor rendimiento.</p>
+<h4 id="implementacion">Implementación</h4>
+<p>De manera similar al <a href="https://github.com/nvaccess/nvda/blob/master/nvdaHelper/remote/winword.cpp">soporte en proceso para Microsoft Word</a>, se debería plantear la posibilidad de recuperar toda la información posible necesaria para una celda dada en una sola llamada mediante el código en proceso de NVDA escrito en C++. Mientras se hacen estas llamadas, se debería pensar en pedirle a Excel que pause el <a href="https://docs.microsoft.com/en-us/office/vba/api/excel.application.screenupdating">refresco de pantalla</a>. 
+Aunque ya existe todo el código necesario para ejecutar llamadas internas de proceso en el propio Excel desde NVDA, se deberían escribir las llamadas COM reales, así como definir un formato de serialización apropiado en el que representar toda la información de una celda dada para enviarla a NVDA.</p>
+<h4 id="impacto">Impacto</h4>
+<p>Muchas personas ciegas y con baja visión usan Excel en sus estudios o su trabajo. Acelerar el soporte para Microsoft Excel permitiría a los usuarios de NVDA ser mucho más eficientes en sus tareas.</p>
+<h3 id="mejorar-la-estabilidad-de-la-salida-de-audio-en-nvda">Mejorar la estabilidad de la salida de audio en NVDA</h3>
+<p><a href="https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aopen+label%3Aaudio">Incidencias relacionadas</a></p>
+<h4 id="el-problema_1">El problema</h4>
+<p>NVDA emite audio (incluyendo sonidos y voz de la mayoría de sintetizadores) mediante la API <a href="https://docs.microsoft.com/en-gb/windows/desktop/Multimedia/waveform-functions">Windows  Multimedia</a> (winMM).
+Algunos usuarios (especialmente los que utilizan hardware de audio USB) informan sobre un pequeño corte en el audio al comienzo o al final de cada mensaje de voz. Esto podría deberse al hecho de que NVDA abre y cierra el dispositivo de audio en cada emisión de voz. Es posible que algunos controladores de audio tarden ligeramente más en abrir el dispositivo y se deshagan de algunos bloques iniciales. De forma similar, al cerrar el dispositivo, algún hardware de audio puede deshacerse de los bloques finales, en vez de asegurarse de que se reproducen antes de cerrar. </p>
+<h4 id="implementacion_1">Implementación</h4>
+<p>Se podría considerar la posibilidad de mantener el dispositivo abierto durante algunos segundos después de que la voz termine para que se reproduzca todo el audio, de tal forma que no haga falta abrir el dispositivo de nuevo si se va a emitir más voz. También se podrían añadir unos milisegundos de silencio al principio del audio cuando se abre el dispositivo por primera vez, para asegurarse de que el dispositivo está realmente listo antes de que NVDA empiece a hablar.
+Se podría también plantear la posibilidad de usar apis nuevas incluidas en Windows 7 y versiones posteriores, ya que esta es la versión mínima de Windows en la que funciona NVDA.
+Hay una posibilidad de que se hayan producido varios fallos de sistema informados por algunos usuarios al abrir y cerrar el dispositivo de forma demasiado agresiva. De forma similar, algunos usuarios con hardware de gama baja informan de retrasos generales y malos tiempos de respuesta. Posiblemente, esto puede ser debido a que el controlador de audio se toma su tiempo para abrir el dispositivo cada vez que se emite voz.
+También se pueden tener varias partes del código que abren, cierran y escriben en el dispositivo de audio al mismo tiempo. Por ejemplo, el módulo tones que emite pitidos puede mantener abierto el dispositivo de audio todo el tiempo. Puede ser una buena idea trabajar en un único fragmento de código que integre todo esto y serialice el acceso al dispositivo de audio.
+Actualmente hay en juego varios cerrojos, pero habría que revisar esa parte.
+Mira el módulo <a href="https://github.com/nvaccess/nvda/blob/master/source/nvwave.py">nvWave</a> en el código fuente de NVDA.
+ #### Impacto
+Mejorar el audio en NVDA mejorará la estabilidad y el rendimiento del lector. NVDA podrá usarse de forma eficiente en un rango más amplio de dispositivos de audio, lo que significa que podrá utilizarse en más situaciones y posiblemente en dispositivos de gama más baja, ayudando así al mayor número de personas ciegas y deficientes visuales posible.</p>
+<h3 id="rendimiento-y-estabilidad-en-las-consolas-de-comandos-de-windows">Rendimiento y estabilidad en las consolas de comandos de Windows</h3>
+<p><a href="https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aopen+label%3A%22Windows+Command+Console%22">Incidencias relacionadas</a></p>
+<p>NVDA permite al usuario leer el contenido de las consolas de comandos de Windows (cmd, bash, etc) con las órdenes del cursor de revisión. También anuncia el texto tecleado mientras lo escribimos en la consola.
+Este soporte se implementa usando las <a href="https://docs.microsoft.com/en-us/windows/console/console-functions">apis de consola de kernel32</a>.
+Sin embargo, este soporte tiene problemas que hay que resolver:</p>
+<h4 id="rendimiento">Rendimiento</h4>
+<p>Cuando se escriben enormes cantidades de texto en la consola, NVDA reduce considerablemente su rendimiento o se cuelga completamente, no sólo haciendo imposible la lectura de nuevo contenido en la consola, sino en todo el sistema. Esto sólo se arregla cerrando la ventana de la consola o reiniciando NVDA. 
+Deberíamos plantearnos buscar un algoritmo más rápido de diferenciación o escribir uno propio en C++. Además se debería intentar limitar el texto que se va a verbalizar de tal forma que no inunde el núcleo de NVDA o el sintetizador de voz. </p>
+<h4 id="precision-al-verbalizar-caracteres-escritos-en-la-consola">Precisión al verbalizar caracteres escritos en la consola</h4>
+<p>Si NVDA está configurado para verbalizar caracteres mientras se escriben, algunos fragmentos de texto se pueden confundir con caracteres escritos cuando llegan a la consola. Esto hace que NVDA acabe deletreando gran parte del contenido.
+Actualmente, NVDA intenta diferencia los caracteres escritos del resto por su proximidad al cursor. Sin embargo, habría que plantearse el uso de apis que no existían cuando se desarrolló el soporte inicial. Por ejemplo, detectarlos con mensajes "WM_CHAR" (disponibles en Windows 7 y posterior), o desde las propias pulsaciones de teclado con el módulo <code>keyboardHandler</code> de NVDA (en la actualización Windows 10 Fall Creators y posterior). En Windows 10 de octubre 2018 y posterior se podría usar <code>UI Automation</code> en vez de usar las apis de consola del todo.</p>
+<h4 id="al-cerrar-consolas-con-el-raton-nvda-muere">¡Al cerrar consolas con el ratón NVDA muere!</h4>
+<p>Debido a la forma que tiene NVDA de conectarse a las consolas para acceder a su contenido, si la consola se cierra con el ratón, el proceso de NVDA se cierra con ella.
+Debería plantearse la idea de mover todo el código de consola a un proceso independiente que pueda matarse con seguridad, o bien recurrir a <code>UI Automation</code> en la actualización de octubre de 2018 de Windows 10 y posterior.</p>
+<h3 id="nvda-para-64-bits">NVDA para 64 bits</h3>
+<h4 id="el-problema_2">El problema</h4>
+<p>Aunque NVDA funciona en las variantes X86 y X64 de Windows y dispone de cierto código que se inyecta en los procesos X64, la aplicación principal de NVDA tan sólo es X86.
+Ya que los procesadores X64 pueden ejecutar instrucciones X86 de forma nativa, NV Access piensa que no habría mejoras de rendimiento importantes al portar NVDA a X64. Sin embargo, al no estar seguros al 100%, hacerlo sería la forma de zanjar esta cuestión de una vez por todas.
+Habría, sin embargo, un beneficio definido al ir a X64, y es que se resolvería la incidencia #7724, en la que se expone que NVDA actualmente no puede interactuar con aplicaciones Java de 64 bits porque no hay empaquetada una DLL del cliente de Java Access Bridge para X86 en la máquina virtual de Java para X64.
+Algunos argumentos teóricos por los que el rendimiento mejoraría al moverse a X64:
+- NVDA recibe una cantidad de eventos del sistema mucho mayor que cualquier aplicación estándar. Tal vez esto implica un coste al tener que cambiar constantemente el contexto de hilos entre arquitecturas.
+- NVDA es la puerta mediante la que los usuarios ciegos de Windows perciben el sistema operativo y sus aplicaciones. Si hay cualquier coste de rendimiento derivado del cambio de hilos entre arquitecturas, los usuarios lo notarán, ya que afectará a cualquier cosa que hagan.</p>
+<h4 id="implementacion_2">Implementación</h4>
+<p>La mayoría de trabajo que hay que realizar para crear una variante X64 de NVDA es cambiar el proceso de construcción para incorporar y usar una compilación X64 de Python. Sin embargo, puede haber un montón de pequeños supuestos en el código fuente de NVDA sobre la arquitectura. Ahora mismo existen ciertas situaciones especializadas en las que NVDA debe usar estructuras específicas de 64 bits al utilizar algunas apis de Windows para acceder a aplicaciones de 64 bits. Posiblemente sería necesario revertir esta lógica.</p>
+<h3 id="carga-perezosa-de-la-lista-de-elementos">Carga perezosa de la lista de elementos</h3>
+<p>Incidencia relacionada: #7197</p>
+<h4 id="el-problema_3">El problema</h4>
+<p>Para ayudar a ubicar información en documentos grandes, NVDA proporciona una lista de elementos (una vista en árbol de elementos disponibles en el documento) que puede filtrarse por tipo o nombre. Por ejemplo, en una página web, se puede usar la lista de elementos para buscar rápidamente en una lista de enlaces.
+Sin embargo, dependiendo del tamaño del documento, la lista de elementos puede tardar mucho tiempo en llenarse completamente de contenido. Mientras eso ocurre, el usuario se queda bloqueado y no puede hacer nada más con NVDA.</p>
+<h4 id="implementacion_3">Implementación</h4>
+<p>Debería plantearse la posibilidad de reescribir la lista de elementos de tal forma que cargue sólo tantos elementos como quepan visualmente en pantalla en la vista en árbol, y después cargue más en segundo plano o bajo demanda cuando el usuario haga desplazarse la vista en árbol con el ratón o se mueva más allá del primer o último elemento visible.</p>
+<h3 id="mover-los-manejadores-de-entrada-apis-de-accesibilidad-a-c">Mover los manejadores de entrada / apis de accesibilidad a C++</h3>
+<h4 id="el-problema_4">El problema</h4>
+<p>NVDA recibe una gran cantidad de eventos de diversas apis de accesibilidad como <a href="https://docs.microsoft.com/en-us/windows/desktop/winauto/microsoft-active-accessibility">Microsoft Active Accessibility</a> (MSAA), <a href="https://docs.microsoft.com/en-us/windows/desktop/winauto/entry-uiauto-win32">Microsoft UI Automation</a>, y los <a href="https://docs.microsoft.com/en-us/windows/desktop/winmsg/hooks">interceptores de teclado y ratón</a>. Actualmente parte de este código se ejecuta en un hilo separado, pero todavía está escrito en Python. Aunque se hace una gran operación de filtrado antes de que estos eventos alcancen el hilo principal del núcleo de NVDA, el cerrojo global del intérprete Python está en uso por estos manejadores de eventos mientras procesan y filtran estos eventos en bruto.
+Si NVDA se inunda con eventos, se puede causar un importante degradado en el rendimiento.</p>
+<h4 id="implementacion_4">Implementación</h4>
+<p>Se debería plantear la posibilidad de mover estos manejadores a C++, asegurándose de que se ejecuten en hilos distintos al del núcleo principal de NVDA. Cada manejador debería dejar sus datos filtrados en una cola y despertar al núcleo con algún tipo de evento Win32 a bajo nivel. El núcleo entonces puede recoger de la cola y procesar la información como lo haría normalmente.</p>
+<h3 id="sistema-de-medida-de-rendimiento-para-nvda">Sistema de medida de rendimiento para NVDA</h3>
+<p>A NV Access le gustaría recopilar información sobre el rendimiento de los distintos subsistemas de NVDA al usarlos día a día, y de esa forma entender mejor los problemas de rendimiento de los que informan los usuarios, especialmente aquellos con hardware de gama baja.
+La recopilación y envío de los datos de rendimiento debe ser opcional, y en sí misma no debería causar un impacto negativo en el rendimiento.
+Información sobre cada cuánto tiempo despierta el núcleo, cuánto lleva de media un ciclo del núcleo, cuántos eventos se reciben de las apis de accesibilidad, cuánto tiempo lleva navegar a la línea anterior o siguiente en un documento, etc.
+Como mínimo se podrían almacenar estos datos de forma local y dar la capacidad al usuario de enviarlos a NV Access manualmente. Lo mejor sería que los datos se enviaran a los servidores de NV Access automáticamente, siempre que el usuario lo haya permitido.</p>
+<h3 id="mejorar-la-experiencia-de-usuario-con-el-actualizador-de-nvda">Mejorar la experiencia de usuario con el actualizador de NVDA</h3>
+<p>Incidencias relacionadas: <a href="https://github.com/nvaccess/nvda/issues/2257">#2257</a>, <a href="https://github.com/nvaccess/nvda/issues/7451">#7451</a>, <a href="https://github.com/nvaccess/nvda/issues/9174">#9174</a> </p>
+<h4 id="el-problema_5">El problema</h4>
+<p>Actualmente, si hay una actualización disponible para NVDA, se muestra un diálogo en primer plano para notificar al usuario. Esto puede interrumpir al usuario, que además podría pulsar de forma accidental alguno de los botones. </p>
+<h4 id="implementacion_5">Implementación</h4>
+<p>Debería plantearse la posibilidad de proporcionar una experiencia de usuario similar a la de otros programas, que haga uso de las apis modernas de notificación, como por ejemplo la API de notificación de Windows 10 o las notificaciones emergentes.
+Quizás en este trabajo se podrían incluir mejoras en el proceso de actualización como las siguientes:
+- Que ya no haga falta acceso como administrador para actualizar NVDA (se podría usar un servicio como el que tienen los productos de Mozilla)
+- Extraer NVDA en segundo plano, de tal forma que la actualización dure sólo lo que se tarda en renombrar una carpeta, registrar algunos accesos directos, etc. en vez de que el usuario tenga que esperar a que se copien todos los archivos.</p>
+<h3 id="personalizar-el-orden-y-la-inclusion-de-la-informacion-de-objetos-y-formato-con-voz-y-braille">Personalizar el orden y la inclusión de la información de objetos y formato con voz y braille</h3>
+<p>Incidencias relacionadas: #7232</p>
+<h4 id="el-problema_6">El problema</h4>
+<p>Cuando NVDA anuncia un control determinado mediante voz o braille, incluye información como su nombre, su rol (botón, casilla de verificación, deslizador, etc), estados (marcado, pulsado, contraído, etc), su valor si lo tiene (100% por ejemplo), descripción, atajo de teclado, posición en el grupo, y otras posibles propiedades varias. 
+El orden en que NVDA anuncia estas propiedades es rígido, y es casi el mismo para voz y braille.
+Debería plantearse la posibilidad de permitir que el usuario personalice el orden en el que se presenta esta información, y que se configure de forma separada para voz y braille.
+ Quizás se podría usar algún tipo de lenguaje de plantilla para representar este orden, junto con una interfaz de usuario adecuada que permita al usuario medio ser capaz de insertar, eliminar y reordenar propiedades.
+ Esta interfaz debería separar las configuraciones de voz y braille, y puede llegar incluso a separar la configuración para el modo foco y el modo exploración (por ejemplo, anunciar controles incrustados en un documento tales como enlaces, en comparación con un control independiente en un diálogo).
+De manera similar a cómo se anuncian controles, NVDA informa sobre muchos atributos de texto. De nuevo, esta información vuelve a ser rígida y es casi la misma tanto en voz como en braille. Algunos atributos de formato de ejemplo son el nombre de la fuente, tamaño de fuente, atributos como negrita, cursiva o subrayado, color de fuente y fondo, alineación de párrafo y muchos más.
+Debería plantearse la idea de permitir que el usuario personalice el orden de esta información, y permitir que lo configuren por separado para voz y braille.</p>
+<h3 id="integrar-nvda-con-la-lupa-de-windows">Integrar NVDA con la lupa de Windows</h3>
+<p>Hay un buen número de usuarios que utilizan NVDA junto con la <a href="https://support.microsoft.com/en-au/help/11542/windows-use-magnifier">lupa incorporada en Windows</a>. Debería plantearse la posibilidad de mejorar la inegración entre NVDA y la lupa de Windows. Ejemplos:
+- Permitir al usuario configurar todos los ajustes de la lupa desde NVDA. Esto significa que no tendrían que aprender a usar dos programas de asistencia, y sus preferencias podrían guardarse en la misma configuración.
+- Sincronizar la lupa con la navegación de NVDA por objetos o foco. Por ejemplo: si el usuario navega exclusivamente con NVDA, la lupa debería seguirlo.
+- Aprender de las ideas innovadoras del ampliador gratuito <a href="https://www.glassbrick.org/">Glassbrick</a>, y asegurarse de que NVDA puede ofrecer la misma o mejor interacción y configuración.</p>
+</body>
+</html>

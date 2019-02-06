@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-02-02 11:45+Hora estándar romance\n"
-"PO-Revision-Date: 2019-02-05 20:51+0100\n"
+"POT-Creation-Date: 2019-02-06 15:15+Hora estándar romance\n"
+"PO-Revision-Date: 2019-02-06 15:28+0100\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.2.1\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\GSOC-2019-Ideas-List.py:3
 msgid "## Introduction"
@@ -47,9 +47,8 @@ msgstr ""
 "estudiantes podrían plantearse resolver."
 
 #: ..\python_docs\GSOC-2019-Ideas-List.py:6
-#: ..\python_docs\GSOC-2019-Ideas-List.py:24
-#: ..\python_docs\GSOC-2019-Ideas-List.py:68
 #: ..\python_docs\GSOC-2019-Ideas-List.py:83
+#: ..\python_docs\GSOC-2019-Ideas-List.py:99
 msgid " "
 msgstr " "
 
@@ -71,6 +70,16 @@ msgstr ""
 "Incidencia relacionada: [#7348](https://github.com/nvaccess/nvda/issues/7348)"
 
 #: ..\python_docs\GSOC-2019-Ideas-List.py:10
+#: ..\python_docs\GSOC-2019-Ideas-List.py:20
+#: ..\python_docs\GSOC-2019-Ideas-List.py:47
+#: ..\python_docs\GSOC-2019-Ideas-List.py:58
+#: ..\python_docs\GSOC-2019-Ideas-List.py:64
+#: ..\python_docs\GSOC-2019-Ideas-List.py:76
+#: ..\python_docs\GSOC-2019-Ideas-List.py:86
+msgid "#### The problem"
+msgstr "#### El problema"
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:11
 msgid ""
 "NVDA provides broad support for reading and interacting with spreadsheets in "
 "Microsoft Excel. This support is implemented by using [Excel's COM object "
@@ -82,7 +91,7 @@ msgstr ""
 "modelo de objetos COM de Excel](https://docs.microsoft.com/en-us/office/vba/"
 "api/overview/excel/object-model) utilizando un enfoque de proceso cruzado."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:11
+#: ..\python_docs\GSOC-2019-Ideas-List.py:12
 msgid ""
 "Partly due to the amount of information NVDA must fetch, and partly due to "
 "recent slowdowns in the object model itself, NVDA's access for Microsoft "
@@ -100,7 +109,16 @@ msgstr ""
 "acciones que se puedan aplicar a NVDA para limitar o procesar por lotes las "
 "llamadas al modelo de objetos para proporcionar el mejor rendimiento."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:12
+#: ..\python_docs\GSOC-2019-Ideas-List.py:13
+#: ..\python_docs\GSOC-2019-Ideas-List.py:23
+#: ..\python_docs\GSOC-2019-Ideas-List.py:54
+#: ..\python_docs\GSOC-2019-Ideas-List.py:61
+#: ..\python_docs\GSOC-2019-Ideas-List.py:67
+#: ..\python_docs\GSOC-2019-Ideas-List.py:78
+msgid "#### Implementation"
+msgstr "#### Implementación"
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:14
 msgid ""
 "Similarly to our [in-process support for Microsoft Word](https://github.com/"
 "nvaccess/nvda/blob/master/nvdaHelper/remote/winword.cpp), we should consider "
@@ -117,7 +135,7 @@ msgstr ""
 "pedirle a Excel que pause el [refresco de pantalla](https://docs.microsoft."
 "com/en-us/office/vba/api/excel.application.screenupdating). "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:13
+#: ..\python_docs\GSOC-2019-Ideas-List.py:15
 msgid ""
 "Although all the work to run NVDA's in-process code in Excel already exists, "
 "we would need to still write the actual COM calls, plus come up with an "
@@ -129,11 +147,25 @@ msgstr ""
 "reales, así como definir un formato de serialización apropiado en el que "
 "representar toda la información de una celda dada para enviarla a NVDA."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:14
+#: ..\python_docs\GSOC-2019-Ideas-List.py:16
+msgid "#### Impact"
+msgstr "#### Impacto"
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:17
+msgid ""
+"Many blind and vision impaired people use Excel either in their education or "
+"employment. Speeding up support for Microsoft Excel will allow NVDA users to "
+"be much more efficient at their work."
+msgstr ""
+"Muchas personas ciegas y con baja visión usan Excel en sus estudios o su "
+"trabajo. Acelerar el soporte para Microsoft Excel permitiría a los usuarios "
+"de NVDA ser mucho más eficientes en sus tareas."
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:18
 msgid "### Improve stability of NVDA's audio output"
 msgstr "### Mejorar la estabilidad de la salida de audio en NVDA"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:15
+#: ..\python_docs\GSOC-2019-Ideas-List.py:19
 msgid ""
 "[Related issues](https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&q=is"
 "%3Aissue+is%3Aopen+label%3Aaudio)"
@@ -141,7 +173,7 @@ msgstr ""
 "[Incidencias relacionadas](https://github.com/nvaccess/nvda/issues?utf8="
 "%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Aaudio)"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:16
+#: ..\python_docs\GSOC-2019-Ideas-List.py:21
 msgid ""
 "NVDA outputs audio (including sounds and speech from most speech "
 "synthesizers) via the [Windows  Multimedia](https://docs.microsoft.com/en-gb/"
@@ -151,7 +183,7 @@ msgstr ""
 "mediante la API [Windows  Multimedia](https://docs.microsoft.com/en-gb/"
 "windows/desktop/Multimedia/waveform-functions) (winMM)."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:17
+#: ..\python_docs\GSOC-2019-Ideas-List.py:22
 msgid ""
 "Some users (especially those using USB audio hardware) report a short chunk "
 "of audio being cut off either at the beginning or the end of speech. This "
@@ -170,7 +202,7 @@ msgstr ""
 "dispositivo, algún hardware de audio puede deshacerse de los bloques "
 "finales, en vez de asegurarse de que se reproducen antes de cerrar. "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:18
+#: ..\python_docs\GSOC-2019-Ideas-List.py:24
 msgid ""
 "We could consider keeping the audio device open for several seconds after "
 "speech finishes so that all audio is played, and so that the audio device "
@@ -187,7 +219,7 @@ msgstr ""
 "dispositivo por primera vez, para asegurarse de que el dispositivo está "
 "realmente listo antes de que NVDA empiece a hablar."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:19
+#: ..\python_docs\GSOC-2019-Ideas-List.py:25
 msgid ""
 "We could also consider looking at using newer audio APIs available in "
 "Windows 7 and above, as this is now the minimum Windows version required by "
@@ -197,7 +229,7 @@ msgstr ""
 "Windows 7 y versiones posteriores, ya que esta es la versión mínima de "
 "Windows en la que funciona NVDA."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:20
+#: ..\python_docs\GSOC-2019-Ideas-List.py:26
 msgid ""
 "There is a possibility that several system crashes reported by users may be "
 "due to NVDA opening and closing the audio device too aggressively. "
@@ -212,7 +244,7 @@ msgstr ""
 "Posiblemente, esto puede ser debido a que el controlador de audio se toma su "
 "tiempo para abrir el dispositivo cada vez que se emite voz."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:21
+#: ..\python_docs\GSOC-2019-Ideas-List.py:27
 msgid ""
 "We also may have multiple code paths opening, writing to and closing the "
 "audio device at the same time. E.g. the tones module for beeps, may hold the "
@@ -226,13 +258,13 @@ msgstr ""
 "el tiempo. Puede ser una buena idea trabajar en un único fragmento de código "
 "que integre todo esto y serialice el acceso al dispositivo de audio."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:22
+#: ..\python_docs\GSOC-2019-Ideas-List.py:28
 msgid ""
 "There are several locks in place currently, but this should be reviewed."
 msgstr ""
 "Actualmente hay en juego varios cerrojos, pero habría que revisar esa parte."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:23
+#: ..\python_docs\GSOC-2019-Ideas-List.py:29
 msgid ""
 "See the [nvWave](https://github.com/nvaccess/nvda/blob/master/source/nvwave."
 "py) module in the NVDA source code."
@@ -240,11 +272,29 @@ msgstr ""
 "Mira el módulo [nvWave](https://github.com/nvaccess/nvda/blob/master/source/"
 "nvwave.py) en el código fuente de NVDA."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:25
+#: ..\python_docs\GSOC-2019-Ideas-List.py:30
+msgid " #### Impact"
+msgstr " #### Impacto"
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:31
+msgid ""
+"Improving the audio in NvDA will improve both stability and performance of "
+"NVDA. NVDA will be able to be used efficiently on a wider range of audio "
+"hardware, which means NvDA can be used in more situations and possibly on "
+"lower-end devices, ensuring NVDA is helping the greatest amount of blind and "
+"vision impaired people possible."
+msgstr ""
+"Mejorar el audio en NVDA mejorará la estabilidad y el rendimiento del "
+"lector. NVDA podrá usarse de forma eficiente en un rango más amplio de "
+"dispositivos de audio, lo que significa que podrá utilizarse en más "
+"situaciones y posiblemente en dispositivos de gama más baja, ayudando así al "
+"mayor número de personas ciegas y deficientes visuales posible."
+
+#: ..\python_docs\GSOC-2019-Ideas-List.py:32
 msgid "### Performance and stability in windows command consoles"
 msgstr "### Rendimiento y estabilidad en las consolas de comandos de Windows"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:26
+#: ..\python_docs\GSOC-2019-Ideas-List.py:33
 msgid ""
 "[Related issues](https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&q=is"
 "%3Aissue+is%3Aopen+label%3A%22Windows+Command+Console%22)"
@@ -252,7 +302,7 @@ msgstr ""
 "[Incidencias relacionadas](https://github.com/nvaccess/nvda/issues?utf8="
 "%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22Windows+Command+Console%22)"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:27
+#: ..\python_docs\GSOC-2019-Ideas-List.py:34
 msgid ""
 "NVDA allows the user to read the content of Windows command consoles (cmd, "
 "Bash etc) with NVDA review cursor commands. It Also reports new text as it "
@@ -262,7 +312,7 @@ msgstr ""
 "Windows (cmd, bash, etc) con las órdenes del cursor de revisión. También "
 "anuncia el texto tecleado mientras lo escribimos en la consola."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:28
+#: ..\python_docs\GSOC-2019-Ideas-List.py:35
 msgid ""
 "This support is implemented using the [console APIs from kernel32](https://"
 "docs.microsoft.com/en-us/windows/console/console-functions)."
@@ -270,16 +320,16 @@ msgstr ""
 "Este soporte se implementa usando las [apis de consola de kernel32](https://"
 "docs.microsoft.com/en-us/windows/console/console-functions)."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:29
+#: ..\python_docs\GSOC-2019-Ideas-List.py:36
 msgid ""
 "However, this support has the following problems which need to be addressed:"
 msgstr "Sin embargo, este soporte tiene problemas que hay que resolver:"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:30
+#: ..\python_docs\GSOC-2019-Ideas-List.py:37
 msgid "#### Performance"
 msgstr "#### Rendimiento"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:31
+#: ..\python_docs\GSOC-2019-Ideas-List.py:38
 msgid ""
 "When large amounts of new text is written to the console, NVDA can greatly "
 "decrease in performance or completely freeze, not only making it impossible "
@@ -293,7 +343,7 @@ msgstr ""
 "sistema. Esto sólo se arregla cerrando la ventana de la consola o "
 "reiniciando NVDA. "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:32
+#: ..\python_docs\GSOC-2019-Ideas-List.py:39
 msgid ""
 "We should consider finding a faster diffing algorithm or perhaps writing one "
 "ourselves in c++. Also we should try to limit the amount of text sent to be "
@@ -304,11 +354,11 @@ msgstr ""
 "se va a verbalizar de tal forma que no inunde el núcleo de NVDA o el "
 "sintetizador de voz. "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:33
+#: ..\python_docs\GSOC-2019-Ideas-List.py:40
 msgid "#### Accuracy of Speak typed characters in consoles"
 msgstr "#### Precisión al verbalizar caracteres escritos en la consola"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:34
+#: ..\python_docs\GSOC-2019-Ideas-List.py:41
 msgid ""
 "If NVDA is configured to speak characters as they are typed, many times in "
 "consoles if new chunks of text are being written to the console, many of "
@@ -320,7 +370,7 @@ msgstr ""
 "cuando llegan a la consola. Esto hace que NVDA acabe deletreando gran parte "
 "del contenido."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:35
+#: ..\python_docs\GSOC-2019-Ideas-List.py:42
 msgid ""
 "Currently we try to differentiate typed characters from other characters by "
 "their proximity to the caret. However, we should consider looking at newer "
@@ -340,11 +390,11 @@ msgstr ""
 "Windows 10 de octubre 2018 y posterior se podría usar `UI Automation` en vez "
 "de usar las apis de consola del todo."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:36
+#: ..\python_docs\GSOC-2019-Ideas-List.py:43
 msgid "#### Closing consoles with the mouse kills NVDA!"
 msgstr "#### ¡Al cerrar consolas con el ratón NVDA muere!"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:37
+#: ..\python_docs\GSOC-2019-Ideas-List.py:44
 msgid ""
 "Due to the way NVDA must connect to consoles in order to access their "
 "content, if the console is closed with the mouse, it will always kill off "
@@ -354,7 +404,7 @@ msgstr ""
 "su contenido, si la consola se cierra con el ratón, el proceso de NVDA se "
 "cierra con ella."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:38
+#: ..\python_docs\GSOC-2019-Ideas-List.py:45
 msgid ""
 "We should consider either moving all of our console API code into a separate "
 "process which would be safe to kill off, or consider moving to `UI "
@@ -364,54 +414,75 @@ msgstr ""
 "independiente que pueda matarse con seguridad, o bien recurrir a `UI "
 "Automation` en la actualización de octubre de 2018 de Windows 10 y posterior."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:39
+#: ..\python_docs\GSOC-2019-Ideas-List.py:46
 msgid "### 64 bit NVDA"
 msgstr "### NVDA para 64 bits"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:40
+#: ..\python_docs\GSOC-2019-Ideas-List.py:48
 msgid ""
 "Although NVDA runs on both x86 and x64 variants of Windows, and there is "
 "some x64 c++ code for NVDA that runs in-process,  the main NVDA application "
 "is only itself x86."
 msgstr ""
+"Aunque NVDA funciona en las variantes X86 y X64 de Windows y dispone de "
+"cierto código que se inyecta en los procesos X64, la aplicación principal de "
+"NVDA tan sólo es X86."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:41
+#: ..\python_docs\GSOC-2019-Ideas-List.py:49
 msgid ""
 "As x64 processors can run x86 instructions natively, it is the current "
 "belief of NV Access that no major performance benefit would be seen by "
 "moving the NVDA application to x64. However, we are not 100% sure of this, "
 "and only doing it would answer the question once and for all."
 msgstr ""
+"Ya que los procesadores X64 pueden ejecutar instrucciones X86 de forma "
+"nativa, NV Access piensa que no habría mejoras de rendimiento importantes al "
+"portar NVDA a X64. Sin embargo, al no estar seguros al 100%, hacerlo sería "
+"la forma de zanjar esta cuestión de una vez por todas."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:42
+#: ..\python_docs\GSOC-2019-Ideas-List.py:50
 msgid ""
 "There would however be one definite benefit to going x64, which is that it "
 "would resolve #7724 where NVDA cannot currently interact with 64 bit Java "
 "applications because there is no x86 Java Access Bridge client dll packaged "
 "with the x64 Java VM."
 msgstr ""
+"Habría, sin embargo, un beneficio definido al ir a X64, y es que se "
+"resolvería la incidencia #7724, en la que se expone que NVDA actualmente no "
+"puede interactuar con aplicaciones Java de 64 bits porque no hay empaquetada "
+"una DLL del cliente de Java Access Bridge para X86 en la máquina virtual de "
+"Java para X64."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:43
+#: ..\python_docs\GSOC-2019-Ideas-List.py:51
 msgid ""
 "Some theoretical arguments to why going x64 may improve performance are:"
 msgstr ""
+"Algunos argumentos teóricos por los que el rendimiento mejoraría al moverse "
+"a X64:"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:44
+#: ..\python_docs\GSOC-2019-Ideas-List.py:52
 msgid ""
 "- NVDA receives a great deal more events from the system than other standard "
 "applications. Perhaps there is a cost involved with constant thread context "
 "switching between architectures."
 msgstr ""
+"- NVDA recibe una cantidad de eventos del sistema mucho mayor que cualquier "
+"aplicación estándar. Tal vez esto implica un coste al tener que cambiar "
+"constantemente el contexto de hilos entre arquitecturas."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:45
+#: ..\python_docs\GSOC-2019-Ideas-List.py:53
 msgid ""
 "- NVDA is the gateway through which blind Windows users perceive the "
 "Operating System and its applications. If there is any performance cost for "
 "thread switching between architectures, users will notice, as it will affect "
 "anything they do."
 msgstr ""
+"- NVDA es la puerta mediante la que los usuarios ciegos de Windows perciben "
+"el sistema operativo y sus aplicaciones. Si hay cualquier coste de "
+"rendimiento derivado del cambio de hilos entre arquitecturas, los usuarios "
+"lo notarán, ya que afectará a cualquier cosa que hagan."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:46
+#: ..\python_docs\GSOC-2019-Ideas-List.py:55
 msgid ""
 "The majority of the work to make an x64 variant of NVDA is to change the "
 "build process to incorporate and use an x64 build of Python. However, there "
@@ -420,43 +491,64 @@ msgid ""
 "must use specific 64 bit structures when using some Windows APIs to access "
 "64 bit apps. This logic would need to be possibly reversed."
 msgstr ""
+"La mayoría de trabajo que hay que realizar para crear una variante X64 de "
+"NVDA es cambiar el proceso de construcción para incorporar y usar una "
+"compilación X64 de Python. Sin embargo, puede haber un montón de pequeños "
+"supuestos en el código fuente de NVDA sobre la arquitectura. Ahora mismo "
+"existen ciertas situaciones especializadas en las que NVDA debe usar "
+"estructuras específicas de 64 bits al utilizar algunas apis de Windows para "
+"acceder a aplicaciones de 64 bits. Posiblemente sería necesario revertir "
+"esta lógica."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:47
+#: ..\python_docs\GSOC-2019-Ideas-List.py:56
 msgid "### Lazy population of Elements list"
-msgstr ""
+msgstr "### Carga perezosa de la lista de elementos"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:48
+#: ..\python_docs\GSOC-2019-Ideas-List.py:57
 msgid "Related issue: #7197"
 msgstr "Incidencia relacionada: #7197"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:49
+#: ..\python_docs\GSOC-2019-Ideas-List.py:59
 msgid ""
 "To aide in locating information in large documents, NVDA provides an "
 "Elements List (a treevew of available elements in the document) which can be "
 "filtered by type or name. For instance, on a web page, the Elements List can "
 "be used to quickly search through a list of links."
 msgstr ""
+"Para ayudar a ubicar información en documentos grandes, NVDA proporciona una "
+"lista de elementos (una vista en árbol de elementos disponibles en el "
+"documento) que puede filtrarse por tipo o nombre. Por ejemplo, en una página "
+"web, se puede usar la lista de elementos para buscar rápidamente en una "
+"lista de enlaces."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:50
+#: ..\python_docs\GSOC-2019-Ideas-List.py:60
 msgid ""
 "However, depending on the size of the document, the Elements list can take a "
 "long time to become fully populated with content. While this is happening, "
 "the user is blocked from doing anything else in NVDA."
 msgstr ""
+"Sin embargo, dependiendo del tamaño del documento, la lista de elementos "
+"puede tardar mucho tiempo en llenarse completamente de contenido. Mientras "
+"eso ocurre, el usuario se queda bloqueado y no puede hacer nada más con NVDA."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:51
+#: ..\python_docs\GSOC-2019-Ideas-List.py:62
 msgid ""
 "We should consider rewriting the Elements List so that it only loads as many "
 "elements as actually fit in the treeview visibly on screen, and then either "
 "fetch more in the background or on demand when the user causes the treeview "
 "to scroll with the mouse or by moving past the first or last visible element."
 msgstr ""
+"Debería plantearse la posibilidad de reescribir la lista de elementos de tal "
+"forma que cargue sólo tantos elementos como quepan visualmente en pantalla "
+"en la vista en árbol, y después cargue más en segundo plano o bajo demanda "
+"cuando el usuario haga desplazarse la vista en árbol con el ratón o se mueva "
+"más allá del primer o último elemento visible."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:52
+#: ..\python_docs\GSOC-2019-Ideas-List.py:63
 msgid "### Move input / accessibility API event handlers into c++"
-msgstr ""
+msgstr "### Mover los manejadores de entrada / apis de accesibilidad a C++"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:53
+#: ..\python_docs\GSOC-2019-Ideas-List.py:65
 msgid ""
 "NVDA receives a great deal of events from various accessibility APIs such as "
 "[Microsoft Active Accessibility](https://docs.microsoft.com/en-us/windows/"
@@ -469,13 +561,26 @@ msgid ""
 "Python's global interpreter lock is held by these event handlers while they "
 "process / filter the raw events."
 msgstr ""
+"NVDA recibe una gran cantidad de eventos de diversas apis de accesibilidad "
+"como [Microsoft Active Accessibility](https://docs.microsoft.com/en-us/"
+"windows/desktop/winauto/microsoft-active-accessibility) (MSAA), [Microsoft "
+"UI Automation](https://docs.microsoft.com/en-us/windows/desktop/winauto/"
+"entry-uiauto-win32), y los [interceptores de teclado y ratón](https://docs."
+"microsoft.com/en-us/windows/desktop/winmsg/hooks). Actualmente parte de este "
+"código se ejecuta en un hilo separado, pero todavía está escrito en Python. "
+"Aunque se hace una gran operación de filtrado antes de que estos eventos "
+"alcancen el hilo principal del núcleo de NVDA, el cerrojo global del "
+"intérprete Python está en uso por estos manejadores de eventos mientras "
+"procesan y filtran estos eventos en bruto."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:54
+#: ..\python_docs\GSOC-2019-Ideas-List.py:66
 msgid ""
 "If NVDA is flooded with events, this can cause major performance degradation."
 msgstr ""
+"Si NVDA se inunda con eventos, se puede causar un importante degradado en el "
+"rendimiento."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:55
+#: ..\python_docs\GSOC-2019-Ideas-List.py:68
 msgid ""
 "We should consider moving these handlers into C++, ensuring that they are "
 "run on separate threads from NVDA's main core thread. Each handler should "
@@ -483,45 +588,65 @@ msgid ""
 "low-level win32 event. The core can then take from the queue and process as "
 "it normally does."
 msgstr ""
+"Se debería plantear la posibilidad de mover estos manejadores a C++, "
+"asegurándose de que se ejecuten en hilos distintos al del núcleo principal "
+"de NVDA. Cada manejador debería dejar sus datos filtrados en una cola y "
+"despertar al núcleo con algún tipo de evento Win32 a bajo nivel. El núcleo "
+"entonces puede recoger de la cola y procesar la información como lo haría "
+"normalmente."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:56
+#: ..\python_docs\GSOC-2019-Ideas-List.py:69
 msgid "### Performance measuring system for NVDA"
-msgstr ""
+msgstr "### Sistema de medida de rendimiento para NVDA"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:57
+#: ..\python_docs\GSOC-2019-Ideas-List.py:70
 msgid ""
 "We would like to gather information about the performance of NVDA's various "
 "subsystems within day to day usage, so that we can better understand the "
 "performance issues that some people are reporting, especially those on low-"
 "end hardware."
 msgstr ""
+"A NV Access le gustaría recopilar información sobre el rendimiento de los "
+"distintos subsistemas de NVDA al usarlos día a día, y de esa forma entender "
+"mejor los problemas de rendimiento de los que informan los usuarios, "
+"especialmente aquellos con hardware de gama baja."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:58
+#: ..\python_docs\GSOC-2019-Ideas-List.py:71
 msgid ""
 "Collection and submission of performance data should be opt-in, and should "
 "not in itself cause negative impact on performance."
 msgstr ""
+"La recopilación y envío de los datos de rendimiento debe ser opcional, y en "
+"sí misma no debería causar un impacto negativo en el rendimiento."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:59
+#: ..\python_docs\GSOC-2019-Ideas-List.py:72
 msgid ""
 "Information such as how often the core is woken up, how long a core cycle "
 "takes on average, number of accessibility API events are received, how long "
 "navigating to the next or previous line in a document takes etc."
 msgstr ""
+"Información sobre cada cuánto tiempo despierta el núcleo, cuánto lleva de "
+"media un ciclo del núcleo, cuántos eventos se reciben de las apis de "
+"accesibilidad, cuánto tiempo lleva navegar a la línea anterior o siguiente "
+"en un documento, etc."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:60
+#: ..\python_docs\GSOC-2019-Ideas-List.py:73
 msgid ""
 "At very least this data could be stored locally with the ability for the "
 "user to send it to NV Access manually. At best, this data would be sent "
 "directly to NV Access servers automatically, assuming the user has allowed "
 "this."
 msgstr ""
+"Como mínimo se podrían almacenar estos datos de forma local y dar la "
+"capacidad al usuario de enviarlos a NV Access manualmente. Lo mejor sería "
+"que los datos se enviaran a los servidores de NV Access automáticamente, "
+"siempre que el usuario lo haya permitido."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:61
+#: ..\python_docs\GSOC-2019-Ideas-List.py:74
 msgid "### Improve the UX of the NVDA updater"
-msgstr ""
+msgstr "### Mejorar la experiencia de usuario con el actualizador de NVDA"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:62
+#: ..\python_docs\GSOC-2019-Ideas-List.py:75
 msgid ""
 "Related issues: [#2257](https://github.com/nvaccess/nvda/issues/2257), "
 "[#7451](https://github.com/nvaccess/nvda/issues/7451), [#9174](https://"
@@ -531,87 +656,122 @@ msgstr ""
 "issues/2257), [#7451](https://github.com/nvaccess/nvda/issues/7451), [#9174]"
 "(https://github.com/nvaccess/nvda/issues/9174) "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:63
+#: ..\python_docs\GSOC-2019-Ideas-List.py:77
 msgid ""
 "Currently if there is an update available for NVDA, a dialog comes to the "
 "foreground notifying the user. this can interrupt the user and or the user "
 "may miss it or even accidentally activate it. "
 msgstr ""
+"Actualmente, si hay una actualización disponible para NVDA, se muestra un "
+"diálogo en primer plano para notificar al usuario. Esto puede interrumpir al "
+"usuario, que además podría pulsar de forma accidental alguno de los botones. "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:64
+#: ..\python_docs\GSOC-2019-Ideas-List.py:79
 msgid ""
 "We should consider providing a UX for updates similar to other software, "
 "that makes use of modern notification APIs such as toasts and the Windows 10 "
 "notification API."
 msgstr ""
+"Debería plantearse la posibilidad de proporcionar una experiencia de usuario "
+"similar a la de otros programas, que haga uso de las apis modernas de "
+"notificación, como por ejemplo la API de notificación de Windows 10 o las "
+"notificaciones emergentes."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:65
+#: ..\python_docs\GSOC-2019-Ideas-List.py:80
 msgid ""
 "Perhaps included in this work could be also improving the update process so "
 "that:"
 msgstr ""
+"Quizás en este trabajo se podrían incluir mejoras en el proceso de "
+"actualización como las siguientes:"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:66
+#: ..\python_docs\GSOC-2019-Ideas-List.py:81
 msgid ""
 "- Administrative access is no longer required to update NVDA (we could use a "
 "service like Mozilla products)"
 msgstr ""
+"- Que ya no haga falta acceso como administrador para actualizar NVDA (se "
+"podría usar un servicio como el que tienen los productos de Mozilla)"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:67
+#: ..\python_docs\GSOC-2019-Ideas-List.py:82
 msgid ""
 "- Unpack NVDA in the background, so updating only takes as long as renaming "
 "a folder and registering some shortcuts etc. Rather than the user having to "
 "wait for all files to be copied."
 msgstr ""
+"- Extraer NVDA en segundo plano, de tal forma que la actualización dure sólo "
+"lo que se tarda en renombrar una carpeta, registrar algunos accesos "
+"directos, etc. en vez de que el usuario tenga que esperar a que se copien "
+"todos los archivos."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:69
+#: ..\python_docs\GSOC-2019-Ideas-List.py:84
 msgid ""
 "### Customize order and inclusion of object and formatting information to "
 "speech and braille"
 msgstr ""
+"### Personalizar el orden y la inclusión de la información de objetos y "
+"formato con voz y braille"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:70
+#: ..\python_docs\GSOC-2019-Ideas-List.py:85
 msgid " Related issues: #7232"
 msgstr " Incidencias relacionadas: #7232"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:71
+#: ..\python_docs\GSOC-2019-Ideas-List.py:87
 msgid ""
-" When NVDA reports a particular control in speech or braille, it includes "
+"When NVDA reports a particular control in speech or braille, it includes "
 "information such as the control's name, role (button, checkbox, slider etc), "
 "states (checked, pressed, collapsed etc), its value if it has one (100% for "
 "example), description, keyboard shortcut, position in group, and several "
 "other possible properties. "
 msgstr ""
+"Cuando NVDA anuncia un control determinado mediante voz o braille, incluye "
+"información como su nombre, su rol (botón, casilla de verificación, "
+"deslizador, etc), estados (marcado, pulsado, contraído, etc), su valor si lo "
+"tiene (100% por ejemplo), descripción, atajo de teclado, posición en el "
+"grupo, y otras posibles propiedades varias. "
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:72
+#: ..\python_docs\GSOC-2019-Ideas-List.py:88
 msgid ""
 "The order in which NVDA reports these properties is hard-coded, and is "
 "roughly the same for both speech and braille."
 msgstr ""
+"El orden en que NVDA anuncia estas propiedades es rígido, y es casi el mismo "
+"para voz y braille."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:73
+#: ..\python_docs\GSOC-2019-Ideas-List.py:89
 msgid ""
 "We should consider allowing the user to customize the order in which this "
 "information is presented, and allow it to be configured separately for "
 "speech and braille."
 msgstr ""
+"Debería plantearse la posibilidad de permitir que el usuario personalice el "
+"orden en el que se presenta esta información, y que se configure de forma "
+"separada para voz y braille."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:74
+#: ..\python_docs\GSOC-2019-Ideas-List.py:90
 msgid ""
 " Perhaps some kind of template language could be used to represent the "
 "order, along with a suitable UI that could allow the average user to be able "
 "to insert, remove and reorder properties."
 msgstr ""
+" Quizás se podría usar algún tipo de lenguaje de plantilla para representar "
+"este orden, junto con una interfaz de usuario adecuada que permita al "
+"usuario medio ser capaz de insertar, eliminar y reordenar propiedades."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:75
+#: ..\python_docs\GSOC-2019-Ideas-List.py:91
 msgid ""
 " This UI would have to allow separate configuring for both speech and "
 "braille, and may go as far as separate configurations for both browse mode "
 "and focus mode (i.e. reporting controls embedded in a document such as a "
 "link, verses a stand-alone control in a dialog)."
 msgstr ""
+" Esta interfaz debería separar las configuraciones de voz y braille, y puede "
+"llegar incluso a separar la configuración para el modo foco y el modo "
+"exploración (por ejemplo, anunciar controles incrustados en un documento "
+"tales como enlaces, en comparación con un control independiente en un "
+"diálogo)."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:76
+#: ..\python_docs\GSOC-2019-Ideas-List.py:92
 msgid ""
 "Similar to reporting controls, NVDA reports many text formatting attributes. "
 "Again, currently the order of this information is hard-coded and is pretty "
@@ -619,42 +779,64 @@ msgid ""
 "font name, font size, attributes such as bold, italic and underline, font "
 "and background color, paragraph alignment and much more."
 msgstr ""
+"De manera similar a cómo se anuncian controles, NVDA informa sobre muchos "
+"atributos de texto. De nuevo, esta información vuelve a ser rígida y es casi "
+"la misma tanto en voz como en braille. Algunos atributos de formato de "
+"ejemplo son el nombre de la fuente, tamaño de fuente, atributos como "
+"negrita, cursiva o subrayado, color de fuente y fondo, alineación de párrafo "
+"y muchos más."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:77
+#: ..\python_docs\GSOC-2019-Ideas-List.py:93
 msgid ""
 "We should consider allowing the user to customize the order of this "
 "information, and allow them to configure it separately for both speech and "
 "braille."
 msgstr ""
+"Debería plantearse la idea de permitir que el usuario personalice el orden "
+"de esta información, y permitir que lo configuren por separado para voz y "
+"braille."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:78
+#: ..\python_docs\GSOC-2019-Ideas-List.py:94
 msgid "### Integrate NVDA with the windows magnifier"
-msgstr ""
+msgstr "### Integrar NVDA con la lupa de Windows"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:79
+#: ..\python_docs\GSOC-2019-Ideas-List.py:95
 msgid ""
 "There are a number of NVDA users who use NVDA in conjunction with the "
 "[Magnifier built into Windows](https://support.microsoft.com/en-au/"
 "help/11542/windows-use-magnifier). We should consider a tighter integration "
 "between NVDA and the Windows Magnifier. Examples:"
 msgstr ""
+"Hay un buen número de usuarios que utilizan NVDA junto con la [lupa "
+"incorporada en Windows](https://support.microsoft.com/en-au/help/11542/"
+"windows-use-magnifier). Debería plantearse la posibilidad de mejorar la "
+"inegración entre NVDA y la lupa de Windows. Ejemplos:"
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:80
+#: ..\python_docs\GSOC-2019-Ideas-List.py:96
 msgid ""
 "- Allow the user to configure all Magnifier settings directly from NVDA. "
 "This means they do not have to learn two different assistive programs, and "
 "their preferences can be saved in the same configuration."
 msgstr ""
+"- Permitir al usuario configurar todos los ajustes de la lupa desde NVDA. "
+"Esto significa que no tendrían que aprender a usar dos programas de "
+"asistencia, y sus preferencias podrían guardarse en la misma configuración."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:81
+#: ..\python_docs\GSOC-2019-Ideas-List.py:97
 msgid ""
 "- Synchronize the Magnifier with NVDA's focus / object navigation. I.e. if "
 "the user specifically navigates with NVDA, the Magnifier should follow along."
 msgstr ""
+"- Sincronizar la lupa con la navegación de NVDA por objetos o foco. Por "
+"ejemplo: si el usuario navega exclusivamente con NVDA, la lupa debería "
+"seguirlo."
 
-#: ..\python_docs\GSOC-2019-Ideas-List.py:82
+#: ..\python_docs\GSOC-2019-Ideas-List.py:98
 msgid ""
 "- Learn from the innovative ideas in the free [Glassbrick](https://www."
 "glassbrick.org/) magnifier, and ensure that NVDA can offer the same if not "
 "better interaction and configurability."
 msgstr ""
+"- Aprender de las ideas innovadoras del ampliador gratuito [Glassbrick]"
+"(https://www.glassbrick.org/), y asegurarse de que NVDA puede ofrecer la "
+"misma o mejor interacción y configuración."
