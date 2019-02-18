@@ -8,7 +8,7 @@
   <header><h1># Complementos de NVDA vistos por dentro: StationPlaylist Studio</h1></header>
   <h1 id="complementos-de-nvda-vistos-por-dentro-stationplaylist-studio">Complementos de NVDA vistos por dentro: StationPlaylist Studio</h1>
 <p>Autor: Joseph Lee</p>
-<p>Basado en el complemento StationPlaylist Studio 19.01 para NVDA</p>
+<p>Basado en el complemento StationPlaylist Studio 19.02 para NVDA</p>
 <h2 id="prologo-y-notas-de-2018">Prólogo y notas de 2018</h2>
 <p>Esta guía ha pasado por muchas revisiones, cambios de estilo, y se ha actualizado para incluir características de las últimas versiones del complemento. Cuando se publicó por primera vez en 2015, se elaboró como una serie de entradas de blog. Ahora en 2018, se está editando para eliminar las huellas del estilo anterior y actualizándose para reflejar las últimas características del 2018.</p>
 <p>En 2018 también se ha expandido el ámbito del complemento para cubrir StationPlaylist Creator y la herramienta de pista. En su mayor parte, esta guía todavía cubrirá StationPlaylist Studio únicamente, pero hay cambios importantes que se han hecho en las versiones más recientes que nos harán plantearnos añadir otros programas de la suite StationPlaylist. En particular, la jerarquía de herencia de la clase de elemento de pista ha cambiado, por lo que muchas órdenes de navegación por columnas están disponibles al tratar con pistas en las aplicaciones de SPL.</p>
@@ -56,11 +56,11 @@
 </ul>
 <p>Con algunos conceptos básicos ya aclarados, buceemos en el interior del complemento SPL (deberías descargar el código fuente del complemento, que puede encontrarse en https://github.com/josephsl/stationplaylist).</p>
 <h3 id="diseno-general-y-del-codigo-fuente">Diseño general y del código fuente</h3>
-<p>El complemento de NVDA para StationPlaylist Studio consta de tres módulos de aplicación y una extensión global. Ya que Studio viene con la herramienta de pista para gestionar pistas, el complemento incluye un módulo de aplicación para la herramienta de pista además del módulo de aplicación principal para Studio, así como un módulo de aplicación para StationPlaylist Creator.</p>
+<p>El complemento de NVDA para StationPlaylist Studio consta de cuatro módulos de aplicación y una extensión global. Ya que Studio viene con la herramienta de pista para gestionar pistas, el complemento incluye un módulo de aplicación para la herramienta de pista además del módulo de aplicación principal para Studio, así como un módulo de aplicación para StationPlaylist Creator. Se encuentra presente un cuarto módulo de aplicación para la grabadora de pistas de voz, usado con propósitos de seguimiento de eventos.</p>
 <p>El diseño general es una relación entre el módulo de aplicación principal de Studio y la extensión global de utilidades de Studio (SPLUtils). El módulo de aplicación de Studio hace cosas que se esperan de los scripts, como reaccionar a pulsaciones de teclado, anunciar información de estado, gestión de configuración y todo eso, mientras que la extensión global es responsable de ejecutar órdenes de Studio desde cualquier sitio y del soporte de los codificadores (el complemento soporta los codificadores SAM y SPL). En realidad, la extensión global es subordinada del módulo de aplicación, ya que el módulo de aplicación controla la funcionalidad general del complemento y la extensión global necesita que Studio esté en funcionamiento para desbloquear algunas funciones (aquí, desbloquear significa usar la capa de órdenes y el soporte de codificadoresÇ).</p>
 <p>El código fuente consta de:</p>
 <ul>
-<li>appModules: esta carpeta contiene el paquete (módulo de aplicación) principal splstudio y los módulos de aplicación para la herramienta de pista y Creator.</li>
+<li>appModules: esta carpeta contiene el paquete (módulo de aplicación) principal splstudio y los módulos de aplicación para la herramienta de pista, Creator y la grabadora de pistas de voz.</li>
 <li>El paquete SPL Studio consta de varios módulos, en los que se incluyen <strong>init</strong> (módulo de aplicación principal y clases de elemento de pista), el gestor de configuraciones y las interfaces de usuario (splconfig y splconfui) y servicios misceláneos (splmisc), así como módulos de soporte y diversos archivos wav usados por el complemento.</li>
 <li>El archivo del módulo de aplicación principal está dividido en secciones. Primero, se definen las clases de superposición para elementos de pista, después viene el módulo de aplicación, dividido en cuatro secciones: métodos fundamentales (constructor, eventos y otros), órdenes de tiempo (fin de pista, tiempo del locutor, etc.), otras órdenes (buscador de pista, explorador Cart y otros) y la capa de SPL Assistant. Esto me permite identificar de dónde viene un fallo y añadir características en las secciones apropiadas.</li>
 <li>globalPlugins: esta carpeta contiene el paquete SPLStudioUtils, que consta de <strong>init</strong> (extensión principal y capa del controlador de SPL) y el módulo de soporte del codificador.</li>
@@ -128,7 +128,7 @@
 <li>Clases de superposición del elemento de pista: se definen tres clases con diversos propósitos. La primera es una clase base que proporciona órdenes y servicios a través de Studio y otras aplicaciones, mientras que las otras dos clases proporcionan soporte para el visor de elementos de lista de reproducción en Studio 5.0x y 5.1x, respectivamente. Volveremos a estos objetos más tarde.</li>
 <li>Clase del módulo de aplicación: este es el núcleo no sólo del módulo de aplicación, sino del paquete del complemento entero. La clase del módulo de aplicación (appModules.splstudio.AppModule) está a su vez dividida en secciones como se describe en el capítulo de diseño del complemento.</li>
 </ul>
-<p>Los compañeros de Studio (Creator y herramienta de pista) se explican en las secciones listadas arriba excepto la capa de envoltura de órdenes, y se han simplificado las clases de elemento de pista.</p>
+<p>Los compañeros de Studio (Creator y herramienta de pista) se explican en las secciones listadas arriba excepto la capa de envoltura de órdenes, y se han simplificado las clases de elemento de pista. Ya que la grabadora de pistas de voz controla ciertos aspectos internos del módulo de aplicación de Studio al arrancar, sólo se proporcionan el constructor y el método terminate (mira más abajo).</p>
 <p>Recorramos ahora el ciclo de vida del objeto del módulo de aplicación en cuestión: antes y durante la inicialización del módulo de aplicación, actividades realizadas mientras el módulo de aplicación está activo, muerte y (hasta 2018) actualizaciones del complemento.</p>
 <p>Nota: aunque la función independiente de búsqueda de actualizaciones se ha ido, el mecanismo detrás de la actualización de complementos se documentará para dar completitud.</p>
 <h3 id="antes-de-nacer-procedimientos-de-importacion-del-modulo-de-aplicacion-de-nvda">Antes de nacer: procedimientos de importación del módulo de aplicación de NVDA</h3>
@@ -159,7 +159,7 @@
 <li>Para el complemento 6.0 y posteriores, se cargan los perfiles de emisión desde la carpeta rutaDelComplemento/profiles. Son archivos .ini y se procesan como se hace con el perfil normal salvo porque los ajustes globales se toman desde el perfil normal. En el complemento 8.0, al igual que con el perfil normal, esto se hace al construir el objeto SPLConfig. En el complemento 17.10 y posteriores, si decimos al complemento que use solamente el perfil normal, no se hará este paso.</li>
 <li>A continuación, cada perfil se anexa a un contenedor encargado de los registros (splconfig.SPLConfigPool para 6.x y 7.x, splconfig.SPLConfig.profiles en 8.0 y posteriores). Después se establece el perfil activo y splconfig.SPLConfig (mapa de configuración del usuario) se establece al primer perfil en el contenedor de configuración (perfil normal; para el complemento 5.x y anteriores o si sólo va a usarse el perfil normal (17.10 y posteriores), hay (o habrá) simplemente un perfil, por lo que el paso de anexar se omite).</li>
 <li>Empezando con el complemento 7.0 y mejorándolo en 17.10, a menos que guardar los ajustes en disco esté prohibido o se solicite la configuración en memoria, el diccionario del perfil normal (y no otros) se guarda. Esto es útil para conservar un registro de ajustes cargados de disco contra la configuración en tiempo de ejecución, y se emplea al comparar valores al guardar perfiles. Mira la sección de guardado de perfiles en perfiles de emisión para más detalles y razones.</li>
-<li>Comenzando con el complemento 18.08, si NVDA lo soporta, SPLConfig escuchará la acción de guardar configuración para guardar los ajustes del complemento cuando se invoque la orden para guardar la configuración (control+NVDA+c).</li>
+<li>Comenzando con el complemento 18.08, si NVDA lo soporta, SPLConfig escuchará la acción de guardar configuración para guardar los ajustes del complemento cuando se invoque la orden para guardar la configuración (control+NVDA+c). En el complemento 19.03 se añade soporte para la acción de recarga / restablecimiento de la configuración, de tal forma que las opciones del complemento se recargan o restablecen a valores por defecto si se pulsa NVDA+CTRL+r una o tres veces, respectivamente.</li>
 <li>Si se define un perfil instantáneo (hay presente un nombre de perfil instantáneo en la caché) se establece de forma apropiada la variable de perfil instantáneo.</li>
 <li>Si se encuentran errores, NVDA muestra un diálogo de error (5.x y anteriores) o bien un diálogo de estado (6.0 y posteriores) detallando el error en cuestión y lo que ha hecho NVDA a los perfiles fallidos. Esto puede pasar por aplicar valores por defecto a algunos ajustes para restablecer los ajustes por defecto (lo último ocurrirá si el validador informa de que todos los ajustes en el perfil normal son inválidos o configObj lanzó errores de interpretación, vistos comúnmente cuando el contenido del archivo no tiene sentido).</li>
 <li>Entre los complementos 7.0 y 18.12, se inicializa la característica de actualizaciones (splupdate.initialize). Entre otras cosas, el procedimiento de inicialización carga los metadatos de búsqueda de actualizaciones. En 2018, la inicialización de las actualizaciones se hace como parte del constructor del módulo de aplicación. Encontraremos los procedimientos de actualización del complemento (alojados en splstudio/splupdate.py) más adelante en este artículo.</li>
@@ -238,7 +238,7 @@
 </ol>
 <h3 id="actualizaciones-del-complemento-actualizar-a-la-ultima-y-mas-fantastica-version">Actualizaciones del complemento: actualizar a la última y más fantástica versión</h3>
 <p>Nota: esta función, reciemtemente llamada "actualización independiente del complemento", se ha ido en la versión 19.01, aunque el mecanismo que hay tras ella se documenta aquí para dar completitud. La actualización independiente hace referencia a usar el asistente de SPL para buscar actualizaciones desde Studio.</p>
-<p>En el complemento 7.0 y posteriores, es posible actualizar a la última versión del complemento usando la característica de comprobación de actualizaciones del complemento. Esto se hace conectando a un servidor donde se alojan los archivos de actualización del complemento.</p>
+<p>En el complemento 7.0 y posteriores (hasta la versión 18.12), es posible actualizar a la última versión del complemento usando la característica de comprobación de actualizaciones del complemento. Esto se hace conectando a un servidor donde se alojan los archivos de actualización del complemento.</p>
 <p>El complemento de Studio usa una combinación de la biblioteca urllib y canales de actualización (explicados más tarde) para recuperar los metadatos necesarios de actualización. El usuario puede decirle al complemento que busque actualizaciones automáticamente o puede comprobarlas de forma manual.</p>
 <p>La búsqueda de actualizaciones se hace de la siguiente manera:</p>
 <ol>
@@ -298,8 +298,7 @@
 <li>3: controles de la alarma del micrófono.</li>
 </ul>
 <h3 id="conmutar-ajustes">Conmutar ajustes</h3>
-<p>El complemento de Studio viene con algunos ajustes conmutables que afectan a la forma de operar del módulo de aplicación. Estos incluyen anuncios de estado (ctrl+NVDA+1), anuncio de escaneo de biblioteca (alt+NVDA+r) y temporizador braille (ctrl+shift+x). Para cada script de configuración, NVDA primero comprobará el valor actual, cambiará el valor y anunciará el nuevo valor.</p>
-<p>Ahora ya sabes cómo funcionan los diálogos de alarma, qué pasa cuando conmutas algunos ajustes y has recorrido el interior de diversas órdenes de verbalización de tiempo. Hay otras cosas de las que debemos hablar, así que continuaremos nuestra exposición del módulo de aplicación de Studio viendo cómo entran en juego las alarmas y cómo se verbalizan los cambios de estado.</p>
+<p>El complemento de Studio viene con algunos ajustes conmutables que afectan a la forma de operar del módulo de aplicación. Estos incluyen anuncio de escaneo de biblioteca (alt+NVDA+r) y temporizador braille (ctrl+shift+x). Para cada script de configuración, NVDA primero comprobará el valor actual, cambiará el valor y anunciará el nuevo valor.</p>
 <h2 id="procesamiento-de-eventos-verbalizacion-de-cambios-de-estado-activacion-de-alarmas-y-mas">Procesamiento de eventos: verbalización de cambios de estado, activación de alarmas y más</h2>
 <p>Cuando produces un programa en vivo, es importante que tu lector de pantalla verbalice diversos cambios de estado y sucesos como número de oyentes, notificación de fin de pista, estado de la reproducción, alertas sobre peticiones de oyentes y demás. NVDA es un experto cuando se trata de manejar cambios de estado, activar alarmas y más. En esta sección, conoceremos la magia que hay tras esta profesionalidad: el procesamiento de eventos.</p>
 <h3 id="nvda-esta-dirigido-por-eventos">NVDA está dirigido por eventos</h3>
@@ -325,12 +324,12 @@
 </code></pre>
 <p>Cuando Studio dispara este evento, NVDA hace las siguientes operaciones:</p>
 <ol>
-<li>Se realizan diversas comprobaciones. Estas incluyen, pero no se limitan a:</li>
+<li>Se realizan diversas comprobaciones. Estas incluyen, pero no se limitan a:<ol>
+<li>Asegurarse de que hay algo que verbalizar.</li>
+<li>Si se está usando otra aplicación, NVDA se asegurará de que el indicador de monitorización en segundo plano esté establecido (mira la exposición en el constructor del módulo de aplicación en artículos anteriores para más detalles).</li>
+<li>Si el estado a ser verbalizado es un estado común, como número de oyentes, estado de la programación y reproducción del cart, NVDA comprobará si tiene permitido verbalizarlo.</li>
 </ol>
-<p>A. Asegurarse de que hay algo que verbalizar.
-B. Si se está usando otra aplicación, NVDA se asegurará de que el indicador de monitorización en segundo plano esté establecido (mira la exposición en el constructor del módulo de aplicación en artículos anteriores para más detalles).
-C. Si el estado a ser verbalizado es un estado común, como número de oyentes, estado de la programación y reproducción del cart, NVDA comprobará si tiene permitido verbalizarlo.</p>
-<ol>
+</li>
 <li>Dependiendo del tipo de control (mayoritariamente nombre de la clase de ventana), NVDA realiza distintas operaciones (mira más abajo).</li>
 <li>Finalmente, NVDA llama a nextHandler() para dejar que otros controles respondan al evento de cambio de nombre.</li>
 </ol>
@@ -340,13 +339,13 @@ C. Si el estado a ser verbalizado es un estado común, como número de oyentes, 
 <ol>
 <li>Comprueba el ID del hijo de IAccessible (posición del control relativa al control padre tal y como expone MSAA (Microsoft Active Accessibility) / IAccessible).</li>
 <li>Si el identificador del hijo de IAccessible es 1, se verbaliza el progreso del escaneo de la biblioteca o bien el estado de la reproducción.</li>
-<li>Para otros objetos de la barra de estado (controles o ventanas), NVDA primero comprueba si es un cambio de conmutación (acaba en "on" o "off"), y si es así, hace lo siguiente:</li>
+<li>Para otros objetos de la barra de estado (controles o ventanas), NVDA primero comprueba si es un cambio de conmutación (acaba en "on" o "off"), y si es así, hace lo siguiente:<ol>
+<li>Si estableces la verbalización de estado en palabras, NVDA verbaliza la notificación de cambio de conmutación mediante voz.</li>
+<li>Si la verbalización de estado se ha establecido en pitidos, se selecciona un archivo wav adecuado y se reproduce mediante el módulo NVWave (nvwave.playWaveFile; esto se hace mediante la función messageSound).</li>
+<li>La salida braille no se ve afectada, se anunciarán los cambios de conmutación.</li>
+<li>Para el modo de edición de cart o la conmutación del micrófono, se realizan pasos extra, (llamando al método extraAction con la cadena de estado como argumento), como activar la alarma del micrófono o indicar que estás usando el explorador cart (si es el caso). Volveremos a explicar cómo funciona esto en futuras entregas.</li>
 </ol>
-<p>A. Si estableces la verbalización de estado en palabras (ctrl+NVDA+1), NVDA verbaliza la notificación de cambio de estado mediante voz.
-B. Si la verbalización de estado se ha establecido en pitidos, se selecciona un archivo wav adecuado y se reproduce mediante el módulo NVWave (nvwave.playWaveFile; esto se hace mediante la función messageSound).
-C. La salida braille no se ve afectada, se anunciarán los cambios de conmutación.
-D. Para el modo de edición de cart o la conmutación del micrófono, se realizan pasos extra, (llamando al método extraAction con la cadena de estado como argumento), como activar la alarma del micrófono o indicar que estás usando el explorador cart (si es el caso). Volveremos a explicar cómo funciona esto en futuras entregas.</p>
-<ol>
+</li>
 <li>Para todos los demás anuncios, NVDA los verbaliza. En el caso del anuncio de programación, para evitar que se repita el mismo mensaje, NVDA comprueba si el nombre cambiado es igual que un nombre guardado que ya tenía.</li>
 </ol>
 <p>Para controles de texto estático (mayormente usados para notificaciones de alarma):</p>
@@ -357,19 +356,20 @@ D. Para el modo de edición de cart o la conmutación del micrófono, se realiza
 </ol>
 <p>La estructura de la función event_nameChange definida en el módulo de aplicación de Studio está hecha de tal manera que puede extenderse para manejar el evento de cambio de nombre para otros controles (es una estructura en árbol, siendo la raíz el evento y dos subárboles, uno para la barra de estado y otro para el texto estático). Al igual que en otros complementos que definen procedimientos para manejar eventos, el evento de cambio de nombre llama a nextHandler().</p>
 <h3 id="otros-eventos-definidos-en-el-modulo-de-aplicacion-de-studio">Otros eventos definidos en el módulo de aplicación de Studio</h3>
-<p>Hay cuatro eventos más definidos en el módulo de aplicación de Studio. Son los siguientes:</p>
+<p>Hay cinco eventos más definidos en el módulo de aplicación de Studio. Son los siguientes:</p>
 <ul>
 <li>gainFocus: realiza procedimientos relacionados con el foco, tales como comprobar si estás en el diálogo de inserción de pistas para apagar el escaneo en segundo plano de la biblioteca (más sobre el escaneo de la biblioteca en segundo plano en una entrega futura).</li>
 <li>gainFocus del módulo de aplicación: usado para procesar pantallas táctiles (sí, el módulo de aplicación de Studio tiene un modo táctil dedicado para SPL) que permite añadir órdenes adicionales.</li>
 <li>loseFocus (pérdida de foco) del módulo de aplicación: el opuesto al evento anterior.</li>
 <li>Show (mostrar): este evento está diseñado específicamente para reaccionar a peticiones de oyentes, de las que hablaremos más abajo.</li>
+<li>Foreground (primer plano): se usa para coordinar el anuncio del contenido de la barra de estado cuando se inicia Studio.</li>
 </ul>
 <h4 id="peticiones-de-los-oyentes">Peticiones de los oyentes</h4>
 <p>Un componente raro del que se habla en StationPlaylist Studio es la capacidad de alojar un sitio web con un script php para permitir a los oyentes pedir pistas para que el locutor las reproduzca. Cuando se hace una petición, Studio muestra un diálogo de petición del oyente que lista las pistas solicitadas.</p>
 <p>Debido a las limitaciones que había en antiguas versiones de NVDA, el módulo de aplicación de Studio no lo tenía fácil para detectar la aparición de este diálogo y notificarte las peticiones de los oyentes. Este ya no será más el caso, ya que NVDA permite registrar eventos de mostrar para rastrearlos en segundo plano. Sin embargo, ya que cualquier cosa puede disparar eventos de mostrar, rastrearlos no se recomienda. Sabiendo esto, el módulo de aplicación de Studio vigila los eventos de mostrar de una y sólo una ventana: peticiones de los oyentes, representada por el nombre de clase de ventana TRequests, siendo el único trabajo asignado para este manejador de eventos reproducir un sonido cuando las peticiones llegan, asumiendo que la opción de mostrar un globo cuando lleguen solicitudes esté activada en Studio.</p>
 <p>Hasta ahora, hemos cubierto cosas que realiza el módulo de aplicación independientemente de dónde estés en Studio. Las siguientes secciones cubrirán cómo el módulo de aplicación maneja situaciones específicas tales como trabajar con elementos en el visor de listas de reproducción, buscar pistas, escanear la biblioteca y mucho más.</p>
 <h2 id="elementos-de-pista-clases-de-superposicion-y-buscador-de-pistas">Elementos de pista, clases de superposición y buscador de pistas</h2>
-<p>Al usar el complemento de Studio para NVDA, te habrás dado cuenta de que puedes ejecutar ciertas órdenes al tener el foco en los elementos de pista, y que la orden para buscar pistas es la misma que la de buscar en navegadores web. Si tienes curiosidad sobre todo esto, esta entrega te permitirá ver cómo funciona. Pero primero, debemos hablar de algunos hechos más sobre el lector de pantalla NVDA, en esta ocasión hablaremos de objetos.</p>
+<p>Al usar el complemento de Studio para NVDA, te habrás dado cuenta de que puedes ejecutar ciertas órdenes al tener el foco en los elementos de pista, y que la orden para buscar pistas es la misma que la de buscar en navegadores web. Si tienes curiosidad sobre todo esto, esta sección te permitirá ver cómo funciona. Pero primero, debemos hablar de algunos hechos más sobre el lector de pantalla NVDA, en esta ocasión hablaremos de objetos.</p>
 <h3 id="consideraciones-importantes-sobre-el-uso-que-hace-nvda-de-los-objetos">Consideraciones importantes sobre el uso que hace NVDA de los objetos</h3>
 <p>Una de las preguntas que hemos recibido tanto yo como otros programadores de complementos y desarrolladores de NVDA es, "¿Qué son exactamente los objetos y cómo se usan en NVDA?". En programación, un objeto es una instancia de la definición del objeto en tiempo de ejecución (esta definición, que se conoce como "clase", define cómo se comportan ciertas cosas y cómo recuperan la información de este objeto otras partes del programa; el paradigma de programación que usa clases y otros conceptos se llama "programación orientada a objetos"). Por ejemplo, alguien puede decir "Constrúyeme una guía telefónica", y un programador pensará cómo se almacenan las entradas de una guía de teléfonos y entregará una "guía telefónica" (un array de entradas de teléfono), toda ella hecha con objetos.</p>
 <p>En las interfaces gráficas de usuario (GUIs), un objeto es un término más técnico para los controles (a veces llamados widgets). Esto incluye ventanas, campos de formulario, enlaces, documentos y demás. Un control (objeto) puede contener información como estado del control, ubicación, color y demás (el control contiene atributos visibles e internos que otros programas pueden usar).</p>

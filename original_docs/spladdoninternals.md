@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Studio Add-on for NvDA 19.01
+Based on StationPlaylist Studio Add-on for NvDA 19.02
 
 ## 2018 Preface and notes
 
@@ -57,7 +57,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
-To download the add-on, go to http://addons.nvda-project.org/addons/StationPlaylist.en.html.
+To download the add-on, go to https://addons.nvda-project.org/addons/StationPlaylist.en.html.
 
 ## Design, code layout, layer sets and importance of Studio API and Studio window handle
 
@@ -76,13 +76,13 @@ With some basics out of the way, let's dive into SPL add-on internals (you shoul
 
 ### Overall design and source code layout
 
-StationPlaylist Studio add-on for NVDA consists of three app modules and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator.
+StationPlaylist Studio add-on for NVDA consists of four app modules and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes.
 
 The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM and SPL encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and encoder support).
 
 The source code consists of:
 
-* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool and Creator.
+* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator and VT Recorder.
 * The SPL Studio package consists of various modules, which include __init__ (main app module and track item classes), configuration manager and user interfaces (splconfig and splconfui) and miscellaneous services (splmisc) as well as support modules and various wave files used by the add-on.
 * The main app module file is divided into sections. First, the overlay classes for track items are defined, then comes the app module, further divided into four sections: fundamental methods (constructor, events and others), time commands (end of track, broadcaster time, etc.), other commands (track Finder, cart explorer and others) and SPL Assistant layer. This allows me to identify where a bug is coming from and to add features in appropriate sections.
 * globalPlugins: This folder contains SPLStudioUtils package, which consists of __init__ (main plugin and SPL Controller layer) and encoder support module.
@@ -159,7 +159,7 @@ As noted previously, the SPL Studio app module (splstudio/__init__.py) and frien
 * Track item overlay classes: three classes are defined for various purposes. The first is a base class that provides commands and services across Studio and other apps, while other two classes provide support for Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back to these objects later.
 * App module class: This is the core of not only the app module, but the entire add-on package. The app module class (appModules.splstudio.AppModule) is further divided into sections as described in add-on design chapter.
 
-For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified.
+For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified. For VT Recorder, because it controls certain internal behaviors of Studio app module when it starts, only the constructor and terminate methods (see below) are provided.
 
 Let's now tour the lifecycle of the app module object in question: before and during app module initialization, activities performed while the app module is active, death and (until 2018) add-on updates.
 
@@ -191,12 +191,12 @@ Certain app module add-ons shipts with an app module with a constructor define, 
 
 1. Checks whether a supported version of Studio is running, and if not, raises RuntimeError exception, preventing you from using the app module while an unsupported version of Studio is in use (as of add-on 17.04, you need to use Studio 5.10 and later).
 2. Unless silenced by `globalVars.appArgs.minimal` being True, NVDA announces, "Using SPL Studio version 5.01" if Studio 5.01 is in use (of course, NVDA will say 5.10 when Studio 5.10 is in use). This is done via ui.message function (part of NVDA Core) which lets you hear spoken messages or read the message on a braille display. In reality, ui.message function calls two functions serially (one after the other): speech.speakMessage (speaking something via a synthesizer) and braille.handler.message (brailling messages on a braille display if connected).
-3. Next, add-on settings and related subsystems are initialized by calling splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are performed by the init (formerly initConfig) function itself, while in 8.0 it is handled by SPLConfig ConfigHub class constructor. Add-on 17.10 changes this significantly, and in 18.07 and later, some steps are skipped if another STudio app is in use (see the next few sections). This is done as follows:
+3. Next, add-on settings and related subsystems are initialized by calling splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are performed by the init (formerly initConfig) function itself, while in 8.0 it is handled by SPLConfig ConfigHub class constructor. Add-on 17.10 changes this significantly, and in 18.07 and later, some steps are skipped if another Studio app is in use (see the next few sections). This is done as follows:
 	1. For add-on 6.x and 7.x, loads a predefined configuration file named userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "normal profile). In add-on 6.x and 7.x, this is done by calling splconfig.unlockConfig() function that handles configuration validation via ConfigObj and Validator, and in 8.0 and later, this is part of SPLConfig constructor. In add-on 17.10 and later, this step will not take place if NVDA is told to use an in-memory config, and in 18.07 and later, any SPL app module that opens SPLConfig (splconfig.openConfig) will register its app name to indicate which app is starting.
 	2. For add-on 6.0 and later, loads broadcast profiles from addonDir/profiles folder. These are .ini files and are processed just like the normal profile except that global settings are pulled in from the normal profile. In add-on 8.0, just like normal profile, this is done when constructing SPLConfig object. In add-on 17.10 and later, if the add-on is told to use normal profile only, this step will not occur.
 	3. Each profile is then appended to a record keeper container (splconfig.SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and later). Then the active profile is set and splconfig.SPLConfig (user configuration map) is set to the first profile in the configuration pool (normal profile; for add-on 5.x and earlier or if only normal profile is to be used (17.10 and later), there is (or will be) just one profile so append step is skipped).
 	4. Starting from add-on 7.0 and enhanced in 17.10, unless saving settings to disk is prohibited or in-memory config is requested, Normal profile dictionary (not others) is cached. This is useful in keeping a record of settings loaded from disk versus run-time configuration and is employed when comparing values when saving profiles. See profile caching section in broadcast profiles for details and reasons.
-	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NvDA+C) is invoked.
+	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NvDA+C) is invoked. Add-on 19.03 added support for config reload/reset action so add-on settings can be reloaded or reset to defaults if Control+NVDA+R is pressed once or three times, respectively.
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
 	8. Between add-on 7.0 and 18.12, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, prior to being removed, update initialization was moved to app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
@@ -283,7 +283,7 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 
 Note: this feature, recently dubbed "standalone add-on update", is gone in 19.01, although the mechanism behind it is documented here for sake of completeness. Standalone add-on update refers to using SPL Assistant to check for updates from Studio.
 
-In add-on 7.0 and later, it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
+In add-on 7.0 and later (until 18.12), it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
 
 The Studio add-on uses a combination of urllib library and update channels (explained later) to fetch the needed update metadata. The user can tell the add-on to check for updates automatically or one can perform this check manually.
 
@@ -316,7 +316,7 @@ One can then use Input Gestures dialog (part of NVDA screen reader) to change th
 
 ### A step sideways with studioAPI function: A central Studio API handler and dispatcher
 
-Before going any further, it is important to mention a function that not only is used by the first two time routines, but also comes in handy in SPL Assistant and other methods. This function, called studioAPI (part of the main app module and defined as a module-level function), sends messages to Studio window and retrieves the value returned. The signature is:
+Before going any further, it is important to mention a function that not only is used by the first two time routines, but also comes in handy in SPL Assistant and other methods. This function, called studioAPI (part of the main app module and defined as a module-level function in splbase module), sends messages to Studio window and retrieves the value returned. The signature is:
 
 	studioAPI(arg, command)
 
@@ -334,7 +334,7 @@ When you listen to radio shows, you may hear messages such as, "five minutes to 
 
 Studio does display broadcaster clock. However, because it is in the middle of the screen, one has to use object navigation commands to locate it, and this method was used in older Studio add-on releases. This involved locating the foreground window (api.getForegroundObject()) and navigating through a preset direction to arrive at the clock object, and this is still used in some places. However, this was prone to a critical problem: sometimes, the object we're interested in changed positions (a good example was when different builds of Studio 5.10 were released).
 
-Recently, this method was abandoned in favor of using Python's time module to obtain current time and convert it into a format that is familiar to broadcasters, thus removing the need to use object navigation. When you press NVDA+Shift+F12, NVDA first fetches local time (time.localtime), then converts this into a format suitable for output. Along the way NVDA tries to emulate how Studio displays broadcaster clock. Recently, a slight modification was made so this process can be used to obtain time left to top of the hour when NVDA+Shift+F12 is pressed twice, with the difference being subtracting local time from top of the next hour. When processing is completefor both cases, NVDA announces the output text.
+Recently, this method was abandoned in favor of using Python's time module to obtain current time and convert it into a format that is familiar to broadcasters, thus removing the need to use object navigation. When you press NVDA+Shift+F12, NVDA first fetches local time (time.localtime), then converts this into a format suitable for output. Along the way NVDA tries to emulate how Studio displays broadcaster clock. Recently, a slight modification was made so this process can be used to obtain time left to top of the hour when NVDA+Shift+F12 is pressed twice, with the difference being subtracting local time from top of the next hour. When processing is complete for both cases, NVDA announces the output text.
 
 ### Complete time: Windows API to the rescue
 
@@ -368,9 +368,7 @@ This single dialog that presents different alarm controls is known as 'Alarms Ce
 
 ### Toggle settings
 
-Studio add-on comes with some toggle settings that affect the operation of the app module. These include status announcements (Control+NVDA+1), library scan announcement (Alt+NVDA+R) and braille timer (Control+Shift+X). For each setting script, NVDA will first check the current value, change the value and announce the new value.
-
-Now you know how the alarm dialogs function, what happenn when you toggle some settings and went through a behind the scenes tour of various time announcement commands. There are other things we need to talk about, and we'll continue our discussion of the Studio app module with how alarms come into play and how status changes are announced.
+Studio add-on comes with some toggle settings that affect the operation of the app module. These include library scan announcement (Alt+NVDA+R) and braille timer (Control+Shift+X). For each setting script, NVDA will first check the current value, change the value and announce the new value.
 
 ## Event handling: announcing status changes, activating alarms and more
 
@@ -408,11 +406,9 @@ Of all the event handlers declared, the most important one is name change event.
 When this event is fired by Studio, NVDA performs following operations:
 
 1. Various checks are performed. These include, but are not limited to:
-
-A. Make sure there is something to announce.
-B. If using another app, NVDA will ensure that background monitor flag is set (see the discussion on app module constructor in previous articles for more details).
-C. If the status to be announced is a common one such as listener count, schedule and cart playback status, NVDA will check if it is permited to announce them.
-
+	1. Make sure there is something to announce.
+	2. If using another app, NVDA will ensure that background monitor flag is set (see the discussion on app module constructor in previous articles for more details).
+	3. If the status to be announced is a common one such as listener count, schedule and cart playback status, NVDA will check if it is permited to announce them.
 2. Depending on the type of control (mostly window class name), NVDA performs different operations (see below).
 3. Lastly, NVDA calls nextHandler() to let other controls respond to name change event.
 
@@ -425,12 +421,10 @@ For status announcements (TStatusBar), NVDA:
 1. Checks IAccessible child ID (position of the control relative to the parent control as exposed by MSAA (Microsoft Active Accessibility)/IAccessible).
 2. If IAccessible child ID is 1, it either announces library scan progress or playback status.
 3. For other status bar objects (controls or windows), NVDA first checks if it is a toggle change (ends with "On" or "Off"), and if so, it does the following:
-
-A. If you set status announcement to words (Control+NVDA+1), NVDA announces toggle change notification via speech.
-B. If status announcement is set to beeps, an appropriate wave file is selected for playback via NVWave module (nvwave.playWaveFile; this is done via messageSound function).
-C. Braille output is not affected - it'll announce toggle changes.
-D. For cart edit mode or microphone toggle, extra steps are performed, (by calling extraAction method with the status string as the argument) such as activating microphone alarm or announcing that you are using Cart Explorer (if this is the case). We'll come back to how this works in future installments.
-
+	1. If you set status announcement to words, NVDA announces toggle change notification via speech.
+	2. If status announcement is set to beeps, an appropriate wave file is selected for playback via NVWave module (nvwave.playWaveFile; this is done via messageSound function).
+	3. Braille output is not affected - it'll announce toggle changes.
+	4. For cart edit mode or microphone toggle, extra steps are performed, (by calling extraAction method with the status string as the argument) such as activating microphone alarm or announcing that you are using Cart Explorer (if this is the case). We'll come back to how this works in future installments.
 4. For all other announcements, NVDA announces them. In case of schedule announcement, to prevent itself from repeating the same message, NVDA checks if a cached name is the same as the just changed name.
 
 For static text controls (mostly used for alarm notifications):
@@ -443,12 +437,13 @@ The structure of event_nameChange function defined in the Studio app module is s
 
 ### Other events defined in the Studio app module
 
-There are four more events defined in the Studio app module. They are:
+There are five more events defined in the Studio app module. They are:
 
 * Gain focus: performs focus-related routines such as checking if you are in Insert Tracks dialog in order to turn off background library scanning (more on background library scan in a future installment).
 * App module gain focus: Used to handle touchscreens (yes, Studio app module has a dedicated SPL touch mode) such as assigning additional commands.
 * App module lose focus: opposite of the event above.
 * Show: this event is specifically designed to respond to listener requests, discussed below.
+* Foreground: this is used to coordinate status bar content announcement when Studio starts.
 
 #### Listener requests
 
@@ -460,7 +455,7 @@ So far, we have covered things that the app module performs wherever you are in 
 
 ## Track items, overlay classes and Track Finder
 
-When you use the Studio add-on for NVDA, you may have noticed that you can perform certain commands while focused on track items, and that the command to find tracks is same as that of find command in web browsers. If you are curious about these, then this installment will let you see how it works. But first, we need to go over some more facts about NVDA screen reader, this time we'll talk about objects.
+When you use the Studio add-on for NVDA, you may have noticed that you can perform certain commands while focused on track items, and that the command to find tracks is same as that of find command in web browsers. If you are curious about these, then this section will let you see how it works. But first, we need to go over some more facts about NVDA screen reader, this time we'll talk about objects.
 
 ### Important facts about NVDA's use of objects
 
