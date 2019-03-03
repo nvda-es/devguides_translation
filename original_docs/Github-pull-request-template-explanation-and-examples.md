@@ -21,10 +21,25 @@ How have you tested to ensure that your change works as intended, across all sup
 Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_
 
 ### Change log entry:
-The section and description of this change to use for the changes file. The valid sections are:
+The section and description of this change to use for the changes file (used as a whats changed / change log document). Because this file (`user_docs/en/changes.t2t`) is prone to conflicts, we ask contributors not to edit the file directly, but instead add the entry to the bottom of the PR description.
+
+For instance:
+```
+*New features*
+`Added a command to announce useful thing. (#WXYZ, #ABCD)`
+
+*Changes*
+`Old command, now also uses new useful command. (#WXYZ)`
+```
+
+These descriptions should be in the format: `"{Description of change}. (#{issue number})"`
+
+You may suggest descriptions for multiple sections. The usual sections are:
  
 * New features
 * Changes
 * Bug fixes
+
+Multiple issue numbers can be included, separated by comma. If there is no issue number, you can use the PR number.
 
 For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t)

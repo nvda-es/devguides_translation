@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-07-03 16:24+Hora de verano romance\n"
-"PO-Revision-Date: 2018-07-04 22:42+0200\n"
+"POT-Creation-Date: 2019-03-03 15:10+Hora estándar romance\n"
+"PO-Revision-Date: 2019-03-03 15:19+0100\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.0.8\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:3
 msgid "# Creating PR's on the NVDA project"
@@ -112,8 +112,8 @@ msgid ""
 "Are there any known issues or downsides of this approach. For instance: "
 "_Will not work with python 3_"
 msgstr ""
-"¿Hay problemas o desventajas con este enfoque? Por ejemplo: \"No funcionará "
-"en Python 3\""
+"¿Hay problemas o desventajas con este enfoque? Por ejemplo: _No funcionará "
+"en Python 3_"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:17
 msgid "### Change log entry:"
@@ -121,32 +121,93 @@ msgstr "### Entrada en el registro de cambios:"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:18
 msgid ""
-"The section and description of this change to use for the changes file. The "
-"valid sections are:"
+"The section and description of this change to use for the changes file (used "
+"as a whats changed / change log document). Because this file (`user_docs/en/"
+"changes.t2t`) is prone to conflicts, we ask contributors not to edit the "
+"file directly, but instead add the entry to the bottom of the PR description."
 msgstr ""
-"La descripción de este cambio y la sección en la que irá, para incluirlo en "
-"el archivo de novedades. Las secciones válidas son:"
+"La sección y descripción de este cambio para incluirlo en el archivo de "
+"cambios (usado como un documento de novedades / registro de cambios). Ya que "
+"este archivo (`user_docs/en/changes.t2t`) tiende a provocar conflictos, se "
+"pide a los colaboradores que no editen el archivo directamente, y que en su "
+"lugar añadan la entrada en la parte inferior de la descripción de la "
+"solicitud de cambios."
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:19
+msgid "For instance:"
+msgstr "Por ejemplo:"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:20
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:25
+msgid "```"
+msgstr "```"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:21
+msgid "*New features*"
+msgstr "*Nuevas características*"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:22
+msgid "`Added a command to announce useful thing. (#WXYZ, #ABCD)`"
+msgstr "`Added a command to announce useful thing. (#WXYZ, #ABCD)`"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:23
+msgid "*Changes*"
+msgstr "*Cambios*"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:24
+msgid "`Old command, now also uses new useful command. (#WXYZ)`"
+msgstr "`Old command, now also uses new useful command. (#WXYZ)`"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:26
+msgid ""
+"These descriptions should be in the format: `\"{Description of change}. "
+"(#{issue number})\"`"
+msgstr ""
+"Estas descripciones deberían seguir el formato: `\"{Descripción del cambio}. "
+"(#{número de incidencia})\"`"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:27
+msgid ""
+"You may suggest descriptions for multiple sections. The usual sections are:"
+msgstr ""
+"Puedes sugerir descripciones para varias secciones. Las secciones más "
+"comunes son:"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:28
 msgid " "
 msgstr " "
 
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:20
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:29
 msgid "* New features"
 msgstr "* Nuevas características"
 
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:21
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:30
 msgid "* Changes"
 msgstr "* Cambios"
 
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:22
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:31
 msgid "* Bug fixes"
 msgstr "* Fallos solucionados"
 
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:23
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:32
+msgid ""
+"Multiple issue numbers can be included, separated by comma. If there is no "
+"issue number, you can use the PR number."
+msgstr ""
+"Se pueden incluir varios números de incidencia separados por comas. Si no "
+"hay número de incidencia, puedes usar el número de la solicitud de cambio."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:33
 msgid ""
 "For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/"
 "blob/master/user_docs/en/changes.t2t)"
 msgstr ""
 "Por ejemplo, consulta el [archivo changes.t2t](https://github.com/nvaccess/"
 "nvda/blob/master/user_docs/en/changes.t2t)"
+
+#~ msgid ""
+#~ "The section and description of this change to use for the changes file. "
+#~ "The valid sections are:"
+#~ msgstr ""
+#~ "La descripción de este cambio y la sección en la que irá, para incluirlo "
+#~ "en el archivo de novedades. Las secciones válidas son:"

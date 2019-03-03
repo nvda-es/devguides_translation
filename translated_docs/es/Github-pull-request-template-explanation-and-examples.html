@@ -6,7 +6,8 @@
   </head>
   <body>
   <header><h1># Creación de solicitudes de cambio en el proyecto NVDA</h1></header>
-  <p>Esta página está creada con la intención de servir como explicación para rellenar <a href="https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md">la plantilla de solicitud de cambios de NVDA en GitHub (en inglés)</a></p>
+  <h1 id="creacion-de-solicitudes-de-cambio-en-el-proyecto-nvda">Creación de solicitudes de cambio en el proyecto NVDA</h1>
+<p>Esta página está creada con la intención de servir como explicación para rellenar <a href="https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md">la plantilla de solicitud de cambios de NVDA en GitHub (en inglés)</a></p>
 <h2 id="la-plantilla">La plantilla</h2>
 <p>Al principio de la plantilla hay un bloque de comentarios en HTML que apunta a la versión inglesa de esta página en la wiki, se puede dejar donde está y no aparecerá cuando se guarde la incidencia. Puedes eliminarlo sin problema.</p>
 <h3 id="enlace-al-numero-de-incidencia">Enlace al número de incidencia:</h3>
@@ -18,14 +19,25 @@
 <h3 id="pruebas-realizadas">Pruebas realizadas:</h3>
 <p>¿Cómo has hecho las pruebas para asegurarte de que tus cambios funcionan como quieres, a través de los distintos sistemas operativos soportados, sin introducir regresiones? Emplea esta sección como una oportunidad para intentar convencer a los desarrolladores (y a ti mismo) de que debería mezclarse tu cambio. </p>
 <h3 id="problemas-conocidos-con-la-solicitud-de-cambio">Problemas conocidos con la solicitud de cambio:</h3>
-<p>¿Hay problemas o desventajas con este enfoque? Por ejemplo: "No funcionará en Python 3"</p>
+<p>¿Hay problemas o desventajas con este enfoque? Por ejemplo: <em>No funcionará en Python 3</em></p>
 <h3 id="entrada-en-el-registro-de-cambios">Entrada en el registro de cambios:</h3>
-<p>La descripción de este cambio y la sección en la que irá, para incluirlo en el archivo de novedades. Las secciones válidas son:</p>
+<p>La sección y descripción de este cambio para incluirlo en el archivo de cambios (usado como un documento de novedades / registro de cambios). Ya que este archivo (<code>user_docs/en/changes.t2t</code>) tiende a provocar conflictos, se pide a los colaboradores que no editen el archivo directamente, y que en su lugar añadan la entrada en la parte inferior de la descripción de la solicitud de cambios.</p>
+<p>Por ejemplo:</p>
+<pre><code>*Nuevas características*
+`Added a command to announce useful thing. (#WXYZ, #ABCD)`
+
+*Cambios*
+`Old command, now also uses new useful command. (#WXYZ)`
+</code></pre>
+
+<p>Estas descripciones deberían seguir el formato: <code>"{Descripción del cambio}. (#{número de incidencia})"</code></p>
+<p>Puedes sugerir descripciones para varias secciones. Las secciones más comunes son:</p>
 <ul>
 <li>Nuevas características</li>
 <li>Cambios</li>
 <li>Fallos solucionados</li>
 </ul>
+<p>Se pueden incluir varios números de incidencia separados por comas. Si no hay número de incidencia, puedes usar el número de la solicitud de cambio.</p>
 <p>Por ejemplo, consulta el <a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t">archivo changes.t2t</a></p>
 </body>
 </html>
