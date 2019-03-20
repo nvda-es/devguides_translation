@@ -3,10 +3,12 @@
 This page is meant to serve as an explanation for how to fill out [our Github pull request template](https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
 
 ## The template
-At the start of the template there is a HTML comment block which points to this wiki page, it can be left in place and will not appear once the issue is saved. Feel free to delete it.
+At the start of the template there is a HTML comment block (starting with `<!--`), which points to this wiki page, it can be left in place and will not appear once the issue is saved. Feel free to delete it, i.e. all text up to and including `-->`.
 
 ### Link to issue number:
-Please include the issue number here. This helps us to keep the information linked together. If this is a minor/trivial change an issue does not need to be created. If in doubt, please create one.
+Please include the issue number here, including information on how this pull request is related to it. This helps us to keep the information linked together. If this is a minor/trivial change an issue does not need to be created. If in doubt, please create one.
+Note that Github [allows you to automatically close issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords). For example, 
+when writing `closes #7777` or `fixes #4242` in the body of the description, the mentioned issue will automatically be closed when the pull request is merged into the master branch. If your pull request is filed against another branch, such as beta, the particular issue will have to be close manually after merging the pull request.
 
 ### Summary of the issue:
 A quick summary of the problem you are trying to solve.

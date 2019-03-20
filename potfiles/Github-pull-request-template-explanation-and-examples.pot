@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-03-03 15:10+Hora estándar romance\n"
+"POT-Creation-Date: 2019-03-20 19:12+Hora estándar romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgid "## The template"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:6
-msgid "At the start of the template there is a HTML comment block which points to this wiki page, it can be left in place and will not appear once the issue is saved. Feel free to delete it."
+msgid "At the start of the template there is a HTML comment block (starting with `<!--`), which points to this wiki page, it can be left in place and will not appear once the issue is saved. Feel free to delete it, i.e. all text up to and including `-->`."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:7
@@ -36,103 +36,111 @@ msgid "### Link to issue number:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:8
-msgid "Please include the issue number here. This helps us to keep the information linked together. If this is a minor/trivial change an issue does not need to be created. If in doubt, please create one."
+msgid "Please include the issue number here, including information on how this pull request is related to it. This helps us to keep the information linked together. If this is a minor/trivial change an issue does not need to be created. If in doubt, please create one."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:9
-msgid "### Summary of the issue:"
+msgid "Note that Github [allows you to automatically close issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords). For example, "
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:10
-msgid "A quick summary of the problem you are trying to solve."
+msgid "when writing `closes #7777` or `fixes #4242` in the body of the description, the mentioned issue will automatically be closed when the pull request is merged into the master branch. If your pull request is filed against another branch, such as beta, the particular issue will have to be close manually after merging the pull request."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:11
-msgid "### Description of how this pull request fixes the issue:"
+msgid "### Summary of the issue:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:12
-msgid "Please include a quick discussion of how this change addresses the issue. Please also include any links or external information you may have used in order to address the issue. This helps others to have the same background as you and learn from this work."
+msgid "A quick summary of the problem you are trying to solve."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:13
-msgid "### Testing performed:"
+msgid "### Description of how this pull request fixes the issue:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:14
-msgid "How have you tested to ensure that your change works as intended, across all supported operating systems, without introducing regressions? Please use this section as an opportunity to try to convince us (and yourself) that your proposed change should be merged. "
+msgid "Please include a quick discussion of how this change addresses the issue. Please also include any links or external information you may have used in order to address the issue. This helps others to have the same background as you and learn from this work."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:15
-msgid "### Known issues with pull request:"
+msgid "### Testing performed:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:16
-msgid "Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_"
+msgid "How have you tested to ensure that your change works as intended, across all supported operating systems, without introducing regressions? Please use this section as an opportunity to try to convince us (and yourself) that your proposed change should be merged. "
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:17
-msgid "### Change log entry:"
+msgid "### Known issues with pull request:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:18
-msgid "The section and description of this change to use for the changes file (used as a whats changed / change log document). Because this file (`user_docs/en/changes.t2t`) is prone to conflicts, we ask contributors not to edit the file directly, but instead add the entry to the bottom of the PR description."
+msgid "Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:19
-msgid "For instance:"
+msgid "### Change log entry:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:20
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:25
-msgid "```"
+msgid "The section and description of this change to use for the changes file (used as a whats changed / change log document). Because this file (`user_docs/en/changes.t2t`) is prone to conflicts, we ask contributors not to edit the file directly, but instead add the entry to the bottom of the PR description."
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:21
-msgid "*New features*"
+msgid "For instance:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:22
-msgid "`Added a command to announce useful thing. (#WXYZ, #ABCD)`"
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:27
+msgid "```"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:23
-msgid "*Changes*"
+msgid "*New features*"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:24
-msgid "`Old command, now also uses new useful command. (#WXYZ)`"
+msgid "`Added a command to announce useful thing. (#WXYZ, #ABCD)`"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:25
+msgid "*Changes*"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:26
-msgid "These descriptions should be in the format: `\"{Description of change}. (#{issue number})\"`"
-msgstr ""
-
-#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:27
-msgid "You may suggest descriptions for multiple sections. The usual sections are:"
+msgid "`Old command, now also uses new useful command. (#WXYZ)`"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:28
-msgid " "
+msgid "These descriptions should be in the format: `\"{Description of change}. (#{issue number})\"`"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:29
-msgid "* New features"
+msgid "You may suggest descriptions for multiple sections. The usual sections are:"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:30
-msgid "* Changes"
+msgid " "
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:31
-msgid "* Bug fixes"
+msgid "* New features"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:32
-msgid "Multiple issue numbers can be included, separated by comma. If there is no issue number, you can use the PR number."
+msgid "* Changes"
 msgstr ""
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:33
+msgid "* Bug fixes"
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:34
+msgid "Multiple issue numbers can be included, separated by comma. If there is no issue number, you can use the PR number."
+msgstr ""
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:35
 msgid "For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t)"
 msgstr ""
 

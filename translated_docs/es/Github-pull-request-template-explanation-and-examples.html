@@ -9,9 +9,11 @@
   <h1 id="creacion-de-solicitudes-de-cambio-en-el-proyecto-nvda">Creación de solicitudes de cambio en el proyecto NVDA</h1>
 <p>Esta página está creada con la intención de servir como explicación para rellenar <a href="https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md">la plantilla de solicitud de cambios de NVDA en GitHub (en inglés)</a></p>
 <h2 id="la-plantilla">La plantilla</h2>
-<p>Al principio de la plantilla hay un bloque de comentarios en HTML que apunta a la versión inglesa de esta página en la wiki, se puede dejar donde está y no aparecerá cuando se guarde la incidencia. Puedes eliminarlo sin problema.</p>
+<p>Al principio de la plantilla hay un bloque de comentarios en HTML (que comienza con <code>&lt;!--</code>), que apunta a la versión inglesa de esta página en la wiki, se puede dejar donde está y no aparecerá cuando se guarde la incidencia. Puedes eliminarlo sin problema, borrando todo el texto desde el principio hasta <code>--&gt;</code> incluido.</p>
 <h3 id="enlace-al-numero-de-incidencia">Enlace al número de incidencia:</h3>
-<p>Por favor, incluye aquí el número de la incidencia. Esto ayuda a los desarrolladores a mantener la información relacionada entre sí junta. Si se trata de un cambio menor o trivial, no es necesario crear una incidencia. En caso de dudas, crea una.</p>
+<p>Por favor, incluye aquí el número de la incidencia. Esto ayuda a los desarrolladores a mantener la información relacionada entre sí junta. Si se trata de un cambio menor o trivial, no es necesario crear una incidencia. En caso de dudas, crea una.
+Ten en cuenta que Github <a href="https://help.github.com/en/articles/closing-issues-using-keywords">permite cerrar incidencias automáticamente mediante palabras clave</a>. Por ejemplo, 
+Si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de la descripción, la incidencia mencionada se cerrará automáticamente al mezclar la solicitud de cambio en la rama master. Si tu solicitud de cambio se archiva en otra rama, como por ejemplo beta, habrá que cerrar la incidencia manualmente tras mezclar dicha solicitud.</p>
 <h3 id="resumen-de-la-incidencia">Resumen de la incidencia:</h3>
 <p>Un breve resumen del problema que intentas resolver.</p>
 <h3 id="descripcion-de-como-resuelve-la-incidencia-esta-solicitud-de-cambios">Descripción de cómo resuelve la incidencia esta solicitud de cambios:</h3>
