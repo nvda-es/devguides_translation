@@ -124,9 +124,9 @@ Start date: September 17, 2018
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
 	* Requires editing Git submodule config.
 3. Transition issues must be researched and documented (see above for known issues and proposed workarounds). Use "python 3" label.
-	* As of December 18, 2018, at least 20 issues were identified, along with several pull requests, some of which are resolved.
+	* As of March 26, 2019, at least 20 issues were identified, along with several pull requests, some of which are resolved.
 4. If needed, create pull requests dealing with pre-transition workflow such as making NVDA source code Python 2 and 3 aware (imports, for instance).
-	* As of December 18, 2018, at least two transition related pull request were submitted and merged into master branch.
+	* As of March 26, 2019, at least two transition related pull request were submitted and merged into master branch.
 
 Ideal completion: between NVDA 2018.4 and 2019.1 releases (tentatively by March 31, 2019)
 
@@ -173,6 +173,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	4. September 17, 2018: NVDA 2018.3 powered by wxPython 4.0.3 released, with a follow-up release (2018.3.1) 48 hours later, pre-transition workflow officially begins.
 	5. December 13, 2018: a major pull request that introduces abstract base classes is merged into master branch. This pull request also resolves metaclass syntax problem through use of six module.
 	6. December 17, 2018: NVDA 2018.4 stable version released.
+	7. March 26, 2019: NVDA 2019.1 released.
 2. Transition: Not yet begun.
 3. After transition: not yet begun.
 4. Python 3 native features:

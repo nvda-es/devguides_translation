@@ -17,7 +17,31 @@ A quick summary of the problem you are trying to solve.
 Please include a quick discussion of how this change addresses the issue. Please also include any links or external information you may have used in order to address the issue. This helps others to have the same background as you and learn from this work.
 
 ### Testing performed:
-How have you tested to ensure that your change works as intended, across all supported operating systems, without introducing regressions? Please use this section as an opportunity to try to convince us (and yourself) that your proposed change should be merged. 
+Outline the steps you took to test the change. This should allow someone else to reproduce your testing.
+
+More broadly, try to answer the following questions:
+- How have you tested to ensure that your change works as intended?
+- Have you ensured testing coverage across all supported operating systems?
+- Have you considered possible regressions (related features or behaviours that may break)?
+
+Please use this section as an opportunity to try to convince us (and yourself) that your proposed change should be merged. 
+
+Often in face to face development it's useful to demonstrate a change, quite often bugs are noticed at this point when the new person asks for some variation in testing approach. Since we unlikely to be able to demonstrate a feature in an interactive way, an easy to follow list of steps for a "demo" allows others check themselves without having to work out all the details. It also serves as a starting point for members of the community who are testing the changes that go into NVDA.
+
+Example:
+> In NVDA settings ensure that:
+> - Keyboard category
+>   - "speak typed characters" is unchecked
+>   - "speak typed words" is checked
+>
+> 1. Open notepad
+> 2. Type "hello"
+> 3. Press space
+>
+> Expect "hello" to be announced.
+
+- If many NVDA settings are required, consider attaching a sample `nvda.ini` file to the PR.
+- If a complicated document is required to test with a 3rd party application, consider attaching it to the PR for others to test with.
 
 ### Known issues with pull request:
 Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_

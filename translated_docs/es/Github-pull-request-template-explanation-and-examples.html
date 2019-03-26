@@ -13,13 +13,36 @@
 <h3 id="enlace-al-numero-de-incidencia">Enlace al número de incidencia:</h3>
 <p>Por favor, incluye aquí el número de la incidencia. Esto ayuda a los desarrolladores a mantener la información relacionada entre sí junta. Si se trata de un cambio menor o trivial, no es necesario crear una incidencia. En caso de dudas, crea una.
 Ten en cuenta que Github <a href="https://help.github.com/en/articles/closing-issues-using-keywords">permite cerrar incidencias automáticamente mediante palabras clave</a>. Por ejemplo, 
-Si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de la descripción, la incidencia mencionada se cerrará automáticamente al mezclar la solicitud de cambio en la rama master. Si tu solicitud de cambio se archiva en otra rama, como por ejemplo beta, habrá que cerrar la incidencia manualmente tras mezclar dicha solicitud.</p>
+si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de la descripción, la incidencia mencionada se cerrará automáticamente al mezclar la solicitud de cambio en la rama master. Si tu solicitud de cambio se archiva en otra rama, como por ejemplo beta, habrá que cerrar la incidencia manualmente tras mezclar dicha solicitud.</p>
 <h3 id="resumen-de-la-incidencia">Resumen de la incidencia:</h3>
 <p>Un breve resumen del problema que intentas resolver.</p>
 <h3 id="descripcion-de-como-resuelve-la-incidencia-esta-solicitud-de-cambios">Descripción de cómo resuelve la incidencia esta solicitud de cambios:</h3>
 <p>Incluye una breve exposición indicando cómo resuelve la incidencia este cambio. Incluye también cualquier enlace o información externa que hayas usado para solucionar el problema. Esto ayuda a que otros tengan la misma base que tú y aprendan de este trabajo.</p>
 <h3 id="pruebas-realizadas">Pruebas realizadas:</h3>
-<p>¿Cómo has hecho las pruebas para asegurarte de que tus cambios funcionan como quieres, a través de los distintos sistemas operativos soportados, sin introducir regresiones? Emplea esta sección como una oportunidad para intentar convencer a los desarrolladores (y a ti mismo) de que debería mezclarse tu cambio. </p>
+<p>Describe los pasos que seguiste para probar tus cambios. Esto debería permitir que alguien más pueda reproducir tus pruebas.</p>
+<p>Vayamos más allá, intenta responder las siguientes preguntas:
+- ¿Cómo has hecho las pruebas para asegurarte de que tus cambios funcionan como se esperan?
+- ¿Te has asegurado de que hay una extensa cobertura de pruebas a través de varios sistemas operativos?
+- ¿Te has planteado que pueda haber posibles regresiones (funciones o comportamientos relacionados que puedan romperse)?</p>
+<p>Emplea esta sección como una oportunidad para intentar convencer a los desarrolladores (y a ti mismo) de que debería mezclarse el cambio que has propuesto. </p>
+<p>A menudo es útil en el desarrollo cara a cara demostrar un cambio, bastantes fallos se descubren en ese momento cuando la otra persona pide una variación en el enfoque de las pruebas. Ya que es bastante improbable que se pueda demostrar una función de manera interactiva, una lista de pasos fácil de seguir para una "demo" permite que otros puedan hacer comprobaciones por sí mismos sin tener que entrar en demasiados detalles. También sirve como punto de partida para los miembros de la comunidad que prueban los cambios que van dentro de NVDA.</p>
+<p>Ejemplo:</p>
+<blockquote>
+<p>En las opciones de NVDA comprueba que:
+- En la categoría teclado
+  - "Verbalizar caracteres al escribir" está desmarcada
+  - "Verbalizar palabras al escribir" está marcada</p>
+<ol>
+<li>Abre el bloc de notas</li>
+<li>Escribe "hola"</li>
+<li>Pulsa espacio</li>
+</ol>
+<p>Se espera que se verbalice "hola".</p>
+</blockquote>
+<ul>
+<li>Si es necesario modificar muchos ajustes de NVDA, plantéate adjuntar un archivo <code>nvda.ini</code> de muestra a la solicitud de cambio.</li>
+<li>Si se necesita un documento complicado para hacer pruebas con una aplicación de terceros, plantéate adjuntarlo a la solicitud de cambios para que otros hagan pruebas también.</li>
+</ul>
 <h3 id="problemas-conocidos-con-la-solicitud-de-cambio">Problemas conocidos con la solicitud de cambio:</h3>
 <p>¿Hay problemas o desventajas con este enfoque? Por ejemplo: <em>No funcionará en Python 3</em></p>
 <h3 id="entrada-en-el-registro-de-cambios">Entrada en el registro de cambios:</h3>

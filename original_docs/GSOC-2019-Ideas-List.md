@@ -1,19 +1,12 @@
 ## Introduction
 As a part of the Google Summer of Code application process, NV Access is required to provide a project ideas list, which will help students as they plan and write their project proposals.
 The [NVDA project](https://github.com/nvaccess/nvda/) currently has more than 2000 [open issues](https://github.com/nvaccess/nvda/issues/) on Github and will consider project proposals on any of them assuming the size and complexity is suitable for GSOC. However, the following list are just some of the higher priority issues students may wish to consider.
- 
-## Ideas
-### Improve performance of reading/navigating Microsoft excel by batching COM calls in process
-Related issue: [#7348](https://github.com/nvaccess/nvda/issues/7348)
 
-#### The problem
-NVDA provides broad support for reading and interacting with spreadsheets in Microsoft Excel. This support is implemented by using [Excel's COM object model](https://docs.microsoft.com/en-us/office/vba/api/overview/excel/object-model) in a cross-process fashion.
-Partly due to the amount of information NVDA must fetch, and partly due to recent slowdowns in the object model itself, NVDA's access for Microsoft Excel is becoming slower, and in some cases  totally impractical. Although NV Access is working closely with the Excel team at Microsoft to rectify the recent slowdowns, we should definitely consider actions we can take in NVDA to limit or batch object model calls in order to provide the best performance.
-#### Implementation
-Similarly to our [in-process support for Microsoft Word](https://github.com/nvaccess/nvda/blob/master/nvdaHelper/remote/winword.cpp), we should consider fetching all possible information needed for a given cell in one call, via NVDA's in-process code in c++. While these calls are being made, we should also consider instructing Excel to pause [screen updating](https://docs.microsoft.com/en-us/office/vba/api/excel.application.screenupdating). 
-Although all the work to run NVDA's in-process code in Excel already exists, we would need to still write the actual COM calls, plus come up with an appropriate serialized format in which to represent all the information for a given cell, for sending back to NVDA.
-#### Impact
-Many blind and vision impaired people use Excel either in their education or employment. Speeding up support for Microsoft Excel will allow NVDA users to be much more efficient at their work.
+Please direct any questions about these ideas to the NV Access GSOC mentors:
+* Michael Curran <mick@nvaccess.org> (@michaeldcurran on Github)
+* Reef Turner <reef@nvaccess.org> (@feerrenrut on Github)
+
+## Ideas
 
 ### Improve stability of NVDA's audio output
 [Related issues](https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Aaudio)
@@ -28,8 +21,8 @@ There is a possibility that several system crashes reported by users may be due 
 We also may have multiple code paths opening, writing to and closing the audio device at the same time. E.g. the tones module for beeps, may hold the audio device open all the time. It may be an idea to somehow integrate all this so that audio only goes through one final code path that serializes access to the audio device.
 There are several locks in place currently, but this should be reviewed.
 See the [nvWave](https://github.com/nvaccess/nvda/blob/master/source/nvwave.py) module in the NVDA source code.
- #### Impact
-Improving the audio in NvDA will improve both stability and performance of NVDA. NVDA will be able to be used efficiently on a wider range of audio hardware, which means NvDA can be used in more situations and possibly on lower-end devices, ensuring NVDA is helping the greatest amount of blind and vision impaired people possible.
+#### Impact
+Improving the audio in NVDA will improve both stability and performance of NVDA. NVDA will be able to be used efficiently on a wider range of audio hardware, which means NVDA can be used in more situations and possibly on lower-end devices, ensuring NVDA is helping the greatest amount of blind and vision impaired people possible.
 
 ### Performance and stability in windows command consoles
 [Related issues](https://github.com/nvaccess/nvda/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22Windows+Command+Console%22)
@@ -109,3 +102,16 @@ There are a number of NVDA users who use NVDA in conjunction with the [Magnifier
 - Synchronize the Magnifier with NVDA's focus / object navigation. I.e. if the user specifically navigates with NVDA, the Magnifier should follow along.
 - Learn from the innovative ideas in the free [Glassbrick](https://www.glassbrick.org/) magnifier, and ensure that NVDA can offer the same if not better interaction and configurability.
  
+### Improve performance of reading/navigating Microsoft excel by batching COM calls in process
+Related issue: [#7348](https://github.com/nvaccess/nvda/issues/7348)
+Note that much of this idea has already been implemented in NVDA, see pr #9257.
+However, further work can be done to extend this to fetching of text formatting which is still slow.
+
+#### The problem
+NVDA provides broad support for reading and interacting with spreadsheets in Microsoft Excel. This support is implemented by using [Excel's COM object model](https://docs.microsoft.com/en-us/office/vba/api/overview/excel/object-model) in a cross-process fashion.
+Partly due to the amount of information NVDA must fetch, and partly due to recent slowdowns in the object model itself, NVDA's access for Microsoft Excel is becoming slower, and in some cases  totally impractical. Although NV Access is working closely with the Excel team at Microsoft to rectify the recent slowdowns, and has in some cases improved performance in the last few months, we should definitely consider further actions we can take in NVDA to limit or batch object model calls in order to provide the best performance.
+#### Implementation
+Similarly to our [in-process support for Microsoft Word](https://github.com/nvaccess/nvda/blob/master/nvdaHelper/remote/winword.cpp), work has already begun to batch cross-process COM calls. we should consider fetching all possible information needed for a given cell in one call, via NVDA's in-process code in c++. While these calls are being made, we should also consider instructing Excel to pause [screen updating](https://docs.microsoft.com/en-us/office/vba/api/excel.application.screenupdating). 
+Although all the work to run NVDA's in-process code in Excel already exists, we would need to still write the actual COM calls, plus come up with an appropriate serialized format in which to represent all the information for a given cell, for sending back to NVDA.
+#### Impact
+Many blind and vision impaired people use Excel either in their education or employment. Speeding up support for Microsoft Excel will allow NVDA users to be much more efficient at their work.
