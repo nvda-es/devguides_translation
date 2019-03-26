@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2018.4</title>
+  <title># Guía del desarrollador de NVDA 2019.1</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2018.4</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20184">Guía del desarrollador de NVDA 2018.4</h1>
+  <header><h1># Guía del desarrollador de NVDA 2019.1</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20191">Guía del desarrollador de NVDA 2019.1</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -44,15 +44,13 @@
 <li>4.1. Nombres de fichero no ASCII en archivos Zip</li>
 <li>4.2. Archivos de manifiesto</li>
 <li>4.2.1. Campos disponibles</li>
-<li>4.2.2. Un archivo de manifiesto de ejemplo</li>
-<li>4.3. Extensiones y controladores</li>
-<li>4.4. Código opcional de instalación y desinstalación</li>
-<li>4.4.1. La función onInstall</li>
-<li>4.4.2. La función onUninstall</li>
-<li>4.5. Traducción de complementos</li>
-<li>4.5.1. Archivos de manifiesto específicos del idioma</li>
-<li>4.5.2. Mensajes específicos del idioma</li>
-<li>4.6. Documentación del complemento</li>
+<li>4.3. Código opcional de instalación y desinstalación</li>
+<li>4.3.1. La función onInstall</li>
+<li>4.3.2. La función onUninstall</li>
+<li>4.4. Traducción de complementos</li>
+<li>4.4.1. Archivos de manifiesto específicos del idioma</li>
+<li>4.4.2. Mensajes específicos del idioma</li>
+<li>4.5. Documentación del complemento</li>
 </ul>
 </li>
 <li>5. La consola Python de NVDA<ul>
@@ -153,10 +151,12 @@ b   bravo
 </ul>
 <p>Si quieres mejorar el acceso de NVDA a una aplicación en particular, lo más probable es que necesites escribir un módulo de aplicación. En contraste, si quisieras añadir alguna funcionalidad general a NVDA (por ejemplo, un script que verbalice la fuerza de la señal de la red wi-fi desde cualquier aplicación), lo que necesitas entonces es una extensión global. </p>
 <p>Tanto los módulos de aplicación como las extensiones globales tienen mucho en común. Ambos son archivos con código fuente Python (con una extensión .py), ambos definen una clase especial que contiene todos los eventos, scripts y asociaciones, y ambos pueden definir clases personalizadas para acceder a controles, contenido textual y documentos complejos. Sin embargo, difieren en algunos aspectos. </p>
+<p>Las extensiones globales y los módulos de aplicación personalizados pueden empaquetarse como complementos de NVDA. Esto facilita la distribución y proporciona una forma segura para que el usuario instale y desinstale código personalizado. Por favor, lee la sección que habla de complementos más adelante en este documento. </p>
+<p>Para probar el código durante el desarrollo, puedes situarlo en un directorio especial llamado 'scratchpad' en tu carpeta de configuración de usuario de NVDA. También será necesario configurar NVDA para habilitar la carga de código personalizado desde el directorio scratchpad para desarrolladores. Esto se puede hacer desde la categoría Avanzado del diálogo de opciones de NVDA. La categoría Avanzado también contiene un botón para abrir fácilmente la carpeta scratchpad de desarrollo si está activada. </p>
 <p>Las siguientes secciones hablarán por separado de módulos de aplicación y extensiones globales. Después de este punto, la discusión volverá a ser más general. </p>
 <h3 id="33-lo-basico-de-un-modulo-de-aplicacion">3.3. Lo básico de un módulo de aplicación</h3>
 <p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. </p>
-<p>Los archivos de módulo de aplicación deben situarse en el subdirectorio appModules del directorio de configuración de usuario de NVDA. Para más información sobre dónde encontrar el directorio de configuración de usuario, por favor consulta la guía de usuario de NVDA. </p>
+<p>Los archivos de módulo de aplicación deben situarse en la subcarpeta appModules de un complemento, o en el directorio scratchpad de la carpeta de configuración de usuario de NVDA. </p>
 <p>Los módulos de aplicación deben definir una clase llamada AppModule, que hereda de appModuleHandler.AppModule. Esta clase puede definir métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá más tarde en profundidad. </p>
 <p>NVDA carga el módulo de aplicación para una aplicación dada tan pronto como se da cuenta de que esa aplicación se está ejecutando. El módulo de aplicación se descarga una vez se cierra la aplicación o se sale de NVDA. </p>
 <h3 id="34-ejemplo-1-un-modulo-de-aplicacion-que-pita-ante-eventos-de-cambio-de-foco">3.4. Ejemplo 1: un módulo de aplicación que pita ante eventos de cambio de foco</h3>
@@ -199,7 +199,7 @@ class AppModule(appModuleHandler.AppModule):
 <p>Como se pide con otros ejemplos de esta guía, recuerda eliminar el módulo de aplicación creado cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
 <h3 id="35-lo-basico-de-una-extension-global">3.5. Lo básico de una extensión global</h3>
 <p>Los archivos de extensión global tienen la extensión .py, y deberían tener un nombre corto y único que identifique lo que hacen. </p>
-<p>Los archivos de extensión global deben situarse en la subcarpeta globalPlugins del directorio de configuración de usuario de NVDA. Para más información sobre cómo encontrar el directorio de configuración de usuario, por favor consulta la guía de usuario de NVDA. </p>
+<p>Los archivos de extensión global deben situarse en el subdirectorio globalPlugins de un complemento, o en la carpeta scratchpad del directorio de configuración de usuario de NVDA. </p>
 <p>Las extensiones globales deben definir una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. Esta clase puede definir a continuación métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá en profundidad más tarde. </p>
 <p>NVDA carga todas las extensiones globales tan pronto como se inicia, y las descarga al salir. </p>
 <h3 id="36-ejemplo-2-una-extension-global-que-proporciona-un-script-para-verbalizar-la-version-de-nvda">3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</h3>
@@ -229,7 +229,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 
 
-    @scriptHandler.script(gesture="kb:NVDA+shift+v")
+    @script(gesture="kb:NVDA+shift+v")
 
     def script_announceNVDAVersion(self, gesture):
 
@@ -570,45 +570,61 @@ class AppModule(appModuleHandler.AppModule):
 <li>description: una o dos frases que describan qué hace el complemento. </li>
 <li>url: una URL donde pueda encontrarse este complemento, sus actualizaciones y más información sobre él. </li>
 <li>docFileName: el nombre del archivo de documentación principal para el complemento; por ejemplo readme.html. Mira la sección de documentación de complementos para más detalles. </li>
+<li>minimumNVDAVersion: la mínima versión requerida de NVDA para que este complemento pueda instalarse o habilitarse. <ul>
+<li>por ejemplo "2019.1.1" </li>
+<li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
+<li>Por defecto es "0.0.0" </li>
+<li>Debe ser inferior o igual a `lastTestedNVDAVersion` </li>
 </ul>
-<h4 id="422-un-ejemplo-de-archivo-de-manifiesto">4.2.2. Un ejemplo de archivo de manifiesto</h4>
-<pre><code>--- inicio ---
+</li>
+<li>lastTestedNVDAVersion: la última versión de NVDA con la que se ha probado el complemento. <ul>
+<li>por ejemplo "2019.1.0" </li>
+<li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
+<li>Por defecto es "0.0.0" </li>
+<li>Debe ser mayor o igual a `minimumNVDAVersion` - </li>
+</ul>
+</li>
+</ul>
+<p>El campo lastTestedNVDAVersion en particular se usa para asegurar que los usuarios pueden confiar a la hora de instalar un complemento. Permite que el autor asegure que el complemento no causará inestabilidad o dañará el sistema del usuario. Cuando no se proporcione o sea menor que la versión actual de NVDA (ignorando actualizaciones menores como 2018.3.1), el usuario recibirá una advertencia indicando que no instale el complemento. </p>
+<p>+++ Un ejemplo de archivo de manifiesto +++ </p>
+<pre><code>    --- inicio ---
 
-name = MyTestAddon
+    name = MyTestAddon
 
-summary = Cool Test Add-on
+    summary = Cool Test Add-on
 
-version = 1.0
+    version = 1.0
 
-description = An example add-on showing how to create add-ons!
+    description = An example add-on showing how to create add-ons!
 
-author = Michael Curran &lt;mick@kulgan.net&gt;
+    author = Michael Curran &lt;mick@kulgan.net&gt;
 
-url = http://www.nvda-project.org/wiki/Development
+    url = http://www.nvda-project.org/wiki/Development
 
---- fin ---
+    minimumNVDAVersion = 2018.1.0
+
+    lastTestedNVDAVersion = 2019.1.0
+
+    --- fin ---
 </code></pre>
-<h3 id="43-extensiones-y-controladores">4.3. Extensiones y controladores</h3>
-<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: </p>
-<ul>
-<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
-<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
-<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
-<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
-</ul>
-<h3 id="44-codigo-opcional-de-instalacion-y-desinstalacion">4.4. Código opcional de instalación y desinstalación</h3>
+<p>++ Extensiones y controladores ++ Se pueden incluir las siguientes extensiones y controladores en un complemento: 
+  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
+  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
+  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
+  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
+<h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
-<h4 id="441-la-funcion-oninstall">4.4.1. La función onInstall</h4>
+<h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>
 <p>NVDA buscará y ejecutará una función onInstall en installTasks.py después de que termine de extraer el complemento en NVDA. Ten en cuenta que aunque el complemento haya sido extraído en ese momento, su directorio tendrá el sufijo .pendingInstall hasta que NVDA se reinicie, el directorio sea renombrado y el complemento realmente cargado por primera vez. Si esta función eleva una excepción, la instalación del complemento fallará y su directorio será eliminado. </p>
-<h4 id="442-la-funcion-onuninstall">4.4.2. La función onUninstall</h4>
+<h4 id="432-la-funcion-onuninstall">4.3.2. La función onUninstall</h4>
 <p>NVDA buscará y ejecutará una función onUninstall en installTasks.py cuando se reinicie después de que el usuario haya elegido eliminar el complemento. Después de que esta función complete su ejecución, se eliminará automáticamente el directorio del complemento. Como esto pasa en la inicialización de NVDA antes de que se carguen otros componentes, esta función no puede solicitar entrada del usuario. </p>
-<h3 id="45-traduccion-de-complementos">4.5. Traducción de complementos</h3>
+<h3 id="44-traduccion-de-complementos">4.4. Traducción de complementos</h3>
 <p>Es posible proporcionar información y mensajes específicos del idioma para tu complemento. La información traducida puede almacenarse en un directorio locale en el archivo. Este directorio debería contener directorios para cada idioma que soporte, usando el mismo formato de código de idioma que el resto de NVDA; por ejemplo en para inglés, fr_ca para francés de Canadá. </p>
-<h4 id="451-archivos-de-manifiesto-especificos-del-idioma">4.5.1. Archivos de manifiesto específicos del idioma</h4>
+<h4 id="441-archivos-de-manifiesto-especificos-del-idioma">4.4.1. Archivos de manifiesto específicos del idioma</h4>
 <p>Cada uno de estos directorios de idioma puede contener un archivo de manifiesto específico del idioma llamado manifest.ini, que puede tener un pequeño subconjunto de los campos de manifiesto para traducir. Estos campos son summary y description. Todos los demás campos se ignoran. </p>
-<h4 id="452-mensajes-especificos-del-idioma">4.5.2. Mensajes específicos del idioma</h4>
+<h4 id="442-mensajes-especificos-del-idioma">4.4.2. Mensajes específicos del idioma</h4>
 <p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web.</p>
-<h3 id="46-documentacion-del-complemento">4.6. Documentación del complemento</h3>
+<h3 id="45-documentacion-del-complemento">4.5. Documentación del complemento</h3>
 <p>La documentación para un complemento debería situarse en un directorio doc en el archivo. De forma similar al directorio locale, este directorio debería contener carpetas para cada idioma en el que haya disponible documentación. </p>
 <p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionando el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
 <h2 id="546-la-consola-python-de-nvda">5. La consola Python de NVDA</h2>

@@ -1,4 +1,4 @@
-# NVDA 2018.4 Developer Guide
+# NVDA 2019.1 Developer Guide
 
 ## Table of Contents
 
@@ -31,15 +31,13 @@
     * 4.1. Non-ASCII File Names in Zip Archives
     * 4.2. Manifest Files
       * 4.2.1. Available Fields
-      * 4.2.2. An Example Manifest File
-    * 4.3. Plugins and Drivers
-    * 4.4. Optional install / Uninstall code
-      * 4.4.1. the onInstall function
-      * 4.4.2. The onUninstall Function
-    * 4.5. Localizing Add-ons
-      * 4.5.1. Locale-specific Manifest Files
-      * 4.5.2. Locale-specific Messages
-    * 4.6. Add-on Documentation
+    * 4.3. Optional install / Uninstall code
+      * 4.3.1. the onInstall function
+      * 4.3.2. The onUninstall Function
+    * 4.4. Localizing Add-ons
+      * 4.4.1. Locale-specific Manifest Files
+      * 4.4.2. Locale-specific Messages
+    * 4.5. Add-on Documentation
   * 5\. NVDA Python Console
     * 5.1. Usage
     * 5.2. Namespace
@@ -181,13 +179,17 @@ If you wish to improve NVDA's access to a particular application, it is most lik
 
 Both App Modules and Global Plugins share a common look and feel. They are both Python source files \(with a .py extension\), they both define a special class containing all events, scripts and bindings, and they both may define custom classes to access controls, text content and complex documents. However, they do differ in some ways. 
 
+Custom appModules and globalPlugins can be packaged into NVDA add-ons. This allows easy distribution, and provides a safe way for the user to install and uninstall the custom code. Please refer to the Add-ons section later on in this document. 
+
+In order to test the code while developing, you can place it in a special 'scratchpad' directory in your NVDA user configuration directory. You will also need to configure NVDA to enable loading of custom code from the Developer Scratchpad Directory, by enabling this in the Advanced category of NVDA's Settings dialog. The Advanced category also contains a button to easily open the Developer Scratchpad directory if enabled. 
+
 The following few sections will talk separately about App Modules and Global Plugins. After this point, discussion is again more general. 
 
 ### 3.3. Basics of an App Module
 
 App Module files have a .py extension, and are named the same as the main executable of the application for which you wish them to be used. For example, an App Module for notepad would be called notepad.py, as notepad's main executable is called notepad.exe. 
 
-App Module files must be placed in the appModules subdirectory of the user's NVDA user configuration directory. For more information on where to find the user configuration directory, please see the NVDA user guide. 
+App Module files must be placed in the appModules subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. 
 
 App Modules must define a class called AppModule, which inherits from appModuleHandler.AppModule. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. 
 
@@ -234,7 +236,7 @@ As with other examples in this guide, remember to delete the created app module 
 
 Global Plugin files have a .py extension, and should have a short unique name which identifies what they do. 
 
-Global Plugin files must be placed in the globalPlugins subdirectory of the user's NVDA user configuration directory. For more information on where to find the user configuration directory, please see the NVDA user guide. 
+Global plugin files must be placed in the globalPlugins subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. 
 
 Global Plugins must define a class called GlobalPlugin, which inherits from globalPluginHandler.GlobalPlugin. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. 
 
@@ -262,7 +264,7 @@ From anywhere, you can now press NVDA+shift+v to have NVDA's version spoken and 
     
     class GlobalPlugin(globalPluginHandler.GlobalPlugin):
     
-    	@scriptHandler.script(gesture="kb:NVDA+shift+v")
+    	@script(gesture="kb:NVDA+shift+v")
     	def script_announceNVDAVersion(self, gesture):
     		ui.message(versionInfo.version)
     
@@ -599,7 +601,7 @@ If your add-on includes files which contain non-ASCII \(non-English\) characters
 
 ### 4.2. Manifest Files
 
-Each add-on package must contain a manifest file named manifest.ini. This must be a UTF-8 encoded text file. This manifest file contains key = value pares declaring info such as the add-on's name, version and description. 
+Each add-on package must contain a manifest file named manifest.ini. This must be a UTF-8 encoded text file. This manifest file contains key = value pairs declaring info such as the add-on's name, version and description. 
 
 #### 4.2.1. Available Fields
 
@@ -612,56 +614,66 @@ Although it is highly suggested that manifests contain all fields, the fields ma
   * description: A sentence or two describing what the add-on does. 
   * url: A URL where this add-on, further info and upgrades can be found. 
   * docFileName: The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. 
+  * minimumNVDAVersion: The minimum required version of NVDA for this add-on to be installed or enabled. 
+    * e.g "2019.1.1" 
+    * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
+    * Defaults to "0.0.0" 
+    * Must be less than or equal to \`lastTestedNVDAVersion\` 
+  * lastTestedNVDAVersion: The last version of NVDA this add-on has been tested with. 
+    * e.g "2019.1.0" 
+    * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
+    * Defaults to "0.0.0" 
+    * Must be greater than or equal to \`minimumNVDAVersion\` \- 
 
+The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \(ignoring minor point updates EG 2018.3.1\) then the user will be warned not to install the add-on. 
 
-#### 4.2.2. An Example Manifest File
-    
-    
-    --- start ---
-    name = MyTestAddon
-    summary = Cool Test Add-on
-    version = 1.0
-    description = An example add-on showing how to create add-ons!
-    author = Michael Curran <mick@kulgan.net>
-    url = http://www.nvda-project.org/wiki/Development
-    --- end ---
-    
++++ An Example Manifest File +++ 
+        
+        
+        --- start ---
+        name = MyTestAddon
+        summary = Cool Test Add-on
+        version = 1.0
+        description = An example add-on showing how to create add-ons!
+        author = Michael Curran <mick@kulgan.net>
+        url = http://www.nvda-project.org/wiki/Development
+        minimumNVDAVersion = 2018.1.0
+        lastTestedNVDAVersion = 2019.1.0
+        --- end ---
+        
 
-### 4.3. Plugins and Drivers
-
-The following plugins and drivers can be included in an add-on: 
-
+++ Plugins and Drivers ++ The following plugins and drivers can be included in an add-on: 
   * App modules: Place them in an appModules directory in the archive. 
   * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. 
   * Global plugins: Place them in a globalPlugins directory in the archive. 
   * Synthesizer drivers: Place them in a synthDrivers directory in the archive. 
 
 
-### 4.4. Optional install / Uninstall code
+### 4.3. Optional install / Uninstall code
 
 If you need to execute code as your add-on is being installed or uninstalled from NVDA \(e.g. to validate license information or to copy files to a custom location\), you can provide a Python file called installTasks.py in the archive which contains special functions that NVDA will call while installing or uninstalling your add-on. This file should avoid loading any modules that are not absolutely necessary, especially Python C extensions or dlls from your own add-on, as this could cause later removal of the add-on to fail. However, if this does happen, the add-on directory will be renamed and then deleted after the next restart of NVDA. Finally, it should not depend on the existence or state of other add-ons, as they may not be installed, have already been removed or not yet be initialized. 
 
-#### 4.4.1. the onInstall function
+#### 4.3.1. the onInstall function
 
 NVDA will look for and execute an onInstall function in installTasks.py after it has finished extracting the add-on into NVDA. Note that although the add-on will have been extracted at this time, its directory will have a .pendingInstall suffix until NVDA is restarted, the directory is renamed and the add-on is really loaded for the first time. If this function raises an exception, the installation of the add-on will fail and its directory will be cleaned up. 
 
-#### 4.4.2. The onUninstall Function
+#### 4.3.2. The onUninstall Function
 
 NVDA will look for and execute an onUninstall function in installTasks.py when NVDA is restarted after the user has chosen to remove the add-on. After this function completes, the add-on's directory will automatically be removed. As this happens on NVDA startup before other components are initialized, this function cannot request input from the user. 
 
-### 4.5. Localizing Add-ons
+### 4.4. Localizing Add-ons
 
 It is possible to provide locale-specific information and messages for your add-on. Locale information can be stored in a locale directory in the archive. This directory should contain directories for each language it supports, using the same language code format as the rest of NVDA; e.g. en for English, fr\_CA for French Canadian. 
 
-#### 4.5.1. Locale-specific Manifest Files
+#### 4.4.1. Locale-specific Manifest Files
 
 Each of these language directories can contain a locale-specific manifest file called manifest.ini, which can contain a small subset of the manifest fields for translation. These fields are summary and description. All other fields will be ignored. 
 
-#### 4.5.2. Locale-specific Messages
+#### 4.4.2. Locale-specific Messages
 
 Each language directory can also contain gettext information, which is the system used to translate the rest of NVDA's user interface and reported messages. As with the rest of NVDA, an nvda.mo compiled gettext database file should be placed in the LC\_MESSAGES directory within this directory. to allow plugins in your add-on to access gettext message information via calls to \_\(\), you must initialize translations at the top of each Python module by calling addonHandler.initTranslation\(\). For more information about gettext and NVDA translation in general, please read <http://www.nvda-project.org/wiki/TranslatingNVDA>
 
-### 4.6. Add-on Documentation
+### 4.5. Add-on Documentation
 
 Documentation for an add-on should be placed in a doc directory in the archive. Similar to the locale directory, this directory should contain directories for each language in which documentation is available. 
 
