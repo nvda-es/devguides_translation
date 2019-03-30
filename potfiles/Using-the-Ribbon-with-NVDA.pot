@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-03-26 13:55+Hora estándar romance\n"
+"POT-Creation-Date: 2019-03-30 20:00+Hora estándar romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,31 +44,31 @@ msgid "Just like it always has been with menus so it remains with tabs/ribbons t
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:10
-msgid "\342\200\242\tF for the File Tab, which does not have a ribbon but does have a number of controls"
+msgid "* F for the File Tab, which does not have a ribbon but does have a number of controls"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:11
-msgid "\342\200\242\tH for the Home Tab, which is by far and away the one that gets the most use"
+msgid "* H for the Home Tab, which is by far and away the one that gets the most use"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:12
-msgid "\342\200\242\tS for the Share Tab"
+msgid "* S for the Share Tab"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:13
-msgid "\342\200\242\tV for the View Tab"
+msgid "* V for the View Tab"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:14
-msgid "\342\200\242\t1 for the properties dialog if you have a file or folder selected.  Can also be invoked using ALT+Enter instead"
+msgid "* 1 for the properties dialog if you have a file or folder selected.  Can also be invoked using ALT+Enter instead"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:15
-msgid "\342\200\242\t2 for the New Folder button.  Can also be invoked using CTRL+Shift+N instead"
+msgid "* 2 for the New Folder button.  Can also be invoked using CTRL+Shift+N instead"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:16
-msgid "\342\200\242\tE to invoke the Windows Help function for File Explorer.  Opens a web browser window in whatever browser you\342\200\231ve set up as your default."
+msgid "* E to invoke the Windows Help function for File Explorer.  Opens a web browser window in whatever browser you\342\200\231ve set up as your default."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:17
@@ -120,27 +120,27 @@ msgid "Contains the following controls, I will note the direct keyboard sequence
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:29
-msgid "\342\200\242\tPin to Quick Access \342\200\223 if a file or folder is selected will be active and will do precisely what its name states.  [PI]"
+msgid "* Pin to Quick Access \342\200\223 if a file or folder is selected will be active and will do precisely what its name states.  [PI]"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:30
-msgid "\342\200\242\tCopy [CO]   You can also use the CTRL+C keyboard shortcut to copy (which I always do)."
+msgid "* Copy [CO]   You can also use the CTRL+C keyboard shortcut to copy (which I always do)."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:31
-msgid "\342\200\242\tPaste [V]  You can also use the CTRL+V keyboard shortcut to paste (which I always do)."
+msgid "* Paste [V]  You can also use the CTRL+V keyboard shortcut to paste (which I always do)."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:32
-msgid "\342\200\242\tCut [T]  You can also use the CTRL+X keyboard shortcut to cut (again, which I always do)."
+msgid "* Cut [T]  You can also use the CTRL+X keyboard shortcut to cut (again, which I always do)."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:33
-msgid "\342\200\242\tCopy Path [CP] Copies the full path to the file(s) or folder(s) selected to the clipboard"
+msgid "* Copy Path [CP] Copies the full path to the file(s) or folder(s) selected to the clipboard"
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:34
-msgid "\342\200\242\tPaste Shortcut [PS]  If you did a previous copy on a file, using Paste Shortcut will do what it says, paste a shortcut (symbolic link) to the original file in the folder you\342\200\231re sitting in rather than an actual duplicate copy of the file."
+msgid "* Paste Shortcut [PS]  If you did a previous copy on a file, using Paste Shortcut will do what it says, paste a shortcut (symbolic link) to the original file in the folder you\342\200\231re sitting in rather than an actual duplicate copy of the file."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:35
@@ -148,19 +148,19 @@ msgid "## Short List of Commonly Used Key Sequences for Ribbon Navigation."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:36
-msgid "\342\200\242\tALT plus appropriate letter:  Throw focus on a specific tab that contains the ribbon you need to use.  For example, in MS-Word, ALT+F for File Tab or ALT+H for Home Tab."
+msgid "* ALT plus appropriate letter:  Throw focus on a specific tab that contains the ribbon you need to use.  For example, in MS-Word, ALT+F for File Tab or ALT+H for Home Tab."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:37
-msgid "\342\200\242\tDown Arrow, struck once.  In File Explorer this puts you into the ribbon without having to go through a couple of controls that are part of the File Explorer window itself.  You can also use this in any other program as well, but often TAB will work. I want people to be aware of this exception primarily for File Explorer since it requires four TAB presses to achieve what a single down arrow press does. "
+msgid "* Down Arrow, struck once.  In File Explorer this puts you into the ribbon without having to go through a couple of controls that are part of the File Explorer window itself.  You can also use this in any other program as well, but often TAB will work. I want people to be aware of this exception primarily for File Explorer since it requires four TAB presses to achieve what a single down arrow press does. "
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:38
-msgid "\342\200\242\tTAB \342\200\223 this is your primary control to control navigation key.  It\342\200\231s great if you don\342\200\231t know where something happens to be and need to listen for the control and its shortcut character or characters."
+msgid "* TAB \342\200\223 this is your primary control to control navigation key.  It\342\200\231s great if you don\342\200\231t know where something happens to be and need to listen for the control and its shortcut character or characters."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:39
-msgid "\342\200\242\tCTRL+Right Arrow (or Left Arrow)  move to the next (or previous) group of controls.  In the old menu system many menu items had submenus and in the ribbon system most controls are grouped together based on their functions, but all are visible.  If you know that the group you\342\200\231re in definitely isn\342\200\231t what you\342\200\231re looking for you can quickly jump to the next or previous group rather than having to tab your way through each and every control."
+msgid "* CTRL+Right Arrow (or Left Arrow)  move to the next (or previous) group of controls.  In the old menu system many menu items had submenus and in the ribbon system most controls are grouped together based on their functions, but all are visible.  If you know that the group you\342\200\231re in definitely isn\342\200\231t what you\342\200\231re looking for you can quickly jump to the next or previous group rather than having to tab your way through each and every control."
 msgstr ""
 
 #: ..\python_docs\Using-the-Ribbon-with-NVDA.py:40

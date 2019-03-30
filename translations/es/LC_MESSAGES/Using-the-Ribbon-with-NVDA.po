@@ -1,0 +1,382 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-03-30 20:00+Hora estándar romance\n"
+"PO-Revision-Date: 2019-03-30 21:34+0100\n"
+"Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:3
+msgid "Originally by Brian Vogel."
+msgstr "Original por Brian Vogel."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:4
+msgid ""
+"The ribbons in Windows, whether in File Explorer or specific programs like "
+"MS-Word or others, are really just another variant on a menu system that has "
+"as its intention making the most commonly used items \\342\\200\\234front "
+"and center\\342\\200\\235 for fast access."
+msgstr ""
+"Las cintas en Windows, ya sea en el explorador de archivos o en programas "
+"específicos como MS-Word y otros, sólo son otra variante de un sistema de "
+"menús que tiene por objetivo priorizar los elementos más comunmente "
+"utilizados para agilizar el acceso."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:5
+msgid ""
+"Many of the things you already know for using a menu-driven system still "
+"apply for accessing the ribbons.  In the old-style menus you hit ALT plus "
+"the appropriate letter to drop down that menu.  In the ribbon system you hit "
+"ALT plus the appropriate letter to open a specific tab that shows the ribbon "
+"you need to access."
+msgstr ""
+"Varias de las cosas que ya sabes para utilizar un sistema basado en menús "
+"también aplican para acceder a las cintas.  En los menús a la antigua usanza "
+"se pulsa ALT más la letra correspondiente para desplegar ese menú.  En el "
+"sistema de cintas se pulsa ALT más la letra correspondiente para abrir una "
+"pestaña específica que muestra la cinta a la que necesitas acceder."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:6
+msgid ""
+"Every blessed option on a ribbon has a direct keyboard shortcut to activate "
+"it, so it is worth learning what your own \\342\\200\\234greatest hits"
+"\\342\\200\\235 generally are and what their keyboard shortcuts are to save "
+"yourself a lot of time.  That being said, we all occasionally have to use a "
+"feature that we seldom use, so on occasion a brute force \\342\\200\\234tab "
+"by tab\\342\\200\\235 search, either through a whole ribbon or within select "
+"groups on a given ribbon might be needed."
+msgstr ""
+"Toda opción en una cinta tiene un atajo de teclado directo para activarla, "
+"así que vale la pena aprender cuáles son por lo general tus \"grandes éxitos"
+"\" y sus teclas rápidas para ahorrar un montón de tiempo.  Dicho esto, todos "
+"nosotros tenemos que usar ocasionalmente alguna característica que rara vez "
+"utilizamos, de forma que en ocasiones una búsqueda mediante fuerza bruta "
+"\"pestaña por pestaña\", a través de la cinta o de grupos específicos en una "
+"cinta concreta, podría ser necesaria."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:7
+msgid ""
+"One big difference between using the old-style menu system and ribbons is "
+"that the up, down, left, and right arrow keys were your primary navigation "
+"keys for menus.  They are not for ribbon navigation.  Your primary "
+"navigation key is the TAB key, along with CTRL+Right Arrow (or Left Arrow) "
+"if you wish to jump from ribbon group to ribbon group."
+msgstr ""
+"Una gran diferencia entre usar el sistema de menús con estilo antiguo y las "
+"cintas es que las teclas de flecha arriba, abajo, izquierda y derecha eran "
+"nuestras teclas primarias de navegación para los menús.  Pero no lo son para "
+"la navegación por cintas.  Tu tecla principal de navegación es TAB, junto "
+"con CTRL+Flecha Derecha (o Flecha Izquierda) si deseas saltar entre grupos "
+"de cinta."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:8
+msgid ""
+"What follows will use File Explorer as the program and its various buttons "
+"and ribbons.  This is from a system running Windows 10, Version 1607 (the "
+"Anniversary Update), Build 14393.187.  I do not recall having customized "
+"File Explorer in any way, so this should apply to File Explorer in its "
+"\\342\\200\\234out of the box\\342\\200\\235 state.  The principles of "
+"navigation of the ribbon apply in any program that uses one, but the buttons "
+"and ribbons in other programs obviously differ."
+msgstr ""
+"Lo que sigue usará el Explorador de Archivos como programa y sus varios "
+"botones y cintas.  Está basado en un sistema ejecutando Windows 10, versión "
+"1607 (la Aniversary Update), Compilación 14393.187.  No recuerdo haber "
+"personalizado el Explorador de Archivos de ninguna forma, de manera que esto "
+"debería ser aplicable al Explorador de Archivos en su estado de \"fuera de "
+"la caja\" (estado inicial).  Los principios de navegación para cintas se "
+"pueden aplicar a cualquier programa que use una, pero los botones y cintas "
+"de otros programas difieren, obviamente."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:9
+msgid ""
+"Just like it always has been with menus so it remains with tabs/ribbons that "
+"pressing ALT throws focus to the controls.  Of course, controls are context "
+"sensitive and so which are available versus which are not directly depends "
+"on the item or items you have selected in the File Explorer window.  The "
+"primary choices after hitting ALT are:"
+msgstr ""
+"De la misma forma en que lo ha sido siempre con menús, persiste con las "
+"pestañas/cintas la tecla ALT para llevar el foco a los controles. Por "
+"supuesto, los controles son sensibles al contexto, de forma que cuáles están "
+"disponibles y cuáles no depende directamente de los elementos que hayas "
+"seleccionado en la ventana del Explorador de Archivos.  Las principales "
+"alternativas tras pulsar ALT son:"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:10
+msgid ""
+"* F for the File Tab, which does not have a ribbon but does have a number of "
+"controls"
+msgstr ""
+"* F para la pestaña Archivo, que no tiene una cinta pero sí cierto número de "
+"controles."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:11
+msgid ""
+"* H for the Home Tab, which is by far and away the one that gets the most use"
+msgstr "* H para la Pestaña Inicio, que es de lejos la que más se usa"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:12
+msgid "* S for the Share Tab"
+msgstr "* S para la Pestaña Compartir"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:13
+msgid "* V for the View Tab"
+msgstr "* V para la Pestaña Ver"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:14
+msgid ""
+"* 1 for the properties dialog if you have a file or folder selected.  Can "
+"also be invoked using ALT+Enter instead"
+msgstr ""
+"* 1 para el diálogo de propiedades si has seleccionad un archivo o carpeta.  "
+"También se puede invocar pulsando ALT+Intro en su lugar"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:15
+msgid ""
+"* 2 for the New Folder button.  Can also be invoked using CTRL+Shift+N "
+"instead"
+msgstr ""
+"* 2 para el botón Nueva Carpeta.  También se puede invocar pulsando CTRL"
+"+Shift+N en su lugar"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:16
+msgid ""
+"* E to invoke the Windows Help function for File Explorer.  Opens a web "
+"browser window in whatever browser you\\342\\200\\231ve set up as your "
+"default."
+msgstr ""
+"* E para invocar la función de Ayuda de Windows para el Explorador de "
+"Archivos.  Abre una ventana del navegador de internet en el navegador "
+"predeterminado."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:17
+msgid "## The Structure of Tabs & Ribbons"
+msgstr "## La estructura de Pestañas y & Cintas"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:18
+msgid ""
+"Most Tabs have a single ribbon, though some have none and are more "
+"\\342\\200\\234menu-like\\342\\200\\235 structure with a collection of "
+"controls that are not split into groups/toolbars.  The File Tab is like "
+"this.  Since the Home Tab and its ribbon get the heavy-duty workload the "
+"vast majority of the time I will focus on it as my primary in-depth "
+"example.  The following will presume that you\\342\\200\\231ve already hit "
+"ALT followed by H and have the Home Tab open."
+msgstr ""
+"La mayoría de las Pestañas tienen una sola cinta, aunque algunas no tienen "
+"ninguna y tienen una estructura más parecida a la de un menú con un conjunto "
+"de controles no separados en grupos/barras de herramientas.  La pestaña "
+"Archivo es un ejemplo.  "
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:19
+msgid ""
+"To move directly in to the ribbon hit the down arrow key once, or hit the "
+"TAB key four times, as it traverses some controls on the window prior to "
+"entering the ribbon.  You will now be sitting in the Clipboard group/toolbar "
+"of the ribbon on the Pin to Quick Access control (which will be inactive "
+"unless you have a file or folder selected in the main pane of the window).  "
+"The Home Ribbon is broken in to 5 toolbars/control groups, left to right "
+"these are:"
+msgstr ""
+"Para moverte directamente a la cinta pulsa la tecla de flecha abajo una vez "
+"o TAB cuatro veces para atravesar algunos controles en la ventana anteriores "
+"a la cinta.  Estarás ahora dentro del grupo/barra de herramientas "
+"Portapapeles de la cinta, en el control \"Anclar a Acceso Rápido (que estará "
+"inactivo a menos que tengas un archivo o carpeta seleccionado en el primer "
+"plano de la ventana).  La cinta Inicio está partida en cinco barras de "
+"herramientas/grupos de controles, que son de izquierda a derecha:"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:20
+msgid "1.\tClipboard"
+msgstr "1. Portapapeles"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:21
+msgid "2.\tOrganize"
+msgstr "2. Organizar"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:22
+msgid "3.\tNew"
+msgstr "3. Nuevo"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:23
+msgid "4.\tOpen"
+msgstr "4. Abrir"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:24
+msgid "5.\tSelect"
+msgstr "5. Seleccionar"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:25
+msgid ""
+"Almost every control has a keyboard shortcut to invoke it.  The exceptions "
+"are those that involve selection from a table/list for a setting, and these "
+"have a keyboard shortcut to take you straight into the selection for that "
+"control and you can use TAB to traverse those selections."
+msgstr ""
+"Casi todos los controles disponen de un atajo de teclado para invocarlos.  "
+"Las excepciones son aquellos que implican la selección de un ajuste en una "
+"tabla/lista, que tienen un atajo de teclado para llevarte directamente a la "
+"selección para ese control, donde puedes usar tab para pasar por las "
+"opciones."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:26
+msgid ""
+"You can use the TAB key to do a control-by-control traversal of the entire "
+"ribbon.  The screen reader will announce when you have traversed from one "
+"toolbar/control group into the next.  You can also do a quick jump from "
+"wherever you might be within a given toolbar to the first control of the "
+"next (or previous) toolbar using CTRL+Right Arrow (Left Arrow).  When you "
+"are moving from control to control via the TAB key you will have the control "
+"announced along with the keyboard sequence (coupled with the ALT followed by "
+"letter that you\\342\\200\\231ve already entered) that would be used to "
+"invoke it directly."
+msgstr ""
+"Puedes usar la tecla TAB para atravesar toda la cinta control por control.  "
+"El lector de pantallas anunciará cuándo pasas de una barra de herramientas/"
+"grupo de controles al siguiente.  También puedes saltar rápidamente desde "
+"donde quiera que puedas estar en una cierta barra de herramientas al próximo "
+"control de la siguiente (o anterior) barra de herramientas utilizando CTRL"
+"+Flecha Derecha (Flecha Izquierda).  Al moverte control a control con la "
+"tecla TAB el control se anunciará el control junto con la secuencia de "
+"teclas (iniciada por ALT seguida de la letra que ya has pulsado) que se usa "
+"para invocarlo directamente."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:27
+msgid "## Clipboard Toolbar/Control Group"
+msgstr "## Barra de herramientas/grupo de controles Portapapeles"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:28
+msgid ""
+"Contains the following controls, I will note the direct keyboard sequence "
+"that would follow the ALT followed by H if you wish to invoke it directly "
+"within square brackets.  Some are single characters while others are two "
+"characters that must be typed rapidly :"
+msgstr ""
+"contiene los siguientes controles, indicaré entre corchetes la secuencia de "
+"teclas que seguiría al ALT más H por si quieres invocarlo directamente.  "
+"Algunas son un único carácter mientras que otras son dos caracteres que "
+"deben escribirse rápidamente :"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:29
+msgid ""
+"* Pin to Quick Access \\342\\200\\223 if a file or folder is selected will "
+"be active and will do precisely what its name states.  [PI]"
+msgstr ""
+"* Anclar a Acceso Rápido - Si un archivo o carpeta está seleccionado estará "
+"activo y hará precisamente lo que su nombre indica.  [PI]"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:30
+msgid ""
+"* Copy [CO]   You can also use the CTRL+C keyboard shortcut to copy (which I "
+"always do)."
+msgstr ""
+"* Copiar [CO]   También puedes usar el atajo de teclado CTRL+C para copiar "
+"(lo que hago yo siempre)."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:31
+msgid ""
+"* Paste [V]  You can also use the CTRL+V keyboard shortcut to paste (which I "
+"always do)."
+msgstr ""
+"* Pegar [V]   También puedes usar el atajo de teclado CTRL+V para pegar (lo "
+"que hago yo siempre)."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:32
+msgid ""
+"* Cut [T]  You can also use the CTRL+X keyboard shortcut to cut (again, "
+"which I always do)."
+msgstr ""
+"* Cortar [T]   También puedes usar el atajo de teclado CTRL+X para cortar "
+"(de nuevo, lo que hago yo siempre)."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:33
+msgid ""
+"* Copy Path [CP] Copies the full path to the file(s) or folder(s) selected "
+"to the clipboard"
+msgstr ""
+"* copiar ruta [CP] Copia al portapapeles la ruta completa al/los archivo(s) "
+"o carpeta(s) seleccionado(s)"
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:34
+msgid ""
+"* Paste Shortcut [PS]  If you did a previous copy on a file, using Paste "
+"Shortcut will do what it says, paste a shortcut (symbolic link) to the "
+"original file in the folder you\\342\\200\\231re sitting in rather than an "
+"actual duplicate copy of the file."
+msgstr ""
+"* Pegar Acceso Directo `PS]  Si hiciste previamente una copia en un archivo, "
+"Pegar Acceso Directo hará lo que dice, pegar un acceso directo (enlace "
+"simbólico) al archivo original en la carpeta en la que estás en lugar de una "
+"copia real duplicada del archivo."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:35
+msgid "## Short List of Commonly Used Key Sequences for Ribbon Navigation."
+msgstr ""
+"##Breve Lista de las Secuencias de Teclas Más Comunmente Usadas para la "
+"Navegación de Cintas."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:36
+msgid ""
+"* ALT plus appropriate letter:  Throw focus on a specific tab that contains "
+"the ribbon you need to use.  For example, in MS-Word, ALT+F for File Tab or "
+"ALT+H for Home Tab."
+msgstr ""
+"* ALT más letra correspondiente: Llevar el foco a una pestaña específica que "
+"contiene la cinta que necesitas usar.  Por ejemplo, en MS-Word, ALT+A para "
+"la Pestaña Archivo o ALT+O para la Pestaña Inicio."
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:37
+msgid ""
+"* Down Arrow, struck once.  In File Explorer this puts you into the ribbon "
+"without having to go through a couple of controls that are part of the File "
+"Explorer window itself.  You can also use this in any other program as well, "
+"but often TAB will work. I want people to be aware of this exception "
+"primarily for File Explorer since it requires four TAB presses to achieve "
+"what a single down arrow press does. "
+msgstr ""
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:38
+msgid ""
+"* TAB \\342\\200\\223 this is your primary control to control navigation "
+"key.  It\\342\\200\\231s great if you don\\342\\200\\231t know where "
+"something happens to be and need to listen for the control and its shortcut "
+"character or characters."
+msgstr ""
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:39
+msgid ""
+"* CTRL+Right Arrow (or Left Arrow)  move to the next (or previous) group of "
+"controls.  In the old menu system many menu items had submenus and in the "
+"ribbon system most controls are grouped together based on their functions, "
+"but all are visible.  If you know that the group you\\342\\200\\231re in "
+"definitely isn\\342\\200\\231t what you\\342\\200\\231re looking for you can "
+"quickly jump to the next or previous group rather than having to tab your "
+"way through each and every control."
+msgstr ""
+
+#: ..\python_docs\Using-the-Ribbon-with-NVDA.py:40
+msgid ""
+"Learning the actual keyboard shortcuts for functions that you use all the "
+"time will save you a lot of time and effort.  For instance, if you use "
+"bullet lists in your Microsoft Word documents on a routine basis it"
+"\\342\\200\\231s a lot easier to hit, ALT+H,U, then down arrow through the "
+"bullet styles to choose the one you want than to hit ALT+H, CTRL+Right Arrow "
+"three times to get to the Paragraph control grouping, Enter to open the "
+"bullet list dialog (which happens to be the first control in the Paragraph "
+"group), then down arrowing through the bullet styles.  Also using keyboard "
+"shortcuts like CTRL+B to toggle bold type on/off, CTRL+I for italic, and CTRL"
+"+U for underline, is much faster than hunting for these in the Font Group "
+"via ribbon navigation."
+msgstr ""
