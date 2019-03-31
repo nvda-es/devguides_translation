@@ -6,7 +6,8 @@
   </head>
   <body>
   <header><h1># Hacer complementos traducibles mediante el sistema de traducciones de NVDA #</h1></header>
-  <h2 id="pasos">Pasos</h2>
+  <h1 id="hacer-complementos-traducibles-mediante-el-sistema-de-traducciones-de-nvda">Hacer complementos traducibles mediante el sistema de traducciones de NVDA</h1>
+<h2 id="pasos">Pasos</h2>
 <ol>
 <li>Los autores solicitan la inclusión de un complemento en el sistema de traducciones mediante la <a href="https://nvda-addons.groups.io/g/nvda-addons">lista de correo de complementos de NVDA</a>.</li>
 <li>
@@ -25,6 +26,8 @@
 <li>cd available.d</li>
 <li>mr registerAddon addonRepoName</li>
 <li>git push</li>
+<li>cd a mr</li>
+<li>mr up</li>
 <li>cd a mr/addons/addonRepoName</li>
 <li>mr addon2settings</li>
 <li>cd ~/mr/srt</li>
@@ -39,9 +42,26 @@
 </ul>
 </li>
 </ol>
+<h2 id="requisitos">Requisitos</h2>
+<h3 id="acceso-a-addonfiles">Acceso a addonFiles</h3>
+<p>Esto se concederá sólo a personas que tengan un registro a lo largo del tiempo de revisiones y de las cuales se sepa que son de confianza en sus deberes, todo esto sujeto a un diálogo de toda la comunidad sobre la administración de repositorios.</p>
+<p>El mantenedor debe cumplir los siguientes criterios:</p>
+<ol>
+<li>Haber hecho una revisión básica como mínimo.</li>
+<li>Que se sepa que es un modelo de rol confiable en términos de autoría, revisión, mantenimiento y promoción de complementos (la administración de un repositorio es un trabajo con un montón de responsabilidades).</li>
+<li>Que se sepa que es responsivo a la comunicación para y desde usuarios y otros desarrolladores.</li>
+<li>Mantener vigilado el desarrollo del núcleo de NVDA.</li>
+</ol>
+<h3 id="acceso-a-los-repositorios-y-registro-de-complementos">Acceso a los repositorios y registro de complementos</h3>
+<ul>
+<li>El registro o el acceso a repositorios no se denegará por problemas personales, como diferencia de pareceres, críticas al código de los administradores o actitud basada en evidencia, etc. Si un administrador no es de confianza en sus deberes, debe ser reemplazado por otro mantenedor.</li>
+<li>Así y todo, si la solicitud de registro o acceso se hace de forma que se vea (perceptiva o realmente) como amenazante o dañina para la persona a la que se pide el alta de un nuevo mantenedor, o para toda la comunidad en esa materia, la solicitud será denegada y se archivará para siempre (a fin de que sirva como lección para la persona que lo hizo en primer lugar así como para la comunidad).</li>
+</ul>
 <h2 id="enlaces-relacionados">Enlaces relacionados</h2>
 <ul>
 <li><a href="https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki">Añadiendo un Nuevo Idioma a Ikiwiki (en inglés)</a></li>
+<li><a href="https://www.systutorials.com/docs/linux/man/1-mr/">documentación de mr</a></li>
+<li><a href="https://nvda-addons.groups.io/g/nvda-addons/message/6937">Hilo sobre registro y administración de repositorios, iniciado por Joseph Lee</a></li>
 </ul>
 <h2 id="agradecimientos">Agradecimientos</h2>
 <p>Este documento está basado en el trabajo e información proporcionados por Mesar Hameed y James Teh.</p>

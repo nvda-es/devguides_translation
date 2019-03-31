@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-03-28 16:35+Hora de verano romance\n"
-"PO-Revision-Date: 2018-04-29 01:32+0100\n"
+"POT-Creation-Date: 2019-03-31 20:44+Hora de verano romance\n"
+"PO-Revision-Date: 2019-03-31 20:57+0200\n"
 "Last-Translator: Iván Novegil <ivan.novegil.cancelas@gmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\MakeAddonsTranslatable.py:3
 msgid "# Make add-ons translatable throught the NVDA's translation system #"
@@ -80,10 +80,12 @@ msgstr ""
 "traductores desde el servidor exbi (nvdal10n@exbi.nvaccess.org):"
 
 #: ..\python_docs\MakeAddonsTranslatable.py:11
+#: ..\python_docs\MakeAddonsTranslatable.py:16
 msgid "\t- cd into mr"
 msgstr "\t- cd a mr"
 
 #: ..\python_docs\MakeAddonsTranslatable.py:12
+#: ..\python_docs\MakeAddonsTranslatable.py:17
 msgid "\t- mr up"
 msgstr "\t- mr up"
 
@@ -99,19 +101,19 @@ msgstr "\t- mr registerAddon addonRepoName"
 msgid "\t- git push"
 msgstr "\t- git push"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:16
-msgid "\t- cd into mr/addons/addonRepoName"
+#: ..\python_docs\MakeAddonsTranslatable.py:18
+msgid "\t- cd into addons/addonRepoName"
 msgstr "\t- cd a mr/addons/addonRepoName"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:17
+#: ..\python_docs\MakeAddonsTranslatable.py:19
 msgid "\t- mr addon2settings"
 msgstr "\t- mr addon2settings"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:18
+#: ..\python_docs\MakeAddonsTranslatable.py:20
 msgid "\t- cd ~/mr/srt"
 msgstr "\t- cd ~/mr/srt"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:19
+#: ..\python_docs\MakeAddonsTranslatable.py:21
 msgid ""
 "\t- svn commit */settings -m \"Make blah add-on available for translation.\""
 msgstr ""
@@ -119,7 +121,7 @@ msgstr ""
 "\" (\"se hace al complemento blah disponible para traducción\", mensaje a "
 "enviar a los traductores)"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:20
+#: ..\python_docs\MakeAddonsTranslatable.py:22
 msgid ""
 "4. edit addonFiles/automatic.crontab, so that l10n updates are merged into "
 "the stable branch, and translators receive new messages automatically."
@@ -128,7 +130,7 @@ msgstr ""
 "a la rama stable, y de que los traductores reciban nuevos mensajes "
 "automáticamente."
 
-#: ..\python_docs\MakeAddonsTranslatable.py:21
+#: ..\python_docs\MakeAddonsTranslatable.py:23
 msgid ""
 "\t- Copy one of the lines for one of the existing addons, just change the "
 "addon name and paste it in the correct section, commit and push."
@@ -136,7 +138,7 @@ msgstr ""
 "\t- Copia una de las líneas para un complemento existente, cambia el nombre "
 "del complemento y pégala en la sección correcta, commit y push."
 
-#: ..\python_docs\MakeAddonsTranslatable.py:22
+#: ..\python_docs\MakeAddonsTranslatable.py:24
 msgid ""
 "\t- Note: Admins can perform the above process manually, running mr "
 "addon2svn and mr svn2addon from Exbi."
@@ -144,11 +146,92 @@ msgstr ""
 "\t- Nota: Los administradores pueden realizar el proceso arriba manualmente, "
 "ejecutando mr svn2addon y mr addon2svn desde exbi."
 
-#: ..\python_docs\MakeAddonsTranslatable.py:23
+#: ..\python_docs\MakeAddonsTranslatable.py:25
+msgid "## Requirements ##"
+msgstr "## Requisitos ##"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:26
+msgid "### Access to addonFiles ###"
+msgstr "### Acceso a addonFiles ###"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:27
+msgid ""
+"This will be granted only to people who have a track record of providing "
+"reviews and known to be reliable at their duties, all of this subject to a "
+"community-wide dialogue about repo management."
+msgstr ""
+"Esto se concederá sólo a personas que tengan un registro a lo largo del "
+"tiempo de revisiones y de las cuales se sepa que son de confianza en sus "
+"deberes, todo esto sujeto a un diálogo de toda la comunidad sobre la "
+"administración de repositorios."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:28
+msgid "The maintainer should fulfill the following criteria:"
+msgstr "El mantenedor debe cumplir los siguientes criterios:"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:29
+msgid "1. Has done at least one basic review."
+msgstr "1. Haber hecho una revisión básica como mínimo."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:30
+msgid ""
+"2. Known to be a reliable role model in terms of add-on authoring, "
+"reviewing, maintenance, and promotion (repo management is a job with tons of "
+"responsibilities)."
+msgstr ""
+"2. Que se sepa que es un modelo de rol confiable en términos de autoría, "
+"revisión, mantenimiento y promoción de complementos (la administración de un "
+"repositorio es un trabajo con un montón de responsabilidades)."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:31
+msgid ""
+"3. Known to be responsive to communication to and from users and other "
+"developers."
+msgstr ""
+"3. Que se sepa que es responsivo a la comunicación para y desde usuarios y "
+"otros desarrolladores."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:32
+msgid "4. Keeps an eye on NvDA Core development."
+msgstr "4. Mantener vigilado el desarrollo del núcleo de NVDA."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:33
+msgid "### Access to repos and add-on registration ###"
+msgstr "### Acceso a los repositorios y registro de complementos ###"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:34
+msgid ""
+"- Registration or access to repos won't be denied for personal issues, such "
+"as differences in opinions, criticism to admins code or attitude based on "
+"evidence, etc. If an admin is not reliable at their duties, that person "
+"should be replaced by other maintainer."
+msgstr ""
+"- El registro o el acceso a repositorios no se denegará por problemas "
+"personales, como diferencia de pareceres, críticas al código de los "
+"administradores o actitud basada en evidencia, etc. Si un administrador no "
+"es de confianza en sus deberes, debe ser reemplazado por otro mantenedor."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:35
+msgid ""
+"- Anyway, if the registration or access request is done in a manner that is "
+"seen (perceived or actual) as threatening or harmful to the individual being "
+"asked to register a new maintainer, or for that matter, to the whole "
+"community, this request will be denied, and this will be archived forever "
+"(to serve as a lesson for the actual individual who did this in the first "
+"place, as well as for the community)."
+msgstr ""
+"- Así y todo, si la solicitud de registro o acceso se hace de forma que se "
+"vea (perceptiva o realmente) como amenazante o dañina para la persona a la "
+"que se pide el alta de un nuevo mantenedor, o para toda la comunidad en esa "
+"materia, la solicitud será denegada y se archivará para siempre (a fin de "
+"que sirva como lección para la persona que lo hizo en primer lugar así como "
+"para la comunidad)."
+
+#: ..\python_docs\MakeAddonsTranslatable.py:36
 msgid "## Related links ##"
 msgstr "## Enlaces relacionados ##"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:24
+#: ..\python_docs\MakeAddonsTranslatable.py:37
 msgid ""
 "- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/"
 "wiki/Adding-a-New-Language-to-Ikiwiki)"
@@ -156,11 +239,24 @@ msgstr ""
 "- [Añadiendo un Nuevo Idioma a Ikiwiki (en inglés)](https://github.com/"
 "nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:25
+#: ..\python_docs\MakeAddonsTranslatable.py:38
+msgid "- [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)"
+msgstr ""
+"- [documentación de mr](https://www.systutorials.com/docs/linux/man/1-mr/)"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:39
+msgid ""
+"- [Thread about repo management and registration, started by Joseph Lee]"
+"(https://nvda-addons.groups.io/g/nvda-addons/message/6937)"
+msgstr ""
+"- [Hilo sobre registro y administración de repositorios, iniciado por Joseph "
+"Lee](https://nvda-addons.groups.io/g/nvda-addons/message/6937)"
+
+#: ..\python_docs\MakeAddonsTranslatable.py:40
 msgid "## Aknowledgements ##"
 msgstr "## Agradecimientos ##"
 
-#: ..\python_docs\MakeAddonsTranslatable.py:26
+#: ..\python_docs\MakeAddonsTranslatable.py:41
 msgid ""
 "This document is based on work and information provided by Mesar Hameed and "
 "James Teh."
@@ -168,6 +264,6 @@ msgstr ""
 "Este documento está basado en el trabajo e información proporcionados por "
 "Mesar Hameed y James Teh."
 
-#: ..\python_docs\MakeAddonsTranslatable.py:27
+#: ..\python_docs\MakeAddonsTranslatable.py:42
 msgid "Thanks for making this possible."
 msgstr "Gracias por hacer esto posible."

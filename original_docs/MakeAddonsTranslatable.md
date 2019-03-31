@@ -14,7 +14,9 @@
 	- cd available.d
 	- mr registerAddon addonRepoName
 	- git push
-	- cd into mr/addons/addonRepoName
+	- cd into mr
+	- mr up
+	- cd into addons/addonRepoName
 	- mr addon2settings
 	- cd ~/mr/srt
 	- svn commit */settings -m "Make blah add-on available for translation."
@@ -23,10 +25,30 @@
 	- Copy one of the lines for one of the existing addons, just change the addon name and paste it in the correct section, commit and push.
 	- Note: Admins can perform the above process manually, running mr addon2svn and mr svn2addon from Exbi.
 
+## Requirements ##
+
+### Access to addonFiles ###
+
+This will be granted only to people who have a track record of providing reviews and known to be reliable at their duties, all of this subject to a community-wide dialogue about repo management.
+
+The maintainer should fulfill the following criteria:
+
+1. Has done at least one basic review.
+2. Known to be a reliable role model in terms of add-on authoring, reviewing, maintenance, and promotion (repo management is a job with tons of responsibilities).
+3. Known to be responsive to communication to and from users and other developers.
+4. Keeps an eye on NvDA Core development.
+
+### Access to repos and add-on registration ###
+
+- Registration or access to repos won't be denied for personal issues, such as differences in opinions, criticism to admins code or attitude based on evidence, etc. If an admin is not reliable at their duties, that person should be replaced by other maintainer.
+- Anyway, if the registration or access request is done in a manner that is seen (perceived or actual) as threatening or harmful to the individual being asked to register a new maintainer, or for that matter, to the whole community, this request will be denied, and this will be archived forever (to serve as a lesson for the actual individual who did this in the first place, as well as for the community).
+
+
 ## Related links ##
 
 - [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)
-
+- [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)
+- [Thread about repo management and registration, started by Joseph Lee](https://nvda-addons.groups.io/g/nvda-addons/message/6937)
 ## Aknowledgements ##
 
 This document is based on work and information provided by Mesar Hameed and James Teh.

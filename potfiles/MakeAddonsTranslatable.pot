@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-03-30 20:00+Hora estándar romance\n"
+"POT-Creation-Date: 2019-03-31 20:44+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,10 +48,12 @@ msgid "3. Admins register the add-on and commit settings for translators from Ex
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:11
+#: ..\python_docs\MakeAddonsTranslatable.py:16
 msgid "\t- cd into mr"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:12
+#: ..\python_docs\MakeAddonsTranslatable.py:17
 msgid "\t- mr up"
 msgstr ""
 
@@ -67,51 +69,103 @@ msgstr ""
 msgid "\t- git push"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:16
-msgid "\t- cd into mr/addons/addonRepoName"
-msgstr ""
-
-#: ..\python_docs\MakeAddonsTranslatable.py:17
-msgid "\t- mr addon2settings"
-msgstr ""
-
 #: ..\python_docs\MakeAddonsTranslatable.py:18
-msgid "\t- cd ~/mr/srt"
+msgid "\t- cd into addons/addonRepoName"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:19
-msgid "\t- svn commit */settings -m \"Make blah add-on available for translation.\""
+msgid "\t- mr addon2settings"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:20
-msgid "4. edit addonFiles/automatic.crontab, so that l10n updates are merged into the stable branch, and translators receive new messages automatically."
+msgid "\t- cd ~/mr/srt"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:21
-msgid "\t- Copy one of the lines for one of the existing addons, just change the addon name and paste it in the correct section, commit and push."
+msgid "\t- svn commit */settings -m \"Make blah add-on available for translation.\""
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:22
-msgid "\t- Note: Admins can perform the above process manually, running mr addon2svn and mr svn2addon from Exbi."
+msgid "4. edit addonFiles/automatic.crontab, so that l10n updates are merged into the stable branch, and translators receive new messages automatically."
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:23
-msgid "## Related links ##"
+msgid "\t- Copy one of the lines for one of the existing addons, just change the addon name and paste it in the correct section, commit and push."
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:24
-msgid "- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)"
+msgid "\t- Note: Admins can perform the above process manually, running mr addon2svn and mr svn2addon from Exbi."
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:25
-msgid "## Aknowledgements ##"
+msgid "## Requirements ##"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:26
-msgid "This document is based on work and information provided by Mesar Hameed and James Teh."
+msgid "### Access to addonFiles ###"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:27
+msgid "This will be granted only to people who have a track record of providing reviews and known to be reliable at their duties, all of this subject to a community-wide dialogue about repo management."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:28
+msgid "The maintainer should fulfill the following criteria:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:29
+msgid "1. Has done at least one basic review."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:30
+msgid "2. Known to be a reliable role model in terms of add-on authoring, reviewing, maintenance, and promotion (repo management is a job with tons of responsibilities)."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:31
+msgid "3. Known to be responsive to communication to and from users and other developers."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:32
+msgid "4. Keeps an eye on NvDA Core development."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:33
+msgid "### Access to repos and add-on registration ###"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:34
+msgid "- Registration or access to repos won't be denied for personal issues, such as differences in opinions, criticism to admins code or attitude based on evidence, etc. If an admin is not reliable at their duties, that person should be replaced by other maintainer."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:35
+msgid "- Anyway, if the registration or access request is done in a manner that is seen (perceived or actual) as threatening or harmful to the individual being asked to register a new maintainer, or for that matter, to the whole community, this request will be denied, and this will be archived forever (to serve as a lesson for the actual individual who did this in the first place, as well as for the community)."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:36
+msgid "## Related links ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:37
+msgid "- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:38
+msgid "- [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:39
+msgid "- [Thread about repo management and registration, started by Joseph Lee](https://nvda-addons.groups.io/g/nvda-addons/message/6937)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:40
+msgid "## Aknowledgements ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:41
+msgid "This document is based on work and information provided by Mesar Hameed and James Teh."
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:42
 msgid "Thanks for making this possible."
 msgstr ""
 
