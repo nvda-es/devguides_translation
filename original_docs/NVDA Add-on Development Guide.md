@@ -1,12 +1,12 @@
 # NVDA Add-on Development Guide
 
-* Latest version: December 2018 for NVDA 2018.4/2019.1
+Latest version: April 2019 for NVDA 2019.1
 
 ## Authors, Contributions, and Copyright
 
 This guide was originally written by Joseph Lee, and is shaped by the NVDA user and developer community. We welcome your feedback and contributions.
 
-NVDA is copyright 2006-2018 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
+NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction
 
@@ -19,7 +19,7 @@ For more information on NVDA development, please visit the [NVDA Community Devel
 This guide is designed for: 
 
 * Python beginners
-* beginners to NVDA
+* beginners to NVDA development
 * Expert Python developers
 * Expert NVDA developers
 * People familiar with programming languages other than Python.
@@ -44,6 +44,20 @@ Some of the concepts described in this document are same across different screen
 ### A special note about Windows Store version of NvDA
 
 As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store application. Once the Windows Store version of NVDA is published to Microsoft Store, users running Windows 10 can go to Store and obtain NVDA. However, there are restrictions that comes with this version of NVDA, notably add-ons cannot run in this environment. Thus, if you need to run or write NVDA add-ons, you need to use the classic desktop version of NVDA, available from nvaccess.org website.
+
+### A very important note about migrating custom extension code to development scratchpad
+
+If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules inside folders stored in user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
+
+1. NVDA will no longer load extension code stored in the following subdirectories of user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.
+	* If you find that code inside these folders are no longer working as of NVDA 2019.1, the above reason is why.
+2. You must enable development scratchpad functionality (reserved for developers) if you wish to load custom extension code. To do so:
+	1. With NVDA 2019.1 running, go to NVDA menu/Preferences/settings/Advanced.
+	2. You must check "I understand that changing these settings may cause NVDA to function incorrectly" checkbox.
+	3. You must check "Enable loading custom code from Developer Scratchpad directory".
+	4. Select OK.
+3. You must store code that were formerly housed in the above list of subdirectories inside corresponding subdirectories of scratchpad folder.
+4. If you need to use NVDA 2018.4 and would like to use custom code, you must not remove subdirectories from user configuration directory, otherwise go ahead and remove the folders listed in item 1.
 
 ## What are Add-ons?
 
@@ -92,7 +106,7 @@ Once you install the needed dependencies (see above), paste the Gettext package 
 
 Each add-on folder, at a minimum, must contain the following files and folders:
 
-* manifest.ini to store manifest information such as add-on name and author.
+* manifest.ini to store manifest information such as add-on name, author, and compatibility range (minimum version, last tested version).
 * An "addon" subfolder with the add-on module directory underneath this subfolder (appModules, globalPlugins, synthDrivers, brailleDisplays). One or more module folders can be specified.
 
 If you are using the add-on template, the folder structure will automatically be created, so you need to create only the addon subfolder and the add-on module folder(s) and code inside this folder. See the readme file in the template folder for more information on customizing your add-on manifest using the template files.
@@ -110,7 +124,7 @@ For more information on add-on management, see the management chapter in this gu
 
 So are you ready to start your adventure with add-ons, but not sure as to how to bring it to life? If that is you, please go through this chapter, as it gives you basic information to get you started with add-ons and give you tips on writing code.
 
-Note: for this chapter, we will not use the actual add-on packages. Instead, we'll use plugin folders - a number of subdirectories in your NVDA user configuration folder (available from Start Menu/Screen if NVDA is installed) to store our example Python files.
+Note: for this chapter, we will not use the actual add-on packages. Instead, we'll use scratchpad plugin folders - a number of subdirectories located in a folder called "scratchpad", which in turn is a subfolder of your NVDA user configuration folder (available from Start Menu/Screen if NVDA is installed) to store our example Python files.
 
 To edit .py files, you need a word processor which can handle .py files. The best one we recommend is Notepad++ which can be downloaded from https://notepad-plus-plus.org/download/v6.8.3.html.
 
@@ -132,13 +146,15 @@ After that, all you are writing is Python code (see the Python documentation on 
 
 ### Running your add-on in this example chapter
 
-To run your example add-ons from this chapter, open your NVDA user configuration directory (from Start Menu/Screen, look for Explore NVDA user configuration folder" item). Then paste your .py file to the appropriate folder: appModules folder for app module examples, and globalPlugins folder for global plugins.
+Before you can run example add-ons, you must enable development scratchpad from NVDA's advanced settings. After doing so, a new folder named "scratchpad" will appear in user configuration folder. See the section on scratchpad above for details on how to do so.
+
+To run your example add-ons from this chapter, open your NVDA user configuration directory (from Start Menu/Screen, look for Explore NVDA user configuration folder" item). Then look for "scratchpad" folder (if enabled), then paste your .py file to the appropriate folder inside this subfolder: appModules folder for app module examples, and globalPlugins folder for global plugins.
 
 ### Example 1: Hear a tone when pressing NVDA+A
 
 Let us start with a simple example: if you press NVDA+A, you would hear a tone for 1 second from any program. Since we want to use this everywhere, it must be a global plugin.
 
-First, open your user configuration folder, then open globalPlugins folder. Create a new .py file and give it a descriptive name such as example1.py (it is strongly recommended that when you name your global plugin file, give it a short descriptive name). Then open the newly created .py file in the word processor.
+First, if you haven't done so, enable development scratchpad. Then open your user configuration folder, then open scratchpad folder (if it exists), then select globalPlugins folder. Create a new .py file and give it a descriptive name such as example1.py (it is strongly recommended that when you name your global plugin file, give it a short descriptive name). Then open the newly created .py file in the word processor.
 
 The below code implements our example. Put this in your .py file as exactly as shown:
 
@@ -189,7 +205,7 @@ Most of the below code comes from NVDA Developer Guide.
 
 Not only NVDA let's you add global commands, but it also allows writing code to enhance usage of programs through app modules. An app module is also a Python file except that, this time, the name of the .py file is the name of the executable for a program. For example, an app module for Notepad would be named notepad.py.
 
-The below code, from NVDA developer Guide, gives a short example of a typical app module: play a short beep when switching to Notepad. Put the below code in notepad.py, which in turn should be placed in appModules folder in your user configuration folder in order for it to run.
+The below code, from NVDA developer Guide, gives a short example of a typical app module: play a short beep when switching to Notepad. Put the below code in notepad.py, which in turn should be placed in appModules folder under scratchpad directory (if enabled) in your user configuration folder in order for it to run.
 
 	# An example app module.
 	
@@ -520,7 +536,7 @@ In this example, we'll define two scripts called "sayHello" and say"GoodBye", th
 	import ui
 	
 	def script_sayHello(self, gesture):
-		ui.message"Hello!")
+		ui.message("Hello!")
 	
 	def script_sayGoodBye(self, gesture):
 		ui.message("Good Bye!")
@@ -740,12 +756,16 @@ NVDA 2018.3 uses wxPython 4, whereas earlier versions use older wxPython release
 
 Q. After installing NVDA 2019.1, users say my add-ons are not compatible.
 
-NVDA 2019.1 introduces add-on compatibility flags that tells NVDA the following information:
+NVDA 2019.1 introduces add-on compatibility flags (sometimes called compatibility range) that tells NVDA the following information:
 
 * Minimum NVDA version (minimumNVDAVersion): an add-on can specify minimum NVDA version required for the add-on. This is useful if you need to use features introduced or changed in a given NVDA release without supporting older NVDA releases.
 * Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest supported release for the add-on. Without this flag being set, NVDA will treat your add-ons as incompatible with the latest release.
 
 Words in parentheses are manifest keys. Starting in NVDA 2019.1, these compatibility flags are mandatory for all add-ons.
+
+Q. My app module that was stored under appModules folder in user configuration folder isn't working in NVDA 2019.1.
+
+This is because NVDA 2019.1 will not load custom extension code stored in subfolders of user configuration folder anymore. See the section on scratchpad for details.
 
 We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
