@@ -7,12 +7,10 @@
   <body>
   <header><h1># Guía de Desarrollo de Complementos de NVDA</h1></header>
   <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<ul>
-<li>Última versión: diciembre de 2018 para NVDA 2018.4/2019.1</li>
-</ul>
+<p>Última versión: abril de 2019 para NVDA 2019.1</p>
 <h2 id="autores-colaboraciones-y-copyright">Autores, Colaboraciones y Copyright</h2>
 <p>Esta guía fue escrita originalmente por Joseph Lee, y está diseñada por la comunidad de usuarios y de desarrolladores de NVDA. Agradecemos vuestros comentarios y contribuciones.</p>
-<p>NVDA es copyright 2006-2018 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
+<p>NVDA es copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Bienvenido a la Guía de desarrollo de complementos para NVDA. Esta es la guía completa sobre cómo desarrollar complementos de NVDA. Esta guía también explica algún segmento de código útil del código fuente del núcleo de NVDA, que resalta conceptos para ti mientras aprendes a escribir complementos.</p>
 <p>Para obtener más información sobre el desarrollo de NVDA, por favor visita <a href="https://community.nvda-project.org/wiki/Developme">la Página de la Comunidad de Desarrollo de NVDA</a>. Asegúrate de revisar la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a> para familiarizarte con los términos clave y los conceptos básicos para comenzar con el desarrollo de complementos.</p>
@@ -20,7 +18,7 @@
 <p>Esta guía se ha diseñado para: </p>
 <ul>
 <li>aprendices de Python</li>
-<li>aprendices de NVDA</li>
+<li>principiantes en el desarrollo de NVDA</li>
 <li>desarrolladores Expertos de Python</li>
 <li>desarrolladores Expertos de NVDA</li>
 <li>Gente familiarizada con otros lenguajes de programación distintos a Python.</li>
@@ -40,6 +38,23 @@
 </ul>
 <h3 id="nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows">Nota especial sobre la versión de NVDA para la tienda de Windows</h3>
 <p>A partir de NVDA 2018.1, se han establecido cambios para permitir a NVDA ejecutarse como una aplicación de la tienda Windows. Una vez se publique en la tienda la versión de NVDA para la tienda de Windows, los usuarios de Windows 10 podrán ir a la tienda y obtener NVDA. Sin embargo, hay restricciones que vienen con esta versión de NVDA, la más notable es que los complementos no pueden ejecutarse en este entorno. Por lo tanto, si necesitas ejecutar o escribir complementos de NVDA, deberás utilizar la versión clásica de escritorio de este lector, disponible en la sección de descargas de nuestro sitio web.</p>
+<h3 id="nota-muy-importante-sobre-la-migracion-de-codigo-personalizado-de-extension-a-development-scratchpad">Nota muy importante sobre la migración de código personalizado de extensión a development scratchpad</h3>
+<p>Si vienes de NVDA 2018.4 o versiones anteriores, recordarás que se podían ejecutar módulos de extensión desde el interior de carpetas situadas en el directorio de configuración de usuario (por ejemplo, appModules). Esta funcionalidad se ha rediseñado en NVDA 2019.1 de la siguiente manera:</p>
+<ol>
+<li>NVDA ya no cargará código de extensiones alojado en los siguientes subdirectorios de la carpeta de configuración de usuario: appModules, brailleDisplayDrivers, globalPlugins y synthDrivers.<ul>
+<li>Si descubres que el código de estas carpetas no está funcionando desde que tienes NVDA 2019.1, la razón anterior explica por qué.</li>
+</ul>
+</li>
+<li>Debes activar la funcionalidad development scratchpad (reservada para desarrolladores) si quieres habilitar la carga de código de extensión personalizado. Para hacerlo:<ol>
+<li>Teniendo NVDA 2019.1 en ejecución, ve al menú NVDA / Preferencias / Opciones / Avanzado.</li>
+<li>Debes marcar la casilla "Comprendo que cambiar estas opciones puede hacer que NVDA funcione incorrectamente".</li>
+<li>Debes marcar la casilla "Habilitar la carga de código personalizado desde el directorio Developer Scratchpad".</li>
+<li>Pulsa Aceptar.</li>
+</ol>
+</li>
+<li>Debes almacenar el código que estaba previamente alojado en la lista anterior de subcarpetas dentro de los directorios correspondientes de la carpeta scratchpad.</li>
+<li>Si necesitas usar NVDA 2018.4 y quisieras utilizar código personalizado, no elimines las subcarpetas del directorio de configuración de usuario. En cualquier otro caso, elimina las carpetas que se mencionan en el elemento 1 de esta lista.</li>
+</ol>
 <h2 id="que-son-los-complementos">¿Qué son los Complementos?</h2>
 <p>Los complementos son paquetes adicionales que amplían la funcionalidad de NVDA o el soporte para programas. Esto puede incluir la adición de características globales, la mejora de la compatibilidad con una aplicación o la adición de soporte para nuevas pantallas braille o sintetizadores de voz. Los complementos pueden contener más de un módulo. A continuación se incluye una descripción general de los tipos de módulos adicionales.</p>
 <h3 id="tipos-de-modulos-de-complementos">Tipos de módulos de Complementos</h3>
@@ -78,7 +93,7 @@
 <h3 id="estructura-de-carpetas-del-complemento">Estructura de carpetas del complemento</h3>
 <p>Cada carpeta de complementos, como mínimo, debe contener los siguientes archivos y carpetas:</p>
 <ul>
-<li>manifest.ini para almacenar la información de manifiesto del complemento tal como el nombre y el autor.</li>
+<li>manifest.ini para almacenar la información de manifiesto del complemento tal como el nombre, el autor y el rango de compatibilidad (versión mínima, última versión probada).</li>
 <li>Una subcarpeta "addon" con el directorio de módulos del complemento bajo esta subcarpeta (appModules, globalPlugins, synthDrivers, brailleDisplays). Se pueden especificar una o más carpetas de módulos.</li>
 </ul>
 <p>Si estás utilizando la plantilla de complementos, la estructura de carpetas se creará automáticamente, por lo que sólo necesitas crear la subcarpeta addon y las carpetas de módulos adicionales y el código dentro de estas carpetas. Consulta el archivo readme en la carpeta de la plantilla para obtener más información sobre cómo personalizar tu manifiesto de complemento mediante los archivos de la plantilla.</p>
@@ -91,7 +106,7 @@
 <p>Para más información sobre gestión de complementos, consulta el capítulo gestión en esta guía.</p>
 <h2 id="comenzando-ejemplos-practicos">Comenzando: Ejemplos prácticos</h2>
 <p>Entonces, ¿estás listo para comenzar tu aventura con los complementos, pero no estás seguro de cómo darle vida? Si ese es tu caso, vé por favor a través de este capítulo, pues te da la información básica para conseguir comenzar con los complementos y te da consejos para escribir código.</p>
-<p>Nota: para este capítulo, no usaremos paquetes de complementos reales. En su lugar, usaremos carpetas de extensiones - una serie de subdirectorios en tu carpeta de configuración de usuario de NVDA (disponible desde el menú de inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros Python de ejemplo.</p>
+<p>Nota: para este capítulo, no usaremos paquetes de complementos reales. En su lugar, usaremos carpetas de extensiones de scratchpad - una serie de subdirectorios situados en una carpeta llamada "scratchpad", que es una subcarpeta en tu carpeta de configuración de usuario de NVDA (disponible desde el menú de inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros Python de ejemplo.</p>
 <p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++ que se puede descargar de https://notepad-plus-plus.org/download/v6.8.3.html.</p>
 <h3 id="como-esta-organizado-el-codigo-de-los-complementos">Cómo está organizado el código de los complementos</h3>
 <p>El código de tu complemento se almacena en uno o más ficheros Python (fichero .py). A pesar de los diferentes tipos de complementos que hay por ahí, todos ellos tienen un diseño similar.</p>
@@ -102,10 +117,11 @@
 <p><code>class appModule(appModuleHandler.AppModule):</code></p>
 <p>Después de eso, todo lo que se escribe es código Python (consulta la documentación de Python sobre cómo escribir programas en Python).</p>
 <h3 id="ejecutar-tu-complemento-de-ejemplo-en-este-capitulo">Ejecutar tu complemento de ejemplo en este capítulo</h3>
-<p>Para ejecutar tu complemento de ejemplo desde este capítulo, abre el directorio de configuración de usuario de NVDA(desde Menú o pantalla Inicio, busca el elemento NVDA "  buscar Explorar carpeta de configuración del usuario). Luego pega tu fichero .py en la carpeta correspondiente: carpeta appModules para ejemplos de módulos de aplicación, y carpeta globalPlugins para extensiones globales.</p>
+<p>Antes de que puedas ejecutar complementos de prueba, debes habilitar el development scratchpad desde las opciones avanzadas de NVDA. Después de hacerlo, aparecerá una nueva carpeta llamada "scratchpad" en la carpeta de configuración del usuario. Lee la sección anterior sobre scratchpad para más detalles sobre cómo hacerlo.</p>
+<p>Para ejecutar tu complemento de ejemplo desde este capítulo, abre el directorio de configuración de usuario de NVDA(desde Menú o pantalla Inicio, busca el elemento NVDA "  Explorar carpeta de configuración del usuario"). Luego busca la carpeta "scratchpad" (si está activada), y pega tu fichero .py en la carpeta correspondiente dentro de esta subcarpeta: carpeta appModules para ejemplos de módulos de aplicación, y carpeta globalPlugins para extensiones globales.</p>
 <h3 id="ejemplo-1-escuchar-un-tono-al-pulsar-nvdaa">Ejemplo 1: escuchar un tono al pulsar NVDA+A</h3>
 <p>Comencemos con un ejemplo sencillo: Si pulsamos NVDA+A, se oye un tono durante 1 segundo desde cualquier programa. Puesto que queremos usar esto en todas partes, debe ser una extensión global.</p>
-<p>En primer lugar, abre la carpeta de configuración de usuario, a continuación, abre la carpeta globalPlugins. Crea un nuevo fichero .py y dale un nombre descriptivo, como example1.py (se recomienda encarecidamente que cuando le dés el nombre del fichero de la extensión global, este sea corto). A continuación, abre el archivo .py recién creado en el procesador de textos.</p>
+<p>En primer lugar, si todavía no lo has hecho, habilita development scratchpad. Después abre la carpeta de configuración de usuario, abre la carpeta scratchpad (si existe), a continuación, abre la carpeta globalPlugins. Crea un nuevo fichero .py y dale un nombre descriptivo, como example1.py (se recomienda encarecidamente que cuando le dés el nombre del fichero de la extensión global, este sea corto). A continuación, abre el archivo .py recién creado en el procesador de textos.</p>
 <p>El código siguiente implementa nuestro ejemplo. Pon esto en tu .py exactamente como se muestra.:</p>
 <pre><code># Primer ejemplo de desarrollo de complemento
 
@@ -144,7 +160,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <h3 id="ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas">Ejemplo 2: generar un tono cuando se cambie al Bloc de notas</h3>
 <p>La mayor parte del código de abajo viene de la Guía del desarrollador de NVDA.</p>
 <p>NVDA no sólo te permite agregar comandos globales, sino que también permite la escritura de código para mejorar el uso de los programas a través de módulos de aplicación. Un módulo de aplicación es también un archivo Python, excepto que, esta vez, el nombre del archivo .PY Es el nombre del ejecutable de un programa. Por ejemplo, un módulo de aplicación para el Bloc de notas se llamaría notepad.py.</p>
-<p>El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño ejemplo de un módulo de aplicación típica: reproducir un pitido corto al cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez se debe colocar en la carpeta appModules en la carpeta de configuración del usuario con el fin de que se ejecute.</p>
+<p>El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño ejemplo de un módulo de aplicación típica: reproducir un pitido corto al cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez se debe colocar en la carpeta appModules del directorio scratchpad (si está activado) en la carpeta de configuración del usuario con el fin de que se ejecute.</p>
 <pre><code># Un ejemplo de módulo de aplicación.
 
 import appModuleHandler
@@ -593,12 +609,14 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>P. Mi complemento usa componentes de interfaz gráfica, y después de instalar NVDA 2018.3, obtengo errores relacionados con WXPython.</p>
 <p>NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una versión más antigua de WXPython. Si quieres dar soporte a versiones anteriores de NVDA, debes emplear sentencias condicionales (if/else) y comprobaciones de versión, de tal forma que se elija el camino correcto al ejecutar el código.</p>
 <p>P. Tras instalar NVDA 2019.1, los usuarios dicen que mis complementos no son compatibles.</p>
-<p>NVDA 2019.1 introduce indicadores de compatibilidad de complementos que le dan la siguiente información:</p>
+<p>NVDA 2019.1 introduce indicadores de compatibilidad (en ocasiones llamados rango de compatibilidad) de complementos que le dan la siguiente información:</p>
 <ul>
 <li>Versión mínima de NVDA (minimumNVDAVersion): un complemento puede especificar la versión mínima de NVDA necesaria para funcionar. Esto viene bien si necesitas utilizar funciones introducidas o modificadas en una versión dada de NVDA sin dar soporte a versiones de NVDA más antiguas.</li>
 <li>Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): le dice a NVDA la versión más alta soportada por el complemento. Si no se establece este indicador, NVDA tratará tus complementos como incompatibles con la versión más reciente.</li>
 </ul>
 <p>Las palabras entre paréntesis son claves de manifest. Con la llegada de NVDA 2019.1, estos indicadores de compatibilidad son obligatorios en todos los complementos.</p>
+<p>P. Mi módulo de aplicación que estaba alojado en la carpeta appModules de la configuración de usuario no funciona en NVDA 2019.1.</p>
+<p>Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado situado en carpetas del directorio de configuración de usuario. Lee la sección de scratchpad para más detalles.</p>
 <p>No incluimos preguntas frecuentes de programación relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación y controladores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>

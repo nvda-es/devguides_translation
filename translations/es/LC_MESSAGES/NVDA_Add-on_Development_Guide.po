@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-04-03 23:28+Hora de verano romance\n"
-"PO-Revision-Date: 2019-04-03 23:37+0200\n"
+"PO-Revision-Date: 2019-04-04 18:23+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -22,10 +22,8 @@ msgid "# NVDA Add-on Development Guide"
 msgstr "# Guía de Desarrollo de Complementos de NVDA"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:4
-#, fuzzy
-#| msgid "* Latest version: December 2018 for NVDA 2018.4/2019.1"
 msgid "Latest version: April 2019 for NVDA 2019.1"
-msgstr "* Última versión: diciembre de 2018 para NVDA 2018.4/2019.1"
+msgstr "Última versión: abril de 2019 para NVDA 2019.1"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:5
 msgid "## Authors, Contributions, and Copyright"
@@ -41,14 +39,6 @@ msgstr ""
 "comentarios y contribuciones."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:7
-#, fuzzy
-#| msgid ""
-#| "NVDA is copyright 2006-2018 NV Access Limited. Microsoft Windows, "
-#| "Microsoft Office, Win32 API, and other Microsoft  products are copyright "
-#| "Microsoft Corporation. the IAccessible package is copyright by IBM and "
-#| "the Linux Foundation. Python is copyright by Python Software Foundation. "
-#| "Other products mentioned are copyrighted by their respective copyright "
-#| "holders."
 msgid ""
 "NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft "
 "Office, Win32 API, and other Microsoft  products are copyright Microsoft "
@@ -56,7 +46,7 @@ msgid ""
 "Foundation. Python is copyright by Python Software Foundation. Other "
 "products mentioned are copyrighted by their respective copyright holders."
 msgstr ""
-"NVDA es copyright 2006-2018 NV Access Limited. Microsoft Windows, Microsoft "
+"NVDA es copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft "
 "Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft "
 "Corporation. el paquete IAccessible es propiedad intelectual de IBM y la "
 "Fundación Linux. Python es propiedad intelectual de la Python Software "
@@ -105,10 +95,8 @@ msgid "* Python beginners"
 msgstr "* aprendices de Python"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:14
-#, fuzzy
-#| msgid "* beginners to NVDA"
 msgid "* beginners to NVDA development"
-msgstr "* aprendices de NVDA"
+msgstr "* principiantes en el desarrollo de NVDA"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:15
 msgid "* Expert Python developers"
@@ -269,6 +257,8 @@ msgid ""
 "### A very important note about migrating custom extension code to "
 "development scratchpad"
 msgstr ""
+"### Nota muy importante sobre la migración de código personalizado de "
+"extensión a development scratchpad"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:32
 msgid ""
@@ -277,6 +267,10 @@ msgid ""
 "directory (e.g. appModules). This functionality has been revised in NVDA "
 "2019.1 as follows:"
 msgstr ""
+"Si vienes de NVDA 2018.4 o versiones anteriores, recordarás que se podían "
+"ejecutar módulos de extensión desde el interior de carpetas situadas en el "
+"directorio de configuración de usuario (por ejemplo, appModules). Esta "
+"funcionalidad se ha rediseñado en NVDA 2019.1 de la siguiente manera:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:33
 msgid ""
@@ -284,45 +278,62 @@ msgid ""
 "subdirectories of user configuration folder: appModules, "
 "brailleDisplayDrivers, globalPlugins, synthDrivers."
 msgstr ""
+"1. NVDA ya no cargará código de extensiones alojado en los siguientes "
+"subdirectorios de la carpeta de configuración de usuario: appModules, "
+"brailleDisplayDrivers, globalPlugins y synthDrivers."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:34
 msgid ""
 "\t* If you find that code inside these folders are no longer working as of "
 "NVDA 2019.1, the above reason is why."
 msgstr ""
+"\t* Si descubres que el código de estas carpetas no está funcionando desde "
+"que tienes NVDA 2019.1, la razón anterior explica por qué."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:35
 msgid ""
 "2. You must enable development scratchpad functionality (reserved for "
 "developers) if you wish to load custom extension code. To do so:"
 msgstr ""
+"2. Debes activar la funcionalidad development scratchpad (reservada para "
+"desarrolladores) si quieres habilitar la carga de código de extensión "
+"personalizado. Para hacerlo:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:36
 msgid ""
 "\t1. With NVDA 2019.1 running, go to NVDA menu/Preferences/settings/Advanced."
 msgstr ""
+"\t1. Teniendo NVDA 2019.1 en ejecución, ve al menú NVDA / Preferencias / "
+"Opciones / Avanzado."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:37
 msgid ""
 "\t2. You must check \"I understand that changing these settings may cause "
 "NVDA to function incorrectly\" checkbox."
 msgstr ""
+"\t2. Debes marcar la casilla \"Comprendo que cambiar estas opciones puede "
+"hacer que NVDA funcione incorrectamente\"."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:38
 msgid ""
 "\t3. You must check \"Enable loading custom code from Developer Scratchpad "
 "directory\"."
 msgstr ""
+"\t3. Debes marcar la casilla \"Habilitar la carga de código personalizado "
+"desde el directorio Developer Scratchpad\"."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:39
 msgid "\t4. Select OK."
-msgstr ""
+msgstr "\t4. Pulsa Aceptar."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:40
 msgid ""
 "3. You must store code that were formerly housed in the above list of "
 "subdirectories inside corresponding subdirectories of scratchpad folder."
 msgstr ""
+"3. Debes almacenar el código que estaba previamente alojado en la lista "
+"anterior de subcarpetas dentro de los directorios correspondientes de la "
+"carpeta scratchpad."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:41
 msgid ""
@@ -330,6 +341,10 @@ msgid ""
 "must not remove subdirectories from user configuration directory, otherwise "
 "go ahead and remove the folders listed in item 1."
 msgstr ""
+"4. Si necesitas usar NVDA 2018.4 y quisieras utilizar código personalizado, "
+"no elimines las subcarpetas del directorio de configuración de usuario. En "
+"cualquier otro caso, elimina las carpetas que se mencionan en el elemento 1 "
+"de esta lista."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:42
 msgid "## What are Add-ons?"
@@ -566,16 +581,13 @@ msgstr ""
 "archivos y carpetas:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:71
-#, fuzzy
-#| msgid ""
-#| "* manifest.ini to store manifest information such as add-on name and "
-#| "author."
 msgid ""
 "* manifest.ini to store manifest information such as add-on name, author, "
 "and compatibility range (minimum version, last tested version)."
 msgstr ""
 "* manifest.ini para almacenar la información de manifiesto del complemento "
-"tal como el nombre y el autor."
+"tal como el nombre, el autor y el rango de compatibilidad (versión mínima, "
+"última versión probada)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:72
 msgid ""
@@ -656,12 +668,6 @@ msgstr ""
 "con los complementos y te da consejos para escribir código."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:81
-#, fuzzy
-#| msgid ""
-#| "Note: for this chapter, we will not use the actual add-on packages. "
-#| "Instead, we'll use plugin folders - a number of subdirectories in your "
-#| "NVDA user configuration folder (available from Start Menu/Screen if NVDA "
-#| "is installed) to store our example Python files."
 msgid ""
 "Note: for this chapter, we will not use the actual add-on packages. Instead, "
 "we'll use scratchpad plugin folders - a number of subdirectories located in "
@@ -670,10 +676,11 @@ msgid ""
 "installed) to store our example Python files."
 msgstr ""
 "Nota: para este capítulo, no usaremos paquetes de complementos reales. En su "
-"lugar, usaremos carpetas de extensiones - una serie de subdirectorios en tu "
-"carpeta de configuración de usuario de NVDA (disponible desde el menú de "
-"inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros "
-"Python de ejemplo."
+"lugar, usaremos carpetas de extensiones de scratchpad - una serie de "
+"subdirectorios situados en una carpeta llamada \"scratchpad\", que es una "
+"subcarpeta en tu carpeta de configuración de usuario de NVDA (disponible "
+"desde el menú de inicio/pantalla si está instalado NVDA) para almacenar "
+"nuestros ficheros Python de ejemplo."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:82
 msgid ""
@@ -773,15 +780,13 @@ msgid ""
 "\"scratchpad\" will appear in user configuration folder. See the section on "
 "scratchpad above for details on how to do so."
 msgstr ""
+"Antes de que puedas ejecutar complementos de prueba, debes habilitar el "
+"development scratchpad desde las opciones avanzadas de NVDA. Después de "
+"hacerlo, aparecerá una nueva carpeta llamada \"scratchpad\" en la carpeta de "
+"configuración del usuario. Lee la sección anterior sobre scratchpad para más "
+"detalles sobre cómo hacerlo."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:93
-#, fuzzy
-#| msgid ""
-#| "To run your example add-ons from this chapter, open your NVDA user "
-#| "configuration directory (from Start Menu/Screen, look for Explore NVDA "
-#| "user configuration folder\" item). Then paste your .py file to the "
-#| "appropriate folder: appModules folder for app module examples, and "
-#| "globalPlugins folder for global plugins."
 msgid ""
 "To run your example add-ons from this chapter, open your NVDA user "
 "configuration directory (from Start Menu/Screen, look for Explore NVDA user "
@@ -792,8 +797,9 @@ msgid ""
 msgstr ""
 "Para ejecutar tu complemento de ejemplo desde este capítulo, abre el "
 "directorio de configuración de usuario de NVDA(desde Menú o pantalla Inicio, "
-"busca el elemento NVDA \"  buscar Explorar carpeta de configuración del "
-"usuario). Luego pega tu fichero .py en la carpeta correspondiente: carpeta "
+"busca el elemento NVDA \"  Explorar carpeta de configuración del usuario\"). "
+"Luego busca la carpeta \"scratchpad\" (si está activada), y pega tu fichero ."
+"py en la carpeta correspondiente dentro de esta subcarpeta: carpeta "
 "appModules para ejemplos de módulos de aplicación, y carpeta globalPlugins "
 "para extensiones globales."
 
@@ -812,13 +818,6 @@ msgstr ""
 "todas partes, debe ser una extensión global."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:96
-#, fuzzy
-#| msgid ""
-#| "First, open your user configuration folder, then open globalPlugins "
-#| "folder. Create a new .py file and give it a descriptive name such as "
-#| "example1.py (it is strongly recommended that when you name your global "
-#| "plugin file, give it a short descriptive name). Then open the newly "
-#| "created .py file in the word processor."
 msgid ""
 "First, if you haven't done so, enable development scratchpad. Then open your "
 "user configuration folder, then open scratchpad folder (if it exists), then "
@@ -827,12 +826,13 @@ msgid ""
 "global plugin file, give it a short descriptive name). Then open the newly "
 "created .py file in the word processor."
 msgstr ""
-"En primer lugar, abre la carpeta de configuración de usuario, a "
-"continuación, abre la carpeta globalPlugins. Crea un nuevo fichero .py y "
-"dale un nombre descriptivo, como example1.py (se recomienda encarecidamente "
-"que cuando le dés el nombre del fichero de la extensión global, este sea "
-"corto). A continuación, abre el archivo .py recién creado en el procesador "
-"de textos."
+"En primer lugar, si todavía no lo has hecho, habilita development "
+"scratchpad. Después abre la carpeta de configuración de usuario, abre la "
+"carpeta scratchpad (si existe), a continuación, abre la carpeta "
+"globalPlugins. Crea un nuevo fichero .py y dale un nombre descriptivo, como "
+"example1.py (se recomienda encarecidamente que cuando le dés el nombre del "
+"fichero de la extensión global, este sea corto). A continuación, abre el "
+"archivo .py recién creado en el procesador de textos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:97
 msgid ""
@@ -1138,12 +1138,6 @@ msgstr ""
 "se llamaría notepad.py."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:132
-#, fuzzy
-#| msgid ""
-#| "The below code, from NVDA developer Guide, gives a short example of a "
-#| "typical app module: play a short beep when switching to Notepad. Put the "
-#| "below code in notepad.py, which in turn should be placed in appModules "
-#| "folder in your user configuration folder in order for it to run."
 msgid ""
 "The below code, from NVDA developer Guide, gives a short example of a "
 "typical app module: play a short beep when switching to Notepad. Put the "
@@ -1154,8 +1148,9 @@ msgstr ""
 "El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño "
 "ejemplo de un módulo de aplicación típica: reproducir un pitido corto al "
 "cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez "
-"se debe colocar en la carpeta appModules en la carpeta de configuración del "
-"usuario con el fin de que se ejecute."
+"se debe colocar en la carpeta appModules del directorio scratchpad (si está "
+"activado) en la carpeta de configuración del usuario con el fin de que se "
+"ejecute."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:133
 msgid "\t# An example app module."
@@ -2889,8 +2884,6 @@ msgid "\tdef script_sayHello(self, gesture):"
 msgstr "\tdef script_sayHello(self, gesture):"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:369
-#, fuzzy
-#| msgid "\t\tui.message\"Hello!\")"
 msgid "\t\tui.message(\"Hello!\")"
 msgstr "\t\tui.message(\"Hello!\")"
 
@@ -3951,16 +3944,12 @@ msgstr ""
 "compatibles."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:512
-#, fuzzy
-#| msgid ""
-#| "NVDA 2019.1 introduces add-on compatibility flags that tells NVDA the "
-#| "following information:"
 msgid ""
 "NVDA 2019.1 introduces add-on compatibility flags (sometimes called "
 "compatibility range) that tells NVDA the following information:"
 msgstr ""
-"NVDA 2019.1 introduce indicadores de compatibilidad de complementos que le "
-"dan la siguiente información:"
+"NVDA 2019.1 introduce indicadores de compatibilidad (en ocasiones llamados "
+"rango de compatibilidad) de complementos que le dan la siguiente información:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:513
 msgid ""
@@ -3999,6 +3988,8 @@ msgid ""
 "Q. My app module that was stored under appModules folder in user "
 "configuration folder isn't working in NVDA 2019.1."
 msgstr ""
+"P. Mi módulo de aplicación que estaba alojado en la carpeta appModules de la "
+"configuración de usuario no funciona en NVDA 2019.1."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:517
 msgid ""
@@ -4006,6 +3997,9 @@ msgid ""
 "subfolders of user configuration folder anymore. See the section on "
 "scratchpad for details."
 msgstr ""
+"Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado "
+"situado en carpetas del directorio de configuración de usuario. Lee la "
+"sección de scratchpad para más detalles."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:518
 msgid ""
