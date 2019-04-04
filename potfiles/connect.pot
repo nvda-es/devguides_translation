@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-04-03 23:28+Hora de verano romance\n"
+"POT-Creation-Date: 2019-04-04 19:07+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 
 #: ..\python_docs\connect.py:3
-msgid "# Connect with the NVDA Community"
+msgid "[][[# Connect with the NVDA Community"
 msgstr ""
 
 #: ..\python_docs\connect.py:4
@@ -148,7 +148,7 @@ msgid " * Portuguese mailing list: to subscribe, send a blank email to nvdaempor
 msgstr ""
 
 #: ..\python_docs\connect.py:36
-msgid " * Romanian website: http://www.ro-nvda.tk"
+msgid " * Romanian website: http://www.nvda.ro"
 msgstr ""
 
 #: ..\python_docs\connect.py:37
@@ -160,34 +160,50 @@ msgid " * Russian mailing list: To subscribe, send a blank email to nvda-rus-sub
 msgstr ""
 
 #: ..\python_docs\connect.py:39
-msgid " * Spanish website: https://nvda.es"
+msgid " * Spanish community (two different teams):"
 msgstr ""
 
 #: ..\python_docs\connect.py:40
-msgid " * Spanish Github website: https://nvdaes.github.io"
+msgid "  * NVDA en espa\303\261ol (owner: [@nvda-es](https://github.com/nvda-es))"
 msgstr ""
 
 #: ..\python_docs\connect.py:41
-msgid " * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es+subscribe@googlegroups.com"
+msgid "   * Spanish website: https://nvda.es"
 msgstr ""
 
 #: ..\python_docs\connect.py:42
-msgid " * Swedish mailing list: To subscribe send a blank email to nvda-request@smartlist.nu putting subscribe in the subject line."
+msgid "   * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es+subscribe@googlegroups.com"
 msgstr ""
 
 #: ..\python_docs\connect.py:43
-msgid " * Turkish mailing list: http://groups.yahoo.com/group/nvda_tr"
+msgid "  * Comunidad hispanohablante de NVDA (owner: [@nvdaes](https://github.com/nvdaes))"
 msgstr ""
 
 #: ..\python_docs\connect.py:44
-msgid " * NVDA Simplified Chinese website: http://www.nvdacn.com"
+msgid "   * Spanish website: https://nvdaes.github.io"
 msgstr ""
 
 #: ..\python_docs\connect.py:45
-msgid " * NVDA Simplified Chinese Website is the official website of NVDA China Mainland. It provides the latest tutorials on "
+msgid "   * Spanish mailing list: To subscribe, send a blank e-mail to lista+subscribe@nvdaes.groups.io"
 msgstr ""
 
 #: ..\python_docs\connect.py:46
+msgid " * Swedish mailing list: To subscribe send a blank email to nvda-request@smartlist.nu putting subscribe in the subject line."
+msgstr ""
+
+#: ..\python_docs\connect.py:47
+msgid " * Turkish mailing list: http://groups.yahoo.com/group/nvda_tr"
+msgstr ""
+
+#: ..\python_docs\connect.py:48
+msgid " * NVDA Simplified Chinese website: http://www.nvdacn.com"
+msgstr ""
+
+#: ..\python_docs\connect.py:49
+msgid " * NVDA Simplified Chinese Website is the official website of NVDA China Mainland. It provides the latest tutorials on "
+msgstr ""
+
+#: ..\python_docs\connect.py:50
 msgid "NVDA Simplified Chinese news and plugins."
 msgstr ""
 

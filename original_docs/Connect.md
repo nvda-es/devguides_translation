@@ -1,4 +1,4 @@
-# Connect with the NVDA Community
+[][[# Connect with the NVDA Community
 
 ## Official project resources
 
@@ -42,12 +42,16 @@ The web resources mentioned in the following list are published independently; t
  * Korean users forum on Facebook: https://www.facebook.com/groups/nvdakr
  * Polish: http://www.nvda.pl
  * Portuguese mailing list: to subscribe, send a blank email to nvdaemportugues+subscribe@googlegroups.com. Note that this list was formerly on Yahoo Groups.
- * Romanian website: http://www.ro-nvda.tk
+ * Romanian website: http://www.nvda.ro
  * Romanian mailing list: To subscribe, send an e-mail to NVDA-romanian-comunity+subscribe@googlegroups.com or you can access the link https://groups.google.com/forum/#!forum/nvda-romanian-comunity to subscribe via web.
  * Russian mailing list: To subscribe, send a blank email to nvda-rus-subscribe@tiflo.info and reply to the received message.
- * Spanish website: https://nvda.es
- * Spanish Github website: https://nvdaes.github.io
- * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es+subscribe@googlegroups.com
+ * Spanish community (two different teams):
+  * NVDA en español (owner: [@nvda-es](https://github.com/nvda-es))
+   * Spanish website: https://nvda.es
+   * Spanish mailing list: To subscribe, send a blank e-mail to nvda-es+subscribe@googlegroups.com
+  * Comunidad hispanohablante de NVDA (owner: [@nvdaes](https://github.com/nvdaes))
+   * Spanish website: https://nvdaes.github.io
+   * Spanish mailing list: To subscribe, send a blank e-mail to lista+subscribe@nvdaes.groups.io
  * Swedish mailing list: To subscribe send a blank email to nvda-request@smartlist.nu putting subscribe in the subject line.
  * Turkish mailing list: http://groups.yahoo.com/group/nvda_tr
 
