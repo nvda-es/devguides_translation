@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2019-05-15 18:04+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\Triage-process.py:3
+msgid "For transparency, the following is a brief outline of the process NV Access is following for issue triage. If you would like to help with the triage process (which is an excellent way to make a contribution to NVDA) please refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:4
+msgid "### Missing attachments"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:5
+msgid "NV Access migrated tickets from our old issue tracker ('Trac') into Github issues. These issues can be identified by having an author of `nvaccessauto`. Some of these issues have comments that indicate an attachment should be available, but it is not. All of these Trac attachments are now accessible at: https://www.nvaccess.org/files/nvdaTracAttachments/ (then the Github issue number). So as an example, for issue [#2396](https://github.com/nvaccess/nvda/issues/2396), get the attachments from https://www.nvaccess.org/files/nvdaTracAttachments/2396"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:6
+msgid "If you come across one of these missing attachments, please upload if you think they're relevant to GitHub. Note you'll need to rename adding a .txt extension to code, logs, etc. Anything else should probably be zipped."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:7
+msgid "### How prioritisation works"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:8
+msgid "We differentiate between the priority for bugs (labelled `bug`) and new features (labelled `feature`). Rather than assign a priority to issues with the `feature` label, typically we try to group new features into a project of related work. We should try to ensure that new features are [well defined](https://github.com/nvaccess/nvda/wiki/Issue-triage-help#new-features-1) before applying the `feature` label. One exception here might be if we can determine that a feature is not something we are likely ever to work on. In this case we should apply `P4` and explain this is not something we are going to look at but will be happy to accept a pull request for. We also have a label for `enhancement`, think of this as a more internal facing change. For instance, editing code comments to provide clearer / more complete information, or extending an internal framework/API to unblock other issues."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:9
+msgid "Bugs/regressions are given priorities based on an estimate of their severity, impact and implementation cost:"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:10
+msgid "- `P1` issues are typically crashes or severe errors that should be fixed immediately."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:11
+msgid "- `P2` issues should be among the next issues fixed. Try to start on the oldest of these issues."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:12
+msgid "- `P3` issues are less likely to get fixed, we hope to get to them \"one day\". However if something changes (severity/impact/cost) the priority can be reassessed."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:13
+msgid "- `P4` issues probably won't be worked on by NV Access, however we will be happy to provide implementation guidance and accept a Pull Request."
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:14
+msgid "Due to the difficulty in assigning priorities to individual issues, recently (2019) NV Access has asked members of the community to provide their top 2 issues. This data allowed us to find trends resulting in a re-prioritisation of our efforts. While this exercise allowed us to tackle the most important issue for the majority, we are aware that critical issues for smaller groups may be missed. So the above process should still be followed, especially for P1 or P2 issues. If an issue is critical to you, please comment on the issue and explain why."
+msgstr ""
+

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-04 00:37+Hora de verano romance\n"
+"POT-Creation-Date: 2019-05-15 18:04+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgid "Welcome to the NVDA Add-on Development Guide. This is the one-stop guide 
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:10
-msgid "For more information on NVDA development, please visit the [NVDA Community Development page][1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize yourself with key terms and basics on getting started with add-on development."
+msgid "For more information on NVDA development, please visit the [NVDA GitHub page][1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize yourself with key terms and basics on getting started with add-on development."
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:11
@@ -3131,7 +3131,7 @@ msgid "| I want to contribute features of my add-on to NVDA screen reader | Send
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:826
-msgid "[1]: https://community.nvda-project.org/wiki/Developme"
+msgid "[1]: https://github.com/nvaccess/nvda"
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:827

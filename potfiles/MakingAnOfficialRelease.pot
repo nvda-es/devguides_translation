@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2019-05-15 18:04+Hora de verano romance\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ..\python_docs\MakingAnOfficialRelease.py:3
+msgid "# Making an Official Release"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:4
+msgid "The following instructions are for the release manager and detail how to make an official release."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:5
+msgid "## Betas"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:6
+msgid "* At a point where master is healthy (all checks passing and no known regressions): Merge master into beta."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:7
+msgid "* At least one week after the last merge of master into beta, tag beta1. E.g. release-2019.1beta1. Tagging the beta will make the beta show up on the snapshots page, and the auto update system to start offering it to those checking for betas."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:8
+msgid "* Periodically look at recent issues filed, specifically looking for those with p1, crash or appcrash labels."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:9
+msgid "* Periodically look for prs based on beta and ensure they are reviewed and then approved/merged or rejected. "
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:10
+msgid "* After the final beta, call a translation freeze for 2 weeks. No more commits should be made to the beta branch at this time."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:11
+msgid "* As prs based on the beta branch are merged, periodically tag further betas. "
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:12
+msgid "## Release candidates"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:13
+msgid "* Ensure it is safe to release an rc by looking at recent issues filed, specifically looking for those with p1, crash or appcrash labels."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:14
+msgid "* If this is rc1, update translations:"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:15
+msgid "    1. Log into exbi and su to nvdal10n."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:16
+msgid "    2. `cd ~/mr/mainNVDACode`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:17
+msgid "    3. `mr up`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:18
+msgid "    4. `cd ../srt`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:19
+msgid "    5. `mr up`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:20
+msgid "    6. `mr svn2nvda`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:21
+msgid "* If this is rc1, reset the rc branch to beta. Otherwise, merge rc into beta if necessary."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:22
+msgid "* For all other RCs, look for any prs based on rc, and review and approve/merge or reject them."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:23
+msgid "* Create an annotated tag for the release with a \"release-\" prefix; e.g. release-2016.1rc1."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:24
+msgid "* This will start an AppVeyor build, so wait for the build to complete. As part of this, the release will be staged."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:25
+msgid "* Publish the staged release. On exbi, su to the nvaccess user and run `nvdaRelease`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:26
+msgid "* If this is an rc, make a blog post on www.nvaccess.org, placing it in the Development category. It should never be placed in the News category."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:27
+msgid "    * Use a previous blog post as a base."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:28
+msgid "    * If this is not the first pre-release, include a list of changes since the last pre-release."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:29
+msgid "* Spread the word via the nvda-devel and nvda-translations lists and Twitter."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:30
+msgid "* Scan the launcher executable with [VirusTotal](http://www.virustotal.com/). Just submit the direct download URL."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:31
+msgid "If this is a final release:"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:32
+msgid "* Mark the release milestone as done on GitHub."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:33
+msgid "* Change the milestone set for issues and pull requests automatically closed by GitHub to the next release:"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:34
+msgid "    1. Get the milestone id for the new release. The easiest way to do this is to go to https://github.com/nvaccess/nvda/milestones and look at the link URL for the relevant milestone. The number at the end is the id."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:35
+msgid "    2. On exbi, edit ~nvaccess/data/nvaServer.conf."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:36
+msgid "    3. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` to the milestone id obtained in step 1."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:37
+msgid "    4. Reload uwsgi so the change takes effect: `sudo systemctl reload uwsgi`"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:38
+msgid "* Make a blog post on www.nvaccess.org in the Releases category."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:39
+msgid "* Post on Facebook."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:40
+msgid "* Post to the NV Access News email list."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:41
+msgid "* If it hasn't been done already, prepare for the next version (after the one just published) in master:"
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:42
+msgid "    1. In `source/versionInfo.py`, update the `version_year` and/or `version_major` variables for the next version. If the next version is the first version for that year (e.g. 2018.1), also update `copyrightYears`."
+msgstr ""
+
+#: ..\python_docs\MakingAnOfficialRelease.py:43
+msgid "    2. Add a heading for the next version in `user_docs/en/changes.t2t`."
+msgstr ""
+

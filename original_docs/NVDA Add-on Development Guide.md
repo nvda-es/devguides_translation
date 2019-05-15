@@ -12,7 +12,7 @@ NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Offi
 
 Welcome to the NVDA Add-on Development Guide. This is the one-stop guide on how to develop NVDA add-ons. This guide also  explains some useful code segments from the NVDA core source code, which highlight concepts for you, as you learn to write add-ons.
 
-For more information on NVDA development, please visit the [NVDA Community Development page][1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize yourself with key terms and basics on getting started with add-on development.
+For more information on NVDA development, please visit the [NVDA GitHub page][1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize yourself with key terms and basics on getting started with add-on development.
 
 ## Audience
 
@@ -1175,7 +1175,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |
 | I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |
 
-[1]: https://community.nvda-project.org/wiki/Developme
+[1]: https://github.com/nvaccess/nvda
 [2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
 [3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip
 [4]: http://www.zlotowicz.pl/nvda/winapi.mdwn

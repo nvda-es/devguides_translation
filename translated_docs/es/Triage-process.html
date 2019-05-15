@@ -1,0 +1,24 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title>Por transparencia, lo siguiente es un breve resumen sobre el proceso que NVAccess está siguiendo para la clasificación de incidencias. Si quieres ayudar con el proceso de clasificación (lo que es una excelente forma de hacer una contribución a NVDA), consulta la sección de ayuda de clasificación de incidencias.</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1>Por transparencia, lo siguiente es un breve resumen sobre el proceso que NVAccess está siguiendo para la clasificación de incidencias. Si quieres ayudar con el proceso de clasificación (lo que es una excelente forma de hacer una contribución a NVDA), consulta la sección de ayuda de clasificación de incidencias.</h1></header>
+  <p>Por transparencia, lo siguiente es un breve resumen sobre el proceso que NVAccess está siguiendo para la clasificación de incidencias. Si quieres ayudar con el proceso de clasificación (lo que es una excelente forma de hacer una contribución a NVDA), consulta la sección de ayuda de clasificación de incidencias.</p>
+<h3 id="adjuntos-que-faltan">Adjuntos que faltan</h3>
+<p>NVAccess migró sus tickets desde su antiguo rastreador de incidencias (‘Track’) a incidencias de GitHub. Estas incidencias pueden identificarse porque tienen como autor a nvaccessauto. Algunas de estas incidencias tienen comentarios que indican que debería haber un adjunto disponible, pero no está. Todos estos adjuntos de Track ahora están accesibles en: https://www.nvaccess.org/files/nvdaTracAttachments/ (seguido del número de incidencia de GitHub). De esta manera, como ejemplo, para la incidencia <a href="https://github.com/nvaccess/nvda/issues/2396">#2396</a> obtén los adjuntos desde https://www.nvaccess.org/files/nvdaTracAttachments/2396
+Si te encuentras con uno de estos adjuntos que faltan, por favor súbelo a GitHub si piensas que es relevante. Ten en cuenta que necesitarás renombrarlos añadiendo una extensión .txt al código, los registros, etc. Todo lo demás probablemente debería comprimirse en zip.</p>
+<h3 id="como-funciona-la-asignacion-de-prioridades">Cómo funciona la asignación de prioridades</h3>
+<p>NV Access diferencia entre prioridad para fallos (etiquetados como <code>bug</code>) y nuevas características (etiquetadas como <code>feature</code>). En vez de asignar una prioridad a incidencias con la etiqueta de <code>feature</code>, NV Access intenta agrupar nuevas características en un proyecto con trabajos relacionados. Se debe intentar que las nuevas características estén bien definidas antes de aplicar la etiqueta <code>feature</code>. Podría darse una excepción aquí si podemos determinar que una característica es algo en lo que probablemente nunca se trabajará. En este caso se debería aplicar <code>P4</code> y explicar que esto no es algo que vayamos a mirar, pero para lo que se acepta felizmente una solicitud de cambios. NV Access también tiene una etiqueta para mejoras, piensa que esto tiene que afrontar cambios más internos. Por ejemplo, editar comentarios del código para ofrecer información más clara y completa, o extender una API o framework interno para desbloquear otras incidencias.</p>
+<p>Los fallos y las regresiones reciben prioridades en base a una estimación de su severidad, impacto y coste de implementación:</p>
+<ul>
+<li>Las incidencias <code>P1</code> son típicamente errores fatales o muy graves que deben repararse inmediatamente.</li>
+<li>Las incidencias <code>P2</code> deberían estar entre las siguientes incidencias reparadas. Intenta empezar con la más antigua de ellas.</li>
+<li>Las incidencias <code>P3</code> tienen menos probabilidad de ser reparadas, se espera centrarse en ellas "algún día". Sin embargo, si algo cambia (severidad, impacto, coste) su prioridad puede alterarse.</li>
+<li>NV Access probablemente no trabajará en las incidencias de tipo <code>P4</code>. Sin embargo, estarán encantados de ofrecer guiado durante la implementación y aceptar una solicitud de cambios.</li>
+</ul>
+<p>Debido a la dificultad a la hora de dar prioridad a incidencias individuales, recientemente (2019) NV Access ha pedido a los miembros de la comunidad que hablen de sus 2 incidencias más importantes. Estos datos permitieron a NV Access encontrar tendencias, dando como resultado una reasignación de prioridad en sus esfuerzos. Aunque este ejercicio les permitió resolver los problemas más importantes para la mayoría, son conscientes de que hay problemas críticos que afectan a pequeños grupos que pueden no haber sido resueltos. Por tanto, se debería seguir aplicando el proceso anterior, especialmente para las incidencias p1 y p2. Si una incidencia resulta crítica para ti, comenta en ella y explica por qué.</p>
+</body>
+</html>

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-04-03 23:28+Hora de verano romance\n"
-"PO-Revision-Date: 2019-04-04 18:23+0200\n"
+"POT-Creation-Date: 2019-05-15 18:04+Hora de verano romance\n"
+"PO-Revision-Date: 2019-05-15 18:06+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -71,16 +71,15 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:10
 msgid ""
-"For more information on NVDA development, please visit the [NVDA Community "
-"Development page][1]. Be sure to go over the [NVDA Developer Guide][2] to "
-"familiarize yourself with key terms and basics on getting started with add-"
-"on development."
+"For more information on NVDA development, please visit the [NVDA GitHub page]"
+"[1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize "
+"yourself with key terms and basics on getting started with add-on "
+"development."
 msgstr ""
 "Para obtener más información sobre el desarrollo de NVDA, por favor visita "
-"[la Página de la Comunidad de Desarrollo de NVDA][1]. Asegúrate de revisar "
-"la [Guía del desarrollador de NVDA][2] para familiarizarte con los términos "
-"clave y los conceptos básicos para comenzar con el desarrollo de "
-"complementos."
+"[la Página de GitHub de NVDA][1]. Asegúrate de revisar la [Guía del "
+"desarrollador de NVDA][2] para familiarizarte con los términos clave y los "
+"conceptos básicos para comenzar con el desarrollo de complementos."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:11
 msgid "## Audience"
@@ -6259,8 +6258,8 @@ msgstr ""
 "las pautas de contribución de NV Access. |"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:826
-msgid "[1]: https://community.nvda-project.org/wiki/Developme"
-msgstr "[1]: https://community.nvda-project.org/wiki/Developme"
+msgid "[1]: https://github.com/nvaccess/nvda"
+msgstr "[1]: https://github.com/nvaccess/nvda"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:827
 msgid ""
@@ -6283,3 +6282,6 @@ msgstr "[5]: https://addons.nvda-project.org"
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:831
 msgid "[6]: https://www.git-scm.com/josephsl/stationPlaylist"
 msgstr "[6]: https://www.git-scm.com/josephsl/stationPlaylist"
+
+#~ msgid "[1]: https://community.nvda-project.org/wiki/Developme"
+#~ msgstr "[1]: https://community.nvda-project.org/wiki/Developme"

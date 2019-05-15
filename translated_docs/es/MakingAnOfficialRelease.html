@@ -1,0 +1,67 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Creación de una liberación oficial</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Creación de una liberación oficial</h1></header>
+  <h1 id="creacion-de-una-liberacion-oficial">Creación de una liberación oficial</h1>
+<p>Las siguientes instrucciones son para el administrador de liberaciones, y detallan cómo liberar una nueva versión oficial.</p>
+<h2 id="betas">Betas</h2>
+<ul>
+<li>En un punto donde la rama master esté sana (se superen todas las pruebas y no haya regresiones conocidas): mezcla master en beta.</li>
+<li>Al menos una semana después de mezclar master en beta, añade una etiqueta beta1. Por ejemplo: release-2019.1beta1. Al etiquetar la beta esta se mostrará en la página versiones de desarrollo, y el sistema de actualizaciones automáticas comenzará a ofrecerla a aquellos que busquen betas.</li>
+<li>Mira periódicamente las incidencias recientes archivadas, específicamente las etiquetadas como p1, crash o appcrash.</li>
+<li>Mira periódicamente las solicitudes de cambio basadas en beta y asegúrate de que son revisadas y luego aprobadas / mezcladas o rechazadas. </li>
+<li>Tras la beta final, congela las traducciones durante 2 semanas. En este momento no deberían llegar más commits a la rama beta.</li>
+<li>Según se vayan mezclando solicitudes de cambio basadas en la rama beta, crea nuevas etiquetas. </li>
+</ul>
+<h2 id="candidatas-a-liberacion">Candidatas a liberación</h2>
+<ul>
+<li>Comprueba que es seguro liberar una rc mirando las incidencias recientes, especialmente aquellas etiquetadas como p1, crash o appcrash.</li>
+<li>Si se trata de la rc1, actualiza las traducciones:<ol>
+<li>Inicia sesión en exbi y cambia con el comando su al usuario nvdal10n.</li>
+<li><code>cd ~/mr/mainNVDACode</code></li>
+<li><code>mr up</code></li>
+<li><code>cd ../srt</code></li>
+<li><code>mr up</code></li>
+<li><code>mr svn2nvda</code></li>
+</ol>
+</li>
+<li>Si se trata de la rc1, restablece la rama rc a beta. De lo contrario, mezcla rc en beta si es necesario.</li>
+<li>Para todas las demás candidatas a liberación, busca cualquier solicitud de cambio basada en rc, revísalas y acepta / mezcla o rechaza según corresponda.</li>
+<li>Crea una etiqueta anotada para la liberación con el prefijo "release-". Por ejemplo, release-2016.1rc1.</li>
+<li>Esto iniciará una construcción con AppVeyor, tendrás que esperar a que se complete. Como parte de esto, se lanzará la liberación.</li>
+<li>Publica la versión liberada. En exbi, cambia al usuario nvaccess y ejecuta <code>nvdaRelease</code></li>
+<li>Si es una liberación candidata, crea una entrada de blog en www.nvaccess.org. Ponla en la categoría en desarrollo, y nunca en la de noticias.<ul>
+<li>Usa como base una publicación anterior.</li>
+<li>Si no es la primera liberación candidata, incluye los cambios desde la liberación candidata anterior.</li>
+</ul>
+</li>
+<li>Difunde la publicación en la lista de traductores de NVDA, la lista de desarrolladores y Twitter.</li>
+<li>
+<p>Escanea el archivo del instalador en <a href="http://www.virustotal.com/">Virus Total</a>. Pon directamente la URL de descarga.</p>
+</li>
+<li>
+<p>Si es una liberación final:</p>
+</li>
+<li>Marca el hito de lanzamiento como completado en GitHub.</li>
+<li>Cambia el conjunto de hitos de las incidencias y las peticiones de cambios automáticamente cerradas por GitHub a la siguiente liberación:<ol>
+<li>Consigue el id del hito para la nueva liberación. La forma más fácil de hacerlo es ir a https://github.com/nvaccess/nvda/milestones y mirar el enlace del hito en cuestión. El número del final es el id.</li>
+<li>En exbi, edita ~nvaccess/data/nvaServer.conf.</li>
+<li>En la sección [nvdaGithub], cambia el valor de autoCloseMilestone al identificador del hito que has obtenido en el paso 1.</li>
+<li>Recarga uwsgi para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></li>
+</ol>
+</li>
+<li>Crea una entrada de blog en www.nvaccess.org bajo la categoría liberaciones.</li>
+<li>Publica la noticia en Facebook.</li>
+<li>Publica la noticia en la lista de correo de noticias de NV Access.</li>
+<li>Si no se ha hecho ya, prepara la rama master para la siguiente versión (la que va después de la que se ha publicado):<ol>
+<li>En source/versionInfo.py, actualiza las variables version_year y/o version_major para la próxima versión. Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza copyrightYears también.</li>
+<li>Añade un encabezado para la siguiente versión en user_docs/en/changes.t2t.</li>
+</ol>
+</li>
+</ul>
+</body>
+</html>
