@@ -86,6 +86,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
 * A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the NV Access page at https://www.nvaccess.org.
 	* We recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python 2.7 series, version 2.7.14 32-bit for Windows: <https://www.python.org/download/releases/2.7.14/>.
+	* If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows.
 * SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): <http://www.scons.org/>.
 * Markdown 2.0.1 or later for generating add-on documentation: <https://pypi.python.org/pypi/Markdown/2.0.1>.
 * The GNU Gettext package for Windows for message localization support. The build can be found at: <http://gnuwin32.sourceforge.net/downlinks/gettext.php>.
@@ -126,7 +127,7 @@ So are you ready to start your adventure with add-ons, but not sure as to how to
 
 Note: for this chapter, we will not use the actual add-on packages. Instead, we'll use scratchpad plugin folders - a number of subdirectories located in a folder called "scratchpad", which in turn is a subfolder of your NVDA user configuration folder (available from Start Menu/Screen if NVDA is installed) to store our example Python files.
 
-To edit .py files, you need a word processor which can handle .py files. The best one we recommend is Notepad++ which can be downloaded from https://notepad-plus-plus.org/download/v6.8.3.html.
+To edit .py files, you need a word processor which can handle .py files. The best one we recommend is Notepad++.
 
 ### How add-on code is organized
 
@@ -361,7 +362,7 @@ You can ask NvDA to send specific keystrokes by instantiating a keyboard gesture
 	import keyboardHandler
 	
 	def sendApplicationsKey():
-		keyboardHandler.KeyboardInputGesture.fromName("kb:applications").send()
+		keyboardHandler.KeyboardInputGesture.fromName("applications").send()
 
 ### Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off
 

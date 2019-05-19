@@ -1,37 +1,28 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</title>
+  <title>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.7.</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</h1></header>
-  <p>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.x.</p>
+  <header><h1>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.7.</h1></header>
+  <p>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.7.</p>
 <p>Importante: debido a las actividades previas a la transición que están en curso, este documento se encuentra sujeto a cambios sin previo aviso.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Python es uno de los lenguajes de programación más populares para diversos proyectos. Es fácil de aprender, tiene muchísimos módulos en su biblioteca estándar y extensiones de terceros, así como una documentación muy completa y una sintaxis clara. Todo esto hace que sea la opción ideal a la hora de elaborar scripts.</p>
-<p>Actualmente hay dos ramas principales en Python: 2.x, liberada a principios del año 2000, y 3.x, liberada por primera vez en 2008. A primera vista, Python 3 puede parecer similar a Python 2, pero hay numerosas diferencias profundas, incluyendo el soporte extenso de Unicode en Python 3, módulos renombrados y más.</p>
+<p>Actualmente hay dos ramas principales en Python: 2.x, liberada a principios del año 2000, y 3.x, liberada por primera vez en 2008. A primera vista, Python 3 puede parecer similar a Python 2, pero hay numerosas diferencias profundas, incluyendo el soporte extenso de Unicode en Python 3, módulos renombrados, cambios en las importaciones, cambios en las divisiones y más.</p>
 <h2 id="motivos">Motivos</h2>
-<p>Cuando NVDA comenzó en 2006, usaba Python 2.4. Con el paso de los años, NVDA y sus complementos se han escrito en Python 2.7. Al moverse a Python 3, NVDA busca proporcionar mejoras en el soporte Unicode, rendimiento mejorado en diversas operaciones y otros beneficios que van más allá del lector de pantalla.</p>
-<h2 id="ventajas-de-moverse-a-python-3">Ventajas de moverse a Python 3</h2>
-<ul>
-<li>Soporte Unicode mejorado, que se traduce en esfuerzos de internacionalización más productivos.</li>
-<li>Uso de nuevas técnicas relacionadas con la lectura de pantalla.</li>
-<li>Revisión importante del código base de NVDA.</li>
-</ul>
-<h2 id="desventajas-de-moverse-a-python-3">Desventajas de moverse a Python 3</h2>
-<ul>
-<li>Muchos complementos sin actualizar dejarán de funcionar.</li>
-<li>Módulos renombrados.</li>
-<li>Tener cuidado con las diferencias internas y de sintaxis.</li>
-</ul>
+<p>Cuando NVDA comenzó en 2006, usaba Python 2.4. Con el paso de los años, NVDA y sus complementos se han escrito en Python 2.7. El soporte para Python 2.7 se acaba, ya no recibirá actualizaciones (rendimiento, seguridad o corrección de fallos). Por este motivo, la longevidad de NVDA depende de migrar a Python 3.</p>
 <h2 id="para-comenzar">Para comenzar</h2>
-<p>Primero, aprende más sobre las diferencias entre Python 2 y 3 leyendo la siguiente página: https://wiki.python.org/moin/Python2orPython3.</p>
-<p>Después, instala Python 3.7 y familiarízate con el intérprete o escribiendo scripts externos. Así sabrás qué hacer cuando empiece la transición y cómo adaptar tu código (solicitudes de cambio, complementos, etc.) a Python 3. Aunque se pueden usar las versiones de 32 y 64 bits de Python 3.7 con propósitos de prueba, la transición debe hacerse mediante Python de 32 bits.</p>
+<p>Aprende más sobre las diferencias entre Python 2 y 3 con estos recursos:
+- https://wiki.python.org/moin/Python2orPython3
+- http://python3porting.com/
+- http://python-future.org/compatible_idioms.html</p>
+<p>Instala Python 3.7 de 32 bits.</p>
 <p>A fecha de diciembre de 2018, la mayoría de complementos no funcionan, así que se recomienda no instalar ninguno de ellos en la copia de código fuente de NVDA a menos que quieras probar tus complementos y conozcas los riesgos que implica. Como Espeak NG ya se ha llevado a Python 3, el requisito de usar Windows 10 se relaja.</p>
 <h3 id="dependencias-necesarias">Dependencias necesarias:</h3>
 <p>La mayoría de dependencias Python se pueden instalar mediante pip mientras se ejecuta como un módulo en Python 3 de la siguiente manera:</p>
-<p>py -3 -m pip install nombreDeDependencia</p>
+<p><code>py -3 -m pip install nombreDeDependencia</code></p>
 <p>Lo anterior funcionará si Python launcher está instalado y la única versión de Python 3 disponible es la 3.7 de 32 bits.</p>
 <p>Antes de instalar cualquier dependencia de las listadas a continuación, asegúrate de instalar Python 3.7 de 32 bits. Se deben instalar aquellas dependencias marcadas como "obligatoria".</p>
 <ul>
@@ -54,9 +45,9 @@
 <ol>
 <li>Cambia al directorio raíz del código fuente de NVDA.</li>
 <li>Después teclea una de las siguientes órdenes:<ul>
-<li>Si sólo está instalado Python 3.7 de 32 bits: py -3 source/nvda.pyw</li>
-<li>Si tanto Python 3.7 de 32 como de 64 bits están instalados: py -3-32 source/nvda.pyw</li>
-<li>Hay una versión diferente de Python 3.x instalada: py -3.7-32 source/nvda.pyw</li>
+<li>Si sólo está instalado Python 3.7 de 32 bits: <code>py -3 source/nvda.pyw</code></li>
+<li>Si tanto Python 3.7 de 32 como de 64 bits están instalados: <code>py -3-32 source/nvda.pyw</code></li>
+<li>Hay una versión diferente de Python 3.x instalada: <code>py -3.7-32 source/nvda.pyw</code></li>
 </ul>
 </li>
 </ol>
@@ -70,67 +61,68 @@
 <p>La siguiente es una descripción general de la transición del lector de pantalla NVDA desde Python 2 a Python 3. Ten en cuenta que la información que hay a continuación puede cambiar sin aviso previo.</p>
 <h3 id="problemas-destacables-y-soluciones">Problemas destacables y soluciones:</h3>
 <ul>
-<li>Módulos renombrados en Python 3 como _winreg -&gt; winreg, SocketServer -&gt; socketserver, Queue -&gt; queue y otros.<ul>
-<li>Intentar usar la versión de Python 3 antes de volver a los nombres de Python 2.</li>
+<li>Módulos renombrados:</li>
+<li>Ejemplos:<ul>
+<li><code>_winreg</code> -&gt; <code>winreg</code></li>
+<li><code>SocketServer</code> -&gt; <code>socketserver</code></li>
+<li><code>Queue</code> -&gt; <code>queue</code></li>
+</ul>
+</li>
 <li>Para ciertos módulos (especialmente aquellos escritos en C), asegurarse de que los nuevos módulos no rompen la funcionalidad.</li>
 <li>En al menos un caso (sintetizador de voz Espeak NG), se importa un módulo Python pero nunca se usa.</li>
+<li>Módulos reorganizados en Python 3:</li>
+<li>Ejemplos:<ul>
+<li><code>urllib</code></li>
+<li><code>io</code></li>
 </ul>
 </li>
-<li>Módulos reorganizados en Python 3, incluyendo urllib e io.<ul>
 <li>Intentar cargar atributos específicos de los módulos reorganizados.</li>
-</ul>
-</li>
-<li>Importaciones absolutas frente a relativas, especialmente cuando hay alias implicados (importaciones de la forma 'from mod import *', observadas mayoritariamente en módulos de aplicación).<ul>
-<li>Usar importaciones relativas de la forma "from .mod import attr".</li>
-</ul>
-</li>
-<li>Reemplazados algunos atributos del módulo logging.<ul>
+<li>Importaciones absolutas frente a relativas:</li>
+<li>Especialmente cuando hay alias implicados (importaciones de la forma 'from módulo import *', observadas mayoritariamente en módulos de aplicación).</li>
+<li>Usar importaciones relativas de la forma <code>from .módulo import atributo</code></li>
+<li>Reemplazados algunos atributos del módulo logging.</li>
 <li>Deberían cambiarse caso por caso.</li>
-</ul>
-</li>
-<li>Incapacidad de imprimir un texto significativo de registro al archivo de registro.<ul>
+<li>Incapacidad de imprimir un texto significativo de registro al archivo de registro.</li>
 <li>Investigar flujo / manejador de archivos / problema de redirección.</li>
-</ul>
-</li>
-<li>Uso de "async" en Python 3, que afecta a nvwave.playWaveFile(async=True) elevando un error de sintaxis.<ul>
+<li>Uso de "async" en Python 3:</li>
+<li>Que afecta a <code>nvwave.playWaveFile(async=True)</code> elevando un error de sintaxis.</li>
 <li>Renombrar la palabra clave a "asynchronous".</li>
+<li>Diferencias en la división (<code>/</code> frente a <code>//</code>):</li>
+<li>Ejemplos:<ul>
+<li><code>nvwave.WavePlayer</code></li>
+<li>Manipular el cursor del ratón.</li>
 </ul>
 </li>
-<li>Diferencias de división (operadores / y //), que afectan especialmente a nvwave.WavePlayer y a la manipulación del cursor del ratón.<ul>
-<li>Estandarizar la división redondeando a la baja (//) para enteros, división regular (/) para números reales.</li>
-</ul>
-</li>
-<li>Bytes contra cadenas causado por la codificación, o en algunos casos, obligatorio para las dlls que esperan caracteres ANSI.<ul>
+<li>Estandarizar la división redondeando a la baja (<code>//</code>) para enteros, división regular (<code>/</code>) para números reales.</li>
+<li>Bytes frente a cadenas:</li>
+<li>Causado por la codificación, o en algunos casos, obligatorio para las dlls que esperan caracteres ANSI.</li>
 <li>Intentar unificar bajo Unicode tanto como sea posible.</li>
 <li>Esto se complica al trabajar con funciones en C (la dll de Espeak, por ejemplo), donde esperan cadenas ANSI pero Python las envía como Unicode.</li>
+<li>Módulos eliminados e incompatibles</li>
+<li>Ejemplo:<ul>
+<li><code>new.instancemethod</code></li>
 </ul>
 </li>
-<li>Módulos eliminados e incompatibles, incluyendo new.instancemethod.<ul>
 <li>Encontrar un equivalente en Python 3, o usar las características incorporadas en Python.</li>
-<li>Se puede decir lo mismo de las dependencias (txt2tags, por ejemplo).</li>
+<li>Se puede decir lo mismo de las dependencias (<code>txt2tags</code>, por ejemplo)</li>
+<li>Proporciona un método <code>__hash__</code> para las clases que implementen el método <code>__eq__</code> </li>
+<li>Ejemplo:<ul>
+<li><code>NVDAObjects.NVDAObject</code></li>
 </ul>
 </li>
-<li>Proporciona un método <strong>hash</strong> para las clases que implementen el método <strong>eq</strong> (NVDAObjects.NVDAObject, por ejemplo).<ul>
 <li>Esto es necesario debido a la aleatorización de hashes en Python 3.3 y posterior.</li>
-<li>Una de las soluciones más simples es usar el método <strong>hash</strong> de la clase padre (<strong>hash</strong> = clasePadre.<strong>hash</strong>).</li>
-</ul>
-</li>
-<li>Los métodos de objeto de la forma _get_property no funcionan, observable al intentar establecer el sintetizador inicial, la pantalla braille, el objeto con el foco y demás.<ul>
+<li>Una de las soluciones más simples es usar el método <code>__hash__</code> de la clase padre (<code>__hash__ = clasePadre.__hash__</code>).</li>
+<li>Los métodos de objeto que siguen el formato <code>_get_property</code> no funcionan</li>
+<li>Por ejemplo al intentar establecer el sintetizador inicial, la pantalla braille o el objeto con el foco</li>
 <li>Causado por las diferencias de sintaxis de metaclase entre Python 2 y 3.</li>
-<li>Usar el especificador de metaclase de la forma "metaclase=algunaclase".</li>
-<li>Resuelto en diciembre de 2018 (mira debajo).</li>
-</ul>
-</li>
-<li>Métodos de diccionario incompatibles.<ul>
-<li>dict.has_key(clave): usar "clave en dict".</li>
-<li>dict.iter*: usar atributos directamente (por ejemplo, usar "dict.items()" en vez de "dict.iteritems()").</li>
-<li>Ciertos fragmentos de código esperan una lista, por lo que se envuelve la llamada al iterador dentro de un constructor de lista.</li>
-</ul>
-</li>
-<li>Ya no existe unichr.<ul>
-<li>Estandarizarse alredecor de "chr".</li>
-</ul>
-</li>
+<li>Usar el especificador de metaclase de la forma <code>metaclase=algunaclase</code></li>
+<li>Resuelto en diciembre de 2018 (mira debajo)</li>
+<li>Métodos de diccionario incompatibles.</li>
+<li><code>dict.has_key(clave)</code>: usar <code>clave in dict</code></li>
+<li><code>dict.iter*</code>: usar atributos directamente (por ejemplo, usar <code>dict.items()</code> en vez de <code>dict.iteritems()</code>)</li>
+<li>Ciertos fragmentos de código esperan una lista, por lo que se envuelve la llamada al iterador dentro de un constructor de lista</li>
+<li>Ya no existe <code>unichr</code></li>
+<li>Estandarizarse alrededor de <code>chr</code></li>
 </ul>
 <h3 id="antes-de-la-transicion">Antes de la transición:</h3>
 <p>Fecha de inicio: 17 de septiembre de 2018</p>

@@ -1,4 +1,4 @@
-This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.x.
+This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7.
 
 IMPORTANT: due to ongoing pre-transition activities, this document is subject to change without notice.
 
@@ -6,29 +6,20 @@ IMPORTANT: due to ongoing pre-transition activities, this document is subject to
 
 Python is one of the popular programming languages for various projects. Its ease of learning, extensive standard library modules and third-party extensions, as well as extensive documentation and clear syntax makes it an ideal choice for scripting.
 
-Currently there are two major branches of Python: 2.x, released in early 2000's, and 3.x, first released in 2008. At first glance, Python 3 may seem similar to Python 2, but there are numerous deeper differences, including extensive Unicode support in Python 3, module renames and so on.
+Currently there are two major branches of Python: 2.x, released in early 2000's, and 3.x, first released in 2008. At first glance, Python 3 may seem similar to Python 2, but there are numerous deeper differences which break backwards compatibility with code written for Python 2. These including extensive Unicode support in Python 3, module renames, changes to imports, changes to division, and many more.
 
 ## Rationale
 
-When NVDA began in 2006, it used python 2.4. Over the years, NvDA and its add-ons were written in Python 2.7. By moving to Python 3, NVDA project seeks to provide improvements in Unicode support, improved performance in various operations and other benefits, which goes beyond just the screen reader.
-
-## Advantages of moving to Python 3
-
-* Better Unicode support, thus leading to improved internationalization efforts.
-* Using newer techniques for screen reading purposes.
-* Major overhaul of NVDA's code base.
-
-## Drawbacks of moving to Python 3
-
-* Many add-ons not updated will no longer work.
-* Renamed modules.
-* Being careful about syntax and internal differences.
+When NVDA began in 2006, it used python 2.4. Over the years, NVDA and its add-ons were written in Python 2.7. Support for Python 2.7 is ending, it will no longer receive updates (performance, security, or bug fixes). For this reason, the longevity of NVDA depends on moving to Python 3.
 
 ## Getting started
 
-First, learn more about differences between Python 2 and 3 by reading the following page: https://wiki.python.org/moin/Python2orPython3.
+Learn more about differences between Python 2 and 3, some resources:
+- https://wiki.python.org/moin/Python2orPython3
+- http://python3porting.com/
+- http://python-future.org/compatible_idioms.html
 
-Next, install and become familiar with Python 3.7 through the interpreter or writing external scripts. This is so that you will know what to do when transition starts and port your code (pull requests, add-ons, etc.) to Python 3. Although both 32-bit and 64-bit Python 3.7 can be used for testing purposes, porting must be done against 32-bit Python.
+Install Python 3.7 32-bit.
 
 Note: as of December 2018, most add-ons won't work, so it is advised not to install any of them into the source code copy of NVDA unless you need to test your add-ons know the risks involved. The requirement to use Windows 10 has been lifted as eSpeak NG has been ported.
 
@@ -36,7 +27,7 @@ Note: as of December 2018, most add-ons won't work, so it is advised not to inst
 
 Most Python dependencies can be installed via PIP while running as a module in Python 3.7 like so:
 
-py -3 -m pip install dependencyName
+`py -3 -m pip install dependencyName`
 
 The above will work if Python Launcher is installed and the only Python 3 installed is 3.7 32-bit.
 
@@ -56,15 +47,15 @@ Before installing any dependencies listed below, be sure to install Python 3.7 3
 * A replacement for py2exe for binary distribution (not mandatory until binary distributions are ready to be built)
 * A replacement for txt2tags for generating documentation (not mandatory until binary distributions are to be built)
 
-### Running Python 3 version of NvDA
+### Running Python 3 version of NVDA
 
 Once Python 3.7 and dependencies are installed, provided that DLL's are compiled and the version of NVDA in source code form complies with Python 3, run the Python 3 NVDA from Command Prompt or Windows PowerShell as follows:
 
 1. Change to the root directory of NVDA's source code.
 2. Then type one of the following:
-	* Only Python 3.7 32-bit is installed: py -3 source/nvda.pyw
-	* Python 3.7 32-bit and 64-bit are installed: py -3-32 source/nvda.pyw
-	* A different Python 3.x version is installed: py -3.7-32 source/nvda.pyw
+	* Only Python 3.7 32-bit is installed: `py -3 source/nvda.pyw`
+	* Python 3.7 32-bit and 64-bit are installed: `py -3-32 source/nvda.pyw`
+	* A different Python 3.x version is installed: `py -3.7-32 source/nvda.pyw`
 
 ### Debugging Python 3 transition work
 
@@ -79,41 +70,58 @@ The following is an overview of Python 2 to 3 transition for NVDA screen reader.
 
 ### Notable issues and solutions:
 
-* Renamed modules in Python 3 such as _winreg -> winreg, SocketServer -> socketserver, Queue -> queue and so forth.
-	* Try using Python 3 version before falling back to Python 2 names.
-	* For certain modules (especially those written in C), make sure new modules won't break functionality.
-	* For at least one case (Espeak NG speech synthesizer), a Python module is imported but never used.
-* Reorganized modules in Python 3, including urllib and io.
-	* Try loading specific attributes from reorganized modules.
-* Absolute versus relative imports, especially when aliasing is involved (imports of the form 'from mod import *", observed mostly in app modules).
-	* Use relative imports of the form "from .mod import attr".
+* Renamed modules:
+  - Examples:
+    - `_winreg` -> `winreg`
+    - `SocketServer` -> `socketserver`
+    - `Queue` -> `queue`
+  - For certain modules (especially those written in C), make sure new modules won't break functionality.
+  - For at least one case (Espeak NG speech synthesizer), a Python module is imported but never used.
+* Reorganized modules in Python 3:
+  - Examples:
+    - `urllib`
+    - `io`
+  - Try loading specific attributes from reorganized modules.
+* Absolute versus relative imports:
+  - Especially when aliasing is involved (using 'from moduleName import *", observed mostly in app modules).
+  - Use relative imports of the form `from .moduleName import attributeName`
 * Replacement of some private attributes of logging module.
-	* These should be changed on a case-by-case basis.
+  - These should be changed on a case-by-case basis.
 * Inability to print a meaningful log text to log file.
-	* Investigate streaming/file handler/redirection issue.
-* Use of "async" in Python 3, which affects nvwave.playWaveFile(async=True) as this raises syntax error.
-	* Rename the keyword to "asynchronous".
-* Division differences (/ versus //), most notably in nvwave.WavePlayer and manipulating mouse cursor.
-	* Standardize around floor division (//) for integer values, regular division (/) for floats.
-* Bytes versus strings caused by encoding, or in some cases, mandated by DLL's where ANSI characters are expected.
-	* Try unifying under Unicode as much as possible.
-	* This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
-* Removed and incompatible modules, including new.instancemethod.
-	* Either find a Python 3 equivalent, or use built-in Python features.
-	* Same can be said about dependencies (txt2tags, for example).
-* Provide __hash__ method for classes implementing __eq__ method (NVDAObjects.NVDAObject, for instance).
-	* This is required due to hash randomization in python 3.3 and later.
-	* One of the simplest solutions is to use the parent object's __hash__ method (__hash__ = parentClass.__hash__).
-* Object methods of the form _get_property does not work, noticeable when trying to set initial synthesizer, braille display, focus object and so on.
-	* Caused by metaclass syntax differences between Python 2 and 3.
-	* Use metaclass specifier of the form "metaclass=someclass".
-	* Resolved in December 2018 (see below).
+  - Investigate streaming/file handler/redirection issue.
+* Use of "async" in Python 3:
+  - Which affects `nvwave.playWaveFile(async=True)` as this raises syntax error.
+  - Rename the keyword to "asynchronous"
+* Division differences (`/` versus `//`):
+  - Examples:
+    - `nvwave.WavePlayer`
+    - manipulating mouse cursor.
+  - Standardize around floor division (`//`) for integer values, regular division (`/`) for floats.
+* Bytes versus strings:
+  - caused by encoding, or in some cases, mandated by DLL's where ANSI characters are expected.
+  - Try unifying under Unicode as much as possible.
+  - This is pronounced when working with C functions (Espeak DLL, for example) where ANSI strings are expected by C functions but Python prefers Unicode.
+* Removed and incompatible modules
+  - EG:
+    -  `new.instancemethod`
+  - Either find a Python 3 equivalent, or use built-in Python features.
+  - Same can be said about dependencies (`txt2tags`, for example)
+* Provide `__hash__` method for classes implementing `__eq__` method 
+  - EG:
+    - `NVDAObjects.NVDAObject`
+  - This is required due to hash randomization in python 3.3 and later.
+  - One of the simplest solutions is to use the parent object's `__hash__` method (`__hash__ = parentClass.__hash__`).
+* Object methods of the form `_get_property` do not work
+  - EG when trying to set initial synthesizer, braille display, focus object
+  - Caused by metaclass syntax differences between Python 2 and 3.
+  - Use metaclass specifier of the form `metaclass=someclass`
+  - Resolved in December 2018 (see below)
 * Incompatible dictionary methods.
-	* dict.has_key(key): use "key in dict".
-	* dict.iter*: use attributes directly (e.g. "dict.items()" instead of "dict.iteritems()").
-	* Certain code fragments expect a list, so wrap the iterator call inside a list constructor.
-* No more unichr.
-	* Standardize around "chr".
+  - `dict.has_key(key)`: use `key in dict`
+  - `dict.iter*`: use attributes directly (e.g. `dict.items()` instead of `dict.iteritems()`
+  - Certain code fragments expect a list, so wrap the iterator call inside a list constructor
+* No more `unichr`
+  - Standardize around `chr`
 
 ### Before transition:
 

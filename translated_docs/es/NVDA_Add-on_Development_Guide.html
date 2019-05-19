@@ -75,7 +75,10 @@
 <li>Recomendamos instalar la última versión master de desarrollo para mantenerse al día con los cambios en el API del núcleo.  Puedes descargar las últimas snapshots en https://community.nvda-project.org/wiki/Snapshots.</li>
 </ul>
 </li>
-<li>Series de Python 2.7, versión 2.7.14 32-bit para Windows: <a href="https://www.python.org/download/releases/2.7.14/">https://www.python.org/download/releases/2.7.14/</a>.</li>
+<li>Series de Python 2.7, versión 2.7.14 32-bit para Windows: <a href="https://www.python.org/download/releases/2.7.14/">https://www.python.org/download/releases/2.7.14/</a>.<ul>
+<li>Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para Windows.</li>
+</ul>
+</li>
 <li>SCons 2 o 3, versión 2.3.0 o posterior para la generación de paquetes de complementos (si se usa la versión 3.x, se recomienda la 3.0.1 o posterior): <a href="http://www.scons.org/">http://www.scons.org/</a>.</li>
 <li>Markdown 2.0.1 o posterior para generar la documentación del complemento: <a href="https://pypi.python.org/pypi/Markdown/2.0.1">https://pypi.python.org/pypi/Markdown/2.0.1</a>.</li>
 <li>El paquete Gettext de GNU para Windows para soporte de localización de mensajes. La compilación se puede encontrar en: <a href="http://gnuwin32.sourceforge.net/downlinks/gettext.php">http://gnuwin32.sourceforge.net/downlinks/gettext.php</a>.<ul>
@@ -107,7 +110,7 @@
 <h2 id="comenzando-ejemplos-practicos">Comenzando: Ejemplos prácticos</h2>
 <p>Entonces, ¿estás listo para comenzar tu aventura con los complementos, pero no estás seguro de cómo darle vida? Si ese es tu caso, vé por favor a través de este capítulo, pues te da la información básica para conseguir comenzar con los complementos y te da consejos para escribir código.</p>
 <p>Nota: para este capítulo, no usaremos paquetes de complementos reales. En su lugar, usaremos carpetas de extensiones de scratchpad - una serie de subdirectorios situados en una carpeta llamada "scratchpad", que es una subcarpeta en tu carpeta de configuración de usuario de NVDA (disponible desde el menú de inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros Python de ejemplo.</p>
-<p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++ que se puede descargar de https://notepad-plus-plus.org/download/v6.8.3.html.</p>
+<p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++.</p>
 <h3 id="como-esta-organizado-el-codigo-de-los-complementos">Cómo está organizado el código de los complementos</h3>
 <p>El código de tu complemento se almacena en uno o más ficheros Python (fichero .py). A pesar de los diferentes tipos de complementos que hay por ahí, todos ellos tienen un diseño similar.</p>
 <p>Primero, comienza por escribir una cabecera opcional para el complemento, tal como tu nombre, una o dos frases breves sobre para qué es el complemento y así sucesivamente. Aunque esto es opcional, Se recomienda que escribas el encabezado como un recordatorio para realizar un seguimiento de lo que estás haciendo con tu complemento.</p>
@@ -314,7 +317,7 @@ def announceUIAId():
 <pre><code>import keyboardHandler
 
 def sendApplicationsKey():
-    keyboardHandler.KeyboardInputGesture.fromName("kb:applications").send()
+    keyboardHandler.KeyboardInputGesture.fromName("applications").send()
 </code></pre>
 <h3 id="ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-la-pantalla-si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado">Ejemplo 5: Detener la voz cada vez que cambie el contenido de la pantalla si el anuncio de cambio de contenido dinámico está desactivado</h3>
 <p>El código que aparece a continuación es un controlador para un evento de cambio de nombre que detiene la voz siempre que el contenido de la pantalla cambie si el anuncio de cambio de contenido dinámico está desactivado.</p>
