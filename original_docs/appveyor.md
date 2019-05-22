@@ -17,7 +17,6 @@ git clone https://github.com/username/repo
 
 git pull
 ```
-
 2. In the root of the add-on folder (where the sconstruct file is placed), paste this [AppVeyor configuration file](https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml) (appveyor.yml).
 
 3. If you don't have it, [create a personal API access token](https://github.com/settings/tokens) and [encrypt it](https://ci.appveyor.com/tools/encrypt).
@@ -56,6 +55,9 @@ git push origin 1.0
 
 Now, the release will be created and binary-1.0.nvda-addon will be attached on GitHub.
 
+Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) for releasing using an FTP server.
+
+
 ## Procedure to receive notifications about commits
 
 For notifications about push events (recommended for add-ons review), please see:
@@ -87,6 +89,7 @@ Here is a [topic in groups.io mailing list as a real example](https://nvdaes.gro
 - [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)
 - [mesa/appveyor.yml at master · anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)
 - [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)
+- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)
 
 ## Aknowledgements
 
