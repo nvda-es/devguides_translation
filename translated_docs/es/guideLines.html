@@ -12,8 +12,8 @@
 <ol>
 <li>Usa la plantilla de complemento que se encuentra en https://github.com/nvdaaddons/addonTemplate</li>
 <li>El nombre del complemento no debería contener palabras tales como "nvda", "plugin", "appmodule", "globalPlugin" en su composición, el usuario no debería tener que preocuparse de detalles de la implementación.</li>
-<li>El nombre del complemento debería tener la forma "nombre", o "primeroSegundo", o "primero_segundo"
-ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_monitor". El sistema automatizado no soporta guiones en el nombre.</li>
+<li>El nombre del complemento debería tener la forma "nombre", o "primeroSegundo", o "primero_segundo"<br />
+    ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_monitor". El sistema automatizado no soporta guiones en el nombre.</li>
 <li>Asegúrate de que tu complemento se libera bajo la licencia GPL o una equivalente compatible con ella, ya que el propio NVDA es GPL y el alojamiento de los complementos corre a cargo de NVDA.</li>
 </ol>
 <h2 id="versionado">Versionado</h2>
@@ -36,13 +36,14 @@ ejemplos: "word", "dropbox", "extendedWinamp", "resourceMonitor" o "resource_mon
 <ol>
 <li>Haz el indentado o bien con cuatro espacios, o con un tabulador. La segunda opción es la más recomendada.</li>
 <li>Todos los mensajes presentados al usuario deberían ser traducibles (salvo excepciones), si somos los creadores del mensaje.</li>
-<li>Los mensajes que contengan varios comodines '%s' o '%d' o siguen el formato
-"%(name)s .. %(name2)s" deberían reescribirse como _("{name1} .. {name2}").format(name1=v1, name2=v2)</li>
+<li>Los mensajes que contengan varios comodines '%s' o '%d' o siguen el formato:<br />
+    "%(name)s .. %(name2)s" deberían reescribirse como:<br />
+    _("{name1} .. {name2}").format(name1=v1, name2=v2)</li>
 <li>Los mensajes traducibles deberían tener un comentario para traductores para explicar dónde o cuándo se presentarán al usuario, para que los traductores puedan probar el resultado de su traducción fácilmente al instalar el complemento. Si la cadena traducible es similar a alguna contenida en los mensajes principales de NVDA, indícalo también.</li>
 <li>Si tu complemento necesita guardar cualquier ajuste de configuración:<ul>
-<li>no uses:
+<li>no uses:<br />
 config_file = os.path.join(config.getUserDefaultConfigPath(),"addonName.ini")</li>
-<li>usa en su lugar:
+<li>usa en su lugar:<br />
 config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")</li>
 </ul>
 </li>
@@ -52,7 +53,7 @@ config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")</li>
 <h2 id="documentacion-y-ordenes-de-teclado">Documentación y órdenes de teclado</h2>
 <ol>
 <li>Si añades nuevas órdenes de teclado como parte de tu complemento, consulta la referencia rápida de órdenes de NVDA y las órdenes de otros complementos oficiales de la comunidad antes de asignarlas.</li>
-<li>Para NVDA 2013.3 o posterior: si quieres categorizar tus órdenes de teclado (para una identificación más sencilla y que el usuario pueda cambiarlas), asigna una categoría existente en NVDA (si si tu complemento mejora partes de NVDA como una orden nueva para abrir un diálogo de preferencias), o bien crea nuevas categorías si es necesario (si el complemento ofrece otras características como el soporte para funciones avanzadas de un programa).</li>
+<li>Para NVDA 2013.3 o posterior: si quieres categorizar tus órdenes de teclado (para una identificación más sencilla y que el usuario pueda cambiarlas), asigna una categoría existente en NVDA (si tu complemento mejora partes de NVDA como una orden nueva para abrir un diálogo de preferencias), o bien crea nuevas categorías si es necesario (si el complemento ofrece otras características como el soporte para funciones avanzadas de un programa).</li>
 <li>Por favor, ofrece un archivo readme.md en el que se listen los cambios entre versiones, atajos de teclado (si los hay), notas de uso y otra información relevante. Inspírate en cualquiera de los complementos oficiales ya existentes.</li>
 <li>Los archivos addon/doc/*/readme.md no deberían traducirse a mano y enviarse al repositorio, sino que deberían generarse y enviarse desde el sistema oficial de traducciones.</li>
 <li>Si traduces un complemento a tu idioma y lo envías a Git, por favor notifícaselo al responsable de traducción de NVDA en tu idioma para que no se duplique el trabajo. En cualquier caso, siempre es mejor mantener las traducciones en el sistema oficial de traducciones.</li>

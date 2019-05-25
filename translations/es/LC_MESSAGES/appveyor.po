@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-22 13:00+Hora de verano romance\n"
-"PO-Revision-Date: 2019-05-22 13:04+0200\n"
+"POT-Creation-Date: 2019-05-26 01:39+Hora de verano romance\n"
+"PO-Revision-Date: 2019-05-26 01:48+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: Iván Novegil Cancelas - nvda.es <ivan.novegil@nvda.es>, "
 "<contacto@nvda.es>\n"
@@ -55,24 +55,23 @@ msgid "1. Get the code of an add-on."
 msgstr "1. Consigue el código de un complemento."
 
 #: ..\python_docs\appveyor.py:9
-msgid "Example:"
-msgstr "Ejemplo:"
+msgid "\tExample:"
+msgstr "\tEjemplo:"
 
 #: ..\python_docs\appveyor.py:10 ..\python_docs\appveyor.py:13
-#: ..\python_docs\appveyor.py:17 ..\python_docs\appveyor.py:20
-#: ..\python_docs\appveyor.py:21 ..\python_docs\appveyor.py:24
-#: ..\python_docs\appveyor.py:32 ..\python_docs\appveyor.py:35
-#: ..\python_docs\appveyor.py:44 ..\python_docs\appveyor.py:49
-msgid "```"
-msgstr "```"
+#: ..\python_docs\appveyor.py:22 ..\python_docs\appveyor.py:25
+#: ..\python_docs\appveyor.py:26 ..\python_docs\appveyor.py:29
+#: ..\python_docs\appveyor.py:49 ..\python_docs\appveyor.py:54
+msgid "\t```"
+msgstr "\t```"
 
 #: ..\python_docs\appveyor.py:11
-msgid "git clone https://github.com/username/repo"
-msgstr "git clone https://github.com/nombreusuario/repo"
+msgid "\tgit clone https://github.com/username/repo"
+msgstr "\tgit clone https://github.com/nombreusuario/repo"
 
 #: ..\python_docs\appveyor.py:12
-msgid "git pull"
-msgstr "git pull"
+msgid "\tgit pull"
+msgstr "\tgit pull"
 
 #: ..\python_docs\appveyor.py:14
 msgid ""
@@ -97,43 +96,65 @@ msgstr ""
 
 #: ..\python_docs\appveyor.py:16
 msgid ""
+"\tNote: you could need to set the following token scopes to avoid  "
+"inconvenience when releasing tags:"
+msgstr ""
+"\tNota: podría ser necesario configurar los siguientes ámbitos de token para "
+"evitar inconvenientes al publicar tags:"
+
+#: ..\python_docs\appveyor.py:17
+msgid "\t- notifications"
+msgstr "\t - notifications"
+
+#: ..\python_docs\appveyor.py:18
+msgid "\t- public_repo"
+msgstr "\t- public_repo"
+
+#: ..\python_docs\appveyor.py:19
+msgid "\t- repo:status"
+msgstr "\t- repo:status"
+
+#: ..\python_docs\appveyor.py:20
+msgid "\t- repo_deployment"
+msgstr "\t- repo_deployment"
+
+#: ..\python_docs\appveyor.py:21
+msgid ""
 "4. In the appveyor.yml file, replace the value provided for the secure key "
 "with your encrypted token. For instance, instead of"
 msgstr ""
 "4. En el archivo appveyor.yml, reemplaza el valor proporcionado para la "
 "clave segura por tu token cifrado. Por ejemplo, en lugar de"
 
-#: ..\python_docs\appveyor.py:18
-msgid "  auth_token:"
-msgstr "  auth_token:"
+#: ..\python_docs\appveyor.py:23 ..\python_docs\appveyor.py:27
+msgid "\t  auth_token:"
+msgstr "\t  auth_token:"
 
-#: ..\python_docs\appveyor.py:19
+#: ..\python_docs\appveyor.py:24
 msgid ""
-"    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
+"\t    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/"
+"LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
 msgstr ""
-"    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
+"\t    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/"
+"LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
 
-#: ..\python_docs\appveyor.py:22
-msgid "auth_token:"
-msgstr "auth_token:"
+#: ..\python_docs\appveyor.py:28
+msgid "\t    secure: yourEncryptedToken"
+msgstr "\t    secure: tuTokenCifrado"
 
-#: ..\python_docs\appveyor.py:23
-msgid "    secure: yourEncryptedToken"
-msgstr "    secure: tuTokenCifrado"
-
-#: ..\python_docs\appveyor.py:25
+#: ..\python_docs\appveyor.py:30
 msgid ""
-"Now, you can paste your appveyor.yml file to any add-on posted on your "
+"\tNow, you can paste your appveyor.yml file to any add-on posted on your "
 "GitHub account."
 msgstr ""
-"Ahora puedes publicar el archivo appveyor.yml en cualquier repositorio de "
+"\tAhora puedes publicar el archivo appveyor.yml en cualquier repositorio de "
 "complemento en tu cuenta de GitHub."
 
-#: ..\python_docs\appveyor.py:26
+#: ..\python_docs\appveyor.py:31
 msgid "5. [Sign in with AppVeyor](https://www.appveyor.com/)."
 msgstr "5. [Inicia sesión en AppVeyor](https://www.appveyor.com/)."
 
-#: ..\python_docs\appveyor.py:27
+#: ..\python_docs\appveyor.py:32
 msgid ""
 "6. From AppVeyor, select New Project. (If needed, choose GitHub and "
 "authorize it)."
@@ -141,7 +162,7 @@ msgstr ""
 "6. En AppVeyor, selecciona New Project (Nuevo Proyecto). (Si es necesario, "
 "elige GitHub y autorízalo)."
 
-#: ..\python_docs\appveyor.py:28
+#: ..\python_docs\appveyor.py:33
 msgid ""
 "7. Locate the name of the repo you're interested in, move the mouse over it "
 "(for instance pressing NVDA+numpadDivide or NVDA+shift+m), and activate the "
@@ -151,11 +172,11 @@ msgstr ""
 "sobre él (por ejemplo presionando NVDA+DividirBloqueNumérico o NVDA+shift"
 "+m), y activa el enlace \"Añadir\" debajo."
 
-#: ..\python_docs\appveyor.py:29
+#: ..\python_docs\appveyor.py:34
 msgid "### Releasing"
 msgstr "### Liberando"
 
-#: ..\python_docs\appveyor.py:30
+#: ..\python_docs\appveyor.py:35
 msgid ""
 "To post a new release of an add-on, you can create a tag and push it to "
 "GitHub:"
@@ -163,19 +184,23 @@ msgstr ""
 "Para publicar una nueva versión de un complemento, puedes crear una etiqueta "
 "y enviarla a GitHub:"
 
-#: ..\python_docs\appveyor.py:31
+#: ..\python_docs\appveyor.py:36
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ..\python_docs\appveyor.py:33
+#: ..\python_docs\appveyor.py:37 ..\python_docs\appveyor.py:40
+msgid "```"
+msgstr "```"
+
+#: ..\python_docs\appveyor.py:38
 msgid "git tag 1.0"
 msgstr "git tag 1.0"
 
-#: ..\python_docs\appveyor.py:34
+#: ..\python_docs\appveyor.py:39
 msgid "git push origin 1.0"
 msgstr "git push origin 1.0"
 
-#: ..\python_docs\appveyor.py:36
+#: ..\python_docs\appveyor.py:41
 msgid ""
 "Now, the release will be created and binary-1.0.nvda-addon will be attached "
 "on GitHub."
@@ -183,7 +208,7 @@ msgstr ""
 "Entonces la release (versión) se creará y binario-1.0.nvda-addon se añadirá "
 "como adjunto a ella en GitHub."
 
-#: ..\python_docs\appveyor.py:37
+#: ..\python_docs\appveyor.py:42
 msgid ""
 "Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://"
 "gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/"
@@ -195,11 +220,11 @@ msgstr ""
 "raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) para "
 "publicar utilizando un servidor FTP."
 
-#: ..\python_docs\appveyor.py:38
+#: ..\python_docs\appveyor.py:43
 msgid "## Procedure to receive notifications about commits"
 msgstr "## Procedimiento para recibir notificaciones sobre los commits"
 
-#: ..\python_docs\appveyor.py:39
+#: ..\python_docs\appveyor.py:44
 msgid ""
 "For notifications about push events (recommended for add-ons review), please "
 "see:"
@@ -207,15 +232,15 @@ msgstr ""
 "Para las notificaciones sobre eventos push (recomendadas a la hora de "
 "revisar complementos), visita:"
 
-#: ..\python_docs\appveyor.py:40
+#: ..\python_docs\appveyor.py:45
 msgid "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
 msgstr "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
 
-#: ..\python_docs\appveyor.py:41
+#: ..\python_docs\appveyor.py:46
 msgid "Anyway, if you want to use AppVeyor: "
 msgstr "En cualquier caso, si quieres usar AppVeyor: "
 
-#: ..\python_docs\appveyor.py:42
+#: ..\python_docs\appveyor.py:47
 msgid ""
 "1. Create an email address to receive notifications. For instance, you may "
 "use the [groups.io email integration](https://groups.io/static/features)."
@@ -224,52 +249,52 @@ msgstr ""
 "puedes usar la [integración de correo electrónico de groups.io](https://"
 "groups.io/static/features)."
 
-#: ..\python_docs\appveyor.py:43
+#: ..\python_docs\appveyor.py:48
 msgid "2. In the appveyor.yml file, add these lines:"
 msgstr "2. En el archivo appveyor.impl, añade las siguientes líneas:"
 
-#: ..\python_docs\appveyor.py:45
-msgid "notifications:"
-msgstr "notifications:"
-
-#: ..\python_docs\appveyor.py:46
-msgid "  - provider: Email"
-msgstr "  - provider: Email"
-
-#: ..\python_docs\appveyor.py:47
-msgid "    to:"
-msgstr "    to:"
-
-#: ..\python_docs\appveyor.py:48
-msgid "      - notificationsEmailAddress.example.com"
-msgstr "      - notificationsEmailAddress.example.com"
-
 #: ..\python_docs\appveyor.py:50
-msgid ""
-"Replace notificationsEmailAddress.example.com with a valid email address."
-msgstr ""
-"Reemplaza notificationsEmailAddress.example.com por una dirección de correo "
-"electrónico válida."
+msgid "\tnotifications:"
+msgstr "\tnotifications:"
 
 #: ..\python_docs\appveyor.py:51
-msgid ""
-"Here is a [topic in groups.io mailing list as a real example](https://nvdaes."
-"groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
-msgstr ""
-"Hay un [tema en la lista de correo de groups.io que sirve como ejemplo real]"
-"(https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/"
-"build_completed/27377767)."
+msgid "\t  - provider: Email"
+msgstr "\t  - provider: Email"
 
 #: ..\python_docs\appveyor.py:52
+msgid "\t    to:"
+msgstr "\t    to:"
+
+#: ..\python_docs\appveyor.py:53
+msgid "\t      - notificationsEmailAddress.example.com"
+msgstr "\t      - notificationsEmailAddress.example.com"
+
+#: ..\python_docs\appveyor.py:55
+msgid ""
+"\tReplace notificationsEmailAddress.example.com with a valid email address."
+msgstr ""
+"\tReemplaza notificationsEmailAddress.example.com por una dirección de "
+"correo electrónico válida."
+
+#: ..\python_docs\appveyor.py:56
+msgid ""
+"\tHere is a [topic in groups.io mailing list as a real example](https://"
+"nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
+msgstr ""
+"\tHay un [tema en la lista de correo de groups.io que sirve como ejemplo "
+"real](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/"
+"build_completed/27377767)."
+
+#: ..\python_docs\appveyor.py:57
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\appveyor.py:53
+#: ..\python_docs\appveyor.py:58
 msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
 msgstr ""
 "- [Referencia Appveyor.yml](https://www.appveyor.com/docs/appveyor-yml/)"
 
-#: ..\python_docs\appveyor.py:54
+#: ..\python_docs\appveyor.py:59
 msgid ""
 "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor."
 "com/docs/deployment/github/#configuring-in-appveyoryml)"
@@ -277,7 +302,7 @@ msgstr ""
 "- [Publicando artifacts en releases de GitHub | AppVeyor](https://www."
 "appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
 
-#: ..\python_docs\appveyor.py:55
+#: ..\python_docs\appveyor.py:60
 msgid ""
 "- [Syntax of the release name value in the deploy section of the appveyor."
 "yml configuration file](http://help.appveyor.com/discussions/questions/9221-"
@@ -289,7 +314,7 @@ msgstr ""
 "questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-"
 "appveyoryml-configuration-file)"
 
-#: ..\python_docs\appveyor.py:56
+#: ..\python_docs\appveyor.py:61
 msgid ""
 "- [mesa/appveyor.yml at master \\302\\267 anholt/mesa](https://github.com/"
 "anholt/mesa/blob/master/appveyor.yml)"
@@ -297,7 +322,7 @@ msgstr ""
 "- [mesa/appveyor.yml en master \\302\\267 anholt/mesa](https://github.com/"
 "anholt/mesa/blob/master/appveyor.yml)"
 
-#: ..\python_docs\appveyor.py:57
+#: ..\python_docs\appveyor.py:62
 msgid ""
 "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups."
 "io/g/nvda-addons/topic/6220467)"
@@ -305,7 +330,7 @@ msgstr ""
 "- [Discusión en la lista de correo de NVDA-Addons (complementos de NVDA)]"
 "(https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
 
-#: ..\python_docs\appveyor.py:58
+#: ..\python_docs\appveyor.py:63
 msgid ""
 "- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://"
 "nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
@@ -314,10 +339,13 @@ msgstr ""
 "complementos de NVDA](https://nvda-addons.groups.io/g/nvda-addons/"
 "topic/31686195#7943)"
 
-#: ..\python_docs\appveyor.py:59
+#: ..\python_docs\appveyor.py:64
 msgid "## Aknowledgements"
 msgstr "## Agradecimientos"
 
-#: ..\python_docs\appveyor.py:60
+#: ..\python_docs\appveyor.py:65
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr "Gracias a @abdel792, @derekriemer y @tuukao por hacer esto posible."
+
+#~ msgid "auth_token:"
+#~ msgstr "auth_token:"

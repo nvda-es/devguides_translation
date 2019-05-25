@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-22 13:00+Hora de verano romance\n"
+"POT-Creation-Date: 2019-05-26 01:39+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,23 +40,22 @@ msgid "1. Get the code of an add-on."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:9
-msgid "Example:"
+msgid "\tExample:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:10 ..\python_docs\appveyor.py:13
-#: ..\python_docs\appveyor.py:17 ..\python_docs\appveyor.py:20
-#: ..\python_docs\appveyor.py:21 ..\python_docs\appveyor.py:24
-#: ..\python_docs\appveyor.py:32 ..\python_docs\appveyor.py:35
-#: ..\python_docs\appveyor.py:44 ..\python_docs\appveyor.py:49
-msgid "```"
+#: ..\python_docs\appveyor.py:22 ..\python_docs\appveyor.py:25
+#: ..\python_docs\appveyor.py:26 ..\python_docs\appveyor.py:29
+#: ..\python_docs\appveyor.py:49 ..\python_docs\appveyor.py:54
+msgid "\t```"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:11
-msgid "git clone https://github.com/username/repo"
+msgid "\tgit clone https://github.com/username/repo"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:12
-msgid "git pull"
+msgid "\tgit pull"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:14
@@ -68,150 +67,170 @@ msgid "3. If you don't have it, [create a personal API access token](https://git
 msgstr ""
 
 #: ..\python_docs\appveyor.py:16
-msgid "4. In the appveyor.yml file, replace the value provided for the secure key with your encrypted token. For instance, instead of"
+msgid "\tNote: you could need to set the following token scopes to avoid  inconvenience when releasing tags:"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:17
+msgid "\t- notifications"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:18
-msgid "  auth_token:"
+msgid "\t- public_repo"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:19
-msgid "    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
+msgid "\t- repo:status"
 msgstr ""
 
-#: ..\python_docs\appveyor.py:22
-msgid "auth_token:"
+#: ..\python_docs\appveyor.py:20
+msgid "\t- repo_deployment"
 msgstr ""
 
-#: ..\python_docs\appveyor.py:23
-msgid "    secure: yourEncryptedToken"
+#: ..\python_docs\appveyor.py:21
+msgid "4. In the appveyor.yml file, replace the value provided for the secure key with your encrypted token. For instance, instead of"
 msgstr ""
 
-#: ..\python_docs\appveyor.py:25
-msgid "Now, you can paste your appveyor.yml file to any add-on posted on your GitHub account."
+#: ..\python_docs\appveyor.py:23 ..\python_docs\appveyor.py:27
+msgid "\t  auth_token:"
 msgstr ""
 
-#: ..\python_docs\appveyor.py:26
-msgid "5. [Sign in with AppVeyor](https://www.appveyor.com/)."
-msgstr ""
-
-#: ..\python_docs\appveyor.py:27
-msgid "6. From AppVeyor, select New Project. (If needed, choose GitHub and authorize it)."
+#: ..\python_docs\appveyor.py:24
+msgid "\t    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:28
-msgid "7. Locate the name of the repo you're interested in, move the mouse over it (for instance pressing NVDA+numpadDivide or NVDA+shift+m), and activate the \"Add\" link below."
-msgstr ""
-
-#: ..\python_docs\appveyor.py:29
-msgid "### Releasing"
+msgid "\t    secure: yourEncryptedToken"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:30
-msgid "To post a new release of an add-on, you can create a tag and push it to GitHub:"
+msgid "\tNow, you can paste your appveyor.yml file to any add-on posted on your GitHub account."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:31
-msgid "Example"
+msgid "5. [Sign in with AppVeyor](https://www.appveyor.com/)."
+msgstr ""
+
+#: ..\python_docs\appveyor.py:32
+msgid "6. From AppVeyor, select New Project. (If needed, choose GitHub and authorize it)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:33
-msgid "git tag 1.0"
+msgid "7. Locate the name of the repo you're interested in, move the mouse over it (for instance pressing NVDA+numpadDivide or NVDA+shift+m), and activate the \"Add\" link below."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:34
-msgid "git push origin 1.0"
+msgid "### Releasing"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:35
+msgid "To post a new release of an add-on, you can create a tag and push it to GitHub:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:36
-msgid "Now, the release will be created and binary-1.0.nvda-addon will be attached on GitHub."
+msgid "Example"
 msgstr ""
 
-#: ..\python_docs\appveyor.py:37
-msgid "Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) for releasing using an FTP server."
+#: ..\python_docs\appveyor.py:37 ..\python_docs\appveyor.py:40
+msgid "```"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:38
-msgid "## Procedure to receive notifications about commits"
+msgid "git tag 1.0"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:39
-msgid "For notifications about push events (recommended for add-ons review), please see:"
-msgstr ""
-
-#: ..\python_docs\appveyor.py:40
-msgid "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
+msgid "git push origin 1.0"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:41
-msgid "Anyway, if you want to use AppVeyor: "
+msgid "Now, the release will be created and binary-1.0.nvda-addon will be attached on GitHub."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:42
-msgid "1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features)."
+msgid "Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) for releasing using an FTP server."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:43
-msgid "2. In the appveyor.yml file, add these lines:"
+msgid "## Procedure to receive notifications about commits"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:44
+msgid "For notifications about push events (recommended for add-ons review), please see:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:45
-msgid "notifications:"
+msgid "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:46
-msgid "  - provider: Email"
+msgid "Anyway, if you want to use AppVeyor: "
 msgstr ""
 
 #: ..\python_docs\appveyor.py:47
-msgid "    to:"
+msgid "1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:48
-msgid "      - notificationsEmailAddress.example.com"
+msgid "2. In the appveyor.yml file, add these lines:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:50
-msgid "Replace notificationsEmailAddress.example.com with a valid email address."
+msgid "\tnotifications:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:51
-msgid "Here is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
+msgid "\t  - provider: Email"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:52
-msgid "## References"
+msgid "\t    to:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:53
-msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
-msgstr ""
-
-#: ..\python_docs\appveyor.py:54
-msgid "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
+msgid "\t      - notificationsEmailAddress.example.com"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:55
-msgid "- [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)"
+msgid "\tReplace notificationsEmailAddress.example.com with a valid email address."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:56
-msgid "- [mesa/appveyor.yml at master \302\267 anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)"
+msgid "\tHere is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:57
-msgid "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
+msgid "## References"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:58
-msgid "- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
+msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:59
-msgid "## Aknowledgements"
+msgid "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:60
+msgid "- [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:61
+msgid "- [mesa/appveyor.yml at master \302\267 anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:62
+msgid "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:63
+msgid "- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:64
+msgid "## Aknowledgements"
+msgstr ""
+
+#: ..\python_docs\appveyor.py:65
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr ""
 

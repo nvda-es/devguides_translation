@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-22 13:00+Hora de verano romance\n"
+"POT-Creation-Date: 2019-05-26 01:39+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,11 @@ msgid "2. Addon name should not contain \"nvda\", \"plugin\", \"appmodule\", \"g
 msgstr ""
 
 #: ..\python_docs\guideLines.py:8
-msgid "3. Addon name should be of the form \"name\", or \"firstSecond\" or \"first_second\""
+msgid "3. Addon name should be of the form \"name\", or \"firstSecond\" or \"first_second\"  "
 msgstr ""
 
 #: ..\python_docs\guideLines.py:9
-msgid "examples: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" or \"resource_monitor\". Dashes in names are currently not supported by the automated system."
+msgid "\texamples: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" or \"resource_monitor\". Dashes in names are currently not supported by the automated system."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:10
@@ -108,90 +108,94 @@ msgid "2. All messages presented to the user should be translatable (with some e
 msgstr ""
 
 #: ..\python_docs\guideLines.py:26
-msgid "3. Messages containing multiple '%s' or %'d' or are of the form"
+msgid "3. Messages containing multiple '%s' or %'d' or are of the form:  "
 msgstr ""
 
 #: ..\python_docs\guideLines.py:27
-msgid "\"%(name)s .. %(name2)s\" should be rewritten to _(\"{name1} .. {name2}\").format(name1=v1, name2=v2)"
+msgid "\t\"%(name)s .. %(name2)s\" should be rewritten to:  "
 msgstr ""
 
 #: ..\python_docs\guideLines.py:28
-msgid "4. Translatable messages should have a translator comment to explain where/when the message is presented, so that the translator can test the  message easily when s/he installs the addon. If the translatable string is similar to main NvDA messages, indicate this as well."
+msgid "\t_(\"{name1} .. {name2}\").format(name1=v1, name2=v2)"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:29
-msgid "5. If your addon needs to store any configuration:"
+msgid "4. Translatable messages should have a translator comment to explain where/when the message is presented, so that the translator can test the  message easily when s/he installs the addon. If the translatable string is similar to main NvDA messages, indicate this as well."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:30
-msgid "    - dont use:"
+msgid "5. If your addon needs to store any configuration:"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:31
-msgid "    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName.ini\")"
+msgid "    - dont use:  "
 msgstr ""
 
 #: ..\python_docs\guideLines.py:32
-msgid "    - do use:"
+msgid "    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName.ini\")"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:33
-msgid "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini\")"
+msgid "    - do use:  "
 msgstr ""
 
 #: ..\python_docs\guideLines.py:34
-msgid "6. Unless there is a good reason for it, it is recommended to use config.conf so add-on settings (particularly for global plugins) can be made available to configuration profiles."
+msgid "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini\")"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:35
-msgid "7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily."
+msgid "6. Unless there is a good reason for it, it is recommended to use config.conf so add-on settings (particularly for global plugins) can be made available to configuration profiles."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:36
-msgid "## Documentation and key bindings ##"
+msgid "7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:37
-msgid "1. If you are adding new keyboard commands as part of your add-on, be sure to consult NVDA Command Quick Reference and other community supported add-on commands before assigning a new command."
+msgid "## Documentation and key bindings ##"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:38
-msgid "2. For NvDA 2013.3 or later: If you wish to categorize your keyboard bindings (for easier identification so the user can change it), either assign the same category as NVDA script categories (if your add-on enhances some parts of NVDA such as adding a shortcut to a preferences dialog) or create new categories if needed (if the add-on provides other features such as support for advanced features of a program)."
+msgid "1. If you are adding new keyboard commands as part of your add-on, be sure to consult NVDA Command Quick Reference and other community supported add-on commands before assigning a new command."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:39
-msgid "3. Please provide a readme.md file listing changes between versions, shortcut keys (if any) and usage notes and other information, see one of the other git repos for examples."
+msgid "2. For NVDA 2013.3 or later: If you wish to categorize your keyboard bindings (for easier identification so the user can change it), either assign the same category as NVDA script categories (if your add-on enhances some parts of NVDA such as adding a shortcut to a preferences dialog) or create new categories if needed (if the add-on provides other features such as support for advanced features of a program)."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:40
-msgid "4. Files addon/doc/*/readme.md should not be translated by hand and committed to the repository, but should be generated and committed from the translation system."
+msgid "3. Please provide a readme.md file listing changes between versions, shortcut keys (if any) and usage notes and other information, see one of the other git repos for examples."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:41
-msgid "5. If you translate an addon to your language and commit to git, please inform your nvda translation maintainer for your language so that work is not duplicated, in any case it is better to keep translations on the translation system."
+msgid "4. Files addon/doc/*/readme.md should not be translated by hand and committed to the repository, but should be generated and committed from the translation system."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:42
-msgid "## Sharing and add-on reviews ##"
+msgid "5. If you translate an addon to your language and commit to git, please inform your nvda translation maintainer for your language so that work is not duplicated, in any case it is better to keep translations on the translation system."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:43
-msgid "1. If you haven't, subscribe to NVDA Add-ons list located at Groups.IO."
+msgid "## Sharing and add-on reviews ##"
 msgstr ""
 
 #: ..\python_docs\guideLines.py:44
-msgid "2. Request a basic review (license and copyright, documentation, basic user experience, security, etc.). When doing so, be sure to provide the link to the add-on source code along with installers if any."
+msgid "1. If you haven't, subscribe to NVDA Add-ons list located at Groups.IO."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:45
-msgid "3. If the basic review passes, you can declare the add-on stable or wait a while so you can work on addressing review comments before releasing a stable version. If you choose to wait, you have an option of releasing a development version for wider testing."
+msgid "2. Request a basic review (license and copyright, documentation, basic user experience, security, etc.). When doing so, be sure to provide the link to the add-on source code along with installers if any."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:46
-msgid "4. If the review does not pass, you are asked to address comments from reviewers. Once you address review comments, ask the reviewer to go over your add-on once more. This is done until the add-on passes basic review, and this is rare."
+msgid "3. If the basic review passes, you can declare the add-on stable or wait a while so you can work on addressing review comments before releasing a stable version. If you choose to wait, you have an option of releasing a development version for wider testing."
 msgstr ""
 
 #: ..\python_docs\guideLines.py:47
+msgid "4. If the review does not pass, you are asked to address comments from reviewers. Once you address review comments, ask the reviewer to go over your add-on once more. This is done until the add-on passes basic review, and this is rare."
+msgstr ""
+
+#: ..\python_docs\guideLines.py:48
 msgid "5. If your add-on passes basic review, you have an option of asking for a more thorough review. These may involve looking at add-on messages, GUI widget toolkit compatibility, potential bugs and so on. It is up to you to respond to comments on thorough reviews and address them when you have time."
 msgstr ""
 

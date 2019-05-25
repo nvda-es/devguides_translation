@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-09-02 19:57+Hora de verano romance\n"
-"PO-Revision-Date: 2018-09-02 20:08+0200\n"
+"POT-Creation-Date: 2019-05-26 01:39+Hora de verano romance\n"
+"PO-Revision-Date: 2019-05-26 01:55+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\guideLines.py:3
@@ -54,18 +54,18 @@ msgstr ""
 #: ..\python_docs\guideLines.py:8
 msgid ""
 "3. Addon name should be of the form \"name\", or \"firstSecond\" or "
-"\"first_second\""
+"\"first_second\"  "
 msgstr ""
 "3. El nombre del complemento debería tener la forma \"nombre\", o "
-"\"primeroSegundo\", o \"primero_segundo\""
+"\"primeroSegundo\", o \"primero_segundo\"  "
 
 #: ..\python_docs\guideLines.py:9
 msgid ""
-"examples: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" or "
-"\"resource_monitor\". Dashes in names are currently not supported by the "
+"\texamples: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" "
+"or \"resource_monitor\". Dashes in names are currently not supported by the "
 "automated system."
 msgstr ""
-"ejemplos: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" o "
+"\tejemplos: \"word\", \"dropbox\", \"extendedWinamp\", \"resourceMonitor\" o "
 "\"resource_monitor\". El sistema automatizado no soporta guiones en el "
 "nombre."
 
@@ -221,20 +221,20 @@ msgstr ""
 "excepciones), si somos los creadores del mensaje."
 
 #: ..\python_docs\guideLines.py:26
-msgid "3. Messages containing multiple '%s' or %'d' or are of the form"
+msgid "3. Messages containing multiple '%s' or %'d' or are of the form:  "
 msgstr ""
 "3. Los mensajes que contengan varios comodines '%s' o '%d' o siguen el "
-"formato"
+"formato:  "
 
 #: ..\python_docs\guideLines.py:27
-msgid ""
-"\"%(name)s .. %(name2)s\" should be rewritten to _(\"{name1} .. {name2}\")."
-"format(name1=v1, name2=v2)"
-msgstr ""
-"\"%(name)s .. %(name2)s\" deberían reescribirse como _(\"{name1} .. "
-"{name2}\").format(name1=v1, name2=v2)"
+msgid "\t\"%(name)s .. %(name2)s\" should be rewritten to:  "
+msgstr "\t\"%(name)s .. %(name2)s\" deberían reescribirse como:  "
 
 #: ..\python_docs\guideLines.py:28
+msgid "\t_(\"{name1} .. {name2}\").format(name1=v1, name2=v2)"
+msgstr "\t_(\"{name1} .. {name2}\").format(name1=v1, name2=v2)"
+
+#: ..\python_docs\guideLines.py:29
 msgid ""
 "4. Translatable messages should have a translator comment to explain where/"
 "when the message is presented, so that the translator can test the  message "
@@ -247,28 +247,28 @@ msgstr ""
 "instalar el complemento. Si la cadena traducible es similar a alguna "
 "contenida en los mensajes principales de NVDA, indícalo también."
 
-#: ..\python_docs\guideLines.py:29
+#: ..\python_docs\guideLines.py:30
 msgid "5. If your addon needs to store any configuration:"
 msgstr ""
 "5. Si tu complemento necesita guardar cualquier ajuste de configuración:"
 
-#: ..\python_docs\guideLines.py:30
-msgid "    - dont use:"
-msgstr "    - no uses:"
-
 #: ..\python_docs\guideLines.py:31
-msgid ""
-"    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
-"ini\")"
-msgstr ""
-"    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
-"ini\")"
+msgid "    - dont use:  "
+msgstr "    - no uses:  "
 
 #: ..\python_docs\guideLines.py:32
-msgid "    - do use:"
-msgstr "    - usa en su lugar:"
+msgid ""
+"    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
+"ini\")"
+msgstr ""
+"    config_file = os.path.join(config.getUserDefaultConfigPath(),\"addonName."
+"ini\")"
 
 #: ..\python_docs\guideLines.py:33
+msgid "    - do use:  "
+msgstr "    - usa en su lugar:  "
+
+#: ..\python_docs\guideLines.py:34
 msgid ""
 "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini"
 "\")"
@@ -276,7 +276,7 @@ msgstr ""
 "    config_file = os.path.join(globalVars.appArgs.configPath,\"addonName.ini"
 "\")"
 
-#: ..\python_docs\guideLines.py:34
+#: ..\python_docs\guideLines.py:35
 msgid ""
 "6. Unless there is a good reason for it, it is recommended to use config."
 "conf so add-on settings (particularly for global plugins) can be made "
@@ -286,7 +286,7 @@ msgstr ""
 "config.conf para que los ajustes del complemento (especialmente si lleva "
 "extensiones globales) estén disponibles al usar perfiles de configuración."
 
-#: ..\python_docs\guideLines.py:35
+#: ..\python_docs\guideLines.py:36
 msgid ""
 "7. When working on a new or modifying a major feature, create/use branches "
 "other than master branch, as it helps merging and code review (via pull "
@@ -297,11 +297,11 @@ msgstr ""
 "el proceso de mezcla y revisión de código (a través de solicitudes de "
 "cambio) y a encontrar fallos fácilmente."
 
-#: ..\python_docs\guideLines.py:36
+#: ..\python_docs\guideLines.py:37
 msgid "## Documentation and key bindings ##"
 msgstr "## Documentación y órdenes de teclado ##"
 
-#: ..\python_docs\guideLines.py:37
+#: ..\python_docs\guideLines.py:38
 msgid ""
 "1. If you are adding new keyboard commands as part of your add-on, be sure "
 "to consult NVDA Command Quick Reference and other community supported add-on "
@@ -311,9 +311,9 @@ msgstr ""
 "consulta la referencia rápida de órdenes de NVDA y las órdenes de otros "
 "complementos oficiales de la comunidad antes de asignarlas."
 
-#: ..\python_docs\guideLines.py:38
+#: ..\python_docs\guideLines.py:39
 msgid ""
-"2. For NvDA 2013.3 or later: If you wish to categorize your keyboard "
+"2. For NVDA 2013.3 or later: If you wish to categorize your keyboard "
 "bindings (for easier identification so the user can change it), either "
 "assign the same category as NVDA script categories (if your add-on enhances "
 "some parts of NVDA such as adding a shortcut to a preferences dialog) or "
@@ -322,13 +322,13 @@ msgid ""
 msgstr ""
 "2. Para NVDA 2013.3 o posterior: si quieres categorizar tus órdenes de "
 "teclado (para una identificación más sencilla y que el usuario pueda "
-"cambiarlas), asigna una categoría existente en NVDA (si si tu complemento "
+"cambiarlas), asigna una categoría existente en NVDA (si tu complemento "
 "mejora partes de NVDA como una orden nueva para abrir un diálogo de "
 "preferencias), o bien crea nuevas categorías si es necesario (si el "
 "complemento ofrece otras características como el soporte para funciones "
 "avanzadas de un programa)."
 
-#: ..\python_docs\guideLines.py:39
+#: ..\python_docs\guideLines.py:40
 msgid ""
 "3. Please provide a readme.md file listing changes between versions, "
 "shortcut keys (if any) and usage notes and other information, see one of the "
@@ -339,7 +339,7 @@ msgstr ""
 "información relevante. Inspírate en cualquiera de los complementos oficiales "
 "ya existentes."
 
-#: ..\python_docs\guideLines.py:40
+#: ..\python_docs\guideLines.py:41
 msgid ""
 "4. Files addon/doc/*/readme.md should not be translated by hand and "
 "committed to the repository, but should be generated and committed from the "
@@ -349,7 +349,7 @@ msgstr ""
 "enviarse al repositorio, sino que deberían generarse y enviarse desde el "
 "sistema oficial de traducciones."
 
-#: ..\python_docs\guideLines.py:41
+#: ..\python_docs\guideLines.py:42
 msgid ""
 "5. If you translate an addon to your language and commit to git, please "
 "inform your nvda translation maintainer for your language so that work is "
@@ -361,17 +361,17 @@ msgstr ""
 "se duplique el trabajo. En cualquier caso, siempre es mejor mantener las "
 "traducciones en el sistema oficial de traducciones."
 
-#: ..\python_docs\guideLines.py:42
+#: ..\python_docs\guideLines.py:43
 msgid "## Sharing and add-on reviews ##"
 msgstr "## Revisiones al compartir un complemento ##"
 
-#: ..\python_docs\guideLines.py:43
+#: ..\python_docs\guideLines.py:44
 msgid "1. If you haven't, subscribe to NVDA Add-ons list located at Groups.IO."
 msgstr ""
 "1. Si todavía no lo has hecho, suscríbete a la lista de complementos situada "
 "en groups.IO."
 
-#: ..\python_docs\guideLines.py:44
+#: ..\python_docs\guideLines.py:45
 msgid ""
 "2. Request a basic review (license and copyright, documentation, basic user "
 "experience, security, etc.). When doing so, be sure to provide the link to "
@@ -382,7 +382,7 @@ msgstr ""
 "asegúrate de proporcionar el enlace al código fuente del complemento, junto "
 "con instaladores, si los hay."
 
-#: ..\python_docs\guideLines.py:45
+#: ..\python_docs\guideLines.py:46
 msgid ""
 "3. If the basic review passes, you can declare the add-on stable or wait a "
 "while so you can work on addressing review comments before releasing a "
@@ -394,7 +394,7 @@ msgstr ""
 "antes de liberar una versión estable. Si decides esperar, tienes la opción "
 "de liberar una versión de desarrollo para que se hagan pruebas más extensas."
 
-#: ..\python_docs\guideLines.py:46
+#: ..\python_docs\guideLines.py:47
 msgid ""
 "4. If the review does not pass, you are asked to address comments from "
 "reviewers. Once you address review comments, ask the reviewer to go over "
@@ -406,7 +406,7 @@ msgstr ""
 "haga la revisión una vez más. Esto se hace hasta que el complemento supere "
 "la revisión básica, pero es extraño."
 
-#: ..\python_docs\guideLines.py:47
+#: ..\python_docs\guideLines.py:48
 msgid ""
 "5. If your add-on passes basic review, you have an option of asking for a "
 "more thorough review. These may involve looking at add-on messages, GUI "

@@ -12,35 +12,33 @@
 <p>Funciona para complementos basados en la <a href="https://github.com/nvdaaddons/addontemplate">Plantilla para complementos</a>.</p>
 <h3 id="configurando-appveyor-para-complementos">Configurando AppVeyor para complementos</h3>
 <ol>
-<li>Consigue el código de un complemento.</li>
-</ol>
-<p>Ejemplo:</p>
-<pre><code>git clone https://github.com/nombreusuario/repo
-
-git pull
-</code></pre>
-
-<ol>
 <li>
-<p>En la raíz de la carpeta del complemento (la misma en la que está el archivo sconstruct), pega este <a href="https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml">archivo de configuración de AppVeyor</a> (appveyor.yml).</p>
+<p>Consigue el código de un complemento.</p>
+<p>Ejemplo:</p>
+<p>```
+git clone https://github.com/nombreusuario/repo</p>
+<p>git pull
+```
+2. En la raíz de la carpeta del complemento (la misma en la que está el archivo sconstruct), pega este <a href="https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml">archivo de configuración de AppVeyor</a> (appveyor.yml).</p>
 </li>
 <li>
 <p>Si no tienes ya uno, <a href="https://github.com/settings/tokens">crea un token personal de acceso a la API de GitHub</a> y <a href="https://ci.appveyor.com/tools/encrypt">cífralo</a>.</p>
+<p>Nota: podría ser necesario configurar los siguientes ámbitos de token para evitar inconvenientes al publicar tags:</p>
+<ul>
+<li>notifications</li>
+<li>public_repo</li>
+<li>repo:status</li>
+<li>repo_deployment</li>
+</ul>
 </li>
 <li>
 <p>En el archivo appveyor.yml, reemplaza el valor proporcionado para la clave segura por tu token cifrado. Por ejemplo, en lugar de</p>
-</li>
-</ol>
-<pre><code>  auth_token:
-    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH
-</code></pre>
-
-<pre><code>auth_token:
-    secure: tuTokenCifrado
-</code></pre>
-
+<p><code>auth_token:
+    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH</code></p>
+<p><code>auth_token:
+    secure: tuTokenCifrado</code></p>
 <p>Ahora puedes publicar el archivo appveyor.yml en cualquier repositorio de complemento en tu cuenta de GitHub.</p>
-<ol>
+</li>
 <li>
 <p><a href="https://www.appveyor.com/">Inicia sesión en AppVeyor</a>.</p>
 </li>
@@ -71,18 +69,16 @@ https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks</p>
 </li>
 <li>
 <p>En el archivo appveyor.impl, añade las siguientes líneas:</p>
-</li>
-</ol>
-<pre><code>
-notifications:
+<p>```</p>
+<p>notifications:
   - provider: Email
     to:
-      - notificationsEmailAddress.example.com
-
-</code></pre>
-
+      - notificationsEmailAddress.example.com</p>
+<p>```</p>
 <p>Reemplaza notificationsEmailAddress.example.com por una dirección de correo electrónico válida.</p>
 <p>Hay un <a href="https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767">tema en la lista de correo de groups.io que sirve como ejemplo real</a>.</p>
+</li>
+</ol>
 <h2 id="referencias">Referencias</h2>
 <ul>
 <li><a href="https://www.appveyor.com/docs/appveyor-yml/">Referencia Appveyor.yml</a></li>

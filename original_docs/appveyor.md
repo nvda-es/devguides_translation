@@ -10,30 +10,37 @@ It works for add-ons based on the [Add-on Template](https://github.com/nvdaaddon
 
 1. Get the code of an add-on.
 
-Example:
+	Example:
 
-```
-git clone https://github.com/username/repo
+	```
+	git clone https://github.com/username/repo
 
-git pull
-```
+	git pull
+	```
 2. In the root of the add-on folder (where the sconstruct file is placed), paste this [AppVeyor configuration file](https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml) (appveyor.yml).
 
 3. If you don't have it, [create a personal API access token](https://github.com/settings/tokens) and [encrypt it](https://ci.appveyor.com/tools/encrypt).
 
+	Note: you could need to set the following token scopes to avoid  inconvenience when releasing tags:
+
+	- notifications
+	- public_repo
+	- repo:status
+	- repo_deployment
+
 4. In the appveyor.yml file, replace the value provided for the secure key with your encrypted token. For instance, instead of
 
-```
-  auth_token:
-    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH
-```
+	```
+	  auth_token:
+	    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH
+	```
 
-```
-auth_token:
-    secure: yourEncryptedToken
-```
+	```
+	  auth_token:
+	    secure: yourEncryptedToken
+	```
 
-Now, you can paste your appveyor.yml file to any add-on posted on your GitHub account.
+	Now, you can paste your appveyor.yml file to any add-on posted on your GitHub account.
 
 5. [Sign in with AppVeyor](https://www.appveyor.com/).
 
@@ -69,18 +76,18 @@ Anyway, if you want to use AppVeyor:
 
 2. In the appveyor.yml file, add these lines:
 
-```
+	```
 
-notifications:
-  - provider: Email
-    to:
-      - notificationsEmailAddress.example.com
+	notifications:
+	  - provider: Email
+	    to:
+	      - notificationsEmailAddress.example.com
 
-```
+	```
 
-Replace notificationsEmailAddress.example.com with a valid email address.
+	Replace notificationsEmailAddress.example.com with a valid email address.
 
-Here is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767).
+	Here is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767).
 
 ## References
 

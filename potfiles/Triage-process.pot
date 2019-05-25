@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-22 13:00+Hora de verano romance\n"
+"POT-Creation-Date: 2019-05-26 01:40+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgid "NV Access migrated tickets from our old issue tracker ('Trac') into Githu
 msgstr ""
 
 #: ..\python_docs\Triage-process.py:6
-msgid "If you come across one of these missing attachments, please upload if you think they're relevant to GitHub. Note you'll need to rename adding a .txt extension to code, logs, etc. Anything else should probably be zipped."
+msgid "If you come across one of these missing attachments, please upload if you think they're relevant to GitHub. Note you'll need to pay attention to Github's attachment naming restrictions, if it fails try zipping it."
 msgstr ""
 
 #: ..\python_docs\Triage-process.py:7

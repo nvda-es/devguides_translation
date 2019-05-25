@@ -6,8 +6,8 @@ The following is a set of guidelines that current and potential add-on authors s
 
 1. Use the addonTemplate from https://github.com/nvdaaddons/addonTemplate
 2. Addon name should not contain "nvda", "plugin", "appmodule", "globalPlugin" as part of its name, the user should not have to worry about implementational issues.
-3. Addon name should be of the form "name", or "firstSecond" or "first_second"
-examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_monitor". Dashes in names are currently not supported by the automated system.
+3. Addon name should be of the form "name", or "firstSecond" or "first_second"  
+	examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_monitor". Dashes in names are currently not supported by the automated system.
 4. Make sure that your add-on is released under GPL license or an equivalent that is GPL compatible, as NVDA itself is GPL and add-ons are hosted by NVDA.
 
 ## Versioning ##
@@ -30,13 +30,14 @@ examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_mo
 
 1. Indent with either 4 spaces or 1 tab. Tab-based indentation is strongly encouraged.
 2. All messages presented to the user should be translatable (with some exceptions), if we are the creator of the message.
-3. Messages containing multiple '%s' or %'d' or are of the form
-"%(name)s .. %(name2)s" should be rewritten to _("{name1} .. {name2}").format(name1=v1, name2=v2)
+3. Messages containing multiple '%s' or %'d' or are of the form:  
+	"%(name)s .. %(name2)s" should be rewritten to:  
+	_("{name1} .. {name2}").format(name1=v1, name2=v2)
 4. Translatable messages should have a translator comment to explain where/when the message is presented, so that the translator can test the  message easily when s/he installs the addon. If the translatable string is similar to main NvDA messages, indicate this as well.
 5. If your addon needs to store any configuration:
-    - dont use:
+    - dont use:  
     config_file = os.path.join(config.getUserDefaultConfigPath(),"addonName.ini")
-    - do use:
+    - do use:  
     config_file = os.path.join(globalVars.appArgs.configPath,"addonName.ini")
 6. Unless there is a good reason for it, it is recommended to use config.conf so add-on settings (particularly for global plugins) can be made available to configuration profiles.
 7. When working on a new or modifying a major feature, create/use branches other than master branch, as it helps merging and code review (via pull request) process and to find bugs easily.
@@ -44,7 +45,7 @@ examples: "word", "dropbox", "extendedWinamp", "resourceMonitor" or "resource_mo
 ## Documentation and key bindings ##
 
 1. If you are adding new keyboard commands as part of your add-on, be sure to consult NVDA Command Quick Reference and other community supported add-on commands before assigning a new command.
-2. For NvDA 2013.3 or later: If you wish to categorize your keyboard bindings (for easier identification so the user can change it), either assign the same category as NVDA script categories (if your add-on enhances some parts of NVDA such as adding a shortcut to a preferences dialog) or create new categories if needed (if the add-on provides other features such as support for advanced features of a program).
+2. For NVDA 2013.3 or later: If you wish to categorize your keyboard bindings (for easier identification so the user can change it), either assign the same category as NVDA script categories (if your add-on enhances some parts of NVDA such as adding a shortcut to a preferences dialog) or create new categories if needed (if the add-on provides other features such as support for advanced features of a program).
 3. Please provide a readme.md file listing changes between versions, shortcut keys (if any) and usage notes and other information, see one of the other git repos for examples.
 4. Files addon/doc/*/readme.md should not be translated by hand and committed to the repository, but should be generated and committed from the translation system.
 5. If you translate an addon to your language and commit to git, please inform your nvda translation maintainer for your language so that work is not duplicated, in any case it is better to keep translations on the translation system.
