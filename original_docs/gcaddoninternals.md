@@ -12,7 +12,7 @@ Simply speaking, Golden Cursor is an add-on that allows NVDA users to manipulate
 
 To download this add-on, visit https://addons.nvda-project.org/addons/goldenCursor.en.html. The source code repository can be found at https://github.com/josephsl/goldenCursor.
 
-Copyright notice: NVDA is copyright 2006-2018 NV Access Limited. Golden Cursor add-on is copyright 2015-2018 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation.
+Copyright notice: NVDA is copyright 2006-2019 NV Access Limited. Golden Cursor add-on is copyright 2015-2019 Salah Atair, Wafeeq Taher, Joseph Lee and contributors. Microsoft Windows, Windows API and related technologies are copyright Microsoft Corporation.
 
 ## Golden Cursor: A History
 

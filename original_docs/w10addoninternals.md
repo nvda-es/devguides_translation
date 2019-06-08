@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: April 2019
+Revision: June 2019
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of April 2019 revision, one or two features from NVDA 2019.1 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of June 2019 revision, one or two features from NVDA 2019.1 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2019 Joseph Lee and others, released under GPL 2.
 
@@ -37,6 +37,8 @@ Windows 10 App Essentials add-on is built on top of four pillars:
 * UI Automation and accessibility workarounds: every day, new features and bug fixes are added to various universal apps or Windows 10 itself. At the same time, there is at least one app where accessibility, particularly UI Automation, gets broken. Some of the add-on code is devoted to providing workarounds for odd UIA implementations.
 * Demonstrating commitment to accessibility advocacy: some accessibility champions, including I, have recently stressed that accessibility is important in app designs, and that developers should take accessibility feedback seriously. Through workarounds and features, the add-on provides a way to demonstrate this commitment and advocacy.
 
+There is a fifth pillar that has emerged in recent years: providing a testing ground for potential NVDA features dealing with Windows 10 and apps. Recently, parts of this add-on have made their way to NVDA screen reader, including emoji panel support, suggestion sounds, dialog detection and others.
+
 ## Add-on contents
 
 The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps that comes with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, along with UIA event tracking and logger facility. Until 2018, the global plugin was also responsible for add-on update feature, documented here for sake of completeness.
@@ -45,11 +47,11 @@ In regards to app modules, these were included to either provide workarounds or 
 
 ### A note on feature parity with NVDA screen reader
 
-Some features discussed in this article (such as suggestion sound playback and UIA notification event handler) were integrated into recent NVDA releases. I will point out some of these, as well as provide how these were integrated, including planning involved and some tips on modifying add-on features to fit into NVDA's code base.
+As noted above, some features discussed in this article (such as suggestion sound playback and UIA notification event handler) were integrated into recent NVDA releases. I will point out some of these, as well as provide how these were integrated, including planning involved and some tips on modifying add-on features to fit into NVDA's code base.
 
 ### Information on add-on update feature
 
-This article will sometimes reference add-on update feature, which is gone in 2019. The information about it is kept here for reference purposes. An add-on appropriately named "Add-on Updater" is used to update windows 10 App Essentials and other add-ons.
+This article will sometimes reference add-on update feature, which is gone in 2019. Information about it is kept here for reference purposes. An add-on appropriately named "Add-on Updater" is used to update windows 10 App Essentials and other add-ons.
 
 ## Fun with UI Automation
 
@@ -87,7 +89,7 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
 * Announcing tooltips from universal apps.
-* Recognizing dialogs powered by XAML and various frameworks. In NVDA 2018.3, NVDA itself will take care of this in most situations.
+* Recognizing dialogs powered by XAML and various frameworks. Since NVDA 2018.3, NVDA itself takes care of this in most situations.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
@@ -213,11 +215,11 @@ The modules and enhancers/fixers applied are:
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
 * Microsoft Edge: announce correct alert text, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
-* Modern keyboard: support for emoji panel, hardware input suggestions and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
+* Modern keyboard: support for emoji panel, dictation, hardware input suggestions, and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
 * MSN Weather: use up or down arrow keys to read forecast information.
 * People: announcing first suggestion when looking for a contact.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
-* Shell Experience Host: work around some UIA state information mismatch and announce item status in Action Center.
+* Shell Experience Host: work around some UIA state information mismatch and announce item status in Action Center. Action Center support, including reclassifying brightness button as a proper button is now part of NVDA 2019.1.
 * Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more).
 
 ### Adding useful features in apps
@@ -230,7 +232,7 @@ The following app modules add functionality unique to NVDA and/or commands that 
 
 #### A note about modern keyboard
 
-Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
+Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, dictation, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
 
 In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field.
 
