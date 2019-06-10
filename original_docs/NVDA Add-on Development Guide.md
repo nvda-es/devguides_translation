@@ -1,11 +1,13 @@
 [//]: # (Links for use elsewhere in the document)
-[1]: https://github.com/nvaccess/nvda
-[2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
-[3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip
-[Python Console]: <https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole> (NVDA Developer Guide: The Python Console)
-[4]: http://www.zlotowicz.pl/nvda/winapi.mdwn
-[5]: https://addons.nvda-project.org
-[6]: https://www.git-scm.com/josephsl/stationPlaylist
+[Git]: https://www.git-scm.com
+[GitHub]: https://www.github.com/
+[NVDA GitHub page]: https://github.com/nvaccess/nvda
+[NVDA Developer Guide]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
+[Design Overview]: https://github.com/nvaccess/nvda/wiki/DesignOverview
+[NVDA Community Add-ons web site]: https://addons.nvda-project.org
+[add-on template]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip
+[Python Console]: <https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole> (Python Console in NVDA Developer Guide)
+[Using Win32 API]: http://www.zlotowicz.pl/nvda/winapi.mdwn (Using Win32 API in your add-on)
 
 # NVDA Add-on Development Guide
 
@@ -48,7 +50,7 @@ Latest version: April 2019 for NVDA 2019.1
 - <a href="#user-content-useful-modules-from-nvda-core">Useful modules from NVDA core</a>
   - <a href="#user-content-list-of-useful-nvda-core-modules-and-methods">List of useful NVDA core modules and methods</a>
   - <a href="#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located">Example 1: am I on the right app where the focus is located?</a>
-  - <a href="#user-content-example-2-display-a-message-on-a-browse-mode-document">Example 2: Display a message on a browse mode document</a>
+  - <a href="#user-content-example-2-display-a-message-in-a-browse-mode-document">Example 2: Display a message in a browse mode document</a>
   - <a href="#user-content-example-3-announce-the-automation-id-of-a-uia-object">Example 3: Announce the automation ID of a UIA object</a>
   - <a href="#user-content-example-4-send-keystrokes">Example 4: Send keystrokes</a>
   - <a href="#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off">Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off</a>
@@ -65,7 +67,7 @@ Latest version: April 2019 for NVDA 2019.1
   - <a href="#user-content-example-2-a-basic-script-dictionary-and-message-output">Example 2: A basic script dictionary and message output</a>
   - <a href="#user-content-example-3-scripts-for-specific-objects">Example 3: Scripts for specific objects</a>
   - <a href="#user-content-script-lookup-order-and-command-conflicts">Script lookup order and command conflicts</a>
-  - <a href="#user-content-few-other-remarks-on-scripts">Few other remarks on scripts</a>
+  - <a href="#user-content-a-few-other-remarks-on-scripts">A few other remarks on scripts</a>
   - <a href="#user-content-events">Events</a>
   - <a href="#user-content-example-4-announcing-the-changed-name-of-a-control">Example 4: Announcing the changed name of a control</a>
   - <a href="#user-content-list-of-possible-events">List of possible events</a>
@@ -118,7 +120,7 @@ NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Offi
 
 Welcome to the NVDA Add-on Development Guide. This is the one-stop guide on how to develop NVDA add-ons. This guide also  explains some useful code segments from the NVDA core source code, which highlight concepts for you, as you learn to write add-ons.
 
-For more information on NVDA development, please visit the [NVDA GitHub page][1]. Be sure to go over the [NVDA Developer Guide][2] to familiarize yourself with key terms and basics on getting started with add-on development.
+For more information on NVDA development, please visit the [NVDA GitHub page]. Be sure to go over the [NVDA Developer Guide] to familiarize yourself with key terms and basics on getting started with add-on development.
 
 ## Audience
 
@@ -131,7 +133,7 @@ This guide is designed for:
 * People familiar with programming languages other than Python.
 * Developers of scripts for other screen readers.
 
-If you are new to NVDA add-on or core development, we recommend that you get to know Python first, as it gives the necessary programming background for understanding the rest of the guide. If you are a Python programmer but new to NVDA development, please checkout the NVDA development guide and Design Overview document, both of which can be found on the [NVDA Community Development page][1].
+If you are new to NVDA add-on or core development, we recommend that you get to know Python first, as it gives the necessary programming background for understanding the rest of the guide. If you are a Python programmer but new to NVDA development, please checkout the [NVDA Developer Guide] and [Design Overview] document, both of which can be found on the [NVDA Community Development page][1].
 
 ### Special note on Python version
 
@@ -198,7 +200,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
 * The GNU Gettext package for Windows for message localization support. The build can be found at: <http://gnuwin32.sourceforge.net/downlinks/gettext.php>.
 	* Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
 * Git 1.7.9 or later if you wish to upload the add-on to a repository such as Bitbucket (optional. See below). You can use various Git clients, such as Git Bash, Cygwin's Git, and Tortoise Git.
-* The NVDA Community Add-on Template for ease of add-on file and folder packaging and management (optional. [Download the add-on template)][3] .
+* The NVDA Community Add-on Template for ease of add-on file and folder packaging and management (optional: download the [add-on template]) .
 * If you are developing support for a program, speech synthesizer, or braille display, install the needed software and hardware.
 
 Note: if using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (aka Windows Subsystem for Linux), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
@@ -438,9 +440,9 @@ The below code checks whether the navigator object is located somewhere on the s
 
 The `api.getNavigatorObject()` function returns the current navigator object, the object you are interested in as opposed to focused object. Each NVDA object includes `appModule` member which records on which app an object is located.
 
-### Example 2: Display a message on a browse mode document
+### Example 2: Display a message in a browse mode document
 
-In NVDA 2015.2 and later, it became possible to display a message on a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" on a document window.
+In NVDA 2015.2 and later, it became possible to display a message in a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" in a document window.
 
 	import ui
 	
@@ -450,7 +452,7 @@ The isHtml flag tells NVDA to treat the message as an HTML text.
 
 ### Example 3: Announce the automation ID of a UIA object
 
-In UI Automation, automation ID is used to identify different screen elements. The following code displays this information on a browsable window.
+In UI Automation, automation ID is used to identify different screen elements. The following code displays this information in a browsable window.
 
 	import ui
 	from NVDAObjects.UIA import UIA
@@ -492,13 +494,13 @@ An add-on module consists of a number of components. This includes handling inpu
 
 This chapter introduces key components and concepts that are used in add-on development, such as NVDA objects, scripts, event handling and additional topics with examples.
 
-Note that the NVDA core development guide introduces the below concepts. This chapter is intended as an extension of that document. Consult the NVDA development guide for a brief introductions.
+Note that the [NVDA core development guide][NVDA Developer Guide] introduces the below concepts. This chapter is intended as an extension of that document. Consult the NVDA developer guide for a brief introduction.
 
 Note for scripters of other screen readers: you might be familiar with some of the concepts introduced in this section. Please read this section if you want a better understanding of how some of them are used in NVDA.
 
 ### The Python Console
 
-This guide sometimes suggests that you use the [Python Console]. The console is a feature of NVDA which can be very useful to developers. It is described in more detail in chapter 5 of the [NVDA Developer Guide][2].
+This guide sometimes suggests that you use the [Python Console]. The console is a feature of NVDA which can be very useful to developers. It is described in more detail in chapter 5 of the [NVDA Developer Guide].
 You can activate it by going to the NVDA Tools menu, or by pressing NVDA+control+z.
 
 ### Working with objects on screen
@@ -697,7 +699,7 @@ Because of the above rule, one should be careful when defining a script for an a
 1. First, consult the NVDA commands quick reference to see if the command you wish to use has been defined in global commands. You should try to minimize conflicts with built-in NVDA commands. An exception is commands for app modules where same command may be used differently from one program to another.
 2. Read the documentation for add-ons (especially global plugins) to see if any add-on is using this command, and if so, contact the add-on author to come up with an alternate binding.
 
-### Few other remarks on scripts
+### A few other remarks on scripts
 
 * You can use any modifiers as parts of commands for scripts (for example, Alt+NVDA+letter). However, in order to avoid command conflicts, try minimizing use of commands that programs might use such as Control+letter, Alt+Shift+letter and so on.
 * When assigning keyboard commands, keyboard key labels are case insensitive.
@@ -840,7 +842,7 @@ Check if a global plugin which uses the command is installed. First, remove the 
 
 Q. How can I use Win32 API in my add-on or object?
 
-There is a document written by an add-on developer which talks about using Win32 API in your add-on. Select [this link][4] to view this document.
+There is a document written by an add-on developer which talks about using Win32 API in your add-on. Select [this link][Using Win32 API] to view this document.
 
 Q. How can I create dialogs in my add-on?
 
@@ -1119,13 +1121,13 @@ If you want to keep in touch with your add-on users or want to learn from or con
 
 ### The NVDA Community Add-ons web site and code repository
 
-To download or learn more about various add-ons created by NVDA users, visit [NVDA Community Add-ons web site][5]. You can browse currently available add-ons, view add-ons under development and read add-on development guidelines.
+To download or learn more about various add-ons created by NVDA users, visit [NVDA Community Add-ons web site]. You can browse currently available add-ons, view add-ons under development and read add-on development guidelines.
 
-For developers wishing to read the code that powers various add-ons, you can search for add-on repositories stored on GitHub. The NVDA community add-on developers use [Git][6] for version control.
+For developers wishing to read the code that powers various add-ons, you can search for add-on repositories stored on [GitHub]. The NVDA community add-on developers use [Git] for version control.
 
 Some of the useful and educational add-on repositories are:
 
-* [Add-on template](https://github.com/nvdaaddons/addonTemplate): this is the source code repository for the community add-on template.
+* [Add-on Template]: this is the source code repository for the community add-on template.
 * [Place markers by Noelia Martinez](https://github.com/nvdaes/placeMarkers): adds place marker functionality and provides a good example on using text infos.
 * [Windows 10 App Essentials by Joseph Lee](https://github.com/josephsl/wintenApps): provides improved support for Windows 10 and various universal apps, considered a classic in how global plugins and app modules work together and includes examples of overlay classes and control behaviors that derives from UI Automation objects.
 * [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings.
@@ -1142,7 +1144,7 @@ Please add additional material to this guide. We at NVDA Add-on Team welcome con
 
 The below terms are used throughout this development guide as well as in the add-ons community to refer to add-ons, development processes and so on.
 
-* Add-on: an extension for a program. In NVDA world, an add-on refers to additional packages users can install to extend NVDA's functionality, improve support for an app, or add new speech synthesizers or braille displays.
+* Add-on: an extension for a program. In NVDA world, add-ons refer to additional packages users can install to extend NVDA's functionality, improve support for an app, or add new speech synthesizers or braille displays.
 * Application: synonymous with program.
 * App module: a module that adds or improves support for a program.
 * API: Application Programming Interface.
