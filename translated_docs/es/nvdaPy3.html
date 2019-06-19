@@ -33,12 +33,10 @@
 <li>Six 1.11.0 (obligatoria)</li>
 <li>SCons 3.0.1 (obligatoria)</li>
 <li>comtypes 1.1.7 (obligatoria)</li>
-<li>Extensiones Pywin32, compilación 223 para Python 3.7 (obligatoria)</li>
+<li>Extensiones Pywin32, compilación 223 para Python 3.7 (opcional)</li>
 <li>pyserial para Python 3.7 (obligatoria para depurar pantallas braille)</li>
 <li>Configobj 5.1.0 (obligatoria)</li>
 <li>Cualquier otra dependencia anunciando soporte para Python 2.x en un paquete o con una versión distinta para Python 3.x</li>
-<li>Un reemplazo para py2exe para la distribución binaria (no es obligatoria hasta que no se encuentren listas para su construcción las distribuciones binarias)</li>
-<li>Un reemplazo para txt2tags para generar la documentación (no es obligatoria hasta que las distribuciones binarias no estén listas para construirse)</li>
 </ul>
 <h3 id="ejecucion-de-la-version-de-nvda-para-python-3">Ejecución de la versión de NVDA para Python 3</h3>
 <p>Una vez esté instalado Python 3.7 junto con las dependencias, asumiendo que las dlls están compiladas y la versión del código fuente de NVDA cumple con Python 3, ejecuta NVDA para Python 3 desde el símbolo del sistema o Windows PowerShell de la siguiente manera:</p>
@@ -132,21 +130,31 @@
 </ul>
 </li>
 <li>Las dependencias a nivel de código fuente deben satisfacerse. Esto no sólo incluye WXPython 4, sino también ConfigObj, Comtypes, Pyserial, Pywin32 y otras.<ul>
-<li>Es necesario editar la configuración de los submódulos Git.</li>
+<li>Requisito cumplido el 10 de junio de 2019</li>
 </ul>
 </li>
 <li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas). Usa la etiqueta "python 3".<ul>
-<li>A fecha de 7 de junio de 2019, se han identificado al menos 20 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
+<li>A fecha de 15 de junio de 2019, se han identificado al menos 30 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
 </ul>
 </li>
 <li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).<ul>
-<li>Con fecha 7 de junio de 2019, se han enviado e integrado al menos dos solicitudes de cambio relacionadas con la transición en la rama master.</li>
+<li>Con fecha 15 de junio de 2019, se han enviado e integrado al menos 15 solicitudes de cambio relacionadas con la transición en una rama transitoria.</li>
+</ul>
+</li>
+<li>Se deben satisfacer las dependencias binarias. Estas incluyen WXPython, Py2exe y otras.<ul>
+<li>Requisito cumplido el 10 de junio de 2019.</li>
 </ul>
 </li>
 </ol>
-<p>Finalización ideal: entre las versiones 2018.4 y 2019.1 de NVDA (provisionalmente el 31 de marzo de 2019).</p>
+<p>Finalización ideal: entre las versiones 2019.2 y 2019.3 de NVDA (provisionalmente el 31 de julio de 2019).</p>
 <h3 id="transicion">Transición:</h3>
-<p>Fecha de inicio: no especificada</p>
+<p>Esto se divide en dos fases:</p>
+<ol>
+<li>Fase 1 (cambios al código fuente): los desarrolladores de NVDA investigarán, proporcionarán correcciones y harán pruebas en incidencias relacionadas con la transición.</li>
+<li>Fase 2 (pruebas generalizadas): pruebas más allá de los desarrolladores de NVDA cuando NV Access crea que los trabajos de transición estén listos para pruebas externas.</li>
+</ol>
+<h4 id="fase-1-cambios-al-codigo-fuente">Fase 1: cambios al código fuente</h4>
+<p>Fecha de inicio: 8 de junio de 2019</p>
 <ol>
 <li>Un grupo de desarrolladores (colaboradores de código, desarrolladores de complementos, programadores Python de fuera del proyecto NVDA y otros) deberían trabajar en transformar el código fuente de NVDA a Python 3.<ul>
 <li>No ejecutar el script 2to3 diciéndole que reemplace archivos, ya que se deben hacer retoques adicionales.</li>
@@ -158,20 +166,31 @@
 <li>Si es necesario, se deben documentar las soluciones propuestas en el sistema de incidencias.</li>
 </ul>
 </li>
-<li>Los desarrolladores del código fuente deben probar NVDA y los complementos para asegurarse de que no se encuentran problemas importantes mientras se trabaja en la transición a Python 3. Durante esta fase, no se liberarán versiones binarias hasta que se cumpla la siguiente condición.<ul>
+<li>Los desarrolladores del código fuente deben probar NVDA para asegurarse de que no se encuentran problemas importantes mientras se trabaja en la transición a Python 3. Durante esta fase, no se liberarán versiones binarias hasta que se cumpla la siguiente condición.<ul>
 <li>Recopilar dependencias y asegurarse de que son compatibles con Python 3.</li>
 <li>Intentar ejecutar SCons en Python 3 para asegurarse de que el código está preparado.</li>
 <li>Si las características funcionan, compararlas con la última versión estable de NVDA con la esperanza de capturar regresiones.</li>
 </ul>
 </li>
 <li>Se debe encontrar un empaquetador de distribución binaria adecuado, probarlo y documentarlo. Debe crearse una serie de compilaciones binarias para asegurarse de que la combinación de NVDA codificado en Python 3, las dependencias, los empaquetadores binarios y demás funcionan bien juntos.<ul>
-<li>Se ha pensado en Py2exe, pero no soporta Python 3.7.</li>
+<li>Originalmente se pensó en Py2exe, pero no soporta Python 3.7.</li>
 <li>cx_freeze es una alternativa prometedora.</li>
+<li>Se ha encontrado una versión de Py2exe que soporta Python 3.7.</li>
 </ul>
 </li>
-<li>Se debería invitar a los miembros del público a que prueben una serie de compilaciones de prueba hechas para comprobar el trabajo de la transición, probar complementos, documentar, extender a la comunidad y otros.</li>
+<li>La compilación de Appveyor debe finalizar para completar.<ul>
+<li>A fecha del 15 de junio de 2019, tanto el código fuente como el lanzador y ciertas pruebas funcionan.</li>
+</ul>
+</li>
 </ol>
-<p>Finalización estimada: de cuatro a seis meses después de que se completen los pasos previos a la transición.</p>
+<p>Finalización ideal: TBD</p>
+<h4 id="fase-2-pruebas-generalizadas">Fase 2: pruebas generalizadas</h4>
+<p>Fecha de inicio: no especificada</p>
+<ol>
+<li>Se debería invitar a los miembros del público a que prueben una serie de compilaciones de prueba hechas para comprobar el trabajo de la transición, probar complementos, documentar, extender a la comunidad y otros.</li>
+<li>La comunidad de complementos y otros miembros deben recibir asistencia relacionada con la transición a Python 3.</li>
+</ol>
+<p>Finalización estimada de ambas fases: de cuatro a seis meses después de que se completen los pasos previos a la transición.</p>
 <h3 id="despues-de-la-transicion">Después de la transición:</h3>
 <p>Fecha de inicio: no especificada</p>
 <ol>
@@ -197,7 +216,14 @@
 <li>7 de junio de 2019: la corrección para la palabra clave async se ha mezclado en la rama Threshold.</li>
 </ol>
 </li>
-<li>Transición: todavía no ha empezado.</li>
+<li>Fase 1 de la transición (en progreso):<ol>
+<li>7 de junio de 2019: se ha activado una rama temporal con la transición a Python 3 con diversos cambios en el código fuente.</li>
+<li>8 de junio de 2019: comienzan las compilaciones desde la rama transitoria.</li>
+<li>12 de junio de 2019: ya es posible compilar desde el código fuente.</li>
+<li>13 de junio de 2019: parte de la compilación binaria y el marco de trabajo de pruebas tienen éxito.</li>
+</ol>
+</li>
+<li>Fase 2 de la transición: aún no ha empezado.</li>
 <li>Después de la transición: todavía no ha empezado.</li>
 <li>Características nativas de Python 3:<ul>
 <li>Asyncio: no es importante en esta fase.</li>

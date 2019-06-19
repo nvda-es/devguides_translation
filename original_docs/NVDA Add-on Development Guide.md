@@ -1,6 +1,7 @@
 [//]: # (Links for use elsewhere in the document)
 [Git]: https://www.git-scm.com
 [GitHub]: https://www.github.com/
+[BitBucket]: https://bitbucket.org/
 [NVDA GitHub page]: https://github.com/nvaccess/nvda
 [NVDA Developer Guide]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
 [Design Overview]: https://github.com/nvaccess/nvda/wiki/DesignOverview
@@ -8,6 +9,10 @@
 [add-on template]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip
 [Python Console]: <https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole> (Python Console in NVDA Developer Guide)
 [Using Win32 API]: http://www.zlotowicz.pl/nvda/winapi.mdwn (Using Win32 API in your add-on)
+[Git Bash]: https://www.atlassian.com/git/tutorials/git-bash
+[Git for Cygwin]: https://stackoverflow.com/questions/33006007/how-to-install-git-for-cygwin
+[TortoiseGit]: https://tortoisegit.org/
+[WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10 (Windows Subsystem for Linux)
 
 # NVDA Add-on Development Guide
 
@@ -29,8 +34,10 @@ Latest version: April 2019 for NVDA 2019.1
   - <a href="#user-content-a-special-note-for-scripters-of-other-screen-readers">A special note for scripters of other screen readers</a>
   - <a href="#user-content-a-special-note-about-windows-store-version-of-nvda">A special note about Windows Store version of NVDA</a>
   - <a href="#user-content-a-very-important-note-about-migrating-custom-extension-code-to-development-scratchpad">A very important note about migrating custom extension code to development scratchpad</a>
-- <a href="#user-content-what-are-add-ons">What are Add-ons?</a>
-  - <a href="#user-content-add-on-module-types">Add-on Module Types</a>
+- <a href="#user-content-add-on-basics">Add-on Basics</a>
+  - <a href="#user-content-what-are-add-ons">What are Add-ons?</a>
+  - <a href="#user-content-what-are-add-on-modules">What Are Add-on Modules?</a>
+  - <a href="#user-content-what-are-add-on-packages">What Are Add-on Packages?</a>
   - <a href="#user-content-installing-nvda-add-ons">Installing NVDA Add-ons</a>
 - <a href="#user-content-setting-up-the-add-on-development-environment">Setting up the add-on development environment</a>
   - <a href="#user-content-meet-system-requirements">Meet System requirements</a>
@@ -133,7 +140,7 @@ This guide is designed for:
 * People familiar with programming languages other than Python.
 * Developers of scripts for other screen readers.
 
-If you are new to NVDA add-on or core development, we recommend that you get to know Python first, as it gives the necessary programming background for understanding the rest of the guide. If you are a Python programmer but new to NVDA development, please checkout the [NVDA Developer Guide] and [Design Overview] document, both of which can be found on the [NVDA Community Development page][1].
+If you are new to NVDA add-on or core development, we recommend that you get to know [Python](https://python.org) first, as it gives the necessary programming background for understanding the rest of the guide. If you are a Python programmer but new to NVDA development, please checkout the [NVDA Developer Guide] and [Design Overview] document.
 
 ### Special note on Python version
 
@@ -141,37 +148,51 @@ NVDA and add-ons are written in Python 2, specifically 2.7. There is an active r
 
 ### A special note for scripters of other screen readers
 
-Some of the concepts described in this document are same across different screen readers, such as objects, windows, events, accessibility API and so on. However, there are important things to be aware of when writing or porting scripts:
+Some of the concepts described in this document are the same across different screen readers, such as objects, windows, events, accessibility API and so on. However, there are important things to be aware of when writing or porting scripts:
 
 * Unlike some screen readers, NVDA does not have a formal specification or an object model as defined by documentation in other screen readers.
 * The code you write will run inside the same runtime environment as the screen reader itself, thus you can perform things such as obtain focused object directly, modify NVDA's functionality and even replace NVDA functions and classes with your own.
 * Python, and consequently, NVDA is an object-oriented system. In other words, most of your code will consist of defining classes and objects which are than picked up by NVDA at runtime.
 * Unlike scripting engines for some screen readers, there is no special hack involved when you wish to provide a feature that'll work in all applications.
-* Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with older NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself.
+* Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself.
 
 ### A special note about Windows Store version of NVDA
 
-As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store application. Once the Windows Store version of NVDA is published to Microsoft Store, users running Windows 10 can go to Store and obtain NVDA. However, there are restrictions that comes with this version of NVDA, notably add-ons cannot run in this environment. Thus, if you need to run or write NVDA add-ons, you need to use the classic desktop version of NVDA, available from nvaccess.org website.
+As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store application. Once the Windows Store version of NVDA is published to Microsoft Store, users running Windows 10 can go to Store and obtain NVDA. However, there are restrictions that come with this version of NVDA, notably add-ons cannot run in this environment. Thus, if you need to run or write NVDA add-ons, you need to use the classic desktop version of NVDA, available from the [nvaccess.org website](https://www.nvaccess.org/).
 
 ### A very important note about migrating custom extension code to development scratchpad
 
-If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules inside folders stored in user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
+If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
 
-1. NVDA will no longer load extension code stored in the following subdirectories of user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.
-	* If you find that code inside these folders are no longer working as of NVDA 2019.1, the above reason is why.
+1. NVDA will no longer load extension code stored in the following subdirectories of the user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.
+	* If you find that code inside these folders is no longer working as of NVDA 2019.1, the above reason is why.
 2. You must enable development scratchpad functionality (reserved for developers) if you wish to load custom extension code. To do so:
-	1. With NVDA 2019.1 running, go to NVDA menu/Preferences/settings/Advanced.
-	2. You must check "I understand that changing these settings may cause NVDA to function incorrectly" checkbox.
+	1. With NVDA 2019.1 (or later) running, go to NVDA menu/Preferences/settings/Advanced.
+	2. You must check "I understand that changing these settings may cause NVDA to function incorrectly".
 	3. You must check "Enable loading custom code from Developer Scratchpad directory".
 	4. Select OK.
-3. You must store code that were formerly housed in the above list of subdirectories inside corresponding subdirectories of scratchpad folder.
-4. If you need to use NVDA 2018.4 and would like to use custom code, you must not remove subdirectories from user configuration directory, otherwise go ahead and remove the folders listed in item 1.
+3. You must store code that was formerly housed in the above list of subdirectories inside corresponding subdirectories of the scratchpad folder.
+4. If you need to use NVDA 2018.4 and would like to use custom code, you must not remove the above listed subdirectories from the user configuration directory. Otherwise go ahead and remove the folders listed in item 1.
 
-## What are Add-ons?
+## Add-on Basics
 
-Add-ons are additional packages that extend NVDA's functionality or support for programs. This may include adding global features, enhancing support for an application, or adding support for newer braille displays or speech synthesizers. Add-ons may contain more than one module. The following is a general description of add-on module types.
+### What are Add-ons?
 
-### Add-on Module Types
+Add-ons are additional small programs that extend NVDA's functionality or support for applications. This may include adding global features, enhancing 
+support for an application, or adding support for newer braille displays or speech synthesizers.
+
+Note: add-ons are sometimes called "Plugins", especially in the [NVDA Developer Guide]. In general, we will call them add-ons in this guide for the sake of clarity, but just be aware that they are the same thing.
+
+A fully constructed add-on will consist of the add-on Python code itself, contained in one or more modules (more on that in the next section), and 
+usually some documentation, and other support files. If that sounds daunting: don't worry, we will start small, with examples, and only with Python 
+code. The rest of the support structure for an add-on will come later.
+
+### What Are Add-on Modules?
+
+Add-ons can act globally (across all of NVDA), in a specific application or program, or behind the scenes (at the hardware level). We call these three 
+major areas "modules". Every add-on contains at least one module, which is just one or more Python files designed to act in one of those three specific 
+areas. Additionally, if it makes sense for the add-on you are developing, your add-on can include more than one module. For example, if your add-on 
+provides better accessibility for a specific application, but also provides global commands that work anywhere in NVDA, you would be using two modules.
 
 Currently, NVDA supports these add-on module types:
 
@@ -179,31 +200,43 @@ Currently, NVDA supports these add-on module types:
 * App module: An app module allows enhanced support for a specific program. App modules only run as long as the program runs. They change how NVDA reacts to the windows and controls in the running application. 
 * Driver: A driver allows a program to talk to hardware. Currently you can write drivers for new braille displays or speech synthesizers.
 
+### What Are Add-on Packages?
+
+A package is the single file which contains the code, documentation, and other elements which make up a fully functioning add-on, which is 
+intended to be robust enough to be distributed to the public. Each NVDA add-on package is a normal zip file with a file extension of .nvda-addon instead of .zip.
+
+If making an add-on package sounds like a lot of work: don't worry, you don't have to make a package just to start writing and testing your first 
+add-on.
+
 ### Installing NVDA Add-ons
 
-Each NVDA add-on package is a zip file with the file extension of .nvda-addon. You can install add-on modules via the Add-ons Manager in NVDA 2012.2 or later. Alternatively, you can install them from File Manager if you use NVDA 2012.3 or later.
+You can install NVDA-approved add-on packages via the Add-ons Manager, found on NVDA's tools menu. Alternatively, you can open any .nvda-addon file 
+you may have created or downloaded, by selecting it in your Windows file manager, and it should launch the add-on install process.
 
-## Setting up the add-on development environment
+## Setting Up Your Add-on Development Environment
 
 Follow these steps to prepare your computer for writing NVDA add-ons.
 
-### Meet System requirements
+### Meet System Requirements
 
 To create an add-on for NVDA, please make sure your system meets the following requirements:
 
-* A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the NV Access page at https://www.nvaccess.org.
-	* We recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
-* Python 2.7 series, version 2.7.14 32-bit for Windows: <https://www.python.org/download/releases/2.7.14/>.
-	* If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows.
-* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): <http://www.scons.org/>.
-* Markdown 2.0.1 or later for generating add-on documentation: <https://pypi.python.org/pypi/Markdown/2.0.1>.
-* The GNU Gettext package for Windows for message localization support. The build can be found at: <http://gnuwin32.sourceforge.net/downlinks/gettext.php>.
-	* Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
-* Git 1.7.9 or later if you wish to upload the add-on to a repository such as Bitbucket (optional. See below). You can use various Git clients, such as Git Bash, Cygwin's Git, and Tortoise Git.
-* The NVDA Community Add-on Template for ease of add-on file and folder packaging and management (optional: download the [add-on template]) .
+* NVDA:
+  - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
+  - Even better: we recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
+* Python:
+  - Python 2.7 series, version 2.7.14 32-bit for Windows: https://www.python.org/downloads/release/python-2714/
+  - If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows: https://www.python.org/downloads/release/python-373/
+* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): http://www.scons.org/
+* Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
+* The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
+	- Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
 * If you are developing support for a program, speech synthesizer, or braille display, install the needed software and hardware.
+* Optional Items:
+  - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
+  - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
 
-Note: if using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (aka Windows Subsystem for Linux), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
+Note: if using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
 
 ### Add-on Development Folder Structure
 
@@ -261,9 +294,9 @@ To run your example add-ons from this chapter, open your NVDA user configuration
 
 ### Example 1: Hear a tone when pressing NVDA+A
 
-Let us start with a simple example: if you press NVDA+A, you would hear a tone for 1 second from any program. Since we want to use this everywhere, it must be a global plugin.
+Let us start with a simple example: if you press NVDA+A, you will hear a tone for 1 second in any program. Since we want to use this everywhere, it must be a global plugin.
 
-First, if you haven't done so, enable development scratchpad. Then open your user configuration folder, then open scratchpad folder (if it exists), then select globalPlugins folder. Create a new .py file and give it a descriptive name such as example1.py (it is strongly recommended that when you name your global plugin file, give it a short descriptive name). Then open the newly created .py file in the word processor.
+First, if you haven't done so, enable development scratchpad. Then open your user configuration folder, then open the scratchpad folder (if it exists--create it if not), then select globalPlugins folder. Create a new .py file and give it a descriptive name such as example1.py (it is strongly recommended that when you name your global plugin file, give it a short descriptive name). Then open the newly created .py file in the word processor.
 
 The below code implements our example. Put this in your .py file as exactly as shown:
 

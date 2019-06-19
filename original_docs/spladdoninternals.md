@@ -1,14 +1,14 @@
-# NVDA Add-on internals: StationPlaylist Studio
+# NVDA Add-on internals: StationPlaylist
 
 Author: Joseph Lee
 
-Based on StationPlaylist Studio Add-on for NvDA 19.02
+Based on StationPlaylist Add-on for NvDA 19.07
 
-## 2018 Preface and notes
+## 2019 Preface and notes
 
-This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2018, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2018.
+This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2019, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2019.
 
-Also in 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps.
+In 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps. As a result, the add-on itself was renamed in 2019 to just "StationPlaylist".
 
 Lastly, at the end of 2018, add-on update feature was removed in favor of Add-on Updater add-on. Although the source code for this feature is gone, information pertaining to it will be documented here for sake of completeness (after all, Add-on Updater's update checking mechanism can trace its roots to Studio add-on).
 
@@ -16,11 +16,13 @@ Lastly, at the end of 2018, add-on update feature was removed in favor of Add-on
 
 If you are a radio broadcaster, you might be accustomed to activities involved when producing a show. This may include playlist selection, scheduling break notes, responding to requests, monitoring listener count and encoding status and so on. To assist a broadcaster, a broadcast automation program is used, and one of the popular apps is called StationPlaylist Studio.
 
-In NVDA Add-on Internals: StationPlaylist Studio, we'll learn about what Studio (and other SPL suite of apps) is and how the NVDA add-on works. You don't have to install or use the NVDA add-on to understand the ins and outs of this powerful add-on (using the add-on might help you better appreciate the defth of this material; for fuller experience, it is handy to have the add-on source code in front of you as you navigate this article). So let's get started by learning more about SPL Studio.
+In NVDA Add-on Internals: StationPlaylist, we'll learn about what StationPlaylist Studio (and other StationPlaylist (SPL) suite of apps) is and how the NVDA add-on works. You don't have to install or use the NVDA add-on to understand the ins and outs of this powerful add-on (using the add-on might help you better appreciate the defth of this material; for fuller experience, it is handy to have the add-on source code in front of you as you navigate this article). So let's get started by learning more about SPL suite of applications.
+
+Note: throughout this guide, unless specified otherwise, the terms "StationPlaylist", "SPL", and "Studio" refer to the same thing.
 
 ### Introducing StationPlaylist app suite and the NVDA add-on
 
-[StationPlaylist suite](www.stationplaylist.com) is a collection of programs to help broadcasters plan, run, and do related activities around broadcasting. The apps consist of Studio, Creator, Track Tool and others.
+[StationPlaylist suite](www.stationplaylist.com) is a collection of programs to help broadcasters plan, run, and do related activities around broadcasting. The apps consist of Studio, Creator, Track Tool, Streamer and others.
 
 StationPlaylist Studio is a broadcast automation software that helps broadcasters schedule trakcs, play jingles and more. It includes support for break notes, hourly playlist, track tagging and comes with tools to manage track playback such as setting track intros. In studio 5.00 and later, it includes its own stream encoder.
 
@@ -28,9 +30,11 @@ StationPlaylist Creator is mostly used for planning a show and designing playlis
 
 StationPlaylist Track Tool is mainly used for managing tracks. It is often employed to define introductions, cue points and other properties of tracks.
 
+StationPlaylist Streamer is useful for broadcasting a show with something other than Studio. As such, it comes with support for various encoders and digital signal processing (DSP) modules.
+
 Is Studio suite accessible? Surprisingly, yes. It is possible to use app features without using screen reader scripts and add-ons. However, there are times when a broadcaster would use scripts, such as announcing status changes, monitoring track intros and endings, enhanced support for encoders and so on, and NVDA add-on for StationPlaylist Studio (usually refered to as SPL) accomplishes this well.
 
-### Studio add-on: a history
+### StationPlaylist add-on: a history
 
 In 2011, Geoff Shang, a seasoned blind broadcaster, started working on SPL Studio add-on. This early version (numbered 0.01) was developed to let NVDA announce various status changes such as automation toggle and so on. This initial version, co-developed by James Teh (a former lead developer of NVDA screen reader) was considered a quick project, and further development ceased until 2013.
 
@@ -54,6 +58,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 18.06: responding to recent NVDA features, playlist transcripts, wxPython 4 support, partial playlist snapshots, expanding the scope of the add-on.
 * 18.09: third LTS release, add-on settings panels, checkable list, wxPython 4.
 * 19.01: add-on update feature removed, compatibility flags with future NVDA releases.
+* 19.07: renaming the add-on, settings reload/reset.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -76,7 +81,7 @@ With some basics out of the way, let's dive into SPL add-on internals (you shoul
 
 ### Overall design and source code layout
 
-StationPlaylist Studio add-on for NVDA consists of four app modules and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes.
+StationPlaylist add-on for NVDA consists of four app modules and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes.
 
 The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM and SPL encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and encoder support).
 
@@ -143,7 +148,7 @@ In the old days of Windows (1990's), programs were not ready to support Unicode 
 
 In reality, programs call FindWindow function, and the appropriate "version" was chosen based on overall character representation macro as specified by the program. For example, if the program was unicode-aware, when FindWindow is called, Windows internally calls FindWindowW.
 
-Until 2018, Studio app module and other components of the add-on called FindWindowA due to the fact that, in Python 2, a string is a read-only array of ANSI characters. Python 3 (and if a string is prefixed with "u" in Python 2) uses immutable array of Unicode characters for strings. Internally, NVDA expects Unicode strings for the function that wraps FindWindow function (located in winUser module), thus mimicking Python 3 behavior. Studio add-on adopted FindWindowW behavior in late 2018, but the wrapper provided by NVDA is not used due to incorrect error checking behavior in NVDA (if window handle is 0 (NULL), success error is raised, which goes against specifications from Windows API).
+Until 2018, Studio app module and other components of the add-on called FindWindowA due to the fact that, in Python 2, a string is a read-only array of ANSI characters. Python 3 (and if a string is prefixed with "u" in Python 2) uses immutable array of Unicode characters for strings. Internally, NVDA expects Unicode strings for the function that wraps FindWindow function (located in winUser module), thus mimicking Python 3 behavior. StationPlaylist add-on adopted FindWindowW behavior in late 2018, but the wrapper provided by NVDA is not used due to incorrect error checking behavior in NVDA (if window handle is 0 (NULL), success error is raised, which goes against specifications from Windows API).
 
 ## Life of the SPL app module
 
@@ -255,14 +260,14 @@ There are three extension point types:
 * Decider: A data processor inside a script or a function can tell NVDA to continue processing data, such as passing a keystroke to remote system.
 * Filter: a speech processor can add, change, or remove texts before letting synthesizers announce the would-be spoken text.
 
-In Studio add-on, actions are used to notify modules of some action such as when Studio exits, broadcast profile switches and so on. There are two actions defined (in splactions module):
+In SPL add-on, actions are used to notify modules of some action such as when Studio exits, broadcast profile switches and so on. There are two actions defined (in splactions module):
 
 * Broadcast profile switch: notifies microphone alarm thread and metadata streaming configuration to switch streams or turn off the alarm (see below for details).
 * Studio exiting: tells add-on dialogs to close without saving settings.
 
 ### Death: termination routines
 
-While using Studio add-on, you can stop using the add-on in various ways, including exiting or restarting NVDA, turning off your computer or logging off or closing Studio or other SPL app. Just like initialization routines, the Studio app module has specific directions to follow when add-on is closed.
+While using the add-on, you can stop using it in various ways, including exiting or restarting NVDA, turning off your computer or logging off or closing Studio or other SPL app. Just like initialization routines, the Studio app module has specific directions to follow when add-on is closed.
 
 Here is a list of steps Studio app module performs when it is about to leave this world:
 
@@ -276,7 +281,7 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 	6. For add-on 5.x and earlier, there is only one broadcast profile to worry about, and this profile is saved at this point.
 	7. These steps are part of splconfig.SPLConfig.save method in add-on 8.0 and later.
 3. In 17.12 and later, NVDA notifies registered handlers for app terminate action. As noted above, this will cause add-on dialogs to close without saving settings.
-4. NVDA then attempts to remove SPL Studio Settings entry from NVDA's preferences menu, then various maps used by Studio add-on (such as Cart Explorer map) are cleared.
+4. NVDA then attempts to remove StationPlaylist Add-on Settings entry from NVDA's preferences menu, then various maps used by Studio app module (such as Cart Explorer map) are cleared.
 5. As the app module is laid to rest, the window handle value for Studio window is cleared. This is a must, as the handle will be different next time Studio runs. At this point, NVDA removes splstudio (Studio app module) from list of app modules in use.
 
 ### Add-on updates: updating to latest and greatest version
@@ -285,7 +290,7 @@ Note: this feature, recently dubbed "standalone add-on update", is gone in 19.01
 
 In add-on 7.0 and later (until 18.12), it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
 
-The Studio add-on uses a combination of urllib library and update channels (explained later) to fetch the needed update metadata. The user can tell the add-on to check for updates automatically or one can perform this check manually.
+The SPL add-on uses a combination of urllib library and update channels (explained later) to fetch the needed update metadata. The user can tell the add-on to check for updates automatically or one can perform this check manually.
 
 The update check is performed as follows:
 
@@ -300,7 +305,7 @@ In case of a manual update check (described in SPL Assistant layer section), apa
 
 ## Time announcements, alarms and adjusting basic settings
 
-Now that we know how Studio app module is born and dies, it is time for us to look at what happens while the Studio add-on is alive, and we'll start with how Studio add-on announces time, work with alarms and uses basic settings.
+Now that we know how Studio app module is born and dies, it is time for us to look at what happens while Studio is in use, and we'll start with how the add-on announces time, work with alarms and uses basic settings.
 
 ### Time announcement routines: a tale of four brothers
 
@@ -332,7 +337,7 @@ When you press Control+Alt+T or Alt+Shift+T to hear remaining or elapsed time, t
 
 When you listen to radio shows, you may hear messages such as, "five minutes to two" or "ten minutes past five". This announcement is called broadcaster time.
 
-Studio does display broadcaster clock. However, because it is in the middle of the screen, one has to use object navigation commands to locate it, and this method was used in older Studio add-on releases. This involved locating the foreground window (api.getForegroundObject()) and navigating through a preset direction to arrive at the clock object, and this is still used in some places. However, this was prone to a critical problem: sometimes, the object we're interested in changed positions (a good example was when different builds of Studio 5.10 were released).
+Studio does display broadcaster clock. However, because it is in the middle of the screen, one has to use object navigation commands to locate it, and this method was used in older add-on releases. This involved locating the foreground window (api.getForegroundObject()) and navigating through a preset direction to arrive at the clock object, and this is still used in some places. However, this was prone to a critical problem: sometimes, the object we're interested in changed positions (a good example was when different builds of Studio 5.10 were released).
 
 Recently, this method was abandoned in favor of using Python's time module to obtain current time and convert it into a format that is familiar to broadcasters, thus removing the need to use object navigation. When you press NVDA+Shift+F12, NVDA first fetches local time (time.localtime), then converts this into a format suitable for output. Along the way NVDA tries to emulate how Studio displays broadcaster clock. Recently, a slight modification was made so this process can be used to obtain time left to top of the hour when NVDA+Shift+F12 is pressed twice, with the difference being subtracting local time from top of the next hour. When processing is complete for both cases, NVDA announces the output text.
 
@@ -368,7 +373,7 @@ This single dialog that presents different alarm controls is known as 'Alarms Ce
 
 ### Toggle settings
 
-Studio add-on comes with some toggle settings that affect the operation of the app module. These include library scan announcement (Alt+NVDA+R) and braille timer (Control+Shift+X). For each setting script, NVDA will first check the current value, change the value and announce the new value.
+StationPlaylist add-on comes with some toggle settings that affect the operation of the app module. These include library scan announcement (Alt+NVDA+R) and braille timer (Control+Shift+X). For each setting script, NVDA will first check the current value, change the value and announce the new value.
 
 ## Event handling: announcing status changes, activating alarms and more
 
@@ -455,7 +460,7 @@ So far, we have covered things that the app module performs wherever you are in 
 
 ## Track items, overlay classes and Track Finder
 
-When you use the Studio add-on for NVDA, you may have noticed that you can perform certain commands while focused on track items, and that the command to find tracks is same as that of find command in web browsers. If you are curious about these, then this section will let you see how it works. But first, we need to go over some more facts about NVDA screen reader, this time we'll talk about objects.
+While using the add-on, you may have noticed that you can perform certain commands while focused on track items, and that the command to find tracks is same as that of find command in web browsers. If you are curious about these, then this section will let you see how it works. But first, we need to go over some more facts about NVDA screen reader, this time we'll talk about objects.
 
 ### Important facts about NVDA's use of objects
 
@@ -527,8 +532,6 @@ For both versions, the signature of trackFinder method (linear search routine in
 
 Text is the search term, obj is where the search should begin, direction specifies search direction and column is used if Column Search is used (searching for text in specific columns). In Track Finder 2.0 (add-on 6.0), add an "s" to column keyword.
 
-In the next section, we'll learn more about how NVDA performs column navigation commands and how it is used in various features. We'll also meet how Track Finder refactor has helped implement an unexpected feature or two in the Studio add-on.
-
 ## Method resolution  order and importance of column navigation in track items, Track Tool and other features
 
 In the previous section, you saw how overlay classes work, as well as how track items in Studio are defined and used. We'll continue our tour of track items by looking at column navigation feature and how it is used in various places. But before we get into that, we need to talk about how NVDA knows how certain commands apply in specific situations via method resolution order.
@@ -573,7 +576,7 @@ I started by looking for patterns in description text that could be used to give
 
 SysListView32 controls are lists with items organized into columns. For example, certain apps use these controls to arrange entries into columns, such as in certain table-based apps, and in case of studio, displaying various status about encoders.
 
-When these controls are encountered, NVDA allows you to use table navigation commands (Control+Alt+arrows) to navigate between columns, provided that there are child objects (columns) exposed by the accessibility API implementation in use. Table navigation commands are supplied by another class (behaviors.RowWithFakeNavigation; the behaviors mix-in includes things NVDA should perform in various scenarios, including terminal input and output, editable text handling (via a dedicated module) and so on). This is all possible thanks to a method in SysListView32 class (NVDA Core) that allows one to retrieve column text, and this became the engine for Track Dial, Columns Explorer and other column navigation facilities in the Studio add-on (I say "add-on" because column navigation is used by both Studio and Track Tool). This was further solidified in 2018 when all track item classes were repowered by SysListView32.ListItem class.
+When these controls are encountered, NVDA allows you to use table navigation commands (Control+Alt+arrows) to navigate between columns, provided that there are child objects (columns) exposed by the accessibility API implementation in use. Table navigation commands are supplied by another class (behaviors.RowWithFakeNavigation; the behaviors mix-in includes things NVDA should perform in various scenarios, including terminal input and output, editable text handling (via a dedicated module) and so on). This is all possible thanks to a method in SysListView32 class (NVDA Core) that allows one to retrieve column text, and this became the engine for Track Dial, Columns Explorer and other column navigation facilities in this add-on (I say "add-on" because column navigation is used by both Studio and Track Tool). This was further solidified in 2018 and later when all track item classes (including Creator track items and SAM encoder entries) were repowered by SysListView32.ListItem class.
 
 Until 2018, the column text retrieval routine (which lives in SysListView32 and a copy lives in splstudio.splmisc module) was as follows:
 
@@ -587,7 +590,7 @@ In 2018, this was simplified by use of SysListView32 routines directly.
 
 ### Column retrieval and navigation routines: from hesitation to a cornerstone
 
-Column content retrieval routine has become one of the cornerstones of the Studio add-on. In addition to Track Dial, nine other routines uses it: Column Search, track place marker, column announcement order, Track Columns Explorer, vertical column navigation, playlist snapshots, playlist transcripts, Creator and Track Tool app modules. Let's find out how seven of these work in more detail (playlist snapshots and transcripts are described under SPL Assistant section, as they deserve sections of their own).
+Column content retrieval routine has become one of the cornerstones of this add-on. In addition to Track Dial, ten other routines uses it: Column Search, track place marker, column announcement order, Track Columns Explorer, vertical column navigation, playlist snapshots, playlist transcripts, Creator and Track Tool app modules, and when working with SAM encoder entries. Let's find out how seven of these work in more detail (playlist snapshots and transcripts are described under SPL Assistant section, as they deserve sections of their own).
 
 #### Track Dial: Navigating columns in track items
 
@@ -647,17 +650,17 @@ Ever since implementing Track Dial, some broadcasters requested adding support f
 
 #### Track Tool and Creator: one routine, multiple app modules
 
-Column retriever routine is not only employed by Studio app module, but is also used in Track Tool and Creator app modules (part of the studio add-on). These app modules (specifically, track item classes) uses column retriever for reviewing column data via table navigation commands and announcing column information (Control+NVDA+1  through 0, now termed Columns Explorer for Track Tool/SPL Creator).
+Column retriever routine is not only employed by Studio app module, but is also used in Track Tool and Creator app modules (part of the add-on). These app modules (specifically, track item classes) uses column retriever for reviewing column data via table navigation commands and announcing column information (Control+NVDA+1  through 0, now termed Columns Explorer for Track Tool/SPL Creator).
 
 ### Few remarks
 
-Of all the features in the StationPlaylist Studio add-on, column navigation is one of my favorites (besides Cart Explorer and encoder support and others). I enjoyed working with this routine and learned a few things about Windows API, as well as open possibilities not previously explorered before, such as Track Tool and Column Search. I hope that you'll find column navigation commands to be useful in your broadcasts.
+Of all the features in the StationPlaylist add-on, column navigation is one of my favorites (besides Cart Explorer and encoder support and others). I enjoyed working with this routine and learned a few things about Windows API, as well as open possibilities not previously explorered before, such as Track Tool and Column Search. I hope that you'll find column navigation commands to be useful in your broadcasts.
 
-I would like to take this time to answer a question posed by some users and developers: Can NVDA be ported to other operating systems? No. The above column retriever routine is a prime example why this cannot be done easily: different operating systems use different API's, and porting NonVisual Desktop Access to other operating systems will involve significant architectural changes to use the new API's. In case of ReactOS, this isn't possible, as there are no stable foundation from which NVDA screen reader can exercise its full rights: accessibility API's are needed, stable driver development framework is needed, ability to run a program as a service must be ready and so on. Add to the fact that we have several add-ons relying on Windows API (including StationPlaylist Studio add-on) and you'll see the huge work involved in an attempt to port NVDA to other operating systems.
+I would like to take this time to answer a question posed by some users and developers: Can NVDA be ported to other operating systems? No. The above column retriever routine is a prime example why this cannot be done easily: different operating systems use different API's, and porting NonVisual Desktop Access to other operating systems will involve significant architectural changes to use the new API's. In case of ReactOS, this isn't possible, as there are no stable foundation from which NVDA screen reader can exercise its full rights: accessibility API's are needed, stable driver development framework is needed, ability to run a program as a service must be ready and so on. Add to the fact that we have several add-ons relying on Windows API (including this add-on) and you'll see the huge work involved in an attempt to port NVDA to other operating systems.
 
 ## Microphone alarm and library scan: threads, threads and more threads
 
-Of all the work done on Studio add-on, one of them stands out the most: background tasks. I spent many hours and months perfecting this concept, read documentation on this feature and learned a lot through this experience. Today, this work is used in various parts of the Studio app module and beyond, and we'll take a look at two most important result of this work: library scan and microphone alarm.
+Of all the work done on this add-on, one of them stands out the most: background tasks. I spent many hours and months perfecting this concept, read documentation on this feature and learned a lot through this experience. Today, this work is used in various parts of the Studio app module and beyond, and we'll take a look at two most important results of this work: library scan and microphone alarm.
 
 ### Brief feature overview
 
@@ -737,7 +740,7 @@ libraryScanner = threading.Thread(target=self.libraryScanReporter, args=(_SPLWin
 
 There are important arguments in use: the function (task) to be performed and arguments for this function. The most important argument is the last one: Studio 5.0x and 5.10 expects different arguments when told to report number of items scanned so far.
 
-Despite limitations of Python's threading routines, if used properly, it can open new possibilities, and you saw some of them above: microphone alarm and background library scan. Use of threads in the Studio app module also allows NVDA to be responsive while using Studio and allows background tasks to be faithful to the tasks at hand. We'll come back to threads when we talk about encoder connection routines. There is a more "magical" feature we'll visit, and this is our next stop on the SPL Studio Add-on Internals: Cart Explorer.
+Despite limitations of Python's threading routines, if used properly, it can open new possibilities, and you saw some of them above: microphone alarm and background library scan. Use of threads in the Studio app module also allows NVDA to be responsive while using Studio and allows background tasks to be faithful to the tasks at hand. We'll come back to threads when we talk about encoder connection routines. There is a more "magical" feature we'll visit, and this is our next stop on the Add-on Internals: Cart Explorer.
 
 ## The magic behind Cart Explorer
 
@@ -807,7 +810,7 @@ The first issue was solved by telling users that Cart Explorer was active while 
 
 Cart Explorer has come a long way; from a simple suggestion to the CSV parsing routine above to checking timestamps for cart assignment changes, Cart Explorer has changed to meet the needs of broadcasters using Studio and NVDA. I would like to improve this further in future releases (another suggestion I received was ability to specify cart file names for individual banks, and I'm thinking about implementing this in the near future).
 
-One of the things you may have noticed as you read this article so far is how I and other developers continue to research better ways of accomplishing something. You also saw a glimpse of how developers and users shape a feature and how much work is involved to bring a feature suggestion to life. These activities (research and feature development collaboration) are just two of the pillars supporting Studio add-on for NVDA, and highlights how design philosophy and product development approach affects future course of product development.
+One of the things you may have noticed as you read this article so far is how I and other developers continue to research better ways of accomplishing something. You also saw a glimpse of how developers and users shape a feature and how much work is involved to bring a feature suggestion to life. These activities (research and feature development collaboration) are just two of the pillars of this add-on, and highlights how design philosophy and product development approach affects future course of product development.
 
 This ends our detailed tour of internals of major features in Studio app module. When we come back, we'll visit our friend from the past: SPL Assistant layer and inner workings of various layer commands.
 
@@ -821,11 +824,11 @@ One of the common features of Studio scripts for JAWS, Window-Eyes and NVDA is e
 
 ### Birth of SPL Assistant layer
 
-As mentioned previously, since version 1.0 in January 2014, Studio add-on comes with two layer commands to represent the global plugin and the studio app module. In case of Studio app module and its layer set (SPL Assistant), I borrowed some commands from both JAWS and Window-Eyes scripts with some notable differences, namely some commands and how things were announced.
+As mentioned previously, since version 1.0 in January 2014, StationPlaylist add-on comes with two layer commands to represent the global plugin and the studio app module. In case of Studio app module and its layer set (SPL Assistant), I borrowed some commands from both JAWS and Window-Eyes scripts with some notable differences, namely some commands and how things were announced.
 
 When I sat down to design this layer set, I felt it would be helpful for broadcasters if most of the Assistant layer commands borrowed from Studio command assignments. For example, a broadcaster will press M to toggle microphone on and off, and in SPL Assistant layer, pressing M announces microphone status. Another example was Cart Edit Mode - pressing Control+T in Studio will toggle this, and pressing SPL Assistant, T will announce whether this mode is on or off (the reason for assigning T for Cart Edit Mode status will be discussed later).
 
-Originally, one could invoke SPL Assistant layer by pressing Control+NVDA+grave key from within Studio. However, some NVDA translators told me that this key combination is used for NVDA screen reader commands in their language. Thus, in add-on 2.0 (late spring 2014), I decided to remove this command, which means in order for you (broadcasters) to invoke SPL Assistant layer, you need to go to Input Gestures dialog while focused in Studio, expand StationPlaylist category and look for the Assistant entry (I personally use Control+NVDA+grave, and in recent add-on development builds, I told Studio add-on to let SPL Controller layer command (discussed later) to invoke Assistant layer).
+Originally, one could invoke SPL Assistant layer by pressing Control+NVDA+grave key from within Studio. However, some NVDA translators told me that this key combination is used for NVDA screen reader commands in their languages. Thus, in add-on 2.0 (late spring 2014), I decided to remove this command, which means in order for you (broadcasters) to invoke SPL Assistant layer, you need to go to Input Gestures dialog while focused in Studio, expand StationPlaylist category and look for the Assistant entry (I personally use Control+NVDA+grave, and in recent add-on development builds, I told the add-on to let SPL Controller layer command (discussed later) to invoke Assistant layer).
 
 Another addition to SPL Assistant layer is ability to emulate layer commands provided by other screen readers. This is achieved by using gestures map for each screen reader (NVDA included), with the correct gestures map chosen when entering SPL Assistant layer. Currently, in addition to default NVDA layout, the add-on supports JAWS for Windows and Window-Eyes layer commands.
 
@@ -1009,7 +1012,7 @@ Configuration profiles involve a few support routines and a careful coordination
 
 What if settings had errors? As part of the startup routine (portions of main function (source/core.py) prior to entering the main loop), NVDA will display a configuration error dialog if it detects serious issues with configuration values (in reality, ConfigObj notifies NVDA of this problem). You'll see this is also implemented in the Studio app module to deal with add-on configuration issues.
 
-### All about Studio add-on Configuration Manager
+### All about StationPlaylist add-on Configuration Manager
 
 Until recently, Studio app module handled all add-on configuration routines. With the advent of add-on 5.0 which introduced add-on settings dialog, configuration management routines were split into a dedicated Configuration Manager (splstudio.splconfig). The new module takes care of configuration routines, including validating the user configuration, presenting add-on settings dialog and other dialogs inside it, handling broadcast profiles and more. In add-on 7.0, routines pertaining to configuration dialog were split into splconfui module, with the main add-on settings listed under NVDA preferences menu.
 
@@ -1021,7 +1024,7 @@ When the configuration database is ready, Studio app module will then use values
 
 After you are done using Studio, close Studio so settings can be saved to disk. This involves saving individual profiles, copying global settings to the normal profile and saving the normal profile to disk.
 
-### The Studio Add-on Settings Dialog
+### The StationPlaylist Add-on Settings Dialog
 
 Studio app module allows you to configure various settings in two ways: via a shortcut key (discussed in an article on configuring basic settings) or via the settings dialog. When you use a shortcut key to change settings, NVDA will look up the value for the setting, change it, announce the new setting and store the newly changed value in the settings map.
 
@@ -1055,7 +1058,7 @@ In the old days, if one wanted to change settings in NVDA, one would open NVDA's
 
 In 2018, a major paradigm shift occurred in NVDA's own user interface: multi-category settings screen. In NVDA 2018.2, a new settings screen, combining various dialogs into a panel, launched. For many settings, one can now open NVDA Menu/Preferences/Settings, select the desired settings category, then change settings. This also had the benefit of moving many settings under one roof.
 
-As a follow-up to this development, Studio add-on settings has undergone a major facelift. As noted throughout this article, add-on settings are housed under various dialogs, with the main add-on settings dialog serving as a gateway to these dialogs. In 2018, this has changed into a multi-category settings screen.
+As a follow-up to this development, StationPlaylist add-on settings has undergone a major facelift. As noted throughout this article, add-on settings are housed under various dialogs, with the main add-on settings dialog serving as a gateway to these dialogs. In 2018, this has changed into a multi-category settings screen.
 
 ### All about broadcast profiles
 
@@ -1115,11 +1118,11 @@ This article concludes a detailed tour of Studio app module internals. The rest 
 
 ## Introduction to SPL Utilities: SPLController and focusing to Studio window
 
-Now that we've covered the "kernel" (innermost parts) of the Studio add-on, it is time to talk about the icing: SPL Utilities global plugins and its contents. The next few articles will talk about what the global plugin does, introduce you to inner workings of SPL Controller layer and tour how encoder support is implemented.
+Now that we've covered the "kernel" (innermost parts) of this add-on, it is time to talk about the icing: SPL Utilities global plugins and its contents. The next few articles will talk about what the global plugin does, introduce you to inner workings of SPL Controller layer and tour how encoder support is implemented.
 
 ### Studio app module versus SPL Utilities global plugin
 
-As described in the add-on design section, SPL Studio add-on comes with two app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs. With the introduction of encoder support in add-on 3.0 (fall 2014), the global plugin portion of the add-on (SPL Utilities) took on an important role: working as an encoders manager to report connection status and to perform other routines.
+As described in the add-on design section, SPL add-on comes with several app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs. With the introduction of encoder support in add-on 3.0 (fall 2014), the global plugin portion of the add-on (SPL Utilities) took on an important role: working as an encoders manager to report connection status and to perform other routines.
 
 ### SPL Utilities package contents
 
@@ -1259,7 +1262,7 @@ For SPL encoders:
 
 ## Final notes and add-on development process overview
 
-Now that we've visited internals of StationPlaylist Studio add-on, I'd like to give you a tour of my lab where I develop this add-on. Along the way you'll learn how an add-on is born, coded, tested, released and maintained.
+Now that we've visited internals of StationPlaylist add-on, I'd like to give you a tour of my lab where I develop this add-on. Along the way you'll learn how an add-on is born, coded, tested, released and maintained.
 
 ### Lab setup, development equipment and software
 
@@ -1312,7 +1315,7 @@ Follow me as I show you how a typical SPL add-on version is developed, released 
 
 #### Changes in 2017
 
-In late 2016, I and some users had a conference call regarding the future direction of the add-on. During this call, participants felt that the add-on now includes all the features people need, so it was decided to scale back on features and focus on compatibility with new Studio releases. In the end, it was decided that a version of the add-on to be released in 2017 will be the final major version of the Studio add-on, with future updates being byte-sized chunks.
+In late 2016, I and some users had a conference call regarding the future direction of the add-on. During this call, participants felt that the add-on now includes all the features people need, so it was decided to scale back on features and focus on compatibility with new Studio releases. In the end, it was decided that a version of the add-on to be released in 2017 will be the final major version of this add-on, with future updates being byte-sized chunks.
 
 This decision also aligned with my other add-ons where new versions were released every month or so, along with the fact that features are complete for most add-ons. The new regular update schedule for SPL add-on was implemented as of June 2017.
 
@@ -1363,7 +1366,7 @@ As of December 2018, the most recent LTS version is add-on 18.09.x (September 20
 
 ### Final thoughts
 
-As I end this article on StationPlaylist Studio Add-on Internals, I feel it is time I reveal why my add-ons are free: it is because I love you users and as a service for NVDA user and developer community (and in extension, to all blind broadcasters using SPL Studio). What brings me joy as an add-on writer is the fact that this add-on (and accompanying documentation) has made impact in your lives and lives of listeners to your shows, as well as to other NVDA users and developers around the world. Thank you users for your continued support and feedback, and I promise once again that all my add-on code (including SPL Studio add-on) will be free and anyone is welcome to study and improve upon it.
+As I end this article on StationPlaylist Add-on Internals, I feel it is time I reveal why my add-ons are free: it is because I love you users and as a service for NVDA user and developer community (and in extension, to all blind broadcasters using SPL Studio). What brings me joy as an add-on writer is the fact that this add-on (and accompanying documentation) has made impact in your lives and lives of listeners to your shows, as well as to other NVDA users and developers around the world. Thank you users for your continued support and feedback, and I promise once again that all my add-on code (including SPL add-on) will be free and anyone is welcome to study and improve upon it.
 
 For add-on writers looking for quality add-on documentation, I hope this series gave you an inspiration as to how to write amazing documentation in your future projects. For people new to add-on writing or for those interested in writing an add-on, I hope this Add-ons Internals series served as a handy resource for your projects, and in extension, gave you an idea as to how certain NVDA functions work. If you'd like to reference this documentation or use it as a blueprint, you are more than welcome to do so. Thank you community add-on reviewers for your continued support and reviews.
 
@@ -1373,7 +1376,7 @@ I'd like to thank StationPlaylist staff for continued collaboration with screen 
 
 Source code notice: to protect copyrights, parts of Studio API has not been documented. Also, source code discussed throughout this series may change as future add-on versions are developed.
 
-Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2016 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist Studio add-on for NvDA is copyright 2011, 2013-2016 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
+Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2019 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist add-on for NvDA is copyright 2011, 2013-2019 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
 
 ## References
 

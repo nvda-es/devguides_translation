@@ -40,12 +40,10 @@ Before installing any dependencies listed below, be sure to install Python 3.7 3
 * Six 1.11.0 (mandatory)
 * SCons 3.0.1 (mandatory)
 * comtypes 1.1.7 (mandatory)
-* Pywin32 extensions build 223 for Python 3.7 (mandatory)
+* Pywin32 extensions build 223 for Python 3.7 (optional)
 * pyserial for Python 3.7 (mandatory for debugging braille displays)
 * Configobj 5.1.0 (mandatory)
 * Any other dependencies advertising support for Python 2.x in one package or a separate release for Python 3.x
-* A replacement for py2exe for binary distribution (not mandatory until binary distributions are ready to be built)
-* A replacement for txt2tags for generating documentation (not mandatory until binary distributions are to be built)
 
 ### Running Python 3 version of NVDA
 
@@ -130,34 +128,54 @@ Start date: September 17, 2018
 1. An NVDA version with wxPython 4 must be released. This is a must, as wxPython 4 supports Python 3, which is a stepping stone for Python 3 transition.
 	* Requirement met on September 17, 2018 with release of NVDA 2018.3.
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
-	* Requires editing Git submodule config.
+	* Requirement met on June 10, 2019
 3. Transition issues must be researched and documented (see above for known issues and proposed workarounds). Use "python 3" label.
-	* As of June 7, 2019, at least 20 issues were identified, along with several pull requests, some of which are resolved.
+	* As of June 15, 2019, at least 30 issues were identified, along with several pull requests, most of which are resolved.
 4. If needed, create pull requests dealing with pre-transition workflow such as making NVDA source code Python 2 and 3 aware (imports, for instance).
-	* As of June 7, 2019, at least two transition related pull request were submitted and merged into master branch.
+	* As of June 15, 2019, at least 15 transition related pull request were submitted and merged into a staging branch.
+5. Binary dependencies must be satisfied. These include wxPython, Py2exe and others.
+	* Requirement met on June 10, 2019.
 
-Ideal completion: between NVDA 2018.4 and 2019.1 releases (tentatively by March 31, 2019)
+Ideal completion: between NVDA 2019.2 and 2019.3 releases (tentatively by July 31, 2019)
 
 ### Transition:
 
-Start date: TBD
+This is divided into two stages:
 
-1. A group of developers (code contributors, add-on developers, Python programmers outside of NVDA project and others) should work on transforming NVDA's source code to Python 3.
+1. Stage 1 (source code changes): NVDA developers will investigate, provide fixes for, and test transition related issues.
+2. Stage 2 (broad testing): testing beyond NVDA developers when NV Access believes transition work is ready for broad testing.
+
+#### Stage 1: source code changes
+
+Start date: June 8, 2019
+
+1. A group of developers (code contributors, Python programmers outside of NVDA project and others) should work on transforming NVDA's source code to Python 3.
 	* Do not run 2to3 and tell the script to replace files, as further tweaking is required for some files.
 	* For each transformation iteration, test the source code to make sure features are identical (or almost identical) with older NVDA releases.
 2. Issues related to transition must be documented.
 	* Issues must be labeled as "Python 3" in GitHub.
 	* If needed, proposed solutions and workarounds should be documented in the issue tracker.
-3. Source code developers must test NVDA and add-ons to make sure no major issues are encountered while working on python 3 transition. During this phase, binary builds will not be released until the below condition is met.
+3. Source code developers must test NVDA to make sure no major issues are encountered while working on python 3 transition. During this phase, binary builds will not be released until the below condition is met.
 	* Gather dependencies and make sure they are compatible with Python 3.
 	* Try running SCons under Python 3 to make sure source code is prepared.
 	* If features are working, compare it against latest stable NVDA release in hopes of catching regressions.
 4. A suitable binary distribution packager must be found, tested, and documented. A series of binary builds must be created to make sure the combination of NVDA's own python 3 code, dependencies, binary packagers, and others work seamlessly.
-	* Py2exe was considered, but it does not support Python 3.7.
+	* Originally, Py2exe was considered, but it does not support Python 3.7.
 	* A promising alternative is cx_freeze.
-5. Members of the public should be invited to test a series of try builds meant to test transition work, test add-ons, documentation purposes, community outreach and other steps.
+	* A Python 3 version of Py2exe that supports Python 3.7 was found.
+5. Appveyor build must finish to completion.
+	* As of june 15, 2019, source code, launcher, and certain tests are working.
 
-Estimated completion: four to six months after pre-transition steps are completed.
+Ideal completion: TBD
+
+#### Stage 2: broad testing
+
+Start date: TBD
+
+1. Members of the public should be invited to test a series of try builds meant to test transition work, test add-ons, documentation purposes, community outreach and other steps.
+2. Add-ons community and other stakeholders must be given guidance regarding Python 3 transition.
+
+Estimated completion for both stages: four to six months after pre-transition steps are completed.
 
 ### After transition:
 
@@ -184,9 +202,14 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	7. March 26, 2019: NVDA 2019.1 released.
 	8. April 26, 2019: placeholder snapshot (Threshold) built to house Python 3 transition and other backwards incompatible changes.
 	9. June 7, 2019: async keyword fix merged into Threshold.
-2. Transition: Not yet begun.
-3. After transition: not yet begun.
-4. Python 3 native features:
+2. Transition stage 1 (in progress):
+	1. June 7, 2019: a staging branch for Python 3 transition activated with various source code edits.
+	2. June 8, 2019: staging branch building begins.
+	3. June 12, 2019: source code compilation became possible.
+	4. June 13, 2019: parts of binary compilation and testing framework succeeded.
+3. Transition stage 2: not yet begun.
+4. After transition: not yet begun.
+5. Python 3 native features:
 	* Asyncio: not important at this stage.
 	* Collections.ChainMap: eases implementation of config.ConfigManager.
 	* pyz: no impact unless use cases emerge.
