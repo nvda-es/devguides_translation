@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-06-19 19:41+Hora de verano romance\n"
-"PO-Revision-Date: 2019-06-19 20:10+0200\n"
+"PO-Revision-Date: 2019-06-20 12:09+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,104 +19,92 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:3
 msgid "[//]: # (Links for use elsewhere in the document)"
-msgstr ""
+msgstr "[//]: # (Enlaces que pueden usarse en cualquier parte del documento)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:4
-#, fuzzy
-#| msgid "[6]: https://www.git-scm.com/josephsl/stationPlaylist"
 msgid "[Git]: https://www.git-scm.com"
-msgstr "[6]: https://github.com/josephsl/stationPlaylist"
+msgstr "[Git]: https://www.git-scm.com"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:5
-#, fuzzy
-#| msgid "[1]: https://github.com/nvaccess/nvda"
 msgid "[GitHub]: https://www.github.com/"
-msgstr "[1]: https://github.com/nvaccess/nvda"
+msgstr "[GitHub]: https://www.github.com/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:6
-#, fuzzy
-#| msgid "[1]: https://github.com/nvaccess/nvda"
 msgid "[BitBucket]: https://bitbucket.org/"
-msgstr "[1]: https://github.com/nvaccess/nvda"
+msgstr "[BitBucket]: https://bitbucket.org/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:7
-#, fuzzy
-#| msgid "[1]: https://github.com/nvaccess/nvda"
 msgid "[NVDA GitHub page]: https://github.com/nvaccess/nvda"
-msgstr "[1]: https://github.com/nvaccess/nvda"
+msgstr "[Página de NVDA en GitHub]: https://github.com/nvaccess/nvda"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:8
-#, fuzzy
-#| msgid ""
-#| "[2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html"
 msgid ""
 "[NVDA Developer Guide]: https://www.nvaccess.org/files/nvda/documentation/"
 "developerGuide.html"
 msgstr ""
-"[2]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html"
+"[Guía del desarrollador de NVDA]: https://www.nvaccess.org/files/nvda/"
+"documentation/developerGuide.html"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:9
-#, fuzzy
-#| msgid "[1]: https://github.com/nvaccess/nvda"
 msgid "[Design Overview]: https://github.com/nvaccess/nvda/wiki/DesignOverview"
-msgstr "[1]: https://github.com/nvaccess/nvda"
+msgstr ""
+"[Descripción del diseño]: https://github.com/nvaccess/nvda/wiki/"
+"DesignOverview"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:10
-#, fuzzy
-#| msgid "[5]: https://addons.nvda-project.org"
 msgid "[NVDA Community Add-ons web site]: https://addons.nvda-project.org"
-msgstr "[5]: https://addons.nvda-project.org"
+msgstr ""
+"[Sitio web de complementos de la comunidad de NVDA]: https://addons.nvda-"
+"project.org"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:11
-#, fuzzy
-#| msgid ""
-#| "[3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip"
 msgid ""
 "[add-on template]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/"
 "master.zip"
-msgstr "[3]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip"
+msgstr ""
+"[plantilla de complemento]: https://bitbucket.org/nvdaaddonteam/"
+"addontemplate/get/master.zip"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:12
-#, fuzzy
-#| msgid ""
-#| "[Python Console]: <https://www.nvaccess.org/files/nvda/documentation/"
-#| "developerGuide.html#PythonConsole> (NVDA Developer Guide: The Python "
-#| "Console)"
 msgid ""
 "[Python Console]: <https://www.nvaccess.org/files/nvda/documentation/"
 "developerGuide.html#PythonConsole> (Python Console in NVDA Developer Guide)"
 msgstr ""
 "[Consola Python]: <https://www.nvaccess.org/files/nvda/documentation/"
-"developerGuide.html#PythonConsole> (Guía del desarrollador de NVDA: la "
-"consola Python)"
+"developerGuide.html#PythonConsole> (Consola Python en la guía del "
+"desarrollador de NVDA)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:13
-#, fuzzy
-#| msgid "[4]: http://www.zlotowicz.pl/nvda/winapi.mdwn"
 msgid ""
 "[Using Win32 API]: http://www.zlotowicz.pl/nvda/winapi.mdwn (Using Win32 API "
 "in your add-on)"
-msgstr "[4]: http://www.zlotowicz.pl/nvda/winapi.mdwn"
+msgstr ""
+"[Usar la API de Win32]: http://www.zlotowicz.pl/nvda/winapi.mdwn (Usar la "
+"API de Win32 en tu complemento)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:14
 msgid "[Git Bash]: https://www.atlassian.com/git/tutorials/git-bash"
-msgstr ""
+msgstr "[Git Bash]: https://www.atlassian.com/git/tutorials/git-bash"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:15
 msgid ""
 "[Git for Cygwin]: https://stackoverflow.com/questions/33006007/how-to-"
 "install-git-for-cygwin"
 msgstr ""
+"[Git para Cygwin]: https://stackoverflow.com/questions/33006007/how-to-"
+"install-git-for-cygwin"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:16
 msgid "[TortoiseGit]: https://tortoisegit.org/"
-msgstr ""
+msgstr "[TortoiseGit]: https://tortoisegit.org/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:17
 msgid ""
 "[WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10 (Windows "
 "Subsystem for Linux)"
 msgstr ""
+"[WSL]: https://docs.microsoft.com/en-us/windows/wsl/install-win10 (Windows "
+"Subsystem for Linux)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:18
 msgid "# NVDA Add-on Development Guide"
@@ -133,11 +121,11 @@ msgstr "---"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:21
 msgid "[//]: # (Place this line where you want the table of contents to start)"
-msgstr ""
+msgstr "[//]: # (Pon esta línea donde quieras que empiece el índice)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:22
 msgid "[Table Of Contents]: <#user-content-table-of-contents> (TOC)"
-msgstr ""
+msgstr "[Índice]: <#indice>"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:23
 msgid "# **TABLE OF CONTENTS**"
@@ -651,7 +639,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:111
 msgid "[//]: # (End of TOC)"
-msgstr ""
+msgstr "[//]: # (Fin de la tabla de contenidos)"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:112
 msgid "## Authors, Contributions, and Copyright"
@@ -1044,13 +1032,11 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:149
 msgid "## Add-on Basics"
-msgstr ""
+msgstr "## Conceptos básicos sobre complementos"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:150
-#, fuzzy
-#| msgid "## What are Add-ons?"
 msgid "### What are Add-ons?"
-msgstr "## ¿Qué son los Complementos?"
+msgstr "### ¿Qué son los Complementos?"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:151
 msgid ""
@@ -1203,8 +1189,6 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:174
-#, fuzzy
-#| msgid "## Setting up the add-on development environment"
 msgid "## Setting Up Your Add-on Development Environment"
 msgstr "## Configuración del entorno de desarrollo de complementos"
 
@@ -1215,8 +1199,6 @@ msgstr ""
 "NVDA."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:176
-#, fuzzy
-#| msgid "### Meet System requirements"
 msgid "### Meet System Requirements"
 msgstr "### Cumplir con los requisitos del Sistema"
 
@@ -1230,25 +1212,20 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:178
 msgid "* NVDA:"
-msgstr ""
+msgstr "* NVDA:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:179
-#, fuzzy
-#| msgid ""
-#| "* A version of NVDA is available on your computer (either a portable or "
-#| "installed version will work, but we strongly recommend that you install a "
-#| "copy of NVDA on your development computer). Download NVDA from the NV "
-#| "Access page at https://www.nvaccess.org."
 msgid ""
 "  - A version of NVDA is available on your computer (either a portable or "
 "installed version will work, but we strongly recommend that you install a "
 "copy of NVDA on your development computer). Download NVDA from the [NV "
 "Access download page](https://www.nvaccess.org/download/)."
 msgstr ""
-"* Una versión de NVDA está disponible en tu ordenador (funcionará ya sea una "
-"versión portable o instalada, pero te recomendamos encarecidamente que "
+"  - Una versión de NVDA está disponible en tu ordenador (funcionará ya sea "
+"una versión portable o instalada, pero te recomendamos encarecidamente que "
 "instales una copia de NVDA en tu ordenador de desarrollo). Descarga NVDA "
-"desde la página de NV Access en https://www.nvaccess.org."
+"desde la [página de descargas de NV Access](https://www.nvaccess.org/"
+"download/)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:180
 #, fuzzy
@@ -1267,70 +1244,49 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:181
 msgid "* Python:"
-msgstr ""
+msgstr "* Python:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:182
-#, fuzzy
-#| msgid ""
-#| "* Python 2.7 series, version 2.7.14 32-bit for Windows: <https://www."
-#| "python.org/download/releases/2.7.14/>."
 msgid ""
 "  - Python 2.7 series, version 2.7.14 32-bit for Windows: https://www.python."
 "org/downloads/release/python-2714/"
 msgstr ""
-"* Series de Python 2.7, versión 2.7.14 32-bit para Windows: <https://www."
-"python.org/download/releases/2.7.14/>."
+"  - Series de Python 2.7, versión 2.7.14 32-bit para Windows: https://www."
+"python.org/downloads/release/python-2714/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:183
-#, fuzzy
-#| msgid ""
-#| "\t* If you wish to work with Python 3, use Python 3.7.3, 32-bit for "
-#| "Windows."
 msgid ""
 "  - If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows: "
 "https://www.python.org/downloads/release/python-373/"
 msgstr ""
-"\t* Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para "
-"Windows."
+"  - Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para "
+"Windows: https://www.python.org/downloads/release/python-373/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:184
-#, fuzzy
-#| msgid ""
-#| "* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if "
-#| "using a 3.x release, use 3.0.1 or later): <http://www.scons.org/>."
 msgid ""
 "* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if "
 "using a 3.x release, use 3.0.1 or later): http://www.scons.org/"
 msgstr ""
 "* SCons 2 o 3, versión 2.3.0 o posterior para la generación de paquetes de "
 "complementos (si se usa la versión 3.x, se recomienda la 3.0.1 o posterior): "
-"<http://www.scons.org/>."
+"http://www.scons.org/"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:185
-#, fuzzy
-#| msgid ""
-#| "* Markdown 2.0.1 or later for generating add-on documentation: <https://"
-#| "pypi.python.org/pypi/Markdown/2.0.1>."
 msgid ""
 "* Markdown 2.0.1 or later for generating add-on documentation: https://pypi."
 "python.org/pypi/Markdown/2.0.1"
 msgstr ""
 "* Markdown 2.0.1 o posterior para generar la documentación del complemento: "
-"<https://pypi.python.org/pypi/Markdown/2.0.1>."
+"https://pypi.python.org/pypi/Markdown/2.0.1"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:186
-#, fuzzy
-#| msgid ""
-#| "* The GNU Gettext package for Windows for message localization support. "
-#| "The build can be found at: <http://gnuwin32.sourceforge.net/downlinks/"
-#| "gettext.php>."
 msgid ""
 "* The GNU Gettext package for Windows for message localization support. The "
 "build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php"
 msgstr ""
-"* El paquete Gettext de GNU para Windows para soporte de localización de "
-"mensajes. La compilación se puede encontrar en: <http://gnuwin32.sourceforge."
-"net/downlinks/gettext.php>."
+"* El paquete Gettext de GNU para Windows para soporte de traducción de "
+"mensajes. La compilación se puede encontrar en: http://gnuwin32.sourceforge."
+"net/downlinks/gettext.php"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:187
 #, fuzzy
@@ -1356,36 +1312,27 @@ msgstr ""
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:189
 msgid "* Optional Items:"
-msgstr ""
+msgstr "* Elementos opcionales:"
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:190
-#, fuzzy
-#| msgid ""
-#| "* Git 1.7.9 or later if you wish to upload the add-on to a repository "
-#| "such as Bitbucket (optional. See below). You can use various Git clients, "
-#| "such as Git Bash, Cygwin's Git, and Tortoise Git."
 msgid ""
 "  - Git 1.7.9 or later if you wish to upload the add-on to a repository such "
 "as [Bitbucket] or [Github] (optional. See below). You can use various Git "
 "clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and "
 "[TortoiseGit]."
 msgstr ""
-"* Git 1.7.9 o posterior si deseas subir el complemento a un repositorio como "
-"Bitbucket (opcional). Puedes utilizar varios clientes de Git, como Git Bash, "
-"Git de Cygwin, y Tortoise Git."
+"  - Git 1.7.9 o posterior si deseas subir el complemento a un repositorio "
+"como [Bitbucket] o [Github] (opcional. Mira más abajo). Puedes utilizar "
+"varios clientes de Git, como [Git Bash], [Git de Cygwin], y [TortoiseGit]."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:191
-#, fuzzy
-#| msgid ""
-#| "* The NVDA Community Add-on Template for ease of add-on file and folder "
-#| "packaging and management (optional. [Download the add-on template)][3] ."
 msgid ""
 "  - The [NVDA Community Add-on Template][add-on template] for ease of add-on "
 "file and folder packaging and management (optional)."
 msgstr ""
-"* La plantilla de complemento de NVDA de la comunidad para facilitar el "
-"empaquetado y la gestión de carpetas y archivos del complemento (opcional) "
-"[Descarga la plantilla del complemento)][3]."
+"  - La [plantilla de complemento de NVDA de la comunidad][plantilla de "
+"complemento] para facilitar el empaquetado y la gestión de carpetas y "
+"archivos del complemento (opcional)."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:192
 #, fuzzy
@@ -2819,8 +2766,6 @@ msgstr ""
 "encuentra un objeto."
 
 #: ..\python_docs\NVDA_Add-on_Development_Guide.py:362
-#, fuzzy
-#| msgid "### Example 2: Display a message on a browse mode document"
 msgid "### Example 2: Display a message in a browse mode document"
 msgstr "### Ejemplo 2: Mostrar un mensaje en un documento en modo exploración"
 
