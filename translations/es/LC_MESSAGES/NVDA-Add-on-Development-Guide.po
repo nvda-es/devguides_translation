@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-06-21 16:36+Hora de verano romance\n"
-"PO-Revision-Date: 2019-06-21 16:56+0200\n"
+"PO-Revision-Date: 2019-06-21 18:02+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -308,12 +308,10 @@ msgstr ""
 "complementos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:51
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-packaging-add-ons\">Packaging add-ons</a>"
 msgid "    - [Installing NVDA Add-ons](#user-content-installing-nvda-add-ons)"
 msgstr ""
-"  - <a href=\"#enpaquetado-de-complementos\">Enpaquetado de complementos</a>"
+"    - [Instalación de Complementos de NVDA](#instalacion-de-complementos-de-"
+"nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:52
 msgid ""
@@ -324,15 +322,11 @@ msgstr ""
 "del-entorno-de-desarrollo-de-complementos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:53
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-more-new-terms-please\">More new terms "
-#| "please</a>"
 msgid ""
 "    - [Meet System Requirements](#user-content-meet-system-requirements)"
 msgstr ""
-"  - <a href=\"#mas-terminos-nuevos-por-favor\">Más términos nuevos por "
-"favor</a>"
+"    - [Cumplir con los requisitos del Sistema](#cumplir-con-los-requisitos-"
+"del-sistema)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:54
 msgid ""
@@ -343,14 +337,10 @@ msgstr ""
 "carpetas-de-desarrollo-del-complemento)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:55
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-add-on-development-folder-structure\">Add-on "
-#| "Development Folder Structure</a>"
 msgid "    - [Add-on folder structure](#user-content-add-on-folder-structure)"
 msgstr ""
-"  - <a href=\"#estructura-de-carpetas-de-desarrollo-del-complemento"
-"\">Estructura de Carpetas de Desarrollo del Complemento</a>"
+"    - [Estructura de carpetas del complemento](#estructura-de-carpetas-del-"
+"complemento)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:56
 msgid "    - [Packaging add-ons](#user-content-packaging-add-ons)"
@@ -363,86 +353,58 @@ msgid ""
 msgstr "- [Comenzando: Ejemplos prácticos](#comenzando-ejemplos-practicos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:58
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-what-are-add-on-modules\">What Are Add-on "
-#| "Modules?</a>"
 msgid ""
 "    - [How add-on code is organized](#user-content-how-add-on-code-is-"
 "organized)"
 msgstr ""
-"  - <a href=\"#que-son-los-modulos-de-un-complemento\">¿Qué son los módulos "
-"de un complemento?</a>"
+"    - [Cómo está organizado el código de los complementos](#como-esta-"
+"organizado-el-codigo-de-los-complementos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:59
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-running-your-add-on-in-this-example-chapter"
-#| "\">Running your add-on in this example chapter</a>"
 msgid ""
 "    - [Running your add-on in this example chapter](#user-content-running-"
 "your-add-on-in-this-example-chapter)"
 msgstr ""
-"  - <a href=\"#ejecutar-tu-complemento-de-ejemplo-en-este-capitulo"
-"\">Ejecutar tu complemento de ejemplo en este capítulo</a>"
+"    - [Ejecutar tu complemento de ejemplo en este capítulo](#ejecutar-tu-"
+"complemento-de-ejemplo-en-este-capitulo)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:60
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-generate-a-tone-when-switching-to-"
-#| "notepad\">Example 2: Generate a tone when switching to Notepad</a>"
 msgid ""
 "    - [Example 1: Hear a tone when pressing NVDA+A](#user-content-example-1-"
 "hear-a-tone-when-pressing-nvdaa)"
 msgstr ""
-"  - <a href=\"#ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas"
-"\">Ejemplo 2: generar un tono cuando se cambie al Bloc de notas</a>"
+"    - [Ejemplo 1: escuchar un tono al pulsar NVDA+A](#ejemplo-1-escuchar-un-"
+"tono-al-pulsar-nvdaa)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:61
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-1-code-explanation\">Example 1 code "
-#| "explanation</a>"
 msgid ""
 "    - [Example 1 code explanation](#user-content-example-1-code-explanation)"
 msgstr ""
-"  - <a href=\"#explicacion-del-codigo-del-ejemplo-1\">Explicación del código "
-"del ejemplo 1</a>"
+"    - [Explicación del código del ejemplo 1](#explicacion-del-codigo-del-"
+"ejemplo-1)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:62
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-i-dont-understand-those-above-terms\">I don't "
-#| "understand those above terms</a>"
 msgid ""
 "    - [I don't understand those above terms](#user-content-i-dont-understand-"
 "those-above-terms)"
 msgstr ""
-"  - <a href=\"#no-entiendo-los-terminos-anteriores\">No entiendo los "
-"términos anteriores</a>"
+"    - [No entiendo los términos anteriores](#no-entiendo-los-terminos-"
+"anteriores)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:63
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-generate-a-tone-when-switching-to-"
-#| "notepad\">Example 2: Generate a tone when switching to Notepad</a>"
 msgid ""
 "    - [Example 2: Generate a tone when switching to Notepad](#user-content-"
 "example-2-generate-a-tone-when-switching-to-notepad)"
 msgstr ""
-"  - <a href=\"#ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas"
-"\">Ejemplo 2: generar un tono cuando se cambie al Bloc de notas</a>"
+"    - [Ejemplo 2: generar un tono cuando se cambie al Bloc de notas]"
+"(#ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:64
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-code-explanation\">Example 2 code "
-#| "explanation</a>"
 msgid ""
 "    - [Example 2 code explanation](#user-content-example-2-code-explanation)"
 msgstr ""
-"  - <a href=\"#explicacion-del-codigo-del-ejemplo-2\">Explicación del código "
-"del ejemplo 2</a>"
+"    - [Explicación del código del ejemplo 2](#explicacion-del-codigo-del-"
+"ejemplo-2)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:65
 msgid "    - [More new terms please](#user-content-more-new-terms-please)"
@@ -450,15 +412,11 @@ msgstr ""
 "    - [Más términos nuevos por favor](#mas-terminos-nuevos-por-favor\")"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:66
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-a-few-other-remarks-on-scripts\">A few other "
-#| "remarks on scripts</a>"
 msgid ""
 "    - [A few tips for beginners](#user-content-a-few-tips-for-beginners)"
 msgstr ""
-"  - <a href=\"#otros-comentarios-sobre-scripts\">Otros comentarios sobre "
-"scripts</a>"
+"    - [Algunos consejos para principiantes](#algunos-consejos-para-"
+"principiantes)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:67
 msgid ""
@@ -468,97 +426,63 @@ msgstr ""
 "- [Módulos útiles del núcleo de NVDA](#modulos-utiles-del-nucleo-de-nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:68
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-useful-app-module-properties-and-methods"
-#| "\">Useful app module properties and methods</a>"
 msgid ""
 "    - [List of useful NVDA core modules and methods](#user-content-list-of-"
 "useful-nvda-core-modules-and-methods)"
 msgstr ""
-"  - <a href=\"#propiedades-y-metodos-utiles-de-los-modulos-de-aplicacion"
-"\">Propiedades y métodos útiles de los módulos de aplicación</a>"
+"    - [Lista de módulos y métodos básicos útiles de NVDA](#lista-de-modulos-"
+"y-metodos-basicos-utiles-de-nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:69
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-1-am-i-on-the-right-app-where-the-"
-#| "focus-is-located\">Example 1: am I on the right app where the focus is "
-#| "located?</a>"
 msgid ""
 "    - [Example 1: am I on the right app where the focus is located?](#user-"
 "content-example-1-am-i-on-the-right-app-where-the-focus-is-located)"
 msgstr ""
-"  - <a href=\"#ejemplo-1-estoy-en-la-aplicacion-correcta-donde-se-encuentra-"
-"el-foco\">Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el "
-"foco?</a>"
+"    - [Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el "
+"foco?](#ejemplo-1-estoy-en-la-aplicacion-correcta-donde-se-encuentra-el-foco)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:70
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-display-a-message-in-a-browse-mode-"
-#| "document\">Example 2: Display a message in a browse mode document</a>"
 msgid ""
 "    - [Example 2: Display a message in a browse mode document](#user-content-"
 "example-2-display-a-message-in-a-browse-mode-document)"
 msgstr ""
-"  - <a href=\"#ejemplo-2-mostrar-un-mensaje-en-un-documento-en-modo-"
-"exploracion\">Ejemplo 2: Mostrar un mensaje en un documento en modo "
-"exploración</a>"
+"    - [Ejemplo 2: Mostrar un mensaje en un documento en modo exploración]"
+"(#ejemplo-2-mostrar-un-mensaje-en-un-documento-en-modo-exploracion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:71
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-4-announcing-the-changed-name-of-a-"
-#| "control\">Example 4: Announcing the changed name of a control</a>"
 msgid ""
 "    - [Example 3: Announce the automation ID of a UIA object](#user-content-"
 "example-3-announce-the-automation-id-of-a-uia-object)"
 msgstr ""
-"  - <a href=\"#ejemplo-4-anunciar-el-nombre-cambiado-de-un-control\">Ejemplo "
-"4: Anunciar el nombre cambiado de un control</a>"
+"    - [Ejemplo 3: Anunciar el ID de automatización de un objeto UIA]"
+"(#ejemplo-3-anunciar-el-id-de-automatizacion-de-un-objeto-uia)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:72
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-1-code-explanation\">Example 1 code "
-#| "explanation</a>"
 msgid ""
 "    - [Example 4: Send keystrokes](#user-content-example-4-send-keystrokes)"
 msgstr ""
-"  - <a href=\"#explicacion-del-codigo-del-ejemplo-1\">Explicación del código "
-"del ejemplo 1</a>"
+"    - [Ejemplo 4: Enviar pulsaciones de teclas](#ejemplo-4-enviar-"
+"pulsaciones-de-teclas)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:73
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-5-stop-speech-whenever-screen-content-"
-#| "changes-if-dynamic-content-change-announcement-is-off\">Example 5: Stop "
-#| "speech whenever screen content changes if dynamic content change "
-#| "announcement is off</a>"
 msgid ""
 "    - [Example 5: Stop speech whenever screen content changes if dynamic "
 "content change announcement is off](#user-content-example-5-stop-speech-"
 "whenever-screen-content-changes-if-dynamic-content-change-announcement-is-"
 "off)"
 msgstr ""
-"  - <a href=\"#ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-"
-"la-pantalla-si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado"
-"\">Ejemplo 5: Detener la voz cada vez que cambie el contenido de la pantalla "
-"si el anuncio de cambio de contenido dinámico está desactivado</a>"
+"    - [Ejemplo 5: Detener la voz cada vez que cambie el contenido de la "
+"pantalla si el anuncio de cambio de contenido dinámico está desactivado]"
+"(#ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-la-pantalla-"
+"si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:74
-#, fuzzy
-#| msgid ""
-#| "- <a href=\"#user-content-add-on-module-components-and-development-tips"
-#| "\">Add-on module components and development tips</a>"
 msgid ""
 "- [Add-on module components and development tips](#user-content-add-on-"
 "module-components-and-development-tips)"
 msgstr ""
-"- <a href=\"#componentes-del-modulo-de-un-complemento-y-consejos-de-"
-"desarrollo\">Componentes del módulo de un complemento y consejos de "
-"desarrollo</a>"
+"- [Componentes del módulo de un complemento y consejos de desarrollo]"
+"(#componentes-del-modulo-de-un-complemento-y-consejos-de-desarrollo)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:75
 msgid "    - [The Python Console](#user-content-the-python-console)"
@@ -580,278 +504,176 @@ msgstr ""
 "objetos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:78
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-events-within-objects\">Events within "
-#| "objects</a>"
 msgid ""
 "    - [Focus vs. navigator object](#user-content-focus-vs-navigator-object)"
-msgstr ""
-"  - <a href=\"#eventos-dentro-de-objetos\">Eventos dentro de objetos</a>"
+msgstr "    - [Foco vs. navegador de objetos](#foco-vs-navegador-de-objetos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:79
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-other-useful-object-related-goodies\">Other "
-#| "useful object-related goodies</a>"
 msgid ""
 "    - [Other useful object-related goodies](#user-content-other-useful-"
 "object-related-goodies)"
 msgstr ""
-"  - <a href=\"#otras-golosinas-utiles-relacionadas-con-objetos\">Otras "
-"golosinas útiles relacionadas con objetos</a>"
+"    - [Otras golosinas útiles relacionadas con objetos](#otras-golosinas-"
+"utiles-relacionadas-con-objetos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:80
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-1-finding-the-value-of-a-slider-in-a-"
-#| "program\">Example 1: Finding the value of a slider in a program</a>"
 msgid ""
 "    - [Example 1: Finding the value of a slider in a program](#user-content-"
 "example-1-finding-the-value-of-a-slider-in-a-program)"
 msgstr ""
-"  - <a href=\"#ejemplo-1-encontrar-el-valor-de-un-deslizador-en-un-programa"
-"\">Ejemplo 1: encontrar el valor de un deslizador en un programa</a>"
+"    - [Ejemplo 1: encontrar el valor de un deslizador en un programa]"
+"(#ejemplo-1-encontrar-el-valor-de-un-deslizador-en-un-programa)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:81
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-specialist-objects-and-overriding-object-"
-#| "properties-at-runtime\">Specialist objects and overriding object "
-#| "properties at runtime</a>"
 msgid ""
 "    - [Specialist objects and overriding object properties at runtime](#user-"
 "content-specialist-objects-and-overriding-object-properties-at-runtime)"
 msgstr ""
-"  - <a href=\"#objetos-especiales-y-redefinicion-de-las-propiedades-de-"
-"objetos-en-tiempo-de-ejecucion\">Objetos Especiales y redefinición de las "
-"propiedades de objetos en tiempo de ejecución</a>"
+"    - [Objetos Especiales y redefinición de las propiedades de objetos en "
+"tiempo de ejecución](#objetos-especiales-y-redefinicion-de-las-propiedades-"
+"de-objetos-en-tiempo-de-ejecucion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:82
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-examples-of-overlay-classes-and-modified-roles"
-#| "\">Examples of overlay classes and modified roles</a>"
 msgid ""
 "    - [Examples of overlay classes and modified roles](#user-content-"
 "examples-of-overlay-classes-and-modified-roles)"
 msgstr ""
-"  - <a href=\"#ejemplos-de-sobreescritura-de-clases-y-de-modificacion-de-"
-"roles\">Ejemplos de sobreescritura de clases y de modificación de roles</a>"
+"    - [Ejemplos de sobreescritura de clases y de modificación de roles]"
+"(#ejemplos-de-sobreescritura-de-clases-y-de-modificacion-de-roles)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:83
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-input-and-output-scripts-and-ui-messages"
-#| "\">Input and output: scripts and UI messages</a>"
 msgid ""
 "    - [Input and output: scripts and UI messages](#user-content-input-and-"
 "output-scripts-and-ui-messages)"
 msgstr ""
-"  - <a href=\"#entrada-y-salida-scripts-y-mensajes-iu\">Entrada y salida: "
-"scripts y mensajes IU</a>"
+"    - [Entrada y salida: scripts y mensajes IU](#entrada-y-salida-scripts-y-"
+"mensajes-iu)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:84
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-a-basic-script-dictionary-and-"
-#| "message-output\">Example 2: A basic script dictionary and message output</"
-#| "a>"
 msgid ""
 "    - [Example 2: A basic script dictionary and message output](#user-"
 "content-example-2-a-basic-script-dictionary-and-message-output)"
 msgstr ""
-"  - <a href=\"#ejemplo-2-un-diccionario-de-scripts-basico-y-un-mensaje-de-"
-"salida\">Ejemplo 2: Un diccionario de scripts básico y un mensaje de salida</"
-"a>"
+"    - [Ejemplo 2: Un diccionario de scripts básico y un mensaje de salida]"
+"(#ejemplo-2-un-diccionario-de-scripts-basico-y-un-mensaje-de-salida)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:85
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-3-scripts-for-specific-objects"
-#| "\">Example 3: Scripts for specific objects</a>"
 msgid ""
 "    - [Example 3: Scripts for specific objects](#user-content-example-3-"
 "scripts-for-specific-objects)"
 msgstr ""
-"  - <a href=\"#ejemplo-3-scripts-para-objetos-especificos\">Ejemplo 3: "
-"Scripts para objetos específicos</a>"
+"    - [Ejemplo 3: Scripts para objetos específicos](#ejemplo-3-scripts-para-"
+"objetos-especificos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:86
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-script-lookup-order-and-command-conflicts"
-#| "\">Script lookup order and command conflicts</a>"
 msgid ""
 "    - [Script lookup order and command conflicts](#user-content-script-"
 "lookup-order-and-command-conflicts)"
 msgstr ""
-"  - <a href=\"#orden-de-busqueda-de-scripts-y-conflictos-de-ordenes\">Orden "
-"de búsqueda de scripts y conflictos de órdenes</a>"
+"    - [Orden de búsqueda de scripts y conflictos de órdenes](#orden-de-"
+"busqueda-de-scripts-y-conflictos-de-ordenes)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:87
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-a-few-other-remarks-on-scripts\">A few other "
-#| "remarks on scripts</a>"
 msgid ""
 "    - [A few other remarks on scripts](#user-content-a-few-other-remarks-on-"
 "scripts)"
 msgstr ""
-"  - <a href=\"#otros-comentarios-sobre-scripts\">Otros comentarios sobre "
-"scripts</a>"
+"    - [Otros comentarios sobre scripts](#otros-comentarios-sobre-scripts)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:88
-#, fuzzy
-#| msgid "  - <a href=\"#user-content-events\">Events</a>"
 msgid "    - [Events](#user-content-events)"
-msgstr "  - <a href=\"#eventos\">Eventos</a>"
+msgstr "    - [Eventos](#eventos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:89
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-4-announcing-the-changed-name-of-a-"
-#| "control\">Example 4: Announcing the changed name of a control</a>"
 msgid ""
 "    - [Example 4: Announcing the changed name of a control](#user-content-"
 "example-4-announcing-the-changed-name-of-a-control)"
 msgstr ""
-"  - <a href=\"#ejemplo-4-anunciar-el-nombre-cambiado-de-un-control\">Ejemplo "
-"4: Anunciar el nombre cambiado de un control</a>"
+"    - [Ejemplo 4: Anunciar el nombre cambiado de un control](#ejemplo-4-"
+"anunciar-el-nombre-cambiado-de-un-control)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:90
-#, fuzzy
-#| msgid "  - <a href=\"#user-content-other-components\">Other components</a>"
 msgid "    - [List of possible events](#user-content-list-of-possible-events)"
-msgstr "  - <a href=\"#otros-componentes\">Otros componentes</a>"
+msgstr "    - [Lista de posibles eventos](#lista-de-posibles-eventos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:91
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-events-within-objects\">Events within "
-#| "objects</a>"
 msgid "    - [Events within objects](#user-content-events-within-objects)"
-msgstr ""
-"  - <a href=\"#eventos-dentro-de-objetos\">Eventos dentro de objetos</a>"
+msgstr "    - [Eventos dentro de objetos](#eventos-dentro-de-objetos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:92
-#, fuzzy
-#| msgid "  - <a href=\"#user-content-other-components\">Other components</a>"
 msgid "    - [Other components](#user-content-other-components)"
-msgstr "  - <a href=\"#otros-componentes\">Otros componentes</a>"
+msgstr "    - [Otros componentes](#otros-componentes)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:93
-#, fuzzy
-#| msgid "  - <a href=\"#user-content-what-are-add-ons\">What are Add-ons?</a>"
 msgid "    - [Let's build an add-on](#user-content-lets-build-an-add-on)"
-msgstr ""
-"  - <a href=\"#que-son-los-complementos\">¿Qué son los Complementos?</a>"
+msgstr "    - [Construyamos un complemento](#construyamos-un-complemento)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:94
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-add-on-planning-and-development-tips\">Add-on "
-#| "planning and development tips</a>"
 msgid ""
 "    - [Add-on planning and development tips](#user-content-add-on-planning-"
 "and-development-tips)"
 msgstr ""
-"  - <a href=\"#consejos-para-planificacion-y-desarrollo-de-complementos"
-"\">Consejos para planificación y desarrollo de complementos</a>"
+"    - [Consejos para planificación y desarrollo de complementos](#consejos-"
+"para-planificacion-y-desarrollo-de-complementos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:95
-#, fuzzy
-#| msgid "  - <a href=\"#user-content-what-are-add-ons\">What are Add-ons?</a>"
 msgid "    - [Do's and don'ts](#user-content-dos-and-donts)"
-msgstr ""
-"  - <a href=\"#que-son-los-complementos\">¿Qué son los Complementos?</a>"
+msgstr "    - [Qué hacer y qué no](#que-hacer-y-que-no)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:96
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-frequently-asked-questions-about-add-on-"
-#| "components-and-development\">Frequently Asked Questions about add-on "
-#| "components and development</a>"
 msgid ""
 "    - [Frequently Asked Questions about add-on components and development]"
 "(#user-content-frequently-asked-questions-about-add-on-components-and-"
 "development)"
 msgstr ""
-"  - <a href=\"#preguntas-frecuentes-sobre-componentes-de-complementos-y-"
-"desarrollo\">Preguntas frecuentes sobre componentes de complementos y "
-"desarrollo</a>"
+"    - [Preguntas frecuentes sobre componentes de complementos y desarrollo]"
+"(#preguntas-frecuentes-sobre-componentes-de-complementos-y-desarrollo)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:97
-#, fuzzy
-#| msgid ""
-#| "- <a href=\"#user-content-introduction-to-global-plugins\">Introduction "
-#| "to global plugins</a>"
 msgid ""
 "- [Introduction to global plugins](#user-content-introduction-to-global-"
 "plugins)"
 msgstr ""
-"- <a href=\"#introduccion-a-las-extensiones-globales\">Introducción a las "
-"extensiones globales</a>"
+"- [Introducción a las extensiones globales](#introduccion-a-las-extensiones-"
+"globales)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:98
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-typical-development-plan-for-global-plugins"
-#| "\">Typical development plan for global plugins</a>"
 msgid ""
 "    - [Typical development plan for global plugins](#user-content-typical-"
 "development-plan-for-global-plugins)"
 msgstr ""
-"  - <a href=\"#plan-de-desarrollo-tipico-para-extensiones-globales\">Plan de "
-"desarrollo típico para extensiones globales</a>"
+"    - [Plan de desarrollo típico para extensiones globales](#plan-de-"
+"desarrollo-tipico-para-extensiones-globales)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:99
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-the-global-plugin-code\">The global plugin "
-#| "code</a>"
 msgid "    - [The global plugin code](#user-content-the-global-plugin-code)"
 msgstr ""
-"  - <a href=\"#el-codigo-de-la-extension-global\">El código de la extensión "
-"global</a>"
+"    - [El código de la extensión global](#el-codigo-de-la-extension-global)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:100
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-when-to-write-or-not-write-global-plugins"
-#| "\">When to write or not write global plugins</a>"
 msgid ""
 "    - [When to write or not write global plugins](#user-content-when-to-"
 "write-or-not-write-global-plugins)"
 msgstr ""
-"  - <a href=\"#cuando-escribir-o-no-escribir-extensiones-globales\">Cuándo "
-"escribir o no escribir extensiones globales</a>"
+"    - [Cuándo escribir o no escribir extensiones globales](#cuando-escribir-"
+"o-no-escribir-extensiones-globales)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:101
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-few-more-things-to-remember-about-global-"
-#| "plugins\">Few more things to remember about global plugins</a>"
 msgid ""
 "    - [Few more things to remember about global plugins](#user-content-few-"
 "more-things-to-remember-about-global-plugins)"
 msgstr ""
-"  - <a href=\"#algunas-cosas-mas-que-recordar-sobre-las-extensiones-globales"
-"\">Algunas cosas más que recordar sobre las extensiones globales</a>"
+"    - [Algunas cosas más que recordar sobre las extensiones globales]"
+"(#algunas-cosas-mas-que-recordar-sobre-las-extensiones-globales)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:102
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-1-writing-computer-braille-using-"
-#| "qwerty-keyboard\">Example 1: Writing computer braille using QWERTY "
-#| "keyboard</a>"
 msgid ""
 "    - [Example 1: Writing computer braille using QWERTY keyboard](#user-"
 "content-example-1-writing-computer-braille-using-qwerty-keyboard)"
 msgstr ""
-"  - <a href=\"#ejemplo-1-escribir-braille-computerizado-utilizando-el-"
-"teclado-qwerty\">Ejemplo 1: Escribir braille computerizado utilizando el "
-"teclado QWERTY</a>"
+"    - [Ejemplo 1: Escribir braille computerizado utilizando el teclado "
+"QWERTY](#ejemplo-1-escribir-braille-computerizado-utilizando-el-teclado-"
+"qwerty)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:103
 msgid "    - [Exercises](#user-content-exercises)"
@@ -881,67 +703,46 @@ msgstr ""
 "(#proceso-y-estrategias-de-desarrollo-de-modulos-de-aplicacion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:107
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-2-generate-a-tone-when-switching-to-"
-#| "notepad\">Example 2: Generate a tone when switching to Notepad</a>"
 msgid ""
 "    - [Example 2: Simple app module in Notepad](#user-content-example-2-"
 "simple-app-module-in-notepad)"
 msgstr ""
-"  - <a href=\"#ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas"
-"\">Ejemplo 2: generar un tono cuando se cambie al Bloc de notas</a>"
+"    - [Ejemplo 2: Módulo de aplicación simple en el Bloc de notas]"
+"(#ejemplo-2-modulo-de-aplicacion-simple-en-el-bloc-de-notas)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:108
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-3-scripts-for-specific-objects"
-#| "\">Example 3: Scripts for specific objects</a>"
 msgid ""
 "    - [Example 3: Silencing NVDA in Openbook](#user-content-example-3-"
 "silencing-nvda-in-openbook)"
 msgstr ""
-"  - <a href=\"#ejemplo-3-scripts-para-objetos-especificos\">Ejemplo 3: "
-"Scripts para objetos específicos</a>"
+"    - [Ejemplo 3: Silenciar NVDA en Openbook](#ejemplo-3-silenciar-nvda-en-"
+"openbook)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:109
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-example-4-announcing-control-property-changes-"
-#| "while-using-another-app\">Example 4: Announcing control property changes "
-#| "while using another app</a>"
 msgid ""
 "    - [Example 4: Announcing control property changes while using another "
 "app](#user-content-example-4-announcing-control-property-changes-while-using-"
 "another-app)"
 msgstr ""
-"  - <a href=\"#ejemplo-4-anunciar-cambios-de-propiedad-de-control-mientras-"
-"se-usa-otra-aplicacion\">Ejemplo 4: Anunciar cambios de propiedad de control "
-"mientras se usa otra aplicación</a>"
+"    - [Ejemplo 4: Anunciar cambios de propiedad de control mientras se usa "
+"otra aplicación](#ejemplo-4-anunciar-cambios-de-propiedad-de-control-"
+"mientras-se-usa-otra-aplicacion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:110
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-useful-app-module-properties-and-methods"
-#| "\">Useful app module properties and methods</a>"
 msgid ""
 "    - [Useful app module properties and methods](#user-content-useful-app-"
 "module-properties-and-methods)"
 msgstr ""
-"  - <a href=\"#propiedades-y-metodos-utiles-de-los-modulos-de-aplicacion"
-"\">Propiedades y métodos útiles de los módulos de aplicación</a>"
+"    - [Propiedades y métodos útiles de los módulos de aplicación]"
+"(#propiedades-y-metodos-utiles-de-los-modulos-de-aplicacion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:111
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-a-few-other-remarks-on-scripts\">A few other "
-#| "remarks on scripts</a>"
 msgid ""
 "    - [Other remarks on app modules](#user-content-other-remarks-on-app-"
 "modules)"
 msgstr ""
-"  - <a href=\"#otros-comentarios-sobre-scripts\">Otros comentarios sobre "
-"scripts</a>"
+"    - [Otros comentarios sobre los módulos de aplicación](#otros-comentarios-"
+"sobre-los-modulos-de-aplicacion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:112
 msgid "- [Drivers](#user-content-drivers)"
@@ -952,19 +753,14 @@ msgid "    - [Driver components](#user-content-driver-components)"
 msgstr "    - [Componentes del controlador](#componentes-del-controlador)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:114
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-few-important-things-to-remember-before-"
-#| "during-and-after-driver-development\">Few important things to remember "
-#| "before, during and after driver development</a>"
 msgid ""
 "    - [Few important things to remember before, during and after driver "
 "development](#user-content-few-important-things-to-remember-before-during-"
 "and-after-driver-development)"
 msgstr ""
-"  - <a href=\"#unas-pocas-cosas-importantes-que-recordar-antes-durante-y-"
-"despues-del-desarrollo-de-controladores\">Unas pocas cosas importantes que "
-"recordar antes, durante y después del desarrollo de controladores</a>"
+"    - [Unas pocas cosas importantes que recordar antes, durante y después "
+"del desarrollo de controladores](#unas-pocas-cosas-importantes-que-recordar-"
+"antes-durante-y-despues-del-desarrollo-de-controladores)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:115
 msgid ""
@@ -983,14 +779,9 @@ msgstr ""
 "complemento-y-experiencia-con-otros)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:117
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-what-are-add-on-modules\">What Are Add-on "
-#| "Modules?</a>"
 msgid "    - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)"
 msgstr ""
-"  - <a href=\"#que-son-los-modulos-de-un-complemento\">¿Qué son los módulos "
-"de un complemento?</a>"
+"    - [La lista de complementos de NVDA](#la-lista-de-complementos-de-nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:118
 msgid ""
@@ -1028,16 +819,12 @@ msgstr ""
 "python-que-todo-desarrollador-de-complementos-necesita-saber)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:123
-#, fuzzy
-#| msgid ""
-#| "  - <a href=\"#user-content-appendix-a-add-on-terms-dictionary\">Appendix "
-#| "A: add-on terms dictionary</a>"
 msgid ""
 "    - [Appendix C: Add-on type comparison](#user-content-appendix-c-add-on-"
 "type-comparison)"
 msgstr ""
-"  - <a href=\"#apendice-a-diccionario-de-terminos-de-complemento\">Apéndice "
-"A: Diccionario de términos de complemento</a>"
+"    - [Apéndice C: Comparación de tipos de complementos](#apendice-c-"
+"comparacion-de-tipos-de-complementos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:124
 msgid ""
