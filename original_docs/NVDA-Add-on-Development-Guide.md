@@ -1,3 +1,5 @@
+[//]: # (Translators: delete the table of contents before translating. Regenerate after translation if possible, or don't include in translated version)
+
 [//]: # (Links for use elsewhere in the document)
 [Git]: https://www.git-scm.com
 [GitHub]: https://www.github.com/
@@ -27,91 +29,91 @@ Latest version: April 2019 for NVDA 2019.1
 
 *A note to screen reader users:* to return to this table of contents, use your heading level 1 browse mode command in the reverse direction.
 
-- <a href="#user-content-authors-contributions-and-copyright">Authors, Contributions, and Copyright</a>
-- <a href="#user-content-introduction">Introduction</a>
-- <a href="#user-content-audience">Audience</a>
-  - <a href="#user-content-special-note-on-python-version">Special note on Python version</a>
-  - <a href="#user-content-a-special-note-for-scripters-of-other-screen-readers">A special note for scripters of other screen readers</a>
-  - <a href="#user-content-a-special-note-about-windows-store-version-of-nvda">A special note about Windows Store version of NVDA</a>
-  - <a href="#user-content-a-very-important-note-about-migrating-custom-extension-code-to-development-scratchpad">A very important note about migrating custom extension code to development scratchpad</a>
-- <a href="#user-content-add-on-basics">Add-on Basics</a>
-  - <a href="#user-content-what-are-add-ons">What are Add-ons?</a>
-  - <a href="#user-content-what-are-add-on-modules">What Are Add-on Modules?</a>
-  - <a href="#user-content-what-are-add-on-packages">What Are Add-on Packages?</a>
-  - <a href="#user-content-installing-nvda-add-ons">Installing NVDA Add-ons</a>
-- <a href="#user-content-setting-up-the-add-on-development-environment">Setting up the add-on development environment</a>
-  - <a href="#user-content-meet-system-requirements">Meet System requirements</a>
-  - <a href="#user-content-add-on-development-folder-structure">Add-on Development Folder Structure</a>
-  - <a href="#user-content-add-on-folder-structure">Add-on folder structure</a>
-  - <a href="#user-content-packaging-add-ons">Packaging add-ons</a>
-- <a href="#user-content-getting-started-hands-on-examples">Getting started: Hands-on examples</a>
-  - <a href="#user-content-how-add-on-code-is-organized">How add-on code is organized</a>
-  - <a href="#user-content-running-your-add-on-in-this-example-chapter">Running your add-on in this example chapter</a>
-  - <a href="#user-content-example-1-hear-a-tone-when-pressing-nvdaa">Example 1: Hear a tone when pressing NVDA+A</a>
-  - <a href="#user-content-example-1-code-explanation">Example 1 code explanation</a>
-  - <a href="#user-content-i-dont-understand-those-above-terms">I don't understand those above terms</a>
-  - <a href="#user-content-example-2-generate-a-tone-when-switching-to-notepad">Example 2: Generate a tone when switching to Notepad</a>
-  - <a href="#user-content-example-2-code-explanation">Example 2 code explanation</a>
-  - <a href="#user-content-more-new-terms-please">More new terms please</a>
-  - <a href="#user-content-a-few-tips-for-beginners">A few tips for beginners</a>
-- <a href="#user-content-useful-modules-from-nvda-core">Useful modules from NVDA core</a>
-  - <a href="#user-content-list-of-useful-nvda-core-modules-and-methods">List of useful NVDA core modules and methods</a>
-  - <a href="#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located">Example 1: am I on the right app where the focus is located?</a>
-  - <a href="#user-content-example-2-display-a-message-in-a-browse-mode-document">Example 2: Display a message in a browse mode document</a>
-  - <a href="#user-content-example-3-announce-the-automation-id-of-a-uia-object">Example 3: Announce the automation ID of a UIA object</a>
-  - <a href="#user-content-example-4-send-keystrokes">Example 4: Send keystrokes</a>
-  - <a href="#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off">Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off</a>
-- <a href="#user-content-add-on-module-components-and-development-tips">Add-on module components and development tips</a>
-  - <a href="#user-content-the-python-console">The Python Console</a>
-  - <a href="#user-content-working-with-objects-on-screen">Working with objects on screen</a>
-  - <a href="#user-content-examining-object-hierarchy">Examining object hierarchy</a>
-  - <a href="#user-content-focus-vs-navigator-object">Focus vs. navigator object</a>
-  - <a href="#user-content-other-useful-object-related-goodies">Other useful object-related goodies</a>
-  - <a href="#user-content-example-1-finding-the-value-of-a-slider-in-a-program">Example 1: Finding the value of a slider in a program</a>
-  - <a href="#user-content-specialist-objects-and-overriding-object-properties-at-runtime">Specialist objects and overriding object properties at runtime</a>
-  - <a href="#user-content-examples-of-overlay-classes-and-modified-roles">Examples of overlay classes and modified roles</a>
-  - <a href="#user-content-input-and-output-scripts-and-ui-messages">Input and output: scripts and UI messages</a>
-  - <a href="#user-content-example-2-a-basic-script-dictionary-and-message-output">Example 2: A basic script dictionary and message output</a>
-  - <a href="#user-content-example-3-scripts-for-specific-objects">Example 3: Scripts for specific objects</a>
-  - <a href="#user-content-script-lookup-order-and-command-conflicts">Script lookup order and command conflicts</a>
-  - <a href="#user-content-a-few-other-remarks-on-scripts">A few other remarks on scripts</a>
-  - <a href="#user-content-events">Events</a>
-  - <a href="#user-content-example-4-announcing-the-changed-name-of-a-control">Example 4: Announcing the changed name of a control</a>
-  - <a href="#user-content-list-of-possible-events">List of possible events</a>
-  - <a href="#user-content-events-within-objects">Events within objects</a>
-  - <a href="#user-content-other-components">Other components</a>
-  - <a href="#user-content-lets-build-an-add-on">Let's build an add-on</a>
-  - <a href="#user-content-add-on-planning-and-development-tips">Add-on planning and development tips</a>
-  - <a href="#user-content-dos-and-donts">Do's and don'ts</a>
-  - <a href="#user-content-frequently-asked-questions-about-add-on-components-and-development">Frequently Asked Questions about add-on components and development</a>
-- <a href="#user-content-introduction-to-global-plugins">Introduction to global plugins</a>
-  - <a href="#user-content-typical-development-plan-for-global-plugins">Typical development plan for global plugins</a>
-  - <a href="#user-content-the-global-plugin-code">The global plugin code</a>
-  - <a href="#user-content-when-to-write-or-not-write-global-plugins">When to write or not write global plugins</a>
-  - <a href="#user-content-few-more-things-to-remember-about-global-plugins">Few more things to remember about global plugins</a>
-  - <a href="#user-content-example-1-writing-computer-braille-using-qwerty-keyboard">Example 1: Writing computer braille using QWERTY keyboard</a>
-  - <a href="#user-content-exercises">Exercises</a>
-- <a href="#user-content-introduction-to-app-modules">Introduction to app modules</a>
-  - <a href="#user-content-differences-between-app-modules-and-global-plugins">Differences between app modules and global plugins</a>
-  - <a href="#user-content-app-module-development-process-and-strategies">App module development process and strategies</a>
-  - <a href="#user-content-example-2-simple-app-module-in-notepad">Example 2: Simple app module in Notepad</a>
-  - <a href="#user-content-example-3-silencing-nvda-in-openbook">Example 3: Silencing NVDA in Openbook</a>
-  - <a href="#user-content-example-4-announcing-control-property-changes-while-using-another-app">Example 4: Announcing control property changes while using another app</a>
-  - <a href="#user-content-useful-app-module-properties-and-methods">Useful app module properties and methods</a>
-  - <a href="#user-content-other-remarks-on-app-modules">Other remarks on app modules</a>
-- <a href="#user-content-drivers">Drivers</a>
-  - <a href="#user-content-driver-components">Driver components</a>
-  - <a href="#user-content-few-important-things-to-remember-before-during-and-after-driver-development">Few important things to remember before, during and after driver development</a>
-  - <a href="#user-content-typical-driver-development-steps">Typical driver development steps</a>
-- <a href="#user-content-sharing-your-add-on-and-experience-with-others">Sharing your add-on and experience with others</a>
-  - <a href="#user-content-the-nvda-add-ons-list">The NVDA Add-ons list</a>
-  - <a href="#user-content-the-nvda-community-add-ons-web-site-and-code-repository">The NVDA Community Add-ons web site and code repository</a>
-- <a href="#user-content-miscellaneous-information">Miscellaneous information</a>
-- <a href="#user-content-appendicies">Appendicies</a>
-  - <a href="#user-content-appendix-a-add-on-terms-dictionary">Appendix A: add-on terms dictionary</a>
-  - <a href="#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know">Appendix B: Programming and Python concepts every add-on developer needs to know</a>
-  - <a href="#user-content-appendix-c-add-on-type-comparison">Appendix C: Add-on type comparison</a>
-  - <a href="#user-content-appendix-d-notes-and-references-for-scripters-of-other-screen-readers">Appendix D: notes and references for scripters of other screen readers</a>
+- [Authors, Contributions, and Copyright](#user-content-authors-contributions-and-copyright)
+- [Introduction](#user-content-introduction)
+- [Audience](#user-content-audience)
+    - [Special note on Python version](#user-content-special-note-on-python-version)
+    - [A special note for scripters of other screen readers](#user-content-a-special-note-for-scripters-of-other-screen-readers)
+    - [A special note about Windows Store version of NVDA](#user-content-a-special-note-about-windows-store-version-of-nvda)
+    - [A very important note about migrating custom extension code to development scratchpad](#user-content-a-very-important-note-about-migrating-custom-extension-code-to-development-scratchpad)
+- [Add-on Basics](#user-content-add-on-basics)
+    - [What are Add-ons?](#user-content-what-are-add-ons)
+    - [What Are Add-on Modules?](#user-content-what-are-add-on-modules)
+    - [What Are Add-on Packages?](#user-content-what-are-add-on-packages)
+    - [Installing NVDA Add-ons](#user-content-installing-nvda-add-ons)
+- [Setting Up Your Add-on Development Environment](#user-content-setting-up-your-add-on-development-environment)
+    - [Meet System Requirements](#user-content-meet-system-requirements)
+    - [Add-on Development Folder Structure](#user-content-add-on-development-folder-structure)
+    - [Add-on folder structure](#user-content-add-on-folder-structure)
+    - [Packaging add-ons](#user-content-packaging-add-ons)
+- [Getting started: Hands-on examples](#user-content-getting-started-hands-on-examples)
+    - [How add-on code is organized](#user-content-how-add-on-code-is-organized)
+    - [Running your add-on in this example chapter](#user-content-running-your-add-on-in-this-example-chapter)
+    - [Example 1: Hear a tone when pressing NVDA+A](#user-content-example-1-hear-a-tone-when-pressing-nvdaa)
+    - [Example 1 code explanation](#user-content-example-1-code-explanation)
+    - [I don't understand those above terms](#user-content-i-dont-understand-those-above-terms)
+    - [Example 2: Generate a tone when switching to Notepad](#user-content-example-2-generate-a-tone-when-switching-to-notepad)
+    - [Example 2 code explanation](#user-content-example-2-code-explanation)
+    - [More new terms please](#user-content-more-new-terms-please)
+    - [A few tips for beginners](#user-content-a-few-tips-for-beginners)
+- [Useful modules from NVDA core](#user-content-useful-modules-from-nvda-core)
+    - [List of useful NVDA core modules and methods](#user-content-list-of-useful-nvda-core-modules-and-methods)
+    - [Example 1: am I on the right app where the focus is located?](#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located)
+    - [Example 2: Display a message in a browse mode document](#user-content-example-2-display-a-message-in-a-browse-mode-document)
+    - [Example 3: Announce the automation ID of a UIA object](#user-content-example-3-announce-the-automation-id-of-a-uia-object)
+    - [Example 4: Send keystrokes](#user-content-example-4-send-keystrokes)
+    - [Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off](#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off)
+- [Add-on module components and development tips](#user-content-add-on-module-components-and-development-tips)
+    - [The Python Console](#user-content-the-python-console)
+    - [Working with objects on screen](#user-content-working-with-objects-on-screen)
+    - [Examining object hierarchy](#user-content-examining-object-hierarchy)
+    - [Focus vs. navigator object](#user-content-focus-vs-navigator-object)
+    - [Other useful object-related goodies](#user-content-other-useful-object-related-goodies)
+    - [Example 1: Finding the value of a slider in a program](#user-content-example-1-finding-the-value-of-a-slider-in-a-program)
+    - [Specialist objects and overriding object properties at runtime](#user-content-specialist-objects-and-overriding-object-properties-at-runtime)
+    - [Examples of overlay classes and modified roles](#user-content-examples-of-overlay-classes-and-modified-roles)
+    - [Input and output: scripts and UI messages](#user-content-input-and-output-scripts-and-ui-messages)
+    - [Example 2: A basic script dictionary and message output](#user-content-example-2-a-basic-script-dictionary-and-message-output)
+    - [Example 3: Scripts for specific objects](#user-content-example-3-scripts-for-specific-objects)
+    - [Script lookup order and command conflicts](#user-content-script-lookup-order-and-command-conflicts)
+    - [A few other remarks on scripts](#user-content-a-few-other-remarks-on-scripts)
+    - [Events](#user-content-events)
+    - [Example 4: Announcing the changed name of a control](#user-content-example-4-announcing-the-changed-name-of-a-control)
+    - [List of possible events](#user-content-list-of-possible-events)
+    - [Events within objects](#user-content-events-within-objects)
+    - [Other components](#user-content-other-components)
+    - [Let's build an add-on](#user-content-lets-build-an-add-on)
+    - [Add-on planning and development tips](#user-content-add-on-planning-and-development-tips)
+    - [Do's and don'ts](#user-content-dos-and-donts)
+    - [Frequently Asked Questions about add-on components and development](#user-content-frequently-asked-questions-about-add-on-components-and-development)
+- [Introduction to global plugins](#user-content-introduction-to-global-plugins)
+    - [Typical development plan for global plugins](#user-content-typical-development-plan-for-global-plugins)
+    - [The global plugin code](#user-content-the-global-plugin-code)
+    - [When to write or not write global plugins](#user-content-when-to-write-or-not-write-global-plugins)
+    - [Few more things to remember about global plugins](#user-content-few-more-things-to-remember-about-global-plugins)
+    - [Example 1: Writing computer braille using QWERTY keyboard](#user-content-example-1-writing-computer-braille-using-qwerty-keyboard)
+    - [Exercises](#user-content-exercises)
+- [Introduction to app modules](#user-content-introduction-to-app-modules)
+    - [Differences between app modules and global plugins](#user-content-differences-between-app-modules-and-global-plugins)
+    - [App module development process and strategies](#user-content-app-module-development-process-and-strategies)
+    - [Example 2: Simple app module in Notepad](#user-content-example-2-simple-app-module-in-notepad)
+    - [Example 3: Silencing NVDA in Openbook](#user-content-example-3-silencing-nvda-in-openbook)
+    - [Example 4: Announcing control property changes while using another app](#user-content-example-4-announcing-control-property-changes-while-using-another-app)
+    - [Useful app module properties and methods](#user-content-useful-app-module-properties-and-methods)
+    - [Other remarks on app modules](#user-content-other-remarks-on-app-modules)
+- [Drivers](#user-content-drivers)
+    - [Driver components](#user-content-driver-components)
+    - [Few important things to remember before, during and after driver development](#user-content-few-important-things-to-remember-before-during-and-after-driver-development)
+    - [Typical driver development steps](#user-content-typical-driver-development-steps)
+- [Sharing your add-on and experience with others](#user-content-sharing-your-add-on-and-experience-with-others)
+    - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)
+    - [The NVDA Community Add-ons web site and code repository](#user-content-the-nvda-community-add-ons-web-site-and-code-repository)
+- [Miscellaneous information](#user-content-miscellaneous-information)
+- [Appendicies](#user-content-appendicies)
+    - [Appendix A: add-on terms dictionary](#user-content-appendix-a-add-on-terms-dictionary)
+    - [Appendix B: Programming and Python concepts every add-on developer needs to know](#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know)
+    - [Appendix C: Add-on type comparison](#user-content-appendix-c-add-on-type-comparison)
+    - [Appendix D: notes and references for scripters of other screen readers](#user-content-appendix-d-notes-and-references-for-scripters-of-other-screen-readers)
 
 ---
 
@@ -119,7 +121,7 @@ Latest version: April 2019 for NVDA 2019.1
 
 ## Authors, Contributions, and Copyright
 
-This guide was originally written by Joseph Lee, and is shaped by the NVDA user and developer community. We welcome your feedback and contributions.
+This guide was originally written by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. As of May, 2019, it is being maintained and revised by Luke Davis ([@XLTechie](https://github.com/XLTechie)). We welcome your feedback and contributions.
 
 NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
@@ -236,7 +238,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
   - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
   - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
 
-Note: if using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
+Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
 
 ### Add-on Development Folder Structure
 
@@ -1285,7 +1287,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Live region change announcements | event_liveRegionChange(self, obj, nextHandler) | By default, new text will be spoken and/or brailled. |
 | Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contents of this "dialog" will be announced automatically. |
 | I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |
-| I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). \
+| I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). |
 | I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |
 | Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | Commonly called "aliasing". |
 | Play a tone | tones.beep(hertz, duration) | Duration in milliseconds. |
@@ -1307,14 +1309,14 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Download headers for a file on the web | resource = urllib.urlopen(URL) | |
 | Work with JSON data | json module | |
 | Allocate some memory somewhere | ctypes.windll.kernel32.VirtualAllocEx() | The faster way to do this is winKernel.virtualAllocEx function. |
-| Send a message to another process | ctypes.windll.user32.SendMessageW() | The shorter way is winUser.sendMessage() function.
+| Send a message to another process | ctypes.windll.user32.SendMessageW() | The shorter way is winUser.sendMessage() function. |
 | Current time in seconds | time.time() | This returns seconds elapsed from January 1, 1970 at midnight. |
 | Create a message box | gui.messageBox | A thin wrapper around wx.MessageBox class. |
 | Create a custom dialog | wx.Dialog | |
 | Run multiple background tasks at once | threading.Thread | In reality, due to internal issues, Python will run one thread after another. This approach is useful if you want to run a background task while making NVDA remain responsive. |
 | Run something periodically | wx.PyTimer or threading.Timer | |
 | Tally occurrence of text in a document | collections.Counter | Be sure to have a list of words from a text file before running a tally on it. |
-| Create a dynamic array | list object | Python's list object ([]) is a dynamic array. \
+| Create a dynamic array | list object | Python's list object ([]) is a dynamic array. |
 | Work with associative arrays | dict object | Python's dictionary ({}) object is another name for associative array, sometimes called a map. |
 | Open, parse, and save config files | config module or configobj module | |
 | I wish to make my code run faster and error-free | DO NOT DO IT UNLESS YOU REALLY NEED TO! | To paraphrase a quote from a famous programmer, "don't optimize unless you want to go through headaches". |

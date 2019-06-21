@@ -1,81 +1,230 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía de Desarrollo de Complementos de NVDA</title>
+  <title>[//]: # (Translators: delete the table of contents before translating. Regenerate after translation if possible, or don't include in translated version)</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía de Desarrollo de Complementos de NVDA</h1></header>
-  <ul>
-<li>Última versión: diciembre de 2017 para NVDA 2017.4</li>
+  <header><h1>[//]: # (Translators: delete the table of contents before translating. Regenerate after translation if possible, or don't include in translated version)</h1></header>
+  <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
+<p>Última versión: abril de 2019 para NVDA 2019.1</p>
+<hr />
+<h1 id="indice"><strong>ÍNDICE</strong></h1>
+<p><em>Nota para usuarios de lectores de pantalla</em>: para volver a este índice, usa tu orden del modo exploración para moverte al encabezado de nivel 1 en dirección contraria.</p>
+<ul>
+<li><a href="#user-content-authors-contributions-and-copyright">Authors, Contributions, and Copyright</a></li>
+<li><a href="#user-content-introduction">Introduction</a></li>
+<li><a href="#user-content-audience">Audience</a><ul>
+<li><a href="#user-content-special-note-on-python-version">Special note on Python version</a></li>
+<li><a href="#user-content-a-special-note-for-scripters-of-other-screen-readers">A special note for scripters of other screen readers</a></li>
+<li><a href="#user-content-a-special-note-about-windows-store-version-of-nvda">A special note about Windows Store version of NVDA</a></li>
+<li><a href="#user-content-a-very-important-note-about-migrating-custom-extension-code-to-development-scratchpad">A very important note about migrating custom extension code to development scratchpad</a></li>
 </ul>
+</li>
+<li><a href="#user-content-add-on-basics">Add-on Basics</a><ul>
+<li><a href="#user-content-what-are-add-ons">What are Add-ons?</a></li>
+<li><a href="#user-content-what-are-add-on-modules">What Are Add-on Modules?</a></li>
+<li><a href="#user-content-what-are-add-on-packages">What Are Add-on Packages?</a></li>
+<li><a href="#user-content-installing-nvda-add-ons">Installing NVDA Add-ons</a></li>
+</ul>
+</li>
+<li><a href="#user-content-setting-up-your-add-on-development-environment">Setting Up Your Add-on Development Environment</a><ul>
+<li><a href="#user-content-meet-system-requirements">Meet System Requirements</a></li>
+<li><a href="#user-content-add-on-development-folder-structure">Add-on Development Folder Structure</a></li>
+<li><a href="#user-content-add-on-folder-structure">Add-on folder structure</a></li>
+<li><a href="#user-content-packaging-add-ons">Packaging add-ons</a></li>
+</ul>
+</li>
+<li><a href="#user-content-getting-started-hands-on-examples">Getting started: Hands-on examples</a><ul>
+<li><a href="#user-content-how-add-on-code-is-organized">How add-on code is organized</a></li>
+<li><a href="#user-content-running-your-add-on-in-this-example-chapter">Running your add-on in this example chapter</a></li>
+<li><a href="#user-content-example-1-hear-a-tone-when-pressing-nvdaa">Example 1: Hear a tone when pressing NVDA+A</a></li>
+<li><a href="#user-content-example-1-code-explanation">Example 1 code explanation</a></li>
+<li><a href="#user-content-i-dont-understand-those-above-terms">I don't understand those above terms</a></li>
+<li><a href="#user-content-example-2-generate-a-tone-when-switching-to-notepad">Example 2: Generate a tone when switching to Notepad</a></li>
+<li><a href="#user-content-example-2-code-explanation">Example 2 code explanation</a></li>
+<li><a href="#user-content-more-new-terms-please">More new terms please</a></li>
+<li><a href="#user-content-a-few-tips-for-beginners">A few tips for beginners</a></li>
+</ul>
+</li>
+<li><a href="#user-content-useful-modules-from-nvda-core">Useful modules from NVDA core</a><ul>
+<li><a href="#user-content-list-of-useful-nvda-core-modules-and-methods">List of useful NVDA core modules and methods</a></li>
+<li><a href="#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located">Example 1: am I on the right app where the focus is located?</a></li>
+<li><a href="#user-content-example-2-display-a-message-in-a-browse-mode-document">Example 2: Display a message in a browse mode document</a></li>
+<li><a href="#user-content-example-3-announce-the-automation-id-of-a-uia-object">Example 3: Announce the automation ID of a UIA object</a></li>
+<li><a href="#user-content-example-4-send-keystrokes">Example 4: Send keystrokes</a></li>
+<li><a href="#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off">Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off</a></li>
+</ul>
+</li>
+<li><a href="#user-content-add-on-module-components-and-development-tips">Add-on module components and development tips</a><ul>
+<li><a href="#user-content-the-python-console">The Python Console</a></li>
+<li><a href="#user-content-working-with-objects-on-screen">Working with objects on screen</a></li>
+<li><a href="#user-content-examining-object-hierarchy">Examining object hierarchy</a></li>
+<li><a href="#user-content-focus-vs-navigator-object">Focus vs. navigator object</a></li>
+<li><a href="#user-content-other-useful-object-related-goodies">Other useful object-related goodies</a></li>
+<li><a href="#user-content-example-1-finding-the-value-of-a-slider-in-a-program">Example 1: Finding the value of a slider in a program</a></li>
+<li><a href="#user-content-specialist-objects-and-overriding-object-properties-at-runtime">Specialist objects and overriding object properties at runtime</a></li>
+<li><a href="#user-content-examples-of-overlay-classes-and-modified-roles">Examples of overlay classes and modified roles</a></li>
+<li><a href="#user-content-input-and-output-scripts-and-ui-messages">Input and output: scripts and UI messages</a></li>
+<li><a href="#user-content-example-2-a-basic-script-dictionary-and-message-output">Example 2: A basic script dictionary and message output</a></li>
+<li><a href="#user-content-example-3-scripts-for-specific-objects">Example 3: Scripts for specific objects</a></li>
+<li><a href="#user-content-script-lookup-order-and-command-conflicts">Script lookup order and command conflicts</a></li>
+<li><a href="#user-content-a-few-other-remarks-on-scripts">A few other remarks on scripts</a></li>
+<li><a href="#user-content-events">Events</a></li>
+<li><a href="#user-content-example-4-announcing-the-changed-name-of-a-control">Example 4: Announcing the changed name of a control</a></li>
+<li><a href="#user-content-list-of-possible-events">List of possible events</a></li>
+<li><a href="#user-content-events-within-objects">Events within objects</a></li>
+<li><a href="#user-content-other-components">Other components</a></li>
+<li><a href="#user-content-lets-build-an-add-on">Let's build an add-on</a></li>
+<li><a href="#user-content-add-on-planning-and-development-tips">Add-on planning and development tips</a></li>
+<li><a href="#user-content-dos-and-donts">Do's and don'ts</a></li>
+<li><a href="#user-content-frequently-asked-questions-about-add-on-components-and-development">Frequently Asked Questions about add-on components and development</a></li>
+</ul>
+</li>
+<li><a href="#user-content-introduction-to-global-plugins">Introduction to global plugins</a><ul>
+<li><a href="#user-content-typical-development-plan-for-global-plugins">Typical development plan for global plugins</a></li>
+<li><a href="#user-content-the-global-plugin-code">The global plugin code</a></li>
+<li><a href="#user-content-when-to-write-or-not-write-global-plugins">When to write or not write global plugins</a></li>
+<li><a href="#user-content-few-more-things-to-remember-about-global-plugins">Few more things to remember about global plugins</a></li>
+<li><a href="#user-content-example-1-writing-computer-braille-using-qwerty-keyboard">Example 1: Writing computer braille using QWERTY keyboard</a></li>
+<li><a href="#user-content-exercises">Exercises</a></li>
+</ul>
+</li>
+<li><a href="#user-content-introduction-to-app-modules">Introduction to app modules</a><ul>
+<li><a href="#user-content-differences-between-app-modules-and-global-plugins">Differences between app modules and global plugins</a></li>
+<li><a href="#user-content-app-module-development-process-and-strategies">App module development process and strategies</a></li>
+<li><a href="#user-content-example-2-simple-app-module-in-notepad">Example 2: Simple app module in Notepad</a></li>
+<li><a href="#user-content-example-3-silencing-nvda-in-openbook">Example 3: Silencing NVDA in Openbook</a></li>
+<li><a href="#user-content-example-4-announcing-control-property-changes-while-using-another-app">Example 4: Announcing control property changes while using another app</a></li>
+<li><a href="#user-content-useful-app-module-properties-and-methods">Useful app module properties and methods</a></li>
+<li><a href="#user-content-other-remarks-on-app-modules">Other remarks on app modules</a></li>
+</ul>
+</li>
+<li><a href="#user-content-drivers">Drivers</a><ul>
+<li><a href="#user-content-driver-components">Driver components</a></li>
+<li><a href="#user-content-few-important-things-to-remember-before-during-and-after-driver-development">Few important things to remember before, during and after driver development</a></li>
+<li><a href="#user-content-typical-driver-development-steps">Typical driver development steps</a></li>
+</ul>
+</li>
+<li><a href="#user-content-sharing-your-add-on-and-experience-with-others">Sharing your add-on and experience with others</a><ul>
+<li><a href="#user-content-the-nvda-add-ons-list">The NVDA Add-ons list</a></li>
+<li><a href="#user-content-the-nvda-community-add-ons-web-site-and-code-repository">The NVDA Community Add-ons web site and code repository</a></li>
+</ul>
+</li>
+<li><a href="#user-content-miscellaneous-information">Miscellaneous information</a></li>
+<li><a href="#user-content-appendicies">Appendicies</a><ul>
+<li><a href="#user-content-appendix-a-add-on-terms-dictionary">Appendix A: add-on terms dictionary</a></li>
+<li><a href="#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know">Appendix B: Programming and Python concepts every add-on developer needs to know</a></li>
+<li><a href="#user-content-appendix-c-add-on-type-comparison">Appendix C: Add-on type comparison</a></li>
+<li><a href="#user-content-appendix-d-notes-and-references-for-scripters-of-other-screen-readers">Appendix D: notes and references for scripters of other screen readers</a></li>
+</ul>
+</li>
+</ul>
+<hr />
 <h2 id="autores-colaboraciones-y-copyright">Autores, Colaboraciones y Copyright</h2>
-<p>Esta guía fue escrita originalmente por Joseph Lee, y está diseñada por la comunidad de usuarios y de desarrolladores de NVDA. Agradecemos vuestros comentarios y contribuciones.</p>
-<p>NVDA es copyright 2006-2017 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
+<p>This guide was originally written by Joseph Lee (<a href="https://github.com/josephsl">@josephsl</a>), and is shaped by the NVDA user and developer community. As of May, 2019, it is being maintained and revised by Luke Davis (<a href="https://github.com/XLTechie">@XLTechie</a>). We welcome your feedback and contributions.</p>
+<p>NVDA es copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Bienvenido a la Guía de desarrollo de complementos para NVDA. Esta es la guía completa sobre cómo desarrollar complementos de NVDA. Esta guía también explica algún segmento de código útil del código fuente del núcleo de NVDA, que resalta conceptos para ti mientras aprendes a escribir complementos.</p>
-<p>Para obtener más información sobre el desarrollo de NVDA, por favor visita <a href="https://community.nvda-project.org/wiki/Developme">la Página de la Comunidad de Desarrollo de NVDA</a>. Asegúrate de revisar la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a> para familiarizarte con los términos clave y los conceptos básicos para comenzar con el desarrollo de complementos.</p>
+<p>For more information on NVDA development, please visit the [NVDA GitHub page]. Be sure to go over the [NVDA Developer Guide] to familiarize yourself with key terms and basics on getting started with add-on development.</p>
 <h2 id="audiencia">Audiencia</h2>
 <p>Esta guía se ha diseñado para: </p>
 <ul>
 <li>aprendices de Python</li>
-<li>aprendices de NVDA</li>
+<li>principiantes en el desarrollo de NVDA</li>
 <li>desarrolladores Expertos de Python</li>
 <li>desarrolladores Expertos de NVDA</li>
 <li>Gente familiarizada con otros lenguajes de programación distintos a Python.</li>
 <li>Desarrolladores de scripts para otros lectores de pantalla.</li>
 </ul>
-<p>Si eres nuevo en el desarrollo de complementos o del núcleo de NVDA, te recomendamos que conozcas Python primero, ya que proporciona los conocimientos de programación necesarios para entender el resto de la guía. Si eres programador de Python pero eres nuevo en el desarrollo de NVDA, por favor, consulta la guía de desarrollo de NVDA y el documento Vista General de Diseño, los cuales se encuentran en <a href="https://community.nvda-project.org/wiki/Developme">la página de la comunidad de desarrolladores de NVDA</a>.</p>
+<p>If you are new to NVDA add-on or core development, we recommend that you get to know <a href="https://python.org">Python</a> first, as it gives the necessary programming background for understanding the rest of the guide. If you are a Python programmer but new to NVDA development, please checkout the [NVDA Developer Guide] and [Design Overview] document.</p>
 <h3 id="nota-especial-sobre-la-version-de-python">Nota especial sobre la versión de Python</h3>
 <p>NVDA y los complementos están escritos en Python 2, específicamente 2.7. Existe un proyecto de investigación activo para transferir NVDA a python 3, con algunos desarrolladores de complementos modificando su código fuente para que se ejecute en Python 2 y 3. Asegúrate de estar atento al desarrollo de NVDA y a las listas de correo de complementos, así como a la documentación de desarrollo relevante y a los avisos relacionados con las noticias sobre Python 3 y NVDA.</p>
 <h3 id="una-nota-especial-para-creadores-de-scripts-de-otros-lectores-de-pantalla">Una nota especial para creadores de scripts de otros lectores de pantalla</h3>
-<p>Algunos de los conceptos descritos en este documento son los mismos para diferentes lectores de pantalla, tales como objetos, ventanas, eventos, APIs de accesibilidad y así sucesivamente. Sin embargo, hay cosas importantes que hay que tener en cuenta al escribir o portar scripts:</p>
+<p>Some of the concepts described in this document are the same across different screen readers, such as objects, windows, events, accessibility API and so on. However, there are important things to be aware of when writing or porting scripts:</p>
 <ul>
 <li>A diferencia de algunos lectores de pantalla, NVDA no tiene una especificación formal o un modelo de objeto definido por la documentación en otros lectores de pantalla.</li>
 <li>El código que escribas se ejecutará dentro del mismo entorno de ejecución que el propio lector de pantalla, por lo que puedes realizar cosas como obtener directamente objetos enfocados, modificar la funcionalidad de NVDA e incluso reemplazar las funciones y clases de NVDA con las tuyas propias.</li>
 <li>Python, y consecuentemente NVDA, es un sistema orientado a objetos. En otras palabras, la mayor parte de su código consistirá en definir clases y objetos que NVDA recogerá en tiempo de ejecución.</li>
 <li>A diferencia de los motores de scripting para algunos lectores de pantalla, no hay ningún hack especial involucrado cuando se desee proporcionar una característica que funcione en todas las aplicaciones.</li>
-<li>A diferencia de los motores de scripting para algunos lectores de pantalla, no estás limitado a bibliotecas que vengan con los lectores de pantalla; como un programa basado en Python, puedes usar cualquier módulo (s) de python que se adapte a tus necesidades. Por ejemplo, un módulo popular utilizado para interactuar con aplicaciones web es el módulo JSON (JavaScript Object Notation), que no está incluido en las versiones de NVDA anteriores a 2017.3. Necesitas incorporar las bibliotecas externas de Python tú mismo.</li>
+<li>Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself.</li>
 </ul>
-<h2 id="que-son-los-complementos">¿Qué son los Complementos?</h2>
-<p>Los complementos son paquetes adicionales que amplían la funcionalidad de NVDA o el soporte para programas. Esto puede incluir la adición de características globales, la mejora de la compatibilidad con una aplicación o la adición de soporte para nuevas pantallas braille o sintetizadores de voz. Los complementos pueden contener más de un módulo. A continuación se incluye una descripción general de los tipos de módulos adicionales.</p>
-<h3 id="tipos-de-modulos-de-complementos">Tipos de módulos de Complementos</h3>
+<h3 id="nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows">Nota especial sobre la versión de NVDA para la tienda de Windows</h3>
+<p>As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store application. Once the Windows Store version of NVDA is published to Microsoft Store, users running Windows 10 can go to Store and obtain NVDA. However, there are restrictions that come with this version of NVDA, notably add-ons cannot run in this environment. Thus, if you need to run or write NVDA add-ons, you need to use the classic desktop version of NVDA, available from the <a href="https://www.nvaccess.org/">nvaccess.org website</a>.</p>
+<h3 id="nota-muy-importante-sobre-la-migracion-de-codigo-personalizado-de-extension-a-development-scratchpad">Nota muy importante sobre la migración de código personalizado de extensión a development scratchpad</h3>
+<p>If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:</p>
+<ol>
+<li>NVDA will no longer load extension code stored in the following subdirectories of the user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.<ul>
+<li>If you find that code inside these folders is no longer working as of NVDA 2019.1, the above reason is why.</li>
+</ul>
+</li>
+<li>Debes activar la funcionalidad development scratchpad (reservada para desarrolladores) si quieres habilitar la carga de código de extensión personalizado. Para hacerlo:<ol>
+<li>With NVDA 2019.1 (or later) running, go to NVDA menu/Preferences/settings/Advanced.</li>
+<li>You must check "I understand that changing these settings may cause NVDA to function incorrectly".</li>
+<li>Debes marcar la casilla "Habilitar la carga de código personalizado desde el directorio Developer Scratchpad".</li>
+<li>Pulsa Aceptar.</li>
+</ol>
+</li>
+<li>You must store code that was formerly housed in the above list of subdirectories inside corresponding subdirectories of the scratchpad folder.</li>
+<li>If you need to use NVDA 2018.4 and would like to use custom code, you must not remove the above listed subdirectories from the user configuration directory. Otherwise go ahead and remove the folders listed in item 1.</li>
+</ol>
+<h2 id="conceptos-basicos-sobre-complementos">Conceptos básicos sobre complementos</h2>
+<h3 id="que-son-los-complementos">¿Qué son los Complementos?</h3>
+<p>Los complementos son pequeños programas adicionales que extienden la funcionalidad de NVDA o su soporte para aplicaciones. Esto puede incluir la adición de características globales, la mejora 
+del soporte para una aplicación, o la adición de soporte para pantallas Braille nuevas o sintetizadores de voz.</p>
+<p>Nota: en ocasiones a los complementos también se los conoce como "extensiones", especialmente en la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">guía del desarrollador de NVDA</a>. En general, los llamaremos complementos en esta guía para dar más claridad, pero sé consciente de que son lo mismo.</p>
+<p>Un complemento completamente construido constará del propio código Python del complemento, contenido en uno o más módulos (más sobre esto en la próxima sección), y 
+normalmente algo de documentación, y otros archivos de soporte. Si esto suena desalentador, no te preocupes: empezaremos con muy poco, ejemplos, y sólo con código 
+Python. El resto de estructura de soporte de los complementos vendrá más adelante.</p>
+<h3 id="que-son-los-modulos-de-un-complemento">¿Qué son los módulos de un complemento?</h3>
+<p>Los complementos pueden actuar globalmente (a través de todo NVDA), en un programa o aplicación específica, o tras el escenario (a nivel del hardware). Llamamos a estas tres 
+major areas "modules". Every add-on contains at least one module, which is just one or more Python files designed to act in one of those three specific 
+areas. Additionally, if it makes sense for the add-on you are developing, your add-on can include more than one module. For example, if your add-on 
+provides better accessibility for a specific application, but also provides global commands that work anywhere in NVDA, you would be using two modules.</p>
 <p>Actualmente, NVDA soporta estos tipos de módulos adicionales:</p>
 <ul>
 <li>Extensión global: una extensión global añade características para NVDA que se pueden utilizar en cualquier lugar, como la función de OCR.</li>
 <li>Módulo de aplicación: Un módulo de aplicación permite un soporte mejorado para un programa específico. Los módulos de aplicación sólo se ejecutan mientras el programa se ejecute. Cambian la forma en que NVDA reacciona a las ventanas y controles de la aplicación en ejecución. </li>
 <li>Controlador: Un controlador permite a un programa comunicarse con el hardware. Actualmente puedes escribir controladores para nuevas pantallas braille o sintetizadores de voz.</li>
 </ul>
+<h3 id="que-son-los-paquetes-de-complementos">¿Qué son los paquetes de complementos?</h3>
+<p>A package is the single file which contains the code, documentation, and other elements which make up a fully functioning add-on, which is 
+intended to be robust enough to be distributed to the public. Each NVDA add-on package is a normal zip file with a file extension of .nvda-addon instead of .zip.</p>
+<p>If making an add-on package sounds like a lot of work: don't worry, you don't have to make a package just to start writing and testing your first 
+add-on.</p>
 <h3 id="instalacion-de-complementos-de-nvda">Instalación de Complementos de NVDA</h3>
-<p>Cada paquete de complementos de NVDA es un archivo zip con la extensión de archivo .nvda-addon. Puedes instalar módulos adicionales a través del Administrador de complementos en NVDA 2012.2 o posterior. Alternativamente, puedes instalarlos desde el Explorador de Archivos si utilizas NVDA 2012.3 o posterior.</p>
+<p>You can install NVDA-approved add-on packages via the Add-ons Manager, found on NVDA's tools menu. Alternatively, you can open any .nvda-addon file 
+you may have created or downloaded, by selecting it in your Windows file manager, and it should launch the add-on install process.</p>
 <h2 id="configuracion-del-entorno-de-desarrollo-de-complementos">Configuración del entorno de desarrollo de complementos</h2>
 <p>Sigue estos pasos para preparar tu ordenador para escribir complementos de NVDA.</p>
 <h3 id="cumplir-con-los-requisitos-del-sistema">Cumplir con los requisitos del Sistema</h3>
 <p>Para crear un complemento para NVDA, asegúrate de que tu sistema cumple los siguientes requisitos:</p>
 <ul>
-<li>Una versión de NVDA está disponible en tu ordenador (funcionará ya sea una versión portable o instalada, pero te recomendamos encarecidamente que instales una copia de NVDA en tu ordenador de desarrollo). Descarga NVDA desde la página de NV Access en https://www.nvaccess.org.<ul>
-<li>Recomendamos instalar la última versión master de desarrollo para mantenerse al día con los cambios en el API del núcleo.  Puedes descargar las últimas snapshots en https://community.nvda-project.org/wiki/Snapshots.</li>
+<li>NVDA:</li>
+<li>Una versión de NVDA está disponible en tu ordenador (funcionará ya sea una versión portable o instalada, pero te recomendamos encarecidamente que instales una copia de NVDA en tu ordenador de desarrollo). Descarga NVDA desde la <a href="https://www.nvaccess.org/download/">página de descargas de NV Access</a>.</li>
+<li>Even better: we recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.</li>
+<li>Python:</li>
+<li>Series de Python 2.7, versión 2.7.14 32-bit para Windows: https://www.python.org/downloads/release/python-2714/</li>
+<li>Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para Windows: https://www.python.org/downloads/release/python-373/</li>
+<li>SCons 2 o 3, versión 2.3.0 o posterior para la generación de paquetes de complementos (si se usa la versión 3.x, se recomienda la 3.0.1 o posterior): http://www.scons.org/</li>
+<li>Markdown 2.0.1 o posterior para generar la documentación del complemento: https://pypi.python.org/pypi/Markdown/2.0.1</li>
+<li>El paquete Gettext de GNU para Windows para soporte de traducción de mensajes. La compilación se puede encontrar en: http://gnuwin32.sourceforge.net/downlinks/gettext.php<ul>
+<li>Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.</li>
 </ul>
 </li>
-<li>Series de Python 2.7, versión 2.7.14 32-bit para Windows: <a href="https://www.python.org/download/releases/2.7.14/">https://www.python.org/download/releases/2.7.14/</a>.</li>
-<li>SCons 2, versión 2.3.0 o posterior para la generación de paquetes de complementos: <a href="http://www.scons.org/">http://www.scons.org/</a>.</li>
-<li>Markdown 2.0.1 o posterior para generar la documentación del complemento: <a href="https://pypi.python.org/pypi/Markdown/2.0.1">https://pypi.python.org/pypi/Markdown/2.0.1</a>.</li>
-<li>El paquete Gettext de GNU para Windows para soporte de localización de mensajes. La compilación se puede encontrar en: <a href="http://gnuwin32.sourceforge.net/downlinks/gettext.php">http://gnuwin32.sourceforge.net/downlinks/gettext.php</a>.<ul>
-<li>Una vez descargados, copia ambos archivos exe en la carpeta de desarrollo del complemento. Consulta la siguiente sección para obtener una descripción de la estructura de carpetas del complemento.</li>
-</ul>
-</li>
-<li>Git 1.7.9 o posterior si deseas subir el complemento a un repositorio como Bitbucket (opcional). Puedes utilizar varios clientes de Git, como Git Bash, Git de Cygwin, y Tortoise Git.</li>
-<li>La plantilla de complemento de NVDA de la comunidad para facilitar el empaquetado y la gestión de carpetas y archivos del complemento (opcional) <a href="https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip">Descarga la plantilla del complemento)</a>.</li>
 <li>Si estás desarrollando soporte para un programa, sintetizador de voz o pantalla braille, instala el software y el hardware necesario.</li>
+<li>Elementos opcionales:</li>
+<li>Git 1.7.9 o posterior si deseas subir el complemento a un repositorio como <a href="https://bitbucket.org/">Bitbucket</a> o <a href="https://www.github.com/">Github</a> (opcional. Mira más abajo). Puedes utilizar varios clientes de Git, como <a href="https://www.atlassian.com/git/tutorials/git-bash">Git Bash</a>, [Git de Cygwin], y <a href="https://tortoisegit.org/">TortoiseGit</a>.</li>
+<li>La <a href="https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip">plantilla de complemento de NVDA de la comunidad</a> para facilitar el empaquetado y la gestión de carpetas y archivos del complemento (opcional).</li>
 </ul>
-<p>Nota: si utilizas Windows 10 Anniversary Update o posterior y deseas usar Ubuntu en Windows (también conocido como Windows Subsystem for Linux), puedes utilizar Advanced Packaging Tool (APT) para obtener SCons y Gettext. A continuación, puedes utilizar pip para descargar e instalar Markdown.</p>
+<p>Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Subsystem for Linux">Windows Subsystem for Linux</a>), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.</p>
 <h3 id="estructura-de-carpetas-de-desarrollo-del-complemento">Estructura de Carpetas de Desarrollo del Complemento</h3>
 <p>Cuando escribas complementos, se recomienda que guardes el código del complemento en carpetas separadas, una por complemento. Si decides descargar la plantilla del complemento, la estructura de carpetas se creará automáticamente.</p>
 <p>Una vez que instales las dependencias necesarias (mira arriba), pega los ejecutables del paquete Gettext en la carpeta del complemento.</p>
 <h3 id="estructura-de-carpetas-del-complemento">Estructura de carpetas del complemento</h3>
 <p>Cada carpeta de complementos, como mínimo, debe contener los siguientes archivos y carpetas:</p>
 <ul>
-<li>manifest.ini para almacenar la información de manifiesto del complemento tal como el nombre y el autor.</li>
+<li>manifest.ini para almacenar la información de manifiesto del complemento tal como el nombre, el autor y el rango de compatibilidad (versión mínima, última versión probada).</li>
 <li>Una subcarpeta "addon" con el directorio de módulos del complemento bajo esta subcarpeta (appModules, globalPlugins, synthDrivers, brailleDisplays). Se pueden especificar una o más carpetas de módulos.</li>
 </ul>
 <p>Si estás utilizando la plantilla de complementos, la estructura de carpetas se creará automáticamente, por lo que sólo necesitas crear la subcarpeta addon y las carpetas de módulos adicionales y el código dentro de estas carpetas. Consulta el archivo readme en la carpeta de la plantilla para obtener más información sobre cómo personalizar tu manifiesto de complemento mediante los archivos de la plantilla.</p>
@@ -88,8 +237,8 @@
 <p>Para más información sobre gestión de complementos, consulta el capítulo gestión en esta guía.</p>
 <h2 id="comenzando-ejemplos-practicos">Comenzando: Ejemplos prácticos</h2>
 <p>Entonces, ¿estás listo para comenzar tu aventura con los complementos, pero no estás seguro de cómo darle vida? Si ese es tu caso, vé por favor a través de este capítulo, pues te da la información básica para conseguir comenzar con los complementos y te da consejos para escribir código.</p>
-<p>Nota: para este capítulo, no usaremos paquetes de complementos reales. En su lugar, usaremos carpetas de extensiones - una serie de subdirectorios en tu carpeta de configuración de usuario de NVDA (disponible desde el menú de inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros Python de ejemplo.</p>
-<p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++ que se puede descargar de https://notepad-plus-plus.org/download/v6.8.3.html.</p>
+<p>Nota: para este capítulo, no usaremos paquetes de complementos reales. En su lugar, usaremos carpetas de extensiones de scratchpad - una serie de subdirectorios situados en una carpeta llamada "scratchpad", que es una subcarpeta en tu carpeta de configuración de usuario de NVDA (disponible desde el menú de inicio/pantalla si está instalado NVDA) para almacenar nuestros ficheros Python de ejemplo.</p>
+<p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++.</p>
 <h3 id="como-esta-organizado-el-codigo-de-los-complementos">Cómo está organizado el código de los complementos</h3>
 <p>El código de tu complemento se almacena en uno o más ficheros Python (fichero .py). A pesar de los diferentes tipos de complementos que hay por ahí, todos ellos tienen un diseño similar.</p>
 <p>Primero, comienza por escribir una cabecera opcional para el complemento, tal como tu nombre, una o dos frases breves sobre para qué es el complemento y así sucesivamente. Aunque esto es opcional, Se recomienda que escribas el encabezado como un recordatorio para realizar un seguimiento de lo que estás haciendo con tu complemento.</p>
@@ -99,10 +248,11 @@
 <p><code>class appModule(appModuleHandler.AppModule):</code></p>
 <p>Después de eso, todo lo que se escribe es código Python (consulta la documentación de Python sobre cómo escribir programas en Python).</p>
 <h3 id="ejecutar-tu-complemento-de-ejemplo-en-este-capitulo">Ejecutar tu complemento de ejemplo en este capítulo</h3>
-<p>Para ejecutar tu complemento de ejemplo desde este capítulo, abre el directorio de configuración de usuario de NVDA(desde Menú o pantalla Inicio, busca el elemento NVDA "  buscar Explorar carpeta de configuración del usuario). Luego pega tu fichero .py en la carpeta correspondiente: carpeta appModules para ejemplos de módulos de aplicación, y carpeta globalPlugins para extensiones globales.</p>
+<p>Antes de que puedas ejecutar complementos de prueba, debes habilitar el development scratchpad desde las opciones avanzadas de NVDA. Después de hacerlo, aparecerá una nueva carpeta llamada "scratchpad" en la carpeta de configuración del usuario. Lee la sección anterior sobre scratchpad para más detalles sobre cómo hacerlo.</p>
+<p>Para ejecutar tu complemento de ejemplo desde este capítulo, abre el directorio de configuración de usuario de NVDA(desde Menú o pantalla Inicio, busca el elemento NVDA "  Explorar carpeta de configuración del usuario"). Luego busca la carpeta "scratchpad" (si está activada), y pega tu fichero .py en la carpeta correspondiente dentro de esta subcarpeta: carpeta appModules para ejemplos de módulos de aplicación, y carpeta globalPlugins para extensiones globales.</p>
 <h3 id="ejemplo-1-escuchar-un-tono-al-pulsar-nvdaa">Ejemplo 1: escuchar un tono al pulsar NVDA+A</h3>
-<p>Comencemos con un ejemplo sencillo: Si pulsamos NVDA+A, se oye un tono durante 1 segundo desde cualquier programa. Puesto que queremos usar esto en todas partes, debe ser una extensión global.</p>
-<p>En primer lugar, abre la carpeta de configuración de usuario, a continuación, abre la carpeta globalPlugins. Crea un nuevo fichero .py y dale un nombre descriptivo, como example1.py (se recomienda encarecidamente que cuando le dés el nombre del fichero de la extensión global, este sea corto). A continuación, abre el archivo .py recién creado en el procesador de textos.</p>
+<p>Let us start with a simple example: if you press NVDA+A, you will hear a tone for 1 second in any program. Since we want to use this everywhere, it must be a global plugin.</p>
+<p>First, if you haven't done so, enable development scratchpad. Then open your user configuration folder, then open the scratchpad folder (if it exists--create it if not), then select globalPlugins folder. Create a new .py file and give it a descriptive name such as example1.py (it is strongly recommended that when you name your global plugin file, give it a short descriptive name). Then open the newly created .py file in the word processor.</p>
 <p>El código siguiente implementa nuestro ejemplo. Pon esto en tu .py exactamente como se muestra.:</p>
 <pre><code># Primer ejemplo de desarrollo de complemento
 
@@ -132,16 +282,18 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <p>Guarda este fichero, después reinicia NVDA. Ahora, cada vez que se pulse NVDA+A, se escucha un tono durante 1 segundo. Una vez que te sientas cómodo con el código del complemento y de cómo se presenta, Puedes eliminar el fichero .py recién creado.</p>
 <h3 id="no-entiendo-los-terminos-anteriores">No entiendo los términos anteriores</h3>
 <p>Para algunos, los términos "clase", "método" y demás podrían ser nuevos. Vamos a repasar lo que son estos términos, ya que son fundamentales para el desarrollo de complementos:</p>
-<p>Clase: una clase describe un objeto. Podría describir cualquier cosa, tal como una persona, una mesa, un complemento de NVDA y otros. Las clases son fundamentales para NVDA y otros programas - de hecho, un buen número de programadores son expertos por conocer las clases.
-<em> Método: un método es un pequeño programa o una rutina que ejecuta un programa para hacer algo, tal como generar tonos, calcular números grandes, cargar complementos de NVDA y así sucesivamente. Algunas personas los llaman "funciones."
-</em> Script: un script es un método que se ejecuta cuando el usuario realiza órdenes tales como pulsar ciertas teclas en un teclado. Por ejemplo, cuando pulsas NVDA+F12, NVDA ejecuta el script dateTime, localizado en uno de los módulos principales de NVDA llamado Global Commands. Un script toma dos argumentos: dónde se debería ejecutar el script (normalmente "self"; lo veremos más adelante) y el gesto para el script (véase más adelante).
-<em> Variable: una variable es algo que puede cambiar, tal como el nombre de una persona, un nombre del complemento de NVDA en ejecución, la versión de NVDA que estás utilizando y así sucesivamente. En un archivo de complemento pueden definirse una o más variables(Por ejemplo, para almacenar constantes comunes, tales como cadenas).
-</em> Módulo: un módulo es una colección de métodos y variables en un fichero. Cuando escribimos complementos, de hecho, estamos escribiendo módulos adicionales que NVDA puede utilizar mientras se está ejecutando.</p>
+<ul>
+<li>Clase: una clase describe un objeto. Podría describir cualquier cosa, tal como una persona, una mesa, un complemento de NVDA y otros. Las clases son fundamentales para NVDA y otros programas - de hecho, un buen número de programadores son expertos por conocer las clases.</li>
+<li>Método: un método es un pequeño programa o una rutina que ejecuta un programa para hacer algo, tal como generar tonos, calcular números grandes, cargar complementos de NVDA y así sucesivamente. Algunas personas los llaman "funciones."</li>
+<li>Script: un script es un método que se ejecuta cuando el usuario realiza órdenes tales como pulsar ciertas teclas en un teclado. Por ejemplo, cuando pulsas NVDA+F12, NVDA ejecuta el script dateTime, localizado en uno de los módulos principales de NVDA llamado Global Commands. Un script toma dos argumentos: dónde se debería ejecutar el script (normalmente "self"; lo veremos más adelante) y el gesto para el script (véase más adelante).</li>
+<li>Variable: una variable es algo que puede cambiar, tal como el nombre de una persona, un nombre del complemento de NVDA en ejecución, la versión de NVDA que estás utilizando y así sucesivamente. En un archivo de complemento pueden definirse una o más variables(Por ejemplo, para almacenar constantes comunes, tales como cadenas).</li>
+<li>Módulo: un módulo es una colección de métodos y variables en un fichero. Cuando escribimos complementos, de hecho, estamos escribiendo módulos adicionales que NVDA puede utilizar mientras se está ejecutando.</li>
+</ul>
 <p>Hay otros términos que vamos a llegar a conocer en breve.</p>
 <h3 id="ejemplo-2-generar-un-tono-cuando-se-cambie-al-bloc-de-notas">Ejemplo 2: generar un tono cuando se cambie al Bloc de notas</h3>
 <p>La mayor parte del código de abajo viene de la Guía del desarrollador de NVDA.</p>
 <p>NVDA no sólo te permite agregar comandos globales, sino que también permite la escritura de código para mejorar el uso de los programas a través de módulos de aplicación. Un módulo de aplicación es también un archivo Python, excepto que, esta vez, el nombre del archivo .PY Es el nombre del ejecutable de un programa. Por ejemplo, un módulo de aplicación para el Bloc de notas se llamaría notepad.py.</p>
-<p>El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño ejemplo de un módulo de aplicación típica: reproducir un pitido corto al cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez se debe colocar en la carpeta appModules en la carpeta de configuración del usuario con el fin de que se ejecute.</p>
+<p>El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño ejemplo de un módulo de aplicación típica: reproducir un pitido corto al cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez se debe colocar en la carpeta appModules del directorio scratchpad (si está activado) en la carpeta de configuración del usuario con el fin de que se ejecute.</p>
 <pre><code># Un ejemplo de módulo de aplicación.
 
 import appModuleHandler
@@ -223,7 +375,7 @@ class AppModule(appModuleHandler.AppModule):
 <li><code>logHandler.Log</code>: la clase que implementa la utilidad de registro.</li>
 </ul>
 </li>
-<li>Presentación de contenido matemático (paquetes de MathPress): permite a NVDA reconocer e interactuar con diversos contenidos matemáticos y marcas de revisión. NVDA se envía con el paquete de soporte MathML y el soporte para Math Player se incluye en 2015.2 o posterior.</li>
+<li>Presentación de contenido matemático (paquetes de MathPress): permite a NVDA reconocer e interactuar con diversos contenidos matemáticos y lenguajes de marcado. NVDA incluye el paquete de soporte MathML y el soporte para Math Player, que viene incorporado en 2015.2 o posterior.</li>
 <li>Soporte de ratón (mouseHandler.py): Soporta órdenes de ratón.</li>
 <li>Colección de objetos de NVDA (NVDAObjects): Una colección de objetos o controles de NVDA que se utilizan en muchas aplicaciones y estándares como la UIA (User Interface Automation). Algunos objetos requieren que se realicen acciones especiales y éstas se especifican en el módulo de comportamientos del paquete de objetos NVDA. Entre los más comunes se incluyen:<ul>
 <li><code>NVDAObjects.NVDAObject</code>: la clase base para objetos de NVDA donde se definen eventos, propiedades, etcétera.</li>
@@ -239,14 +391,17 @@ class AppModule(appModuleHandler.AppModule):
 <li>Salida de voz(speech.py): Controla la salida de voz.</li>
 <li>Soporte para controladores de Sintetizador (synthDriverHandler.py): Este es el módulo principal necesario para complementos de sintetizador de voz.</li>
 <li>Acceso al texto de los Widgets (textInfos): Permite el acceso al texto de widgets y documentos.</li>
-<li>Soporte de pantalla táctil (touchHandler.py): Proporciona soporte para la entrada de la pantalla táctil (sólo versiones instaladas).</li>
+<li>Soporte de pantalla táctil (touchHandler.py): Proporciona soporte para la entrada de la pantalla táctil (sólo versiones instaladas).<ul>
+<li><code>touchHandler.touchSupported()</code> (NVDA 2018.1 o posterior): indica si el sistema soporta interacción táctil.</li>
+</ul>
+</li>
 <li>Salida de tonos (tones.py): Permite al usuario escuchar tonos. Se definió la siguiente función:<ul>
 <li><code>tones.beep(tono en hercios, duración en milésimas de segundo, volumen del canal izquierdo, volumen del canal derecho)</code>: Reproduce un sonido de un tono específico durante un tiempo determinado. Los dos primeros argumentos son obligatorios, mientras que los otros dos son opcionales.</li>
 </ul>
 </li>
 <li>Mensajes de la interfaz de usuario (ui.py): Incluye varias funciones para la salida de voz y/o braille, incluyendo:<ul>
 <li><code>ui.message(mensaje a ser verbalizado/braillificado)</code>: verbaliza o braillifica el mensaje. Este debe ser una cadena entre comillas.</li>
-<li><code>ui.browsableMessage(mensaje a ser mostrado, HTML o no)</code>: muestra algún texto en una ventana del navegador web. Si deseas utilizar el marcado HTML, define el argumento isHTML como True.</li>
+<li><code>ui.browseableMessage(mensaje a ser mostrado, HTML o no)</code>: muestra algún texto en una ventana de navegador web. Si deseas utilizar el marcado HTML, define el argumento isHTML como True.</li>
 </ul>
 </li>
 <li>Soporte UIA (UIAHandler.py, objetos UIA): Usado para soportar controles UIA (User Interface Automation) (Windows 7 y posteriores).</li>
@@ -270,14 +425,14 @@ def sameApp(obj=None):
 </code></pre>
 <p>La función <code>api.getNavigatorObject ()</code> devuelve el objeto del navegador actual, el objeto que te interesa en lugar del objeto enfocado. Cada objeto de NVDA incluye un miembro <code>appModule</code> que registra en qué aplicación se encuentra un objeto.</p>
 <h3 id="ejemplo-2-mostrar-un-mensaje-en-un-documento-en-modo-exploracion">Ejemplo 2: Mostrar un mensaje en un documento en modo exploración</h3>
-<p>Desde NVDA 2015.2 y posterior, fue posible mostrar un mensaje en una ventana del modo de exploración para que la gente pueda utilizar las órdenes del modo de exploración para revisar el contenido del mensaje. El siguiente código muestra"Hola mundo" en la ventana de un documento.</p>
+<p>In NVDA 2015.2 and later, it became possible to display a message in a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" in a document window.</p>
 <pre><code>import ui
 
-ui.browsableMessage("Hola Mundo!", isHtml=False)
+ui.browseableMessage("Hola Mundo!", isHtml=False)
 </code></pre>
 <p>La bandera isHtml indica a NVDA que trate el mensaje como un texto HTML.</p>
 <h3 id="ejemplo-3-anunciar-el-id-de-automatizacion-de-un-objeto-uia">Ejemplo 3: Anunciar el ID de automatización de un objeto UIA</h3>
-<p>En UI Automation, el ID de automatización se utiliza para identificar diferentes elementos de pantalla. El siguiente código muestra esta información en una ventana navegable.</p>
+<p>In UI Automation, automation ID is used to identify different screen elements. The following code displays this information in a browsable window.</p>
 <pre><code>import ui
 from NVDAObjects.UIA import UIA
 
@@ -285,14 +440,14 @@ def announceUIAId():
     obj = api.getFocusObject()
     if isinstance(obj, UIA):
         UIAElement = obj.UIAElement
-        ui.browsableMessage(UIAElement.cachedAutomationId, isHtml=True)
+        ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
 </code></pre>
 <h3 id="ejemplo-4-enviar-pulsaciones-de-teclas">Ejemplo 4: Enviar pulsaciones de teclas</h3>
 <p>Puedes pedirle a NVDA que envíe pulsaciones de teclas específicas instanciando un objeto de gesto de teclado.</p>
 <pre><code>import keyboardHandler
 
 def sendApplicationsKey():
-    keyboardHandler.KeyboardInputGesture.fromName("kb:applications").send()
+    keyboardHandler.KeyboardInputGesture.fromName("applications").send()
 </code></pre>
 <h3 id="ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-la-pantalla-si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado">Ejemplo 5: Detener la voz cada vez que cambie el contenido de la pantalla si el anuncio de cambio de contenido dinámico está desactivado</h3>
 <p>El código que aparece a continuación es un controlador para un evento de cambio de nombre que detiene la voz siempre que el contenido de la pantalla cambie si el anuncio de cambio de contenido dinámico está desactivado.</p>
@@ -310,19 +465,22 @@ class AppModule(appModuleHandler.AppModule):
 <h2 id="componentes-del-modulo-de-un-complemento-y-consejos-de-desarrollo">Componentes del módulo de un complemento y consejos de desarrollo</h2>
 <p>Un módulo de complemento se compone de una serie de componentes. Esto incluye el manejo de la entrada y de la salida, el trabajo con diferentes objetos de NVDA, la reacción a eventos, el almacenamiento de configuración y más.</p>
 <p>Este capítulo presenta los componentes y conceptos clave que se utilizan en el desarrollo de complementos, tales como objetos de NVDA, scripts, gestión de eventos y temas adicionales con ejemplos.</p>
-<p>Ten en cuenta que la guía de desarrollo básico de NVDA presenta los siguientes conceptos. Este capítulo pretende ser una extensión de ese documento. Consulta la guía de desarrollo de NVDA para una breve introducción.</p>
+<p>Note that the [NVDA core development guide][NVDA Developer Guide] introduces the below concepts. This chapter is intended as an extension of that document. Consult the NVDA developer guide for a brief introduction.</p>
 <p>Nota para creadores de scripts de otros lectores de pantalla: es posible que estés familiarizado con algunos de los conceptos introducidos en esta sección. Por favor, lee esta sección si deseas conocer mejor cómo se utilizan algunos de ellos en NVDA.</p>
+<h3 id="la-consola-python">La consola Python</h3>
+<p>This guide sometimes suggests that you use the [Python Console]. The console is a feature of NVDA which can be very useful to developers. It is described in more detail in chapter 5 of the [NVDA Developer Guide].
+Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p>
 <h3 id="trabajando-con-objetos-en-pantalla">Trabajando con objetos en pantalla</h3>
 <p>Un objeto es una instancia de una clase - es decir, una clase activa mientras un programa se está ejecutando. Por ejemplo, si se ha definido una clase llamada botón, el botón en una pantalla es el objeto de esta clase botón.</p>
 <p>En NVDA, un objeto es la representación de un control o partes de un programa. Esto incluye botones, casillas de verificación, campos de edición, barras de herramientas, deslizadores e incluso la ventana de la aplicación. Estos se organizan en jerarquías, o relación padre-hijo donde un objeto podrá contener objetos hijos - por ejemplo, un objeto lista en Windows Explorer podrá contener uno o más elementos de lista, y el padre de esta lista podría ser la ventana de Windows Explorer. El objeto que estás examinando en este momento se denomina "navegador de objetos."</p>
-<p>Los objetos de NVDA (o simplemente llamados objetos) contienen una serie de propiedades o atributos útiles. Estos incluyen el nombre del objeto, su valor (seleccionado, el texto de la ventana de edición, etc), rol (casilla de verificación, ventana, objeto incrustado, etc., localización (coordenadas de la pantalla) y más. Los objetos de NVDA también contienen métodos útiles para su manipulación, tales como cambiar el valor del objeto, reaccionar a los eventos para el objeto (recepción del foco, valor de cambio, etc).</p>
+<p>Los objetos de NVDA (o simplemente llamados objetos) contienen una serie de propiedades o atributos útiles. Estos incluyen el nombre del objeto, su valor (seleccionado, el texto de la ventana de edición, etc), rol (casilla de verificación, ventana, objeto incrustado, etc., posición (coordenadas de la pantalla) y más. Los objetos de NVDA también contienen métodos útiles para su manipulación, tales como cambiar el valor del objeto, reaccionar a los eventos para el objeto (recepción del foco, el valor ha cambiado, etc) y demás.</p>
 <p>En muchas situaciones, un objeto NVDA puede pertenecer a una clase de objetos relacionados. Para cada una de las clases de objetos, NVDA proporciona formas de manipularlos. Estas clases incluyen IAccessible, JAB, UIA y así. Estas clases y comportamientos para cada clase de objetos se definen en el directorio NVDAObjects en el código fuente de NVDA, y para utilizarlos en tu complemento, importa el controlador de clase de objeto adecuado para el objeto que estás utilizando(por ejemplo si estás trabajando con un objeto IAccessible, importa NVDAObjects.IAccessible.).</p>
 <p>Dos de estas clases de objetos merecen especial mención: los modos virtuales y los interceptores de árbol. Un interceptor de árbol permite a NVDA funcionar con un "árbol" de objetos como si fuesen sólo un objeto. un caso especial de interceptor de árbol es el modo virtual, que permite a NVDA trabajar con documentos complejos, como documentos PDF. Estos objetos contienen un mecanismo especial para determinar si una orden de teclado dada será pasada a la aplicación o manejada por NVDA (por ejemplo, el modo de exploración donde se usa la primera letra de navegación para moverse entre elementos).</p>
 <h3 id="examinando-la-jerarquia-de-objetos">Examinando la jerarquía de objetos</h3>
 <p>Hay varias alternativas que puedes utilizar para ver la jerarquía de un objeto de un determinado programa:</p>
 <ol>
 <li>utilizando las órdenes de navegación de objetos(NVDA+2/4/5/6/8 del teclado numérico) con el modo simple de revisión desactivado.</li>
-<li>Utilizando la consola de Python, usa los atributos obj.next/previous/parent/firstChild/lastChild. Si quieres ver todas las propiedades disponibles, desde la consola Python , escribe dir(obj).</li>
+<li>Utilizando la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a>, usa los atributos obj.next/previous/parent/firstChild/lastChild. Si quieres ver todas las propiedades disponibles, desde la consola Python , escribe dir(obj).</li>
 </ol>
 <p>Si deseas ver una descripción más detallada sobre el navegador de objetos, mientras que el navegador de objetos se encuentre en el objeto en que estés interesado, pulsa NVDA+F1 para lanzar el visualizador del registro. La raíz de todos los objetos de Windows es el escritorio, objeto shell.</p>
 <h3 id="foco-vs-navegador-de-objetos">Foco vs. navegador de objetos</h3>
@@ -332,8 +490,8 @@ class AppModule(appModuleHandler.AppModule):
 <h3 id="otras-golosinas-utiles-relacionadas-con-objetos">Otras golosinas útiles relacionadas con objetos</h3>
 <p>Aquí van algunos otros métodos que funcionan con objetos de NVDA, todos ubicados en el módulo api.py:</p>
 <p>Si deseas obtener el objeto en primer plano (útil si se desea ver algún objeto secundario de la ventana en primer plano), utiliza <code>obj = api.getForegroundObject()</code>.
-<em> Desde la consola Python, para ver el número de objetos secundarios que contiene un objeto (por ejemplo, el hijo,  o los widgets de una ventana en primer plano), teclea <code>obj.childCount</code>. El valor0 significa que no hay más objetos secundarios.
-</em> Para definir un objeto como el foco nuevo o el navegador de objetos, utiliza <code>api.setFocusObject(obj)</code> o <code>api.setNavigatorObject(obj)</code>. Esto no cambia la forma que tiene Windows de ver el objeto enfocado, simplemente hace creer a NVDA que el nuevo objeto es el que tiene el foco o el navegador de objetos.
+* Desde la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a>, para ver el número de objetos secundarios que contiene un objeto (por ejemplo, el hijo,  o los widgets de una ventana en primer plano), teclea <code>obj.childCount</code>. El valor0 significa que no hay más objetos secundarios.
+* Para definir un objeto como el foco nuevo o el navegador de objetos, utiliza <code>api.setFocusObject(obj)</code> o <code>api.setNavigatorObject(obj)</code>. Esto no cambia la forma que tiene Windows de ver el objeto enfocado, simplemente hace creer a NVDA que el nuevo objeto es el que tiene el foco o el navegador de objetos.
 * Puedes obtener varias propiedades de un objeto especificando obj.property donde property es el atributo que deseas ver (por ejemplo obj.value). Entre las propiedades más comunes se incluyen name, value, states, role, appModule, windowClassName, etc.</p>
 <h3 id="ejemplo-1-encontrar-el-valor-de-un-deslizador-en-un-programa">Ejemplo 1: encontrar el valor de un deslizador en un programa</h3>
 <p>Supongamos que un usuario te pide que le des el valor de un deslizador en un programa usando un app module. Después de buscar en la jerarquía de objetos y otras propiedades, sabes que la barra de herramientas es el último hijo del objeto en primer plano.</p>
@@ -407,7 +565,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>Otro  componente crucial de los complementos es manejar órdenes del usuario y mostrar qué está haciendo el complemento. Esto se realiza a través de scripts (en la entrada) y  mensajes IU (en la salida).</p>
 <p>Un script es un método que se ejecuta cuando el usuario lleva a cabo ciertas órdenes. Por ejemplo, cuando pulsas NVDA+T, NVDA ejecuta un script en el módulo de órdenes globales llamado SayTitle. En Poedit, por ejemplo, cuando un traductor pulsa Control+Shift+A, NVDA leerá los comentarios para el traductor añadidos por el programador para ayudar a clarificar una cadena traducible dada. Esta orden no es una orden nativa de NVDA, pero se definió en el módulo de aplicación de Poedit para llevar a cabo esta función.</p>
 <p>Normalmente, un complemento  que acepte scripts tendrá un mapa de lista orden:función en algún lugar en el módulo. El más simple es un diccionario de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) que posee órdenes como teclas y scripts como valores para estas teclas (más de una tecla, u orden que puede vincularse a los scripts). Estos diccionarios se cargan cuando el complemento se carga y se borran cuando se sale de NVDA o cuando la aplicación para la que es el módulo de aplicación pierde el foco(es decir, el usuario ha cambiado a otro programa).</p>
-<p>Otro modo de enlazar scripts es a través de inserción en tiempo de ejecución. Esto se hace creando otro diccionario de gestos diferente del diccionario <strong>gestures que posea gestos sensibles al contexto tales como la manipulación de un sólo control. Entonces el desarrollador podría utilizar inputCore.bindGesture (o inputCore.bindGestures si se ha definido más de un gesto/script) para definir ciertos gestos a la vez, entonces utilizar inputCore.clearGestures luego inputCore.bindGestures(</strong>gestures) para eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts para objetos específicos, se tratará cuando hablemos sobre módulos de aplicación y cómo asignar gestos a partes específicas de un programa.</p>
+<p>Otro modo de enlazar scripts es a través de inserción en tiempo de ejecución. Esto se hace creando otro diccionario de gestos diferente del diccionario __gestures que posea gestos sensibles al contexto tales como la manipulación de un sólo control. Entonces el desarrollador podría utilizar inputCore.bindGesture (o inputCore.bindGestures si se ha definido más de un gesto/script) para definir ciertos gestos a la vez, entonces utilizar inputCore.clearGestures luego inputCore.bindGestures(__gestures) para eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts para objetos específicos, se tratará cuando hablemos sobre módulos de aplicación y cómo asignar gestos a partes específicas de un programa.</p>
 <p>Para la mayoría de los scripts, no tienes que preocuparte por enviar el comando a la aplicación. Sin embargo, en caso de que el script realice tareas adicionales mientras envía la tecla a la aplicación activa, puedes utilizar <code>gesture.send()</code> para enviar el comando primero antes de realizar trabajo adicional.</p>
 <p>De manera similar a los scripts, el módulo UI permite verbalizar o braillificar lo que tu complemento está haciendo. Esto se hace usando el mensaje <code>ui.message(algo que decir)</code> donde <code>algo que decir</code> se reemplaza por una cadena para que NVDA la diga. Alternativamente, puedes llamar a los métodos de manejo del habla y del braille directamente si deseas que el habla diga una cosa y la pantalla braille muestre otra. No repasaremos `ui.message' aquí (verás ejemplos de esos), pero lo más importante son los scripts, así que nos enfocaremos en eso en esta sección.</p>
 <p>En el momento de escritura de esta guía, NVDA soporta entrada desde el teclado, pantallas braille con o sin teclado braille y pantallas táctiles. Estos tipos de entrada tienen un prefijo de gesto correspondiente (kb para teclado, br para braille y ts para pantalla táctil) que identifica el tipo de gesto. La salida puede enviarse vía voz y/o braille.</p>
@@ -487,7 +645,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <pre><code>def event_eventName(self):
     # Rutina de evento.
 </code></pre>
-<p>De hecho, hemos conocido un"evento" real antes: <code>event_NVDAObject-Init</code>. Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de acuerdo con su entrada (consulta la sección sobre sobreescritura de propiedades de un objeto para obtener más información). Veamos otros eventos que puedes ver mientras escribes tu complemento.</p>
+<p>De hecho, hemos conocido un"evento" real antes: <code>event_NVDAObject-Init</code>. Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de acuerdo con tu entrada (consulta la sección sobre sobreescritura de propiedades de un objeto para obtener más información). Veamos otros eventos que puedes ver mientras escribes tu complemento.</p>
 <h3 id="ejemplo-4-anunciar-el-nombre-cambiado-de-un-control">Ejemplo 4: Anunciar el nombre cambiado de un control</h3>
 <p>El siguiente código procede de uno de los complementos de módulos de aplicación.</p>
 <p>A continuación se muestra una rutina para un evento que le indica el nombre de algún texto en la pantalla cuando el texto cambie.</p>
@@ -533,8 +691,8 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <li>
 <p>Para módulos de aplicación:
     def <strong>init</strong>(self, *args, <strong>kwargs):
-        super(AppModule, self).__init__(*args, </strong>kwargs)
-        # Lo que debería hacer NVDA cuando el app module se cargue.</p>
+        super(AppModule, self).<strong>init</strong>(*args, </strong>kwargs)
+        # Lo que debería hacer NVDA cuando el módulo de aplicación se cargue.</p>
 </li>
 <li>
 <p>Para terminar, independientemente del tipo de complemento:
@@ -548,7 +706,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <h3 id="consejos-para-planificacion-y-desarrollo-de-complementos">Consejos para planificación y desarrollo de complementos</h3>
 <p>A lo largo de los años, la comunidad de NVDA ha creado una serie de potentes complementos para los usuarios. Durante estos años, los redactores de complementos recopilaron algunos consejos útiles cuando se trata de escribir sus propios complementos. He aquí algunos de ellos:</p>
 <ul>
-<li>Conocer a NVDA: es importante que te familiarices con las órdenes, conceptos y consejos de NVDA. Suscríbete a los grupos de usuarios de NVDA para obtener más información sobre NVDA y conocer cómo funciona, ya que lo ampliarás a través de tus complementos.</li>
+<li>Conocer a NVDA: es importante que te familiarices con las órdenes, conceptos y consejos de NVDA. Suscríbete a los grupos de usuarios de NVDA para aprender más sobre NVDA y conocer cómo funciona, ya que lo ampliarás a través de tus complementos.</li>
 <li>Conocer el producto que tienes a mano: como se mencionó anteriormente, es importante que conozcas el software para el que estás escribiendo el módulo de aplicación, los sintetizadores y las pantallas braille para los que vas a escribir el controlador, etcétera.</li>
 <li>Planificar con anticipación: si sabes que mantendrás tu complemento durante varios meses o años, es útil tener un plan y escribir el código del complemento para prepararte para futuras extensiones. Por ejemplo, trabajando en las características que necesitas implementar ahora, dividiendo partes de un programa en objetos y así sucesivamente.</li>
 <li>Listo para depurar y probar tu complemento: escribir tu código de complemento es sólo una parte del desarrollo global del complemento. La otra parte es probar y depurar tu complemento para asegurarte de que los usuarios lo utilizan con errores mínimos. A medida que escribas tus complementos, asegúrate de probar tu código con regularidad.</li>
@@ -564,26 +722,37 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <li>Mantente al día con los cambios básicos de NVDA: a veces, puede que descubras que tu complemento no funcione debido a los cambios en el código del núcleo de NVDA. Asegúrate de leer la sección "Cambios para desarrolladores" en el documento Novedades de NVDA para mantenerte al día con los cambios de código que puedan afectar a tu complemento.</li>
 </ol>
 <h3 id="preguntas-frecuentes-sobre-componentes-de-complementos-y-desarrollo">Preguntas frecuentes sobre componentes de complementos y desarrollo</h3>
-<p>P. Cuando trato de obtener un objeto usando un índice, éste obtiene uno después del índice que escribí.<br />
-Este es el efecto colateral de la indexación basada en cero (el recuento comienza en 0).</p>
-<p>P. Al importar un módulo, NVDA dice que no puede localizar el módulo.<br />
-¿Escribiste el nombre correcto del módulo? ¿Extrajiste los archivos del módulo en la ubicación correcta? Intenta corregir el error tipográfico, observa la ruta de importación y vuelve a intentar importar.</p>
-<p>P. ¿Cuál es la diferencia entre la revisión simple y la revisión normal y cuál debo usar?<br />
-La revisión simple excluye los objetos de diseño como ventanas, agrupaciones, etc. que se colocan para propósitos de diseño. La revisión normal también incluye esto. La elección de usar la revisión simple versus la revisión normal depende de tu situación.</p>
-<p>P. La orden para mi app module no funciona en mi app module, sino que NVDA hace otra cosa.<br />
-Comprueba si está instalada una extensión global que utiliza la orden. Primero, quita la extensión global e inténtalo de nuevo.</p>
-<p>P. ¿Cómo puedo utilizar Win32 API en mi complemento u objeto?
-Existe un documento escrito por un desarrollador de complementos que habla sobre el uso de Win32 API en su complemento. Selecciona <a href="http://www.zlotowicz.pl/nvda/winapi.mdwn">este enlace</a> para ver este documento.</p>
-<p>P. ¿Cómo puedo crear diálogos en mi complemento?
-Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx).</p>
-<p>P. ¿Puedo crear funciones y asignar variables fuera de las clases de módulo?
-Sí. Esto es útil si necesitas hacer referencia a ellos desde dentro de la clase del complemento. Por ejemplo, es posible que tengas una función definida fuera de tu clase que necesitarás utilizar desde más de un método en una clase de extensión global.</p>
-<p>P. Quiero guardar la configuración de usuario para mi complemento. ¿Se puede hacer esto?
-Sí. Deberás utilizar la biblioteca ConfigObj(configObj) para administrar la configuración. Algunos complementos (como OCR) que utilizan archivos de configuración almacenan su configuración como un archivo ini en la carpeta de configuración de usuario de NVDA. En el caso de las extensiones globales, puedes cargar y guardar la configuración de usuario desde el complemento cuando se crea el complemento (<strong>init</strong>) o se finaliza (terminate), respectivamente. Esto no se puede hacer fácilmente con los módulos de aplicación. Además, tendrás que proporcionar una alternativa (órdenes, diálogos, etc.) en la que los usuarios puedan configurar opciones adicionales.</p>
-<p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.
-Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
-<p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.
-Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2 porque WXPython utiliza Python 2, y hasta que WXPython no sea reescrito para soportar Python 3, no se puede ejecutar el código Python 3 en NVDA.</p>
+<p>P. Cuando trato de obtener un objeto usando un índice, éste obtiene uno después del índice que escribí.  </p>
+<p>Este es el efecto colateral de la indexación basada en cero (el recuento comienza en 0).</p>
+<p>P. Al importar un módulo, NVDA dice que no puede localizar el módulo.  </p>
+<p>¿Escribiste el nombre correcto del módulo? ¿Extrajiste los archivos del módulo en la ubicación correcta? Intenta corregir el error tipográfico, observa la ruta de importación y vuelve a intentar importar.</p>
+<p>P. ¿Cuál es la diferencia entre la revisión simple y la revisión normal y cuál debo usar?  </p>
+<p>La revisión simple excluye los objetos de diseño como ventanas, agrupaciones, etc. que se colocan para propósitos de diseño. La revisión normal también incluye esto. La elección de usar la revisión simple versus la revisión normal depende de tu situación.</p>
+<p>P. La orden para mi app module no funciona en mi app module, sino que NVDA hace otra cosa.  </p>
+<p>Comprueba si está instalada una extensión global que utiliza la orden. Primero, quita la extensión global e inténtalo de nuevo.</p>
+<p>P. ¿Cómo puedo utilizar Win32 API en mi complemento u objeto?</p>
+<p>Existe un documento escrito por un desarrollador de complementos que habla sobre el uso de Win32 API en su complemento. Selecciona [este enlace][Using Win32 API] para ver este documento.</p>
+<p>P. ¿Cómo puedo crear diálogos en mi complemento?</p>
+<p>Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx).</p>
+<p>P. ¿Puedo crear funciones y asignar variables fuera de las clases de módulo?</p>
+<p>Sí. Esto es útil si necesitas hacer referencia a ellos desde dentro de la clase del complemento. Por ejemplo, es posible que tengas una función definida fuera de tu clase que necesitarás utilizar desde más de un método en una clase de extensión global.</p>
+<p>P. Quiero guardar la configuración de usuario para mi complemento. ¿Se puede hacer esto?</p>
+<p>Sí. Deberás utilizar la biblioteca ConfigObj(configObj) para administrar la configuración. Algunos complementos (como OCR) que utilizan archivos de configuración almacenan su configuración como un archivo ini en la carpeta de configuración de usuario de NVDA. En el caso de las extensiones globales, puedes cargar y guardar la configuración de usuario desde el complemento cuando se crea el complemento (<strong>init</strong>) o se finaliza (terminate), respectivamente. Esto no se puede hacer fácilmente con los módulos de aplicación. Además, tendrás que proporcionar una alternativa (órdenes, diálogos, etc.) en la que los usuarios puedan configurar opciones adicionales.</p>
+<p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.</p>
+<p>Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
+<p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.</p>
+<p>Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2, pero ya se están haciendo trabajos de transición a Python 3.</p>
+<p>P. Mi complemento usa componentes de interfaz gráfica, y después de instalar NVDA 2018.3, obtengo errores relacionados con WXPython.</p>
+<p>NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una versión más antigua de WXPython. Si quieres dar soporte a versiones anteriores de NVDA, debes emplear sentencias condicionales (if/else) y comprobaciones de versión, de tal forma que se elija el camino correcto al ejecutar el código.</p>
+<p>P. Tras instalar NVDA 2019.1, los usuarios dicen que mis complementos no son compatibles.</p>
+<p>NVDA 2019.1 introduce indicadores de compatibilidad (en ocasiones llamados rango de compatibilidad) de complementos que le dan la siguiente información:</p>
+<ul>
+<li>Versión mínima de NVDA (minimumNVDAVersion): un complemento puede especificar la versión mínima de NVDA necesaria para funcionar. Esto viene bien si necesitas utilizar funciones introducidas o modificadas en una versión dada de NVDA sin dar soporte a versiones de NVDA más antiguas.</li>
+<li>Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): le dice a NVDA la versión más alta soportada por el complemento. Si no se establece este indicador, NVDA tratará tus complementos como incompatibles con la versión más reciente.</li>
+</ul>
+<p>Las palabras entre paréntesis son claves de manifest. Con la llegada de NVDA 2019.1, estos indicadores de compatibilidad son obligatorios en todos los complementos.</p>
+<p>P. Mi módulo de aplicación que estaba alojado en la carpeta appModules de la configuración de usuario no funciona en NVDA 2019.1.</p>
+<p>Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado situado en carpetas del directorio de configuración de usuario. Lee la sección de scratchpad para más detalles.</p>
 <p>No incluimos preguntas frecuentes de programación relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación y controladores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
@@ -723,7 +892,7 @@ class AppModule(appModuleHandler.AppModule):
 <li>is64BitProcess: si es true, la aplicación es un proceso de 64 bits (sólo true si se está usando una aplicación de 64 bits en versiones Windows de 64 bits).</li>
 <li>dumpOnCrash: si estás depurando aplicaciones que se bloquean con frecuencia, puedes llamar a esta función para permitir que NVDA guarde un volcado de esta aplicación en el directorio de archivos temporales para que puedas recuperarlo más tarde.</li>
 </ul>
-<p>Y otras propiedades. Escribe dir(obj.appModule) desde la consola Python para obtener la lista completa.</p>
+<p>Y otras propiedades. Escribe dir(obj.appModule) desde la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a> para obtener la lista completa.</p>
 <h3 id="otros-comentarios-sobre-los-modulos-de-aplicacion">Otros comentarios sobre los módulos de aplicación</h3>
 <p>Aquí hay otras observaciones sobre los módulos de aplicación:</p>
 <ul>
@@ -764,7 +933,7 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <ul>
 <li>Antes de escribir un controlador, asegúrate de tener el software y/o hardware necesarios.</li>
 <li>Asegúrate de estudiar los protocolos y las API's utilizadas por un sintetizador de voz o una pantalla braille (esto es más importante para las pantallas braille que pueden implementar diferentes protocolos).</li>
-<li>Asegúrate de saber cómo comunicarte con el equipo: puertos, IDs USB, direcciones Bluetooth, configuración del puerto serie, etc.</li>
+<li>Asegúrate de saber cómo comunicarte con el equipo o software: puertos, IDs USB, direcciones Bluetooth, configuración del puerto serie, dlls, etc.</li>
 <li>Trabaja con otra persona que utilice el equipo o el software para el que estás escribiendo el (los) controlador (es).</li>
 </ul>
 <h3 id="pasos-tipicos-de-desarrollo-de-un-controlador">Pasos típicos de desarrollo de un controlador</h3>
@@ -773,13 +942,13 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <p>Una vez que hayas terminado de desarrollar tus complementos, es posible que desees compartir tu código con otros. A lo largo del camino, podrías aportar tu conocimiento para que otros puedan beneficiarse de tus experiencias.</p>
 <p>Este capítulo está diseñado para proporcionar orientación sobre la liberación y el mantenimiento de complementos, así como para conectarte con los usuarios de complementos y otros desarrolladores del núcleo y de complementos de NVDA de todo el mundo.</p>
 <h3 id="la-lista-de-complementos-de-nvda">La lista de complementos de NVDA</h3>
-<p>Si deseas mantenerte en contacto con los usuarios de tu complemento o deseas aprender o contribuir con tu complemento a otros, suscríbete a<a href="http://www.zlotowicz.pl/nvda/winapi.mdwn">la lista de complementos de NVDA</a>. Esta es una lista de poco tráfico dedicada a discutir los complementos actuales y futuros, así como a revisar otros complementos creados por miembros de la comunidad o hacer que otros desarrolladores de complementos revisen sus complementos en todo el mundo.</p>
+<p>Si deseas mantenerte en contacto con los usuarios de tu complemento o deseas aprender o contribuir con tu complemento a otros, suscríbete a[la lista de complementos de NVDA][4]. Esta es una lista de poco tráfico dedicada a discutir los complementos actuales y futuros, así como a revisar otros complementos creados por miembros de la comunidad o hacer que otros desarrolladores de complementos revisen sus complementos en todo el mundo.</p>
 <h3 id="el-sitio-web-y-el-repositorio-de-codigo-de-los-complementos-de-la-comunidad-de-nvda">El sitio web y el repositorio de código de los complementos de la comunidad de NVDA</h3>
-<p>Para descargar u obtener más información sobre los diversos complementos creados por los usuarios de NVDA, visita el <a href="https://addons.nvda-project.org">sitio web de los complementos de la comunidad de NVDA</a>. Puedes examinar los complementos actualmente disponibles, ver los complementos en desarrollo y leer las directrices de desarrollo de complementos.</p>
-<p>Para los desarrolladores que deseen leer el código que impulsa a varios complementos, puedes buscar repositorios de complementos almacenados en GitHub. Los desarrolladores de complementos de la comunidad de NVDA utilizan <a href="https://www.git-scm.com/josephsl/stationPlaylist">Git</a> para el control de versiones.</p>
+<p>To download or learn more about various add-ons created by NVDA users, visit [NVDA Community Add-ons web site]. You can browse currently available add-ons, view add-ons under development and read add-on development guidelines.</p>
+<p>For developers wishing to read the code that powers various add-ons, you can search for add-on repositories stored on <a href="https://www.github.com/">GitHub</a>. The NVDA community add-on developers use <a href="https://www.git-scm.com">Git</a> for version control.</p>
 <p>Algunos de los repositorios útiles y educativos son:</p>
 <ul>
-<li><a href="https://github.com/nvdaaddons/addonTemplate">add-on template</a>: este es el repositorio de código fuente para la plantilla de complementos de la comunidad.</li>
+<li>[add-on template]: este es el repositorio de código fuente para la plantilla de complementos de la comunidad.</li>
 <li><a href="https://github.com/nvdaes/placeMarkers">Place markers de Noelia Martínez</a>: agrega funcionalidad de marcadores de posición y proporciona un buen ejemplo sobre el uso de text infos.</li>
 <li><a href="https://github.com/josephsl/wintenApps">Windows 10 App Essentials de Joseph Lee</a>: proporciona soporte mejorado para Windows 10 y varias aplicaciones universales, considerado un clásico en la forma en que las extensiones globales y módulos de aplicaciones trabajan juntos e incluye ejemplos de clases de superposición y comportamientos de control que se derivan de los objetos UI Automation.</li>
 <li><a href="https://github.com/nvdaes/readFeeds">Read Feeds de Noelia Martínez</a>: facilita el descubrimiento de feeds en varios sitios web e incluye un ejemplo sencillo de almacenar y validar configuraciones adicionales.</li>
@@ -883,6 +1052,12 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 </tr>
 <tr>
 <td>Definir acciones personalizadas al realizarse cuando el módulo se cargue y se descargue</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Definir acciones personalizadas a realizarse cuando ocurran cambios de perfil y otros eventos</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
@@ -1059,7 +1234,17 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <tr>
 <td>Posición de un elemento de lista MSAA</td>
 <td>item.IAccessibleChildID</td>
-<td>Siempre y cuando esto se aplique correctamente. El valor predeterminado para los controles que no sean elementos de lista o elementos de vista de árbol es 0.</td>
+<td>Siempre y cuando esto se implemente correctamente. El valor predeterminado para los controles que no sean elementos de lista o elementos de vista de árbol es 0.</td>
+</tr>
+<tr>
+<td>Necesito trabajar con métodos de un objeto IAccessible directamente</td>
+<td>obj.IAccessibleObject.method</td>
+<td>primero, descubre cómo usar el método MSAA dado para un control, y después recupera el propio objeto IAccessible y llama al método.</td>
+</tr>
+<tr>
+<td>Dame el elemento UIA que proporciona un control UIA</td>
+<td>obj.UIAElement</td>
+<td>útil si quieres realizar operaciones de cliente UIA en este elemento.</td>
 </tr>
 <tr>
 <td>ID de automatización para un elemento UIA</td>
@@ -1070,6 +1255,11 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Framework utilizado para generar este objeto UIA</td>
 <td>obj.UIAElement.cachedFrameworkID</td>
 <td>El framework GUI utilizado para programar este objeto. Los frameworks más comunes son Direct UI, Windows Presentation Foundation (WPF) con UIA habilitado, XAML (lenguaje extensible de programación de aplicaciones) y Microsoft Edge.</td>
+</tr>
+<tr>
+<td>Quiero pedirle a UIA los valores de una propiedad específica</td>
+<td>obj._getUIACacheablePropertyValue(propertyID)</td>
+<td>asumiendo que el objeto es un control UIA, pásale el identificador de la propiedad que quieres conocer como argumento de esta función. Si la propiedad está soportada, se devolverá un valor válido. Si no, se lanzará un error COM.</td>
 </tr>
 <tr>
 <td>Nombre ejecutable de cualquier objeto</td>
@@ -1117,19 +1307,19 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td></td>
 </tr>
 <tr>
-<td>Deseo añadir comandos de navegación de tabla para un objeto que todavía no se muestra como tabla</td>
-<td>Hereda de NVDAObjects.behaviors.RowWithFakeNavigation</td>
-<td>Esta clase define el mensaje del modo de ayuda de entrada y una implementación básica para las órdenes de navegación de tabla (Control+Alt+flechas).</td>
+<td>I want to add table navigation commands for an object that is not shown as a table yet</td>
+<td>Inherit from NVDAObjects.behaviors.RowWithFakeNavigation</td>
+<td>This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows).</td>
 </tr>
 <tr>
 <td>Necesito indicadores para proporcionar soporte mejorado para una aplicación Java</td>
 <td>NVDAObjects.JAB y módulo JABHandler</td>
-<td>Java Access Bridge debería instalarse.</td>
+<td>Java Access Bridge (de 32 y 64 bits) debería instalarse.</td>
 </tr>
 <tr>
 <td>Añadir soporte para una aplicación con funcionalidad similar a la de otra aplicación</td>
-<td>Importar contenidos del app module fuente a través de from nombremódulo import *</td>
-<td></td>
+<td>Importar contenidos del módulo de aplicación fuente a través de from nombremódulo import *</td>
+<td>Se conoce con el nombre de "Aliasing".</td>
 </tr>
 <tr>
 <td>Reproducir un tono</td>
@@ -1177,6 +1367,21 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td></td>
 </tr>
 <tr>
+<td>Quiero hacer algo cada vez que cambien los perfiles de configuración</td>
+<td>config.post_configProfileSwitch</td>
+<td>debes registrar una función que escuche esta acción, y hacer que haga algo cada vez que los perfiles cambien.</td>
+</tr>
+<tr>
+<td>Hazme saber si esta es una versión de desarrollo</td>
+<td><strong>debug</strong></td>
+<td>Si esta variable es True, la versión actual es de desarrollo. En cualquier otro caso, es una liberación oficial.</td>
+</tr>
+<tr>
+<td>Necesito ciertas características para que mi código funcione mejor</td>
+<td>hasattr(módulo, algo)</td>
+<td>esto te permite comprobar la existencia de una característica o atributo que puedas necesitar, de tal forma que puedas dar soporte a versiones antiguas y nuevas del código.</td>
+</tr>
+<tr>
 <td>Versión de Windows</td>
 <td>sys.getwindowsversion</td>
 <td>Esto devuelve una tupla de cinco elementos: versión principal, versión menor, número de compilación, plataforma y versión del Service Pack.</td>
@@ -1212,9 +1417,9 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>La forma más rápida de hacerlo es la función winKernel.virtualAllocEx.</td>
 </tr>
 <tr>
-<td>Enviar un mensaje a otro proceso</td>
+<td>Send a message to another process</td>
 <td>ctypes.windll.user32.SendMessageW()</td>
-<td>El camino más corto es la función winUser.sendMessage().</td>
+<td>The shorter way is winUser.sendMessage() function.</td>
 </tr>
 <tr>
 <td>Hora actual en segundos</td>
@@ -1247,9 +1452,9 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Asegúrate de tener una lista de palabras de un archivo de texto antes de ejecutar una cuenta en él.</td>
 </tr>
 <tr>
-<td>Crear una matriz dinámica</td>
-<td>Objeto list</td>
-<td>El objeto de lista de Python ([]) es una matriz dinámica.</td>
+<td>Create a dynamic array</td>
+<td>list object</td>
+<td>Python's list object ([]) is a dynamic array.</td>
 </tr>
 <tr>
 <td>Trabajar con matrices asociativas</td>
@@ -1260,6 +1465,26 @@ Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si d
 <td>Abrir, analizar y guardar archivos de configuración</td>
 <td>módulo config o módulo configobj</td>
 <td></td>
+</tr>
+<tr>
+<td>Quiero que mi código se ejecute más rápido y sin errores</td>
+<td>¡No lo hagas a menos que sea necesario!</td>
+<td>Citando a un conocido programador, "No optimices si no quieres tener dolores de cabeza".</td>
+</tr>
+<tr>
+<td>Quiero liberar la versión 1.0 de mi código con todo incluido</td>
+<td>¡Nunca lo hagas a menos que sepas por qué, sepas qué estás haciendo o lo especifique un contrato que hayas firmado!</td>
+<td></td>
+</tr>
+<tr>
+<td>Me gustaría traer una función de otro lector de pantalla a NVDA</td>
+<td>Justifica por qué y planéalo adecuadamente</td>
+<td></td>
+</tr>
+<tr>
+<td>Quiero integrar funciones de mi complemento en el lector de pantalla NVDA</td>
+<td>Envía una solicitud de cambios y prepárate para responder a las preguntas de los revisores</td>
+<td>A veces, una o dos características de un complemento aterrizan en el lector de pantalla NVDA, pero después de pasar por un proceso de revisión en una solicitud de cambios. Para más información, mira las pautas de contribución de NV Access.</td>
 </tr>
 </tbody>
 </table>
