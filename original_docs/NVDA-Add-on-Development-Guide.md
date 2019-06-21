@@ -1,4 +1,19 @@
-[//]: # (Translators: delete the table of contents before translating. Regenerate after translation if possible, or don't include in translated version)
+<!-- A note to translators:
+If you are publishing a translated version of this file off-github, the current table of contents likely won't work.
+It includes "user-content-" at the start of each relative link, because of Github's processing.
+You will have to remove all of those.
+
+It may be better to delete this table of contents entirely, and generate a clean one, either by:
+Deleting everything between the TOC start and end comments, and replacing the whole thing with:
+[TOC]
+Assuming your translation tool supports that markdown extension; or:
+downloading the PERL script we use to generate the table of contents, and running it with the 
+$relativeLinkPreface variable in the CONFIGURATION section set to the empty string "".
+You can download the PERL script at:
+https://github.com/XLTechie/pubtools/raw/master/markdowntoc.pl
+If you take this latter option, you may consider generating the table of contents after the translation, instead of before. This may or may not work.
+Please report your experiences with translations, and we will do our best to adjust things to make it easier.
+-->
 
 [//]: # (Links for use elsewhere in the document)
 [Git]: https://www.git-scm.com
