@@ -75,7 +75,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 </li>
 <li><a href="#componentes-del-modulo-de-un-complemento-y-consejos-de-desarrollo">Componentes del módulo de un complemento y consejos de desarrollo</a><ul>
 <li><a href="#la-consola-python">La consola Python</a></li>
-<li><a href="#trabajando-con-objetos-en-pantalla">Trabajando con objetos en pantalla&lt;/a</a></li>
+<li><a href="#trabajando-con-objetos-en-pantalla">Trabajando con objetos en pantalla</a></li>
 <li><a href="#examinando-la-jerarquia-de-objetos">Examinando la jerarquía de objetos</a></li>
 <li><a href="#foco-vs-navegador-de-objetos">Foco vs. navegador de objetos</a></li>
 <li><a href="#otras-golosinas-utiles-relacionadas-con-objetos">Otras golosinas útiles relacionadas con objetos</a></li>
@@ -217,14 +217,16 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <h3 id="cumplir-con-los-requisitos-del-sistema">Cumplir con los requisitos del Sistema</h3>
 <p>Para crear un complemento para NVDA, asegúrate de que tu sistema cumple los siguientes requisitos:</p>
 <ul>
-<li>NVDA:</li>
-<li>Una versión de NVDA está disponible en tu ordenador (funcionará ya sea una versión portable o instalada, pero te recomendamos encarecidamente que instales una copia de NVDA en tu ordenador de desarrollo). Descarga NVDA desde la <a href="https://www.nvaccess.org/download/">página de descargas de NV Access</a>.<ul>
+<li>NVDA:<ul>
+<li>Una versión de NVDA está disponible en tu ordenador (funcionará ya sea una versión portable o instalada, pero te recomendamos encarecidamente que instales una copia de NVDA en tu ordenador de desarrollo). Descarga NVDA desde la <a href="https://www.nvaccess.org/download/">página de descargas de NV Access</a>.</li>
 <li>O incluso mejor: recomendamos instalar la última versión master de desarrollo para mantenerse al día con los cambios en el API del núcleo.  Puedes descargar las últimas snapshots en https://community.nvda-project.org/wiki/Snapshots.</li>
 </ul>
 </li>
-<li>Python:</li>
+<li>Python:<ul>
 <li>Series de Python 2.7, versión 2.7.14 32-bit para Windows: https://www.python.org/downloads/release/python-2714/</li>
 <li>Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para Windows: https://www.python.org/downloads/release/python-373/</li>
+</ul>
+</li>
 <li>SCons 2 o 3, versión 2.3.0 o posterior para la generación de paquetes de complementos (si se usa la versión 3.x, se recomienda la 3.0.1 o posterior): http://www.scons.org/</li>
 <li>Markdown 2.0.1 o posterior para generar la documentación del complemento: https://pypi.python.org/pypi/Markdown/2.0.1</li>
 <li>El paquete Gettext de GNU para Windows para soporte de traducción de mensajes. La compilación se puede encontrar en: http://gnuwin32.sourceforge.net/downlinks/gettext.php<ul>
@@ -232,9 +234,11 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Si estás desarrollando soporte para un programa, sintetizador de voz o pantalla braille, instala el software y el hardware necesario.</li>
-<li>Elementos opcionales:</li>
+<li>Elementos opcionales:<ul>
 <li>Git 1.7.9 o posterior si deseas subir el complemento a un repositorio como <a href="https://bitbucket.org/">Bitbucket</a> o <a href="https://www.github.com/">Github</a> (opcional. Mira más abajo). Puedes utilizar varios clientes de Git, como <a href="https://www.atlassian.com/git/tutorials/git-bash">Git Bash</a>, [Git de Cygwin], y <a href="https://tortoisegit.org/">TortoiseGit</a>.</li>
 <li>La <a href="https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip">plantilla de complemento de NVDA de la comunidad</a> para facilitar el empaquetado y la gestión de carpetas y archivos del complemento (opcional).</li>
+</ul>
+</li>
 </ul>
 <p>Nota: si utilizas Windows 10 Anniversary Update o posterior y deseas usar Ubuntu en Windows (también conocido como <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Subsystem for Linux">Windows Subsystem for Linux</a>), puedes utilizar Advanced Packaging Tool (APT) para obtener SCons y Gettext. A continuación, puedes utilizar pip para descargar e instalar Markdown.</p>
 <h3 id="estructura-de-carpetas-de-desarrollo-del-complemento">Estructura de Carpetas de Desarrollo del Complemento</h3>
