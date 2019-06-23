@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2019-03-26 11:45+Hora estándar romance\n"
-"PO-Revision-Date: 2019-03-26 12:26+0100\n"
+"PO-Revision-Date: 2019-06-23 11:59+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\developer_guide.py:3
@@ -3033,47 +3033,3 @@ msgstr ""
 #: ..\python_docs\developer_guide.py:517
 msgid "  * rmSnap\\(\\): Removes all snapshot variables. "
 msgstr "  * rmSnap\\(\\): elimina todas las variables instantáneas. "
-
-#~ msgid "      * 4.2.2. An Example Manifest File"
-#~ msgstr "      * 4.2.2. Un archivo de manifiesto de ejemplo"
-
-#~ msgid "    * 4.3. Plugins and Drivers"
-#~ msgstr "    * 4.3. Extensiones y controladores"
-
-#~ msgid "    \t@scriptHandler.script(gesture=\"kb:NVDA+shift+v\")\n"
-#~ msgstr "    \t@scriptHandler.script(gesture=\"kb:NVDA+shift+v\")\n"
-
-#~ msgid "### 4.3. Plugins and Drivers"
-#~ msgstr "### 4.3. Extensiones y controladores"
-
-#~ msgid "    \t__gestures={\n"
-#~ msgstr "    \t__gestures={\n"
-
-#~ msgid ""
-#~ "To bind a gesture to a script, a special \"\\_\\_gestures\" Python "
-#~ "dictionary can be defined as a class variable on the App Module, Global "
-#~ "Plugin or NVDA Object. These dictionaries should contain gesture "
-#~ "identifier strings pointing to the name of the requested script, without "
-#~ "the \"script\\_\" prefix. "
-#~ msgstr ""
-#~ "Para asociar un gesto a un script, puede definirse un diccionario Python "
-#~ "llamado \"\\_\\_gestures\" como una variable de clase en el módulo de "
-#~ "aplicación, extensión global u objeto de NVDA. Estos diccionarios "
-#~ "deberían contener cadenas identificadoras de gestos que apunten al nombre "
-#~ "del script solicitado, sin el prefijo \"script\\_\". "
-
-#~ msgid ""
-#~ "There are more advanced ways of binding gestures in a more dynamic "
-#~ "fashion, though the \\_\\_gestures dictionary is the simplest. "
-#~ msgstr ""
-#~ "Hay formas más avanzadas de asociar gestos a scripts de forma más "
-#~ "dinámica, aunque el diccionario \\_\\_gestures es la manera más simple. "
-
-#~ msgid "    \t__gestures = {\n"
-#~ msgstr "    \t__gestures = {\n"
-
-#~ msgid "    \t\t\"kb:NVDA+leftArrow\": \"announceWindowClassName\",\n"
-#~ msgstr "    \t\t\"kb:NVDA+leftArrow\": \"announceWindowClassName\",\n"
-
-#~ msgid "    \t\t\"kb:NVDA+l\": \"reportLength\",\n"
-#~ msgstr "    \t\t\"kb:NVDA+l\": \"reportLength\",\n"
