@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: June 2019
+Revision: July 2019
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of June 2019 revision, one or two features from NVDA 2019.1 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of July 2019 revision, one or two features from NVDA 2019.2 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2019 Joseph Lee and others, released under GPL 2.
 
@@ -73,7 +73,7 @@ Other useful information exposed by UIA elements are:
 * Framework: the underlying framework used to create a given control such as XAML, Direct UI and others.
 * Localized control type: a role type text that should be spoken by screen readers in different languages.
 * Controller for: a list (array) of controls that this element manipulates when performing actions such as search suggestions (explained below).
-* ARIA properties: a map of ARIA properties such as role description, mostly encountered in Microsoft Edge element.s
+* ARIA properties: a map of ARIA properties such as role description, mostly encountered in Microsoft Edge elements.
 
 ### UIA events
 
@@ -86,8 +86,8 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
 * Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into NVDA 2018.3 release, but more recent changes do require support from this add-on.
-* Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2.
-* Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update.
+* Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2, and refined in 2019.2 to interupt users when important notifications are pending.
+* Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update, sensitive to changes in Insider Preview builds.
 * Announcing tooltips from universal apps.
 * Recognizing dialogs powered by XAML and various frameworks. Since NVDA 2018.3, NVDA itself takes care of this in most situations.
 
@@ -99,7 +99,7 @@ Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin 
 
 ### Source code layout
 
-The global plugin consists of the following:
+The global plugin consists of the following: 
 
 * winTenObjs/__init__.py: the base global plugin.
 * winTenObjs/_UIAHandlerEx.py: additional UIA routines for ones NVDA does not support natively (mostly for old NVDA releases). This module can come and go without notice.
@@ -147,6 +147,8 @@ In addition, in some cases, it is helpful to announce how many suggestions have 
 
 Since NVDA 2017.3, suggestion announcement (not the count) is part of the screen reader.
 
+Note that the routines described above was done at a time when it was desirable to detect all possible search fields. However, it was found that some workarounds were app specific, thus in June 2019, it was decided to transfer some search field handling to app modules. This is especially the case with address omnibar in Microsoft Edge (EdgeHTML version) where the global plugin’s suggestions closed event handler did not apply if Edge is in use. Along the way, handling rarely used search fields that appeared in one or two apps (such as People app search field in old app releases) were dropped.
+
 #### Announcing notifications
 
 Windows 10 Version 1709 (Fall Creators Update) introduces a new event to let apps send text to be announced by UIA clients such as NVDA. One of the jobs of Windows 10 Objects is to catch this and announce notifications for NVDA releases which does not support this natively.
@@ -165,7 +167,7 @@ As of October 2018, NVDA itself announces notifications for all apps (especially
 
 #### Tracking UIA events for controls
 
-The Windows 10 Objects global plugin also has ability to track UIA events for controls and log info  about them, executed via `uiaDebugLogging` function that takes an object and the event name. This function records the following if NVDA is started with debug logging enabled:
+The Windows 10 Objects global plugin also has ability to track UIA events for controls and log info  about them, executed via `uiaDebugLogging` function that takes an object and the event name. This function records the following if NVDA is started with debug logging enabled or told to monitor specific events and/or events from specific apps:
 
 * What the object actually is.
 * Object name.
@@ -183,7 +185,7 @@ For notification events, NVDA records event parameters from the event handler me
 
 A looping selector is a combo box-like control where the selection loops around. This is employed in places such as Alarms and Clock, Settings/Update and Security/Windows Update/active hours and so on.
 
-In older Windows 10 and universal app releases, when changing selector values, item selected UIA event wasn't fired. To get around this, the add-on will examine states for each item and announce if an item has selected state. This isn't the case for newer implementations, but for backward compatibility, the old routines are kept. This has been enhanced in NVDA 2019.1.
+In older Windows 10 and universal app releases, when changing selector values, item selected UIA event wasn't fired. To get around this, the add-on will examine states for each item and announce if an item has selected state. This isn't the case for newer implementations, but for backward compatibility, the old routines are kept. This has been enhanced in NVDA 2019.1, and since June 2019, the add-on is no longer involved in keeping an eye on this control.
 
 #### Live region change events
 
@@ -195,7 +197,7 @@ The Windows 10 Objects goes one step further by recording instances of this even
 
 Despite not being identified as such, some windows are actually dialogs. These include pop-up dialog for uninstaling apps, various dialogs found in Settings app and so on.
 
-In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Version 1809 and later, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Version 1809.
+In old add-on releases, NVDA would consult a list of known dialog class names in hopes of catching a dialog. In newer releases, especially if run on Windows 10 Version 1809 and later, UIA IsDialog property is used to catch dialog elements. Once dialogs are recognized, NVDA will read contents of these dialogs automatically when they appear. This has been simplified in NVDA 2018.3 as NVDA itself will try its best to recognize more dialogs, including those marked as a dialog via UIA in Version 1809. However, there are windows that are actually dialogs, so the add-on still ships with a list of known dialog classes to be consulted by NVDA.
 
 ## App modules for universal apps
 
@@ -214,7 +216,7 @@ The modules and enhancers/fixers applied are:
 * Cortana/Start menu: suppress double announcement of suggestion result item in some cases, staying silent when user is dictating to Cortana, handling bad UIA implementations.
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
-* Microsoft Edge: announce correct alert text, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
+* Microsoft Edge: announce correct alert text and enhancements for address omnibar, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
 * Modern keyboard: support for emoji panel, dictation, hardware input suggestions, and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
 * MSN Weather: use up or down arrow keys to read forecast information.
 * People: announcing first suggestion when looking for a contact.

@@ -239,19 +239,19 @@ Follow these steps to prepare your computer for writing NVDA add-ons.
 To create an add-on for NVDA, please make sure your system meets the following requirements:
 
 * NVDA:
-  - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
-  - Even better: we recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
+    - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
+    - Even better: we recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python:
-  - Python 2.7 series, version 2.7.14 32-bit for Windows: https://www.python.org/downloads/release/python-2714/
-  - If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows: https://www.python.org/downloads/release/python-373/
+    - Python 2.7 series, version 2.7.14 32-bit for Windows: https://www.python.org/downloads/release/python-2714/
+    - If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows: https://www.python.org/downloads/release/python-373/
 * SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
-	- Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
+    - Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
 * If you are developing support for a program, speech synthesizer, or braille display, install the needed software and hardware.
 * Optional Items:
-  - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
-  - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
+    - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
+    - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
 
 Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
 
@@ -418,12 +418,12 @@ The following lists available NVDA core modules and some useful methods and clas
 
 * Addon Handler (addonHandler.py): The module which implements the add-on subsystem. The addonHandler.initTranslation() method is used to initialize internationalization support for your add-on.
 * NVDA basic API (api.py): A collection of core methods used throughout NVDA, such as obtaining focus and navigator object, setting focus and so on. Some of the most useful functions are:
-	* `api.getFocusObject()`: Retrieves the focused control (returns the object with focus).
-	* `api.getNavigatorObject()`: Fetches the current navigator object. If NVDA is set to follow system focus, the focus and navigator object will be the same, otherwise a different object is returned.
-	* `api.getForegroundObject()`: Returns the foreground window of the current application (the parent of this object is the application itself).
-	* These have a corresponding method to set certain object as the focus or navigator object. Note that these lets NVDA see the new focus or navigator object but does not actually change system focus.
-	* `api.getDesktopObject()`: returns the shell (topmost level_ object).
-	* `api.copyToClip()`: copies text to the clipboard.
+    - `api.getFocusObject()`: Retrieves the focused control (returns the object with focus).
+    - `api.getNavigatorObject()`: Fetches the current navigator object. If NVDA is set to follow system focus, the focus and navigator object will be the same, otherwise a different object is returned.
+    - `api.getForegroundObject()`: Returns the foreground window of the current application (the parent of this object is the application itself).
+    - These have a corresponding method to set a certain object as the focus or navigator object. Note that this lets NVDA see the new focus or navigator object but does not actually change system focus.
+    - `api.getDesktopObject()`: returns the shell (topmost level) object.
+    - `api.copyToClip()`: copies text to the clipboard.
 * App Module subsystem (appModuleHandler.py, appModules): The subsystem in charge of handling app modules (see the chapter on app modules for more information).
 * ARIA support (aria.py): Implements support for Accessible Rich Internet Applications (ARIA).
 * Base object collection (baseObject.py): Contains useful base objects such as scriptable objects (see the chapter on NVDA objects and overlay objects for more information).
@@ -432,11 +432,11 @@ The following lists available NVDA core modules and some useful methods and clas
 * Configuration (config): Manages configuration and profiles (profiles are available in 2013.3 or later).
 * Controls and states collection (controlTypes.py): Includes dictionaries on control types (roles) and possible states that a control can be in.
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
-	* `eventHandler.requestEvents(process ID, window class name for the control, event to be requested)`: Allows NVDA to listen to specific events for certain controls while using another app.
+    - `eventHandler.requestEvents(process ID, window class name for the control, event to be requested)`: Allows NVDA to listen to specific events for certain controls while using another app.
 * Extension points (extensionPoints.py): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
-	* `extensionPoints.Action`: notifies when something happens e.g. profile switches.
-	* `extensionPoints.Decider`: decides whether to process something further e.g. processing keyboard input from a remote system.
-	* `extensionPoints.Filter`: modifies a given text for further processing e.g. advanced speech sequences.
+    - `extensionPoints.Action`: notifies when something happens e.g. profile switches.
+    - `extensionPoints.Decider`: decides whether to process something further e.g. processing keyboard input from a remote system.
+    - `extensionPoints.Filter`: modifies a given text for further processing e.g. advanced speech sequences.
 * Global Commands collection (globalCommands.py): A list of global commands available while using NVDA (see section on script scope for more information).
 * Global Plugin subsystem (globalPluginHandler.py): The module needed for controlling global plugins.
 * NVDA GUI (gui): A collection of classes used by NVDA to display its messages graphically. Includes GUI's for NVDA menu, add-on manager and others.
@@ -446,33 +446,33 @@ The following lists available NVDA core modules and some useful methods and clas
 * Java Access Bridge support (JABHandler.py): A collection of methods used for supporting JAB subsystem used for Java applications.
 * Keyboard input (keyboardHandler.py): Supports entering commands from the keyboard.
 * Logging facility (logHandler.py): Allows a module to write logs to be viewed by a developer or a user via Log Viewer. It includes the following class:
-	* `logHandler.Log`: The class which implements logging facility.
+    - `logHandler.Log`: The class which implements logging facility.
 * Math content presentation (MathPress packages): allows NVDA to recognize and interact with various math content and markup. NVDA ships with MathML support package and support for Math Player is included in 2015.2 or later.
 * Mouse support (mouseHandler.py): Supports mouse commands.
 * NVDA objects collection (NVDAObjects): A collection of NVDA objects or controls used in many applications and standards such as UIA (User Interface Automation). Some objects require special actions to be performed, and these are specified in behaviors module in NVDA objects package. Some of the common ones include:
-	* `NVDAObjects.NVDAObject`: the base class for NVDA objects that define events, properties and so on.
-	* `NVDAObjects.IAccessible`: a collection of MSAA/IAccessible objects, such as working with SysListView32 list views and others.
-	* `NVDAObjects.JAB`: a collection of classes used when interfacing with Java applications and Java Access Bridge.
-	* `NVDAObjects.UIA`: various classes for objects powered by UI Automation. Since 2016, it is also the home of a collection of controls used in Microsoft Edge and objects powered by EdgeHTML rendering engine.
-	* `NVDAObjects.Window`: generic windows and other custom objects such as those found in Microsoft Excel.
-	* `NVDAObjects.behaviors`: a collection of behaviors for specific controls, such as edit fields with or without selection detection, terminals, tool tips, help balloons, a way to simulate table commands in various controls and others.
+    - `NVDAObjects.NVDAObject`: the base class for NVDA objects that define events, properties and so on.
+    - `NVDAObjects.IAccessible`: a collection of MSAA/IAccessible objects, such as working with SysListView32 list views and others.
+    - `NVDAObjects.JAB`: a collection of classes used when interfacing with Java applications and Java Access Bridge.
+    - `NVDAObjects.UIA`: various classes for objects powered by UI Automation. Since 2016, it is also the home of a collection of controls used in Microsoft Edge and objects powered by EdgeHTML rendering engine.
+    - `NVDAObjects.Window`: generic windows and other custom objects such as those found in Microsoft Excel.
+    - `NVDAObjects.behaviors`: a collection of behaviors for specific controls, such as edit fields with or without selection detection, terminals, tool tips, help balloons, a way to simulate table commands in various controls and others.
 * Review facility (review.py): assists with working with review cursor.
 * Scripts support (scriptHandler.py): Handles scripts, methods executed due to the user pressing keyboard commands and other input.
 * Speech output (speech.py): Controls speech output.
 * Synthesizer driver support (synthDriverHandler.py): This is the core module needed for speech synthesizer add-ons.
 * Widget text access (textInfos): Allows access to text for widget and documents.
 * Touchscreen support (touchHandler.py): Provides support for touchscreen input (installed versions only).
-	* `touchHandler.touchSupported()` (NVDA 2018.1 and later): returns if the system supports touch interaction.
+    - `touchHandler.touchSupported()` (NVDA 2018.1 and later): returns if the system supports touch interaction.
 * Tone output (tones.py): Allows the user to hear tones. The following function is defined:
-	* `tones.beep(pitch in hertz, duration in milliseconds, left channel volume, right channel volume)`: Plays a tone of specified pitch for specified duration. The first two arguments are mandatory, while the other two are optional.
+    - `tones.beep(pitch in hertz, duration in milliseconds, left channel volume, right channel volume)`: Plays a tone of specified pitch for specified duration. The first two arguments are mandatory, while the other two are optional.
 * User interface messages (ui.py): Includes various functions for speech and/or braille output, including:
-	* `ui.message(message to be spoken/brailled)`: Speaks or brailles the message. This should be a string surrounded by quotes.
-	* `ui.browseableMessage(message to be shown, HTML or not)`: displays some text on a web browser window. If you want to use HTML markup, set isHTML argument to True.
+    - `ui.message(message to be spoken/brailled)`: Speaks or brailles the message. This should be a string surrounded by quotes.
+    - `ui.browseableMessage(message to be shown, HTML or not)`: displays some text in a web browser window. If you want to use HTML markup, set isHTML argument to True.
 * UIA support (UIAHandler.py, UIA objects): Used for supporting UIA (User Interface Automation) controls (Windows 7 and later).
 * Virtual buffers (virtualBuffers): Handles virtual buffer documents such as web sites.
 * Windows API wrappers: the following modules are thin wrappers around Windows API libraries. You can use the below modules or call Windows API directly via ctypes.windll.dllname (e.g. ctypes.windll.user32):
-	* `winKernel`: Wraps some constants, structures and functions from kernel32.dll that are commonly encountered in NVDA.
-	* `winUser`: wraps around constants, structures and functions defined in user32.dll that are used by NVDA.
+    - `winKernel`: Wraps some constants, structures and functions from kernel32.dll that are commonly encountered in NVDA.
+    - `winUser`: wraps around constants, structures and functions defined in user32.dll that are used by NVDA.
 
 The modules without .py extension are directories, containing specialist modules. There are other useful methods out there in addition to the list above, but the above are the most useful ones. See the NVDA source code documentation for other methods, or see the examples below on how these methods and others are used throughout the life of an add-on.
 
@@ -834,19 +834,24 @@ If you wish to store settings for your add-on, use ConfigObj or NVDA's built-in 
 Finally, you can ask NVDA to perform some routines while the add-on is loading or being terminated. This is done by defining `__init__` and `terminate` method for the add-on. Depending on the plugin type, use:
 
 * For global plugin:
-	def __init__(self):
-		super(GlobalPlugin, self).__init__()
-		# The routine to do when the global plugin loads.
-		# Warning! You should always call super method first in order to initialize various foundations correctly.
+  ```
+  def __init__(self):
+  	super(GlobalPlugin, self).__init__()
+  	# The routine to do when the global plugin loads.
+  	# Warning! You should always call super method first in order to initialize various foundations correctly.
+  ```
 * For app modules:
-	def __init__(self, *args, **kwargs):
-		super(AppModule, self).__init__(*args, **kwargs)
-		# What NVDA should do when the app module loads.
-
+  ```
+  def __init__(self, *args, **kwargs):
+  	super(AppModule, self).__init__(*args, **kwargs)
+  	# What NVDA should do when the app module loads.
+  ```
 * For terminating, regardless of the add-on type:
-	def terminate(self):
-		# Do something when the add-on terminates.
-		# Warning! Never initialize ANY core module such as GUI in terminate method as doing so will prevent NVDA from exiting properly.
+  ```
+  def terminate(self):
+  	# Do something when the add-on terminates.
+  	# Warning! Never initialize ANY core module such as GUI in terminate method as doing so will prevent NVDA from exiting properly.
+  ```
 
 ### Let's build an add-on
 
@@ -971,7 +976,7 @@ You should not write a global plugin if:
 
 ### Few more things to remember about global plugins
 
-* When you write scripts in your global plugin, the commands you assign to them will take precedence (looked up first). Therefore it is important to consult the NVDA user guide and help for other add-ons to minimize command conflicts.
+* When you write scripts in your global plugin, the commands you assign to them will take precedence (they are looked up first). Therefore it is important to consult the NVDA user guide and help for other add-ons to minimize command conflicts.
 * Each global plugin must be placed in globalPlugins directory in your add-on folder structure.
 * It is possible to use more than one Python file in your global plugin. If this is the case, you need to put them in a folder (name must be the name of the plugin) inside globalPlugins folder, with the main plugin file named __init__.py.
 * If you need to do something when the global plugin is loaded (such as loading the user configuration), you need to write an __init__ method in your plugin class. In this method, you need to call the __init__ method in the super (globalPluginHandler.GlobalPlugin) first before doing other startup work. Also, if you need to do something when the global plugin ends, define terminate method.
@@ -1112,14 +1117,14 @@ Here are other remarks regarding app modules:
 
 * If you find that different versions of the program are laid out differently e.g. locations for controls are different, then you can write code which can handle these cases. There are a number of options you can choose from: adding some constants in your app module to handle different object locations, writing code for these controls (one per version) in custom objects which will be chosen in overlay class method and so on.
 * If possible, try working with services that the app provides, such as COM (Component Object Model) methods (for example, Outlook app module), API's the app provides (such as Winamp) and so on.
-* To support an application that works the same as another program (especially if you're writing app module for a 64-bit version of a 32-bit program for which you wrote an app module for), use the following code fragment (called aliasing):
-	from appName import *
-where appName is the name of the app module and * (asterisk or star) means import everything. For an example of this, look at NVDA's app modules for Miranda32 and Miranda64.
-* If you wish to extend an app module that comes with NVDA, use the following code fragment (this is called overriding the built-in module):
-	from nvdaBuiltin.appModules.appName import *
-Where appName is the app module you wish to extend. For example, if you wish to support different controls in Windows calculator (calc.py), use:  
-	from nvdaBuiltin.appModules.calc import *
-* Many app modules (both built-in and third-party ones) uses app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants starts with "PP". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with "SPL". This is used to remind you where this constants are used.
+* To support an application that works the same as another program (especially if you're writing an app module for a 64-bit version of a 32-bit program for which you also wrote an app module), use the following code fragment (called aliasing):\
+  `from appName import *`\
+  where appName is the name of the app module and * (asterisk or star) means import everything. For an example of this, look at NVDA's app modules for Miranda32 and Miranda64.
+* If you wish to extend an app module that comes with NVDA, use the following code fragment (this is called overriding the built-in module):\
+  `from nvdaBuiltin.appModules.appName import *`\
+  Where appName is the app module you wish to extend. For example, if you wish to support different controls in Windows calculator (calc.py), use:\
+  `from nvdaBuiltin.appModules.calc import *`\
+* Many app modules (both built-in and third-party ones) use app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants starts with "PP". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with "SPL". This is used to remind you where these constants are used.
 
 ## Drivers
 
@@ -1224,7 +1229,7 @@ The below list summarizes concepts all add-on developers will need to know when 
 * Code block: collection of code.
 * Compiling: translating a high-level programming language into a low-level language suitable for machine execution.
 * Event-driven programming: a programming paradigm based on following, reacting to and handling events.
-* Exception: one or more runtime circumstances that prevents normal operation of a program such as being denied access to a resource, name usage problem in code and other cases.
+* Exception: one or more runtime circumstances that prevent normal operation of a program such as being denied access to a resource, name usage problem in code and other cases.
 * GUI: Graphical User Interface.
 * Handle: an opaque reference to a resource such as a file, TCP socket, window and so on.
 * Has versus is relationship: former referring to attributes of a single class, the latter referring to inherited classes.
@@ -1338,4 +1343,3 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |
 | I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |
 | I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |
-

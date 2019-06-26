@@ -707,22 +707,18 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>Finalmente, puedes pedirle a NVDA que realice algunas rutinas mientras el complemento se esté cargando o finalizando. Esto se hace definiendo el método <code>__init__</code> y <code>terminate</code> para el complemento. Dependiendo del tipo de extensión, utiliza:</p>
 <ul>
 <li>Para extensiones globales:
-    def <strong>init</strong>(self):
-        super(GlobalPlugin, self).<strong>init</strong>()
-        # La rutina a hacer cuando la extensión global se cargue.
-        # ¡Precaución! siempre deberías llamar al método super primero para inicializar la clase padre correctamente.</li>
-<li>
-<p>Para módulos de aplicación:
-    def <strong>init</strong>(self, *args, <strong>kwargs):
-        super(AppModule, self).<strong>init</strong>(*args, </strong>kwargs)
-        # Lo que debería hacer NVDA cuando el módulo de aplicación se cargue.</p>
-</li>
-<li>
-<p>Para terminar, independientemente del tipo de complemento:
-    def terminate(self):
-        # Hacer algo cuando el complemento termine.
-        # ¡Precaución! nunca inicializes cualquier módulo del núcleo tal como GUI en el método terminate, ya que al hacerlo evitarás que NVDA salga correctamente.</p>
-</li>
+  <code>def __init__(self):
+    super(GlobalPlugin, self).__init__()
+    # La rutina a hacer cuando la extensión global se cargue.
+    # ¡Precaución! siempre deberías llamar al método super primero para inicializar la clase padre correctamente.</code></li>
+<li>Para módulos de aplicación:
+  <code>def __init__(self, *args, **kwargs):
+    super(AppModule, self).__init__(*args, **kwargs)
+    # Lo que debería hacer NVDA cuando el módulo de aplicación se cargue.</code></li>
+<li>Para terminar, independientemente del tipo de complemento:
+  <code>def terminate(self):
+    # Hacer algo cuando el complemento termine.
+    # ¡Precaución! nunca inicializes cualquier módulo del núcleo tal como GUI en el método terminate, ya que al hacerlo evitarás que NVDA salga correctamente.</code></li>
 </ul>
 <h3 id="construyamos-un-complemento">Construyamos un complemento</h3>
 <p>Ahora tenemos una visión general básica de los componentes de los complementos, estamos listos para crear algunos complementos sencillos. Pero primero, repasemos el proceso real de desarrollo de complementos, consejos de depuración, lo que se debe hacer y lo que no se debe hacer y otras cosas.</p>
@@ -921,14 +917,14 @@ class AppModule(appModuleHandler.AppModule):
 <ul>
 <li>Si encuentras que las diferentes versiones del programa están dispuestas de forma diferente, por ejemplo, las ubicaciones para los controles son diferentes, entonces puedes escribir código que pueda manejar estos casos. Hay una serie de opciones entre las que puedes elegir: añadir algunas constantes en tu módulo de aplicación para manejar diferentes ubicaciones de objetos, escribir código para estos controles (uno por versión) en objetos personalizados que se seleccionarán en el método de clases de superposición, etc.</li>
 <li>Si es posible, intenta trabajar con los servicios que proporciona la aplicación, como los métodos COM (Component Object Model) (por ejemplo, el módulo de aplicación de Outlook), API's que proporciona la aplicación (como Winamp) y así sucesivamente.</li>
-<li>Para soportar una aplicación que funcione igual que otro programa (especialmente si estás escribiendo un módulo de aplicación para una versión de 64 bits de un programa de 32 bits para el que has escrito un módulo de aplicación), utiliza el siguiente fragmento de código (llamado aliasing):
-    from appName import *
-donde appName es el nombre del app module y * (asterisco o estrella) significa importarlo todo. Para un ejemplo de esto, mira los módulos de aplicación de NVDA para Miranda32 y Miranda64.</li>
-<li>Si deseas ampliar un app module que venga con NVDA, utiliza el siguiente fragmento de código (llamado sobreescritura del módulo incorporado):
-    from nvdaBuiltin.appModules.appName import *
-Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si deseas admitir diferentes controles en la calculadora de Windows (calc.py), utiliza:<br />
-    from nvdaBuiltin.appModules.calc import *</li>
-<li>Muchos módulos de aplicación (tanto integrados como de terceros) utilizan nombres de applicación como parte del nombre de una constante (un valor que no cambia). Por ejemplo, en el módulo Powerpoint de NVDA (powerpnt.py), muchas constantes comienzan con "PP". Del mismo modo, en el app module de Station Playlist Studio, muchas constantes en el archivo del módulo de aplicación (splstudio.py) comienzan con "SPL". Esto se usa para recordarte dónde se utilizan estas constantes.</li>
+<li>Para soportar una aplicación que funcione igual que otro programa (especialmente si estás escribiendo un módulo de aplicación para una versión de 64 bits de un programa de 32 bits para el que has escrito un módulo de aplicación), utiliza el siguiente fragmento de código (llamado aliasing):\
+  <code>from appName import *</code>\
+  donde appName es el nombre del módulo de aplicación y * (asterisco o estrella) significa importarlo todo. Para un ejemplo de esto, mira los módulos de aplicación de NVDA para Miranda32 y Miranda64.</li>
+<li>Si deseas ampliar un módulo de aplicación que venga con NVDA, utiliza el siguiente fragmento de código (llamado sobreescritura del módulo incorporado):\
+  <code>from nvdaBuiltin.appModules.appName import *</code>\
+  Donde appName es el módulo de aplicación que deseas ampliar. Por ejemplo, si deseas admitir diferentes controles en la calculadora de Windows (calc.py), utiliza:\
+  <code>from nvdaBuiltin.appModules.calc import *</code>\</li>
+<li>Muchos módulos de aplicación (tanto integrados como de terceros) utilizan nombres de applicación como parte del nombre de una constante (un valor que no cambia). Por ejemplo, en el módulo Powerpoint de NVDA (powerpnt.py), muchas constantes comienzan con "PP". Del mismo modo, en el módulo de aplicación de Station Playlist Studio, muchas constantes en el archivo del módulo de aplicación (splstudio.py) comienzan con "SPL". Esto se usa para recordarte dónde se utilizan estas constantes.</li>
 </ul>
 <h2 id="controladores">Controladores</h2>
 <p>Un controlador permite que un software como NVDA se comunique con el hardware o utilice la funcionalidad proporcionada por otro software. Normalmente, cuando la gente habla de controladores, usualmente se refiere a un programa instalado en una computadora que permite que el software se comunique con un hardware específico, como tarjetas de vídeo, teclados y demás.</p>
