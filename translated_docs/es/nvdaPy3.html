@@ -130,19 +130,23 @@
 </ul>
 </li>
 <li>Las dependencias a nivel de código fuente deben satisfacerse. Esto no sólo incluye WXPython 4, sino también ConfigObj, Comtypes, Pyserial, Pywin32 y otras.<ul>
-<li>Requisito cumplido el 10 de junio de 2019</li>
+<li>Requisito cumplido el 10 de junio de 2019.</li>
 </ul>
 </li>
 <li>Se deben investigar y documentar los problemas de la transición (mira arriba para ver problemas conocidos y soluciones propuestas). Usa la etiqueta "python 3".<ul>
-<li>A fecha de 15 de junio de 2019, se han identificado al menos 30 problemas, que llevan asociadas sus respectivas solicitudes de cambio. Algunos ya se han resuelto.</li>
+<li>A fecha de 13 de julio de 2019, se han identificado al menos 40 problemas, que llevan asociadas sus respectivas solicitudes de cambio. La mayoría ya se han resuelto.</li>
 </ul>
 </li>
 <li>Si es necesario,crear solicitudes de cambio que traten  con el flujo de trabajo previo a la transición, como por ejemplo hacer que el código fuente sea compatible con Python 2 y 3 (importaciones, por ejemplo).<ul>
-<li>Con fecha 15 de junio de 2019, se han enviado e integrado al menos 15 solicitudes de cambio relacionadas con la transición en una rama transitoria.</li>
+<li>Con fecha 13 de julio de 2019, se han enviado e integrado al menos 30 solicitudes de cambio relacionadas con la transición en una rama transitoria.</li>
 </ul>
 </li>
 <li>Se deben satisfacer las dependencias binarias. Estas incluyen WXPython, Py2exe y otras.<ul>
 <li>Requisito cumplido el 10 de junio de 2019.</li>
+</ul>
+</li>
+<li>Las pruebas deben ejecutarse hasta que se completen.<ul>
+<li>Requisito cumplido el 26 de junio de 2019.</li>
 </ul>
 </li>
 </ol>
@@ -180,6 +184,7 @@
 </li>
 <li>La compilación de Appveyor debe finalizar para completar.<ul>
 <li>A fecha del 15 de junio de 2019, tanto el código fuente como el lanzador y ciertas pruebas funcionan.</li>
+<li>A fecha de 26 de junio de 2019, la compilación de Appveyor se ejecuta hasta completarse.</li>
 </ul>
 </li>
 </ol>
@@ -189,6 +194,7 @@
 <ol>
 <li>Se debería invitar a los miembros del público a que prueben una serie de compilaciones de prueba hechas para comprobar el trabajo de la transición, probar complementos, documentar, extender a la comunidad y otros.</li>
 <li>La comunidad de complementos y otros miembros deben recibir asistencia relacionada con la transición a Python 3.</li>
+<li>Se solicita a los desarrolladores de complementos que migren su código a Python 3.</li>
 </ol>
 <p>Finalización estimada de ambas fases: de cuatro a seis meses después de que se completen los pasos previos a la transición.</p>
 <h3 id="despues-de-la-transicion">Después de la transición:</h3>
@@ -196,7 +202,7 @@
 <ol>
 <li>Se debe liberar una beta de NVDA que funcione con Python 3.</li>
 <li>Los miembros del público deberían proporcionar comentarios a nivel de beta.</li>
-<li>Se solicita a los desarrolladores de complementos que migren su código a Python 3.</li>
+<li>Se solicita a los desarrolladores de complementos que proporcionen a los usuarios avisos sobre Python 3.</li>
 <li>Se libera una versión estable de NVDA que funcione con Python 3.</li>
 <li>Debería tener lugar una evaluación tras la transición, que incluya problemas documentados durante las pruebas de campo, más extensión a la comunidad y otras actividades.</li>
 <li>Si es necesario, se deberían hacer intentos para utilizar las características nativas de Python 3 (a continuación se muestra una lista de características y su posible impacto en NVDA).</li>
@@ -214,6 +220,7 @@
 <li>26 de marzo de 2019: liberada la versión estable de NVDA 2019.1.</li>
 <li>26 de abril de 2019: creación de versión de desarrollo (Threshold) construida para alojar la transición a Python 3 y otros cambios incompatibles con versiones anteriores.</li>
 <li>7 de junio de 2019: la corrección para la palabra clave async se ha mezclado en la rama Threshold.</li>
+<li>24 de junio de 2019: los principales obstáculos con el proceso de compilación de Appveyor (pruebas unitarias y del sistema, firma de ejecutables, etc.) se han resuelto.</li>
 </ol>
 </li>
 <li>Fase 1 de la transición (en progreso):<ol>
@@ -221,6 +228,8 @@
 <li>8 de junio de 2019: comienzan las compilaciones desde la rama transitoria.</li>
 <li>12 de junio de 2019: ya es posible compilar desde el código fuente.</li>
 <li>13 de junio de 2019: parte de la compilación binaria y el marco de trabajo de pruebas tienen éxito.</li>
+<li>24 de junio de 2019: ya es posible ejecutar NVDA desde el código fuente y realizar pruebas del sistema.</li>
+<li>26 de junio de 2019: compilada la primera versión binaria de desarrollo (no está preparada para el público general).</li>
 </ol>
 </li>
 <li>Fase 2 de la transición: aún no ha empezado.</li>
@@ -229,11 +238,11 @@
 <li>Asyncio: no es importante en esta fase.</li>
 <li>Collections.ChainMap: facilita la implementación de config.ConfigManager.</li>
 <li>pyz: no tiene impacto a menos que aparezcan casos de uso.</li>
-<li>Literales de cadenas formateadas (las cadenas "f"): hace más legibles los mensajes traducibles.</li>
+<li>Literales de cadenas formateadas (las cadenas "f"): facilita la depuración de cadenas (necesita Python 3.8).</li>
 <li>Gettext.pgettext (Python 3.8): la respuesta buscada durante tanto tiempo para los contextos de un mensaje (mira la incidencia 1524 de GitHub para más detalles).</li>
 <li>Expresión de asignación (el operador := en Python 3.8): puede permitir una lectura mejorada de algunas instrucciones if y while.</li>
 <li>sys.breakpointhook: ayuda al depurador de Visual Studio y compañía a depurar NVDA (si está instalado).</li>
-<li>Enum: puede mejorar ciertas listas.</li>
+<li>Enum: puede mejorar ciertas listas, incluyendo la lista de roles en los tipos de control.</li>
 </ul>
 </li>
 </ol>
@@ -263,7 +272,7 @@
 <li>Intenta usar módulos Python que se sepa que son compatibles con Python 2 y 3.</li>
 </ul>
 <h3 id="para-evaluadores">Para evaluadores:</h3>
-<p>Todavía nada, la transición aún no ha comenzado.</p>
+<p>Todavía nada, las pruebas generales aún no han comenzado.</p>
 <h3 id="para-traductores">Para traductores:</h3>
 <p>Nada todavía.</p>
 <h3 id="para-usuarios">Para usuarios:</h3>

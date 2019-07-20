@@ -128,13 +128,15 @@ Start date: September 17, 2018
 1. An NVDA version with wxPython 4 must be released. This is a must, as wxPython 4 supports Python 3, which is a stepping stone for Python 3 transition.
 	* Requirement met on September 17, 2018 with release of NVDA 2018.3.
 2. Source code level dependencies must be satisfied. This includes not only wxPython 4, but also ConfigObj, Comtypes, Pyserial, Pywin32 and others.
-	* Requirement met on June 10, 2019
+	* Requirement met on June 10, 2019.
 3. Transition issues must be researched and documented (see above for known issues and proposed workarounds). Use "python 3" label.
-	* As of June 15, 2019, at least 30 issues were identified, along with several pull requests, most of which are resolved.
+	* As of July 13, 2019, at least 40 issues were identified, along with several pull requests, most of which are resolved.
 4. If needed, create pull requests dealing with pre-transition workflow such as making NVDA source code Python 2 and 3 aware (imports, for instance).
-	* As of June 15, 2019, at least 15 transition related pull request were submitted and merged into a staging branch.
+	* As of july 13, 2019, at least 30 transition related pull request were submitted and merged into a staging branch.
 5. Binary dependencies must be satisfied. These include wxPython, Py2exe and others.
 	* Requirement met on June 10, 2019.
+6. Tests must run to completion.
+	* Requirement met on June 26, 2019.
 
 Ideal completion: between NVDA 2019.2 and 2019.3 releases (tentatively by July 31, 2019)
 
@@ -165,6 +167,7 @@ Start date: June 8, 2019
 	* A Python 3 version of Py2exe that supports Python 3.7 was found.
 5. Appveyor build must finish to completion.
 	* As of june 15, 2019, source code, launcher, and certain tests are working.
+	* As of june 26, 2019, Appveyor build runs to completion.
 
 Ideal completion: TBD
 
@@ -174,6 +177,7 @@ Start date: TBD
 
 1. Members of the public should be invited to test a series of try builds meant to test transition work, test add-ons, documentation purposes, community outreach and other steps.
 2. Add-ons community and other stakeholders must be given guidance regarding Python 3 transition.
+3. Add-on developers are asked to start porting their add-ons to Python 3.
 
 Estimated completion for both stages: four to six months after pre-transition steps are completed.
 
@@ -183,7 +187,7 @@ Start date: TBD
 
 1. A beta of NVDA powered by python 3 must be released.
 2. Members of the public should provide beta-level feedback.
-3. Add-on developers are asked to start porting their add-ons to Python 3.
+3. Add-on developers are asked to provide notices regarding python 3 to users.
 4. A stable version of NVDA powered by Python 3 is released.
 5. Post-transition evaluation should take place, including documenting issues found during field testing, more community outreach and other activities.
 6. If needed, attempts to use Python 3 native features should be attempted (see below for a list of possible features and their impact on NVDA).
@@ -202,22 +206,25 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	7. March 26, 2019: NVDA 2019.1 released.
 	8. April 26, 2019: placeholder snapshot (Threshold) built to house Python 3 transition and other backwards incompatible changes.
 	9. June 7, 2019: async keyword fix merged into Threshold.
+	10. June 24, 2019: major hurdles with Appveyor build process (unit and system tests, signing executables, etc.) resolved.
 2. Transition stage 1 (in progress):
 	1. June 7, 2019: a staging branch for Python 3 transition activated with various source code edits.
 	2. June 8, 2019: staging branch building begins.
 	3. June 12, 2019: source code compilation became possible.
 	4. June 13, 2019: parts of binary compilation and testing framework succeeded.
+	5. June 24, 2019: running NVDA from source and performing system tests became possible.
+	6. June 26, 2019: first binary snapshot compiled (not ready for the general public).
 3. Transition stage 2: not yet begun.
 4. After transition: not yet begun.
 5. Python 3 native features:
 	* Asyncio: not important at this stage.
 	* Collections.ChainMap: eases implementation of config.ConfigManager.
 	* pyz: no impact unless use cases emerge.
-	* Formatted string literals (the "f" strings): makes translatable messages more readable.
+	* Formatted string literals (the "f" strings): eases string debugging (requires Python 3.8).
 	* Gettext.pgettext (Python 3.8): long sought answer to message contexts (see GitHub issue 1524 for details).
 	* Assignment expression (the ":=" operator in Python 3.8): may allow improved readability of some if and while statements.
 	* sys.breakpointhook: allow Visual Studio debugger and friends to help debug NVDA (if installed).
-	* Enum: may improve certain listings.
+	* Enum: may improve certain listings including roles list in control types.
 
 ## Notes for various audiences
 
@@ -243,7 +250,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 
 ### For testers:
 
-Nothing yet, as transition hasn't begun.
+Nothing yet, as broad testing hasn't begun.
 
 ### For translators:
 

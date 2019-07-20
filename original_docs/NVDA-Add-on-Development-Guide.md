@@ -331,11 +331,11 @@ The below code implements our example. Put this in your .py file as exactly as s
 			"kb:NVDA+A":"doBeep"
 		}
 
-In Python, you put comments by putting hash sign (#) at the start of the comment line.
+In Python, you make comments by putting hash sign (#) at the start of the comment line.
 
 ### Example 1 code explanation
 
-Our first example let's us sound a beep for one second when we press NVDA+A. But you might be wondering what that above code means, so let's step through the code, one piece at a time.
+Our first example lets us sound a beep for one second when we press NVDA+A. But you might be wondering what that above code means, so let's step through the code, one piece at a time.
 
 1. At the top of the file, we wrote a header which tells us that this is an example add-on.
 2. Since this is a global plugin, we need to import a crucial module: global plugin handler, so we wrote `import globalPluginHandler`.
@@ -362,7 +362,7 @@ There are other terms that we'll get to know shortly.
 
 Most of the below code comes from NVDA Developer Guide.
 
-Not only NVDA let's you add global commands, but it also allows writing code to enhance usage of programs through app modules. An app module is also a Python file except that, this time, the name of the .py file is the name of the executable for a program. For example, an app module for Notepad would be named notepad.py.
+NVDA doesn't just let you add global commands, but it also allows writing code to enhance usage of programs through app modules. An app module is also a Python file except that, this time, the name of the .py file is the name of the executable for a program. For example, an app module for Notepad would be named notepad.py.
 
 The below code, from NVDA developer Guide, gives a short example of a typical app module: play a short beep when switching to Notepad. Put the below code in notepad.py, which in turn should be placed in appModules folder under scratchpad directory (if enabled) in your user configuration folder in order for it to run.
 
@@ -390,8 +390,8 @@ We're seeing more new code here. Let's go over this, again piece by piece:
 
 Other terms you may see include:
 
-* Event: An event is a method that'll be run when some events happen, such as when a program is on focused, when names of controls change and so on.
-* Call: We say a function calls some another method when we run the second method from another method. For example, in our first example, we're calling tones.beep method from our script method.
+* Event: An event is a method that'll be run when something occurs, such as when a program is focused, when names of controls change and so on.
+* Call: We say a function or method "calls" another method when we run the second method from the first method. Our first example above demonstrates this, by calling the tones.beep method from our script method.
 * Object: An object is an instance of a class - that is, a class coming to life when a program runs. Throughout your add-ons, as you write classes and when you run your add-ons, your classes come to life as objects, commonly abbreviated to obj. In NVDA, an object may refer to controls or parts of a program.
 * Self: In Python, the word "self" means current class (if we're defining one, such as when writing add-ons), or means the class for which a method is defined. For example, in a class called numbers, the add method would have self as the first argument, reminding us that add method is part of the class of numbers. In NVDA development world, self usually means the current NVDA object (see below), or in the add-on development, the instance of an add-on. Many of your methods will have self as the first argument.
 
@@ -557,11 +557,11 @@ You can activate it by going to the NVDA Tools menu, or by pressing NVDA+control
 
 An object is an instance of a class - that is, a class coming to life while a program is running. For example, if a class called button has been defined, the button on a screen is the object of this button class.
 
-In NVDA, an object is representation of a control or parts of a program. This includes buttons, check boxes, edit fields, toolbars, sliders and even the application window. These are organized into hierarchies, or parent-child relationship where an object may contain child objects - for example, a list object in Windows Explorer may contain one or more list items, and the parent of this list might be the Windows Explorer window. The object that you're examining right now is termed "navigator object."
+In NVDA, an object is a representation of a control or part of a program. This includes buttons, check boxes, edit fields, toolbars, sliders and even the application window. These are organized into hierarchies, or parent-child relationships where an object may contain child objects - for example, a list object in Windows Explorer may contain one or more list items, and the parent of this list might be the Windows Explorer window. The object that you're examining right now is termed "navigator object."
 
-The NVDA objects (or simply called objects) contains a number of useful properties or attributes. These include the object's name, its value (checked, text of the edit window, etc.), role (check box, window, embedded object, etc., location (screen coordinates) and more. NVDA objects also contain useful methods for manipulating them, such as changing the value of the object, reacting to events for the object (gains focus, value has changed, etc.) and so on.
+The NVDA object (or simply called object) contains a number of useful properties or attributes. These include the object's name, its value (checked, text of the edit window, etc.), role (check box, window, embedded object, etc., location (screen coordinates) and more. NVDA objects also contain useful methods for manipulating them, such as changing the value of the object, reacting to events for the object (gains focus, value has changed, etc.) and so on.
 
-In many situations, an NVDA object may belong to a class of related objects. For each object classes, NVDA provides ways of handling them. These classes include IAccessible, JAB, UIA and so forth. These classes and behaviors for each class of objects is defined in NVDAObjects directory in the NVDA source code, and to use them in your add-on, import the appropriate object class handler for the object you're using (e.g. if you're working with an IAccessible object, import NVDAObjects.IAccessible.).
+In many situations, an NVDA object may belong to a class of related objects. For each object class, NVDA provides ways of handling it. These classes include IAccessible, JAB, UIA and so forth. These classes and behaviors for each class of objects is defined in NVDAObjects directory in the NVDA source code, and to use them in your add-on, import the appropriate object class handler for the object you're using (e.g. if you're working with an IAccessible object, import NVDAObjects.IAccessible.).
 
 Two of these object classes merit special mention: virtual buffers and tree interceptors. A tree interceptor allows NVDA to work with a "tree" of objects as though they are just one object. A special case of tree interceptor is virtual buffer, which allows NVDA to work with complex documents such as PDF documents. These objects contain a special mechanism to determine whether a given keyboard command will be passed to the application or handled by NVDA (for instance, browse mode where first letter navigation is used to move between elements).
 
@@ -584,7 +584,7 @@ In your add-on, to fetch the object with focus, write `someObj = api.getFocusObj
 
 ### Other useful object-related goodies
 
-Here are some other methods which works with NVDA objects, all located in api.py module:
+Here are some other methods which work with NVDA objects, all located in api.py module:
 
 * If you wish to obtain the foreground object (useful if you wish to look at some child object of the foreground window), use `obj = api.getForegroundObject()`. The name of the foreground object, usually the top-level window of an application is treated as a title by NVDA and can be obtained by pressing NVDA+T.
 * From [Python Console], to see the number of child objects that an object contains (for instance, the children, or widgets of a foreground window), type `obj.childCount`. The value 0 means that there are no more child objects.

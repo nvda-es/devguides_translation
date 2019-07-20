@@ -3,12 +3,19 @@
 The following instructions are for the release manager and detail how to make an official release.
 
 ## Betas
-* At a point where master is healthy (all checks passing and no known regressions): Merge master into beta.
-* At least one week after the last merge of master into beta, tag beta1. E.g. release-2019.1beta1. Tagging the beta will make the beta show up on the snapshots page, and the auto update system to start offering it to those checking for betas.
-* Periodically look at recent issues filed, specifically looking for those with p1, crash or appcrash labels.
-* Periodically look for prs based on beta and ensure they are reviewed and then approved/merged or rejected. 
-* After the final beta, call a translation freeze for 2 weeks. No more commits should be made to the beta branch at this time.
-* As prs based on the beta branch are merged, periodically tag further betas. 
+* Ensure beta branch has required changes:
+  - Choose a point where master is healthy (all checks passing and no known regressions)
+  - Merge master into beta
+* Ensure these changes have had some alpha level testing.
+  - The most recent (significant) change on beta should have had at least one week of alpha testing.
+* Tag beta1. E.g. release-2019.1beta1.
+  - ?? command line or via Github new release url (with pre-release)?
+  - beta will now show up on the snapshots page
+  - the auto update system will start offering it to those checking for betas
+* Periodically look at recent issues filed, specifically looking for those with `p1`, `crash` or `appcrash` labels.
+* Periodically look for PRs based on beta and ensure they are reviewed then merged or rejected.
+  - As PRs based on the beta branch are merged, periodically tag further betas.
+* After the final beta, [call a translation freeze](https://github.com/nvaccess/nvda/wiki/StartingTranslationFreeze) for 2 weeks. No more commits should be made to the beta branch at this time.
 
 ## Release candidates
 * Ensure it is safe to release an rc by looking at recent issues filed, specifically looking for those with p1, crash or appcrash labels.
