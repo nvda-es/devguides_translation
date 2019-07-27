@@ -128,6 +128,18 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li><a href="#el-sitio-web-y-el-repositorio-de-codigo-de-los-complementos-de-la-comunidad-de-nvda">El sitio web y el repositorio de código de los complementos de la comunidad de NVDA</a></li>
 </ul>
 </li>
+<li><a href="#ejemplos-avanzados-de-codigo-y-caracteristicas">Ejemplos avanzados de código y características</a><ul>
+<li><a href="#dialogos-interactivos">Diálogos interactivos</a><ul>
+<li><a href="#introduccion">Introducción</a></li>
+<li><a href="#ejemplo-1-un-dialogo-basico">Ejemplo 1: un diálogo básico</a></li>
+<li><a href="#ejemplo-2-un-dialogo-con-tres-caminos">Ejemplo 2: un diálogo con tres caminos</a></li>
+</ul>
+</li>
+<li><a href="#usar-el-registro">Usar el registro</a></li>
+<li><a href="#concurrencia">Concurrencia</a></li>
+<li><a href="#almacenar-y-usar-informacion-persistente-mas-alla-de-tu-complemento">Almacenar y usar información persistente más allá de tu complemento</a></li>
+</ul>
+</li>
 <li><a href="#informacion-miscelanea">Información miscelánea</a></li>
 <li><a href="#apendices">Apéndices</a><ul>
 <li><a href="#apendice-a-diccionario-de-terminos-de-complemento">Apéndice A: Diccionario de términos de complemento</a></li>
@@ -255,7 +267,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <p>Hay dos modos de empaquetar complementos:</p>
 <ol>
 <li>Para empaquetar el complemento manualmente, comprime (en zip) la carpeta del complemento como un archivo .zip, y luego cambia el nombre de la extensión del archivo a .nvda-addon.</li>
-<li>Para utilizar la plantilla de complemento con SCons, abre el símbolo del sistema en el modo Administrador (Windows Vista o posterior) o Bash en Ubuntu en Windows (Windows 10 Anniversary Update con el WSL habilitado), cambie a la carpeta de complemento y escribe `scons~.</li>
+<li>Para utilizar la plantilla de complemento con SCons, abre el símbolo del sistema en el modo Administrador (Windows Vista o posterior) o Bash en Ubuntu en Windows (Windows 10 Anniversary Update con el WSL habilitado), cambie a la carpeta de complemento y escribe <code>scons</code>.</li>
 </ol>
 <p>Para más información sobre gestión de complementos, consulta el capítulo gestión en esta guía.</p>
 <h2 id="comenzando-ejemplos-practicos">Comenzando: Ejemplos prácticos</h2>
@@ -512,10 +524,12 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <p>En tu complemento, para obtener el objeto con el foco, escribe <code>someObj = api.getFocusObject()</code>. el someObj puede ser llamado de forma diferente- la convención es utilizar el nombre "obj". Para obtener el navegador de objetos (que podría ser diferente del del objeto enfocado), utiliza <code>obj = api.getNavigatorObject()</code>.</p>
 <h3 id="otras-golosinas-utiles-relacionadas-con-objetos">Otras golosinas útiles relacionadas con objetos</h3>
 <p>Aquí van algunos otros métodos que funcionan con objetos de NVDA, todos ubicados en el módulo api.py:</p>
-<p>Si deseas obtener el objeto en primer plano (útil si se desea ver algún objeto secundario de la ventana en primer plano), utiliza <code>obj = api.getForegroundObject()</code>.
-* Desde la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a>, para ver el número de objetos secundarios que contiene un objeto (por ejemplo, el hijo,  o los widgets de una ventana en primer plano), teclea <code>obj.childCount</code>. El valor0 significa que no hay más objetos secundarios.
-* Para definir un objeto como el foco nuevo o el navegador de objetos, utiliza <code>api.setFocusObject(obj)</code> o <code>api.setNavigatorObject(obj)</code>. Esto no cambia la forma que tiene Windows de ver el objeto enfocado, simplemente hace creer a NVDA que el nuevo objeto es el que tiene el foco o el navegador de objetos.
-* Puedes obtener varias propiedades de un objeto especificando obj.property donde property es el atributo que deseas ver (por ejemplo obj.value). Entre las propiedades más comunes se incluyen name, value, states, role, appModule, windowClassName, etc.</p>
+<ul>
+<li>Si deseas obtener el objeto en primer plano (útil si se desea ver algún objeto secundario de la ventana en primer plano), utiliza <code>obj = api.getForegroundObject()</code>.</li>
+<li>Desde la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a>, para ver el número de objetos secundarios que contiene un objeto (por ejemplo, el hijo,  o los widgets de una ventana en primer plano), teclea <code>obj.childCount</code>. El valor0 significa que no hay más objetos secundarios.</li>
+<li>Para definir un objeto como el foco nuevo o el navegador de objetos, utiliza <code>api.setFocusObject(obj)</code> o <code>api.setNavigatorObject(obj)</code>. Esto no cambia la forma que tiene Windows de ver el objeto enfocado, simplemente hace creer a NVDA que el nuevo objeto es el que tiene el foco o el navegador de objetos.</li>
+<li>Puedes obtener varias propiedades de un objeto especificando obj.property donde property es el atributo que deseas ver (por ejemplo obj.value). Entre las propiedades más comunes se incluyen name, value, states, role, appModule, windowClassName, etc.</li>
+</ul>
 <h3 id="ejemplo-1-encontrar-el-valor-de-un-deslizador-en-un-programa">Ejemplo 1: encontrar el valor de un deslizador en un programa</h3>
 <p>Supongamos que un usuario te pide que le des el valor de un deslizador en un programa usando un app module. Después de buscar en la jerarquía de objetos y otras propiedades, sabes que la barra de herramientas es el último hijo del objeto en primer plano.</p>
 <p>Aquí está el código para implementar esta función:</p>
@@ -587,7 +601,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <h3 id="entrada-y-salida-scripts-y-mensajes-iu">Entrada y salida: scripts y mensajes IU</h3>
 <p>Otro  componente crucial de los complementos es manejar órdenes del usuario y mostrar qué está haciendo el complemento. Esto se realiza a través de scripts (en la entrada) y  mensajes IU (en la salida).</p>
 <p>Un script es un método que se ejecuta cuando el usuario lleva a cabo ciertas órdenes. Por ejemplo, cuando pulsas NVDA+T, NVDA ejecuta un script en el módulo de órdenes globales llamado SayTitle. En Poedit, por ejemplo, cuando un traductor pulsa Control+Shift+A, NVDA leerá los comentarios para el traductor añadidos por el programador para ayudar a clarificar una cadena traducible dada. Esta orden no es una orden nativa de NVDA, pero se definió en el módulo de aplicación de Poedit para llevar a cabo esta función.</p>
-<p>Normalmente, un complemento  que acepte scripts tendrá un mapa de lista orden:función en algún lugar en el módulo. El más simple es un diccionario de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) que posee órdenes como teclas y scripts como valores para estas teclas (más de una tecla, u orden que puede vincularse a los scripts). Estos diccionarios se cargan cuando el complemento se carga y se borran cuando se sale de NVDA o cuando la aplicación para la que es el módulo de aplicación pierde el foco(es decir, el usuario ha cambiado a otro programa).</p>
+<p>Normalmente, un complemento  que acepte scripts tendrá un mapa de lista orden:función en algún lugar en el módulo. El más simple es un diccionario de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) que posee órdenes como claves y scripts como valores para estas claves (más de una tecla, u orden que puede vincularse a los scripts). Estos diccionarios se cargan cuando el complemento se carga y se borran cuando se sale de NVDA o cuando la aplicación para la que es el módulo de aplicación pierde el foco(es decir, el usuario ha cambiado a otro programa).</p>
 <p>Otro modo de enlazar scripts es a través de inserción en tiempo de ejecución. Esto se hace creando otro diccionario de gestos diferente del diccionario __gestures que posea gestos sensibles al contexto tales como la manipulación de un sólo control. Entonces el desarrollador podría utilizar inputCore.bindGesture (o inputCore.bindGestures si se ha definido más de un gesto/script) para definir ciertos gestos a la vez, entonces utilizar inputCore.clearGestures luego inputCore.bindGestures(__gestures) para eliminar los gestos añadidos. Un modo más elegante, que consiste en scripts para objetos específicos, se tratará cuando hablemos sobre módulos de aplicación y cómo asignar gestos a partes específicas de un programa.</p>
 <p>Para la mayoría de los scripts, no tienes que preocuparte por enviar el comando a la aplicación. Sin embargo, en caso de que el script realice tareas adicionales mientras envía la tecla a la aplicación activa, puedes utilizar <code>gesture.send()</code> para enviar el comando primero antes de realizar trabajo adicional.</p>
 <p>De manera similar a los scripts, el módulo UI permite verbalizar o braillificar lo que tu complemento está haciendo. Esto se hace usando el mensaje <code>ui.message(algo que decir)</code> donde <code>algo que decir</code> se reemplaza por una cadena para que NVDA la diga. Alternativamente, puedes llamar a los métodos de manejo del habla y del braille directamente si deseas que el habla diga una cosa y la pantalla braille muestre otra. No repasaremos `ui.message' aquí (verás ejemplos de esos), pero lo más importante son los scripts, así que nos enfocaremos en eso en esta sección.</p>
@@ -721,7 +735,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
     # ¡Precaución! nunca inicializes cualquier módulo del núcleo tal como GUI en el método terminate, ya que al hacerlo evitarás que NVDA salga correctamente.</code></li>
 </ul>
 <h3 id="construyamos-un-complemento">Construyamos un complemento</h3>
-<p>Ahora tenemos una visión general básica de los componentes de los complementos, estamos listos para crear algunos complementos sencillos. Pero primero, repasemos el proceso real de desarrollo de complementos, consejos de depuración, lo que se debe hacer y lo que no se debe hacer y otras cosas.</p>
+<p>Ahora que tenemos una visión general básica de los componentes de los complementos, estamos listos para crear algunos complementos sencillos. Pero primero, repasemos el proceso real de desarrollo de complementos, consejos de depuración, lo que se debe hacer y lo que no se debe hacer y otras cosas.</p>
 <h3 id="consejos-para-planificacion-y-desarrollo-de-complementos">Consejos para planificación y desarrollo de complementos</h3>
 <p>A lo largo de los años, la comunidad de NVDA ha creado una serie de potentes complementos para los usuarios. Durante estos años, los redactores de complementos recopilaron algunos consejos útiles cuando se trata de escribir sus propios complementos. He aquí algunos de ellos:</p>
 <ul>
@@ -752,7 +766,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>P. ¿Cómo puedo utilizar Win32 API en mi complemento u objeto?</p>
 <p>Existe un documento escrito por un desarrollador de complementos que habla sobre el uso de Win32 API en su complemento. Selecciona [este enlace][Using Win32 API] para ver este documento.</p>
 <p>P. ¿Cómo puedo crear diálogos en mi complemento?</p>
-<p>Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx).</p>
+<p>Mira la sección aaaa.</p>
 <p>P. ¿Puedo crear funciones y asignar variables fuera de las clases de módulo?</p>
 <p>Sí. Esto es útil si necesitas hacer referencia a ellos desde dentro de la clase del complemento. Por ejemplo, es posible que tengas una función definida fuera de tu clase que necesitarás utilizar desde más de un método en una clase de extensión global.</p>
 <p>P. Quiero guardar la configuración de usuario para mi complemento. ¿Se puede hacer esto?</p>
@@ -974,6 +988,68 @@ class AppModule(appModuleHandler.AppModule):
 <li><a href="https://github.com/nvdaremote/nvdaremote">NVDA Remote Support de Christopher Toth y Tyler Spivey</a>: un popular complemento utilizado para la solución remota de problemas y soporte técnico, proporciona ejemplos de cómo se utilizan varias bibliotecas externas de Python.</li>
 <li><a href="https://github.com/josephsl/stationPlaylist">StationPlaylist Studio de Joseph Lee</a>: mejora el uso de StationPlaylist Studio, proporciona ejemplos interesantes sobre las clases de superposición y la API de aplicaciones, el uso de hilos y diálogos adicionales y otras interfaces de usuario.</li>
 </ul>
+<h2 id="ejemplos-avanzados-de-codigo-y-caracteristicas">Ejemplos avanzados de código y características</h2>
+<p>Este capítulo está en construcción. Si hay algo que desees ver aquí, o tienes un comentario o corrección, contacta con alguno de los autores.</p>
+<h3 id="dialogos-interactivos">Diálogos interactivos</h3>
+<h4 id="introduccion_1">Introducción</h4>
+<p>Para presentar información a tus usuarios, ui.message y ui.browseableMessage normalmente son suficientes. Sin embargo, si el usuario necesita enviar información de vuelta a tu complemento, no te van a ayudar. Por este motivo necesitas los diálogos. La creación de diálogos y muchas consideraciones sobre su uso se encuentran fuera del ámbito de este documento, pero podemos ayudarte en tus primeros pasos.</p>
+<p>Para crear y usar diálogos, debes importar dos módulos: gui (import gui) y WXPython (import wx). Lee su documentación para conocer la impresionante cantidad de opciones a tu disposición.</p>
+<p>Para abreviar:</p>
+<ul>
+<li>Gui proporciona métodos para construir y mostrar algunos diálogos estándar.</li>
+<li>Wx proporciona la implementación real de esos diálogos, y proporciona muchas de las constantes y opciones extendidas que necesitas realmente para usar de forma eficaz los diálogos.</li>
+</ul>
+<h4 id="ejemplo-1-un-dialogo-basico">Ejemplo 1: un diálogo básico</h4>
+<p>El siguiente código creará un diálogo básico, proporcionando al usuario dos opciones muy familiares. Mira las notas que hay después del código para entender qué ocurre.</p>
+<pre><code class="python">import globalPluginHandler
+from scriptHandler import script
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+    @script(gesture=&quot;kb:nvda+shift+t&quot;)      # Configura la tecla
+    def script_makeSillyWindow(self, gesture):  # Un método script normal de la clase GlobalPlugin
+        import wx, gui              # Los necesitamos para trabajar con diálogos y ventanas
+        def showSillyWindow():          # Se define una función interna
+            gui.messageBox(&quot;¡Aviso! Estás a punto de no hacer nada. Pero estarás haciéndolo con una ventana de diálogo muy importante. ¿Deseas continuar?&quot;,
+                &quot;Ventana de pregunta tonta&quot;, wx.OK | wx.CANCEL | wx.ICON_WARNING)
+        wx.CallAfter(showSillyWindow)
+</code></pre>
+
+<p>Si guardas lo anterior como extensión global y la cargas en NVDA, y a continuación pulsas NVDA+shift+t, deberías encontrarte en una nueva ventana.
+La ventana es generada por la llamada a gui.messageBox. El primer parámetro es el texto de la ventana, el segundo parámetro es su título, y el tercero contiene una lista de indicadores constantes que wx usa para generar los botones y otros atributos del diálogo.</p>
+<ul>
+<li>wx.ICON_WARNING, hace que la ventana se comporte como una advertencia de Windows.</li>
+<li>wx.OK, hace que la ventana muestre el botón Aceptar estándar.</li>
+<li>Y wx.CANCEL hace lo mismo con Cancelar.</li>
+</ul>
+<p>Por desgracia, si llamamos a gui.messageBox directamente, generalmente hará que NVDA se cuelgue, a menos que se ejecute desde el hilo principal. Para resolver ese problema, usamos wx.CallAfter, que mete en cola el diálogo para que se muestre en el hilo principal. Sin embargo, wx.CallAfter puede no llamar a gui.messageBox directamente: debe hacerlo a través de otro método o función. En este ejemplo lo solucionamos mediante una función anidada cuyo único propósito es generar una sola vez ese diálogo.</p>
+<h4 id="ejemplo-2-un-dialogo-con-tres-caminos">Ejemplo 2: un diálogo con tres caminos</h4>
+<p>A continuación se encuentra un ejemplo más complejo, que muestra cómo devolver información de un diálogo en función del botón que se ha pulsado. Ten en cuenta que existen muchas más constantes que puedes utilizar, y tipos de diálogos distintos a messageBox. Esta sección es sólo una introducción al tema para dar los primeros pasos.</p>
+<pre><code class="python">import globalPluginHandler, wx, gui
+from scriptHandler import script
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+    @script(gesture=&quot;kb:nvda+shift+t&quot;)      # Configura la tecla
+    def script_askPointlessQuestion(self, gesture):
+        def askTheQuestion():           # Definir una función interna
+            result = gui.messageBox(&quot;&quot;&quot;¡Aviso! Estás a punto de responder una pregunta tonta.
+¡Por suerte tienes esta fantástica ventana para hacerlo!
+¿Deseas continuar?&quot;&quot;&quot;,
+                &quot;Pregunta Tonta&quot;, wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL)
+            if result == wx.YES: answer = &quot;sí&quot;
+            elif result == wx.NO: answer = &quot;no&quot;
+            else: return
+            gui.messageBox(&quot;Has respondido %s a la pregunta tonta.&quot; %(answer), &quot;Respuesta Tonta&quot;, wx.OK)
+        wx.CallAfter(askTheQuestion)
+</code></pre>
+
+<h3 id="usar-el-registro">Usar el registro</h3>
+<p><strong>Próximamente</strong></p>
+<h3 id="concurrencia">Concurrencia</h3>
+<p><strong>Próximamente</strong></p>
+<h3 id="almacenar-y-usar-informacion-persistente-mas-alla-de-tu-complemento">Almacenar y usar información persistente más allá de tu complemento</h3>
+<p><strong>Próximamente</strong></p>
 <h2 id="informacion-miscelanea">Información miscelánea</h2>
 <p>Por favor, añade material adicional a esta guía. En el Equipo de Complementos de NVDA agradecemos las contribuciones de otros desarrolladores y usuarios de complementos por todo el mundo.</p>
 <h2 id="apendices">Apéndices</h2>

@@ -149,8 +149,12 @@
 <li>Requisito cumplido el 26 de junio de 2019.</li>
 </ul>
 </li>
+<li>Se debe mover el trabajo de pruebas limitadas a pruebas más extensas.<ul>
+<li>Requisito cumplido el 25 de julio de 2019.</li>
+</ul>
+</li>
 </ol>
-<p>Finalización ideal: entre las versiones 2019.2 y 2019.3 de NVDA (provisionalmente el 31 de julio de 2019).</p>
+<p>Completado: 25 de julio de 2019</p>
 <h3 id="transicion">Transición:</h3>
 <p>Esto se divide en dos fases:</p>
 <ol>
@@ -187,10 +191,15 @@
 <li>A fecha de 26 de junio de 2019, la compilación de Appveyor se ejecuta hasta completarse.</li>
 </ul>
 </li>
+<li>La rama master debe contener el trabajo en Python 3.<ul>
+<li>A fecha de 15 de julio de 2019, el trabajo de Python 3 se ha movido de una rama transitoria a la rama principal del proyecto Threshold.</li>
+<li>A fecha de 25 de julio de 2019, Python 3 se encuentra en la rama master.</li>
+</ul>
+</li>
 </ol>
-<p>Finalización ideal: TBD</p>
+<p>Completado: 25 de julio de 2019</p>
 <h4 id="fase-2-pruebas-generalizadas">Fase 2: pruebas generalizadas</h4>
-<p>Fecha de inicio: no especificada</p>
+<p>Fecha de inicio: 25 de julio de 2019</p>
 <ol>
 <li>Se debería invitar a los miembros del público a que prueben una serie de compilaciones de prueba hechas para comprobar el trabajo de la transición, probar complementos, documentar, extender a la comunidad y otros.</li>
 <li>La comunidad de complementos y otros miembros deben recibir asistencia relacionada con la transición a Python 3.</li>
@@ -210,7 +219,7 @@
 <p>Fecha estimada de finalización: no más tarde de doce a quince meses después de que se completen las actividades previas a la transición.</p>
 <h2 id="progreso-de-la-transicion">Progreso de la transición</h2>
 <ol>
-<li>Antes de la transición (en progreso):<ol>
+<li>Antes de la transición (completado):<ol>
 <li>17 de julio de 2018: se liberó una alpha de NVDA con WXPython 4.0.3 integrado.</li>
 <li>17 de agosto de 2018: se liberó NVDA 2018.3 beta 3, la primera versión beta que funciona con WXPython 4.0.3.</li>
 <li>21 de agosto de 2018: las versiones de desarrollo alpha incluyen importaciones editadas para Python 3. El código fuente cambia para utilizar nombres de módulos de Python 3 en la mayor parte de los casos.</li>
@@ -221,18 +230,25 @@
 <li>26 de abril de 2019: creación de versión de desarrollo (Threshold) construida para alojar la transición a Python 3 y otros cambios incompatibles con versiones anteriores.</li>
 <li>7 de junio de 2019: la corrección para la palabra clave async se ha mezclado en la rama Threshold.</li>
 <li>24 de junio de 2019: los principales obstáculos con el proceso de compilación de Appveyor (pruebas unitarias y del sistema, firma de ejecutables, etc.) se han resuelto.</li>
+<li>15 de julio de 2019: Python 3 se mueve de staging a threshold.</li>
+<li>25 de julio de 2019: los trabajos relacionados con Python 3 llegan a la rama master, hito completado.</li>
 </ol>
 </li>
-<li>Fase 1 de la transición (en progreso):<ol>
+<li>Fase 1 de la transición (completada):<ol>
 <li>7 de junio de 2019: se ha activado una rama temporal con la transición a Python 3 con diversos cambios en el código fuente.</li>
 <li>8 de junio de 2019: comienzan las compilaciones desde la rama transitoria.</li>
 <li>12 de junio de 2019: ya es posible compilar desde el código fuente.</li>
 <li>13 de junio de 2019: parte de la compilación binaria y el marco de trabajo de pruebas tienen éxito.</li>
 <li>24 de junio de 2019: ya es posible ejecutar NVDA desde el código fuente y realizar pruebas del sistema.</li>
 <li>26 de junio de 2019: compilada la primera versión binaria de desarrollo (no está preparada para el público general).</li>
+<li>15 de julio de 2019: se inician las pruebas con los trabajos en Threshold.</li>
+<li>25 de julio de 2019: se compiló una versión de desarrollo Alpha de NVDA con Python 3 incorporado, hito alcanzado.</li>
 </ol>
 </li>
-<li>Fase 2 de la transición: aún no ha empezado.</li>
+<li>Fase 2 de la transición (en progreso):<ol>
+<li>26 de julio de 2019: invitación para que la comunidad pruebe el trabajo con Python 3.</li>
+</ol>
+</li>
 <li>Después de la transición: todavía no ha empezado.</li>
 <li>Características nativas de Python 3:<ul>
 <li>Asyncio: no es importante en esta fase.</li>

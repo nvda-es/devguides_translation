@@ -137,8 +137,10 @@ Start date: September 17, 2018
 	* Requirement met on June 10, 2019.
 6. Tests must run to completion.
 	* Requirement met on June 26, 2019.
+7. Work must move from llimited testing to broad testing.
+	* Requirement met on July 25, 2019.
 
-Ideal completion: between NVDA 2019.2 and 2019.3 releases (tentatively by July 31, 2019)
+Completed on: July 25, 2019
 
 ### Transition:
 
@@ -168,12 +170,15 @@ Start date: June 8, 2019
 5. Appveyor build must finish to completion.
 	* As of june 15, 2019, source code, launcher, and certain tests are working.
 	* As of june 26, 2019, Appveyor build runs to completion.
+6. Master branch must contain Python 3 work.
+	* As of July 15, 2019, Python 3 work has moved from a staging branch to Project Threshold main branch.
+	* As of July 25, 2019, Python 3 powers master branch.
 
-Ideal completion: TBD
+Completed on: July 25, 2019
 
 #### Stage 2: broad testing
 
-Start date: TBD
+Start date: July 25, 2019
 
 1. Members of the public should be invited to test a series of try builds meant to test transition work, test add-ons, documentation purposes, community outreach and other steps.
 2. Add-ons community and other stakeholders must be given guidance regarding Python 3 transition.
@@ -196,7 +201,7 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 
 ## Transition progress
 
-1. Before transition (in progress):
+1. Before transition (done):
 	1. July 17, 2018: NVDA alpha snapshot powered by wxPython 4.0.3 was released.
 	2. August 17, 2018: NVDA 2018.3 beta 3, the first beta release powered by wxPython 4.0.3, was released.
 	3. August 21, 2018: alpha snapshots include Python 3 import edits. Source code changed to use Python 3 module names in most cases.
@@ -207,14 +212,19 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	8. April 26, 2019: placeholder snapshot (Threshold) built to house Python 3 transition and other backwards incompatible changes.
 	9. June 7, 2019: async keyword fix merged into Threshold.
 	10. June 24, 2019: major hurdles with Appveyor build process (unit and system tests, signing executables, etc.) resolved.
-2. Transition stage 1 (in progress):
+	11. July 15, 2019: Python 3 moves from staging to Threshold integration.
+	12. July 25, 2019: Python 3 work comes to master branch, milestone done.
+2. Transition stage 1 (done):
 	1. June 7, 2019: a staging branch for Python 3 transition activated with various source code edits.
 	2. June 8, 2019: staging branch building begins.
 	3. June 12, 2019: source code compilation became possible.
 	4. June 13, 2019: parts of binary compilation and testing framework succeeded.
 	5. June 24, 2019: running NVDA from source and performing system tests became possible.
 	6. June 26, 2019: first binary snapshot compiled (not ready for the general public).
-3. Transition stage 2: not yet begun.
+	7. July 15, 2019: started testing with Threshold work.
+	8. July 25, 2019: alpha snapshot powered by Python 3 compiled, milestone done.
+3. Transition stage 2 (in progress):
+	1. July 26, 2019: community invitation to test Python 3 work.
 4. After transition: not yet begun.
 5. Python 3 native features:
 	* Asyncio: not important at this stage.

@@ -105,7 +105,7 @@ Latest version: April 2019 for NVDA 2019.1
     - [Typical development plan for global plugins](#user-content-typical-development-plan-for-global-plugins)
     - [The global plugin code](#user-content-the-global-plugin-code)
     - [When to write or not write global plugins](#user-content-when-to-write-or-not-write-global-plugins)
-    - [Few more things to remember about global plugins](#user-content-few-more-things-to-remember-about-global-plugins)
+    - [A Few more things to remember about global plugins](#user-content-a-few-more-things-to-remember-about-global-plugins)
     - [Example 1: Writing computer braille using QWERTY keyboard](#user-content-example-1-writing-computer-braille-using-qwerty-keyboard)
     - [Exercises](#user-content-exercises)
 - [Introduction to app modules](#user-content-introduction-to-app-modules)
@@ -118,11 +118,19 @@ Latest version: April 2019 for NVDA 2019.1
     - [Other remarks on app modules](#user-content-other-remarks-on-app-modules)
 - [Drivers](#user-content-drivers)
     - [Driver components](#user-content-driver-components)
-    - [Few important things to remember before, during and after driver development](#user-content-few-important-things-to-remember-before-during-and-after-driver-development)
+    - [A Few important things to remember before, during and after driver development](#user-content-a-few-important-things-to-remember-before-during-and-after-driver-development)
     - [Typical driver development steps](#user-content-typical-driver-development-steps)
 - [Sharing your add-on and experience with others](#user-content-sharing-your-add-on-and-experience-with-others)
     - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)
     - [The NVDA Community Add-ons web site and code repository](#user-content-the-nvda-community-add-ons-web-site-and-code-repository)
+- [Advanced Code Examples and Features](#user-content-advanced-code-examples-and-features)
+    - [Interactive Dialogs](#user-content-interactive-dialogs)
+        - [Introduction](#user-content-introduction)
+        - [Example 1: A Basic Dialog](#user-content-example-1-a-basic-dialog)
+        - [Example 2: A Three-Way Dialog](#user-content-example-2-a-three-way-dialog)
+    - [Using The Log](#user-content-using-the-log)
+    - [Threading](#user-content-threading)
+    - [Storing and Using Persistent Information Outside Your Add-on](#user-content-storing-and-using-persistent-information-outside-your-add-on)
 - [Miscellaneous information](#user-content-miscellaneous-information)
 - [Appendicies](#user-content-appendicies)
     - [Appendix A: add-on terms dictionary](#user-content-appendix-a-add-on-terms-dictionary)
@@ -275,7 +283,7 @@ If you are using the add-on template, the folder structure will automatically be
 There are two ways of packaging add-ons:
 
 1. To package your add-on manually, zip up (compress) your add-on folder as a .zip file, then rename the file extension to .nvda-addon.
-2. To use the add-on template with SCons, open Command Prompt with administrator mode (Windows Vista or later) or Bash on Ubuntu on Windows (Windows 10 Anniversary Update with WSL enabled), change to your add-on folder and type `scons~.
+2. To use the add-on template with SCons, open Command Prompt with administrator mode (Windows Vista or later) or Bash on Ubuntu on Windows (Windows 10 Anniversary Update with WSL enabled), change to your add-on folder and type `scons`.
 
 For more information on add-on management, see the management chapter in this guide.
 
@@ -680,9 +688,9 @@ Note: You may need to tune these two methods to provide correct overlay classes 
 
 Another crucial component of add-ons is handling commands from users and displaying what the add-on is doing. These are done via scripts (input) and UI messages (output).
 
-A script is a method run when the user performs certain commands. For example, when you press NVDA+T, NVDA runs a script in global commands module called SayTitle. In Poedit, for instance, when a translator presses Control+Shift+A, NVDA will read translator comments added by the programmer to help clarify a given translatable string. this command is not a native NVDA command, but it is defined in the Poedit app module to perform this function.
+A script is a method run when the user performs certain commands. For example, when you press NVDA+T, NVDA runs a script in global commands module called SayTitle. In Poedit, for instance, when a translator presses Control+Shift+A, NVDA will read translator comments added by the programmer to help clarify a given translatable string. This command is not a native NVDA command, but it is defined in the Poedit app module to perform this function.
 
-Typically, an add-on which accepts scripts will have a list of command:function map somewhere in the module. The simplest is a gestures (commands) dictionary, a python dictionary (typically named __gestures) which holds commands as keys and scripts as values for these keys (more than one key, or command can be bound to scripts). These dictionaries are loaded when add-on loads and is cleared when either NVDA exits or the app for the app module loses focus (that is, the user has switched to another program).
+Typically, an add-on which accepts scripts will have a list of command:function mapped somewhere in the module. The simplest is a gestures (commands) dictionary, a python dictionary (typically named __gestures) which holds commands as keys and scripts as values for these keys (more than one key, or command can be bound to scripts). These dictionaries are loaded when add-on loads and is cleared when either NVDA exits or the app for the app module loses focus (that is, the user has switched to another program).
 
 Another way to bind scripts is via runtime insertion. This is done by creating another gestures dictionary apart from __gestures dictionary which holds context-sensitive gestures such as manipulating a single control. Then the developer would use inputCore.bindGesture (or inputCore.bindGestures if more than one gestures/scripts are defined) to define certain gestures for a time, then using inputCore.clearGestures then inputCore.bindGestures(__gestures) to remove the added gestures. A more elegant way, which involves scripts for specific objects, will be covered when we talk about app modules and assigning gestures to specific parts of a program.
 
@@ -735,7 +743,7 @@ There is something odd going on with this example: normally, when you press NVDA
 
 ### Script lookup order and command conflicts
 
-As your write add-ons with scripts, you need to remember the following script lookup order when trying to assign commands to scripts:
+As you write add-ons with scripts, you need to remember the following script lookup order when trying to assign commands to scripts:
 
 1. Global plugins.
 2. App modules for the currently focused program.
@@ -855,7 +863,7 @@ Finally, you can ask NVDA to perform some routines while the add-on is loading o
 
 ### Let's build an add-on
 
-Now we have a basic overview of components of add-ons, we're ready to build some simple add-ons. But first, let's go over the actual add-on development process, debugging tips, do's and don'ts and other tips.
+Now that we have a basic overview of components of add-ons, we're ready to build some simple add-ons. But first, let's go over the actual add-on development process, debugging tips, do's and don'ts and other tips.
 
 ### Add-on planning and development tips
 
@@ -901,7 +909,7 @@ There is a document written by an add-on developer which talks about using Win32
 
 Q. How can I create dialogs in my add-on?
 
-You need to import two modules: GUI (import gui) and WXPython (import wx).
+See the aaaa section.
 
 Q. Can I create functions and assign variables outside the module classes?
 
@@ -974,7 +982,7 @@ You should not write a global plugin if:
 1. If you wish to enhance support for a single application.
 2. You are writing support for speech synthesizers or braille displays.
 
-### Few more things to remember about global plugins
+### A Few more things to remember about global plugins
 
 * When you write scripts in your global plugin, the commands you assign to them will take precedence (they are looked up first). Therefore it is important to consult the NVDA user guide and help for other add-ons to minimize command conflicts.
 * Each global plugin must be placed in globalPlugins directory in your add-on folder structure.
@@ -1153,7 +1161,7 @@ For braille displays:
 * Input handlers: if input from the braille display is desirable, the driver author must implement responders for commands such as braille keys, routing buttons and additional hardware.
 * Command set: a map that identifies NVDA command assignments for various display hardware buttons.
 
-### Few important things to remember before, during and after driver development
+### A Few important things to remember before, during and after driver development
 
 * Before writing a driver, make sure you have the needed software and/or hardware.
 * Be sure to study protocols and API's used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols).
@@ -1188,6 +1196,87 @@ Some of the useful and educational add-on repositories are:
 * [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings.
 * [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used.
 * [StationPlaylist Studio by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces.
+
+## Advanced Code Examples and Features
+
+This chapter is a work in progress. If there is something you would like to see here, or if you have a comment or correction, please contact one of the maintainers.
+
+### Interactive Dialogs
+
+#### Introduction
+
+To present straight forward information to your users, ui.message and ui.browseableMessage are usually sufficient. However, if the user needs to give information back to your add-on, those aren't going to help. For that, you need dialogs. Dialog creation and the many considerations around using them are outside the scope of this document, but we can help to get you started.
+
+To create and use dialogs, you need to import two modules: GUI (import gui) and WXPython (import wx). Read their documentation for the large number of options available to you.
+
+In short:
+
+* gui provides methods for constructing and displaying some standard dialogs.
+* wx provides the actual implementation for those dialogs, and provides many of the constants and extended options you will need to really make use of dialogs effectively.
+
+#### Example 1: A Basic Dialog
+
+The following code will create a basic dialog, providing the user with two very familiar options. See the notes after the code to understand what is going on.
+
+```python
+import globalPluginHandler
+from scriptHandler import script
+
+class GlobalPlugin (globalPluginHandler.GlobalPlugin):
+
+	@script(gesture="kb:nvda+shift+t")		# Configure the key
+	def script_makeSillyWindow(self, gesture):	# A normal GlobalPlugin script method
+		import wx, gui				# We need these for working with dialogs and windows
+		def showSillyWindow():			# Define an internal function
+			gui.messageBox("Warning! You are about to do nothing. But you will be doing it with an important looking dialog window. Continue?",
+				"Silly Question Window", wx.OK | wx.CANCEL | wx.ICON_WARNING)
+		wx.CallAfter(showSillyWindow)
+```
+
+If you save the above as a global plugin and load it in NVDA, then press NVDA+shift+t, you should find yourself in a new window.
+The window is generated by the call to gui.messageBox. The first parameter is the text of the window, the second parameter is the title of the window, and the third parameter contains a list of constant flags which wx uses to generate the dialog's buttons and other attributes.
+
+* wx.ICON_WARNING, causes the window to behave as a Windows warning.
+* wx.OK, causes the window to display the standard OK button.
+* And wx.CANCEL is the same for cancel.
+
+Unfortunately, if we just call gui.messageBox directly, it will usually cause NVDA to hang, unless it is run from the main thread. To get around that problem, we use wx.CallAfter to queue the dialog for display in the main thread. However, wx.CallAfter can not call gui.messageBox directly: it must do so through some other method or function. In this example we achieve that by using a nested function who's only purpose is the one-time generation of that dialog.
+
+#### Example 2: A Three-Way Dialog
+
+Below is a more complex example, that shows how to return information from a dialog, based upon which button was pressed. Note that there are many more constants you can use, and types of dialog other than messageBox. This section is only an introduction to the subject to get you started.
+
+```python
+import globalPluginHandler, wx, gui
+from scriptHandler import script
+
+class GlobalPlugin (globalPluginHandler.GlobalPlugin):
+
+	@script(gesture="kb:nvda+shift+t")		# Configure the key
+	def script_askPointlessQuestion(self, gesture):
+		def askTheQuestion():			# Define an internal function
+			result = gui.messageBox("""Warning! You are about to answer a pointless question.
+Fortunately you have this great window to do it in!
+Do you wish to proceed?""",
+				"Silly Question", wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL)
+			if result == wx.YES: answer = "yes"
+			elif result == wx.NO: answer = "no"
+			else: return
+			gui.messageBox("You answered %s to the pointless question." %(answer), "Silly Answer", wx.OK)
+		wx.CallAfter(askTheQuestion)
+```
+
+### Using The Log
+
+**Coming soon**
+
+### Threading
+
+**Coming Soon**
+
+### Storing and Using Persistent Information Outside Your Add-on
+
+**Coming Soon**
 
 ## Miscellaneous information
 
