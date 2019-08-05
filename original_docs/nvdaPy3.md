@@ -257,10 +257,11 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 ### For add-on developers:
 
 * Try using Python modules that are known to be compatible with both Python 2 and 3.
+* Be sure to test add-ons in 2019.3 alpha and edit add-on files accordingly.
 
 ### For testers:
 
-Nothing yet, as broad testing hasn't begun.
+* Use a portable copy of 2019.3 alpha if you rely on add-ons not ported to Python 3 yet.
 
 ### For translators:
 

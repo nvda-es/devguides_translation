@@ -23,7 +23,7 @@ Please report your experiences with translations, and we will do our best to adj
 [NVDA Developer Guide]: https://www.nvaccess.org/files/nvda/documentation/developerGuide.html
 [Design Overview]: https://github.com/nvaccess/nvda/wiki/DesignOverview
 [NVDA Community Add-ons web site]: https://addons.nvda-project.org
-[add-on template]: https://bitbucket.org/nvdaaddonteam/addontemplate/get/master.zip
+[add-on template]: https://github.com/nvdaaddons/AddonTemplate/archive/master.zip
 [Python Console]: <https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole> (Python Console in NVDA Developer Guide)
 [Using Win32 API]: http://www.zlotowicz.pl/nvda/winapi.mdwn (Using Win32 API in your add-on)
 [Git Bash]: https://www.atlassian.com/git/tutorials/git-bash
@@ -33,7 +33,9 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: April 2019 for NVDA 2019.1
+Latest version: August 2019 for NVDA 2019.2
+
+IMPORTANT: the NVDA community is in the midst of a Python 3 transition. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
 
 ---
 
@@ -137,6 +139,7 @@ Latest version: April 2019 for NVDA 2019.1
     - [Appendix B: Programming and Python concepts every add-on developer needs to know](#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know)
     - [Appendix C: Add-on type comparison](#user-content-appendix-c-add-on-type-comparison)
     - [Appendix D: notes and references for scripters of other screen readers](#user-content-appendix-d-notes-and-references-for-scripters-of-other-screen-readers)
+    - [Appendix E: Python 2 versus 3](#user-content-appendix-e-python-2-versus-3)
 
 ---
 
@@ -169,7 +172,7 @@ If you are new to NVDA add-on or core development, we recommend that you get to 
 
 ### Special note on Python version
 
-NVDA and add-ons are written in Python 2, specifically 2.7. There is an active research project to port NVDA to python 3, with some add-on developers modifying their add-on source code to run on Python 2 and 3. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA.
+Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA. For more information on Python 2 versus 3, please read Appendix E.
 
 ### A special note for scripters of other screen readers
 
@@ -214,7 +217,7 @@ code. The rest of the support structure for an add-on will come later.
 
 ### What Are Add-on Modules?
 
-Add-ons can act globally (across all of NVDA), in a specific application or program, or behind the scenes (at the hardware level). We call these three 
+Add-ons can act globally (across all of NVDA), in a specific application or program, or behind the scenes (at the hardware or software level). We call these three 
 major areas "modules". Every add-on contains at least one module, which is just one or more Python files designed to act in one of those three specific 
 areas. Additionally, if it makes sense for the add-on you are developing, your add-on can include more than one module. For example, if your add-on 
 provides better accessibility for a specific application, but also provides global commands that work anywhere in NVDA, you would be using two modules.
@@ -223,7 +226,7 @@ Currently, NVDA supports these add-on module types:
 
 * Global plugin: A global plugin adds features for NVDA which can be used anywhere, such as OCR capability.
 * App module: An app module allows enhanced support for a specific program. App modules only run as long as the program runs. They change how NVDA reacts to the windows and controls in the running application. 
-* Driver: A driver allows a program to talk to hardware. Currently you can write drivers for new braille displays or speech synthesizers.
+* Driver: A driver allows a program to talk to hardware, and in some cases, other software. Currently you can write drivers for new braille displays or speech synthesizers.
 
 ### What Are Add-on Packages?
 
@@ -248,10 +251,11 @@ To create an add-on for NVDA, please make sure your system meets the following r
 
 * NVDA:
     - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
-    - Even better: we recommend installing the latest master development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
+    - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python:
-    - Python 2.7 series, version 2.7.14 32-bit for Windows: https://www.python.org/downloads/release/python-2714/
-    - If you wish to work with Python 3, use Python 3.7.3, 32-bit for Windows: https://www.python.org/downloads/release/python-373/
+    - Python 2.7 series, version 2.7.16 32-bit for Windows: https://www.python.org/downloads/release/python-2716/
+    - If you wish to work with Python 3, use Python 3.7.4, 32-bit for Windows: https://www.python.org/downloads/release/python-374/
+    - Starting from July 2019, Python 3 is required.
 * SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
@@ -448,7 +452,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Global Commands collection (globalCommands.py): A list of global commands available while using NVDA (see section on script scope for more information).
 * Global Plugin subsystem (globalPluginHandler.py): The module needed for controlling global plugins.
 * NVDA GUI (gui): A collection of classes used by NVDA to display its messages graphically. Includes GUI's for NVDA menu, add-on manager and others.
-* Hardware port utilities (hwPortUtils.py): A set of utilities for communicating over serial and other hardware ports, useful during driver add-on development.
+* Hardware port utilities and input/output management (hwPortUtils.py, hwIo.py): A set of utilities for communicating over serial and other hardware ports, useful during driver add-on development.
 * IAccessible support (IAccessibleHandler.py, IAccessible objects): Used for supporting Microsoft Active Accessibility (MSAA)/IAccessible controls.
 * Input management (inputCore.py): Manages input from the user.
 * Java Access Bridge support (JABHandler.py): A collection of methods used for supporting JAB subsystem used for Java applications.
@@ -466,7 +470,7 @@ The following lists available NVDA core modules and some useful methods and clas
     - `NVDAObjects.behaviors`: a collection of behaviors for specific controls, such as edit fields with or without selection detection, terminals, tool tips, help balloons, a way to simulate table commands in various controls and others.
 * Review facility (review.py): assists with working with review cursor.
 * Scripts support (scriptHandler.py): Handles scripts, methods executed due to the user pressing keyboard commands and other input.
-* Speech output (speech.py): Controls speech output.
+* Speech output (speech): Controls speech output.
 * Synthesizer driver support (synthDriverHandler.py): This is the core module needed for speech synthesizer add-ons.
 * Widget text access (textInfos): Allows access to text for widget and documents.
 * Touchscreen support (touchHandler.py): Provides support for touchscreen input (installed versions only).
@@ -1034,6 +1038,7 @@ At first glance, app modules may look the same as any global plugin. However, ap
 * Instead of `globalPluginHandler`, you need to import `appModuleHandler`. The class to implement is `AppModule(appModuleHandler.AppModule)`.
 * App modules are stored in appModules folder in your add-on directory structure and is named the same as the executable name of the program.
 * You can ask NVDA to enter sleep mode in a program where NVDA will not speak or braille anything while using the program, and any keyboard commands you press will be handled by the program directly. This is done by setting `sleepMode` attribute in the AppModule class to True.
+* Some apps present information in the form of a webpage, and if this happens, browse mode can be used. However, in NVDA 2019.2 and later, this ability is disabled for apps such as Skype. To restore browse mode functionality, you need to set disableBrowseModeByDefault to False.
 * The `event_NVDAObject_init` routine is only available in app modules.
 * You can ask NVDA to keep an eye on an object to handle events for them even if the user is using another app.
 
@@ -1210,7 +1215,6 @@ To present straight forward information to your users, ui.message and ui.browsea
 To create and use dialogs, you need to import two modules: GUI (import gui) and WXPython (import wx). Read their documentation for the large number of options available to you.
 
 In short:
-
 * gui provides methods for constructing and displaying some standard dialogs.
 * wx provides the actual implementation for those dialogs, and provides many of the constants and extended options you will need to really make use of dialogs effectively.
 
@@ -1235,7 +1239,6 @@ class GlobalPlugin (globalPluginHandler.GlobalPlugin):
 
 If you save the above as a global plugin and load it in NVDA, then press NVDA+shift+t, you should find yourself in a new window.
 The window is generated by the call to gui.messageBox. The first parameter is the text of the window, the second parameter is the title of the window, and the third parameter contains a list of constant flags which wx uses to generate the dialog's buttons and other attributes.
-
 * wx.ICON_WARNING, causes the window to behave as a Windows warning.
 * wx.OK, causes the window to display the standard OK button.
 * And wx.CANCEL is the same for cancel.
@@ -1272,7 +1275,57 @@ Do you wish to proceed?""",
 
 ### Threading
 
-**Coming Soon**
+#### Introduction
+
+If a routine in an add-on runs for a long time, NVDA would appear to freeze or stop responding altogether. This is where threads come in - running a long-running task with a different thread, allowing NVDA to remain responsive.
+
+Although Python does support threads, it can run one thing at a time due to global interpreter lock (GIL). Thus, on computers with multiple processor cores, it is advised to use processes (via multiprocessing module) to allow Python interpreters to run on all cores. However, this workaround introduces latency and overhead, so for many scenarios, threads are prefered.
+
+#### Threading scenarios
+
+Threads are useful if
+
+* You need to work on something while waiting for a result. For example, if a global plugin needs to access the internet for various tasks, a separate thread can be used for obtaining online information while NVDA is busy with something else.
+* Monitor things in the background without interupting NVDA. For example, an overlay class defined in an app module can use a thread to announce screen information as it changes in the background.
+* Run tasks periodically. For example, a speech synthesizer can use a timer thread to determine if a hardware synthesizer is ready or not.
+
+#### Threading examples
+
+All examples use threading module unless noted otherwise.
+
+Download content from a website via a global plugin:
+
+	import threading
+	import urllib
+	# Other parts of the global plugin.
+
+	def downloadContent(address):
+		return urllib.urlopen(address)
+
+	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+		def script_downloadContent(self, gesture):
+			downloadThread = threading.Thread(target=downloadContent, args=(someWebsite,))
+			downloadThread.start()
+			downloadThread.join()
+
+We need to use a separate thread to access web content because urllib (urllib.request in Python 3) blocks, making NVDA appear to freeze.
+
+Announce a message ten seconds after pressing a key from an app:
+
+There are two timers you can use: threading.Timer or wx.Timer. The below app module example uses threading.Timer.
+
+	import threading
+	import ui
+	# Other parts of an app module.
+
+	class AppModule(appModuleHandler.AppModule):
+
+		def script_saySomething(self, gesture):
+			messageTimer = threading.Timer(10.0, ui.message, args="this is a timer message", ))
+			messageTimer.start()
+
+One limitation with threading.Timer is that it does not support repetetive tasks, and for these, you need to use wx.Timer.
 
 ### Storing and Using Persistent Information Outside Your Add-on
 
@@ -1432,3 +1485,21 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |
 | I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |
 | I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |
+
+### Appendix E: Python 2 versus 3
+
+The following describes notable changes between Python 2 and 3 and tips for making your add-on Python 2 and 3 compatible.
+
+| Concept or task | Python 2| Python 3 | Compatibility tips |
+| ------- | --------- | -------- | -------- |
+| Print text | print text | print(text) | The latter also works on Python 2. |
+| Default text format | ANSI | Unicode | Unicode is prefered. To do so, prefix text with a "u". |
+| Range | xrange | range | If you are not concerned with performance, use range. |
+| Reduce/accumulate | reduce | functools.reduce | |
+| Map and filter returns | list | iterator | If you want maximum compatibility, wrap a call to map or filter inside a list function call. |
+| Exception aliasing | exception, e | exception as e | The latter works on Python 2. |
+| Relative import | import relativeModule | from . import relativeModule | The latter also works on Python 2. |
+| Registry access | _winreg | winreg | For maximum compatibility, use winreg, and on Python 2, import _winreg as winreg. |
+| Dictionary item/key/value iteration | dict.iteritems/iterkeys/itervalues | dict.items/keys/values | In case of dict.keys, one can just iterate through the dictionary itself. |
+| Strictly integer division | / | // | The former now performs regular division on Python 3. |
+| Class definition | class someclass: content | class someclass(object): content | The latter also works on Python 2. |

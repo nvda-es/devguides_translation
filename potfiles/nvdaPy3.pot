@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-07-27 22:18+Hora de verano romance\n"
+"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -825,50 +825,54 @@ msgid "* Try using Python modules that are known to be compatible with both Pyth
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:210
-msgid "### For testers:"
+msgid "* Be sure to test add-ons in 2019.3 alpha and edit add-on files accordingly."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:211
-msgid "Nothing yet, as broad testing hasn't begun."
+msgid "### For testers:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:212
-msgid "### For translators:"
+msgid "* Use a portable copy of 2019.3 alpha if you rely on add-ons not ported to Python 3 yet."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:213
-msgid "Nothing yet."
+msgid "### For translators:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:214
-msgid "### For users:"
+msgid "Nothing yet."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:215
-msgid "nothing yet."
+msgid "### For users:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:216
-msgid "### For organizations:"
+msgid "nothing yet."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:217
-msgid "* Stay informed on Python 3 transition workflow."
+msgid "### For organizations:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:218
-msgid "### For Python community:"
+msgid "* Stay informed on Python 3 transition workflow."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:219
-msgid "* During pre-transition period, please help NVDA project spot potential issues with Python 3 transition so they can be noted."
+msgid "### For Python community:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:220
-msgid "* During transition, please help write and test Python 3 code and provide additional comments."
+msgid "* During pre-transition period, please help NVDA project spot potential issues with Python 3 transition so they can be noted."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:221
+msgid "* During transition, please help write and test Python 3 code and provide additional comments."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:222
 msgid "* During post-transition, please help NV Access review transition work, as well as suggest Python 3 features NVDA should adopt,"
 msgstr ""
 

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-07-27 22:18+Hora de verano romance\n"
-"PO-Revision-Date: 2019-07-27 22:26+0200\n"
+"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"PO-Revision-Date: 2019-08-05 20:34+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -872,7 +872,7 @@ msgstr "### Después de la transición:"
 
 #: ..\python_docs\nvdaPy3.py:150
 msgid "Start date: TBD"
-msgstr "Fecha de inicio: no especificada"
+msgstr "Fecha de inicio: por determinar"
 
 #: ..\python_docs\nvdaPy3.py:151
 msgid "1. A beta of NVDA powered by python 3 must be released."
@@ -1277,43 +1277,54 @@ msgstr ""
 "3."
 
 #: ..\python_docs\nvdaPy3.py:210
+msgid ""
+"* Be sure to test add-ons in 2019.3 alpha and edit add-on files accordingly."
+msgstr ""
+"* Asegúrate de probar los complementos en 2019.3 Alpha y edita los archivos "
+"del complemento según corresponda."
+
+#: ..\python_docs\nvdaPy3.py:211
 msgid "### For testers:"
 msgstr "### Para evaluadores:"
 
-#: ..\python_docs\nvdaPy3.py:211
-msgid "Nothing yet, as broad testing hasn't begun."
-msgstr "Todavía nada, las pruebas generales aún no han comenzado."
-
 #: ..\python_docs\nvdaPy3.py:212
+msgid ""
+"* Use a portable copy of 2019.3 alpha if you rely on add-ons not ported to "
+"Python 3 yet."
+msgstr ""
+"* Usa una copia portable de 2019.3 Alpha si necesitas apoyarte en "
+"complementos que todavía no han migrado a Python 3."
+
+#: ..\python_docs\nvdaPy3.py:213
 msgid "### For translators:"
 msgstr "### Para traductores:"
 
-#: ..\python_docs\nvdaPy3.py:213
+#: ..\python_docs\nvdaPy3.py:214
 msgid "Nothing yet."
 msgstr "Nada todavía."
 
-#: ..\python_docs\nvdaPy3.py:214
+#: ..\python_docs\nvdaPy3.py:215
 msgid "### For users:"
 msgstr "### Para usuarios:"
 
-#: ..\python_docs\nvdaPy3.py:215
+#: ..\python_docs\nvdaPy3.py:216
 msgid "nothing yet."
 msgstr "nada todavía."
 
-#: ..\python_docs\nvdaPy3.py:216
+#: ..\python_docs\nvdaPy3.py:217
 msgid "### For organizations:"
 msgstr "### Para organizaciones:"
 
-#: ..\python_docs\nvdaPy3.py:217
+#: ..\python_docs\nvdaPy3.py:218
 msgid "* Stay informed on Python 3 transition workflow."
 msgstr ""
 "* Permanece informado sobre el flujo de trabajo de la transición a Python 3."
 
-#: ..\python_docs\nvdaPy3.py:218
+#: ..\python_docs\nvdaPy3.py:219
 msgid "### For Python community:"
 msgstr "### Para la comunidad Python:"
 
-#: ..\python_docs\nvdaPy3.py:219
+#: ..\python_docs\nvdaPy3.py:220
 msgid ""
 "* During pre-transition period, please help NVDA project spot potential "
 "issues with Python 3 transition so they can be noted."
@@ -1322,7 +1333,7 @@ msgstr ""
 "NVDA a detectar problemas potenciales con la transición a Python 3 para que "
 "puedan documentarse."
 
-#: ..\python_docs\nvdaPy3.py:220
+#: ..\python_docs\nvdaPy3.py:221
 msgid ""
 "* During transition, please help write and test Python 3 code and provide "
 "additional comments."
@@ -1330,7 +1341,7 @@ msgstr ""
 "* Durante la transición, por favor ayudad a escribir y probar código en "
 "Python 3 y proporcionad comentarios adicionales."
 
-#: ..\python_docs\nvdaPy3.py:221
+#: ..\python_docs\nvdaPy3.py:222
 msgid ""
 "* During post-transition, please help NV Access review transition work, as "
 "well as suggest Python 3 features NVDA should adopt,"
@@ -1338,6 +1349,9 @@ msgstr ""
 "* Durante la fase posterior a la transición, ayuda a NV Access a revisar los "
 "trabajos de transición, y sugiere funciones de Python 3 que NVDA debería "
 "adoptar,"
+
+#~ msgid "Nothing yet, as broad testing hasn't begun."
+#~ msgstr "Todavía nada, las pruebas generales aún no han comenzado."
 
 #~ msgid ""
 #~ "Ideal completion: between NVDA 2019.2 and 2019.3 releases (tentatively by "
