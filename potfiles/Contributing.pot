@@ -1,26 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\Contributing.py:3
 msgid "# Contributing to NVDA"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:4
-msgid "If you would like to contribute code or documentation to NVDA, please follow these guidelines. You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki."
+msgid ""
+"If you would like to contribute code or documentation to NVDA, please follow "
+"these guidelines. You can also make non-code contributions by helping "
+"process incoming Github issues. For information on this please see the "
+"[triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and "
+"[issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) "
+"on the wiki."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:5
@@ -28,7 +36,9 @@ msgid "## Submitting Changes"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:6
-msgid "For anything other than minor bug fixes, please comment on an existing issue or create a new issue providing details about your proposed change."
+msgid ""
+"For anything other than minor bug fixes, please comment on an existing issue "
+"or create a new issue providing details about your proposed change."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:7
@@ -40,23 +50,42 @@ msgid "Include information about use cases, design, user experience, etc."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:9
-msgid "This allows us to discuss these aspects and any other concerns that might arise, thus potentially avoiding a great deal of wasted time."
+msgid ""
+"This allows us to discuss these aspects and any other concerns that might "
+"arise, thus potentially avoiding a great deal of wasted time."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:10
-msgid "You should generally wait for acceptance of your proposal before you start coding. Please understand that we very likely will not accept changes that are not discussed first."
+msgid ""
+"You should generally wait for acceptance of your proposal before you start "
+"coding. Please understand that we very likely will not accept changes that "
+"are not discussed first."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:11
-msgid "If this is a minor/trivial change which definitely wouldn't require design, user experience or implementation discussion (e.g. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver), you can just create a pull request rather than using an issue first. However, this should be fairly rare. If in doubt, use an issue first."
+msgid ""
+"If this is a minor/trivial change which definitely wouldn't require design, "
+"user experience or implementation discussion (e.g. a fix for a typo/obvious "
+"coding error or a simple synthesizer/braille display driver), you can just "
+"create a pull request rather than using an issue first. However, this should "
+"be fairly rare. If in doubt, use an issue first."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:12
-msgid "If this is your first contribution, you will first need to \"fork\" the NVDA repository on GitHub."
+msgid ""
+"If this is your first contribution, you will first need to \"fork\" the NVDA "
+"repository on GitHub."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:13
-msgid "When you fork the repository, GitHub will create a copy of the master branch. However, this branch will not be updated when the official master branch is updated. To ensure your work is always based on the latest commit in the official master branch, it is recommended that your master branch be linked to the official master branch, rather than the master branch in your GitHub fork. If you have cloned your GitHub fork, you can do this from the command line as follows:"
+msgid ""
+"When you fork the repository, GitHub will create a copy of the master "
+"branch. However, this branch will not be updated when the official master "
+"branch is updated. To ensure your work is always based on the latest commit "
+"in the official master branch, it is recommended that your master branch be "
+"linked to the official master branch, rather than the master branch in your "
+"GitHub fork. If you have cloned your GitHub fork, you can do this from the "
+"command line as follows:"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:14 ..\python_docs\Contributing.py:25
@@ -109,7 +138,10 @@ msgid "You should use a separate \"topic\" branch for each issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:27
-msgid "All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue."
+msgid ""
+"All code should usually be based on the latest commit in the official master "
+"branch at the time you start the work unless the code is entirely dependent "
+"on the code for another issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:28
@@ -117,15 +149,22 @@ msgid "Branches should *never* be based on the \"next\" branch."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:29
-msgid "If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly."
+msgid ""
+"If you are adding a feature or changing something that will be noticeable to "
+"the user, you should update the User Guide accordingly."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:30
-msgid "For anything touching code, Please run `scons tests` before you open your Pull Request, and make sure all the unit tests pass. If possible for your PR, please consider creating a set of unit tests to test your changes."
+msgid ""
+"For anything touching code, Please run `scons tests` before you open your "
+"Pull Request, and make sure all the unit tests pass. If possible for your "
+"PR, please consider creating a set of unit tests to test your changes."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:31
-msgid "When it is time to submit your code, you should open a pull request referring to the original issue."
+msgid ""
+"When it is time to submit your code, you should open a pull request "
+"referring to the original issue."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:32
@@ -141,11 +180,17 @@ msgid "### Encoding"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:35
-msgid "* Where Python files contain non-ASCII characters, they should be encoded in UTF-8."
+msgid ""
+"* Where Python files contain non-ASCII characters, they should be encoded in "
+"UTF-8."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:36
-msgid "    * There should be no Unicode BOM at the start of the file, as this unfortunately breaks one of the translation tools we use (xgettext). Instead, include this as the first line of the file (only if the file contains non-ASCII characters):"
+msgid ""
+"    * There should be no Unicode BOM at the start of the file, as this "
+"unfortunately breaks one of the translation tools we use (xgettext). "
+"Instead, include this as the first line of the file (only if the file "
+"contains non-ASCII characters):"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:37 ..\python_docs\Contributing.py:39
@@ -157,11 +202,18 @@ msgid "        # -*- coding: UTF-8 -*-"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:40
-msgid "    * This coding comment must also be included if strings in the code (even strings that aren't translatable) contain escape sequences that produce non-ASCII characters; e.g. `\"\\xff\"`. This is particularly relevant for braille display drivers. This is due to a gettext bug; see https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911."
+msgid ""
+"    * This coding comment must also be included if strings in the code (even "
+"strings that aren't translatable) contain escape sequences that produce non-"
+"ASCII characters; e.g. `\"\\xff\"`. This is particularly relevant for "
+"braille display drivers. This is due to a gettext bug; see https://github."
+"com/nvaccess/nvda/issues/2592#issuecomment-155299911."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:41
-msgid "* Most files should contain CRLF line endings, as this is a Windows project and can't be used on Unix-like operating systems."
+msgid ""
+"* Most files should contain CRLF line endings, as this is a Windows project "
+"and can't be used on Unix-like operating systems."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:42
@@ -173,7 +225,10 @@ msgid "* Indentation must be done with tabs (one per level), not spaces."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:44
-msgid "* When splitting a single statement over multiple lines, just indent one or more additional levels. Don't use vertical alignment; e.g. lining up with the bracket on the previous line."
+msgid ""
+"* When splitting a single statement over multiple lines, just indent one or "
+"more additional levels. Don't use vertical alignment; e.g. lining up with "
+"the bracket on the previous line."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:45
@@ -181,19 +236,28 @@ msgid "### Identifier Names"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:46
-msgid "* Functions, variables, properties, etc. should use mixed case to separate words, starting with a lower case letter; e.g. `speakText`."
+msgid ""
+"* Functions, variables, properties, etc. should use mixed case to separate "
+"words, starting with a lower case letter; e.g. `speakText`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:47
-msgid "* Classes should use mixed case to separate words, starting with an upper case letter; e.g. `BrailleHandler`."
+msgid ""
+"* Classes should use mixed case to separate words, starting with an upper "
+"case letter; e.g. `BrailleHandler`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:48
-msgid "* Constants should be all upper case, separating words with underscores; e.g. `LANGS_WITH_CONJUNCT_CHARS`."
+msgid ""
+"* Constants should be all upper case, separating words with underscores; e."
+"g. `LANGS_WITH_CONJUNCT_CHARS`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:49
-msgid "* Event handlers are prefixed with \"event_\", and are often in the form \"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the class type that the ACTION refers to."
+msgid ""
+"* Event handlers are prefixed with \"event_\", and are often in the form "
+"\"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the "
+"class type that the ACTION refers to."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:50
@@ -201,15 +265,22 @@ msgid "* Extension points:"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:51
-msgid "    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are being notified before / after the action has taken place."
+msgid ""
+"    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are "
+"being notified before / after the action has taken place."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:52
-msgid "    * `Decider`: Prefixed with `should_` to turn them into a question eg `should_doSomething`"
+msgid ""
+"    * `Decider`: Prefixed with `should_` to turn them into a question eg "
+"`should_doSomething`"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:53
-msgid "    * `Filter`: TBD. Ideally follows a similar style the others, and communicates if the filtering happens before or after some action. It would also be nice to have a naming scheme that differentiates it from the others."
+msgid ""
+"    * `Filter`: TBD. Ideally follows a similar style the others, and "
+"communicates if the filtering happens before or after some action. It would "
+"also be nice to have a naming scheme that differentiates it from the others."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:54
@@ -217,11 +288,15 @@ msgid "### Translatable Strings"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:55
-msgid "* All strings that could be presented to the user should be marked as translatable using the `_()` function; e.g. `_(\"Text review\")`."
+msgid ""
+"* All strings that could be presented to the user should be marked as "
+"translatable using the `_()` function; e.g. `_(\"Text review\")`."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:56
-msgid "* All translatable strings should have a preceding translators comment describing the purpose of the string for translators. For example:"
+msgid ""
+"* All translatable strings should have a preceding translators comment "
+"describing the purpose of the string for translators. For example:"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:58
@@ -231,4 +306,3 @@ msgstr ""
 #: ..\python_docs\Contributing.py:59
 msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
 msgstr ""
-

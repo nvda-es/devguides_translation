@@ -1,34 +1,43 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\Updating-eSpeak-NG.py:3
 msgid "### Background"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:4
-msgid "The main authority on build requirements should be `<nvda repo root>/include/espeak/Makefile.am`. The `*.vcxproj` files"
+msgid ""
+"The main authority on build requirements should be `<nvda repo root>/include/"
+"espeak/Makefile.am`. The `*.vcxproj` files"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:5
-msgid "in `<nvda repo root>/include/espeak/src/windows/` can also be considered, however these are not always kept up to date."
+msgid ""
+"in `<nvda repo root>/include/espeak/src/windows/` can also be considered, "
+"however these are not always kept up to date."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:6
-msgid "We dont use the auto make files or the visual studio files, we maintain our own method of building espeak. Modifications will need to be made in `<nvda repo root>/nvdaHelper/espeak`"
+msgid ""
+"We dont use the auto make files or the visual studio files, we maintain our "
+"own method of building espeak. Modifications will need to be made in `<nvda "
+"repo root>/nvdaHelper/espeak`"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:7
@@ -36,7 +45,8 @@ msgid "* `sconscript` for the build process."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:8
-msgid "* `config.h` to set the eSpeak-ng version that NVDA outputs to the log file."
+msgid ""
+"* `config.h` to set the eSpeak-ng version that NVDA outputs to the log file."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:9
@@ -48,7 +58,8 @@ msgid "1. Start from a clean branch off of NVDA `master`"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:11
-msgid "   1. Check out the latest NVDA `origin/master` and create a new branch."
+msgid ""
+"   1. Check out the latest NVDA `origin/master` and create a new branch."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:12
@@ -80,7 +91,8 @@ msgid "   1. Do `git fetch` to get the latest from the espeak-ng repo"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:19
-msgid "   1. Do `git checkout origin/master` or whichever espeak-ng ref you wish."
+msgid ""
+"   1. Do `git checkout origin/master` or whichever espeak-ng ref you wish."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:20
@@ -92,7 +104,10 @@ msgid "   1. Change back to the NVDA repo root"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:22
-msgid "   1. Update the package version in `<nvda repo root>/nvdaHelper/espeak/config.h` you can use `<nvda repo root>/include/espeak/src/windows/config.h` to double check this is what you expect."
+msgid ""
+"   1. Update the package version in `<nvda repo root>/nvdaHelper/espeak/"
+"config.h` you can use `<nvda repo root>/include/espeak/src/windows/config.h` "
+"to double check this is what you expect."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:23
@@ -104,7 +119,8 @@ msgid "1. Run NVDA (set eSpeak-ng as the synthesizer) and test."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:25
-msgid "1. Ensure that the log file contains the new version number for eSpeak-NG"
+msgid ""
+"1. Ensure that the log file contains the new version number for eSpeak-NG"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:26
@@ -112,15 +128,21 @@ msgid "### Troubleshooting"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:27
-msgid "If python crashes while building, check the log. If the last thing is compiling some dictionary try excluding it. This"
+msgid ""
+"If python crashes while building, check the log. If the last thing is "
+"compiling some dictionary try excluding it. This"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:28
-msgid "can be done in `<nvda repo root>/nvdaHelper/espeak/sconscript`. Remember to report this to the eSpeak-ng project."
+msgid ""
+"can be done in `<nvda repo root>/nvdaHelper/espeak/sconscript`. Remember to "
+"report this to the eSpeak-ng project."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:29
-msgid "If the build fails, take note of the error, compare the diff of the `Makefile.am` file and mirror any changes in our `sconscript` file."
+msgid ""
+"If the build fails, take note of the error, compare the diff of the "
+"`Makefile.am` file and mirror any changes in our `sconscript` file."
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:30
@@ -128,6 +150,8 @@ msgid "### Known issues"
 msgstr ""
 
 #: ..\python_docs\Updating-eSpeak-NG.py:31
-msgid "Due to problems with emoji support (causing crashes), emoji dictionary files are being excluded from the build, they are deleted prior to compiling the dictionaries in the `<nvda repo root>/nvdaHelper/espeak/sconscript` file."
+msgid ""
+"Due to problems with emoji support (causing crashes), emoji dictionary files "
+"are being excluded from the build, they are deleted prior to compiling the "
+"dictionaries in the `<nvda repo root>/nvdaHelper/espeak/sconscript` file."
 msgstr ""
-

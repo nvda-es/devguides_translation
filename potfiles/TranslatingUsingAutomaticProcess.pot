@@ -1,34 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:3
 msgid "# Translating using the automatic workflow process"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:4
-msgid "This page describes the process of translating NvDA and related files using the automatic workflow process. For more information about the overall translation process, please read the translate intro page."
+msgid ""
+"This page describes the process of translating NvDA and related files using "
+"the automatic workflow process. For more information about the overall "
+"translation process, please read the translate intro page."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:5
-msgid "The automatic workflow process consists of receiving translation files, working on your translations, then submitting your translations to the translations server. This is done via a version control system called Subversion (SVN). From time to time, you'll receive new translations (along with new translation notices via email or Twitter( optional; follow \"@SRT_\" for tweets), and your translations are included in NVDA periodically so you can test your translations."
+msgid ""
+"The automatic workflow process consists of receiving translation files, "
+"working on your translations, then submitting your translations to the "
+"translations server. This is done via a version control system called "
+"Subversion (SVN). From time to time, you'll receive new translations (along "
+"with new translation notices via email or Twitter( optional; follow \"@SRT_"
+"\" for tweets), and your translations are included in NVDA periodically so "
+"you can test your translations."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:6
-msgid "Note that you need to keep the translations up to date and test your translation work to make sure it works as intended. Also, read the release process document to remind yourself about release dates."
+msgid ""
+"Note that you need to keep the translations up to date and test your "
+"translation work to make sure it works as intended. Also, read the release "
+"process document to remind yourself about release dates."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:7
@@ -40,7 +55,14 @@ msgid "## Creating an account"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:9
-msgid "To begin the workflow process, start by subscribing to the NVDA translations mailing list and request an invitation to join the workflow. Once you receive your [assembla http://www.assembla.com] invitation, you can proceed by creating a username/password so that you can use the svn server. Once you are logged in, you need to accept the invitation to the screenReaderTranslations team. After that, you don't need to come back to the website."
+msgid ""
+"To begin the workflow process, start by subscribing to the NVDA translations "
+"mailing list and request an invitation to join the workflow. Once you "
+"receive your [assembla http://www.assembla.com] invitation, you can proceed "
+"by creating a username/password so that you can use the svn server. Once you "
+"are logged in, you need to accept the invitation to the "
+"screenReaderTranslations team. After that, you don't need to come back to "
+"the website."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:10
@@ -48,11 +70,15 @@ msgid "## Download and install Subversion"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:11
-msgid "Currently we recommend Tortoise svn. Download it from http://tortoisesvn.net and install it."
+msgid ""
+"Currently we recommend Tortoise svn. Download it from http://tortoisesvn.net "
+"and install it."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:12
-msgid "The default TortoiseSVN settings and properties are fine, so no need to change anything."
+msgid ""
+"The default TortoiseSVN settings and properties are fine, so no need to "
+"change anything."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:13
@@ -60,7 +86,11 @@ msgid "## First time checkout (To download the repository)"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:14
-msgid "To checkout the screenreader translations repository, create a directory e.g. named Translations, right click on it and select \"SVN Checkout...\" from the context menu. Copy and paste the following url into the repository url edit box:  "
+msgid ""
+"To checkout the screenreader translations repository, create a directory e."
+"g. named Translations, right click on it and select \"SVN Checkout...\" from "
+"the context menu. Copy and paste the following url into the repository url "
+"edit box:  "
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:15
@@ -68,7 +98,9 @@ msgid "`http://subversion.assembla.com/svn/screenReaderTranslations`"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:16
-msgid "You can see that it is successful when the last line that it printed says something like `Completed; Path: At revision: 1234`"
+msgid ""
+"You can see that it is successful when the last line that it printed says "
+"something like `Completed; Path: At revision: 1234`"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:17
@@ -80,15 +112,22 @@ msgid "The layout of the repository is as follows:"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:19
-msgid "- Folders of two character language codes (such as es for Spanish, fr for French), as used by nvda, contains all the translation documents for this language."
+msgid ""
+"- Folders of two character language codes (such as es for Spanish, fr for "
+"French), as used by nvda, contains all the translation documents for this "
+"language."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:20
-msgid "- scripts: the scripts that are run on the server, should generally not be changed."
+msgid ""
+"- scripts: the scripts that are run on the server, should generally not be "
+"changed."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:21
-msgid "- some t2tconf files, standard config files that should not need to be changed."
+msgid ""
+"- some t2tconf files, standard config files that should not need to be "
+"changed."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:22
@@ -96,19 +135,27 @@ msgid "Each language directory contains:"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:23
-msgid "- add-ons, the translatable messages for various add-ons (if enabled for your language)."
+msgid ""
+"- add-ons, the translatable messages for various add-ons (if enabled for "
+"your language)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:24
-msgid "- changes-newRevisions, directory containing updates that need to be translated for the changes.t2t (read only)."
+msgid ""
+"- changes-newRevisions, directory containing updates that need to be "
+"translated for the changes.t2t (read only)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:25
-msgid "- userGuide-newRevisions, directory containing updates that need to be translated for the userGuide.t2t (read only)."
+msgid ""
+"- userGuide-newRevisions, directory containing updates that need to be "
+"translated for the userGuide.t2t (read only)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:26
-msgid "- symbols-newRevisions, directory containing updates that need to be translated for the symbols.dic (read only)."
+msgid ""
+"- symbols-newRevisions, directory containing updates that need to be "
+"translated for the symbols.dic (read only)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:27
@@ -116,7 +163,9 @@ msgid "- changes.t2t, localized list of changes (you should edit)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:28
-msgid "- changes.html, automatically generated html from t2t, so that you can check your syntax."
+msgid ""
+"- changes.html, automatically generated html from t2t, so that you can check "
+"your syntax."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:29
@@ -124,19 +173,29 @@ msgid "- userGuide.t2t, localized manual (you should edit)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:30
-msgid "- userGuide.html, automatically generated html from your t2t, so that you can check your syntax."
+msgid ""
+"- userGuide.html, automatically generated html from your t2t, so that you "
+"can check your syntax."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:31
-msgid "- userGuide-structureDifferences.txt, automatically generated diffrence between the english user guide statistics, and the localized user guide stats (very useful)."
+msgid ""
+"- userGuide-structureDifferences.txt, automatically generated diffrence "
+"between the english user guide statistics, and the localized user guide "
+"stats (very useful)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:32
-msgid "- nvda.po, the nvda interface file, new messages from pot are automatically merged, and you will be sent an email (or a tweet) when there are new messages to be translated."
+msgid ""
+"- nvda.po, the nvda interface file, new messages from pot are automatically "
+"merged, and you will be sent an email (or a tweet) when there are new "
+"messages to be translated."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:33
-msgid "- characterDescriptions.dic, your localized character descriptions file (you should edit)."
+msgid ""
+"- characterDescriptions.dic, your localized character descriptions file (you "
+"should edit)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:34
@@ -144,7 +203,9 @@ msgid "- symbols.dic, your localized symbols file (you should edit)."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:35
-msgid "- Settings, various meta information to help the automated translation system, also used to indicate when you want to translate a specific addon."
+msgid ""
+"- Settings, various meta information to help the automated translation "
+"system, also used to indicate when you want to translate a specific addon."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:36
@@ -172,7 +233,9 @@ msgid "The workflow is something like this:"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:42
-msgid "1. You receive an email telling you that nvda.po has been updated, and it will tell you how many messages are untranslated, and how many are fuzzy."
+msgid ""
+"1. You receive an email telling you that nvda.po has been updated, and it "
+"will tell you how many messages are untranslated, and how many are fuzzy."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:43
@@ -184,43 +247,64 @@ msgid "1.2 Localize the new messages/fuzzy messages."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:45
-msgid "1.3 Commit, in the commit message you say if the work was finished or not."
+msgid ""
+"1.3 Commit, in the commit message you say if the work was finished or not."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:46
-msgid "2. You receive an email (or a tweet) telling you that there are new revisions for the changes or userGuide documents to be translated"
+msgid ""
+"2. You receive an email (or a tweet) telling you that there are new "
+"revisions for the changes or userGuide documents to be translated"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:47
-msgid "2.1 You svn update, you find one new directory for example 10289 in changes-newRevisions."
+msgid ""
+"2.1 You svn update, you find one new directory for example 10289 in changes-"
+"newRevisions."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:48
-msgid "2.2 Inside 10289 you will find the changes.t2t, differences.txt, wordDifferences.txt and log.txt"
+msgid ""
+"2.2 Inside 10289 you will find the changes.t2t, differences.txt, "
+"wordDifferences.txt and log.txt"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:49
-msgid "2.3 differences.txt will show you exactly what line has been added/changed/removed."
+msgid ""
+"2.3 differences.txt will show you exactly what line has been added/changed/"
+"removed."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:50
-msgid "2.4 if your localization is complete, the line numbers of each difference block should be close to  where you need to do your changes."
+msgid ""
+"2.4 if your localization is complete, the line numbers of each difference "
+"block should be close to  where you need to do your changes."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:51
-msgid "2.5 If differences.txt showed you a line that was modified, and it isn't easy to see what changed, (for example an inserted punctuation mark, or corrected spelling) you can see the word by word change by looking inside wordDifferences.txt."
+msgid ""
+"2.5 If differences.txt showed you a line that was modified, and it isn't "
+"easy to see what changed, (for example an inserted punctuation mark, or "
+"corrected spelling) you can see the word by word change by looking inside "
+"wordDifferences.txt."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:52
-msgid "2.6 log.txt, sometimes helpful to see the commit message from nvda authors, so it is provided in case it is useful."
+msgid ""
+"2.6 log.txt, sometimes helpful to see the commit message from nvda authors, "
+"so it is provided in case it is useful."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:53
-msgid "2.7 When we finished with all the differences blocks for 10289, we check to make sure that nothing has been missed (see svn diff, svn status)"
+msgid ""
+"2.7 When we finished with all the differences blocks for 10289, we check to "
+"make sure that nothing has been missed (see svn diff, svn status)"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:54
-msgid "2.8 We svn commit, and in the message we say we completed the translation for 10289."
+msgid ""
+"2.8 We svn commit, and in the message we say we completed the translation "
+"for 10289."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:55
@@ -232,11 +316,15 @@ msgid "### Download new changes from the server"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:57
-msgid "To update the repository simply select the Translations folder in your explorer right click on it and activate SVN update."
+msgid ""
+"To update the repository simply select the Translations folder in your "
+"explorer right click on it and activate SVN update."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:58
-msgid "The last line of the output window should be something like updated to revision 1234."
+msgid ""
+"The last line of the output window should be something like updated to "
+"revision 1234."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:59
@@ -244,7 +332,9 @@ msgid "The other lines will show a list of files that have been effected."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:60
-msgid "        added file1.txt # meens that file.txt has been added to svn, and you are getting your copy."
+msgid ""
+"        added file1.txt # meens that file.txt has been added to svn, and you "
+"are getting your copy."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:61
@@ -252,15 +342,22 @@ msgid "        updated file2.txt # means that file2.txt has been updated"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:62
-msgid "        deleted file3.txt # means that someone removed the file and svn is also removing your copy of the file."
+msgid ""
+"        deleted file3.txt # means that someone removed the file and svn is "
+"also removing your copy of the file."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:63
-msgid "        g file4.txt # means that you have changed the file , and it was also changed by someone else, but svn was happy merging the changes."
+msgid ""
+"        g file4.txt # means that you have changed the file , and it was also "
+"changed by someone else, but svn was happy merging the changes."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:64
-msgid "        c file5.txt # means that you have modified the file and it has been  modified by someone else, but svn could not automatically merge, this causes a problem, so ask for help if you get it."
+msgid ""
+"        c file5.txt # means that you have modified the file and it has been  "
+"modified by someone else, but svn could not automatically merge, this causes "
+"a problem, so ask for help if you get it."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:65
@@ -268,7 +365,9 @@ msgid "### Committing (sending the modifications to the server)"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:66
-msgid "If you translated new revisions, changed userguide and so on you can commit the changes by right clicking on your language code"
+msgid ""
+"If you translated new revisions, changed userguide and so on you can commit "
+"the changes by right clicking on your language code"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:67
@@ -276,7 +375,9 @@ msgid "inside the translation folder and select SVN commit from the menu."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:68
-msgid "In the dialog you should write a Commit message with your language code and a description of the work that was done."
+msgid ""
+"In the dialog you should write a Commit message with your language code and "
+"a description of the work that was done."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:69
@@ -292,7 +393,9 @@ msgid "If you deleted a file or folder in windows, "
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:72
-msgid "by default it is unchecked in this dialog, so you have to check it for it to be deleted from the repository on the server."
+msgid ""
+"by default it is unchecked in this dialog, so you have to check it for it to "
+"be deleted from the repository on the server."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:73
@@ -300,7 +403,10 @@ msgid "### unintended modification to file"
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:74
-msgid "If you deleted a file by mistake or something like that you can revert the changes by right clicking on the Translations folder, and select TortoiseSVN -> revert out of the menu."
+msgid ""
+"If you deleted a file by mistake or something like that you can revert the "
+"changes by right clicking on the Translations folder, and select TortoiseSVN "
+"-> revert out of the menu."
 msgstr ""
 
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:75
@@ -310,4 +416,3 @@ msgstr ""
 #: ..\python_docs\TranslatingUsingAutomaticProcess.py:76
 msgid "If you have any tips or additional info please update this page."
 msgstr ""
-

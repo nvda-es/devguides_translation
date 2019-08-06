@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\githubWebhooks.py:3
 msgid "# Using GitHub webhooks to receive notifications"
@@ -24,7 +26,10 @@ msgid "## Purpose"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:5
-msgid "This can be helpful to receive notifications, for example on a mailing list, when Gitub repos trigger push events, i.e., when new code or tags are pushed in the add-ons development process."
+msgid ""
+"This can be helpful to receive notifications, for example on a mailing list, "
+"when Gitub repos trigger push events, i.e., when new code or tags are pushed "
+"in the add-ons development process."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:6
@@ -36,11 +41,18 @@ msgid "### Create a Google web app "
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:8
-msgid "1. Copy this [script sample](https://gist.github.com/nvdaes/c5cb65b148e6e989d3e243b61719a80a/raw/4f5129705fa49b01ff5434535492870ac2c750e5/githubPushNotifier.gs) in an accessible editor, such as Notepadd++ or Notepad:"
+msgid ""
+"1. Copy this [script sample](https://gist.github.com/nvdaes/"
+"c5cb65b148e6e989d3e243b61719a80a/"
+"raw/4f5129705fa49b01ff5434535492870ac2c750e5/githubPushNotifier.gs) in an "
+"accessible editor, such as Notepadd++ or Notepad:"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:9
-msgid "2. Replace email@example.com with the email address you want to use, for instance, using the [groups.io email integration](https://groups.io/static/features)."
+msgid ""
+"2. Replace email@example.com with the email address you want to use, for "
+"instance, using the [groups.io email integration](https://groups.io/static/"
+"features)."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:10
@@ -52,7 +64,9 @@ msgid "https://script.google.com"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:12
-msgid "\t- In the multi-line edit box, copy your modified script and press control+s to save."
+msgid ""
+"\t- In the multi-line edit box, copy your modified script and press control"
+"+s to save."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:13
@@ -84,7 +98,9 @@ msgid "\tFor more details, please see"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:20
-msgid "\t[Web Apps \302\240|\302\240 Apps Script \302\240|\302\240 Google Developers](https://developers.google.com/apps-script/guides/web)."
+msgid ""
+"\t[Web Apps  |  Apps Script  |  Google Developers](https://developers.google."
+"com/apps-script/guides/web)."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:21
@@ -104,7 +120,8 @@ msgid "3. In the Content type combo box, select application/json."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:25
-msgid "4. In the Enable SSL verification set of radio buttons, disable this option."
+msgid ""
+"4. In the Enable SSL verification set of radio buttons, disable this option."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:26
@@ -112,7 +129,8 @@ msgid "5. Press Add webhook."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:27
-msgid "Note: In the above process, you may need to confirm your GitHub password."
+msgid ""
+"Note: In the above process, you may need to confirm your GitHub password."
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:28
@@ -120,10 +138,12 @@ msgid "## References"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:29
-msgid "- [Class MailApp \302\240|\302\240 Apps Script \302\240|\302\240 Google Developers](https://developers.google.com/apps-script/reference/mail/mail-app)"
+msgid ""
+"- [Class MailApp  |  Apps Script  |  Google Developers](https://developers."
+"google.com/apps-script/reference/mail/mail-app)"
 msgstr ""
 
 #: ..\python_docs\githubWebhooks.py:30
-msgid "- [Webhooks | GitHub Developer Guide](https://developer.github.com/webhooks/)"
+msgid ""
+"- [Webhooks | GitHub Developer Guide](https://developer.github.com/webhooks/)"
 msgstr ""
-

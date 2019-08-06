@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\developer_guide.py:3
 msgid "# NVDA 2019.1 Developer Guide"
@@ -76,7 +78,9 @@ msgid "    * 3.5. Basics of a Global Plugin"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:18
-msgid "    * 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA Version"
+msgid ""
+"    * 3.6. Example 2: a Global Plugin Providing a Script to Announce the "
+"NVDA Version"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:19
@@ -92,7 +96,8 @@ msgid "      * 3.8.1. Defining script properties"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:22
-msgid "    * 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
+msgid ""
+"    * 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:23
@@ -112,7 +117,9 @@ msgid "    * 3.13. Providing Custom NVDA Object Classes"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:27
-msgid "    * 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"
+msgid ""
+"    * 3.14. Example 5: Command to Retrieve the Length of Text in an Edit "
+"Field Using a Custom NVDA Object"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:28
@@ -120,7 +127,9 @@ msgid "    * 3.15. Making Small Changes to an NVDA Object in App Modules"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:29
-msgid "    * 3.16. Example 6: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"
+msgid ""
+"    * 3.16. Example 6: Labelling the Notepad Edit Field Using event"
+"\\_NVDAObject\\_init"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:30
@@ -200,7 +209,9 @@ msgid "## 1\\. Introduction"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:49
-msgid "This guide provides information concerning NVDA development, including translation and the development of components for NVDA. "
+msgid ""
+"This guide provides information concerning NVDA development, including "
+"translation and the development of components for NVDA. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:50
@@ -208,7 +219,12 @@ msgid "### 1.1. A Note About Python"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:51
-msgid "NVDA and its components are primarily written in the Python programming language. It is not the goal of this guide to teach you Python, though examples are provided through out this guide which will help to familiarise you with the Python syntax. Documentation and other resources related to the Python language can be found at [www.python.org/](http://www.python.org/)"
+msgid ""
+"NVDA and its components are primarily written in the Python programming "
+"language. It is not the goal of this guide to teach you Python, though "
+"examples are provided through out this guide which will help to familiarise "
+"you with the Python syntax. Documentation and other resources related to the "
+"Python language can be found at [www.python.org/](http://www.python.org/)"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:52
@@ -216,7 +232,14 @@ msgid "## 2\\. Translation"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:53
-msgid "In order to support multiple languages/locales, NVDA must be translated and data specific to the locale must be provided. This section only includes information on custom NVDA file formats required for translation. Other items need to be translated, such as the NVDA user interface and documentation, but these use standard file formats. For complete documentation about translating NVDA, please see <https://github.com/nvaccess/nvda/wiki/Translating>"
+msgid ""
+"In order to support multiple languages/locales, NVDA must be translated and "
+"data specific to the locale must be provided. This section only includes "
+"information on custom NVDA file formats required for translation. Other "
+"items need to be translated, such as the NVDA user interface and "
+"documentation, but these use standard file formats. For complete "
+"documentation about translating NVDA, please see <https://github.com/"
+"nvaccess/nvda/wiki/Translating>"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:54
@@ -224,1559 +247,2084 @@ msgid "### 2.1. Character Descriptions"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:55
-msgid "Sometimes, it can be very difficult or even impossible to distinguish one character from another. For example, two characters might be pronounced the same way, even though they are actually different characters. To help users when this occurs, character descriptions can be provided which describe the character in a unique way. "
+msgid ""
+"Sometimes, it can be very difficult or even impossible to distinguish one "
+"character from another. For example, two characters might be pronounced the "
+"same way, even though they are actually different characters. To help users "
+"when this occurs, character descriptions can be provided which describe the "
+"character in a unique way. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:56
-msgid "Character descriptions can be provided for a locale in a file named characterDescriptions.dic in the directory for the locale. This is a UTF-8 encoded text file. Blank lines and lines beginning with a \"\\#\" character are ignored. All other lines should contain a character, followed by a tab, then one or more descriptions separated by tabs. "
+msgid ""
+"Character descriptions can be provided for a locale in a file named "
+"characterDescriptions.dic in the directory for the locale. This is a UTF-8 "
+"encoded text file. Blank lines and lines beginning with a \"\\#\" character "
+"are ignored. All other lines should contain a character, followed by a tab, "
+"then one or more descriptions separated by tabs. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:57
 msgid "For example: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:58 ..\python_docs\developer_guide.py:63
-#: ..\python_docs\developer_guide.py:73 ..\python_docs\developer_guide.py:76
-#: ..\python_docs\developer_guide.py:78 ..\python_docs\developer_guide.py:81
-#: ..\python_docs\developer_guide.py:85 ..\python_docs\developer_guide.py:88
-#: ..\python_docs\developer_guide.py:106 ..\python_docs\developer_guide.py:109
-#: ..\python_docs\developer_guide.py:111 ..\python_docs\developer_guide.py:114
-#: ..\python_docs\developer_guide.py:116 ..\python_docs\developer_guide.py:119
-#: ..\python_docs\developer_guide.py:149 ..\python_docs\developer_guide.py:165
-#: ..\python_docs\developer_guide.py:181 ..\python_docs\developer_guide.py:199
-#: ..\python_docs\developer_guide.py:260 ..\python_docs\developer_guide.py:263
-#: ..\python_docs\developer_guide.py:265 ..\python_docs\developer_guide.py:276
-#: ..\python_docs\developer_guide.py:290 ..\python_docs\developer_guide.py:324
-#: ..\python_docs\developer_guide.py:357 ..\python_docs\developer_guide.py:367
-#: ..\python_docs\developer_guide.py:382 ..\python_docs\developer_guide.py:404
-#: ..\python_docs\developer_guide.py:414 ..\python_docs\developer_guide.py:426
+#: ..\python_docs\developer_guide.py:58 ..\python_docs\developer_guide.py:67
+#: ..\python_docs\developer_guide.py:77 ..\python_docs\developer_guide.py:82
+#: ..\python_docs\developer_guide.py:84 ..\python_docs\developer_guide.py:89
+#: ..\python_docs\developer_guide.py:93 ..\python_docs\developer_guide.py:98
+#: ..\python_docs\developer_guide.py:116 ..\python_docs\developer_guide.py:121
+#: ..\python_docs\developer_guide.py:123 ..\python_docs\developer_guide.py:128
+#: ..\python_docs\developer_guide.py:130 ..\python_docs\developer_guide.py:135
+#: ..\python_docs\developer_guide.py:165 ..\python_docs\developer_guide.py:196
+#: ..\python_docs\developer_guide.py:212 ..\python_docs\developer_guide.py:247
+#: ..\python_docs\developer_guide.py:308 ..\python_docs\developer_guide.py:313
+#: ..\python_docs\developer_guide.py:315 ..\python_docs\developer_guide.py:336
+#: ..\python_docs\developer_guide.py:350 ..\python_docs\developer_guide.py:417
+#: ..\python_docs\developer_guide.py:450 ..\python_docs\developer_guide.py:469
+#: ..\python_docs\developer_guide.py:484 ..\python_docs\developer_guide.py:527
+#: ..\python_docs\developer_guide.py:537 ..\python_docs\developer_guide.py:560
 msgid "    "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:59 ..\python_docs\developer_guide.py:74
-#: ..\python_docs\developer_guide.py:79 ..\python_docs\developer_guide.py:86
-#: ..\python_docs\developer_guide.py:107 ..\python_docs\developer_guide.py:112
-#: ..\python_docs\developer_guide.py:117 ..\python_docs\developer_guide.py:150
-#: ..\python_docs\developer_guide.py:154 ..\python_docs\developer_guide.py:156
-#: ..\python_docs\developer_guide.py:158 ..\python_docs\developer_guide.py:163
-#: ..\python_docs\developer_guide.py:182 ..\python_docs\developer_guide.py:186
-#: ..\python_docs\developer_guide.py:191 ..\python_docs\developer_guide.py:193
-#: ..\python_docs\developer_guide.py:197 ..\python_docs\developer_guide.py:261
-#: ..\python_docs\developer_guide.py:266 ..\python_docs\developer_guide.py:274
-#: ..\python_docs\developer_guide.py:291 ..\python_docs\developer_guide.py:295
-#: ..\python_docs\developer_guide.py:300 ..\python_docs\developer_guide.py:302
-#: ..\python_docs\developer_guide.py:312 ..\python_docs\developer_guide.py:322
-#: ..\python_docs\developer_guide.py:358 ..\python_docs\developer_guide.py:361
-#: ..\python_docs\developer_guide.py:363 ..\python_docs\developer_guide.py:365
-#: ..\python_docs\developer_guide.py:383 ..\python_docs\developer_guide.py:390
-#: ..\python_docs\developer_guide.py:392 ..\python_docs\developer_guide.py:396
-#: ..\python_docs\developer_guide.py:398 ..\python_docs\developer_guide.py:402
-#: ..\python_docs\developer_guide.py:415 ..\python_docs\developer_guide.py:419
-#: ..\python_docs\developer_guide.py:421
-msgid ""
-"    \n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:60
-msgid ""
-"    # This is a comment.\n"
+#: ..\python_docs\developer_guide.py:59 ..\python_docs\developer_guide.py:78
+#: ..\python_docs\developer_guide.py:85 ..\python_docs\developer_guide.py:94
+#: ..\python_docs\developer_guide.py:117 ..\python_docs\developer_guide.py:124
+#: ..\python_docs\developer_guide.py:131 ..\python_docs\developer_guide.py:166
+#: ..\python_docs\developer_guide.py:174 ..\python_docs\developer_guide.py:178
+#: ..\python_docs\developer_guide.py:182 ..\python_docs\developer_guide.py:192
+#: ..\python_docs\developer_guide.py:213 ..\python_docs\developer_guide.py:221
+#: ..\python_docs\developer_guide.py:231 ..\python_docs\developer_guide.py:235
+#: ..\python_docs\developer_guide.py:243 ..\python_docs\developer_guide.py:309
+#: ..\python_docs\developer_guide.py:316 ..\python_docs\developer_guide.py:332
+#: ..\python_docs\developer_guide.py:351 ..\python_docs\developer_guide.py:359
+#: ..\python_docs\developer_guide.py:369 ..\python_docs\developer_guide.py:373
+#: ..\python_docs\developer_guide.py:393 ..\python_docs\developer_guide.py:413
+#: ..\python_docs\developer_guide.py:451 ..\python_docs\developer_guide.py:457
+#: ..\python_docs\developer_guide.py:461 ..\python_docs\developer_guide.py:465
+#: ..\python_docs\developer_guide.py:485 ..\python_docs\developer_guide.py:499
+#: ..\python_docs\developer_guide.py:503 ..\python_docs\developer_guide.py:511
+#: ..\python_docs\developer_guide.py:515 ..\python_docs\developer_guide.py:523
+#: ..\python_docs\developer_guide.py:538 ..\python_docs\developer_guide.py:546
+#: ..\python_docs\developer_guide.py:550
+msgid "    \n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:61
-msgid ""
-"    a\talpha\n"
+msgid "    # This is a comment.\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:62
-msgid ""
-"    b\tbravo\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:64
-msgid "See the file locale\\en\\characterDescriptions.dic for a full example. "
+#: ..\python_docs\developer_guide.py:63
+msgid "    a\talpha\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:65
-msgid "In most cases, the characters in this file should be a single lower case character. It is assumed that characters will have the same description regardless of their case, so upper case characters are converted to lower case before looking up their character descriptions. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:66
-msgid "### 2.2. Symbol Pronunciation"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:67
-msgid "It is often useful to hear punctuation and other symbols pronounced as words when reading text, particularly when moving by character. Unfortunately, the pronunciation of symbols is inconsistent between speech synthesisers and many synthesisers do not speak many symbols and/or do not allow control over what symbols are spoken. Therefore, NVDA allows information about symbol pronunciation to be provided. "
+msgid "    b\tbravo\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:68
-msgid "This is done for a locale by providing a file named symbols.dic in the directory for the locale. This is a UTF-8 encoded text file. Blank lines and lines beginning with a \"\\#\" character are ignored. All locales implicitly inherit the symbol information for English, though any of this information can be overridden. "
+msgid "See the file locale\\en\\characterDescriptions.dic for a full example. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:69
-msgid "The file contains two sections. "
+msgid ""
+"In most cases, the characters in this file should be a single lower case "
+"character. It is assumed that characters will have the same description "
+"regardless of their case, so upper case characters are converted to lower "
+"case before looking up their character descriptions. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:70
-msgid "#### 2.2.1. Defining Complex Symbols"
+msgid "### 2.2. Symbol Pronunciation"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:71
-msgid "The first section is optional and defines regular expression patterns for complex symbols. Complex symbols are symbols which aren't simply a character or sequence of characters, but instead require a more complicated match. An example is the full stop \\(.\\) sentence ending in English. The \".\" is used for multiple purposes, so a more complicated check is required to determine whether this refers to the end of a sentence. "
+msgid ""
+"It is often useful to hear punctuation and other symbols pronounced as words "
+"when reading text, particularly when moving by character. Unfortunately, the "
+"pronunciation of symbols is inconsistent between speech synthesisers and "
+"many synthesisers do not speak many symbols and/or do not allow control over "
+"what symbols are spoken. Therefore, NVDA allows information about symbol "
+"pronunciation to be provided. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:72
-msgid "The complex symbols section begins with the line: "
+msgid ""
+"This is done for a locale by providing a file named symbols.dic in the "
+"directory for the locale. This is a UTF-8 encoded text file. Blank lines and "
+"lines beginning with a \"\\#\" character are ignored. All locales implicitly "
+"inherit the symbol information for English, though any of this information "
+"can be overridden. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:73
+msgid "The file contains two sections. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:74
+msgid "#### 2.2.1. Defining Complex Symbols"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:75
 msgid ""
-"    complexSymbols:\n"
+"The first section is optional and defines regular expression patterns for "
+"complex symbols. Complex symbols are symbols which aren't simply a character "
+"or sequence of characters, but instead require a more complicated match. An "
+"example is the full stop \\(.\\) sentence ending in English. The \".\" is "
+"used for multiple purposes, so a more complicated check is required to "
+"determine whether this refers to the end of a sentence. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:77
-msgid "Subsequent lines contain a textual identifier used to identify the symbol, a tab and the regular expression pattern for that symbol. For example: "
+#: ..\python_docs\developer_guide.py:76
+msgid "The complex symbols section begins with the line: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:80
-msgid ""
-"    . sentence ending\t(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:82
-msgid "Again, the English symbols are inherited by all other locales, so you need not include any complex symbols already defined for English. "
+msgid "    complexSymbols:\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:83
-msgid "#### 2.2.2. Defining Symbol Information"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:84
-msgid "The second section provides information about when and how to pronounce all symbols. It begins with the line: "
+msgid ""
+"Subsequent lines contain a textual identifier used to identify the symbol, a "
+"tab and the regular expression pattern for that symbol. For example: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:87
-msgid ""
-"    symbols:\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:89
-msgid "Subsequent lines should contain several fields separated by tabs. The only mandatory fields are the identifier and replacement. The default will be used for omitted fields. The fields are as follows: "
+msgid "    . sentence ending\t(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:90
-msgid "  * identifier: The identifier of the symbol. In most cases, this is just the character or characters of the symbol. However, it can also be the identifier of a complex symbol. Certain characters cannot be typed into the file, so the following special sequences can be used: "
+msgid ""
+"Again, the English symbols are inherited by all other locales, so you need "
+"not include any complex symbols already defined for English. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:91
-msgid "    * \\0: null "
+msgid "#### 2.2.2. Defining Symbol Information"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:92
-msgid "    * \\t: tab "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:93
-msgid "    * \\n: line feed "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:94
-msgid "    * \\r: carriage return "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:95
-msgid "    * \\f: form feed "
+msgid ""
+"The second section provides information about when and how to pronounce all "
+"symbols. It begins with the line: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:96
-msgid "    * \\\\\\#: \\# character \\(needed because \\# at the start of a line denotes a comment\\) "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:97
-msgid "  * replacement: The text which should be spoken for the symbol. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:98
-msgid "  * level: The symbol level at which the symbol should be spoken. The symbol level is configured by the user and specifies the amount of symbols that should be spoken. This field should contain one of the levels \"none\", \"some\", \"most\", \"all\" or \"char\", or \"-\" to use the default. \"char\" means that the symbol should only be pronounced when moving by character. The default is to inherit the value or \"all\" if there is nothing to inherit. "
+msgid "    symbols:\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:99
-msgid "  * preserve: Whether the symbol itself should be preserved to facilitate correct pronunciation by the synthesiser. For example, symbols which cause pauses or inflection \\(such as the comma in English\\) should be preserved. This field should be one of the following: "
+msgid ""
+"Subsequent lines should contain several fields separated by tabs. The only "
+"mandatory fields are the identifier and replacement. The default will be "
+"used for omitted fields. The fields are as follows: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:100
-msgid "    * never: Never preserve the symbol. "
+msgid ""
+"  * identifier: The identifier of the symbol. In most cases, this is just "
+"the character or characters of the symbol. However, it can also be the "
+"identifier of a complex symbol. Certain characters cannot be typed into the "
+"file, so the following special sequences can be used: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:101
-msgid "    * always: Always preserve the symbol. "
+msgid "    * \\0: null "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:102
-msgid "    * norep: Only preserve the symbol if it is not being replaced; i.e. the user has set symbol level lower than the level of this symbol. "
+msgid "    * \\t: tab "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:103
-msgid "    * -: Use the default.  The default is to inherit the value or \"never\" if there is nothing to inherit. "
+msgid "    * \\n: line feed "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:104
-msgid "Finally, a display name for the symbol can be provided in a comment after a tab at the end of the line. This will be shown to users when editing the symbol information and is especially useful for translators to define translated names for English complex symbols. "
+msgid "    * \\r: carriage return "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:105
-msgid "Here are some examples: "
+msgid "    * \\f: form feed "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:106
+msgid ""
+"    * \\\\\\#: \\# character \\(needed because \\# at the start of a line "
+"denotes a comment\\) "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:107
+msgid "  * replacement: The text which should be spoken for the symbol. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:108
 msgid ""
-"    (\tleft paren\tmost\n"
+"  * level: The symbol level at which the symbol should be spoken. The symbol "
+"level is configured by the user and specifies the amount of symbols that "
+"should be spoken. This field should contain one of the levels \"none\", "
+"\"some\", \"most\", \"all\" or \"char\", or \"-\" to use the default. \"char"
+"\" means that the symbol should only be pronounced when moving by character. "
+"The default is to inherit the value or \"all\" if there is nothing to "
+"inherit. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:109
+msgid ""
+"  * preserve: Whether the symbol itself should be preserved to facilitate "
+"correct pronunciation by the synthesiser. For example, symbols which cause "
+"pauses or inflection \\(such as the comma in English\\) should be preserved. "
+"This field should be one of the following: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:110
-msgid "This means that the \"\\(\" character should be spoken as \"left paren\" only when the symbol level is set to most or higher; i.e. most or all. "
+msgid "    * never: Never preserve the symbol. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:111
+msgid "    * always: Always preserve the symbol. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:112
+msgid ""
+"    * norep: Only preserve the symbol if it is not being replaced; i.e. the "
+"user has set symbol level lower than the level of this symbol. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:113
 msgid ""
-"    ,\tcomma\tall\talways\n"
+"    * -: Use the default.  The default is to inherit the value or \"never\" "
+"if there is nothing to inherit. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:114
+msgid ""
+"Finally, a display name for the symbol can be provided in a comment after a "
+"tab at the end of the line. This will be shown to users when editing the "
+"symbol information and is especially useful for translators to define "
+"translated names for English complex symbols. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:115
-msgid "This means that the \",\" character should be spoken as \"comma\" when the symbol level is set to all and that the character itself should always be preserved so that the synthesiser will pause appropriately. "
+msgid "Here are some examples: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:118
-msgid ""
-"    . sentence ending\tpoint\t# . fin de phrase\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:120
-msgid "This line appears in the French symbols.dic file. It means that the \". sentence ending\" complex symbol should be spoken as \"point\". Level and preserve are not specified, so they will be taken from English. A display name is provided so that French users will know what the symbol represents. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:121
-msgid "Please see the file locale\\en\\symbols.dic for the English definitions which are inherited for all locales. This is also a good full example. "
+#: ..\python_docs\developer_guide.py:119
+msgid "    (\tleft paren\tmost\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:122
-msgid "## 3\\. Plugins"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:123
-msgid "### 3.1. Overview"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:124
-msgid "Plugins allow you to customize the way NVDA behaves overall or within a particular application. They are able to: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:125
-msgid "  * Respond to particular events such as focus and object property changes; e.g. when a control changes its name. "
+msgid ""
+"This means that the \"\\(\" character should be spoken as \"left paren\" "
+"only when the symbol level is set to most or higher; i.e. most or all. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:126
-msgid "  * Implement commands which are bound to particular key presses or other input. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:127
-msgid "  * Customise the behaviour of and implement additional functionality for particular controls. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:128
-msgid "  * Customise or add new support for text content and complex documents. "
+msgid "    ,\tcomma\tall\talways\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:129
-msgid "This section provides an introduction to developing plugins. Developers should consult the code documentation for a complete reference. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:130
-msgid "### 3.2. Types of Plugins"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:131
-msgid "There are two types of plugins. These are: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:132
-msgid "  * App Modules: code specific to a particular application. The App Module receives all events for a particular application, even if that application is not currently active. When the application is active, any commands that the App Module has bound to key presses or other input can be executed by the user. "
+msgid ""
+"This means that the \",\" character should be spoken as \"comma\" when the "
+"symbol level is set to all and that the character itself should always be "
+"preserved so that the synthesiser will pause appropriately. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:133
-msgid "  * Global Plugins: code global to NVDA; i.e. it is used in all applications. Global Plugins Receive all events for all controls in the Operating System. Any commands bound by a Global Plugin can be executed by the user wherever they are in the operating system, regardless of application. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:134
-msgid "If you wish to improve NVDA's access to a particular application, it is most likely you will want to write an App Module. In contrast, if you wish to add some overall functionality to NVDA \\(e.g. a script that announces current Wireless network strength while in any application\\), then a Global Plugin is what you want. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:135
-msgid "Both App Modules and Global Plugins share a common look and feel. They are both Python source files \\(with a .py extension\\), they both define a special class containing all events, scripts and bindings, and they both may define custom classes to access controls, text content and complex documents. However, they do differ in some ways. "
+msgid "    . sentence ending\tpoint\t# . fin de phrase\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:136
-msgid "Custom appModules and globalPlugins can be packaged into NVDA add-ons. This allows easy distribution, and provides a safe way for the user to install and uninstall the custom code. Please refer to the Add-ons section later on in this document. "
+msgid ""
+"This line appears in the French symbols.dic file. It means that the \". "
+"sentence ending\" complex symbol should be spoken as \"point\". Level and "
+"preserve are not specified, so they will be taken from English. A display "
+"name is provided so that French users will know what the symbol represents. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:137
-msgid "In order to test the code while developing, you can place it in a special 'scratchpad' directory in your NVDA user configuration directory. You will also need to configure NVDA to enable loading of custom code from the Developer Scratchpad Directory, by enabling this in the Advanced category of NVDA's Settings dialog. The Advanced category also contains a button to easily open the Developer Scratchpad directory if enabled. "
+msgid ""
+"Please see the file locale\\en\\symbols.dic for the English definitions "
+"which are inherited for all locales. This is also a good full example. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:138
-msgid "The following few sections will talk separately about App Modules and Global Plugins. After this point, discussion is again more general. "
+msgid "## 3\\. Plugins"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:139
-msgid "### 3.3. Basics of an App Module"
+msgid "### 3.1. Overview"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:140
-msgid "App Module files have a .py extension, and are named the same as the main executable of the application for which you wish them to be used. For example, an App Module for notepad would be called notepad.py, as notepad's main executable is called notepad.exe. "
+msgid ""
+"Plugins allow you to customize the way NVDA behaves overall or within a "
+"particular application. They are able to: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:141
-msgid "App Module files must be placed in the appModules subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. "
+msgid ""
+"  * Respond to particular events such as focus and object property changes; "
+"e.g. when a control changes its name. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:142
-msgid "App Modules must define a class called AppModule, which inherits from appModuleHandler.AppModule. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. "
+msgid ""
+"  * Implement commands which are bound to particular key presses or other "
+"input. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:143
-msgid "NVDA loads an App Module for an application as soon as it notices the application is running. The App Module is unloaded once the application is closed or when NVDA is exiting. "
+msgid ""
+"  * Customise the behaviour of and implement additional functionality for "
+"particular controls. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:144
-msgid "### 3.4. Example 1: An App Module that Beeps on Focus Change Events"
+msgid ""
+"  * Customise or add new support for text content and complex documents. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:145
-msgid "The following example App Module makes NVDA beep each time the focus changes within the notepad application. This example shows you the basic layout of an App Module. "
+msgid ""
+"This section provides an introduction to developing plugins. Developers "
+"should consult the code documentation for a complete reference. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:146
-msgid "Copy and paste the code between \\(but not including\\) the start and end markers into a new text file called notepad.py, which should be saved in the AppModules subdirectory. Be very careful to keep all tabs and spaces intact. "
+msgid "### 3.2. Types of Plugins"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:147
-msgid "Once saved in the correct location, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. "
+msgid "There are two types of plugins. These are: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:148
-msgid "Finally, open Notepad and move the focus around the application; e.g. move along the menu bar, open some dialog boxes, etc. You should hear beeps each time the focus changes. Note though that if you move outside of Notepad - for instance, to Windows Explorer - you do not hear beeps. "
+msgid ""
+"  * App Modules: code specific to a particular application. The App Module "
+"receives all events for a particular application, even if that application "
+"is not currently active. When the application is active, any commands that "
+"the App Module has bound to key presses or other input can be executed by "
+"the user. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:151 ..\python_docs\developer_guide.py:183
-#: ..\python_docs\developer_guide.py:267 ..\python_docs\developer_guide.py:292
-#: ..\python_docs\developer_guide.py:359 ..\python_docs\developer_guide.py:384
-#: ..\python_docs\developer_guide.py:416
+#: ..\python_docs\developer_guide.py:149
 msgid ""
-"    --- start ---\n"
+"  * Global Plugins: code global to NVDA; i.e. it is used in all "
+"applications. Global Plugins Receive all events for all controls in the "
+"Operating System. Any commands bound by a Global Plugin can be executed by "
+"the user wherever they are in the operating system, regardless of "
+"application. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:150
+msgid ""
+"If you wish to improve NVDA's access to a particular application, it is most "
+"likely you will want to write an App Module. In contrast, if you wish to add "
+"some overall functionality to NVDA \\(e.g. a script that announces current "
+"Wireless network strength while in any application\\), then a Global Plugin "
+"is what you want. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:151
+msgid ""
+"Both App Modules and Global Plugins share a common look and feel. They are "
+"both Python source files \\(with a .py extension\\), they both define a "
+"special class containing all events, scripts and bindings, and they both may "
+"define custom classes to access controls, text content and complex "
+"documents. However, they do differ in some ways. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:152
 msgid ""
-"    # Notepad App Module for NVDA\n"
+"Custom appModules and globalPlugins can be packaged into NVDA add-ons. This "
+"allows easy distribution, and provides a safe way for the user to install "
+"and uninstall the custom code. Please refer to the Add-ons section later on "
+"in this document. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:153
 msgid ""
-"    # Developer guide example 1\n"
+"In order to test the code while developing, you can place it in a special "
+"'scratchpad' directory in your NVDA user configuration directory. You will "
+"also need to configure NVDA to enable loading of custom code from the "
+"Developer Scratchpad Directory, by enabling this in the Advanced category of "
+"NVDA's Settings dialog. The Advanced category also contains a button to "
+"easily open the Developer Scratchpad directory if enabled. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:155 ..\python_docs\developer_guide.py:360
-#: ..\python_docs\developer_guide.py:385 ..\python_docs\developer_guide.py:417
+#: ..\python_docs\developer_guide.py:154
 msgid ""
-"    import appModuleHandler\n"
+"The following few sections will talk separately about App Modules and Global "
+"Plugins. After this point, discussion is again more general. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:157 ..\python_docs\developer_guide.py:362
-#: ..\python_docs\developer_guide.py:391 ..\python_docs\developer_guide.py:420
+#: ..\python_docs\developer_guide.py:155
+msgid "### 3.3. Basics of an App Module"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:156
 msgid ""
-"    class AppModule(appModuleHandler.AppModule):\n"
+"App Module files have a .py extension, and are named the same as the main "
+"executable of the application for which you wish them to be used. For "
+"example, an App Module for notepad would be called notepad.py, as notepad's "
+"main executable is called notepad.exe. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:157
+msgid ""
+"App Module files must be placed in the appModules subdirectory of an add-on, "
+"or of the scratchpad directory of the NVDA user configuration directory. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:158
+msgid ""
+"App Modules must define a class called AppModule, which inherits from "
+"appModuleHandler.AppModule. This class can then define event and script "
+"methods, gesture bindings and other code. This will all be covered in depth "
+"later. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:159
 msgid ""
-"    \tdef event_gainFocus(self, obj, nextHandler):\n"
+"NVDA loads an App Module for an application as soon as it notices the "
+"application is running. The App Module is unloaded once the application is "
+"closed or when NVDA is exiting. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:160
-msgid ""
-"    \t\timport tones\n"
+msgid "### 3.4. Example 1: An App Module that Beeps on Focus Change Events"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:161
 msgid ""
-"    \t\ttones.beep(550, 50)\n"
+"The following example App Module makes NVDA beep each time the focus changes "
+"within the notepad application. This example shows you the basic layout of "
+"an App Module. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:162
 msgid ""
-"    \t\tnextHandler()\n"
+"Copy and paste the code between \\(but not including\\) the start and end "
+"markers into a new text file called notepad.py, which should be saved in the "
+"AppModules subdirectory. Be very careful to keep all tabs and spaces intact. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:164 ..\python_docs\developer_guide.py:198
-#: ..\python_docs\developer_guide.py:275 ..\python_docs\developer_guide.py:323
-#: ..\python_docs\developer_guide.py:366 ..\python_docs\developer_guide.py:403
-#: ..\python_docs\developer_guide.py:425
+#: ..\python_docs\developer_guide.py:163
 msgid ""
-"    --- end ---\n"
+"Once saved in the correct location, either restart NVDA or choose Reload "
+"Plugins found under Tools in the NVDA menu. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:166
-msgid "This App Module file starts with two comment lines, which describe what the file is for. "
+#: ..\python_docs\developer_guide.py:164
+msgid ""
+"Finally, open Notepad and move the focus around the application; e.g. move "
+"along the menu bar, open some dialog boxes, etc. You should hear beeps each "
+"time the focus changes. Note though that if you move outside of Notepad - "
+"for instance, to Windows Explorer - you do not hear beeps. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:167
-msgid "It then imports the appModuleHandler module, so that the App Module then has access to the base AppModule class. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:168
-msgid "Next, it defines a class called AppModule, which is inherited from appModuleHandler.AppModule. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:169
-msgid "Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines one event method for gainFocus events \\(event\\_gainFocus\\), which plays a short beep each time it is executed. The implementation of this event is not important for the purposes of this example. The most important part is the class itself. Events will be covered in greater detail later. "
+#: ..\python_docs\developer_guide.py:168 ..\python_docs\developer_guide.py:215
+#: ..\python_docs\developer_guide.py:318 ..\python_docs\developer_guide.py:353
+#: ..\python_docs\developer_guide.py:453 ..\python_docs\developer_guide.py:487
+#: ..\python_docs\developer_guide.py:540
+msgid "    --- start ---\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:170
-msgid "As with other examples in this guide, remember to delete the created app module when you are finished testing and then restart NVDA or reload plugins, so that original functionality is restored. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:171
-msgid "### 3.5. Basics of a Global Plugin"
+msgid "    # Notepad App Module for NVDA\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:172
-msgid "Global Plugin files have a .py extension, and should have a short unique name which identifies what they do. "
+msgid "    # Developer guide example 1\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:173
-msgid "Global plugin files must be placed in the globalPlugins subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. "
+#: ..\python_docs\developer_guide.py:176 ..\python_docs\developer_guide.py:455
+#: ..\python_docs\developer_guide.py:489 ..\python_docs\developer_guide.py:542
+msgid "    import appModuleHandler\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:174
-msgid "Global Plugins must define a class called GlobalPlugin, which inherits from globalPluginHandler.GlobalPlugin. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:175
-msgid "NVDA loads all global plugins as soon as it starts, and unloads them on exit. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:176
-msgid "### 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA Version"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:177
-msgid "The following example Global Plugin Allows you to press NVDA+shift+v while anywhere in the Operating System to find out NVDA's version. This example is only to show you the basic layout of a Global Plugin. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:178
-msgid "Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example2.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:179 ..\python_docs\developer_guide.py:289
-msgid "Once saved in the right place, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:180
-msgid "From anywhere, you can now press NVDA+shift+v to have NVDA's version spoken and brailled. "
+#: ..\python_docs\developer_guide.py:180 ..\python_docs\developer_guide.py:459
+#: ..\python_docs\developer_guide.py:501 ..\python_docs\developer_guide.py:548
+msgid "    class AppModule(appModuleHandler.AppModule):\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:184
-msgid ""
-"    # Version announcement plugin for NVDA\n"
+msgid "    \tdef event_gainFocus(self, obj, nextHandler):\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:185
-msgid ""
-"    # Developer guide example 2\n"
+#: ..\python_docs\developer_guide.py:186
+msgid "    \t\timport tones\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:187 ..\python_docs\developer_guide.py:296
-msgid ""
-"    import globalPluginHandler\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:188 ..\python_docs\developer_guide.py:262
-#: ..\python_docs\developer_guide.py:297 ..\python_docs\developer_guide.py:386
-msgid ""
-"    from scriptHandler import script\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:189 ..\python_docs\developer_guide.py:298
-#: ..\python_docs\developer_guide.py:389
-msgid ""
-"    import ui\n"
+#: ..\python_docs\developer_guide.py:188
+msgid "    \t\ttones.beep(550, 50)\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:190
-msgid ""
-"    import versionInfo\n"
+msgid "    \t\tnextHandler()\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:192 ..\python_docs\developer_guide.py:301
-msgid ""
-"    class GlobalPlugin(globalPluginHandler.GlobalPlugin):\n"
+#: ..\python_docs\developer_guide.py:194 ..\python_docs\developer_guide.py:245
+#: ..\python_docs\developer_guide.py:334 ..\python_docs\developer_guide.py:415
+#: ..\python_docs\developer_guide.py:467 ..\python_docs\developer_guide.py:525
+#: ..\python_docs\developer_guide.py:558
+msgid "    --- end ---\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:194
+#: ..\python_docs\developer_guide.py:197
 msgid ""
-"    \t@script(gesture=\"kb:NVDA+shift+v\")\n"
+"This App Module file starts with two comment lines, which describe what the "
+"file is for. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:195
+#: ..\python_docs\developer_guide.py:198
 msgid ""
-"    \tdef script_announceNVDAVersion(self, gesture):\n"
+"It then imports the appModuleHandler module, so that the App Module then has "
+"access to the base AppModule class. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:196
+#: ..\python_docs\developer_guide.py:199
 msgid ""
-"    \t\tui.message(versionInfo.version)\n"
+"Next, it defines a class called AppModule, which is inherited from "
+"appModuleHandler.AppModule. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:200
-msgid "This Global Plugin file starts with two comment lines, which describe what the file is for. "
+msgid ""
+"Inside this class, it defines 1 or more events, scripts or gesture bindings. "
+"In this example, it defines one event method for gainFocus events \\(event"
+"\\_gainFocus\\), which plays a short beep each time it is executed. The "
+"implementation of this event is not important for the purposes of this "
+"example. The most important part is the class itself. Events will be covered "
+"in greater detail later. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:201
-msgid "It then imports the globalPluginHandler module, so that the Global Plugin has access to the base GlobalPlugin class. "
+msgid ""
+"As with other examples in this guide, remember to delete the created app "
+"module when you are finished testing and then restart NVDA or reload "
+"plugins, so that original functionality is restored. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:202
-msgid "It also imports a few other modules, namely ui, versionInfo and scriptHandler, which this specific plugin needs in order for it to perform the necessary actions to announce the version. "
+msgid "### 3.5. Basics of a Global Plugin"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:203
-msgid "Next, it defines a class called GlobalPlugin, which is inherited from globalPluginHandler.GlobalPlugin. "
+msgid ""
+"Global Plugin files have a .py extension, and should have a short unique "
+"name which identifies what they do. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:204
-msgid "Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines a script method that performs the version announcement. The script decorator from the scriptHandler module is used to assign the NVDA+shift+v shortcut to this script. However, the details of the script and its binding are not important for the purposes of this example. The most important part is the class itself. More information about scripts and the script decorator can be found in the Defining script properties section of this guide. "
+msgid ""
+"Global plugin files must be placed in the globalPlugins subdirectory of an "
+"add-on, or of the scratchpad directory of the NVDA user configuration "
+"directory. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:205
-msgid "As with other examples in this guide, remember to delete the created Global Plugin when finished testing and then restart NVDA or reload plugins, so that original functionality is restored. "
+msgid ""
+"Global Plugins must define a class called GlobalPlugin, which inherits from "
+"globalPluginHandler.GlobalPlugin. This class can then define event and "
+"script methods, gesture bindings and other code. This will all be covered in "
+"depth later. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:206
-msgid "### 3.7. NVDA Objects"
+msgid ""
+"NVDA loads all global plugins as soon as it starts, and unloads them on "
+"exit. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:207
-msgid "NVDA represents controls and other GUI elements as NVDA Objects. These NVDA Objects contain standardised properties, such as name, role, value, states and description, which allow other parts of NVDA to query or present information about a control in a generalised way. For example, the OK button in a dialog would be represented as an NVDA Object with a name of \"OK\" and a role of button. Similarly, a checkbox with a label of \"I agree\" would have a name of \"I agree\", a role of checkbox, and if currently checked, a state of checked. "
+msgid ""
+"### 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA "
+"Version"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:208
-msgid "As there are many different GUI Toolkits and platform and accessibility APIs, NVDA Objects abstract these differences into a standard form that NVDA can use, regardless of the toolkit or API a particular control is made with. For example, the Ok button just discussed could be a widget in a Java application, an MSAA object, an IAccessible2 object or a UI Automation element. "
+msgid ""
+"The following example Global Plugin Allows you to press NVDA+shift+v while "
+"anywhere in the Operating System to find out NVDA's version. This example is "
+"only to show you the basic layout of a Global Plugin. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:209
-msgid "NVDA Objects have many properties. Some of the most useful are: "
+msgid ""
+"Copy and paste the code between \\(but not including\\) the start and end "
+"markers into a new text file with a name of example2.py, which should be "
+"saved in the globalPlugins subdirectory. Be very careful to keep all tabs "
+"and spaces intact. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:210
-msgid "  * name: the label of the control. "
+#: ..\python_docs\developer_guide.py:210 ..\python_docs\developer_guide.py:349
+msgid ""
+"Once saved in the right place, either restart NVDA or choose Reload Plugins "
+"found under Tools in the NVDA menu. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:211
-msgid "  * role: one of the ROLE\\_\\* constants from NVDA's controlTypes module. Button, dialog, editableText, window and checkbox are examples of roles. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:212
-msgid "  * states: a set of 0 or more of the STATE\\_\\* constants from NVDA's controlTypes module. Focusable, focused, selected, selectable, expanded, collapsed and checked are some examples of states. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:213
-msgid "  * value: the value of the control; e.g. the percentage of a scroll bar or the current setting of a combo box. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:214
-msgid "  * description: a sentence or two describing what the control does \\(usually the same as its tooltip\\). "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:215
-msgid "  * location: the object's left, top, width and height positions in screen coordinates. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:216
-msgid "  * parent: this object's parent object. For example, a list item object's parent would be the list containing it. "
+msgid ""
+"From anywhere, you can now press NVDA+shift+v to have NVDA's version spoken "
+"and brailled. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:217
-msgid "  * next: the object directly after this one on the same level in logical order. For example, a menu item NVDA Object's next object is most likely another menu item within the same menu. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:218
-msgid "  * previous: like next but in reverse. "
+msgid "    # Version announcement plugin for NVDA\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:219
-msgid "  * firstChild: the first direct child object of this object. For example, a list's first child would be the first list item. "
+msgid "    # Developer guide example 2\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:220
-msgid "  * lastChild: the last direct child of this object. "
+#: ..\python_docs\developer_guide.py:223 ..\python_docs\developer_guide.py:361
+msgid "    import globalPluginHandler\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:221
-msgid "  * children: a list of all the direct children of this object; e.g. all the menu items in a menu. "
+#: ..\python_docs\developer_guide.py:225 ..\python_docs\developer_guide.py:311
+#: ..\python_docs\developer_guide.py:363 ..\python_docs\developer_guide.py:491
+msgid "    from scriptHandler import script\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:222
-msgid "There are also a few simplified navigation properties such as simpleParent, simpleNext, simpleFirstChild and simpleLastChild. These are like their respective navigation properties described above, but NVDA filters out unuseful objects. These properties are used when NVDA's simple review mode is turned on, which is the default. These simple properties may be easier to use, but the real navigation properties more closely reflect the underlying Operating System structure. Also, these may change in future versions of NVDA as improvements are made to simple review, so they should generally be avoided when programmatically locating specific objects. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:223
-msgid "When developing plugins, most of the time, it is not important what toolkit or API backs an NVDA Object, as the plugin will usually only access standard properties such as name, role and value. However, as plugins become more advanced, it is certainly possible to delve deeper into NVDA Objects to find out toolkit or API specific information if required. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:224
-msgid "Plugins make use of NVDA Objects in three particular ways: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:225
-msgid "  * Most events that plugins receive take an argument which is the NVDA Object on which the event occurred. For example, event\\_gainFocus takes the NVDA Object that represents the control gaining focus. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:226
-msgid "  * Scripts, events or other code may fetch objects of interest such as the NVDA Object with focus, NVDA's current navigator object, or perhaps the Desktop NVDA Object. The code may then retreave information from that object or perhaps even retreave another object related to it \\(e.g. its parent, first child, etc.\\). "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:227
-msgid "  * the Plugin may define its own custom NVDA Object classes which will be used to wrap a specific control to give it extra functionality, mutate its properties, etc. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:228
-msgid "Just like App Modules and Global Plugins, NVDA Objects can also define events, scripts and gesture bindings. "
+#: ..\python_docs\developer_guide.py:227 ..\python_docs\developer_guide.py:365
+#: ..\python_docs\developer_guide.py:497
+msgid "    import ui\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:229
-msgid "### 3.8. Scripts and Gesture Bindings"
+msgid "    import versionInfo\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:230
-msgid "App Modules, Global Plugins and NVDA Objects can define special methods which can be bound to a particular piece of input such as a key press. NVDA refers to these methods as scripts. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:231
-msgid "A script is a standard Python instance method with a name starting with \"script\\_\"; e.g. \"script\\_sayDateTime\". "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:232
-msgid "A script method takes two arguments: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:233
-msgid "  * self: a reference to the App Module, Global Plugin or NVDA Object instance the script was called on. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:234
-msgid "  * gesture: an Input Gesture object, which represents the input that caused the script to run. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:235
-msgid "As well as the actual script method, some form of gesture binding must be defined, so that NVDA knows what input should execute the script. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:236
-msgid "A gesture identifier string is a simple string representation of a piece of input. It consists of a two letter character code denoting the source of the input, an optional device in brackets, a colon \\(:\\) and one or more names separated by a plus \\(+\\) denoting the actual keys or input values. "
+#: ..\python_docs\developer_guide.py:233 ..\python_docs\developer_guide.py:371
+msgid "    class GlobalPlugin(globalPluginHandler.GlobalPlugin):\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:237
-msgid "Some examples of gesture string identifiers are: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:238
-msgid "  * \"kb:NVDA+shift+v\" "
+msgid "    \t@script(gesture=\"kb:NVDA+shift+v\")\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:239
-msgid "  * \"br\\(freedomScientific\\):leftWizWheelUp\" "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:240
-msgid "  * \"br\\(alva.BC640\\):t3\" "
+msgid "    \tdef script_announceNVDAVersion(self, gesture):\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:241
-msgid "  * \"kb\\(laptop\\):NVDA+t\" "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:242
-msgid "Currently, the input sources in NVDA are: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:243
-msgid "  * kb: system keyboard input "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:244
-msgid "  * br: braille display controls "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:245
-msgid "  * ts: touch screen "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:246
-msgid "  * bk: braille keyboard input "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:247
-msgid "When NVDA receives input, it looks for a matching gesture binding in a particular order. Once a gesture binding is found, the script is executed and no further bindings are used, nore is that particular gesture passed on automatically to the Operating System. "
+msgid "    \t\tui.message(versionInfo.version)\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:248
-msgid "The order for gesture binding lookup is: "
+msgid ""
+"This Global Plugin file starts with two comment lines, which describe what "
+"the file is for. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:249
-msgid "  * The user specific gesture map "
+msgid ""
+"It then imports the globalPluginHandler module, so that the Global Plugin "
+"has access to the base GlobalPlugin class. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:250
-msgid "  * The locale specific gesture map "
+msgid ""
+"It also imports a few other modules, namely ui, versionInfo and "
+"scriptHandler, which this specific plugin needs in order for it to perform "
+"the necessary actions to announce the version. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:251
-msgid "  * The braille display driver specific gesture map "
+msgid ""
+"Next, it defines a class called GlobalPlugin, which is inherited from "
+"globalPluginHandler.GlobalPlugin. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:252 ..\python_docs\developer_guide.py:329
-msgid "  * Loaded Global Plugins "
+#: ..\python_docs\developer_guide.py:252
+msgid ""
+"Inside this class, it defines 1 or more events, scripts or gesture bindings. "
+"In this example, it defines a script method that performs the version "
+"announcement. The script decorator from the scriptHandler module is used to "
+"assign the NVDA+shift+v shortcut to this script. However, the details of the "
+"script and its binding are not important for the purposes of this example. "
+"The most important part is the class itself. More information about scripts "
+"and the script decorator can be found in the Defining script properties "
+"section of this guide. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:253
-msgid "  * App Module of the active application "
+msgid ""
+"As with other examples in this guide, remember to delete the created Global "
+"Plugin when finished testing and then restart NVDA or reload plugins, so "
+"that original functionality is restored. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:254
-msgid "  * Tree Interceptor of the NVDA Object with focus if any; e.g. a virtualBuffer "
+msgid "### 3.7. NVDA Objects"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:255
-msgid "  * NVDA Object with focus "
+msgid ""
+"NVDA represents controls and other GUI elements as NVDA Objects. These NVDA "
+"Objects contain standardised properties, such as name, role, value, states "
+"and description, which allow other parts of NVDA to query or present "
+"information about a control in a generalised way. For example, the OK button "
+"in a dialog would be represented as an NVDA Object with a name of \"OK\" and "
+"a role of button. Similarly, a checkbox with a label of \"I agree\" would "
+"have a name of \"I agree\", a role of checkbox, and if currently checked, a "
+"state of checked. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:256
-msgid "  * Global Commands \\(built in commands like quitting NVDA, object navigation commands, etc.\\) "
+msgid ""
+"As there are many different GUI Toolkits and platform and accessibility "
+"APIs, NVDA Objects abstract these differences into a standard form that NVDA "
+"can use, regardless of the toolkit or API a particular control is made with. "
+"For example, the Ok button just discussed could be a widget in a Java "
+"application, an MSAA object, an IAccessible2 object or a UI Automation "
+"element. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:257
-msgid "#### 3.8.1. Defining script properties"
+msgid "NVDA Objects have many properties. Some of the most useful are: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:258
-msgid "For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. "
+msgid "  * name: the label of the control. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:259
-msgid "In order for you to use the script decorator, you will have to import it from the scriptHandler module. "
+msgid ""
+"  * role: one of the ROLE\\_\\* constants from NVDA's controlTypes module. "
+"Button, dialog, editableText, window and checkbox are examples of roles. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:260
+msgid ""
+"  * states: a set of 0 or more of the STATE\\_\\* constants from NVDA's "
+"controlTypes module. Focusable, focused, selected, selectable, expanded, "
+"collapsed and checked are some examples of states. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:261
+msgid ""
+"  * value: the value of the control; e.g. the percentage of a scroll bar or "
+"the current setting of a combo box. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:262
+msgid ""
+"  * description: a sentence or two describing what the control does "
+"\\(usually the same as its tooltip\\). "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:263
+msgid ""
+"  * location: the object's left, top, width and height positions in screen "
+"coordinates. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:264
-msgid "After that, just above your script definition, add the script decorator, providing it the desired arguments. For example: "
+msgid ""
+"  * parent: this object's parent object. For example, a list item object's "
+"parent would be the list containing it. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:268 ..\python_docs\developer_guide.py:303
-#: ..\python_docs\developer_guide.py:313
+#: ..\python_docs\developer_guide.py:265
 msgid ""
-"    \t@script(\n"
+"  * next: the object directly after this one on the same level in logical "
+"order. For example, a menu item NVDA Object's next object is most likely "
+"another menu item within the same menu. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:266
+msgid "  * previous: like next but in reverse. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:267
+msgid ""
+"  * firstChild: the first direct child object of this object. For example, a "
+"list's first child would be the first list item. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:268
+msgid "  * lastChild: the last direct child of this object. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:269
 msgid ""
-"    \t\tdescription=_(\"Speaks the date and time\"),\n"
+"  * children: a list of all the direct children of this object; e.g. all the "
+"menu items in a menu. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:270
 msgid ""
-"    \t\tcategory=inputCore.SCRCAT_MISC,\n"
+"There are also a few simplified navigation properties such as simpleParent, "
+"simpleNext, simpleFirstChild and simpleLastChild. These are like their "
+"respective navigation properties described above, but NVDA filters out "
+"unuseful objects. These properties are used when NVDA's simple review mode "
+"is turned on, which is the default. These simple properties may be easier to "
+"use, but the real navigation properties more closely reflect the underlying "
+"Operating System structure. Also, these may change in future versions of "
+"NVDA as improvements are made to simple review, so they should generally be "
+"avoided when programmatically locating specific objects. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:271
 msgid ""
-"    \t\tgestures=[\"kb:NVDA+shift+t\", \"kb:NVDA+alt+r\"]\n"
+"When developing plugins, most of the time, it is not important what toolkit "
+"or API backs an NVDA Object, as the plugin will usually only access standard "
+"properties such as name, role and value. However, as plugins become more "
+"advanced, it is certainly possible to delve deeper into NVDA Objects to find "
+"out toolkit or API specific information if required. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:272 ..\python_docs\developer_guide.py:306
-#: ..\python_docs\developer_guide.py:316
-msgid ""
-"    \t)\n"
+#: ..\python_docs\developer_guide.py:272
+msgid "Plugins make use of NVDA Objects in three particular ways: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:273
 msgid ""
-"    \tdef script_sayDateTime(self, gesture):\n"
+"  * Most events that plugins receive take an argument which is the NVDA "
+"Object on which the event occurred. For example, event\\_gainFocus takes the "
+"NVDA Object that represents the control gaining focus. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:274
+msgid ""
+"  * Scripts, events or other code may fetch objects of interest such as the "
+"NVDA Object with focus, NVDA's current navigator object, or perhaps the "
+"Desktop NVDA Object. The code may then retreave information from that object "
+"or perhaps even retreave another object related to it \\(e.g. its parent, "
+"first child, etc.\\). "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:275
+msgid ""
+"  * the Plugin may define its own custom NVDA Object classes which will be "
+"used to wrap a specific control to give it extra functionality, mutate its "
+"properties, etc. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:276
+msgid ""
+"Just like App Modules and Global Plugins, NVDA Objects can also define "
+"events, scripts and gesture bindings. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:277
-msgid "In this example, your script will be listed in the input gestures dialog under the \"Miscellaneous\" category. It will have the description \"Speaks the date and time\", and will be bound to the \"NVDA+shift+t\" and \"NVDA+alt+r\" key combinations on the keyboard. "
+msgid "### 3.8. Scripts and Gesture Bindings"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:278
-msgid "The following keyword arguments can be used when applying the script decorator: "
+msgid ""
+"App Modules, Global Plugins and NVDA Objects can define special methods "
+"which can be bound to a particular piece of input such as a key press. NVDA "
+"refers to these methods as scripts. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:279
-msgid "  * description: A short, translatable string which describes the command for users. This is reported to users when in Input Help mode and shown in the input gestures dialog. The script will not appear in the Input Gestures dialog unless you specify a description. "
+msgid ""
+"A script is a standard Python instance method with a name starting with "
+"\"script\\_\"; e.g. \"script\\_sayDateTime\". "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:280
-msgid "  * category: The category of the script in order for it to be grouped with other similar scripts. For example, a script in a global plugin which adds browse mode quick navigation keys may be categorized under the \"Browse mode\" category. The category can be set for individual scripts, but you can also set the \"scriptCategory\" attribute on the plugin class, which will be used for scripts which do not specify a category. There are constants for common categories prefixed with SCRCAT\\_ in the inputCore and globalCommands modules, which can also be specified. The script will be listed under the specified category in the Input Gestures dialog. If no category is specified, the script will be categorized under \"Miscellaneous\". "
+msgid "A script method takes two arguments: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:281
-msgid "  * gesture: A string containing a single gesture associated with this script, e.g. \"kb:NVDA+shift+r\". "
+msgid ""
+"  * self: a reference to the App Module, Global Plugin or NVDA Object "
+"instance the script was called on. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:282
-msgid "  * gestures: A string list of multiple gestures associated with this script, e.g. \\[\"kb:NVDA+shift+r\", \"kb:NVDA+alt+t\"\\]. When both gesture and gestures are specified, they are combined. Either gesture, or any item in gestures can be used to trigger the script. "
+msgid ""
+"  * gesture: an Input Gesture object, which represents the input that caused "
+"the script to run. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:283
-msgid "  * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. "
+msgid ""
+"As well as the actual script method, some form of gesture binding must be "
+"defined, so that NVDA knows what input should execute the script. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:284
-msgid "  * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. "
+msgid ""
+"A gesture identifier string is a simple string representation of a piece of "
+"input. It consists of a two letter character code denoting the source of the "
+"input, an optional device in brackets, a colon \\(:\\) and one or more names "
+"separated by a plus \\(+\\) denoting the actual keys or input values. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:285
-msgid "Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special \"\\_\\_gestures\" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the \"script\\_\" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a \"category\" attribute on the script function to a string containing the name of the category. "
+msgid "Some examples of gesture string identifiers are: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:286
-msgid "### 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
+msgid "  * \"kb:NVDA+shift+v\" "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:287
-msgid "The following Global Plugin allows you to press NVDA+leftArrow to have the window class of the current focus announced, and NVDA+rightArrow to have the window control ID of the current focus announced. This example shows you how to define one or more scripts and gesture bindings on a class such as an App Module, Global Plugin or NVDA Object. "
+msgid "  * \"br\\(freedomScientific\\):leftWizWheelUp\" "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:288
-msgid "Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example3.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. "
+msgid "  * \"br\\(alva.BC640\\):t3\" "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:289
+msgid "  * \"kb\\(laptop\\):NVDA+t\" "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:290
+msgid "Currently, the input sources in NVDA are: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:291
+msgid "  * kb: system keyboard input "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:292
+msgid "  * br: braille display controls "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:293
-msgid ""
-"    #Window utility scripts for NVDA\n"
+msgid "  * ts: touch screen "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:294
+msgid "  * bk: braille keyboard input "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:295
 msgid ""
-"    #Developer guide example 3\n"
+"When NVDA receives input, it looks for a matching gesture binding in a "
+"particular order. Once a gesture binding is found, the script is executed "
+"and no further bindings are used, nore is that particular gesture passed on "
+"automatically to the Operating System. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:296
+msgid "The order for gesture binding lookup is: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:297
+msgid "  * The user specific gesture map "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:298
+msgid "  * The locale specific gesture map "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:299
+msgid "  * The braille display driver specific gesture map "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:300 ..\python_docs\developer_guide.py:422
+msgid "  * Loaded Global Plugins "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:301
+msgid "  * App Module of the active application "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:302
 msgid ""
-"    import api\n"
+"  * Tree Interceptor of the NVDA Object with focus if any; e.g. a "
+"virtualBuffer "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:303
+msgid "  * NVDA Object with focus "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:304
 msgid ""
-"    \t\tdescription=_(\"Announces the window class name of the current focus object\"),\n"
+"  * Global Commands \\(built in commands like quitting NVDA, object "
+"navigation commands, etc.\\) "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:305
+msgid "#### 3.8.1. Defining script properties"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:306
 msgid ""
-"    \t\tgesture=\"kb:NVDA+leftArrow\"\n"
+"For NVDA 2018.3 and above, the recommended way to set script properties is "
+"by means of the so called script decorator. In short, a decorator is a "
+"function that modifies the behavior of a particular function. The script "
+"decorator modifies the script in such a way that it will be properly bound "
+"to the desired gestures. Furthermore, it ensures that the script is listed "
+"with the description you specify, and that it is categorised under the "
+"desired category in the input gestures dialog. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:307
 msgid ""
-"    \tdef script_announceWindowClassName(self, gesture):\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:308 ..\python_docs\developer_guide.py:318
-msgid ""
-"    \t\tfocusObj = api.getFocusObject()\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:309 ..\python_docs\developer_guide.py:319
-msgid ""
-"    \t\tname = focusObj.name\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:310
-msgid ""
-"    \t\twindowClassName = focusObj.windowClassName\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:311
-msgid ""
-"    \t\tui.message(\"class for %s window: %s\" % (name, windowClassName))\n"
+"In order for you to use the script decorator, you will have to import it "
+"from the scriptHandler module. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:314
 msgid ""
-"    \t\tdescription=_(\"Announces the window control ID of the current focus object\"),\n"
+"After that, just above your script definition, add the script decorator, "
+"providing it the desired arguments. For example: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:315
-msgid ""
-"    \t\tgesture=\"kb:NVDA+rightArrow\"\n"
+#: ..\python_docs\developer_guide.py:320 ..\python_docs\developer_guide.py:375
+#: ..\python_docs\developer_guide.py:395
+msgid "    \t@script(\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:317
-msgid ""
-"    \tdef script_announceWindowControlID(self, gesture):\n"
+#: ..\python_docs\developer_guide.py:322
+msgid "    \t\tdescription=_(\"Speaks the date and time\"),\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:320
-msgid ""
-"    \t\twindowControlID = focusObj.windowControlID\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:321
-msgid ""
-"    \t\tui.message(\"Control ID for %s window: %d\" % (name, windowControlID))\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:325
-msgid "### 3.10. Events"
+#: ..\python_docs\developer_guide.py:324
+msgid "    \t\tcategory=inputCore.SCRCAT_MISC,\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:326
-msgid "When NVDA detects particular toolkit, API or Operating System events, it abstracts these and fires its own internal events on plugins and NVDA Objects. "
+msgid "    \t\tgestures=[\"kb:NVDA+shift+t\", \"kb:NVDA+alt+r\"]\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:327
-msgid "Although most events are related to a specific NVDA Object \\(e.g. name change, gain focus, state change, etc.\\), these events can be handled at various levels. When an event is handled, it is stopped from going further down the chain. However, code inside the event can choose to propagate it further if needed. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:328
-msgid "The order of levels through which the event passes until an event method is found is: "
+#: ..\python_docs\developer_guide.py:328 ..\python_docs\developer_guide.py:381
+#: ..\python_docs\developer_guide.py:401
+msgid "    \t)\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:330
-msgid "  * The App Module associated with the NVDA Object on which the event was fired "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:331
-msgid "  * The Tree Interceptor \\(if any\\) associated with the NVDAObject on which the event was fired "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:332
-msgid "  * the NVDAObject itself. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:333
-msgid "Events are Python instance methods, with a name starting with \"event\\_\" followed by the actual name of the event \\(e.g. gainFocus\\). "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:334
-msgid "These event methods take slightly different arguments depending at what level they are defined. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:335
-msgid "If an event for an NVDA Object is defined on an NVDA Object itself, the method only takes one mandatory argument which is the 'self' argument; i.e. the NVDA Object instance\\). Some events may take extra arguments, though this is quite rare. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:336
-msgid "If an event for an NVDA Object is defined on a Global Plugin, App Module or Tree Interceptor, the event takes the following arguments: "
+msgid "    \tdef script_sayDateTime(self, gesture):\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:337
-msgid "  * self: the instance of the Global Plugin, App Module or Tree Interceptor "
+msgid ""
+"In this example, your script will be listed in the input gestures dialog "
+"under the \"Miscellaneous\" category. It will have the description \"Speaks "
+"the date and time\", and will be bound to the \"NVDA+shift+t\" and \"NVDA+alt"
+"+r\" key combinations on the keyboard. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:338
-msgid "  * obj: the NVDA Object on which the event was fired "
+msgid ""
+"The following keyword arguments can be used when applying the script "
+"decorator: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:339
-msgid "  * nextHandler: a function that when called will propagate the event further down the chain. "
+msgid ""
+"  * description: A short, translatable string which describes the command "
+"for users. This is reported to users when in Input Help mode and shown in "
+"the input gestures dialog. The script will not appear in the Input Gestures "
+"dialog unless you specify a description. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:340
-msgid "Some common NVDA Object events are: "
+msgid ""
+"  * category: The category of the script in order for it to be grouped with "
+"other similar scripts. For example, a script in a global plugin which adds "
+"browse mode quick navigation keys may be categorized under the \"Browse mode"
+"\" category. The category can be set for individual scripts, but you can "
+"also set the \"scriptCategory\" attribute on the plugin class, which will be "
+"used for scripts which do not specify a category. There are constants for "
+"common categories prefixed with SCRCAT\\_ in the inputCore and "
+"globalCommands modules, which can also be specified. The script will be "
+"listed under the specified category in the Input Gestures dialog. If no "
+"category is specified, the script will be categorized under \"Miscellaneous"
+"\". "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:341
-msgid "  * foreground: this NVDA Object has become the new foreground object; i.e. active top-level object "
+msgid ""
+"  * gesture: A string containing a single gesture associated with this "
+"script, e.g. \"kb:NVDA+shift+r\". "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:342
-msgid "  * gainFocus "
+msgid ""
+"  * gestures: A string list of multiple gestures associated with this "
+"script, e.g. \\[\"kb:NVDA+shift+r\", \"kb:NVDA+alt+t\"\\]. When both gesture "
+"and gestures are specified, they are combined. Either gesture, or any item "
+"in gestures can be used to trigger the script. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:343
-msgid "  * focusEntered: Focus has moved inside this object; i.e. it is an ancestor of the focus object "
+msgid ""
+"  * canPropagate: A boolean indicating whether this script should also apply "
+"when it belongs to a focus ancestor object. For example, this can be used "
+"when you want to specify a script on a particular foreground object, or "
+"another object in the focus ancestry which is not the current focus object. "
+"This option defaults to False. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:344
-msgid "  * loseFocus "
+msgid ""
+"  * bypassInputHelp: A boolean indicating whether this script should run "
+"when input help is active. This option defaults to False. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:345
-msgid "  * nameChange "
+msgid ""
+"Though the script decorator makes the script definition process a lot "
+"easier, there are more ways of binding gestures and setting script "
+"properties. For example, a special \"\\_\\_gestures\" Python dictionary can "
+"be defined as a class variable on an App Module, Global Plugin or NVDA "
+"Object. This dictionary should contain gesture identifier strings pointing "
+"to the name of the requested script, without the \"script\\_\" prefix. You "
+"can also specify a description of the script in the function's docstring. "
+"Furthermore, an alternative way of specifying the script's category is by "
+"means of setting a \"category\" attribute on the script function to a string "
+"containing the name of the category. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:346
-msgid "  * valueChange "
+msgid ""
+"### 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:347
-msgid "  * stateChange "
+msgid ""
+"The following Global Plugin allows you to press NVDA+leftArrow to have the "
+"window class of the current focus announced, and NVDA+rightArrow to have the "
+"window control ID of the current focus announced. This example shows you how "
+"to define one or more scripts and gesture bindings on a class such as an App "
+"Module, Global Plugin or NVDA Object. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:348
-msgid "  * caret: when the caret \\(insertion point\\) within this NVDA Object moves "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:349
-msgid "  * locationChange: physical screen location changes "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:350
-msgid "There are many other events, though those listed above are usually the most useful. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:351
-msgid "For an example of an event handled by an App Module, please refer to example 1 \\(focus beeps in notepad\\). "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:352
-msgid "### 3.11. the App Module SleepMode variable"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:353
-msgid "App Modules have one very useful property called \"sleepMode\", which if set to true almost completely disables NVDA within that application. Sleep Mode is very useful for self voicing applications that have their own screen reading functionality, or perhaps even some games that need full use of the keyboard. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:354
-msgid "Although sleep mode can be toggled on and off by the user with the key command NVDA+shift+s, a developer can choose to have sleep mode enabled by default for an application. This is done by providing an App Module for that application which simply sets sleepMode to True in the AppModule class. "
+msgid ""
+"Copy and paste the code between \\(but not including\\) the start and end "
+"markers into a new text file with a name of example3.py, which should be "
+"saved in the globalPlugins subdirectory. Be very careful to keep all tabs "
+"and spaces intact. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:355
-msgid "### 3.12. Example 4: A Sleep Mode App Module"
+msgid "    #Window utility scripts for NVDA\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:356
-msgid "The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of the application you wish to enable sleep mode for. As always, the file must have a .py extension. "
+#: ..\python_docs\developer_guide.py:357
+msgid "    #Developer guide example 3\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:364
-msgid ""
-"    \tsleepMode = True\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:368
-msgid "### 3.13. Providing Custom NVDA Object Classes"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:369
-msgid "Providing custom NVDA Object classes is probably the most powerful and useful way to improve the experience of an application in an NVDA plugin. This method allows you to place all the needed logic for a particular control altogether in one NVDA Object class for that control, rather than scattering code for many controls across a plugin's events. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:370
-msgid "There are two steps to providing a custom NVDA Object class: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:371
-msgid "  * Define the NVDA Object class and its events, scripts, gesture bindings and overridden properties. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:372
-msgid "  * Tell NVDA to use this NVDA Object class in specific situations by handling it in the plugin's chooseNVDAObjectOverlayClasses method. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:373
-msgid "When defining a custom NVDAObject class, you have many NVDAObject base classes to choose from. These base classes contain the base support for the particular accessibility or OS API underlying the control, such as win32, MSAA or Java access Bridge. You should usually inherit your custom NVDAObject class from the highest base class you need in order to choose your class in the first place. For example, if you choose to use your custom NVDAObject class when the window class name is \"Edit\" and the window control ID is 15, you should probably inherit from NVDAObjects.window.Window, as clearly you are aware that this is a Window object. Similarly, if you match on MSAA's accRole property, you would probably need to inherit from NVDAObjects.IAccessible.IAccessible. You should also consider what properties you are going to override on the custom NVDA Object. For instance, if you are going to override an IAccessible specific property, such as shouldAllowIAccessibleFocusEvent, then you need to inherit from NVDAObjects.IAccessible.IAccessible. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:374
-msgid "the chooseNVDAObjectOverlayClasses method can be implemented on app modules or global plugin classes. It takes 3 arguments: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:375
-msgid "  1. self: the app module or global plugin instance. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:376
-msgid "  2. obj: the NVDAObject for which classes are being chosen. "
+#: ..\python_docs\developer_guide.py:367
+msgid "    import api\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:377
-msgid "  3. clsList: a Python list of NVDAObject classes that will be used for obj. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:378
-msgid "Inside this method, you should decide which custom NVDA Object class\\(es\\) \\(if any\\) this NVDA Object should use by checking its properties, etc. If a custom class should be used, it must be inserted into the class list, usually at the beginning. You can also remove classes chosen by NVDA from the class list, although this is rarely required. "
+msgid ""
+"    \t\tdescription=_(\"Announces the window class name of the current focus "
+"object\"),\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:379
-msgid "### 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"
+msgid "    \t\tgesture=\"kb:NVDA+leftArrow\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:380
-msgid "This app module for notepad provides a command to report the number of characters in edit fields. You can activate it using NVDA+l. Notice that the command is specific to edit fields; i.e. it only works while you are focused in an edit field, rather than anywhere in the application. "
+#: ..\python_docs\developer_guide.py:383
+msgid "    \tdef script_announceWindowClassName(self, gesture):\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:381 ..\python_docs\developer_guide.py:413
-msgid "The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of notepad.py. "
+#: ..\python_docs\developer_guide.py:385 ..\python_docs\developer_guide.py:405
+msgid "    \t\tfocusObj = api.getFocusObject()\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:387
+#: ..\python_docs\developer_guide.py:387 ..\python_docs\developer_guide.py:407
+msgid "    \t\tname = focusObj.name\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:389
+msgid "    \t\twindowClassName = focusObj.windowClassName\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:391
 msgid ""
-"    from NVDAObjects.IAccessible import IAccessible\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:388
-msgid ""
-"    import controlTypes\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:393
-msgid ""
-"    \tdef chooseNVDAObjectOverlayClasses(self, obj, clsList):\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:394
-msgid ""
-"    \t\tif obj.windowClassName == \"Edit\" and obj.role == controlTypes.ROLE_EDITABLETEXT:\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:395
-msgid ""
-"    \t\t\tclsList.insert(0, EnhancedEditField)\n"
+"    \t\tui.message(\"class for %s window: %s\" % (name, windowClassName))\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:397
 msgid ""
-"    class EnhancedEditField(IAccessible):\n"
+"    \t\tdescription=_(\"Announces the window control ID of the current focus "
+"object\"),\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:399
-msgid ""
-"    \t@script(gesture=\"kb:NVDA+l\")\n"
+msgid "    \t\tgesture=\"kb:NVDA+rightArrow\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:400
-msgid ""
-"    \tdef script_reportLength(self, gesture):\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:401
-msgid ""
-"    \t\tui.message(\"%d\" % len(self.value))\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:405
-msgid "### 3.15. Making Small Changes to an NVDA Object in App Modules"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:406
-msgid "Sometimes, you may wish to make only small changes to an NVDA Object in an application, such as overriding its name or role. In these cases, you don't need the full power of a custom NVDA Object class. To do this, you can use the NVDAObject\\_init event available only on App Modules. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:407
-msgid "The event\\_NVDAObject\\_init method takes two arguments: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:408
-msgid "  1. self: the AppModule instance. "
+#: ..\python_docs\developer_guide.py:403
+msgid "    \tdef script_announceWindowControlID(self, gesture):\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:409
-msgid "  2. obj: the NVDAObject being initialized. "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:410
-msgid "Inside this method, you can check whether this object is relevant and then override properties accordingly. "
+msgid "    \t\twindowControlID = focusObj.windowControlID\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:411
-msgid "### 3.16. Example 6: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:412
-msgid "This app module for notepad makes NVDA report Notepad's main edit field as having a name of \"content\". That is, when it receives focus, NVDA will say \"Content edit\". "
+msgid ""
+"    \t\tui.message(\"Control ID for %s window: %d\" % (name, "
+"windowControlID))\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:418
-msgid ""
-"    from NVDAObjects.window import Window\n"
+msgid "### 3.10. Events"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:422
+#: ..\python_docs\developer_guide.py:419
 msgid ""
-"    \tdef event_NVDAObject_init(self, obj):\n"
+"When NVDA detects particular toolkit, API or Operating System events, it "
+"abstracts these and fires its own internal events on plugins and NVDA "
+"Objects. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:420
+msgid ""
+"Although most events are related to a specific NVDA Object \\(e.g. name "
+"change, gain focus, state change, etc.\\), these events can be handled at "
+"various levels. When an event is handled, it is stopped from going further "
+"down the chain. However, code inside the event can choose to propagate it "
+"further if needed. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:421
+msgid ""
+"The order of levels through which the event passes until an event method is "
+"found is: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:423
 msgid ""
-"    \t\tif isinstance(obj, Window) and obj.windowClassName == \"Edit\" and obj.windowControlID == 15:\n"
+"  * The App Module associated with the NVDA Object on which the event was "
+"fired "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:424
 msgid ""
-"    \t\t\tobj.name = \"Content\"\n"
+"  * The Tree Interceptor \\(if any\\) associated with the NVDAObject on "
+"which the event was fired "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:425
+msgid "  * the NVDAObject itself. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:426
+msgid ""
+"Events are Python instance methods, with a name starting with \"event\\_\" "
+"followed by the actual name of the event \\(e.g. gainFocus\\). "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:427
-msgid "## 4\\. Packaging Code as NVDA Add-ons"
+msgid ""
+"These event methods take slightly different arguments depending at what "
+"level they are defined. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:428
-msgid "To make it easy for users to share and install plugins and drivers, they can be packaged in to a single NVDA add-on package which the user can then install into a copy of NVDA via the Add-ons Manager found under Tools in the NVDA menu. Add-on packages are only supported in NVDA 2012.2 and later. An add-on package is simply a standard zip archive with the file extension of nvda-addon which contains a manifest file, optional install/uninstall code and one or more directories containing plugins and/or drivers. "
+msgid ""
+"If an event for an NVDA Object is defined on an NVDA Object itself, the "
+"method only takes one mandatory argument which is the 'self' argument; i.e. "
+"the NVDA Object instance\\). Some events may take extra arguments, though "
+"this is quite rare. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:429
-msgid "### 4.1. Non-ASCII File Names in Zip Archives"
+msgid ""
+"If an event for an NVDA Object is defined on a Global Plugin, App Module or "
+"Tree Interceptor, the event takes the following arguments: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:430
-msgid "If your add-on includes files which contain non-ASCII \\(non-English\\) characters, you should create the zip archive such that it uses UTF-8 file names. This means that these files can be extracted properly on all systems, regardless of the system's configured language. Unfortunately, many zip archivers do not support this, including Windows Explorer. Generally, it has to be explicitly enabled even in archivers that do support it. [http://www.7-zip.org/](https://www.nvaccess.org/files/nvda/documentation/7-Zip) supports this, though it must be enabled by specifying the \"cu=on\" method parameter. "
+msgid ""
+"  * self: the instance of the Global Plugin, App Module or Tree Interceptor "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:431
-msgid "### 4.2. Manifest Files"
+msgid "  * obj: the NVDA Object on which the event was fired "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:432
-msgid "Each add-on package must contain a manifest file named manifest.ini. This must be a UTF-8 encoded text file. This manifest file contains key = value pairs declaring info such as the add-on's name, version and description. "
+msgid ""
+"  * nextHandler: a function that when called will propagate the event "
+"further down the chain. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:433
-msgid "#### 4.2.1. Available Fields"
+msgid "Some common NVDA Object events are: "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:434
-msgid "Although it is highly suggested that manifests contain all fields, the fields marked as mandatory must be included. Otherwise, the add-on will not install. "
+msgid ""
+"  * foreground: this NVDA Object has become the new foreground object; i.e. "
+"active top-level object "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:435
-msgid "  * name: A short unique name for the add-on. This is used to differentiate add-ons internally and is not shown to the user. \\(Mandatory\\) "
+msgid "  * gainFocus "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:436
-msgid "  * summary: The name of the add-on as shown to the user. \\(Mandatory\\) "
+msgid ""
+"  * focusEntered: Focus has moved inside this object; i.e. it is an ancestor "
+"of the focus object "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:437
-msgid "  * version: The version of this add-on; e.g. 2.0. \\(Mandatory\\) "
+msgid "  * loseFocus "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:438
-msgid "  * author: The author of this add-on, preferably in the form Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan.net)>. \\(Mandatory\\) "
+msgid "  * nameChange "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:439
-msgid "  * description: A sentence or two describing what the add-on does. "
+msgid "  * valueChange "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:440
-msgid "  * url: A URL where this add-on, further info and upgrades can be found. "
+msgid "  * stateChange "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:441
-msgid "  * docFileName: The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. "
+msgid ""
+"  * caret: when the caret \\(insertion point\\) within this NVDA Object "
+"moves "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:442
-msgid "  * minimumNVDAVersion: The minimum required version of NVDA for this add-on to be installed or enabled. "
+msgid "  * locationChange: physical screen location changes "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:443
-msgid "    * e.g \"2019.1.1\" "
+msgid ""
+"There are many other events, though those listed above are usually the most "
+"useful. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:444 ..\python_docs\developer_guide.py:449
-msgid "    * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. "
+#: ..\python_docs\developer_guide.py:444
+msgid ""
+"For an example of an event handled by an App Module, please refer to example "
+"1 \\(focus beeps in notepad\\). "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:445 ..\python_docs\developer_guide.py:450
-msgid "    * Defaults to \"0.0.0\" "
+#: ..\python_docs\developer_guide.py:445
+msgid "### 3.11. the App Module SleepMode variable"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:446
-msgid "    * Must be less than or equal to \\`lastTestedNVDAVersion\\` "
+msgid ""
+"App Modules have one very useful property called \"sleepMode\", which if set "
+"to true almost completely disables NVDA within that application. Sleep Mode "
+"is very useful for self voicing applications that have their own screen "
+"reading functionality, or perhaps even some games that need full use of the "
+"keyboard. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:447
-msgid "  * lastTestedNVDAVersion: The last version of NVDA this add-on has been tested with. "
+msgid ""
+"Although sleep mode can be toggled on and off by the user with the key "
+"command NVDA+shift+s, a developer can choose to have sleep mode enabled by "
+"default for an application. This is done by providing an App Module for that "
+"application which simply sets sleepMode to True in the AppModule class. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:448
+msgid "### 3.12. Example 4: A Sleep Mode App Module"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:449
+msgid ""
+"The following code can be copied and pasted in to a text file, then saved in "
+"the appModules directory with the name of the application you wish to enable "
+"sleep mode for. As always, the file must have a .py extension. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:463
+msgid "    \tsleepMode = True\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:470
+msgid "### 3.13. Providing Custom NVDA Object Classes"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:471
+msgid ""
+"Providing custom NVDA Object classes is probably the most powerful and "
+"useful way to improve the experience of an application in an NVDA plugin. "
+"This method allows you to place all the needed logic for a particular "
+"control altogether in one NVDA Object class for that control, rather than "
+"scattering code for many controls across a plugin's events. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:472
+msgid "There are two steps to providing a custom NVDA Object class: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:473
+msgid ""
+"  * Define the NVDA Object class and its events, scripts, gesture bindings "
+"and overridden properties. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:474
+msgid ""
+"  * Tell NVDA to use this NVDA Object class in specific situations by "
+"handling it in the plugin's chooseNVDAObjectOverlayClasses method. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:475
+msgid ""
+"When defining a custom NVDAObject class, you have many NVDAObject base "
+"classes to choose from. These base classes contain the base support for the "
+"particular accessibility or OS API underlying the control, such as win32, "
+"MSAA or Java access Bridge. You should usually inherit your custom "
+"NVDAObject class from the highest base class you need in order to choose "
+"your class in the first place. For example, if you choose to use your custom "
+"NVDAObject class when the window class name is \"Edit\" and the window "
+"control ID is 15, you should probably inherit from NVDAObjects.window."
+"Window, as clearly you are aware that this is a Window object. Similarly, if "
+"you match on MSAA's accRole property, you would probably need to inherit "
+"from NVDAObjects.IAccessible.IAccessible. You should also consider what "
+"properties you are going to override on the custom NVDA Object. For "
+"instance, if you are going to override an IAccessible specific property, "
+"such as shouldAllowIAccessibleFocusEvent, then you need to inherit from "
+"NVDAObjects.IAccessible.IAccessible. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:476
+msgid ""
+"the chooseNVDAObjectOverlayClasses method can be implemented on app modules "
+"or global plugin classes. It takes 3 arguments: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:477
+msgid "  1. self: the app module or global plugin instance. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:478
+msgid "  2. obj: the NVDAObject for which classes are being chosen. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:479
+msgid ""
+"  3. clsList: a Python list of NVDAObject classes that will be used for obj. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:480
+msgid ""
+"Inside this method, you should decide which custom NVDA Object class\\(es\\) "
+"\\(if any\\) this NVDA Object should use by checking its properties, etc. If "
+"a custom class should be used, it must be inserted into the class list, "
+"usually at the beginning. You can also remove classes chosen by NVDA from "
+"the class list, although this is rarely required. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:481
+msgid ""
+"### 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field "
+"Using a Custom NVDA Object"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:482
+msgid ""
+"This app module for notepad provides a command to report the number of "
+"characters in edit fields. You can activate it using NVDA+l. Notice that the "
+"command is specific to edit fields; i.e. it only works while you are focused "
+"in an edit field, rather than anywhere in the application. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:483 ..\python_docs\developer_guide.py:536
+msgid ""
+"The following code can be copied and pasted in to a text file, then saved in "
+"the appModules directory with the name of notepad.py. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:493
+msgid "    from NVDAObjects.IAccessible import IAccessible\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:495
+msgid "    import controlTypes\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:505
+msgid "    \tdef chooseNVDAObjectOverlayClasses(self, obj, clsList):\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:507
+msgid ""
+"    \t\tif obj.windowClassName == \"Edit\" and obj.role == controlTypes."
+"ROLE_EDITABLETEXT:\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:509
+msgid "    \t\t\tclsList.insert(0, EnhancedEditField)\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:513
+msgid "    class EnhancedEditField(IAccessible):\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:517
+msgid "    \t@script(gesture=\"kb:NVDA+l\")\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:519
+msgid "    \tdef script_reportLength(self, gesture):\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:521
+#, python-format
+msgid "    \t\tui.message(\"%d\" % len(self.value))\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:528
+msgid "### 3.15. Making Small Changes to an NVDA Object in App Modules"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:529
+msgid ""
+"Sometimes, you may wish to make only small changes to an NVDA Object in an "
+"application, such as overriding its name or role. In these cases, you don't "
+"need the full power of a custom NVDA Object class. To do this, you can use "
+"the NVDAObject\\_init event available only on App Modules. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:530
+msgid "The event\\_NVDAObject\\_init method takes two arguments: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:531
+msgid "  1. self: the AppModule instance. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:532
+msgid "  2. obj: the NVDAObject being initialized. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:533
+msgid ""
+"Inside this method, you can check whether this object is relevant and then "
+"override properties accordingly. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:534
+msgid ""
+"### 3.16. Example 6: Labelling the Notepad Edit Field Using event"
+"\\_NVDAObject\\_init"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:535
+msgid ""
+"This app module for notepad makes NVDA report Notepad's main edit field as "
+"having a name of \"content\". That is, when it receives focus, NVDA will say "
+"\"Content edit\". "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:544
+msgid "    from NVDAObjects.window import Window\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:552
+msgid "    \tdef event_NVDAObject_init(self, obj):\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:554
+msgid ""
+"    \t\tif isinstance(obj, Window) and obj.windowClassName == \"Edit\" and "
+"obj.windowControlID == 15:\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:556
+msgid "    \t\t\tobj.name = \"Content\"\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:561
+msgid "## 4\\. Packaging Code as NVDA Add-ons"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:562
+msgid ""
+"To make it easy for users to share and install plugins and drivers, they can "
+"be packaged in to a single NVDA add-on package which the user can then "
+"install into a copy of NVDA via the Add-ons Manager found under Tools in the "
+"NVDA menu. Add-on packages are only supported in NVDA 2012.2 and later. An "
+"add-on package is simply a standard zip archive with the file extension of "
+"nvda-addon which contains a manifest file, optional install/uninstall code "
+"and one or more directories containing plugins and/or drivers. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:563
+msgid "### 4.1. Non-ASCII File Names in Zip Archives"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:564
+msgid ""
+"If your add-on includes files which contain non-ASCII \\(non-English\\) "
+"characters, you should create the zip archive such that it uses UTF-8 file "
+"names. This means that these files can be extracted properly on all systems, "
+"regardless of the system's configured language. Unfortunately, many zip "
+"archivers do not support this, including Windows Explorer. Generally, it has "
+"to be explicitly enabled even in archivers that do support it. [http://www.7-"
+"zip.org/](https://www.nvaccess.org/files/nvda/documentation/7-Zip) supports "
+"this, though it must be enabled by specifying the \"cu=on\" method "
+"parameter. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:565
+msgid "### 4.2. Manifest Files"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:566
+msgid ""
+"Each add-on package must contain a manifest file named manifest.ini. This "
+"must be a UTF-8 encoded text file. This manifest file contains key = value "
+"pairs declaring info such as the add-on's name, version and description. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:567
+msgid "#### 4.2.1. Available Fields"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:568
+msgid ""
+"Although it is highly suggested that manifests contain all fields, the "
+"fields marked as mandatory must be included. Otherwise, the add-on will not "
+"install. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:569
+msgid ""
+"  * name: A short unique name for the add-on. This is used to differentiate "
+"add-ons internally and is not shown to the user. \\(Mandatory\\) "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:570
+msgid ""
+"  * summary: The name of the add-on as shown to the user. \\(Mandatory\\) "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:571
+msgid "  * version: The version of this add-on; e.g. 2.0. \\(Mandatory\\) "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:572
+msgid ""
+"  * author: The author of this add-on, preferably in the form Full Name "
+"<email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan."
+"net)>. \\(Mandatory\\) "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:573
+msgid "  * description: A sentence or two describing what the add-on does. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:574
+msgid ""
+"  * url: A URL where this add-on, further info and upgrades can be found. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:575
+msgid ""
+"  * docFileName: The name of the main documentation file for this add-on; e."
+"g. readme.html. See the Add-on Documentation section for more details. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:576
+msgid ""
+"  * minimumNVDAVersion: The minimum required version of NVDA for this add-on "
+"to be installed or enabled. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:577
+msgid "    * e.g \"2019.1.1\" "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:578 ..\python_docs\developer_guide.py:583
+msgid ""
+"    * Must be a three part version string I.E. Year.Major.Minor, or a two "
+"part version string of Year.Major. In the second case, Minor defaults to 0. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:579 ..\python_docs\developer_guide.py:584
+msgid "    * Defaults to \"0.0.0\" "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:580
+msgid "    * Must be less than or equal to \\`lastTestedNVDAVersion\\` "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:581
+msgid ""
+"  * lastTestedNVDAVersion: The last version of NVDA this add-on has been "
+"tested with. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:582
 msgid "    * e.g \"2019.1.0\" "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:451
+#: ..\python_docs\developer_guide.py:585
 msgid "    * Must be greater than or equal to \\`minimumNVDAVersion\\` \\- "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:452
-msgid "The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \\(ignoring minor point updates EG 2018.3.1\\) then the user will be warned not to install the add-on. "
+#: ..\python_docs\developer_guide.py:586
+msgid ""
+"The lastTestedNVDAVersion field in particular is used to ensure that users "
+"can be confident about installing an add-on. It allows the add-on author to "
+"make an assurance that the add-on will not cause instability, or break the "
+"users system. When this is not provided, or is less than the current version "
+"of NVDA \\(ignoring minor point updates EG 2018.3.1\\) then the user will be "
+"warned not to install the add-on. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:453
+#: ..\python_docs\developer_guide.py:587
 msgid "+++ An Example Manifest File +++ "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:454 ..\python_docs\developer_guide.py:466
+#: ..\python_docs\developer_guide.py:588 ..\python_docs\developer_guide.py:611
 msgid "        "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:455
-msgid ""
-"        \n"
+#: ..\python_docs\developer_guide.py:589
+msgid "        \n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:456
-msgid ""
-"        --- start ---\n"
+#: ..\python_docs\developer_guide.py:591
+msgid "        --- start ---\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:457
-msgid ""
-"        name = MyTestAddon\n"
+#: ..\python_docs\developer_guide.py:593
+msgid "        name = MyTestAddon\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:458
-msgid ""
-"        summary = Cool Test Add-on\n"
+#: ..\python_docs\developer_guide.py:595
+msgid "        summary = Cool Test Add-on\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:459
-msgid ""
-"        version = 1.0\n"
+#: ..\python_docs\developer_guide.py:597
+msgid "        version = 1.0\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:460
+#: ..\python_docs\developer_guide.py:599
 msgid ""
 "        description = An example add-on showing how to create add-ons!\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:461
+#: ..\python_docs\developer_guide.py:601
+msgid "        author = Michael Curran <mick@kulgan.net>\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:603
+msgid "        url = http://www.nvda-project.org/wiki/Development\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:605
+msgid "        minimumNVDAVersion = 2018.1.0\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:607
+msgid "        lastTestedNVDAVersion = 2019.1.0\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:609
+msgid "        --- end ---\n"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:612
 msgid ""
-"        author = Michael Curran <mick@kulgan.net>\n"
+"++ Plugins and Drivers ++ The following plugins and drivers can be included "
+"in an add-on: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:462
-msgid ""
-"        url = http://www.nvda-project.org/wiki/Development\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:463
-msgid ""
-"        minimumNVDAVersion = 2018.1.0\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:464
-msgid ""
-"        lastTestedNVDAVersion = 2019.1.0\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:465
-msgid ""
-"        --- end ---\n"
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:467
-msgid "++ Plugins and Drivers ++ The following plugins and drivers can be included in an add-on: "
-msgstr ""
-
-#: ..\python_docs\developer_guide.py:468
+#: ..\python_docs\developer_guide.py:613
 msgid "  * App modules: Place them in an appModules directory in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:469
-msgid "  * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. "
+#: ..\python_docs\developer_guide.py:614
+msgid ""
+"  * Braille display drivers: Place them in a brailleDisplayDrivers directory "
+"in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:470
-msgid "  * Global plugins: Place them in a globalPlugins directory in the archive. "
+#: ..\python_docs\developer_guide.py:615
+msgid ""
+"  * Global plugins: Place them in a globalPlugins directory in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:471
-msgid "  * Synthesizer drivers: Place them in a synthDrivers directory in the archive. "
+#: ..\python_docs\developer_guide.py:616
+msgid ""
+"  * Synthesizer drivers: Place them in a synthDrivers directory in the "
+"archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:472
+#: ..\python_docs\developer_guide.py:617
 msgid "### 4.3. Optional install / Uninstall code"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:473
-msgid "If you need to execute code as your add-on is being installed or uninstalled from NVDA \\(e.g. to validate license information or to copy files to a custom location\\), you can provide a Python file called installTasks.py in the archive which contains special functions that NVDA will call while installing or uninstalling your add-on. This file should avoid loading any modules that are not absolutely necessary, especially Python C extensions or dlls from your own add-on, as this could cause later removal of the add-on to fail. However, if this does happen, the add-on directory will be renamed and then deleted after the next restart of NVDA. Finally, it should not depend on the existence or state of other add-ons, as they may not be installed, have already been removed or not yet be initialized. "
+#: ..\python_docs\developer_guide.py:618
+msgid ""
+"If you need to execute code as your add-on is being installed or uninstalled "
+"from NVDA \\(e.g. to validate license information or to copy files to a "
+"custom location\\), you can provide a Python file called installTasks.py in "
+"the archive which contains special functions that NVDA will call while "
+"installing or uninstalling your add-on. This file should avoid loading any "
+"modules that are not absolutely necessary, especially Python C extensions or "
+"dlls from your own add-on, as this could cause later removal of the add-on "
+"to fail. However, if this does happen, the add-on directory will be renamed "
+"and then deleted after the next restart of NVDA. Finally, it should not "
+"depend on the existence or state of other add-ons, as they may not be "
+"installed, have already been removed or not yet be initialized. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:474
+#: ..\python_docs\developer_guide.py:619
 msgid "#### 4.3.1. the onInstall function"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:475
-msgid "NVDA will look for and execute an onInstall function in installTasks.py after it has finished extracting the add-on into NVDA. Note that although the add-on will have been extracted at this time, its directory will have a .pendingInstall suffix until NVDA is restarted, the directory is renamed and the add-on is really loaded for the first time. If this function raises an exception, the installation of the add-on will fail and its directory will be cleaned up. "
+#: ..\python_docs\developer_guide.py:620
+msgid ""
+"NVDA will look for and execute an onInstall function in installTasks.py "
+"after it has finished extracting the add-on into NVDA. Note that although "
+"the add-on will have been extracted at this time, its directory will have a ."
+"pendingInstall suffix until NVDA is restarted, the directory is renamed and "
+"the add-on is really loaded for the first time. If this function raises an "
+"exception, the installation of the add-on will fail and its directory will "
+"be cleaned up. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:476
+#: ..\python_docs\developer_guide.py:621
 msgid "#### 4.3.2. The onUninstall Function"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:477
-msgid "NVDA will look for and execute an onUninstall function in installTasks.py when NVDA is restarted after the user has chosen to remove the add-on. After this function completes, the add-on's directory will automatically be removed. As this happens on NVDA startup before other components are initialized, this function cannot request input from the user. "
+#: ..\python_docs\developer_guide.py:622
+msgid ""
+"NVDA will look for and execute an onUninstall function in installTasks.py "
+"when NVDA is restarted after the user has chosen to remove the add-on. After "
+"this function completes, the add-on's directory will automatically be "
+"removed. As this happens on NVDA startup before other components are "
+"initialized, this function cannot request input from the user. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:478
+#: ..\python_docs\developer_guide.py:623
 msgid "### 4.4. Localizing Add-ons"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:479
-msgid "It is possible to provide locale-specific information and messages for your add-on. Locale information can be stored in a locale directory in the archive. This directory should contain directories for each language it supports, using the same language code format as the rest of NVDA; e.g. en for English, fr\\_CA for French Canadian. "
+#: ..\python_docs\developer_guide.py:624
+msgid ""
+"It is possible to provide locale-specific information and messages for your "
+"add-on. Locale information can be stored in a locale directory in the "
+"archive. This directory should contain directories for each language it "
+"supports, using the same language code format as the rest of NVDA; e.g. en "
+"for English, fr\\_CA for French Canadian. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:480
+#: ..\python_docs\developer_guide.py:625
 msgid "#### 4.4.1. Locale-specific Manifest Files"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:481
-msgid "Each of these language directories can contain a locale-specific manifest file called manifest.ini, which can contain a small subset of the manifest fields for translation. These fields are summary and description. All other fields will be ignored. "
+#: ..\python_docs\developer_guide.py:626
+msgid ""
+"Each of these language directories can contain a locale-specific manifest "
+"file called manifest.ini, which can contain a small subset of the manifest "
+"fields for translation. These fields are summary and description. All other "
+"fields will be ignored. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:482
+#: ..\python_docs\developer_guide.py:627
 msgid "#### 4.4.2. Locale-specific Messages"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:483
-msgid "Each language directory can also contain gettext information, which is the system used to translate the rest of NVDA's user interface and reported messages. As with the rest of NVDA, an nvda.mo compiled gettext database file should be placed in the LC\\_MESSAGES directory within this directory. to allow plugins in your add-on to access gettext message information via calls to \\_\\(\\), you must initialize translations at the top of each Python module by calling addonHandler.initTranslation\\(\\). For more information about gettext and NVDA translation in general, please read <http://www.nvda-project.org/wiki/TranslatingNVDA>"
+#: ..\python_docs\developer_guide.py:628
+msgid ""
+"Each language directory can also contain gettext information, which is the "
+"system used to translate the rest of NVDA's user interface and reported "
+"messages. As with the rest of NVDA, an nvda.mo compiled gettext database "
+"file should be placed in the LC\\_MESSAGES directory within this directory. "
+"to allow plugins in your add-on to access gettext message information via "
+"calls to \\_\\(\\), you must initialize translations at the top of each "
+"Python module by calling addonHandler.initTranslation\\(\\). For more "
+"information about gettext and NVDA translation in general, please read "
+"<http://www.nvda-project.org/wiki/TranslatingNVDA>"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:484
+#: ..\python_docs\developer_guide.py:629
 msgid "### 4.5. Add-on Documentation"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:485
-msgid "Documentation for an add-on should be placed in a doc directory in the archive. Similar to the locale directory, this directory should contain directories for each language in which documentation is available. "
+#: ..\python_docs\developer_guide.py:630
+msgid ""
+"Documentation for an add-on should be placed in a doc directory in the "
+"archive. Similar to the locale directory, this directory should contain "
+"directories for each language in which documentation is available. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:486
-msgid "Users can access documentation for a particular add-on by opening the Add-ons Manager, selecting the add-on and pressing the Add-on help button. This will open the file named in the docFileName parameter of the manifest. NVDA will search for this file in the appropriate language directories. For example, if docFileName is set to readme.html and the user is using English, NVDA will open doc\\en\\readme.html. "
+#: ..\python_docs\developer_guide.py:631
+msgid ""
+"Users can access documentation for a particular add-on by opening the Add-"
+"ons Manager, selecting the add-on and pressing the Add-on help button. This "
+"will open the file named in the docFileName parameter of the manifest. NVDA "
+"will search for this file in the appropriate language directories. For "
+"example, if docFileName is set to readme.html and the user is using English, "
+"NVDA will open doc\\en\\readme.html. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:487
+#: ..\python_docs\developer_guide.py:632
 msgid "## 5\\. NVDA Python Console"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:488
-msgid "The NVDA Python console emulates the interactive Python interpreter from within NVDA. It is a development tool which is useful for debugging, general inspection of NVDA internals or inspection of the accessibility hierarchy of an application. "
+#: ..\python_docs\developer_guide.py:633
+msgid ""
+"The NVDA Python console emulates the interactive Python interpreter from "
+"within NVDA. It is a development tool which is useful for debugging, general "
+"inspection of NVDA internals or inspection of the accessibility hierarchy of "
+"an application. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:489
+#: ..\python_docs\developer_guide.py:634
 msgid "### 5.1. Usage"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:490
+#: ..\python_docs\developer_guide.py:635
 msgid "The console can be activated in two ways: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:491
-msgid "  * By pressing NVDA+control+z. If activated in this fashion, a snapshot of the current state of NVDA at the time the key was pressed will be taken and saved in certain variables available in the console. See Snapshot Variables for more details. "
+#: ..\python_docs\developer_guide.py:636
+msgid ""
+"  * By pressing NVDA+control+z. If activated in this fashion, a snapshot of "
+"the current state of NVDA at the time the key was pressed will be taken and "
+"saved in certain variables available in the console. See Snapshot Variables "
+"for more details. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:492
-msgid "  * By selecting Tools -> Python console from the NVDA system tray menu. "
+#: ..\python_docs\developer_guide.py:637
+msgid ""
+"  * By selecting Tools -> Python console from the NVDA system tray menu. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:493
-msgid "The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time. The current line is processed when enter is pressed. You can navigate through the history of previously entered lines using the up and down arrow keys. "
+#: ..\python_docs\developer_guide.py:638
+msgid ""
+"The console is similar to the standard interactive Python interpreter. Input "
+"is accepted one line at a time. The current line is processed when enter is "
+"pressed. You can navigate through the history of previously entered lines "
+"using the up and down arrow keys. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:494
-msgid "Output \\(responses from the interpreter\\) will be spoken when enter is pressed. The f6 key toggles between the input and output controls. "
+#: ..\python_docs\developer_guide.py:639
+msgid ""
+"Output \\(responses from the interpreter\\) will be spoken when enter is "
+"pressed. The f6 key toggles between the input and output controls. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:495
-msgid "Closing the console window simply hides it. This allows the user to return to the session as it was left when it was closed, including history and variables. "
+#: ..\python_docs\developer_guide.py:640
+msgid ""
+"Closing the console window simply hides it. This allows the user to return "
+"to the session as it was left when it was closed, including history and "
+"variables. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:496
+#: ..\python_docs\developer_guide.py:641
 msgid "### 5.2. Namespace"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:497
+#: ..\python_docs\developer_guide.py:642
 msgid "#### 5.2.1. Automatic Imports"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:498
-msgid "For convenience, the following modules and variables are automatically imported in the console: sys, os, wx, log \\(from logHandler\\), api, queueHandler, speech, braille "
+#: ..\python_docs\developer_guide.py:643
+msgid ""
+"For convenience, the following modules and variables are automatically "
+"imported in the console: sys, os, wx, log \\(from logHandler\\), api, "
+"queueHandler, speech, braille "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:499
+#: ..\python_docs\developer_guide.py:644
 msgid "#### 5.2.2. Snapshot Variables"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:500
-msgid "Whenever NVDA+control+z is pressed, certain variables available in the console will be assigned according to the current state of NVDA. These variables are: "
+#: ..\python_docs\developer_guide.py:645
+msgid ""
+"Whenever NVDA+control+z is pressed, certain variables available in the "
+"console will be assigned according to the current state of NVDA. These "
+"variables are: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:501
+#: ..\python_docs\developer_guide.py:646
 msgid "  * focus: The current focus object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:502
+#: ..\python_docs\developer_guide.py:647
 msgid "  * focusAnc: The ancestors of the current focus object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:503
-msgid "  * fdl: Focus difference level; i.e. the level at which the ancestors for the current and previous focus differ "
+#: ..\python_docs\developer_guide.py:648
+msgid ""
+"  * fdl: Focus difference level; i.e. the level at which the ancestors for "
+"the current and previous focus differ "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:504
+#: ..\python_docs\developer_guide.py:649
 msgid "  * fg: The current foreground object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:505
+#: ..\python_docs\developer_guide.py:650
 msgid "  * nav: The current navigator object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:506
+#: ..\python_docs\developer_guide.py:651
 msgid "  * mouse: The current mouse object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:507
+#: ..\python_docs\developer_guide.py:652
 msgid "  * brlRegions: The braille regions from the active braille buffer "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:508
+#: ..\python_docs\developer_guide.py:653
 msgid "## 6\\. Remote Python Console"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:509
-msgid "A remote Python console is available for situations where remote debugging of NVDA is useful. It is similar to the local Python console discussed above, but is accessed via TCP. "
+#: ..\python_docs\developer_guide.py:654
+msgid ""
+"A remote Python console is available for situations where remote debugging "
+"of NVDA is useful. It is similar to the local Python console discussed "
+"above, but is accessed via TCP. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:510
-msgid "Please be aware that this is a huge security risk. You should only enable it if you are connected to trusted networks. "
+#: ..\python_docs\developer_guide.py:655
+msgid ""
+"Please be aware that this is a huge security risk. You should only enable it "
+"if you are connected to trusted networks. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:511
+#: ..\python_docs\developer_guide.py:656
 msgid "### 6.1. Usage"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:512
-msgid "To enable the remote Python console, use the local Python console to import remotePythonConsole and call remotePythonConsole.initialize\\(\\). You can then connect to it via TCP port 6832. "
+#: ..\python_docs\developer_guide.py:657
+msgid ""
+"To enable the remote Python console, use the local Python console to import "
+"remotePythonConsole and call remotePythonConsole.initialize\\(\\). You can "
+"then connect to it via TCP port 6832. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:513
+#: ..\python_docs\developer_guide.py:658
 msgid "History of previously entered lines is not supported. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:514
-msgid "The namespace is the same as the namespace in the local Python console. "
+#: ..\python_docs\developer_guide.py:659
+msgid ""
+"The namespace is the same as the namespace in the local Python console. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:515
+#: ..\python_docs\developer_guide.py:660
 msgid "There are some special functions: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:516
-msgid "  * snap\\(\\): Takes a snapshot of the current state of NVDA and saves it in the snapshot variables. "
+#: ..\python_docs\developer_guide.py:661
+msgid ""
+"  * snap\\(\\): Takes a snapshot of the current state of NVDA and saves it "
+"in the snapshot variables. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:517
+#: ..\python_docs\developer_guide.py:662
 msgid "  * rmSnap\\(\\): Removes all snapshot variables. "
 msgstr ""
-

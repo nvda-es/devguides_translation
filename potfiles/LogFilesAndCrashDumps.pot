@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:3
 msgid "# Log Files and Crash Dumps"
@@ -24,11 +26,20 @@ msgid "## Log Files"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:5
-msgid "When reporting problems, it is often useful to provide an NVDA log file. This file shows what NVDA was doing when the problem occurred. Sometimes, a particular problem is difficult to reproduce or not reproduceable at all on other systems, so the log file can act as a further description or recording of the problem as it happened."
+msgid ""
+"When reporting problems, it is often useful to provide an NVDA log file. "
+"This file shows what NVDA was doing when the problem occurred. Sometimes, a "
+"particular problem is difficult to reproduce or not reproduceable at all on "
+"other systems, so the log file can act as a further description or recording "
+"of the problem as it happened."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:6
-msgid "A log file should be attached to a GitHub issue at the same time or after it is created. It is important not to simply paste fragments or entire log files in to an issue comment, as this clutters the issue and may mangle certain information needed from the log."
+msgid ""
+"A log file should be attached to a GitHub issue at the same time or after it "
+"is created. It is important not to simply paste fragments or entire log "
+"files in to an issue comment, as this clutters the issue and may mangle "
+"certain information needed from the log."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:7
@@ -36,7 +47,18 @@ msgid "### Log levels"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:8
-msgid "By default, NVDA's log level is set to `Info`. This means that only informational messages, warning messages and major error messages are logged. This level of logging may be useful for crashes of NVDA or when nothing better is available. However, in order to provide much more detail, you can set NVDA's log level to `Debug` (In General Settings under Preferences in the NVDA menu) before the error occurs. Setting the log level to `Debug` tells NVDA to also log information such as what keys were pressed, what was spoken and other messages to help developers diagnose problems. Although this detail will help a great deal in solving the issue, please be aware that because key presses and spoken messages are logged, the log may contain personal information."
+msgid ""
+"By default, NVDA's log level is set to `Info`. This means that only "
+"informational messages, warning messages and major error messages are "
+"logged. This level of logging may be useful for crashes of NVDA or when "
+"nothing better is available. However, in order to provide much more detail, "
+"you can set NVDA's log level to `Debug` (In General Settings under "
+"Preferences in the NVDA menu) before the error occurs. Setting the log level "
+"to `Debug` tells NVDA to also log information such as what keys were "
+"pressed, what was spoken and other messages to help developers diagnose "
+"problems. Although this detail will help a great deal in solving the issue, "
+"please be aware that because key presses and spoken messages are logged, the "
+"log may contain personal information."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:9
@@ -44,7 +66,9 @@ msgid "### Collecting the log file"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:10
-msgid "To retrieve a log file to be attached to an issue, after the problem occurs and before closing NVDA, do the following:"
+msgid ""
+"To retrieve a log file to be attached to an issue, after the problem occurs "
+"and before closing NVDA, do the following:"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:11
@@ -52,15 +76,25 @@ msgid "1. Open the log viewer found under Tools in the NVDA menu. "
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:12
-msgid "2. In the log viewer, choose Save As from the Log menu, and save the file to a place of your choice."
+msgid ""
+"2. In the log viewer, choose Save As from the Log menu, and save the file to "
+"a place of your choice."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:13
-msgid "3. Finally, this file you have saved can be attached to an issue on GitHub."
+msgid ""
+"3. Finally, this file you have saved can be attached to an issue on GitHub."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:14
-msgid "If you have already closed NVDA or NVDA crashed, you can always find the log file for the last time NVDA was running. For most users, this file can be found in the [user temporary folder](#user-temporary-folder) `%temp%`. If you have not started NVDA since it last exited (e.g. you have some sight or are using another screen reader), the file you want is `nvda.log`. If you have started NVDA since it last exited, the file you want is `nvda-old.log`. For those running from source, these files are in the source directory."
+msgid ""
+"If you have already closed NVDA or NVDA crashed, you can always find the log "
+"file for the last time NVDA was running. For most users, this file can be "
+"found in the [user temporary folder](#user-temporary-folder) `%temp%`. If "
+"you have not started NVDA since it last exited (e.g. you have some sight or "
+"are using another screen reader), the file you want is `nvda.log`. If you "
+"have started NVDA since it last exited, the file you want is `nvda-old.log`. "
+"For those running from source, these files are in the source directory."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:15
@@ -68,11 +102,17 @@ msgid "## Crash Dumps"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:16
-msgid "This applies to NVDA 2014.1 and later. Earlier versions do not generate crash dumps."
+msgid ""
+"This applies to NVDA 2014.1 and later. Earlier versions do not generate "
+"crash dumps."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:17
-msgid "If NVDA crashes, it will generate a file called a minidump which will help developers to determine the cause of the crash. In addition, minidumps can also be generated on request for other applications which crash if NVDA is suspected as the cause of the crash."
+msgid ""
+"If NVDA crashes, it will generate a file called a minidump which will help "
+"developers to determine the cause of the crash. In addition, minidumps can "
+"also be generated on request for other applications which crash if NVDA is "
+"suspected as the cause of the crash."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:18
@@ -80,7 +120,13 @@ msgid "### Minidumps for NVDA Itself"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:19
-msgid "When NVDA crashes, it will usually restart itself. In some rare circumstances, this may not work. If NVDA crashes, a minidump will be generated in a file called nvda_crash.dmp. For most users, this file can be found in the [user temporary folder](#user-temporary-folder) `%temp%`. For users running from source, `nvda_crash.dmp` will be placed in the source directory."
+msgid ""
+"When NVDA crashes, it will usually restart itself. In some rare "
+"circumstances, this may not work. If NVDA crashes, a minidump will be "
+"generated in a file called nvda_crash.dmp. For most users, this file can be "
+"found in the [user temporary folder](#user-temporary-folder) `%temp%`. For "
+"users running from source, `nvda_crash.dmp` will be placed in the source "
+"directory."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:20
@@ -88,7 +134,13 @@ msgid "### Minidumps for Other Applications"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:21
-msgid "If an application you are using is crashing and NVDA is the suspected cause, you can request that a minidump be generated when that application crashes. You should generally only do this if requested by a developer or if you are an advanced user. This is not enabled by default and it needs to be enabled for each application after it is started. To enable it for a given application:"
+msgid ""
+"If an application you are using is crashing and NVDA is the suspected cause, "
+"you can request that a minidump be generated when that application crashes. "
+"You should generally only do this if requested by a developer or if you are "
+"an advanced user. This is not enabled by default and it needs to be enabled "
+"for each application after it is started. To enable it for a given "
+"application:"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:22
@@ -100,7 +152,9 @@ msgid "2. Press `NVDA+control+z` to open the NVDA Python console."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:24
-msgid "3. Type the following command exactly as it appears (you will probably want to copy and paste it):"
+msgid ""
+"3. Type the following command exactly as it appears (you will probably want "
+"to copy and paste it):"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:25
@@ -117,11 +171,17 @@ msgid "4. Press enter."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:29
-msgid "5. The path to the file that will be generated will be presented. If you wish to copy it, you can press `F6` to move to the console output."
+msgid ""
+"5. The path to the file that will be generated will be presented. If you "
+"wish to copy it, you can press `F6` to move to the console output."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:30
-msgid "These dumps will always be placed in the [user temporary folder](#user-temporary-folder) `%temp%`. They are named in the form nvda_crash_appName_processId.dmp, where appName is the name of the application's executable file."
+msgid ""
+"These dumps will always be placed in the [user temporary folder](#user-"
+"temporary-folder) `%temp%`. They are named in the form "
+"nvda_crash_appName_processId.dmp, where appName is the name of the "
+"application's executable file."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:31
@@ -129,15 +189,25 @@ msgid "### Alternative Way to Get Minidumps for Other Applications"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:32
-msgid "Sometimes, the method described above (having NVDA generate a minidump when an application crashes) doesn't work; no minidump is generated. Instead, you can configure Windows to collect minidumps when any application crashes. To do this:"
+msgid ""
+"Sometimes, the method described above (having NVDA generate a minidump when "
+"an application crashes) doesn't work; no minidump is generated. Instead, you "
+"can configure Windows to collect minidumps when any application crashes. To "
+"do this:"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:33
-msgid "For users experienced with the Registry: Create the following (empty) key: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\LocalDumps`"
+msgid ""
+"For users experienced with the Registry: Create the following (empty) key: "
+"`HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting"
+"\\LocalDumps`"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:34
-msgid "More detailed instructions for users who aren't familiar with the registry (though this should generally not be attempted by users without some technical knowledge of Windows):"
+msgid ""
+"More detailed instructions for users who aren't familiar with the registry "
+"(though this should generally not be attempted by users without some "
+"technical knowledge of Windows):"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:35
@@ -145,19 +215,27 @@ msgid "1. Press Windows+r and type `regedit` to open the Registry Editor."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:36
-msgid "2. Move to the following key: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting`"
+msgid ""
+"2. Move to the following key: `HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft"
+"\\Windows\\Windows Error Reporting`"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:37
-msgid "    - If you're running Windows 10, you can simply paste this into the address bar in the Registry Editor and press enter."
+msgid ""
+"    - If you're running Windows 10, you can simply paste this into the "
+"address bar in the Registry Editor and press enter."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:38
-msgid "    - Otherwise, use the tree to locate the key, where the backslashes indicate deeper levels of the tree."
+msgid ""
+"    - Otherwise, use the tree to locate the key, where the backslashes "
+"indicate deeper levels of the tree."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:39
-msgid "3. Open the context menu for the `Windows Error Reporting` key and select New -> Key."
+msgid ""
+"3. Open the context menu for the `Windows Error Reporting` key and select "
+"New -> Key."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:40
@@ -165,15 +243,25 @@ msgid "4. Type `LocalDumps` exactly as it appears and press enter."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:41
-msgid "When an application crashes, it will display the standard Windows application crash dialog. Once that dialog is closed, the crash dump will be placed in `%localappdata%\\CrashDumps`."
+msgid ""
+"When an application crashes, it will display the standard Windows "
+"application crash dialog. Once that dialog is closed, the crash dump will be "
+"placed in `%localappdata%\\CrashDumps`."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:42
-msgid "You should disable this once you have collected the dump you're interested in, as otherwise, dumps will be collected for all future crashes and consume disk space. To disable this, just delete the `LocalDumps` key you created earlier."
+msgid ""
+"You should disable this once you have collected the dump you're interested "
+"in, as otherwise, dumps will be collected for all future crashes and consume "
+"disk space. To disable this, just delete the `LocalDumps` key you created "
+"earlier."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:43
-msgid "See the [Collecting User-Mode Dumps MSDN article](https://msdn.microsoft.com/en-us/library/windows/desktop/bb787181(v=vs.85).aspx) for more information about this functionality."
+msgid ""
+"See the [Collecting User-Mode Dumps MSDN article](https://msdn.microsoft.com/"
+"en-us/library/windows/desktop/bb787181(v=vs.85).aspx) for more information "
+"about this functionality."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:44
@@ -181,7 +269,11 @@ msgid "### Attaching Minidumps to Issues"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:45
-msgid "In order to attach a minidump to a GitHub issue, you will need to place it in a zip archive. You can do this by navigating to the minidump file in File Explorer, activating the context menu, selecting Send to and then selecting Compressed (zipped) folder."
+msgid ""
+"In order to attach a minidump to a GitHub issue, you will need to place it "
+"in a zip archive. You can do this by navigating to the minidump file in File "
+"Explorer, activating the context menu, selecting Send to and then selecting "
+"Compressed (zipped) folder."
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:46
@@ -189,6 +281,9 @@ msgid "## User Temporary Folder"
 msgstr ""
 
 #: ..\python_docs\LogFilesAndCrashDumps.py:47
-msgid "The user temporary folder can be accessed by typing `%temp%` in most places where a folder name can be typed. For example, you can type this in the address bar of File Explorer, the Run dialog accessed by pressing `Windows key+r` or a file open or browse dialog."
+msgid ""
+"The user temporary folder can be accessed by typing `%temp%` in most places "
+"where a folder name can be typed. For example, you can type this in the "
+"address bar of File Explorer, the Run dialog accessed by pressing `Windows "
+"key+r` or a file open or browse dialog."
 msgstr ""
-

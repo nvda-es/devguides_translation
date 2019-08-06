@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\stladdoninternals.py:3
 msgid "# NVDA Add-on internals: SysTray List"
@@ -28,19 +30,41 @@ msgid "## Introduction"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:6
-msgid "When transitioning between screen readers, one of the first things people might ask is inclusion of familiar features from old screen reader in the new product. As a user who have worked with multiple screen readers, I often ask this question when moving from one screen reader to another."
+msgid ""
+"When transitioning between screen readers, one of the first things people "
+"might ask is inclusion of familiar features from old screen reader in the "
+"new product. As a user who have worked with multiple screen readers, I often "
+"ask this question when moving from one screen reader to another."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:7
-msgid "As more and more people are transitioning from JAWS for Windows to NVDA, a frequently asked question is whether NVDA has a dialog to show system tray (notification area) icons. By default, NVDA does not ship with such a feature, but it can be brought back with an add-on appropriately called \"SysTray List\". This add-on, developed by Rui Fontes and Rui Batista, allows you to view a list of system tray or taskbar icons, and this is the add-on we'll find out how it works in this add-on internals article."
+msgid ""
+"As more and more people are transitioning from JAWS for Windows to NVDA, a "
+"frequently asked question is whether NVDA has a dialog to show system tray "
+"(notification area) icons. By default, NVDA does not ship with such a "
+"feature, but it can be brought back with an add-on appropriately called "
+"\"SysTray List\". This add-on, developed by Rui Fontes and Rui Batista, "
+"allows you to view a list of system tray or taskbar icons, and this is the "
+"add-on we'll find out how it works in this add-on internals article."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:8
-msgid "To download the add-on, go to https://addons.nvda-project.org/addons/systrayList.en.html, and for the source code, go to http://bitbucket.org/nvdaaddonteam/systraylist. Just like the previous series on StationPlaylist Studio, you don't have to use the add-on to learn about its internals, but having the source code and/or using the add-on could help you as you understand how this add-on works behind the scenes."
+msgid ""
+"To download the add-on, go to https://addons.nvda-project.org/addons/"
+"systrayList.en.html, and for the source code, go to http://bitbucket.org/"
+"nvdaaddonteam/systraylist. Just like the previous series on StationPlaylist "
+"Studio, you don't have to use the add-on to learn about its internals, but "
+"having the source code and/or using the add-on could help you as you "
+"understand how this add-on works behind the scenes."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:9
-msgid "Important disclaimer: This add-on was not developed by the author of this article, and views expressed in this article are strictly the author's. SysTrayList add-on is copyright Rui Fontes and Rui Batista, Windows API is copyright Microsoft Corporation, NVDA is copyright NV Access, Python is copyright Python Software Foundation."
+msgid ""
+"Important disclaimer: This add-on was not developed by the author of this "
+"article, and views expressed in this article are strictly the author's. "
+"SysTrayList add-on is copyright Rui Fontes and Rui Batista, Windows API is "
+"copyright Microsoft Corporation, NVDA is copyright NV Access, Python is "
+"copyright Python Software Foundation."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:10
@@ -48,11 +72,20 @@ msgid "## SysTray List add-on features"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:11
-msgid "After installing this add-on, you can press NVDA+F11 to view a list of system tray icons. This dialog lists the icons in the notification area, as well as buttons to cilck, double-click and do right mouse clicks."
+msgid ""
+"After installing this add-on, you can press NVDA+F11 to view a list of "
+"system tray icons. This dialog lists the icons in the notification area, as "
+"well as buttons to cilck, double-click and do right mouse clicks."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:12
-msgid "A hidden gem of this add-on is that there is no command to view taskbar icons (that command is taken by NVDA's review cursor selection copy command (NvDA+F10)). Instead, to view taskbar icons, press NVDA+F11 twice quickly (more on how this is possible in a second). The list view changes to show taskbar icons (including pinned items). Pressing ENTER will cause NVDA to perform a left mouse click."
+msgid ""
+"A hidden gem of this add-on is that there is no command to view taskbar "
+"icons (that command is taken by NVDA's review cursor selection copy command "
+"(NvDA+F10)). Instead, to view taskbar icons, press NVDA+F11 twice quickly "
+"(more on how this is possible in a second). The list view changes to show "
+"taskbar icons (including pinned items). Pressing ENTER will cause NVDA to "
+"perform a left mouse click."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:13
@@ -60,7 +93,10 @@ msgid "## Source code layout"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:14
-msgid "This global plugin lives in its own directory named sysTrayList (globalPlugins/sysTrayList/__init__.py). Some add-ons, especially those that use helper modules uses package-style directory structure."
+msgid ""
+"This global plugin lives in its own directory named sysTrayList "
+"(globalPlugins/sysTrayList/__init__.py). Some add-ons, especially those that "
+"use helper modules uses package-style directory structure."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:15
@@ -72,15 +108,21 @@ msgid "* Like any Python module, various modules are imported."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:17
-msgid "* An event executor (more on this below) that sends mouse events specified in the parameter."
+msgid ""
+"* An event executor (more on this below) that sends mouse events specified "
+"in the parameter."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:18
-msgid "* The global plugin (class GlobalPlugin(globalPluginHandler.GlobalPlugin)) which contains the systray script and helper functions."
+msgid ""
+"* The global plugin (class GlobalPlugin(globalPluginHandler.GlobalPlugin)) "
+"which contains the systray script and helper functions."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:19
-msgid "* The dialog class (globalPlugins.systraylist.SystrayListDialog) for displaying the dialog itself."
+msgid ""
+"* The dialog class (globalPlugins.systraylist.SystrayListDialog) for "
+"displaying the dialog itself."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:20
@@ -88,39 +130,66 @@ msgid "## NVDA+F11: A behind the scenes tour"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:21
-msgid "So what exactly happens when you press NVDA+F11? When you press this command after installing the add-on, NVDA will do the following:"
+msgid ""
+"So what exactly happens when you press NVDA+F11? When you press this command "
+"after installing the add-on, NVDA will do the following:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:22
-msgid "1. Determines if you pressed this command once or twice by calling scriptHandler.getLastScriptRepeatCount. If you press NvDA+F11 and then you press NVDA+F11 within the next half a second, NvDA will treat this as multiple press of this command."
+msgid ""
+"1. Determines if you pressed this command once or twice by calling "
+"scriptHandler.getLastScriptRepeatCount. If you press NvDA+F11 and then you "
+"press NVDA+F11 within the next half a second, NvDA will treat this as "
+"multiple press of this command."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:23
-msgid "2. If NVDA sees that you have pressed NVDA+F11 once, NvDA will locate system tray icons, otherwise it'll fetch taskbar icons."
+msgid ""
+"2. If NVDA sees that you have pressed NVDA+F11 once, NvDA will locate system "
+"tray icons, otherwise it'll fetch taskbar icons."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:24
-msgid "3. The icon locators (both are private functions) will do the following to obtain a list of icons needed:"
+msgid ""
+"3. The icon locators (both are private functions) will do the following to "
+"obtain a list of icons needed:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:25
-msgid "\t1. Each locator has a list of window paths (window class names) to be searched to locate the needed icons and their locations, and this list is used by another private function to obtain a list of icon names."
+msgid ""
+"\t1. Each locator has a list of window paths (window class names) to be "
+"searched to locate the needed icons and their locations, and this list is "
+"used by another private function to obtain a list of icon names."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:26
-msgid "\t2. The private function will use user32.dll's FindWindowEx to locate the handle to the icons list where the icons live (more on this in the next section)."
+msgid ""
+"\t2. The private function will use user32.dll's FindWindowEx to locate the "
+"handle to the icons list where the icons live (more on this in the next "
+"section)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:27
-msgid "\t3. Once the handle is found, NVDA will locate the first icon via NVDAObjects.IAccessible.getNVDAObjectFromEvent function. Then NvDA will use object navigation emulation (object, does something, object = object.next) to locate the icons and store their names and location in a list, which will then be returned to the locator routines."
+msgid ""
+"\t3. Once the handle is found, NVDA will locate the first icon via "
+"NVDAObjects.IAccessible.getNVDAObjectFromEvent function. Then NvDA will use "
+"object navigation emulation (object, does something, object = object.next) "
+"to locate the icons and store their names and location in a list, which will "
+"then be returned to the locator routines."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:28
-msgid "4. Once the locators obtain the list of icons and their locations, it'll call another private function to open a dialog and show the requested icons. Depending on script count, it'll change the title and the label for the icons list view."
+msgid ""
+"4. Once the locators obtain the list of icons and their locations, it'll "
+"call another private function to open a dialog and show the requested icons. "
+"Depending on script count, it'll change the title and the label for the "
+"icons list view."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:29
-msgid "5. After you select an icon and what to do (left click (default), right click, double-click), NVDA will perform the following:"
+msgid ""
+"5. After you select an icon and what to do (left click (default), right "
+"click, double-click), NVDA will perform the following:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:30
@@ -128,7 +197,9 @@ msgid "\t1. NVDA will look up the location of the selected icon."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:31
-msgid "\t2. NVDA will perform a series of mouse clicks (mouseEvents function, more on this routine below)."
+msgid ""
+"\t2. NVDA will perform a series of mouse clicks (mouseEvents function, more "
+"on this routine below)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:32
@@ -136,11 +207,18 @@ msgid "## FindWindow versus FindWindowEx and its relation to icon locators"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:33
-msgid "Windows API has changed a lot in more recent versions of Windows. This came as a response to security concerns, to extend API functionality and so on. Because of this, you may see many Windows API functions that ends with \"Ex\" (short for \"extended\")."
+msgid ""
+"Windows API has changed a lot in more recent versions of Windows. This came "
+"as a response to security concerns, to extend API functionality and so on. "
+"Because of this, you may see many Windows API functions that ends with \"Ex"
+"\" (short for \"extended\")."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:34
-msgid "In the original version, FindWindow would return a handle to a window given the class name and child window class name. For example, if we need to obtain a handle to a menu bar in an app, we would use:"
+msgid ""
+"In the original version, FindWindow would return a handle to a window given "
+"the class name and child window class name. For example, if we need to "
+"obtain a handle to a menu bar in an app, we would use:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:35
@@ -148,11 +226,17 @@ msgid "hwnd = FindWindow(\"WindowClassName\", \"MenuBar\")"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:36
-msgid "Specifying NULL (None) for the second parameter would search for the top-level window."
+msgid ""
+"Specifying NULL (None) for the second parameter would search for the top-"
+"level window."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:37
-msgid "As opposed to FindWindow, FindWindowEx takes two additional parameters, namely the handle to a window where the search should begin and which child window to search (or a group of windows to search). This results in the following signature:"
+msgid ""
+"As opposed to FindWindow, FindWindowEx takes two additional parameters, "
+"namely the handle to a window where the search should begin and which child "
+"window to search (or a group of windows to search). This results in the "
+"following signature:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:38
@@ -176,31 +260,50 @@ msgid "## The \"magic\" behind icon name locator function"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:43
-msgid "When asked by NVDA, the icon name locator function (noted above) will try its best to locate the first system tray or taskbar icon. This is how it is done:"
+msgid ""
+"When asked by NVDA, the icon name locator function (noted above) will try "
+"its best to locate the first system tray or taskbar icon. This is how it is "
+"done:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:44
-msgid "1. For element in the path to be searched, it calls FindWindowEx to locate the needed handle. At first, this handle is 0, and search begins from the shell (desktop) object (the root of all windows)."
+msgid ""
+"1. For element in the path to be searched, it calls FindWindowEx to locate "
+"the needed handle. At first, this handle is 0, and search begins from the "
+"shell (desktop) object (the root of all windows)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:45
-msgid "2. Depending on the icons you are looking for, NvDA will search the following windows:"
+msgid ""
+"2. Depending on the icons you are looking for, NvDA will search the "
+"following windows:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:46
-msgid "\t* For system tray list: \"shell_TrayWnd\" (desktop object), \"TrayNotifyWnd\" (notification area), \"SysPager\" (system tray), \"ToolbarWindow32\" (first system tray icon)."
+msgid ""
+"\t* For system tray list: \"shell_TrayWnd\" (desktop object), \"TrayNotifyWnd"
+"\" (notification area), \"SysPager\" (system tray), "
+"\"ToolbarWindow32\" (first system tray icon)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:47
-msgid "\t*Taskbar icons in Windows XP/Server 2003: \"Shell_TrayWnd\" (Desktop), \"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), \"ToolbarWindow32\"), (first taskbar icon)."
+msgid ""
+"\t*Taskbar icons in Windows XP/Server 2003: \"Shell_TrayWnd\" (Desktop), "
+"\"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), "
+"\"ToolbarWindow32\"), (first taskbar icon)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:48
-msgid "\t* Taskbar icons in Windows Vista/Server 2008 and later: Shell_TrayWnd\" (Desktop), \"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), \"MSTaskListWClass\") , (taskbar icon)."
+msgid ""
+"\t* Taskbar icons in Windows Vista/Server 2008 and later: Shell_TrayWnd"
+"\" (Desktop), \"RebarWindow32\" (Taskbar), \"MSTaskSwWClass\" (Taskbar), "
+"\"MSTaskListWClass\") , (taskbar icon)."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:49
-msgid "3. For each path (window handle if found), this function will ask Windows to search for the next window in the path and store the resulting handle."
+msgid ""
+"3. For each path (window handle if found), this function will ask Windows to "
+"search for the next window in the path and store the resulting handle."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:50
@@ -208,15 +311,31 @@ msgid "## Conclusion"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:51
-msgid "Although the idea of listing system tray icons seems easy, there is a lot going on under the hood, involving locating the correct window via Windows API and carefully designing the user interface. This shows that designing a simple add-on like this involves careful thinking, especially if it'll be used by many users around the world. I hope this article was helpful in letting you understand how simple add-on suggestions are developed and designed."
+msgid ""
+"Although the idea of listing system tray icons seems easy, there is a lot "
+"going on under the hood, involving locating the correct window via Windows "
+"API and carefully designing the user interface. This shows that designing a "
+"simple add-on like this involves careful thinking, especially if it'll be "
+"used by many users around the world. I hope this article was helpful in "
+"letting you understand how simple add-on suggestions are developed and "
+"designed."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:52
-msgid "A big hint: you don't have to use this add-on to access list of system tray icons. To access system tray, press Windows+B."
+msgid ""
+"A big hint: you don't have to use this add-on to access list of system tray "
+"icons. To access system tray, press Windows+B."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:53
-msgid "Lastly, I would like to stress the fact that JAWS for Windows and NonVisual Desktop Access are two completely different screen readers. Although they have borrowed features from each other, the underlying philosophy, license type (proprietary and commercial for JAWS versus open-source and GPL for NvDA), design and programming language in use are different. Thus, please do not expect all JAWS functionality suggestions to be investigated by NV Access, or Freedom Scientific to borrow every feature from NVDA."
+msgid ""
+"Lastly, I would like to stress the fact that JAWS for Windows and NonVisual "
+"Desktop Access are two completely different screen readers. Although they "
+"have borrowed features from each other, the underlying philosophy, license "
+"type (proprietary and commercial for JAWS versus open-source and GPL for "
+"NvDA), design and programming language in use are different. Thus, please do "
+"not expect all JAWS functionality suggestions to be investigated by NV "
+"Access, or Freedom Scientific to borrow every feature from NVDA."
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:54
@@ -224,10 +343,13 @@ msgid "## References:"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:55
-msgid "1. FindWindow (user32.dll) reference (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx"
+msgid ""
+"1. FindWindow (user32.dll) reference (Windows API): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx"
 msgstr ""
 
 #: ..\python_docs\stladdoninternals.py:56
-msgid "2. FindWindowEx (user32.dll) reference (Windows API): https://msdn.microsoft.com/en-us/library/windows/desktop/ms633500(v=vs.85).aspx"
+msgid ""
+"2. FindWindowEx (user32.dll) reference (Windows API): https://msdn.microsoft."
+"com/en-us/library/windows/desktop/ms633500(v=vs.85).aspx"
 msgstr ""
-

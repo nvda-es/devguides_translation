@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-"Generated-By: pygettext.py 1.5\n"
-
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\appveyor.py:3
 msgid "# Using AppVeyor to manage NVDA add-ons "
@@ -24,11 +26,16 @@ msgid "## Procedure to build and attach nvda-addon files to releases on GitHub"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:5
-msgid "This can be used to automate the building of NVDA add-ons (binaries with the .nvda-addon extension), which will be uploaded from Appveyor to GitHub, and attached to the created release."
+msgid ""
+"This can be used to automate the building of NVDA add-ons (binaries with "
+"the .nvda-addon extension), which will be uploaded from Appveyor to GitHub, "
+"and attached to the created release."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:6
-msgid "It works for add-ons based on the [Add-on Template](https://github.com/nvdaaddons/addontemplate)."
+msgid ""
+"It works for add-ons based on the [Add-on Template](https://github.com/"
+"nvdaaddons/addontemplate)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:7
@@ -59,15 +66,23 @@ msgid "\tgit pull"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:14
-msgid "2. In the root of the add-on folder (where the sconstruct file is placed), paste this [AppVeyor configuration file](https://gist.github.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml) (appveyor.yml)."
+msgid ""
+"2. In the root of the add-on folder (where the sconstruct file is placed), "
+"paste this [AppVeyor configuration file](https://gist.github.com/nvdaes/"
+"a486e45b98566d530688f6da9ce75f84/raw/"
+"d05b620185a58327b39da1215cf3c13c01249031/appveyor.yml) (appveyor.yml)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:15
-msgid "3. If you don't have it, [create a personal API access token](https://github.com/settings/tokens) and [encrypt it](https://ci.appveyor.com/tools/encrypt)."
+msgid ""
+"3. If you don't have it, [create a personal API access token](https://github."
+"com/settings/tokens) and [encrypt it](https://ci.appveyor.com/tools/encrypt)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:16
-msgid "\tNote: you could need to set the following token scopes to avoid  inconvenience when releasing tags:"
+msgid ""
+"\tNote: you could need to set the following token scopes to avoid  "
+"inconvenience when releasing tags:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:17
@@ -87,7 +102,9 @@ msgid "\t- repo_deployment"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:21
-msgid "4. In the appveyor.yml file, replace the value provided for the secure key with your encrypted token. For instance, instead of"
+msgid ""
+"4. In the appveyor.yml file, replace the value provided for the secure key "
+"with your encrypted token. For instance, instead of"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:23 ..\python_docs\appveyor.py:27
@@ -95,7 +112,9 @@ msgid "\t  auth_token:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:24
-msgid "\t    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
+msgid ""
+"\t    secure: 3yxF2EQ/wfLKNEobcRfdNL6srjXjoMdRa/"
+"LSQ7z2PJNqOL3IEyiFtlnxxHeIQskH"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:28
@@ -103,7 +122,9 @@ msgid "\t    secure: yourEncryptedToken"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:30
-msgid "\tNow, you can paste your appveyor.yml file to any add-on posted on your GitHub account."
+msgid ""
+"\tNow, you can paste your appveyor.yml file to any add-on posted on your "
+"GitHub account."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:31
@@ -111,11 +132,16 @@ msgid "5. [Sign in with AppVeyor](https://www.appveyor.com/)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:32
-msgid "6. From AppVeyor, select New Project. (If needed, choose GitHub and authorize it)."
+msgid ""
+"6. From AppVeyor, select New Project. (If needed, choose GitHub and "
+"authorize it)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:33
-msgid "7. Locate the name of the repo you're interested in, move the mouse over it (for instance pressing NVDA+numpadDivide or NVDA+shift+m), and activate the \"Add\" link below."
+msgid ""
+"7. Locate the name of the repo you're interested in, move the mouse over it "
+"(for instance pressing NVDA+numpadDivide or NVDA+shift+m), and activate the "
+"\"Add\" link below."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:34
@@ -123,7 +149,9 @@ msgid "### Releasing"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:35
-msgid "To post a new release of an add-on, you can create a tag and push it to GitHub:"
+msgid ""
+"To post a new release of an add-on, you can create a tag and push it to "
+"GitHub:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:36
@@ -143,11 +171,17 @@ msgid "git push origin 1.0"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:41
-msgid "Now, the release will be created and binary-1.0.nvda-addon will be attached on GitHub."
+msgid ""
+"Now, the release will be created and binary-1.0.nvda-addon will be attached "
+"on GitHub."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:42
-msgid "Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) for releasing using an FTP server."
+msgid ""
+"Bonus track: Also, Abdel has created an [appveyorForFTP.yml file](https://"
+"gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/"
+"raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml) for "
+"releasing using an FTP server."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:43
@@ -155,7 +189,9 @@ msgid "## Procedure to receive notifications about commits"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:44
-msgid "For notifications about push events (recommended for add-ons review), please see:"
+msgid ""
+"For notifications about push events (recommended for add-ons review), please "
+"see:"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:45
@@ -167,7 +203,9 @@ msgid "Anyway, if you want to use AppVeyor: "
 msgstr ""
 
 #: ..\python_docs\appveyor.py:47
-msgid "1. Create an email address to receive notifications. For instance, you may use the [groups.io email integration](https://groups.io/static/features)."
+msgid ""
+"1. Create an email address to receive notifications. For instance, you may "
+"use the [groups.io email integration](https://groups.io/static/features)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:48
@@ -191,11 +229,14 @@ msgid "\t      - notificationsEmailAddress.example.com"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:55
-msgid "\tReplace notificationsEmailAddress.example.com with a valid email address."
+msgid ""
+"\tReplace notificationsEmailAddress.example.com with a valid email address."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:56
-msgid "\tHere is a [topic in groups.io mailing list as a real example](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
+msgid ""
+"\tHere is a [topic in groups.io mailing list as a real example](https://"
+"nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
 msgstr ""
 
 #: ..\python_docs\appveyor.py:57
@@ -207,23 +248,35 @@ msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:59
-msgid "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
+msgid ""
+"- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor."
+"com/docs/deployment/github/#configuring-in-appveyoryml)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:60
-msgid "- [Syntax of the release name value in the deploy section of the appveyor.yml configuration file](http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file)"
+msgid ""
+"- [Syntax of the release name value in the deploy section of the appveyor."
+"yml configuration file](http://help.appveyor.com/discussions/questions/9221-"
+"syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-"
+"configuration-file)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:61
-msgid "- [mesa/appveyor.yml at master \302\267 anholt/mesa](https://github.com/anholt/mesa/blob/master/appveyor.yml)"
+msgid ""
+"- [mesa/appveyor.yml at master · anholt/mesa](https://github.com/anholt/mesa/"
+"blob/master/appveyor.yml)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:62
-msgid "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
+msgid ""
+"- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups."
+"io/g/nvda-addons/topic/6220467)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:63
-msgid "- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
+msgid ""
+"- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://"
+"nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
 msgstr ""
 
 #: ..\python_docs\appveyor.py:64
@@ -233,4 +286,3 @@ msgstr ""
 #: ..\python_docs\appveyor.py:65
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr ""
-

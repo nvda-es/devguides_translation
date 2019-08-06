@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
-"PO-Revision-Date: 2019-08-05 20:44+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 11:38+0200\n"
+"PO-Revision-Date: 2019-08-06 12:19+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -214,6 +215,9 @@ msgid ""
 "examples from this guide will work on both Python 2 and 3 unless otherwise "
 "specified."
 msgstr ""
+"Importante: la comunidad de NVDA se encuentra en mitad de una transición a "
+"Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como "
+"Python 3 a menos que se indique lo contrario."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:36
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:135
@@ -888,16 +892,11 @@ msgstr ""
 "scripts-de-otros-lectores-de-pantalla)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:134
-#, fuzzy
-#| msgid ""
-#| "    - [Special note on Python version](#user-content-special-note-on-"
-#| "python-version)"
 msgid ""
 "    - [Appendix E: Python 2 versus 3](#user-content-appendix-e-python-2-"
 "versus-3)"
 msgstr ""
-"    - [Nota especial sobre la versión de Python](#nota-especial-sobre-la-"
-"version-de-python)"
+"    - [Apéndice E: Python 2 frente a 3](#apendice-e-python-2-frente-a-3)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:136
 msgid "[//]: # (End of TOC)"
@@ -1015,14 +1014,6 @@ msgid "### Special note on Python version"
 msgstr "### Nota especial sobre la versión de Python"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:153
-#, fuzzy
-#| msgid ""
-#| "NVDA and add-ons are written in Python 2, specifically 2.7. There is an "
-#| "active research project to port NVDA to python 3, with some add-on "
-#| "developers modifying their add-on source code to run on Python 2 and 3. "
-#| "Be sure to keep an eye on NVDA development and add-ons mailing lists, as "
-#| "well as relevant development documentation and notices regarding news on "
-#| "Python 3 and NVDA."
 msgid ""
 "Until 2019, NVDA and add-ons were written primarily in Python 2, "
 "specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, "
@@ -1032,13 +1023,14 @@ msgid ""
 "regarding news on Python 3 and NVDA. For more information on Python 2 versus "
 "3, please read Appendix E."
 msgstr ""
-"NVDA y los complementos están escritos en Python 2, específicamente 2.7. "
-"Existe un proyecto de investigación activo para transferir NVDA a python 3, "
-"con algunos desarrolladores de complementos modificando su código fuente "
-"para que se ejecute en Python 2 y 3. Asegúrate de estar atento al desarrollo "
-"de NVDA y a las listas de correo de complementos, así como a la "
-"documentación de desarrollo relevante y a los avisos relacionados con las "
-"noticias sobre Python 3 y NVDA."
+"Hasta 2019, NVDA y los complementos estaban escritos principalmente en "
+"Python 2, específicamente 2.7. A partir de julio de 2019, NVDA ha sido "
+"migrado a Python 3.7, con algunos desarrolladores de complementos "
+"modificando su código fuente para que se ejecute en Python 2 y 3. Asegúrate "
+"de estar atento al desarrollo de NVDA y a las listas de correo de "
+"complementos, así como a la documentación de desarrollo relevante y a los "
+"avisos relacionados con las noticias sobre Python 3 y NVDA. Para más "
+"información sobre las diferencias entre Python 2 y 3, consulta el apéndice E."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:154
 msgid "### A special note for scripters of other screen readers"
@@ -1300,11 +1292,6 @@ msgid "### What Are Add-on Modules?"
 msgstr "### ¿Qué son los módulos de un complemento?"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:183
-#, fuzzy
-#| msgid ""
-#| "Add-ons can act globally (across all of NVDA), in a specific application "
-#| "or program, or behind the scenes (at the hardware level). We call these "
-#| "three "
 msgid ""
 "Add-ons can act globally (across all of NVDA), in a specific application or "
 "program, or behind the scenes (at the hardware or software level). We call "
@@ -1470,21 +1457,16 @@ msgstr ""
 "download/)."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:205
-#, fuzzy
-#| msgid ""
-#| "    - Even better: we recommend installing the latest master development "
-#| "version to keep up to date with core API changes. You can download the "
-#| "latest snapshots at https://community.nvda-project.org/wiki/Snapshots."
 msgid ""
 "    - Even better: we recommend installing the latest master (alpha) or beta "
 "development version to keep up to date with core API changes. You can "
 "download the latest snapshots at https://community.nvda-project.org/wiki/"
 "Snapshots."
 msgstr ""
-"    - O incluso mejor: recomendamos instalar la última versión master de "
-"desarrollo para mantenerse al día con los cambios en el API del núcleo.  "
-"Puedes descargar las últimas snapshots en https://community.nvda-project.org/"
-"wiki/Snapshots."
+"    - O incluso mejor: recomendamos instalar la última versión master "
+"(Alpha) o beta de desarrollo para mantenerse al día con los cambios en el "
+"API del núcleo.  Puedes descargar las últimas snapshots en https://community."
+"nvda-project.org/wiki/Snapshots."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:206
 msgid "* Python:"
@@ -1499,20 +1481,16 @@ msgstr ""
 "python.org/downloads/release/python-2716/"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:208
-#, fuzzy
-#| msgid ""
-#| "    - If you wish to work with Python 3, use Python 3.7.3, 32-bit for "
-#| "Windows: https://www.python.org/downloads/release/python-373/"
 msgid ""
 "    - If you wish to work with Python 3, use Python 3.7.4, 32-bit for "
 "Windows: https://www.python.org/downloads/release/python-374/"
 msgstr ""
-"    - Si deseas trabajar con Python 3, utiliza Python 3.7.3 de 32 bits para "
-"Windows: https://www.python.org/downloads/release/python-373/"
+"    - Si deseas trabajar con Python 3, utiliza Python 3.7.4 de 32 bits para "
+"Windows: https://www.python.org/downloads/release/python-374/"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:209
 msgid "    - Starting from July 2019, Python 3 is required."
-msgstr ""
+msgstr "    - Desde julio de 2019, es necesario Python 3."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:210
 msgid ""
@@ -2652,19 +2630,15 @@ msgstr ""
 "usuario para el menú de NVDA, el administrador de complementos y otros."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:344
-#, fuzzy
-#| msgid ""
-#| "* Hardware port utilities (hwPortUtils.py): A set of utilities for "
-#| "communicating over serial and other hardware ports, useful during driver "
-#| "add-on development."
 msgid ""
 "* Hardware port utilities and input/output management (hwPortUtils.py, hwIo."
 "py): A set of utilities for communicating over serial and other hardware "
 "ports, useful during driver add-on development."
 msgstr ""
-"* Servicios de los puertos Hardware(hwPortUtils.py): Un conjunto de "
-"utilidades para la comunicación a través de los puertos serie de hardware y "
-"otros, útil durante el desarrollo de un complemento de controlador."
+"* Utilidades de los puertos Hardware y gestión de la entrada y la salida "
+"(hwPortUtils.py, hwIo.py): Un conjunto de utilidades para la comunicación a "
+"través de los puertos serie de hardware y otros, útil durante el desarrollo "
+"de un complemento de controlador."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:345
 msgid ""
@@ -5495,6 +5469,11 @@ msgid ""
 "ability is disabled for apps such as Skype. To restore browse mode "
 "functionality, you need to set disableBrowseModeByDefault to False."
 msgstr ""
+"* Algunas aplicaciones presentan información en forma de página web, y si "
+"esto ocurre, se puede usar el modo exploración. Sin embargo, en NVDA 2019.2 "
+"y versiones posteriores, esta capacidad se desactiva en aplicaciones como "
+"Skype. Para restaurar la funcionalidad del modo exploración, es necesario "
+"establecer disableBrowseModeByDefault a False."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:738
 msgid "* The `event_NVDAObject_init` routine is only available in app modules."
@@ -6533,6 +6512,10 @@ msgid ""
 "long-running task with a different thread, allowing NVDA to remain "
 "responsive."
 msgstr ""
+"Si un procedimiento en un complemento se ejecuta durante un largo periodo de "
+"tiempo, NVDA podría parecer congelado o dejar de responder. Aquí es donde "
+"entran en escena los hilos - ejecutando una tarea de larga duración en un "
+"hilo diferente, permitiendo que NVDA siga respondiendo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:902
 msgid ""
@@ -6542,6 +6525,12 @@ msgid ""
 "Python interpreters to run on all cores. However, this workaround introduces "
 "latency and overhead, so for many scenarios, threads are prefered."
 msgstr ""
+"Aunque Python soporta hilos, sólo puede ejecutar una tarea a la vez debido "
+"al bloqueo global del intérprete (GIL). Por tanto, en ordenadores con varios "
+"núcleos de procesador, se aconseja el uso de procesos (mediante el módulo "
+"multiprocessing) para permitir que los intérpretes de Python se ejecuten en "
+"todos los núcleos. Sin embargo, esta solución introduce latencia y "
+"sobrecarga, por lo que en muchos escenarios se prefieren los hilos."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:903
 msgid "#### Threading scenarios"
@@ -6558,6 +6547,10 @@ msgid ""
 "thread can be used for obtaining online information while NVDA is busy with "
 "something else."
 msgstr ""
+"* Necesitas trabajar en algo mientras esperas un resultado. Por ejemplo, si "
+"una extensión global necesita acceder a Internet para diversas tareas, se "
+"puede usar un hilo separado para obtener información en línea mientras NVDA "
+"está ocupado con algo más."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:906
 msgid ""
@@ -6565,12 +6558,19 @@ msgid ""
 "overlay class defined in an app module can use a thread to announce screen "
 "information as it changes in the background."
 msgstr ""
+"* Monitorizar tareas en segundo plano sin interrumpir a NVDA. Por ejemplo, "
+"una clase superpuesta definida en un módulo de aplicación puede usar un hilo "
+"para anunciar información de la pantalla mientras esta cambia en segundo "
+"plano."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:907
 msgid ""
 "* Run tasks periodically. For example, a speech synthesizer can use a timer "
 "thread to determine if a hardware synthesizer is ready or not."
 msgstr ""
+"* Ejecutar tareas periódicamente. Por ejemplo, un sintetizador de voz puede "
+"usar un hilo temporizador para determinar si un sintetizador hardware está "
+"listo o no."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:908
 msgid "#### Threading examples"
@@ -6579,6 +6579,8 @@ msgstr "#### Ejemplos de concurrencia"
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:909
 msgid "All examples use threading module unless noted otherwise."
 msgstr ""
+"Todos los ejemplos usan el módulo threading a no ser que se indique lo "
+"contrario."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:910
 msgid "Download content from a website via a global plugin:"
@@ -6630,16 +6632,23 @@ msgid ""
 "We need to use a separate thread to access web content because urllib "
 "(urllib.request in Python 3) blocks, making NVDA appear to freeze."
 msgstr ""
+"Necesitamos usar un hilo separado para acceder al contenido web porque "
+"urllib (urllib.request en Python 3) bloquea, haciendo que NVDA parezca "
+"colgarse."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:922
 msgid "Announce a message ten seconds after pressing a key from an app:"
 msgstr ""
+"Anunciar un mensaje diez segundos después de pulsar una tecla en una "
+"aplicación:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:923
 msgid ""
 "There are two timers you can use: threading.Timer or wx.Timer. The below app "
 "module example uses threading.Timer."
 msgstr ""
+"Hay dos temporizadores que puedes usar: threading.Timer o wx.Timer. El "
+"siguiente ejemplo de módulo de aplicación usa threading.Timer."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:926
 msgid "\t# Other parts of an app module."
@@ -6666,6 +6675,8 @@ msgid ""
 "One limitation with threading.Timer is that it does not support repetetive "
 "tasks, and for these, you need to use wx.Timer."
 msgstr ""
+"Una limitación de threading.Timer es que no soporta tareas repetitivas, y "
+"por este motivo puede ser necesario usar wx.Timer."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:932
 msgid "### Storing and Using Persistent Information Outside Your Add-on"
@@ -7801,56 +7812,73 @@ msgid ""
 "The following describes notable changes between Python 2 and 3 and tips for "
 "making your add-on Python 2 and 3 compatible."
 msgstr ""
+"La siguiente tabla describe cambios notables entre Python 2 y 3 y da "
+"consejos para hacer que tu complemento sea compatible con ambas versiones."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1076
 msgid "| Concept or task | Python 2| Python 3 | Compatibility tips |"
 msgstr ""
+"| Concepto o tarea | Python 2 | Python 3 | Consejos de compatibilidad |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1078
 msgid ""
 "| Print text | print text | print(text) | The latter also works on Python 2. "
 "|"
 msgstr ""
+"| Imprimir texto | print texto | print(texto) | Esta última también funciona "
+"en Python 2. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1079
 msgid ""
 "| Default text format | ANSI | Unicode | Unicode is prefered. To do so, "
 "prefix text with a \"u\". |"
 msgstr ""
+"| Formato predeterminado del texto | ANSI | Unicode | Se prefiere Unicode. "
+"Para usarlo, prefija el texto con una \"u\". |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1080
 msgid ""
 "| Range | xrange | range | If you are not concerned with performance, use "
 "range. |"
 msgstr ""
+"| Rango | xrange | range | Si no te importa el rendimiento, usa range. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1081
 msgid "| Reduce/accumulate | reduce | functools.reduce | |"
-msgstr ""
+msgstr "| Reducir/Acumular | reduce | functools.reduce | |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1082
 msgid ""
 "| Map and filter returns | list | iterator | If you want maximum "
 "compatibility, wrap a call to map or filter inside a list function call. |"
 msgstr ""
+"| Map y Filter devuelven | lista | iterador | Si quieres compatibilidad "
+"máxima, envuelve la llamada a map o filter en una llamada a la función list. "
+"|"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1083
 msgid ""
 "| Exception aliasing | exception, e | exception as e | The latter works on "
 "Python 2. |"
 msgstr ""
+"| Alias de excepciones | exception, e | exception as e | La última también "
+"funciona en Python 2. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1084
 msgid ""
 "| Relative import | import relativeModule | from . import relativeModule | "
 "The latter also works on Python 2. |"
 msgstr ""
+"| Importación relativa | import module | from . import module | La última "
+"también funciona en Python 2. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1085
 msgid ""
 "| Registry access | _winreg | winreg | For maximum compatibility, use "
 "winreg, and on Python 2, import _winreg as winreg. |"
 msgstr ""
+"| Acceso al registro | _winreg | winreg | Para dar máxima compatibilidad usa "
+"winreg, y en Python 2 import _winreg as winreg. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1086
 msgid ""
@@ -7858,20 +7886,22 @@ msgid ""
 "dict.items/keys/values | In case of dict.keys, one can just iterate through "
 "the dictionary itself. |"
 msgstr ""
+"| Iteración por elementos/claves/valores en un diccionario | dict.iteritems|"
+"iterkeys|itervalues | dict.items/keys/values | En el caso de dict.keys, se "
+"puede iterar por el propio diccionario. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1087
 msgid ""
 "| Strictly integer division | / | // | The former now performs regular "
 "division on Python 3. |"
 msgstr ""
+"| División estrictamente entera | / | // | El primero ahora hace una "
+"división normal en Python 3. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1088
 msgid ""
 "| Class definition | class someclass: content | class someclass(object): "
 "content | The latter also works on Python 2. |"
 msgstr ""
-
-#~ msgid ""
-#~ "You need to import two modules: GUI (import gui) and WXPython (import wx)."
-#~ msgstr ""
-#~ "Necesitas importar dos módulos: GUI (import gui) y WXPython (import wx)."
+"| Definición de clases | class algunaclase: contenido | class "
+"algunaclase(object): contenido | El último también funciona en Python 2. |"
