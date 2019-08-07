@@ -5,17 +5,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-08-05 20:30+Hora de verano romance\n"
-"PO-Revision-Date: 2019-08-07 11:04+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-07 11:12+0200\n"
+"PO-Revision-Date: 2019-08-07 11:13+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 2.2.3\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:3
 msgid "# Switching From JAWS To NVDA"
@@ -721,17 +722,17 @@ msgstr ""
 "(como NVDA se refiere a palabra real)."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:75
-msgid " * anywhere, which is the default behavior."
-msgstr "    * En cualquier sitio, que es el comportamiento por defecto."
+msgid "* anywhere, which is the default behavior."
+msgstr "* En cualquier sitio, que es el comportamiento por defecto."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:76
-msgid " * Whole word, which is how JAWS handles dictionary entries."
+msgid "* Whole word, which is how JAWS handles dictionary entries."
 msgstr ""
-"    * Palabra completa, que es cómo JAWS maneja las entradas de diccionario."
+"* Palabra completa, que es cómo JAWS maneja las entradas de diccionario."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:77
-msgid " * Regular Expression, which is complicated."
-msgstr "    * Expresión regular, lo cual es complicado."
+msgid "* Regular Expression, which is complicated."
+msgstr "* Expresión regular, lo cual es complicado."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:78
 msgid "You will also find a case sensitive checkbox."

@@ -140,9 +140,11 @@ To turn that option off, uncheck "Report table row/column headers" in the "Docum
 ## the Speech dictionary
 
 NVDA has always included a function to edit "Speech Dictionaries", which are similar to JAWS' dictionary manager files.  There is a group of radio buttons in the Add/edit dictionary entry labelled type, which determines how the text in the pattern, (NVDA speak for actual word), box will be treated.
- * anywhere, which is the default behavior.
- * Whole word, which is how JAWS handles dictionary entries.
- * Regular Expression, which is complicated.
+
+* anywhere, which is the default behavior.
+* Whole word, which is how JAWS handles dictionary entries.
+* Regular Expression, which is complicated.
+
 You will also find a case sensitive checkbox.
 
 Access the speech dictionaries with NVDA+n (to open the NVDA menu), then P for preferences, then D for dictionaries.  There are three options.  Default dictionary works across the board, Voice dictionary works only for the current voice, and temporary works only for the current session.  Unless you know you want one of the other two, most of the time "default dictionary" is the desired dictionary to edit.
