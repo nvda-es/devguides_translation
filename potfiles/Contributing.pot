@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-07 11:12+0200\n"
+"POT-Creation-Date: 2019-08-09 13:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,9 @@ msgid ""
 "user experience or implementation discussion (e.g. a fix for a typo/obvious "
 "coding error or a simple synthesizer/braille display driver), you can just "
 "create a pull request rather than using an issue first. However, this should "
-"be fairly rare. If in doubt, use an issue first."
+"be fairly rare. If in doubt, use an issue first. Use this issue to discuss "
+"the alternatives you have considered in regards to implementation, design, "
+"and user experience. Then give people time to offer feedback."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:12
@@ -89,7 +91,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\Contributing.py:14 ..\python_docs\Contributing.py:25
-#: ..\python_docs\Contributing.py:57 ..\python_docs\Contributing.py:60
+#: ..\python_docs\Contributing.py:65 ..\python_docs\Contributing.py:68
 msgid "```"
 msgstr ""
 
@@ -156,9 +158,11 @@ msgstr ""
 
 #: ..\python_docs\Contributing.py:30
 msgid ""
-"For anything touching code, Please run `scons tests` before you open your "
+"For anything touching code, please run `scons tests` before you open your "
 "Pull Request, and make sure all the unit tests pass. If possible for your "
-"PR, please consider creating a set of unit tests to test your changes."
+"PR, please consider creating a set of unit tests to test your changes. "
+"Please also run our linter, see [`tests/lint/readme.md`](https://github.com/"
+"nvaccess/nvda/tree/master/tests/lint) for more information."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:31
@@ -176,16 +180,23 @@ msgid "## Code Style"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:34
-msgid "### Encoding"
+msgid ""
+"Code style is enforced with the flake8 linter, see [`tests/lint/readme.md`]"
+"(https://github.com/nvaccess/nvda/tree/master/tests/lint) for more "
+"information."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:35
+msgid "### Encoding"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:36
 msgid ""
 "* Where Python files contain non-ASCII characters, they should be encoded in "
 "UTF-8."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:36
+#: ..\python_docs\Contributing.py:37
 msgid ""
 "    * There should be no Unicode BOM at the start of the file, as this "
 "unfortunately breaks one of the translation tools we use (xgettext). "
@@ -193,15 +204,15 @@ msgid ""
 "contains non-ASCII characters):"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:37 ..\python_docs\Contributing.py:39
-msgid "    ```"
+#: ..\python_docs\Contributing.py:38 ..\python_docs\Contributing.py:40
+msgid "        ```"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:38
+#: ..\python_docs\Contributing.py:39
 msgid "        # -*- coding: UTF-8 -*-"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:40
+#: ..\python_docs\Contributing.py:41
 msgid ""
 "    * This coding comment must also be included if strings in the code (even "
 "strings that aren't translatable) contain escape sequences that produce non-"
@@ -210,99 +221,137 @@ msgid ""
 "com/nvaccess/nvda/issues/2592#issuecomment-155299911."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:41
+#: ..\python_docs\Contributing.py:42
 msgid ""
 "* Most files should contain CRLF line endings, as this is a Windows project "
 "and can't be used on Unix-like operating systems."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:42
+#: ..\python_docs\Contributing.py:43
 msgid "### Indentation"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:43
+#: ..\python_docs\Contributing.py:44
 msgid "* Indentation must be done with tabs (one per level), not spaces."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:44
+#: ..\python_docs\Contributing.py:45
 msgid ""
 "* When splitting a single statement over multiple lines, just indent one or "
 "more additional levels. Don't use vertical alignment; e.g. lining up with "
 "the bracket on the previous line."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:45
+#: ..\python_docs\Contributing.py:46
+msgid ""
+"  - Be aware that this requires a new-line after an opening parenthesis/"
+"bracket/brace if you intend to split the statement over multiple lines."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:47
+msgid ""
+"  - For the parameter list of function definitions, double indent, this "
+"differentiates the parameters and the body of the function."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:48
 msgid "### Identifier Names"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:46
+#: ..\python_docs\Contributing.py:49
+msgid "* Use descriptive names"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:50
+msgid ""
+"  - name constants to avoid \"magic numbers\" and hint at intent or origin "
+"of the value. Consider, what does this represent?"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:51
 msgid ""
 "* Functions, variables, properties, etc. should use mixed case to separate "
 "words, starting with a lower case letter; e.g. `speakText`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:47
+#: ..\python_docs\Contributing.py:52
+msgid "* Boolean functions or variables"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:53
+msgid ""
+"  - should try to use the positive form of the language (to avoid double "
+"negatives like `shouldNotDoSomething = False`)"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:54
+msgid ""
+"  - start with a \"question word\" to hint at their boolean nature. EG "
+"`shouldX`, `isX`, `hasX`"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:55
 msgid ""
 "* Classes should use mixed case to separate words, starting with an upper "
 "case letter; e.g. `BrailleHandler`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:48
+#: ..\python_docs\Contributing.py:56
 msgid ""
 "* Constants should be all upper case, separating words with underscores; e."
 "g. `LANGS_WITH_CONJUNCT_CHARS`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:49
+#: ..\python_docs\Contributing.py:57
 msgid ""
 "* Event handlers are prefixed with \"event_\", and are often in the form "
 "\"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the "
 "class type that the ACTION refers to."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:50
+#: ..\python_docs\Contributing.py:58
 msgid "* Extension points:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:51
+#: ..\python_docs\Contributing.py:59
 msgid ""
-"    * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are "
+"  * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are "
 "being notified before / after the action has taken place."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:52
+#: ..\python_docs\Contributing.py:60
 msgid ""
-"    * `Decider`: Prefixed with `should_` to turn them into a question eg "
+"  * `Decider`: Prefixed with `should_` to turn them into a question eg "
 "`should_doSomething`"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:53
+#: ..\python_docs\Contributing.py:61
 msgid ""
-"    * `Filter`: TBD. Ideally follows a similar style the others, and "
+"  * `Filter`: TBD. Ideally follows a similar style the others, and "
 "communicates if the filtering happens before or after some action. It would "
 "also be nice to have a naming scheme that differentiates it from the others."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:54
+#: ..\python_docs\Contributing.py:62
 msgid "### Translatable Strings"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:55
+#: ..\python_docs\Contributing.py:63
 msgid ""
 "* All strings that could be presented to the user should be marked as "
 "translatable using the `_()` function; e.g. `_(\"Text review\")`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:56
+#: ..\python_docs\Contributing.py:64
 msgid ""
 "* All translatable strings should have a preceding translators comment "
 "describing the purpose of the string for translators. For example:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:58
+#: ..\python_docs\Contributing.py:66
 msgid "# Translators: The name of a category of NVDA commands."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:59
+#: ..\python_docs\Contributing.py:67
 msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
 msgstr ""
