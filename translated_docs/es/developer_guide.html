@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2019.1</title>
+  <title># Guía del desarrollador de NVDA 2019.2</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2019.1</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20191">Guía del desarrollador de NVDA 2019.1</h1>
+  <header><h1># Guía del desarrollador de NVDA 2019.2</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20192">Guía del desarrollador de NVDA 2019.2</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -563,21 +563,21 @@ class AppModule(appModuleHandler.AppModule):
 <h4 id="421-campos-disponibles">4.2.1. Campos disponibles</h4>
 <p>Aunque se sugiere encarecidamente que los manifiestos tengan todos los campos, basta con incluir sólo aquellos marcados como obligatorios. De cualquier otro modo, el complemento no se instalará. </p>
 <ul>
-<li>name: un nombre corto y único para el complemento. Se usa para diferenciar a los complementos internamente y no se muestra al usuario. (Obligatorio) </li>
-<li>summary: el nombre del complemento tal como se muestra al usuario. (Obligatorio) </li>
-<li>version: la versión del complemento, por ejemplo 2.0. (Obligatorio) </li>
-<li>author: el autor del complemento, preferiblemente en la forma nombre completo &lt;dirección de correo&gt;; por ejemplo Michael Curran &lt;<a href="mailto:mick@kulgan.net">mick@kulgan.net</a>&gt;. (Obligatorio) </li>
-<li>description: una o dos frases que describan qué hace el complemento. </li>
-<li>url: una URL donde pueda encontrarse este complemento, sus actualizaciones y más información sobre él. </li>
-<li>docFileName: el nombre del archivo de documentación principal para el complemento; por ejemplo readme.html. Mira la sección de documentación de complementos para más detalles. </li>
-<li>minimumNVDAVersion: la mínima versión requerida de NVDA para que este complemento pueda instalarse o habilitarse. <ul>
+<li>name (cadena): un nombre corto y único para el complemento. Se usa para diferenciar a los complementos internamente y no se muestra al usuario. (Obligatorio) </li>
+<li>summary (cadena): el nombre del complemento tal como se muestra al usuario. (Obligatorio) </li>
+<li>version (cadena): la versión del complemento, por ejemplo 2.0. (Obligatorio) </li>
+<li>author (cadena): el autor del complemento, preferiblemente en la forma nombre completo &lt;dirección de correo&gt;; por ejemplo Michael Curran &lt;<a href="mailto:mick@kulgan.net">mick@kulgan.net</a>&gt;. (Obligatorio) </li>
+<li>description (cadena): una o dos frases que describan qué hace el complemento. </li>
+<li>url (cadena): una URL donde pueda encontrarse este complemento, sus actualizaciones y más información sobre él. </li>
+<li>docFileName (cadena): el nombre del archivo de documentación principal para el complemento; por ejemplo readme.html. Mira la sección de documentación de complementos para más detalles. </li>
+<li>minimumNVDAVersion (cadena): la mínima versión requerida de NVDA para que este complemento pueda instalarse o habilitarse. <ul>
 <li>por ejemplo "2019.1.1" </li>
 <li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
 <li>Por defecto es "0.0.0" </li>
 <li>Debe ser inferior o igual a `lastTestedNVDAVersion` </li>
 </ul>
 </li>
-<li>lastTestedNVDAVersion: la última versión de NVDA con la que se ha probado el complemento. <ul>
+<li>lastTestedNVDAVersion (cadena): la última versión de NVDA con la que se ha probado el complemento. <ul>
 <li>por ejemplo "2019.1.0" </li>
 <li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
 <li>Por defecto es "0.0.0" </li>
@@ -585,33 +585,39 @@ class AppModule(appModuleHandler.AppModule):
 </ul>
 </li>
 </ul>
+<p>Todos los valores de cadena deben encerrarse entre comillas, como se muestra en el ejemplo de más abajo. </p>
 <p>El campo lastTestedNVDAVersion en particular se usa para asegurar que los usuarios pueden confiar a la hora de instalar un complemento. Permite que el autor asegure que el complemento no causará inestabilidad o dañará el sistema del usuario. Cuando no se proporcione o sea menor que la versión actual de NVDA (ignorando actualizaciones menores como 2018.3.1), el usuario recibirá una advertencia indicando que no instale el complemento. </p>
-<p>+++ Un ejemplo de archivo de manifiesto +++ </p>
+<h3 id="un-ejemplo-de-archivo-de-manifiesto">Un ejemplo de archivo de manifiesto</h3>
 <pre><code>    --- inicio ---
 
-    name = MyTestAddon
+    name = "myTestAddon"
 
-    summary = Cool Test Add-on
+    summary = "Cool Test Add-on"
 
-    version = 1.0
+    version = "1.0"
 
-    description = An example add-on showing how to create add-ons!
+    description = "An example add-on showing how to create add-ons!"
 
-    author = Michael Curran &lt;mick@kulgan.net&gt;
+    author = "Michael Curran &lt;mick@kulgan.net&gt;"
 
-    url = http://www.nvda-project.org/wiki/Development
+    url = "http://www.nvda-project.org/wiki/Development"
 
-    minimumNVDAVersion = 2018.1.0
+    docFileName = "readme.html"
 
-    lastTestedNVDAVersion = 2019.1.0
+    minimumNVDAVersion = "2018.1.0"
+
+    lastTestedNVDAVersion = "2019.1.0"
 
     --- fin ---
 </code></pre>
-<p>++ Extensiones y controladores ++ Se pueden incluir las siguientes extensiones y controladores en un complemento: 
-  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
-  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
-  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
-  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
+<h2 id="extensiones-y-controladores">Extensiones y controladores</h2>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: </p>
+<ul>
+<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
+<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
+<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
+<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
+</ul>
 <h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
 <h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>
@@ -635,9 +641,10 @@ class AppModule(appModuleHandler.AppModule):
 <li>Pulsando NVDA+ctrl+z. Si se activa de este modo, se tomará una instantánea de NVDA en el momento en que se pulsaron las teclas y se guardará en ciertas variables disponibles en la consola. Mira la sección de variables instantáneas para más detalles. </li>
 <li>Seleccionando Herramientas -&gt; Consola Python desde el menú de NVDA de la bandeja del sistema. </li>
 </ul>
-<p>La consola es similar al intérprete estándar de Python. La entrada sólo acepta una línea cada vez. La línea actual se procesa al pulsar intro. Puedes navegar por el historial de líneas introducidas anteriormente usando flechas arriba y abajo. </p>
+<p>La consola es similar al intérprete interactivo estándar de Python. La entrada sólo acepta una línea cada vez y la procesa al pulsar intro. Se pueden pegar varias líneas a la vez desde el portapapeles y se procesarán una a una. Puedes navegar por el historial de líneas introducidas anteriormente usando flechas arriba y abajo. </p>
 <p>La salida (respuestas del intérprete) se verbalizará al pulsar intro. La tecla f6 permite desplazarse entre los controles de entrada y salida. </p>
-<p>Cerrar la ventana de la consola simplemente la oculta. Esto permite al usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo historial y variables. </p>
+<p>El resultado del último comando ejecutado se almacena en la variable global "_". Esto impide usar la función de Gettext que se aloja como función incorporada con el mismo nombre. Se puede suprimir esta superposición ejecutando "del _", y evitarse con "_=_". </p>
+<p>Cerrar la ventana de la consola (con escape o alt+f4) simplemente la oculta. Esto permite al usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo historial y variables. </p>
 <h3 id="52-espacio-de-nombres">5.2. Espacio de nombres</h3>
 <h4 id="521-importaciones-automaticas">5.2.1. Importaciones automáticas</h4>
 <p>Los siguientes módulos y variables se importan automáticamente en la consola por conveniencia: sys, os, wx, log (de logHandler), api, queueHandler, speech, braille </p>

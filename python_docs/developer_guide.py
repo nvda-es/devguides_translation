@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# NVDA 2019.1 Developer Guide"""),
+_(u"""# NVDA 2019.2 Developer Guide"""),
 "",_(u"""## Table of Contents"""),
 "",_(u"""  * 1\\. Introduction"""),
 _(u"""    * 1.1. A Note About Python"""),
@@ -432,40 +432,43 @@ _(u"""    """),
 "",_(u"""Each add-on package must contain a manifest file named manifest.ini. This must be a UTF-8 encoded text file. This manifest file contains key = value pairs declaring info such as the add-on's name, version and description. """),
 "",_(u"""#### 4.2.1. Available Fields"""),
 "",_(u"""Although it is highly suggested that manifests contain all fields, the fields marked as mandatory must be included. Otherwise, the add-on will not install. """),
-"",_(u"""  * name: A short unique name for the add-on. This is used to differentiate add-ons internally and is not shown to the user. \\(Mandatory\\) """),
-_(u"""  * summary: The name of the add-on as shown to the user. \\(Mandatory\\) """),
-_(u"""  * version: The version of this add-on; e.g. 2.0. \\(Mandatory\\) """),
-_(u"""  * author: The author of this add-on, preferably in the form Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan.net)>. \\(Mandatory\\) """),
-_(u"""  * description: A sentence or two describing what the add-on does. """),
-_(u"""  * url: A URL where this add-on, further info and upgrades can be found. """),
-_(u"""  * docFileName: The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. """),
-_(u"""  * minimumNVDAVersion: The minimum required version of NVDA for this add-on to be installed or enabled. """),
+"",_(u"""  * name \\(string\\): A short unique name for the add-on. This is used to differentiate add-ons internally and is not shown to the user. \\(Mandatory\\) """),
+_(u"""  * summary \\(string\\): The name of the add-on as shown to the user. \\(Mandatory\\) """),
+_(u"""  * version \\(string\\): The version of this add-on; e.g. 2.0. \\(Mandatory\\) """),
+_(u"""  * author \\(string\\): The author of this add-on, preferably in the form Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan.net)>. \\(Mandatory\\) """),
+_(u"""  * description \\(string\\): A sentence or two describing what the add-on does. """),
+_(u"""  * url \\(string\\): A URL where this add-on, further info and upgrades can be found. """),
+_(u"""  * docFileName \\(string\\): The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. """),
+_(u"""  * minimumNVDAVersion \\(string\\): The minimum required version of NVDA for this add-on to be installed or enabled. """),
 _(u"""    * e.g \"2019.1.1\" """),
 _(u"""    * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. """),
 _(u"""    * Defaults to \"0.0.0\" """),
 _(u"""    * Must be less than or equal to \\`lastTestedNVDAVersion\\` """),
-_(u"""  * lastTestedNVDAVersion: The last version of NVDA this add-on has been tested with. """),
+_(u"""  * lastTestedNVDAVersion \\(string\\): The last version of NVDA this add-on has been tested with. """),
 _(u"""    * e.g \"2019.1.0\" """),
 _(u"""    * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. """),
 _(u"""    * Defaults to \"0.0.0\" """),
 _(u"""    * Must be greater than or equal to \\`minimumNVDAVersion\\` \\- """),
+"",_(u"""All string values must be enclosed in quotes as shown in the example below. """),
 "",_(u"""The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \\(ignoring minor point updates EG 2018.3.1\\) then the user will be warned not to install the add-on. """),
-"",_(u"""+++ An Example Manifest File +++ """),
+"",_(u"""### An Example Manifest File"""),
 _(u"""        """),
 _(u"""        """),
 _(u"""        --- start ---"""),
-_(u"""        name = MyTestAddon"""),
-_(u"""        summary = Cool Test Add-on"""),
-_(u"""        version = 1.0"""),
-_(u"""        description = An example add-on showing how to create add-ons!"""),
-_(u"""        author = Michael Curran <mick@kulgan.net>"""),
-_(u"""        url = http://www.nvda-project.org/wiki/Development"""),
-_(u"""        minimumNVDAVersion = 2018.1.0"""),
-_(u"""        lastTestedNVDAVersion = 2019.1.0"""),
+_(u"""        name = \"myTestAddon\""""),
+_(u"""        summary = \"Cool Test Add-on\""""),
+_(u"""        version = \"1.0\""""),
+_(u"""        description = \"An example add-on showing how to create add-ons!\""""),
+_(u"""        author = \"Michael Curran <mick@kulgan.net>\""""),
+_(u"""        url = \"http://www.nvda-project.org/wiki/Development\""""),
+_(u"""        docFileName = \"readme.html\""""),
+_(u"""        minimumNVDAVersion = \"2018.1.0\""""),
+_(u"""        lastTestedNVDAVersion = \"2019.1.0\""""),
 _(u"""        --- end ---"""),
 _(u"""        """),
-"",_(u"""++ Plugins and Drivers ++ The following plugins and drivers can be included in an add-on: """),
-_(u"""  * App modules: Place them in an appModules directory in the archive. """),
+"",_(u"""## Plugins and Drivers"""),
+"",_(u"""The following plugins and drivers can be included in an add-on: """),
+"",_(u"""  * App modules: Place them in an appModules directory in the archive. """),
 _(u"""  * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. """),
 _(u"""  * Global plugins: Place them in a globalPlugins directory in the archive. """),
 _(u"""  * Synthesizer drivers: Place them in a synthDrivers directory in the archive. """),
@@ -490,9 +493,10 @@ _(u"""  * Synthesizer drivers: Place them in a synthDrivers directory in the arc
 "",_(u"""The console can be activated in two ways: """),
 "",_(u"""  * By pressing NVDA+control+z. If activated in this fashion, a snapshot of the current state of NVDA at the time the key was pressed will be taken and saved in certain variables available in the console. See Snapshot Variables for more details. """),
 _(u"""  * By selecting Tools -> Python console from the NVDA system tray menu. """),
-"","",_(u"""The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time. The current line is processed when enter is pressed. You can navigate through the history of previously entered lines using the up and down arrow keys. """),
+"","",_(u"""The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time and processed when enter is pressed. Multiple lines can be pasted at once from the clipboard and will be processed one by one. You can navigate through the history of previously entered lines using the up and down arrow keys. """),
 "",_(u"""Output \\(responses from the interpreter\\) will be spoken when enter is pressed. The f6 key toggles between the input and output controls. """),
-"",_(u"""Closing the console window simply hides it. This allows the user to return to the session as it was left when it was closed, including history and variables. """),
+"",_(u"""The result of the last executed command is stored in the \"\\_\" global variable. This shadows the gettext function which is stored as a built-in with the same name. It can be unshadowed by executing \"del \\_\" and avoided altogether by executing \"\\_ = \\_\". """),
+"",_(u"""Closing the console window \\(with escape or alt+F4\\) simply hides it. This allows the user to return to the session as it was left when it was closed, including history and variables. """),
 "",_(u"""### 5.2. Namespace"""),
 "",_(u"""#### 5.2.1. Automatic Imports"""),
 "",_(u"""For convenience, the following modules and variables are automatically imported in the console: sys, os, wx, log \\(from logHandler\\), api, queueHandler, speech, braille """),

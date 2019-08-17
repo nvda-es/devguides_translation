@@ -1,4 +1,4 @@
-# NVDA 2019.1 Developer Guide
+# NVDA 2019.2 Developer Guide
 
 ## Table of Contents
 
@@ -607,42 +607,48 @@ Each add-on package must contain a manifest file named manifest.ini. This must b
 
 Although it is highly suggested that manifests contain all fields, the fields marked as mandatory must be included. Otherwise, the add-on will not install. 
 
-  * name: A short unique name for the add-on. This is used to differentiate add-ons internally and is not shown to the user. \(Mandatory\) 
-  * summary: The name of the add-on as shown to the user. \(Mandatory\) 
-  * version: The version of this add-on; e.g. 2.0. \(Mandatory\) 
-  * author: The author of this add-on, preferably in the form Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan.net)>. \(Mandatory\) 
-  * description: A sentence or two describing what the add-on does. 
-  * url: A URL where this add-on, further info and upgrades can be found. 
-  * docFileName: The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. 
-  * minimumNVDAVersion: The minimum required version of NVDA for this add-on to be installed or enabled. 
+  * name \(string\): A short unique name for the add-on. This is used to differentiate add-ons internally and is not shown to the user. \(Mandatory\) 
+  * summary \(string\): The name of the add-on as shown to the user. \(Mandatory\) 
+  * version \(string\): The version of this add-on; e.g. 2.0. \(Mandatory\) 
+  * author \(string\): The author of this add-on, preferably in the form Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan.net)>. \(Mandatory\) 
+  * description \(string\): A sentence or two describing what the add-on does. 
+  * url \(string\): A URL where this add-on, further info and upgrades can be found. 
+  * docFileName \(string\): The name of the main documentation file for this add-on; e.g. readme.html. See the Add-on Documentation section for more details. 
+  * minimumNVDAVersion \(string\): The minimum required version of NVDA for this add-on to be installed or enabled. 
     * e.g "2019.1.1" 
     * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
     * Defaults to "0.0.0" 
     * Must be less than or equal to \`lastTestedNVDAVersion\` 
-  * lastTestedNVDAVersion: The last version of NVDA this add-on has been tested with. 
+  * lastTestedNVDAVersion \(string\): The last version of NVDA this add-on has been tested with. 
     * e.g "2019.1.0" 
     * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
     * Defaults to "0.0.0" 
     * Must be greater than or equal to \`minimumNVDAVersion\` \- 
 
+All string values must be enclosed in quotes as shown in the example below. 
+
 The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \(ignoring minor point updates EG 2018.3.1\) then the user will be warned not to install the add-on. 
 
-+++ An Example Manifest File +++ 
+### An Example Manifest File
         
         
         --- start ---
-        name = MyTestAddon
-        summary = Cool Test Add-on
-        version = 1.0
-        description = An example add-on showing how to create add-ons!
-        author = Michael Curran <mick@kulgan.net>
-        url = http://www.nvda-project.org/wiki/Development
-        minimumNVDAVersion = 2018.1.0
-        lastTestedNVDAVersion = 2019.1.0
+        name = "myTestAddon"
+        summary = "Cool Test Add-on"
+        version = "1.0"
+        description = "An example add-on showing how to create add-ons!"
+        author = "Michael Curran <mick@kulgan.net>"
+        url = "http://www.nvda-project.org/wiki/Development"
+        docFileName = "readme.html"
+        minimumNVDAVersion = "2018.1.0"
+        lastTestedNVDAVersion = "2019.1.0"
         --- end ---
         
 
-++ Plugins and Drivers ++ The following plugins and drivers can be included in an add-on: 
+## Plugins and Drivers
+
+The following plugins and drivers can be included in an add-on: 
+
   * App modules: Place them in an appModules directory in the archive. 
   * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. 
   * Global plugins: Place them in a globalPlugins directory in the archive. 
@@ -691,11 +697,13 @@ The console can be activated in two ways:
   * By selecting Tools -> Python console from the NVDA system tray menu. 
 
 
-The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time. The current line is processed when enter is pressed. You can navigate through the history of previously entered lines using the up and down arrow keys. 
+The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time and processed when enter is pressed. Multiple lines can be pasted at once from the clipboard and will be processed one by one. You can navigate through the history of previously entered lines using the up and down arrow keys. 
 
 Output \(responses from the interpreter\) will be spoken when enter is pressed. The f6 key toggles between the input and output controls. 
 
-Closing the console window simply hides it. This allows the user to return to the session as it was left when it was closed, including history and variables. 
+The result of the last executed command is stored in the "\_" global variable. This shadows the gettext function which is stored as a built-in with the same name. It can be unshadowed by executing "del \_" and avoided altogether by executing "\_ = \_". 
+
+Closing the console window \(with escape or alt+F4\) simply hides it. This allows the user to return to the session as it was left when it was closed, including history and variables. 
 
 ### 5.2. Namespace
 

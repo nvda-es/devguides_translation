@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-09 13:44+0200\n"
+"POT-Creation-Date: 2019-08-17 01:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\developer_guide.py:3
-msgid "# NVDA 2019.1 Developer Guide"
+msgid "# NVDA 2019.2 Developer Guide"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:4
@@ -1895,45 +1895,53 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:569
 msgid ""
-"  * name: A short unique name for the add-on. This is used to differentiate "
-"add-ons internally and is not shown to the user. \\(Mandatory\\) "
+"  * name \\(string\\): A short unique name for the add-on. This is used to "
+"differentiate add-ons internally and is not shown to the user. \\(Mandatory"
+"\\) "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:570
 msgid ""
-"  * summary: The name of the add-on as shown to the user. \\(Mandatory\\) "
+"  * summary \\(string\\): The name of the add-on as shown to the user. "
+"\\(Mandatory\\) "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:571
-msgid "  * version: The version of this add-on; e.g. 2.0. \\(Mandatory\\) "
+msgid ""
+"  * version \\(string\\): The version of this add-on; e.g. 2.0. \\(Mandatory"
+"\\) "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:572
 msgid ""
-"  * author: The author of this add-on, preferably in the form Full Name "
-"<email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:mick@kulgan."
-"net)>. \\(Mandatory\\) "
+"  * author \\(string\\): The author of this add-on, preferably in the form "
+"Full Name <email address>; e.g. Michael Curran <[mick@kulgan.net](mailto:"
+"mick@kulgan.net)>. \\(Mandatory\\) "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:573
-msgid "  * description: A sentence or two describing what the add-on does. "
+msgid ""
+"  * description \\(string\\): A sentence or two describing what the add-on "
+"does. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:574
 msgid ""
-"  * url: A URL where this add-on, further info and upgrades can be found. "
+"  * url \\(string\\): A URL where this add-on, further info and upgrades can "
+"be found. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:575
 msgid ""
-"  * docFileName: The name of the main documentation file for this add-on; e."
-"g. readme.html. See the Add-on Documentation section for more details. "
+"  * docFileName \\(string\\): The name of the main documentation file for "
+"this add-on; e.g. readme.html. See the Add-on Documentation section for more "
+"details. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:576
 msgid ""
-"  * minimumNVDAVersion: The minimum required version of NVDA for this add-on "
-"to be installed or enabled. "
+"  * minimumNVDAVersion \\(string\\): The minimum required version of NVDA "
+"for this add-on to be installed or enabled. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:577
@@ -1956,8 +1964,8 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:581
 msgid ""
-"  * lastTestedNVDAVersion: The last version of NVDA this add-on has been "
-"tested with. "
+"  * lastTestedNVDAVersion \\(string\\): The last version of NVDA this add-on "
+"has been tested with. "
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:582
@@ -1970,6 +1978,11 @@ msgstr ""
 
 #: ..\python_docs\developer_guide.py:586
 msgid ""
+"All string values must be enclosed in quotes as shown in the example below. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:587
+msgid ""
 "The lastTestedNVDAVersion field in particular is used to ensure that users "
 "can be confident about installing an add-on. It allows the add-on author to "
 "make an assurance that the add-on will not cause instability, or break the "
@@ -1978,91 +1991,97 @@ msgid ""
 "warned not to install the add-on. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:587
-msgid "+++ An Example Manifest File +++ "
+#: ..\python_docs\developer_guide.py:588
+msgid "### An Example Manifest File"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:588 ..\python_docs\developer_guide.py:611
+#: ..\python_docs\developer_guide.py:589 ..\python_docs\developer_guide.py:614
 msgid "        "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:589
+#: ..\python_docs\developer_guide.py:590
 msgid "        \n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:591
+#: ..\python_docs\developer_guide.py:592
 msgid "        --- start ---\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:593
-msgid "        name = MyTestAddon\n"
+#: ..\python_docs\developer_guide.py:594
+msgid "        name = \"myTestAddon\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:595
-msgid "        summary = Cool Test Add-on\n"
+#: ..\python_docs\developer_guide.py:596
+msgid "        summary = \"Cool Test Add-on\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:597
-msgid "        version = 1.0\n"
+#: ..\python_docs\developer_guide.py:598
+msgid "        version = \"1.0\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:599
+#: ..\python_docs\developer_guide.py:600
 msgid ""
-"        description = An example add-on showing how to create add-ons!\n"
+"        description = \"An example add-on showing how to create add-ons!\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:601
-msgid "        author = Michael Curran <mick@kulgan.net>\n"
+#: ..\python_docs\developer_guide.py:602
+msgid "        author = \"Michael Curran <mick@kulgan.net>\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:603
-msgid "        url = http://www.nvda-project.org/wiki/Development\n"
+#: ..\python_docs\developer_guide.py:604
+msgid "        url = \"http://www.nvda-project.org/wiki/Development\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:605
-msgid "        minimumNVDAVersion = 2018.1.0\n"
+#: ..\python_docs\developer_guide.py:606
+msgid "        docFileName = \"readme.html\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:607
-msgid "        lastTestedNVDAVersion = 2019.1.0\n"
+#: ..\python_docs\developer_guide.py:608
+msgid "        minimumNVDAVersion = \"2018.1.0\"\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:609
-msgid "        --- end ---\n"
+#: ..\python_docs\developer_guide.py:610
+msgid "        lastTestedNVDAVersion = \"2019.1.0\"\n"
 msgstr ""
 
 #: ..\python_docs\developer_guide.py:612
-msgid ""
-"++ Plugins and Drivers ++ The following plugins and drivers can be included "
-"in an add-on: "
+msgid "        --- end ---\n"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:613
+#: ..\python_docs\developer_guide.py:615
+msgid "## Plugins and Drivers"
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:616
+msgid "The following plugins and drivers can be included in an add-on: "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:617
 msgid "  * App modules: Place them in an appModules directory in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:614
+#: ..\python_docs\developer_guide.py:618
 msgid ""
 "  * Braille display drivers: Place them in a brailleDisplayDrivers directory "
 "in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:615
+#: ..\python_docs\developer_guide.py:619
 msgid ""
 "  * Global plugins: Place them in a globalPlugins directory in the archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:616
+#: ..\python_docs\developer_guide.py:620
 msgid ""
 "  * Synthesizer drivers: Place them in a synthDrivers directory in the "
 "archive. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:617
+#: ..\python_docs\developer_guide.py:621
 msgid "### 4.3. Optional install / Uninstall code"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:618
+#: ..\python_docs\developer_guide.py:622
 msgid ""
 "If you need to execute code as your add-on is being installed or uninstalled "
 "from NVDA \\(e.g. to validate license information or to copy files to a "
@@ -2077,11 +2096,11 @@ msgid ""
 "installed, have already been removed or not yet be initialized. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:619
+#: ..\python_docs\developer_guide.py:623
 msgid "#### 4.3.1. the onInstall function"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:620
+#: ..\python_docs\developer_guide.py:624
 msgid ""
 "NVDA will look for and execute an onInstall function in installTasks.py "
 "after it has finished extracting the add-on into NVDA. Note that although "
@@ -2092,11 +2111,11 @@ msgid ""
 "be cleaned up. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:621
+#: ..\python_docs\developer_guide.py:625
 msgid "#### 4.3.2. The onUninstall Function"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:622
+#: ..\python_docs\developer_guide.py:626
 msgid ""
 "NVDA will look for and execute an onUninstall function in installTasks.py "
 "when NVDA is restarted after the user has chosen to remove the add-on. After "
@@ -2105,11 +2124,11 @@ msgid ""
 "initialized, this function cannot request input from the user. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:623
+#: ..\python_docs\developer_guide.py:627
 msgid "### 4.4. Localizing Add-ons"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:624
+#: ..\python_docs\developer_guide.py:628
 msgid ""
 "It is possible to provide locale-specific information and messages for your "
 "add-on. Locale information can be stored in a locale directory in the "
@@ -2118,11 +2137,11 @@ msgid ""
 "for English, fr\\_CA for French Canadian. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:625
+#: ..\python_docs\developer_guide.py:629
 msgid "#### 4.4.1. Locale-specific Manifest Files"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:626
+#: ..\python_docs\developer_guide.py:630
 msgid ""
 "Each of these language directories can contain a locale-specific manifest "
 "file called manifest.ini, which can contain a small subset of the manifest "
@@ -2130,11 +2149,11 @@ msgid ""
 "fields will be ignored. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:627
+#: ..\python_docs\developer_guide.py:631
 msgid "#### 4.4.2. Locale-specific Messages"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:628
+#: ..\python_docs\developer_guide.py:632
 msgid ""
 "Each language directory can also contain gettext information, which is the "
 "system used to translate the rest of NVDA's user interface and reported "
@@ -2147,18 +2166,18 @@ msgid ""
 "<http://www.nvda-project.org/wiki/TranslatingNVDA>"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:629
+#: ..\python_docs\developer_guide.py:633
 msgid "### 4.5. Add-on Documentation"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:630
+#: ..\python_docs\developer_guide.py:634
 msgid ""
 "Documentation for an add-on should be placed in a doc directory in the "
 "archive. Similar to the locale directory, this directory should contain "
 "directories for each language in which documentation is available. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:631
+#: ..\python_docs\developer_guide.py:635
 msgid ""
 "Users can access documentation for a particular add-on by opening the Add-"
 "ons Manager, selecting the add-on and pressing the Add-on help button. This "
@@ -2168,11 +2187,11 @@ msgid ""
 "NVDA will open doc\\en\\readme.html. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:632
+#: ..\python_docs\developer_guide.py:636
 msgid "## 5\\. NVDA Python Console"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:633
+#: ..\python_docs\developer_guide.py:637
 msgid ""
 "The NVDA Python console emulates the interactive Python interpreter from "
 "within NVDA. It is a development tool which is useful for debugging, general "
@@ -2180,15 +2199,15 @@ msgid ""
 "an application. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:634
+#: ..\python_docs\developer_guide.py:638
 msgid "### 5.1. Usage"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:635
+#: ..\python_docs\developer_guide.py:639
 msgid "The console can be activated in two ways: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:636
+#: ..\python_docs\developer_guide.py:640
 msgid ""
 "  * By pressing NVDA+control+z. If activated in this fashion, a snapshot of "
 "the current state of NVDA at the time the key was pressed will be taken and "
@@ -2196,135 +2215,144 @@ msgid ""
 "for more details. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:637
+#: ..\python_docs\developer_guide.py:641
 msgid ""
 "  * By selecting Tools -> Python console from the NVDA system tray menu. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:638
+#: ..\python_docs\developer_guide.py:642
 msgid ""
 "The console is similar to the standard interactive Python interpreter. Input "
-"is accepted one line at a time. The current line is processed when enter is "
-"pressed. You can navigate through the history of previously entered lines "
-"using the up and down arrow keys. "
+"is accepted one line at a time and processed when enter is pressed. Multiple "
+"lines can be pasted at once from the clipboard and will be processed one by "
+"one. You can navigate through the history of previously entered lines using "
+"the up and down arrow keys. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:639
+#: ..\python_docs\developer_guide.py:643
 msgid ""
 "Output \\(responses from the interpreter\\) will be spoken when enter is "
 "pressed. The f6 key toggles between the input and output controls. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:640
+#: ..\python_docs\developer_guide.py:644
 msgid ""
-"Closing the console window simply hides it. This allows the user to return "
-"to the session as it was left when it was closed, including history and "
-"variables. "
+"The result of the last executed command is stored in the \"\\_\" global "
+"variable. This shadows the gettext function which is stored as a built-in "
+"with the same name. It can be unshadowed by executing \"del \\_\" and "
+"avoided altogether by executing \"\\_ = \\_\". "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:641
+#: ..\python_docs\developer_guide.py:645
+msgid ""
+"Closing the console window \\(with escape or alt+F4\\) simply hides it. This "
+"allows the user to return to the session as it was left when it was closed, "
+"including history and variables. "
+msgstr ""
+
+#: ..\python_docs\developer_guide.py:646
 msgid "### 5.2. Namespace"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:642
+#: ..\python_docs\developer_guide.py:647
 msgid "#### 5.2.1. Automatic Imports"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:643
+#: ..\python_docs\developer_guide.py:648
 msgid ""
 "For convenience, the following modules and variables are automatically "
 "imported in the console: sys, os, wx, log \\(from logHandler\\), api, "
 "queueHandler, speech, braille "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:644
+#: ..\python_docs\developer_guide.py:649
 msgid "#### 5.2.2. Snapshot Variables"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:645
+#: ..\python_docs\developer_guide.py:650
 msgid ""
 "Whenever NVDA+control+z is pressed, certain variables available in the "
 "console will be assigned according to the current state of NVDA. These "
 "variables are: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:646
+#: ..\python_docs\developer_guide.py:651
 msgid "  * focus: The current focus object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:647
+#: ..\python_docs\developer_guide.py:652
 msgid "  * focusAnc: The ancestors of the current focus object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:648
+#: ..\python_docs\developer_guide.py:653
 msgid ""
 "  * fdl: Focus difference level; i.e. the level at which the ancestors for "
 "the current and previous focus differ "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:649
+#: ..\python_docs\developer_guide.py:654
 msgid "  * fg: The current foreground object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:650
+#: ..\python_docs\developer_guide.py:655
 msgid "  * nav: The current navigator object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:651
+#: ..\python_docs\developer_guide.py:656
 msgid "  * mouse: The current mouse object "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:652
+#: ..\python_docs\developer_guide.py:657
 msgid "  * brlRegions: The braille regions from the active braille buffer "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:653
+#: ..\python_docs\developer_guide.py:658
 msgid "## 6\\. Remote Python Console"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:654
+#: ..\python_docs\developer_guide.py:659
 msgid ""
 "A remote Python console is available for situations where remote debugging "
 "of NVDA is useful. It is similar to the local Python console discussed "
 "above, but is accessed via TCP. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:655
+#: ..\python_docs\developer_guide.py:660
 msgid ""
 "Please be aware that this is a huge security risk. You should only enable it "
 "if you are connected to trusted networks. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:656
+#: ..\python_docs\developer_guide.py:661
 msgid "### 6.1. Usage"
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:657
+#: ..\python_docs\developer_guide.py:662
 msgid ""
 "To enable the remote Python console, use the local Python console to import "
 "remotePythonConsole and call remotePythonConsole.initialize\\(\\). You can "
 "then connect to it via TCP port 6832. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:658
+#: ..\python_docs\developer_guide.py:663
 msgid "History of previously entered lines is not supported. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:659
+#: ..\python_docs\developer_guide.py:664
 msgid ""
 "The namespace is the same as the namespace in the local Python console. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:660
+#: ..\python_docs\developer_guide.py:665
 msgid "There are some special functions: "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:661
+#: ..\python_docs\developer_guide.py:666
 msgid ""
 "  * snap\\(\\): Takes a snapshot of the current state of NVDA and saves it "
 "in the snapshot variables. "
 msgstr ""
 
-#: ..\python_docs\developer_guide.py:662
+#: ..\python_docs\developer_guide.py:667
 msgid "  * rmSnap\\(\\): Removes all snapshot variables. "
 msgstr ""
