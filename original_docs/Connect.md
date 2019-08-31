@@ -16,6 +16,9 @@ nvda+subscribe@groups.io.
 
 You can also visit [the homepage](https://nvda.groups.io/g/nvda) of the users' email list where you can subscribe, search and read list archives.
 
+### English language Facebook group
+A community created group on Facebook for discussion of anything related to NVDA: https://www.facebook.com/groups/nvdaforum/
+
 ### Resources for specific languages
 Since the creation of NVDA, the community has created a number of independent websites, blogs and mailing lists to discuss all issues related to NVDA in their native languages. The following list shows those web resources in alphabetical order.
 

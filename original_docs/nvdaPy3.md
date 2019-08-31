@@ -1,6 +1,6 @@
 This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7.
 
-IMPORTANT: due to ongoing pre-transition activities, this document is subject to change without notice.
+IMPORTANT: due to ongoing transition activities, this document is subject to change without notice.
 
 ## Background
 
@@ -184,11 +184,11 @@ Start date: July 25, 2019
 2. Add-ons community and other stakeholders must be given guidance regarding Python 3 transition.
 3. Add-on developers are asked to start porting their add-ons to Python 3.
 
-Estimated completion for both stages: four to six months after pre-transition steps are completed.
+Estimated completion for both stages: NVDA 2019.3
 
 ### After transition:
 
-Start date: TBD
+Start date: after NVDA 2019.3 is released
 
 1. A beta of NVDA powered by python 3 must be released.
 2. Members of the public should provide beta-level feedback.
@@ -225,12 +225,13 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	8. July 25, 2019: alpha snapshot powered by Python 3 compiled, milestone done.
 3. Transition stage 2 (in progress):
 	1. July 26, 2019: community invitation to test Python 3 work.
+	2. August 14, 2019: NVDA 2019.2, one of the last Python 2 versions, released.
 4. After transition: not yet begun.
 5. Python 3 native features:
 	* Asyncio: not important at this stage.
 	* Collections.ChainMap: eases implementation of config.ConfigManager.
 	* pyz: no impact unless use cases emerge.
-	* Formatted string literals (the "f" strings): eases string debugging (requires Python 3.8).
+	* Formatted string literals (the "f" strings): eases string debugging and more readable messages.
 	* Gettext.pgettext (Python 3.8): long sought answer to message contexts (see GitHub issue 1524 for details).
 	* Assignment expression (the ":=" operator in Python 3.8): may allow improved readability of some if and while statements.
 	* sys.breakpointhook: allow Visual Studio debugger and friends to help debug NVDA (if installed).
@@ -258,10 +259,12 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 
 * Try using Python modules that are known to be compatible with both Python 2 and 3.
 * Be sure to test add-ons in 2019.3 alpha and edit add-on files accordingly.
+* Make sure to communicate status of Python 3 compatibility for add-ons if possible.
 
 ### For testers:
 
 * Use a portable copy of 2019.3 alpha if you rely on add-ons not ported to Python 3 yet.
+* Contact add-on authors if add-ons do not work in 2019.3 alpha.
 
 ### For translators:
 

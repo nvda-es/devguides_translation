@@ -10,6 +10,8 @@ _(u"""If you would like to text chat with the developers or other NVDA users dir
 "",_(u"""To join the users' list, send a blank email to: """),
 _(u"""nvda+subscribe@groups.io."""),
 "",_(u"""You can also visit [the homepage](https://nvda.groups.io/g/nvda) of the users' email list where you can subscribe, search and read list archives."""),
+"",_(u"""### English language Facebook group"""),
+_(u"""A community created group on Facebook for discussion of anything related to NVDA: https://www.facebook.com/groups/nvdaforum/"""),
 "",_(u"""### Resources for specific languages"""),
 _(u"""Since the creation of NVDA, the community has created a number of independent websites, blogs and mailing lists to discuss all issues related to NVDA in their native languages. The following list shows those web resources in alphabetical order."""),
 "",_(u"""Note:"""),

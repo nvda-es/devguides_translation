@@ -7,7 +7,7 @@
   <body>
   <header><h1>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.7.</h1></header>
   <p>Este documento describe los pasos y motivos por los que NVDA se mueve de Python 2.7 a 3.7.</p>
-<p>Importante: debido a las actividades previas a la transición que están en curso, este documento se encuentra sujeto a cambios sin previo aviso.</p>
+<p>Importante: debido a las actividades de transición que están en curso, este documento se encuentra sujeto a cambios sin previo aviso.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Python es uno de los lenguajes de programación más populares para diversos proyectos. Es fácil de aprender, tiene muchísimos módulos en su biblioteca estándar y extensiones de terceros, así como una documentación muy completa y una sintaxis clara. Todo esto hace que sea la opción ideal a la hora de elaborar scripts.</p>
 <p>Actualmente hay dos ramas principales en Python: 2.x, liberada a principios del año 2000, y 3.x, liberada por primera vez en 2008. A primera vista, Python 3 puede parecer similar a Python 2, pero hay numerosas diferencias profundas, incluyendo el soporte extenso de Unicode en Python 3, módulos renombrados, cambios en las importaciones, cambios en las divisiones y más.</p>
@@ -205,9 +205,9 @@
 <li>La comunidad de complementos y otros miembros deben recibir asistencia relacionada con la transición a Python 3.</li>
 <li>Se solicita a los desarrolladores de complementos que migren su código a Python 3.</li>
 </ol>
-<p>Finalización estimada de ambas fases: de cuatro a seis meses después de que se completen los pasos previos a la transición.</p>
+<p>Finalización estimada de ambas fases: NVDA 2019.3</p>
 <h3 id="despues-de-la-transicion">Después de la transición:</h3>
-<p>Fecha de inicio: por determinar</p>
+<p>Fecha de inicio: después de la publicación de NVDA 2019.3</p>
 <ol>
 <li>Se debe liberar una beta de NVDA que funcione con Python 3.</li>
 <li>Los miembros del público deberían proporcionar comentarios a nivel de beta.</li>
@@ -247,6 +247,7 @@
 </li>
 <li>Fase 2 de la transición (en progreso):<ol>
 <li>26 de julio de 2019: invitación para que la comunidad pruebe el trabajo con Python 3.</li>
+<li>14 de agosto de 2019: se publica NVDA 2019.2, una de las últimas versiones compatibles con Python 2.</li>
 </ol>
 </li>
 <li>Después de la transición: todavía no ha empezado.</li>
@@ -254,7 +255,7 @@
 <li>Asyncio: no es importante en esta fase.</li>
 <li>Collections.ChainMap: facilita la implementación de config.ConfigManager.</li>
 <li>pyz: no tiene impacto a menos que aparezcan casos de uso.</li>
-<li>Literales de cadenas formateadas (las cadenas "f"): facilita la depuración de cadenas (necesita Python 3.8).</li>
+<li>Literales de cadenas formateadas (las cadenas "f"): facilita la depuración de cadenas y hace más legibles los mensajes.</li>
 <li>Gettext.pgettext (Python 3.8): la respuesta buscada durante tanto tiempo para los contextos de un mensaje (mira la incidencia 1524 de GitHub para más detalles).</li>
 <li>Expresión de asignación (el operador := en Python 3.8): puede permitir una lectura mejorada de algunas instrucciones if y while.</li>
 <li>sys.breakpointhook: ayuda al depurador de Visual Studio y compañía a depurar NVDA (si está instalado).</li>
@@ -287,10 +288,12 @@
 <ul>
 <li>Intenta usar módulos Python que se sepa que son compatibles con Python 2 y 3.</li>
 <li>Asegúrate de probar los complementos en 2019.3 Alpha y edita los archivos del complemento según corresponda.</li>
+<li>Asegúrate de comunicar el estado de compatibilidad con Python 3 de los complementos si es posible.</li>
 </ul>
 <h3 id="para-evaluadores">Para evaluadores:</h3>
 <ul>
 <li>Usa una copia portable de 2019.3 Alpha si necesitas apoyarte en complementos que todavía no han migrado a Python 3.</li>
+<li>Contacta con los autores de complementos si los complementos no funcionan en 2019.3 alpha.</li>
 </ul>
 <h3 id="para-traductores">Para traductores:</h3>
 <p>Nada todavía.</p>

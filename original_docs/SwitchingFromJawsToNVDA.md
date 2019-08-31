@@ -69,7 +69,7 @@ However, if you simply want to activate the current object you are focused on wh
 
 ### Accessing the notification area (system tray)
 
-NVDA does not provide a dialog to access the notification area, as this is accessible natively.  Press WINDOWS+B to access the notification area, then use the arrow keys to move between items.  Pressing spacebar on an icon is the same as left clicking the mouse.  Pressing enter is the same as double-clicking the left mouse button (there is no distinction between these in Windows 10).  Pressing the applications key or or shift+f10 to open the context menu for an item.
+NVDA does not provide a dialog to access the notification area, as this is accessible natively.  Press WINDOWS+B to access the notification area.  To move between notification area items, either use the arrow keys or press the first letter of an item.  Pressing the spacebar on an icon is the same as left-clicking the mouse.  Pressing enter is the same as double-clicking the left mouse button (there is no distinction between these in Windows 10).  Pressing the applications key or or shift+f10 to open the context menu for an item.
 
 If the first item in the notification area is "Notification chevron button", Windows is not set to show all icons.  Press ENTER or spacebar to open this and then arrow through the items.  To set Windows to always show all notification area icons, open "notification area" windows settings, or "select which icons appear on the taskbar", and ensure "Always show all icons in the notification area" is checked.
 

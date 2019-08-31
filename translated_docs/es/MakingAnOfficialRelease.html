@@ -8,66 +8,166 @@
   <header><h1># Creación de una liberación oficial</h1></header>
   <h1 id="creacion-de-una-liberacion-oficial">Creación de una liberación oficial</h1>
 <p>Las siguientes instrucciones son para el administrador de liberaciones, y detallan cómo liberar una nueva versión oficial.</p>
-<h2 id="betas">Betas</h2>
+<h2 id="iniciar-la-beta">Iniciar la beta</h2>
 <ul>
-<li>Comprueba que la rama beta tiene los cambios necesarios:</li>
-<li>Elige un punto donde master esté sana (se superen todas las pruebas y no haya regresiones conocidas)</li>
-<li>Mezcla master en beta</li>
-<li>Comprueba que estos cambios han tenido algunas pruebas a nivel alpha.</li>
+<li>Decide desde qué commit quieres que empiece la beta.<ul>
+<li>Generalmente master debería estar sana (se superan todas las pruebas y no hay regresiones conocidas)</li>
 <li>El cambio más reciente (y significativo) en beta debería haber tenido al menos una semana de pruebas en alpha.</li>
-<li>Etiqueta la beta1. Por ejemplo: release-2019.1beta1.</li>
-<li>¿Línea de órdenes o URL de nueva liberación en Github (con liberación preliminar)?</li>
-<li>Ahora la beta se mostrará en la página de versiones de desarrollo</li>
+</ul>
+</li>
+<li>Mezcla este commit en beta</li>
+<li>Crea una nueva pre-release con la <a href="https://github.com/nvaccess/nvda/releases/new">página de nueva liberación de GitHub</a><ul>
+<li>Ejemplo de versión de etiqueta: <code>release-2019.2beta3</code></li>
+<li>Destino: <code>beta</code></li>
+<li>Ejemplo de título de liberación: <code>Release 2019.2beta3</code></li>
+<li>No hace falta descripción para la primera beta, en las siguientes betas se pueden describir  adiciones o eliminaciones importantes.</li>
+<li>Asegúrate de que la opción "This is a pre-release" está marcada.</li>
+<li>La etiqueta debe tener un prefijo <code>release-</code>.</li>
+<li>Esto crea una nueva etiqueta anotada. Por ejemplo, release-2019.2beta3</li>
+</ul>
+</li>
+<li>Ahora la beta se mostrará en la página de versiones de desarrollo<ul>
 <li>El sistema de actualizaciones automáticas comenzará a ofrecerla a aquellos que busquen betas</li>
+</ul>
+</li>
+<li>Haz una revisión del archivo <code>user_docs/en/changes.t2t</code>.<ul>
+<li>Solicita una segunda revisión.</li>
+</ul>
+</li>
+</ul>
+<h2 id="durante-el-periodo-beta">Durante el periodo beta</h2>
+<ul>
 <li>Mira periódicamente las incidencias recientes archivadas, específicamente las etiquetadas como <code>p1</code>, <code>crash</code> o <code>appcrash</code>.</li>
 <li>Mira periódicamente las solicitudes de cambio basadas en beta y asegúrate de que son revisadas y luego aprobadas / mezcladas o rechazadas.</li>
 <li>Según se vayan mezclando solicitudes de cambio basadas en la rama beta, crea nuevas etiquetas periódicamente.</li>
+</ul>
+<h2 id="final-del-periodo-beta">Final del periodo beta</h2>
+<ul>
 <li>Tras la beta final, <a href="https://github.com/nvaccess/nvda/wiki/StartingTranslationFreeze">congela las traducciones</a> durante 2 semanas. En este momento no deberían llegar más commits a la rama beta.</li>
+</ul>
+<h2 id="segunda-congelacion-de-traducciones">Segunda congelación de traducciones</h2>
+<p>Normalmente no hace falta, pero si se descubre que hay que actualizar las traducciones tras iniciar o completar la congelación de traducciones, entonces:</p>
+<ul>
+<li>Comprueba que <code>beta</code> tiene los cambios que requieren volver a traducir.</li>
+<li>Vuelve a hacer los pasos descritos en el documento Iniciar una congelación de traducciones.</li>
+<li>Envía un correo electrónico a la lista de correo de traducciones describiendo la necesidad de nuevos cambios y plazos.</li>
+<li>Después de la congelación de traducciones, </li>
 </ul>
 <h2 id="candidatas-a-liberacion">Candidatas a liberación</h2>
 <ul>
-<li>Comprueba que es seguro liberar una rc mirando las incidencias recientes, especialmente aquellas etiquetadas como p1, crash o appcrash.</li>
-<li>Si se trata de la rc1, actualiza las traducciones:<ol>
+<li>Comprueba que es seguro publicar una rc.<ul>
+<li>Mirando las incidencias archivadas recientemente, buscando específicamente las etiquetadas como <code>p1</code>, <code>crash</code> o <code>appcrash</code>.</li>
+</ul>
+</li>
+<li>Si se trata de la <code>rc1</code>, actualiza las traducciones:<ol>
 <li>Inicia sesión en exbi y cambia con el comando su al usuario nvdal10n.</li>
 <li><code>cd ~/mr/mainNVDACode</code></li>
 <li><code>mr up</code></li>
 <li><code>cd ../srt</code></li>
 <li><code>mr up</code></li>
 <li><code>mr svn2nvda</code></li>
+<li>Nota: esto actualiza <code>beta</code> con las nuevas traducciones.</li>
 </ol>
 </li>
-<li>Si se trata de la rc1, restablece la rama rc a beta. De lo contrario, mezcla rc en beta si es necesario.</li>
-<li>Para todas las demás candidatas a liberación, busca cualquier solicitud de cambio basada en rc, revísalas y acepta / mezcla o rechaza según corresponda.</li>
-<li>Crea una etiqueta anotada para la liberación con el prefijo "release-". Por ejemplo, release-2016.1rc1.</li>
-<li>Esto iniciará una construcción con AppVeyor, tendrás que esperar a que se complete. Como parte de esto, se lanzará la liberación.</li>
-<li>Publica la versión liberada. En exbi, cambia al usuario nvaccess y ejecuta <code>nvdaRelease</code></li>
-<li>Si es una liberación candidata, crea una entrada de blog en www.nvaccess.org. Ponla en la categoría en desarrollo, y nunca en la de noticias.<ul>
-<li>Usa como base una publicación anterior.</li>
-<li>Si no es la primera liberación candidata, incluye los cambios desde la liberación candidata anterior.</li>
+<li>Actualiza la rama <code>rc</code><ul>
+<li>Para la rc1, restablece la rama <code>rc</code> a <code>beta</code></li>
+<li>Para la rc1 y posteriores, mezcla <code>beta</code> en <code>rc</code></li>
 </ul>
 </li>
-<li>Difunde la publicación en la lista de traductores de NVDA, la lista de desarrolladores y Twitter.</li>
-<li>
-<p>Escanea el archivo del instalador en <a href="http://www.virustotal.com/">Virus Total</a>. Pon directamente la URL de descarga.</p>
+<li>Comprueba las solicitudes de cambio para <code>rc</code><ul>
+<li>Busca cualquier solicitud de cambio basada en <code>rc</code>, revísala y aprueba/mezcla o recházala.</li>
+</ul>
 </li>
-<li>
-<p>Si es una liberación final:</p>
+<li>Crea una nueva pre-release con la <a href="https://github.com/nvaccess/nvda/releases/new">página de nueva liberación de GitHub</a><ul>
+<li>Ejemplo de etiqueta de versión: <code>release-2019.2rc1</code></li>
+<li>Destino: <code>rc</code></li>
+<li>Ejemplo de título de liberación: <code>Release 2019.2rc1</code></li>
+<li>No hace falta descripción para la primera rc, las siguientes rcs pueden describir adiciones o eliminaciones importantes.</li>
+<li>Asegúrate de que la opción "This is a pre-release" está marcada.</li>
+<li>La etiqueta debe tener un prefijo <code>release-</code>.</li>
+<li>Esto crea una nueva etiqueta anotada. Por ejemplo: release-2019.2rc1</li>
+</ul>
 </li>
-<li>Marca el hito de lanzamiento como completado en GitHub.</li>
-<li>Cambia el conjunto de hitos de las incidencias y las peticiones de cambios automáticamente cerradas por GitHub a la siguiente liberación:<ol>
-<li>Consigue el id del hito para la nueva liberación. La forma más fácil de hacerlo es ir a https://github.com/nvaccess/nvda/milestones y mirar el enlace del hito en cuestión. El número del final es el id.</li>
-<li>En exbi, edita ~nvaccess/data/nvaServer.conf.</li>
-<li>En la sección [nvdaGithub], cambia el valor de autoCloseMilestone al identificador del hito que has obtenido en el paso 1.</li>
+<li>Espera a que AppVeyor complete la construcción.<ul>
+<li>Al etiquetar la liberación el proceso se dispara automáticamente.</li>
+<li>Como parte de él, el lanzamiento será efectuado.</li>
+</ul>
+</li>
+<li>Publica la liberación efectuada.<ul>
+<li>En exbi, cambia al usuario <code>nvaccess</code> y ejecuta <code>nvdaRelease</code></li>
+</ul>
+</li>
+<li>Difunde la liberación.<ul>
+<li>Crea una entrada de blog en www.nvaccess.org<ul>
+<li>Pon la entrada en la categoría <code>Development</code>. Nunca debería situarse en la categoría <code>News</code>.</li>
+</ul>
+</li>
+<li>Usa como base una publicación anterior.</li>
+<li>Si no es la primera liberación de prueba, incluye los cambios desde la liberación de prueba anterior.</li>
+<li>Escribe un correo electrónico a la lista nvda-devel</li>
+<li>Escribe un correo electrónico a la lista nvda-translations</li>
+<li>Publícala en Twitter</li>
+</ul>
+</li>
+<li>Analiza el archivo del instalador<ul>
+<li>Utiliza <a href="http://www.virustotal.com/">VirusTotal</a>. Envía la URL de descarga directa.</li>
+</ul>
+</li>
+</ul>
+<h2 id="liberacion-final">Liberación final</h2>
+<ul>
+<li>Crea una nueva liberación con la <a href="https://github.com/nvaccess/nvda/releases/new">página de nueva liberación de GitHub</a><ul>
+<li>Ejemplo de etiqueta de versión: <code>release-2019.2</code></li>
+<li>Destino: <code>rc</code></li>
+<li>Ejemplo de título de liberación: <code>Release 2019.2</code></li>
+<li>No hace falta descripción para la liberación final</li>
+<li>Comprueba que la opción "This is a pre-release" <strong>no</strong> está marcada.</li>
+<li>La etiqueta debe tener un prefijo <code>release-</code>.</li>
+<li>Esto crea una nueva etiqueta anotada. Por ejemplo: release-2019.2</li>
+</ul>
+</li>
+<li>Espera a que AppVeyor complete la construcción.<ul>
+<li>Al etiquetar la liberación el proceso se dispara automáticamente.</li>
+<li>Como parte de él, el lanzamiento será efectuado.</li>
+</ul>
+</li>
+<li>Publica la liberación efectuada.<ul>
+<li>En exbi, cambia al usuario <code>nvaccess</code> y ejecuta <code>nvdaRelease</code></li>
+</ul>
+</li>
+<li>Cierra el <a href="https://github.com/nvaccess/nvda/milestones">hito de la liberación</a>.</li>
+<li>Comprueba que el siguiente hito se ha establecido en incidencias y solicitudes de cambio cerradas ahora automáticamente por GitHub.<ol>
+<li>Obtén el id del hito para la nueva liberación.</li>
+<li>Ve a https://github.com/nvaccess/nvda/milestones</li>
+<li>Mira la URL del enlace del hito relevante.</li>
+<li>El número al final es el id.</li>
+<li>En exbi, edita <code>~nvaccess/data/nvaServer.conf</code></li>
+<li>En la sección <code>[nvdaGithub]</code>, cambia el valor de <code>autoCloseMilestone</code> al identificador del hito que has obtenido en el paso 1.</li>
 <li>Recarga uwsgi para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></li>
 </ol>
 </li>
-<li>Crea una entrada de blog en www.nvaccess.org bajo la categoría liberaciones.</li>
+<li>Difunde la liberación.<ul>
+<li>Crea una entrada de blog en www.nvaccess.org<ul>
+<li>Pon la entrada en la categoría <code>releases</code>.</li>
+</ul>
+</li>
+<li>Usa como base una publicación anterior.</li>
+<li>Escribe un correo electrónico a la lista nvda-devel</li>
+<li>Escribe un correo electrónico a la lista nvda-translations</li>
+<li>Publícala en Twitter</li>
 <li>Publica la noticia en Facebook.</li>
 <li>Publica la noticia en la lista de correo de noticias de NV Access.</li>
-<li>Si no se ha hecho ya, prepara la rama master para la siguiente versión (la que va después de la que se ha publicado):<ol>
-<li>En source/versionInfo.py, actualiza las variables version_year y/o version_major para la próxima versión. Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza copyrightYears también.</li>
+</ul>
+</li>
+<li>Asegúrate de que el número de versión de <code>master</code> y el archivo de cambios están correctos<ol>
+<li>En <code>source/buildVersion.py</code>, actualiza las variables <code>version_year</code> y/o <code>version_major</code> para la próxima versión.</li>
+<li>Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza <code>copyrightYears</code> también.</li>
 <li>Añade un encabezado para la siguiente versión en user_docs/en/changes.t2t.</li>
 </ol>
+</li>
+<li>Analiza el archivo del instalador<ul>
+<li>Utiliza <a href="http://www.virustotal.com/">VirusTotal</a>. Envía la URL de descarga directa.</li>
+</ul>
 </li>
 </ul>
 </body>
