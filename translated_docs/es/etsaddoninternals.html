@@ -1,0 +1,65 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Complementos de NVDA vistos por dentro: Enhanced Touch Gestures</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Complementos de NVDA vistos por dentro: Enhanced Touch Gestures</h1></header>
+  <h1 id="complementos-de-nvda-vistos-por-dentro-enhanced-touch-gestures">Complementos de NVDA vistos por dentro: Enhanced Touch Gestures</h1>
+<p>Autor: Joseph Lee</p>
+<h2 id="introduccion">Introducción</h2>
+<p>Las interfaces de usuario basadas en toques se encuentran en todas partes: desde relojes inteligentes hasta grandes ordenadores, desde sistemas de automatización del hogar a equipamiento de monitorización de vuelo. La idea de usar un dedo para manipular elementos de la pantalla era un sueño hace muchas décadas, pero en el siglo 21 aparecen productos con pantallas táctiles cada día, más aún en el mundo de los teléfonos inteligentes y las tabletas.</p>
+<p>Para las personas ciegas, el modo más común de interactuar con un ordenador ha sido y todavía es el teclado. Pero cada vez más, gracias a tecnologías como Apple VoiceOver o Google Accessibility Suite, se ha ido haciendo posible para las personas ciegas interactuar con ordenadores y teléfonos inteligentes mediante toques. Esto sigue evolucionando hasta el punto de que los lectores de pantalla para Windows, como Narrador o NVDA, vienen con soporte integrado para el acceso con pantallas táctiles, con más trabajo por hacer en algunas áreas.</p>
+<p>En Complementos de NVDA vistos por dentro: Enhanced Touch Gestures, veremos cómo se ha implementado el soporte de NVDA para pantallas táctiles, y también cómo ayuda este complemento a mejorar la experiencia de usuario con pantallas táctiles.</p>
+<h2 id="linea-de-tiempo-del-soporte-tactil-de-nvda">Línea de tiempo del soporte táctil de NVDA</h2>
+<p>El soporte táctil en NVDA se remonta a los esfuerzos de muchos lectores de pantalla móviles en la década del 2000, especialmente en Windows Mobile y VoiceOver en IOs. Los lectores de pantalla para Windows Mobile, tales como Mobile Speak de Code Factory (abandonado), proporcionaban órdenes táctiles básicas para navegar y llevar a cabo tareas sencillas. Comparados con los dispositivos táctiles actuales, los dispositivos de la época de Windows Mobile eran dispositivos resistivos, y con frecuencia requerían el uso de un lápiz. Aunque en su momento fue algo revolucionario, la interacción táctil con los dispositivos móviles era un nicho de mercado, y combinada con la falta de pautas de accesibilidad para los primeros teléfonos inteligentes, no se recomendaba el uso de los primeros móviles Android e IOs a las personas ciegas.</p>
+<p>Esto cambió en 2009, cuando Apple anunció que VoiceOver formaría parte de IOs 3.0. Este lector de pantalla móvil, en parte derivado de VoiceOver en OS X / MacOS con optimizaciones para la interacción táctil, halló un éxito inmediato. Con VoiceOver preinstalado, los dispositivos con IOs 3.0 en adelante (incluidos iPhone, iPad, iPod touch y otros) se volvieron accesibles para las personas ciegas, y ganaron importancia gracias a las órdenes táctiles intuitivas para navegar y hacer diversas tareas. Google les siguió, introduciendo una serie de liberaciones de Android con Talkback, un lector de pantalla integrado en este sistema operativo, junto con servicios de accesibilidad diseñados para permitir la creación de soluciones de terceros.</p>
+<p>Las pantallas táctiles en ordenadores con Windows comenzaron a popularizarse en 2012 tras la llegada de Windows 8. Aunque Windows 7 y versiones anteriores tenían soporte básico para estas pantallas, no fue hasta Windows 8 cuando la interacción táctil tomó un rol más importante. Aprendiendo de Apple y Google, Microsoft introdujo un Narrador notablemente modificado con soporte táctil integrado, junto con servicios de soporte que permitieran aprovechar las ventajas de la interacción táctil a lectores de pantalla de terceros como NVDA. NVDA lo hizo, y en su versión 2012.3 (noviembre de 2012) se convirtió en uno de los primeros lectoores de pantalla de terceros en soportar de forma nativa las pantallas táctiles en Windows.</p>
+<h2 id="como-funciona-el-soporte-tactil-en-nvda">Cómo funciona el soporte táctil en NVDA</h2>
+<p>Para que NVDA soporte pantallas táctiles, debe estar instalado en un equipo con Windows 8 o una versión posterior (la versión portable y el instalador temporal no funcionarán). Esto se debe a que como parte del soporte táctil, NVDA debe comunicarse con los servicios de accesibilidad y modificar los indicadores de soporte táctil, cosa que sólo puede hacerse si el ejecutable está registrado en los servicios de accesibilidad (sólo la copia instalada puede hacerlo). Además, el monitor táctil debe soportar cinco puntos de contacto, aunque la mayoría de pantallas táctiles hoy en día soportan 10.</p>
+<p>Al arrancar, una vez que NVDA detecta que se puede usar el soporte táctil, inicia un hilo manejador de toques que informa a los servicios de accesibilidad que se encuentra activa una tecnología de asistencia que soporta la interacción táctil, y crea una ventana de eventos táctiles que recibe los eventos de toque entrantes. El trabajo de la ventana de eventos táctiles es detectar la entrada táctil y pedir a un gestor de rastreo táctil que construya una representación más significativa de la entrada táctil, normalmente conocida como "gesto táctil". Actualmente, NVDA puede reconocer un toque (pulsación corta), deslizamientos (desplazamientos cortos), tocar y mantener (un toque seguido de otro toque sin levantar el dedo), exploraciones (mover un dedo por la pantalla sin quitar el dedo), y una combinación de estos que tenga lugar con al menos un dedo (siendo el máximo la cantidad de puntos táctiles que tenga el monitor). Cuando se cierra NVDA, el hilo manejador táctil se cierra, lo que mata la ventana de eventos táctiles e informa a los servicios de accesibilidad de que NVDA se apaga, de tal forma que la interacción táctil regresa al estado normal.</p>
+<p>Cada fragmento de entrada táctil se graba mediante un objeto rastreador de toques. Se usa un rastreador de un único dedo para seguir los gestos de un dedo, mientras que se utiliza un rastreador multitáctil para generalizarlo a varios dedos. Cada rastreador táctil graba el dedo que se usó, la dirección del desplazamiento, cantidad de toques, y si este gesto forma parte de un gesto de exploración. Colectivamente, estos objetos rastreadores se representan bajo un gesto de entrada dedicado, por lo que se les pueden asignar órdenes de NVDA, incluidas aquellas que se encuentran en el complemento Enhanced Touch Gestures.</p>
+<h2 id="introduccion-al-complemento-enhanced-touch-gestures">Introducción al complemento Enhanced Touch Gestures</h2>
+<p>Como su nombre indica, Enhanced Touch Gestures mejora la experiencia de interacción táctil de los usuarios. El objetivo general de este complemento es proporcionar órdenes táctiles para algunas órdenes comunes de NVDA que vienen por defecto sin órdenes táctiles, así como proporcionar posibilidades de navegación adicionales como el modo web.</p>
+<p>Este complemento nació en 2013, poco después de comprar un ordenador con pantalla táctil. Estudié las características del soporte táctil proporcionado por NVDA, y como estaba acostumbrado a IOs, miré las diferencias entre NVDA y VoiceOver en términos de órdenes táctiles. Algunas características de este complemento son el resultado de intentar reducir la brecha entre lectores de pantalla, mientras que otras nacieron de sugerencias de los usuarios, como pasar a través del modo táctil (se explica más adelante).</p>
+<p>Recientemente ha emergido otro objetivo: solicitudes de cambio para NVDA. Debido a la popularidad de Enhanced Touch Gestures, decidí enviar algunas características de este complemento a NV Access en una serie de solicitudes de cambio. A fecha de redacción de este artículo (agosto de 2019), al menos una solicitud de cambio basada en este complemento se ha enviado para revisar su código e incluirla en versiones futuras de NVDA.</p>
+<h2 id="estructura-del-complemento">Estructura del complemento</h2>
+<p>Aunque es potente, toda la acción tiene lugar dentro de un módulo con una única extensión global. Esta extensión global se divide en las siguientes partes:</p>
+<ul>
+<li>Órdenes táctiles para acciones comunes como verbalizar la barra de estado, la barra de título y otras.</li>
+<li>Mejoras de soporte como modos táctiles adicionales y pitido de anuncio de coordenadas.</li>
+<li>Posibilidades adicionales de navegación, como la navegación web.</li>
+<li>Pasar a través del modo táctil y otras funciones adicionales que podrían incluirse en NVDA en el futuro.</li>
+<li>Características dedicadas al teclado táctil.</li>
+<li>Opciones adicionales de interacción táctil.</li>
+</ul>
+<p>Algunas características son ahora parte de NVDA, la más destacable la alternancia entre modos de escritura táctil.</p>
+<h2 id="modos-tactiles-adicionales">Modos táctiles adicionales</h2>
+<p>Por defecto, NVDA viene con los modos de objetos y de texto, que pueden conmutarse dando un único toque con tres dedos. Enhanced Touch Gestures añade hasta dos modos táctiles adicionales:</p>
+<ul>
+<li>Modo web: usado para navegar por elementos web. En este modo, desplazar el dedo arriba o abajo cambia el tipo de elemento, mientras que moverlo a izquierda o derecha se desplaza por el elemento del tipo elegido.</li>
+<li>Modo de opciones del sintetizador: en este modo, deslizar dos dedos a izquierda o derecha cambia entre opciones del anillo del sintetizador, mientras que deslizar dos dedos arriba o abajo modifica sus valores.</li>
+</ul>
+<h3 id="modo-tactil-web">Modo táctil web</h3>
+<p>El modo táctil web está diseñado para permitir a los usuarios navegar por documentos complejos. En resumen, es similar a las diversas opciones del rotor de VoiceOver.</p>
+<p>Por defecto se usa el modo normal. En este modo, se desliza un dedo a la izquierda o a la derecha para moverse por los objetos tal y como se hace en el modo táctil para objetos. Los otros tipos de elementos son enlace, encabezado, marco, tabla, región y formularios.</p>
+<p>Internamente, la navegación por elementos llama a los scripts de navegación de una sola letra, excepto en el modo normal, que llama a los comandos estándar de objeto siguiente o anterior. Los elementos disponibles se alojan dentro de una tupla, y al cambiar el elemento de navegación se cambia la entrada de la tupla que se mira para buscar gestos de navegación web.</p>
+<h2 id="teclado-tactil">Teclado táctil</h2>
+<p>El teclado táctil, como su propio nombre indica, permite que los usuarios escriban utilizando un teclado virtual que se muestra en pantalla. Se pueden escribir caracteres, realizar órdenes de funciones, y acceder a símbolos adicionales que no se "muestran" en el teclado.</p>
+<p>Tres características (una de ellas es una corrección) se agrupan bajo el soporte para el teclado táctil proporcionado por Enhanced Touch Gestures, siendo una de ellas parte de NVDA:</p>
+<ul>
+<li>Mostrar u ocultar el teclado táctil.</li>
+<li>Eliminar información sobrante mientras se anuncian las teclas del teclado, como el estado sólo lectura, que no es preciso.</li>
+<li>Controlar si las teclas se activan al hacer una doble pulsación sobre ellas o al levantar el dedo.</li>
+</ul>
+<h3 id="mostrar-u-ocultar-el-teclado-tactil">Mostrar u ocultar el teclado táctil</h3>
+<p>Por defecto, hay un botón para el teclado táctil en la parte inferior de la pantalla, y a menos que se trabaje con un área de edición, hay que pulsarlo explícitamente para mostrar el teclado táctil. Haciendo un desplazamiento con cuatro dedos a la derecha, se puede mostrar u ocultar el teclado táctil desde cualquier parte. NVDA hace esto posible buscando el botón del teclado táctil mediante emulación de navegación por objetos, y una vez que lo encuentra, lo activa.</p>
+<h3 id="escritura-tactil">Escritura táctil</h3>
+<p>A diferencia de la mayoría de controles, donde hay que pulsar dos veces para activarlos, se puede indicar a NVDA que permita pulsar teclas del teclado táctil levantando el dedo. Esto se conoce como "escritura táctil", y es totalmente opuesta a la escritura clásica mediante activación de objetos. NVDA lleva a cabo la escritura táctil definiendo un gesto "colocación del cursor", que permitirá escribir usando el teclado táctil.</p>
+<p>Antes no era posible alternar entre estos dos modos, pero en versiones recientes del complemento se puede conmutar entre ellos mediante la interfaz de opciones del complemento. Con el modo de escritura táctil desactivado, se debe pulsar dos veces la tecla deseada. Con él encendido, se puede simplemente levantar el dedo. Esto, junto con algunas partes de la interfaz de opciones del complemento, forma parte ahora de NVDA.</p>
+<h2 id="pasar-a-traves-del-modo-tactil">Pasar a través del modo táctil</h2>
+<h2 id="pitido-de-anuncio-de-coordenadas">Pitido de anuncio de coordenadas</h2>
+<h2 id="conclusion">Conclusión</h2>
+</body>
+</html>

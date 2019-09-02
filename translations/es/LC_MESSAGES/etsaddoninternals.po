@@ -1,0 +1,523 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-31 00:00+0200\n"
+"PO-Revision-Date: 2019-09-02 16:54+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\etsaddoninternals.py:3
+msgid "# NVDA Add-on internals: Enhanced Touch Gestures"
+msgstr "# Complementos de NVDA vistos por dentro: Enhanced Touch Gestures"
+
+#: ..\python_docs\etsaddoninternals.py:4
+msgid "Author: Joseph Lee"
+msgstr "Autor: Joseph Lee"
+
+#: ..\python_docs\etsaddoninternals.py:5
+msgid "## Introduction"
+msgstr "## Introducción"
+
+#: ..\python_docs\etsaddoninternals.py:6
+msgid ""
+"Touch-based user interface is everywhere: from smartwatches to some "
+"mainframe computers, from home automation systems to aircraft monitoring "
+"equipments. The idea of using one's finger to manipulate screen elements was "
+"a dream many decades ago, but in the 21st century, new products equipped "
+"with touchscreens appear every day, more so in the world of smartphones and "
+"tablets."
+msgstr ""
+"Las interfaces de usuario basadas en toques se encuentran en todas partes: "
+"desde relojes inteligentes hasta grandes ordenadores, desde sistemas de "
+"automatización del hogar a equipamiento de monitorización de vuelo. La idea "
+"de usar un dedo para manipular elementos de la pantalla era un sueño hace "
+"muchas décadas, pero en el siglo 21 aparecen productos con pantallas "
+"táctiles cada día, más aún en el mundo de los teléfonos inteligentes y las "
+"tabletas."
+
+#: ..\python_docs\etsaddoninternals.py:7
+msgid ""
+"For blind people, the most common way to interact with a computer has been, "
+"and still is, keyboard. But increasingly, thanks to technologies such as "
+"Apple's VoiceOver and Google Accessibility suite, it became possible for "
+"blind people to interact with computers and smartphones via touch. This is "
+"more so now that Windows screen readers such as Narrator and NVDA comes with "
+"built-in support for touchscreen access, with more work to be done in some "
+"areas."
+msgstr ""
+"Para las personas ciegas, el modo más común de interactuar con un ordenador "
+"ha sido y todavía es el teclado. Pero cada vez más, gracias a tecnologías "
+"como Apple VoiceOver o Google Accessibility Suite, se ha ido haciendo "
+"posible para las personas ciegas interactuar con ordenadores y teléfonos "
+"inteligentes mediante toques. Esto sigue evolucionando hasta el punto de que "
+"los lectores de pantalla para Windows, como Narrador o NVDA, vienen con "
+"soporte integrado para el acceso con pantallas táctiles, con más trabajo por "
+"hacer en algunas áreas."
+
+#: ..\python_docs\etsaddoninternals.py:8
+msgid ""
+"In NVDA Add-on Internals: Enhanced Touch Gestures, we'll take a look at how "
+"NVDA's touchscreen support is implemented, as well as how this add-on helps "
+"enhance user experience on touchscreens."
+msgstr ""
+"En Complementos de NVDA vistos por dentro: Enhanced Touch Gestures, veremos "
+"cómo se ha implementado el soporte de NVDA para pantallas táctiles, y "
+"también cómo ayuda este complemento a mejorar la experiencia de usuario con "
+"pantallas táctiles."
+
+#: ..\python_docs\etsaddoninternals.py:9
+msgid "## Timeline of NVDA's touch support"
+msgstr "## Línea de tiempo del soporte táctil de NVDA"
+
+#: ..\python_docs\etsaddoninternals.py:10
+msgid ""
+"Touch support in NVDA can be traced to efforts by various mobile screen "
+"readers in the 2000's, most significantly, for Windows Mobile and VoiceOver "
+"on iOS. Screen readers for Windows Mobile such as Code Factory's Mobile "
+"Speak (discontinued) provided basic touch commands for navigation and "
+"performing basic tasks. Compared to today's touchscreen devices, devices "
+"from Windows Mobile era were resistive devices, often requiring use of a "
+"stylus. Although revolutionary at that time, touch-based mobile device "
+"interaction were a nitch market, and combined with lack of accessibility "
+"guidelines for early smartphones, early iOS and Android devices were not "
+"recommended for use by blind people."
+msgstr ""
+"El soporte táctil en NVDA se remonta a los esfuerzos de muchos lectores de "
+"pantalla móviles en la década del 2000, especialmente en Windows Mobile y "
+"VoiceOver en IOs. Los lectores de pantalla para Windows Mobile, tales como "
+"Mobile Speak de Code Factory (abandonado), proporcionaban órdenes táctiles "
+"básicas para navegar y llevar a cabo tareas sencillas. Comparados con los "
+"dispositivos táctiles actuales, los dispositivos de la época de Windows "
+"Mobile eran dispositivos resistivos, y con frecuencia requerían el uso de un "
+"lápiz. Aunque en su momento fue algo revolucionario, la interacción táctil "
+"con los dispositivos móviles era un nicho de mercado, y combinada con la "
+"falta de pautas de accesibilidad para los primeros teléfonos inteligentes, "
+"no se recomendaba el uso de los primeros móviles Android e IOs a las "
+"personas ciegas."
+
+#: ..\python_docs\etsaddoninternals.py:11
+msgid ""
+"This changed in 2009 when Apple announced VoiceOver as part of iOS 3.0. This "
+"mobile screen reader, partly derived from VoiceOver on OS X/macOS with "
+"optimizations for touch interaction, were met with immediate success. With "
+"VoiceOver preinstalled, devices running iOS 3 and later (including iPhone, "
+"iPad, iPod Touch and others) became accessible for blind people, made more "
+"significant because of intuitive touch commands for navigation and various "
+"tasks. Google followed suit, introducing a series of Android relesaes with "
+"TalkBack, a built-in screen reader for Android, along iwth accessibility "
+"services designed to allow third-party solutions to provide additoinal "
+"services."
+msgstr ""
+"Esto cambió en 2009, cuando Apple anunció que VoiceOver formaría parte de "
+"IOs 3.0. Este lector de pantalla móvil, en parte derivado de VoiceOver en OS "
+"X / MacOS con optimizaciones para la interacción táctil, halló un éxito "
+"inmediato. Con VoiceOver preinstalado, los dispositivos con IOs 3.0 en "
+"adelante (incluidos iPhone, iPad, iPod touch y otros) se volvieron "
+"accesibles para las personas ciegas, y ganaron importancia gracias a las "
+"órdenes táctiles intuitivas para navegar y hacer diversas tareas. Google les "
+"siguió, introduciendo una serie de liberaciones de Android con Talkback, un "
+"lector de pantalla integrado en este sistema operativo, junto con servicios "
+"de accesibilidad diseñados para permitir la creación de soluciones de "
+"terceros."
+
+#: ..\python_docs\etsaddoninternals.py:12
+msgid ""
+"Touchscreen devices became a mainstream on Windows computers in 2012 with "
+"the release of Windows 8. Although Windows 7 and earlier had basic support "
+"for touchscreens, it wasn't until Windows 8 that touch interaction took on a "
+"more prominent role. Learning from Apple and Google, Microsoft introduced a "
+"substantially revamped Narrator with built-in touch support, along with "
+"support services so third party screen readers such as NVDA can take "
+"advantage of touch interaction. This NVDA did, and NVDA 2012.3 (November "
+"2012) became one of the first third-party screen readers to support "
+"touchscreens on Windows natively."
+msgstr ""
+"Las pantallas táctiles en ordenadores con Windows comenzaron a popularizarse "
+"en 2012 tras la llegada de Windows 8. Aunque Windows 7 y versiones "
+"anteriores tenían soporte básico para estas pantallas, no fue hasta Windows "
+"8 cuando la interacción táctil tomó un rol más importante. Aprendiendo de "
+"Apple y Google, Microsoft introdujo un Narrador notablemente modificado con "
+"soporte táctil integrado, junto con servicios de soporte que permitieran "
+"aprovechar las ventajas de la interacción táctil a lectores de pantalla de "
+"terceros como NVDA. NVDA lo hizo, y en su versión 2012.3 (noviembre de 2012) "
+"se convirtió en uno de los primeros lectoores de pantalla de terceros en "
+"soportar de forma nativa las pantallas táctiles en Windows."
+
+#: ..\python_docs\etsaddoninternals.py:13
+msgid "## How touch support in NVDA works"
+msgstr "## Cómo funciona el soporte táctil en NVDA"
+
+#: ..\python_docs\etsaddoninternals.py:14
+msgid ""
+"In order for NVDA to support touchscreens, it must be installed on a "
+"computer running Windows 8 and later (portable and temporary installers will "
+"not work). This is because as part of touch support, NVDA must communicate "
+"with Ease of Access regarding modifying touch interaction flags, wihch can "
+"be done as long as the running executable is registered with Ease of Access "
+"(only the installed copy is eligible to do this). In addition, a touchscreen "
+"monitor must support at least five touch points, although most touchscreens "
+"support 10 touch points."
+msgstr ""
+"Para que NVDA soporte pantallas táctiles, debe estar instalado en un equipo "
+"con Windows 8 o una versión posterior (la versión portable y el instalador "
+"temporal no funcionarán). Esto se debe a que como parte del soporte táctil, "
+"NVDA debe comunicarse con los servicios de accesibilidad y modificar los "
+"indicadores de soporte táctil, cosa que sólo puede hacerse si el ejecutable "
+"está registrado en los servicios de accesibilidad (sólo la copia instalada "
+"puede hacerlo). Además, el monitor táctil debe soportar cinco puntos de "
+"contacto, aunque la mayoría de pantallas táctiles hoy en día soportan 10."
+
+#: ..\python_docs\etsaddoninternals.py:15
+msgid ""
+"At startup, once NVDA detects that touchscreen support can be used, it "
+"starts a touch handler thread that informs Ease of Access that an assistive "
+"technology supporting touch interaction is active, along with creating a "
+"touch event window that receives touch input events. The job of the touch "
+"events window is to detect touch input and ask a touch tracker manager to "
+"construct a more meaningful representation of a touch input, commonly known "
+"as a \"touch gesture\". Currently NVDA can recognize a tap (short press), "
+"flicks (short travel), tap and hold (tap followed by another tap and a "
+"holding gesture), hovers (moving around the screen with one finger without "
+"removing the finger from the screen), and a combination of these taking "
+"place with at least one finger (the maximum being how many touch points are "
+"supported by the monitor). When NVDA closes, NVDA closes the touch handler "
+"thread, which in turn kills the touch events window and informs Ease of "
+"Access that NVDA is exiting so touch interaction can return to normal."
+msgstr ""
+"Al arrancar, una vez que NVDA detecta que se puede usar el soporte táctil, "
+"inicia un hilo manejador de toques que informa a los servicios de "
+"accesibilidad que se encuentra activa una tecnología de asistencia que "
+"soporta la interacción táctil, y crea una ventana de eventos táctiles que "
+"recibe los eventos de toque entrantes. El trabajo de la ventana de eventos "
+"táctiles es detectar la entrada táctil y pedir a un gestor de rastreo táctil "
+"que construya una representación más significativa de la entrada táctil, "
+"normalmente conocida como \"gesto táctil\". Actualmente, NVDA puede "
+"reconocer un toque (pulsación corta), deslizamientos (desplazamientos "
+"cortos), tocar y mantener (un toque seguido de otro toque sin levantar el "
+"dedo), exploraciones (mover un dedo por la pantalla sin quitar el dedo), y "
+"una combinación de estos que tenga lugar con al menos un dedo (siendo el "
+"máximo la cantidad de puntos táctiles que tenga el monitor). Cuando se "
+"cierra NVDA, el hilo manejador táctil se cierra, lo que mata la ventana de "
+"eventos táctiles e informa a los servicios de accesibilidad de que NVDA se "
+"apaga, de tal forma que la interacción táctil regresa al estado normal."
+
+#: ..\python_docs\etsaddoninternals.py:16
+msgid ""
+"Each piece of touch input is recorded via a touch tracker object. Single "
+"finger tracker is used to track one finger gestures, while multi-touch "
+"tracker is used to generalize this to multiple fingers. Each touch tracker "
+"records which finger was used, direction of travel, tap count, and if this "
+"gesture is part of a hover gesture. Collectively, these tracker objects are "
+"represented under a dedicated input gesture so NVDA commands can be assigned "
+"to them, including those found in Enhanced Touch Gestures add-on."
+msgstr ""
+"Cada fragmento de entrada táctil se graba mediante un objeto rastreador de "
+"toques. Se usa un rastreador de un único dedo para seguir los gestos de un "
+"dedo, mientras que se utiliza un rastreador multitáctil para generalizarlo a "
+"varios dedos. Cada rastreador táctil graba el dedo que se usó, la dirección "
+"del desplazamiento, cantidad de toques, y si este gesto forma parte de un "
+"gesto de exploración. Colectivamente, estos objetos rastreadores se "
+"representan bajo un gesto de entrada dedicado, por lo que se les pueden "
+"asignar órdenes de NVDA, incluidas aquellas que se encuentran en el "
+"complemento Enhanced Touch Gestures."
+
+#: ..\python_docs\etsaddoninternals.py:17
+msgid "## Introducing Enhanced Touch Gestures add-on"
+msgstr "## Introducción al complemento Enhanced Touch Gestures"
+
+#: ..\python_docs\etsaddoninternals.py:18
+msgid ""
+"As the name implies, Enhanced Touch Gestures enhances the touch interaction "
+"experience for users. The overall goal of this add-on is to provide touch "
+"commands for some common NVDA commands that come with no touch commands by "
+"default, as well as providing additional navigation possibilities such as "
+"web navigation."
+msgstr ""
+"Como su nombre indica, Enhanced Touch Gestures mejora la experiencia de "
+"interacción táctil de los usuarios. El objetivo general de este complemento "
+"es proporcionar órdenes táctiles para algunas órdenes comunes de NVDA que "
+"vienen por defecto sin órdenes táctiles, así como proporcionar posibilidades "
+"de navegación adicionales como el modo web."
+
+#: ..\python_docs\etsaddoninternals.py:19
+msgid ""
+"This add-on began in 2013 shortly after acquiring a touch-capable computer. "
+"I studied touch support features provided by NVDA, and because I was "
+"familiar with iOS, I looked at differences between NVDA and Voiceover in "
+"terms of touch commands. Some features of this add-on are result of trying "
+"to reduce the gap between screen readers, while others were born out of "
+"suggestions from users such as passthrough mode (see below)."
+msgstr ""
+"Este complemento nació en 2013, poco después de comprar un ordenador con "
+"pantalla táctil. Estudié las características del soporte táctil "
+"proporcionado por NVDA, y como estaba acostumbrado a IOs, miré las "
+"diferencias entre NVDA y VoiceOver en términos de órdenes táctiles. Algunas "
+"características de este complemento son el resultado de intentar reducir la "
+"brecha entre lectores de pantalla, mientras que otras nacieron de "
+"sugerencias de los usuarios, como pasar a través del modo táctil (se explica "
+"más adelante)."
+
+#: ..\python_docs\etsaddoninternals.py:20
+msgid ""
+"Recently, another goal has emerged: pull requests for NVDA. Because of "
+"popularity of Enhanced Touch Gestures, I decided to send some features of "
+"this add-on to NV Access as a series of pull requests. As of time of this "
+"writing (August 2019), at least one pull request based on this add-on has "
+"been submitted for code review for inclusion in future NVDA releases."
+msgstr ""
+"Recientemente ha emergido otro objetivo: solicitudes de cambio para NVDA. "
+"Debido a la popularidad de Enhanced Touch Gestures, decidí enviar algunas "
+"características de este complemento a NV Access en una serie de solicitudes "
+"de cambio. A fecha de redacción de este artículo (agosto de 2019), al menos "
+"una solicitud de cambio basada en este complemento se ha enviado para "
+"revisar su código e incluirla en versiones futuras de NVDA."
+
+#: ..\python_docs\etsaddoninternals.py:21
+msgid "## Add-on structure"
+msgstr "## Estructura del complemento"
+
+#: ..\python_docs\etsaddoninternals.py:22
+msgid ""
+"While powerful, all the action takes place inside a single global plugin "
+"module. The global plugin is divided into the following parts:"
+msgstr ""
+"Aunque es potente, toda la acción tiene lugar dentro de un módulo con una "
+"única extensión global. Esta extensión global se divide en las siguientes "
+"partes:"
+
+#: ..\python_docs\etsaddoninternals.py:23
+msgid ""
+"* Touch commands for common actions such as announcing status bar, title bar "
+"and others."
+msgstr ""
+"* Órdenes táctiles para acciones comunes como verbalizar la barra de estado, "
+"la barra de título y otras."
+
+#: ..\python_docs\etsaddoninternals.py:24
+msgid ""
+"* Support enhancers such as additional touch modes and coordinate "
+"announcement beep."
+msgstr ""
+"* Mejoras de soporte como modos táctiles adicionales y pitido de anuncio de "
+"coordenadas."
+
+#: ..\python_docs\etsaddoninternals.py:25
+msgid "* Additional navigation possibilities such as web navigation."
+msgstr "* Posibilidades adicionales de navegación, como la navegación web."
+
+#: ..\python_docs\etsaddoninternals.py:26
+msgid ""
+"* Touch passthrough mode and other additional features that might be "
+"included in NVDA in the future."
+msgstr ""
+"* Pasar a través del modo táctil y otras funciones adicionales que podrían "
+"incluirse en NVDA en el futuro."
+
+#: ..\python_docs\etsaddoninternals.py:27
+msgid "* Dedicated features for touch keyboard."
+msgstr "* Características dedicadas al teclado táctil."
+
+#: ..\python_docs\etsaddoninternals.py:28
+msgid "* Additional touch interaction settings."
+msgstr "* Opciones adicionales de interacción táctil."
+
+#: ..\python_docs\etsaddoninternals.py:29
+msgid "Some features are now part of NVDA, most notably touch typing toggle."
+msgstr ""
+"Algunas características son ahora parte de NVDA, la más destacable la "
+"alternancia entre modos de escritura táctil."
+
+#: ..\python_docs\etsaddoninternals.py:30
+msgid "## Additional touch modes"
+msgstr "## Modos táctiles adicionales"
+
+#: ..\python_docs\etsaddoninternals.py:31
+msgid ""
+"By default, NVDA comes with object and text touch modes, which can be "
+"toggled by doing a three finger single tap. Enhance Touch Gestures adds up "
+"to two additional touch modes:"
+msgstr ""
+"Por defecto, NVDA viene con los modos de objetos y de texto, que pueden "
+"conmutarse dando un único toque con tres dedos. Enhanced Touch Gestures "
+"añade hasta dos modos táctiles adicionales:"
+
+#: ..\python_docs\etsaddoninternals.py:32
+msgid ""
+"* Web mode: used to navigate web elements. In this mode, one finger flick up "
+"and down cycles between web elements, while one finger flickt left and right "
+"navigates via the chosen element."
+msgstr ""
+"* Modo web: usado para navegar por elementos web. En este modo, desplazar el "
+"dedo arriba o abajo cambia el tipo de elemento, mientras que moverlo a "
+"izquierda o derecha se desplaza por el elemento del tipo elegido."
+
+#: ..\python_docs\etsaddoninternals.py:33
+msgid ""
+"* Synth settings mode: in this mode, two finger flick left and right cycles "
+"through synth settings ring options, while two finger flick up and down "
+"changes values."
+msgstr ""
+"* Modo de opciones del sintetizador: en este modo, deslizar dos dedos a "
+"izquierda o derecha cambia entre opciones del anillo del sintetizador, "
+"mientras que deslizar dos dedos arriba o abajo modifica sus valores."
+
+#: ..\python_docs\etsaddoninternals.py:34
+msgid "### Web touch mode"
+msgstr "### Modo táctil web"
+
+#: ..\python_docs\etsaddoninternals.py:35
+msgid ""
+"Web touch mode is designed to allow users to navigate complex documents. In "
+"short, this is similar to various element rotor options in VoiceOver."
+msgstr ""
+"El modo táctil web está diseñado para permitir a los usuarios navegar por "
+"documentos complejos. En resumen, es similar a las diversas opciones del "
+"rotor de VoiceOver."
+
+#: ..\python_docs\etsaddoninternals.py:36
+msgid ""
+"By default, normal mode is used. In this mode, one finger flick left and "
+"right moves through objects just as one can do in object touch mode. The "
+"other element types are link, heading, frame, table, landmark, and forms."
+msgstr ""
+"Por defecto se usa el modo normal. En este modo, se desliza un dedo a la "
+"izquierda o a la derecha para moverse por los objetos tal y como se hace en "
+"el modo táctil para objetos. Los otros tipos de elementos son enlace, "
+"encabezado, marco, tabla, región y formularios."
+
+#: ..\python_docs\etsaddoninternals.py:37
+msgid ""
+"Internally, element navigation calls relevant single letter navigation "
+"scripts except for normal mode which calls next/previous object in flow "
+"commands. The available elements are housed inside a tuple, and changing the "
+"navigation element changes which tuple entry is looked up for web navigation "
+"gestures."
+msgstr ""
+"Internamente, la navegación por elementos llama a los scripts de navegación "
+"de una sola letra, excepto en el modo normal, que llama a los comandos "
+"estándar de objeto siguiente o anterior. Los elementos disponibles se alojan "
+"dentro de una tupla, y al cambiar el elemento de navegación se cambia la "
+"entrada de la tupla que se mira para buscar gestos de navegación web."
+
+#: ..\python_docs\etsaddoninternals.py:38
+msgid "## Touch keyboard"
+msgstr "## Teclado táctil"
+
+#: ..\python_docs\etsaddoninternals.py:39
+msgid ""
+"Touch keyboard, as the name implies, allows users to type using a virtual "
+"keyboard that appears on screen. One can type characters, perform function "
+"commands, and access additional symbols not \"printed\" on the keyboard."
+msgstr ""
+"El teclado táctil, como su propio nombre indica, permite que los usuarios "
+"escriban utilizando un teclado virtual que se muestra en pantalla. Se pueden "
+"escribir caracteres, realizar órdenes de funciones, y acceder a símbolos "
+"adicionales que no se \"muestran\" en el teclado."
+
+#: ..\python_docs\etsaddoninternals.py:40
+msgid ""
+"Three features (for one, a bug fix) are grouped under touch keyboard support "
+"provided by Enhanced Touch Gestures, with one of them now part of NVDA:"
+msgstr ""
+"Tres características (una de ellas es una corrección) se agrupan bajo el "
+"soporte para el teclado táctil proporcionado por Enhanced Touch Gestures, "
+"siendo una de ellas parte de NVDA:"
+
+#: ..\python_docs\etsaddoninternals.py:41
+msgid "* Summoning and dismissing touch keyboard."
+msgstr "* Mostrar u ocultar el teclado táctil."
+
+#: ..\python_docs\etsaddoninternals.py:42
+msgid ""
+"* Removing extraneous information while announcing keyboard keys such as "
+"read-only state which isn't accurate."
+msgstr ""
+"* Eliminar información sobrante mientras se anuncian las teclas del teclado, "
+"como el estado sólo lectura, que no es preciso."
+
+#: ..\python_docs\etsaddoninternals.py:43
+msgid ""
+"* Controlling whether keys are typed by double-tapping it or lifting one's "
+"finger."
+msgstr ""
+"* Controlar si las teclas se activan al hacer una doble pulsación sobre "
+"ellas o al levantar el dedo."
+
+#: ..\python_docs\etsaddoninternals.py:44
+msgid "### Summoning and dismissing touch keyboard"
+msgstr "### Mostrar u ocultar el teclado táctil"
+
+#: ..\python_docs\etsaddoninternals.py:45
+msgid ""
+"By default, there is a touch keyboard button on the bottom of the screen, "
+"and unless one is dealing with an edit area, this button must be tapped to "
+"bring up the touch keyboard. By doing a four finger flick right, one can "
+"summon or dismiss touch keyboard from anywhere. NVDA does this by looking "
+"for the touch keyboard button through object navigation emulation, and once "
+"found, activating it."
+msgstr ""
+"Por defecto, hay un botón para el teclado táctil en la parte inferior de la "
+"pantalla, y a menos que se trabaje con un área de edición, hay que pulsarlo "
+"explícitamente para mostrar el teclado táctil. Haciendo un desplazamiento "
+"con cuatro dedos a la derecha, se puede mostrar u ocultar el teclado táctil "
+"desde cualquier parte. NVDA hace esto posible buscando el botón del teclado "
+"táctil mediante emulación de navegación por objetos, y una vez que lo "
+"encuentra, lo activa."
+
+#: ..\python_docs\etsaddoninternals.py:46
+msgid "### Touch typing"
+msgstr "### Escritura táctil"
+
+#: ..\python_docs\etsaddoninternals.py:47
+msgid ""
+"Unlike most controls where one must double tap to activate them, NVDA can be "
+"told to enter keys from touch keyboard by lifting one's finger. This mode is "
+"called \"touch typing\" as opposed to classic typing by object activation. "
+"NVDA performs touch typing by defining a \"hover up\" gesture that will "
+"allow typing using the touch keyboard."
+msgstr ""
+"A diferencia de la mayoría de controles, donde hay que pulsar dos veces para "
+"activarlos, se puede indicar a NVDA que permita pulsar teclas del teclado "
+"táctil levantando el dedo. Esto se conoce como \"escritura táctil\", y es "
+"totalmente opuesta a la escritura clásica mediante activación de objetos. "
+"NVDA lleva a cabo la escritura táctil definiendo un gesto \"colocación del "
+"cursor\", que permitirá escribir usando el teclado táctil."
+
+#: ..\python_docs\etsaddoninternals.py:48
+msgid ""
+"In the past, it wasn't possible to toggle between these two modes, but in "
+"recent releases of the add-on, these modes can be toggled via add-on "
+"settings interface. With touch typing mode off, one must double-tap the "
+"desired key, but with this on, one can just lift a finger. This, along with "
+"some parts of add-on settings interface, is now part of NVDA."
+msgstr ""
+"Antes no era posible alternar entre estos dos modos, pero en versiones "
+"recientes del complemento se puede conmutar entre ellos mediante la interfaz "
+"de opciones del complemento. Con el modo de escritura táctil desactivado, se "
+"debe pulsar dos veces la tecla deseada. Con él encendido, se puede "
+"simplemente levantar el dedo. Esto, junto con algunas partes de la interfaz "
+"de opciones del complemento, forma parte ahora de NVDA."
+
+#: ..\python_docs\etsaddoninternals.py:49
+msgid "## Touch passthrough"
+msgstr "## Pasar a través del modo táctil"
+
+#: ..\python_docs\etsaddoninternals.py:50
+msgid "## Coordinate announcement beep"
+msgstr "## Pitido de anuncio de coordenadas"
+
+#: ..\python_docs\etsaddoninternals.py:51
+msgid "## Conclusion"
+msgstr "## Conclusión"
