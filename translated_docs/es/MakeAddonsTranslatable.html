@@ -42,6 +42,46 @@
 </ul>
 </li>
 </ol>
+<h2 id="mantener-el-complemento">Mantener el complemento</h2>
+<p>Nota: los responsables de mantenimiento pueden seguir otros procedimientos. Esta información sólo se proporciona como una referencia, de acuerdo a debates como este <a href="https://nvda-addons.groups.io/g/nvda-addons/message/9418">tema sobre gestión de repositorios</a>.</p>
+<ul>
+<li>Clona el repositorio del responsable de mantenimiento:<ul>
+<li><code>git clone https://github.com/usuarioGithub/repoComplemento</code></li>
+</ul>
+</li>
+<li>Añade un origen remoto para el repositorio de Bitbucket:<ul>
+<li><code>git remote add bitbucket https://bitbucket.org/nvdaaddonteam/repoComplemento</code></li>
+</ul>
+</li>
+<li>Descarga el repositorio de Bitbucket:<ul>
+<li><code>git fetch bitbucket</code></li>
+</ul>
+</li>
+<li>Sigue la rama stable:<ul>
+<li><code>git checkout -t bitbucket/stable</code></li>
+</ul>
+</li>
+<li>Periódicamente:<ul>
+<li>Desde la rama stable:<ul>
+<li><code>git pull</code> # Descargar traducciones</li>
+<li><code>git merge master</code> # Código estable que contiene mensajes traducibles</li>
+<li><code>git push bitbucket stable</code></li>
+</ul>
+</li>
+<li>Desde master:<ul>
+<li><code>git pull</code></li>
+<li><code>git merge stable</code></li>
+<li><code>git push origin master</code> # Actualizar traducciones</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="referencias-para-responsables-de-mantenimiento">Referencias para responsables de mantenimiento</h3>
+<ul>
+<li><a href="https://gist.githubusercontent.com/bjmiller121/f93cd974ff709d2b968f/raw/8f17c4d72ba8bd36aea0ec0cf344a8197fa648e8/multiple-push-urls.md">Enviar los cambios a varios repositorios en un solo paso</a></li>
+<li><a href="https://git-scm.com/book">Libro sobre Git</a></li>
+</ul>
 <h2 id="requisitos">Requisitos</h2>
 <h3 id="acceso-a-addonfiles">Acceso a addonFiles</h3>
 <p>Esto se concederá sólo a personas que tengan un registro a lo largo del tiempo de revisiones y de las cuales se sepa que son de confianza en sus deberes, todo esto sujeto a un diálogo de toda la comunidad sobre la administración de repositorios.</p>

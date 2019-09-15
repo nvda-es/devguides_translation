@@ -25,6 +25,33 @@
 	- Copy one of the lines for one of the existing addons, just change the addon name and paste it in the correct section, commit and push.
 	- Note: Admins can perform the above process manually, running mr addon2svn and mr svn2addon from Exbi.
 
+## Maintaining the add-on ##
+
+Note: Maintainers may follow other procedures. This info is only provided for convenience, according to discussions like this [topic about repos management](https://nvda-addons.groups.io/g/nvda-addons/message/9418).
+
+- Clone the maintainer repo:
+	- ```git clone https://github.com/githubUserName/addonRepoName```
+- Add remote for Bitbucket repo:
+	- ```git remote add bitbucket https://bitbucket.org/nvdaaddonteam/addonRepoName```
+- Fetch Bitbucket repo:
+	- ```git fetch bitbucket```
+- Track the stable branch:
+	- ```git checkout -t bitbucket/stable```
+- Periodically:
+	- From stable branch:
+		- ```git pull``` # Get translations
+		- ```git merge master``` # Stable code containing translatable messages
+		- ```git push bitbucket stable```
+	- From master:
+		- ```git pull```
+		- ```git merge stable```
+		- ```git push origin master``` # Update translations
+
+### References for maintainers ###
+
+- [Push to multiple repos in one step](https://gist.githubusercontent.com/bjmiller121/f93cd974ff709d2b968f/raw/8f17c4d72ba8bd36aea0ec0cf344a8197fa648e8/multiple-push-urls.md)
+- [Book about Git](https://git-scm.com/book)
+
 ## Requirements ##
 
 ### Access to addonFiles ###

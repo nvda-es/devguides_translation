@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-31 00:00+0200\n"
+"POT-Creation-Date: 2019-09-15 12:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,50 +119,147 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:25
-msgid "## Requirements ##"
+msgid "## Maintaining the add-on ##"
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:26
-msgid "### Access to addonFiles ###"
+msgid ""
+"Note: Maintainers may follow other procedures. This info is only provided "
+"for convenience, according to discussions like this [topic about repos "
+"management](https://nvda-addons.groups.io/g/nvda-addons/message/9418)."
 msgstr ""
 
 #: ..\python_docs\MakeAddonsTranslatable.py:27
+msgid "- Clone the maintainer repo:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:28
+msgid "\t- ```git clone https://github.com/githubUserName/addonRepoName```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:29
+msgid "- Add remote for Bitbucket repo:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:30
+msgid ""
+"\t- ```git remote add bitbucket https://bitbucket.org/nvdaaddonteam/"
+"addonRepoName```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:31
+msgid "- Fetch Bitbucket repo:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:32
+msgid "\t- ```git fetch bitbucket```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:33
+msgid "- Track the stable branch:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:34
+msgid "\t- ```git checkout -t bitbucket/stable```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:35
+msgid "- Periodically:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:36
+msgid "\t- From stable branch:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:37
+msgid "\t\t- ```git pull``` # Get translations"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:38
+msgid ""
+"\t\t- ```git merge master``` # Stable code containing translatable messages"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:39
+msgid "\t\t- ```git push bitbucket stable```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:40
+msgid "\t- From master:"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:41
+msgid "\t\t- ```git pull```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:42
+msgid "\t\t- ```git merge stable```"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:43
+msgid "\t\t- ```git push origin master``` # Update translations"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:44
+msgid "### References for maintainers ###"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:45
+msgid ""
+"- [Push to multiple repos in one step](https://gist.githubusercontent.com/"
+"bjmiller121/f93cd974ff709d2b968f/"
+"raw/8f17c4d72ba8bd36aea0ec0cf344a8197fa648e8/multiple-push-urls.md)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:46
+msgid "- [Book about Git](https://git-scm.com/book)"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:47
+msgid "## Requirements ##"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:48
+msgid "### Access to addonFiles ###"
+msgstr ""
+
+#: ..\python_docs\MakeAddonsTranslatable.py:49
 msgid ""
 "This will be granted only to people who have a track record of providing "
 "reviews and known to be reliable at their duties, all of this subject to a "
 "community-wide dialogue about repo management."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:28
+#: ..\python_docs\MakeAddonsTranslatable.py:50
 msgid "The maintainer should fulfill the following criteria:"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:29
+#: ..\python_docs\MakeAddonsTranslatable.py:51
 msgid "1. Has done at least one basic review."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:30
+#: ..\python_docs\MakeAddonsTranslatable.py:52
 msgid ""
 "2. Known to be a reliable role model in terms of add-on authoring, "
 "reviewing, maintenance, and promotion (repo management is a job with tons of "
 "responsibilities)."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:31
+#: ..\python_docs\MakeAddonsTranslatable.py:53
 msgid ""
 "3. Known to be responsive to communication to and from users and other "
 "developers."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:32
+#: ..\python_docs\MakeAddonsTranslatable.py:54
 msgid "4. Keeps an eye on NvDA Core development."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:33
+#: ..\python_docs\MakeAddonsTranslatable.py:55
 msgid "### Access to repos and add-on registration ###"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:34
+#: ..\python_docs\MakeAddonsTranslatable.py:56
 msgid ""
 "- Registration or access to repos won't be denied for personal issues, such "
 "as differences in opinions, criticism to admins code or attitude based on "
@@ -170,7 +267,7 @@ msgid ""
 "should be replaced by other maintainer."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:35
+#: ..\python_docs\MakeAddonsTranslatable.py:57
 msgid ""
 "- Anyway, if the registration or access request is done in a manner that is "
 "seen (perceived or actual) as threatening or harmful to the individual being "
@@ -180,36 +277,36 @@ msgid ""
 "place, as well as for the community)."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:36
+#: ..\python_docs\MakeAddonsTranslatable.py:58
 msgid "## Related links ##"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:37
+#: ..\python_docs\MakeAddonsTranslatable.py:59
 msgid ""
 "- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/"
 "wiki/Adding-a-New-Language-to-Ikiwiki)"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:38
+#: ..\python_docs\MakeAddonsTranslatable.py:60
 msgid "- [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:39
+#: ..\python_docs\MakeAddonsTranslatable.py:61
 msgid ""
 "- [Thread about repo management and registration, started by Joseph Lee]"
 "(https://nvda-addons.groups.io/g/nvda-addons/message/6937)"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:40
+#: ..\python_docs\MakeAddonsTranslatable.py:62
 msgid "## Aknowledgements ##"
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:41
+#: ..\python_docs\MakeAddonsTranslatable.py:63
 msgid ""
 "This document is based on work and information provided by Mesar Hameed and "
 "James Teh."
 msgstr ""
 
-#: ..\python_docs\MakeAddonsTranslatable.py:42
+#: ..\python_docs\MakeAddonsTranslatable.py:64
 msgid "Thanks for making this possible."
 msgstr ""
