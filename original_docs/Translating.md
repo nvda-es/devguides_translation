@@ -19,33 +19,33 @@ Translators should ensure their translation is up to date by (UTC 00:00 on 14 Fe
 ## Translation Status
 
 Status for existing NVDA localizations are provided below. If you would like to improve or would like to work on a new language, please write to the NVDA translations email list.
-Information updated as of August 2017 (2017.3).
-When 2017.3 is listed in the last updated column, it means that the localization is fully up to date and will be ready for the next release. For the purposes of the information below, "up to date" refers to interface translation of at least 90%.
+Information updated as of September 2019 (2019.2).
+When 2019.2 is listed in the last updated column, it means that the localization is fully up to date and will be ready for the next release. For the purposes of the information below, "up to date" refers to interface translation of at least 90%.
 
 | Language | Status | Last updated |
 |------------|----------|----------------|
 | af_ZA: Afrikaans | Not complete/out of date, maintainer needed. | Oct 2009 |
 | am: Amharic | Not complete/out of date, maintainer needed. | Jul 2012 |
-| an: Aragonese | Up to date. | 2018.3 |
-| ar: Arabic | Up to date. | 2018.3 |
-| bg: Bulgarian | Up to date. | 2018.3 |
-| CA: Catalan | Up to date. | 2018.2 |
-| CKB: Central Kurdish | In progress. | N/A |
-| cs: Czech | Up to date. | 2018.3 | 
-| da: Danish | Up to date. | 2018.3 | 
-| de: German | Up to date. | 2018.3 | 
-| de_CH: Swiss German | Up to date. | 2018.3 | 
-| el: Greek | The NVDA interface is up to date. There is work to be done on the user's guide. | 2018.3 |
-| es: Spanish | Up to date. | 2018.3 | 
-| es_CO: Spanish (Columbia) | NVDA interface needs updating. There is work to be done on the user's guide. | July 2016 |
-| fa: Farsi | Up to date. | 2017.3 |
-| fi: Finnish | Up to date. | 2018.3 | 
-| fr: French | Up to date. | 2018.3 | 
-| ga: Gaeilge (Ireland) | Update in progress. | 2016.3 |
-| gl: Galician | Up to date. | 2018.3 | 
-| he: Hebrew | Up to date. | 2018.2 |
-| hi: Hindi | Not complete, intermittent, help needed. | Jan 2015 |
-| hr: Croatian | Up to date. | 2018.3 |
+| an: Aragonese | nearly complete. | 2019.2 |
+| ar: Arabic | Up to date. | 2019.2 |
+| bg: Bulgarian | Up to date. | 2019.2 |
+| CA: Catalan | not complete. | 2018.4 |
+| CKB: Central Kurdish | Not complete/out of date, maintainer needed. | n.a. |
+| cs: Czech | Documentation incomplete from Sept 2017. The NVDA interface is Up to date. | 2019.2 | 
+| da: Danish | Up to date. | 2019.2 | 
+| de: German | Up to date. | 2019.2 | 
+| de_CH: Swiss German | Not complete/out of date, maintainer needed. | 2018.3 | 
+| el: Greek | The NVDA interface is nearly complete. Documentation is out of date from Nov 2017| 2019.1 |
+| es: Spanish | Up to date. | 2019.1 | 
+| es_CO: Spanish (Columbia) | Not complete/out of date, maintainer needed. | Jul 2016|
+| fa: Farsi | Up to date. | 2019.2 |
+| fi: Finnish | Up to date. | 2019.2 | 
+| fr: French | Up to date. | 2019.2 | 
+| ga: Gaeilge (Ireland) | Interface: work in progress. | Dez 2018 |
+| gl: Galician | Up to date. | 2019.2 | 
+| he: Hebrew | Documentation from Feb 2017. NVDA interface Up to date. | 2019.2 |
+| hi: Hindi | NVDA interface up to date | 2019.2 |
+| hr: Croatian | Up to date. | 2019.2 |
 | hu: Hungarian | Up to date. | 2018.3 |
 | is: Icelandic | Not complete, intermittent, help needed. | Apr 2013 |
 | it: Italian | Up to date. | 2018.3 | 

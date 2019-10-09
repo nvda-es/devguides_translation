@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-11-13 09:50+Hora estándar romance\n"
-"PO-Revision-Date: 2018-11-13 09:54+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-09 15:07+0200\n"
+"PO-Revision-Date: 2019-10-09 15:22+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\Translating.py:3
@@ -116,17 +117,17 @@ msgstr ""
 "un nuevo idioma, escribe a la lista de correo de traducciones de NVDA."
 
 #: ..\python_docs\Translating.py:16
-msgid "Information updated as of August 2017 (2017.3)."
-msgstr "Información actualizada en agosto de 2018 (2018.3)."
+msgid "Information updated as of September 2019 (2019.2)."
+msgstr "Información actualizada en septiembre de 2019 (2019.2)."
 
 #: ..\python_docs\Translating.py:17
 msgid ""
-"When 2017.3 is listed in the last updated column, it means that the "
+"When 2019.2 is listed in the last updated column, it means that the "
 "localization is fully up to date and will be ready for the next release. For "
 "the purposes of the information below, \"up to date\" refers to interface "
 "translation of at least 90%."
 msgstr ""
-"Cuando se indica 2018.3 en la columna Actualizada por última vez, significa "
+"Cuando se indica 2019.2 en la columna Actualizada por última vez, significa "
 "que la traducción está completamente actualizada y lista para ser incluida "
 "en la próxima liberación. A los efectos de esta tabla, se entiende por "
 "“actualizada” una traducción con como mínimo el 90% de la interfaz traducida."
@@ -155,93 +156,110 @@ msgstr ""
 "2012 |"
 
 #: ..\python_docs\Translating.py:22
-msgid "| an: Aragonese | Up to date. | 2018.3 |"
-msgstr "| an: aragonés | Actualizada. | 2018.3 |"
+msgid "| an: Aragonese | nearly complete. | 2019.2 |"
+msgstr "| an: aragonés | Casi completa. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:23
-msgid "| ar: Arabic | Up to date. | 2018.3 |"
-msgstr "| ar: árabe | Actualizada. | 2018.3 |"
+msgid "| ar: Arabic | Up to date. | 2019.2 |"
+msgstr "| ar: árabe | Actualizada. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:24
-msgid "| bg: Bulgarian | Up to date. | 2018.3 |"
-msgstr "| bg: búlgaro | Actualizada. | 2018.3 |"
+msgid "| bg: Bulgarian | Up to date. | 2019.2 |"
+msgstr "| bg: búlgaro | Actualizada. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:25
-msgid "| CA: Catalan | Up to date. | 2018.2 |"
-msgstr "| CA: catalán | Actualizada. | 2018.2 |"
+msgid "| CA: Catalan | not complete. | 2018.4 |"
+msgstr "| CA: catalán | Incompleta. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:26
-msgid "| CKB: Central Kurdish | In progress. | N/A |"
-msgstr "| CKB: curdo central | En progreso. | N/A |"
+msgid ""
+"| CKB: Central Kurdish | Not complete/out of date, maintainer needed. | n.a. "
+"|"
+msgstr ""
+"| CKB: curdo central | Incompleta / obsoleta, se necesita un responsable. | "
+"n.a. |"
 
 #: ..\python_docs\Translating.py:27
-msgid "| cs: Czech | Up to date. | 2018.3 | "
-msgstr "| cs: Checo | Actualizada. | 2018.3 | "
+msgid ""
+"| cs: Czech | Documentation incomplete from Sept 2017. The NVDA interface is "
+"Up to date. | 2019.2 | "
+msgstr ""
+"| cs: Checo | Documentación incompleta desde Septiembre de 2017. Interfaz "
+"actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:28
-msgid "| da: Danish | Up to date. | 2018.3 | "
-msgstr "| da: danés | Actualizada. | 2018.3 | "
+msgid "| da: Danish | Up to date. | 2019.2 | "
+msgstr "| da: danés | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:29
-msgid "| de: German | Up to date. | 2018.3 | "
-msgstr "| de: alemán | Actualizada. | 2018.3 | "
+msgid "| de: German | Up to date. | 2019.2 | "
+msgstr "| de: alemán | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:30
-msgid "| de_CH: Swiss German | Up to date. | 2018.3 | "
-msgstr "| de_CH: alemán de Suiza | Actualizada. | 2018.3 | "
+msgid ""
+"| de_CH: Swiss German | Not complete/out of date, maintainer needed. | "
+"2018.3 | "
+msgstr ""
+"| de_CH: alemán de Suiza | Incompleta / obsoleta, se necesita un "
+"responsable. | 2018.3 | "
 
 #: ..\python_docs\Translating.py:31
 msgid ""
-"| el: Greek | The NVDA interface is up to date. There is work to be done on "
-"the user's guide. | 2018.3 |"
+"| el: Greek | The NVDA interface is nearly complete. Documentation is out of "
+"date from Nov 2017| 2019.1 |"
 msgstr ""
-"| el: griego | La interfaz de NVDA está completa, pero se debe trabajar en "
-"la guía de usuario. | 2018.3 |"
+"| el: griego | La interfaz de NVDA está casi completa. La documentación está "
+"obsoleta desde noviembre de 2017. | 2019.1 |"
 
 #: ..\python_docs\Translating.py:32
-msgid "| es: Spanish | Up to date. | 2018.3 | "
-msgstr "| es: español | Actualizada. | 2018.3 | "
+msgid "| es: Spanish | Up to date. | 2019.1 | "
+msgstr "| es: español | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:33
 msgid ""
-"| es_CO: Spanish (Columbia) | NVDA interface needs updating. There is work "
-"to be done on the user's guide. | July 2016 |"
+"| es_CO: Spanish (Columbia) | Not complete/out of date, maintainer needed. | "
+"Jul 2016|"
 msgstr ""
-"| es_CO: español (Colombia) | La interfaz de NVDA debe actualizarse. Hay "
-"trabajo que hacer en la guía de usuario. | Julio 2016 |"
+"| es_CO: Español (Colombia) | Incompleta / Obsoleta, se necesita un "
+"responsable. | Julio de 2016 |"
 
 #: ..\python_docs\Translating.py:34
-msgid "| fa: Farsi | Up to date. | 2017.3 |"
-msgstr "| fa: farsi | Actualizada. | 2018.3 |"
+msgid "| fa: Farsi | Up to date. | 2019.2 |"
+msgstr "| fa: farsi | Actualizada. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:35
-msgid "| fi: Finnish | Up to date. | 2018.3 | "
-msgstr "| fi: finés | Actualizada. | 2018.3 | "
+msgid "| fi: Finnish | Up to date. | 2019.2 | "
+msgstr "| fi: finés | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:36
-msgid "| fr: French | Up to date. | 2018.3 | "
-msgstr "| fr: francés | Actualizada. | 2018.3 | "
+msgid "| fr: French | Up to date. | 2019.2 | "
+msgstr "| fr: francés | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:37
-msgid "| ga: Gaeilge (Ireland) | Update in progress. | 2016.3 |"
-msgstr "| ga: gaélico (Irlanda) | Actualización en progreso. | 2016.3 |"
+msgid "| ga: Gaeilge (Ireland) | Interface: work in progress. | Dez 2018 |"
+msgstr ""
+"| ga: gaélico (Irlanda) | Interfaz: actualización en progreso. | Diciembre "
+"de 2018 |"
 
 #: ..\python_docs\Translating.py:38
-msgid "| gl: Galician | Up to date. | 2018.3 | "
-msgstr "| gl: gallego | Actualizada. | 2018.3 | "
+msgid "| gl: Galician | Up to date. | 2019.2 | "
+msgstr "| gl: gallego | Actualizada. | 2019.2 | "
 
 #: ..\python_docs\Translating.py:39
-msgid "| he: Hebrew | Up to date. | 2018.2 |"
-msgstr "| he: hebreo | Actualizada. | 2018.2 |"
+msgid ""
+"| he: Hebrew | Documentation from Feb 2017. NVDA interface Up to date. | "
+"2019.2 |"
+msgstr ""
+"| he: hebreo | Documentación de febrero de 2017. Interfaz actualizada. | "
+"2019.2 |"
 
 #: ..\python_docs\Translating.py:40
-msgid "| hi: Hindi | Not complete, intermittent, help needed. | Jan 2015 |"
-msgstr ""
-"| hi: hindi | Incompleta, intermitente, se necesita ayuda. | Enero 2015 |"
+msgid "| hi: Hindi | NVDA interface up to date | 2019.2 |"
+msgstr "| hi: Hindi | Interfaz actualizada. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:41
-msgid "| hr: Croatian | Up to date. | 2018.3 |"
-msgstr "| hr: croata | Actualizada. | 2018.3 |"
+msgid "| hr: Croatian | Up to date. | 2019.2 |"
+msgstr "| hr: croata | Actualizada. | 2019.2 |"
 
 #: ..\python_docs\Translating.py:42
 msgid "| hu: Hungarian | Up to date. | 2018.3 |"
@@ -652,3 +670,23 @@ msgstr "### Secciones que faltan"
 #: ..\python_docs\Translating.py:112
 msgid "If someone could add Sites for Gestures.ini, it'll be done."
 msgstr "Se necesita a alguien que haga una página para gestures.ini."
+
+#~ msgid "| CKB: Central Kurdish | In progress. | N/A |"
+#~ msgstr "| CKB: curdo central | En progreso. | N/A |"
+
+#~ msgid "| cs: Czech | Up to date. | 2018.3 | "
+#~ msgstr "| cs: Checo | Actualizada. | 2018.3 | "
+
+#~ msgid "| de_CH: Swiss German | Up to date. | 2018.3 | "
+#~ msgstr "| de_CH: alemán de Suiza | Actualizada. | 2018.3 | "
+
+#~ msgid ""
+#~ "| es_CO: Spanish (Columbia) | NVDA interface needs updating. There is "
+#~ "work to be done on the user's guide. | July 2016 |"
+#~ msgstr ""
+#~ "| es_CO: español (Colombia) | La interfaz de NVDA debe actualizarse. Hay "
+#~ "trabajo que hacer en la guía de usuario. | Julio 2016 |"
+
+#~ msgid "| hi: Hindi | Not complete, intermittent, help needed. | Jan 2015 |"
+#~ msgstr ""
+#~ "| hi: hindi | Incompleta, intermitente, se necesita ayuda. | Enero 2015 |"

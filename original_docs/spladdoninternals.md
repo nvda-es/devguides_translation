@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NvDA 19.07
+Based on StationPlaylist Add-on for NvDA 19.10
 
 ## 2019 Preface and notes
 
@@ -10,7 +10,9 @@ This guide has gone through many revisions, style changes, and updated to includ
 
 In 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps. As a result, the add-on itself was renamed in 2019 to just "StationPlaylist".
 
-Lastly, at the end of 2018, add-on update feature was removed in favor of Add-on Updater add-on. Although the source code for this feature is gone, information pertaining to it will be documented here for sake of completeness (after all, Add-on Updater's update checking mechanism can trace its roots to Studio add-on).
+Later in 2018, add-on update feature was removed in favor of Add-on Updater add-on. Although the source code for this feature is gone, information pertaining to it will be documented here for sake of completeness (after all, Add-on Updater's update checking mechanism can trace its roots to Studio add-on).
+
+Then came 2019, and so did Python 3, abstract classes, and new encoder types. The old days of just dealing with SAM and SPL encoders is over, and there is an ongoing effort to redesign encoder support routine from ground up. Specifically, it is planned that the scope of SPL Utilities global plugin will be reduced in favor of giving more autonomy to encoder support app modules (mostly SPL Engine). Along with this, the add-on is ready for Python 3.
 
 ## Introduction
 
@@ -31,6 +33,8 @@ StationPlaylist Creator is mostly used for planning a show and designing playlis
 StationPlaylist Track Tool is mainly used for managing tracks. It is often employed to define introductions, cue points and other properties of tracks.
 
 StationPlaylist Streamer is useful for broadcasting a show with something other than Studio. As such, it comes with support for various encoders and digital signal processing (DSP) modules.
+
+In addition to the components above, StationPlaylist suite includes additional tools such as VT Recorder, and a host of internal support modules such as SPL Engine used for DSP processing and other tasks.
 
 Is Studio suite accessible? Surprisingly, yes. It is possible to use app features without using screen reader scripts and add-ons. However, there are times when a broadcaster would use scripts, such as announcing status changes, monitoring track intros and endings, enhanced support for encoders and so on, and NVDA add-on for StationPlaylist Studio (usually refered to as SPL) accomplishes this well.
 
@@ -66,31 +70,20 @@ To download the add-on, go to https://addons.nvda-project.org/addons/StationPlay
 
 ## Design, code layout, layer sets and importance of Studio API and Studio window handle
 
-### A place to start: reader questions and definitions
-
-I'm sure some readers might ask, "doesn't writing articles on software internals require programming knowledge?" Yes and no. Yes, as you may need some basic exposure to programming such as what a variable is, conditional execution and so forth. On the flip side, you don't have to be a programmer to write about internal workings of an add-on (the basic requirement is passion for teaching and a hope for users to learn something new). Same could be said about reading this article: you may need some exposure to programming, but you don't have to be a programmer to follow along.
-
-Another question might be, "will this article teach me all there is to it when writing an add-on of my own?" Yes and no. Yes, as you'll learn how add-on writers think when it comes to taking care of their add-ons and get a glimpse into add-on development processes. On the other side of the coin is scope of this article - this article does not serve as a definitive guide on add-on writing (there are documentation, linked at the end of this article that'll give you some basic overview). If you are familiar with add-on development and/or NVDA screen reader development and source code, you'll have slightly easier time understanding this article. I tried my best to make it easy for users to understand (although I do have to include some technical details).
-
-Some definitions:
-
-* Add-on: An add-on is a module for a program that adds additional features or changes the behavior of a program (3).
-* API: Application Programming Interface, a set of specifications for programmers for using services offered by a program such as modules, functions and documentation (4). One of the most well-known API's is Python and its documentation (5).
-
-With some basics out of the way, let's dive into SPL add-on internals (you should download the add-on source code, which can be found at https://github.com/josephsl/stationplaylist).
-
 ### Overall design and source code layout
 
-StationPlaylist add-on for NVDA consists of four app modules and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes.
+StationPlaylist add-on for NVDA consists of six app modules (including one app module package) and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. The other two app modules deal with Streamer and SPL DSP Engine.
 
-The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM and SPL encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and encoder support).
+The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and encoder support).
 
 The source code consists of:
 
-* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator and VT Recorder.
+* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine, and Streamer.
 * The SPL Studio package consists of various modules, which include __init__ (main app module and track item classes), configuration manager and user interfaces (splconfig and splconfui) and miscellaneous services (splmisc) as well as support modules and various wave files used by the add-on.
 * The main app module file is divided into sections. First, the overlay classes for track items are defined, then comes the app module, further divided into four sections: fundamental methods (constructor, events and others), time commands (end of track, broadcaster time, etc.), other commands (track Finder, cart explorer and others) and SPL Assistant layer. This allows me to identify where a bug is coming from and to add features in appropriate sections.
 * globalPlugins: This folder contains SPLStudioUtils package, which consists of __init__ (main plugin and SPL Controller layer) and encoder support module.
+
+Note: Encoder support is planned to be transfered to SPL DSP Engine app module in the near future.
 
 ### Design philosophy
 
@@ -164,7 +157,7 @@ As noted previously, the SPL Studio app module (splstudio/__init__.py) and frien
 * Track item overlay classes: three classes are defined for various purposes. The first is a base class that provides commands and services across Studio and other apps, while other two classes provide support for Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back to these objects later.
 * App module class: This is the core of not only the app module, but the entire add-on package. The app module class (appModules.splstudio.AppModule) is further divided into sections as described in add-on design chapter.
 
-For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified. For VT Recorder, because it controls certain internal behaviors of Studio app module when it starts, only the constructor and terminate methods (see below) are provided.
+For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified. For VT Recorder, because it controls certain internal behaviors of Studio app module when it starts, only the constructor and terminate methods (see below) are provided. For Streamer and DSP Engine, encoder specific workarounds are present.
 
 Let's now tour the lifecycle of the app module object in question: before and during app module initialization, activities performed while the app module is active, death and (until 2018) add-on updates.
 
@@ -412,7 +405,7 @@ When this event is fired by Studio, NVDA performs following operations:
 
 1. Various checks are performed. These include, but are not limited to:
 	1. Make sure there is something to announce.
-	2. If using another app, NVDA will ensure that background monitor flag is set (see the discussion on app module constructor in previous articles for more details).
+	2. If using another app, NVDA will ensure that background monitor flag is set (see the discussion on app module constructor in previous sections for more details).
 	3. If the status to be announced is a common one such as listener count, schedule and cart playback status, NVDA will check if it is permited to announce them.
 2. Depending on the type of control (mostly window class name), NVDA performs different operations (see below).
 3. Lastly, NVDA calls nextHandler() to let other controls respond to name change event.
@@ -513,7 +506,7 @@ In reality, Track Finder and Column Search are a single dialog (splmisc.SPLFindD
 
 #### Original track Finder: commands, routines and controls
 
-To use Track Finder, press Control+NVDA+F (wait, I saw this command before). For anyone who are accustomed to NVDA's browse mode, this command would be familiar: find text in webpages. This command performs activities similar to alarm dialogs (see previous articles): after conditions are checked (making sure you are in playlist viewer and you have added at least one track) and setting required flags, NVDA opens Track Finder dialog where you can enter a search term and press ENTER. NVDA will call track finder function (trackFinder) to locate the track with the given search term, and depending on search results, NVDA will move focus to the track or open a dialog saying results were not found.
+To use Track Finder, press Control+NVDA+F (wait, I saw this command before). For anyone who are accustomed to NVDA's browse mode, this command would be familiar: find text in webpages. This command performs activities similar to alarm dialogs (see sections above): after conditions are checked (making sure you are in playlist viewer and you have added at least one track) and setting required flags, NVDA opens Track Finder dialog where you can enter a search term and press ENTER. NVDA will call track finder function (trackFinder) to locate the track with the given search term, and depending on search results, NVDA will move focus to the track or open a dialog saying results were not found.
 
 Two other commands are used as part of Track Finder: Find next and previous, assigned to NVDA+F3 and NVDA+Shift+F3, respectively (they also come from browse mode). When these commands are invoked, it'll check if you have searched for a term before, and if not, it'll open Track Finder dialog. If you have searched for a term before, NVDA will perform linear search with search direction specified (trackFinder method in the app module takes various parameters, and one of them is search direction).
 
@@ -816,7 +809,7 @@ This ends our detailed tour of internals of major features in Studio app module.
 
 ## All about StationPlaylist Assistant layer
 
-You may recall visiting two layer command sets in a previous article: SPL Controller and SPL Assistant, the former used to perform Studio functions from any program and the latter for status announcements. I mentioned throughout this series that we'll tour these layer sets, and we'll start with SPL Assistant layer.
+You may recall visiting two layer command sets in an earlier section: SPL Controller and SPL Assistant, the former used to perform Studio functions from any program and the latter for status announcements. I mentioned throughout this series that we'll tour these layer sets, and we'll start with SPL Assistant layer.
 
 ### Talk about layer commands
 
@@ -842,7 +835,7 @@ Once you invoke SPL Assistant layer (a beep will be heard), you can perform one 
 * Ask for help (opening SPL Assistant help dialog or the online user guide).
 * Until 18.12, checking for add-on updates (manually).
 
-For the first two categories, they can be divided further into commands which uses studio API (via statusAPI function discussed in a previous article), ones using Windows API (Columns explorer) and those relying on object navigation (multiple components are involved and is sensitive to user interface changes). We'll go through each of these categories in turn.
+For the first two categories, they can be divided further into commands which uses studio API (via statusAPI function discussed in a previous section), ones using Windows API (Columns explorer) and those relying on object navigation (multiple components are involved and is sensitive to user interface changes). We'll go through each of these categories in turn.
 
 #### SPL Assistant 1: status announcements
 
@@ -926,7 +919,7 @@ These are miscellaneous commands in SPL Assistant, and three of them use Studio 
 * D: Remaining time for the opened playlist.
 * K: Moves to a marked track. This was discussed in column routines and place marker sections.
 * Control+K: Sets track place marker. Consult the place marker section to learn how it works.
-* Shift+R: Library scan. This is a convenience function to start library scan in the background, useful if you have added new tracks from a number of folders via Studio Options dialog. Consult a previous article on library scan for details on library scan internals.
+* Shift+R: Library scan. This is a convenience function to start library scan in the background, useful if you have added new tracks from a number of folders via Studio Options dialog. Consult library scan section for details on library scan internals.
 * 1 through 0 (6 for studio 5.0x): Columns Explorer (discussed earlier). Unlike other commands in this set, this routine uses Windows API only.
 * F8: Obtains playlist snapshot information for the currently loaded track, including track count, shortest and longest tracks and top artists. This feature uses a combination of Windows and Studio API's.
 * Shift+F8: requests a playlist transcript (data about loaded playlist). Just like playlist snapshots, it uses a combination of object navigation and Windows API.
@@ -1136,9 +1129,9 @@ The SPL Utilities global plugin consists of the following modules:
 The SPL Controller layer (entry command unassigned, same reason as the Assistant layer entry command) is used to invoke Studio functions from anywhere. The entry routine is similar to the app module counterpart (SPL Assistant) except for the following:
 
 * NVDA will make sure Studio is running (if so, it'll cache the window handle value just as in the Studio app module), otherwise it cannot enter SPL Controller layer.
-* All commands (except two) use Studio API (Studio API and use of user32.dll's SendMessage was described in a previous article).
+* All commands (except two) use Studio API (Studio API and use of user32.dll's SendMessage was described in a previous section).
 
-For mechanics of layer commands, see a previous article on add-on design where layer commands were discussed.
+For mechanics of layer commands, see section on add-on design where layer commands were discussed.
 
 The following commands utilize Studio API:
 
@@ -1182,6 +1175,8 @@ The routines discussed above (SPL Controller and the command to switch to Studio
 
 ## Encoder support
 
+Note: this section is subject to change in the near future due to ongoing encoder support migration work.
+
 We have now arrived at the penultimate chapter in this Add-on Internals article for StationPlaylist add-on: encoder support, the second pillar for the SPL Utilities global plugin. We'll talk about how encoder support is implemented, how NVDA can detect stream labels and a behind the scenes overview of what happens when you connect to a streaming server.
 
 ### Encoder support: From suggestion to implementation
@@ -1192,13 +1187,15 @@ The first issue I had to solve was making NVDA recognize the encoder entries the
 
 Originally, I manipulated text written to the screen to obtain needed status messages (via text infos). This routine caused some to experience screen flickering issues when connecting to a streaming server. This was resolved by using encoder description (obj.description), which opened up a possibility to monitor changes to this text via a background thread (more on this routine below), which also eliminated a need to stay on the encoders window until connected.
 
-While I was resolving problems with SAM encoders, I also worked on refactoring encoder support code to support StationPlaylist encoders (add-on 4.0). Initially, encoder support code was optimized for SAM encoders, but the current code structure (explained below) was written to extend basic encoder support easily, and as a result, both SAM and SPL encoder entries present similar interfaces and commands, including a common encoder configuration dialog (add-on 7.0).
+While I was resolving problems with SAM encoders, I also worked on refactoring encoder support code to support StationPlaylist encoders (add-on 4.0). Initially, encoder support code was optimized for SAM encoders, but the current code structure (explained below) was written to extend basic encoder support easily, and as a result, both SAM and SPL encoder entries (and other encoder types) present similar interfaces and commands, including a common encoder configuration dialog (add-on 7.0).
+
+Few years later, encoder support became a hot topic when I was asked by a broadcaster to add support for Edcast in 2019. Edcast, while free, was end of life, and Altacast took its place. Thankfully, adding support for AltaCast encoder (Winamp plugin which must be recognized by Studio and Streamer) was a breeze because its user interface is similar to SPL encoders. Thus, AltaCast encoder support is similar to SPL encoders, thus for purposes of this section, AlataCast is synonymous with SPL encoder.
 
 ### Encoder entries: Yet another overlay class family
 
-Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM or SPL) inherits from a single encoder object (SPLStudioUtils.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
+Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (SPLStudioUtils.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
 
-On top of the base encoder class are two encoder classes, representing SAM encoder entries and SPL encoder entries. SAM encoder entries (SPLStudioUtils.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (SPLStudioUtils.encoders.SPLEncoderWindow) is a typical SysListView32 control (see an article on column routines for more information). Both classes provide similar routines, with the only difference being how connection messages are handled.
+On top of the base encoder class are two encoder classes, representing SAM encoder entries and SPL encoder entries. SAM encoder entries (SPLStudioUtils.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (SPLStudioUtils.encoders.SPLEncoderWindow) is a typical SysListView32 control (see an article on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (SPLStudioUtils.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as stream labels.
 
 ### Common services: basic settings, stream labels and related methods
 
@@ -1218,7 +1215,7 @@ All encoder classes provide the following common services:
 	2. If a label is found, NVDA will announce the label (in braille, surrounded by parentheses).
 * Define and remove stream labels. This is done via stream labels dialog (F12) that'll make sure you entered a label (if not, the encoder position is removed from the encoder-specific stream labels dictionary).
 * Updates stream label position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
-* Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL allows one to hear encoder format and transfer rate/connection status.
+* Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL and AltaCast allows one to hear encoder format and transfer rate/connection status.
 * In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the four settings described above) has been added. Press Alt+NVDA+0 to open this dialog.
 
 ### Encoder ID's
@@ -1253,7 +1250,7 @@ For SAM encoders:
 * To disconnect, press F10.
 * You can press Control+F9 or Control+F10 to connect or disconnect all encoders (does not work well in recent SAM releases, according to my tests). A workaround was developed to fix this problem (opens context menu and activates the correct item on its own).
 
-For SPL encoders:
+For SPL encoder family (including AltaCast):
 
 * When you press F9 to connect, NVDA does the following:
 	1. Locates "connect" button, and if it says "Connect", clicks it (obj.doAction).
