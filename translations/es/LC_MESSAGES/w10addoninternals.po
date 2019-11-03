@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-06-26 09:41+Hora de verano romance\n"
-"PO-Revision-Date: 2019-06-26 09:56+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-03 12:07+0100\n"
+"PO-Revision-Date: 2019-11-03 12:55+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\w10addoninternals.py:3
@@ -26,8 +27,8 @@ msgid "Author: Joseph Lee"
 msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\w10addoninternals.py:5
-msgid "Revision: July 2019"
-msgstr "Revisión: julio de 2019"
+msgid "Revision: October 2019"
+msgstr "Revisión: octubre de 2019"
 
 #: ..\python_docs\w10addoninternals.py:6
 msgid "## Introduction"
@@ -100,20 +101,20 @@ msgstr ""
 #: ..\python_docs\w10addoninternals.py:11
 msgid ""
 "Note: some of the features described may change as Windows 10 and NvDA "
-"development progresses. As of July 2019 revision, one or two features from "
-"NVDA 2019.2 release and recent Windows Insider Preview builds are documented "
-"for reference purposes. Also, when refering to Windows 10 updates, release "
-"ID (YYMM) is used instead of using marketing label unless specified (for "
-"example, Version 1709 instead of Fall Creators Update)."
+"development progresses. As of October 2019 revision, one or two features "
+"from upcoming NVDA 2019.3 release and recent Windows Insider Preview builds "
+"are documented for reference purposes. Also, when refering to Windows 10 "
+"updates, release ID (YYMM) is used instead of using marketing label unless "
+"specified (for example, Version 1709 instead of Fall Creators Update)."
 msgstr ""
 "Nota: algunas de las funciones descritas pueden cambiar según progresen el "
-"desarrollo de NVDA y Windows 10. En la revisión de julio de 2019, se han "
-"documentado una o dos características de NVDA 2019.2 y las compilaciones de "
-"Windows Insider Preview más recientes con propósitos de referencia. Además, "
-"al referirse a las actualizaciones de Windows 10, se usa el identificador de "
-"la versión (aamm) en lugar de la etiqueta de mercado a menos que se "
-"especifique (por ejemplo, versión 1709 en vez de actualización Fall "
-"Creators)."
+"desarrollo de NVDA y Windows 10. En la revisión de octubre de 2019, se han "
+"documentado una o dos características del futuro NVDA 2019.3 y las "
+"compilaciones de Windows Insider Preview más recientes con propósitos de "
+"referencia. Además, al referirse a las actualizaciones de Windows 10, se usa "
+"el identificador de la versión (aamm) en lugar de la etiqueta de mercado a "
+"menos que se especifique (por ejemplo, versión 1709 en vez de actualización "
+"Fall Creators)."
 
 #: ..\python_docs\w10addoninternals.py:12
 msgid ""
@@ -633,8 +634,10 @@ msgstr ""
 "Windows Update, sensibles a los cambios en las compilaciones Insider Preview."
 
 #: ..\python_docs\w10addoninternals.py:54
-msgid "* Announcing tooltips from universal apps."
-msgstr "* verbalización de consejos en aplicaciones universales."
+msgid "* Announcing tooltips from universal apps, now part of NVDA 2019.3."
+msgstr ""
+"* verbalización de consejos en aplicaciones universales, ahora parte de NVDA "
+"2019.3."
 
 #: ..\python_docs\w10addoninternals.py:55
 msgid ""
@@ -659,17 +662,17 @@ msgid ""
 "Windows 10 App Essentials add-on comes with Windows 10 Objects, a global "
 "plugin that contains definitions of common controls encountered in Windows "
 "10 and various universal apps. These include search suggestion handling, "
-"looping selectors for time pickers and so on. It also includes additional "
-"UIA handling routines and configuration and update facility for the add-on "
-"(the latter was removed in 2019)."
+"tool tips for universal apps and so on. It also includes additional UIA "
+"handling routines and configuration and update facility for the add-on (the "
+"latter was removed in 2019)."
 msgstr ""
 "El complemento Windows 10 App Essentials viene con Objetos para Windows 10, "
 "una extensión global que contiene definiciones de controles comunes que se "
 "encuentran en Windows 10 y diversas aplicaciones universales. Aquí se "
-"incluyen el manejo de sugerencias de búsqueda, repetición para selectores de "
-"tiempo y así sucesivamente. También incluye procedimientos de manejo "
+"incluyen el manejo de sugerencias de búsqueda, consejos de aplicaciones "
+"universales y así sucesivamente. También incluye procedimientos de manejo "
 "adicionales para UIA, y las características de configuración y actualización "
-"del complemento (esta última se elimina en 2019)."
+"del complemento (esta última se eliminó en 2019)."
 
 #: ..\python_docs\w10addoninternals.py:59
 msgid "### Source code layout"
@@ -954,10 +957,10 @@ msgid ""
 "some workarounds were app specific, thus in June 2019, it was decided to "
 "transfer some search field handling to app modules. This is especially the "
 "case with address omnibar in Microsoft Edge (EdgeHTML version) where the "
-"global plugin\\342\\200\\231s suggestions closed event handler did not apply "
-"if Edge is in use. Along the way, handling rarely used search fields that "
-"appeared in one or two apps (such as People app search field in old app "
-"releases) were dropped."
+"global plugin’s suggestions closed event handler did not apply if Edge is in "
+"use. Along the way, handling rarely used search fields that appeared in one "
+"or two apps (such as People app search field in old app releases) were "
+"dropped."
 msgstr ""
 "Ten en cuenta que los procedimientos descritos más arriba se hicieron de una "
 "vez cuando se quisieron detectar todos los campos de búsqueda. Sin embargo, "
@@ -1285,15 +1288,22 @@ msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:134
 msgid ""
-"* Cortana/Start menu: suppress double announcement of suggestion result item "
-"in some cases, staying silent when user is dictating to Cortana, handling "
-"bad UIA implementations."
+"* Cortana/Start menu/Windows Search (classic Cortana): suppress double "
+"announcement of suggestion result item in some cases, staying silent when "
+"user is dictating to Cortana, handling bad UIA implementations."
 msgstr ""
-"* Cortana / Menú inicio: suprime la verbalización doble del elemento de "
-"sugerencia de resultado en algunos casos, permanece en silencio cuando el "
-"usuario dicta a Cortana, y procesa malas implementaciones de UIA."
+"* Cortana / Menú inicio / Windows Search (Cortana clásico): suprime la "
+"verbalización doble del elemento de sugerencia de resultado en algunos "
+"casos, permanece en silencio cuando el usuario dicta a Cortana, y procesa "
+"malas implementaciones de UIA."
 
 #: ..\python_docs\w10addoninternals.py:135
+msgid "* Cortana/conversations (new Cortana): announcing Cortana's responses."
+msgstr ""
+"* Cortana/conversaciones (nuevo Cortana): se anuncian las respuestas de "
+"Cortana."
+
+#: ..\python_docs\w10addoninternals.py:136
 msgid ""
 "* Mail: table navigation commands in message list, suppress read-only "
 "announcement in email content, app alias for hxmail.exe and hxoutlook.exe "
@@ -1304,7 +1314,7 @@ msgstr ""
 "aplicación para hxmail.exe y hxoutlook.exe (el más reciente para "
 "actualizaciones publicadas después de mayo del 2017)."
 
-#: ..\python_docs\w10addoninternals.py:136
+#: ..\python_docs\w10addoninternals.py:137
 msgid ""
 "* Maps: play location coordinates for map items, suppress repeated live "
 "region announcements, aliases to support old and new Maps releases (the old "
@@ -1315,37 +1325,49 @@ msgstr ""
 "dar soporte a versiones viejas y nuevas de la aplicación (el alias viejo, "
 "maps_windows, ya no está)."
 
-#: ..\python_docs\w10addoninternals.py:137
-msgid ""
-"* Microsoft Edge: announce correct alert text and enhancements for address "
-"omnibar, supports both the overall Microsoft Edge process and the content "
-"process (microsoftedgecp.exe)."
-msgstr ""
-"* Microsoft Edge: verbaliza el texto correcto en alertas e incluye mejoras "
-"para la barra de direcciones, soporta el proceso de Edge y el proceso de "
-"contenido (microsoftedgecp.exe)."
-
 #: ..\python_docs\w10addoninternals.py:138
 msgid ""
-"* Modern keyboard: support for emoji panel, dictation, hardware input "
-"suggestions, and pasting clipboard items (Version 1809), part of NVDA since "
-"2018.3."
+"* Microsoft Edge (classic EdgeHTML version): announce correct alert text and "
+"enhancements for address omnibar, supports both the overall Microsoft Edge "
+"process and the content process (microsoftedgecp.exe)."
 msgstr ""
-"* Teclado moderno: soporte para el panel de emojis, el dictado, las "
-"sugerencias de entrada por hardware y pegar elementos desde el portapapeles "
-"(versión 1809), parte de NVDA desde la versión 2018.3."
+"* Microsoft Edge (versión EdgeHTML clásica): verbaliza el texto correcto en "
+"alertas e incluye mejoras para la barra de direcciones, soporta el proceso "
+"de Edge y el proceso de contenido (microsoftedgecp.exe)."
 
 #: ..\python_docs\w10addoninternals.py:139
+msgid ""
+"* Microsoft Store: announce needed information when live region changed "
+"event is fired by some controls, aliases to support old and new Store "
+"versions (the old alias, winstore_mobile, is no more)."
+msgstr ""
+"* Tienda de Microsoft: verbaliza información necesaria cuando se dispara el "
+"evento de cambio de región viva en algunos controles, alias para soportar "
+"versiones antiguas y nuevas de la tienda (el alias antiguo, winstore_mobile, "
+"ya no está)."
+
+#: ..\python_docs\w10addoninternals.py:140
+msgid ""
+"* Modern keyboard/text input host: support for emoji panel, dictation, "
+"hardware input suggestions, and pasting clipboard items (Version 1809), part "
+"of NVDA since 2018.3."
+msgstr ""
+"* Teclado moderno / host de entrada de texto: soporte para el panel de "
+"emojis, el dictado, las sugerencias de entrada por hardware y pegar "
+"elementos desde el portapapeles (versión 1809), parte de NVDA desde la "
+"versión 2018.3."
+
+#: ..\python_docs\w10addoninternals.py:141
 msgid "* MSN Weather: use up or down arrow keys to read forecast information."
 msgstr ""
 "* El tiempo: usa las flechas arriba o abajo para leer la información "
 "meteorológica."
 
-#: ..\python_docs\w10addoninternals.py:140
+#: ..\python_docs\w10addoninternals.py:142
 msgid "* People: announcing first suggestion when looking for a contact."
 msgstr "* Personas: se anuncia la primera sugerencia al buscar un contacto."
 
-#: ..\python_docs\w10addoninternals.py:141
+#: ..\python_docs\w10addoninternals.py:143
 msgid ""
 "* Settings: selectively announce various status information, provide correct "
 "labels for certain controls."
@@ -1353,7 +1375,7 @@ msgstr ""
 "* Configuración: verbaliza de forma selectiva diversa información de estado, "
 "proporciona etiquetas correctas para ciertos controles."
 
-#: ..\python_docs\w10addoninternals.py:142
+#: ..\python_docs\w10addoninternals.py:144
 msgid ""
 "* Shell Experience Host: work around some UIA state information mismatch and "
 "announce item status in Action Center. Action Center support, including "
@@ -1366,22 +1388,11 @@ msgstr ""
 "actividades, incluyendo la reclasificación del botón de brillo como un botón "
 "correctamente, ahora forma parte de NVDA 2019.1."
 
-#: ..\python_docs\w10addoninternals.py:143
-msgid ""
-"* Store: announce needed information when live region changed event is fired "
-"by some controls, aliases to support old and new Store versions (the old "
-"alias, winstore_mobile, is no more)."
-msgstr ""
-"* Tienda: verbaliza información necesaria cuando se dispara el evento de "
-"cambio de región viva en algunos controles, alias para soportar versiones "
-"antiguas y nuevas de la tienda (el alias antiguo, winstore_mobile, ya no "
-"está)."
-
-#: ..\python_docs\w10addoninternals.py:144
+#: ..\python_docs\w10addoninternals.py:145
 msgid "### Adding useful features in apps"
 msgstr "### Añadiendo funciones útiles en aplicaciones"
 
-#: ..\python_docs\w10addoninternals.py:145
+#: ..\python_docs\w10addoninternals.py:146
 msgid ""
 "The following app modules add functionality unique to NVDA and/or commands "
 "that are used to improve user experience when using apps:"
@@ -1390,7 +1401,7 @@ msgstr ""
 "y / o órdenes utilizadas exclusivamente para mejorar la experiencia de "
 "usuario al utilizar aplicaciones:"
 
-#: ..\python_docs\w10addoninternals.py:146
+#: ..\python_docs\w10addoninternals.py:147
 msgid ""
 "* Maps (maps.py): when using object navigation to examine a map, a tone will "
 "be played to indicate where things are located on the map. This is achieved "
@@ -1410,7 +1421,7 @@ msgstr ""
 "el mapa, y esto se ha realizado a través de manejadores para el evento de "
 "región viva cambiada."
 
-#: ..\python_docs\w10addoninternals.py:147
+#: ..\python_docs\w10addoninternals.py:148
 msgid ""
 "* Mail (hxoutlook.py): when focused on messages list, one can use table "
 "navigation commands (Control+Alt+arrow keys) to review message headers. This "
@@ -1425,7 +1436,7 @@ msgstr ""
 "emplear la clase `NVDAObjects.behaviors.RowWithFakeNavigation` para añadir "
 "esta funcionalidad."
 
-#: ..\python_docs\w10addoninternals.py:148
+#: ..\python_docs\w10addoninternals.py:149
 msgid ""
 "* MSN Weather (microsoft_msn_weather.py): this app module, contributed by "
 "Derek Riemer, allows users to use up and down arrow keys to read forecast "
@@ -1437,32 +1448,35 @@ msgstr ""
 "para leer información meteorológica, llamando a las órdenes correspondientes "
 "de movimiento del cursor de revisión para moverse por línea."
 
-#: ..\python_docs\w10addoninternals.py:149
+#: ..\python_docs\w10addoninternals.py:150
 msgid "#### A note about modern keyboard"
 msgstr "#### Una nota sobre el teclado moderno"
 
-#: ..\python_docs\w10addoninternals.py:150
+#: ..\python_docs\w10addoninternals.py:151
 msgid ""
 "Modern keyboard, sometimes called Composable Shell "
-"(windowsinternal_composableshell_experiences_textinput_inputapp.py) is the "
-"name of the app that provides various features, including emoji panel, "
-"dictation, hardware input suggestions, and listing items to be pasted from "
-"cloud clipboard. This is not exactly an app, but more towards a floating "
-"overlay, much akin to touch keyboard on touchscreen devices. Powering these "
-"is a redesigned touch keyboard where XAML-based touch panel (with its own "
-"process) is used."
+"(windowsinternal_composableshell_experiences_textinput_inputapp.py) and "
+"nowadays called Text Input Host, is the name of the app that provides "
+"various features, including emoji panel, dictation, hardware input "
+"suggestions, listing items to be pasted from cloud clipboard and many other "
+"input related features. This is not exactly an app, but more towards a "
+"floating overlay, much akin to touch keyboard on touchscreen devices. "
+"Powering these is a redesigned touch keyboard where XAML-based touch panel "
+"(with its own process) is used."
 msgstr ""
 "Teclado moderno, en ocasiones llamado Composable Shell "
-"(windowsinternal_composableshell_experiences_textinput_inputapp.py) es el "
-"nombre de la aplicación que proporciona diversas características, incluyendo "
-"el panel de emojis, el dictado, las sugerencias de entrada por hardware y el "
-"listado de elementos que pueden pegarse desde el portapapeles en la nube. No "
-"se trata exactamente de una aplicación, sino que está más enfocado hacia una "
-"capa flotante, similar a los teclados en pantalla que se muestran en "
-"dispositivos táctiles. Para potenciarlos, hay un teclado táctil rediseñado "
-"donde se usa el panel táctil basado en XAML (con su propio proceso)."
+"(windowsinternal_composableshell_experiences_textinput_inputapp.py), y hoy "
+"en día llamado host de entrada de texto, es el nombre de la aplicación que "
+"proporciona diversas características, incluyendo el panel de emojis, el "
+"dictado, las sugerencias de entrada por hardware, el listado de elementos "
+"que pueden pegarse desde el portapapeles en la nube y muchas más funciones "
+"relacionadas con la entrada. No se trata exactamente de una aplicación, sino "
+"que está más enfocado hacia una capa flotante, similar a los teclados en "
+"pantalla que se muestran en dispositivos táctiles. Para potenciarlos, hay un "
+"teclado táctil rediseñado donde se usa el panel táctil basado en XAML (con "
+"su propio proceso)."
 
-#: ..\python_docs\w10addoninternals.py:151
+#: ..\python_docs\w10addoninternals.py:152
 msgid ""
 "In Windows 10 Insider Preview build 16215 and later, it is possible for "
 "users to browse and select emojis to insert in an edit field. This is done "
@@ -1480,7 +1494,7 @@ msgstr ""
 "compilación 16226, se pueden teclear descripciones de emojis para acotar el "
 "emoji deseado."
 
-#: ..\python_docs\w10addoninternals.py:152
+#: ..\python_docs\w10addoninternals.py:153
 msgid ""
 "In build 17666 and later, this panel has been redesigned. Instead of using "
 "Tab key to move between categories, one would press Tab to move between "
@@ -1495,7 +1509,7 @@ msgstr ""
 "tonos de piel, en la que puedes usar las flechas para seleccionar un tono de "
 "piel, y luego pulsar tabulador para moverte a la cuadrícula de emojis."
 
-#: ..\python_docs\w10addoninternals.py:153
+#: ..\python_docs\w10addoninternals.py:154
 msgid ""
 "Build 18305 and later brought another design change to this panel. In "
 "addition to selecting emojis, it also hosts two new grand categories named "
@@ -1511,7 +1525,18 @@ msgstr ""
 "elementos: emoji, kaomoji y símbolos. Al igual que con las categorías de "
 "emojis, al pulsar intro se alternará el panel entre estos modos."
 
-#: ..\python_docs\w10addoninternals.py:154
+#: ..\python_docs\w10addoninternals.py:155
+msgid ""
+"Build 18963 renamed Modern Keyboard to Text Input Host, along wth bringing "
+"refined version of Input Method Editor (IME) for certain languages. For "
+"languages such as Japanese, the modern IME hosted by Text Input Host is used."
+msgstr ""
+"La compilación 18963 ha renombrado el teclado moderno como host de entrada "
+"de texto, y además trae una versión refinada del editor de métodos de "
+"entrada (IME) para ciertos idiomas. En idiomas como el japonés, se usa el "
+"IME moderno alojado en el host de entrada de texto."
+
+#: ..\python_docs\w10addoninternals.py:156
 msgid ""
 "When this panel opens, a menu open event is fired by the emoji panel (File "
 "Explorer in build 18305 and later), an event NVDA does not detect for "
@@ -1532,7 +1557,7 @@ msgstr ""
 "5 y OneCore (Sapi Mobile) vienen con definiciones de caracteres emoji, "
 "expandidas para cubrir otros sintetizadores en NVDA 2018.4."
 
-#: ..\python_docs\w10addoninternals.py:155
+#: ..\python_docs\w10addoninternals.py:157
 msgid ""
 "Similar to emoji panel (or expanded input panel in build 18305 and later), "
 "in build 17025 and later, modern keyboard can also provide input "
@@ -1552,7 +1577,7 @@ msgstr ""
 "pueden pulsar flechas izquierda y derecha para navegar entre sugerencias y "
 "pulsar intro para aceptar el elemento ofrecido."
 
-#: ..\python_docs\w10addoninternals.py:156
+#: ..\python_docs\w10addoninternals.py:158
 msgid ""
 "The above mechanism for selecting input suggestions is also employed when "
 "pasting items from cloud clipboard. In build 17666 and later, one can copy "
@@ -1569,7 +1594,7 @@ msgstr ""
 "lista de elementos del portapapeles, y en ella se pueden pulsar flechas "
 "izquierda y derecha para seleccionar el elemento deseado."
 
-#: ..\python_docs\w10addoninternals.py:157
+#: ..\python_docs\w10addoninternals.py:159
 msgid ""
 "In NVDA 2018.3, support for all of these (modern keyboard features) plus "
 "dictation window (also part of modern keyboard) have become part of NVDA. "
@@ -1580,11 +1605,11 @@ msgstr ""
 "ventana de dictado) forma parte del propio NVDA. No obstante, el complemento "
 "es necesario todavía para soportar los nuevos diseños explicados más arriba."
 
-#: ..\python_docs\w10addoninternals.py:158
+#: ..\python_docs\w10addoninternals.py:160
 msgid "### What to announce, what not to announce"
 msgstr "### Qué verbalizar, qué callar"
 
-#: ..\python_docs\w10addoninternals.py:159
+#: ..\python_docs\w10addoninternals.py:161
 msgid ""
 "It is sometimes helpful to let users know what's going on by announcing "
 "various status information, while at other times it is equally important to "
@@ -1598,7 +1623,7 @@ msgstr ""
 "para la mayoría de los siguientes módulos de aplicación en el pasado, pero "
 "desde mediados de 2017 se está evolucionando precisamente hacia lo contrario."
 
-#: ..\python_docs\w10addoninternals.py:160
+#: ..\python_docs\w10addoninternals.py:162
 msgid ""
 "The app modules (and for one in particular, more than an app module) in "
 "question are:"
@@ -1606,7 +1631,7 @@ msgstr ""
 "Los módulos de aplicación (y para uno en particular, más de un módulo de "
 "aplicación) en cuestión son:"
 
-#: ..\python_docs\w10addoninternals.py:161
+#: ..\python_docs\w10addoninternals.py:163
 msgid ""
 "* Calculator (calculator.py): while entering calculations, entered "
 "expression will be announced via name change handler. Because this may "
@@ -1620,7 +1645,7 @@ msgstr ""
 "introducidos en NVDA, sólo se verbalizará el contenido de la pantalla de la "
 "calculadora cuando aparezcan los resultados reales o cuando se limpie."
 
-#: ..\python_docs\w10addoninternals.py:162
+#: ..\python_docs\w10addoninternals.py:164
 msgid ""
 "* People (peopleapp.py): NVDA will announce first suggestion when looking "
 "for a contact. Unlike other search fields, there is no controller for event. "
@@ -1631,22 +1656,39 @@ msgstr ""
 "para evento. Sin embargo, la sugerencia lanza un evento de elemento "
 "seleccionado."
 
-#: ..\python_docs\w10addoninternals.py:163
+#: ..\python_docs\w10addoninternals.py:165
 msgid ""
-"* Cortana (searchui.py): Cortana uses name change events and specific "
+"* Cortana (searchui.py)/new Start menu and Windows Search experience "
+"(searchapp.py): classic Cortana uses name change events and specific "
 "automation ID's to convey text messages. Name change event is also employed "
 "when Cortana tries to understand the text a user is dictating, which in old "
 "releases of the add-on meant NVDA would announce gibberish, subsequently "
-"resolved in later add-on releases."
+"resolved in later add-on releases. In recent Windows 10 releases, due to "
+"Windows Search redesign (which also involve changing executable for Windows "
+"Search to searchapp), search box content instead of result details is "
+"announced, or if results are announced, they are announced twice."
 msgstr ""
-"* Cortana (searchui.py): Cortana usa eventos de cambio de nombre e "
+"* Cortana (searchui.py) / nuevo menú Inicio y experiencia de búsqueda en "
+"Windows (searchapp.py): Cortana clásico usa eventos de cambio de nombre e "
 "identificadores de automatización específicos para transmitir mensajes de "
 "texto. El evento de cambio de nombre también se emplea cuando Cortana "
 "intenta entender el texto dictado por un usuario, lo que en las versiones "
 "antiguas del complemento se traducía en que NVDA podía verbalizar "
-"galimatías. Esto se ha resuelto en las versiones recientes del complemento."
+"galimatías. Esto se ha resuelto en las versiones recientes del complemento. "
+"En versiones recientes de Windows 10, debido al cambio de diseño de Windows "
+"Search (que también implica renombrar el ejecutable de Windows Search a "
+"searchapp), se anuncia el contenido del cuadro de búsqueda en lugar de los "
+"detalles del resultado, o si se anuncian los resultados, lo hacen dos veces."
 
-#: ..\python_docs\w10addoninternals.py:164
+#: ..\python_docs\w10addoninternals.py:166
+msgid ""
+"* Cortana conversations (cortana.py): similar to classic Cortana, Cortana's "
+"responses are announced."
+msgstr ""
+"* Conversaciones de Cortana (cortana.py): similar al Cortana clásico, se "
+"anuncian las respuestas de Cortana."
+
+#: ..\python_docs\w10addoninternals.py:167
 msgid ""
 "* Settings (systemsettings.py): NVDA will announce messages such as Windows "
 "Update notifications, and this is done through live region changed event "
@@ -1657,7 +1699,7 @@ msgstr ""
 "región viva cambiada (evento de cambio de nombre en versiones del "
 "complemento más antiguas)."
 
-#: ..\python_docs\w10addoninternals.py:165
+#: ..\python_docs\w10addoninternals.py:168
 msgid ""
 "* Shell Experience Host (shellexperiencehost.py): in Action Center, toggling "
 "some quick actions causes item status change event to be logged. NVDA will "
@@ -1668,7 +1710,7 @@ msgstr ""
 "conmutar ciertas acciones rápidas. NVDA anunciará el nuevo estado si es "
 "adecuado."
 
-#: ..\python_docs\w10addoninternals.py:166
+#: ..\python_docs\w10addoninternals.py:169
 msgid ""
 "* Microsoft Store (winstore_app.py): just like Settings app, status messages "
 "are announced, this time dealing with product downloads such as apps and "
@@ -1679,11 +1721,11 @@ msgstr ""
 "relacionados con la descarga de productos como aplicaciones o contenido "
 "multimedia."
 
-#: ..\python_docs\w10addoninternals.py:167
+#: ..\python_docs\w10addoninternals.py:170
 msgid "### Hunting for UIA implementation issues"
 msgstr "### Cazando problemas de implementación de UIA"
 
-#: ..\python_docs\w10addoninternals.py:168
+#: ..\python_docs\w10addoninternals.py:171
 msgid ""
 "As noted above, some controls ship with odd or bad UIA implementations, and "
 "universal apps are no exception (at least for app modules that ships with "
@@ -1698,7 +1740,7 @@ msgstr ""
 "extensión global Objetos de Windows 10) incluyen soluciones para diversos "
 "problemas de UIA:"
 
-#: ..\python_docs\w10addoninternals.py:169
+#: ..\python_docs\w10addoninternals.py:172
 msgid ""
 "* Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, "
 "such as appointment title and others are shown as read-only when they are "
@@ -1710,25 +1752,27 @@ msgstr ""
 "lectura cuando en realidad no lo son, y eliminando este estado del conjunto "
 "de estados para estos controles resolvía este problema."
 
-#: ..\python_docs\w10addoninternals.py:170
+#: ..\python_docs\w10addoninternals.py:173
 msgid ""
 "* Cortana: some search suggestions expose same text for name and "
 "description, which results in repeats for suggestion result text. This was "
 "corrected by comparing name and description and nullifying the description "
-"(obj.description = None). Also, when opening Sets version of Cortana search "
-"box (builds 17666 and 17692), wrong controller for event is fired, which "
-"prevents NvDA from announcing suggestions, and this has been corrected."
+"(obj.description = None). This workaround is no longer applicable due to "
+"Windows Search redesign in Version 1903. Also, when opening Sets version of "
+"Cortana search box (builds 17666 and 17692), wrong controller for event is "
+"fired, which prevents NvDA from announcing suggestions, and this has been "
+"corrected."
 msgstr ""
 "* Cortana: algunas sugerencias de búsqueda exponen el mismo texto en su "
 "nombre y descripción, lo que resulta en repeticiones del texto con el "
 "resultado de la sugerencia. Esto fue corregido comparando nombre y "
-"descripción, y anulando la descripción (obj.description=None). Además, al "
-"abrir la versión de conjuntos del cuadro de búsqueda de Cortana "
-"(compilaciones 17666 y 17692), se dispara el controlador para evento "
-"equivocado, lo que evita que NVDA verbalice las sugerencias. Esto ya ha sido "
-"corregido."
+"descripción, y anulando la descripción (obj.description=None). Este truco ya "
+"no se puede aplicar por el cambio de diseño de Windows Search en la versión "
+"1903. Además, al abrir la versión de Conjuntos del cuadro de búsqueda de "
+"Cortana (compilaciones 17666 y 17692), se dispara el controlador de evento "
+"equivocado, que evita que NVDA anuncie las sugerencias. Esto se ha corregido."
 
-#: ..\python_docs\w10addoninternals.py:171
+#: ..\python_docs\w10addoninternals.py:174
 msgid ""
 "* Maps: despite no changes to the app, live region changed event is fired by "
 "map title control, so NvDA includes a way to suppress repetitions."
@@ -1737,7 +1781,7 @@ msgstr ""
 "título del mapa dispara el evento de región viva cambiada, por lo que NVDA "
 "incluye una forma de suprimir repeticiones."
 
-#: ..\python_docs\w10addoninternals.py:172
+#: ..\python_docs\w10addoninternals.py:175
 msgid ""
 "* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, "
 "the name of the control that fires live region changed and system alert "
@@ -1751,7 +1795,7 @@ msgstr ""
 "hijo o el texto disperso por los hijos, por lo que NVDA buscará el texto "
 "real al verbalizar alertas."
 
-#: ..\python_docs\w10addoninternals.py:173
+#: ..\python_docs\w10addoninternals.py:176
 msgid ""
 "* Settings and Store: for some controls (such as wehn downloading content "
 "from Store), a specific status control fires live region changed event. "
@@ -1776,7 +1820,7 @@ msgstr ""
 "anterior), y en el caso de ciertas instalaciones de la versión 1809 de "
 "Windows 10, la etiqueta correcta es el nombre del primer hijo."
 
-#: ..\python_docs\w10addoninternals.py:174
+#: ..\python_docs\w10addoninternals.py:177
 msgid ""
 "* Shell Experience Host: for some submenus, NVDA does not know that it is a "
 "submenu, thus worked around by teaching NVDA to recognize the proper role "
@@ -1789,11 +1833,11 @@ msgstr ""
 "limitó a esta aplicación en 2018, pero se expandió para cubrir los submenús "
 "en el menú de aplicación de Edge en agosto del 2018."
 
-#: ..\python_docs\w10addoninternals.py:175
+#: ..\python_docs\w10addoninternals.py:178
 msgid "### A tale on app module and executable names"
 msgstr "### Un cuento sobre los nombres de ejecutables y módulos de aplicación"
 
-#: ..\python_docs\w10addoninternals.py:176
+#: ..\python_docs\w10addoninternals.py:179
 msgid ""
 "One of the side-effects of continuous delivery is appearance of "
 "unanticipated changes. This is more so when a workaround for an app broke "
@@ -1808,32 +1852,34 @@ msgstr ""
 "vinieron con un ejecutable cuyo nombre rompía los nombres de módulo de "
 "Python y los procedimientos de importación."
 
-#: ..\python_docs\w10addoninternals.py:177
+#: ..\python_docs\w10addoninternals.py:180
 msgid "The specific issues encountered were:"
 msgstr "Los problemas específicos que se encontraron fueron:"
 
-#: ..\python_docs\w10addoninternals.py:178
+#: ..\python_docs\w10addoninternals.py:181
 msgid ""
-"* Mail, Maps and Store: executable names have changed throughout Windows 10 "
-"development. For example, in May 2017, workarounds in place for Mail app "
-"broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a "
-"special case of this because it requires use of two app modules: "
-"microsoftedge.exe for web browser management, and microsoftedgecp.exe "
-"(content process) for displaying content in a more secure way. Due to this, "
-"aliasing (a new app module importing everything from an old version) is "
-"common."
+"* Mail, Maps, Modern Keyboard, Start menu and Store: executable names have "
+"changed throughout Windows 10 development. For example, in May 2017, "
+"workarounds in place for Mail app broke when Microsoft renamed hxmail to "
+"hxoutlook, and in July 2019, Modern Keyboard was renamed to textinputhost. "
+"Microsoft Edge is a special case of this because it requires use of two app "
+"modules: microsoftedge.exe for web browser management, and microsoftedgecp."
+"exe (content process) for displaying content in a more secure way. Due to "
+"this, aliasing (a new app module importing everything from an old version) "
+"is common."
 msgstr ""
-"* Correo, mapas y tienda: los nombres de los ejecutables han cambiado en los "
-"últimos meses. Por ejemplo, en mayo de 2017, las soluciones para la "
-"aplicación de correo se rompieron cuando Microsoft cambió el nombre de "
-"hxmail a hxoutlook. Microsoft Edge es un caso especial, ya que necesita que "
-"se usen dos módulos de aplicación: microsoftedge.exe para la administración "
-"del explorador web, y microsoftedgecp.exe (proceso de contenido) para "
-"mostrar el contenido de una forma más segura. Por este motivo, es común la "
-"creación de alias (un módulo de aplicación que importa todo lo de otro "
-"módulo)."
+"* Correo, mapas, teclado moderno, menú Inicio y tienda: los nombres de los "
+"ejecutables han cambiado a lo largo del desarrollo de Windows 10. Por "
+"ejemplo, en mayo de 2017, las soluciones para la aplicación de correo se "
+"rompieron cuando Microsoft cambió el nombre de hxmail a hxoutlook, y en "
+"julio de 2019, el teclado moderno se renombró a textinputhost. Microsoft "
+"Edge es un caso especial, ya que necesita que se usen dos módulos de "
+"aplicación: microsoftedge.exe para la administración del explorador web, y "
+"microsoftedgecp.exe (proceso de contenido) para mostrar el contenido de una "
+"forma más segura. Por este motivo, es común la creación de alias (un módulo "
+"de aplicación que importa todo lo de otro módulo)."
 
-#: ..\python_docs\w10addoninternals.py:179
+#: ..\python_docs\w10addoninternals.py:182
 msgid ""
 "* MSN Weather, Store, modern keyboard and others: some executable names have "
 "a dot (.) in the middle, which breaks app module import routines. This is "
@@ -1848,15 +1894,15 @@ msgstr ""
 "mientras que su módulo de aplicación se llama Skype_app.py. Esta solución ya "
 "forma parte de las últimas versiones de NVDA."
 
-#: ..\python_docs\w10addoninternals.py:180
+#: ..\python_docs\w10addoninternals.py:183
 msgid "## Few remarks"
 msgstr "## Unas pocas notas"
 
-#: ..\python_docs\w10addoninternals.py:181
+#: ..\python_docs\w10addoninternals.py:184
 msgid "### UIA performance"
 msgstr "### Rendimiento de UIA"
 
-#: ..\python_docs\w10addoninternals.py:182
+#: ..\python_docs\w10addoninternals.py:185
 msgid ""
 "Numerous issues were filed on NVDA's GitHub page regarding UIA performnace "
 "issues. These include issues in early days of Edge support where navigating "
@@ -1879,7 +1925,7 @@ msgstr ""
 "correcciones para problemas de rendimiento e implementación de controles "
 "(como los que se han listado arriba)."
 
-#: ..\python_docs\w10addoninternals.py:183
+#: ..\python_docs\w10addoninternals.py:186
 msgid ""
 "### Narrator is the new reference in screen reading in Windows 10 and "
 "universal apps"
@@ -1887,7 +1933,7 @@ msgstr ""
 "### Narrador es la nueva referencia en lectura de pantalla en Windows 10 y "
 "las aplicaciones universales"
 
-#: ..\python_docs\w10addoninternals.py:184
+#: ..\python_docs\w10addoninternals.py:187
 msgid ""
 "Until a few years ago, any screen reader wishing to support an app or add "
 "features would look up to JAWS for Windows for guidance. This is no longer "
@@ -1914,13 +1960,13 @@ msgstr ""
 "soluciones para implementaciones UIA defectuosas para hacer frente a algunos "
 "problemas."
 
-#: ..\python_docs\w10addoninternals.py:185
+#: ..\python_docs\w10addoninternals.py:188
 msgid "### Integrating features from this add-on to NVDA screen reader"
 msgstr ""
 "### Integración de características de este complemento en el lector de "
 "pantalla NVDA"
 
-#: ..\python_docs\w10addoninternals.py:186
+#: ..\python_docs\w10addoninternals.py:189
 msgid ""
 "As noted above, some add-on features are being (or have been) integrated "
 "into NVDA. These include search suggestion notification, modern keyboard "
@@ -1931,7 +1977,7 @@ msgstr ""
 "de búsqueda, soporte del teclado moderno, rastreo y verbalización del evento "
 "de región viva cambiada y así sucesivamente."
 
-#: ..\python_docs\w10addoninternals.py:187
+#: ..\python_docs\w10addoninternals.py:190
 msgid ""
 "Typically, when a feature from an add-on is integrated into NVDA, it goes "
 "through a typical issue-review-test-documentation cycle. To illustrate this, "
@@ -1942,13 +1988,13 @@ msgstr ""
 "ilustrarlo, vayamos por los pasos implicados en la integración de "
 "sugerencias de búsqueda en NVDA:"
 
-#: ..\python_docs\w10addoninternals.py:188
+#: ..\python_docs\w10addoninternals.py:191
 msgid "1. Issue: an issue regarding search suggestions was filed in 2016."
 msgstr ""
 "1. Incidencia: se creó una incidencia relacionada con las sugerencias de "
 "búsqueda en 2016."
 
-#: ..\python_docs\w10addoninternals.py:189
+#: ..\python_docs\w10addoninternals.py:192
 msgid ""
 "2. Review: I and NV Access went through a review phase where implementation "
 "detail were discussed and test cases written."
@@ -1956,7 +2002,7 @@ msgstr ""
 "2. Revisión: NV Access y yo iniciamos una fase de revisión donde se "
 "discutieron detalles de implementación y se escribieron casos de prueba."
 
-#: ..\python_docs\w10addoninternals.py:190
+#: ..\python_docs\w10addoninternals.py:193
 msgid ""
 "3. Test: in 2017, search suggestion feature made its debut in an NVDA next "
 "snapshod. This resulted in feedback from users regarding braille support, "
@@ -1970,7 +2016,7 @@ msgstr ""
 "disposición de los usuarios de la versión de desarrollo master, y por tanto "
 "estuvo lista para NVDA 2017.3."
 
-#: ..\python_docs\w10addoninternals.py:191
+#: ..\python_docs\w10addoninternals.py:194
 msgid ""
 "4. Documentation: the search suggestion feature was documented in the user "
 "guide. Discussion of this feature in this article is a special case of "
@@ -1980,14 +2026,14 @@ msgstr ""
 "en la guía de usuario. La exposición de esta función en este artículo es un "
 "caso especial del paso de documentación."
 
-#: ..\python_docs\w10addoninternals.py:192
+#: ..\python_docs\w10addoninternals.py:195
 msgid ""
 "Due to changes to release process in 2018, testing occurs via pull requests."
 msgstr ""
 "Debido a los cambios del proceso de liberación en 2018, las pruebas se hacen "
 "mediante solicitudes de cambio."
 
-#: ..\python_docs\w10addoninternals.py:193
+#: ..\python_docs\w10addoninternals.py:196
 msgid ""
 "In addition, when a feature from an add-on is under consideration for "
 "inclusion in NVDA, I modify the add-on source code to make it compliant with "
@@ -1999,11 +2045,11 @@ msgstr ""
 "las pautas del código fuente de NVDA, como el estilo de comentarios, "
 "cabecera de copyright y así sucesivamente."
 
-#: ..\python_docs\w10addoninternals.py:194
+#: ..\python_docs\w10addoninternals.py:197
 msgid "### Giving feedback to app developers"
 msgstr "### Cómo dar retroalimentación a los desarrolladores de aplicaciones"
 
-#: ..\python_docs\w10addoninternals.py:195
+#: ..\python_docs\w10addoninternals.py:198
 msgid ""
 "Feedback drives Windows 10 and universal apps. one of the reasons for "
 "instituting Windows Insider Program, as noted by Microsoft and others, is to "
@@ -2020,20 +2066,20 @@ msgstr ""
 "preinstaladas, así como de las aplicaciones de terceros, es crucial en la "
 "era del desarrollo dirigido por comentarios."
 
-#: ..\python_docs\w10addoninternals.py:196
+#: ..\python_docs\w10addoninternals.py:199
 msgid "Here are some tips regarding sending feedback to app writers:"
 msgstr ""
 "Aquí hay algunos consejos que se pueden poner en práctica a la hora de "
 "enviar comentarios a los desarrolladores de aplicaciones:"
 
-#: ..\python_docs\w10addoninternals.py:197
+#: ..\python_docs\w10addoninternals.py:200
 msgid ""
 "1. Embrace: have willingness to embrace (use and test) the app in question."
 msgstr ""
 "1. Compromiso: ten la disposición para comprometerte a usar y probar la "
 "aplicación en cuestión."
 
-#: ..\python_docs\w10addoninternals.py:198
+#: ..\python_docs\w10addoninternals.py:201
 msgid ""
 "2. Document: if something happens, document what happened, steps to "
 "reproduce, and possible workarounds."
@@ -2041,7 +2087,7 @@ msgstr ""
 "2. Documenta: si algo pasa, documenta qué ha pasado, pasos para "
 "reproducirlo, y posibles soluciones."
 
-#: ..\python_docs\w10addoninternals.py:199
+#: ..\python_docs\w10addoninternals.py:202
 msgid ""
 "3. Send: send feedback to developers (Feedback Hub, contacting developers of "
 "third-party universal apps, screen reader vendors and so on)."
@@ -2050,7 +2096,7 @@ msgstr ""
 "comentarios, contacto con desarrolladores de aplicaciones universales de "
 "terceros, fabricantes de lectores de pantalla, etc.)."
 
-#: ..\python_docs\w10addoninternals.py:200
+#: ..\python_docs\w10addoninternals.py:203
 msgid ""
 "4. Follow-up: follow-up with developers if they have questions for you or "
 "you want to know what's going on with your feedback."
@@ -2058,11 +2104,11 @@ msgstr ""
 "4. Seguimiento: seguimiento con los desarrolladores para ver si tienen "
 "preguntas para ti o para saber qué ocurre con tu retroalimentación."
 
-#: ..\python_docs\w10addoninternals.py:201
+#: ..\python_docs\w10addoninternals.py:204
 msgid "### Accessibility best practices for universal apps"
 msgstr "### Buenas prácticas de accesibilidad para aplicaciones universales"
 
-#: ..\python_docs\w10addoninternals.py:202
+#: ..\python_docs\w10addoninternals.py:205
 msgid ""
 "As a Windows Insider, a screen reader contributor and the author of a screen "
 "reader add-on for Windows 10 and universal apps, I came across numerous "
@@ -2075,7 +2121,7 @@ msgstr ""
 "su usabilidad se veía ensombrecida por problemas al trabajar con los "
 "controles, la navegación y así sucesivamente."
 
-#: ..\python_docs\w10addoninternals.py:203
+#: ..\python_docs\w10addoninternals.py:206
 msgid ""
 "Here are some tips in hopes of making universal apps truly universally "
 "accessible and usable:"
@@ -2083,7 +2129,7 @@ msgstr ""
 "Aquí hay algunos consejos que espero sirvan para hacer las aplicaciones "
 "universales verdaderamente accesibles y usables:"
 
-#: ..\python_docs\w10addoninternals.py:204
+#: ..\python_docs\w10addoninternals.py:207
 msgid ""
 "* Listen to feedback, especially feedback coming from users with "
 "disabilities such as screen reader users."
@@ -2091,7 +2137,7 @@ msgstr ""
 "* Escucha la retroalimentación, especialmente los comentarios que vengan de "
 "usuarios con discapacidad, como por ejemplo usuarios de lectores de pantalla."
 
-#: ..\python_docs\w10addoninternals.py:205
+#: ..\python_docs\w10addoninternals.py:208
 msgid ""
 "* Do not put accessibility as an afterthought, nor something you want to "
 "work in the future (say, version 3). Proactive accessibility and "
@@ -2103,7 +2149,7 @@ msgstr ""
 "investigación proactiva de la accesibilidad y sus problemas es algo que los "
 "desarrolladores de aplicaciones deberían aprender según las desarrollan."
 
-#: ..\python_docs\w10addoninternals.py:206
+#: ..\python_docs\w10addoninternals.py:209
 msgid ""
 "* Test with screen readers and other assistive technologies: one way to "
 "validate accessibility issues raised by users with disabilities is using "
@@ -2118,7 +2164,7 @@ msgstr ""
 "desarrollador en Narrador, etc. para localizar dónde se encuentra la raíz "
 "del problema."
 
-#: ..\python_docs\w10addoninternals.py:207
+#: ..\python_docs\w10addoninternals.py:210
 msgid ""
 "* Try using keyboards and other input methods offered by various assistive "
 "technologies: touchscreen isn't the only input method used in universal "
@@ -2136,7 +2182,7 @@ msgstr ""
 "asegurarte de que las funciones de la aplicación funcionan como se espera al "
 "utilizar teclados y otros métodos de entrada."
 
-#: ..\python_docs\w10addoninternals.py:208
+#: ..\python_docs\w10addoninternals.py:211
 msgid ""
 "* Use useful labels: in case the control has no label as reported by screen "
 "readers, be sure to provide labels. A good historical case is Windows "
@@ -2159,7 +2205,7 @@ msgstr ""
 "antiguas, problema que se ha solucionado en las actualizaciones más "
 "recientes."
 
-#: ..\python_docs\w10addoninternals.py:209
+#: ..\python_docs\w10addoninternals.py:212
 msgid ""
 "* Raise appropriate UIA events: screen readers listen to UIA events to "
 "detect what's happening with apps. For example, if there's a need to anounce "
@@ -2175,11 +2221,11 @@ msgstr ""
 "las sugerencias de contenido. Las versiones más recientes ya lanzan este "
 "evento."
 
-#: ..\python_docs\w10addoninternals.py:210
+#: ..\python_docs\w10addoninternals.py:213
 msgid "## Conclusion"
 msgstr "## Conclusión"
 
-#: ..\python_docs\w10addoninternals.py:211
+#: ..\python_docs\w10addoninternals.py:214
 msgid ""
 "With the introduction of Windows 10 and Universal Windows Platform, a new "
 "way of connecting users and developers has emerged: feedback-driven "
@@ -2199,7 +2245,7 @@ msgstr ""
 "la retroalimentación continuada, y la colaboración entre Microsoft y los "
 "fabricantes de ayudas técnicas."
 
-#: ..\python_docs\w10addoninternals.py:212
+#: ..\python_docs\w10addoninternals.py:215
 msgid ""
 "In terms of NVDA, what made Windows 10 usability possible was not only "
 "changes made from within Windows and universal apps, but also proactive "
@@ -2234,19 +2280,19 @@ msgstr ""
 "partes en el ecosistema de Windows 10 y las aplicaciones universales, el "
 "complemento seguirá aquí."
 
-#: ..\python_docs\w10addoninternals.py:213
+#: ..\python_docs\w10addoninternals.py:216
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\w10addoninternals.py:214
+#: ..\python_docs\w10addoninternals.py:217
 msgid "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
 msgstr "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
 
-#: ..\python_docs\w10addoninternals.py:215
+#: ..\python_docs\w10addoninternals.py:218
 msgid "* Windows Insider Program (Microsoft): https://insider.windows.com/"
 msgstr "* Windows Insider Program (Microsoft): https://insider.windows.com/"
 
-#: ..\python_docs\w10addoninternals.py:216
+#: ..\python_docs\w10addoninternals.py:219
 msgid ""
 "* Windows as a Service Overview (Microsoft Docs): https://docs.microsoft.com/"
 "en-us/windows/deployment/update/waas-overview"
@@ -2254,7 +2300,7 @@ msgstr ""
 "* Descripción de Windows como servicio (Microsoft Docs): https://docs."
 "microsoft.com/en-us/windows/deployment/update/waas-overview"
 
-#: ..\python_docs\w10addoninternals.py:217
+#: ..\python_docs\w10addoninternals.py:220
 msgid ""
 "* What's a Universal Windows Platform (UWP) App (Microsoft UWP App "
 "Developer): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-"
@@ -2264,7 +2310,7 @@ msgstr ""
 "(desarrollador de aplicaciones Microsoft UWP): https://docs.microsoft.com/en-"
 "us/windows/uwp/get-started/whats-a-uwp"
 
-#: ..\python_docs\w10addoninternals.py:218
+#: ..\python_docs\w10addoninternals.py:221
 msgid ""
 "* UI Automation Overview (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee684076(v=vs.85).aspx"
@@ -2272,7 +2318,7 @@ msgstr ""
 "* Descripción de UI Automation (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee684076(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:219
+#: ..\python_docs\w10addoninternals.py:222
 msgid ""
 "* MSAA overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/"
 "desktop/dd373592(v=vs.85).aspx"
@@ -2280,7 +2326,7 @@ msgstr ""
 "* Descripción de MSAA (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/dd373592(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:220
+#: ..\python_docs\w10addoninternals.py:223
 msgid ""
 "* UI Automation and Active Accessibility (MSDN): https://msdn.microsoft.com/"
 "en-us/library/windows/desktop/ee671585(v=vs.85).aspx"
@@ -2288,7 +2334,7 @@ msgstr ""
 "* UI Automation y Active Accessibility (MSDN): https://msdn.microsoft.com/en-"
 "us/library/windows/desktop/ee671585(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:221
+#: ..\python_docs\w10addoninternals.py:224
 msgid ""
 "* Component Object Model Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ms680573(v=vs.85).aspx"
@@ -2296,7 +2342,7 @@ msgstr ""
 "* Descripción de Component Object Model (MSDN): https://msdn.microsoft.com/"
 "en-us/library/windows/desktop/ms680573(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:222
+#: ..\python_docs\w10addoninternals.py:225
 msgid ""
 "* IUIAutomationElement interface (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671425(v=vs.85).aspx"
@@ -2304,7 +2350,7 @@ msgstr ""
 "* La interfaz IUIAutomationElement (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671425(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:223
+#: ..\python_docs\w10addoninternals.py:226
 msgid ""
 "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee671434(v=vs.85).aspx"
@@ -2312,7 +2358,7 @@ msgstr ""
 "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee671434(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:224
+#: ..\python_docs\w10addoninternals.py:227
 msgid ""
 "* UI Automation Properties Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671594(v=vs.85).aspx"
@@ -2320,7 +2366,7 @@ msgstr ""
 "* Descripción de las propiedades de UI Automation (MSDN): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ee671594(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:225
+#: ..\python_docs\w10addoninternals.py:228
 msgid ""
 "* UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671221(v=vs.85).aspx"
@@ -2328,7 +2374,7 @@ msgstr ""
 "* Descripción de los eventos de UI Automation (MSDN): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ee671221(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:226
+#: ..\python_docs\w10addoninternals.py:229
 msgid ""
 "* UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671223(v=vs.85).aspx"
@@ -2336,7 +2382,7 @@ msgstr ""
 "* Identificadores de eventos en UI Automation (MSDN): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ee671223(v=vs.85).aspx"
 
-#: ..\python_docs\w10addoninternals.py:227
+#: ..\python_docs\w10addoninternals.py:230
 msgid ""
 "* Auto-suggest accessibility, part of Accessible Text Requirements "
 "(Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/"
@@ -2346,7 +2392,7 @@ msgstr ""
 "textos accesibles (Microsoft Docs): https://docs.microsoft.com/en-us/windows/"
 "uwp/accessibility/accessible-text-requirements"
 
-#: ..\python_docs\w10addoninternals.py:228
+#: ..\python_docs\w10addoninternals.py:231
 msgid ""
 "* IUIAutomationNotificationEventHandler::HandleNotificationEvent (MSDN): "
 "https://msdn.microsoft.com/en-us/library/windows/desktop/mt814955(v=vs.85)."

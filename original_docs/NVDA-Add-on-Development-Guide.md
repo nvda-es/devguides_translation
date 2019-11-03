@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: August 2019 for NVDA 2019.2
+Latest version: November 2019 for NVDA 2019.2
 
 IMPORTANT: the NVDA community is in the midst of a Python 3 transition. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
 
@@ -190,7 +190,7 @@ As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store a
 
 ### A very important note about migrating custom extension code to development scratchpad
 
-If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
+If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules (sometikmes claled "plugins") inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
 
 1. NVDA will no longer load extension code stored in the following subdirectories of the user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.
 	* If you find that code inside these folders is no longer working as of NVDA 2019.1, the above reason is why.
@@ -207,18 +207,23 @@ If you are coming from NVDA 2018.4 or earlier, you may recall that you are able 
 ### What are Add-ons?
 
 Add-ons are additional small programs that extend NVDA's functionality or support for applications. This may include adding global features, enhancing 
-support for an application, or adding support for newer braille displays or speech synthesizers.
-
-Note: add-ons are sometimes called "Plugins", especially in the [NVDA Developer Guide]. In general, we will call them add-ons in this guide for the sake of clarity, but just be aware that they are the same thing.
+support for an application, adding support for newer braille displays or speech synthesizers, or enhancing visual usage of NVDA via vision enhancers.
 
 A fully constructed add-on will consist of the add-on Python code itself, contained in one or more modules (more on that in the next section), and 
 usually some documentation, and other support files. If that sounds daunting: don't worry, we will start small, with examples, and only with Python 
 code. The rest of the support structure for an add-on will come later.
 
+Note: add-ons are sometimes called "Plugins", especially in the [NVDA Developer Guide]. Although they may appear to be similar, these terms are different:
+
+* Add-on: one or more modules or components packaged as an archive for easy installation.
+* Plugin: a module or a collection of modules designed to modify NVDA's behavior in various ways.
+
+Throughout this guide, whenever we refer to "add-ons", you can assume that they contain at least one plugin or component.
+
 ### What Are Add-on Modules?
 
-Add-ons can act globally (across all of NVDA), in a specific application or program, or behind the scenes (at the hardware or software level). We call these three 
-major areas "modules". Every add-on contains at least one module, which is just one or more Python files designed to act in one of those three specific 
+Add-ons can act globally (across all of NVDA), in a specific application or program, behind the scenes (at the hardware or software level), or enhance NVDA experience for visual audiences. We call these four 
+major areas "modules". Every add-on contains at least one module, which is just one or more Python files designed to act in one of those four specific 
 areas. Additionally, if it makes sense for the add-on you are developing, your add-on can include more than one module. For example, if your add-on 
 provides better accessibility for a specific application, but also provides global commands that work anywhere in NVDA, you would be using two modules.
 
@@ -227,6 +232,7 @@ Currently, NVDA supports these add-on module types:
 * Global plugin: A global plugin adds features for NVDA which can be used anywhere, such as OCR capability.
 * App module: An app module allows enhanced support for a specific program. App modules only run as long as the program runs. They change how NVDA reacts to the windows and controls in the running application. 
 * Driver: A driver allows a program to talk to hardware, and in some cases, other software. Currently you can write drivers for new braille displays or speech synthesizers.
+* Enhancer: An enhancer is used to improve NVDA experience for different groups of users as they use computers. Currently one enhancer type, "vision enhancement provider", is supported.
 
 ### What Are Add-on Packages?
 
@@ -278,7 +284,7 @@ Once you install the needed dependencies (see above), paste the Gettext package 
 Each add-on folder, at a minimum, must contain the following files and folders:
 
 * manifest.ini to store manifest information such as add-on name, author, and compatibility range (minimum version, last tested version).
-* An "addon" subfolder with the add-on module directory underneath this subfolder (appModules, globalPlugins, synthDrivers, brailleDisplays). One or more module folders can be specified.
+* An "addon" subfolder with the add-on module directory underneath this subfolder (appModules, globalPlugins, synthDrivers, brailleDisplays, visionEnhancementProviders). One or more module folders can be specified.
 
 If you are using the add-on template, the folder structure will automatically be created, so you need to create only the addon subfolder and the add-on module folder(s) and code inside this folder. See the readme file in the template folder for more information on customizing your add-on manifest using the template files.
 
@@ -335,12 +341,12 @@ The below code implements our example. Put this in your .py file as exactly as s
 	import tones # We want to hear beeps.
 	
 	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-		
+	
 		def script_doBeep(self, gesture):
-			tones.beep(440, 1000) # Beep a standard middle A for 1 second.
-		
+			tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
+	
 		__gestures={
-			"kb:NVDA+A":"doBeep"
+			"kb:NVDA+A": "doBeep"
 		}
 
 In Python, you make comments by putting hash sign (#) at the start of the comment line.
@@ -793,7 +799,7 @@ For object events, use:
 	def event_eventName(self):
 		# Event routine.
 
-In fact, we have met an actual "event" before: `event_NVDAObject-Init`. This is a special event (one of many events defined in NVDA) fired when NVDA meets a new object and initializes it according to your input (see the section on overriding object properties for more information). Let's meet other events you may see while writing your add-on.
+In fact, we have met an actual "event" before: `event_NVDAObject_init`. This is a special event (one of many events defined in NVDA) fired when NVDA meets a new object and initializes it according to your input (see the section on overriding object properties for more information). Let's meet other events you may see while writing your add-on.
 
 ### Example 4: Announcing the changed name of a control
 
@@ -950,13 +956,15 @@ This is because NVDA 2019.1 will not load custom extension code stored in subfol
 
 We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
-Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules and drivers.
+Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules, drivers, and enhancers.
 
 ## Introduction to global plugins
 
 A global plugin adds features available everywhere. For example, if there is a control that will be used in many applications, then you can write a global plugin to handle them throughout NVDA. Another example is adding additional features to NVDA that can be used in all programs, such as OCR capability, place marker management and so on.
 
 A global plugin is a Python source code (.py) file with the name of your plugin. For example, if you're adding support for rich edit fields in many applications, you can name your plugin as richEditSupport.py. When naming them, try be brief so you can see what your plugin does.
+
+IMPORTANT: although enhancers may appear to be identical with global plugins (and several enhancers were created as global plugins in the past), they are not the same. See Enhancers section for details.
 
 ### Typical development plan for global plugins
 
@@ -1177,6 +1185,34 @@ For braille displays:
 
 When writing drivers, you may wish to follow the recommended steps for app module development (planning, talking to vendors, user test, etc.). However, since drivers require intimate knowledge of hardware and/or software, you should spend more time on testing your driver. This is more so if you are writing a driver for a braille display which can send arbitrary commands (braille commands, routing buttons, etc.).
 
+## Enhancers
+
+An enhancer is a module that helps certain groups of users use computers more efficiently. These may include cursor tracking, magnification, and other enhancements.
+
+Currently NVDA can provide assistance through vision enhancement providers. A vision enhancement provider is an enhancer that allows people with low vision or sight use computers effectively by working in tandem with NVDA. Enhancements may include cursor highlighting, screen curtain effect, and magnifying parts of the screen. These enhancers are stored under "visionEnhancementProviders" folder and defined as a "VisionEnhancementProvider" class which inherits from "vision.providerBase.VisionEnhancementProvider".
+
+Note: because only one enhancer is supported at this time, we will refer to vision enhancement provider in the sections below.
+
+### Enhancer components
+
+An enhancer such as vision enhancement provider will look similar to a combination of a global plugin and a driver (see above sections for explanations). For the most part, components used for drivers are applicable. These include:
+
+* Enhancer identifier: a camel-case string such as "screenCurtain" that uniquely identifies this enhancer.
+* Friendly name: the name that'll appear under Vision dialog.
+* Supported enhancements: a frozen set of enhancement roles this provider will introduce..
+* Startup check: a routine that will ensure NVDA is running on a specific environment where the enhancer would be most helpful, such as ehcking for a specific Windows release.
+* Startup and shutdown: a class constructor that instructs the enhancer to come online and a "termiante" method that shuts it down.
+* Event registrar: if an enhancer wishes to respond to various actions performed by users, it can specify follow-up actions.
+
+### A Few important things to remember before, during and after enhancer development
+
+* Be sure to talk to users planning to use your enhancer. For vision enhancement providers, make sure the enhancements are indeed what users want.
+* Test your enhancers with many users to make sure it is working correctly.
+
+### Typical enhancer development steps
+
+When writing enhancers such as vision enhancement providers, you may wish to follow the recommended steps for driver and global plugin development (planning, talking to users, user test, etc.). As these modules will affect NVDA experience globally (even when switching configuration profiles), make sure the enhancer does not degrade user experience for people not needing it.
+
 ## Sharing your add-on and experience with others
 
 Once you've finished developing your add-ons, you might want to share your code with others. Along the way, you might contribute your know-how so others may benefit from your experiences.
@@ -1350,6 +1386,8 @@ The below terms are used throughout this development guide as well as in the add
 * Built-in module: a module that comes with NVDA that add-ons can optionally override or extend.
 * Caret: cursor shown on screen, usually seen when editing text or navigating documents.
 * Class: definition of an object.
+* Driver: a program that allows another program to talk to other software or hardware.
+* Enhancer: a module that adds usability enhancements in tandem with NVDA.
 * Event: a routine called when certain things happen such as character input, changes to text on screen, a checkbox being checked and so on.
 * Function: a piece of code that performs something given one or more input parameters and optionally returns something.
 * Gesture: a piece of input such as key presses, touchscreen flicks, braille keys and so on.
@@ -1387,22 +1425,22 @@ The below list summarizes concepts all add-on developers will need to know when 
 
 The following table compares various add-on types and when to use them.
 
-| Task or feature | Global plugin | App module | Driver |
-| ------- | --------- | -------- | -------- |
-| Can be used everywhere | Yes | No | Yes |
-| Naming restrictions | No (limited by Windows file naming conventions) | Must be name of the executable | No (limited by Windows file naming conventions) |
-| Retrieve various controls, including focused control | Yes | Yes | No |
-| Commands can be used everywhere | Yes | No | Braille display drivers only if defined |
-| Handle events such as focus changes | Yes | Yes | No |
-| Define custom objects to represent controls | Yes | Yes | No |
-| Define custom actions to be performed when the module loads and unloads | Yes | Yes | Yes |
-| Perform actions when profile switching occurs and other actions | Yes | Yes | Yes |
-| Can modify object attributes at runtime | No | Yes | No |
-| Modify speech and other output routines and presentation experience (i.e. speech.cancelSpeech, braille.handler.update, etc.) | Yes | yes | No |
-| Include custom settings | Yes | Yes | Speech synthesizers only |
-| Can patch NVDA functions, classes and modules at will | Yes | Not advised | No |
-| Subject to configuration profile switches | No | Yes | Yes |
-| Can call external libraries written in C and other languages and bundled as DLLs | Yes | Yes | Yes |
+| Task or feature | Global plugin | App module | Driver | Enhancer |
+| ------- | --------- | -------- | -------- | -------- |
+| Can be used everywhere | Yes | No | Yes | Yes |
+| Naming restrictions | No (limited by Windows file naming conventions) | Must be name of the executable | No (limited by Windows file naming conventions) | No (limited by Windows file naming conventions) |
+| Retrieve various controls, including focused control | Yes | Yes | No | Yes |
+| Commands can be used everywhere | Yes | No | Braille display drivers only if defined | Yes |
+| Handle events such as focus changes | Yes | Yes | No | Yes |
+| Define custom objects to represent controls | Yes | Yes | No | No |
+| Define custom actions to be performed when the module loads and unloads | Yes | Yes | Yes | Yes |
+| Perform actions when profile switching occurs and other actions | Yes | Yes | Yes | Yes |
+| Can modify object attributes at runtime | No | Yes | No | No |
+| Modify speech and other output routines and presentation experience (i.e. speech.cancelSpeech, braille.handler.update, etc.) | Yes | yes | No | Depends on enhancer |
+| Include custom settings | Yes | Yes | Yes | Yes |
+| Can patch NVDA functions, classes and modules at will | Yes | Not advised | No | Not advised |
+| Subject to configuration profile switches | No | Yes | Yes | Yes |
+| Can call external libraries written in C and other languages and bundled as DLLs | Yes | Yes | Yes | Yes |
 
 ### Appendix D: notes and references for scripters of other screen readers
 

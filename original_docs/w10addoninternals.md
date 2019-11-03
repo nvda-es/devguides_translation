@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: July 2019
+Revision: October 2019
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of July 2019 revision, one or two features from NVDA 2019.2 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of October 2019 revision, one or two features from upcoming NVDA 2019.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2019 Joseph Lee and others, released under GPL 2.
 
@@ -88,14 +88,14 @@ The Windows 10 App Essentials add-on includes the following additions, fixes and
 * Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into NVDA 2018.3 release, but more recent changes do require support from this add-on.
 * Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2, and refined in 2019.2 to interupt users when important notifications are pending.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update, sensitive to changes in Insider Preview builds.
-* Announcing tooltips from universal apps.
+* Announcing tooltips from universal apps, now part of NVDA 2019.3.
 * Recognizing dialogs powered by XAML and various frameworks. Since NVDA 2018.3, NVDA itself takes care of this in most situations.
 
 We'll meet various UIA controls and workarounds throughout this article.
 
 ## Windows 10 Objects
 
-Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, looping selectors for time pickers and so on. It also includes additional UIA handling routines and configuration and update facility for the add-on (the latter was removed in 2019).
+Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin that contains definitions of common controls encountered in Windows 10 and various universal apps. These include search suggestion handling, tool tips for universal apps and so on. It also includes additional UIA handling routines and configuration and update facility for the add-on (the latter was removed in 2019).
 
 ### Source code layout
 
@@ -213,16 +213,17 @@ The modules and enhancers/fixers applied are:
 
 * Calculator: selectively announce calculator display.
 * Calendar: suppress read-only state announcement in various controls.
-* Cortana/Start menu: suppress double announcement of suggestion result item in some cases, staying silent when user is dictating to Cortana, handling bad UIA implementations.
+* Cortana/Start menu/Windows Search (classic Cortana): suppress double announcement of suggestion result item in some cases, staying silent when user is dictating to Cortana, handling bad UIA implementations.
+* Cortana/conversations (new Cortana): announcing Cortana's responses.
 * Mail: table navigation commands in message list, suppress read-only announcement in email content, app alias for hxmail.exe and hxoutlook.exe (the latter for updates released in May 2017).
 * Maps: play location coordinates for map items, suppress repeated live region announcements, aliases to support old and new Maps releases (the old alias, maps_windows, is gone).
-* Microsoft Edge: announce correct alert text and enhancements for address omnibar, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
-* Modern keyboard: support for emoji panel, dictation, hardware input suggestions, and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
+* Microsoft Edge (classic EdgeHTML version): announce correct alert text and enhancements for address omnibar, supports both the overall Microsoft Edge process and the content process (microsoftedgecp.exe).
+* Microsoft Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more).
+* Modern keyboard/text input host: support for emoji panel, dictation, hardware input suggestions, and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
 * MSN Weather: use up or down arrow keys to read forecast information.
 * People: announcing first suggestion when looking for a contact.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
 * Shell Experience Host: work around some UIA state information mismatch and announce item status in Action Center. Action Center support, including reclassifying brightness button as a proper button is now part of NVDA 2019.1.
-* Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more).
 
 ### Adding useful features in apps
 
@@ -234,13 +235,15 @@ The following app modules add functionality unique to NVDA and/or commands that 
 
 #### A note about modern keyboard
 
-Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) is the name of the app that provides various features, including emoji panel, dictation, hardware input suggestions, and listing items to be pasted from cloud clipboard. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
+Modern keyboard, sometimes called Composable Shell (windowsinternal_composableshell_experiences_textinput_inputapp.py) and nowadays called Text Input Host, is the name of the app that provides various features, including emoji panel, dictation, hardware input suggestions, listing items to be pasted from cloud clipboard and many other input related features. This is not exactly an app, but more towards a floating overlay, much akin to touch keyboard on touchscreen devices. Powering these is a redesigned touch keyboard where XAML-based touch panel (with its own process) is used.
 
 In Windows 10 Insider Preview build 16215 and later, it is possible for users to browse and select emojis to insert in an edit field. This is done by pressing Windows+period (.) or Windows+semicolon (;). A floating panel of emoji categories and emojis will appear. One can then use arrow keys to move through emojis or Tab and Shift+Tab to cycle through categories. In build 16226, one can type emoji descriptions to narrow the emoji field.
 
 In build 17666 and later, this panel has been redesigned. Instead of using Tab key to move between categories, one would press Tab to move between emoji grid and categories. In case of People category, pressing Tab will let you move to skin tones list where you can use arrow keys to select a skin tone, then press Tab to move to emoji grid.
 
 Build 18305 and later brought another design change to this panel. In addition to selecting emojis, it also hosts two new grand categories named kaomoji ("face characters" in Japanese) and symbols. When one presses Tab, one will eventually reach category list with three items: emoji, kaomoji, and symbols. Just like selecting emoji categories, pressing Enter will switch the panel among these modes.
+
+Build 18963 renamed Modern Keyboard to Text Input Host, along wth bringing refined version of Input Method Editor (IME) for certain languages. For languages such as Japanese, the modern IME hosted by Text Input Host is used.
 
 When this panel opens, a menu open event is fired by the emoji panel (File Explorer in build 18305 and later), an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters, expanded to cover other synthesizers in NVDA 2018.4
 
@@ -258,7 +261,8 @@ The app modules (and for one in particular, more than an app module) in question
 
 * Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared.
 * People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event.
-* Cortana (searchui.py): Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases.
+* Cortana (searchui.py)/new Start menu and Windows Search experience (searchapp.py): classic Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases. In recent Windows 10 releases, due to Windows Search redesign (which also involve changing executable for Windows Search to searchapp), search box content instead of result details is announced, or if results are announced, they are announced twice.
+* Cortana conversations (cortana.py): similar to classic Cortana, Cortana's responses are announced.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
 * Shell Experience Host (shellexperiencehost.py): in Action Center, toggling some quick actions causes item status change event to be logged. NVDA will announce the new status if appropriate.
 * Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
@@ -268,7 +272,7 @@ The app modules (and for one in particular, more than an app module) in question
 As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules (and in case of two, taken care of by Windows 10 Objects global plugin itself) include workarounds for various UIA problems:
 
 * Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
-* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). Also, when opening Sets version of Cortana search box (builds 17666 and 17692), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
+* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). This workaround is no longer applicable due to Windows Search redesign in Version 1903. Also, when opening Sets version of Cortana search box (builds 17666 and 17692), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
 * Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects, and in case of certain Windows 10 Version 1809 installations, the correct label is the name of the first child.
@@ -280,7 +284,7 @@ One of the side-effects of continuous delivery is appearance of unanticipated ch
 
 The specific issues encountered were:
 
-* Mail, Maps and Store: executable names have changed throughout Windows 10 development. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common.
+* Mail, Maps, Modern Keyboard, Start menu and Store: executable names have changed throughout Windows 10 development. For example, in May 2017, workarounds in place for Mail app broke when Microsoft renamed hxmail to hxoutlook, and in July 2019, Modern Keyboard was renamed to textinputhost. Microsoft Edge is a special case of this because it requires use of two app modules: microsoftedge.exe for web browser management, and microsoftedgecp.exe (content process) for displaying content in a more secure way. Due to this, aliasing (a new app module importing everything from an old version) is common.
 * MSN Weather, Store, modern keyboard and others: some executable names have a dot (.) in the middle, which breaks app module import routines. This is countered by replacing dots with underscores (_). For example, for Skype, the actual executable name is skype.app.exe, while the app module for this app is named skype_app.py. This fix is now part of recent NVDA releases.
 
 ## Few remarks

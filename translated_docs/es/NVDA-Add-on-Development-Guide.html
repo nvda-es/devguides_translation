@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: agosto de 2019 para NVDA 2019.2</p>
+<p>Última versión: noviembre de 2019 para NVDA 2019.2</p>
 <p>Importante: la comunidad de NVDA se encuentra en mitad de una transición a Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como Python 3 a menos que se indique lo contrario.</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
@@ -183,7 +183,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <h3 id="nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows">Nota especial sobre la versión de NVDA para la tienda de Windows</h3>
 <p>A partir de NVDA 2018.1, se han establecido cambios para permitir a NVDA ejecutarse como una aplicación de la tienda Windows. Una vez se publique en la tienda la versión de NVDA para la tienda de Windows, los usuarios de Windows 10 podrán ir a la tienda y obtener NVDA. Sin embargo, hay restricciones que vienen con esta versión de NVDA, la más notable es que los complementos no pueden ejecutarse en este entorno. Por lo tanto, si necesitas ejecutar o escribir complementos de NVDA, deberás utilizar la versión clásica de escritorio de este lector, disponible en la sección de descargas de nuestro sitio web.</p>
 <h3 id="nota-muy-importante-sobre-la-migracion-de-codigo-personalizado-de-extension-a-development-scratchpad">Nota muy importante sobre la migración de código personalizado de extensión a development scratchpad</h3>
-<p>Si vienes de NVDA 2018.4 o versiones anteriores, recordarás que se podían ejecutar módulos de extensión desde el interior de carpetas situadas en el directorio de configuración de usuario (por ejemplo, appModules). Esta funcionalidad se ha rediseñado en NVDA 2019.1 de la siguiente manera:</p>
+<p>Si vienes de NVDA 2018.4 o versiones anteriores, recordarás que se podían ejecutar módulos de extensión (a veces llamados "extensiones") desde el interior de carpetas situadas en el directorio de configuración de usuario (por ejemplo, appModules). Esta funcionalidad se ha rediseñado en NVDA 2019.1 de la siguiente manera:</p>
 <ol>
 <li>NVDA ya no cargará código de extensiones alojado en los siguientes subdirectorios de la carpeta de configuración de usuario: appModules, brailleDisplayDrivers, globalPlugins y synthDrivers.<ul>
 <li>Si descubres que el código de estas carpetas no está funcionando desde que tienes NVDA 2019.1, la razón anterior explica por qué.</li>
@@ -202,14 +202,19 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <h2 id="conceptos-basicos-sobre-complementos">Conceptos básicos sobre complementos</h2>
 <h3 id="que-son-los-complementos">¿Qué son los Complementos?</h3>
 <p>Los complementos son pequeños programas adicionales que extienden la funcionalidad de NVDA o su soporte para aplicaciones. Esto puede incluir la adición de características globales, la mejora 
-del soporte para una aplicación, o la adición de soporte para pantallas Braille nuevas o sintetizadores de voz.</p>
-<p>Nota: en ocasiones a los complementos también se los conoce como "extensiones", especialmente en la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">guía del desarrollador de NVDA</a>. En general, los llamaremos complementos en esta guía para dar más claridad, pero sé consciente de que son lo mismo.</p>
+del soporte para una aplicación, o la adición de soporte para pantallas Braille nuevas o sintetizadores de voz, o la mejora del uso visual de NVDA mediante potenciadores de la visión.</p>
 <p>Un complemento completamente construido constará del propio código Python del complemento, contenido en uno o más módulos (más sobre esto en la próxima sección), y 
 normalmente algo de documentación, y otros archivos de soporte. Si esto suena desalentador, no te preocupes: empezaremos con muy poco, ejemplos, y sólo con código 
 Python. El resto de estructura de soporte de los complementos vendrá más adelante.</p>
+<p>Nota: en ocasiones a los complementos también se los conoce como "extensiones", especialmente en la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">guía del desarrollador de NVDA</a>. Aunque parece que son lo mismo, estos términos son diferentes:</p>
+<ul>
+<li>Complemento: uno o más módulos o componentes empaquetados en un archivo para facilitar su instalación.</li>
+<li>Extensión: módulo o colección de módulos diseñados para modificar el comportamiento de NVDA de diversas formas.</li>
+</ul>
+<p>A lo largo de esta guía, cuando hagamos referencia a "complementos", puedes asumir que contienen al menos un componente o extensión.</p>
 <h3 id="que-son-los-modulos-de-un-complemento">¿Qué son los módulos de un complemento?</h3>
-<p>Los complementos pueden actuar globalmente (a través de todo NVDA), en un programa o aplicación específica, o tras el escenario (a nivel del hardware). Llamamos a estas tres 
-áreas principales "módulos". Cada complemento contiene al menos un módulo, consistente en uno o más archivos Python diseñados para actuar en una de estas tres áreas 
+<p>Los complementos pueden actuar globalmente (a través de todo NVDA), en un programa o aplicación específica, tras el escenario (a nivel del hardware), o mejorar la experiencia con NVDA para público con visión. Llamamos a estas cuatro 
+áreas principales "módulos". Cada complemento contiene al menos un módulo, consistente en uno o más archivos Python diseñados para actuar en una de estas cuatro áreas 
 específicas. Además, si tiene sentido para el complemento que estás desarrollando, tu complemento puede incluir más de un módulo. Por ejemplo, si tu complemento 
 proporciona accesibilidad mejorada en una aplicación específica, pero también proporciona órdenes globales que funcionan en cualquier parte con NVDA, estarías utilizando dos módulos.</p>
 <p>Actualmente, NVDA soporta estos tipos de módulos adicionales:</p>
@@ -217,6 +222,7 @@ proporciona accesibilidad mejorada en una aplicación específica, pero también
 <li>Extensión global: una extensión global añade características para NVDA que se pueden utilizar en cualquier lugar, como la función de OCR.</li>
 <li>Módulo de aplicación: Un módulo de aplicación permite un soporte mejorado para un programa específico. Los módulos de aplicación sólo se ejecutan mientras el programa se ejecute. Cambian la forma en que NVDA reacciona a las ventanas y controles de la aplicación en ejecución. </li>
 <li>Controlador: Un controlador permite a un programa comunicarse con el hardware, y en algunas ocasiones, con otro software. Actualmente puedes escribir controladores para nuevas pantallas braille o sintetizadores de voz.</li>
+<li>Potenciador: un potenciador se usa para mejorar la experiencia con NVDA a distintos grupos de usuarios que utilizan ordenadores. Actualmente sólo se soporta un tipo de potenciador, "proveedor de mejoras de visión".</li>
 </ul>
 <h3 id="que-son-los-paquetes-de-complementos">¿Qué son los paquetes de complementos?</h3>
 <p>Un paquete es el archivo único que contiene el código, la documentación, y otros elementos que componen un complemento totalmente operativo, que está 
@@ -263,7 +269,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <p>Cada carpeta de complementos, como mínimo, debe contener los siguientes archivos y carpetas:</p>
 <ul>
 <li>manifest.ini para almacenar la información de manifiesto del complemento tal como el nombre, el autor y el rango de compatibilidad (versión mínima, última versión probada).</li>
-<li>Una subcarpeta "addon" con el directorio de módulos del complemento bajo esta subcarpeta (appModules, globalPlugins, synthDrivers, brailleDisplays). Se pueden especificar una o más carpetas de módulos.</li>
+<li>Una subcarpeta "addon" con el directorio de módulos del complemento bajo esta subcarpeta (appModules, globalPlugins, synthDrivers, brailleDisplayDriverss, visionEnhancementProviders). Se pueden especificar una o más carpetas de módulos.</li>
 </ul>
 <p>Si estás utilizando la plantilla de complementos, la estructura de carpetas se creará automáticamente, por lo que sólo necesitas crear la subcarpeta addon y las carpetas de módulos adicionales y el código dentro de estas carpetas. Consulta el archivo readme en la carpeta de la plantilla para obtener más información sobre cómo personalizar tu manifiesto de complemento mediante los archivos de la plantilla.</p>
 <h3 id="enpaquetado-de-complementos">Enpaquetado de complementos</h3>
@@ -300,10 +306,10 @@ import tones # Queremos escuchar pitidos.
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
     def script_doBeep(self, gesture):
-        tones.beep(440, 1000) # pita un Lá estándar de la quinta octava durante 1 segundo.
+        tones.beep(440, 1000)  # pita un Lá estándar de la quinta octava durante 1 segundo.
 
     __gestures={
-        "kb:NVDA+A":"doBeep"
+        "kb:NVDA+A": "doBeep"
     }
 </code></pre>
 <p>En Python, para poner comentarios se pone el símbolo número (#) al principio de la línea de comentario.</p>
@@ -685,7 +691,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <pre><code>def event_eventName(self):
     # Rutina de evento.
 </code></pre>
-<p>De hecho, hemos conocido un"evento" real antes: <code>event_NVDAObject-Init</code>. Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de acuerdo con tu entrada (consulta la sección sobre sobreescritura de propiedades de un objeto para obtener más información). Veamos otros eventos que puedes ver mientras escribes tu complemento.</p>
+<p>De hecho, hemos conocido un"evento" real antes: <code>event_NVDAObject-Init</code>. Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de acuerdo con tu entrada (consulta la sección sobre sobreescritura de propiedades de un objeto para obtener más información). Veamos otros eventos que puedes encontrar mientras escribes tu complemento.</p>
 <h3 id="ejemplo-4-anunciar-el-nombre-cambiado-de-un-control">Ejemplo 4: Anunciar el nombre cambiado de un control</h3>
 <p>El siguiente código procede de uno de los complementos de módulos de aplicación.</p>
 <p>A continuación se muestra una rutina para un evento que le indica el nombre de algún texto en la pantalla cuando el texto cambie.</p>
@@ -790,10 +796,11 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>P. Mi módulo de aplicación que estaba alojado en la carpeta appModules de la configuración de usuario no funciona en NVDA 2019.1.</p>
 <p>Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado situado en carpetas del directorio de configuración de usuario. Lee la sección de scratchpad para más detalles.</p>
 <p>No incluimos preguntas frecuentes de programación relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
-<p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación y controladores.</p>
+<p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación, controladores y potenciadores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
 <p>Una extensión global añade características disponibles en todas partes. Por ejemplo, si hay un control que se utilizará en muchas aplicaciones, puedes escribir una extensión global para manejarlas en NVDA. Otro ejemplo es la adición de funciones adicionales a NVDA que se puedan utilizar en todos los programas, como la capacidad de OCR, la gestión de marcadores de ubicación, etc.</p>
 <p>Una extensión global es un archivo de código fuente de Python (.py) con el nombre de tu plugin. Por ejemplo, si estás añadiendo soporte para campos de edición enriquecidos en muchas aplicaciones, puedes nombrar la extensión como richEditSupport.py. Cuando los nombres, trata de ser breve para que puedas ver lo que hace tu extensión.</p>
+<p>Importante: aunque los potenciadores puedan parecer idénticos a las extensiones globales (y se crearon potenciadores como extensiones globales en el pasado), no son lo mismo. Mira la sección de potenciadores para más detalles.</p>
 <h3 id="plan-de-desarrollo-tipico-para-extensiones-globales">Plan de desarrollo típico para extensiones globales</h3>
 <p>Normalmente, una extensión global se desarrolla así:</p>
 <ol>
@@ -975,6 +982,27 @@ class AppModule(appModuleHandler.AppModule):
 </ul>
 <h3 id="pasos-tipicos-de-desarrollo-de-un-controlador">Pasos típicos de desarrollo de un controlador</h3>
 <p>Cuando escribas controladores, es posible que desees seguir los pasos recomendados para el desarrollo de módulos de aplicación (planificación, comunicación con los proveedores, pruebas de usuario, etc.). Sin embargo, dado que los controladores requieren un conocimiento íntimo del hardware y/o del software, deberías dedicar más tiempo a probar tu controlador. Esto es más importante si estás escribiendo un controlador para una pantalla braille que puede enviar órdenes arbitrarias (órdenes braille, botones de enrutamiento, etc.).</p>
+<h2 id="potenciadores">Potenciadores</h2>
+<p>Un potenciador es un módulo que ayuda a ciertos grupos de usuarios a utilizar ordenadores de una forma más eficiente. Aquí se puede incluir seguimiento del cursor, ampliación y otras mejoras.</p>
+<p>Actualmente NVDA puede proporcionar asistencia mediante proveedores de mejoras de visión. Un proveedor de mejoras de visión es un potenciador que permite a personas con vista o baja visión usar ordenadores de manera efectiva trabajando en tándem con NVDA. Los potenciadores pueden incluir resaltado del cursor, efecto de cortina de pantalla y ampliación de ciertas zonas de la pantalla. Estos potenciadores se alojan bajo la carpeta "visionEnhancementProviders"y se definen con la clase "VisionEnhancementProvider", que hereda de "vision.providerBase.VisionEnhancementProvider".</p>
+<p>Nota: como de momento sólo se soporta un potenciador, nos referiremos al proveedor de mejoras de visión en las siguientes secciones.</p>
+<h3 id="componentes-potenciadores">Componentes potenciadores</h3>
+<p>Un potenciador como el proveedor de mejoras de visión se parecerá a una combinación de extensión global y controlador (mira las secciones anteriores para conocer más sobre ellos). En la mayoría de los casos, se pueden aplicar los componentes usados en un controlador. Estos incluyen:</p>
+<ul>
+<li>Identificador del potenciador: una cadena de caracteres como "screenCurtain" que identifique de forma unívoca a este potenciador.</li>
+<li>Nombre amigable: el nombre que aparecerá en el diálogo Visión.</li>
+<li>Mejoras soportadas: un conjunto congelado de roles de mejora introducidos por este proveedor.</li>
+<li>Comprobación de inicio: un procedimiento que se aseugrará de que NVDA se ejecuta en un entorno específico donde el potenciador puede ser útil. Por ejemplo, se puede buscar una versión de Windows específica.</li>
+<li>Inicio y apagado: un constructor de clase que indica al potenciador qué debe hacer para ponerse en línea y un método "terminate" que lo desactiva.</li>
+<li>Reacción a eventos: si un potenciador quisiera responder a diversas acciones realizadas por los usuarios, puede especificar acciones como consecuencia.</li>
+</ul>
+<h3 id="unas-pocas-cosas-importantes-que-recordar-antes-durante-y-despues-del-desarrollo-de-potenciadores">Unas pocas cosas importantes que recordar antes, durante y después del desarrollo de potenciadores</h3>
+<ul>
+<li>Asegúrate de hablar con los usuarios que planean utilizar tu potenciador. Para los proveedores de mejoras de visión, comprueba que las mejoras son las que los usuarios quieren.</li>
+<li>Prueba tus potenciadores con muchos usuarios para asegurarte de que funcionan correctamente.</li>
+</ul>
+<h3 id="pasos-tipicos-de-desarrollo-de-un-potenciador">Pasos típicos de desarrollo de un potenciador</h3>
+<p>Cuando escribas potenciadores como los proveedores de mejoras de la visión, puedes querer seguir los pasos recomendados para el desarrollo de controladores y extensiones globales (planear, hablar con usuarios, pruebas con usuarios, etc.). Ya que estos módulos afectarán globalmente a la experiencia con NVDA (incluso al cambiar entre perfiles de configuración), asegúrate de que el potenciador no degrada la experiencia de usuario de la gente que no lo necesite.</p>
 <h2 id="compartiendo-tu-complemento-y-experiencia-con-otros">Compartiendo tu complemento y experiencia con otros</h2>
 <p>Una vez que hayas terminado de desarrollar tus complementos, es posible que desees compartir tu código con otros. A lo largo del camino, podrías aportar tu conocimiento para que otros puedan beneficiarse de tus experiencias.</p>
 <p>Este capítulo está diseñado para proporcionar orientación sobre la liberación y el mantenimiento de complementos, así como para conectarte con los usuarios de complementos y otros desarrolladores del núcleo y de complementos de NVDA de todo el mundo.</p>
@@ -1105,6 +1133,8 @@ class AppModule(appModuleHandler.AppModule):
 <li>Módulo integrado: un módulo que viene con NVDA y que puede ser sobreescrito o ampliado por los complementos opcionalmente.</li>
 <li>Caret: cursor que se muestra en pantalla, generalmente visto al editar texto o al navegar por documentos.</li>
 <li>clase: definición de un objeto.</li>
+<li>Controlador: programa que permite que otro programa se comunique con cierto software o hardware.</li>
+<li>Potenciador: módulo que añade mejoras de usabilidad en tándem con NVDA.</li>
 <li>Evento: una rutina llamada cuando suceden ciertas cosas, como la introducción de caracteres, cambios en el texto de la pantalla, una casilla de verificación marcada y así sucesivamente.</li>
 <li>Función: un pedazo de código que realiza algo con uno o más parámetros de entrada y opcionalmente devuelve algo.</li>
 <li>Gesto: una entrada como pulsaciones de teclas, gestos en la pantalla táctil, teclas braille, etcétera.</li>
@@ -1146,6 +1176,7 @@ class AppModule(appModuleHandler.AppModule):
 <th>Extensión global</th>
 <th>Módulo de aplicación</th>
 <th>Controlador</th>
+<th>Potenciador</th>
 </tr>
 </thead>
 <tbody>
@@ -1154,11 +1185,13 @@ class AppModule(appModuleHandler.AppModule):
 <td>Sí</td>
 <td>No</td>
 <td>Sí</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Restricciones de nombrado</td>
 <td>No (limitado por las convenciones de nombrado de ficheros de Windows)</td>
 <td>Debe llamarse como el ejecutable</td>
+<td>No (limitado por las convenciones de nombrado de ficheros de Windows)</td>
 <td>No (limitado por las convenciones de nombrado de ficheros de Windows)</td>
 </tr>
 <tr>
@@ -1166,27 +1199,32 @@ class AppModule(appModuleHandler.AppModule):
 <td>Sí</td>
 <td>Sí</td>
 <td>No</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Las órdenes pueden utilizarse en cualquier lugar</td>
 <td>Sí</td>
 <td>No</td>
 <td>Sólo los controladores de pantalla braille si se definió</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Manejar eventos tales como cambios del foco</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>No</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Definir objetos personalizados para representar controles</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>No</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Definir acciones personalizadas al realizarse cuando el módulo se cargue y se descargue</td>
+<td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
@@ -1196,11 +1234,13 @@ class AppModule(appModuleHandler.AppModule):
 <td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Puede modificar atributos de objeto en tiempo de ejecución</td>
 <td>No</td>
 <td>Sí</td>
+<td>No</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1208,27 +1248,32 @@ class AppModule(appModuleHandler.AppModule):
 <td>Sí</td>
 <td>Sí</td>
 <td>No</td>
+<td>Depende del potenciador</td>
 </tr>
 <tr>
 <td>Incluir opciones personalizadas</td>
 <td>Sí</td>
 <td>Sí</td>
-<td>Sólo sintetizadores de voz</td>
+<td>Sí</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Puede parchear funciones de NVDA, classes y módulos a voluntad</td>
 <td>Sí</td>
 <td>No se aconseja</td>
 <td>No</td>
+<td>No se aconseja</td>
 </tr>
 <tr>
 <td>Sujeto a cambios de perfil de configuración</td>
 <td>No</td>
 <td>Sí</td>
 <td>Sí</td>
+<td>Sí</td>
 </tr>
 <tr>
 <td>Puede llamar a bibliotecas externas escritas en C y otros lenguajes y empaquetadas como DLLs</td>
+<td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
 <td>Sí</td>
