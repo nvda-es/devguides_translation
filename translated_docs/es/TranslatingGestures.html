@@ -1,0 +1,94 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Traducción de gestos</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Traducción de gestos</h1></header>
+  <h1 id="traduccion-de-gestos">Traducción de gestos</h1>
+<p>Los gestos definidos originalmente en NVDA están adaptados a la distribución de teclado inglesa y a programas en inglés. En la mayor parte de los casos, estos gestos pueden ejecutarse en otras distribuciones de teclado sin problema. Sin embargo, en ocasiones un gesto definido por NVDA no se adapta a un idioma específico (distribución de teclado o software). La necesidad de modificar un gesto original puede darse por las siguientes razones:</p>
+<ul>
+<li>El gesto original se ha definido con un carácter que no es un nombre de tecla en la distribución de teclado del idioma. Generalmente, los nombres de las teclas son los caracteres que pueden introducirse sin la ayuda de una tecla modificadora (shift, control, etc.)</li>
+<li>El gesto original aprovecha la ventaja de la ubicación física de las teclas de la distribución de teclado inglesa, pero esta ventaja no se percibe con la distribución de teclado del idioma.</li>
+<li>Se define el gesto original para que coincida con un atajo de Windows o de una aplicación, pero el atajo en la versión local de Windows o de la aplicación no es el mismo que en inglés.</li>
+</ul>
+<p>En todos estos casos, NVDA permite reasignar estos gestos para un idioma específico.</p>
+<h2 id="ejemplos-de-modificaciones-de-un-archivo-gesturesini">Ejemplos de modificaciones de un archivo <code>gestures.ini</code></h2>
+<p>A continuación se encuentran tres ejemplos detallados de archivos gestures.ini correspondientes a las tres situaciones listadas donde podrían ser necesarias reasignaciones de gestos.</p>
+<h3 id="ejemplo-1-el-gesto-original-se-define-con-un-caracter-que-no-corresponde-a-un-nombre-de-tecla-valido-en-la-distribucion-de-teclado-del-idioma">Ejemplo 1: el gesto original se define con un carácter que no corresponde a un nombre de tecla válido en la distribución de teclado del idioma</h3>
+<p>En la versión original en inglés, los scripts para hacer clic con los botones izquierdo y derecho del ratón (distribución portátil) se ejecutan con NVDA+[ y NVDA+], respectivamente. En la distribución de teclado inglesa, las teclas [ y ] son las dos que se encuentran a la derecha de la tecla P.
+En la distribución de teclado italiana, los caracteres [ y ] sólo pueden introducirse con la ayuda de la tecla modificadora AltGr: AltGr+è y AltGr+Más, respectivamente. Por tanto, los traductores italianos decidieron reasignar estos scripts a las dos teclas a la derecha de la P en la distribución de teclado italiana, è y +. Para hacerlo, añadieron las siguientes líneas en el archivo <code>gestures.ini</code>:</p>
+<pre><code>[globalCommands.GlobalCommands]
+    leftMouseClick = kb(laptop):NVDA+è
+    rightMouseClick = kb(laptop):NVDA+plus
+</code></pre>
+
+<h3 id="ejemplo-2-el-gesto-original-aprovecha-la-ventaja-de-la-ubicacion-fisica-de-las-teclas">Ejemplo 2: el gesto original aprovecha la ventaja de la ubicación física de las teclas</h3>
+<p>Mirando de nuevo a los scripts para hacer clic con los botones izquierdo y derecho del ratón (distribución portátil), vemos que originalmente están asignados (en inglés) a dos teclas vecinas. Esto recuerda a los botones izquierdo y derecho del ratón.
+Como se vio en el ejemplo 1, muchos traductores han tenido que modificar estas teclas. La mayoría de ellos (si no todos) han elegido dos teclas vecinas. Por ejemplo, en el archivo <code>gestures.ini</code> francés se añadieron las siguientes líneas:</p>
+<pre><code>[globalCommands.GlobalCommands]
+    None = kb(laptop):nvda+[, kb(laptop):nvda+control+[, kb(laptop):nvda+], kb(laptop):nvda+control+], kb(laptop):nvda+shift+., kb(laptop):nvda+., kb(laptop):nvda+control+.
+    leftMouseClick = kb(laptop):nvda+ù
+    rightMouseClick = kb(laptop):nvda+*
+</code></pre>
+
+<p>Los caracteres ù y * en la distribución francesa no están en la misma ubicación que [ y ] en la distribución inglesa, pero también son teclas vecinas.
+Yendo más allá, aquí podemos ver que NVDA+[ y NVDA+] se han asignado a None, entre otras, para dejar sin asignar estos gestos. Para la distribución en francés (Francia), no era algo obligatorio, ya que no hay posibilidad de pulsar NVDA+[ y NVDA+] sin otras teclas modificadoras.</p>
+<h3 id="ejemplo-3-el-gesto-original-se-ha-definido-para-que-coincida-con-un-atajo-nativo">Ejemplo 3: el gesto original se ha definido para que coincida con un atajo nativo</h3>
+<p>NVDA proporciona un script para el objeto de documento de Word llamado <code>toggleBold</code>. Este script se encuentra asignado al mismo gesto del atajo nativo de Word para poner el texto en negrita, control+b en la versión en inglés de Word. Sin embargo, en la versión en francés de Word, el atajo para poner el texto en negrita es control+G. La g viene de "gras", que significa "negrita" en francés. Las siguientes líneas se añadieron al archivo <code>gestures.ini</code> francés para reasignar este script:</p>
+<pre><code>[NVDAObjects.window.winword.WordDocument]
+    None = kb:control+b, kb:control+[, kb:control+], &quot;kb:control+shift+,&quot;, kb:control+shift+., kb:control+l, kb:control+r
+    toggleBold = kb:control+g, kb:control+shift+b
+</code></pre>
+
+<p>Podemos ver que la asignación de control+b se ha eliminado. Esto es necesario porque corresponde a otra orden de la versión en francés de Word.
+No se ha hecho una reasignación para el script toggleItalic, ya que el atajo es el mismo en las versiones inglesa y francesa de Word.</p>
+<h2 id="como-reasignar-una-tecla-de-atajo">Cómo reasignar una tecla de atajo</h2>
+<h3 id="identificacion-de-la-clase-el-script-y-el-gesto-original-a-reasignar">Identificación de la clase, el script y el gesto original a reasignar</h3>
+<p>Para editar el archivo gestures.ini, tendrás que identificar la clase, el script y el atajo original que quieres reasignar.</p>
+<h4 id="caso-de-un-script-de-orden-global">Caso de un script de orden global</h4>
+<p>Si el gesto a reasignar es una orden global, puedes ejecutar los siguientes pasos para descubrir los nombres de la clase y el script de dicha orden:</p>
+<ul>
+<li>Activa la ayuda de entrada (NVDA+1)</li>
+<li>Pulsa el gesto que deseas reasignar, por ejemplo NVDA+] (distribución portátil)</li>
+<li>Desactiva la ayuda de entrada (NVDA+1)</li>
+<li>Abre el registro (NVDA+f1)</li>
+<li>Busca la línea correspondiente al momento en el que has ejecutado el gesto, por ejemplo:
+  <code>Input help: gesture kb(laptop):NVDA+], bound to script rightMouseClick on globalCommands.GlobalCommands</code></li>
+</ul>
+<p>La información que buscas está en esta línea:</p>
+<ul>
+<li>nombre del script: <code>rightMouseClick</code></li>
+<li>nombre de la clase: <code>globalCommands.GlobalCommands</code> (Observa que siempre es esta clase para las órdenes globales)</li>
+<li>gesto original: <code>kb(laptop):NVDA+]</code></li>
+</ul>
+<h4 id="caso-de-un-script-de-una-aplicacion-especifica">Caso de un script de una aplicación específica</h4>
+<p>En caso de que quieras reasignar un script de una aplicación específica, tendrás que seguir los mismos pasos que vimos para una orden global. Antes de proceder, debes asegurarte de que te encuentras en la aplicación deseada.</p>
+<h4 id="caso-de-un-script-especifico-de-un-objeto">Caso de un script específico de un objeto</h4>
+<p>Los scripts específicos de objeto, como los enlazados a <code>NVDAObjects.window.winword.WordDocument</code>, no disponen generalmente de un mensaje de ayuda, por lo que la técnica anterior no funcionará. Será necesario explorar el código fuente de NVDA para encontrar el nombre de clase y de script del gesto que deseas reasignar.</p>
+<h3 id="edicion-del-archivo-gesturesini">Edición del archivo gestures.ini</h3>
+<ol>
+<li>
+<p>En tu copia local del repositorio ScreenReaderTranslations, comprueba si existe el archivo gestures.ini. Por ejemplo, d:\SVN\SRT\fr\gestures.ini</p>
+<ul>
+<li>Si este archivo no existe, créalo copiándolo de la última versión de NVDA.</li>
+<li>Si ya existe, todo está bien.</li>
+</ul>
+</li>
+<li>
+<p>En este archivo, las secciones corresponden a la clase a la que el script pertenece. Si la clase que buscas no existe, crea una sección para ella.</p>
+</li>
+<li>Bajo la sección deseada, añade una línea correspondiente al nuevo atajo. Por ejemplo:
+   <code>toggleBold = kb:control+g, kb:control+shift+b</code>
+    Si ya existe una línea con el nombre de script cuyo atajo quieres modificar, añade el nuevo atajo en la misma línea, separando cada atajo de los otros con una coma (,)</li>
+<li>Si quieres eliminar la asignación del gesto original, simplemente asígnalo a <code>None</code>. Por ejemplo:
+   <code>None = kb:control+b</code>
+    Eliminar el atajo asignado original sólo es obligatorio si este atajo no coincide con ningún otro atajo reasignado en ese idioma.</li>
+<li>Guarda tu archivo en formato UTF-8.</li>
+<li>Envía los cambios al repositorio ScreenReaderTranslations.</li>
+</ol>
+<h2 id="que-ocurre-despues">Qué ocurre después</h2>
+<p>El sistema automático de traducciones copiará periódicamente los archivos gestures.ini modificados desde el repositorio ScreenReaderTranslations a la rama beta del repositorio de NVDA.</p>
+</body>
+</html>

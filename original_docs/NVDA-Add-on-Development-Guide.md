@@ -265,7 +265,9 @@ To create an add-on for NVDA, please make sure your system meets the following r
 * SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
-    - Once downloaded, copy both exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
+    - Once downloaded, copy these two exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
+        + msgfmt.exe
+        + xgettext.exe
 * If you are developing support for a program, speech synthesizer, or braille display, install the needed software and hardware.
 * Optional Items:
     - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].

@@ -59,6 +59,100 @@ git push origin 1.0
 
 <p>Entonces la release (versión) se creará y binario-1.0.nvda-addon se añadirá como adjunto a ella en GitHub.</p>
 <p>Pista extra: además, Abdel ha creado un <a href="https://gist.githubusercontent.com/nvdaes/a486e45b98566d530688f6da9ce75f84/raw/46236e04b02de117f9edbb30aaf626692116b6c3/appveyorForFTP.yml">archivo appveyorForFTP.yml</a> para publicar utilizando un servidor FTP.</p>
+<h2 id="entorno-de-despliegue-personal">Entorno de despliegue personal</h2>
+<p>En el ejmplo anterior, hemos descrito cómo introducir la clave cifrada de tu token personal de GitHub en el archivo appveyor.yml.</p>
+<p>Si quieres conservar esta clave personal sin compartirla en tu repositorio, puedes crear un entorno de despliegue personal.</p>
+<p>Para ello, ve a <a href="https://ci.appveyor.com/environments">tu página de entorno de Appveyor</a> y pulsa sobre el enlace "New environment".</p>
+<p>Una vez en la página de creación de nuevo entorno, describimos a continuación el procedimiento para crear un despliegue para GitHub, así como un despliegue FTP:</p>
+<h3 id="creacion-de-un-entorno-de-despliegue-personal-para-github">Creación de un entorno de despliegue personal para GitHub</h3>
+<p>Para crear un entorno de despliegue personal para GitHub, deberías elegir las siguientes opciones.</p>
+<p>La variable de entorno $(REPO_NAME) usada en la descripción de la liberación se creó en la sección before_deploy de <a href="https://gist.githubusercontent.com/abdel792/708a787bb79b265c32b66e363e9cb5c1/raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml">este archivo de configuración appveyor.yml</a>.</p>
+<p>Debes usar este entorno de despliegue personal con su archivo de configuración apropiado para que se pueda reconocer el nombre del complemento en la descripción.</p>
+<ol>
+<li>
+<p>Provider: GitHub Releases</p>
+</li>
+<li>
+<p>Environment name: GitHub_deployment</p>
+</li>
+<li>
+<p>Tag name: $(APPVEYOR_REPO_TAG_NAME)</p>
+</li>
+<li>
+<p>Release name: Release $(APPVEYOR_REPO_TAG_NAME)</p>
+</li>
+<li>
+<p>Release description: This is the release $(APPVEYOR_REPO_TAG_NAME) of the $(REPO_NAME) addon for the NVDA screen reader built and uploaded to GitHub using Appveyor.</p>
+</li>
+<li>
+<p>GitHub authentication token: Tu token personal de GitHub. (Advertencia: se trata de tu token personal de GitHub, no tu clave cifrada con Appveyor)</p>
+</li>
+<li>
+<p>Repository name: Se deja vacío, este campo es opcional</p>
+</li>
+<li>
+<p>Artifact(s) to deploy: addon</p>
+</li>
+</ol>
+<p>Con esto hecho, valida y envía el formulario pulsando el botón "Add environment".</p>
+<h3 id="creacion-de-un-entorno-de-despliegue-personal-para-ftp">Creación de un entorno de despliegue personal para FTP</h3>
+<p>Para crear un entorno de despliegue personal para FTP, deberías elegir las siguientes opciones:</p>
+<ol>
+<li>
+<p>Provider: FTP </p>
+</li>
+<li>
+<p>Environment name: ftp_deployment</p>
+</li>
+<li>
+<p>Protocol: FTP </p>
+</li>
+<li>
+<p>Host: Tu servidor.</p>
+</li>
+<li>
+<p>Active mode: Se deja vacío, este campo es opcional </p>
+</li>
+<li>
+<p>Username: Tu nombre de usuario</p>
+</li>
+<li>
+<p>Password: Tu contraseña</p>
+</li>
+<li>
+<p>Remote folder: El nombre de la carpeta que contendrá el complemento en tu servidor FTP. (Puede ser algo como /nvda-addons o /add-ons)</p>
+</li>
+<li>
+<p>Artifact(s): addon</p>
+</li>
+<li>
+<p>Application: Se deja vacío, este campo es opcional</p>
+</li>
+<li>
+<p>Use alternative FTP library (beta): Se deja vacío, este campo es opcional </p>
+</li>
+</ol>
+<p>Con esto hecho, valida y envía el formulario pulsando el botón "Add environment".</p>
+<h3 id="anadir-la-seccion-de-despliegue-para-entornos-personales">Añadir la sección de despliegue para entornos personales</h3>
+<p>Una vez se haya añadido tu entorno personal, tendrás que agregar la siguiente sección de despliegue a tu archivo appveyor.yml, mencionando sólo el nombre que hayas elegido para tu entorno</p>
+<ol>
+<li>
+<p>Para el despliegue en GitHub:</p>
+<p><code>deploy:
+- provider: Environment
+  name: GitHub_deployment
+  on:
+    APPVEYOR_REPO_TAG: true</code>
+Ejemplo de <a href="https://gist.githubusercontent.com/abdel792/708a787bb79b265c32b66e363e9cb5c1/raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml">archivo de configuración de Appveyor para un entorno de despliegue personal en GitHub</a>
+2. Para el despliegue FTP:</p>
+<p><code>deploy:
+- provider: Environment
+  name: ftp_deployment
+  on:
+    APPVEYOR_REPO_TAG: true</code>
+Ejemplo de <a href="https://gist.githubusercontent.com/abdel792/58c7fa82c44df08b06d2674bb8bd6c70/raw/75eede89b1702df923d36fdccc2ccc47b7046cc1/appveyorForFTP.yml">archivo de configuración de Appveyor para un entorno de despliegue personal en FTP</a></p>
+</li>
+</ol>
 <h2 id="procedimiento-para-recibir-notificaciones-sobre-los-commits">Procedimiento para recibir notificaciones sobre los commits</h2>
 <p>Para las notificaciones sobre eventos push (recomendadas a la hora de revisar complementos), visita:
 https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks</p>
@@ -84,7 +178,7 @@ https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks</p>
 <li><a href="https://www.appveyor.com/docs/appveyor-yml/">Referencia Appveyor.yml</a></li>
 <li><a href="https://www.appveyor.com/docs/deployment/github/#configuring-in-appveyoryml">Publicando artifacts en releases de GitHub | AppVeyor</a></li>
 <li><a href="http://help.appveyor.com/discussions/questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-appveyoryml-configuration-file">Sintaxis del nombre de release en la sección deploy del archivo de configuración appveyor.yml</a></li>
-<li><a href="https://github.com/anholt/mesa/blob/master/appveyor.yml">mesa/appveyor.yml at master · anholt/mesa</a></li>
+<li><a href="https://github.com/anholt/mesa/blob/master/appveyor.yml">mesa/appveyor.yml en master · anholt/mesa</a></li>
 <li><a href="https://nvda-addons.groups.io/g/nvda-addons/topic/6220467">Discusión en la lista de correo de NVDA-Addons (complementos de NVDA)</a></li>
 <li><a href="https://nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943">Actualizaciones de Abdel para AppVeyor en la lista de correo de complementos de NVDA</a></li>
 </ul>

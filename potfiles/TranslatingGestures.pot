@@ -1,0 +1,386 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-06 09:52+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\python_docs\TranslatingGestures.py:3
+msgid "# Translating the gestures"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:4
+msgid ""
+"The gestures defined originally in NVDA are adapted with English softwares "
+"and keyboard layout. In most cases, these gestures can also be executed on "
+"other keyboard layouts without any problem. However, sometimes a gesture "
+"originally defined by NVDA is not adapted for a specific locale (keyboard "
+"layout or software). The need to modify an original gesture may be due to "
+"the following reasons:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:5
+msgid ""
+"* The original gesture is defined with a character that is not a key name on "
+"the locale keyboard layout. Generally, the key names are the characters that "
+"can be input without the help of a modifier key (shift, control, etc.)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:6
+msgid ""
+"* The original gesture takes advantage of the keys physical location on the "
+"English keyboard layout, but this advantage does not appear anymore with the "
+"locale keyboard layout."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:7
+msgid ""
+"* The original gesture is defined to match a native shortcut in Windows or "
+"in an application, but the shortcut in the local version of Windows or of "
+"this application is not the same as the English one."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:8
+msgid ""
+"In all of this case, NVDA allows to remap this gesture for this specific "
+"locale."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:9
+msgid "## Examples of modifications of a `gestures.ini` file"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:10
+msgid ""
+"Below are three detailed examples of gestures.ini files corresponding to the "
+"three listed situations where a gesture remapping could be required."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:11
+msgid ""
+"### Example 1: The original gesture is defined with a character that is not "
+"a key name on the locale keyboard layout"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:12
+msgid ""
+"In English original version, the scripts for left and right mouse click "
+"(laptop layout) are executed respectively with NVDA+[ and NVDA+]. On English "
+"keyboard layout, the [ and ] keys are the two keys at the right of the P key."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:13
+msgid ""
+"On Italian keyboard layout, [ and ] characters can only be input with the "
+"help of AltGr modifier: AltGr+è and AltGr+Plus respectively. Thus Italian "
+"translators decided to remap these scripts with the two keys at the right of "
+"the P key on Italian keyboard layout, i.e. è and +. To do this they have "
+"added the following lines in the `gestures.ini` file:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:14
+#: ..\python_docs\TranslatingGestures.py:18
+#: ..\python_docs\TranslatingGestures.py:22
+#: ..\python_docs\TranslatingGestures.py:27
+#: ..\python_docs\TranslatingGestures.py:32
+#: ..\python_docs\TranslatingGestures.py:36
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:15
+#: ..\python_docs\TranslatingGestures.py:23
+msgid "[globalCommands.GlobalCommands]"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:16
+msgid "\tleftMouseClick = kb(laptop):NVDA+è"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:17
+msgid "\trightMouseClick = kb(laptop):NVDA+plus"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:19
+msgid ""
+"### Example 2: The original gesture takes advantage of the keys physical "
+"location "
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:20
+msgid ""
+"Looking again at the scripts for left and right mouse click (laptop layout) "
+"we can see that they are originally mapped (in English) to two neighboring "
+"keys. This reminds the left and right buttons of the mouse."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:21
+msgid ""
+"As seen in example 1, many translators have had to modify these keys. Most "
+"of them (if not all) have chosen two neighboring keys. E.g. in French "
+"`gestures.ini` the following lines have been added:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:24
+msgid ""
+"\tNone = kb(laptop):nvda+[, kb(laptop):nvda+control+[, kb(laptop):nvda+], "
+"kb(laptop):nvda+control+], kb(laptop):nvda+shift+., kb(laptop):nvda+., "
+"kb(laptop):nvda+control+."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:25
+msgid "\tleftMouseClick = kb(laptop):nvda+ù"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:26
+msgid "\trightMouseClick = kb(laptop):nvda+*"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:28
+msgid ""
+"The ù and * on French layout are not at the same location as [ and ] of "
+"English layout, but these are still two neighboring keys."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:29
+msgid ""
+"Moreover we can see here that NVDA+[ and NVDA+] has been among other mapped "
+"to None in order to unbind these gestures. For French (France) layout, this "
+"was not mandatory since there is no possibility to input NVDA+[ or NVDA+] "
+"without any other modifier key."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:30
+msgid ""
+"### Example 3: The original gesture is defined to match a native shortcut"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:31
+msgid ""
+"NVDA provides a script for Word document object named `toggleBold`. This "
+"script is mapped to the same gesture as the Word native shortcut to set text "
+"bold, i.e. Control+B in English version of Word. However on French version "
+"of Word, the shortcut to turn text bold is Control+G. The G stands for \"gras"
+"\" meaning \"bold\" in French. The following lines have been added in the "
+"French `gestures.ini` file to remap this script:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:33
+msgid "[NVDAObjects.window.winword.WordDocument]"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:34
+msgid ""
+"\tNone = kb:control+b, kb:control+[, kb:control+], \"kb:control+shift+,\", "
+"kb:control+shift+., kb:control+l, kb:control+r"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:35
+msgid "\ttoggleBold = kb:control+g, kb:control+shift+b"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:37
+msgid ""
+"We can see that Control+B has been unbound. This was necessary because it is "
+"the shortcut of another command in French version of Word."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:38
+msgid ""
+"No remapping has been done for toggleItalic script since the shortcut is the "
+"same for French and English versions of Word."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:39
+msgid "## How to remap a shortcut key"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:40
+msgid ""
+"### Identify the class, the script and the original gesture to be remapped"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:41
+msgid ""
+"To edit the gesture.ini file, you will have to identify the class, the "
+"script and the original shortcut you want to remap."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:42
+msgid "#### Case of a global command script"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:43
+msgid ""
+"If the gesture to be remapped is a global command, you may execute the "
+"following steps to find out the class and the script name of the command:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:44
+msgid "* activate input help (NVDA+1)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:45
+msgid "* press the gesture you want to remap, e.g. NVDA+] (laptop layout)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:46
+msgid "* de-activate input help (NVDA+1)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:47
+msgid "* open the log (NVDA+F1)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:48
+msgid ""
+"* find out the line corresponding to the moment you have executed the "
+"gesture, e.g.:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:49
+#: ..\python_docs\TranslatingGestures.py:51
+msgid "  ```"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:50
+msgid ""
+"  Input help: gesture kb(laptop):NVDA+], bound to script rightMouseClick on "
+"globalCommands.GlobalCommands"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:52
+msgid "The information you are searching is on this line:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:53
+msgid "* script name: `rightMouseClick`"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:54
+msgid ""
+"* class name: `globalCommands.GlobalCommands` (Note that this is always this "
+"class for global commands)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:55
+msgid "* original gesture: `kb(laptop):NVDA+]`"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:56
+msgid "#### Case of an application specific script"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:57
+msgid ""
+"In case you want to remap an application specific script, you will have to "
+"follow the same steps as those for a global command script. You just need to "
+"ensure before proceeding that you are in the targeted application."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:58
+msgid "#### Case of an object specific script"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:59
+msgid ""
+"Object specific scripts such as the ones linked to `NVDAObjects.window."
+"winword.WordDocument` do not have generally an help message. So the previous "
+"technique will not work. You will need to explore NVDA's source code to find "
+"the class and the script name of the gesture you want to remap."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:60
+msgid "### Edit the gestures.ini file"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:61
+msgid ""
+"1. In your local copy of the screenReaderTranslations repository, check if "
+"the gestures.ini file exists, e.g. d:\\SVN\\SRT\\fr\\gestures.ini"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:62
+msgid ""
+"   * If this file does not exist, create it by copying it from the last "
+"version of NVDA."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:63
+msgid "   * If it already exists, all is fine."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:64
+msgid ""
+"2. In this file the sections correspond to the class to which the script "
+"belongs. If the class your looking for does not exist, create this section."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:65
+msgid ""
+"3. Under the targeted section, add a line corresponding to the new shortcut. "
+"E.g.:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:66
+#: ..\python_docs\TranslatingGestures.py:68
+#: ..\python_docs\TranslatingGestures.py:71
+#: ..\python_docs\TranslatingGestures.py:73
+msgid "   ```"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:67
+msgid "   toggleBold = kb:control+g, kb:control+shift+b"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:69
+msgid ""
+"   If a line already exists for the script name you want to modify the "
+"shortcut, add the new shortcut on the same line, separating each shortcut "
+"from another with a comma (,)"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:70
+msgid ""
+"4. If you want to unmap the original shortcut, just map it to `None`, e.g.:"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:72
+msgid "   None = kb:control+b"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:74
+msgid ""
+"   Unmapping the original shortcut is only required if this shortcut does "
+"not match any other remapped locale shortcut."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:75
+msgid "5. Save your file in UTF-8 format."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:76
+msgid "6. Commit your changes to screenReaderTranslations repo."
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:77
+msgid "## What happens next"
+msgstr ""
+
+#: ..\python_docs\TranslatingGestures.py:78
+msgid ""
+"The automatic translation system will periodically copy the modified "
+"gestures.ini files from the screenReaderTranslations repo in the beta branch "
+"of the NVDA repo."
+msgstr ""

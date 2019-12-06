@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# Make add-ons translatable throught the NVDA's translation system #"""),
+_(u"""# Make add-ons translatable throughout the NVDA's translation system #"""),
 "",_(u"""## Steps ##"""),
 "",_(u"""1. Authors request the inclusion of an add-on in the translation system via the [NVDA add-ons mailing list](https://nvda-addons.groups.io/g/nvda-addons)."""),
 _(u"""2. A member of the NVDA add-on team creates a repo for the add-on at"""),
@@ -59,7 +59,7 @@ _(u"""- Anyway, if the registration or access request is done in a manner that i
 "",_(u"""- [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)"""),
 _(u"""- [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)"""),
 _(u"""- [Thread about repo management and registration, started by Joseph Lee](https://nvda-addons.groups.io/g/nvda-addons/message/6937)"""),
-_(u"""## Aknowledgements ##"""),
+_(u"""## Acknowledgements ##"""),
 "",_(u"""This document is based on work and information provided by Mesar Hameed and James Teh."""),
 "",_(u"""Thanks for making this possible."""),
 ]

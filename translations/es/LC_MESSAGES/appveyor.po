@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-26 01:39+Hora de verano romance\n"
-"PO-Revision-Date: 2019-06-23 11:58+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-06 09:52+0100\n"
+"PO-Revision-Date: 2019-12-06 10:28+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: Iván Novegil Cancelas - nvda.es <ivan.novegil@nvda.es>, "
 "<contacto@nvda.es>\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\appveyor.py:3
@@ -61,7 +62,9 @@ msgstr "\tEjemplo:"
 #: ..\python_docs\appveyor.py:10 ..\python_docs\appveyor.py:13
 #: ..\python_docs\appveyor.py:22 ..\python_docs\appveyor.py:25
 #: ..\python_docs\appveyor.py:26 ..\python_docs\appveyor.py:29
-#: ..\python_docs\appveyor.py:49 ..\python_docs\appveyor.py:54
+#: ..\python_docs\appveyor.py:80 ..\python_docs\appveyor.py:86
+#: ..\python_docs\appveyor.py:89 ..\python_docs\appveyor.py:95
+#: ..\python_docs\appveyor.py:103 ..\python_docs\appveyor.py:108
 msgid "\t```"
 msgstr "\t```"
 
@@ -221,10 +224,268 @@ msgstr ""
 "publicar utilizando un servidor FTP."
 
 #: ..\python_docs\appveyor.py:43
+msgid "## Personal deployment environment"
+msgstr "## Entorno de despliegue personal"
+
+#: ..\python_docs\appveyor.py:44
+msgid ""
+"In the example above, we've described how to introduce the encrypted key of "
+"your GitHub personal token in the appveyor.yml file."
+msgstr ""
+"En el ejmplo anterior, hemos descrito cómo introducir la clave cifrada de tu "
+"token personal de GitHub en el archivo appveyor.yml."
+
+#: ..\python_docs\appveyor.py:45
+msgid ""
+"If you want to keep this personal key, without sharing it in your repo, you "
+"can create a personal deployment environment."
+msgstr ""
+"Si quieres conservar esta clave personal sin compartirla en tu repositorio, "
+"puedes crear un entorno de despliegue personal."
+
+#: ..\python_docs\appveyor.py:46
+msgid ""
+"For that, go to [your appveyor environment page](https://ci.appveyor.com/"
+"environments) and click on the \"New environment\" link."
+msgstr ""
+"Para ello, ve a [tu página de entorno de Appveyor](https://ci.appveyor.com/"
+"environments) y pulsa sobre el enlace \"New environment\"."
+
+#: ..\python_docs\appveyor.py:47
+msgid ""
+"Once in the new environment creation page, we describe below the procedure "
+"for creating a deployment for GitHub, as well as an FTP deployment:"
+msgstr ""
+"Una vez en la página de creación de nuevo entorno, describimos a "
+"continuación el procedimiento para crear un despliegue para GitHub, así como "
+"un despliegue FTP:"
+
+#: ..\python_docs\appveyor.py:48
+msgid "### Creating a personal deployment environment for GitHub"
+msgstr "### Creación de un entorno de despliegue personal para GitHub"
+
+#: ..\python_docs\appveyor.py:49
+msgid ""
+"To create a personal deployment environment for GitHub, you should make the "
+"following choices."
+msgstr ""
+"Para crear un entorno de despliegue personal para GitHub, deberías elegir "
+"las siguientes opciones."
+
+#: ..\python_docs\appveyor.py:50
+msgid ""
+"The $(REPO_NAME) environment variable used in the release description was "
+"created in the before_deploy section of [this appveyor.yml configuration "
+"file](https://gist.githubusercontent.com/"
+"abdel792/708a787bb79b265c32b66e363e9cb5c1/"
+"raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml)."
+msgstr ""
+"La variable de entorno $(REPO_NAME) usada en la descripción de la liberación "
+"se creó en la sección before_deploy de [este archivo de configuración "
+"appveyor.yml](https://gist.githubusercontent.com/"
+"abdel792/708a787bb79b265c32b66e363e9cb5c1/"
+"raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml)."
+
+#: ..\python_docs\appveyor.py:51
+msgid ""
+"You must use this personal deployment environment with its appropriate "
+"configuration file so that it can recognize the name of the add-on in its "
+"description."
+msgstr ""
+"Debes usar este entorno de despliegue personal con su archivo de "
+"configuración apropiado para que se pueda reconocer el nombre del "
+"complemento en la descripción."
+
+#: ..\python_docs\appveyor.py:52
+msgid "1. Provider: GitHub Releases"
+msgstr "1. Provider: GitHub Releases"
+
+#: ..\python_docs\appveyor.py:53
+msgid "2. Environment name: GitHub_deployment"
+msgstr "2. Environment name: GitHub_deployment"
+
+#: ..\python_docs\appveyor.py:54
+msgid "3. Tag name: $(APPVEYOR_REPO_TAG_NAME)"
+msgstr "3. Tag name: $(APPVEYOR_REPO_TAG_NAME)"
+
+#: ..\python_docs\appveyor.py:55
+msgid "4. Release name: Release $(APPVEYOR_REPO_TAG_NAME)"
+msgstr "4. Release name: Release $(APPVEYOR_REPO_TAG_NAME)"
+
+#: ..\python_docs\appveyor.py:56
+msgid ""
+"5. Release description: This is the release $(APPVEYOR_REPO_TAG_NAME) of the "
+"$(REPO_NAME) addon for the NVDA screen reader built and uploaded to GitHub "
+"using Appveyor."
+msgstr ""
+"5. Release description: This is the release $(APPVEYOR_REPO_TAG_NAME) of the "
+"$(REPO_NAME) addon for the NVDA screen reader built and uploaded to GitHub "
+"using Appveyor."
+
+#: ..\python_docs\appveyor.py:57
+msgid ""
+"6. GitHub authentication token: Your personal GitHub token. (Warning: This "
+"is your personal GitHub token, not your encrypted key with Appveyor)"
+msgstr ""
+"6. GitHub authentication token: Tu token personal de GitHub. (Advertencia: "
+"se trata de tu token personal de GitHub, no tu clave cifrada con Appveyor)"
+
+#: ..\python_docs\appveyor.py:58
+msgid "7. Repository name: Leave empty, this field is optional"
+msgstr "7. Repository name: Se deja vacío, este campo es opcional"
+
+#: ..\python_docs\appveyor.py:59 ..\python_docs\appveyor.py:74
+msgid " "
+msgstr " "
+
+#: ..\python_docs\appveyor.py:60
+msgid "8. Artifact(s) to deploy: addon"
+msgstr "8. Artifact(s) to deploy: addon"
+
+#: ..\python_docs\appveyor.py:61 ..\python_docs\appveyor.py:76
+msgid "This done, submit your form by validating \"Add environment\" button."
+msgstr ""
+"Con esto hecho, valida y envía el formulario pulsando el botón \"Add "
+"environment\"."
+
+#: ..\python_docs\appveyor.py:62
+msgid "### Creating a personal deployment environment for FTP"
+msgstr "### Creación de un entorno de despliegue personal para FTP"
+
+#: ..\python_docs\appveyor.py:63
+msgid ""
+"To create a personal deployment environment for FTP, you should make the "
+"following choices:"
+msgstr ""
+"Para crear un entorno de despliegue personal para FTP, deberías elegir las "
+"siguientes opciones:"
+
+#: ..\python_docs\appveyor.py:64
+msgid "1. Provider: FTP "
+msgstr "1. Provider: FTP "
+
+#: ..\python_docs\appveyor.py:65
+msgid "2. Environment name: ftp_deployment"
+msgstr "2. Environment name: ftp_deployment"
+
+#: ..\python_docs\appveyor.py:66
+msgid "3. Protocol: FTP "
+msgstr "3. Protocol: FTP "
+
+#: ..\python_docs\appveyor.py:67
+msgid "4. Host: Your host."
+msgstr "4. Host: Tu servidor."
+
+#: ..\python_docs\appveyor.py:68
+msgid "5. Active mode: Leave empty, this field is optional "
+msgstr "5. Active mode: Se deja vacío, este campo es opcional "
+
+#: ..\python_docs\appveyor.py:69
+msgid "6. Username: Your username"
+msgstr "6. Username: Tu nombre de usuario"
+
+#: ..\python_docs\appveyor.py:70
+msgid "7. Password: Your password"
+msgstr "7. Password: Tu contraseña"
+
+#: ..\python_docs\appveyor.py:71
+msgid ""
+"8. Remote folder: The name of the folder that will contain the add-on on "
+"your FTP server. (It can be something like /nvda-addons or /add-ons)"
+msgstr ""
+"8. Remote folder: El nombre de la carpeta que contendrá el complemento en tu "
+"servidor FTP. (Puede ser algo como /nvda-addons o /add-ons)"
+
+#: ..\python_docs\appveyor.py:72
+msgid "9. Artifact(s): addon"
+msgstr "9. Artifact(s): addon"
+
+#: ..\python_docs\appveyor.py:73
+msgid "10. Application: Leave empty, this field is optional"
+msgstr "10. Application: Se deja vacío, este campo es opcional"
+
+#: ..\python_docs\appveyor.py:75
+msgid ""
+"11. Use alternative FTP library (beta): Leave empty, this field is optional "
+msgstr ""
+"11. Use alternative FTP library (beta): Se deja vacío, este campo es "
+"opcional "
+
+#: ..\python_docs\appveyor.py:77
+msgid "### Adding the deploy section for personal environments"
+msgstr "### Añadir la sección de despliegue para entornos personales"
+
+#: ..\python_docs\appveyor.py:78
+msgid ""
+"Once your personal environment has been added, you'll just have to add the "
+"following deploy section to your appveyor.yml file, mentioning only the name "
+"you have chosen for your environment"
+msgstr ""
+"Una vez se haya añadido tu entorno personal, tendrás que agregar la "
+"siguiente sección de despliegue a tu archivo appveyor.yml, mencionando sólo "
+"el nombre que hayas elegido para tu entorno"
+
+#: ..\python_docs\appveyor.py:79
+msgid "1. For GitHub deployment:"
+msgstr "1. Para el despliegue en GitHub:"
+
+#: ..\python_docs\appveyor.py:81 ..\python_docs\appveyor.py:90
+msgid "\tdeploy:"
+msgstr "\tdeploy:"
+
+#: ..\python_docs\appveyor.py:82 ..\python_docs\appveyor.py:91
+msgid "\t- provider: Environment"
+msgstr "\t- provider: Environment"
+
+#: ..\python_docs\appveyor.py:83
+msgid "\t  name: GitHub_deployment"
+msgstr "\t  name: GitHub_deployment"
+
+#: ..\python_docs\appveyor.py:84 ..\python_docs\appveyor.py:93
+msgid "\t  on:"
+msgstr "\t  on:"
+
+#: ..\python_docs\appveyor.py:85 ..\python_docs\appveyor.py:94
+msgid "\t    APPVEYOR_REPO_TAG: true"
+msgstr "\t    APPVEYOR_REPO_TAG: true"
+
+#: ..\python_docs\appveyor.py:87
+msgid ""
+"\tExample of [appveyor configuration file for GitHub personal deployment "
+"environment](https://gist.githubusercontent.com/"
+"abdel792/708a787bb79b265c32b66e363e9cb5c1/"
+"raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml)"
+msgstr ""
+"\tEjemplo de [archivo de configuración de Appveyor para un entorno de "
+"despliegue personal en GitHub](https://gist.githubusercontent.com/"
+"abdel792/708a787bb79b265c32b66e363e9cb5c1/"
+"raw/3757add3bd8a3d872453f949109b38769d28592d/appveyor.yml)"
+
+#: ..\python_docs\appveyor.py:88
+msgid "2. For FTP deployment:"
+msgstr "2. Para el despliegue FTP:"
+
+#: ..\python_docs\appveyor.py:92
+msgid "\t  name: ftp_deployment"
+msgstr "\t  name: ftp_deployment"
+
+#: ..\python_docs\appveyor.py:96
+msgid ""
+"\tExample of [appveyor configuration file for FTP personal deployment "
+"environment](https://gist.githubusercontent.com/"
+"abdel792/58c7fa82c44df08b06d2674bb8bd6c70/"
+"raw/75eede89b1702df923d36fdccc2ccc47b7046cc1/appveyorForFTP.yml)"
+msgstr ""
+"\tEjemplo de [archivo de configuración de Appveyor para un entorno de "
+"despliegue personal en FTP](https://gist.githubusercontent.com/"
+"abdel792/58c7fa82c44df08b06d2674bb8bd6c70/"
+"raw/75eede89b1702df923d36fdccc2ccc47b7046cc1/appveyorForFTP.yml)"
+
+#: ..\python_docs\appveyor.py:97
 msgid "## Procedure to receive notifications about commits"
 msgstr "## Procedimiento para recibir notificaciones sobre los commits"
 
-#: ..\python_docs\appveyor.py:44
+#: ..\python_docs\appveyor.py:98
 msgid ""
 "For notifications about push events (recommended for add-ons review), please "
 "see:"
@@ -232,15 +493,15 @@ msgstr ""
 "Para las notificaciones sobre eventos push (recomendadas a la hora de "
 "revisar complementos), visita:"
 
-#: ..\python_docs\appveyor.py:45
+#: ..\python_docs\appveyor.py:99
 msgid "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
 msgstr "https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/githubWebhooks"
 
-#: ..\python_docs\appveyor.py:46
+#: ..\python_docs\appveyor.py:100
 msgid "Anyway, if you want to use AppVeyor: "
 msgstr "En cualquier caso, si quieres usar AppVeyor: "
 
-#: ..\python_docs\appveyor.py:47
+#: ..\python_docs\appveyor.py:101
 msgid ""
 "1. Create an email address to receive notifications. For instance, you may "
 "use the [groups.io email integration](https://groups.io/static/features)."
@@ -249,34 +510,34 @@ msgstr ""
 "puedes usar la [integración de correo electrónico de groups.io](https://"
 "groups.io/static/features)."
 
-#: ..\python_docs\appveyor.py:48
+#: ..\python_docs\appveyor.py:102
 msgid "2. In the appveyor.yml file, add these lines:"
 msgstr "2. En el archivo appveyor.impl, añade las siguientes líneas:"
 
-#: ..\python_docs\appveyor.py:50
+#: ..\python_docs\appveyor.py:104
 msgid "\tnotifications:"
 msgstr "\tnotifications:"
 
-#: ..\python_docs\appveyor.py:51
+#: ..\python_docs\appveyor.py:105
 msgid "\t  - provider: Email"
 msgstr "\t  - provider: Email"
 
-#: ..\python_docs\appveyor.py:52
+#: ..\python_docs\appveyor.py:106
 msgid "\t    to:"
 msgstr "\t    to:"
 
-#: ..\python_docs\appveyor.py:53
+#: ..\python_docs\appveyor.py:107
 msgid "\t      - notificationsEmailAddress.example.com"
 msgstr "\t      - notificationsEmailAddress.example.com"
 
-#: ..\python_docs\appveyor.py:55
+#: ..\python_docs\appveyor.py:109
 msgid ""
 "\tReplace notificationsEmailAddress.example.com with a valid email address."
 msgstr ""
 "\tReemplaza notificationsEmailAddress.example.com por una dirección de "
 "correo electrónico válida."
 
-#: ..\python_docs\appveyor.py:56
+#: ..\python_docs\appveyor.py:110
 msgid ""
 "\tHere is a [topic in groups.io mailing list as a real example](https://"
 "nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/build_completed/27377767)."
@@ -285,16 +546,16 @@ msgstr ""
 "real](https://nvdaes.groups.io/g/NVDAADDONSCOMMITS/topic/"
 "build_completed/27377767)."
 
-#: ..\python_docs\appveyor.py:57
+#: ..\python_docs\appveyor.py:111
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\appveyor.py:58
+#: ..\python_docs\appveyor.py:112
 msgid "- [Appveyor.yml reference](https://www.appveyor.com/docs/appveyor-yml/)"
 msgstr ""
 "- [Referencia Appveyor.yml](https://www.appveyor.com/docs/appveyor-yml/)"
 
-#: ..\python_docs\appveyor.py:59
+#: ..\python_docs\appveyor.py:113
 msgid ""
 "- [Publishing artifacts to GitHub Releases | AppVeyor](https://www.appveyor."
 "com/docs/deployment/github/#configuring-in-appveyoryml)"
@@ -302,7 +563,7 @@ msgstr ""
 "- [Publicando artifacts en releases de GitHub | AppVeyor](https://www."
 "appveyor.com/docs/deployment/github/#configuring-in-appveyoryml)"
 
-#: ..\python_docs\appveyor.py:60
+#: ..\python_docs\appveyor.py:114
 msgid ""
 "- [Syntax of the release name value in the deploy section of the appveyor."
 "yml configuration file](http://help.appveyor.com/discussions/questions/9221-"
@@ -314,15 +575,15 @@ msgstr ""
 "questions/9221-syntax-of-the-release-name-value-in-the-deploy-section-of-the-"
 "appveyoryml-configuration-file)"
 
-#: ..\python_docs\appveyor.py:61
+#: ..\python_docs\appveyor.py:115
 msgid ""
-"- [mesa/appveyor.yml at master \\302\\267 anholt/mesa](https://github.com/"
-"anholt/mesa/blob/master/appveyor.yml)"
+"- [mesa/appveyor.yml at master · anholt/mesa](https://github.com/anholt/mesa/"
+"blob/master/appveyor.yml)"
 msgstr ""
-"- [mesa/appveyor.yml en master \\302\\267 anholt/mesa](https://github.com/"
-"anholt/mesa/blob/master/appveyor.yml)"
+"- [mesa/appveyor.yml en master · anholt/mesa](https://github.com/anholt/mesa/"
+"blob/master/appveyor.yml)"
 
-#: ..\python_docs\appveyor.py:62
+#: ..\python_docs\appveyor.py:116
 msgid ""
 "- [Discussion on the NVDA add-ons mailing list](https://nvda-addons.groups."
 "io/g/nvda-addons/topic/6220467)"
@@ -330,7 +591,7 @@ msgstr ""
 "- [Discusión en la lista de correo de NVDA-Addons (complementos de NVDA)]"
 "(https://nvda-addons.groups.io/g/nvda-addons/topic/6220467)"
 
-#: ..\python_docs\appveyor.py:63
+#: ..\python_docs\appveyor.py:117
 msgid ""
 "- [Updates for appveyor by Abdel on the NVDA add-ons mailing list](https://"
 "nvda-addons.groups.io/g/nvda-addons/topic/31686195#7943)"
@@ -339,10 +600,10 @@ msgstr ""
 "complementos de NVDA](https://nvda-addons.groups.io/g/nvda-addons/"
 "topic/31686195#7943)"
 
-#: ..\python_docs\appveyor.py:64
-msgid "## Aknowledgements"
+#: ..\python_docs\appveyor.py:118
+msgid "## Acknowledgements"
 msgstr "## Agradecimientos"
 
-#: ..\python_docs\appveyor.py:65
+#: ..\python_docs\appveyor.py:119
 msgid "Thanks to @abdel792, @derekriemer and @tuukao for making this possible."
 msgstr "Gracias a @abdel792, @derekriemer y @tuukao por hacer esto posible."

@@ -105,6 +105,7 @@ These files are listed in order of importance.
 - nvda.po: NVDA's interface messages, see [[TranslatingTheInterface]] page for more info.
 - characterDescriptions.dic: names of characters in your language, see [[TranslatingCharacterDescriptions]] for more info.
 - symbols.dic: names of symbols and punctuation in your language, see [[TranslatingSymbols]] for more information.
+- gestures.ini: remapping of gestures for your language, see [[TranslatingGestures]] for more information.
 - userGuide.t2t: the User Guide, see [[TranslatingUserGuide]] for more information.
 - changes.t2t (optional): a list of changes between releases, see [[TranslatingChanges]] for more information.
 - Add-ons (optional): a set of optional features that users can install, see [[TranslatingAddons]] for more information.
@@ -127,6 +128,3 @@ If you want to follow the automatic workflow process, visit the [[TranslatingUsi
 
 ## Missing information
 Please feel free to update this or any subsequent page with any tips or hints that you feel may be of use to other translators.
-
-### Missing Sections
-If someone could add Sites for Gestures.ini, it'll be done.

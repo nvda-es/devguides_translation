@@ -1,0 +1,495 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-06 09:52+0100\n"
+"PO-Revision-Date: 2019-12-06 12:54+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\TranslatingGestures.py:3
+msgid "# Translating the gestures"
+msgstr "# Traducción de gestos"
+
+#: ..\python_docs\TranslatingGestures.py:4
+msgid ""
+"The gestures defined originally in NVDA are adapted with English softwares "
+"and keyboard layout. In most cases, these gestures can also be executed on "
+"other keyboard layouts without any problem. However, sometimes a gesture "
+"originally defined by NVDA is not adapted for a specific locale (keyboard "
+"layout or software). The need to modify an original gesture may be due to "
+"the following reasons:"
+msgstr ""
+"Los gestos definidos originalmente en NVDA están adaptados a la distribución "
+"de teclado inglesa y a programas en inglés. En la mayor parte de los casos, "
+"estos gestos pueden ejecutarse en otras distribuciones de teclado sin "
+"problema. Sin embargo, en ocasiones un gesto definido por NVDA no se adapta "
+"a un idioma específico (distribución de teclado o software). La necesidad de "
+"modificar un gesto original puede darse por las siguientes razones:"
+
+#: ..\python_docs\TranslatingGestures.py:5
+msgid ""
+"* The original gesture is defined with a character that is not a key name on "
+"the locale keyboard layout. Generally, the key names are the characters that "
+"can be input without the help of a modifier key (shift, control, etc.)"
+msgstr ""
+"* El gesto original se ha definido con un carácter que no es un nombre de "
+"tecla en la distribución de teclado del idioma. Generalmente, los nombres de "
+"las teclas son los caracteres que pueden introducirse sin la ayuda de una "
+"tecla modificadora (shift, control, etc.)"
+
+#: ..\python_docs\TranslatingGestures.py:6
+msgid ""
+"* The original gesture takes advantage of the keys physical location on the "
+"English keyboard layout, but this advantage does not appear anymore with the "
+"locale keyboard layout."
+msgstr ""
+"* El gesto original aprovecha la ventaja de la ubicación física de las "
+"teclas de la distribución de teclado inglesa, pero esta ventaja no se "
+"percibe con la distribución de teclado del idioma."
+
+#: ..\python_docs\TranslatingGestures.py:7
+msgid ""
+"* The original gesture is defined to match a native shortcut in Windows or "
+"in an application, but the shortcut in the local version of Windows or of "
+"this application is not the same as the English one."
+msgstr ""
+"* Se define el gesto original para que coincida con un atajo de Windows o de "
+"una aplicación, pero el atajo en la versión local de Windows o de la "
+"aplicación no es el mismo que en inglés."
+
+#: ..\python_docs\TranslatingGestures.py:8
+msgid ""
+"In all of this case, NVDA allows to remap this gesture for this specific "
+"locale."
+msgstr ""
+"En todos estos casos, NVDA permite reasignar estos gestos para un idioma "
+"específico."
+
+#: ..\python_docs\TranslatingGestures.py:9
+msgid "## Examples of modifications of a `gestures.ini` file"
+msgstr "## Ejemplos de modificaciones de un archivo `gestures.ini`"
+
+#: ..\python_docs\TranslatingGestures.py:10
+msgid ""
+"Below are three detailed examples of gestures.ini files corresponding to the "
+"three listed situations where a gesture remapping could be required."
+msgstr ""
+"A continuación se encuentran tres ejemplos detallados de archivos gestures."
+"ini correspondientes a las tres situaciones listadas donde podrían ser "
+"necesarias reasignaciones de gestos."
+
+#: ..\python_docs\TranslatingGestures.py:11
+msgid ""
+"### Example 1: The original gesture is defined with a character that is not "
+"a key name on the locale keyboard layout"
+msgstr ""
+"### Ejemplo 1: el gesto original se define con un carácter que no "
+"corresponde a un nombre de tecla válido en la distribución de teclado del "
+"idioma"
+
+#: ..\python_docs\TranslatingGestures.py:12
+msgid ""
+"In English original version, the scripts for left and right mouse click "
+"(laptop layout) are executed respectively with NVDA+[ and NVDA+]. On English "
+"keyboard layout, the [ and ] keys are the two keys at the right of the P key."
+msgstr ""
+"En la versión original en inglés, los scripts para hacer clic con los "
+"botones izquierdo y derecho del ratón (distribución portátil) se ejecutan "
+"con NVDA+[ y NVDA+], respectivamente. En la distribución de teclado inglesa, "
+"las teclas [ y ] son las dos que se encuentran a la derecha de la tecla P."
+
+#: ..\python_docs\TranslatingGestures.py:13
+msgid ""
+"On Italian keyboard layout, [ and ] characters can only be input with the "
+"help of AltGr modifier: AltGr+è and AltGr+Plus respectively. Thus Italian "
+"translators decided to remap these scripts with the two keys at the right of "
+"the P key on Italian keyboard layout, i.e. è and +. To do this they have "
+"added the following lines in the `gestures.ini` file:"
+msgstr ""
+"En la distribución de teclado italiana, los caracteres [ y ] sólo pueden "
+"introducirse con la ayuda de la tecla modificadora AltGr: AltGr+è y AltGr"
+"+Más, respectivamente. Por tanto, los traductores italianos decidieron "
+"reasignar estos scripts a las dos teclas a la derecha de la P en la "
+"distribución de teclado italiana, è y +. Para hacerlo, añadieron las "
+"siguientes líneas en el archivo `gestures.ini`:"
+
+#: ..\python_docs\TranslatingGestures.py:14
+#: ..\python_docs\TranslatingGestures.py:18
+#: ..\python_docs\TranslatingGestures.py:22
+#: ..\python_docs\TranslatingGestures.py:27
+#: ..\python_docs\TranslatingGestures.py:32
+#: ..\python_docs\TranslatingGestures.py:36
+msgid "```"
+msgstr "```"
+
+#: ..\python_docs\TranslatingGestures.py:15
+#: ..\python_docs\TranslatingGestures.py:23
+msgid "[globalCommands.GlobalCommands]"
+msgstr "[globalCommands.GlobalCommands]"
+
+#: ..\python_docs\TranslatingGestures.py:16
+msgid "\tleftMouseClick = kb(laptop):NVDA+è"
+msgstr "\tleftMouseClick = kb(laptop):NVDA+è"
+
+#: ..\python_docs\TranslatingGestures.py:17
+msgid "\trightMouseClick = kb(laptop):NVDA+plus"
+msgstr "\trightMouseClick = kb(laptop):NVDA+plus"
+
+#: ..\python_docs\TranslatingGestures.py:19
+msgid ""
+"### Example 2: The original gesture takes advantage of the keys physical "
+"location "
+msgstr ""
+"### Ejemplo 2: el gesto original aprovecha la ventaja de la ubicación física "
+"de las teclas "
+
+#: ..\python_docs\TranslatingGestures.py:20
+msgid ""
+"Looking again at the scripts for left and right mouse click (laptop layout) "
+"we can see that they are originally mapped (in English) to two neighboring "
+"keys. This reminds the left and right buttons of the mouse."
+msgstr ""
+"Mirando de nuevo a los scripts para hacer clic con los botones izquierdo y "
+"derecho del ratón (distribución portátil), vemos que originalmente están "
+"asignados (en inglés) a dos teclas vecinas. Esto recuerda a los botones "
+"izquierdo y derecho del ratón."
+
+#: ..\python_docs\TranslatingGestures.py:21
+msgid ""
+"As seen in example 1, many translators have had to modify these keys. Most "
+"of them (if not all) have chosen two neighboring keys. E.g. in French "
+"`gestures.ini` the following lines have been added:"
+msgstr ""
+"Como se vio en el ejemplo 1, muchos traductores han tenido que modificar "
+"estas teclas. La mayoría de ellos (si no todos) han elegido dos teclas "
+"vecinas. Por ejemplo, en el archivo `gestures.ini` francés se añadieron las "
+"siguientes líneas:"
+
+#: ..\python_docs\TranslatingGestures.py:24
+msgid ""
+"\tNone = kb(laptop):nvda+[, kb(laptop):nvda+control+[, kb(laptop):nvda+], "
+"kb(laptop):nvda+control+], kb(laptop):nvda+shift+., kb(laptop):nvda+., "
+"kb(laptop):nvda+control+."
+msgstr ""
+"\tNone = kb(laptop):nvda+[, kb(laptop):nvda+control+[, kb(laptop):nvda+], "
+"kb(laptop):nvda+control+], kb(laptop):nvda+shift+., kb(laptop):nvda+., "
+"kb(laptop):nvda+control+."
+
+#: ..\python_docs\TranslatingGestures.py:25
+msgid "\tleftMouseClick = kb(laptop):nvda+ù"
+msgstr "\tleftMouseClick = kb(laptop):nvda+ù"
+
+#: ..\python_docs\TranslatingGestures.py:26
+msgid "\trightMouseClick = kb(laptop):nvda+*"
+msgstr "\trightMouseClick = kb(laptop):nvda+*"
+
+#: ..\python_docs\TranslatingGestures.py:28
+msgid ""
+"The ù and * on French layout are not at the same location as [ and ] of "
+"English layout, but these are still two neighboring keys."
+msgstr ""
+"Los caracteres ù y * en la distribución francesa no están en la misma "
+"ubicación que [ y ] en la distribución inglesa, pero también son teclas "
+"vecinas."
+
+#: ..\python_docs\TranslatingGestures.py:29
+msgid ""
+"Moreover we can see here that NVDA+[ and NVDA+] has been among other mapped "
+"to None in order to unbind these gestures. For French (France) layout, this "
+"was not mandatory since there is no possibility to input NVDA+[ or NVDA+] "
+"without any other modifier key."
+msgstr ""
+"Yendo más allá, aquí podemos ver que NVDA+[ y NVDA+] se han asignado a None, "
+"entre otras, para dejar sin asignar estos gestos. Para la distribución en "
+"francés (Francia), no era algo obligatorio, ya que no hay posibilidad de "
+"pulsar NVDA+[ y NVDA+] sin otras teclas modificadoras."
+
+#: ..\python_docs\TranslatingGestures.py:30
+msgid ""
+"### Example 3: The original gesture is defined to match a native shortcut"
+msgstr ""
+"### Ejemplo 3: el gesto original se ha definido para que coincida con un "
+"atajo nativo"
+
+#: ..\python_docs\TranslatingGestures.py:31
+msgid ""
+"NVDA provides a script for Word document object named `toggleBold`. This "
+"script is mapped to the same gesture as the Word native shortcut to set text "
+"bold, i.e. Control+B in English version of Word. However on French version "
+"of Word, the shortcut to turn text bold is Control+G. The G stands for \"gras"
+"\" meaning \"bold\" in French. The following lines have been added in the "
+"French `gestures.ini` file to remap this script:"
+msgstr ""
+"NVDA proporciona un script para el objeto de documento de Word llamado "
+"`toggleBold`. Este script se encuentra asignado al mismo gesto del atajo "
+"nativo de Word para poner el texto en negrita, control+b en la versión en "
+"inglés de Word. Sin embargo, en la versión en francés de Word, el atajo para "
+"poner el texto en negrita es control+G. La g viene de \"gras\", que "
+"significa \"negrita\" en francés. Las siguientes líneas se añadieron al "
+"archivo `gestures.ini` francés para reasignar este script:"
+
+#: ..\python_docs\TranslatingGestures.py:33
+msgid "[NVDAObjects.window.winword.WordDocument]"
+msgstr "[NVDAObjects.window.winword.WordDocument]"
+
+#: ..\python_docs\TranslatingGestures.py:34
+msgid ""
+"\tNone = kb:control+b, kb:control+[, kb:control+], \"kb:control+shift+,\", "
+"kb:control+shift+., kb:control+l, kb:control+r"
+msgstr ""
+"\tNone = kb:control+b, kb:control+[, kb:control+], \"kb:control+shift+,\", "
+"kb:control+shift+., kb:control+l, kb:control+r"
+
+#: ..\python_docs\TranslatingGestures.py:35
+msgid "\ttoggleBold = kb:control+g, kb:control+shift+b"
+msgstr "\ttoggleBold = kb:control+g, kb:control+shift+b"
+
+#: ..\python_docs\TranslatingGestures.py:37
+msgid ""
+"We can see that Control+B has been unbound. This was necessary because it is "
+"the shortcut of another command in French version of Word."
+msgstr ""
+"Podemos ver que la asignación de control+b se ha eliminado. Esto es "
+"necesario porque corresponde a otra orden de la versión en francés de Word."
+
+#: ..\python_docs\TranslatingGestures.py:38
+msgid ""
+"No remapping has been done for toggleItalic script since the shortcut is the "
+"same for French and English versions of Word."
+msgstr ""
+"No se ha hecho una reasignación para el script toggleItalic, ya que el atajo "
+"es el mismo en las versiones inglesa y francesa de Word."
+
+#: ..\python_docs\TranslatingGestures.py:39
+msgid "## How to remap a shortcut key"
+msgstr "## Cómo reasignar una tecla de atajo"
+
+#: ..\python_docs\TranslatingGestures.py:40
+msgid ""
+"### Identify the class, the script and the original gesture to be remapped"
+msgstr ""
+"### Identificación de la clase, el script y el gesto original a reasignar"
+
+#: ..\python_docs\TranslatingGestures.py:41
+msgid ""
+"To edit the gesture.ini file, you will have to identify the class, the "
+"script and the original shortcut you want to remap."
+msgstr ""
+"Para editar el archivo gestures.ini, tendrás que identificar la clase, el "
+"script y el atajo original que quieres reasignar."
+
+#: ..\python_docs\TranslatingGestures.py:42
+msgid "#### Case of a global command script"
+msgstr "#### Caso de un script de orden global"
+
+#: ..\python_docs\TranslatingGestures.py:43
+msgid ""
+"If the gesture to be remapped is a global command, you may execute the "
+"following steps to find out the class and the script name of the command:"
+msgstr ""
+"Si el gesto a reasignar es una orden global, puedes ejecutar los siguientes "
+"pasos para descubrir los nombres de la clase y el script de dicha orden:"
+
+#: ..\python_docs\TranslatingGestures.py:44
+msgid "* activate input help (NVDA+1)"
+msgstr "* Activa la ayuda de entrada (NVDA+1)"
+
+#: ..\python_docs\TranslatingGestures.py:45
+msgid "* press the gesture you want to remap, e.g. NVDA+] (laptop layout)"
+msgstr ""
+"* Pulsa el gesto que deseas reasignar, por ejemplo NVDA+] (distribución "
+"portátil)"
+
+#: ..\python_docs\TranslatingGestures.py:46
+msgid "* de-activate input help (NVDA+1)"
+msgstr "* Desactiva la ayuda de entrada (NVDA+1)"
+
+#: ..\python_docs\TranslatingGestures.py:47
+msgid "* open the log (NVDA+F1)"
+msgstr "* Abre el registro (NVDA+f1)"
+
+#: ..\python_docs\TranslatingGestures.py:48
+msgid ""
+"* find out the line corresponding to the moment you have executed the "
+"gesture, e.g.:"
+msgstr ""
+"* Busca la línea correspondiente al momento en el que has ejecutado el "
+"gesto, por ejemplo:"
+
+#: ..\python_docs\TranslatingGestures.py:49
+#: ..\python_docs\TranslatingGestures.py:51
+msgid "  ```"
+msgstr "  ```"
+
+#: ..\python_docs\TranslatingGestures.py:50
+msgid ""
+"  Input help: gesture kb(laptop):NVDA+], bound to script rightMouseClick on "
+"globalCommands.GlobalCommands"
+msgstr ""
+"  Input help: gesture kb(laptop):NVDA+], bound to script rightMouseClick on "
+"globalCommands.GlobalCommands"
+
+#: ..\python_docs\TranslatingGestures.py:52
+msgid "The information you are searching is on this line:"
+msgstr "La información que buscas está en esta línea:"
+
+#: ..\python_docs\TranslatingGestures.py:53
+msgid "* script name: `rightMouseClick`"
+msgstr "* nombre del script: `rightMouseClick`"
+
+#: ..\python_docs\TranslatingGestures.py:54
+msgid ""
+"* class name: `globalCommands.GlobalCommands` (Note that this is always this "
+"class for global commands)"
+msgstr ""
+"* nombre de la clase: `globalCommands.GlobalCommands` (Observa que siempre "
+"es esta clase para las órdenes globales)"
+
+#: ..\python_docs\TranslatingGestures.py:55
+msgid "* original gesture: `kb(laptop):NVDA+]`"
+msgstr "* gesto original: `kb(laptop):NVDA+]`"
+
+#: ..\python_docs\TranslatingGestures.py:56
+msgid "#### Case of an application specific script"
+msgstr "#### Caso de un script de una aplicación específica"
+
+#: ..\python_docs\TranslatingGestures.py:57
+msgid ""
+"In case you want to remap an application specific script, you will have to "
+"follow the same steps as those for a global command script. You just need to "
+"ensure before proceeding that you are in the targeted application."
+msgstr ""
+"En caso de que quieras reasignar un script de una aplicación específica, "
+"tendrás que seguir los mismos pasos que vimos para una orden global. Antes "
+"de proceder, debes asegurarte de que te encuentras en la aplicación deseada."
+
+#: ..\python_docs\TranslatingGestures.py:58
+msgid "#### Case of an object specific script"
+msgstr "#### Caso de un script específico de un objeto"
+
+#: ..\python_docs\TranslatingGestures.py:59
+msgid ""
+"Object specific scripts such as the ones linked to `NVDAObjects.window."
+"winword.WordDocument` do not have generally an help message. So the previous "
+"technique will not work. You will need to explore NVDA's source code to find "
+"the class and the script name of the gesture you want to remap."
+msgstr ""
+"Los scripts específicos de objeto, como los enlazados a `NVDAObjects.window."
+"winword.WordDocument`, no disponen generalmente de un mensaje de ayuda, por "
+"lo que la técnica anterior no funcionará. Será necesario explorar el código "
+"fuente de NVDA para encontrar el nombre de clase y de script del gesto que "
+"deseas reasignar."
+
+#: ..\python_docs\TranslatingGestures.py:60
+msgid "### Edit the gestures.ini file"
+msgstr "### Edición del archivo gestures.ini"
+
+#: ..\python_docs\TranslatingGestures.py:61
+msgid ""
+"1. In your local copy of the screenReaderTranslations repository, check if "
+"the gestures.ini file exists, e.g. d:\\SVN\\SRT\\fr\\gestures.ini"
+msgstr ""
+"1. En tu copia local del repositorio ScreenReaderTranslations, comprueba si "
+"existe el archivo gestures.ini. Por ejemplo, d:\\SVN\\SRT\\fr\\gestures.ini"
+
+#: ..\python_docs\TranslatingGestures.py:62
+msgid ""
+"   * If this file does not exist, create it by copying it from the last "
+"version of NVDA."
+msgstr ""
+"    * Si este archivo no existe, créalo copiándolo de la última versión de "
+"NVDA."
+
+#: ..\python_docs\TranslatingGestures.py:63
+msgid "   * If it already exists, all is fine."
+msgstr "    * Si ya existe, todo está bien."
+
+#: ..\python_docs\TranslatingGestures.py:64
+msgid ""
+"2. In this file the sections correspond to the class to which the script "
+"belongs. If the class your looking for does not exist, create this section."
+msgstr ""
+"2. En este archivo, las secciones corresponden a la clase a la que el script "
+"pertenece. Si la clase que buscas no existe, crea una sección para ella."
+
+#: ..\python_docs\TranslatingGestures.py:65
+msgid ""
+"3. Under the targeted section, add a line corresponding to the new shortcut. "
+"E.g.:"
+msgstr ""
+"3. Bajo la sección deseada, añade una línea correspondiente al nuevo atajo. "
+"Por ejemplo:"
+
+#: ..\python_docs\TranslatingGestures.py:66
+#: ..\python_docs\TranslatingGestures.py:68
+#: ..\python_docs\TranslatingGestures.py:71
+#: ..\python_docs\TranslatingGestures.py:73
+msgid "   ```"
+msgstr "   ```"
+
+#: ..\python_docs\TranslatingGestures.py:67
+msgid "   toggleBold = kb:control+g, kb:control+shift+b"
+msgstr "   toggleBold = kb:control+g, kb:control+shift+b"
+
+#: ..\python_docs\TranslatingGestures.py:69
+msgid ""
+"   If a line already exists for the script name you want to modify the "
+"shortcut, add the new shortcut on the same line, separating each shortcut "
+"from another with a comma (,)"
+msgstr ""
+"    Si ya existe una línea con el nombre de script cuyo atajo quieres "
+"modificar, añade el nuevo atajo en la misma línea, separando cada atajo de "
+"los otros con una coma (,)"
+
+#: ..\python_docs\TranslatingGestures.py:70
+msgid ""
+"4. If you want to unmap the original shortcut, just map it to `None`, e.g.:"
+msgstr ""
+"4. Si quieres eliminar la asignación del gesto original, simplemente "
+"asígnalo a `None`. Por ejemplo:"
+
+#: ..\python_docs\TranslatingGestures.py:72
+msgid "   None = kb:control+b"
+msgstr "   None = kb:control+b"
+
+#: ..\python_docs\TranslatingGestures.py:74
+msgid ""
+"   Unmapping the original shortcut is only required if this shortcut does "
+"not match any other remapped locale shortcut."
+msgstr ""
+"    Eliminar el atajo asignado original sólo es obligatorio si este atajo no "
+"coincide con ningún otro atajo reasignado en ese idioma."
+
+#: ..\python_docs\TranslatingGestures.py:75
+msgid "5. Save your file in UTF-8 format."
+msgstr "5. Guarda tu archivo en formato UTF-8."
+
+#: ..\python_docs\TranslatingGestures.py:76
+msgid "6. Commit your changes to screenReaderTranslations repo."
+msgstr "6. Envía los cambios al repositorio ScreenReaderTranslations."
+
+#: ..\python_docs\TranslatingGestures.py:77
+msgid "## What happens next"
+msgstr "## Qué ocurre después"
+
+#: ..\python_docs\TranslatingGestures.py:78
+msgid ""
+"The automatic translation system will periodically copy the modified "
+"gestures.ini files from the screenReaderTranslations repo in the beta branch "
+"of the NVDA repo."
+msgstr ""
+"El sistema automático de traducciones copiará periódicamente los archivos "
+"gestures.ini modificados desde el repositorio ScreenReaderTranslations a la "
+"rama beta del repositorio de NVDA."

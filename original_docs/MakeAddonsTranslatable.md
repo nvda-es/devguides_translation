@@ -1,4 +1,4 @@
-# Make add-ons translatable throught the NVDA's translation system #
+# Make add-ons translatable throughout the NVDA's translation system #
 
 ## Steps ##
 
@@ -76,7 +76,7 @@ The maintainer should fulfill the following criteria:
 - [Adding a New Language to Ikiwiki](https://github.com/nvaccess/l10n-code/wiki/Adding-a-New-Language-to-Ikiwiki)
 - [mr documentation](https://www.systutorials.com/docs/linux/man/1-mr/)
 - [Thread about repo management and registration, started by Joseph Lee](https://nvda-addons.groups.io/g/nvda-addons/message/6937)
-## Aknowledgements ##
+## Acknowledgements ##
 
 This document is based on work and information provided by Mesar Hameed and James Teh.
 
