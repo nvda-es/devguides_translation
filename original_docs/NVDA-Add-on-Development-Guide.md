@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: November 2019 for NVDA 2019.2
+Latest version: December 2019 for NVDA 2019.3 beta
 
 IMPORTANT: the NVDA community is in the midst of a Python 3 transition. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
 
@@ -122,6 +122,10 @@ IMPORTANT: the NVDA community is in the midst of a Python 3 transition. Many exa
     - [Driver components](#user-content-driver-components)
     - [A Few important things to remember before, during and after driver development](#user-content-a-few-important-things-to-remember-before-during-and-after-driver-development)
     - [Typical driver development steps](#user-content-typical-driver-development-steps)
+- [Enhancers](#user-content-enhancers)
+    - [Enhancer components](#user-content-enhancer-components)
+    - [A Few important things to remember before, during and after enhancer development](#user-content-a-few-important-things-to-remember-before-during-and-after-enhancer-development)
+    - [Typical enhancer development steps](#user-content-typical-enhancer-development-steps)
 - [Sharing your add-on and experience with others](#user-content-sharing-your-add-on-and-experience-with-others)
     - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)
     - [The NVDA Community Add-ons web site and code repository](#user-content-the-nvda-community-add-ons-web-site-and-code-repository)
@@ -259,10 +263,9 @@ To create an add-on for NVDA, please make sure your system meets the following r
     - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
     - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python:
-    - Python 2.7 series, version 2.7.16 32-bit for Windows: https://www.python.org/downloads/release/python-2716/
-    - If you wish to work with Python 3, use Python 3.7.4, 32-bit for Windows: https://www.python.org/downloads/release/python-374/
-    - Starting from July 2019, Python 3 is required.
-* SCons 2 or 3, version 2.3.0 or later for generating add-on packages (if using a 3.x release, use 3.0.1 or later): http://www.scons.org/
+    - Python 3.7 series, version 3.7.5 32-bit for Windows: https://www.python.org/downloads/release/python-375/
+    - If you wish to work with Python 2 for backward compatibility (not recommended starting January 2020),use version 2.7.16 32-bit for Windows: https://www.python.org/downloads/release/python-2716/
+* SCons 3, version 3.0.1 or later for generating add-on packages: http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
     - Once downloaded, copy these two exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
@@ -937,7 +940,7 @@ One way to fix this is using threads (separate, independent  operations in a pro
 
 Q. I would like to port a module written in Python 3 syntax for use as an NVDA add-on.
 
-This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NVDA itself uses Python 2, and work is under way to transition to Python 3.
+This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NVDA 2019.3 and later is strictly a Python 3 release.
 
 Q. My add-on uses GUI facility, and after installing NVDA 2018.3, I get errors related to wxPython.
 
@@ -1490,7 +1493,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contents of this "dialog" will be announced automatically. |
 | I'm working with a terminal window | Inherit from NVDAObjects.behaviors.Terminal | |
 | I want to add table navigation commands for an object that is not shown as a table yet | Inherit from NVDAObjects.behaviors.RowWithFakeNavigation | This class defines input help mode message and a base implementation for table navigation commands (Control+Alt+arrows). |
-| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed. |
+| I need pointers for providing improved support for a Java application | NVDAObjects.JAB and JABHandler module | Java Access Bridge (32-bit and 64-bit) should be installed (installed in 2019.3). |
 | Adding support for an app that has similar functionality as another app | Import contents of the source app module via from appModuleName import * | Commonly called "aliasing". |
 | Play a tone | tones.beep(hertz, duration) | Duration in milliseconds. |
 | Play a tone on the left speaker | tones.beep(hertz, duration, leftVolume=100, rightVolume=0) | |
@@ -1506,7 +1509,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |
 | Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |
 | Is 64-bit Windows | os.environ["PROCESSOR_ARCHITEW6432"] in ("AMD64", "ARM64") or os.path.exists(r"C:\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |
-| Registry access | _winreg module | Changed to "winreg" in Python 3. |
+| Registry access | winreg module | "_winreg" in Python 2. |
 | Open a website with the default web browser | os.startfile(URL) | |
 | Download headers for a file on the web | resource = urllib.urlopen(URL) | |
 | Work with JSON data | json module | |

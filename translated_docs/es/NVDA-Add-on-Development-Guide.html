@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: noviembre de 2019 para NVDA 2019.2</p>
+<p>Última versión: diciembre de 2019 para NVDA 2019.3 beta</p>
 <p>Importante: la comunidad de NVDA se encuentra en mitad de una transición a Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como Python 3 a menos que se indique lo contrario.</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
@@ -122,6 +122,12 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li><a href="#componentes-del-controlador">Componentes del controlador</a></li>
 <li><a href="#unas-pocas-cosas-importantes-que-recordar-antes-durante-y-despues-del-desarrollo-de-controladores">Unas pocas cosas importantes que recordar antes, durante y después del desarrollo de controladores</a></li>
 <li><a href="#pasos-tipicos-de-desarrollo-de-un-controlador">Pasos típicos de desarrollo de un controlador</a></li>
+</ul>
+</li>
+<li><a href="#potenciadores">Potenciadores</a><ul>
+<li><a href="#componentes-potenciadores">Componentes potenciadores</a></li>
+<li><a href="#unas-pocas-cosas-importantes-que-recordar-antes-durante-y-despues-del-desarrollo-de-potenciadores">Unas pocas cosas importantes que recordar antes, durante y después del desarrollo de potenciadores</a></li>
+<li><a href="#pasos-tipicos-de-desarrollo-de-un-potenciador">Pasos típicos de desarrollo de un potenciador</a></li>
 </ul>
 </li>
 <li><a href="#compartiendo-tu-complemento-y-experiencia-con-otros">Compartiendo tu complemento y experiencia con otros</a><ul>
@@ -243,12 +249,11 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Python:<ul>
-<li>Series de Python 2.7, versión 2.7.16 32-bit para Windows: https://www.python.org/downloads/release/python-2716/</li>
-<li>Si deseas trabajar con Python 3, utiliza Python 3.7.4 de 32 bits para Windows: https://www.python.org/downloads/release/python-374/</li>
-<li>Desde julio de 2019, es necesario Python 3.</li>
+<li>Series de Python 3.7, versión 3.7.5 de 32 bits para Windows: https://www.python.org/downloads/release/python-375/</li>
+<li>Si deseas trabajar con Python 2 para dar compatibilidad hacia atrás (no recomendado a partir de enero de 2020), usa la versión 2.7.16 de 32 bits para Windows: https://www.python.org/downloads/release/python-2716/</li>
 </ul>
 </li>
-<li>SCons 2 o 3, versión 2.3.0 o posterior para la generación de paquetes de complementos (si se usa la versión 3.x, se recomienda la 3.0.1 o posterior): http://www.scons.org/</li>
+<li>Scons 3, versión 3.0.1 o posterior para generar paquetes de complementos: http://www.scons.org/</li>
 <li>Markdown 2.0.1 o posterior para generar la documentación del complemento: https://pypi.python.org/pypi/Markdown/2.0.1</li>
 <li>El paquete Gettext de GNU para Windows para soporte de traducción de mensajes. La compilación se puede encontrar en: http://gnuwin32.sourceforge.net/downlinks/gettext.php<ul>
 <li>Una vez descargados, copia ambos archivos exe en la carpeta de desarrollo del complemento. Consulta la siguiente sección para obtener una descripción de la estructura de carpetas del complemento.<ul>
@@ -787,7 +792,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.</p>
 <p>Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
 <p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.</p>
-<p>Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA usa Python 2, pero ya se están haciendo trabajos de transición a Python 3.</p>
+<p>Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA 2019.3 y las versiones posteriores utilizan estrictamente Python 3.</p>
 <p>P. Mi complemento usa componentes de interfaz gráfica, y después de instalar NVDA 2018.3, obtengo errores relacionados con WXPython.</p>
 <p>NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una versión más antigua de WXPython. Si quieres dar soporte a versiones anteriores de NVDA, debes emplear sentencias condicionales (if/else) y comprobaciones de versión, de tal forma que se elija el camino correcto al ejecutar el código.</p>
 <p>P. Tras instalar NVDA 2019.1, los usuarios dicen que mis complementos no son compatibles.</p>
@@ -1496,9 +1501,9 @@ class AppModule(appModuleHandler.AppModule):
 <td>Esta clase define el mensaje del modo de ayuda de entrada y una implementación básica para las órdenes de navegación de tabla (Control+Alt+flechas).</td>
 </tr>
 <tr>
-<td>Necesito indicadores para proporcionar soporte mejorado para una aplicación Java</td>
+<td>Necesito punteros para proporcionar soporte mejorado para una aplicación Java</td>
 <td>NVDAObjects.JAB y módulo JABHandler</td>
-<td>Java Access Bridge (de 32 y 64 bits) debería instalarse.</td>
+<td>Java Access Bridge (de 32 y 64 bits) debería instalarse (instalado en 2019.3).</td>
 </tr>
 <tr>
 <td>Añadir soporte para una aplicación con funcionalidad similar a la de otra aplicación</td>
@@ -1577,8 +1582,8 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>Acceso al registro</td>
-<td>Módulo _winreg</td>
-<td>Cambiado a "winreg" en Python 3.</td>
+<td>Módulo winreg</td>
+<td>"_winreg" en Python 2.</td>
 </tr>
 <tr>
 <td>Abrir un sitio web con el navegador web predeterminado</td>
