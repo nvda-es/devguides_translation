@@ -33,9 +33,9 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: December 2019 for NVDA 2019.3 beta
+Latest version: February 2020 for NVDA 2019.3
 
-IMPORTANT: the NVDA community is in the midst of a Python 3 transition. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
+IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
 
 ---
 
@@ -186,7 +186,7 @@ Some of the concepts described in this document are the same across different sc
 * The code you write will run inside the same runtime environment as the screen reader itself, thus you can perform things such as obtain focused object directly, modify NVDA's functionality and even replace NVDA functions and classes with your own.
 * Python, and consequently, NVDA is an object-oriented system. In other words, most of your code will consist of defining classes and objects which are than picked up by NVDA at runtime.
 * Unlike scripting engines for some screen readers, there is no special hack involved when you wish to provide a feature that'll work in all applications.
-* Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself.
+* Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs, including external modules. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself if you choose to use these packages.
 
 ### A special note about Windows Store version of NVDA
 
@@ -194,14 +194,14 @@ As of NVDA 2018.1, foundation has been laid to let NVDA run as a Windows Store a
 
 ### A very important note about migrating custom extension code to development scratchpad
 
-If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules (sometikmes claled "plugins") inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
+If you are coming from NVDA 2018.4 or earlier, you may recall that you are able to run extension modules (sometimes called "plugins") inside folders stored in the user configuration directory (e.g. appModules). This functionality has been revised in NVDA 2019.1 as follows:
 
 1. NVDA will no longer load extension code stored in the following subdirectories of the user configuration folder: appModules, brailleDisplayDrivers, globalPlugins, synthDrivers.
 	* If you find that code inside these folders is no longer working as of NVDA 2019.1, the above reason is why.
 2. You must enable development scratchpad functionality (reserved for developers) if you wish to load custom extension code. To do so:
 	1. With NVDA 2019.1 (or later) running, go to NVDA menu/Preferences/settings/Advanced.
-	2. You must check "I understand that changing these settings may cause NVDA to function incorrectly".
-	3. You must check "Enable loading custom code from Developer Scratchpad directory".
+	2. You must check "I understand that changing these settings may cause NVDA to function incorrectly" checkbox.
+	3. You must check "Enable loading custom code from Developer Scratchpad directory" checkbox.
 	4. Select OK.
 3. You must store code that was formerly housed in the above list of subdirectories inside corresponding subdirectories of the scratchpad folder.
 4. If you need to use NVDA 2018.4 and would like to use custom code, you must not remove the above listed subdirectories from the user configuration directory. Otherwise go ahead and remove the folders listed in item 1.

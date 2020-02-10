@@ -1,4 +1,5 @@
-For transparency, the following is a brief outline of the process NV Access is following for issue triage. If you would like to help with the triage process (which is an excellent way to make a contribution to NVDA) please refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)
+For transparency, the following is a brief outline of the process NV Access is following for issue triage.
+If you would like to help with the triage process (which is an excellent way to make a contribution to NVDA) please refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)
 
 ### Missing attachments
 NV Access migrated tickets from our old issue tracker ('Trac') into Github issues. These issues can be identified by having an author of `nvaccessauto`. Some of these issues have comments that indicate an attachment should be available, but it is not. All of these Trac attachments are now accessible at: https://www.nvaccess.org/files/nvdaTracAttachments/ (then the Github issue number). So as an example, for issue [#2396](https://github.com/nvaccess/nvda/issues/2396), get the attachments from https://www.nvaccess.org/files/nvdaTracAttachments/2396

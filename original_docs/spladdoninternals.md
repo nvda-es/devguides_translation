@@ -2,11 +2,11 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NvDA 19.10
+Based on StationPlaylist Add-on for NvDA 20.02
 
 ## 2019 Preface and notes
 
-This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2019, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2019.
+This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2019, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2019 and beyond.
 
 In 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps. As a result, the add-on itself was renamed in 2019 to just "StationPlaylist".
 
@@ -63,6 +63,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 18.09: third LTS release, add-on settings panels, checkable list, wxPython 4.
 * 19.01: add-on update feature removed, compatibility flags with future NVDA releases.
 * 19.07: renaming the add-on, settings reload/reset.
+* 20.02: Python 3, restructured encoders support and new encoders, Creator's Playlist Editor support.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -72,18 +73,23 @@ To download the add-on, go to https://addons.nvda-project.org/addons/StationPlay
 
 ### Overall design and source code layout
 
-StationPlaylist add-on for NVDA consists of six app modules (including one app module package) and a global plugin. Because Studio comes with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. The other two app modules deal with Streamer and SPL DSP Engine.
+StationPlaylist add-on for NVDA consists of six app modules (including two app module packages) and a global plugin. Because Studio and Creator come with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. The other two app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an app module package due to inclusion of encoders support module which is also used by Streamer.
 
-The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and encoder support).
+The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and parts of encoder support).
+
+When it comes to hierarchy of app modules, Studio app module package is ranked highest. This is because Studio app module is the oldest part of the add-on, and it provides base services and blueprints for other app modules. For instance, Creator and Track Tool relies on configuration facility provided by Studio app module package for Columns Explorer (explained later), and Voice Track (VT) Recorder app module cannot function properly without Studio app module running. Even though SPL Engine and Streamer are independent of Studio app module, they still require Studio app module to function (this is especially the case with SPL Engine, as Studio loads splengine.exe, the DSP Engine executable).
+
+In short, all components of StationPlaylist add-on emphasize studio app module - although many components are independent of Studio, they still reference it for various reasons. Thus, Studio serves as the bridge that connects various add-on features together.
 
 The source code consists of:
 
-* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine, and Streamer.
+* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine (package), and Streamer.
 * The SPL Studio package consists of various modules, which include __init__ (main app module and track item classes), configuration manager and user interfaces (splconfig and splconfui) and miscellaneous services (splmisc) as well as support modules and various wave files used by the add-on.
+* The SPL Engine package consists of main Engine module and encoder support module.
 * The main app module file is divided into sections. First, the overlay classes for track items are defined, then comes the app module, further divided into four sections: fundamental methods (constructor, events and others), time commands (end of track, broadcaster time, etc.), other commands (track Finder, cart explorer and others) and SPL Assistant layer. This allows me to identify where a bug is coming from and to add features in appropriate sections.
-* globalPlugins: This folder contains SPLStudioUtils package, which consists of __init__ (main plugin and SPL Controller layer) and encoder support module.
+* globalPlugins: This folder contains SPLStudioUtils package, which consists of __init__ (main plugin and SPL Controller layer).
 
-Note: Encoder support is planned to be transfered to SPL DSP Engine app module in the near future.
+Note: until 2019, encoder support was part of SPL Utils. In 2020, it is part of SPL DSP Engine app module package.
 
 ### Design philosophy
 
@@ -141,7 +147,7 @@ In the old days of Windows (1990's), programs were not ready to support Unicode 
 
 In reality, programs call FindWindow function, and the appropriate "version" was chosen based on overall character representation macro as specified by the program. For example, if the program was unicode-aware, when FindWindow is called, Windows internally calls FindWindowW.
 
-Until 2018, Studio app module and other components of the add-on called FindWindowA due to the fact that, in Python 2, a string is a read-only array of ANSI characters. Python 3 (and if a string is prefixed with "u" in Python 2) uses immutable array of Unicode characters for strings. Internally, NVDA expects Unicode strings for the function that wraps FindWindow function (located in winUser module), thus mimicking Python 3 behavior. StationPlaylist add-on adopted FindWindowW behavior in late 2018, but the wrapper provided by NVDA is not used due to incorrect error checking behavior in NVDA (if window handle is 0 (NULL), success error is raised, which goes against specifications from Windows API).
+Until 2018, Studio app module and other components of the add-on called FindWindowA due to the fact that, in Python 2, a string is a read-only array of ANSI characters. Python 3 (and if a string is prefixed with "u" in Python 2) uses immutable array of Unicode characters for strings. Internally, NVDA expects Unicode strings for the function that wraps FindWindow function (located in winUser module), thus mimicking Python 3 behavior. StationPlaylist add-on adopted FindWindowW behavior in late 2018, but the wrapper provided by NVDA is not used due to incorrect error checking behavior in NVDA (if window handle is 0 (NULL), success error is raised, which goes against specifications from Windows API; no longer the case in NVDA 2019.3/Python 3).
 
 ## Life of the SPL app module
 
@@ -152,7 +158,7 @@ Note: For the rest of this article, you'll see some portions of the source code 
 As noted previously, the SPL Studio app module (splstudio/__init__.py) and friends (other app modules) consists of several sections. These include (from top to bottom):
 
 * Imports: Many modules from Python packages and from NVDA screen reader are imported here, including IAccessible controls support, configuration manager and so on.
-* Layer command wrapper: I talked about how layer commands work in a previous chapter, and the "finally" function at the top is the one that makes this possible.
+* Layer command wrapper: I talked about how layer commands work in a previous section, and the "finally" function at the top is the one that makes this possible.
 * Few helper functions and checks: This includes a flag specifying minimum version of Studio needed, the cached value for Studio window handle (SPLWin) and place holders for threads such as microphone alarm timer (more on this in threads section). This section also includes helper functions such as "messageSound" (displays a message on a braille display and plays a wave file) and other helper functions.
 * Track item overlay classes: three classes are defined for various purposes. The first is a base class that provides commands and services across Studio and other apps, while other two classes provide support for Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back to these objects later.
 * App module class: This is the core of not only the app module, but the entire add-on package. The app module class (appModules.splstudio.AppModule) is further divided into sections as described in add-on design chapter.
@@ -275,7 +281,8 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 	7. These steps are part of splconfig.SPLConfig.save method in add-on 8.0 and later.
 3. In 17.12 and later, NVDA notifies registered handlers for app terminate action. As noted above, this will cause add-on dialogs to close without saving settings.
 4. NVDA then attempts to remove StationPlaylist Add-on Settings entry from NVDA's preferences menu, then various maps used by Studio app module (such as Cart Explorer map) are cleared.
-5. As the app module is laid to rest, the window handle value for Studio window is cleared. This is a must, as the handle will be different next time Studio runs. At this point, NVDA removes splstudio (Studio app module) from list of app modules in use.
+5. An important task is cleaning up objects cache used by some SPL Assistant commands, as cached information (specifically, objects) will point to something else next time Studio starts (without restarting NVDA), which is dangerous.
+6. As the app module is laid to rest, the window handle value for Studio window is cleared. This is a must, as the handle will be different next time Studio runs. At this point, NVDA removes splstudio (Studio app module) from list of app modules in use.
 
 ### Add-on updates: updating to latest and greatest version
 
@@ -607,9 +614,11 @@ For example, if NVDA is told to announce title and artist (in that specific orde
 
 #### Track Columns Explorer: Retrieve information from specific columns
 
-In add-on 7.0, it became possible to let NVDA announce information from specific columns. This is done by letting NVDA assign SPL Assistant, 1 through 0 (6 for Studio 5.0x) to a function to obtain information from specific column (slot); add-on 8.0 changes these commands to use Control+NVDA+number row. This is called Track Columns Explorer (usually termed Coloumns Explorer).
+In add-on 7.0, it became possible to let NVDA announce information from specific columns. This is done by letting NVDA assign SPL Assistant, 1 through 0 (6 for Studio 5.0x) to a function to obtain information from specific column (slot); add-on 8.0 changed these commands to use Control+NVDA+number row. This is called Track Columns Explorer (usually termed Coloumns Explorer).
 
-In addition to using column retriever routine in Track Dial, Columns Explorer needs to know Studio version in use, as Studio 5.1x shows columns not found in Studio 5.0x (this is checked when entering SPL Assistant as discussed later). Once column slots are defined, Columns Explorer performs the following:
+In addition to using column retriever routine in Track Dial, Columns Explorer needs to know Studio version in use, as Studio 5.1x shows columns not found in Studio 5.0x (this is checked when entering SPL Assistant as discussed later). In addition, since not all track items expose more than ten columns or column slots cannot be configured for some items (notably Creator's Playlist Editor), Columns Exploer needs to know how many columns can be retrieved and take action if no column slot can be defined.
+
+Once column slots are defined (for items allowing configuring column slots, which are Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer performs the following:
 
 1. Checks if you are indeed focused on a track item, and if not, it'll say "not a track".
 2. Consults a list of column slots and locates corresponding column index for the slot in question.
@@ -618,6 +627,10 @@ In addition to using column retriever routine in Track Dial, Columns Explorer ne
 ##### Optimization bonus: I've rearranged columns in studio 5.10...
 
 Due to different control data structure in use, one can rearrange columns in Studio 5.10 and later. But how does NVDA know exactly which column is which? This is thanks to the fact that internal column position doesn't change. When you rearrange columns, you are changing the way columns are presented on screen. When column retriever function (described above) is invoked, Studio returns column content for a column index regardless of where this column is located on screen. Not only this makes Columns Explorer simpler to implement, it allows Track Dial to track (after manual intervention) column presentation changes on screen.
+
+##### What about items where column slots cannot be configured?
+
+For items other than Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer slots cannot be configured (hence absence of "exploreColumns" property, notably in Creator's Playlist Editor in add-on 20.02). If so, Columns Explorer will resort to displaying data for columns shown in display order (as it appears on screen). As a bonus, if a track item does not show more than ten columns, Columns Explorer will announce an error message if current column position is out of bounds (beyond column count for the track item). These were done in order to support Playlsit Editor properly as track items in there only shows eight columns.
 
 #### Column Search: Finding text in specific columns
 
@@ -872,7 +885,7 @@ Before the new style routines were written, all commands used object navigation.
 2. To fetch needed objects and to record the command type, a number of constants are defined in the app module (all integers, denoting what you wish to hear). These constants serve as keys to the object index map.
 3. After entering SPL Assistant layer and once you press one of the commands below, NVDA will do the following:
 	1. Each command will obtain the object in question by calling object fetcher (status function) with the announcement type as the parameter (status(SPLConstant; for example, for cart edit mode, the signature is self.status(self.SPLPlayStatus), with the constant denoting a status bar).
-	2. The object fetcher (status function) will first consult an object cache (part of the Studio app module) hoping that the needed object is ready for use (for performance reasons).
+	2. The object fetcher (status function) will first consult an object cache (part of the Studio app module) hoping that the needed object is ready for use (for performance reasons; this is also performed in Playlist Editor for performance reasons as explained later).
 	3. If the object was not cached, the fetcher will first write down the foreground window, then use the directions specified in the object index map (the constant passed into the status function is the key to this map and different values are returned based on Studio version) to locate, cache and return the object in question (in that order).
 	4. Back at the routine for the command, it is up to the routine as to what to do with it (sometimes, the actual object is a child of the just returned object).
 
@@ -911,6 +924,12 @@ In Studio 5.20 and later:
 3. A lookup table with possible status bar messages is then consulted, and the appropriate message based on status flag and value is retrieved and announced.
 
 Not all status bar messages will use Studio API and status messages table. The lone exception is cart mode status, which requires consulting two flag values returned by Studio to construct the actual announcement (cart edit mode on/off and whether cart insert mode is active).
+
+##### Another side tour: Playlist Editor and object caching
+
+As noted above, part of object navigation commands in SPL Assistnat involve object cache. This is necessary for performance reasons, as retrieving and navigating via objects is slow versus retrieving needed object from a cache, which is faster than manual object retrieval. This technique is frequently labeled "memoization" and is used to improve responsiveness if an important data is present somewhere for fast retrieval.
+
+Similar to SPL Assistant commands involving object navigation, Creator's Playlist Editor's status objects require caching because slowness of object navigation. Without caching, retrieving needed information will take seconds instead of fraction of a second. Just like Studio, cached information is cleared when Creator app module is terminated.
 
 #### SPL Assistant 2: tools
 
@@ -1059,7 +1078,7 @@ In Studio app module world, a broadcast profile (usually shortened to profile) i
 
 There are two ways of creating a profile: brand new or as a copy. Both uses the same dialog (splconfui.NewProfileDialog), with the difference being the base profile in use. For a brand new profile, settings from the normal profile will be used (minus profile-specific settings, which are set to default values), and for a copy, the new profile will contain all settings from the base profile. In both cases, a memory resident profile will be created and initialized just like other profiles (splconfig.unlockConfig/splconfig.SPLConfig.createProfile, taking the name of the new profile as a parameter); this was done to reduce unnecessary disk writes. Also, new/copy profile dialog (and other dialogs invoked from the main configuration dialog) will disable the main settings dialog.
 
-In case the selected profile is deleted, the profile will be removed from the profiles list, the configuration file associated with the profile will be deleted (if it exists) and a previously active profile will take over unless if the active profile itself is gone, in which case normal profile will be set as the active profile. In case of a rename operation, it'll look for a profile with the old name and change some properties to reflect name change. There is an important step the app module will performed if an instant switch profile is renamed or deleted (if renamed, the instant profile variable will hold the new name, and if deleted, instant profile value will be None). A similar procedure is invoked when dealing with time-based profiles.
+In case the selected profile is deleted, the profile will be removed from the profiles list, the configuration file associated with the profile will be deleted (if it exists) and a previously active profile will take over unless if the active profile itself is gone, in which case normal profile will be set as the active profile. In case of a rename operation, it'll look for a profile with the old name and change some properties to reflect name change. There is an important step the app module will perform if an instant switch profile is renamed or deleted (if renamed, the instant profile variable will hold the new name, and if deleted, instant profile value will be None). A similar procedure is invoked when dealing with time-based profiles.
 
 #### Introducing Config Hub
 
@@ -1283,7 +1302,7 @@ There was an important reason for writing this feature: Since NVDA supports mult
 
 In March and April 2015, I started rewriting certain parts of add-on configuration manager (splstudio.splconfig) in preparation for developing broadcast profiles (now included as part of add-on 6.0). I started by writing todo comments (where appropriate) describing what the future feature should be like. I then modified initConfig and saveConfig (discussed in app module articles), initially telling them to work with the default profile (the one and only configuration map then), then I left it alone until add-on 5.0 was released in June 2015.
 
-In June 2015, I opened a new branch (initially using the codename "starfish") to house code related to broadcast profiles. Before any "real" code was written, I studied NvDA source code dealing with configuration profiles to learn more about how Jamie (James Teh from NV Access) implemented this feature. Once I understood how it worked, I copied, pasted and changed the code to match the overall add-on code base (giving nV Access the credit they deserve).
+In June 2015, I opened a new branch (initially using the codename "starfish") to house code related to broadcast profiles. Before any "real" code was written, I studied NvDA source code dealing with configuration profiles to learn more about how Jamie (James Teh from NV Access, now Mozilla) implemented this feature. Once I understood how it worked, I copied, pasted and changed the code to match the overall add-on code base (giving nV Access the credit they deserve).
 
 One of the first things I had to decide was how to store profiles. I experimented with using ConfigObj sections, one per profile, but this proved to be problematic (a profile could be given the name of an existing configuration map key). I then went back to NVDA source code to find out how NV Access solved this problem (using separate ini files), implemented it, and was met with another problem: transfering values between profiles. This was resolved by specifying whether a setting was "global" (applies to all profiles) or specific to a profile. Next came profile controls in the add-on settings dialog and using choice events to set alarm values using values from the selected profile.
 
@@ -1305,7 +1324,7 @@ Follow me as I show you how a typical SPL add-on version is developed, released 
 6. Starting in fall 2015, I've merged development branches into a staging branch for testing purposes. This branch is also used to generate try (Test Drive program) builds so those who've signed up for early access program can leave feedback (try builds are generated about once a week).
 7. After testing the feature for a while and if the feature is stable, I merge the feature branch into master.
 8. Every few weeks, I publish master branch snapshots to gather feedback from users willing to test drive snapshots. With the advent of add-on updates in add-on 7.0, one can update between snapshots or stable versions (whichever branch one is using, the update check routine wil use that branch; for example, if one is using master snapshots, updates will be fetched from master branch only).
-9. At some point, I set release target window for the next add-on version (for 6.0, it was December 2015). This determines when feature freeze should be and beta release window (for 6.0, beta 1 was released in October 2015). Between feature freeze and the first beta release, I concentrate on code refinements and bug fixes. This has changed significnatly in 2017 (see below).
+9. At some point, I set release target window for the next add-on version (for 6.0, it was December 2015). This determines when feature freeze should be and beta release window (for 6.0, beta 1 was released in October 2015). Between feature freeze and the first beta release, I concentrate on code refinements and bug fixes. This has changed significantly in 2017 (see below).
 10. After going through several beta cycles (typically two), I ask NVDA community add-on reviewers to review my add-on code and request add-on release during the release window (this is done by merging master branch into stable branch).
 11. Once the add-on version is released, subsequent maintenance versions (localization updates, bug fixes, minor tweaks) will be released from the stable branch, with the master branch containing the code for the next major version.
 12. Once the next version enters beta cycle, further maintenance releases may or may not happen (an exception is long-term support release, described below).
@@ -1339,7 +1358,7 @@ Given that my long-term goal is to let NVDA itself check for SPL add-on updates,
 
 * Test Drive Fast and Slow rings were combined into a single "development" channel. Consequently, there is no more update channel selection capability, with users encouraged to obtain the right releases from add-ons website. This was extended in September 2018 to cover long-term support releases.
 * A new concept of "pilot features" replaced Test Drive Fast, configurable via a checkbox and internal flags.
-* New features under development will be enabled if pilot features facility is turned on, otherwise content is identical to regular development build.
+* New (risky) features under development will be enabled if pilot features facility is turned on, otherwise content is identical to regular development build.
 * Add-on update checking facility is now taken care of by Add-on Updater, and in the future, to be done by NVDA itself. Consequently, add-on update feature and the source code that controlled it has been removed in December 2018.
 
 #### Long-term support release
@@ -1351,9 +1370,9 @@ A LTS version is a major version or a major periodic release of the SPL add-on w
 * Support duration: A LTS version is supported for at least twelve months.
 * Features: A LTS version may contain some features from future add-on releases provided that they can be safely backported.
 * Studio version supported: A LTS version is the last version to support the oldest supported Studio version. This is designed to give people plenty of time to upgrade to newer Studio releases.
-* Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria will first be applied to an LTS release scheduled for 2018 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1, as well as planned transition to Python 3.
+* Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria was first applied in 18.09 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1, as well as transition to Python 3.
 
-As of December 2018, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019 at the earliest). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
+As of January 2020, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
 
 1. Add-on 3.0 was released in September 2014.
 2. Add-on 3.5 (December 2014) could have been the last maintenance version for add-on 3.x if it was not a LTS version.

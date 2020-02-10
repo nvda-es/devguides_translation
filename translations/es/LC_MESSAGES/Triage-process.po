@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-05-26 01:40+Hora de verano romance\n"
-"PO-Revision-Date: 2019-05-26 01:42+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-10 11:39+0100\n"
+"PO-Revision-Date: 2020-02-10 11:53+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -14,28 +15,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\Triage-process.py:3
 msgid ""
 "For transparency, the following is a brief outline of the process NV Access "
-"is following for issue triage. If you would like to help with the triage "
-"process (which is an excellent way to make a contribution to NVDA) please "
-"refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/"
-"wiki/Issue-triage-help)"
+"is following for issue triage."
 msgstr ""
-"Por transparencia, lo siguiente es un breve resumen sobre el proceso que "
-"NVAccess está siguiendo para la clasificación de incidencias. Si quieres "
-"ayudar con el proceso de clasificación (lo que es una excelente forma de "
-"hacer una contribución a NVDA), consulta la sección de ayuda de "
-"clasificación de incidencias."
+"Por motivos de transparencia, a continuación se muestra una breve "
+"descripción del proceso que está siguiendo NV Access para la clasificación "
+"de incidencias."
 
 #: ..\python_docs\Triage-process.py:4
+msgid ""
+"If you would like to help with the triage process (which is an excellent way "
+"to make a contribution to NVDA) please refer to [issue triage help on the "
+"wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)"
+msgstr ""
+"Si quieres ayudar con el proceso de clasificación (lo que es una excelente "
+"forma de hacer una contribución a NVDA), consulta la sección de ayuda de "
+"clasificación de incidencias."
+
+#: ..\python_docs\Triage-process.py:5
 msgid "### Missing attachments"
 msgstr "### Adjuntos que faltan"
 
-#: ..\python_docs\Triage-process.py:5
+#: ..\python_docs\Triage-process.py:6
 msgid ""
 "NV Access migrated tickets from our old issue tracker ('Trac') into Github "
 "issues. These issues can be identified by having an author of "
@@ -56,7 +62,7 @@ msgstr ""
 "github.com/nvaccess/nvda/issues/2396) obtén los adjuntos desde https://www."
 "nvaccess.org/files/nvdaTracAttachments/2396"
 
-#: ..\python_docs\Triage-process.py:6
+#: ..\python_docs\Triage-process.py:7
 msgid ""
 "If you come across one of these missing attachments, please upload if you "
 "think they're relevant to GitHub. Note you'll need to pay attention to "
@@ -67,11 +73,11 @@ msgstr ""
 "atención a las restricciones de nombres de adjuntos en GitHub, si falla "
 "intenta comprimirlos en zip."
 
-#: ..\python_docs\Triage-process.py:7
+#: ..\python_docs\Triage-process.py:8
 msgid "### How prioritisation works"
 msgstr "### Cómo funciona la asignación de prioridades"
 
-#: ..\python_docs\Triage-process.py:8
+#: ..\python_docs\Triage-process.py:9
 msgid ""
 "We differentiate between the priority for bugs (labelled `bug`) and new "
 "features (labelled `feature`). Rather than assign a priority to issues with "
@@ -101,7 +107,7 @@ msgstr ""
 "comentarios del código para ofrecer información más clara y completa, o "
 "extender una API o framework interno para desbloquear otras incidencias."
 
-#: ..\python_docs\Triage-process.py:9
+#: ..\python_docs\Triage-process.py:10
 msgid ""
 "Bugs/regressions are given priorities based on an estimate of their "
 "severity, impact and implementation cost:"
@@ -109,7 +115,7 @@ msgstr ""
 "Los fallos y las regresiones reciben prioridades en base a una estimación de "
 "su severidad, impacto y coste de implementación:"
 
-#: ..\python_docs\Triage-process.py:10
+#: ..\python_docs\Triage-process.py:11
 msgid ""
 "- `P1` issues are typically crashes or severe errors that should be fixed "
 "immediately."
@@ -117,7 +123,7 @@ msgstr ""
 "- Las incidencias `P1` son típicamente errores fatales o muy graves que "
 "deben repararse inmediatamente."
 
-#: ..\python_docs\Triage-process.py:11
+#: ..\python_docs\Triage-process.py:12
 msgid ""
 "- `P2` issues should be among the next issues fixed. Try to start on the "
 "oldest of these issues."
@@ -125,7 +131,7 @@ msgstr ""
 "- Las incidencias `P2` deberían estar entre las siguientes incidencias "
 "reparadas. Intenta empezar con la más antigua de ellas."
 
-#: ..\python_docs\Triage-process.py:12
+#: ..\python_docs\Triage-process.py:13
 msgid ""
 "- `P3` issues are less likely to get fixed, we hope to get to them \"one day"
 "\". However if something changes (severity/impact/cost) the priority can be "
@@ -135,7 +141,7 @@ msgstr ""
 "centrarse en ellas \"algún día\". Sin embargo, si algo cambia (severidad, "
 "impacto, coste) su prioridad puede alterarse."
 
-#: ..\python_docs\Triage-process.py:13
+#: ..\python_docs\Triage-process.py:14
 msgid ""
 "- `P4` issues probably won't be worked on by NV Access, however we will be "
 "happy to provide implementation guidance and accept a Pull Request."
@@ -144,7 +150,7 @@ msgstr ""
 "embargo, estarán encantados de ofrecer guiado durante la implementación y "
 "aceptar una solicitud de cambios."
 
-#: ..\python_docs\Triage-process.py:14
+#: ..\python_docs\Triage-process.py:15
 msgid ""
 "Due to the difficulty in assigning priorities to individual issues, recently "
 "(2019) NV Access has asked members of the community to provide their top 2 "

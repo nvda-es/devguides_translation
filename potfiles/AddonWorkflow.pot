@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-10 11:39+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\python_docs\AddonWorkflow.py:3
+msgid "Definitions:"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:4
+msgid ""
+"In the below text, for brevity we will write he, him, his, but of course it "
+"applies to both sexes."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:5
+msgid ""
+"Author: the standard meaning of author, or the current maintainer of an "
+"addon."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:6
+msgid ""
+"Supporting reviewer: A member of the nvda addon team, that has shown "
+"technical ability, fairness, dedication and willingness to help others."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:7
+msgid ""
+"An author can not act as a supporting reviewer if he is the author of the "
+"addon, even if he is a member of the addon team."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:8
+msgid "For a different addon, roles may be switched."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:9
+msgid "## Workflow"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:10
+msgid ""
+"1. An author wishes to create an addon, so he forks the community supplied "
+"addonTemplate to their personal github space, and rename it to the name of "
+"the new addon."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:11
+msgid ""
+"2. He proceeds to develop the addon, committing and pushing to his personal "
+"repo."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:12
+msgid ""
+"3. When he is ready with the addon, he informs the addon list, and requests "
+"general feedback."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:13
+msgid ""
+"4. At this point, most feedback is probably user testing, but hopefully also "
+"some code review."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:14
+msgid ""
+"\tPlease note that the community can not guarantee the quality or the "
+"content of the addon, so if you as a user run the addon without having "
+"looked at the code, it is at your own risk."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:15
+msgid ""
+"5. The feedback is processed by the author, goto step 2, or when sufficient "
+"feedback has been processed goto step 6."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:16
+msgid ""
+"\tIt is not expected that the author will accept all requests, so if you are "
+"a user, and the author does not think your feature request fits with his "
+"addon, both authors and users are reminded to remain civil to all parties."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:17
+msgid ""
+"\tAll reasonable requests such as reminder of copyright info, license, "
+"improvements to the readme etc are expected to be fixed by the author."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:18
+msgid ""
+"6. Assuming sufficient user interest for the addon to be available on the "
+"community website then the author requests that the addon is forked to the "
+"nvdaaddons organisation by a supporting reviewer."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:19
+msgid ""
+"7. Please remember that addons are accepted at the discretion of the "
+"community reviewers. Everyone is a volunteer, and is under no obligation to "
+"do anything. Of course if you take part in the community and help by "
+"reviewing other peoples code, you will build up good will and others will be "
+"more likely to review your code."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:20
+msgid ""
+"8. The supporting reviewer makes sure there is a license, copyright "
+"information, a readme file, that the addon does what it is suppose to do, "
+"and is ok in terms of security."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:21
+msgid ""
+"\tIt is expected that the supporting reviewer will have read each line of "
+"the addon code global plugin, app modules or other files (not external "
+"libraries), for security risks before forking it."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:22
+msgid ""
+"\tSecurity in this context means: that the addon does not read any "
+"unexpected files from the users computer, does not upload anything, and does "
+"not download anything unexpected."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:23
+msgid ""
+"9. The supporting reviewer forks the addon to the nvda addons organisation."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:24
+msgid ""
+"10. Issues, pull requests should go to the author, and to the authors repo, "
+"not to the community fork."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:25
+msgid ""
+"\tUsers can of course still continue interacting with the addon author using "
+"the addon mailing list."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:26
+msgid ""
+"11. The addon author is expected to add the community copy of the repo as a "
+"remote, so that he can merge in translations."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:27
+msgid ""
+"12. Supporting reviewer might have to do the following tasks to the "
+"community repo after forking:"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:28
+msgid ""
+"\tDelete any other branches than master, add additional information for "
+"automatic building, webhooks etc."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:29
+msgid ""
+"\tAdd a protection rule on master so that it is not accidentally pushed to, "
+"and that it needs a pr with a minimum of 1 reviewer (even admins)."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:30
+msgid "\tOther translation workflow related steps [see here][1]."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:31
+msgid "\tCreate a stable branch."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:32
+msgid ""
+"\tAdd protection rules to stable so that the translation system can push, "
+"every one else needs a pr (even admins)."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:33
+msgid "13. Supporting reviewer merges master into stable."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:34
+msgid "14. Supporting reviewer triggers a release."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:35
+msgid ""
+"\tThis should only bump the patch number (last digit of the version number), "
+"i.e. v1.0.0 becomes v1.0.1."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:36
+msgid ""
+"15. After a period of time, the addon author wishes to make a new release, "
+"he makes a release pull request from his master to the master of the "
+"community copy."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:37
+msgid ""
+"16. A supporting reviewer, reviews the pull request, again, for security, "
+"for updated readme etc, and may request further work to be done before the "
+"pr is accepted. Only the changes since the last release needs to be reviewed."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:38
+msgid ""
+"17. Once the pr is excepted into master, the supporting reviewer will bump "
+"the major or minor version as agreed with author, i.e. just delete the \"-dev"
+"\" from version variable."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:39
+msgid "\tLoop back to step 13."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:40
+msgid "## Considerations"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:41
+msgid ""
+"The following considerations were taken into account when proposing this "
+"addon workflow."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:42
+msgid "1. Addon security."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:43
+msgid ""
+"\tAs the community of nvda users and addon authors grow, we want to promote "
+"a sense of trust to do the correct thing, so that a user should feel "
+"confident in installing or updating addons, so that addons can be installed "
+"alongside NVDA in schools, universities, public libraries etc."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:44
+msgid ""
+"\tThat as adon authors we take our volunteer work seriously, and we "
+"appreciate the trust that we have been given."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:45
+msgid ""
+"\tTherefore the final step of making a release is with the community, not "
+"with the addon author, as we want the final product to be fully trusted."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:46
+msgid "2. Shared learning environment."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:47
+msgid ""
+"\tBy giving each other constructive criticism, suggestions etc, we build "
+"something better and stronger, because no one is perfect, and we all learn "
+"from each other."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:48
+msgid ""
+"\tCriticism of code is not a criticism against the author, it is simply "
+"recommendations to improve the code, because the reviewer cares about the "
+"quality of your code."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:49
+msgid ""
+"\tIf you feel that a reviewer overlooked something when reviewing someone "
+"elses addon, please do not hesitate to provide your review as no one has "
+"monopoly on giving feedback."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:50
+msgid "3. Reducing the existing workload of addon reviewers."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:51
+msgid ""
+"\tAt the point of writing, we have approx 70 addons, and managing all this "
+"is not simple or straightforward."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:52
+msgid ""
+"\tUnfortunately we ended up in a messy situation, with repos in github, on "
+"bitbucket, and some other manual work that needed to be done on a server."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:53
+msgid ""
+"\tIt was felt that more time was spent trying to administrate the system, "
+"than to be able to do the interesting work of reviewing and giving feedback, "
+"therefore more steps should be automated."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:54
+msgid ""
+"\tThis automation is not yet in place, but if the consensus is that this is "
+"a reasonable workflow, then work on the additional automation will begin."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:55
+msgid ""
+"\tWith less complex requirements for a potential addon reviewer, hopefully "
+"more people will become community reviewers and can take an active and "
+"responsible role, as then it is simply about reviewing and merging code, and "
+"does not require such a time investment."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:56
+msgid "## Things for future discussions."
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:57
+msgid "1. Minimum time between releases?"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:58
+msgid "2. How can (if we should?), accommodate dev releases?"
+msgstr ""
+
+#: ..\python_docs\AddonWorkflow.py:59
+msgid ""
+"[1]: https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/"
+"MakeAddonsTranslatable"
+msgstr ""

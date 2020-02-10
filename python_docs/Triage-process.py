@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""For transparency, the following is a brief outline of the process NV Access is following for issue triage. If you would like to help with the triage process (which is an excellent way to make a contribution to NVDA) please refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)"""),
+_(u"""For transparency, the following is a brief outline of the process NV Access is following for issue triage."""),
+_(u"""If you would like to help with the triage process (which is an excellent way to make a contribution to NVDA) please refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)"""),
 "",_(u"""### Missing attachments"""),
 _(u"""NV Access migrated tickets from our old issue tracker ('Trac') into Github issues. These issues can be identified by having an author of `nvaccessauto`. Some of these issues have comments that indicate an attachment should be available, but it is not. All of these Trac attachments are now accessible at: https://www.nvaccess.org/files/nvdaTracAttachments/ (then the Github issue number). So as an example, for issue [#2396](https://github.com/nvaccess/nvda/issues/2396), get the attachments from https://www.nvaccess.org/files/nvdaTracAttachments/2396"""),
 _(u"""If you come across one of these missing attachments, please upload if you think they're relevant to GitHub. Note you'll need to pay attention to Github's attachment naming restrictions, if it fails try zipping it."""),

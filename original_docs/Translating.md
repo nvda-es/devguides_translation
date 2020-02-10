@@ -84,6 +84,7 @@ When 2019.2.1 is listed in the last updated column, it means that the localizati
 | zh_CN: Simplified Chinese | Up to date. | 2019.2.1 |
 | zh_HK: Traditional Chinese Hong Kong | Up to date, Documentation missing. | 2019.2.1 |
 | zh_TW: Traditional Chinese Taiwan | Up to date. | 2019.2.1 |
+| kh:Traditional Khmer Cambodia | Starting | 2020.1.13
 
 ## New Localization
 Start by subscribing to the translation list above, so that you can get help and advice.

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 12:04+0100\n"
+"POT-Creation-Date: 2020-02-10 11:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,17 +20,21 @@ msgstr ""
 #: ..\python_docs\Triage-process.py:3
 msgid ""
 "For transparency, the following is a brief outline of the process NV Access "
-"is following for issue triage. If you would like to help with the triage "
-"process (which is an excellent way to make a contribution to NVDA) please "
-"refer to [issue triage help on the wiki](https://github.com/nvaccess/nvda/"
-"wiki/Issue-triage-help)"
+"is following for issue triage."
 msgstr ""
 
 #: ..\python_docs\Triage-process.py:4
-msgid "### Missing attachments"
+msgid ""
+"If you would like to help with the triage process (which is an excellent way "
+"to make a contribution to NVDA) please refer to [issue triage help on the "
+"wiki](https://github.com/nvaccess/nvda/wiki/Issue-triage-help)"
 msgstr ""
 
 #: ..\python_docs\Triage-process.py:5
+msgid "### Missing attachments"
+msgstr ""
+
+#: ..\python_docs\Triage-process.py:6
 msgid ""
 "NV Access migrated tickets from our old issue tracker ('Trac') into Github "
 "issues. These issues can be identified by having an author of "
@@ -42,18 +46,18 @@ msgid ""
 "nvaccess.org/files/nvdaTracAttachments/2396"
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:6
+#: ..\python_docs\Triage-process.py:7
 msgid ""
 "If you come across one of these missing attachments, please upload if you "
 "think they're relevant to GitHub. Note you'll need to pay attention to "
 "Github's attachment naming restrictions, if it fails try zipping it."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:7
+#: ..\python_docs\Triage-process.py:8
 msgid "### How prioritisation works"
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:8
+#: ..\python_docs\Triage-process.py:9
 msgid ""
 "We differentiate between the priority for bugs (labelled `bug`) and new "
 "features (labelled `feature`). Rather than assign a priority to issues with "
@@ -70,38 +74,38 @@ msgid ""
 "other issues."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:9
+#: ..\python_docs\Triage-process.py:10
 msgid ""
 "Bugs/regressions are given priorities based on an estimate of their "
 "severity, impact and implementation cost:"
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:10
+#: ..\python_docs\Triage-process.py:11
 msgid ""
 "- `P1` issues are typically crashes or severe errors that should be fixed "
 "immediately."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:11
+#: ..\python_docs\Triage-process.py:12
 msgid ""
 "- `P2` issues should be among the next issues fixed. Try to start on the "
 "oldest of these issues."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:12
+#: ..\python_docs\Triage-process.py:13
 msgid ""
 "- `P3` issues are less likely to get fixed, we hope to get to them \"one day"
 "\". However if something changes (severity/impact/cost) the priority can be "
 "reassessed."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:13
+#: ..\python_docs\Triage-process.py:14
 msgid ""
 "- `P4` issues probably won't be worked on by NV Access, however we will be "
 "happy to provide implementation guidance and accept a Pull Request."
 msgstr ""
 
-#: ..\python_docs\Triage-process.py:14
+#: ..\python_docs\Triage-process.py:15
 msgid ""
 "Due to the difficulty in assigning priorities to individual issues, recently "
 "(2019) NV Access has asked members of the community to provide their top 2 "

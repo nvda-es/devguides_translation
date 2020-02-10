@@ -24,8 +24,8 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: diciembre de 2019 para NVDA 2019.3 beta</p>
-<p>Importante: la comunidad de NVDA se encuentra en mitad de una transición a Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como Python 3 a menos que se indique lo contrario.</p>
+<p>Última versión: febrero de 2020 para NVDA 2019.3</p>
+<p>Importante: NVDA 2019.3 requiere un entorno de desarrollo basado en Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como Python 3 a menos que se indique lo contrario.</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
 <p><em>Nota para usuarios de lectores de pantalla</em>: para volver a este índice, usa tu orden del modo exploración para moverte al encabezado de nivel 1 en dirección contraria.</p>
@@ -184,7 +184,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li>El código que escribas se ejecutará dentro del mismo entorno de ejecución que el propio lector de pantalla, por lo que puedes realizar cosas como obtener directamente objetos enfocados, modificar la funcionalidad de NVDA e incluso reemplazar las funciones y clases de NVDA con las tuyas propias.</li>
 <li>Python, y consecuentemente NVDA, es un sistema orientado a objetos. En otras palabras, la mayor parte de su código consistirá en definir clases y objetos que NVDA recogerá en tiempo de ejecución.</li>
 <li>A diferencia de los motores de scripting para algunos lectores de pantalla, no hay ningún hack especial involucrado cuando se desee proporcionar una característica que funcione en todas las aplicaciones.</li>
-<li>A diferencia de los motores de scripting para algunos lectores de pantalla, no estás limitado a bibliotecas que vengan con los lectores de pantalla; como un programa basado en Python, puedes usar cualquier módulo (s) de python que se adapte a tus necesidades. Por ejemplo, un módulo popular utilizado para interactuar con aplicaciones web es el módulo JSON (JavaScript Object Notation), que no está incluido en las versiones de NVDA anteriores a 2017.3. Necesitas incorporar las bibliotecas externas de Python tú mismo.</li>
+<li>A diferencia de los motores de scripting para algunos lectores de pantalla, no estás limitado a bibliotecas que vengan con los lectores de pantalla; como un programa basado en Python, puedes usar cualquier módulo (s) de python que se adapte a tus necesidades, incluyendo módulos externos. Por ejemplo, un módulo popular utilizado para interactuar con aplicaciones web es el módulo JSON (JavaScript Object Notation), que no está incluido en las versiones de NVDA anteriores a 2017.3. Necesitas incorporar las bibliotecas externas de Python tú mismo si deseas usar estos paquetes.</li>
 </ul>
 <h3 id="nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows">Nota especial sobre la versión de NVDA para la tienda de Windows</h3>
 <p>A partir de NVDA 2018.1, se han establecido cambios para permitir a NVDA ejecutarse como una aplicación de la tienda Windows. Una vez se publique en la tienda la versión de NVDA para la tienda de Windows, los usuarios de Windows 10 podrán ir a la tienda y obtener NVDA. Sin embargo, hay restricciones que vienen con esta versión de NVDA, la más notable es que los complementos no pueden ejecutarse en este entorno. Por lo tanto, si necesitas ejecutar o escribir complementos de NVDA, deberás utilizar la versión clásica de escritorio de este lector, disponible en la sección de descargas de nuestro sitio web.</p>

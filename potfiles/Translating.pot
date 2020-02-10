@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-23 12:04+0100\n"
+"POT-Creation-Date: 2020-02-10 11:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -368,186 +368,190 @@ msgid "| zh_TW: Traditional Chinese Taiwan | Up to date. | 2019.2.1 |"
 msgstr ""
 
 #: ..\python_docs\Translating.py:80
-msgid "## New Localization"
+msgid "| kh:Traditional Khmer Cambodia | Starting | 2020.1.13"
 msgstr ""
 
 #: ..\python_docs\Translating.py:81
+msgid "## New Localization"
+msgstr ""
+
+#: ..\python_docs\Translating.py:82
 msgid ""
 "Start by subscribing to the translation list above, so that you can get help "
 "and advice."
 msgstr ""
 
-#: ..\python_docs\Translating.py:82
+#: ..\python_docs\Translating.py:83
 msgid ""
 "It is recommended that you use our new more automated workflow, which will "
 "allow you to focus only on translation. See [the automated workflow section]"
 "(#advantages-of-the-automatic-workflow-process ) below."
 msgstr ""
 
-#: ..\python_docs\Translating.py:83
+#: ..\python_docs\Translating.py:84
 msgid ""
 "If you still wish to go through the manual process, then follow the "
 "instructions on the [[TranslatingUsingManualProcess]] page after first "
 "reading [Files to be Localized](#files-to-be-localized) below."
 msgstr ""
 
-#: ..\python_docs\Translating.py:84
+#: ..\python_docs\Translating.py:85
 msgid "## Improving an Existing Localization"
 msgstr ""
 
-#: ..\python_docs\Translating.py:85
+#: ..\python_docs\Translating.py:86
 msgid ""
 "You should contact the existing maintainer of your language, and discuss "
 "your suggestions and changes. Together you should be able to agree on the "
 "best translation and terms to be used, and the necessary changes can be made."
 msgstr ""
 
-#: ..\python_docs\Translating.py:86
+#: ..\python_docs\Translating.py:87
 msgid ""
 "You can send an email to the translation mailing list to find out the "
 "correct person. "
 msgstr ""
 
-#: ..\python_docs\Translating.py:87
+#: ..\python_docs\Translating.py:88
 msgid ""
 "If your language is no longer maintained, you can request to be the new "
 "maintainer for the language."
 msgstr ""
 
-#: ..\python_docs\Translating.py:88
+#: ..\python_docs\Translating.py:89
 msgid "## Files to be Localized"
 msgstr ""
 
-#: ..\python_docs\Translating.py:89
+#: ..\python_docs\Translating.py:90
 msgid "These files are listed in order of importance."
 msgstr ""
 
-#: ..\python_docs\Translating.py:90
+#: ..\python_docs\Translating.py:91
 msgid ""
 "- nvda.po: NVDA's interface messages, see [[TranslatingTheInterface]] page "
 "for more info."
 msgstr ""
 
-#: ..\python_docs\Translating.py:91
+#: ..\python_docs\Translating.py:92
 msgid ""
 "- characterDescriptions.dic: names of characters in your language, see "
 "[[TranslatingCharacterDescriptions]] for more info."
 msgstr ""
 
-#: ..\python_docs\Translating.py:92
+#: ..\python_docs\Translating.py:93
 msgid ""
 "- symbols.dic: names of symbols and punctuation in your language, see "
 "[[TranslatingSymbols]] for more information."
 msgstr ""
 
-#: ..\python_docs\Translating.py:93
+#: ..\python_docs\Translating.py:94
 msgid ""
 "- gestures.ini: remapping of gestures for your language, see "
 "[[TranslatingGestures]] for more information."
 msgstr ""
 
-#: ..\python_docs\Translating.py:94
+#: ..\python_docs\Translating.py:95
 msgid ""
 "- userGuide.t2t: the User Guide, see [[TranslatingUserGuide]] for more "
 "information."
 msgstr ""
 
-#: ..\python_docs\Translating.py:95
+#: ..\python_docs\Translating.py:96
 msgid ""
 "- changes.t2t (optional): a list of changes between releases, see "
 "[[TranslatingChanges]] for more information."
 msgstr ""
 
-#: ..\python_docs\Translating.py:96
+#: ..\python_docs\Translating.py:97
 msgid ""
 "- Add-ons (optional): a set of optional features that users can install, see "
 "[[TranslatingAddons]] for more information."
 msgstr ""
 
-#: ..\python_docs\Translating.py:97
+#: ..\python_docs\Translating.py:98
 msgid "## Advantages of the Automatic Workflow Process"
 msgstr ""
 
-#: ..\python_docs\Translating.py:98
+#: ..\python_docs\Translating.py:99
 msgid "- No need of a full NVDA development environment."
 msgstr ""
 
-#: ..\python_docs\Translating.py:99
+#: ..\python_docs\Translating.py:100
 msgid ""
 "- You will be sent an email or twitter message when your po file needs "
 "updating."
 msgstr ""
 
-#: ..\python_docs\Translating.py:100
+#: ..\python_docs\Translating.py:101
 msgid ""
 "- You will be sent an email or twitter message when your userGuide or "
 "changes file needs to be updated."
 msgstr ""
 
-#: ..\python_docs\Translating.py:101
+#: ..\python_docs\Translating.py:102
 msgid ""
 "- Automatic generation of html from t2t files, so that you can check the "
 "correctness of your t2t markup."
 msgstr ""
 
-#: ..\python_docs\Translating.py:102
+#: ..\python_docs\Translating.py:103
 msgid ""
 "- Automatically generated difference and word difference between previous "
 "and new versions, to help you quickly find the changes."
 msgstr ""
 
-#: ..\python_docs\Translating.py:103
+#: ..\python_docs\Translating.py:104
 msgid ""
 "- A higher quality User Guide since the difference files encourage you to "
 "keep the English and your localization closely updated."
 msgstr ""
 
-#: ..\python_docs\Translating.py:104
+#: ..\python_docs\Translating.py:105
 msgid ""
 "- Translation becomes many small tasks instead a big rush near a deadline. "
 "Maybe 10 minutes per week on average."
 msgstr ""
 
-#: ..\python_docs\Translating.py:105
+#: ..\python_docs\Translating.py:106
 msgid "- It is easier to contribute, since each work unit is self contained."
 msgstr ""
 
-#: ..\python_docs\Translating.py:106
+#: ..\python_docs\Translating.py:107
 msgid ""
 "- Your translation is regularly and automatically included into NVDA "
 "snapshots."
 msgstr ""
 
-#: ..\python_docs\Translating.py:107
+#: ..\python_docs\Translating.py:108
 msgid ""
 "- Instead of following nvda-dev mailing list emails, you can just subscribe "
 "to nvda translations and important messages related to translation will be "
 "sent there."
 msgstr ""
 
-#: ..\python_docs\Translating.py:108
+#: ..\python_docs\Translating.py:109
 msgid ""
 "- Auto generated structure difference between the English and your localized "
 "user guide, to quickly spot missing paragraphs, tables and lists."
 msgstr ""
 
-#: ..\python_docs\Translating.py:109
+#: ..\python_docs\Translating.py:110
 msgid ""
 "- Automatic checking of po files, making sure that there are no mistakes "
 "that could cause any runtime errors."
 msgstr ""
 
-#: ..\python_docs\Translating.py:110
+#: ..\python_docs\Translating.py:111
 msgid ""
 "If you want to follow the automatic workflow process, visit the "
 "[[TranslatingUsingAutomaticProcess]] page."
 msgstr ""
 
-#: ..\python_docs\Translating.py:111
+#: ..\python_docs\Translating.py:112
 msgid "## Missing information"
 msgstr ""
 
-#: ..\python_docs\Translating.py:112
+#: ..\python_docs\Translating.py:113
 msgid ""
 "Please feel free to update this or any subsequent page with any tips or "
 "hints that you feel may be of use to other translators."
