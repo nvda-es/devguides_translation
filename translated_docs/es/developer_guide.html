@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2019.2</title>
+  <title># Guía del desarrollador de NVDA 2019.3.1</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2019.2</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20192">Guía del desarrollador de NVDA 2019.2</h1>
+  <header><h1># Guía del desarrollador de NVDA 2019.3.1</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-201931">Guía del desarrollador de NVDA 2019.3.1</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -58,10 +58,11 @@
 <li>5.2. Espacio de nombres</li>
 <li>5.2.1. Importaciones automáticas</li>
 <li>5.2.2. Variables instantáneas</li>
+<li>5.3. Autocompletado con el tabulador</li>
 </ul>
 </li>
 <li>6. La consola Python remota<ul>
-<li>6.1. Modo de uso </li>
+<li>6.1. Modo de uso</li>
 </ul>
 </li>
 </ul>
@@ -117,7 +118,8 @@ b   bravo
 <li>never: nunca preservar el símbolo. </li>
 <li>always: preservar el símbolo siempre. </li>
 <li>norep: preservar el símbolo sólo si no se reemplaza; es decir, el usuario ha configurado el nivel de símbolos por debajo del nivel de este símbolo. </li>
-<li>-: usar valor por defecto. Por defecto se hereda el valor o "never" si no hay nada que heredar. </li>
+<li>-: Usar el valor por defecto. 
+Por defecto se hereda el valor o "never" si no hay nada que heredar. </li>
 </ul>
 </li>
 </ul>
@@ -588,7 +590,7 @@ class AppModule(appModuleHandler.AppModule):
 <p>Todos los valores de cadena deben encerrarse entre comillas, como se muestra en el ejemplo de más abajo. </p>
 <p>El campo lastTestedNVDAVersion en particular se usa para asegurar que los usuarios pueden confiar a la hora de instalar un complemento. Permite que el autor asegure que el complemento no causará inestabilidad o dañará el sistema del usuario. Cuando no se proporcione o sea menor que la versión actual de NVDA (ignorando actualizaciones menores como 2018.3.1), el usuario recibirá una advertencia indicando que no instale el complemento. </p>
 <h3 id="un-ejemplo-de-archivo-de-manifiesto">Un ejemplo de archivo de manifiesto</h3>
-<pre><code>    --- inicio ---
+<pre><code>            --- inicio ---
 
     name = "myTestAddon"
 
@@ -611,13 +613,11 @@ class AppModule(appModuleHandler.AppModule):
     --- fin ---
 </code></pre>
 <h2 id="extensiones-y-controladores">Extensiones y controladores</h2>
-<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: </p>
-<ul>
-<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
-<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
-<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
-<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
-</ul>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: 
+  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
+  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
+  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
+  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
 <h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
 <h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>
@@ -659,6 +659,8 @@ class AppModule(appModuleHandler.AppModule):
 <li>mouse: el objeto actual del ratón </li>
 <li>brlRegions: las regiones braille del buffer braille activo </li>
 </ul>
+<h3 id="53-autocompletado-con-el-tabulador">5.3. Autocompletado con el tabulador</h3>
+<p>El control de entrada soporta el autocompletado mediante tabulador de variables y nombres de atributos miembros. Pulsa el tabulador una vez para autocompletar la entrada actual si hay un candidato único. Si hay más de uno, pulsa el tabulador por segunda vez para abrir un menú que liste todas las posibilidades que encajen. Por defecto, sólo se listan los atributos y miembros "públicos". Esto significa que si por ejemplo la entrada es "nav.", se proponen los nombres de atributo que no comiencen con un guión bajo. Si la entrada es "nav._", se proponen los atributos miembros con un guión bajo al principio. De manera similar, si la entrada es "nav.__", se proponen los atributos que comiencen con dos guiones bajos. </p>
 <h2 id="646-la-consola-python-remota">6. La consola Python remota</h2>
 <p>NVDA dispone de una consola Python remota para situaciones donde la depuración remota de NVDA es útil. Es similar a la consola Python local expuesta arriba, pero se accede a ella a través de tcp. </p>
 <p>Por favor, sé consciente de que supone un enorme riesgo de seguridad. Sólo deberías activarla si estás conectado a una red de confianza. </p>
