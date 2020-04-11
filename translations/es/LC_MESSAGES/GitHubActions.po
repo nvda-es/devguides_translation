@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-06 23:05+0200\n"
+"PO-Revision-Date: 2020-04-07 15:35+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\GitHubActions.py:3
+msgid "# Using GitHub Actions to manage NVDA add-ons "
+msgstr "# Uso de acciones de GitHub para gestionar complementos de NVDA "
+
+#: ..\python_docs\GitHubActions.py:4
+msgid ""
+"This document is based on the [article about Appveyor](https://github.com/"
+"nvdaaddons/nvdaaddons.github.io/wiki/appveyor)."
+msgstr ""
+"Este documento está basado en el artículo sobre AppVeyor, disponible en la "
+"documentación sobre desarrollo de complementos de esta web."
+
+#: ..\python_docs\GitHubActions.py:5
+msgid ""
+"## Procedure to build, lint and attach nvda-addon files to releases on GitHub"
+msgstr ""
+"## Procedimiento para construir, comprobar estilo y adjuntar archivos nvda-"
+"addon a liberaciones de GitHub"
+
+#: ..\python_docs\GitHubActions.py:6
+msgid "### Setting GitHub Actions for add-ons"
+msgstr "### Configuración de acciones de GitHub para complementos"
+
+#: ..\python_docs\GitHubActions.py:7
+msgid ""
+"This works for add-ons based on the [Add-on Template](https://github.com/"
+"nvdaaddons/addontemplate)."
+msgstr ""
+"Esto funciona con complementos basados en la [plantilla de complemento]"
+"(https://github.com/nvdaaddons/addontemplate)."
+
+#: ..\python_docs\GitHubActions.py:8
+msgid "1. Get the code of an add-on."
+msgstr "1. Consigue el código de un complemento."
+
+#: ..\python_docs\GitHubActions.py:9
+msgid "\tExample:"
+msgstr "\tEjemplo:"
+
+#: ..\python_docs\GitHubActions.py:10 ..\python_docs\GitHubActions.py:13
+msgid "\t```"
+msgstr "\t```"
+
+#: ..\python_docs\GitHubActions.py:11
+msgid "\tgit clone https://github.com/username/repo"
+msgstr "\tgit clone https://github.com/usuario/repo"
+
+#: ..\python_docs\GitHubActions.py:12
+msgid "\tgit pull"
+msgstr "\tgit pull"
+
+#: ..\python_docs\GitHubActions.py:14
+msgid ""
+"2. In the root of the add-on folder (where the sconstruct file is placed), "
+"paste this [Flake8 configuration file](https://gist.githubusercontent.com/"
+"nvdaes/9caffa59ebbdcfd3e69f8a200b512be9/"
+"raw/3cbaaff48239b1b98e863901cf6a76b955412df7/setup.cfg), which uses [Flake8 "
+"rules configured for NVDA](https://raw.githubusercontent.com/nvaccess/nvda/"
+"master/tests/lint/flake8.ini). This must be named setup.cfg"
+msgstr ""
+"2. En la carpeta raíz del complemento (donde se encuentra el archivo "
+"sconstruct), pega este [archivo de configuración de Flake8](https://gist."
+"githubusercontent.com/nvdaes/9caffa59ebbdcfd3e69f8a200b512be9/"
+"raw/3cbaaff48239b1b98e863901cf6a76b955412df7/setup.cfg), que usa [reglas de "
+"Flake8 configuradas para NVDA](https://raw.githubusercontent.com/nvaccess/"
+"nvda/master/tests/lint/flake8.ini). El archivo debe llamarse setup.cfg"
+
+#: ..\python_docs\GitHubActions.py:15
+msgid ""
+"3. Under the root folder of the add-on repository, create a `.github/"
+"workflows` subdirectory."
+msgstr ""
+"3. En la carpeta raíz del repositorio del complemento, crea la subcarpeta `."
+"github/workflows`."
+
+#: ..\python_docs\GitHubActions.py:16
+msgid ""
+"4. Inside the `repositoryRootFolder/.github/workflows` subfolder, you can "
+"paste this [GitHub workflow file](https://gist.githubusercontent.com/"
+"nvdaes/05451e4e6065bf67a2f121b3028de5ec/"
+"raw/5fc51f0b0bbeb807d22f5bceb7eafcec1e0911c1/addon.yml). File extension "
+"should be .yml (or .yaml)."
+msgstr ""
+"4. Dentro de la subcarpeta `carpetaRaízRepositorio/.github/workflows`, se "
+"puede pegar este [archivo de flujo de trabajo de GitHub](https://gist."
+"githubusercontent.com/nvdaes/05451e4e6065bf67a2f121b3028de5ec/"
+"raw/5fc51f0b0bbeb807d22f5bceb7eafcec1e0911c1/addon.yml). La extensión del "
+"archivo debería ser .yml (o .yaml)."
+
+#: ..\python_docs\GitHubActions.py:17
+msgid "- The above workflow will be triggered on push and pull request events."
+msgstr ""
+"- El flujo de trabajo anterior se disparará en eventos push y ante "
+"solicitudes de cambio."
+
+#: ..\python_docs\GitHubActions.py:18
+msgid ""
+"- Errors detected by Flake8 will be shown, but won't stop the workflow, so "
+"that the add-on can be built or released even when syntax or style errors "
+"are found."
+msgstr ""
+"- Se mostrarán los errores detectados por Flake8, pero estos no detendrán el "
+"flujo de trabajo, de tal forma que el complemento pueda construirse y "
+"liberarse incluso si se encuentran fallos de estilo o sintaxis."
+
+#: ..\python_docs\GitHubActions.py:19
+msgid ""
+"Here is info about [viewing and managing GitHub workflows](https://help."
+"github.com/en/actions/configuring-and-managing-workflows/managing-a-workflow-"
+"run)."
+msgstr ""
+"Aquí hay más información sobre [visualización y gestión de flujos de trabajo "
+"de GitHub](https://help.github.com/en/actions/configuring-and-managing-"
+"workflows/managing-a-workflow-run)."
+
+#: ..\python_docs\GitHubActions.py:20
+msgid "### Releasing"
+msgstr "### Liberaciones"
+
+#: ..\python_docs\GitHubActions.py:21
+msgid ""
+"To post a new release of an add-on, you can create a tag and push it to "
+"GitHub:"
+msgstr ""
+"Para publicar una nueva versión de un complemento, puedes crear una nueva "
+"etiqueta y enviar los cambios a GitHub:"
+
+#: ..\python_docs\GitHubActions.py:22 ..\python_docs\GitHubActions.py:29
+msgid "Example"
+msgstr "Ejemplo"
+
+#: ..\python_docs\GitHubActions.py:23 ..\python_docs\GitHubActions.py:26
+#: ..\python_docs\GitHubActions.py:30 ..\python_docs\GitHubActions.py:33
+msgid "```"
+msgstr "```"
+
+#: ..\python_docs\GitHubActions.py:24
+msgid "git tag 1.0"
+msgstr "git tag 1.0"
+
+#: ..\python_docs\GitHubActions.py:25
+msgid "git push origin 1.0"
+msgstr "git push origin 1.0"
+
+#: ..\python_docs\GitHubActions.py:27
+msgid ""
+"Now, the release will be created and binary-1.0.nvda-addon will be attached "
+"on GitHub."
+msgstr ""
+"Ahora, se creará la liberación en GitHub y se adjuntará el archivo "
+"binary-1.0.nvda-addon."
+
+#: ..\python_docs\GitHubActions.py:28
+msgid ""
+"With the provided yaml file, releases created from tags ending with \"-dev\" "
+"will be marked as prereleases."
+msgstr ""
+"Con el archivo yaml proporcionado, las liberaciones creadas a partir de "
+"etiquetas que terminen en \"-dev\" se marcarán como en desarrollo."
+
+#: ..\python_docs\GitHubActions.py:31
+msgid "git tag 1.0-dev"
+msgstr "git tag 1.0-dev"
+
+#: ..\python_docs\GitHubActions.py:32
+msgid "git push origin 1.0-dev"
+msgstr "git push origin 1.0-dev"
+
+#: ..\python_docs\GitHubActions.py:34
+msgid "## References"
+msgstr "## Referencias"
+
+#: ..\python_docs\GitHubActions.py:35
+msgid "### Documentation"
+msgstr "### Documentación"
+
+#: ..\python_docs\GitHubActions.py:36
+msgid "- [GitHub Actions documentation](https://help.github.com/en/actions)"
+msgstr ""
+"- [Documentación de las acciones de GitHub](https://help.github.com/en/"
+"actions)"
+
+#: ..\python_docs\GitHubActions.py:37
+msgid "- [Flake8 documentation](https://flake8.pycqa.org/en/latest/)"
+msgstr "- [Documentación de Flake8](https://flake8.pycqa.org/en/latest/)"
+
+#: ..\python_docs\GitHubActions.py:38
+msgid "### Used actions"
+msgstr "### Acciones utilizadas"
+
+#: ..\python_docs\GitHubActions.py:39
+msgid ""
+"- [actions/checkout: Action for checking out a repo](https://github.com/"
+"actions/checkout)"
+msgstr ""
+"- [actions/checkout: acción para hacer checkout en un repositorio](https://"
+"github.com/actions/checkout)"
+
+#: ..\python_docs\GitHubActions.py:40
+msgid ""
+"- [actions/create-release: An Action to create releases via the GitHub "
+"Release API](https://github.com/actions/create-release)"
+msgstr ""
+"- [actions/create-release: una acción para crear liberaciones mediante la "
+"API de liberaciones de GitHub](https://github.com/actions/create-release)"
+
+#: ..\python_docs\GitHubActions.py:41
+msgid ""
+"- [svenstaro/upload-release-action: Upload files to a GitHub release]"
+"(https://github.com/svenstaro/upload-release-action)"
+msgstr ""
+"- [svenstaro/upload-release-action: Subir archivos a una liberación de "
+"GitHub](https://github.com/svenstaro/upload-release-action)"
+
+#: ..\python_docs\GitHubActions.py:42
+msgid "### Real example"
+msgstr "### Ejemplo real"
+
+#: ..\python_docs\GitHubActions.py:43
+msgid ""
+"- [clipContentsDesigner NVDA add-on](https://github.com/nvdaes/"
+"clipContentsDesigner)"
+msgstr ""
+"- [Complemento clipContentsDesigner para NVDA](https://github.com/nvdaes/"
+"clipContentsDesigner)"

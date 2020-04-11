@@ -1,0 +1,69 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Uso de acciones de GitHub para gestionar complementos de NVDA </title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Uso de acciones de GitHub para gestionar complementos de NVDA </h1></header>
+  <h1 id="uso-de-acciones-de-github-para-gestionar-complementos-de-nvda">Uso de acciones de GitHub para gestionar complementos de NVDA</h1>
+<p>Este documento está basado en el artículo sobre AppVeyor, disponible en la documentación sobre desarrollo de complementos de esta web.</p>
+<h2 id="procedimiento-para-construir-comprobar-estilo-y-adjuntar-archivos-nvda-addon-a-liberaciones-de-github">Procedimiento para construir, comprobar estilo y adjuntar archivos nvda-addon a liberaciones de GitHub</h2>
+<h3 id="configuracion-de-acciones-de-github-para-complementos">Configuración de acciones de GitHub para complementos</h3>
+<p>Esto funciona con complementos basados en la <a href="https://github.com/nvdaaddons/addontemplate">plantilla de complemento</a>.</p>
+<ol>
+<li>
+<p>Consigue el código de un complemento.</p>
+<p>Ejemplo:</p>
+<p>```
+git clone https://github.com/usuario/repo</p>
+<p>git pull
+```
+2. En la carpeta raíz del complemento (donde se encuentra el archivo sconstruct), pega este <a href="https://gist.githubusercontent.com/nvdaes/9caffa59ebbdcfd3e69f8a200b512be9/raw/3cbaaff48239b1b98e863901cf6a76b955412df7/setup.cfg">archivo de configuración de Flake8</a>, que usa <a href="https://raw.githubusercontent.com/nvaccess/nvda/master/tests/lint/flake8.ini">reglas de Flake8 configuradas para NVDA</a>. El archivo debe llamarse setup.cfg</p>
+</li>
+<li>
+<p>En la carpeta raíz del repositorio del complemento, crea la subcarpeta <code>.github/workflows</code>.</p>
+</li>
+<li>
+<p>Dentro de la subcarpeta <code>carpetaRaízRepositorio/.github/workflows</code>, se puede pegar este <a href="https://gist.githubusercontent.com/nvdaes/05451e4e6065bf67a2f121b3028de5ec/raw/5fc51f0b0bbeb807d22f5bceb7eafcec1e0911c1/addon.yml">archivo de flujo de trabajo de GitHub</a>. La extensión del archivo debería ser .yml (o .yaml).</p>
+</li>
+<li>
+<p>El flujo de trabajo anterior se disparará en eventos push y ante solicitudes de cambio.</p>
+</li>
+<li>Se mostrarán los errores detectados por Flake8, pero estos no detendrán el flujo de trabajo, de tal forma que el complemento pueda construirse y liberarse incluso si se encuentran fallos de estilo o sintaxis.</li>
+</ol>
+<p>Aquí hay más información sobre <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/managing-a-workflow-run">visualización y gestión de flujos de trabajo de GitHub</a>.</p>
+<h3 id="liberaciones">Liberaciones</h3>
+<p>Para publicar una nueva versión de un complemento, puedes crear una nueva etiqueta y enviar los cambios a GitHub:</p>
+<p>Ejemplo</p>
+<pre><code>git tag 1.0
+
+git push origin 1.0
+</code></pre>
+
+<p>Ahora, se creará la liberación en GitHub y se adjuntará el archivo binary-1.0.nvda-addon.</p>
+<p>Con el archivo yaml proporcionado, las liberaciones creadas a partir de etiquetas que terminen en "-dev" se marcarán como en desarrollo.</p>
+<p>Ejemplo</p>
+<pre><code>git tag 1.0-dev
+
+git push origin 1.0-dev
+</code></pre>
+
+<h2 id="referencias">Referencias</h2>
+<h3 id="documentacion">Documentación</h3>
+<ul>
+<li><a href="https://help.github.com/en/actions">Documentación de las acciones de GitHub</a></li>
+<li><a href="https://flake8.pycqa.org/en/latest/">Documentación de Flake8</a></li>
+</ul>
+<h3 id="acciones-utilizadas">Acciones utilizadas</h3>
+<ul>
+<li><a href="https://github.com/actions/checkout">actions/checkout: acción para hacer checkout en un repositorio</a></li>
+<li><a href="https://github.com/actions/create-release">actions/create-release: una acción para crear liberaciones mediante la API de liberaciones de GitHub</a></li>
+<li><a href="https://github.com/svenstaro/upload-release-action">svenstaro/upload-release-action: Subir archivos a una liberación de GitHub</a></li>
+</ul>
+<h3 id="ejemplo-real">Ejemplo real</h3>
+<ul>
+<li><a href="https://github.com/nvdaes/clipContentsDesigner">Complemento clipContentsDesigner para NVDA</a></li>
+</ul>
+</body>
+</html>

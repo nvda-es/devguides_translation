@@ -1,3 +1,4 @@
+<!--- Please fill out the edit message before submitting changes. Do not use this guide to promote illegal software.--->
 # Switching From JAWS To NVDA
 
 ## Introduction
@@ -69,7 +70,7 @@ However, if you simply want to activate the current object you are focused on wh
 
 ### Accessing the notification area (system tray)
 
-NVDA does not provide a dialog to access the notification area, as this is accessible natively.  Press WINDOWS+B to access the notification area.  To move between notification area items, either use the arrow keys or press the first letter of an item.  Pressing the spacebar on an icon is the same as left-clicking the mouse.  Pressing enter is the same as double-clicking the left mouse button (there is no distinction between these in Windows 10).  Pressing the applications key or or shift+f10 to open the context menu for an item.
+NVDA does not provide a dialog to access the notification area, as this is accessible natively.  Press WINDOWS+B to access the notification area.  To move between notification area items, either use the arrow keys or press the first letter of an item.  Pressing the spacebar on an icon is the same as left-clicking the mouse.  Pressing enter is the same as double-clicking the left mouse button (there is no distinction between these in Windows 10).  Pressing the applications key or shift+f10 to open the context menu for an item.
 
 If the first item in the notification area is "Notification chevron button", Windows is not set to show all icons.  Press ENTER or spacebar to open this and then arrow through the items.  To set Windows to always show all notification area icons, open "notification area" windows settings, or "select which icons appear on the taskbar", and ensure "Always show all icons in the notification area" is checked.
 
@@ -157,6 +158,12 @@ These include a few that emulate JAWS features not currently present in NVDA suc
 
 There is an [NVDA Developer Guide](https://www.nvaccess.org/files/nvda/documentation/developerGuide.html) with information on how to create add-ons.
 
+## Screen Shade
+
+From version 2019.3, NVDA includes an equivalent to JAWS' Screen Shade feature called Screen Curtain, which will blacken the screen. By default it is not assigned to a keystroke, but you can assign one from the input gestures dialogue. See the users guide for details on how to do this.
+
+Activating the command once will enable or disable the screen curtain until you restart your computer, whereas doing so twice quickly will enable it permanently until you disable it. You can also toggle it in the vision category in Settings. 
+
 ## Remote access
 
 In 2015, Christopher Toth and Tyler Spivey released a free add-on to allow NVDA users to provide remote support, similar to JAWS Tandem. To learn more about this add-on, go to the [NVDA Remote site](http://www.nvdaremote.com).
@@ -178,3 +185,9 @@ Here are the steps.
 3. After you name your profile, tab to the profile usage radio butttons. arrow down until you hear "say all". Hit *OK* 
 
 while this profile is active, you need to complete the process by configuring the synthesizer while the say all profile is active.
+
+## Missing Info
+
+This guide is a community driven project and is ever expanding. If you have some experience of both JAWS and NVDA and think something's missing, feel free to add a section or revise out of date info. Spelling and grammar corrections are of course welcome. Please note that a Github account is required.
+
+After Editing, please  preview your changes and  fill in the edit summary box before submitting.

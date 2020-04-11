@@ -96,16 +96,19 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <li>Obtén el id del hito para la nueva liberación.</li>
 <li>Ve a https://github.com/nvaccess/nvda/milestones</li>
 <li>Mira la URL del enlace del hito relevante.</li>
-<li>El número al final es el id.</li>
-<li>En exbi, edita <code>~nvaccess/data/nvaServer.conf</code></li>
-<li>En la sección <code>[nvdaGithub]</code>, cambia el valor de <code>autoCloseMilestone</code> al identificador del hito que has obtenido en el paso 1.</li>
-<li>Recarga uwsgi para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></li>
+<li>El número al final es el <code>id</code>.</li>
+<li>Inicia sesión en exbi</li>
+<li>Cambia al usuario nvaccess: <code>sudo su nvaccess</code></li>
+<li>Edita <code>~nvaccess/data/nvaServer.conf</code></li>
+<li>En la sección <code>[nvdaGithub]</code>, cambia el valor de <code>autoCloseMilestone</code> al identificador <code>id</code> del hito que has obtenido en el paso 1.</li>
+<li>Guarda el archivo y teclea <code>exit</code> para volver a tu propio usuario.</li>
+<li>Recarga <code>uwsgi</code> para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></li>
 </ol>
 </li>
-<li>El número de versión actualizado de <code>master</code> y el archivo de cambios están correctos<ol>
+<li>En el código de NVDA, asegúrate de que el número de versión de la rama <code>master</code> y el archivo de cambios estén correctos<ol>
 <li>En <code>source/buildVersion.py</code>, actualiza las variables <code>version_year</code> y/o <code>version_major</code> para la próxima versión.</li>
 <li>Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza <code>copyrightYears</code> también.</li>
-<li>Añade un encabezado para la siguiente versión en user_docs/en/changes.t2t.</li>
+<li>Añade un encabezado para la siguiente versión en <code>user_docs/en/changes.t2t</code> si todavía no existe.</li>
 </ol>
 </li>
 </ul>
@@ -155,6 +158,8 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <ul>
 <li>Utiliza <a href="http://www.virustotal.com/">VirusTotal</a>.</li>
 <li>Simplemente envía la URL de descarga del artefacto de <code>appveyor</code></li>
+<li>Recientemente, usar la URL de Appveyor ha dado como resultado una incidencia ("CRDF") en uno de los 72 analizadores.</li>
+<li>Continúa analizando con la URL de NV Access, ya que el analizador "CRDF" no la identifica como problemática.</li>
 </ul>
 <h2 id="publica-la-liberacion-efectuada">Publica la liberación efectuada</h2>
 <ul>

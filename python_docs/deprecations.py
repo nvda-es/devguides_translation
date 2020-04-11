@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+documentation = [
+_(u"""Occasionally changes have to be made to NVDA that will break compatibility with prior versions of the public API. In order to make this predictable for add-on authors, NV Access has adopted a schedule. The first release of each year (starting with 2021.1) will be the opportunity to remove deprecated code, or make other compatibility breaking design changes. Other releases will aim to maintain compatibility, sometimes keeping code but marking it as deprecated. When marking code as deprecated, the definition should have a comment to explain such and the PR that introduces the change will be tagged with the `deprecated/20YY.1`. Where `YY` is the release year."""),
+]

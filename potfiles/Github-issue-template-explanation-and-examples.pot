@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-16 10:48+0100\n"
+"POT-Creation-Date: 2020-04-10 19:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:77
-msgid "#### Does the issue still occur after restarting your PC?"
+msgid "#### Does the issue still occur after restarting your Computer?"
 msgstr ""
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:78
@@ -404,4 +404,38 @@ msgstr ""
 
 #: ..\python_docs\Github-issue-template-explanation-and-examples.py:83
 msgid "> * NVDA 2018.2 - has error sound"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:84
+msgid "#### If addons are disabled, is your problem still occuring?"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:85
+msgid ""
+"In many cases issues could be caused by an addon not working correctly or "
+"conflicting with other features already integrated in NVDA itself. "
+"Therefore, it is recommended to reproduce issues with all addons disabled. "
+"In case the issue is caused by an addon, it is recommended to contact the "
+"author of the addon first."
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:86
+msgid ""
+"#### Did you try to run the COM registry fixing tool in NVDA menu / tools?"
+msgstr ""
+
+#: ..\python_docs\Github-issue-template-explanation-and-examples.py:87
+msgid ""
+"COM DLL files, which i.e. the IAccessible COM interface depends on, can get "
+"unregistered after instaling and uninstalling different programs on a "
+"computer. The consequence is that NVDA in certain cases does not work "
+"properly. Specifically, it reports \"unknown\" when trying to navigate "
+"websites or fails to switch between focus and browse mode, it causes "
+"performance issues, focus instability and other odd problems. The COM "
+"registry fixing tool has been introduced in order to re-register those DLL "
+"files. In any case, re-registering those DLL files does not have any "
+"negative impact on computer's functionality. Thus, it is recommended to run "
+"the fixing tool whenever focus problems, performance problems on websites or "
+"navigation problems in focus or browse mode on different interfaces are "
+"encountered."
 msgstr ""

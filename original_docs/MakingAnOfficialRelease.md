@@ -70,14 +70,17 @@ Normally not required, however, occasionally to fix a critical issue requires ch
   1. Get the milestone id for the new release.
      - Go to https://github.com/nvaccess/nvda/milestones
      - Look at the link URL for the relevant milestone.
-     - The number at the end is the id.
-  2. On exbi, edit `~nvaccess/data/nvaServer.conf`
-  3. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` to the milestone id obtained in step 1.
-  4. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`
-* Update `master` version number and changes file are correct
+     - The number at the end is the `id`.
+  1. Log into exbi
+  1. Swap to nvaccess user: `sudo su nvaccess`
+  1. Edit `~nvaccess/data/nvaServer.conf`
+  1. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` to the milestone `id` obtained in step 1.
+  1. Save the file and `exit` to return to your user.
+  1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`
+* In NVDA source, ensure the `master` branch version number and changes file are correct
     1. In `source/buildVersion.py`, update the `version_year` and/or `version_major` variables for the next version.
        - If the next version is the first version for that year (e.g. 2018.1), also update `copyrightYears`.
-    2. Add a heading for the next version in `user_docs/en/changes.t2t`.
+    2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is not there already.
 
 
 ## Create the release / annotated tag
@@ -116,6 +119,8 @@ GitHub "releases" are formatted differently, can include metadata such as 'pre-r
 ## Scan the build
 - Use [VirusTotal](http://www.virustotal.com/).
 - Just submit the artifact download URL from `appveyor`
+- Recently, using the appveyor URL has resulted in 1 ("CRDF) of the 72 scanners reporting an issue.
+- Follow up by scanning with the NV Access URL, which the "CRDF" scanner does not flag as an issue.
 
 ## Publish the staged release
 - Connect to `exbi`

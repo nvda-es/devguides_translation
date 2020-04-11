@@ -2,17 +2,21 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NvDA 20.02
+Based on StationPlaylist Add-on for NvDA 20.04
 
-## 2019 Preface and notes
+## 2020 Preface and notes
 
-This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2019, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2019 and beyond.
+This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2020, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2020 and beyond.
 
 In 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps. As a result, the add-on itself was renamed in 2019 to just "StationPlaylist".
 
 Later in 2018, add-on update feature was removed in favor of Add-on Updater add-on. Although the source code for this feature is gone, information pertaining to it will be documented here for sake of completeness (after all, Add-on Updater's update checking mechanism can trace its roots to Studio add-on).
 
-Then came 2019, and so did Python 3, abstract classes, and new encoder types. The old days of just dealing with SAM and SPL encoders is over, and there is an ongoing effort to redesign encoder support routine from ground up. Specifically, it is planned that the scope of SPL Utilities global plugin will be reduced in favor of giving more autonomy to encoder support app modules (mostly SPL Engine). Along with this, the add-on is ready for Python 3.
+Then came 2019, and so did Python 3, abstract classes, and new encoder types. The old days of just dealing with SAM and SPL encoders is over, and encoder support has been redesigned from ground up in 2020. Compared to old add-on releases, the scope of SPL Utilities global plugin has been reduced in favor of giving more autonomy to encoder support app modules (mostly SPL Engine). Along with this, the add-on has been updated to be powered strictly by Python 3.
+
+In 2020, the add-on is going through another major change: removal of unnecessary features and splitting broadcast profiles management from add-on settings dialog. In the old days, add-on settings management was intimately tied to broadcast profiles, and that was the reason why broadcast profiles panel was an integral part of add-on settings dialog. In early 2020, several bugs stemming from design decisions years ago came to light such as applying settings changes to wrong profile. Together with a need to make add-on settings panels independent of each other in order to allow users to open alarms panel from anywhere (described later), it was decided to split broadcast profiles panel into its own dialog.
+
+Another big change in 2020 is removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout is being phased out. Another feature being removed is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
 
 ## Introduction
 
@@ -44,7 +48,7 @@ In 2011, Geoff Shang, a seasoned blind broadcaster, started working on SPL Studi
 
 In 2013, I (Joseph Lee) received several emails regarding NVDA's support for SPL Studio with a request for someone to write an add-on for it. As I was still new to add-on development then (this was after I developed Control Usage Assistant and GoldWave), I decided to take on this challenge in order to learn more Python and to practice what I learned in computer science labs at UC Riverside. I first downloaded the existing add-on (0.01) and installed Studio 5.01 on my computer to learn more about this program and to gather suggestions from SPL users. After little over a month of development and preview releases, I released Studio add-on 1.0 in January 2014.
 
-Most of the early versions (1.x, 2.x, 3.x, released throughout 2014) were mostly quick projects that bridged the gap between NVDA and other screen readers (Brian Hartgen's JAWS scripts were my inspiration and have studied documentation for Jeff Bishop's Window-Eyes scripts). These early versions, supporting Studio 4.33 and later, were also used to fix bugs encountered by Studio users - for instance, a broadcaster posted  a YouTube video explaining how NVDA was not reading edit fields, which was fixed early on. Later releases (4.x, 5.x, 6.x, released throughout 2015), further bridged the gap with other screen readers and introduced unique features (for instance, add-on 5.0 introduced a configuration dialog, and 6.0 introduced concept of a broadcast profile). In late 2016, seeing that some of my add-ons were using year.month scheme for versioning, I decided to switch SPL to follow this model after receiving comments from the NVDA community. As of time of writing, add-on 18.08 just hit the air.
+Most of the early versions (1.x, 2.x, 3.x, released throughout 2014) were mostly quick projects that bridged the gap between NVDA and other screen readers (Brian Hartgen's JAWS scripts were my inspiration and have studied documentation for Jeff Bishop's Window-Eyes scripts). These early versions, supporting Studio 4.33 and later, were also used to fix bugs encountered by Studio users - for instance, a broadcaster posted  a YouTube video explaining how NVDA was not reading edit fields, which was fixed early on. Later releases (4.x, 5.x, 6.x, released throughout 2015), further bridged the gap with other screen readers and introduced unique features (for instance, add-on 5.0 introduced a configuration dialog, and 6.0 introduced concept of a broadcast profile). In late 2016, seeing that some of my add-ons were using year.month scheme for versioning, I decided to switch SPL to follow this model after receiving comments from the NVDA community. As of time of writing, another significant shift is happening in 20.x releases.
 
 Highlights of past major releases and subsequent maintenance releases include:
 
@@ -222,7 +226,7 @@ In add-on 17.10, several internal flags and associated command-line switches are
 
 The flags are as follows:
 
-1. Do not save changes to disk (configNoSave/--spl-confignosave): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
+1. Do not save changes to disk (configVolatile/--spl-configvolatile): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
 2. Load normal profile only (normalProfileOnly/--spl-confignormalonly): broadcast profiles will not be used, including ability to create new profiles and using time-based profile switching (see time-based profiles section for details). Combining this with configIsVolatile flag effectively makes normal profile a read-only config store.
 3. Use in-memory config (configInMemory/--spl-configinmemory): only normal profile will be used, but instead of loading settings from disk, an in-memory version with default settings applied will be used with no caching at all.
 
@@ -347,7 +351,7 @@ Here, complete time refers to time including seconds. Normally, when you press N
 
 ### Setting alarms
 
-Studio app module comes with three alarms: song outro (ending), intro and microphone active alarm. Because we need to talk about some important things when talking about microphone alarm, we'll just tour the routine used when setting up the intro and outro alarms.
+Studio app module comes with three alarms: song outro (ending), intro/ramp,  and microphone active alarm. Because we need to talk about some important things when talking about microphone alarm, we'll just tour the routine used when setting up the intro and outro alarms.
 
 When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song intro alarm dialogs, the dialog will display two controls:
 
@@ -680,7 +684,7 @@ But there's more to it than a simple description when it comes to looking at int
 
 A decade ago, people thought a single core CPU was enough to run multiple programs. This involved the processor spending small fraction of a second devoted to each program. Nowadays, it has become common to see desktops, laptops, smartphones and other small devices using at least two cores (termed multi-core; two cores is dubbed "dual core"). As of 2017, many computers use processors with four cores (dubbed "quad core"), while enthusiasts prefer more cores (the current record holder for desktop computers (as of July 2017) is 18, held by Intel Core I9-7980XE, a 3 GHz unlocked processor which costs 2000 dollars; for servers where more cores are used, the current record holder is a group of eight processors (octa processor) called Intel Xeon E7-8895V3, with each processor boasting eighteen cores with base speed of 2.6 GHz).
 
-Despite the fact that many computers come equipped with multi-core processors, not all programs take advantage of this. Python interpreter is one of those programs, and since NVDA is a Python-based screen reader and due to its operational architecture, many of its operations cannot take advantage of multiple processors. Fortunately, Python provides a way to simulate this - run certain tasks in the background, and this is utilized by NVDA and some of its add-ons as you'll see in this article on library scan and microphone alarm.
+Despite the fact that many computers come equipped with multi-core processors, not all programs take advantage of this. Python interpreter is one of those programs, and since NVDA is a Python-based screen reader and due to its operational architecture, many of its operations cannot take advantage of multiple processors. Fortunately, Python provides a way to simulate this - run certain tasks in the background, and this is utilized by NVDA and some of its add-ons as you'll see in this section on library scan and microphone alarm.
 
 ### A gentle introduction to threads: multiple tasks at once
 
@@ -706,7 +710,7 @@ To use threads, a programmer will define the thread type (regular thread, timer 
 
 ### Threads in Studio app module
 
-For the most part, Studio app module uses only one thread (NVDA's main thread) to do its job. However, there are times when multiple threads are used - up to three can be active at a time: NVDA's main thread (announcing status changes, alarms, Cart Explorer and others), microphone alarm (a timer) and library scan (a background thread). Another situation threads are used is when background encoder monitoring is enabled (see the encoder routines article for details and use of threads there).
+For the most part, Studio app module uses only one thread (NVDA's main thread) to do its job. However, there are times when multiple threads are used - up to three can be active at a time: NVDA's main thread (announcing status changes, alarms, Cart Explorer and others), microphone alarm (a timer) and library scan (a background thread). Another situation threads are used is when background encoder monitoring is enabled (see the encoder routines section for details and use of threads there).
 
 The main reason for using threads is to prevent background tasks from blocking user input (commands will not work when a long running task is run from the main NVDA thread). This is more noticeable when library scan is active as you'll find out soon. For now, let's take a look at microphone alarm.
 
@@ -752,7 +756,7 @@ Despite limitations of Python's threading routines, if used properly, it can ope
 
 A live radio broadcast would not be complete without jingles. This can range from station promotions (often called "promos"), advertisements, jingles to convey the mood of a show, segment jingles and more. Many station automation programs, including StationPlaylist Studio includes facilities to manage jingles (sometimes called carts), including defining a cart to be played when cart keys are pressed, announcing the name of the playing cart and saving uer specific carts to a safe location.
 
-For blind broadcasters, one of the things they worry is pressing a wrong jingle key by accident, thus script writers were asked to implement a way for broadcasters to learn which carts are assigned to cart keys. As of time of this post, all three screen readers (JAWS for Windows (script author: Brian Hartgen), Window-Eyes (script author: Jeff Bishop), NVDA (script author: Joseph Lee (I, the author of this article)) includes a feature to learn jingle assignments. As this is a series of articles on internals of an NVDA add-on, I'll give you an overview of what happens when you activate and explore cart assignments (in fact, this section was the most interesting and feedback driven portion of the add-on). Along the way you'll learn where Cart Explorer (NVDA's version of cart learn mode) draws its power and why it is very important.
+For blind broadcasters, one of the things they worry is pressing a wrong jingle key by accident, thus script writers were asked to implement a way for broadcasters to learn which carts are assigned to cart keys. As of time of this post, all three screen readers (JAWS for Windows (script author: Brian Hartgen), Window-Eyes (script author: Jeff Bishop), NVDA (script author: Joseph Lee (I, the author of this article)) includes a feature to learn jingle assignments. As this is an article on internals of an NVDA add-on, I'll give you an overview of what happens when you activate and explore cart assignments (in fact, this section was the most interesting and feedback driven portion of the add-on). Along the way you'll learn where Cart Explorer (NVDA's version of cart learn mode) draws its power and why it is very important.
 
 ### Carts in StationPlaylist Studio
 
@@ -843,7 +847,7 @@ Another addition to SPL Assistant layer is ability to emulate layer commands pro
 Once you invoke SPL Assistant layer (a beep will be heard), you can perform one of the following operations:
 
 * Status announcements (automation, microphone, etc.).
-* Tools (library scan, track time analysis, obtaining playlist snapshots and transcripts, columns explorer and so on).
+* Tools (library scan, track time analysis, obtaining playlist snapshots and transcripts and so on).
 * Configuration (switching broadcast profiles).
 * Ask for help (opening SPL Assistant help dialog or the online user guide).
 * Until 18.12, checking for add-on updates (manually).
@@ -939,7 +943,6 @@ These are miscellaneous commands in SPL Assistant, and three of them use Studio 
 * K: Moves to a marked track. This was discussed in column routines and place marker sections.
 * Control+K: Sets track place marker. Consult the place marker section to learn how it works.
 * Shift+R: Library scan. This is a convenience function to start library scan in the background, useful if you have added new tracks from a number of folders via Studio Options dialog. Consult library scan section for details on library scan internals.
-* 1 through 0 (6 for studio 5.0x): Columns Explorer (discussed earlier). Unlike other commands in this set, this routine uses Windows API only.
 * F8: Obtains playlist snapshot information for the currently loaded track, including track count, shortest and longest tracks and top artists. This feature uses a combination of Windows and Studio API's.
 * Shift+F8: requests a playlist transcript (data about loaded playlist). Just like playlist snapshots, it uses a combination of object navigation and Windows API.
 * F9: Marks the current position of the playlist as start of track time analysis (more on this feature below).
@@ -976,7 +979,7 @@ In contrast, a playlist transcript is the complete overview of the loaded playli
 
 #### SPL Assistant 3: configuration
 
-There is another function key assigned to SPL Assistant: pressing F12 will switch to an instant switch profile (if defined). We'll come back to what is meant by "instant switch profile" and the mechanics of it (and internals of SPL Assistant, F12) in the next article.
+There is another function key assigned to SPL Assistant: pressing F12 will switch to an instant switch profile (if defined). We'll come back to what is meant by "instant switch profile" and the mechanics of it (and internals of SPL Assistant, F12) in the next section.
 
 #### SPL Assistant 4: getting help
 
@@ -1038,15 +1041,16 @@ After you are done using Studio, close Studio so settings can be saved to disk. 
 
 ### The StationPlaylist Add-on Settings Dialog
 
-Studio app module allows you to configure various settings in two ways: via a shortcut key (discussed in an article on configuring basic settings) or via the settings dialog. When you use a shortcut key to change settings, NVDA will look up the value for the setting, change it, announce the new setting and store the newly changed value in the settings map.
+Studio app module allows you to configure various settings in two ways: via a shortcut key (discussed in a section on configuring basic settings) or via the settings dialog. When you use a shortcut key to change settings, NVDA will look up the value for the setting, change it, announce the new setting and store the newly changed value in the settings map.
 
 Alternatively, you can configure settings via the add-on settings dialog (Alt+NVDA+0). As it is a settings dialog (powered by gui.SettingsDialog), it will look just like any NVDA preferences dialog. For some advanced options, this dialog is the only gateway to access them (covered below).
 
 Until 2018, add-on settings were divided into various dialogs. With the release of NVDA 2018.2, it became possible to house all settings under one roof, divided into various settings panels. Visually, it resembles a two-column layout, with the left column showing a list of settings categories, and the right column displaying settings for the chosen category. See below for notes on multi-category settings.
 
+In 2020, broadcast profiles management was split into its own dialog. Prior to this split, most add-on settings panels relied on broadcast profiles panel for synchronization and updating their controls. This created complications, especially when panels other than broadcast profiles were opened directly. To avoid this issue and to make panels independent of each other, broadcast profiles dialog was born.
+
 The add-on settings dialog (splconfui.SPLConfigDialog) contains following options:
 
-* Broadcast profile controls (add-on 6.0 and later): inspired by NVDA screen reader's configuration profiles dialog, this group of controls shows a list of profiles loaded and buttons to create a brand new profile or a copy of an existing profile, rename and delete profiles. It also contains a button (really a toggle button) that tells NVDA to switch to the selected profile upon request (more on this in a second).
 * Global settings: these are settings not affected by profiles. These include status announcements, announcing listener count, library scan options and so on.
 * Profile-specific settings: Currently alarms, metadata streaming and column announcement settings are profile-specific. These are end of track alarm and the option to use this alarm, song ramp (intro) time and the setting to use this alarm, microphone alarm and microphone alarm interval. It also includes URL's for metadata streaming and column announcement order and inclusion. For numeric settings such as alarm value, it is a spin control (wx.SpinCtrl; use up or down arrow keys to change them).
 * Reset settings: NVDA will ask if you wish to reset settings in the currently active profile back to factory defaults. This is done by using a function in splconfig module (splconfig.resetConfig) that will set current profile values to defaults (a default configuration map is included for this purpose; this map uses a configuration specification (confspec, part of defining validation routine via validator module (a close friend of ConfigObj), and this confspec is defined in the splconfig module).
@@ -1079,6 +1083,14 @@ In Studio app module world, a broadcast profile (usually shortened to profile) i
 There are two ways of creating a profile: brand new or as a copy. Both uses the same dialog (splconfui.NewProfileDialog), with the difference being the base profile in use. For a brand new profile, settings from the normal profile will be used (minus profile-specific settings, which are set to default values), and for a copy, the new profile will contain all settings from the base profile. In both cases, a memory resident profile will be created and initialized just like other profiles (splconfig.unlockConfig/splconfig.SPLConfig.createProfile, taking the name of the new profile as a parameter); this was done to reduce unnecessary disk writes. Also, new/copy profile dialog (and other dialogs invoked from the main configuration dialog) will disable the main settings dialog.
 
 In case the selected profile is deleted, the profile will be removed from the profiles list, the configuration file associated with the profile will be deleted (if it exists) and a previously active profile will take over unless if the active profile itself is gone, in which case normal profile will be set as the active profile. In case of a rename operation, it'll look for a profile with the old name and change some properties to reflect name change. There is an important step the app module will perform if an instant switch profile is renamed or deleted (if renamed, the instant profile variable will hold the new name, and if deleted, instant profile value will be None). A similar procedure is invoked when dealing with time-based profiles.
+
+#### Broadcast profiles dialog
+
+Inspired by NVDA screen reader's configuration profiles dialog, this dialog (splconfui.BroadcastProfilesDialog) shows various profile management controls. When you press Alt+NVDA+P to open this dialog, you'll be greeted with  a list of profiles loaded and buttons to create a brand new profile or a copy of an existing profile, rename and delete profiles. It also contains a "triggers" button to configure profile triggers such as instant switch or time-based profile switching.
+
+There is one more control: activate button. This button is disabled by default if the selected profile is the active profile, becoming active otherwise. Regardless of status of activate button, pressing Enter from profiles list will activate the selected profile.
+
+But there are no OK and Cancel buttons - there is only a "Close" button. How can a broadcast profile become "active" when you press Enter? This is done by setting AffirmativeId to "Activate" button. In effect, "activate" button acts as OK button, which will eventually call the handler associated with "close" button.
 
 #### Introducing Config Hub
 
@@ -1126,22 +1138,21 @@ The triggers dialog, used to configure these fields for the selected profile, co
 
 Once the data is gathered, NvDA will first check if trigger date checkboxes are checked (if no checkboxes are checked, the profile is removed). Next, NVDA will see if another profile has taken the given time slot, and if not, will proceed to store the next trigger date and time (will not be saved until OK button is clicked from the main add-on settings dialog).
 
-This article concludes a detailed tour of Studio app module internals. The rest of this series will focus on SPL Studio Utilities global plugin, encoder support and a few thoughts on how the add-on is developed, starting with a tour of SPL Controller layer commands.
+This concludes a detailed tour of Studio app module internals. The rest of the article will focus on SPL Studio Utilities global plugin, encoder support and a few thoughts on how the add-on is developed, starting with a tour of SPL Controller layer commands.
 
 ## Introduction to SPL Utilities: SPLController and focusing to Studio window
 
-Now that we've covered the "kernel" (innermost parts) of this add-on, it is time to talk about the icing: SPL Utilities global plugins and its contents. The next few articles will talk about what the global plugin does, introduce you to inner workings of SPL Controller layer and tour how encoder support is implemented.
+Now that we've covered the "kernel" (innermost parts) of this add-on, it is time to talk about the icing: SPL Utilities global plugins and its contents.
 
-### Studio app module versus SPL Utilities global plugin
+Note: until 2019, encoder support was part of SPL Utilities, but it is now part of SPL Engine app module which is covered next.
 
-As described in the add-on design section, SPL add-on comes with several app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs. With the introduction of encoder support in add-on 3.0 (fall 2014), the global plugin portion of the add-on (SPL Utilities) took on an important role: working as an encoders manager to report connection status and to perform other routines.
+### Overview and global plugin contents
 
-### SPL Utilities package contents
+As described in the add-on design section, SPL add-on comes with several app modules and a global plugin. This was needed not only to differentiate between module types and expertese, but also allow Studio functions to be invoked from other programs.
 
-The SPL Utilities global plugin consists of the following modules:
+Previously, SPL Utilities was also the home of encoder support routines, introduced in fall 2014 with add-on 3.0. In 2020, encoder support module was moved into its own app module named SPL Engine (splengine package).
 
-* Main plugin code (__init__.py), containing essential global routines such as SPL Controller (described below) and a procedure to focus to Studio window upon request. This module defines constants used by Studio to receive messages, a function to focus to Studio window and the global plugin class containing definitions for SPL Controller layer commands.
-* Encoder support (encoders.py), outlining NVDA's support for various encoders (see the next article; the main global plugin module plays an important part in helping the encoder module as you'll see in the next article).
+The SPL Utilities global plugin is housed inside globalPlugins/splUtils/__init__.py. The module consists of global plugin class, SPL Controller driver and commands housed inside the class, and global constants used to communiocate with Studio. It also includes a routine to switch focus to Studio from anywhere.
 
 ### SPL Controller layer
 
@@ -1168,7 +1179,7 @@ For readers familiar with Studio keyboard commands, you'll find yourself at home
 
 Here are the two exceptions
 
-* E: If you tell NVDA to monitor one or more encoders in the background, this command will announce number of encoders being monitored (see the next aritlce on the format of this message).
+* E: NVDA will search for and announce connection status of encoders. This is done by locating top-level windows for various encoder windows and using EnumChildWindows to look for actual encoders list.
 * F1: Opens a dialog displaying Controller layer commands (does this sound familiar?).
 
 ### Focusing to Studio window from anywhere
@@ -1180,27 +1191,20 @@ Until 2016, this was accomplished with a function in the SPL Utilities module (S
 1. The focus to Studio script will check if Studio is running, and if so, it'll call the fetch window function, which in turn locates the desktop (shell) window to serve as the starting point for locating Studio window.
 2. NVDA will scan top-level windows (children of desktop object) until a Studio window (where the window's app module is the Studio app module) is found, and if found, NVDA will increment a Studio window candidate counter.
 3. Once top-level window scanning is complete, NVDA will take action based on what the Studio window candidate counter says before passing the foreground object back to the main script. It can do one of the following:
-A. If counter is 0 (fg is None), NVDA will know that you have minimized Studio, so it'll tell you that Studio is minimized.
-B. If counter is 1, NVDA will locate the Studio window by looking for the main Studio window (user32.dll is involved).
-C. For all other values, NVDA will assume the last window found is the Studio window (held in fg variable) and return it.
+	1. If counter is 0 (fg is None), NVDA will know that you have minimized Studio, so it'll tell you that Studio is minimized.
+	2. If counter is 1, NVDA will locate the Studio window by looking for the main Studio window (user32.dll is involved).
+	3. For all other values, NVDA will assume the last window found is the Studio window (held in fg variable) and return it.
 4. Back at the focus to Studio script, NvDA will either announce if Studio is minimized or switch to the foreground window returned by the fetch window function (fg.SetFocus).
 
 In 2017, this has been simplified to use SetForegroundWindow Windows API function with the handle to the Studio window being the only required parameter. Not only this simplified this routine significantly, it also improved performance of this command. One side effect is that it is no longer possible to detect Studio being minimized, but one can get a clue of this if NVDA says "unavailable" when trying to switch to Studio. One can then go to system tray and restore Studio window.
 
-### Conclusion
-
-The routines discussed above (SPL Controller and the command to switch to Studio window) is one of the two pillars of the SPL Studio Utilities global plugin (the other is encoder support). With these routines, it became possible to perform playback operations without focusing to studio, and you can switch to Studio window from anywhere, anytime. This "other side" of the lgobal plugin is discussed below, and after that, we'll conclude with an interview with the maintainer of the add-on to learn about how he (I) develop new add-on features.
-
-
 ## Encoder support
 
-Note: this section is subject to change in the near future due to ongoing encoder support migration work.
-
-We have now arrived at the penultimate chapter in this Add-on Internals article for StationPlaylist add-on: encoder support, the second pillar for the SPL Utilities global plugin. We'll talk about how encoder support is implemented, how NVDA can detect stream labels and a behind the scenes overview of what happens when you connect to a streaming server.
+We have now arrived at the penultimate chapter in this Add-on Internals article for StationPlaylist add-on: encoder support. We'll talk about how encoder support is implemented, how NVDA can detect stream labels and a behind the scenes overview of what happens when you connect to a streaming server.
 
 ### Encoder support: From suggestion to implementation
 
-Originally, I wasn't planning on including encoder support into the SPL add-on. However, after talking to some Studio users who were using SAM encoders and seeing how other screen readers supported it, I decided to investigate SAM encoder support in summer 2014.
+Originally, I wasn't planning on including encoder support into the SPL add-on. However, after talking to some Studio users who were using SAM encoders and seeing how other screen readers supported it, I decided to investigate SAM encoder support in summer 2014, resulting in encoders support becoming a part of SPL Utilities global plugin in add-on 3.0.
 
 The first issue I had to solve was making NVDA recognize the encoder entries themselves. Once that was solved, the next task was announcing connection error messages, which led to figuring out how SAM encoders react when connected to a streaming server.
 
@@ -1208,23 +1212,34 @@ Originally, I manipulated text written to the screen to obtain needed status mes
 
 While I was resolving problems with SAM encoders, I also worked on refactoring encoder support code to support StationPlaylist encoders (add-on 4.0). Initially, encoder support code was optimized for SAM encoders, but the current code structure (explained below) was written to extend basic encoder support easily, and as a result, both SAM and SPL encoder entries (and other encoder types) present similar interfaces and commands, including a common encoder configuration dialog (add-on 7.0).
 
-Few years later, encoder support became a hot topic when I was asked by a broadcaster to add support for Edcast in 2019. Edcast, while free, was end of life, and Altacast took its place. Thankfully, adding support for AltaCast encoder (Winamp plugin which must be recognized by Studio and Streamer) was a breeze because its user interface is similar to SPL encoders. Thus, AltaCast encoder support is similar to SPL encoders, thus for purposes of this section, AlataCast is synonymous with SPL encoder.
+Few years later, encoder support became a hot topic when I was asked by a broadcaster to add support for Edcast in 2019. Edcast, while free, was end of life, and Altacast took its place. Thankfully, adding support for AltaCast encoder (Winamp plugin which must be recognized by Studio and Streamer) was a breeze because its user interface is similar to SPL encoders. Thus, AltaCast encoder support is similar to SPL encoders, thus for purposes of this section, AltaCast is synonymous with SPL encoder.
+
+At the same time, encoder support was reorganized. In 2014, with limited knowledge on encoder engines, I felt it was best to house encoder support module inside SPL Utilities. In the course of time, two encoder engines were found: SPL Engine (splengine) and Streamer (splstreamer). After learning that encoder engines were housed inside these apps, it was decided in 2020 to separate encoder support module into its own app module, transfering encoder support from the global plugin to SPL Engine app module package with Streamer deriving most of its power from SPL Engine package.
+
+### Encoder support structure
+
+Encoder support is part of two app modules: SPL Engine and StationPlaylist Streamer, the former being an app module package similar to SPL Studio package. The complete picture is thus:
+
+* SPL Engine app module (splengine/__init__.py), providing base app module services for use by both SPL Engine and Streamer such as encoder detection.
+* Encoder support (splengine/encoders.py), outlining NVDA's support for various encoders and is the focus of this section.
+* Streamer app module (splstreamer.py), which simply imports everything from SPL Engine app module package and adds overlay class management for Streamer user interface.
 
 ### Encoder entries: Yet another overlay class family
 
-Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (SPLStudioUtils.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
+Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (splengine.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
 
-On top of the base encoder class are two encoder classes, representing SAM encoder entries and SPL encoder entries. SAM encoder entries (SPLStudioUtils.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (SPLStudioUtils.encoders.SPLEncoderWindow) is a typical SysListView32 control (see an article on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (SPLStudioUtils.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as stream labels.
+On top of the base encoder class are three encoder classes, representing entries from SAM, SPL, and AltaCast. SAM encoder entries (splengine.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (splengine.encoders.SPLEncoderWindow) is a typical SysListView32 control (see the section on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as stream labels.
 
 ### Common services: basic settings, stream labels and related methods
 
 All encoder classes provide the following common services:
 
-* Configuring settings: four settings can be configured:
+* Configuring settings: five settings can be configured:
 	* Pressing F11 will tell NVDA if NVDA should switch to Studio when the encoder is connected.
 	*Pressing Shift+F11 will ask Studio will play the next track when connected.
 	* Pressing Control+F11 will enable background encoder monitoring (more on this in a second).
 	* Enabling or disabling connection progress tones (add-on 7.0, configurable from encoder settings dialog described below).
+	* Announcing connection status until the selected encoder is connected (add-on 20.03), also configurable from encoder settings dialog.
 	* Once these settings are changed, the new values will be stored in appropriate flag in the encoder entry, which in turn are saved in the configuration map.
 * Retrieves settings. This is done by various property methods - once called, these methods will look up various settings for the encoder from the configuration map (key is the setting flag, value is the encoder ID).
 * Monitors and responds to connection status changes. The response routine (onConnection method) attempts to set focus to Studio and/or play the first checked track if configured to do so.
@@ -1235,7 +1250,7 @@ All encoder classes provide the following common services:
 * Define and remove stream labels. This is done via stream labels dialog (F12) that'll make sure you entered a label (if not, the encoder position is removed from the encoder-specific stream labels dictionary).
 * Updates stream label position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
 * Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL and AltaCast allows one to hear encoder format and transfer rate/connection status.
-* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the four settings described above) has been added. Press Alt+NVDA+0 to open this dialog.
+* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the five settings described above) has been added. Press Alt+NVDA+0 to open this dialog.
 
 ### Encoder ID's
 
@@ -1253,7 +1268,7 @@ Each encoder overlay class (not the base encoder) includes dedicated connection 
 The connection handling routine performs the following:
 
 1. Locates status message for the encoder entry. For SAM, it is the description text, and for SPL, it is one of the entry's child objects (columns). This will be done as long as Studio and/or NVDA is live (that is, if the thread is running).
-2. Announces error messages if any and will try again after waiting a little while (fraction of a second).
+2. Announces error messages if any and will try again after waiting a little while (fraction of a second). If NVDA is told to not announce connection status until the encoder in question is connected, connection reporter thread will stop when an error message is seen.
 3. If connected, NvDA will play a tone, then:
 	* Do nothing if not told to focus to studio nor play the next track.
 	* Focuses to studio and/or plays the next track if no tracks are playing by calling onConnect method.
@@ -1300,7 +1315,7 @@ I started working on broadcast profiles in March 2015 while developing add-on 5.
 
 There was an important reason for writing this feature: Since NVDA supports multiple configuration profiles and since some broadcasters were hosting multiple shows, I thought it would be a good idea to implement a similar feature in the SPL add-on. Thus, I envisioned broadcast profiles to be used primarily by people hosting multiple shows, with each show defined as a profile.
 
-In March and April 2015, I started rewriting certain parts of add-on configuration manager (splstudio.splconfig) in preparation for developing broadcast profiles (now included as part of add-on 6.0). I started by writing todo comments (where appropriate) describing what the future feature should be like. I then modified initConfig and saveConfig (discussed in app module articles), initially telling them to work with the default profile (the one and only configuration map then), then I left it alone until add-on 5.0 was released in June 2015.
+In March and April 2015, I started rewriting certain parts of add-on configuration manager (splstudio.splconfig) in preparation for developing broadcast profiles (now included as part of add-on 6.0). I started by writing todo comments (where appropriate) describing what the future feature should be like. I then modified initConfig and saveConfig (discussed in app module sections), initially telling them to work with the default profile (the one and only configuration map then), then I left it alone until add-on 5.0 was released in June 2015.
 
 In June 2015, I opened a new branch (initially using the codename "starfish") to house code related to broadcast profiles. Before any "real" code was written, I studied NvDA source code dealing with configuration profiles to learn more about how Jamie (James Teh from NV Access, now Mozilla) implemented this feature. Once I understood how it worked, I copied, pasted and changed the code to match the overall add-on code base (giving nV Access the credit they deserve).
 

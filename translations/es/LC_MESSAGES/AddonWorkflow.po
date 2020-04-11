@@ -1,0 +1,475 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-08 17:01+0200\n"
+"PO-Revision-Date: 2020-04-09 11:16+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\AddonWorkflow.py:3
+msgid "Definitions:"
+msgstr "Definiciones:"
+
+#: ..\python_docs\AddonWorkflow.py:4
+msgid ""
+"In the below text, for brevity we will write he, him, his, but of course it "
+"applies to both sexes."
+msgstr ""
+"En el texto que viene a continuación, para abreviar escribiremos "
+"refiriéndonos al género masculino, pero por supuesto hacemos referencia a "
+"ambos sexos."
+
+#: ..\python_docs\AddonWorkflow.py:5
+msgid ""
+"Author: the standard meaning of author, or the current maintainer of an "
+"addon."
+msgstr ""
+"Autor: el significado estándar de autor, o el responsable de mantenimiento "
+"actual de un complemento."
+
+#: ..\python_docs\AddonWorkflow.py:6
+msgid ""
+"Supporting reviewer: A member of the nvda addon team, that has shown "
+"technical ability, fairness, dedication and willingness to help others."
+msgstr ""
+"Revisor de apoyo: un miembro del equipo de complementos de NVDA que haya "
+"demostrado habilidades técnicas, justicia, dedicación y disposición para "
+"ayudar a otras personas."
+
+#: ..\python_docs\AddonWorkflow.py:7
+msgid ""
+"An author can not act as a supporting reviewer if he is the author of the "
+"addon, even if he is a member of the addon team."
+msgstr ""
+"Un autor no puede actuar como revisor de apoyo si es el autor del "
+"complemento, incluso si forma parte del equipo de complementos."
+
+#: ..\python_docs\AddonWorkflow.py:8
+msgid "For a different addon, roles may be switched."
+msgstr "Para un complemento diferente, se pueden intercambiar los roles."
+
+#: ..\python_docs\AddonWorkflow.py:9
+msgid "## Workflow"
+msgstr "## Flujo de trabajo"
+
+#: ..\python_docs\AddonWorkflow.py:10
+msgid ""
+"1. An author wishes to create an addon, so he forks the community supplied "
+"addonTemplate to their personal github space, and rename it to the name of "
+"the new addon."
+msgstr ""
+"1. Un autor desea crear un complemento, por lo que hace fork de la plantilla "
+"de complementos proporcionada por la comunidad a su espacio personal de "
+"GitHub, y la renombra con el nombre del nuevo complemento."
+
+#: ..\python_docs\AddonWorkflow.py:11
+msgid ""
+"2. He proceeds to develop the addon, committing and pushing to his personal "
+"repo."
+msgstr ""
+"2. Él procede a desarrollar el complemento, haciendo commit y push a su "
+"repositorio personal."
+
+#: ..\python_docs\AddonWorkflow.py:12
+msgid ""
+"3. When he is ready with the addon, he informs the addon list, and requests "
+"general feedback."
+msgstr ""
+"3. Cuando su complemento está listo, el autor informa a la lista de "
+"complementos, y solicita comentarios generales."
+
+#: ..\python_docs\AddonWorkflow.py:13
+msgid ""
+"4. At this point, most feedback is probably user testing, but hopefully also "
+"some code review."
+msgstr ""
+"4. En este punto, la mayor parte de los comentarios probablemente son de "
+"pruebas de los usuarios, pero puede haber algo de revisión de código con un "
+"poco de suerte."
+
+#: ..\python_docs\AddonWorkflow.py:14
+msgid ""
+"\tPlease note that the community can not guarantee the quality or the "
+"content of the addon, so if you as a user run the addon without having "
+"looked at the code, it is at your own risk."
+msgstr ""
+"\tPor favor, ten en cuenta que la comunidad no puede garantizar la calidad o "
+"el contenido del complemento, por lo que si un usuario ejecuta el "
+"complemento sin mirar el código, es bajo tu responsabilidad."
+
+#: ..\python_docs\AddonWorkflow.py:15
+msgid ""
+"5. The feedback is processed by the author, goto step 2, or when sufficient "
+"feedback has been processed goto step 6."
+msgstr ""
+"5. El autor procesa los comentarios, regresa al paso 2, o si tiene "
+"comentarios suficientes continúa al paso 6."
+
+#: ..\python_docs\AddonWorkflow.py:16
+msgid ""
+"\tIt is not expected that the author will accept all requests, so if you are "
+"a user, and the author does not think your feature request fits with his "
+"addon, both authors and users are reminded to remain civil to all parties."
+msgstr ""
+"\tNo se espera que el autor acepte todas las solicitudes, por lo que si eres "
+"un usuario y el autor no cree que tu solicitud de características encaje con "
+"su complemento, se recuerda a usuarios y autores que actúen de forma "
+"civilizada."
+
+#: ..\python_docs\AddonWorkflow.py:17
+msgid ""
+"\tAll reasonable requests such as reminder of copyright info, license, "
+"improvements to the readme etc are expected to be fixed by the author."
+msgstr ""
+"\tSe espera que el autor corrija y atienda todas aquellas solicitudes "
+"razonables relacionadas con recordatorios de falta de copyright, licencia o "
+"mejoras en la documentación."
+
+#: ..\python_docs\AddonWorkflow.py:18
+msgid ""
+"6. Assuming sufficient user interest for the addon to be available on the "
+"community website then the author requests that the addon is forked to the "
+"nvdaaddons organisation by a supporting reviewer."
+msgstr ""
+"6. Asumiendo que hay suficiente interés por parte de los usuarios para que "
+"el complemento esté disponible en el sitio web de la comunidad, el autor "
+"solicita que un revisor de apoyo haga fork de su complemento a la "
+"organización nvaaddons."
+
+#: ..\python_docs\AddonWorkflow.py:19
+msgid ""
+"7. Please remember that addons are accepted at the discretion of the "
+"community reviewers. Everyone is a volunteer, and is under no obligation to "
+"do anything. Of course if you take part in the community and help by "
+"reviewing other peoples code, you will build up good will and others will be "
+"more likely to review your code."
+msgstr ""
+"7. Por favor, recuerda que los complementos se aceptan según el criterio de "
+"los revisores de la comunidad. Todos son voluntarios, y no están obligados a "
+"hacer nada. Por supuesto, si formas parte de la comunidad y ayudas revisando "
+"el código de otras personas, la gente mostrará una buena disposición y será "
+"más probable que tu código se revise."
+
+#: ..\python_docs\AddonWorkflow.py:20
+msgid ""
+"8. The supporting reviewer makes sure there is a license, copyright "
+"information, a readme file, that the addon does what it is suppose to do, "
+"and is ok in terms of security."
+msgstr ""
+"8. El revisor de apoyo se asegura de que haya una licencia, información de "
+"copyright, un archivo léame, que el complemento hace lo que se supone que "
+"hace, y es adecuado en términos de seguridad."
+
+#: ..\python_docs\AddonWorkflow.py:21
+msgid ""
+"\tIt is expected that the supporting reviewer will have read each line of "
+"the addon code global plugin, app modules or other files (not external "
+"libraries), for security risks before forking it."
+msgstr ""
+"\tSe espera que el revisor de apoyo haya leído cada línea del código de la "
+"extensión global del complemento, los módulos de aplicación y otros archivos "
+"(sin incluir bibliotecas externas), para analizar riesgos de seguridad antes "
+"de hacer fork."
+
+#: ..\python_docs\AddonWorkflow.py:22
+msgid ""
+"\tSecurity in this context means: that the addon does not read any "
+"unexpected files from the users computer, does not upload anything, and does "
+"not download anything unexpected."
+msgstr ""
+"\tEn este contexto, seguridad significa: que el complemento no lee archivos "
+"inesperados del usuario del ordenador, no sube nada a Internet, y no "
+"descarga nada inesperado."
+
+#: ..\python_docs\AddonWorkflow.py:23
+msgid ""
+"9. The supporting reviewer forks the addon to the nvda addons organisation."
+msgstr ""
+"9. El revisor de apoyo hace fork del complemento a la organización "
+"nvdaaddons."
+
+#: ..\python_docs\AddonWorkflow.py:24
+msgid ""
+"10. Issues, pull requests should go to the author, and to the authors repo, "
+"not to the community fork."
+msgstr ""
+"10. Las incidencias y las solicitudes de cambio deberían ir al autor y al "
+"repositorio del autor, y no al fork de la comunidad."
+
+#: ..\python_docs\AddonWorkflow.py:25
+msgid ""
+"\tUsers can of course still continue interacting with the addon author using "
+"the addon mailing list."
+msgstr ""
+"\tPor supuesto, los usuarios todavía pueden continuar interactuando con el "
+"autor del complemento usando la lista de correo de complementos."
+
+#: ..\python_docs\AddonWorkflow.py:26
+msgid ""
+"11. The addon author is expected to add the community copy of the repo as a "
+"remote, so that he can merge in translations."
+msgstr ""
+"11. Se espera que el autor del complemento añada la copia que ha hecho la "
+"comunidad de su repositorio como origen remoto, de tal forma que pueda "
+"añadir y actualizar traducciones."
+
+#: ..\python_docs\AddonWorkflow.py:27
+msgid ""
+"12. Supporting reviewer might have to do the following tasks to the "
+"community repo after forking:"
+msgstr ""
+"12. El revisor de apoyo podría tener que hacer las siguientes tareas en el "
+"repositorio de la comunidad después del fork:"
+
+#: ..\python_docs\AddonWorkflow.py:28
+msgid ""
+"\tDelete any other branches than master, add additional information for "
+"automatic building, webhooks etc."
+msgstr ""
+"\tEliminar cualquier rama diferente de master, añadir información sobre "
+"compilación automática, webhooks, etc."
+
+#: ..\python_docs\AddonWorkflow.py:29
+msgid ""
+"\tAdd a protection rule on master so that it is not accidentally pushed to, "
+"and that it needs a pr with a minimum of 1 reviewer (even admins)."
+msgstr ""
+"\tAñadir una regla de protección en master para que nadie haga push "
+"accidentalmente, y se necesite una solicitud de cambios con al menos un "
+"revisor (incluso administradores)."
+
+#: ..\python_docs\AddonWorkflow.py:30
+msgid "\tOther translation workflow related steps [see here][1]."
+msgstr ""
+"\tConsulta otros pasos relacionados con el flujo de trabajo de las "
+"traducciones [aquí][1]."
+
+#: ..\python_docs\AddonWorkflow.py:31
+msgid "\tCreate a stable branch."
+msgstr "\tCrear una rama stable."
+
+#: ..\python_docs\AddonWorkflow.py:32
+msgid ""
+"\tAdd protection rules to stable so that the translation system can push, "
+"every one else needs a pr (even admins)."
+msgstr ""
+"\tAñadir reglas de protección a stable de tal forma que el sistema de "
+"traducciones pueda hacer push, pero todos los demás deban hacer una "
+"solicitud de cambios (incluso los administradores)."
+
+#: ..\python_docs\AddonWorkflow.py:33
+msgid "13. Supporting reviewer merges master into stable."
+msgstr "13. El revisor de apoyo mezcla la rama master en stable."
+
+#: ..\python_docs\AddonWorkflow.py:34
+msgid "14. Supporting reviewer triggers a release."
+msgstr "14. El revisor de apoyo dispara una liberación."
+
+#: ..\python_docs\AddonWorkflow.py:35
+msgid ""
+"\tThis should only bump the patch number (last digit of the version number), "
+"i.e. v1.0.0 becomes v1.0.1."
+msgstr ""
+"\tEn ella sólo se debería incrementar el número de parche (último dígito del "
+"número de versión), por ejemplo pasando de v1.0.0 a v1.0.1."
+
+#: ..\python_docs\AddonWorkflow.py:36
+msgid ""
+"15. After a period of time, the addon author wishes to make a new release, "
+"he makes a release pull request from his master to the master of the "
+"community copy."
+msgstr ""
+"15. Tras un periodo de tiempo, el autor del complemento desea publicar una "
+"versión nueva, y para ello hace una solicitud de cambio desde su rama master "
+"a la rama master de la copia de la comunidad."
+
+#: ..\python_docs\AddonWorkflow.py:37
+msgid ""
+"16. A supporting reviewer, reviews the pull request, again, for security, "
+"for updated readme etc, and may request further work to be done before the "
+"pr is accepted. Only the changes since the last release needs to be reviewed."
+msgstr ""
+"16. Un revisor de apoyo revisa la solicitud de cambio garantizando de nuevo "
+"la seguridad, archivo léame actualizado, etc, y puede pedir que se haga más "
+"trabajo antes de que la solicitud se acepte. Sólo deben revisarse los "
+"cambios desde la última versión."
+
+#: ..\python_docs\AddonWorkflow.py:38
+msgid ""
+"17. Once the pr is excepted into master, the supporting reviewer will bump "
+"the major or minor version as agreed with author, i.e. just delete the \"-dev"
+"\" from version variable."
+msgstr ""
+"17. Una vez se mezcla la solicitud de cambio en master, el revisor de apoyo "
+"aumenta la revisión mayor o menor según haya indicado el autor. Por ejemplo, "
+"se podría eliminar el \"-dev\" de la variable de versión."
+
+#: ..\python_docs\AddonWorkflow.py:39
+msgid "\tLoop back to step 13."
+msgstr "\tVuelve al paso 13."
+
+#: ..\python_docs\AddonWorkflow.py:40
+msgid "## Considerations"
+msgstr "## Consideraciones"
+
+#: ..\python_docs\AddonWorkflow.py:41
+msgid ""
+"The following considerations were taken into account when proposing this "
+"addon workflow."
+msgstr ""
+"Se han tenido en cuenta las siguientes consideraciones al proponer este "
+"flujo de trabajo de complementos."
+
+#: ..\python_docs\AddonWorkflow.py:42
+msgid "1. Addon security."
+msgstr "1. Seguridad de los complementos."
+
+#: ..\python_docs\AddonWorkflow.py:43
+msgid ""
+"\tAs the community of nvda users and addon authors grow, we want to promote "
+"a sense of trust to do the correct thing, so that a user should feel "
+"confident in installing or updating addons, so that addons can be installed "
+"alongside NVDA in schools, universities, public libraries etc."
+msgstr ""
+"\tSegún crece la comunidad de autores de complementos y usuarios de NVDA, "
+"queremos proporcionar una sensación de confianza en que hacemos lo correcto, "
+"de tal forma que un usuario se sienta seguro al instalar y actualizar "
+"complementos, y que estos complementos puedan instalarse en escuelas, "
+"universidades, bibliotecas públicas, etc."
+
+#: ..\python_docs\AddonWorkflow.py:44
+msgid ""
+"\tThat as adon authors we take our volunteer work seriously, and we "
+"appreciate the trust that we have been given."
+msgstr ""
+"\tLos autores de complementos se toman nuestro trabajo voluntario en serio, "
+"y agradecemos la confianza depositada."
+
+#: ..\python_docs\AddonWorkflow.py:45
+msgid ""
+"\tTherefore the final step of making a release is with the community, not "
+"with the addon author, as we want the final product to be fully trusted."
+msgstr ""
+"\tPor tanto, el último paso para liberar una nueva versión lo hace la "
+"comunidad, no el autor del complemento, ya que queremos que el producto "
+"final sea plenamente fiable."
+
+#: ..\python_docs\AddonWorkflow.py:46
+msgid "2. Shared learning environment."
+msgstr "2. Entorno de aprendizaje compartido."
+
+#: ..\python_docs\AddonWorkflow.py:47
+msgid ""
+"\tBy giving each other constructive criticism, suggestions etc, we build "
+"something better and stronger, because no one is perfect, and we all learn "
+"from each other."
+msgstr ""
+"\tDando críticas constructivas y sugerencias a los demás, construimos algo "
+"mejor y más fuerte, porque nadie es perfecto y aprendemos de los demás."
+
+#: ..\python_docs\AddonWorkflow.py:48
+msgid ""
+"\tCriticism of code is not a criticism against the author, it is simply "
+"recommendations to improve the code, because the reviewer cares about the "
+"quality of your code."
+msgstr ""
+"\tUna crítica al código no es una crítica al autor, simplemente es una "
+"recomendación para mejorar el código, ya que al revisor le importa la "
+"calidad de tu código."
+
+#: ..\python_docs\AddonWorkflow.py:49
+msgid ""
+"\tIf you feel that a reviewer overlooked something when reviewing someone "
+"elses addon, please do not hesitate to provide your review as no one has "
+"monopoly on giving feedback."
+msgstr ""
+"\tSi piensas que un revisor ha pasado algo por alto al revisar el "
+"complemento de otra persona, no dudes en proporcionar tu revisión, ya que "
+"nadie tiene el monopolio a la hora de proporcionar comentarios."
+
+#: ..\python_docs\AddonWorkflow.py:50
+msgid "3. Reducing the existing workload of addon reviewers."
+msgstr "3. Reducir la sobrecarga existente de los revisores de complementos."
+
+#: ..\python_docs\AddonWorkflow.py:51
+msgid ""
+"\tAt the point of writing, we have approx 70 addons, and managing all this "
+"is not simple or straightforward."
+msgstr ""
+"\tEn el momento de redacción de esta propuesta, hay aproximadamente 70 "
+"complementos oficiales, y gestionarlos no es algo simple ni directo."
+
+#: ..\python_docs\AddonWorkflow.py:52
+msgid ""
+"\tUnfortunately we ended up in a messy situation, with repos in github, on "
+"bitbucket, and some other manual work that needed to be done on a server."
+msgstr ""
+"\tPor desgracia hemos acabado en una situación desastrosa, con repositorios "
+"en GitHub y BitBucket, y ciertos trabajos manuales que deben hacerse en un "
+"servidor."
+
+#: ..\python_docs\AddonWorkflow.py:53
+msgid ""
+"\tIt was felt that more time was spent trying to administrate the system, "
+"than to be able to do the interesting work of reviewing and giving feedback, "
+"therefore more steps should be automated."
+msgstr ""
+"\tSe ha sentido que se ha invertido más tiempo en gestionar el sistema que "
+"en la interesante tarea de revisar y proporcionar comentarios, por lo que "
+"deberían automatizarse más pasos."
+
+#: ..\python_docs\AddonWorkflow.py:54
+msgid ""
+"\tThis automation is not yet in place, but if the consensus is that this is "
+"a reasonable workflow, then work on the additional automation will begin."
+msgstr ""
+"\tEsta automatización aún no se encuentra en funcionamiento, pero si por "
+"consenso se determina que este flujo de trabajo es razonable, comenzará el "
+"trabajo en la automatización adicional."
+
+#: ..\python_docs\AddonWorkflow.py:55
+msgid ""
+"\tWith less complex requirements for a potential addon reviewer, hopefully "
+"more people will become community reviewers and can take an active and "
+"responsible role, as then it is simply about reviewing and merging code, and "
+"does not require such a time investment."
+msgstr ""
+"\tCon menos requisitos para un potencial revisor de complementos, con un "
+"poco de suerte habrá más revisores de la comunidad que tendrán un rol "
+"responsable y activo, ya que sólo sería necesario revisar y mezclar código, "
+"y no requiere una gran inversión de tiempo."
+
+#: ..\python_docs\AddonWorkflow.py:56
+msgid "## Things for future discussions."
+msgstr "## Temas para debates futuros."
+
+#: ..\python_docs\AddonWorkflow.py:57
+msgid "1. Minimum time between releases?"
+msgstr "1. ¿Tiempo mínimo entre liberaciones?"
+
+#: ..\python_docs\AddonWorkflow.py:58
+msgid "2. How can (if we should?), accommodate dev releases?"
+msgstr ""
+"2. ¿Cómo se podrían (¿Deberíamos hacerlo?) acomodar las versiones de "
+"desarrollo?"
+
+#: ..\python_docs\AddonWorkflow.py:59
+msgid ""
+"[1]: https://github.com/nvdaaddons/nvdaaddons.github.io/wiki/"
+"MakeAddonsTranslatable"
+msgstr ""
+"[1]: https://nvda.es/documentacion/desarrollo/desarrollo-de-complementos/"
+"hacer-un-complemento-traducible-mediante-el-sistema-de-traducciones-de-la-"
+"comunidad/"

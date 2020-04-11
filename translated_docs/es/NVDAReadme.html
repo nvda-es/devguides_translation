@@ -1,0 +1,258 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># NVDA</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># NVDA</h1></header>
+  <h1 id="nvda">NVDA</h1>
+<p>NVDA (Non Visual Desktop Access) es un lector de pantalla gratuito y de código abierto para Microsoft Windows.
+Es desarrollado por NV Access en colaboración con una comunidad global de usuarios.
+Para aprender más sobre NVDA o descargar una copia, visita el sitio web principal de <a href="https://www.nvaccess.org/">NV Access</a>.</p>
+<h2 id="enlaces-clave-del-proyecto">Enlaces clave del proyecto</h2>
+<ul>
+<li><a href="https://www.nvaccess.org/">NV Access</a>: La página principal de NVDA</li>
+<li><a href="https://github.com/nvaccess/nvda">NVDA en GitHub</a></li>
+<li><a href="https://github.com/nvaccess/nvda/issues">Incidencias de NVDA en GitHub</a>: Informe de fallos, solicitud de características, etc.</li>
+<li><a href="https://www.nvaccess.org/files/nvda/snapshots/">Versiones de desarrollo de NVDA</a>: Compilaciones automáticas del proyecto en su estado actual de desarrollo</li>
+<li><a href="https://addons.nvda-project.org/">Complementos de NVDA</a>: Obtén complementos para mejorar NVDA</li>
+<li><a href="https://github.com/nvaccess/nvda/wiki/Translating">Traducir NVDA</a>: Información sobre cómo traducir NVDA a otro idioma</li>
+<li><a href="https://github.com/nvaccess/nvda-community/wiki">Wiki de la comunidad de NVDA</a>: Artículos proporcionados por la comunidad</li>
+<li><a href="http://www.nvda-project.org/nvdaControllerClient/nvdaControllerClient_20100219.7z">Cliente del controlador de NVDA</a> (19-02-2010): API de NVDA para que las aplicaciones externas hablen directamente o envíen mensajes Braille, etc.</li>
+<li><a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a></li>
+<li><a href="https://github.com/nvaccess/nvda/wiki/Contributing">Cómo contribuir con NVDA</a>: Guías para contribuir con código fuente a NVDA</li>
+<li><a href="https://nvda-devel.groups.io/">Lista de correo de desarrollo de NVDA</a> (<a href="http://nabble.nvda-project.org/Development-f1.html">Archivo antiguo</a>): Debates sobre el desarrollo de NVDA</li>
+<li><a href="https://lists.sourceforge.net/lists/listinfo/nvda-commits">Lista de correo de commits de NVDA</a>: Notificaciones de todos los commits que se hacen al repositorio Git</li>
+</ul>
+<h2 id="obtencion-del-codigo-fuente">Obtención del código fuente</h2>
+<p>El proyecto NVDA usa el sistema de control de versiones <a href="https://www.git-scm.com/">Git</a> para su código fuente y documentación.</p>
+<p>El repositorio git de NVDA está ubicado en https://github.com/nvaccess/nvda.git. Puedes clonarlo con el siguiente comando, que situará los archivos en un directorio llamado nvda:</p>
+<pre><code>git clone --recursive https://github.com/nvaccess/nvda.git
+</code></pre>
+
+<p>La opción <code>--recursive</code> se usa para recuperar varios submódulos Git necesarios.</p>
+<h2 id="dependencias">Dependencias</h2>
+<p>El código fuente de NVDA depende de varios paquetes para ejecutarse correctamente.</p>
+<h3 id="dependencias-instaladas">Dependencias instaladas</h3>
+<p>Necesitas instalar las siguientes dependencias en tu sistema:</p>
+<ul>
+<li><a href="https://www.python.org/">Python</a>, versión 3.7 de 32 bits<ul>
+<li>Utiliza la última revisión menor si es posible.</li>
+</ul>
+</li>
+<li>Microsoft Visual Studio 2017 Community, versión 15.3 o posterior:<ul>
+<li>Descarga desde https://visualstudio.microsoft.com/vs/older-downloads/</li>
+<li>Al instalar Visual Studio, necesitas activar lo siguiente:
+    En la pestaña cargas de trabajo, en el grupo Windows:
+        * Desarrollo en Universal Windows Platform
+        * Desarrollo para escritorio con C++<ul>
+<li>A continuación, en la sección detalles de la instalación, bajo C++ para escritorio, en el grupo opcional, asegúrate de que se ha seleccionado lo siguiente:<ul>
+<li>Conjunto de herramientas VC++ 2017 v141 (x86,x64)</li>
+<li>Windows 10 SDK (10.0.17134.0) para escritorio C++ x86 y x64</li>
+<li>ATL de Visual C++ para x86 y x64</li>
+</ul>
+</li>
+<li>En la sección detalles de la instalación, bajo componentes individuales, asegúrate de que los siguientes están seleccionados:<ul>
+<li>Compiladores y bibliotecas de Visual C++ para ARM64</li>
+<li>ATL de Visual C++ para ARM64</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="submodulos-git">Submódulos Git</h3>
+<p>La mayoría de las dependencias van dentro de submódulos Git.
+Si no pasaste la opción <code>–recursive</code> a git clone, tendrás que ejecutar <code>git submodule update –init</code>.
+Cada vez que cambie el commit relacionado con un submódulo necesario (por ejemplo después de git pull), deberás ejecutar <code>git submodule update</code>.
+Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer pull, merge o checkout.</p>
+<p>Para referencia, las siguientes dependencias de tiempo de ejecución se incluyen como submódulos Git:</p>
+<ul>
+<li><a href="https://github.com/enthought/comtypes">comtypes</a>, versión 1.1.7</li>
+<li><a href="https://www.wxpython.org/">wxPython</a>, versión 4.0.3</li>
+<li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit ca65812a</li>
+<li><a href="https://github.com/waywardgeek/sonic">Sonic</a>, commit 4f8c1d11</li>
+<li><a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a>, commit 21bbb176</li>
+<li><a href="https://github.com/DiffSK/configobj">ConfigObj</a>, commit 5b5de48</li>
+<li><a href="https://pypi.python.org/pypi/six">Six</a>, versión 1.12.0, necesario para wxPython y ConfigObj</li>
+<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.10.0, commit 146c0757</li>
+<li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a> Emoji Annotations, versión 36.0</li>
+<li>Imágenes y sonidos de NVDA</li>
+<li><a href="https://download.macromedia.com/pub/developer/acrobat/AcrobatAccess.zip">Interfaz de accesibilidad de Adobe Acrobat, versión XI</a></li>
+<li>Biblioteca de tipos de la interfaz de accesibilidad para Adobe Flash</li>
+<li><a href="https://github.com/RaMMicHaeL/minhook">MinHook</a>, versión etiquetada 1.2.2</li>
+<li>Bindings de Python para brlapi versión 0.7.0 o posterior, distribuidos en <a href="https://brltty.app/download.html/brltty/">BRLTTY para Windows</a> versión 4.2-2</li>
+<li>lilli.dll, versión 2.1.0.0</li>
+<li><a href="https://pypi.python.org/pypi/pyserial">pySerial</a>, versión 3.4</li>
+<li><a href="http://fluidmotion.dyndns.org/zenphoto/index.php?p=news&amp;title=Python-interface-to-FTDI-driver-chip">Interfaz Python para el controlador y el chip FTDI</a></li>
+<li>Java Access Bridge de 32 bits, procedente del OpenJDK de la Comunidad Zulu, compilación 13.0.1+10Zulu (13.28.11)</li>
+</ul>
+<p>Además, las siguientes dependencias de tiempo de compilación también se incluyen en submódulos Git:</p>
+<ul>
+<li><a href="https://github.com/albertosottile/py2exe/">Py2Exe</a>, versión 0.9.3.2, commit b372a8e</li>
+<li><a href="https://sourceforge.net/projects/pywin32/">Python Windows Extensions</a>, compilación 224, necesario para usar py2exe</li>
+<li><a href="https://txt2tags.org/">txt2tags</a>, versión 2.5</li>
+<li><a href="https://www.scons.org/">SCons</a>, versión 3.0.4</li>
+<li><a href="https://nsis.sourceforge.io/Main_Page/">Nulsoft Install System</a>, versión 2.51</li>
+<li><a href="https://nsis.sourceforge.io/UAC_plug-in">Complemento de NSIS para Uac</a>, versión 0.2.4, ansi</li>
+<li>xgettext y msgfmt de <a href="https://sourceforge.net/projects/cppcms/files/boost_locale/gettext_for_windows/">GNU gettext</a></li>
+<li><a href="http://epydoc.sourceforge.net/">epydoc</a>, versión 3.0.1 con parche para el fallo #303</li>
+<li><a href="https://github.com/akrzemi1/Optional">Boost opcional (cabecera independiente)</a>, del commit <a href="https://github.com/akrzemi1/Optional/commit/3922965396fc455c6b1770374b9b4111799588a9">3922965</a></li>
+</ul>
+<h3 id="otras-dependencias">Otras dependencias</h3>
+<p>Para hacer comprobaciones de estilo usando Flake 8 localmente utilizando la integración con SCons, algunas dependencias se instalan (automáticamente) mediante Pip.
+Aunque esto debe hacerse manualmente, los desarrolladores podrían querer configurar primero un entorno virtual de Python para asegurar que su instalación general no se ve afectada.
+* Flake8
+* Flake8-tabs</p>
+<p>Estas dependencias no vienen incluidas en submódulos Git, y casi nadie las necesita:</p>
+<ul>
+<li>Para generar la documentación para nvdaHelper: <a href="http://www.doxygen.nl/download.html">Doxygen Windows installer</a>, versión 1.8.15:</li>
+<li>
+<p>Si utilizas Visual Studio Code como tu entorno de desarrollo preferido, puedes emplear la <a href="https://github.com/nvaccess/vscode-nvda/">configuración de espacio de trabajo preconcebida</a> para <a href="https://code.visualstudio.com/">Visual Studio Code</a>.
+    Aunque este proyecto de VS Code no se incluye como un submódulo en el repositorio de NVDA, se puede situar fácilmente la configuración de espacio de trabajo en el repositorio ejecutando lo siguiente desde la raíz del repositorio.</p>
+<p><code>git clone https://github.com/nvaccess/vscode-nvda.git .vscode</code></p>
+</li>
+</ul>
+<h2 id="preparacion-del-codigo-fuente">Preparación del código fuente</h2>
+<p>Antes de que puedas ejecutar NVDA desde el código fuente, debes prepararlo.
+Esto se hace abriendo un símbolo del sistema, cambiando a la raíz del repositorio con el código fuente y escribiendo:</p>
+<pre><code>scons source
+</code></pre>
+
+<p>Esto debes hacerlo cada vez que cambie la versión de comtypes o se añadan o modifiquen archivos de idioma.
+Si quieres acceder a la documentación del usuario desde el menú ayuda de NVDA mientras lo ejecutas desde el código fuente, tendrás que añadir en la consola <code>user_docs</code>. Por ejemplo:</p>
+<pre><code>scons source user_docs
+</code></pre>
+
+<p>Mientras hagas pruebas simples o envíes cambios, será más rápido ejecutar <code>scons source</code>, ya que la documentación de usuario cambiará cada vez que se modifique el número de revisión.</p>
+<h3 id="compilacion-de-nvdahelper-con-opciones-de-depuracion">Compilación de NVDAHelper con opciones de depuración</h3>
+<p>Entre otras cosas, la preparación del código fuente construye las bibliotecas de NVDAHelper.
+Si tu intención es depurar nvdaHelper, puedes controlar diversas opciones de depuración compilando con las variables <code>nvdaHelperDebugFlags</code> y <code>nvdaHelperLogLevel</code> en la consola.</p>
+<p>La variable <code>nvdaHelperLogLevel</code> especifica el nivel de registro (0-59) que desees ver, cuanto más bajo más expresivo. Por defecto, su valor es 15.</p>
+<p>La variable <code>nvdaHelperDebugFlags</code> acepta uno o varios de los siguientes valores:</p>
+<ul>
+<li>debugCRT: las bibliotecas se enlazarán con el tiempo de ejecución de C para depuración y se habilitarán las aserciones. (por defecto se deshabilitan las aserciones y se usa el crt normal).</li>
+<li>RTC: se activarán las comprobaciones en tiempo de ejecución (corrupción de pila, variables sin inicializar, etc.). (por defecto no se hacen pruebas en tiempo de ejecución).</li>
+<li>analyze: ejecuta el análisis de código de MSVC en todo el código de NVDAHelper, mostrando cada advertencia. (por defecto no hay análisis)</li>
+</ul>
+<p>Las palabras clave none y all pueden usarse en lugar de cada valor por separado.</p>
+<p>A continuación se muestra un ejemplo que activa las comprobaciones en tiempo de ejecución y la depuración con crt </p>
+<pre><code>scons source nvdaHelperDebugFlags=debugCRT,RTC
+</code></pre>
+
+<p>Independientemente de las variables de depuración, siempre se generan archivos de símbolos pdb al construir.
+Sin embargo, no se incluyen en la distribución de NVDA.
+En vez de eso, <code>scons symbolsArchive</code> los empaqueta en un archivo separado.</p>
+<p>Por defecto, la compilación se hace sin argumentos de optimización.
+Mira el argumento <code>release</code> más abajo para saber qué optimizaciones se activan al usarlo.</p>
+<h2 id="ejecucion-del-codigo-fuente">Ejecución del código fuente</h2>
+<p>Para iniciar NVDA desde el código fuente, ejecuta el archivo <code>nvda.pyw</code> que se encuentra en la carpeta source.
+Para ver una ayuda sobre los argumentos que acepta NVDA, usa las opciones <code>--help</code> o <code>-h</code>.
+Estos argumentos también están documentados en la guía de usuario.
+Ya que NVDA es una aplicación gráfica (y no de consola), es mejor ejecutarla con <code>pythonw.exe</code>.
+Sin embargo, si durante el desarrollo encuentras un error en una fase temprana del inicio de NVDA, puedes usar <code>python.exe</code> y probablemente obtendrás más información sobre el error.</p>
+<h2 id="construccion-de-nvda">Construcción de NVDA</h2>
+<p>Una versión binaria de NVDA puede ejecutarse en un sistema sin Python y todas las demás dependencias instaladas (tal y como hace NV Access con las liberaciones oficiales y las versiones de desarrollo).</p>
+<p>Se pueden construir archivos binarios y paquetes usando scons desde la raíz de la distribución del código fuente de NVDA. Para construir cualquiera de ellos, abre un símbolo del sistema y navega a este directorio.</p>
+<p>Para hacer una versión binaria no archivada (equivalente a un portable extraído) escribe:</p>
+<pre><code>scons dist
+</code></pre>
+
+<p>La versión compilada se creará en el directorio dist.</p>
+<h3 id="construccion-del-instalador">Construcción del instalador</h3>
+<p>Para crear un archivo de lanzador (un ejecutable que permite instalar NVDA o generar un portable) escribe:</p>
+<pre><code>scons launcher
+</code></pre>
+
+<p>El archivo se ubicará en el directorio output.</p>
+<h3 id="construccion-de-la-documentacion-para-desarrolladores">Construcción de la documentación para desarrolladores</h3>
+<p>Para generar la guía del desarrollador de NVDA, escribe:</p>
+<pre><code>scons developerGuide
+</code></pre>
+
+<p>La guía del desarrollador aparecerá en la carpeta <code>devDocs</code> dentro del directorio output.
+Ten en cuenta que el código fuente de NVDA basado en Python 3 actualmente no permite construir la documentación para desarrolladores de NVDA usando la orden <code>scons devDocs</code>.</p>
+<p>Para generar documentación para desarrolladores de nvdaHelper (no incluida en devDocs):</p>
+<pre><code>scons devDocs_nvdaHelper
+</code></pre>
+
+<p>La documentación aparecerá en la carpeta <code>devDocs\nvdaHelper</code> dentro del directorio output.</p>
+<h3 id="generacion-del-archivo-de-simbolos-de-depuracion">Generación del archivo de símbolos de depuración</h3>
+<p>Para generar un archivo con símbolos de depuración de los diversos exes y dlls, escribe:</p>
+<pre><code>scons symbolsArchive
+</code></pre>
+
+<p>El archivo se ubicará en el directorio output.</p>
+<h3 id="generacion-de-la-plantilla-de-traduccion">Generación de la plantilla de traducción</h3>
+<p>Para generar una plantilla de traducción gettext (para traductores), escribe:</p>
+<pre><code>scons pot
+</code></pre>
+
+<h3 id="personalizacion-de-la-compilacion">Personalización de la compilación</h3>
+<p>Opcionalmente, la compilación puede personalizarse proporcionando variables en la línea de órdenes:</p>
+<ul>
+<li>version: la versión de esta compilación.</li>
+<li>release: indica si esta es una liberación oficial.<ul>
+<li>Esto activa algunas optimizaciones del compilador de C++ como el argumento /O2 o la optimización del programa completo.</li>
+<li>También indica a Python que genere bytecode optimizado.</li>
+</ul>
+</li>
+<li>publisher: el autor de esta compilación.</li>
+<li>certFile: el archivo con el certificado usado para firmar ejecutables. Debe estar en formato pfx y contener la clave privada dentro.</li>
+<li>certPassword: la contraseña de la clave privada del certificado. Si se omite, se asume que no hay contraseña.</li>
+<li>certTimestampServer: la URL del servidor de sellado de tiempo a utilizar para la marca de tiempo authenticode en las firmas. Si se omite, la firma no se sellará.</li>
+<li>outputDir: el directorio donde se ubicarán los archivos construidos.</li>
+<li>targetArchitectures: las arquitecturas que debería soportar NVDA. Sus posibles valores son all, x86 y x86_64. Generalmente debería dejarse como está.</li>
+</ul>
+<p>Por ejemplo, para construir un lanzador con una versión específica, podrías escribir:</p>
+<pre><code>scons launcher version=test1
+</code></pre>
+
+<p>Para ver más variables, consulta el archivo <code>sconstruct</code>.</p>
+<h2 id="ejecucion-de-pruebas-automatizadas">Ejecución de pruebas automatizadas</h2>
+<p>Si haces cambios al código de NVDA, deberías ejecutar sus pruebas automatizadas.
+Estas pruebas ayudan a asegurar que los cambios en el código no rompen de forma involuntaria alguna funcionalidad que previamente estaba operativa.</p>
+<p>Para realizar las pruebas (pruebas unitarias, comprobación de cadenas traducibles), navega al directorio raíz del repositorio como se ha indicado más arriba.
+A continuación, ejecuta:</p>
+<pre><code>scons tests
+</code></pre>
+
+<h3 id="pruebas-unitarias">Pruebas unitarias</h3>
+<p>Para ejecutar solamente pruebas unitarias específicas, indícalas en la variable <code>unitTests</code> en la línea de órdenes.
+Las pruebas deberían proporcionarse en una lista separadas por comas.
+Cada prueba debería especificarse como un módulo, clase o método relativo al directorio <code>tests\unit</code>.
+Por ejemplo, para ejecutar sólo los métodos en las clases <code>TestMove</code> y <code>TestSelection</code> del archivo <code>tests\unit\test_cursorManager.py</code>, escribe esta orden:</p>
+<pre><code>scons tests unitTests=test_cursorManager.TestMove,test_cursorManager.TestSelection
+</code></pre>
+
+<h3 id="comprobacion-de-cadenas-traducibles">Comprobación de cadenas traducibles</h3>
+<p>Para ejecutar solamente las comprobaciones de cadenas traducibles (que comprueban que todas las cadenas tienen comentarios para traductores), escribe:</p>
+<pre><code>scons checkPot
+</code></pre>
+
+<h3 id="comprobacion-del-estilo-de-tus-cambios">Comprobación del estilo de tus cambios</h3>
+<p>Para garantizar que tus cambios cumplen con el estilo de codificación de NVDA, puedes ejecutar el comprobador Flake8 localmente.
+Algunos desarrolladores han encontrado ciertos mensajes de error de comprobación de estilo sin sentido, estos se aclaran en <code>tests/lint/readme.md</code>.
+La ejecución mediante SCons usará Flake8 para inspeccionar únicamente las diferencias entre tu directorio de trabajo y la rama <code>base</code> especificada.
+Si creas una solicitud de cambios, la rama <code>base</code> para ese caso debería ser la misma que el destino que usarías para la solicitud de cambios. En la mayoría de los casos será <code>origin/master</code>.</p>
+<pre><code>scons lint base=origin/master
+</code></pre>
+
+<p>Para recibir avisos más deprisa sobre errores de estilo, podrías querer integrar Flake8 con otras herramientas de desarrollo que utilices.
+Para más detalles, consulta <code>tests/lint/readme.md</code></p>
+<h3 id="pruebas-del-sistema">Pruebas del sistema</h3>
+<p>También puedes usar scons para ejecutar las pruebas del sistema, aunque esto aún necesitará que las dependencias estén configuradas (consulta <code>tests/system/readme.md</code>).</p>
+<pre><code>scons systemTests
+</code></pre>
+
+<p>Para ejecutar únicamente pruebas del sistema concretas, indícalas en la variable <code>filter</code> en la línea de órdenes.
+Este filtro acepta caracteres comodín.</p>
+<pre><code>scons systemTests filter=&quot;Read welcome dialog&quot;
+</code></pre>
+
+<h2 id="colaboracion-con-nvda">Colaboración con NVDA</h2>
+<p>Si deseas colaborar con NVDA aportando código o documentación, puedes leer más sobre ello en la <a href="https://github.com/nvaccess/nvda/wiki/Contributing">guía de colaboración</a>.</p>
+</body>
+</html>

@@ -112,7 +112,7 @@ This is other information about your setup that you think might be relevant to u
 ### Other questions:
 This section has sub-sections, asking about the basic investigation steps you may have completed. Please feel free to add more information here to tell us about what you have tried.
 
-#### Does the issue still occur after restarting your PC?
+#### Does the issue still occur after restarting your Computer?
 
 Restarting your computer will help to ensure that software is in a fresh state.
 
@@ -123,3 +123,11 @@ Knowing whether this issue occurs in previous releases helps us to understand if
 *Example:*
 > * NVDA 2018.1 - no error sound
 > * NVDA 2018.2 - has error sound
+
+#### If addons are disabled, is your problem still occuring?
+
+In many cases issues could be caused by an addon not working correctly or conflicting with other features already integrated in NVDA itself. Therefore, it is recommended to reproduce issues with all addons disabled. In case the issue is caused by an addon, it is recommended to contact the author of the addon first.
+
+#### Did you try to run the COM registry fixing tool in NVDA menu / tools?
+
+COM DLL files, which i.e. the IAccessible COM interface depends on, can get unregistered after instaling and uninstalling different programs on a computer. The consequence is that NVDA in certain cases does not work properly. Specifically, it reports "unknown" when trying to navigate websites or fails to switch between focus and browse mode, it causes performance issues, focus instability and other odd problems. The COM registry fixing tool has been introduced in order to re-register those DLL files. In any case, re-registering those DLL files does not have any negative impact on computer's functionality. Thus, it is recommended to run the fixing tool whenever focus problems, performance problems on websites or navigation problems in focus or browse mode on different interfaces are encountered.

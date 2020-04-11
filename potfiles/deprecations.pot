@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-10 19:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\python_docs\deprecations.py:3
+msgid ""
+"Occasionally changes have to be made to NVDA that will break compatibility "
+"with prior versions of the public API. In order to make this predictable for "
+"add-on authors, NV Access has adopted a schedule. The first release of each "
+"year (starting with 2021.1) will be the opportunity to remove deprecated "
+"code, or make other compatibility breaking design changes. Other releases "
+"will aim to maintain compatibility, sometimes keeping code but marking it as "
+"deprecated. When marking code as deprecated, the definition should have a "
+"comment to explain such and the PR that introduces the change will be tagged "
+"with the `deprecated/20YY.1`. Where `YY` is the release year."
+msgstr ""

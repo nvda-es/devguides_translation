@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-16 10:48+0100\n"
+"POT-Creation-Date: 2020-04-10 19:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,45 +24,98 @@ msgstr ""
 #: ..\python_docs\Contributing.py:4
 msgid ""
 "If you would like to contribute code or documentation to NVDA, please follow "
-"these guidelines. You can also make non-code contributions by helping "
-"process incoming Github issues. For information on this please see the "
-"[triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and "
-"[issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) "
-"on the wiki."
+"these guidelines."
 msgstr ""
 
 #: ..\python_docs\Contributing.py:5
-msgid "## Submitting Changes"
+msgid "## Testing"
 msgstr ""
 
 #: ..\python_docs\Contributing.py:6
+msgid ""
+"Testing alpha / beta / and release candidates help to ensure the quality of "
+"the NVDA."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:7
+msgid ""
+"User / community testing is particularly important for languages other than "
+"English."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:8
+msgid "There are several approaches you may take for this:"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:9
+msgid ""
+"- Unfocused usage: Just use NVDA as you normally would, and try to complete "
+"everyday tasks."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:10
+msgid ""
+"- Recent change focused testing: By following the changes that are being "
+"made to NVDA and purposefully testing these changes and looking for edge-"
+"cases."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:11
+msgid ""
+"- Regression testing: Testing older features and behavior to look for "
+"unintended regressions in behavior that don't seem related to recent changes."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:12
+msgid ""
+"Forming a group can help you to get good coverage, brainstorm on what should "
+"be tested, and perhaps learn new ways to use NVDA."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:13
+msgid "## Issue triage and investigation:"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:14
+msgid ""
+"You can also make non-code contributions by helping process incoming Github "
+"issues. For information on this please see the [triage process](https://"
+"github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help]"
+"(https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:15
+msgid "## Submitting Changes"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:16
 msgid ""
 "For anything other than minor bug fixes, please comment on an existing issue "
 "or create a new issue providing details about your proposed change."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:7
+#: ..\python_docs\Contributing.py:17
 msgid "Unrelated changes should be addressed in separate issues."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:8
+#: ..\python_docs\Contributing.py:18
 msgid "Include information about use cases, design, user experience, etc."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:9
+#: ..\python_docs\Contributing.py:19
 msgid ""
 "This allows us to discuss these aspects and any other concerns that might "
 "arise, thus potentially avoiding a great deal of wasted time."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:10
+#: ..\python_docs\Contributing.py:20
 msgid ""
 "You should generally wait for acceptance of your proposal before you start "
 "coding. Please understand that we very likely will not accept changes that "
 "are not discussed first."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:11
+#: ..\python_docs\Contributing.py:21
 msgid ""
 "If this is a minor/trivial change which definitely wouldn't require design, "
 "user experience or implementation discussion (e.g. a fix for a typo/obvious "
@@ -73,13 +126,13 @@ msgid ""
 "and user experience. Then give people time to offer feedback."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:12
+#: ..\python_docs\Contributing.py:22
 msgid ""
 "If this is your first contribution, you will first need to \"fork\" the NVDA "
 "repository on GitHub."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:13
+#: ..\python_docs\Contributing.py:23
 msgid ""
 "When you fork the repository, GitHub will create a copy of the master "
 "branch. However, this branch will not be updated when the official master "
@@ -90,73 +143,73 @@ msgid ""
 "command line as follows:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:14 ..\python_docs\Contributing.py:25
-#: ..\python_docs\Contributing.py:65 ..\python_docs\Contributing.py:68
+#: ..\python_docs\Contributing.py:24 ..\python_docs\Contributing.py:35
+#: ..\python_docs\Contributing.py:77 ..\python_docs\Contributing.py:80
 msgid "```"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:15
+#: ..\python_docs\Contributing.py:25
 msgid "# Add a remote for the NV Access repository."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:16
+#: ..\python_docs\Contributing.py:26
 msgid "git remote add nvaccess https://github.com/nvaccess/nvda.git"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:17
+#: ..\python_docs\Contributing.py:27
 msgid "# Fetch the nvaccess branches."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:18
+#: ..\python_docs\Contributing.py:28
 msgid "git fetch nvaccess"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:19
+#: ..\python_docs\Contributing.py:29
 msgid "# Switch to the local master branch."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:20
+#: ..\python_docs\Contributing.py:30
 msgid "git checkout master"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:21
+#: ..\python_docs\Contributing.py:31
 msgid "# Set the local master to use the nvaccess master as its upstream."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:22
+#: ..\python_docs\Contributing.py:32
 msgid "git branch -u nvaccess/master"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:23
+#: ..\python_docs\Contributing.py:33
 msgid "# Update the local master."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:24
+#: ..\python_docs\Contributing.py:34
 msgid "git pull"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:26
+#: ..\python_docs\Contributing.py:36
 msgid "You should use a separate \"topic\" branch for each issue."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:27
+#: ..\python_docs\Contributing.py:37
 msgid ""
 "All code should usually be based on the latest commit in the official master "
 "branch at the time you start the work unless the code is entirely dependent "
 "on the code for another issue."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:28
+#: ..\python_docs\Contributing.py:38
 msgid "Branches should *never* be based on the \"next\" branch."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:29
+#: ..\python_docs\Contributing.py:39
 msgid ""
 "If you are adding a feature or changing something that will be noticeable to "
 "the user, you should update the User Guide accordingly."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:30
+#: ..\python_docs\Contributing.py:40
 msgid ""
 "For anything touching code, please run `scons tests` before you open your "
 "Pull Request, and make sure all the unit tests pass. If possible for your "
@@ -165,38 +218,48 @@ msgid ""
 "nvaccess/nvda/tree/master/tests/lint) for more information."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:31
+#: ..\python_docs\Contributing.py:41
+msgid "### Create a Pull Request (PR)"
+msgstr ""
+
+#: ..\python_docs\Contributing.py:42
 msgid ""
 "When it is time to submit your code, you should open a pull request "
 "referring to the original issue."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:32
+#: ..\python_docs\Contributing.py:43
 msgid "Code review will then be done on this pull request."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:33
+#: ..\python_docs\Contributing.py:44
+msgid ""
+"Pull requests that fix bugs will be reviewed before PR's that add features / "
+"enhancements."
+msgstr ""
+
+#: ..\python_docs\Contributing.py:45
 msgid "## Code Style"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:34
+#: ..\python_docs\Contributing.py:46
 msgid ""
 "Code style is enforced with the flake8 linter, see [`tests/lint/readme.md`]"
 "(https://github.com/nvaccess/nvda/tree/master/tests/lint) for more "
 "information."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:35
+#: ..\python_docs\Contributing.py:47
 msgid "### Encoding"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:36
+#: ..\python_docs\Contributing.py:48
 msgid ""
 "* Where Python files contain non-ASCII characters, they should be encoded in "
 "UTF-8."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:37
+#: ..\python_docs\Contributing.py:49
 msgid ""
 "    * There should be no Unicode BOM at the start of the file, as this "
 "unfortunately breaks one of the translation tools we use (xgettext). "
@@ -204,15 +267,15 @@ msgid ""
 "contains non-ASCII characters):"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:38 ..\python_docs\Contributing.py:40
+#: ..\python_docs\Contributing.py:50 ..\python_docs\Contributing.py:52
 msgid "        ```"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:39
+#: ..\python_docs\Contributing.py:51
 msgid "        # -*- coding: UTF-8 -*-"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:41
+#: ..\python_docs\Contributing.py:53
 msgid ""
 "    * This coding comment must also be included if strings in the code (even "
 "strings that aren't translatable) contain escape sequences that produce non-"
@@ -221,137 +284,137 @@ msgid ""
 "com/nvaccess/nvda/issues/2592#issuecomment-155299911."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:42
+#: ..\python_docs\Contributing.py:54
 msgid ""
 "* Most files should contain CRLF line endings, as this is a Windows project "
 "and can't be used on Unix-like operating systems."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:43
+#: ..\python_docs\Contributing.py:55
 msgid "### Indentation"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:44
+#: ..\python_docs\Contributing.py:56
 msgid "* Indentation must be done with tabs (one per level), not spaces."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:45
+#: ..\python_docs\Contributing.py:57
 msgid ""
 "* When splitting a single statement over multiple lines, just indent one or "
 "more additional levels. Don't use vertical alignment; e.g. lining up with "
 "the bracket on the previous line."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:46
+#: ..\python_docs\Contributing.py:58
 msgid ""
 "  - Be aware that this requires a new-line after an opening parenthesis/"
 "bracket/brace if you intend to split the statement over multiple lines."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:47
+#: ..\python_docs\Contributing.py:59
 msgid ""
 "  - For the parameter list of function definitions, double indent, this "
 "differentiates the parameters and the body of the function."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:48
+#: ..\python_docs\Contributing.py:60
 msgid "### Identifier Names"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:49
+#: ..\python_docs\Contributing.py:61
 msgid "* Use descriptive names"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:50
+#: ..\python_docs\Contributing.py:62
 msgid ""
 "  - name constants to avoid \"magic numbers\" and hint at intent or origin "
 "of the value. Consider, what does this represent?"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:51
+#: ..\python_docs\Contributing.py:63
 msgid ""
 "* Functions, variables, properties, etc. should use mixed case to separate "
 "words, starting with a lower case letter; e.g. `speakText`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:52
+#: ..\python_docs\Contributing.py:64
 msgid "* Boolean functions or variables"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:53
+#: ..\python_docs\Contributing.py:65
 msgid ""
 "  - should try to use the positive form of the language (to avoid double "
 "negatives like `shouldNotDoSomething = False`)"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:54
+#: ..\python_docs\Contributing.py:66
 msgid ""
 "  - start with a \"question word\" to hint at their boolean nature. EG "
 "`shouldX`, `isX`, `hasX`"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:55
+#: ..\python_docs\Contributing.py:67
 msgid ""
 "* Classes should use mixed case to separate words, starting with an upper "
 "case letter; e.g. `BrailleHandler`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:56
+#: ..\python_docs\Contributing.py:68
 msgid ""
 "* Constants should be all upper case, separating words with underscores; e."
 "g. `LANGS_WITH_CONJUNCT_CHARS`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:57
+#: ..\python_docs\Contributing.py:69
 msgid ""
 "* Event handlers are prefixed with \"event_\", and are often in the form "
 "\"event_ACTION\" or \"event_OBJECT_ACTION\". Where OBJECT refers to the "
 "class type that the ACTION refers to."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:58
+#: ..\python_docs\Contributing.py:70
 msgid "* Extension points:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:59
+#: ..\python_docs\Contributing.py:71
 msgid ""
 "  * `Action`: Prefixed with `pre_` or `post_` to specify that handlers are "
 "being notified before / after the action has taken place."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:60
+#: ..\python_docs\Contributing.py:72
 msgid ""
 "  * `Decider`: Prefixed with `should_` to turn them into a question eg "
 "`should_doSomething`"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:61
+#: ..\python_docs\Contributing.py:73
 msgid ""
 "  * `Filter`: TBD. Ideally follows a similar style the others, and "
 "communicates if the filtering happens before or after some action. It would "
 "also be nice to have a naming scheme that differentiates it from the others."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:62
+#: ..\python_docs\Contributing.py:74
 msgid "### Translatable Strings"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:63
+#: ..\python_docs\Contributing.py:75
 msgid ""
 "* All strings that could be presented to the user should be marked as "
 "translatable using the `_()` function; e.g. `_(\"Text review\")`."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:64
+#: ..\python_docs\Contributing.py:76
 msgid ""
 "* All translatable strings should have a preceding translators comment "
 "describing the purpose of the string for translators. For example:"
 msgstr ""
 
-#: ..\python_docs\Contributing.py:66
+#: ..\python_docs\Contributing.py:78
 msgid "# Translators: The name of a category of NVDA commands."
 msgstr ""
 
-#: ..\python_docs\Contributing.py:67
+#: ..\python_docs\Contributing.py:79
 msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
 msgstr ""

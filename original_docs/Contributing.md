@@ -1,6 +1,19 @@
 # Contributing to NVDA
+If you would like to contribute code or documentation to NVDA, please follow these guidelines.
 
-If you would like to contribute code or documentation to NVDA, please follow these guidelines. You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
+## Testing
+
+Testing alpha / beta / and release candidates help to ensure the quality of the NVDA.
+User / community testing is particularly important for languages other than English.
+There are several approaches you may take for this:
+- Unfocused usage: Just use NVDA as you normally would, and try to complete everyday tasks.
+- Recent change focused testing: By following the changes that are being made to NVDA and purposefully testing these changes and looking for edge-cases.
+- Regression testing: Testing older features and behavior to look for unintended regressions in behavior that don't seem related to recent changes.
+
+Forming a group can help you to get good coverage, brainstorm on what should be tested, and perhaps learn new ways to use NVDA.
+
+## Issue triage and investigation:
+You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
 
 ## Submitting Changes
 
@@ -11,6 +24,7 @@ This allows us to discuss these aspects and any other concerns that might arise,
 You should generally wait for acceptance of your proposal before you start coding. Please understand that we very likely will not accept changes that are not discussed first.
 
 If this is a minor/trivial change which definitely wouldn't require design, user experience or implementation discussion (e.g. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver), you can just create a pull request rather than using an issue first. However, this should be fairly rare. If in doubt, use an issue first. Use this issue to discuss the alternatives you have considered in regards to implementation, design, and user experience. Then give people time to offer feedback.
+
 
 If this is your first contribution, you will first need to "fork" the NVDA repository on GitHub.
 
@@ -37,8 +51,11 @@ If you are adding a feature or changing something that will be noticeable to the
 
 For anything touching code, please run `scons tests` before you open your Pull Request, and make sure all the unit tests pass. If possible for your PR, please consider creating a set of unit tests to test your changes. Please also run our linter, see [`tests/lint/readme.md`](https://github.com/nvaccess/nvda/tree/master/tests/lint) for more information.
 
+### Create a Pull Request (PR)
+
 When it is time to submit your code, you should open a pull request referring to the original issue.
 Code review will then be done on this pull request.
+Pull requests that fix bugs will be reviewed before PR's that add features / enhancements.
 
 ## Code Style
 

@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: February 2020 for NVDA 2019.3
+Latest version: March 2020 for NVDA 2019.3
 
 IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
 
@@ -151,9 +151,9 @@ IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples 
 
 ## Authors, Contributions, and Copyright
 
-This guide was originally written by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. As of May, 2019, it is being maintained and revised by Luke Davis ([@XLTechie](https://github.com/XLTechie)). We welcome your feedback and contributions.
+This guide was originally written by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. As of March 2020, it is being maintained and revised by Luke Davis ([@XLTechie](https://github.com/XLTechie)). We welcome your feedback and contributions.
 
-NVDA is copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
+NVDA is copyright 2006-2020 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction
 
@@ -176,7 +176,7 @@ If you are new to NVDA add-on or core development, we recommend that you get to 
 
 ### Special note on Python version
 
-Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA. For more information on Python 2 versus 3, please read Appendix E.
+Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. With the release of NVDA 2019.3 in February 2020, Python 3 transition is complete. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA. For more information on Python 2 versus 3, please read Appendix E.
 
 ### A special note for scripters of other screen readers
 
@@ -263,7 +263,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
     - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
     - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
 * Python:
-    - Python 3.7 series, version 3.7.5 32-bit for Windows: https://www.python.org/downloads/release/python-375/
+    - Python 3.7 series, version 3.7.7 32-bit for Windows: https://www.python.org/downloads/release/python-375/
     - If you wish to work with Python 2 for backward compatibility (not recommended starting January 2020),use version 2.7.16 32-bit for Windows: https://www.python.org/downloads/release/python-2716/
 * SCons 3, version 3.0.1 or later for generating add-on packages: http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-16 10:48+0100\n"
+"POT-Creation-Date: 2020-04-10 19:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,888 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:3
+msgid "# Add on Store Proposal"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:4
 msgid ""
-"Moved to a git repository to facilitate collaboration. See the [readme file "
-"on github for the latest version](https://github.com/nvaccess/addon-store-"
-"submission/blob/master/README.md#add-on-store-proposal)"
+"The intention of this proposal is to improve the end to end process and "
+"supporting infrastructure for hosting Addons."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:5
+msgid "This is the current plan from NV Access."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:6
+msgid ""
+"However, before starting this work we would like feedback from the add-ons "
+"community, particularly addon authors and addon reviewers since this will "
+"affect them the most."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:7
+msgid ""
+"The main goal of this is to enable an \"NVDA addon store\" accessible from "
+"within NVDA itself."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:8
+msgid ""
+"In this proposal the word \"store\" is used to refer to the system allowing "
+"users to acquire addons, there is no intention of supporting paid addons."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:9
+msgid ""
+"This \"store\" system includes any website, API, process, or infrastructure "
+"to support users to browse, search, install and update Addons for NVDA."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:10
+msgid ""
+"Many considerations in this proposal have been given to creating a more "
+"secure and robust NVDA Addon store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:11
+msgid ""
+"While there is little that can be done to guarantee an addon is safe to run, "
+"we can ensure that all versions are viewed, and that users are running the "
+"addon they think they are."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:12
+msgid ""
+"The process is intended to be as transparent as possible to make it simple "
+"(for developers) to understand the current state of the store or the state "
+"of a submission of a new / updated addon pending review."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:13
+msgid ""
+"The process should enable authors and reviewers to learn about and improve "
+"the addon-review process."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:14
+msgid ""
+"Much of the recent [conversation on the addons mailing list](https://nvda-"
+"addons.groups.io/g/nvda-addons/topic/69393202#10878) has been about "
+"reviewing Addons."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:15
+msgid ""
+"While NV Access has some opinions on this, I think it will be more "
+"productive to first focus on the steps around this."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:16
+msgid "For now, this step will just be referred to as 'review performed'."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:17
+msgid ""
+"Later, I suggest a new thread to agree on a \"addon review check list\"."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:18
+msgid ""
+"With the right infrastructure, we can automate many checks and reduce the "
+"burden on reviewers."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:19
+msgid ""
+"This proposal does not intend to restrict Addon authors from developing, "
+"publishing, and distributing Addons outside of this store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:20
+msgid "NVDA will still allow local installation from a `*.nvda-addon` file."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:21
+msgid "## Too Long; Didn't Read for Addon authors"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:22
+msgid ""
+"With this proposal if an addon author wishes to submit their addon to be "
+"visible in this addon store they will need to:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:23
+msgid "- Store their addon on Github in an open (not private) repository."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:24
+msgid ""
+"- Create an issue on the `addon-store-submission` repository for each addon "
+"version they want to make available."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:25
+msgid ""
+"- Paste into the issue description a link to the commit or github release."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:26
+msgid ""
+"- Wait for it to be reviewed and accepted or participate in review actions "
+"and resubmit the new version."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:27
+msgid "## Too Long; Didn't Read for Addon reviewers"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:28
+msgid "As an Addon reviewer you will:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:29
+msgid "- Look at pending PR's on the `addon-store-submission` repository."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:30
+msgid "- These will include a link to the addon version being reviewed."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:31
+msgid "- Follow the review process (yet to be documented here)."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:32
+msgid ""
+"- Either 'approve' the PR, or 'request changes' while providing feedback and "
+"close the PR."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:33
+msgid ""
+"- When approving the PR, press the merge button to finalise the submision."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:34
+msgid "## Considerations"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:35
+msgid "- Submissions and reviews should be easy to find and get the status of."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:36
+msgid ""
+"- Make it possible to automate many steps in the process, saving reviewers "
+"time."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:37
+msgid ""
+"- Once submitted an addon version should be immutable. No changing the addon "
+"on an external server, it must be updated in the store via the submission "
+"process."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:38
+msgid ""
+"- Allow addon authors to easily revoke a version if it is buggy / no longer "
+"supported. It should no longer be presented in the store, halting "
+"installation by new users."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:39
+msgid ""
+"- Enable support in the store for multiple versions of an Addon, based on "
+"NVDA version."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:40
+msgid ""
+"  - EG addon version 1.2.5 for NVDA 2019.3 and addon version 1.3.2 for NVDA "
+"2020.1"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:41
+msgid "- Enable support in the store for 'pre-release' Addons, for instance:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:42
+msgid "  - Addons being developed against alpha / beta NVDA."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:43
+msgid "  - Addons that want early feedback from end users."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:44
+msgid "  - End users can choose \"show me pre-release addons\""
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:45
+msgid "## Overview"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:46
+msgid "Use GitHub reviews for store submissions."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:47
+msgid ""
+"Use GitHub for storage of meta-data for addons available from the store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:48
+msgid ""
+"Use GitHub actions (or other integrations) to automate construction of the "
+"data store, and as many of the review checks as possible. This will all be "
+"open source and extensible by the community."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:49
+msgid "### Why GitHub reviews?"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:50
+msgid ""
+"- GitHub is where much of the NVDA development ecosystem is already based."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:51
+msgid ""
+"- Handles all the of the CRUD ([create, read, update, delete](https://en."
+"wikipedia.org/wiki/CRUD)) for users, authentication is handled, and we can "
+"determine how a user relates to an addon repository and what their "
+"permissions are for that repository. Are they actually an owner / maintainer?"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:52
+msgid ""
+"- GitHub has a review system that allows for proposing changes and "
+"discussing these changes. We can leverage this for a store submission and "
+"review process."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:53
+msgid "- GitHub PR's provided a atomic view of a store submission."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:54
+msgid ""
+"- Interested parties can 'watch' PR's they care about without being "
+"subjected to the noise from PR's they don't care about."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:55
+msgid "- The result (open / merged / closed) of the PR is clear."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:56
+msgid ""
+"- GitHub allows us to manage permissions for accepting reviews more easily."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:57
+msgid "## Infrastructure"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:58
+msgid "- `NVDA-Addon-submission` GitHub Repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:59
+msgid "  - For Addon authors / reviewers."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:60
+msgid "  - Where new Addon versions are submitted"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:61
+msgid "  - Where reviews of Addon submissions happen"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:62
+msgid "- `NVDA-Addon-store-data` GitHub Repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:63
+msgid "  - For storage of meta-data about addons \"in the store\""
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:64
+msgid ""
+"  - This repository acts as a back-end database, but is more transparent."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:65
+msgid ""
+"  - Since our needs are simple, preconfigured \"views\" of the data will "
+"suffice."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:66
+msgid ""
+"- NV Access server - To provide the endpoint for \"available Addons\" meta-"
+"data"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:67
+msgid ""
+"  - While this is technically not necessary, it provides a good separation "
+"from implementation."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:68
+msgid ""
+"    If we wished to change our storage mechanism, we would not be breaking "
+"old versions of NVDA."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:69
+msgid "## `NVDA-Addon-submission` GitHub Repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:70
+msgid ""
+"Essentially this repository holds references to all the accepted versions of "
+"Addons which are included in the store. A reference to an old version of an "
+"addon remains until it is explicitly removed or becomes invalid, allowing "
+"delivery to older versions of NVDA, or as a fall back in case the newer "
+"version is revoked after a critical bug is found."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:71
+msgid ""
+"Addons versions are submitted by submitting a pull request, adding the "
+"commit for that version to a file that describes the GitHub repository for "
+"the addon."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:72
+#: ..\python_docs\Add-on-Store-Proposal.py:146
+msgid "### Layout"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:73
+#: ..\python_docs\Add-on-Store-Proposal.py:147
+msgid "Root directory of repository:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:74
+msgid " - `readme.md` - A guide for submission"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:75
+msgid " - `addons/owner1/repo1.commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:76
+msgid " - `addons/owner1/repo2.commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:77
+msgid " - `addons/owner2/repo3.commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:78
+msgid ""
+"Example for the NV Access addon, 'NVDA - OCR': `addons/nvaccess/nvda-ocr."
+"commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:79
+msgid ""
+"Contents of a `*.commits` file, is a (newline separated) list of git SHAs, "
+"one for each commit which could be available in the store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:80
+msgid ""
+"This is intentionally a very simple format to maximise the ease of editing, "
+"and minimise the risk of format corruption."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:81
+msgid ""
+"Commits are used rather than tags because tags can be changed after "
+"creation, a SHA collision should be quite difficult to achieve."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:82
+msgid ""
+"This is important to stop the possibility of a malicious author changing an "
+"addon post review, bypassing the review process."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:83
+msgid "### Submitting an Addon version"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:84
+msgid "Pre-requisites:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:85
+msgid "- An addon must be stored on GitHub in a public repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:86
+msgid ""
+"- The commit which will be submitted must be a valid NVDA `*.nvda-addon` "
+"file if zipped and renamed."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:87
+msgid "Process:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:88
+msgid "1. A PR is created on the `NVDA-Addon-submission` repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:89
+msgid ""
+"   - It adds/removes the SHA of the commit (for the submitted version) to "
+"the appropriate `addons/owner/repo.commits` file."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:90
+msgid "   - Refer to 'Creating the submission PR' below"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:91
+msgid ""
+"1. A bot adds a comment in the PR with links to the addon versions that are "
+"added or removed"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:92
+msgid ""
+"   - NOTE: the URL for this link can be is built from 'owner', 'repo', "
+"'commit' of the lines added / removed. "
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:93
+msgid ""
+"   - This allows the reviewer to browse the source online or download the "
+"addon with, see (in suffix) heading \"Example of bot message for `NVDA-Addon-"
+"submission` PR\" for an example message."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:94
+msgid "1. A review is performed (resulting in: request changes, merge, close)"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:95
+msgid ""
+"   - A bot may perform some automated checks or provide helpful information, "
+"refer to 'automated review ideas' below"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:96
+msgid ""
+"   - Manual review is done according to some published review check list (so "
+"that everyone knows what to expect)"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:97
+msgid ""
+"   - Automated and human process can be decided later, we can address these "
+"details as they come up and improve upon the process"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:98
+msgid "1. When the PR is merged, the Addon becomes available in the store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:99
+msgid "### Creating the submission PR"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:100
+msgid ""
+"To simplify the initial implementation of this process the PR will need to "
+"be created manually, later we can streamline this, and automate only "
+"requiring the addon author to paste a link in a new issue."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:101
+msgid ""
+"A new Pull Request (PR) is created on the `NVDA-Addon-submission` repository."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:102
+msgid "   1. Find or create a file: `addons/owner/repo.commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:103
+msgid "      - Example: `addons/nvaccess/nvda-ocr.commits`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:104
+msgid ""
+"      - Where 'owner' is the username or organisation that owns the addon "
+"GitHub repository. E.G. for `nvda-ocr` it is `nvaccess`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:105
+msgid "      - Where 'repo' is the name of the repository. E.G. `nvda-ocr`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:106
+msgid ""
+"      - NOTE: creating the file means this is an entirely new submission"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:107
+msgid "   1. To submit a new version, add the SHA of the commit to the file"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:108
+msgid ""
+"   1. For no longer supported addon versions, remove the SHA of the commit."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:109
+msgid ""
+"This could be done with the web editor, though screen reader users may be "
+"more comfortable making the changes locally with their chosen editor."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:110
+msgid ""
+"Because this requires addon authors to fork the `NVDA-Addon-submission` "
+"repository, this is a little cumbersome."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:111
+msgid "To streamline this process, we could use GitHub issues."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:112
+msgid "- The addon author would pick from two issue templates:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:113
+msgid "  - \"Add addon version\""
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:114
+msgid "  - \"Remove addon version\""
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:115
+msgid ""
+"- In the template they would paste a link to the commit or tag that should "
+"be added or removed."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:116
+msgid ""
+"- Automation creates the PR automatically from this and closes the issue."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:117
+msgid ""
+"- NOTE: In this approach it is safe to use a git tag, because the commit ID "
+"can be determined from the tag. The commit is then used in the PR and the "
+"rest of the process is the same."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:118
+msgid "### Automated review ideas"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:119
+msgid ""
+"Several suggestions for automated review ideas to streamline the process."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:120
+msgid "- Check manifest validity"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:121
+msgid "- Provide links to relevant diffs"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:122
+msgid ""
+"- Check to see if the GitHub user submitting the PR is a maintainer of the "
+"Addon version being submitted."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:123
+msgid "- Consider using CI (Appveyor) to check the addon installs cleanly:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:124
+msgid "  - Install NVDA (the most recent version supported by the addon)"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:125
+msgid "  - Install the addon"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:126
+msgid "  - Restart NVDA and check for errors"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:127
+msgid "### Concerns"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:128
+msgid ""
+"This approach requires that an addon repository is already a valid (and "
+"installable) addon once it is zipped. Most addons require build steps."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:129
+msgid ""
+" - Can github actions be used to run these steps and produce a certifiable "
+"build artifact?"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:130
+msgid ""
+"   - If we can certify the source for a commit, and the source for the "
+"github actions that produces the artifact, then the artifact itself is "
+"certified?"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:131
+msgid ""
+"   - If this is true we can provide this action along with the addon-"
+"template."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:132
+msgid "### Other notes"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:133
+msgid ""
+"- By using a git repository and and PR process, `git blame` and `git log` "
+"can be used to get more context about addons listed in the store. For "
+"instance:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:134
+msgid "  - When was the addon accepted"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:135
+msgid "  - What did the review look like"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:136
+msgid "  - How often does this addon have updates accepted"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:137
+msgid "- GitHub allows assigning reviews to reviewers"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:138
+msgid "## `NVDA-Addon-store-data` GitHub Repository"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:139
+msgid "Holds meta-data about addons accepted to the store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:140
+msgid ""
+"Using a separate repository for this data store separates concerns, gives "
+"greater flexibility for managing permissions, makes it easier to verify "
+"changes (eg in a PR, or via automation), and simplifies the commit history "
+"(no automation commits \"updating data store\")"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:141
+msgid ""
+"The exact implementation details for this repository are not exposed to "
+"users, because on one side the `NVDA-Addon-submission` repository feeds data "
+"in and the NV Access server is on the other side fetching and providing data "
+"to NVDA or a web based store."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:142
+msgid ""
+"This means that changing the layout or implementation of this repository "
+"does not cause wide breaking changes to the process and it can be updated "
+"independently."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:143
+msgid ""
+"Since the details of this repository don't really matter too much they don't "
+"need to be concrete at this point, however I'll give a brief overview of the "
+"current plan."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:144
+msgid "### Overview"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:145
+msgid ""
+"For each version of NVDA, the meta-data of the most recent (highest version "
+"number) of each Addon is automatically added, based on the data in 'NVDA-"
+"Addon-submission'."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:148
+msgid "- `/NVDA API Version/addon-1-ID/release.json`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:149
+msgid "- `/NVDA API Version/addon-1-ID/pre-rel.json`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:150
+msgid "- `/NVDA API Version/addon-2-ID/release.json`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:151
+msgid "- `/NVDA API Version/all.json`"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:152
+msgid "Notes:"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:153
+msgid ""
+"- 'NVDA API Version' will be something like '2019.3', there will be one "
+"folder for each NVDA API Version."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:154
+msgid ""
+"- The `pre-rel.json` and `release.json` contain the information necessary "
+"for a store entry."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:155
+msgid ""
+"  This is essentially the URL to download the addon (a zip of the commit), "
+"and the rest of the contents of the addon manifest. Of course, by including "
+"translated descriptions in the manifest a multilingual addon store can be "
+"created, though possible not the core goal of this proposal."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:156
+msgid ""
+"- The contents of `all.data` is all (pre-release and release) data for this "
+"NVDA API version together."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:157
+msgid ""
+"The simplicity of this is that the NV Access server can just forward these "
+"files on directly when asked \"what are the latest Addons for NVDA API "
+"Version X\" or \"What is the latest version of Addon-ID for NVDA API Version "
+"X\". Using the NV Access server as the endpoint for this is important in "
+"case the implementation has to change or be migrated away from GitHub for "
+"some reason."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:158
+msgid "### How does data arrive"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:159
+msgid ""
+"For the sake of a simple explanation, optimisations and minor details will "
+"be omitted from this description."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:160
+msgid ""
+"A GitHub Action is created to respond to a new commit on the `NVDA-Addon-"
+"submission` repository. For each commit in each `*.commits` file in the "
+"`NVDA-Addon-submission` repository, the manifest for the addon is fetched."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:161
+msgid "Addons manifests that support each NVDA API version are found."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:162
+msgid ""
+"For each NVDA API version the most recent (based on version number) release "
+"and pre-release addon manifest is kept."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:163
+msgid ""
+"These remaining manifest files are used to reconstruct the data in the "
+"repository and commit it."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:164
+msgid "## Suffix"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:165
+msgid "### Example of bot message for `NVDA-Addon-submission` PR."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:166
+#: ..\python_docs\Add-on-Store-Proposal.py:170
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:167
+msgid "Added Version."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:168
+msgid ""
+"- [Browse source](https://github.com/nvaccess/nvda-ocr/"
+"tree/632d037dae906cd582ff4995628aa3fbaacd84e9)"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:169
+msgid ""
+"- [Download zip](https://github.com/nvaccess/nvda-ocr/"
+"archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:171
+msgid "### Pre-release addon version support"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:172
+msgid ""
+"This will require an update to the addon-manifest. While this proposal plans "
+"for it, it will not be in the initial scope of work."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:173
+msgid "### Invalid Addon references"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:174
+msgid ""
+"When building the data-store, any references to commits that no longer exist "
+"(repo deleted, history rewritten etc) will obviously be excluded since the "
+"manifest can not be fetched. Although not high priority, a mechanism may "
+"need to be developed to update the 'NVDA-Addon-submission' repository so "
+"that these invalid references can be removed."
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:175
+msgid "### Terminology: Addon version vs Addon release"
+msgstr ""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:176
+msgid ""
+"Since this proposal supports pre-release addons, I have tried to avoid using "
+"the term \"addon release\", instead favouring \"addon version\"."
 msgstr ""

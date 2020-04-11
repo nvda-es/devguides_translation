@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: febrero de 2020 para NVDA 2019.3</p>
+<p>Última versión: marzo de 2020 para NVDA 2019.3</p>
 <p>Importante: NVDA 2019.3 requiere un entorno de desarrollo basado en Python 3. Muchos ejemplos de esta guía funcionarán tanto en Python 2 como Python 3 a menos que se indique lo contrario.</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
@@ -159,8 +159,8 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 </ul>
 <hr />
 <h2 id="autores-colaboraciones-y-copyright">Autores, Colaboraciones y Copyright</h2>
-<p>Esta guía fue escrita originalmente por Joseph Lee (<a href="https://github.com/josephsl">@josephsl</a>), y está diseñada por la comunidad de usuarios y desarrolladores de NVDA. Desde mayo de 2019, está siendo revisada y mantenida por Luke Davis (<a href="https://github.com/XLTechie">@XLTechie</a>). Agradecemos vuestros comentarios y contribuciones.</p>
-<p>NVDA es copyright 2006-2019 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
+<p>Esta guía fue escrita originalmente por Joseph Lee (<a href="https://github.com/josephsl">@josephsl</a>), y está diseñada por la comunidad de usuarios y desarrolladores de NVDA. Desde marzo de 2020, está siendo revisada y mantenida por Luke Davis (<a href="https://github.com/XLTechie">@XLTechie</a>). Agradecemos vuestros comentarios y contribuciones.</p>
+<p>NVDA es copyright 2006-2020 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Bienvenido a la Guía de desarrollo de complementos para NVDA. Esta es la guía completa sobre cómo desarrollar complementos de NVDA. Esta guía también explica algún segmento de código útil del código fuente del núcleo de NVDA, que resalta conceptos para ti mientras aprendes a escribir complementos.</p>
 <p>Para obtener más información sobre el desarrollo de NVDA, por favor visita [la Página de GitHub de NVDA]. Asegúrate de revisar la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a> para familiarizarte con los términos clave y los conceptos básicos para comenzar con el desarrollo de complementos.</p>
@@ -176,7 +176,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 </ul>
 <p>Si eres nuevo en el desarrollo de complementos o del núcleo de NVDA, te recomendamos que conozcas <a href="https://python.org">Python</a> primero, ya que proporciona los conocimientos de programación necesarios para entender el resto de la guía. Si eres programador de Python pero eres nuevo en el desarrollo de NVDA, por favor, consulta la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">guía del desarrollador de NVDA</a> y el documento <a href="https://github.com/nvaccess/nvda/wiki/DesignOverview">descripción del diseño</a>.</p>
 <h3 id="nota-especial-sobre-la-version-de-python">Nota especial sobre la versión de Python</h3>
-<p>Hasta 2019, NVDA y los complementos estaban escritos principalmente en Python 2, específicamente 2.7. A partir de julio de 2019, NVDA ha sido migrado a Python 3.7, con algunos desarrolladores de complementos modificando su código fuente para que se ejecute en Python 2 y 3. Asegúrate de estar atento al desarrollo de NVDA y a las listas de correo de complementos, así como a la documentación de desarrollo relevante y a los avisos relacionados con las noticias sobre Python 3 y NVDA. Para más información sobre las diferencias entre Python 2 y 3, consulta el apéndice E.</p>
+<p>Hasta 2019, NVDA y los complementos estaban escritos principalmente en Python 2, específicamente 2.7. A partir de julio de 2019, NVDA ha sido migrado a Python 3.7, con algunos desarrolladores de complementos modificando su código fuente para que se ejecute en Python 2 y 3. Con la publicación de NVDA 2019.3 en febrero de 2020, la transición a Python 3 se dio por completada. Asegúrate de estar atento al desarrollo de NVDA y a las listas de correo de complementos, así como a la documentación de desarrollo relevante y a los avisos relacionados con las noticias sobre Python 3 y NVDA. Para más información sobre las diferencias entre Python 2 y 3, consulta el apéndice E.</p>
 <h3 id="una-nota-especial-para-creadores-de-scripts-de-otros-lectores-de-pantalla">Una nota especial para creadores de scripts de otros lectores de pantalla</h3>
 <p>Algunos de los conceptos descritos en este documento son los mismos para diferentes lectores de pantalla, tales como objetos, ventanas, eventos, APIs de accesibilidad y así sucesivamente. Sin embargo, hay cosas importantes que hay que tener en cuenta al escribir o portar scripts:</p>
 <ul>
@@ -249,7 +249,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Python:<ul>
-<li>Series de Python 3.7, versión 3.7.5 de 32 bits para Windows: https://www.python.org/downloads/release/python-375/</li>
+<li>Series de Python 3.7, versión 3.7.7 de 32 bits para Windows: https://www.python.org/downloads/release/python-377/</li>
 <li>Si deseas trabajar con Python 2 para dar compatibilidad hacia atrás (no recomendado a partir de enero de 2020), usa la versión 2.7.16 de 32 bits para Windows: https://www.python.org/downloads/release/python-2716/</li>
 </ul>
 </li>

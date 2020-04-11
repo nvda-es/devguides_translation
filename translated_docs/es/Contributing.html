@@ -7,7 +7,17 @@
   <body>
   <header><h1># Cómo contribuir con NVDA</h1></header>
   <h1 id="como-contribuir-con-nvda">Cómo contribuir con NVDA</h1>
-<p>Si quieres contribuir con código o documentación al proyecto NVDA, sigue estas pautas. También puedes hacer contribuciones que no sean de código, ayudando a procesar las incidencias entrantes en GitHub.</p>
+<p>Si quieres contribuir con código o documentación a NVDA, sigue estas pautas, por favor.</p>
+<h2 id="pruebas">Pruebas</h2>
+<p>Hacer pruebas sobre las Alfa / beta / candidatas a liberación garantiza la calidad de NVDA.
+Las pruebas de los usuarios y de la comunidad en general son particularmente importantes con idiomas distintos al inglés.
+Hay varios enfoques que se pueden tomar para ellas:
+- Uso no enfocado: simplemente utiliza NVDA como lo harías normalmente, e intenta completar tareas cotidianas.
+- Pruebas enfocadas a cambios recientes: siguiendo los cambios que se han hecho en NVDA y probándolos a propósito con casos extremos.
+- Prueba de regresiones: se prueban funciones antiguas y su comportamiento para buscar regresiones no intencionadas cuyo comportamiento no parezca relacionado con los cambios recientes.</p>
+<p>Formar un grupo puede ayudar a obtener una buena cobertura, ideas sobre lo que se debe probar, y quizá aprender nuevas formas de usar NVDA.</p>
+<h2 id="clasificacion-en-investigacion-de-incidencias">Clasificación en investigación de incidencias:</h2>
+<p>También puedes hacer contribuciones que no sean de código, ayudando a procesar las incidencias entrantes en GitHub. Para más información, consulta los documentos relacionados con la clasificación de incidencias en nuestra web.</p>
 <h2 id="como-enviar-cambios">Cómo enviar cambios</h2>
 <p>Para cualquier cosa distinta a la reparación de problemas pequeños, por favor comenta en una incidencia existente o crea una incidencia nueva exponiendo los detalles del cambio que propones.
 Los cambios no relacionados se deben gestionar en incidencias separadas.
@@ -34,8 +44,10 @@ Todo el código debería basarse en el commit más reciente de la rama master of
 Las nuevas ramas <em>nunca</em> deberán crearse a partir de la rama "next".</p>
 <p>Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías actualizar la guía de usuario convenientemente para reflejar tu cambio.</p>
 <p>Antes de abrir tu solicitud de cambios, ejecuta la orden <code>scons tests</code> y asegúrate de que se superan todas las pruebas unitarias. Si es posible, crea un conjunto de pruebas unitarias adicionales para probar tus cambios. Ejecuta también el comprobador de conformidad de NV Access, visita <a href="https://github.com/nvaccess/nvda/tree/master/tests/lint"><code>tests/lint/readme.md</code></a> para más información.</p>
+<h3 id="crear-una-solicitud-de-cambios-pr-o-pull-request">Crear una solicitud de cambios (PR o Pull Request)</h3>
 <p>Cuando sea hora de enviar el código, abre una nueva solicitud de cambios haciendo referencia a la incidencia que describe tu cambio.
-El equipo de NV Access pasará a revisar tu código.</p>
+El equipo de NV Access pasará a revisar tu código.
+Las solicitudes de cambios que corrijan errores se revisarán antes que las que añadan funciones o mejoras.</p>
 <h2 id="estilo-del-codigo">Estilo del código</h2>
 <p>El estilo del código está reforzado por el comprobador de conformidad Flake8, visita <a href="https://github.com/nvaccess/nvda/tree/master/tests/lint"><code>tests/lint/readme.md</code></a> para más información.</p>
 <h3 id="codificacion">Codificación</h3>

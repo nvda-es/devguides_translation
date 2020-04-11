@@ -1,0 +1,100 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title>Definiciones:</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1>Definiciones:</h1></header>
+  <p>Definiciones:</p>
+<p>En el texto que viene a continuación, para abreviar escribiremos refiriéndonos al género masculino, pero por supuesto hacemos referencia a ambos sexos.</p>
+<p>Autor: el significado estándar de autor, o el responsable de mantenimiento actual de un complemento.</p>
+<p>Revisor de apoyo: un miembro del equipo de complementos de NVDA que haya demostrado habilidades técnicas, justicia, dedicación y disposición para ayudar a otras personas.</p>
+<p>Un autor no puede actuar como revisor de apoyo si es el autor del complemento, incluso si forma parte del equipo de complementos.
+Para un complemento diferente, se pueden intercambiar los roles.</p>
+<h2 id="flujo-de-trabajo">Flujo de trabajo</h2>
+<ol>
+<li>Un autor desea crear un complemento, por lo que hace fork de la plantilla de complementos proporcionada por la comunidad a su espacio personal de GitHub, y la renombra con el nombre del nuevo complemento.</li>
+<li>Él procede a desarrollar el complemento, haciendo commit y push a su repositorio personal.</li>
+<li>Cuando su complemento está listo, el autor informa a la lista de complementos, y solicita comentarios generales.</li>
+<li>En este punto, la mayor parte de los comentarios probablemente son de pruebas de los usuarios, pero puede haber algo de revisión de código con un poco de suerte.
+    Por favor, ten en cuenta que la comunidad no puede garantizar la calidad o el contenido del complemento, por lo que si un usuario ejecuta el complemento sin mirar el código, es bajo tu responsabilidad.</li>
+<li>
+<p>El autor procesa los comentarios, regresa al paso 2, o si tiene comentarios suficientes continúa al paso 6.</p>
+<p>No se espera que el autor acepte todas las solicitudes, por lo que si eres un usuario y el autor no cree que tu solicitud de características encaje con su complemento, se recuerda a usuarios y autores que actúen de forma civilizada.</p>
+<p>Se espera que el autor corrija y atienda todas aquellas solicitudes razonables relacionadas con recordatorios de falta de copyright, licencia o mejoras en la documentación.</p>
+</li>
+<li>
+<p>Asumiendo que hay suficiente interés por parte de los usuarios para que el complemento esté disponible en el sitio web de la comunidad, el autor solicita que un revisor de apoyo haga fork de su complemento a la organización nvaaddons.</p>
+</li>
+<li>Por favor, recuerda que los complementos se aceptan según el criterio de los revisores de la comunidad. Todos son voluntarios, y no están obligados a hacer nada. Por supuesto, si formas parte de la comunidad y ayudas revisando el código de otras personas, la gente mostrará una buena disposición y será más probable que tu código se revise.</li>
+<li>
+<p>El revisor de apoyo se asegura de que haya una licencia, información de copyright, un archivo léame, que el complemento hace lo que se supone que hace, y es adecuado en términos de seguridad.</p>
+<p>Se espera que el revisor de apoyo haya leído cada línea del código de la extensión global del complemento, los módulos de aplicación y otros archivos (sin incluir bibliotecas externas), para analizar riesgos de seguridad antes de hacer fork.</p>
+<p>En este contexto, seguridad significa: que el complemento no lee archivos inesperados del usuario del ordenador, no sube nada a Internet, y no descarga nada inesperado.</p>
+</li>
+<li>
+<p>El revisor de apoyo hace fork del complemento a la organización nvdaaddons.</p>
+</li>
+<li>
+<p>Las incidencias y las solicitudes de cambio deberían ir al autor y al repositorio del autor, y no al fork de la comunidad.</p>
+<p>Por supuesto, los usuarios todavía pueden continuar interactuando con el autor del complemento usando la lista de correo de complementos.</p>
+</li>
+<li>
+<p>Se espera que el autor del complemento añada la copia que ha hecho la comunidad de su repositorio como origen remoto, de tal forma que pueda añadir y actualizar traducciones.</p>
+</li>
+<li>
+<p>El revisor de apoyo podría tener que hacer las siguientes tareas en el repositorio de la comunidad después del fork:</p>
+<p>Eliminar cualquier rama diferente de master, añadir información sobre compilación automática, webhooks, etc.</p>
+<p>Añadir una regla de protección en master para que nadie haga push accidentalmente, y se necesite una solicitud de cambios con al menos un revisor (incluso administradores).</p>
+<p>Consulta otros pasos relacionados con el flujo de trabajo de las traducciones <a href="https://nvda.es/documentacion/desarrollo/desarrollo-de-complementos/hacer-un-complemento-traducible-mediante-el-sistema-de-traducciones-de-la-comunidad/">aquí</a>.</p>
+<p>Crear una rama stable.</p>
+<p>Añadir reglas de protección a stable de tal forma que el sistema de traducciones pueda hacer push, pero todos los demás deban hacer una solicitud de cambios (incluso los administradores).</p>
+</li>
+<li>
+<p>El revisor de apoyo mezcla la rama master en stable.</p>
+</li>
+<li>
+<p>El revisor de apoyo dispara una liberación.</p>
+<p>En ella sólo se debería incrementar el número de parche (último dígito del número de versión), por ejemplo pasando de v1.0.0 a v1.0.1.</p>
+</li>
+<li>
+<p>Tras un periodo de tiempo, el autor del complemento desea publicar una versión nueva, y para ello hace una solicitud de cambio desde su rama master a la rama master de la copia de la comunidad.</p>
+</li>
+<li>Un revisor de apoyo revisa la solicitud de cambio garantizando de nuevo la seguridad, archivo léame actualizado, etc, y puede pedir que se haga más trabajo antes de que la solicitud se acepte. Sólo deben revisarse los cambios desde la última versión.</li>
+<li>
+<p>Una vez se mezcla la solicitud de cambio en master, el revisor de apoyo aumenta la revisión mayor o menor según haya indicado el autor. Por ejemplo, se podría eliminar el "-dev" de la variable de versión.</p>
+<p>Vuelve al paso 13.</p>
+</li>
+</ol>
+<h2 id="consideraciones">Consideraciones</h2>
+<p>Se han tenido en cuenta las siguientes consideraciones al proponer este flujo de trabajo de complementos.</p>
+<ol>
+<li>
+<p>Seguridad de los complementos.</p>
+<p>Según crece la comunidad de autores de complementos y usuarios de NVDA, queremos proporcionar una sensación de confianza en que hacemos lo correcto, de tal forma que un usuario se sienta seguro al instalar y actualizar complementos, y que estos complementos puedan instalarse en escuelas, universidades, bibliotecas públicas, etc.</p>
+<p>Los autores de complementos se toman nuestro trabajo voluntario en serio, y agradecemos la confianza depositada.</p>
+<p>Por tanto, el último paso para liberar una nueva versión lo hace la comunidad, no el autor del complemento, ya que queremos que el producto final sea plenamente fiable.</p>
+</li>
+<li>
+<p>Entorno de aprendizaje compartido.</p>
+<p>Dando críticas constructivas y sugerencias a los demás, construimos algo mejor y más fuerte, porque nadie es perfecto y aprendemos de los demás.</p>
+<p>Una crítica al código no es una crítica al autor, simplemente es una recomendación para mejorar el código, ya que al revisor le importa la calidad de tu código.</p>
+<p>Si piensas que un revisor ha pasado algo por alto al revisar el complemento de otra persona, no dudes en proporcionar tu revisión, ya que nadie tiene el monopolio a la hora de proporcionar comentarios.</p>
+</li>
+<li>
+<p>Reducir la sobrecarga existente de los revisores de complementos.</p>
+<p>En el momento de redacción de esta propuesta, hay aproximadamente 70 complementos oficiales, y gestionarlos no es algo simple ni directo.</p>
+<p>Por desgracia hemos acabado en una situación desastrosa, con repositorios en GitHub y BitBucket, y ciertos trabajos manuales que deben hacerse en un servidor.</p>
+<p>Se ha sentido que se ha invertido más tiempo en gestionar el sistema que en la interesante tarea de revisar y proporcionar comentarios, por lo que deberían automatizarse más pasos.</p>
+<p>Esta automatización aún no se encuentra en funcionamiento, pero si por consenso se determina que este flujo de trabajo es razonable, comenzará el trabajo en la automatización adicional.</p>
+<p>Con menos requisitos para un potencial revisor de complementos, con un poco de suerte habrá más revisores de la comunidad que tendrán un rol responsable y activo, ya que sólo sería necesario revisar y mezclar código, y no requiere una gran inversión de tiempo.</p>
+</li>
+</ol>
+<h2 id="temas-para-debates-futuros">Temas para debates futuros.</h2>
+<ol>
+<li>¿Tiempo mínimo entre liberaciones?</li>
+<li>¿Cómo se podrían (¿Deberíamos hacerlo?) acomodar las versiones de desarrollo?</li>
+</ol>
+</body>
+</html>
