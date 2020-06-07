@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-06 23:05+0200\n"
-"PO-Revision-Date: 2020-04-07 12:19+0200\n"
+"POT-Creation-Date: 2020-06-07 14:20+0200\n"
+"PO-Revision-Date: 2020-06-07 16:54+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:3
@@ -84,8 +84,12 @@ msgstr "* Crea una nueva etiqueta anotada / liberación previa."
 #: ..\python_docs\MakingAnOfficialRelease.py:14
 #: ..\python_docs\MakingAnOfficialRelease.py:53
 #: ..\python_docs\MakingAnOfficialRelease.py:59
-msgid "* Wait for the `appVeyor` build to complete."
-msgstr "* Espera a que AppVeyor complete la construcción."
+msgid ""
+"* Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/"
+"nvda/history) to complete."
+msgstr ""
+"* Espera a que `AppVeyor` complete la [construcción](https://ci.appveyor.com/"
+"project/nvaccess/nvda/history)."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:15
 #: ..\python_docs\MakingAnOfficialRelease.py:54
@@ -112,10 +116,10 @@ msgstr "### Durante el periodo beta"
 #: ..\python_docs\MakingAnOfficialRelease.py:19
 msgid ""
 "* Periodically look at recent issues filed, specifically looking for those "
-"with `p1`, `crash` or `appcrash` labels."
+"with `p1`, `bug/crash` or `bug/app-crash` labels."
 msgstr ""
 "* Mira periódicamente las incidencias recientes archivadas, específicamente "
-"las etiquetadas como `p1`, `crash` o `appcrash`."
+"las etiquetadas como `p1`, `bug/crash` o `bug/app-crash`."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:20
 msgid ""
@@ -201,10 +205,10 @@ msgstr "* Comprueba que es seguro publicar una rc."
 #: ..\python_docs\MakingAnOfficialRelease.py:33
 msgid ""
 "  - Looking at recent issues filed, specifically looking for those with "
-"`P1`, `crash` or `appcrash` labels."
+"`p1`, `bug/crash` or `bug/app-crash` labels."
 msgstr ""
 "    - Mirando las incidencias archivadas recientemente, buscando "
-"específicamente las etiquetadas como `p1`, `crash` o `appcrash`."
+"específicamente las etiquetadas como `p1`, `bug/crash` o `bug/app-crash`."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:34
 msgid ""

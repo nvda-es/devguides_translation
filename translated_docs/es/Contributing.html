@@ -8,6 +8,8 @@
   <header><h1># Cómo contribuir con NVDA</h1></header>
   <h1 id="como-contribuir-con-nvda">Cómo contribuir con NVDA</h1>
 <p>Si quieres contribuir con código o documentación a NVDA, sigue estas pautas, por favor.</p>
+<h2 id="nota-actualmente-solo-se-aceptan-solicitudes-de-cambio-de-mantenimiento-o-correccion-de-fallos-mientras-se-procesa-la-cola-existente">Nota: actualmente sólo se aceptan solicitudes de cambio de mantenimiento o corrección de fallos mientras se procesa la cola existente.</h2>
+<p>Para más información, consulta: https://github.com/nvaccess/nvda/issues/11006</p>
 <h2 id="pruebas">Pruebas</h2>
 <p>Hacer pruebas sobre las Alfa / beta / candidatas a liberación garantiza la calidad de NVDA.
 Las pruebas de los usuarios y de la comunidad en general son particularmente importantes con idiomas distintos al inglés.
@@ -40,8 +42,7 @@ git pull
 </code></pre>
 
 <p>Deberías usar una rama "temática" distinta para cada incidencia.
-Todo el código debería basarse en el commit más reciente de la rama master oficial que hay en el momento en que empiezas a trabajar, a no ser que el código oficial sufra cambios drásticos que afecten a tu trabajo o dependa del código de otra incidencia.
-Las nuevas ramas <em>nunca</em> deberán crearse a partir de la rama "next".</p>
+Todo el código debería basarse en el commit más reciente de la rama master oficial que hay en el momento en que empiezas a trabajar, a no ser que el código oficial sufra cambios drásticos que afecten a tu trabajo o dependa del código de otra incidencia.</p>
 <p>Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías actualizar la guía de usuario convenientemente para reflejar tu cambio.</p>
 <p>Antes de abrir tu solicitud de cambios, ejecuta la orden <code>scons tests</code> y asegúrate de que se superan todas las pruebas unitarias. Si es posible, crea un conjunto de pruebas unitarias adicionales para probar tus cambios. Ejecuta también el comprobador de conformidad de NV Access, visita <a href="https://github.com/nvaccess/nvda/tree/master/tests/lint"><code>tests/lint/readme.md</code></a> para más información.</p>
 <h3 id="crear-una-solicitud-de-cambios-pr-o-pull-request">Crear una solicitud de cambios (PR o Pull Request)</h3>
@@ -98,6 +99,22 @@ Todas las cadenas traducibles deberían estar precedidas por un comentario en in
 </ul>
 <pre><code># Translators: The name of a category of NVDA commands.
 SCRCAT_TEXTREVIEW = _(&quot;Text review&quot;)
+</code></pre>
+
+<ul>
+<li>Se pueden dividir las cadenas traducibles largas en múltiples líneas, aprovechando la ventaja que ofrece la unión implícita de líneas entre paréntesis de Python. Los comentarios para traductores pueden ocupar varias líneas también. Por ejemplo:</li>
+</ul>
+<pre><code>self.copySettingsButton = wx.Button(
+    self,
+    label=_(
+        # Translators: The label for a button in general settings to copy
+        # current user settings to system settings (to allow current
+        # settings to be used in secure screens such as User Account
+        # Control (UAC) dialog).
+        &quot;Use currently saved settings during sign-in and on secure screens&quot;
+        &quot; (requires administrator privileges)&quot;
+    )
+)
 </code></pre>
 </body>
 </html>

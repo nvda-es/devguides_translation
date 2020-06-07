@@ -1,57 +1,59 @@
 # Release Process
 
 This document provides rough guidelines for the process of developing NVDA releases. All current and potential developers and translators should read and follow this document. These guidelines may be broken under special circumstances. Any concerns should be discussed with the lead developers: Mick Curran (@michaelDCurran) and Reef Turner (@feerrenrut).
-
-## Changes to the existing process
-The process outlined later in this document has only been implemented very recently. Therefore this first section talks specifically about the changes from the older process. 
-### Goals and reasoning
-The main goal of these changes is to remove the need for a "next" branch and pull request incubation. Reasons for this are:
-* The next branch required manual merging of pull requests. This did not fit in well with Github's infrastructure in that these incubation merges were not tracked very well, reverts were messy and sometimes required next to be totally re-created, pull requests on next would frequently become conflicted with other pull requests, which meant manually fixing conflicts in both next and master.
- * Up until recently incubation was the only way we could guarantee some kind of code quality. Now we have a growing number of unit tests, system testing is well under way, and Github's management of pull requests (including mandatory code reviews) ensure a minimum code quality we did not have before.
-### Changes for developers
-* Once a pull request is approved by reviewers and all build checks pass, the pull request will be merged straight to master. There is no longer incubation on next.
-* If a merged pull request results in a regression, new bug or does not work as advertised, the lead developers will be a little more strict on reverting the pull request than in the past.
-### Changes for testers
-* The next branch and next snapshots will no longer exist. Anyone currently on a next snapshot will be automatically updated to new "alpha" snapshots. Alpha snapshots are created directly from Master each time it changes (I.e. when a pull request is merged).  As the name suggests, these snapshots are alpha quality. And although automated tests pass, these builds have had no user testing.
- * Anyone currently on master snapshots will be upgraded to the first available tagged beta for the current release. Beta builds, as the name implies, are beta quality and have had some testing by users. Note that as new betas are made available you will keep automatically upgrading, and then also upgrade to the final stable release. To get back to beta testing for the next release you will need to manually download a new beta for that release.
- * The snapshots page at https://www.nvaccess.org/files/nvda/snapshots/ now lists both alpha snapshots and all beta releases. 
  
 ## Release Workflow
-This is the general release workflow. Information for specific community groups is provided in later sections.
+This is the general release workflow. Information for specific community groups is provided in later sections. The production of a release consists of the following:
+1. Development Phase
+   - Development is done in parallel to the release process for the prior version. E.G. NVDA 2020.2 is in development while NVDA 2020.1 is going through the Release Phase
+1. Release Phase
+   - Final testing, and translations work prior to release.
 
-### Development Phase
-* Work should be done in topic branches.
-* A topic branch should be submitted for inclusion using a pull request.
-* All Pull requests must follow the Pull Request template provided.
-* Pull requests must be based on NVDA's master branch unless explicitly instructed to do otherwise by a lead developer.
-* Submitted pull requests should not contain edits to changes.t2t. Instead, change log entries should be placed in the pull request description, under the appropriate section in the template.
-* All pull requests submitted must have their "Allow edits from maintainers" checkbox ticked. This is usually the case for all new pull requests. 
-* Once a pull request has been reviewed and approved by at least one NVDA Collaborator and all build checks have passed, a lead developer will make a final commit to the pull request which updates changes.t2t, and then will squash merge the pull request into master.
-* If the merging of a pull request to master causes any build checks on master to fail, the pull request is reverted without question. This is however unlikely to be an issue as build checks on the pull request itself must have already passed.
+### Development phase
+* Contributions are made according to the [For Developers](#for-developers) section 
+* Once a pull request has been reviewed and approved by at least one NVDA Collaborator and all build checks have passed, a lead developer will make a final commit to the pull request which updates `changes.t2t`, and then will squash merge the pull request into master.
+* If the merging of a pull request to `master` causes any build checks on `master` to fail, the pull request is reverted without question. This is however unlikely to be an issue as build checks on the pull request itself must have already passed.
 * If a merged pull request has been identified as causing a regression, new bug, or does not work as originally reported, the pull request may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pull request may be: 
-    * The pull request was submitted by an active collaborator and it is inevitable that they will follow through with a suitable pull request to address the issues.
-    * The bug is trivial enough to be fixed by a collaborator.
-*  Builds of  master (known as alpha snapshots) will be made available to the public for very early testing. This is bleeding-edge code and should never be run in production environments.
-* Up until 7 weeks before a release, a last known good commit of master (I.e. one that passes build checks) will be periodically merged into a "beta" branch, making that code available for early translation. The beta branch at this stage should still be considered bleeding-edge, and is not recommended for people than other to check early translation work.
+  * The pull request was submitted by an active collaborator who is likely to follow up with a suitable pull request to address the issues.
+  * The bug is trivial enough to be fixed by a collaborator.
+*  Automatic 'alpha snapshots' are made available to the public for very early testing. See [For Testers](#for-testers)
 
-### Beta phase
-* From 7 weeks before the release, merges from master to beta will no longer occur. New pull requests may be now considered for squash merging straight to beta, if and only if they are addressing a bug introduced in the current release cycle or a critical Operating System change out of our control. 
-* If any changes are made to beta, such as the merging of critical pull requests or translation merges, beta will be periodically merged back to master. 
-* Starting from 5 weeks before final release, tagged beta releases will be published periodically, allowing the wider community to try out the betas. At this stage code originally introduced through master will have been tested for at least 2 weeks, thus the beta builds can be seen as beta quality.
-* If a merged pull request that reached beta has been identified as causing a regression, new bug, or does not work as originally reported, the pull request may be reverted at the discretion of the lead developers. Reasons in favor of not reverting the pull request may be: 
-    * The bug is trivial enough to be fixed by a collaborator.
-* If a pull request is reverted from beta, it is more than likely any new pull request replacing it will not get into the current release.
+### Release phase
+The release phase is intended to refine the release, with testing from wider audiences, and incorporated translations.
+When no blocking issues are encountered it is expected to take 7 weeks:
+- Beta builds: 6 weeks (starting 7 weeks before release)
+  - 4 weeks to receive any required fixes
+  - 2 weeks for translation freeze (starting 3 weeks before release) 
+- RC: 1 week.
+  - When issues are encountered, subsequent RC's may take another week at the discretion of lead developers.
+
+#### Beta builds
+* A commit without any known serious issues, will be selected from the 'master' branch and merged into 'beta', this draws the line for features included in the release.
+  - This commit will have been on `master` and thus, in 'alpha builds' for at least 2 weeks and can now be considered beta quality.
+* A tagged 'beta release' will be created for wider testing. 
+* New pull requests may be now considered for squash merging straight to beta.
+  - If addressing regression introduced in this release.
+  - If addressing a bug in a "must have" feature for this release.
+  - If addressing a critical Operating System change out of our control.
+* As appropriate new tagged beta releases will be published. 
+* As necessary `beta` will be merged back into master.
+  - For critical pull requests or translation merges.
+* If a merged pull request that reached beta has been identified as causing a regression, new bug, or does not work as originally reported:
+  - The pull request may be reverted at the discretion of the lead developers.
+  - It may be fixed by a collaborator if the bug is trivial enough.
+  - Once a PR is reverted from `beta`, a replacement PR is very unlikely to get into the current release.
 
 ### Translatable String Freeze
-* 3 weeks before the release is due, the beta branch will enter a translatable string freeze for 2 weeks. That is, no changes to text strings that affect translations are allowed. Minor spelling or grammatical fixes may be made to documentation files, but gettext strings in the code should not be changed at all.
-* Only critical bug fixes and translation updates should be committed to the beta branch at this stage.
+- The beta branch will enter a translatable string freeze.
+- No changes to text strings that affect translations are allowed. Minor spelling or grammatical fixes may be made to documentation files, but `gettext` strings in the code should not be changed at all.
+* Only critical bug fixes and translation updates should be committed to the beta branch at this stage. Otherwise the translation period will need to be extended by an appropriate amount of time.
 
 ### Release Candidate
 * After the translatable string freeze, the "rc" branch will be created based on the beta branch.
-* The first release candidate will immediately be released from the rc branch.
-* After this, only critical bug fixes should be committed to the rc branch.
+* The first release candidate will immediately be released from the `rc` branch.
+* After this, only critical bug fixes should be committed to the `rc` branch.
 * Subsequent release candidates may be released.
-* The final release can only be made if there have been no commits and at least 1 week since the last release candidate.
+* The final release can only be made if there have been no significant changes and at least 1 week since the last release candidate.
 
 ### Representation on GitHub
 * For most items, an issue will be filed and discussed before a pull request is submitted.
@@ -60,24 +62,34 @@ This is the general release workflow. Information for specific community groups 
 * Issues/pull requests for bug fixes for an rc should have their milestone set to the relevant release (e.g. 2013.2).
 
 ### Scheduled Releases
-* Generally, final releases will be due around 22 February, 22 May, 22 August and 22 November. The exact date for each release will be determined by the lead developers.
+* In the past NVDA has been released 4 times per year. This is not expected to change drastically. The exact date for each release will be determined by the lead developers.
 
 ### Maintenance Release
 * Under rare circumstances, a maintenance release (e.g. 2013.1.1) may be made.
 * A maintenance release may only include fixes for crashes and major security issues.
-* Maintenance releases are made from the rc branch.
+* Maintenance releases are made from the `rc` branch.
 
 ## For Developers
-* GitHub issues should be created for most issues and discussed first before submitting a pull request. However, some trivial changes might not require an issue first. See [[Contributing]] for details.
-* Work should be done in a separate topic branch.
+* GitHub issues should be created for most issues and discussed prior to starting work or submitting a pull request. This is to give lead developers and the community a chance to give feedback on the approach and prevent disappointment or wasted effort for contributors. However, some trivial changes might not require an issue first. See [[Contributing]] for details.
+* Work should be done in topic branches. Including for external contributors.
+  - A PR attempting to merge in the master branch of a contributors fork may not get automatic Pull Request builds.
 * Any relevant documentation should be included in the topic branch.
-* New commands, drivers, settings, dialogs, etc. must be documented in the User Guide.
-* Topic branches should be submitted as pull requests against master, unless a lead developer has specifically requested  the pull request be made against beta or rc in the case of addressing bugs introduced in the current release cycle. 
+* The topic branch should be submitted for inclusion using a pull request.
+* New commands, drivers, settings, dialogs, etc. must be documented in the User Guide as appropriate.
+* All Pull Requests must follow the Pull Request template provided.
+* Pull requests must be based on NVDA's master branch.
+  - A lead developer may specifically requested the pull request be made against `beta` or `rc` in the case of addressing bugs introduced in the current release cycle.
+* Submitted pull requests should not contain edits to `changes.t2t.
+  - Instead, change log entries should be placed in the pull request description, under the appropriate section in the template.
+* All pull requests submitted must have their "Allow edits from maintainers" checkbox ticked. This is the GitHub default for new pull requests.
 
 ## For Translators
-* All translation should be based on the beta branch.
-* Translators should ensure their translation is up to date a day before the translatable string freeze ends in order for it to be included in the upcoming final release. The lead developers will announce the deadline when the freeze begins, but it will generally be close to UTC 00:00 on 14 February, 14 May, 14 August and 14 November. Work submitted after this time will not be included in the upcoming release.
+* All translation should be based on the `beta` branch.
+* Translators should ensure their translation is up to date a day before the translatable string freeze ends in order for it to be included in the upcoming final release. The lead developers will announce the deadline when the freeze begins, if in doubt check the [NVDA-Translations message board](https://groups.io/g/nvda-translations/) for the "language freeze" announcement. Work submitted after this time will not be included in the upcoming release.
 
 ## For Testers
-* beta releases are beta quality. They include code that will be in the next release and has been tested without reported issues for at least a week.
-* The master branch is bleeding edge. It includes code that is being tested for possible inclusion in upcoming releases, but it may not yet be tested much (if at all) and there may be major bugs.
+* Pre-release builds for testing (known as "snapshot builds") can be downloaded from the snapshots page at https://www.nvaccess.org/files/nvda/snapshots/.
+  - It lists 'alpha snapshots', 'beta releases', and 'release candidates'. 
+* The `alpha` builds are bleeding edge. It includes code that is being tested for possible inclusion in upcoming releases, but it may not yet be tested much (if at all) and there may be major bugs. Alpha snapshots are created directly from the `master` branch each time it changes (I.E. when a pull request is merged). Although the automated tests pass, these builds have likely had no user testing.
+* 'beta releases' are 'beta' quality. They include all features for the upcoming release that have proved stable in the alpha builds. A feature is considered stable if it has been in 'alpha builds' for at least a week.
+* 'rc releases' in most cases will be identical to the final release.

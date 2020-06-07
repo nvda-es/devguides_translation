@@ -38,24 +38,29 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 <p>Necesitas instalar las siguientes dependencias en tu sistema:</p>
 <ul>
 <li><a href="https://www.python.org/">Python</a>, versión 3.7 de 32 bits<ul>
-<li>Utiliza la última revisión menor si es posible.</li>
+<li>No uses <code>3.7.6</code>, ya que causa un error durante la construcción. Utiliza la versión <code>3.7.5</code> por ahora. Consulta #10696.</li>
 </ul>
 </li>
-<li>Microsoft Visual Studio 2017 Community, versión 15.3 o posterior:<ul>
-<li>Descarga desde https://visualstudio.microsoft.com/vs/older-downloads/</li>
-<li>Al instalar Visual Studio, necesitas activar lo siguiente:
-    En la pestaña cargas de trabajo, en el grupo Windows:
-        * Desarrollo en Universal Windows Platform
-        * Desarrollo para escritorio con C++<ul>
+<li>Microsoft Visual Studio 2019 Community, versión 16.3 o posterior:<ul>
+<li>Descarga desde https://visualstudio.microsoft.com/vs/</li>
+<li>Al instalar Visual Studio, necesitas activar lo siguiente:<ul>
+<li>En la pestaña cargas de trabajo<ul>
+<li>En el grupo Windows:<ul>
+<li>Desarrollo para escritorio con C++</li>
+</ul>
+</li>
 <li>A continuación, en la sección detalles de la instalación, bajo C++ para escritorio, en el grupo opcional, asegúrate de que se ha seleccionado lo siguiente:<ul>
-<li>Conjunto de herramientas VC++ 2017 v141 (x86,x64)</li>
-<li>Windows 10 SDK (10.0.17134.0) para escritorio C++ x86 y x64</li>
-<li>ATL de Visual C++ para x86 y x64</li>
+<li>Herramientas de compilación MSVC v142 - VS 2019 C++ x64/x86</li>
+<li>Windows 10 SDK (10.0.18362.0)</li>
+<li>ATL de C++ para las herramientas de compilación V142 (X86 y X64)</li>
+<li>Herramientas Clang de C++ para Windows</li>
 </ul>
 </li>
-<li>En la sección detalles de la instalación, bajo componentes individuales, asegúrate de que los siguientes están seleccionados:<ul>
-<li>Compiladores y bibliotecas de Visual C++ para ARM64</li>
-<li>ATL de Visual C++ para ARM64</li>
+</ul>
+</li>
+<li>En la pestaña componentes individuales, asegúrate de que los siguientes están seleccionados:<ul>
+<li>Herramientas de compilación MSVC v142 - VS 2019 C++ ARM64</li>
+<li>ATL de C++ para las herramientas de compilación V142 (ARM64)</li>
 </ul>
 </li>
 </ul>
@@ -77,7 +82,7 @@ Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer
 <li><a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a>, commit 21bbb176</li>
 <li><a href="https://github.com/DiffSK/configobj">ConfigObj</a>, commit 5b5de48</li>
 <li><a href="https://pypi.python.org/pypi/six">Six</a>, versión 1.12.0, necesario para wxPython y ConfigObj</li>
-<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.10.0, commit 146c0757</li>
+<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.12.0</li>
 <li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a> Emoji Annotations, versión 36.0</li>
 <li>Imágenes y sonidos de NVDA</li>
 <li><a href="https://download.macromedia.com/pub/developer/acrobat/AcrobatAccess.zip">Interfaz de accesibilidad de Adobe Acrobat, versión XI</a></li>
@@ -94,7 +99,7 @@ Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer
 <li><a href="https://github.com/albertosottile/py2exe/">Py2Exe</a>, versión 0.9.3.2, commit b372a8e</li>
 <li><a href="https://sourceforge.net/projects/pywin32/">Python Windows Extensions</a>, compilación 224, necesario para usar py2exe</li>
 <li><a href="https://txt2tags.org/">txt2tags</a>, versión 2.5</li>
-<li><a href="https://www.scons.org/">SCons</a>, versión 3.0.4</li>
+<li><a href="https://www.scons.org/">SCons</a>, versión 3.1.2</li>
 <li><a href="https://nsis.sourceforge.io/Main_Page/">Nulsoft Install System</a>, versión 2.51</li>
 <li><a href="https://nsis.sourceforge.io/UAC_plug-in">Complemento de NSIS para Uac</a>, versión 0.2.4, ansi</li>
 <li>xgettext y msgfmt de <a href="https://sourceforge.net/projects/cppcms/files/boost_locale/gettext_for_windows/">GNU gettext</a></li>

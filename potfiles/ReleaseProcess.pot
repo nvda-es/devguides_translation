@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 19:22+0200\n"
+"POT-Creation-Date: 2020-06-07 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,161 +31,66 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:5
-msgid "## Changes to the existing process"
+msgid " "
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:6
-msgid ""
-"The process outlined later in this document has only been implemented very "
-"recently. Therefore this first section talks specifically about the changes "
-"from the older process. "
+msgid "## Release Workflow"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:7
-msgid "### Goals and reasoning"
+msgid ""
+"This is the general release workflow. Information for specific community "
+"groups is provided in later sections. The production of a release consists "
+"of the following:"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:8
-msgid ""
-"The main goal of these changes is to remove the need for a \"next\" branch "
-"and pull request incubation. Reasons for this are:"
+msgid "1. Development Phase"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:9
 msgid ""
-"* The next branch required manual merging of pull requests. This did not fit "
-"in well with Github's infrastructure in that these incubation merges were "
-"not tracked very well, reverts were messy and sometimes required next to be "
-"totally re-created, pull requests on next would frequently become conflicted "
-"with other pull requests, which meant manually fixing conflicts in both next "
-"and master."
+"   - Development is done in parallel to the release process for the prior "
+"version. E.G. NVDA 2020.2 is in development while NVDA 2020.1 is going "
+"through the Release Phase"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:10
-msgid ""
-" * Up until recently incubation was the only way we could guarantee some "
-"kind of code quality. Now we have a growing number of unit tests, system "
-"testing is well under way, and Github's management of pull requests "
-"(including mandatory code reviews) ensure a minimum code quality we did not "
-"have before."
+msgid "1. Release Phase"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:11
-msgid "### Changes for developers"
+msgid "   - Final testing, and translations work prior to release."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:12
-msgid ""
-"* Once a pull request is approved by reviewers and all build checks pass, "
-"the pull request will be merged straight to master. There is no longer "
-"incubation on next."
+msgid "### Development phase"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:13
 msgid ""
-"* If a merged pull request results in a regression, new bug or does not work "
-"as advertised, the lead developers will be a little more strict on reverting "
-"the pull request than in the past."
+"* Contributions are made according to the [For Developers](#for-developers) "
+"section "
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:14
-msgid "### Changes for testers"
+msgid ""
+"* Once a pull request has been reviewed and approved by at least one NVDA "
+"Collaborator and all build checks have passed, a lead developer will make a "
+"final commit to the pull request which updates `changes.t2t`, and then will "
+"squash merge the pull request into master."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:15
 msgid ""
-"* The next branch and next snapshots will no longer exist. Anyone currently "
-"on a next snapshot will be automatically updated to new \"alpha\" snapshots. "
-"Alpha snapshots are created directly from Master each time it changes (I.e. "
-"when a pull request is merged).  As the name suggests, these snapshots are "
-"alpha quality. And although automated tests pass, these builds have had no "
-"user testing."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:16
-msgid ""
-" * Anyone currently on master snapshots will be upgraded to the first "
-"available tagged beta for the current release. Beta builds, as the name "
-"implies, are beta quality and have had some testing by users. Note that as "
-"new betas are made available you will keep automatically upgrading, and then "
-"also upgrade to the final stable release. To get back to beta testing for "
-"the next release you will need to manually download a new beta for that "
-"release."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:17
-msgid ""
-" * The snapshots page at https://www.nvaccess.org/files/nvda/snapshots/ now "
-"lists both alpha snapshots and all beta releases. "
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:18
-msgid " "
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:19
-msgid "## Release Workflow"
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:20
-msgid ""
-"This is the general release workflow. Information for specific community "
-"groups is provided in later sections."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:21
-msgid "### Development Phase"
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:22
-msgid "* Work should be done in topic branches."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:23
-msgid ""
-"* A topic branch should be submitted for inclusion using a pull request."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:24
-msgid "* All Pull requests must follow the Pull Request template provided."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:25
-msgid ""
-"* Pull requests must be based on NVDA's master branch unless explicitly "
-"instructed to do otherwise by a lead developer."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:26
-msgid ""
-"* Submitted pull requests should not contain edits to changes.t2t. Instead, "
-"change log entries should be placed in the pull request description, under "
-"the appropriate section in the template."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:27
-msgid ""
-"* All pull requests submitted must have their \"Allow edits from maintainers"
-"\" checkbox ticked. This is usually the case for all new pull requests. "
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:28
-msgid ""
-"* Once a pull request has been reviewed and approved by at least one NVDA "
-"Collaborator and all build checks have passed, a lead developer will make a "
-"final commit to the pull request which updates changes.t2t, and then will "
-"squash merge the pull request into master."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:29
-msgid ""
-"* If the merging of a pull request to master causes any build checks on "
-"master to fail, the pull request is reverted without question. This is "
+"* If the merging of a pull request to `master` causes any build checks on "
+"`master` to fail, the pull request is reverted without question. This is "
 "however unlikely to be an issue as build checks on the pull request itself "
 "must have already passed."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:30
+#: ..\python_docs\ReleaseProcess.py:16
 msgid ""
 "* If a merged pull request has been identified as causing a regression, new "
 "bug, or does not work as originally reported, the pull request may be "
@@ -193,250 +98,368 @@ msgid ""
 "reverting the pull request may be: "
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:31
+#: ..\python_docs\ReleaseProcess.py:17
 msgid ""
-"    * The pull request was submitted by an active collaborator and it is "
-"inevitable that they will follow through with a suitable pull request to "
-"address the issues."
+"  * The pull request was submitted by an active collaborator who is likely "
+"to follow up with a suitable pull request to address the issues."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:32 ..\python_docs\ReleaseProcess.py:40
-msgid "    * The bug is trivial enough to be fixed by a collaborator."
+#: ..\python_docs\ReleaseProcess.py:18
+msgid "  * The bug is trivial enough to be fixed by a collaborator."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:19
+msgid ""
+"*  Automatic 'alpha snapshots' are made available to the public for very "
+"early testing. See [For Testers](#for-testers)"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:20
+msgid "### Release phase"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:21
+msgid ""
+"The release phase is intended to refine the release, with testing from wider "
+"audiences, and incorporated translations."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:22
+msgid "When no blocking issues are encountered it is expected to take 7 weeks:"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:23
+msgid "- Beta builds: 6 weeks (starting 7 weeks before release)"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:24
+msgid "  - 4 weeks to receive any required fixes"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:25
+msgid "  - 2 weeks for translation freeze (starting 3 weeks before release) "
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:26
+msgid "- RC: 1 week."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:27
+msgid ""
+"  - When issues are encountered, subsequent RC's may take another week at "
+"the discretion of lead developers."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:28
+msgid "#### Beta builds"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:29
+msgid ""
+"* A commit without any known serious issues, will be selected from the "
+"'master' branch and merged into 'beta', this draws the line for features "
+"included in the release."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:30
+msgid ""
+"  - This commit will have been on `master` and thus, in 'alpha builds' for "
+"at least 2 weeks and can now be considered beta quality."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:31
+msgid "* A tagged 'beta release' will be created for wider testing. "
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:32
+msgid ""
+"* New pull requests may be now considered for squash merging straight to "
+"beta."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:33
-msgid ""
-"*  Builds of  master (known as alpha snapshots) will be made available to "
-"the public for very early testing. This is bleeding-edge code and should "
-"never be run in production environments."
+msgid "  - If addressing regression introduced in this release."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:34
-msgid ""
-"* Up until 7 weeks before a release, a last known good commit of master (I."
-"e. one that passes build checks) will be periodically merged into a \"beta\" "
-"branch, making that code available for early translation. The beta branch at "
-"this stage should still be considered bleeding-edge, and is not recommended "
-"for people than other to check early translation work."
+msgid "  - If addressing a bug in a \"must have\" feature for this release."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:35
-msgid "### Beta phase"
+msgid ""
+"  - If addressing a critical Operating System change out of our control."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:36
-msgid ""
-"* From 7 weeks before the release, merges from master to beta will no longer "
-"occur. New pull requests may be now considered for squash merging straight "
-"to beta, if and only if they are addressing a bug introduced in the current "
-"release cycle or a critical Operating System change out of our control. "
+msgid "* As appropriate new tagged beta releases will be published. "
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:37
-msgid ""
-"* If any changes are made to beta, such as the merging of critical pull "
-"requests or translation merges, beta will be periodically merged back to "
-"master. "
+msgid "* As necessary `beta` will be merged back into master."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:38
-msgid ""
-"* Starting from 5 weeks before final release, tagged beta releases will be "
-"published periodically, allowing the wider community to try out the betas. "
-"At this stage code originally introduced through master will have been "
-"tested for at least 2 weeks, thus the beta builds can be seen as beta "
-"quality."
+msgid "  - For critical pull requests or translation merges."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:39
 msgid ""
 "* If a merged pull request that reached beta has been identified as causing "
-"a regression, new bug, or does not work as originally reported, the pull "
-"request may be reverted at the discretion of the lead developers. Reasons in "
-"favor of not reverting the pull request may be: "
+"a regression, new bug, or does not work as originally reported:"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:40
+msgid ""
+"  - The pull request may be reverted at the discretion of the lead "
+"developers."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:41
-msgid ""
-"* If a pull request is reverted from beta, it is more than likely any new "
-"pull request replacing it will not get into the current release."
+msgid "  - It may be fixed by a collaborator if the bug is trivial enough."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:42
-msgid "### Translatable String Freeze"
+msgid ""
+"  - Once a PR is reverted from `beta`, a replacement PR is very unlikely to "
+"get into the current release."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:43
-msgid ""
-"* 3 weeks before the release is due, the beta branch will enter a "
-"translatable string freeze for 2 weeks. That is, no changes to text strings "
-"that affect translations are allowed. Minor spelling or grammatical fixes "
-"may be made to documentation files, but gettext strings in the code should "
-"not be changed at all."
+msgid "### Translatable String Freeze"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:44
-msgid ""
-"* Only critical bug fixes and translation updates should be committed to the "
-"beta branch at this stage."
+msgid "- The beta branch will enter a translatable string freeze."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:45
-msgid "### Release Candidate"
+msgid ""
+"- No changes to text strings that affect translations are allowed. Minor "
+"spelling or grammatical fixes may be made to documentation files, but "
+"`gettext` strings in the code should not be changed at all."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:46
+msgid ""
+"* Only critical bug fixes and translation updates should be committed to the "
+"beta branch at this stage. Otherwise the translation period will need to be "
+"extended by an appropriate amount of time."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:47
+msgid "### Release Candidate"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:48
 msgid ""
 "* After the translatable string freeze, the \"rc\" branch will be created "
 "based on the beta branch."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:47
-msgid ""
-"* The first release candidate will immediately be released from the rc "
-"branch."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:48
-msgid ""
-"* After this, only critical bug fixes should be committed to the rc branch."
-msgstr ""
-
 #: ..\python_docs\ReleaseProcess.py:49
-msgid "* Subsequent release candidates may be released."
+msgid ""
+"* The first release candidate will immediately be released from the `rc` "
+"branch."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:50
 msgid ""
-"* The final release can only be made if there have been no commits and at "
-"least 1 week since the last release candidate."
+"* After this, only critical bug fixes should be committed to the `rc` branch."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:51
-msgid "### Representation on GitHub"
+msgid "* Subsequent release candidates may be released."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:52
+msgid ""
+"* The final release can only be made if there have been no significant "
+"changes and at least 1 week since the last release candidate."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:53
+msgid "### Representation on GitHub"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:54
 msgid ""
 "* For most items, an issue will be filed and discussed before a pull request "
 "is submitted."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:53
+#: ..\python_docs\ReleaseProcess.py:55
 msgid ""
 "* If priority should be given to an issue for inclusion in a specific "
 "release, its milestone should be set to the appropriate release milestone (e."
 "g. 2014.4)."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:54
+#: ..\python_docs\ReleaseProcess.py:56
 msgid ""
 "* Once a pull request is squash merged to the master branch, the milestone "
 "for the issue (if any) and pull request should be set to the next release "
 "milestone (e.g. 2013.2) and it should be closed as fixed."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:55
+#: ..\python_docs\ReleaseProcess.py:57
 msgid ""
 "* Issues/pull requests for bug fixes for an rc should have their milestone "
 "set to the relevant release (e.g. 2013.2)."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:56
+#: ..\python_docs\ReleaseProcess.py:58
 msgid "### Scheduled Releases"
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:57
+#: ..\python_docs\ReleaseProcess.py:59
 msgid ""
-"* Generally, final releases will be due around 22 February, 22 May, 22 "
-"August and 22 November. The exact date for each release will be determined "
-"by the lead developers."
+"* In the past NVDA has been released 4 times per year. This is not expected "
+"to change drastically. The exact date for each release will be determined by "
+"the lead developers."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:58
+#: ..\python_docs\ReleaseProcess.py:60
 msgid "### Maintenance Release"
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:59
+#: ..\python_docs\ReleaseProcess.py:61
 msgid ""
 "* Under rare circumstances, a maintenance release (e.g. 2013.1.1) may be "
 "made."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:60
+#: ..\python_docs\ReleaseProcess.py:62
 msgid ""
 "* A maintenance release may only include fixes for crashes and major "
 "security issues."
 msgstr ""
 
-#: ..\python_docs\ReleaseProcess.py:61
-msgid "* Maintenance releases are made from the rc branch."
-msgstr ""
-
-#: ..\python_docs\ReleaseProcess.py:62
-msgid "## For Developers"
-msgstr ""
-
 #: ..\python_docs\ReleaseProcess.py:63
-msgid ""
-"* GitHub issues should be created for most issues and discussed first before "
-"submitting a pull request. However, some trivial changes might not require "
-"an issue first. See [[Contributing]] for details."
+msgid "* Maintenance releases are made from the `rc` branch."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:64
-msgid "* Work should be done in a separate topic branch."
+msgid "## For Developers"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:65
-msgid "* Any relevant documentation should be included in the topic branch."
+msgid ""
+"* GitHub issues should be created for most issues and discussed prior to "
+"starting work or submitting a pull request. This is to give lead developers "
+"and the community a chance to give feedback on the approach and prevent "
+"disappointment or wasted effort for contributors. However, some trivial "
+"changes might not require an issue first. See [[Contributing]] for details."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:66
 msgid ""
-"* New commands, drivers, settings, dialogs, etc. must be documented in the "
-"User Guide."
+"* Work should be done in topic branches. Including for external contributors."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:67
 msgid ""
-"* Topic branches should be submitted as pull requests against master, unless "
-"a lead developer has specifically requested  the pull request be made "
-"against beta or rc in the case of addressing bugs introduced in the current "
-"release cycle. "
+"  - A PR attempting to merge in the master branch of a contributors fork may "
+"not get automatic Pull Request builds."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:68
-msgid "## For Translators"
+msgid "* Any relevant documentation should be included in the topic branch."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:69
-msgid "* All translation should be based on the beta branch."
+msgid ""
+"* The topic branch should be submitted for inclusion using a pull request."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:70
 msgid ""
-"* Translators should ensure their translation is up to date a day before the "
-"translatable string freeze ends in order for it to be included in the "
-"upcoming final release. The lead developers will announce the deadline when "
-"the freeze begins, but it will generally be close to UTC 00:00 on 14 "
-"February, 14 May, 14 August and 14 November. Work submitted after this time "
-"will not be included in the upcoming release."
+"* New commands, drivers, settings, dialogs, etc. must be documented in the "
+"User Guide as appropriate."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:71
-msgid "## For Testers"
+msgid "* All Pull Requests must follow the Pull Request template provided."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:72
-msgid ""
-"* beta releases are beta quality. They include code that will be in the next "
-"release and has been tested without reported issues for at least a week."
+msgid "* Pull requests must be based on NVDA's master branch."
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:73
 msgid ""
-"* The master branch is bleeding edge. It includes code that is being tested "
-"for possible inclusion in upcoming releases, but it may not yet be tested "
-"much (if at all) and there may be major bugs."
+"  - A lead developer may specifically requested the pull request be made "
+"against `beta` or `rc` in the case of addressing bugs introduced in the "
+"current release cycle."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:74
+msgid "* Submitted pull requests should not contain edits to `changes.t2t."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:75
+msgid ""
+"  - Instead, change log entries should be placed in the pull request "
+"description, under the appropriate section in the template."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:76
+msgid ""
+"* All pull requests submitted must have their \"Allow edits from maintainers"
+"\" checkbox ticked. This is the GitHub default for new pull requests."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:77
+msgid "## For Translators"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:78
+msgid "* All translation should be based on the `beta` branch."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:79
+msgid ""
+"* Translators should ensure their translation is up to date a day before the "
+"translatable string freeze ends in order for it to be included in the "
+"upcoming final release. The lead developers will announce the deadline when "
+"the freeze begins, if in doubt check the [NVDA-Translations message board]"
+"(https://groups.io/g/nvda-translations/) for the \"language freeze\" "
+"announcement. Work submitted after this time will not be included in the "
+"upcoming release."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:80
+msgid "## For Testers"
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:81
+msgid ""
+"* Pre-release builds for testing (known as \"snapshot builds\") can be "
+"downloaded from the snapshots page at https://www.nvaccess.org/files/nvda/"
+"snapshots/."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:82
+msgid ""
+"  - It lists 'alpha snapshots', 'beta releases', and 'release candidates'. "
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:83
+msgid ""
+"* The `alpha` builds are bleeding edge. It includes code that is being "
+"tested for possible inclusion in upcoming releases, but it may not yet be "
+"tested much (if at all) and there may be major bugs. Alpha snapshots are "
+"created directly from the `master` branch each time it changes (I.E. when a "
+"pull request is merged). Although the automated tests pass, these builds "
+"have likely had no user testing."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:84
+msgid ""
+"* 'beta releases' are 'beta' quality. They include all features for the "
+"upcoming release that have proved stable in the alpha builds. A feature is "
+"considered stable if it has been in 'alpha builds' for at least a week."
+msgstr ""
+
+#: ..\python_docs\ReleaseProcess.py:85
+msgid "* 'rc releases' in most cases will be identical to the final release."
 msgstr ""

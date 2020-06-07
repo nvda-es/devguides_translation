@@ -11,13 +11,13 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
 * Do a review of the `user_docs/en/changes.t2t` file.
   - Ask for a second review.
 * Create a [new pre-release / annotated tag](#create-the-release--annotated-tag)
-* Wait for the `appVeyor` build to complete.
+* Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 
 ### During the Beta period
-* Periodically look at recent issues filed, specifically looking for those with `p1`, `crash` or `appcrash` labels.
+* Periodically look at recent issues filed, specifically looking for those with `p1`, `bug/crash` or `bug/app-crash` labels.
 * Periodically look for PRs based on beta and ensure they are reviewed then merged or rejected.
   - As PRs based on the beta branch are merged, periodically tag further betas.
 
@@ -34,7 +34,7 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 
 ## Release candidates (pre-release)
 * Ensure it is safe to release an RC.
-  - Looking at recent issues filed, specifically looking for those with `P1`, `crash` or `appcrash` labels.
+  - Looking at recent issues filed, specifically looking for those with `p1`, `bug/crash` or `bug/app-crash` labels.
 * Check for PRs against `rc`, this is more likely after the first RC release.
   - Use [search on PR page `is:pr is:open base:rc`](https://github.com/nvaccess/nvda/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+base%3Arc)
   - Look for any PRs based on `rc`, and review and approve/merge or reject them.
@@ -54,14 +54,14 @@ Normally not required, however, occasionally to fix a critical issue requires ch
   - For RC1, reset the `rc` branch to `beta`
   - For RC1+, merge `beta` to `rc`
 * Create a [new pre-release / annotated tag](#create-the-release--annotated-tag)
-* Wait for the `appVeyor` build to complete.
+* Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 
 ## Final release
 * Create a [new release / annotated tag](#create-the-release--annotated-tag)
-* Wait for the `appVeyor` build to complete.
+* Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)

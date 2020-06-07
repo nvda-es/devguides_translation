@@ -1,6 +1,9 @@
 # Contributing to NVDA
 If you would like to contribute code or documentation to NVDA, please follow these guidelines.
 
+## Note: Currently only accepting bug-fix / maintenance PR's only while addressing backlog.
+For more information please see: https://github.com/nvaccess/nvda/issues/11006
+
 ## Testing
 
 Testing alpha / beta / and release candidates help to ensure the quality of the NVDA.
@@ -45,7 +48,6 @@ git pull
 
 You should use a separate "topic" branch for each issue.
 All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue.
-Branches should *never* be based on the "next" branch.
 
 If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly.
 
@@ -97,4 +99,18 @@ Code style is enforced with the flake8 linter, see [`tests/lint/readme.md`](http
 ```
 # Translators: The name of a category of NVDA commands.
 SCRCAT_TEXTREVIEW = _("Text review")
+```
+* Lengthy translatable strings can be split across multiple lines, taking advantage of Python's implicit line joining inside parentheses. Translators comment can span multiple lines as well. For example:
+```
+self.copySettingsButton = wx.Button(
+	self,
+	label=_(
+		# Translators: The label for a button in general settings to copy
+		# current user settings to system settings (to allow current
+		# settings to be used in secure screens such as User Account
+		# Control (UAC) dialog).
+		"Use currently saved settings during sign-in and on secure screens"
+		" (requires administrator privileges)"
+	)
+)
 ```

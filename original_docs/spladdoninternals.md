@@ -1228,33 +1228,34 @@ Encoder support is part of two app modules: SPL Engine and StationPlaylist Strea
 
 Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (splengine.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
 
-On top of the base encoder class are three encoder classes, representing entries from SAM, SPL, and AltaCast. SAM encoder entries (splengine.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (splengine.encoders.SPLEncoderWindow) is a typical SysListView32 control (see the section on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as stream labels.
+On top of the base encoder class are three encoder classes, representing entries from SAM, SPL, and AltaCast. SAM encoder entries (splengine.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (splengine.encoders.SPLEncoderWindow) is a typical SysListView32 control (see the section on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as stream labels collection.
 
 ### Common services: basic settings, stream labels and related methods
 
 All encoder classes provide the following common services:
 
-* Configuring settings: five settings can be configured:
+* Configuring settings: six settings can be configured:
+	* A custom stream label can be defined for ease of identification.
 	* Pressing F11 will tell NVDA if NVDA should switch to Studio when the encoder is connected.
 	*Pressing Shift+F11 will ask Studio will play the next track when connected.
 	* Pressing Control+F11 will enable background encoder monitoring (more on this in a second).
 	* Enabling or disabling connection progress tones (add-on 7.0, configurable from encoder settings dialog described below).
 	* Announcing connection status until the selected encoder is connected (add-on 20.03), also configurable from encoder settings dialog.
 	* Once these settings are changed, the new values will be stored in appropriate flag in the encoder entry, which in turn are saved in the configuration map.
-* Retrieves settings. This is done by various property methods - once called, these methods will look up various settings for the encoder from the configuration map (key is the setting flag, value is the encoder ID).
+* Apart from stream labels, retrieves settings. This is done by various property methods - once called, these methods will look up various settings for the encoder from the configuration map (key is the setting flag, value is the encoder ID). Stream labels are organized differently (see below).
 * Monitors and responds to connection status changes. The response routine (onConnection method) attempts to set focus to Studio and/or play the first checked track if configured to do so.
 * Loads stream labels when an encoder first gains focus (if this was loaded earlier, it could be a waste of space, especially if encoders are never used).
 * Announces stream labels (if defined) via reportFocus method. In contrast with the Studio track item version, an encoder's reportFocus routine:
 	1. Locates stream labels for the current encoder (the configuration map stores stream labels as dictionaries (sections), with each dictionary representing the encoder type, key is the encoder position and the value is the label; each encoder, when told to look up stream labels, will consult its own labels dictionary).
 	2. If a label is found, NVDA will announce the label (in braille, surrounded by parentheses).
-* Define and remove stream labels. This is done via stream labels dialog (F12) that'll make sure you entered a label (if not, the encoder position is removed from the encoder-specific stream labels dictionary).
-* Updates stream label position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
+* Define and remove stream labels. If a label is defined (no empty string), stream label is stored in encoder specific stream labels collection, otherwise removed from the collection.
+* Updates stream label and flags position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
 * Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL and AltaCast allows one to hear encoder format and transfer rate/connection status.
-* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder (include stream labels and the five settings described above) has been added. Press Alt+NVDA+0 to open this dialog.
+* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder has been added. Press Alt+NVDA+0 to open this dialog.
 
 ### Encoder ID's
 
-An encoder ID is a string which uniquely identifies an encoder. This consists of a string denoting the encoder type (SAM for SAM encoder, for instance), followed by the encoder position (separated by a space). For instance, the first SAM encoder is given the ID "SAM 1". The ID's are used to look up stream labels, configure settings and to identify encoders being monitored (SPL Controller, E).
+An encoder ID is a string which uniquely identifies an encoder. This consists of a string denoting the encoder type (SAM for SAM encoder, for instance), followed by the encoder position (separated by a space). For instance, the first SAM encoder is given the ID "SAM 1". The ID's are used to retrieve and configure encoder settings, as well as identifying encoders when monitoring them in the background.
 
 ### More and more threads: connection messages and background encoder monitoring
 
@@ -1272,7 +1273,7 @@ The connection handling routine performs the following:
 3. If connected, NvDA will play a tone, then:
 	* Do nothing if not told to focus to studio nor play the next track.
 	* Focuses to studio and/or plays the next track if no tracks are playing by calling onConnect method.
-4. For other messages, NVDA will periodically play a progress tone and announce connection status so far as reported by the encoder.
+4. For other messages, NVDA will periodically play a progress tone and announce connection status so far as reported by the encoder (progress tones will not be played if suppressed from encoder settings dialog).
 5. This loop repeats as long as this encoder is being monitored in the background.
 
 ### Encoder-specific routines

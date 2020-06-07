@@ -46,7 +46,10 @@ si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de
 <h3 id="problemas-conocidos-con-la-solicitud-de-cambio">Problemas conocidos con la solicitud de cambio:</h3>
 <p>¿Hay problemas o desventajas con este enfoque? Por ejemplo: <em>No funcionará en Python 3</em></p>
 <h3 id="entrada-en-el-registro-de-cambios">Entrada en el registro de cambios:</h3>
-<p>La sección y descripción de este cambio para incluirlo en el archivo de cambios (usado como un documento de novedades / registro de cambios). Ya que este archivo (<code>user_docs/en/changes.t2t</code>) tiende a provocar conflictos, se pide a los colaboradores que no editen el archivo directamente, y que en su lugar añadan la entrada en la parte inferior de la descripción de la solicitud de cambios.</p>
+<p>Una entrada destinada a explicar los cambios en NVDA a los usuarios finales. La entrada que propongas se añadirá al archivo <code>changes.t2t</code>, que se convierte a HTML y se utiliza como documento de novedades / registro de cambios.
+Consulta (<a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t"><code>user_docs/en/changes.t2t</code></a>)</p>
+<p>Ya que el archivo <code>changes.t2t</code> tiende a provocar conflictos, se pide a los colaboradores que no lo editen directamente, y que en su lugar añadan la entrada en la parte inferior de la descripción de la solicitud de cambios.
+Un desarrollador principal actualizará el archivo al mezclar la solicitud de cambio.</p>
 <p>Por ejemplo:</p>
 <pre><code>*Nuevas características*
 `Added a command to announce useful thing. (#WXYZ, #ABCD)`

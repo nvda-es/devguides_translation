@@ -47,7 +47,11 @@ Example:
 Are there any known issues or downsides of this approach. For instance: _Will not work with python 3_
 
 ### Change log entry:
-The section and description of this change to use for the changes file (used as a whats changed / change log document). Because this file (`user_docs/en/changes.t2t`) is prone to conflicts, we ask contributors not to edit the file directly, but instead add the entry to the bottom of the PR description.
+An entry intended to explain changes in NVDA to end users. Your proposed entry will be added to the `changes.t2t` file which is converted to html and used as a whats changed / change log document.
+See ([`user_docs/en/changes.t2t`](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t))
+
+Because the `changes.t2t` file is prone to conflicts, we ask contributors not to edit the file directly, but instead add the entry to the bottom of the PR description.
+A lead developer will update file when merging the pull request.
 
 For instance:
 ```

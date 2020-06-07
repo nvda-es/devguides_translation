@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 19:22+0200\n"
+"POT-Creation-Date: 2020-06-07 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5382,7 +5382,7 @@ msgid ""
 "entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder "
 "class with encoder specific differences. All encoder classes provide similar "
 "routines, with differences being how connection messages are handled and "
-"obtaining encoder specific data such as stream labels."
+"obtaining encoder specific data such as stream labels collection."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:745
@@ -5394,74 +5394,79 @@ msgid "All encoder classes provide the following common services:"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:747
-msgid "* Configuring settings: five settings can be configured:"
+msgid "* Configuring settings: six settings can be configured:"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:748
+msgid "\t* A custom stream label can be defined for ease of identification."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:749
 msgid ""
 "\t* Pressing F11 will tell NVDA if NVDA should switch to Studio when the "
 "encoder is connected."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:749
+#: ..\python_docs\spladdoninternals.py:750
 msgid ""
 "\t*Pressing Shift+F11 will ask Studio will play the next track when "
 "connected."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:750
+#: ..\python_docs\spladdoninternals.py:751
 msgid ""
 "\t* Pressing Control+F11 will enable background encoder monitoring (more on "
 "this in a second)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:751
+#: ..\python_docs\spladdoninternals.py:752
 msgid ""
 "\t* Enabling or disabling connection progress tones (add-on 7.0, "
 "configurable from encoder settings dialog described below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:752
+#: ..\python_docs\spladdoninternals.py:753
 msgid ""
 "\t* Announcing connection status until the selected encoder is connected "
 "(add-on 20.03), also configurable from encoder settings dialog."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:753
+#: ..\python_docs\spladdoninternals.py:754
 msgid ""
 "\t* Once these settings are changed, the new values will be stored in "
 "appropriate flag in the encoder entry, which in turn are saved in the "
 "configuration map."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:754
+#: ..\python_docs\spladdoninternals.py:755
 msgid ""
-"* Retrieves settings. This is done by various property methods - once "
-"called, these methods will look up various settings for the encoder from the "
-"configuration map (key is the setting flag, value is the encoder ID)."
+"* Apart from stream labels, retrieves settings. This is done by various "
+"property methods - once called, these methods will look up various settings "
+"for the encoder from the configuration map (key is the setting flag, value "
+"is the encoder ID). Stream labels are organized differently (see below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:755
+#: ..\python_docs\spladdoninternals.py:756
 msgid ""
 "* Monitors and responds to connection status changes. The response routine "
 "(onConnection method) attempts to set focus to Studio and/or play the first "
 "checked track if configured to do so."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:756
+#: ..\python_docs\spladdoninternals.py:757
 msgid ""
 "* Loads stream labels when an encoder first gains focus (if this was loaded "
 "earlier, it could be a waste of space, especially if encoders are never "
 "used)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:757
+#: ..\python_docs\spladdoninternals.py:758
 msgid ""
 "* Announces stream labels (if defined) via reportFocus method. In contrast "
 "with the Studio track item version, an encoder's reportFocus routine:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:758
+#: ..\python_docs\spladdoninternals.py:759
 msgid ""
 "\t1. Locates stream labels for the current encoder (the configuration map "
 "stores stream labels as dictionaries (sections), with each dictionary "
@@ -5470,28 +5475,28 @@ msgid ""
 "its own labels dictionary)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:759
+#: ..\python_docs\spladdoninternals.py:760
 msgid ""
 "\t2. If a label is found, NVDA will announce the label (in braille, "
 "surrounded by parentheses)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:760
-msgid ""
-"* Define and remove stream labels. This is done via stream labels dialog "
-"(F12) that'll make sure you entered a label (if not, the encoder position is "
-"removed from the encoder-specific stream labels dictionary)."
-msgstr ""
-
 #: ..\python_docs\spladdoninternals.py:761
 msgid ""
-"* Updates stream label position when told to do so (via a dialog, activated "
-"by pressing Control+F12). This is needed if encoders were removed, as you "
-"may hear stream label for an encoder that no longer exists. This is "
-"implemented as a variation of find predecessor algorithm."
+"* Define and remove stream labels. If a label is defined (no empty string), "
+"stream label is stored in encoder specific stream labels collection, "
+"otherwise removed from the collection."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:762
+msgid ""
+"* Updates stream label and flags position when told to do so (via a dialog, "
+"activated by pressing Control+F12). This is needed if encoders were removed, "
+"as you may hear stream label for an encoder that no longer exists. This is "
+"implemented as a variation of find predecessor algorithm."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:763
 msgid ""
 "* Announces encoder columns. The base class can announce encoder position "
 "(Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce "
@@ -5499,35 +5504,34 @@ msgid ""
 "hear encoder format and transfer rate/connection status."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:763
+#: ..\python_docs\spladdoninternals.py:764
 msgid ""
 "* In add-on 7.0, a central configuration dialog for configuring encoder "
-"settings for the selected encoder (include stream labels and the five "
-"settings described above) has been added. Press Alt+NVDA+0 to open this "
-"dialog."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:764
-msgid "### Encoder ID's"
+"settings for the selected encoder has been added. Press Alt+NVDA+0 to open "
+"this dialog."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:765
+msgid "### Encoder ID's"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:766
 msgid ""
 "An encoder ID is a string which uniquely identifies an encoder. This "
 "consists of a string denoting the encoder type (SAM for SAM encoder, for "
 "instance), followed by the encoder position (separated by a space). For "
 "instance, the first SAM encoder is given the ID \"SAM 1\". The ID's are used "
-"to look up stream labels, configure settings and to identify encoders being "
-"monitored (SPL Controller, E)."
+"to retrieve and configure encoder settings, as well as identifying encoders "
+"when monitoring them in the background."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:766
+#: ..\python_docs\spladdoninternals.py:767
 msgid ""
 "### More and more threads: connection messages and background encoder "
 "monitoring"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:767
+#: ..\python_docs\spladdoninternals.py:768
 msgid ""
 "As we saw in a previous chapter, threads allow developers to let programs "
 "perform certain tasks in the background. Even in encoder support, threads "
@@ -5535,14 +5539,14 @@ msgid ""
 "and background encoder monitoring."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:768
+#: ..\python_docs\spladdoninternals.py:769
 msgid ""
 "Each encoder overlay class (not the base encoder) includes dedicated "
 "connection handling routines (reportConnectionStatus). Depending on how you "
 "invoke this, it starts up as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:769
+#: ..\python_docs\spladdoninternals.py:770
 msgid ""
 "* If background encoder monitoring is off and you press F9 to connect, NVDA "
 "will run this routine in a separate thread. For SAM, this is checked right "
@@ -5550,7 +5554,7 @@ msgid ""
 "clicking \"connect\" button (manipulates focus in the process)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:770
+#: ..\python_docs\spladdoninternals.py:771
 msgid ""
 "* If background encoder monitoring is on before pressing F9, the routine "
 "will run from another thread when this setting is switched on. Then when you "
@@ -5558,11 +5562,11 @@ msgid ""
 "skipping the above step."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:771
+#: ..\python_docs\spladdoninternals.py:772
 msgid "The connection handling routine performs the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:772
+#: ..\python_docs\spladdoninternals.py:773
 msgid ""
 "1. Locates status message for the encoder entry. For SAM, it is the "
 "description text, and for SPL, it is one of the entry's child objects "
@@ -5570,7 +5574,7 @@ msgid ""
 "if the thread is running)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:773
+#: ..\python_docs\spladdoninternals.py:774
 msgid ""
 "2. Announces error messages if any and will try again after waiting a little "
 "while (fraction of a second). If NVDA is told to not announce connection "
@@ -5578,51 +5582,52 @@ msgid ""
 "thread will stop when an error message is seen."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:774
+#: ..\python_docs\spladdoninternals.py:775
 msgid "3. If connected, NvDA will play a tone, then:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:775
+#: ..\python_docs\spladdoninternals.py:776
 msgid "\t* Do nothing if not told to focus to studio nor play the next track."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:776
+#: ..\python_docs\spladdoninternals.py:777
 msgid ""
 "\t* Focuses to studio and/or plays the next track if no tracks are playing "
 "by calling onConnect method."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:777
+#: ..\python_docs\spladdoninternals.py:778
 msgid ""
 "4. For other messages, NVDA will periodically play a progress tone and "
-"announce connection status so far as reported by the encoder."
+"announce connection status so far as reported by the encoder (progress tones "
+"will not be played if suppressed from encoder settings dialog)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:778
+#: ..\python_docs\spladdoninternals.py:779
 msgid ""
 "5. This loop repeats as long as this encoder is being monitored in the "
 "background."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:779
+#: ..\python_docs\spladdoninternals.py:780
 msgid "### Encoder-specific routines"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:780
+#: ..\python_docs\spladdoninternals.py:781
 msgid ""
 "In addition to basic services, each encoder routine has its own goodies, "
 "including:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:781
+#: ..\python_docs\spladdoninternals.py:782
 msgid "For SAM encoders:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:782
+#: ..\python_docs\spladdoninternals.py:783
 msgid "* To disconnect, press F10."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:783
+#: ..\python_docs\spladdoninternals.py:784
 msgid ""
 "* You can press Control+F9 or Control+F10 to connect or disconnect all "
 "encoders (does not work well in recent SAM releases, according to my tests). "
@@ -5630,46 +5635,46 @@ msgid ""
 "activates the correct item on its own)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:784
+#: ..\python_docs\spladdoninternals.py:785
 msgid "For SPL encoder family (including AltaCast):"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:785
+#: ..\python_docs\spladdoninternals.py:786
 msgid "* When you press F9 to connect, NVDA does the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:786
+#: ..\python_docs\spladdoninternals.py:787
 msgid ""
 "\t1. Locates \"connect\" button, and if it says \"Connect\", clicks it (obj."
 "doAction)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:787
+#: ..\python_docs\spladdoninternals.py:788
 msgid "\t2. Moves focus back to the entry (self.SetFocus)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:788
+#: ..\python_docs\spladdoninternals.py:789
 msgid ""
 "* To disconnect, press TAB until you arrive at \"Disconnect\" button and "
 "press SPACE."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:789
+#: ..\python_docs\spladdoninternals.py:790
 msgid "## Final notes and add-on development process overview"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:790
+#: ..\python_docs\spladdoninternals.py:791
 msgid ""
 "Now that we've visited internals of StationPlaylist add-on, I'd like to give "
 "you a tour of my lab where I develop this add-on. Along the way you'll learn "
 "how an add-on is born, coded, tested, released and maintained."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:791
+#: ..\python_docs\spladdoninternals.py:792
 msgid "### Lab setup, development equipment and software"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:792
+#: ..\python_docs\spladdoninternals.py:793
 msgid ""
 "For all my software development, I use two computers: a touchscreen laptop "
 "and a desktop, both running Windows 10 and latest NVDA alpha snapshots. Both "
@@ -5679,7 +5684,7 @@ msgid ""
 "Studio 2017 with latest update and other dependencies."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:793
+#: ..\python_docs\spladdoninternals.py:794
 msgid ""
 "In case of SPL add-on, I have different Studio versions installed: 5.11 on "
 "my laptop and 5.20 on the desktop. This allows me to work on both versions "
@@ -5688,11 +5693,11 @@ msgid ""
 "desktop)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:794
+#: ..\python_docs\spladdoninternals.py:795
 msgid "### Git: a \"smart\" source code manager"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:795
+#: ..\python_docs\spladdoninternals.py:796
 msgid ""
 "Like other NVDA developers and many add-on writers, I use Git for source "
 "code management (contrary to its slogan, Git is very smart). This is a "
@@ -5702,7 +5707,7 @@ msgid ""
 "source code, I can view commit history and generate older add-on releases."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:796
+#: ..\python_docs\spladdoninternals.py:797
 msgid ""
 "Another advantage of Git is extensive support for branches. A branch is a "
 "development workflow separate from other branches. For example, NVDA screen "
@@ -5717,18 +5722,18 @@ msgid ""
 "significantly)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:797
+#: ..\python_docs\spladdoninternals.py:798
 msgid "### How an add-on feature is born"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:798
+#: ..\python_docs\spladdoninternals.py:799
 msgid ""
 "Let's go through a typical development process for an add-on feature by "
 "looking at how broadcast profiles was developed (for more information on "
 "broadcast profiles, refer to configuration management section above)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:799
+#: ..\python_docs\spladdoninternals.py:800
 msgid ""
 "I started working on broadcast profiles in March 2015 while developing add-"
 "on 5.0. This was a natural extension of add-on settings dialog: whereas this "
@@ -5737,7 +5742,7 @@ msgid ""
 "defined and to let the settings dialog respond to profile changes."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:800
+#: ..\python_docs\spladdoninternals.py:801
 msgid ""
 "There was an important reason for writing this feature: Since NVDA supports "
 "multiple configuration profiles and since some broadcasters were hosting "
@@ -5747,7 +5752,7 @@ msgid ""
 "profile."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:801
+#: ..\python_docs\spladdoninternals.py:802
 msgid ""
 "In March and April 2015, I started rewriting certain parts of add-on "
 "configuration manager (splstudio.splconfig) in preparation for developing "
@@ -5759,7 +5764,7 @@ msgid ""
 "5.0 was released in June 2015."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:802
+#: ..\python_docs\spladdoninternals.py:803
 msgid ""
 "In June 2015, I opened a new branch (initially using the codename \"starfish"
 "\") to house code related to broadcast profiles. Before any \"real\" code "
@@ -5770,7 +5775,7 @@ msgid ""
 "the credit they deserve)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:803
+#: ..\python_docs\spladdoninternals.py:804
 msgid ""
 "One of the first things I had to decide was how to store profiles. I "
 "experimented with using ConfigObj sections, one per profile, but this proved "
@@ -5784,7 +5789,7 @@ msgid ""
 "from the selected profile."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:804
+#: ..\python_docs\spladdoninternals.py:805
 msgid ""
 "The last thing I did before merging the broadcast profiles branch to master "
 "branch in July was revising configuration error dialog and writing "
@@ -5796,13 +5801,13 @@ msgid ""
 "(again it had issues which are now largely resolved)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:805
+#: ..\python_docs\spladdoninternals.py:806
 msgid ""
 "### Dealing with threaded code: headaches during development of background "
 "encoder monitoring feature"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:806
+#: ..\python_docs\spladdoninternals.py:807
 msgid ""
 "You may recall our discussion of Cart Explorer and how it went through "
 "extensive testing to arrive at the current state (this was a difficult code "
@@ -5818,17 +5823,17 @@ msgid ""
 "experience fewer headaches)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:807
+#: ..\python_docs\spladdoninternals.py:808
 msgid "### Add-on development process"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:808
+#: ..\python_docs\spladdoninternals.py:809
 msgid ""
 "Follow me as I show you how a typical SPL add-on version is developed, "
 "released and maintained:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:809
+#: ..\python_docs\spladdoninternals.py:810
 msgid ""
 "1. Before starting work on the new add-on version, I write down some goals "
 "the add-on should achieve, including feature ideas, user (your) suggestions "
@@ -5836,19 +5841,19 @@ msgid ""
 "span multiple versions."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:810
+#: ..\python_docs\spladdoninternals.py:811
 msgid ""
 "2. I then hold a conference call with add-on users to see what they think "
 "about some ideas and gather feedback (these are also written down)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:811
+#: ..\python_docs\spladdoninternals.py:812
 msgid ""
 "3. I then create separate branches for each feature in order to isolate  "
 "code and not to break existing code."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:812
+#: ..\python_docs\spladdoninternals.py:813
 msgid ""
 "4. Next, I write todo comments reminding myself as to what the feature "
 "should be like, then I start working on it. As each feature is being "
@@ -5856,7 +5861,7 @@ msgid ""
 "development, such as possible errors, messages spoken and so on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:813
+#: ..\python_docs\spladdoninternals.py:814
 msgid ""
 "5. Once the feature is quite stable, I test the feature to uncover bugs and "
 "to fill in the missing pieces. When it comes to testing, I test the new "
@@ -5865,7 +5870,7 @@ msgid ""
 "to recognize differences between Studio versions)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:814
+#: ..\python_docs\spladdoninternals.py:815
 msgid ""
 "6. Starting in fall 2015, I've merged development branches into a staging "
 "branch for testing purposes. This branch is also used to generate try (Test "
@@ -5873,13 +5878,13 @@ msgid ""
 "leave feedback (try builds are generated about once a week)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:815
+#: ..\python_docs\spladdoninternals.py:816
 msgid ""
 "7. After testing the feature for a while and if the feature is stable, I "
 "merge the feature branch into master."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:816
+#: ..\python_docs\spladdoninternals.py:817
 msgid ""
 "8. Every few weeks, I publish master branch snapshots to gather feedback "
 "from users willing to test drive snapshots. With the advent of add-on "
@@ -5889,7 +5894,7 @@ msgid ""
 "fetched from master branch only)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:817
+#: ..\python_docs\spladdoninternals.py:818
 msgid ""
 "9. At some point, I set release target window for the next add-on version "
 "(for 6.0, it was December 2015). This determines when feature freeze should "
@@ -5899,7 +5904,7 @@ msgid ""
 "below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:818
+#: ..\python_docs\spladdoninternals.py:819
 msgid ""
 "10. After going through several beta cycles (typically two), I ask NVDA "
 "community add-on reviewers to review my add-on code and request add-on "
@@ -5907,7 +5912,7 @@ msgid ""
 "into stable branch)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:819
+#: ..\python_docs\spladdoninternals.py:820
 msgid ""
 "11. Once the add-on version is released, subsequent maintenance versions "
 "(localization updates, bug fixes, minor tweaks) will be released from the "
@@ -5915,18 +5920,18 @@ msgid ""
 "version."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:820
+#: ..\python_docs\spladdoninternals.py:821
 msgid ""
 "12. Once the next version enters beta cycle, further maintenance releases "
 "may or may not happen (an exception is long-term support release, described "
 "below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:821
+#: ..\python_docs\spladdoninternals.py:822
 msgid "#### Changes in 2017"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:822
+#: ..\python_docs\spladdoninternals.py:823
 msgid ""
 "In late 2016, I and some users had a conference call regarding the future "
 "direction of the add-on. During this call, participants felt that the add-on "
@@ -5937,7 +5942,7 @@ msgid ""
 "chunks."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:823
+#: ..\python_docs\spladdoninternals.py:824
 msgid ""
 "This decision also aligned with my other add-ons where new versions were "
 "released every month or so, along with the fact that features are complete "
@@ -5945,52 +5950,52 @@ msgid ""
 "implemented as of June 2017."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:824
+#: ..\python_docs\spladdoninternals.py:825
 msgid "There were two more implications of this decision:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:825
+#: ..\python_docs\spladdoninternals.py:826
 msgid ""
 "* No more waits: a new stable feature should not be held up for up to six "
 "months if it is ready for the public, thus updates include both new features "
 "and bug fixes."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:826
+#: ..\python_docs\spladdoninternals.py:827
 msgid ""
 "* The Test Drive program (see below) should not be an exclusive thing "
 "anymore, but an opt-in process, as I felt early feedback loop is crucial to "
 "success of a product such as this add-on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:827
+#: ..\python_docs\spladdoninternals.py:828
 msgid "With this in mind, the following things were changed in 2017:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:828
+#: ..\python_docs\spladdoninternals.py:829
 msgid ""
 "* No more betas: the development branch (now called slow ring) is considered "
 "live beta branch."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:829
+#: ..\python_docs\spladdoninternals.py:830
 msgid ""
 "* Anyone can switch to try build branch (called fast ring snapshots) "
 "provided that they are willing to provide early feedback."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:830
+#: ..\python_docs\spladdoninternals.py:831
 msgid ""
 "* Long-term support updates are now tied to new major Studio releases. This "
 "criteria was extended in late 2017 to include critical changes to NVDA (see "
 "below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:831
+#: ..\python_docs\spladdoninternals.py:832
 msgid "#### Further changes in 2018"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:832
+#: ..\python_docs\spladdoninternals.py:833
 msgid ""
 "In July 2018, NV Access announced changes to NVDA's release process in order "
 "to make testing and integration easier. Prior to this, an NVDA feature was "
@@ -6001,7 +6006,7 @@ msgid ""
 "snapshots. People who wanted more stability were moved to beta releases."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:833
+#: ..\python_docs\spladdoninternals.py:834
 msgid ""
 "On the SPL add-on side, Test Drive Fast and Slow ring builds have become "
 "identical in late July 2018. I also felt that add-on development has slowed "
@@ -6009,7 +6014,7 @@ msgid ""
 "release (18.09), thus I felt an overhaul of Test Drive Program was in order."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:834
+#: ..\python_docs\spladdoninternals.py:835
 msgid ""
 "Then in August 2018, I released Add-on Updater, a proof of concept add-on "
 "that allows NVDA to check for add-on updates for all add-ons registered with "
@@ -6019,7 +6024,7 @@ msgid ""
 "the new Add-on Updater, hence almost identical internals."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:835
+#: ..\python_docs\spladdoninternals.py:836
 msgid ""
 "Given that my long-term goal is to let NVDA itself check for SPL add-on "
 "updates, coupled with observations from above, I asked the community if it "
@@ -6028,7 +6033,7 @@ msgid ""
 "following changes were made in August 2018 prior to release of 18.09:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:836
+#: ..\python_docs\spladdoninternals.py:837
 msgid ""
 "* Test Drive Fast and Slow rings were combined into a single \"development\" "
 "channel. Consequently, there is no more update channel selection capability, "
@@ -6036,20 +6041,20 @@ msgid ""
 "This was extended in September 2018 to cover long-term support releases."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:837
+#: ..\python_docs\spladdoninternals.py:838
 msgid ""
 "* A new concept of \"pilot features\" replaced Test Drive Fast, configurable "
 "via a checkbox and internal flags."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:838
+#: ..\python_docs\spladdoninternals.py:839
 msgid ""
 "* New (risky) features under development will be enabled if pilot features "
 "facility is turned on, otherwise content is identical to regular development "
 "build."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:839
+#: ..\python_docs\spladdoninternals.py:840
 msgid ""
 "* Add-on update checking facility is now taken care of by Add-on Updater, "
 "and in the future, to be done by NVDA itself. Consequently, add-on update "
@@ -6057,11 +6062,11 @@ msgid ""
 "2018."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:840
+#: ..\python_docs\spladdoninternals.py:841
 msgid "#### Long-term support release"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:841
+#: ..\python_docs\spladdoninternals.py:842
 msgid ""
 "A typical add-on version is supported until the next add-on version is "
 "released (currently several weeks to months). However, there are times when "
@@ -6072,31 +6077,31 @@ msgid ""
 "Windows version."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:842
+#: ..\python_docs\spladdoninternals.py:843
 msgid ""
 "A LTS version is a major version or a major periodic release of the SPL add-"
 "on with some notable differences:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:843
+#: ..\python_docs\spladdoninternals.py:844
 msgid ""
 "* Support duration: A LTS version is supported for at least twelve months."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:844
+#: ..\python_docs\spladdoninternals.py:845
 msgid ""
 "* Features: A LTS version may contain some features from future add-on "
 "releases provided that they can be safely backported."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:845
+#: ..\python_docs\spladdoninternals.py:846
 msgid ""
 "* Studio version supported: A LTS version is the last version to support the "
 "oldest supported Studio version. This is designed to give people plenty of "
 "time to upgrade to newer Studio releases."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:846
+#: ..\python_docs\spladdoninternals.py:847
 msgid ""
 "* Last version with old NVDA technology in use: in some cases, LTS releases "
 "are made to support users of old NVDA releases. After the LTS release is "
@@ -6106,7 +6111,7 @@ msgid ""
 "Python 3."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:847
+#: ..\python_docs\spladdoninternals.py:848
 msgid ""
 "As of January 2020, the most recent LTS version is add-on 18.09.x (September "
 "2018 to December 2019). Previous LTS releases have included 15.x (formerly 7."
@@ -6114,17 +6119,17 @@ msgid ""
 "June 2015). For example, add-on 3.x was maintained thus:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:848
+#: ..\python_docs\spladdoninternals.py:849
 msgid "1. Add-on 3.0 was released in September 2014."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:849
+#: ..\python_docs\spladdoninternals.py:850
 msgid ""
 "2. Add-on 3.5 (December 2014) could have been the last maintenance version "
 "for add-on 3.x if it was not a LTS version."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:850
+#: ..\python_docs\spladdoninternals.py:851
 msgid ""
 "3. When add-on 4.0 was released (January 2015), add-on 3.6 was released, "
 "backporting some features from 4.0. Users were told that add-on 3.x will be "
@@ -6133,24 +6138,24 @@ msgid ""
 "internal branch."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:851
+#: ..\python_docs\spladdoninternals.py:852
 msgid ""
 "4. When add-on 5.0 beta was released (May 2015), add-on 3.x (3.9 was "
 "available then) entered end of support countdown (no more maintenance "
 "releases)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:852
+#: ..\python_docs\spladdoninternals.py:853
 msgid ""
 "5. A few weeks later, when add-on 5.0 came out (June 2015), add-on 3.x "
 "became unsupported."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:853
+#: ..\python_docs\spladdoninternals.py:854
 msgid "### Final thoughts"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:854
+#: ..\python_docs\spladdoninternals.py:855
 msgid ""
 "As I end this article on StationPlaylist Add-on Internals, I feel it is time "
 "I reveal why my add-ons are free: it is because I love you users and as a "
@@ -6164,7 +6169,7 @@ msgid ""
 "improve upon it."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:855
+#: ..\python_docs\spladdoninternals.py:856
 msgid ""
 "For add-on writers looking for quality add-on documentation, I hope this "
 "series gave you an inspiration as to how to write amazing documentation in "
@@ -6176,11 +6181,11 @@ msgid ""
 "Thank you community add-on reviewers for your continued support and reviews."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:856
+#: ..\python_docs\spladdoninternals.py:857
 msgid "### Important notices and credits"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:857
+#: ..\python_docs\spladdoninternals.py:858
 msgid ""
 "I'd like to thank StationPlaylist staff for continued collaboration with "
 "screen reader users in regards to accessibility of Studio. A special thanks "
@@ -6190,14 +6195,14 @@ msgid ""
 "feedback and teaching me new things about studio."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:858
+#: ..\python_docs\spladdoninternals.py:859
 msgid ""
 "Source code notice: to protect copyrights, parts of Studio API has not been "
 "documented. Also, source code discussed throughout this series may change as "
 "future add-on versions are developed."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:859
+#: ..\python_docs\spladdoninternals.py:860
 msgid ""
 "Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders "
 "are copyright StationPlaylist.com. NonVisual Desktop Access is copyright "
@@ -6209,132 +6214,132 @@ msgid ""
 "owners of these products (licenses vary)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:860
+#: ..\python_docs\spladdoninternals.py:861
 msgid "## References"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:861
+#: ..\python_docs\spladdoninternals.py:862
 msgid ""
 "1. JAWS scripts for StationPlaylist Studio (Hartgen Consultancy): http://www."
 "hartgen.org/studio.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:862
+#: ..\python_docs\spladdoninternals.py:863
 msgid ""
 "2. Window-Eyes app for StationPlaylist (Jeff Bishop/AI Squared): https://www."
 "gwmicro.com/App_Central/Apps/App_Details/index.php?"
 "scriptid=1268&readMore&media=print"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:863
+#: ..\python_docs\spladdoninternals.py:864
 msgid ""
 "3. Plug-in (Wikipedia): https://en.wikipedia.org/wiki/Plug-in_(computing)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:864
+#: ..\python_docs\spladdoninternals.py:865
 msgid ""
 "4. Application Programming Interface (Wikipedia): https://en.wikipedia.org/"
 "wiki/Application_programming_interface"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:865
+#: ..\python_docs\spladdoninternals.py:866
 msgid ""
 "5. Python 2.7.13 documentation overview (Python Software Foundation): "
 "https://docs.python.org/2/"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:866
+#: ..\python_docs\spladdoninternals.py:867
 msgid "6. Handle (Wikipedia): https://en.wikipedia.org/wiki/Handle_(computing)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:867
+#: ..\python_docs\spladdoninternals.py:868
 msgid ""
 "7. What is a Windows handle (Stack Overflow): http://stackoverflow.com/"
 "questions/902967/what-is-a-windows-handle"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:868
+#: ..\python_docs\spladdoninternals.py:869
 msgid ""
 "8. FindWindow (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:869
+#: ..\python_docs\spladdoninternals.py:870
 msgid ""
 "9. SendMessage (user32.dll) reference (Windows API): https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ms644950(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:870
+#: ..\python_docs\spladdoninternals.py:871
 msgid ""
 "10. NVDA Developer Guide (NV Access): http://www.nvaccess.org/files/nvda/"
 "documentation/developerGuide.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:871
+#: ..\python_docs\spladdoninternals.py:872
 msgid ""
 "11. OpenProcess (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms684320(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:872
+#: ..\python_docs\spladdoninternals.py:873
 msgid "12. wxPython online docs: http://www.wxpython.org/onlinedocs.php"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:873
+#: ..\python_docs\spladdoninternals.py:874
 msgid ""
 "13. Higher order functions (How do you make a higher order function): http://"
 "effbot.org/pyfaq/how-do-you-make-a-higher-order-function-in-python.htm"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:874
+#: ..\python_docs\spladdoninternals.py:875
 msgid ""
 "14. Time (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/time.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:875
+#: ..\python_docs\spladdoninternals.py:876
 msgid ""
 "15. GetTimeFormat (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/dd318130(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:876
+#: ..\python_docs\spladdoninternals.py:877
 msgid "16. Event loop (Wikipedia): https://en.wikipedia.org/wiki/Event_loop"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:877
+#: ..\python_docs\spladdoninternals.py:878
 msgid ""
 "17. Event-driven programming (Wikipedia): https://en.wikipedia.org/wiki/"
 "Event-driven_programming"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:878
+#: ..\python_docs\spladdoninternals.py:879
 msgid ""
 "18. Sinclair, Rob. Microsoft Active Accessibility architecture, Microsoft "
 "Developer Network, August 2000. https://msdn.microsoft.com/en-us/library/"
 "ms971310.aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:879
+#: ..\python_docs\spladdoninternals.py:880
 msgid ""
 "19. UI Automation Overview, Microsoft Developer Network. https://msdn."
 "microsoft.com/en-us/library/ms747327(v=vs.110).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:880
+#: ..\python_docs\spladdoninternals.py:881
 msgid ""
 "20. Java Access Bridge overview, Java SE Desktop Accessibility, Oracle. "
 "http://www.oracle.com/technetwork/articles/javase/index-jsp-136191.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:881
+#: ..\python_docs\spladdoninternals.py:882
 msgid ""
 "21. Introduction to OOP (Object-Oriented Programming) with Python, "
 "Voidspace. http://www.voidspace.org.uk/python/articles/OOP.shtml"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:882
+#: ..\python_docs\spladdoninternals.py:883
 #, python-format
 msgid ""
 "22. Non-Programmer's Tutorial for Python 3/Intro to Object Oriented "
@@ -6343,168 +6348,168 @@ msgid ""
 "Intro_to_Object_Oriented_Programming_in_Python_3"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:883
+#: ..\python_docs\spladdoninternals.py:884
 msgid ""
 "23. Method Resolution Order, The History of Python, june 23, 2010. http://"
 "python-history.blogspot.com/2010/06/method-resolution-order.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:884
+#: ..\python_docs\spladdoninternals.py:885
 msgid ""
 "24. List View, Microsoft Developer Network: https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/bb774737(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:885
+#: ..\python_docs\spladdoninternals.py:886
 msgid ""
 "25. List View Messages, Microsoft Developer Network: https://msdn.microsoft."
 "com/en-us/library/windows/desktop/ff485961(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:886
+#: ..\python_docs\spladdoninternals.py:887
 msgid ""
 "26. List View Item structure, Microsoft Developer Network: https://msdn."
 "microsoft.com/en-us/library/windows/desktop/bb774760(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:887
+#: ..\python_docs\spladdoninternals.py:888
 msgid ""
 "27. VirtualAllocEx (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366890(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:888
+#: ..\python_docs\spladdoninternals.py:889
 msgid ""
 "28. VirtualFreeEx (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/aa366894(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:889
+#: ..\python_docs\spladdoninternals.py:890
 msgid ""
 "29. WriteProcessMemory (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms681674(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:890
+#: ..\python_docs\spladdoninternals.py:891
 msgid ""
 "30. ReadProcessMemory (kernel32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms680553(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:891
+#: ..\python_docs\spladdoninternals.py:892
 msgid ""
 "31. Ctypes (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/ctypes.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:892
+#: ..\python_docs\spladdoninternals.py:893
 msgid ""
 "32. Thread (Wikipedia): https://en.wikipedia.org/wiki/Thread_(computing)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:893
+#: ..\python_docs\spladdoninternals.py:894
 msgid ""
 "33. Multi-core processor (wikipedia): https://en.wikipedia.org/wiki/Multi-"
 "core_processor"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:894
+#: ..\python_docs\spladdoninternals.py:895
 msgid ""
 "34. Multi-core introduction, Intel Developer Zone, March 5, 2012: https://"
 "software.intel.com/en-us/articles/multi-core-introduction"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:895
+#: ..\python_docs\spladdoninternals.py:896
 msgid ""
 "35. Intel Core I7-5960X specifications (Intel ARK): http://ark.intel.com/"
 "products/82930/Intel-Core-i7-5960X-Processor-Extreme-Edition-20M-Cache-up-"
 "to-3_50-GHz"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:896
+#: ..\python_docs\spladdoninternals.py:897
 msgid ""
 "36. Intel Xeon E7-8895V3 specifications (Intel ARK): http://ark.intel.com/"
 "products/84689/Intel-Xeon-Processor-E7-8895-v3-45M-Cache-2_60-GHz"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:897
+#: ..\python_docs\spladdoninternals.py:898
 msgid ""
 "37. Global Interpreter Lock (Python Wiki): https://wiki.python.org/moin/"
 "GlobalInterpreterLock"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:898
+#: ..\python_docs\spladdoninternals.py:899
 msgid ""
 "38. Threading (Python documentation, Python Software Foundation): https://"
 "docs.python.org/2/library/threading.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:899
+#: ..\python_docs\spladdoninternals.py:900
 msgid ""
 "39. Multiprocessing (Python documentation, Python Software Foundation): "
 "https://docs.python.org/2/library/multiprocessing.html#module-multiprocessing"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:900
+#: ..\python_docs\spladdoninternals.py:901
 msgid ""
 "40. Comma-separated values (Wikipedia): https://en.wikipedia.org/wiki/Comma-"
 "separated_values"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:901
+#: ..\python_docs\spladdoninternals.py:902
 msgid ""
 "41. RFC 4180 (Common Format and MIME Type for Comma-Separated Values (CSV) "
 "Files), Internet Engineering Task Force: https://tools.ietf.org/html/rfc4180"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:902
+#: ..\python_docs\spladdoninternals.py:903
 msgid ""
 "42. Import or export text (.txt or .csv) files, Microsoft Office Support for "
 "Microsoft Excel: https://support.office.com/en-za/article/Import-or-export-"
 "text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:903
+#: ..\python_docs\spladdoninternals.py:904
 msgid ""
 "43. CSV (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/csv.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:904
+#: ..\python_docs\spladdoninternals.py:905
 msgid "44. Cache (Wikipedia): https://en.wikipedia.org/wiki/Cache_(computing)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:905
+#: ..\python_docs\spladdoninternals.py:906
 msgid ""
 "45. Os (Python documentation, Python Software Foundation): https://docs."
 "python.org/2/library/os.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:906
+#: ..\python_docs\spladdoninternals.py:907
 msgid ""
 "46. Configparser (Python documentation, Python Software Foundation): https://"
 "docs.python.org/2/library/configparser.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:907
+#: ..\python_docs\spladdoninternals.py:908
 msgid ""
 "47. ConfigObj documentation: http://www.voidspace.org.uk/python/configobj."
 "html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:908
+#: ..\python_docs\spladdoninternals.py:909
 msgid ""
 "48. Validate module documentation: http://www.voidspace.org.uk/python/"
 "validate.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:909
+#: ..\python_docs\spladdoninternals.py:910
 msgid ""
 "49. Spin control (wx.SpinCtrl) documentation (WXPython): http://wxpython.org/"
 "Phoenix/docs/html/SpinCtrl.html"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:910
+#: ..\python_docs\spladdoninternals.py:911
 msgid ""
 "50. SetForegroundWindow (user32.dll) reference (Windows API): https://msdn."
 "microsoft.com/en-us/library/windows/desktop/ms633539(v=vs.85).aspx"

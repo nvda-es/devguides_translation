@@ -184,11 +184,11 @@ Start date: July 25, 2019
 2. Add-ons community and other stakeholders must be given guidance regarding Python 3 transition.
 3. Add-on developers are asked to start porting their add-ons to Python 3.
 
-Estimated completion for both stages: NVDA 2019.3
+Completed on: March 9, 2020
 
 ### After transition:
 
-Start date: after NVDA 2019.3 is released
+Start date: March 9, 2020
 
 1. A beta of NVDA powered by python 3 must be released.
 2. Members of the public should provide beta-level feedback.
@@ -197,7 +197,7 @@ Start date: after NVDA 2019.3 is released
 5. Post-transition evaluation should take place, including documenting issues found during field testing, more community outreach and other activities.
 6. If needed, attempts to use Python 3 native features should be attempted (see below for a list of possible features and their impact on NVDA).
 
-Estimated completion date: no later than twelve to fifteen months after pre-transition activities are completed.
+Completed on: May 1, 2020
 
 ## Transition progress
 
@@ -223,10 +223,12 @@ Estimated completion date: no later than twelve to fifteen months after pre-tran
 	6. June 26, 2019: first binary snapshot compiled (not ready for the general public).
 	7. July 15, 2019: started testing with Threshold work.
 	8. July 25, 2019: alpha snapshot powered by Python 3 compiled, milestone done.
-3. Transition stage 2 (in progress):
+3. Transition stage 2 (done):
 	1. July 26, 2019: community invitation to test Python 3 work.
 	2. August 14, 2019: NVDA 2019.2, one of the last Python 2 versions, released.
-4. After transition: not yet begun.
+	3. December 9, 2019: NVDA 2019.3 beta 1 released.
+	4. March 9, 2020: NVDA 2019.3 released.
+4. After transition: done.
 5. Python 3 native features:
 	* Asyncio: not important at this stage.
 	* Collections.ChainMap: eases implementation of config.ConfigManager.

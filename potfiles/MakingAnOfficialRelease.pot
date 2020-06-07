@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 19:22+0200\n"
+"POT-Creation-Date: 2020-06-07 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,9 @@ msgstr ""
 #: ..\python_docs\MakingAnOfficialRelease.py:14
 #: ..\python_docs\MakingAnOfficialRelease.py:53
 #: ..\python_docs\MakingAnOfficialRelease.py:59
-msgid "* Wait for the `appVeyor` build to complete."
+msgid ""
+"* Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/"
+"nvda/history) to complete."
 msgstr ""
 
 #: ..\python_docs\MakingAnOfficialRelease.py:15
@@ -103,7 +105,7 @@ msgstr ""
 #: ..\python_docs\MakingAnOfficialRelease.py:19
 msgid ""
 "* Periodically look at recent issues filed, specifically looking for those "
-"with `p1`, `crash` or `appcrash` labels."
+"with `p1`, `bug/crash` or `bug/app-crash` labels."
 msgstr ""
 
 #: ..\python_docs\MakingAnOfficialRelease.py:20
@@ -172,7 +174,7 @@ msgstr ""
 #: ..\python_docs\MakingAnOfficialRelease.py:33
 msgid ""
 "  - Looking at recent issues filed, specifically looking for those with "
-"`P1`, `crash` or `appcrash` labels."
+"`p1`, `bug/crash` or `bug/app-crash` labels."
 msgstr ""
 
 #: ..\python_docs\MakingAnOfficialRelease.py:34

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-10 19:22+0200\n"
+"POT-Creation-Date: 2020-06-07 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -696,7 +696,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:148
-msgid "Estimated completion for both stages: NVDA 2019.3"
+msgid "Completed on: March 9, 2020"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:149
@@ -704,7 +704,7 @@ msgid "### After transition:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:150
-msgid "Start date: after NVDA 2019.3 is released"
+msgid "Start date: March 9, 2020"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:151
@@ -739,9 +739,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:157
-msgid ""
-"Estimated completion date: no later than twelve to fifteen months after pre-"
-"transition activities are completed."
+msgid "Completed on: May 1, 2020"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:158
@@ -865,7 +863,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:181
-msgid "3. Transition stage 2 (in progress):"
+msgid "3. Transition stage 2 (done):"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:182
@@ -879,212 +877,220 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:184
-msgid "4. After transition: not yet begun."
+msgid "\t3. December 9, 2019: NVDA 2019.3 beta 1 released."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:185
-msgid "5. Python 3 native features:"
+msgid "\t4. March 9, 2020: NVDA 2019.3 released."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:186
-msgid "\t* Asyncio: not important at this stage."
+msgid "4. After transition: done."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:187
-msgid "\t* Collections.ChainMap: eases implementation of config.ConfigManager."
+msgid "5. Python 3 native features:"
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:188
-msgid "\t* pyz: no impact unless use cases emerge."
+msgid "\t* Asyncio: not important at this stage."
 msgstr ""
 
 #: ..\python_docs\nvdaPy3.py:189
+msgid "\t* Collections.ChainMap: eases implementation of config.ConfigManager."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:190
+msgid "\t* pyz: no impact unless use cases emerge."
+msgstr ""
+
+#: ..\python_docs\nvdaPy3.py:191
 msgid ""
 "\t* Formatted string literals (the \"f\" strings): eases string debugging "
 "and more readable messages."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:190
+#: ..\python_docs\nvdaPy3.py:192
 msgid ""
 "\t* Gettext.pgettext (Python 3.8): long sought answer to message contexts "
 "(see GitHub issue 1524 for details)."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:191
+#: ..\python_docs\nvdaPy3.py:193
 msgid ""
 "\t* Assignment expression (the \":=\" operator in Python 3.8): may allow "
 "improved readability of some if and while statements."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:192
+#: ..\python_docs\nvdaPy3.py:194
 msgid ""
 "\t* sys.breakpointhook: allow Visual Studio debugger and friends to help "
 "debug NVDA (if installed)."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:193
+#: ..\python_docs\nvdaPy3.py:195
 msgid ""
 "\t* Enum: may improve certain listings including roles list in control types."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:194
+#: ..\python_docs\nvdaPy3.py:196
 msgid "## Notes for various audiences"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:195
+#: ..\python_docs\nvdaPy3.py:197
 msgid "### For code contributors:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:196
+#: ..\python_docs\nvdaPy3.py:198
 msgid ""
 "* Document potential and actual issues when working with Python 3, including "
 "changed modules, attribute name changes, internal changes and so on."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:197
+#: ..\python_docs\nvdaPy3.py:199
 msgid ""
 "* When importing a built-in Python module, use try/except when importing "
 "modules."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:198
+#: ..\python_docs\nvdaPy3.py:200
 msgid ""
 "\t* Try importing Python 2 names as Python 3 name, switching to Python 3 "
 "version when Python 2 module is not found or renamed."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:199
+#: ..\python_docs\nvdaPy3.py:201
 msgid "\t* See NVDA source code for implementation steps."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:200
+#: ..\python_docs\nvdaPy3.py:202
 msgid ""
 "\t* This is for work prior to transition. During transition, Python 3 import "
 "should be attempted first."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:201
+#: ..\python_docs\nvdaPy3.py:203
 msgid "* Issues should be labeled as \"python 3\"."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:202
+#: ..\python_docs\nvdaPy3.py:204
 msgid ""
 "* Pull requests should be based on master branch unless specified by lead "
 "developers."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:203
+#: ..\python_docs\nvdaPy3.py:205
 msgid ""
 "* Try using branch name of the form \"py3*\" where \"*\" denotes Python 3 "
 "feature e.g. py3socketserver for changes to socket server module."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:204
+#: ..\python_docs\nvdaPy3.py:206
 msgid ""
 "* If working with built-in Python modules, be sure to test your code via "
 "Python 2.7 and 3.7 interpreter before making changes to NVDA source code."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:205
+#: ..\python_docs\nvdaPy3.py:207
 msgid ""
 "\t* Create a standalone script that'll use features from Python 2 and/or 3."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:206
+#: ..\python_docs\nvdaPy3.py:208
 msgid ""
 "\t* After testing this script and if it works in Python 3, make changes to "
 "NVDA source code and add comments regarding differences between Python 2 and "
 "3."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:207
+#: ..\python_docs\nvdaPy3.py:209
 msgid ""
 "\t* Source code should target both Python 2 and 3 unless the pull request is "
 "submitted during active transition period."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:208
+#: ..\python_docs\nvdaPy3.py:210
 msgid ""
 "* Edit this page whenever major changes are committed to master branch or "
 "pull request is merged, including import changes and such."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:209
+#: ..\python_docs\nvdaPy3.py:211
 msgid "### For add-on developers:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:210
+#: ..\python_docs\nvdaPy3.py:212
 msgid ""
 "* Try using Python modules that are known to be compatible with both Python "
 "2 and 3."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:211
+#: ..\python_docs\nvdaPy3.py:213
 msgid ""
 "* Be sure to test add-ons in 2019.3 alpha and edit add-on files accordingly."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:212
+#: ..\python_docs\nvdaPy3.py:214
 msgid ""
 "* Make sure to communicate status of Python 3 compatibility for add-ons if "
 "possible."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:213
+#: ..\python_docs\nvdaPy3.py:215
 msgid "### For testers:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:214
+#: ..\python_docs\nvdaPy3.py:216
 msgid ""
 "* Use a portable copy of 2019.3 alpha if you rely on add-ons not ported to "
 "Python 3 yet."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:215
+#: ..\python_docs\nvdaPy3.py:217
 msgid "* Contact add-on authors if add-ons do not work in 2019.3 alpha."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:216
+#: ..\python_docs\nvdaPy3.py:218
 msgid "### For translators:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:217
+#: ..\python_docs\nvdaPy3.py:219
 msgid "Nothing yet."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:218
+#: ..\python_docs\nvdaPy3.py:220
 msgid "### For users:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:219
+#: ..\python_docs\nvdaPy3.py:221
 msgid "nothing yet."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:220
+#: ..\python_docs\nvdaPy3.py:222
 msgid "### For organizations:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:221
+#: ..\python_docs\nvdaPy3.py:223
 msgid "* Stay informed on Python 3 transition workflow."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:222
+#: ..\python_docs\nvdaPy3.py:224
 msgid "### For Python community:"
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:223
+#: ..\python_docs\nvdaPy3.py:225
 msgid ""
 "* During pre-transition period, please help NVDA project spot potential "
 "issues with Python 3 transition so they can be noted."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:224
+#: ..\python_docs\nvdaPy3.py:226
 msgid ""
 "* During transition, please help write and test Python 3 code and provide "
 "additional comments."
 msgstr ""
 
-#: ..\python_docs\nvdaPy3.py:225
+#: ..\python_docs\nvdaPy3.py:227
 msgid ""
 "* During post-transition, please help NV Access review transition work, as "
 "well as suggest Python 3 features NVDA should adopt,"
