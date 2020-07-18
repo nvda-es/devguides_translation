@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-07 17:28+0200\n"
+"POT-Creation-Date: 2020-07-18 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5382,63 +5382,78 @@ msgid ""
 "entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder "
 "class with encoder specific differences. All encoder classes provide similar "
 "routines, with differences being how connection messages are handled and "
-"obtaining encoder specific data such as stream labels collection."
+"obtaining encoder specific data such as encoder type identifier used for "
+"looking up encoder settings with help from encoder ID's."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:745
-msgid "### Common services: basic settings, stream labels and related methods"
+msgid "### Encoder ID's"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:746
-msgid "All encoder classes provide the following common services:"
+msgid ""
+"An encoder ID is a string which uniquely identifies an encoder. This "
+"consists of a string denoting the encoder type (SAM for SAM encoder, for "
+"instance), followed by the encoder position (separated by a space). For "
+"instance, the first SAM encoder is given the ID \"SAM 1\". The ID's are used "
+"to retrieve and configure encoder settings, as well as identifying encoders "
+"when monitoring them in the background."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:747
-msgid "* Configuring settings: six settings can be configured:"
+msgid "### Common services: basic settings, stream labels and related methods"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:748
-msgid "\t* A custom stream label can be defined for ease of identification."
+msgid "All encoder classes provide the following common services:"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:749
+msgid "* Configuring settings: six settings can be configured:"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:750
+msgid "\t* A custom stream label can be defined for ease of identification."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:751
 msgid ""
 "\t* Pressing F11 will tell NVDA if NVDA should switch to Studio when the "
 "encoder is connected."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:750
+#: ..\python_docs\spladdoninternals.py:752
 msgid ""
-"\t*Pressing Shift+F11 will ask Studio will play the next track when "
-"connected."
+"\t*Pressing Shift+F11 will tell NVDA if NVDA should ask Studio to play the "
+"next track when connected."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:751
+#: ..\python_docs\spladdoninternals.py:753
 msgid ""
 "\t* Pressing Control+F11 will enable background encoder monitoring (more on "
 "this in a second)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:752
+#: ..\python_docs\spladdoninternals.py:754
 msgid ""
 "\t* Enabling or disabling connection progress tones (add-on 7.0, "
 "configurable from encoder settings dialog described below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:753
+#: ..\python_docs\spladdoninternals.py:755
 msgid ""
 "\t* Announcing connection status until the selected encoder is connected "
 "(add-on 20.03), also configurable from encoder settings dialog."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:754
+#: ..\python_docs\spladdoninternals.py:756
 msgid ""
 "\t* Once these settings are changed, the new values will be stored in "
 "appropriate flag in the encoder entry, which in turn are saved in the "
 "configuration map."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:755
+#: ..\python_docs\spladdoninternals.py:757
 msgid ""
 "* Apart from stream labels, retrieves settings. This is done by various "
 "property methods - once called, these methods will look up various settings "
@@ -5446,27 +5461,27 @@ msgid ""
 "is the encoder ID). Stream labels are organized differently (see below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:756
+#: ..\python_docs\spladdoninternals.py:758
 msgid ""
 "* Monitors and responds to connection status changes. The response routine "
 "(onConnection method) attempts to set focus to Studio and/or play the first "
 "checked track if configured to do so."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:757
+#: ..\python_docs\spladdoninternals.py:759
 msgid ""
 "* Loads stream labels when an encoder first gains focus (if this was loaded "
 "earlier, it could be a waste of space, especially if encoders are never "
 "used)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:758
+#: ..\python_docs\spladdoninternals.py:760
 msgid ""
 "* Announces stream labels (if defined) via reportFocus method. In contrast "
 "with the Studio track item version, an encoder's reportFocus routine:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:759
+#: ..\python_docs\spladdoninternals.py:761
 msgid ""
 "\t1. Locates stream labels for the current encoder (the configuration map "
 "stores stream labels as dictionaries (sections), with each dictionary "
@@ -5475,20 +5490,20 @@ msgid ""
 "its own labels dictionary)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:760
+#: ..\python_docs\spladdoninternals.py:762
 msgid ""
 "\t2. If a label is found, NVDA will announce the label (in braille, "
 "surrounded by parentheses)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:761
+#: ..\python_docs\spladdoninternals.py:763
 msgid ""
 "* Define and remove stream labels. If a label is defined (no empty string), "
-"stream label is stored in encoder specific stream labels collection, "
-"otherwise removed from the collection."
+"stream label is stored in a stream labels collection, otherwise removed from "
+"the collection."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:762
+#: ..\python_docs\spladdoninternals.py:764
 msgid ""
 "* Updates stream label and flags position when told to do so (via a dialog, "
 "activated by pressing Control+F12). This is needed if encoders were removed, "
@@ -5496,7 +5511,7 @@ msgid ""
 "implemented as a variation of find predecessor algorithm."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:763
+#: ..\python_docs\spladdoninternals.py:765
 msgid ""
 "* Announces encoder columns. The base class can announce encoder position "
 "(Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce "
@@ -5504,25 +5519,11 @@ msgid ""
 "hear encoder format and transfer rate/connection status."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:764
+#: ..\python_docs\spladdoninternals.py:766
 msgid ""
 "* In add-on 7.0, a central configuration dialog for configuring encoder "
 "settings for the selected encoder has been added. Press Alt+NVDA+0 to open "
 "this dialog."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:765
-msgid "### Encoder ID's"
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:766
-msgid ""
-"An encoder ID is a string which uniquely identifies an encoder. This "
-"consists of a string denoting the encoder type (SAM for SAM encoder, for "
-"instance), followed by the encoder position (separated by a space). For "
-"instance, the first SAM encoder is given the ID \"SAM 1\". The ID's are used "
-"to retrieve and configure encoder settings, as well as identifying encoders "
-"when monitoring them in the background."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:767

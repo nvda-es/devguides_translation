@@ -6,11 +6,15 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
 ## Beta release (pre-release)
 * Decide which commit to start the beta from.
   - Generally master should be healthy (all checks passing and no known regressions).
-  - The most recent (significant) change should have had at least one week of alpha testing.
-* Merge this commit into beta
-* Do a review of the `user_docs/en/changes.t2t` file.
-  - Ask for a second review.
-* Create a [new pre-release / annotated tag](#create-the-release--annotated-tag)
+  - In the past, the commit chosen should ensure that the most recent (significant) change should have had at least one week of alpha testing. This restriction has been relaxed somewhat to speed up the beta process. Lead developers should use their discretion to choose an appropriate branching point. If necessary, changes can be reverted or new changes added to the beta to address issues.
+* Create a branch from this commit, create a PR from this branch targeting beta
+  - This allows for others to review the selected commit, and what will be included in the release
+  - It makes reviewing the changes file easier.
+  - Do a review of the `user_docs/en/changes.t2t` file.
+  - Ask for a second review, use the PR and add a link to the diff for the changes file since the diff will be quite large.
+  - Once all approved merge to beta.
+* Create a [new annotated tag](#create-the-release--annotated-tag)
+  - A beta doesn't need a pre-release entry on GitHub. Save that for RC and releases
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
@@ -35,6 +39,9 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 ## Release candidates (pre-release)
 * Ensure it is safe to release an RC.
   - Looking at recent issues filed, specifically looking for those with `p1`, `bug/crash` or `bug/app-crash` labels.
+* Check for PRs against `beta`.
+  - Use [search on PR page `is:pr is:open base:beta`](https://github.com/nvaccess/nvda/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+base%3Abeta)
+  - Look for any PRs based on `beta`, and review and approve/merge or reject them.
 * Check for PRs against `rc`, this is more likely after the first RC release.
   - Use [search on PR page `is:pr is:open base:rc`](https://github.com/nvaccess/nvda/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+base%3Arc)
   - Look for any PRs based on `rc`, and review and approve/merge or reject them.
@@ -53,14 +60,16 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 * Locally, update the `rc` branch and push to GitHub
   - For RC1, reset the `rc` branch to `beta`
   - For RC1+, merge `beta` to `rc`
-* Create a [new pre-release / annotated tag](#create-the-release--annotated-tag)
+* Create a [annotated tag](#create-the-release--annotated-tag)
+* Create a [new pre-release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 
 ## Final release
-* Create a [new release / annotated tag](#create-the-release--annotated-tag)
+* Create a [annotated tag](#create-the-release--annotated-tag)
+* Create a [new release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
@@ -106,11 +115,15 @@ Normally not required, however, occasionally to fix a critical issue requires ch
   - Tagging the release triggers a build on `appveyor` automatically, as part of this the release will be staged.
   - The release will now show up on the snapshots page (under `beta` or `RC`)
   - Auto update system will start offering it to those checking for betas
-* Convert annotated tag into a GitHub release with the [GitHub new release page](https://github.com/nvaccess/nvda/tags)
-  - Click on the tag menu button, shown as "..." and choose "Create Release"
-  - Release Title example: `Release 2019.2beta3`, 
-  - No description necessary for first beta / RC / Release, subsequent beta / RC / Release can describe important additions / removals.
-  - For `beta` and `RC`, ensure option "This is a pre-release" is checked.
+
+## Convert annotated tag into a GitHub release
+
+- Visit the [GitHub new release page](https://github.com/nvaccess/nvda/tags)
+- Click on the tag menu button, shown as "..." and choose "Create Release"
+- Release Title example: `Release 2019.2beta3`, 
+- No description necessary for first RC / Release
+  - Subsequent RC / Release can describe important additions & removals.
+- For `RC`, ensure option "This is a pre-release" is checked.
 
 ### Reasoning
 

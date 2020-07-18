@@ -184,7 +184,7 @@ Some of the concepts described in this document are the same across different sc
 
 * Unlike some screen readers, NVDA does not have a formal specification or an object model as defined by documentation in other screen readers.
 * The code you write will run inside the same runtime environment as the screen reader itself, thus you can perform things such as obtain focused object directly, modify NVDA's functionality and even replace NVDA functions and classes with your own.
-* Python, and consequently, NVDA is an object-oriented system. In other words, most of your code will consist of defining classes and objects which are than picked up by NVDA at runtime.
+* Python, and consequently, NVDA is an object-oriented system. In other words, most of your code will consist of defining classes and objects which are then picked up by NVDA at runtime.
 * Unlike scripting engines for some screen readers, there is no special hack involved when you wish to provide a feature that'll work in all applications.
 * Unlike scripting engines for some screen readers, you are not limited to libraries that come with screen readers; as a Python-based program, you can use any python module(s) that fits your needs, including external modules. For example, a popular module used to interface with web applications is JSON (JavaScript Object Notation) module, which isn't bundled with NVDA versions prior to 2017.3. You need to bundle external Python libraries yourself if you choose to use these packages.
 
