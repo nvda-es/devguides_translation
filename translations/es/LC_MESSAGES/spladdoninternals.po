@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 16:41+0200\n"
-"PO-Revision-Date: 2020-07-18 17:07+0200\n"
+"POT-Creation-Date: 2020-08-15 20:26+0200\n"
+"PO-Revision-Date: 2020-08-15 20:28+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\spladdoninternals.py:3
@@ -27,7 +27,9 @@ msgid "Author: Joseph Lee"
 msgstr "Autor: Joseph Lee"
 
 #: ..\python_docs\spladdoninternals.py:5
-msgid "Based on StationPlaylist Add-on for NvDA 20.04"
+#, fuzzy
+#| msgid "Based on StationPlaylist Add-on for NvDA 20.04"
+msgid "Based on StationPlaylist Add-on for NvDA 20.07"
 msgstr "Basado en el complemento StationPlaylist 20.04 para NVDA"
 
 #: ..\python_docs\spladdoninternals.py:6
@@ -131,16 +133,27 @@ msgstr ""
 "panel de perfiles de emisión y ponerlo en su propio diálogo."
 
 #: ..\python_docs\spladdoninternals.py:12
+#, fuzzy
+#| msgid ""
+#| "Another big change in 2020 is removing unnecessary and problematic "
+#| "features. For years, Window-Eyes users were supported by having a "
+#| "dedicated command layout in SPL Assistant layer. As Window-Eyes usage is "
+#| "declining, the dedicated command layout is being phased out. Another "
+#| "feature being removed is time-based (triggered) broadcast profiles as it "
+#| "became clear that defining instant switch profiles were enough, coupled "
+#| "with design problems in the feature itself that showed up in recent "
+#| "years. Just like add-on update feature, time-based profiles feature will "
+#| "be described to provide historical overview."
 msgid ""
 "Another big change in 2020 is removing unnecessary and problematic features. "
 "For years, Window-Eyes users were supported by having a dedicated command "
 "layout in SPL Assistant layer. As Window-Eyes usage is declining, the "
-"dedicated command layout is being phased out. Another feature being removed "
-"is time-based (triggered) broadcast profiles as it became clear that "
-"defining instant switch profiles were enough, coupled with design problems "
-"in the feature itself that showed up in recent years. Just like add-on "
-"update feature, time-based profiles feature will be described to provide "
-"historical overview."
+"dedicated command layout is being phased out. Another removed feature is "
+"time-based (triggered) broadcast profiles as it became clear that defining "
+"instant switch profiles were enough, coupled with design problems in the "
+"feature itself that showed up in recent years. Just like add-on update "
+"feature, time-based profiles feature will be described to provide historical "
+"overview."
 msgstr ""
 "Otro gran cambio de 2020 es la eliminación de características innecesarias y "
 "problemáticas. Durante años, los usuarios de Window Eyes recibían soporte "
@@ -509,6 +522,12 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:46
 msgid ""
+"* 20.06: removed Window-Eyes support, time-based broadcast profiles facility "
+"removed, support for Remote VT client."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:47
+msgid ""
 "Throughout this article, you'll get a chance to see how the add-on works, "
 "design philosophy and how the add-on is being developed, with glimpses into "
 "the past and future. My hope is that this add-on internals article would be "
@@ -524,7 +543,7 @@ msgstr ""
 "para los desarrolladores, que usen este complemento como un ejemplo a la "
 "hora de planear, implementar, probar, publicar y mantener un complemento."
 
-#: ..\python_docs\spladdoninternals.py:47
+#: ..\python_docs\spladdoninternals.py:48
 msgid ""
 "To download the add-on, go to https://addons.nvda-project.org/addons/"
 "StationPlaylist.en.html."
@@ -532,7 +551,7 @@ msgstr ""
 "Para descargar el complemento, ve a la sección de complementos que se "
 "encuentra en nuestra web."
 
-#: ..\python_docs\spladdoninternals.py:48
+#: ..\python_docs\spladdoninternals.py:49
 msgid ""
 "## Design, code layout, layer sets and importance of Studio API and Studio "
 "window handle"
@@ -540,21 +559,33 @@ msgstr ""
 "## Diseño, estructura del código, conjuntos de capas e importancia de la api "
 "de Studio y el manejador de ventana de Studio"
 
-#: ..\python_docs\spladdoninternals.py:49
+#: ..\python_docs\spladdoninternals.py:50
 msgid "### Overall design and source code layout"
 msgstr "### Diseño general y del código fuente"
 
-#: ..\python_docs\spladdoninternals.py:50
+#: ..\python_docs\spladdoninternals.py:51
+#, fuzzy
+#| msgid ""
+#| "StationPlaylist add-on for NVDA consists of six app modules (including "
+#| "two app module packages) and a global plugin. Because Studio and Creator "
+#| "come with Track Tool for managing tracks, the add-on includes an app "
+#| "module for Track Tool in addition to the main app module for Studio, as "
+#| "well as an app module for StationPlaylist Creator. A fourth app module "
+#| "for Voice Track Recorder is present which is used for event tracking "
+#| "purposes. The other two app modules deal with Streamer and SPL DSP "
+#| "Engine, with SPL Engine being an app module package due to inclusion of "
+#| "encoders support module which is also used by Streamer."
 msgid ""
-"StationPlaylist add-on for NVDA consists of six app modules (including two "
+"StationPlaylist add-on for NVDA consists of seven app modules (including two "
 "app module packages) and a global plugin. Because Studio and Creator come "
 "with Track Tool for managing tracks, the add-on includes an app module for "
-"Track Tool in addition to the main app module for Studio, as well as an app "
-"module for StationPlaylist Creator. A fourth app module for Voice Track "
-"Recorder is present which is used for event tracking purposes. The other two "
-"app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an "
-"app module package due to inclusion of encoders support module which is also "
-"used by Streamer."
+"Track Tool in addition to the main app module package for Studio, as well as "
+"an app module for StationPlaylist Creator. A fourth app module for Voice "
+"Track Recorder is present which is used for event tracking purposes. Remote "
+"VT client is the fifth app module and is mainly used to support remote "
+"playlist editor. The other two app modules deal with Streamer and SPL DSP "
+"Engine, with SPL Engine being an app module package due to inclusion of "
+"encoders support module which is also used by Streamer."
 msgstr ""
 "El complemento de NVDA para StationPlaylist consta de seis módulos de "
 "aplicación (incluyendo dos de ellos en forma de paquete) y una extensión "
@@ -568,7 +599,7 @@ msgstr ""
 "aplicación del motor SPL un paquete debido a la inclusión del módulo de "
 "soporte de codificadores, que también utiliza Streamer."
 
-#: ..\python_docs\spladdoninternals.py:51
+#: ..\python_docs\spladdoninternals.py:52
 msgid ""
 "The overall design is that of a partnership between the main Studio app "
 "module and the Studio Utilities (SPLUtils) global plugin. Studio app module "
@@ -594,18 +625,30 @@ msgstr ""
 "funcionamiento para desbloquear algunas funciones (aquí, desbloquear "
 "significa usar la capa de órdenes y partes del soporte de codificadoresÇ)."
 
-#: ..\python_docs\spladdoninternals.py:52
+#: ..\python_docs\spladdoninternals.py:53
+#, fuzzy
+#| msgid ""
+#| "When it comes to hierarchy of app modules, Studio app module package is "
+#| "ranked highest. This is because Studio app module is the oldest part of "
+#| "the add-on, and it provides base services and blueprints for other app "
+#| "modules. For instance, Creator and Track Tool relies on configuration "
+#| "facility provided by Studio app module package for Columns Explorer "
+#| "(explained later), and Voice Track (VT) Recorder app module cannot "
+#| "function properly without Studio app module running. Even though SPL "
+#| "Engine and Streamer are independent of Studio app module, they still "
+#| "require Studio app module to function (this is especially the case with "
+#| "SPL Engine, as Studio loads splengine.exe, the DSP Engine executable)."
 msgid ""
 "When it comes to hierarchy of app modules, Studio app module package is "
 "ranked highest. This is because Studio app module is the oldest part of the "
 "add-on, and it provides base services and blueprints for other app modules. "
-"For instance, Creator and Track Tool relies on configuration facility "
-"provided by Studio app module package for Columns Explorer (explained "
-"later), and Voice Track (VT) Recorder app module cannot function properly "
-"without Studio app module running. Even though SPL Engine and Streamer are "
-"independent of Studio app module, they still require Studio app module to "
-"function (this is especially the case with SPL Engine, as Studio loads "
-"splengine.exe, the DSP Engine executable)."
+"For instance, Creator and Track Tool rely on configuration facility provided "
+"by Studio app module package for Columns Explorer (explained later), and "
+"Voice Track (VT) Recorder app module cannot function properly without Studio "
+"app module running. Even though SPL Engine and Streamer are independent of "
+"Studio app module, they still require Studio app module to function (this is "
+"especially the case with SPL Engine, as Studio loads splengine.exe, the DSP "
+"Engine executable)."
 msgstr ""
 "Si nos centramos en la jerarquía de los módulos de aplicación, el paquete "
 "del módulo de aplicación de Studio se encuentra en lo más alto. Esto se debe "
@@ -621,7 +664,7 @@ msgstr ""
 "funcione (este es especialmente el caso del motor de SPL, ya que Studio "
 "carga splengine.exe, el ejecutable del motor DSP)."
 
-#: ..\python_docs\spladdoninternals.py:53
+#: ..\python_docs\spladdoninternals.py:54
 msgid ""
 "In short, all components of StationPlaylist add-on emphasize studio app "
 "module - although many components are independent of Studio, they still "
@@ -634,22 +677,27 @@ msgstr ""
 "Por tanto, Studio sirve como el puente que conecta diversas características "
 "del complemento entre sí."
 
-#: ..\python_docs\spladdoninternals.py:54
+#: ..\python_docs\spladdoninternals.py:55
 msgid "The source code consists of:"
 msgstr "El código fuente consta de:"
 
-#: ..\python_docs\spladdoninternals.py:55
+#: ..\python_docs\spladdoninternals.py:56
+#, fuzzy
+#| msgid ""
+#| "* appModules: This folder contains the main splstudio (app module) "
+#| "package and the app modules for Track Tool, Creator, VT Recorder, SPL DSP "
+#| "Engine (package), and Streamer."
 msgid ""
 "* appModules: This folder contains the main splstudio (app module) package "
-"and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine "
-"(package), and Streamer."
+"and the app modules for Track Tool, Creator, VT Recorder, Remote VT client, "
+"SPL DSP Engine (package), and Streamer."
 msgstr ""
 "* appModules: esta carpeta contiene el paquete (módulo de aplicación) "
 "principal splstudio y los módulos de aplicación para la herramienta de "
 "pista, Creator, la grabadora de pistas de voz, el motor DSP (paquete) y "
 "Streamer."
 
-#: ..\python_docs\spladdoninternals.py:56
+#: ..\python_docs\spladdoninternals.py:57
 msgid ""
 "* The SPL Studio package consists of various modules, which include __init__ "
 "(main app module and track item classes), configuration manager and user "
@@ -662,7 +710,7 @@ msgstr ""
 "splconfui) y servicios misceláneos (splmisc), así como módulos de soporte y "
 "diversos archivos wav usados por el complemento."
 
-#: ..\python_docs\spladdoninternals.py:57
+#: ..\python_docs\spladdoninternals.py:58
 msgid ""
 "* The SPL Engine package consists of main Engine module and encoder support "
 "module."
@@ -670,7 +718,7 @@ msgstr ""
 "* El paquete del motor de SPL consta del módulo del motor principal y el "
 "módulo de soporte del codificador."
 
-#: ..\python_docs\spladdoninternals.py:58
+#: ..\python_docs\spladdoninternals.py:59
 msgid ""
 "* The main app module file is divided into sections. First, the overlay "
 "classes for track items are defined, then comes the app module, further "
@@ -689,15 +737,19 @@ msgstr ""
 "identificar de dónde viene un fallo y añadir características en las "
 "secciones apropiadas."
 
-#: ..\python_docs\spladdoninternals.py:59
+#: ..\python_docs\spladdoninternals.py:60
+#, fuzzy
+#| msgid ""
+#| "* globalPlugins: This folder contains SPLStudioUtils package, which "
+#| "consists of __init__ (main plugin and SPL Controller layer)."
 msgid ""
-"* globalPlugins: This folder contains SPLStudioUtils package, which consists "
-"of __init__ (main plugin and SPL Controller layer)."
+"* globalPlugins: This folder contains SPLUtils module, consisting of main "
+"global plugin code and SPL Controller layer."
 msgstr ""
 "* globalPlugins: esta carpeta contiene el paquete SPLStudioUtils, que consta "
 "de __init__ (extensión principal y capa del controlador de SPL)."
 
-#: ..\python_docs\spladdoninternals.py:60
+#: ..\python_docs\spladdoninternals.py:61
 msgid ""
 "Note: until 2019, encoder support was part of SPL Utils. In 2020, it is part "
 "of SPL DSP Engine app module package."
@@ -706,11 +758,11 @@ msgstr ""
 "SPL. En 2020, es parte del paquete del módulo de aplicación del motor DSP de "
 "SPL."
 
-#: ..\python_docs\spladdoninternals.py:61
+#: ..\python_docs\spladdoninternals.py:62
 msgid "### Design philosophy"
 msgstr "### Filosofía del diseño"
 
-#: ..\python_docs\spladdoninternals.py:62
+#: ..\python_docs\spladdoninternals.py:63
 msgid ""
 "When I set out to write the add-on in 2013, I put forth certain things the "
 "add-on should adhere to, including:"
@@ -718,7 +770,7 @@ msgstr ""
 "Cuando me puse a escribir el complemento en 2013, Puse en marcha ciertas "
 "cosas que el complemento debe cumplir, incluyendo:"
 
-#: ..\python_docs\spladdoninternals.py:63
+#: ..\python_docs\spladdoninternals.py:64
 msgid ""
 "* Consistency: The add-on should have a consistent interface and command "
 "structure. Interface includes various GUI's such as add-on configuration "
@@ -729,7 +781,7 @@ msgstr ""
 "configuración del complemento. Para las órdenes de capa, intenté usar la "
 "asignación de órdenes nativa de Studio."
 
-#: ..\python_docs\spladdoninternals.py:64
+#: ..\python_docs\spladdoninternals.py:65
 msgid ""
 "* Extensibility: The add-on should be organized and written in such a way "
 "that permits easy extensibility, hence the app module and the global plugin "
@@ -742,7 +794,7 @@ msgstr ""
 "ellos especializado en una cosa concreta (como la gestión de la "
 "configuración)."
 
-#: ..\python_docs\spladdoninternals.py:65
+#: ..\python_docs\spladdoninternals.py:66
 msgid ""
 "* Separation of concerns: Coupled with extensibility, this allowed me to "
 "provide just needed commands at the right time, which resulted in two layer "
@@ -752,7 +804,7 @@ msgstr ""
 "proporcionar las órdenes necesarias en el momento adecuado, lo que resultó "
 "en dos capas de conjuntos de órdenes (se explica más abajo)."
 
-#: ..\python_docs\spladdoninternals.py:66
+#: ..\python_docs\spladdoninternals.py:67
 msgid ""
 "* Easy to follow source code: Although some may say excessive documentation "
 "is a noise, I believe it is important for a developer to understand how a "
@@ -774,7 +826,7 @@ msgstr ""
 "micrófono ya estaba apagado antes de que acabara la cuenta atrás de la "
 "alarma)."
 
-#: ..\python_docs\spladdoninternals.py:67
+#: ..\python_docs\spladdoninternals.py:68
 msgid ""
 "* Unique feature labels: One way to stand out was to give features "
 "interesting names. For instance, during add-on 3.0 development, I decided to "
@@ -792,7 +844,7 @@ msgstr ""
 "pista, ya que esta función es similar a girar una ruleta en un mando a "
 "distancia)."
 
-#: ..\python_docs\spladdoninternals.py:68
+#: ..\python_docs\spladdoninternals.py:69
 msgid ""
 "* Extensive collaboration and feedback cycle between users and developers: I "
 "believed that the real stars of the show were not the add-on code files, but "
@@ -816,11 +868,11 @@ msgstr ""
 "escenarios (un buen ejemplo son los perfiles de emisión, como verás en la "
 "sección de configuración del complemento)."
 
-#: ..\python_docs\spladdoninternals.py:69
+#: ..\python_docs\spladdoninternals.py:70
 msgid "### Why two layer sets?"
 msgstr "### ¿Por qué dos capas de conjuntos?"
 
-#: ..\python_docs\spladdoninternals.py:70
+#: ..\python_docs\spladdoninternals.py:71
 msgid ""
 "When I first sat down to design the add-on, I knew I had to write both an "
 "app module and a global plugin (to perform Studio commands from anywhere), "
@@ -831,7 +883,7 @@ msgstr ""
 "órdenes de Studio desde cualquier sitio), lo que llevó a definir dos capas "
 "de conjuntos de órdenes con propósitos específicos:"
 
-#: ..\python_docs\spladdoninternals.py:71
+#: ..\python_docs\spladdoninternals.py:72
 msgid ""
 "* SPL Assistant: This layer command set is available in the app module and "
 "is intended to obtain status information and to manage app module features. "
@@ -846,7 +898,7 @@ msgstr ""
 "diversa información de estado. Se pueden encontrar más detalles más adelante "
 "en este artículo."
 
-#: ..\python_docs\spladdoninternals.py:72
+#: ..\python_docs\spladdoninternals.py:73
 msgid ""
 "* SPL Controller: This layer is for the global plugin and performs Studio "
 "commands from anywhere. I called this \"controller\" because it controls "
@@ -858,7 +910,7 @@ msgstr ""
 "controla varias funciones de Studio desde otros programas. Más abajo se "
 "darán más detalles."
 
-#: ..\python_docs\spladdoninternals.py:73
+#: ..\python_docs\spladdoninternals.py:74
 msgid ""
 "In the early days, I enforced this separation, but in add-on 6.0, it is "
 "possible to invoke SPL Assistant layer by pressing the command used to "
@@ -873,11 +925,11 @@ msgstr ""
 "pantalla, y los mecanismos que lo permiten se cubren más adelante en este "
 "artículo."
 
-#: ..\python_docs\spladdoninternals.py:74
+#: ..\python_docs\spladdoninternals.py:75
 msgid "### The \"magic\" behind layer commands"
 msgstr "### La \"magia\" tras las órdenes de capa"
 
-#: ..\python_docs\spladdoninternals.py:75
+#: ..\python_docs\spladdoninternals.py:76
 msgid ""
 "In order for layer commands to work, I borrowed code from another add-on: "
 "Toggle and ToggleX by Tyler Spivey. Toggle/ToggleX allows one to toggle "
@@ -889,7 +941,7 @@ msgstr ""
 "alternar varios ajustes de verbalización de formato a través de un conjunto "
 "de capa de órdenes. Trabaja de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:76
+#: ..\python_docs\spladdoninternals.py:77
 msgid ""
 "* Dynamic Command:script binding and removal: It is possible to bind "
 "gestures dynamically via bindGesture/bindGestures method for an app module "
@@ -906,7 +958,7 @@ msgstr ""
 "dinámicamente, se limpiaba la combinación de gestos principales / de capa, y "
 "después se asociaban los gestos principales."
 
-#: ..\python_docs\spladdoninternals.py:77
+#: ..\python_docs\spladdoninternals.py:78
 msgid ""
 "* Use of two or more gesture maps in the app module/global plugin: Normally, "
 "an app module or a global plugin that accepts keyboard input uses a single "
@@ -923,7 +975,7 @@ msgstr ""
 "un segundo mapa de gestos para almacenar las órdenes de capa (la orden y el "
 "script asociado de la forma \"orden\":\"script\")."
 
-#: ..\python_docs\spladdoninternals.py:78
+#: ..\python_docs\spladdoninternals.py:79
 msgid ""
 "* Wrapped functions: Tyler used \"wraps\" decorator from functools to wrap "
 "how \"finally\" function is called from within the layer set (this was "
@@ -939,11 +991,11 @@ msgstr ""
 "getScript (módulo de aplicación / extensión global) para devolver el script "
 "principal de la versión de la capa dependiendo del contexto."
 
-#: ..\python_docs\spladdoninternals.py:79
+#: ..\python_docs\spladdoninternals.py:80
 msgid "A typical layer command execution is as follows:"
 msgstr "La ejecución típica de las órdenes de capa es como sigue:"
 
-#: ..\python_docs\spladdoninternals.py:80
+#: ..\python_docs\spladdoninternals.py:81
 msgid ""
 "1. First, assign a command to a layer (entry) command (add-on 2.0 and later; "
 "add-on 1.x used NVDA+Grave for SPL Controller and Control+NVDA+Grave for the "
@@ -955,7 +1007,7 @@ msgstr ""
 "ctrl+NVDA+` para la capa del asistente; se eliminó en la 2.0 para prevenir "
 "conflictos con gestos específicos del idioma)."
 
-#: ..\python_docs\spladdoninternals.py:81
+#: ..\python_docs\spladdoninternals.py:82
 msgid ""
 "2. You press the layer entry command. This causes the app module/global "
 "plugin to perform the following:"
@@ -963,7 +1015,7 @@ msgstr ""
 "2. Pulsas la orden de entrada de la capa. Esto causa que el módulo de "
 "aplicación o extensión global haga lo siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:82
+#: ..\python_docs\spladdoninternals.py:83
 msgid ""
 "\t1. Layer conditions are checked. Until add-on 6.x, the app module wanted "
 "to see if you are in the Playlist Viewer (relaxed in add-on 7.0), and for "
@@ -974,14 +1026,14 @@ msgstr ""
 "reproducción (se relajó en el complemento 7.0), y para la extensión global, "
 "comprueba si Studio está en ejecución."
 
-#: ..\python_docs\spladdoninternals.py:83
+#: ..\python_docs\spladdoninternals.py:84
 msgid ""
 "\t2. Sets a flag telling NVDA that the Assistant/Controller layer is active."
 msgstr ""
 "\t2. Se establece un indicador para decirle a NVDA que la capa del "
 "asistente / controlador está activa."
 
-#: ..\python_docs\spladdoninternals.py:84
+#: ..\python_docs\spladdoninternals.py:85
 msgid ""
 "\t3. Adds gestures for the layer set to the main gestures map via "
 "bindGestures function. In case of screen reader emulation in SPL Assistant, "
@@ -992,7 +1044,7 @@ msgstr ""
 "lector de pantalla en el asistente de SPL, se selecciona el mapa apropiado "
 "de gestos."
 
-#: ..\python_docs\spladdoninternals.py:85
+#: ..\python_docs\spladdoninternals.py:86
 msgid ""
 "3. You press a command in the layer set (such as A from Assistant to hear "
 "automation status, or press A to turn automation on if using SPL Controller "
@@ -1012,7 +1064,7 @@ msgstr ""
 "caché. Hay más detalles de los mecanismos de este procedimiento en las "
 "siguientes secciones."
 
-#: ..\python_docs\spladdoninternals.py:86
+#: ..\python_docs\spladdoninternals.py:87
 msgid ""
 "4. After the layer command is done, it calls \"finish\" function (app module/"
 "global plugin) to perform clean up actions such as:"
@@ -1021,11 +1073,11 @@ msgstr ""
 "\"finish\" (módulo de aplicación / extensión global) para realizar acciones "
 "de limpieza tales como:"
 
-#: ..\python_docs\spladdoninternals.py:87
+#: ..\python_docs\spladdoninternals.py:88
 msgid "\t* Clears layer flags."
 msgstr "\t* Limpiar los indicadores de capa."
 
-#: ..\python_docs\spladdoninternals.py:88
+#: ..\python_docs\spladdoninternals.py:89
 msgid ""
 "\t* Removes the \"current\" gestures (main gestures and layer commands) and "
 "reassigns it to the main gestures map (this is dynamic binding removal)."
@@ -1034,7 +1086,7 @@ msgstr ""
 "reasignarlos al mapa principal de gestos (esto se llama eliminación dinámica "
 "de asociaciones)."
 
-#: ..\python_docs\spladdoninternals.py:89
+#: ..\python_docs\spladdoninternals.py:90
 msgid ""
 "\t* Performs additional actions depending on context (for example, if Cart "
 "Explorer was in use)."
@@ -1042,12 +1094,12 @@ msgstr ""
 "\t* Realizar acciones adicionales dependiendo del contexto (por ejemplo, si "
 "el explorador cart estaba en uso)."
 
-#: ..\python_docs\spladdoninternals.py:90
+#: ..\python_docs\spladdoninternals.py:91
 msgid "### The importance of Studio window handle and Studio API"
 msgstr ""
 "### La importancia del manejador de ventana de Studio y la api de Studio"
 
-#: ..\python_docs\spladdoninternals.py:91
+#: ..\python_docs\spladdoninternals.py:92
 msgid ""
 "In order to use services offered by Studio, one has to use Studio API, which "
 "in turn requires one to keep an eye on window handle to Studio (in Windows "
@@ -1066,7 +1118,7 @@ msgstr ""
 "(Studio usa mensajes para comunicarse con el programa externo en cuestión "
 "mediante la función SendMessage de user32.dll)."
 
-#: ..\python_docs\spladdoninternals.py:92
+#: ..\python_docs\spladdoninternals.py:93
 msgid ""
 "Starting from add-on 7.0, one of the activities the app module performs when "
 "started (besides announcing the version of Studio you are using) is to look "
@@ -1094,11 +1146,11 @@ msgstr ""
 "de Studio y modificar el módulo de aplicación y / o la extensión global en "
 "consecuencia."
 
-#: ..\python_docs\spladdoninternals.py:93
+#: ..\python_docs\spladdoninternals.py:94
 msgid "#### FindWindowA versus FindWindowW"
 msgstr "#### FindWindowA frente a FindWindowW"
 
-#: ..\python_docs\spladdoninternals.py:94
+#: ..\python_docs\spladdoninternals.py:95
 msgid ""
 "In the old days of Windows (1990's), programs were not ready to support "
 "Unicode when Windows itself did. To support programs that are not Unicode-"
@@ -1113,17 +1165,17 @@ msgstr ""
 "dos versiones de la función FindWindow, siendo la diferencia su carácter "
 "final, como se explica a continuación:"
 
-#: ..\python_docs\spladdoninternals.py:95
+#: ..\python_docs\spladdoninternals.py:96
 msgid "* A: ANSI version meant for legacy programs (e.g. FindWindowA)."
 msgstr ""
 "* A: versión ANSI hecha para programas antiguos (por ejemplo, FindWindowA)."
 
-#: ..\python_docs\spladdoninternals.py:96
+#: ..\python_docs\spladdoninternals.py:97
 msgid "* W: Widechar (Unicode) character version (e.g. FindWindowW)."
 msgstr ""
 "* W: versión para caracteres Widechar (Unicode) (por ejemplo, FindWindowW)."
 
-#: ..\python_docs\spladdoninternals.py:97
+#: ..\python_docs\spladdoninternals.py:98
 msgid ""
 "In reality, programs call FindWindow function, and the appropriate \"version"
 "\" was chosen based on overall character representation macro as specified "
@@ -1136,7 +1188,7 @@ msgstr ""
 "estuviese preparado para Unicode, al llamar a FindWindow, Windows llamaría "
 "internamente a FindWindowW."
 
-#: ..\python_docs\spladdoninternals.py:98
+#: ..\python_docs\spladdoninternals.py:99
 msgid ""
 "Until 2018, Studio app module and other components of the add-on called "
 "FindWindowA due to the fact that, in Python 2, a string is a read-only array "
@@ -1164,11 +1216,11 @@ msgstr ""
 "contra de las especificaciones de la API de Windows; ya no se da el caso en "
 "NVDA 2019.3 / Python 3)."
 
-#: ..\python_docs\spladdoninternals.py:99
+#: ..\python_docs\spladdoninternals.py:100
 msgid "## Life of the SPL app module"
 msgstr "## Vida del módulo de aplicación de SPL"
 
-#: ..\python_docs\spladdoninternals.py:100
+#: ..\python_docs\spladdoninternals.py:101
 msgid ""
 "Note: For the rest of this article, you'll see some portions of the source "
 "code to let you better understand how something works (mostly pseudo code "
@@ -1182,13 +1234,13 @@ msgstr ""
 "explicar cómo funciona el núcleo de NVDA (el lector de pantalla en sí) (por "
 "lo que aprenderás muchas cosas de una vez)."
 
-#: ..\python_docs\spladdoninternals.py:101
+#: ..\python_docs\spladdoninternals.py:102
 msgid "### SPL Studio app module and friends: design and code overview"
 msgstr ""
 "### Módulo de aplicación de SPL Studio y amigos: descripción del diseño y "
 "del código"
 
-#: ..\python_docs\spladdoninternals.py:102
+#: ..\python_docs\spladdoninternals.py:103
 msgid ""
 "As noted previously, the SPL Studio app module (splstudio/__init__.py) and "
 "friends (other app modules) consists of several sections. These include "
@@ -1197,7 +1249,7 @@ msgstr ""
 "Como se ha indicado antes, el módulo de aplicación de SPL Studio (splstudio/"
 "__init__.py) consta de varias secciones. Estas incluyen (de arriba a abajo):"
 
-#: ..\python_docs\spladdoninternals.py:103
+#: ..\python_docs\spladdoninternals.py:104
 msgid ""
 "* Imports: Many modules from Python packages and from NVDA screen reader are "
 "imported here, including IAccessible controls support, configuration manager "
@@ -1207,7 +1259,7 @@ msgstr ""
 "y del lector de pantalla NVDA, incluyendo soporte para controles de "
 "IAccessible, gestor de configuración y así sucesivamente."
 
-#: ..\python_docs\spladdoninternals.py:104
+#: ..\python_docs\spladdoninternals.py:105
 msgid ""
 "* Layer command wrapper: I talked about how layer commands work in a "
 "previous section, and the \"finally\" function at the top is the one that "
@@ -1217,7 +1269,7 @@ msgstr ""
 "funcionaban las órdenes de capa, y la función \"finally\" al principio es la "
 "que hace esto posible."
 
-#: ..\python_docs\spladdoninternals.py:105
+#: ..\python_docs\spladdoninternals.py:106
 msgid ""
 "* Few helper functions and checks: This includes a flag specifying minimum "
 "version of Studio needed, the cached value for Studio window handle (SPLWin) "
@@ -1234,13 +1286,21 @@ msgstr ""
 "\"messageSound\" (muestra un mensaje en una pantalla Braille y reproduce un "
 "archivo wav) y otras funciones auxiliares."
 
-#: ..\python_docs\spladdoninternals.py:106
+#: ..\python_docs\spladdoninternals.py:107
+#, fuzzy
+#| msgid ""
+#| "* Track item overlay classes: three classes are defined for various "
+#| "purposes. The first is a base class that provides commands and services "
+#| "across Studio and other apps, while other two classes provide support for "
+#| "Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come "
+#| "back to these objects later."
 msgid ""
 "* Track item overlay classes: three classes are defined for various "
 "purposes. The first is a base class that provides commands and services "
 "across Studio and other apps, while other two classes provide support for "
-"Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back "
-"to these objects later."
+"tracks found throughout Studio (one is a general track items class, the "
+"other is specific to playlist viewer). We'll come back to these objects "
+"later."
 msgstr ""
 "* Clases de superposición del elemento de pista: se definen tres clases con "
 "diversos propósitos. La primera es una clase base que proporciona órdenes y "
@@ -1249,7 +1309,7 @@ msgstr ""
 "reproducción en Studio 5.0x y 5.1x, respectivamente. Volveremos a estos "
 "objetos más tarde."
 
-#: ..\python_docs\spladdoninternals.py:107
+#: ..\python_docs\spladdoninternals.py:108
 msgid ""
 "* App module class: This is the core of not only the app module, but the "
 "entire add-on package. The app module class (appModules.splstudio.AppModule) "
@@ -1260,14 +1320,22 @@ msgstr ""
 "aplicación (appModules.splstudio.AppModule) está a su vez dividida en "
 "secciones como se describe en el capítulo de diseño del complemento."
 
-#: ..\python_docs\spladdoninternals.py:108
+#: ..\python_docs\spladdoninternals.py:109
+#, fuzzy
+#| msgid ""
+#| "For Studio's colleagues (Creator and Track Tool), they consist of "
+#| "sections listed above except layer command wrapper, and track item "
+#| "classes are simplified. For VT Recorder, because it controls certain "
+#| "internal behaviors of Studio app module when it starts, only the "
+#| "constructor and terminate methods (see below) are provided. For Streamer "
+#| "and DSP Engine, encoder specific workarounds are present."
 msgid ""
-"For Studio's colleagues (Creator and Track Tool), they consist of sections "
-"listed above except layer command wrapper, and track item classes are "
-"simplified. For VT Recorder, because it controls certain internal behaviors "
-"of Studio app module when it starts, only the constructor and terminate "
-"methods (see below) are provided. For Streamer and DSP Engine, encoder "
-"specific workarounds are present."
+"For Studio's colleagues (Creator, Track Tool, Remote VT client), they "
+"consist of sections listed above except layer command wrapper, and track "
+"item classes are simplified. For VT Recorder, because it controls certain "
+"internal behaviors of Studio app module when it starts, only the constructor "
+"and terminate methods (see below) are provided. For Streamer and DSP Engine, "
+"encoder specific workarounds are present."
 msgstr ""
 "Los compañeros de Studio (Creator y herramienta de pista) se explican en las "
 "secciones listadas arriba excepto la capa de envoltura de órdenes, y se han "
@@ -1277,7 +1345,7 @@ msgstr ""
 "más abajo). Para Streamer y el motor DSP, se encuentran presentes soluciones "
 "específicas del codificador."
 
-#: ..\python_docs\spladdoninternals.py:109
+#: ..\python_docs\spladdoninternals.py:110
 msgid ""
 "Let's now tour the lifecycle of the app module object in question: before "
 "and during app module initialization, activities performed while the app "
@@ -1288,7 +1356,7 @@ msgstr ""
 "actividades realizadas mientras el módulo de aplicación está activo, muerte "
 "y (hasta 2018) actualizaciones del complemento."
 
-#: ..\python_docs\spladdoninternals.py:110
+#: ..\python_docs\spladdoninternals.py:111
 msgid ""
 "Note: although standalone add-on update feature is gone, the mechanism "
 "behind add-on update feature will be documented for sake of completeness."
@@ -1297,13 +1365,13 @@ msgstr ""
 "ido, el mecanismo detrás de la actualización de complementos se documentará "
 "para dar completitud."
 
-#: ..\python_docs\spladdoninternals.py:111
+#: ..\python_docs\spladdoninternals.py:112
 msgid "### Before birth: NVDA's app module import routines"
 msgstr ""
 "### Antes de nacer: procedimientos de importación del módulo de aplicación "
 "de NVDA"
 
-#: ..\python_docs\spladdoninternals.py:112
+#: ..\python_docs\spladdoninternals.py:113
 msgid ""
 "Before we go any further, it is important for you to understand how NVDA "
 "loads various app modules. This routine, available from source/"
@@ -1313,7 +1381,7 @@ msgstr ""
 "distintos módulos de aplicación. Este procedimiento, disponible en source/"
 "appModuleHandler.py (núcleo de NVDA) puede resumirse de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:113
+#: ..\python_docs\spladdoninternals.py:114
 msgid ""
 "1. If a new process (program) runs, NVDA will try to obtain the process ID "
 "(PID) for the newly loaded process."
@@ -1321,7 +1389,7 @@ msgstr ""
 "1. Si se ejecuta un nuevo proceso (programa), NVDA intentará obtener el "
 "identificador de proceso (PID) para el proceso recién cargado."
 
-#: ..\python_docs\spladdoninternals.py:114
+#: ..\python_docs\spladdoninternals.py:115
 msgid ""
 "2. Next, NVDA will look for an app module matching the name of the "
 "executable for the newly created process. It looks in various places, "
@@ -1336,7 +1404,7 @@ msgstr ""
 "por defecto si no encuentra ningún módulo de aplicación con el nombre "
 "especificado."
 
-#: ..\python_docs\spladdoninternals.py:115
+#: ..\python_docs\spladdoninternals.py:116
 msgid ""
 "3. Next, NVDA will attempt to use Python's built-in __import__ function to "
 "load the app module, raising errors if necessary. No errors means the app "
@@ -1346,7 +1414,7 @@ msgstr ""
 "para cargar el módulo de aplicación, lanzando errores si es necesario. Si no "
 "hay errores significa que el módulo de aplicación está listo para usarse."
 
-#: ..\python_docs\spladdoninternals.py:116
+#: ..\python_docs\spladdoninternals.py:117
 msgid ""
 "4. Once the newly loaded module is ready, NVDA will instantiate appModule."
 "AppModule class (make it available). If a constructor (__init__ method) is "
@@ -1358,7 +1426,7 @@ msgstr ""
 "(método __init__), Python (y no NVDA) llamará al constructor del módulo de "
 "aplicación (más sobre esto debajo)."
 
-#: ..\python_docs\spladdoninternals.py:117
+#: ..\python_docs\spladdoninternals.py:118
 msgid ""
 "In case the app module's AppModule class has a constructor defined, Python "
 "will follow directions specified in the constructor. Just prior to "
@@ -1371,15 +1439,15 @@ msgstr ""
 "del módulo de aplicación, es importante llamar primero al constructor del "
 "módulo de aplicación por defecto como en el siguiente código:"
 
-#: ..\python_docs\spladdoninternals.py:118
+#: ..\python_docs\spladdoninternals.py:119
 msgid "\tdef __init__(self, *args, **kwargs):"
 msgstr "\tdef __init__(self, *args, **kwargs):"
 
-#: ..\python_docs\spladdoninternals.py:119
+#: ..\python_docs\spladdoninternals.py:120
 msgid "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 msgstr "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 
-#: ..\python_docs\spladdoninternals.py:120
+#: ..\python_docs\spladdoninternals.py:121
 msgid ""
 "This is a must because the default app module constructor performs important "
 "activities, including:"
@@ -1387,7 +1455,7 @@ msgstr ""
 "Esto es obligatorio porque el constructor del módulo de aplicación por "
 "defecto realiza actividades importantes, incluyendo:"
 
-#: ..\python_docs\spladdoninternals.py:121
+#: ..\python_docs\spladdoninternals.py:122
 msgid ""
 "1. The default app module constructor will call another base constructor "
 "(this time, it is baseObject.ScriptableObject, containing gestures support "
@@ -1397,7 +1465,7 @@ msgstr ""
 "constructor base (en esta ocasión, se trata de baseObject.ScriptableObject, "
 "que contiene soporte de gestos entre otras propiedades importantes)."
 
-#: ..\python_docs\spladdoninternals.py:122
+#: ..\python_docs\spladdoninternals.py:123
 msgid ""
 "2. Initializes various properties, such as PID (process ID), app module name "
 "(if defined), application name and the handle to the app in question via "
@@ -1410,7 +1478,7 @@ msgstr ""
 "de kernel32.dll (XP/Server 2003 y Vista/Server 2008 y posterior necesitan "
 "argumentos distintos)."
 
-#: ..\python_docs\spladdoninternals.py:123
+#: ..\python_docs\spladdoninternals.py:124
 msgid ""
 "3. Lastly, the constructor initializes process injection handle and helper "
 "binding handle in case such routines are required."
@@ -1419,15 +1487,23 @@ msgstr ""
 "proceso y el manejador de asociación auxiliar en caso de que se necesiten "
 "estos procedimientos."
 
-#: ..\python_docs\spladdoninternals.py:124
+#: ..\python_docs\spladdoninternals.py:125
 msgid "### Birth: app module construction"
 msgstr "### Nacimiento: construcción del módulo de aplicación"
 
-#: ..\python_docs\spladdoninternals.py:125
+#: ..\python_docs\spladdoninternals.py:126
+#, fuzzy
+#| msgid ""
+#| "Certain app module add-ons shipts with an app module with a constructor "
+#| "define, and SPL Studio is one of them; in 2018, constructors were added "
+#| "to Creator and Track Tool for various purposes. After calling the base "
+#| "constructor as described above, SPL app module's constructor (__init__ "
+#| "method that runs when the app module starts) does the following:"
 msgid ""
-"Certain app module add-ons shipts with an app module with a constructor "
+"Certain app module add-ons shipt with an app module with a constructor "
 "define, and SPL Studio is one of them; in 2018, constructors were added to "
-"Creator and Track Tool for various purposes. After calling the base "
+"Creator and Track Tool for various purposes, and Remote VT client ships with "
+"a constructor similar to Creator app module. After calling the base "
 "constructor as described above, SPL app module's constructor (__init__ "
 "method that runs when the app module starts) does the following:"
 msgstr ""
@@ -1438,7 +1514,7 @@ msgstr ""
 "arriba, el constructor del módulo de aplicación de SPL (método __init__ que "
 "se ejecuta cuando se inicia el módulo de aplicación) hace lo siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:126
+#: ..\python_docs\spladdoninternals.py:127
 msgid ""
 "1. Checks whether a supported version of Studio is running, and if not, "
 "raises RuntimeError exception, preventing you from using the app module "
@@ -1450,7 +1526,7 @@ msgstr ""
 "de aplicación mientras esté en uso una versión no soportada de Studio (a "
 "partir del complemento 17.04, es necesario usar Studio 5.10 o posterior)."
 
-#: ..\python_docs\spladdoninternals.py:127
+#: ..\python_docs\spladdoninternals.py:128
 msgid ""
 "2. Unless silenced by `globalVars.appArgs.minimal` being True, NVDA "
 "announces, \"Using SPL Studio version 5.01\" if Studio 5.01 is in use (of "
@@ -1471,7 +1547,7 @@ msgstr ""
 "braille.handler.message (mostrando mensajes en una pantalla braille si hay "
 "alguna conectada)."
 
-#: ..\python_docs\spladdoninternals.py:128
+#: ..\python_docs\spladdoninternals.py:129
 msgid ""
 "3. Next, add-on settings and related subsystems are initialized by calling "
 "splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are "
@@ -1490,7 +1566,7 @@ msgstr ""
 "posteriores, se saltan algunos pasos si otra aplicación de Studio está en "
 "uso (mira las siguientes secciones). Esto se hace de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:129
+#: ..\python_docs\spladdoninternals.py:130
 msgid ""
 "\t1. For add-on 6.x and 7.x, loads a predefined configuration file named "
 "userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "
@@ -1514,7 +1590,7 @@ msgstr ""
 "abra SPLConfig (splconfig.openConfig) registrará el nombre de la aplicación "
 "para indicar qué aplicación se está iniciando."
 
-#: ..\python_docs\spladdoninternals.py:130
+#: ..\python_docs\spladdoninternals.py:131
 msgid ""
 "\t2. For add-on 6.0 and later, loads broadcast profiles from addonDir/"
 "profiles folder. These are .ini files and are processed just like the normal "
@@ -1531,7 +1607,7 @@ msgstr ""
 "complemento 17.10 y posteriores, si decimos al complemento que use solamente "
 "el perfil normal, no se hará este paso."
 
-#: ..\python_docs\spladdoninternals.py:131
+#: ..\python_docs\spladdoninternals.py:132
 msgid ""
 "\t3. Each profile is then appended to a record keeper container (splconfig."
 "SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and "
@@ -1550,7 +1626,7 @@ msgstr ""
 "posteriores), hay (o habrá) simplemente un perfil, por lo que el paso de "
 "anexar se omite)."
 
-#: ..\python_docs\spladdoninternals.py:132
+#: ..\python_docs\spladdoninternals.py:133
 msgid ""
 "\t4. Starting from add-on 7.0 and enhanced in 17.10, unless saving settings "
 "to disk is prohibited or in-memory config is requested, Normal profile "
@@ -1567,7 +1643,7 @@ msgstr ""
 "guardar perfiles. Mira la sección de guardado de perfiles en perfiles de "
 "emisión para más detalles y razones."
 
-#: ..\python_docs\spladdoninternals.py:133
+#: ..\python_docs\spladdoninternals.py:134
 msgid ""
 "\t5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen "
 "to config save action so add-on settings can be saved when config save "
@@ -1583,7 +1659,7 @@ msgstr ""
 "opciones del complemento se recargan o restablecen a valores por defecto si "
 "se pulsa NVDA+CTRL+r una o tres veces, respectivamente."
 
-#: ..\python_docs\spladdoninternals.py:134
+#: ..\python_docs\spladdoninternals.py:135
 msgid ""
 "\t6. If an instant profile is defined (a cached instant profile name is "
 "present), the instant profile variable is set accordingly."
@@ -1592,7 +1668,7 @@ msgstr ""
 "instantáneo en la caché) se establece de forma apropiada la variable de "
 "perfil instantáneo."
 
-#: ..\python_docs\spladdoninternals.py:135
+#: ..\python_docs\spladdoninternals.py:136
 msgid ""
 "\t7. If errors were found, NVDA either displays an error dialog (5.x and "
 "earlier) or a status dialog (6.0 and later) detailing the error in question "
@@ -1611,7 +1687,7 @@ msgstr ""
 "interpretación, vistos comúnmente cuando el contenido del archivo no tiene "
 "sentido)."
 
-#: ..\python_docs\spladdoninternals.py:136
+#: ..\python_docs\spladdoninternals.py:137
 msgid ""
 "\t8. Between add-on 7.0 and 18.12, add-on update facility is initialized "
 "(splupdate.initialize). among other things, the initialization routine loads "
@@ -1627,38 +1703,26 @@ msgstr ""
 "actualización del complemento (alojados en splstudio/splupdate.py) más "
 "adelante en este artículo."
 
-#: ..\python_docs\spladdoninternals.py:137
-msgid ""
-"\t9. Prepares routines used by time-based profile switching facility by "
-"loading triggers map and checking if NVDA should switch to the next profile "
-"(this is done if the show associated with the given profile hasn't ended "
-"yet). See time-based profile section for details."
-msgstr ""
-"\t9. Se preparan los procedimientos usados por la característica de cambio "
-"de perfil basado en tiempo cargando un mapa de disparadores y comprobando si "
-"NVDA debería cambiar al siguiente perfil (esto se hace si el programa "
-"asociado con el perfil dado no ha terminado todavía). Mira la sección de "
-"perfiles basados en tiempo para más detalles."
-
 #: ..\python_docs\spladdoninternals.py:138
+#, fuzzy
+#| msgid ""
+#| "\t11. In add-on 8.0, track comments are loaded (if any). See track items "
+#| "section for details."
 msgid ""
-"\t10. Encoder settings file is loaded, and if ConfigObj throws errors, "
-"encoder settings will be reset to defaults."
-msgstr ""
-"\t10. Se carga el archivo de ajustes del codificador, y si ConfigObj lanza "
-"errores, los ajustes del codificador se restablecen por defecto."
-
-#: ..\python_docs\spladdoninternals.py:139
-msgid ""
-"\t11. In add-on 8.0, track comments are loaded (if any). See track items "
+"\t9. In add-on 8.0, track comments are loaded (if any). See track items "
 "section for details."
 msgstr ""
 "\t11. En el complemento 8.0, se cargan los comentarios de pista (si los "
 "hay). Mira la sección de elementos de pista para más detalles."
 
-#: ..\python_docs\spladdoninternals.py:140
+#: ..\python_docs\spladdoninternals.py:139
+#, fuzzy
+#| msgid ""
+#| "\t12. Although not part of the init routine, starting from 17.12, various "
+#| "modules register one or more functions for action notifications. See "
+#| "extension points section for details."
 msgid ""
-"\t12. Although not part of the init routine, starting from 17.12, various "
+"\t10. Although not part of the init routine, starting from 17.12, various "
 "modules register one or more functions for action notifications. See "
 "extension points section for details."
 msgstr ""
@@ -1667,7 +1731,7 @@ msgstr ""
 "notificaciones de acción. Mira la sección de puntos de extensión para más "
 "detalles."
 
-#: ..\python_docs\spladdoninternals.py:141
+#: ..\python_docs\spladdoninternals.py:140
 msgid ""
 "4. Starting with NVDA 2015.3, it became possible for an app module to "
 "request NVDA to monitor certain events for certain controls even if the app "
@@ -1688,7 +1752,7 @@ msgstr ""
 "segundo plano se establece de forma apropiada. Hablaremos del procesamiento "
 "de eventos a lo largo de este artículo."
 
-#: ..\python_docs\spladdoninternals.py:142
+#: ..\python_docs\spladdoninternals.py:141
 msgid ""
 "5. Next, GUI subsystem is initialized (NVDA uses wxPython). This routine "
 "adds an entry in NVDA's preferences menu entitled \"SPL Studio Settings\", "
@@ -1698,7 +1762,7 @@ msgstr ""
 "procedimiento añade una entrada en el menú de preferencias de NVDA, titulada "
 "\"Ajustes de SPL Studio\", el diálogo de configuración del complemento."
 
-#: ..\python_docs\spladdoninternals.py:143
+#: ..\python_docs\spladdoninternals.py:142
 msgid ""
 "6. As described above, the app module will look for the window handle for "
 "the Studio app. In order to avoid this routine consuming resources and "
@@ -1710,7 +1774,7 @@ msgstr ""
 "consuma recursos y reduzca el rendimiento de NVDA, esto se hace en un hilo "
 "separado. El hilo hace lo siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:144
+#: ..\python_docs\spladdoninternals.py:143
 msgid ""
 "\t1. Studio window handle is searched via a loop. If Studio exits for "
 "whatever reason, an event flag is raised by the app module, causing this "
@@ -1720,7 +1784,7 @@ msgstr ""
 "cierra por la razón que sea, el módulo de aplicación activa un indicador de "
 "evento, causando que este hilo finalice."
 
-#: ..\python_docs\spladdoninternals.py:145
+#: ..\python_docs\spladdoninternals.py:144
 msgid ""
 "\t2. If the handle is found, its value is recorded in a flag found in base "
 "services module (splbase)."
@@ -1728,7 +1792,7 @@ msgstr ""
 "\t2. Si se encuentra el manejador, su valor se registra en un indicador "
 "situado en el módulo de servicios básicos (splbase)."
 
-#: ..\python_docs\spladdoninternals.py:146
+#: ..\python_docs\spladdoninternals.py:145
 msgid ""
 "\t3. If the app module is told to announce status of metadata streaming and "
 "connect to predefined URL's, NVDA will do it at this point provided that "
@@ -1748,7 +1812,7 @@ msgstr ""
 "anuncio de metadatos y sus componentes relacionados en el capítulo sobre el "
 "asistente de SPL."
 
-#: ..\python_docs\spladdoninternals.py:147
+#: ..\python_docs\spladdoninternals.py:146
 msgid ""
 "7. Between add-on 7.0 and 18.12, if automatic update check is enabled, "
 "update check timer is started."
@@ -1756,13 +1820,13 @@ msgstr ""
 "7. Entre los complementos 7.0 y 18.12, si está activada la búsqueda "
 "automática de actualizaciones, se inicia el temporizador asociado."
 
-#: ..\python_docs\spladdoninternals.py:148
+#: ..\python_docs\spladdoninternals.py:147
 msgid "#### Changes introduced in 17.10 due to volatile configuration flags"
 msgstr ""
 "#### Cambios introducidos en 17.10 debido a indicadores de configuración "
 "volátil"
 
-#: ..\python_docs\spladdoninternals.py:149
+#: ..\python_docs\spladdoninternals.py:148
 msgid ""
 "In add-on 17.10, several internal flags and associated command-line switches "
 "are introduced to control how the add-on settings are loaded and treated. "
@@ -1777,29 +1841,43 @@ msgstr ""
 "Estos indicadores deberían usarse cuando lo indique el desarrollador del "
 "complemento, ya que su propósito es experimentar o solucionar problemas."
 
-#: ..\python_docs\spladdoninternals.py:150
+#: ..\python_docs\spladdoninternals.py:149
 msgid "The flags are as follows:"
 msgstr "Los indicadores son los siguientes:"
 
-#: ..\python_docs\spladdoninternals.py:151
+#: ..\python_docs\spladdoninternals.py:150
+#, fuzzy
+#| msgid ""
+#| "1. Do not save changes to disk (configVolatile/--spl-configvolatile): all "
+#| "profiles (including broadcast profiles) will be loaded from disk but "
+#| "changes will not be saved. With this flag turned on, profile caching will "
+#| "not occur, including normal profile."
 msgid ""
-"1. Do not save changes to disk (configVolatile/--spl-configvolatile): all "
-"profiles (including broadcast profiles) will be loaded from disk but changes "
-"will not be saved. With this flag turned on, profile caching will not occur, "
-"including normal profile."
+"1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed "
+"in 20.09): all profiles (including broadcast profiles) will be loaded from "
+"disk but changes will not be saved. With this flag turned on, profile "
+"caching will not occur, including normal profile."
 msgstr ""
 "1. No guardar cambios a disco (configVolatile/--spl-configvolatile): todos "
 "los perfiles (incluyendo los perfiles de emisión) se cargarán desde disco, "
 "pero sus cambios no se guardarán. Con este indicador activado, la "
 "conservación de perfiles en caché no ocurrirá, incluso para el perfil normal."
 
-#: ..\python_docs\spladdoninternals.py:152
+#: ..\python_docs\spladdoninternals.py:151
+#, fuzzy
+#| msgid ""
+#| "2. Load normal profile only (normalProfileOnly/--spl-confignormalonly): "
+#| "broadcast profiles will not be used, including ability to create new "
+#| "profiles and using time-based profile switching (see time-based profiles "
+#| "section for details). Combining this with configIsVolatile flag "
+#| "effectively makes normal profile a read-only config store."
 msgid ""
-"2. Load normal profile only (normalProfileOnly/--spl-confignormalonly): "
+"2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): "
 "broadcast profiles will not be used, including ability to create new "
 "profiles and using time-based profile switching (see time-based profiles "
-"section for details). Combining this with configIsVolatile flag effectively "
-"makes normal profile a read-only config store."
+"section for details). Combining this with NVDA setting to not have "
+"configuration to disk on exit effectively makes normal profile a read-only "
+"config store."
 msgstr ""
 "2. Cargar solamente el perfil normal (normalProfileOnly/--spl-"
 "confignormalonly): no se usarán perfiles de emisión, desactivando incluso la "
@@ -1808,7 +1886,7 @@ msgstr ""
 "Combinando este indicador con configIsVolatile, el perfil normal se "
 "convierte de forma efectiva en un almacén de configuración de sólo lectura."
 
-#: ..\python_docs\spladdoninternals.py:153
+#: ..\python_docs\spladdoninternals.py:152
 msgid ""
 "3. Use in-memory config (configInMemory/--spl-configinmemory): only normal "
 "profile will be used, but instead of loading settings from disk, an in-"
@@ -1820,7 +1898,7 @@ msgstr ""
 "se usará una versión en memoria con los ajustes por defecto aplicados y la "
 "conservación no funcionará del todo."
 
-#: ..\python_docs\spladdoninternals.py:154
+#: ..\python_docs\spladdoninternals.py:153
 msgid ""
 "Using flags that specify the use of normal profile only will restrict "
 "ability to create new broadcast profiles."
@@ -1828,7 +1906,7 @@ msgstr ""
 "Usar indicadores que especifiquen la utilización solamente del perfil normal "
 "restringirá la habilidad de crear nuevos perfiles de emisión."
 
-#: ..\python_docs\spladdoninternals.py:155
+#: ..\python_docs\spladdoninternals.py:154
 msgid ""
 "#### Changes introduced in 18.07 to handle add-on settings from apps other "
 "than Studio"
@@ -1836,7 +1914,7 @@ msgstr ""
 "#### Cambios introducidos en 18.07 para procesar opciones del complemento "
 "desde aplicaciones distintas a Studio"
 
-#: ..\python_docs\spladdoninternals.py:156
+#: ..\python_docs\spladdoninternals.py:155
 msgid ""
 "Because Columns Explorer (see the corresponding section below) is used in "
 "Studio, Creator and Track Tool, it became necessary to change how add-on "
@@ -1856,7 +1934,7 @@ msgstr ""
 "ajustes del complemento ya cargados, no tendrá lugar ninguna actividad de "
 "construcción."
 
-#: ..\python_docs\spladdoninternals.py:157
+#: ..\python_docs\spladdoninternals.py:156
 msgid ""
 "In app modules for Creator and Track Tool, the constructor will call "
 "splconfig.openConfig to perform the above activity. When the app module "
@@ -1871,11 +1949,11 @@ msgstr ""
 "que finaliza, y si no hay componentes de SPL activos, las opciones del "
 "complemento se irán de la memoria."
 
-#: ..\python_docs\spladdoninternals.py:158
+#: ..\python_docs\spladdoninternals.py:157
 msgid "### Life of the app module: events, commands and output"
 msgstr "### Vida del módulo de aplicación: eventos, órdenes y salida"
 
-#: ..\python_docs\spladdoninternals.py:159
+#: ..\python_docs\spladdoninternals.py:158
 msgid ""
 "Once the Studio app module is ready, you can then move to Studio window and "
 "perform activities such as:"
@@ -1883,7 +1961,7 @@ msgstr ""
 "Una vez el módulo de Studio está listo, puedes moverte a la ventana de "
 "Studio y realizar actividades como estas:"
 
-#: ..\python_docs\spladdoninternals.py:160
+#: ..\python_docs\spladdoninternals.py:159
 msgid ""
 "* Press commands, and NVDA will respond by either opening a dialog or "
 "speaking what it did."
@@ -1891,7 +1969,7 @@ msgstr ""
 "* Pulsar órdenes, y NVDA responderá abriendo un diálogo o bien diciendo lo "
 "que ha hecho."
 
-#: ..\python_docs\spladdoninternals.py:161
+#: ..\python_docs\spladdoninternals.py:160
 msgid ""
 "* Announce status changes such as microphone status. The length and format "
 "of these messages (and other add-on messages) are controlled by message "
@@ -1910,11 +1988,11 @@ msgstr ""
 "actualmente, para el que se emplea navegación por objetos. Esto es necesario "
 "por culpa de una opción rota en el propio Studio."
 
-#: ..\python_docs\spladdoninternals.py:162
+#: ..\python_docs\spladdoninternals.py:161
 msgid "* Find tracks."
 msgstr "* Buscar pistas."
 
-#: ..\python_docs\spladdoninternals.py:163
+#: ..\python_docs\spladdoninternals.py:162
 msgid ""
 "* Examine information in columns via Track Dial and/or Columns Explorer "
 "(Track Dial was deprecated in 2017)."
@@ -1922,16 +2000,16 @@ msgstr ""
 "* Examinar la información en columnas mediante el dial de pista y / o el "
 "explorador de columnas (el dial de pista quedó obsoleto en 2017)."
 
-#: ..\python_docs\spladdoninternals.py:164
+#: ..\python_docs\spladdoninternals.py:163
 msgid "* Listen to progress of a library scan in the background."
 msgstr ""
 "* Escuchar el progreso de escaneado de una biblioteca en segundo plano."
 
-#: ..\python_docs\spladdoninternals.py:165
+#: ..\python_docs\spladdoninternals.py:164
 msgid "* Perform SPL Assistant gestures."
 msgstr "* Realizar gestos del asistente de SPL."
 
-#: ..\python_docs\spladdoninternals.py:166
+#: ..\python_docs\spladdoninternals.py:165
 msgid ""
 "* For 6.0 and later, manage broadcast profiles (we'll talk about broadcast "
 "profiles in configuration management section)."
@@ -1939,24 +2017,24 @@ msgstr ""
 "* Para 6.0 y posteriores, gestionar perfiles de emisión (hablaremos de los "
 "perfiles de emisión en la sección de gestión de la configuración)."
 
-#: ..\python_docs\spladdoninternals.py:167
+#: ..\python_docs\spladdoninternals.py:166
 msgid ""
 "* For 17.12 and later, respond to actions such as broadcast profile switches."
 msgstr ""
 "* Para 17.12 y posteriores, responder ante acciones como cambios de perfil "
 "de emisión."
 
-#: ..\python_docs\spladdoninternals.py:168
+#: ..\python_docs\spladdoninternals.py:167
 msgid "For Creator and Track Tool, it will let you review column data."
 msgstr ""
 "En Creator y la herramienta de pista, te permitirá revisar los datos de una "
 "columna."
 
-#: ..\python_docs\spladdoninternals.py:169
+#: ..\python_docs\spladdoninternals.py:168
 msgid "#### Extension points"
 msgstr "#### Puntos de extensión"
 
-#: ..\python_docs\spladdoninternals.py:170
+#: ..\python_docs\spladdoninternals.py:169
 msgid ""
 "Introduced in NVDA 2017.4, an extension point is a notification system from "
 "NVDA that tells modules and functions to perform tasks when something "
@@ -1972,11 +2050,11 @@ msgstr ""
 "cambio, o un sintetizador de voz puede filtrar cierto texto de los mensajes "
 "hablados antes de verbalizarlos a los usuarios."
 
-#: ..\python_docs\spladdoninternals.py:171
+#: ..\python_docs\spladdoninternals.py:170
 msgid "There are three extension point types:"
 msgstr "Hay tres tipos de puntos de extensión:"
 
-#: ..\python_docs\spladdoninternals.py:172
+#: ..\python_docs\spladdoninternals.py:171
 msgid ""
 "* Action: a function can wait for something to happen, such as change of "
 "profiles, loading and saving settings and others, and act accordingly once "
@@ -1986,7 +2064,7 @@ msgstr ""
 "perfiles, que se cargue o guarde la configuración y otros, y actuar en "
 "consecuencia cuando una de estas acciones tiene lugar."
 
-#: ..\python_docs\spladdoninternals.py:173
+#: ..\python_docs\spladdoninternals.py:172
 msgid ""
 "* Decider: A data processor inside a script or a function can tell NVDA to "
 "continue processing data, such as passing a keystroke to remote system."
@@ -1995,7 +2073,7 @@ msgstr ""
 "decirle a NVDA que continúe procesando datos, tales como enviar una "
 "pulsación de teclas a un sistema remoto."
 
-#: ..\python_docs\spladdoninternals.py:174
+#: ..\python_docs\spladdoninternals.py:173
 msgid ""
 "* Filter: a speech processor can add, change, or remove texts before letting "
 "synthesizers announce the would-be spoken text."
@@ -2004,7 +2082,7 @@ msgstr ""
 "de dejar que los sintetizadores verbalicen el texto que debería ser "
 "verbalizado."
 
-#: ..\python_docs\spladdoninternals.py:175
+#: ..\python_docs\spladdoninternals.py:174
 msgid ""
 "In SPL add-on, actions are used to notify modules of some action such as "
 "when Studio exits, broadcast profile switches and so on. There are two "
@@ -2014,7 +2092,7 @@ msgstr ""
 "de alguna acción, como cuando salimos de Studio, cambia el perfil de emisión "
 "y así sucesivamente. Hay dos acciones definidas (en el módulo splactions):"
 
-#: ..\python_docs\spladdoninternals.py:176
+#: ..\python_docs\spladdoninternals.py:175
 msgid ""
 "* Broadcast profile switch: notifies microphone alarm thread and metadata "
 "streaming configuration to switch streams or turn off the alarm (see below "
@@ -2024,18 +2102,18 @@ msgstr ""
 "la configuración del flujo de metadatos para que cambie los flujos o apague "
 "la alarma (mira más abajo para más detalles)."
 
-#: ..\python_docs\spladdoninternals.py:177
+#: ..\python_docs\spladdoninternals.py:176
 msgid ""
 "* Studio exiting: tells add-on dialogs to close without saving settings."
 msgstr ""
 "* Saliendo de Studio: indica a los diálogos del complemento que se cierren "
 "sin guardar los ajustes."
 
-#: ..\python_docs\spladdoninternals.py:178
+#: ..\python_docs\spladdoninternals.py:177
 msgid "### Death: termination routines"
 msgstr "### Muerte: procedimientos de finalización"
 
-#: ..\python_docs\spladdoninternals.py:179
+#: ..\python_docs\spladdoninternals.py:178
 msgid ""
 "While using the add-on, you can stop using it in various ways, including "
 "exiting or restarting NVDA, turning off your computer or logging off or "
@@ -2049,7 +2127,7 @@ msgstr ""
 "aplicación de Studio tiene instrucciones que seguir cuando el complemento se "
 "cierra."
 
-#: ..\python_docs\spladdoninternals.py:180
+#: ..\python_docs\spladdoninternals.py:179
 msgid ""
 "Here is a list of steps Studio app module performs when it is about to leave "
 "this world:"
@@ -2057,7 +2135,7 @@ msgstr ""
 "Aquí hay una lista de pasos que sigue el módulo de aplicación de Studio "
 "cuando está a punto de abandonar este mundo:"
 
-#: ..\python_docs\spladdoninternals.py:181
+#: ..\python_docs\spladdoninternals.py:180
 msgid ""
 "1. The \"terminate\" method is called. Just like the startup (constructor) "
 "routine, this method first calls the terminate method defined in the default "
@@ -2068,7 +2146,7 @@ msgstr ""
 "definido en el módulo de aplicación por defecto, que cierra manejadores y "
 "realiza otros procedimientos de cierre."
 
-#: ..\python_docs\spladdoninternals.py:182
+#: ..\python_docs\spladdoninternals.py:181
 msgid ""
 "2. Calls splconfig.terminate() function to save add-on settings and perform "
 "shutdown routines for some features. This function goes through following "
@@ -2078,7 +2156,7 @@ msgstr ""
 "complemento y realizar tareas de apagado de algunas características. Esta "
 "función sigue los siguientes pasos en el complemento 19.01:"
 
-#: ..\python_docs\spladdoninternals.py:183
+#: ..\python_docs\spladdoninternals.py:182
 msgid ""
 "\t1. In add-on 7.0, if update check timer is running, the timer is told to "
 "stop, and update metadata is copied back to normal profile. This step is "
@@ -2089,7 +2167,7 @@ msgstr ""
 "los metadatos de actualización de vuelta en el perfil normal. Este paso se "
 "elimina en la versión 19.01."
 
-#: ..\python_docs\spladdoninternals.py:184
+#: ..\python_docs\spladdoninternals.py:183
 msgid ""
 "\t2. Starting with add-on 18.07, active SPL component is unregistered via "
 "splconfig.closeConfig function. If there are other components running, the "
@@ -2100,7 +2178,7 @@ msgstr ""
 "en ejecución, los siguientes pasos no ocurrirán, y en cualquier otro caso "
 "las opciones del complemento se cerrarán."
 
-#: ..\python_docs\spladdoninternals.py:185
+#: ..\python_docs\spladdoninternals.py:184
 msgid ""
 "\t3. Unless disabled through flags in 17.10, profiles are saved (beginning "
 "with normal profile) to disk if and only if profile-specific settings were "
@@ -2115,7 +2193,7 @@ msgstr ""
 "Este paso no ocurrirá si está en uso una versión en memoria del perfil "
 "normal o hay otros componentes de SPL activos."
 
-#: ..\python_docs\spladdoninternals.py:186
+#: ..\python_docs\spladdoninternals.py:185
 msgid ""
 "\t4. If there is an instant switch profile defined, this is recorded in the "
 "normal profile, otherwise it is removed from the profile database."
@@ -2124,7 +2202,7 @@ msgstr ""
 "perfil normal, de cualquier otro modo se elimina de la base de datos de "
 "perfiles."
 
-#: ..\python_docs\spladdoninternals.py:187
+#: ..\python_docs\spladdoninternals.py:186
 msgid ""
 "\t5. Once all profiles are saved, various flags, active profile and config "
 "pool is cleared."
@@ -2132,7 +2210,7 @@ msgstr ""
 "\t5. Una vez se guardan todos los perfiles, se limpian diversos indicadores, "
 "el perfil activo y el contenedor de configuración."
 
-#: ..\python_docs\spladdoninternals.py:188
+#: ..\python_docs\spladdoninternals.py:187
 msgid ""
 "\t6. For add-on 5.x and earlier, there is only one broadcast profile to "
 "worry about, and this profile is saved at this point."
@@ -2140,7 +2218,7 @@ msgstr ""
 "\t6. Para el complemento 5.x y anteriores, hay sólo un perfil de emisión del "
 "que preocuparse, y este perfil se guarda en este punto."
 
-#: ..\python_docs\spladdoninternals.py:189
+#: ..\python_docs\spladdoninternals.py:188
 msgid ""
 "\t7. These steps are part of splconfig.SPLConfig.save method in add-on 8.0 "
 "and later."
@@ -2148,7 +2226,7 @@ msgstr ""
 "\t7. Estos pasos son parte del método splconfig.SPLConfig.save en el "
 "complemento 8.0 y posteriores."
 
-#: ..\python_docs\spladdoninternals.py:190
+#: ..\python_docs\spladdoninternals.py:189
 msgid ""
 "3. In 17.12 and later, NVDA notifies registered handlers for app terminate "
 "action. As noted above, this will cause add-on dialogs to close without "
@@ -2158,7 +2236,7 @@ msgstr ""
 "acción de finalización de aplicación. Como se explica arriba, esto causará "
 "que los diálogos del complemento se cierren sin guardar los ajustes."
 
-#: ..\python_docs\spladdoninternals.py:191
+#: ..\python_docs\spladdoninternals.py:190
 msgid ""
 "4. NVDA then attempts to remove StationPlaylist Add-on Settings entry from "
 "NVDA's preferences menu, then various maps used by Studio app module (such "
@@ -2169,7 +2247,7 @@ msgstr ""
 "diversos mapas usados por la aplicación Studio (como el mapa del explorador "
 "cart)."
 
-#: ..\python_docs\spladdoninternals.py:192
+#: ..\python_docs\spladdoninternals.py:191
 msgid ""
 "5. An important task is cleaning up objects cache used by some SPL Assistant "
 "commands, as cached information (specifically, objects) will point to "
@@ -2181,7 +2259,7 @@ msgstr ""
 "caché (concretamente objetos) apuntará a un lugar distinto la próxima vez "
 "que se inicie Studio (sin reiniciar NVDA), lo que supone un peligro."
 
-#: ..\python_docs\spladdoninternals.py:193
+#: ..\python_docs\spladdoninternals.py:192
 msgid ""
 "6. As the app module is laid to rest, the window handle value for Studio "
 "window is cleared. This is a must, as the handle will be different next time "
@@ -2194,13 +2272,13 @@ msgstr ""
 "Studio. En este punto, NVDA elimina splstudio (el módulo de aplicación de "
 "Studio) de la lista de módulos de aplicación en uso."
 
-#: ..\python_docs\spladdoninternals.py:194
+#: ..\python_docs\spladdoninternals.py:193
 msgid "### Add-on updates: updating to latest and greatest version"
 msgstr ""
 "### Actualizaciones del complemento: actualizar a la última y más fantástica "
 "versión"
 
-#: ..\python_docs\spladdoninternals.py:195
+#: ..\python_docs\spladdoninternals.py:194
 msgid ""
 "Note: this feature, recently dubbed \"standalone add-on update\", is gone in "
 "19.01, although the mechanism behind it is documented here for sake of "
@@ -2213,7 +2291,7 @@ msgstr ""
 "independiente hace referencia a usar el asistente de SPL para buscar "
 "actualizaciones desde Studio."
 
-#: ..\python_docs\spladdoninternals.py:196
+#: ..\python_docs\spladdoninternals.py:195
 msgid ""
 "In add-on 7.0 and later (until 18.12), it is possible to update to the "
 "latest version of the add-on by using add-on update check facility. This is "
@@ -2224,7 +2302,7 @@ msgstr ""
 "comprobación de actualizaciones del complemento. Esto se hace conectando a "
 "un servidor donde se alojan los archivos de actualización del complemento."
 
-#: ..\python_docs\spladdoninternals.py:197
+#: ..\python_docs\spladdoninternals.py:196
 msgid ""
 "The SPL add-on uses a combination of urllib library and update channels "
 "(explained later) to fetch the needed update metadata. The user can tell the "
@@ -2236,11 +2314,11 @@ msgstr ""
 "de actualización. El usuario puede decirle al complemento que busque "
 "actualizaciones automáticamente o puede comprobarlas de forma manual."
 
-#: ..\python_docs\spladdoninternals.py:198
+#: ..\python_docs\spladdoninternals.py:197
 msgid "The update check is performed as follows:"
 msgstr "La búsqueda de actualizaciones se hace de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:199
+#: ..\python_docs\spladdoninternals.py:198
 msgid ""
 "1. If the add-on is told to check for updates, the Studio app module "
 "constructor will start a timer whose purpose is to call a function when it "
@@ -2250,7 +2328,7 @@ msgstr ""
 "del módulo de aplicación de Studio iniciará un temporizador cuyo propósito "
 "es llamar a una función cuando sea hora de buscar una actualización."
 
-#: ..\python_docs\spladdoninternals.py:200
+#: ..\python_docs\spladdoninternals.py:199
 msgid ""
 "2. If automatic update check is enabled, the update manager (splconfig."
 "updateInit) will determine when the update was checked last. This is done in "
@@ -2261,7 +2339,7 @@ msgstr ""
 "que se buscaron actualizaciones. Esto se hace para realizar búsquedas de "
 "actualizaciones cada 24 horas."
 
-#: ..\python_docs\spladdoninternals.py:201
+#: ..\python_docs\spladdoninternals.py:200
 msgid ""
 "3. Once the timer kicks in (automatic update check is on), the update check "
 "function (splupdate.updateChecker) will be called. This function uses two "
@@ -2274,7 +2352,7 @@ msgstr ""
 "para determinar si debería reproducirse un tono de estado de progreso y para "
 "programar la próxima búsqueda de actualizaciones."
 
-#: ..\python_docs\spladdoninternals.py:202
+#: ..\python_docs\spladdoninternals.py:201
 msgid ""
 "4. The update check function first connects to the URL for the current "
 "update channel (more on channels at the end of this article) and compares "
@@ -2291,7 +2369,7 @@ msgstr ""
 "versión actual del complemento, la nueva versión (extraída de una expresión "
 "regular) y la URL del archivo, y si no, no devuelve nada."
 
-#: ..\python_docs\spladdoninternals.py:203
+#: ..\python_docs\spladdoninternals.py:202
 msgid ""
 "5. If a new version is available and if the user said \"yes\" to update "
 "prompt, the update metadata (update timestamp) will be cached to be "
@@ -2302,7 +2380,7 @@ msgstr ""
 "actualización) se guardarán para que el módulo de aplicación los consulte "
 "más tarde."
 
-#: ..\python_docs\spladdoninternals.py:204
+#: ..\python_docs\spladdoninternals.py:203
 msgid ""
 "6. This process repeats if automatic check is enabled (a timer will be set "
 "to call this function again after 24 hours)."
@@ -2310,7 +2388,7 @@ msgstr ""
 "6. Este proceso se repetirá si la búsqueda automática está activada (se "
 "creará un temporizador para llamar otra vez a esta función en 24 horas)."
 
-#: ..\python_docs\spladdoninternals.py:205
+#: ..\python_docs\spladdoninternals.py:204
 msgid ""
 "In case of a manual update check (described in SPL Assistant layer section), "
 "apart from not using a timer and stopping an update check timer temporarily "
@@ -2322,11 +2400,11 @@ msgstr ""
 "temporalmente (si es necesario), se harán los pasos del 3 al 5 explicados "
 "arriba."
 
-#: ..\python_docs\spladdoninternals.py:206
+#: ..\python_docs\spladdoninternals.py:205
 msgid "## Time announcements, alarms and adjusting basic settings"
 msgstr "## Anuncios de tiempo, alarmas y modificación de ajustes básicos"
 
-#: ..\python_docs\spladdoninternals.py:207
+#: ..\python_docs\spladdoninternals.py:206
 msgid ""
 "Now that we know how Studio app module is born and dies, it is time for us "
 "to look at what happens while Studio is in use, and we'll start with how the "
@@ -2337,12 +2415,12 @@ msgstr ""
 "por ver cómo anuncia la hora este complemento, cómo trabaja con las alarmas "
 "y usa ajustes básicos."
 
-#: ..\python_docs\spladdoninternals.py:208
+#: ..\python_docs\spladdoninternals.py:207
 msgid "### Time announcement routines: a tale of four brothers"
 msgstr ""
 "### Procedimientos de anunciado de tiempo: un cuento de cuatro hermanos"
 
-#: ..\python_docs\spladdoninternals.py:209
+#: ..\python_docs\spladdoninternals.py:208
 msgid ""
 "SPL Studio app module for NVDA comes with four time announcement commands. "
 "These are elapsed time, remaining time, broadcaster time and complete time "
@@ -2357,7 +2435,7 @@ msgstr ""
 "otros usan una combinación de procedimientos Python y funciones de la api de "
 "Windows."
 
-#: ..\python_docs\spladdoninternals.py:210
+#: ..\python_docs\spladdoninternals.py:209
 msgid ""
 "Three of these routines are assigned to commands (sometimes termed "
 "gestures). These are:"
@@ -2365,19 +2443,19 @@ msgstr ""
 "Tres de estos procedimientos tienen órdenes asignadas (a veces llamadas "
 "gestos). Estas son:"
 
-#: ..\python_docs\spladdoninternals.py:211
+#: ..\python_docs\spladdoninternals.py:210
 msgid "* Control+Alt+T: Remaining time"
 msgstr "* Ctrl+alt+t: tiempo restante"
 
-#: ..\python_docs\spladdoninternals.py:212
+#: ..\python_docs\spladdoninternals.py:211
 msgid "* Alt+Shift+T: Elapsed time"
 msgstr "* Alt+shift+t: tiempo transcurrido"
 
-#: ..\python_docs\spladdoninternals.py:213
+#: ..\python_docs\spladdoninternals.py:212
 msgid "* NVDA+Shift+F12: Broadcaster time"
 msgstr "* NVDA+shift+f12: tiempo del locutor"
 
-#: ..\python_docs\spladdoninternals.py:214
+#: ..\python_docs\spladdoninternals.py:213
 msgid ""
 "One can then use Input Gestures dialog (part of NVDA screen reader) to "
 "change them or assign a command to complete time routine."
@@ -2385,7 +2463,7 @@ msgstr ""
 "Se puede usar el diálogo de gestos de entrada (parte del lector de pantalla "
 "NVDA) para cambiarlas o asignar una orden a la función de hora completa."
 
-#: ..\python_docs\spladdoninternals.py:215
+#: ..\python_docs\spladdoninternals.py:214
 msgid ""
 "### A step sideways with studioAPI function: A central Studio API handler "
 "and dispatcher"
@@ -2393,7 +2471,7 @@ msgstr ""
 "### Un paso a un lado con la función StudioApi: un manejador y procesador "
 "central de la api de Studio"
 
-#: ..\python_docs\spladdoninternals.py:216
+#: ..\python_docs\spladdoninternals.py:215
 msgid ""
 "Before going any further, it is important to mention a function that not "
 "only is used by the first two time routines, but also comes in handy in SPL "
@@ -2409,11 +2487,11 @@ msgstr ""
 "módulo), envía mensajes a la ventana de Studio y recupera el valor devuelto. "
 "Su cabecera es:"
 
-#: ..\python_docs\spladdoninternals.py:217
+#: ..\python_docs\spladdoninternals.py:216
 msgid "\tstudioAPI(arg, command)"
 msgstr "\tstudioAPI(arg, command)"
 
-#: ..\python_docs\spladdoninternals.py:218
+#: ..\python_docs\spladdoninternals.py:217
 msgid ""
 "With the arguments being the message to be sent to studio window (arg and "
 "command). At first glance, it may seem similar to user32's SendMessage "
@@ -2429,7 +2507,7 @@ msgstr ""
 "de Studio y el tipo de mensaje se rellenan automáticamente, por lo que sólo "
 "el argumento (WParam) y la orden (LParam) son necesarios."
 
-#: ..\python_docs\spladdoninternals.py:219
+#: ..\python_docs\spladdoninternals.py:218
 msgid ""
 "In older versions of the add-on, studioAPI did more than return results. It "
 "called a callback with or without an offset, as well as not return anything. "
@@ -2445,7 +2523,7 @@ msgstr ""
 "función SendMessage con el manejador de la ventana de Studio y el tipo de "
 "mensaje rellenados."
 
-#: ..\python_docs\spladdoninternals.py:220
+#: ..\python_docs\spladdoninternals.py:219
 msgid ""
 "### First applications of studioAPI function: Announcing elapsed and "
 "remaining times"
@@ -2453,7 +2531,7 @@ msgstr ""
 "### Primeras aplicaciones de la función studioAPI: verbalización de tiempo "
 "transcurrido y restante"
 
-#: ..\python_docs\spladdoninternals.py:221
+#: ..\python_docs\spladdoninternals.py:220
 msgid ""
 "When you press Control+Alt+T or Alt+Shift+T to hear remaining or elapsed "
 "time, the script will first check if you are in the main Playlist Viewer, "
@@ -2468,11 +2546,11 @@ msgstr ""
 "announceTime. De hecho, las únicas diferencias son el argumento que se usa y "
 "el mensaje de error."
 
-#: ..\python_docs\spladdoninternals.py:222
+#: ..\python_docs\spladdoninternals.py:221
 msgid "### Broadcaster time: Simulating Studio's broadcaster clock"
 msgstr "### Hora del locutor: simulando el reloj del locutor de Studio"
 
-#: ..\python_docs\spladdoninternals.py:223
+#: ..\python_docs\spladdoninternals.py:222
 msgid ""
 "When you listen to radio shows, you may hear messages such as, \"five "
 "minutes to two\" or \"ten minutes past five\". This announcement is called "
@@ -2482,7 +2560,7 @@ msgstr ""
 "minutos para las dos\" o \"Son las cinco y diez\". Este anuncio se llama "
 "hora del locutor."
 
-#: ..\python_docs\spladdoninternals.py:224
+#: ..\python_docs\spladdoninternals.py:223
 msgid ""
 "Studio does display broadcaster clock. However, because it is in the middle "
 "of the screen, one has to use object navigation commands to locate it, and "
@@ -2503,7 +2581,7 @@ msgstr ""
 "posición (un buen ejemplo era cuando se publicaban diferentes versiones de "
 "Studio 5.10)."
 
-#: ..\python_docs\spladdoninternals.py:225
+#: ..\python_docs\spladdoninternals.py:224
 msgid ""
 "Recently, this method was abandoned in favor of using Python's time module "
 "to obtain current time and convert it into a format that is familiar to "
@@ -2529,11 +2607,11 @@ msgstr ""
 "Cuando el proceso se completa para ambos casos, NVDA verbaliza el texto de "
 "salida."
 
-#: ..\python_docs\spladdoninternals.py:226
+#: ..\python_docs\spladdoninternals.py:225
 msgid "### Complete time: Windows API to the rescue"
 msgstr "### Hora completa: la api de Windows al rescate"
 
-#: ..\python_docs\spladdoninternals.py:227
+#: ..\python_docs\spladdoninternals.py:226
 msgid ""
 "Here, complete time refers to time including seconds. Normally, when you "
 "press NVDA+F12, NVDA excludes seconds when announcing time. All that is "
@@ -2550,11 +2628,11 @@ msgstr ""
 "debes asignar una orden para esta función (algunas órdenes del módulo de "
 "aplicación no vienen asignadas por defecto)."
 
-#: ..\python_docs\spladdoninternals.py:228
+#: ..\python_docs\spladdoninternals.py:227
 msgid "### Setting alarms"
 msgstr "### Establecimiento de alarmas"
 
-#: ..\python_docs\spladdoninternals.py:229
+#: ..\python_docs\spladdoninternals.py:228
 msgid ""
 "Studio app module comes with three alarms: song outro (ending), intro/ramp,  "
 "and microphone active alarm. Because we need to talk about some important "
@@ -2567,13 +2645,19 @@ msgstr ""
 "recorreremos el procedimiento usado al establecer las alarmas de "
 "introducción y fin."
 
+#: ..\python_docs\spladdoninternals.py:229
+msgid ""
+"Prior to 2020, separate dialogs were used to configure song outro and intro "
+"alarm settings. In 2020, these have been combined into one command that "
+"opens Alarms category in SPL add-on settings. The mechanism behind the "
+"former method is documented for completeness."
+msgstr ""
+
 #: ..\python_docs\spladdoninternals.py:230
 msgid ""
-"When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song intro "
-"alarm dialogs, the dialog will display two controls:"
+"The following two controls are used to configure song outro and intro "
+"settings from Alarms settings (Alt+NVDA+1):"
 msgstr ""
-"Cuando pulses NVDA+alt+1 o NVDA+alt+2 para abrir los diálogos de alarma de "
-"fin de pista o introducción de canción, el diálogo mostrará dos controles:"
 
 #: ..\python_docs\spladdoninternals.py:231
 msgid ""
@@ -2596,47 +2680,6 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:233
 msgid ""
-"In reality, a single dialog (splconfui.AlarmsCenter class) presents these "
-"two alarm dialogs (there are two additional dialogs, covered in the next "
-"section). The type of dialog to be shown is controled by an integer which "
-"denotes which dialog text to present. The process is outlined below:"
-msgstr ""
-"En realidad, un único diálogo (clase splconfui.AlarmsCenter) presenta estos "
-"dos diálogos de alarma (hay dos diálogos adicionales, cubiertos en la "
-"próxima sección). El tipo de diálogo a mostrar viene controlado por un "
-"entero que indica qué texto presentar en el diálogo. El proceso viene "
-"descrito a continuación:"
-
-#: ..\python_docs\spladdoninternals.py:234
-msgid ""
-"1. Just before the dialog opens, checks if another dialog or the add-on "
-"settings dialog is opened, and if so, NVDA will ask you to close the "
-"previously opened dialog first."
-msgstr ""
-"1. Antes de que el diálogo se abra, se comprueba si otro diálogo o el "
-"diálogo de configuración del complemento está abierto, y si es así, NVDA te "
-"pedirá que cierres el diálogo previamente abierto primero."
-
-#: ..\python_docs\spladdoninternals.py:235
-msgid ""
-"2. Tells NVDA that an alarm dialog is opened. This is meant to prevent the "
-"same dialog from being opened repeatedly."
-msgstr ""
-"2. Se le dice a NVDA que hay un diálogo de alarma abierto. Esto se hace para "
-"evitar que se abra el mismo diálogo repetidamente."
-
-#: ..\python_docs\spladdoninternals.py:236
-msgid ""
-"3. After the dialog is dismissed (either a new value is set or you click "
-"Cancel), NVDA clears the alarm opened flag, thereby letting other dialogs to "
-"be shown. "
-msgstr ""
-"3. Después de cerrar el diálogo (bien porque se establece un nuevo valor o "
-"se pulsa en cancelar), NVDA limpia el indicador de alarma abierta, "
-"permitiendo que otros diálogos se muestren. "
-
-#: ..\python_docs\spladdoninternals.py:237
-msgid ""
 "We'll learn how the alarm values are stored and retrieved in the "
 "configuration management section, and you'll get to meet how intro and outro "
 "alarms work in the next chapter."
@@ -2645,20 +2688,37 @@ msgstr ""
 "sección de gestión de configuración, y sabrás cómo funcionan las alarmas de "
 "introducción y fin de pista en el próoximo capítulo."
 
-#: ..\python_docs\spladdoninternals.py:238
+#: ..\python_docs\spladdoninternals.py:234
 msgid "#### Alarms Center"
 msgstr "#### Centro de alarmas"
 
-#: ..\python_docs\spladdoninternals.py:239
+#: ..\python_docs\spladdoninternals.py:235
 msgid ""
-"This single dialog that presents different alarm controls is known as "
-"'Alarms Center\". In fact, not only this dialog houses end of track and "
-"track intro alarms, it includes microphone alarm controls, and all that's "
-"needed to change its appearance is a single integer that specifies which "
-"portion of the dialog should be shown. In case of Alarms Center dialog "
-"presented from add-on settings (see a later chapter on add-on "
-"configuration), all alarm controls will be shown (level = 0), with different "
-"levels controlling what controls should be shown as follows:"
+"Prior to introduction of Alarms category in SPL add-on settings, separate "
+"dialogs were used to configure various alarm settings. In reality, it was "
+"really one dialog class called Alarms Center that presented different "
+"settings based on an internal flag."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:236
+#, fuzzy
+#| msgid ""
+#| "This single dialog that presents different alarm controls is known as "
+#| "'Alarms Center\". In fact, not only this dialog houses end of track and "
+#| "track intro alarms, it includes microphone alarm controls, and all that's "
+#| "needed to change its appearance is a single integer that specifies which "
+#| "portion of the dialog should be shown. In case of Alarms Center dialog "
+#| "presented from add-on settings (see a later chapter on add-on "
+#| "configuration), all alarm controls will be shown (level = 0), with "
+#| "different levels controlling what controls should be shown as follows:"
+msgid ""
+"True to its name and function, Alarms Center not only housed end of track "
+"and track intro alarms, it included microphone alarm controls, and all that "
+"was needed to change its appearance was a single integer that specified "
+"which portion of the dialog was shown. In case of Alarms Center dialog "
+"presented from an older version of add-on settings (see a later chapter on "
+"add-on configuration), all alarm controls were shown (level = 0), with "
+"different levels controlling what controls were shown as follows:"
 msgstr ""
 "Este diálogo único que presenta diferentes controles de alarma se conoce "
 "como 'Centro de alarmas'. De hecho, este diálogo no sólo aloja la alarma de "
@@ -2670,27 +2730,33 @@ msgstr ""
 "mostrarán todos los controles de alarma (level=0), con diferentes niveles "
 "controlando qué controles deberían mostrarse de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:240
+#: ..\python_docs\spladdoninternals.py:237
 msgid "* 0: Alarms Center, displays all controls."
 msgstr "* 0: centro de alarmas, muestra todos los controles."
 
-#: ..\python_docs\spladdoninternals.py:241
+#: ..\python_docs\spladdoninternals.py:238
 msgid "* 1: End of track alarm."
 msgstr "* 1: alarma de fin de pista."
 
-#: ..\python_docs\spladdoninternals.py:242
+#: ..\python_docs\spladdoninternals.py:239
 msgid "* 2: Track intro alarm."
 msgstr "* 2: alarma de introducción de pista."
 
-#: ..\python_docs\spladdoninternals.py:243
+#: ..\python_docs\spladdoninternals.py:240
 msgid "* 3: Microphone alarm controls."
 msgstr "* 3: controles de la alarma del micrófono."
 
-#: ..\python_docs\spladdoninternals.py:244
+#: ..\python_docs\spladdoninternals.py:241
+msgid ""
+"Alarms Center was removed in 2020 in favor of standardizing around alarm "
+"settings category."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:242
 msgid "### Toggle settings"
 msgstr "### Conmutar ajustes"
 
-#: ..\python_docs\spladdoninternals.py:245
+#: ..\python_docs\spladdoninternals.py:243
 msgid ""
 "StationPlaylist add-on comes with some toggle settings that affect the "
 "operation of the app module. These include library scan announcement (Alt"
@@ -2704,14 +2770,14 @@ msgstr ""
 "+shift+x). Para cada script de configuración, NVDA primero comprobará el "
 "valor actual, cambiará el valor y anunciará el nuevo valor."
 
-#: ..\python_docs\spladdoninternals.py:246
+#: ..\python_docs\spladdoninternals.py:244
 msgid ""
 "## Event handling: announcing status changes, activating alarms and more"
 msgstr ""
 "## Procesamiento de eventos: verbalización de cambios de estado, activación "
 "de alarmas y más"
 
-#: ..\python_docs\spladdoninternals.py:247
+#: ..\python_docs\spladdoninternals.py:245
 msgid ""
 "When you are producing a live show, it is important for your screen reader "
 "to announce various status changes and happenings such as number of "
@@ -2727,11 +2793,11 @@ msgstr ""
 "cambios de estado, activar alarmas y más. En esta sección, conoceremos la "
 "magia que hay tras esta profesionalidad: el procesamiento de eventos."
 
-#: ..\python_docs\spladdoninternals.py:248
+#: ..\python_docs\spladdoninternals.py:246
 msgid "### NVDA is event-driven"
 msgstr "### NVDA está dirigido por eventos"
 
-#: ..\python_docs\spladdoninternals.py:249
+#: ..\python_docs\spladdoninternals.py:247
 msgid ""
 "Windows applications (especially those using Windows API) are event-driven "
 "programs. Somewhere in the application is an event loop that responds to "
@@ -2748,7 +2814,7 @@ msgstr ""
 "propósitos, desde verbalizar una notificación de nuevo chat en Skype hasta "
 "ignorarlo completamente."
 
-#: ..\python_docs\spladdoninternals.py:250
+#: ..\python_docs\spladdoninternals.py:248
 msgid ""
 "To handle various events, NVDA uses an event queue (queue handler) and an "
 "event handler for event processing. When an event is fired by itself or from "
@@ -2769,18 +2835,18 @@ msgstr ""
 "globales y módulos de aplicación), NVDA tiene ganas de escuchar ciertos "
 "eventos y dejar que los controles los disparen."
 
-#: ..\python_docs\spladdoninternals.py:251
+#: ..\python_docs\spladdoninternals.py:249
 msgid "Typically, an event handling routine is declared like this:"
 msgstr ""
 "Normalmente, un procedimiento para manejar un evento se declara de la "
 "siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:252
+#: ..\python_docs\spladdoninternals.py:250
 msgid "\tevent_eventname(module, object in question, next handler)"
 msgstr ""
 "\tevent_nombredeevento(módulo, objeto en cuestión, siguiente manejador)"
 
-#: ..\python_docs\spladdoninternals.py:253
+#: ..\python_docs\spladdoninternals.py:251
 msgid ""
 "For example, for Studio app module, one event handler declared is gain focus "
 "(you have moved to a different control), and is written as follows:"
@@ -2789,11 +2855,11 @@ msgstr ""
 "declarado es gainFocus (te has movido a un control diferente), y está "
 "escrito así:"
 
-#: ..\python_docs\spladdoninternals.py:254
+#: ..\python_docs\spladdoninternals.py:252
 msgid "\tevent_gainFocus(self, obj, nextHandler)"
 msgstr "\tevent_gainFocus(self, obj, nextHandler)"
 
-#: ..\python_docs\spladdoninternals.py:255
+#: ..\python_docs\spladdoninternals.py:253
 msgid ""
 "The routine is just like any other function (callable) except that the "
 "routine called nextHandler function at the end to allow other controls to "
@@ -2803,12 +2869,12 @@ msgstr ""
 "llama al procedimiento nextHandler al final para permitir a otros controles "
 "responder a eventos."
 
-#: ..\python_docs\spladdoninternals.py:256
+#: ..\python_docs\spladdoninternals.py:254
 msgid "### What does events have to do with Studio app module?"
 msgstr ""
 "### ¿Qué tienen que hacer los eventos con el módulo de aplicación de Studio?"
 
-#: ..\python_docs\spladdoninternals.py:257
+#: ..\python_docs\spladdoninternals.py:255
 msgid ""
 "Events and event handlers are crucial to the operation of the Studio app "
 "module, described as \"heartbeat\" of the add-on. Events and their handlers "
@@ -2821,20 +2887,20 @@ msgstr ""
 "mayoría del trabajo necesario para que el módulo de aplicación funcione. "
 "Entre ellos se incluyen:"
 
-#: ..\python_docs\spladdoninternals.py:258
+#: ..\python_docs\spladdoninternals.py:256
 msgid ""
 "* Announcing status changes such as when microphone is turned on or off."
 msgstr ""
 "* Verbalización de cambios de estado tales como cuando el micrófono se "
 "enciende o se apaga."
 
-#: ..\python_docs\spladdoninternals.py:259
+#: ..\python_docs\spladdoninternals.py:257
 msgid "* Alarm notification, such as when end of intro is approaching."
 msgstr ""
 "* Notificación de alarma, como la que hay cuando se acerca el final de una "
 "pista."
 
-#: ..\python_docs\spladdoninternals.py:260
+#: ..\python_docs\spladdoninternals.py:258
 msgid ""
 "* Activating certain announcement and background tasks such as activating "
 "microphone alarm, announcing library scan progress and more."
@@ -2843,7 +2909,7 @@ msgstr ""
 "alarma del micrófono, el anunciado del progreso de escaneado de la "
 "biblioteca y más."
 
-#: ..\python_docs\spladdoninternals.py:261
+#: ..\python_docs\spladdoninternals.py:259
 msgid ""
 "* Perform workarounds for issues such as focus problems when deleting a "
 "track."
@@ -2851,7 +2917,7 @@ msgstr ""
 "* Aplicar solución a algunos problemas como los que da el foco al eliminar "
 "una pista."
 
-#: ..\python_docs\spladdoninternals.py:262
+#: ..\python_docs\spladdoninternals.py:260
 msgid ""
 "Of all the event handlers declared, the most important one is name change "
 "event. It is declared as follows:"
@@ -2859,25 +2925,25 @@ msgstr ""
 "De todos los manejadores de eventos declarados, el más importante es el "
 "evento de cambio de nombre. Se declara de la siguiente manera:"
 
-#: ..\python_docs\spladdoninternals.py:263
+#: ..\python_docs\spladdoninternals.py:261
 msgid "\tevent_nameChange(self, obj, nextHandler)"
 msgstr "\tevent_nameChange(self, obj, nextHandler)"
 
-#: ..\python_docs\spladdoninternals.py:264
+#: ..\python_docs\spladdoninternals.py:262
 msgid "When this event is fired by Studio, NVDA performs following operations:"
 msgstr ""
 "Cuando Studio dispara este evento, NVDA hace las siguientes operaciones:"
 
-#: ..\python_docs\spladdoninternals.py:265
+#: ..\python_docs\spladdoninternals.py:263
 msgid "1. Various checks are performed. These include, but are not limited to:"
 msgstr ""
 "1. Se realizan diversas comprobaciones. Estas incluyen, pero no se limitan a:"
 
-#: ..\python_docs\spladdoninternals.py:266
+#: ..\python_docs\spladdoninternals.py:264
 msgid "\t1. Make sure there is something to announce."
 msgstr "\t1. Asegurarse de que hay algo que verbalizar."
 
-#: ..\python_docs\spladdoninternals.py:267
+#: ..\python_docs\spladdoninternals.py:265
 msgid ""
 "\t2. If using another app, NVDA will ensure that background monitor flag is "
 "set (see the discussion on app module constructor in previous sections for "
@@ -2888,7 +2954,7 @@ msgstr ""
 "exposición en el constructor del módulo de aplicación en artículos "
 "anteriores para más detalles)."
 
-#: ..\python_docs\spladdoninternals.py:268
+#: ..\python_docs\spladdoninternals.py:266
 msgid ""
 "\t3. If the status to be announced is a common one such as listener count, "
 "schedule and cart playback status, NVDA will check if it is permited to "
@@ -2898,7 +2964,7 @@ msgstr ""
 "oyentes, estado de la programación y reproducción del cart, NVDA comprobará "
 "si tiene permitido verbalizarlo."
 
-#: ..\python_docs\spladdoninternals.py:269
+#: ..\python_docs\spladdoninternals.py:267
 msgid ""
 "2. Depending on the type of control (mostly window class name), NVDA "
 "performs different operations (see below)."
@@ -2906,7 +2972,7 @@ msgstr ""
 "2. Dependiendo del tipo de control (mayoritariamente nombre de la clase de "
 "ventana), NVDA realiza distintas operaciones (mira más abajo)."
 
-#: ..\python_docs\spladdoninternals.py:270
+#: ..\python_docs\spladdoninternals.py:268
 msgid ""
 "3. Lastly, NVDA calls nextHandler() to let other controls respond to name "
 "change event."
@@ -2914,11 +2980,11 @@ msgstr ""
 "3. Finalmente, NVDA llama a nextHandler() para dejar que otros controles "
 "respondan al evento de cambio de nombre."
 
-#: ..\python_docs\spladdoninternals.py:271
+#: ..\python_docs\spladdoninternals.py:269
 msgid "### Status announcements versus alarm notification"
 msgstr "### Anuncios de estado comparados con notificaciones de alarma"
 
-#: ..\python_docs\spladdoninternals.py:272
+#: ..\python_docs\spladdoninternals.py:270
 msgid ""
 "There are two groups of controls NVDA is interested in: status bar and "
 "status text with window class name of TStatusBar and TStaticText, "
@@ -2930,11 +2996,11 @@ msgstr ""
 "TStaticText, respectivamente (Studio es una aplicación Delphy). Dependiendo "
 "del control que dispare el evento, NVDA reaccionará de forma diferente."
 
-#: ..\python_docs\spladdoninternals.py:273
+#: ..\python_docs\spladdoninternals.py:271
 msgid "For status announcements (TStatusBar), NVDA:"
 msgstr "Para anuncios de estado (TStatusBar), NVDA:"
 
-#: ..\python_docs\spladdoninternals.py:274
+#: ..\python_docs\spladdoninternals.py:272
 msgid ""
 "1. Checks IAccessible child ID (position of the control relative to the "
 "parent control as exposed by MSAA (Microsoft Active Accessibility)/"
@@ -2944,7 +3010,7 @@ msgstr ""
 "control padre tal y como expone MSAA (Microsoft Active Accessibility) / "
 "IAccessible)."
 
-#: ..\python_docs\spladdoninternals.py:275
+#: ..\python_docs\spladdoninternals.py:273
 msgid ""
 "2. If IAccessible child ID is 1, it either announces library scan progress "
 "or playback status."
@@ -2952,7 +3018,7 @@ msgstr ""
 "2. Si el identificador del hijo de IAccessible es 1, se verbaliza el "
 "progreso del escaneo de la biblioteca o bien el estado de la reproducción."
 
-#: ..\python_docs\spladdoninternals.py:276
+#: ..\python_docs\spladdoninternals.py:274
 msgid ""
 "3. For other status bar objects (controls or windows), NVDA first checks if "
 "it is a toggle change (ends with \"On\" or \"Off\"), and if so, it does the "
@@ -2962,7 +3028,7 @@ msgstr ""
 "primero comprueba si es un cambio de conmutación (acaba en \"on\" o \"off"
 "\"), y si es así, hace lo siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:277
+#: ..\python_docs\spladdoninternals.py:275
 msgid ""
 "\t1. If you set status announcement to words, NVDA announces toggle change "
 "notification via speech."
@@ -2970,7 +3036,7 @@ msgstr ""
 "\t1. Si estableces la verbalización de estado en palabras, NVDA verbaliza la "
 "notificación de cambio de conmutación mediante voz."
 
-#: ..\python_docs\spladdoninternals.py:278
+#: ..\python_docs\spladdoninternals.py:276
 msgid ""
 "\t2. If status announcement is set to beeps, an appropriate wave file is "
 "selected for playback via NVWave module (nvwave.playWaveFile; this is done "
@@ -2980,13 +3046,13 @@ msgstr ""
 "selecciona un archivo wav adecuado y se reproduce mediante el módulo NVWave "
 "(nvwave.playWaveFile; esto se hace mediante la función messageSound)."
 
-#: ..\python_docs\spladdoninternals.py:279
+#: ..\python_docs\spladdoninternals.py:277
 msgid "\t3. Braille output is not affected - it'll announce toggle changes."
 msgstr ""
 "\t3. La salida braille no se ve afectada, se anunciarán los cambios de "
 "conmutación."
 
-#: ..\python_docs\spladdoninternals.py:280
+#: ..\python_docs\spladdoninternals.py:278
 msgid ""
 "\t4. For cart edit mode or microphone toggle, extra steps are performed, (by "
 "calling extraAction method with the status string as the argument) such as "
@@ -3000,7 +3066,7 @@ msgstr ""
 "estás usando el explorador cart (si es el caso). Volveremos a explicar cómo "
 "funciona esto en futuras entregas."
 
-#: ..\python_docs\spladdoninternals.py:281
+#: ..\python_docs\spladdoninternals.py:279
 msgid ""
 "4. For all other announcements, NVDA announces them. In case of schedule "
 "announcement, to prevent itself from repeating the same message, NVDA checks "
@@ -3010,13 +3076,13 @@ msgstr ""
 "de programación, para evitar que se repita el mismo mensaje, NVDA comprueba "
 "si el nombre cambiado es igual que un nombre guardado que ya tenía."
 
-#: ..\python_docs\spladdoninternals.py:282
+#: ..\python_docs\spladdoninternals.py:280
 msgid "For static text controls (mostly used for alarm notifications):"
 msgstr ""
 "Para controles de texto estático (mayormente usados para notificaciones de "
 "alarma):"
 
-#: ..\python_docs\spladdoninternals.py:283
+#: ..\python_docs\spladdoninternals.py:281
 msgid ""
 "1. Checks whether NVDA is looking at remaining time for the intro or the "
 "whole track."
@@ -3024,7 +3090,7 @@ msgstr ""
 "1. Comprueba si NVDA está mirando el tiempo restante para la introducción o "
 "para la pista entera."
 
-#: ..\python_docs\spladdoninternals.py:284
+#: ..\python_docs\spladdoninternals.py:282
 msgid ""
 "2. For both cases, NVDA checks if it can braille this (braille timer is not "
 "off)."
@@ -3032,7 +3098,7 @@ msgstr ""
 "2. En ambos casos, comprueba si NVDA puede emitirlo por braille (el "
 "temporizador braille no está apagado)."
 
-#: ..\python_docs\spladdoninternals.py:285
+#: ..\python_docs\spladdoninternals.py:283
 msgid ""
 "3. If NVDA is told to play or announce alarms (for outro and intro), NVDA "
 "plays appropriate tones (middle A (440 hertz) for outro, an octave above "
@@ -3045,7 +3111,7 @@ msgstr ""
 "introducción), o si se le pide hacerlo, te avisa de que el fin de pista o la "
 "introducción está llegando (complemento 6.0 y posteriores)."
 
-#: ..\python_docs\spladdoninternals.py:286
+#: ..\python_docs\spladdoninternals.py:284
 msgid ""
 "The structure of event_nameChange function defined in the Studio app module "
 "is such that it can be extended to handle name change event for other "
@@ -3062,17 +3128,17 @@ msgstr ""
 "complementos que definen procedimientos para manejar eventos, el evento de "
 "cambio de nombre llama a nextHandler()."
 
-#: ..\python_docs\spladdoninternals.py:287
+#: ..\python_docs\spladdoninternals.py:285
 msgid "### Other events defined in the Studio app module"
 msgstr "### Otros eventos definidos en el módulo de aplicación de Studio"
 
-#: ..\python_docs\spladdoninternals.py:288
+#: ..\python_docs\spladdoninternals.py:286
 msgid "There are five more events defined in the Studio app module. They are:"
 msgstr ""
 "Hay cinco eventos más definidos en el módulo de aplicación de Studio. Son "
 "los siguientes:"
 
-#: ..\python_docs\spladdoninternals.py:289
+#: ..\python_docs\spladdoninternals.py:287
 msgid ""
 "* Gain focus: performs focus-related routines such as checking if you are in "
 "Insert Tracks dialog in order to turn off background library scanning (more "
@@ -3083,7 +3149,7 @@ msgstr ""
 "escaneo en segundo plano de la biblioteca (más sobre el escaneo de la "
 "biblioteca en segundo plano en una entrega futura)."
 
-#: ..\python_docs\spladdoninternals.py:290
+#: ..\python_docs\spladdoninternals.py:288
 msgid ""
 "* App module gain focus: Used to handle touchscreens (yes, Studio app module "
 "has a dedicated SPL touch mode) such as assigning additional commands."
@@ -3092,13 +3158,13 @@ msgstr ""
 "(sí, el módulo de aplicación de Studio tiene un modo táctil dedicado para "
 "SPL) que permite añadir órdenes adicionales."
 
-#: ..\python_docs\spladdoninternals.py:291
+#: ..\python_docs\spladdoninternals.py:289
 msgid "* App module lose focus: opposite of the event above."
 msgstr ""
 "* loseFocus (pérdida de foco) del módulo de aplicación: el opuesto al evento "
 "anterior."
 
-#: ..\python_docs\spladdoninternals.py:292
+#: ..\python_docs\spladdoninternals.py:290
 msgid ""
 "* Show: this event is specifically designed to respond to listener requests, "
 "discussed below."
@@ -3106,7 +3172,7 @@ msgstr ""
 "* Show (mostrar): este evento está diseñado específicamente para reaccionar "
 "a peticiones de oyentes, de las que hablaremos más abajo."
 
-#: ..\python_docs\spladdoninternals.py:293
+#: ..\python_docs\spladdoninternals.py:291
 msgid ""
 "* Foreground: this is used to coordinate status bar content announcement "
 "when Studio starts."
@@ -3114,11 +3180,11 @@ msgstr ""
 "* Foreground (primer plano): se usa para coordinar el anuncio del contenido "
 "de la barra de estado cuando se inicia Studio."
 
-#: ..\python_docs\spladdoninternals.py:294
+#: ..\python_docs\spladdoninternals.py:292
 msgid "#### Listener requests"
 msgstr "#### Peticiones de los oyentes"
 
-#: ..\python_docs\spladdoninternals.py:295
+#: ..\python_docs\spladdoninternals.py:293
 msgid ""
 "A seldom talked about component of StationPlaylist Studio is the ability to "
 "host a website with a PHP script to allow listeners to request tracks to be "
@@ -3131,7 +3197,7 @@ msgstr ""
 "petición, Studio muestra un diálogo de petición del oyente que lista las "
 "pistas solicitadas."
 
-#: ..\python_docs\spladdoninternals.py:296
+#: ..\python_docs\spladdoninternals.py:294
 msgid ""
 "Due to limitations of old NVDA releases, Studio app module did not have an "
 "easy way to detect the appearance of this dialog and notify you of listener "
@@ -3156,7 +3222,7 @@ msgstr ""
 "opción de mostrar un globo cuando lleguen solicitudes esté activada en "
 "Studio."
 
-#: ..\python_docs\spladdoninternals.py:297
+#: ..\python_docs\spladdoninternals.py:295
 msgid ""
 "So far, we have covered things that the app module performs wherever you are "
 "in Studio. the next few sections will cover how the app module handles "
@@ -3169,11 +3235,11 @@ msgstr ""
 "como trabajar con elementos en el visor de listas de reproducción, buscar "
 "pistas, escanear la biblioteca y mucho más."
 
-#: ..\python_docs\spladdoninternals.py:298
+#: ..\python_docs\spladdoninternals.py:296
 msgid "## Track items, overlay classes and Track Finder"
 msgstr "## Elementos de pista, clases de superposición y buscador de pistas"
 
-#: ..\python_docs\spladdoninternals.py:299
+#: ..\python_docs\spladdoninternals.py:297
 msgid ""
 "While using the add-on, you may have noticed that you can perform certain "
 "commands while focused on track items, and that the command to find tracks "
@@ -3189,12 +3255,12 @@ msgstr ""
 "Pero primero, debemos hablar de algunos hechos más sobre el lector de "
 "pantalla NVDA, en esta ocasión hablaremos de objetos."
 
-#: ..\python_docs\spladdoninternals.py:300
+#: ..\python_docs\spladdoninternals.py:298
 msgid "### Important facts about NVDA's use of objects"
 msgstr ""
 "### Consideraciones importantes sobre el uso que hace NVDA de los objetos"
 
-#: ..\python_docs\spladdoninternals.py:301
+#: ..\python_docs\spladdoninternals.py:299
 msgid ""
 "One of the questions I and other add-on authors and NVDA developers received "
 "was, \"what exactly are objects and how are they used in NVDA?\" In "
@@ -3219,7 +3285,7 @@ msgstr ""
 "almacenan las entradas de una guía de teléfonos y entregará una \"guía "
 "telefónica\" (un array de entradas de teléfono), toda ella hecha con objetos."
 
-#: ..\python_docs\spladdoninternals.py:302
+#: ..\python_docs\spladdoninternals.py:300
 msgid ""
 "In graphical user interfaces (GUI's), an object is a more technical term for "
 "controls (sometimes called widgets). This includes windows, form fields, "
@@ -3234,17 +3300,29 @@ msgstr ""
 "color y demás (el control contiene atributos visibles e internos que otros "
 "programas pueden usar)."
 
-#: ..\python_docs\spladdoninternals.py:303
+#: ..\python_docs\spladdoninternals.py:301
+#, fuzzy
+#| msgid ""
+#| "In NVDA world, all screen elements (controls) are objects. As such, when "
+#| "dealing with objects, NVDA uses accessibility API's to obtain needed "
+#| "information. To provide consistent user experience, differences between "
+#| "accessibility API's (IAccessible, UI Automation, Java Access Bridge and "
+#| "so on) are checked and provides a mechanism to announce same information "
+#| "across controls implemented using different frameworks. For example, when "
+#| "a check box is checked, NVDA will say \"checked\"\" - NVDA will know if "
+#| "you checked this box because the underlying accessibility API informs "
+#| "NVDA of this change, and the same information is spoken regardless of "
+#| "whether it is dealing with IAccessible, UIA and so on."
 msgid ""
 "In NVDA world, all screen elements (controls) are objects. As such, when "
 "dealing with objects, NVDA uses accessibility API's to obtain needed "
-"information. To provide consistent user experience, differences between "
+"information. To provide a consistent user experience, differences between "
 "accessibility API's (IAccessible, UI Automation, Java Access Bridge and so "
-"on) are checked and provides a mechanism to announce same information across "
-"controls implemented using different frameworks. For example, when a check "
-"box is checked, NVDA will say \"checked\"\" - NVDA will know if you checked "
-"this box because the underlying accessibility API informs NVDA of this "
-"change, and the same information is spoken regardless of whether it is "
+"on) are abstracted and provides a mechanism to announce same information "
+"across controls implemented using different frameworks. For example, when a "
+"check box is checked, NVDA will say \"checked\"\" - NVDA will know if you "
+"checked this box because the underlying accessibility API informs NVDA of "
+"this change, and the same information is spoken regardless of whether it is "
 "dealing with IAccessible, UIA and so on."
 msgstr ""
 "En el mundo de NVDA, todos los elementos de la pantalla (controles) son "
@@ -3260,7 +3338,7 @@ msgstr ""
 "información se verbaliza sin importar que esté tratando con IAccessible, UIA "
 "o cualquier otro."
 
-#: ..\python_docs\spladdoninternals.py:304
+#: ..\python_docs\spladdoninternals.py:302
 msgid ""
 "Currently, NVDA can work with IAccessible, User Interface Automation (UIA), "
 "Java Access Bridge (JAB) and others (WAI ARIA is supported). Support modules "
@@ -3272,11 +3350,11 @@ msgstr ""
 "de soporte para estas apis se encuentran en el directorio source/NVDAObjects "
 "del código fuente principal de NVDA."
 
-#: ..\python_docs\spladdoninternals.py:305
+#: ..\python_docs\spladdoninternals.py:303
 msgid "### Overlay classes: Customizing built-in objects"
 msgstr "### Clases superpuestas: personalización de objetos incorporados"
 
-#: ..\python_docs\spladdoninternals.py:306
+#: ..\python_docs\spladdoninternals.py:304
 msgid ""
 "If NVDA was limited to using its own object handlers, we would be limited to "
 "information that is correctly exposed by accessibility API's (no app modules "
@@ -3293,7 +3371,7 @@ msgstr ""
 "clases de superposición - objetos personalizados y sus manejadores "
 "construidos sobre clases de la api (objetos incorporados)."
 
-#: ..\python_docs\spladdoninternals.py:307
+#: ..\python_docs\spladdoninternals.py:305
 msgid ""
 "In essence, overlay classes are subclasses of stable API classes (subclasses "
 "are specialist classes deriving (inheriting) from one or more parent "
@@ -3310,7 +3388,7 @@ msgstr ""
 "como funciona NVDA al verbalizar las notificaciones emergentes (Windows 8.x "
 "y 10):"
 
-#: ..\python_docs\spladdoninternals.py:308
+#: ..\python_docs\spladdoninternals.py:306
 msgid ""
 "1. Toasts are notifications from apps, and they are UIA objects (NVDAObjects."
 "UIA.Toast)."
@@ -3318,7 +3396,7 @@ msgstr ""
 "1. Las notificaciones emergentes vienen de las aplicaciones, y son objetos "
 "UIA (NVDAObjects.UIA.Toast)."
 
-#: ..\python_docs\spladdoninternals.py:309
+#: ..\python_docs\spladdoninternals.py:307
 msgid ""
 "2. When events fired by toasts are received by NVDA, it'll check to make "
 "sure it is dealing with toast notifications."
@@ -3327,7 +3405,7 @@ msgstr ""
 "emergentes, este se asegurará de que está trabajando exactamente con este "
 "tipo de notificaciones."
 
-#: ..\python_docs\spladdoninternals.py:310
+#: ..\python_docs\spladdoninternals.py:308
 msgid ""
 "3. When NVDA is dealing with toasts, it'll perform what it is told to do by "
 "toast objects (announce toasts provided by \"report help balloons\" is "
@@ -3338,24 +3416,36 @@ msgstr ""
 "notificaciones sólo si está marcada la casilla \"Anunciar globos de ayuda\" "
 "en el diálogo Presentación de objetos)."
 
-#: ..\python_docs\spladdoninternals.py:311
+#: ..\python_docs\spladdoninternals.py:309
 msgid "### Why do objects and overlay classes matter in Studio app module?"
 msgstr ""
 "### ¿Por qué son importantes los objetos y las clases de superposición en el "
 "módulo de aplicación de Studio?"
 
-#: ..\python_docs\spladdoninternals.py:312
+#: ..\python_docs\spladdoninternals.py:310
+#, fuzzy
+#| msgid ""
+#| "Some readers might ask this question after reading the above section on "
+#| "overlay classes. I had to introduce overlay classes because they are "
+#| "important in Studio app module: track items in playlist Viewer are "
+#| "overlay classes. In fact, there are at least three of them: a base object "
+#| "representing track items for studio and other apps (appModules.splstudio."
+#| "SPLTrackItem), a generic representation of Studio track item (appModules."
+#| "splstudio.SPLStudioTrackItem), and Studio 5.10 track item (appModules."
+#| "splstudio.SPLStudio510TrackItem; in case of 5.10, it derives its power "
+#| "from track item class for Studio 5.0x, which in turn is powered by Studio "
+#| "track item powered by IAccessible)."
 msgid ""
 "Some readers might ask this question after reading the above section on "
 "overlay classes. I had to introduce overlay classes because they are "
 "important in Studio app module: track items in playlist Viewer are overlay "
-"classes. In fact, there are at least three of them: a base object "
+"classes. In fact, there are at least three of them: an abstract base class "
 "representing track items for studio and other apps (appModules.splstudio."
 "SPLTrackItem), a generic representation of Studio track item (appModules."
-"splstudio.SPLStudioTrackItem), and Studio 5.10 track item (appModules."
-"splstudio.SPLStudio510TrackItem; in case of 5.10, it derives its power from "
-"track item class for Studio 5.0x, which in turn is powered by Studio track "
-"item powered by IAccessible)."
+"splstudio.SPLStudioTrackItem), and a playlist viewer (main window) track "
+"item (appModules.splstudio.StudioPlaylistViewerItem; in case of playlist "
+"viewer item class, it derives its power from track item class for Studio, "
+"which in turn is powered by abstract SPL track item powered by IAccessible)."
 msgstr ""
 "Algunos lectores podrían hacerse esta pregunta después de leer la sección de "
 "arriba sobre las clases de superposición. Tenía que introducir las clases de "
@@ -3370,7 +3460,7 @@ msgstr ""
 "que en cierto modo va potenciada por el elemento de pista de Studio e "
 "IAccessible)."
 
-#: ..\python_docs\spladdoninternals.py:313
+#: ..\python_docs\spladdoninternals.py:311
 msgid ""
 "These classes were born when I started working on Studio 5.10 support in "
 "2014. Because Studio 5.10 uses a different way of showing track properties, "
@@ -3396,7 +3486,7 @@ msgstr ""
 "descripción de los objetos, la modifiqué para que tuviera en cuenta las "
 "diferencias entre versiones de Studio."
 
-#: ..\python_docs\spladdoninternals.py:314
+#: ..\python_docs\spladdoninternals.py:312
 msgid ""
 "Then in 2015, when I was designing Track Dial (next section), I thought "
 "about scope of this feature. I thought, \"if I let this be invoked from "
@@ -3422,7 +3512,7 @@ msgstr ""
 "elementos de pista de Studio 5.0x y dejando que la clase de los elementos de "
 "pista de Studio 5.10 heredara de esta nueva clase."
 
-#: ..\python_docs\spladdoninternals.py:315
+#: ..\python_docs\spladdoninternals.py:313
 msgid ""
 "In 2018, as support for Columns Explorer was being worked on for Creator and "
 "Track Tool, I decided to overhaul the entire track item class hierarchy. "
@@ -3445,27 +3535,53 @@ msgstr ""
 "el contenido de una columna en la columna correcta cuando estas se reordenan "
 "en pantalla."
 
-#: ..\python_docs\spladdoninternals.py:316
+#: ..\python_docs\spladdoninternals.py:314
+msgid ""
+"In 2020, SPL track item overlay classes were reworked. Because base SPL "
+"track item class was meant to serve as a blueprint, it became an abstract "
+"base class in 2019. What was formerly Studio 5.10 track item class became a "
+"specialist class for playlist viewer items, and old Studio 5.0x item class "
+"was revived to represent track items found in other parts of Studio such as "
+"Insert Tracks dialog. At the same time, column navigation services provided "
+"by the SPL track item base class was eliminated in favor of using facilities "
+"provided by SysListView32 list item class to provide consistency with NVDA "
+"itself and to add column navigation commands for Creator's playlist editor "
+"and Remote VT client (prior to this, SPL track item base provided customized "
+"column navigation commands)."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:315
 msgid "### Track items overview"
 msgstr "### Descripción de los elementos de pista"
 
-#: ..\python_docs\spladdoninternals.py:317
+#: ..\python_docs\spladdoninternals.py:316
+#, fuzzy
+#| msgid ""
+#| "Each track item in Studio's playlist viewer (and in extension, tracks "
+#| "list in Creator and Track Tool) consists of a row of columns (6 for "
+#| "Studio 5.0x and earlier, 18 for 5.10 and later). As far as NVDA is "
+#| "concerned, it is an overlay class that provides a number of services, "
+#| "including:"
 msgid ""
-"Each track item in Studio's playlist viewer (and in extension, tracks list "
-"in Creator and Track Tool) consists of a row of columns (6 for Studio 5.0x "
-"and earlier, 18 for 5.10 and later). As far as NVDA is concerned, it is an "
-"overlay class that provides a number of services, including:"
+"Each track item in Studio (including playlist viewer), and in extension, "
+"tracks found in Creator, Track Tool, and Remote VT client, consists of a row "
+"of columns (6 for Studio 5.0x and earlier, 18 for playlist viewer in Studio "
+"5.10 and later, may vary on other track lists). As far as NVDA is concerned, "
+"it is an overlay class that provides a number of services, including:"
 msgstr ""
 "Cada elemento de pista en el visor de listas de reproducción de Studio "
 "consta de una fila de columnas (6 para Studio 5.0x y anteriores, 18 para "
 "Studio 5.10 y posteriores). Tal y como está concebido NVDA, es una clase de "
 "superposición que proporciona un número de servicios, incluyendo:"
 
-#: ..\python_docs\spladdoninternals.py:318
-msgid "* Routines for navigating and announcing various columns."
-msgstr "* Procedimientos para verbalizar y navegar por diversas columnas."
+#: ..\python_docs\spladdoninternals.py:317
+msgid ""
+"* Routines for navigating and announcing various columns (most were "
+"eliminated in favor of using SysListView32 list item routines directly in "
+"2020)."
+msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:319
+#: ..\python_docs\spladdoninternals.py:318
 msgid ""
 "* Announcing columns in specific order (see the next chapter on importance "
 "of column navigation)."
@@ -3473,7 +3589,7 @@ msgstr ""
 "* Verbalizar las columnas en un orden específico (mira el próximo capítulo "
 "para conocer la importancia de la navegación por columnas)."
 
-#: ..\python_docs\spladdoninternals.py:320
+#: ..\python_docs\spladdoninternals.py:319
 msgid ""
 "* For Studio, obtaining track comments if defined (see track comments "
 "section below)."
@@ -3481,7 +3597,7 @@ msgstr ""
 "* En Studio, Obtener comentarios de pista si están definidos (mira la "
 "sección de comentarios de pista más abajo)."
 
-#: ..\python_docs\spladdoninternals.py:321
+#: ..\python_docs\spladdoninternals.py:320
 msgid ""
 "* For studio 5.10 and later, a routine to handle when check marks are "
 "checked (when you check a track by pressing SPACE, NVDA will announce the "
@@ -3492,7 +3608,7 @@ msgstr ""
 "NVDA verbalizará el nuevo estado de verificación y actualizará la pantalla "
 "braille apropiadamente)."
 
-#: ..\python_docs\spladdoninternals.py:322
+#: ..\python_docs\spladdoninternals.py:321
 msgid ""
 "We'll come back to track items when talking about columns later. For now, "
 "let's move onto two related features in Studio app module that works with "
@@ -3506,12 +3622,12 @@ msgstr ""
 "que trata con el buscador de pistas, la encontraremos en la siguiente "
 "sección."
 
-#: ..\python_docs\spladdoninternals.py:323
+#: ..\python_docs\spladdoninternals.py:322
 msgid "### Track Finder: Locating tracks given a search string"
 msgstr ""
 "### Buscador de pistas: ubicación de pistas dada una cadena de búsqueda"
 
-#: ..\python_docs\spladdoninternals.py:324
+#: ..\python_docs\spladdoninternals.py:323
 msgid ""
 "Track Finder allows you to search for tracks with the given artist or song "
 "title. This is done by performing a \"linear search\" - examining one track "
@@ -3526,7 +3642,7 @@ msgstr ""
 "similares en otros lectores de pantalla y la propia función de búsqueda de "
 "NVDA (cursorManager.FindDialog y sus amigos)."
 
-#: ..\python_docs\spladdoninternals.py:325
+#: ..\python_docs\spladdoninternals.py:324
 msgid ""
 "Track finder is not limited to searching for artist or title: a variation of "
 "this dialog (called Column Search) allows you to search for text in specific "
@@ -3544,7 +3660,7 @@ msgstr ""
 "del buscador de pista) usa la api de Studio para ubicar pistas con duración "
 "entre el mínimo y el máximo especificados por el usuario."
 
-#: ..\python_docs\spladdoninternals.py:326
+#: ..\python_docs\spladdoninternals.py:325
 msgid ""
 "In reality, Track Finder and Column Search are a single dialog (splmisc."
 "SPLFindDialog) that presents two dialogs (does this sound familiar?). For "
@@ -3559,11 +3675,11 @@ msgstr ""
 "para aprender más sobre la búsqueda de columnas y la refactorización "
 "completa del buscador de pistas y sus aplicaciones)."
 
-#: ..\python_docs\spladdoninternals.py:327
+#: ..\python_docs\spladdoninternals.py:326
 msgid "#### Original track Finder: commands, routines and controls"
 msgstr "#### Buscador de pistas original: órdenes, procedimientos y controles"
 
-#: ..\python_docs\spladdoninternals.py:328
+#: ..\python_docs\spladdoninternals.py:327
 msgid ""
 "To use Track Finder, press Control+NVDA+F (wait, I saw this command before). "
 "For anyone who are accustomed to NVDA's browse mode, this command would be "
@@ -3589,7 +3705,7 @@ msgstr ""
 "resultados de búsqueda, NVDA moverá el foco a la pista o abrirá un diálogo "
 "diciendo que no se encontraron resultados."
 
-#: ..\python_docs\spladdoninternals.py:329
+#: ..\python_docs\spladdoninternals.py:328
 msgid ""
 "Two other commands are used as part of Track Finder: Find next and previous, "
 "assigned to NVDA+F3 and NVDA+Shift+F3, respectively (they also come from "
@@ -3608,11 +3724,11 @@ msgstr ""
 "búsqueda especificada (el método trackFinder en el módulo de aplicación "
 "acepta varios parámetros, y uno de ellos es la dirección de búsqueda)."
 
-#: ..\python_docs\spladdoninternals.py:330
+#: ..\python_docs\spladdoninternals.py:329
 msgid "#### Track Finder 1.0 versus 2.0"
 msgstr "#### Comparación del buscador de pistas 1.0 y el 2.0"
 
-#: ..\python_docs\spladdoninternals.py:331
+#: ..\python_docs\spladdoninternals.py:330
 msgid ""
 "In add-on version 2.0 to 5.x, when told to find tracks, NVDA will look for "
 "search term in track descriptions (in case you are searching for artist in "
@@ -3625,7 +3741,7 @@ msgstr ""
 "nombre de la casilla de verificación, ya que contiene el nombre del "
 "artista). Aunque esto fue fácil de implementar, tenía varios problemas:"
 
-#: ..\python_docs\spladdoninternals.py:332
+#: ..\python_docs\spladdoninternals.py:331
 msgid ""
 "1. Because of track item changes in Studio 5.10, I had to spend some time "
 "adjusting the track finder formula."
@@ -3633,7 +3749,7 @@ msgstr ""
 "1. A causa de los cambios del elemento de pista en Studio 5.10, tuve que "
 "dedicar algún tiempo a ajustar la fórmula del buscador de pistas."
 
-#: ..\python_docs\spladdoninternals.py:333
+#: ..\python_docs\spladdoninternals.py:332
 msgid ""
 "2. Wehn finding a track in a playlist with hundreds of tracks loaded, "
 "finding a track at the end of the playlist took several seconds, and this "
@@ -3643,7 +3759,7 @@ msgstr ""
 "cargadas, encontrar una pista al final de la lista llevaba varios segundos, "
 "y esto no era aceptable para los usuarios."
 
-#: ..\python_docs\spladdoninternals.py:334
+#: ..\python_docs\spladdoninternals.py:333
 msgid ""
 "In add-on 6.0, thanks to column search, Track Finder's performance was "
 "improved. Also, track finder was split into two functions: trackFinder still "
@@ -3660,7 +3776,7 @@ msgstr ""
 "pistas pueda ser usado por más de una característica (en este caso, el "
 "marcador de posiciones lo usa, como verás en la próxima sección)."
 
-#: ..\python_docs\spladdoninternals.py:335
+#: ..\python_docs\spladdoninternals.py:334
 msgid ""
 "For both versions, the signature of trackFinder method (linear search "
 "routine in 1.0, search results manager in 2.0) in the Studio app module is:"
@@ -3669,11 +3785,11 @@ msgstr ""
 "búsqueda lineal en 1.0, gestor de resultados de búsqueda en 2.0) en el "
 "módulo de aplicación de Studio es:"
 
-#: ..\python_docs\spladdoninternals.py:336
+#: ..\python_docs\spladdoninternals.py:335
 msgid "\ttrackFinder(self, text, obj, directionForward=True, column=None)"
 msgstr "\ttrackFinder(self, text, obj, directionForward=True, column=None)"
 
-#: ..\python_docs\spladdoninternals.py:337
+#: ..\python_docs\spladdoninternals.py:336
 msgid ""
 "Text is the search term, obj is where the search should begin, direction "
 "specifies search direction and column is used if Column Search is used "
@@ -3686,7 +3802,7 @@ msgstr ""
 "En el buscador de pistas 2.0 (complemento 6.0), se añade una \"s\" a la "
 "palabra clave column."
 
-#: ..\python_docs\spladdoninternals.py:338
+#: ..\python_docs\spladdoninternals.py:337
 msgid ""
 "## Method resolution  order and importance of column navigation in track "
 "items, Track Tool and other features"
@@ -3695,7 +3811,7 @@ msgstr ""
 "columnas en los elementos de pista, la herramienta de pista y otras "
 "características"
 
-#: ..\python_docs\spladdoninternals.py:339
+#: ..\python_docs\spladdoninternals.py:338
 msgid ""
 "In the previous section, you saw how overlay classes work, as well as how "
 "track items in Studio are defined and used. We'll continue our tour of track "
@@ -3712,14 +3828,14 @@ msgstr ""
 "órdenes en situaciones específicas mediante el orden de resolución de "
 "métodos."
 
-#: ..\python_docs\spladdoninternals.py:340
+#: ..\python_docs\spladdoninternals.py:339
 msgid ""
 "### Method resolution order: locating commands and defining command scope"
 msgstr ""
 "### Orden de resolución de métodos: ubicación de órdenes y definición de su "
 "ámbito"
 
-#: ..\python_docs\spladdoninternals.py:341
+#: ..\python_docs\spladdoninternals.py:340
 msgid ""
 "If multiple classes (objects) are defined, especially if inheritance is "
 "involved, it becomes hard to determine which method is which and where "
@@ -3732,7 +3848,7 @@ msgstr ""
 "métodos. Esto se hace más complicado cuando dos o más clases heredan del "
 "mismo padre, o se emplea herencia múltiple (Python soporta ambos escenarios)."
 
-#: ..\python_docs\spladdoninternals.py:342
+#: ..\python_docs\spladdoninternals.py:341
 msgid ""
 "One way Python solves this is through Method Resolution Order (MRO). Simply "
 "put, when a method is to be used, it first looks at whether this method is "
@@ -3744,7 +3860,7 @@ msgstr ""
 "primero se mira si el método está definido en el objeto con el que estamos "
 "tratando, y si no, se consultará al padre de este objeto."
 
-#: ..\python_docs\spladdoninternals.py:343
+#: ..\python_docs\spladdoninternals.py:342
 msgid ""
 "For example, suppose we have a list box that defines a scroll method, and a "
 "custom list box widget inherits from this list box (in effect, custom list "
@@ -3766,7 +3882,7 @@ msgstr ""
 "empleará su método scroll (en este caso sí, Python usará el método scroll "
 "del padre)."
 
-#: ..\python_docs\spladdoninternals.py:344
+#: ..\python_docs\spladdoninternals.py:343
 msgid ""
 "In terms of NVDA, method resolution order comes in handy when dealing with "
 "overlay classes. This has wide ranging consequences, including ability to "
@@ -3784,19 +3900,33 @@ msgstr ""
 "base (padre). Si NVDA no puede hallar la orden en cuestión, la pasará a "
 "Windows, que a continuación envía la orden al programa activo."
 
-#: ..\python_docs\spladdoninternals.py:345
+#: ..\python_docs\spladdoninternals.py:344
 msgid "### Finishing the puzzle: MRO and Studio's track items"
 msgstr "### Terminando el puzle: ORM y los elementos de pista de Studio"
 
-#: ..\python_docs\spladdoninternals.py:346
+#: ..\python_docs\spladdoninternals.py:345
+#, fuzzy
+#| msgid ""
+#| "As described in the previous section, Studio app module defines three "
+#| "classes for track items: base class for tracks found in Studio and other "
+#| "apps, a class representing Studio 5.0x items, and another for 5.1x. In "
+#| "reality, all that matters is the first two, with the 5.10 class providing "
+#| "custom routines on top of the 5.0x track item class. In case of MRO, "
+#| "Studio 5.10 will be consulted if 5.10 is in use, then NVDA will consult "
+#| "Studio track item. For 5.0x, only original track item class will be "
+#| "consulted."
 msgid ""
 "As described in the previous section, Studio app module defines three "
-"classes for track items: base class for tracks found in Studio and other "
-"apps, a class representing Studio 5.0x items, and another for 5.1x. In "
-"reality, all that matters is the first two, with the 5.10 class providing "
-"custom routines on top of the 5.0x track item class. In case of MRO, Studio "
-"5.10 will be consulted if 5.10 is in use, then NVDA will consult Studio "
-"track item. For 5.0x, only original track item class will be consulted."
+"classes for track items: abstract base class for tracks found in Studio and "
+"other apps, a class representing track items found throughout Studio, and "
+"another for representing playlist viewer track items. In reality, all that "
+"matters is the first two, with the playlist viewer item class providing "
+"custom routines on top of the Studio track item class. In case of MRO, "
+"playlist viewer item class will be consulted if playlist viewer is in use, "
+"otherwise main Studio track item class will be consulted, which in turn will "
+"consult SPL track item base class. Other apps such as Track Tool and Remote "
+"VT client have their own MRO, ultimately consulting SPL track item base "
+"class defined in Studio app module."
 msgstr ""
 "Como se describe en la sección anterior, el módulo de aplicación de Studio "
 "define tres clases para los elementos de pista: una clase base para pistas "
@@ -3808,47 +3938,26 @@ msgstr ""
 "luego NVDA consultará al elemento de pista de Studio. Para la versión 5.0x, "
 "sólo se consultará a la clase original de elemento de pista."
 
+#: ..\python_docs\spladdoninternals.py:346
+msgid ""
+"The most important job of appModules.splstudio.SPLTrackItem class is "
+"announcing column data. Prior to 2020, it also housed column navigation "
+"commands and routines such as next and previous column, handler for Track "
+"Dial (historical), and a dedicated routine to announce column information "
+"given column number and optional header. In 2020, only Columns Explorer "
+"remains."
+msgstr ""
+
 #: ..\python_docs\spladdoninternals.py:347
 msgid ""
-"The contents of the base track item class (appModules.splstudio."
-"SPLTrackItem) are as follows:"
+"On top of the base SPL track item class is general Studio track item class, "
+"which does nothing, as it is meant to represent tracks in places such as "
+"Insert Tracks dialog. However the class that represents playlist viewer "
+"items (appModules.splstudio.StudioPlaylistViewerItem) adds routines and "
+"scripts for use from playlist viewer. These include:"
 msgstr ""
-"Los contenidos de la clase base de elemento de pista (appModules.splstudio."
-"SPLTrackItem) son los siguientes:"
 
 #: ..\python_docs\spladdoninternals.py:348
-msgid ""
-"* initOverlayClass: This is run when the track item is first encountered. "
-"This method checks if Track Dial (see below) is active, and if so, assigns "
-"left and right arrow keys to Track Dial functions."
-msgstr ""
-"* initOverlayClass: se ejecuta cuando se encuentra por primera vez un "
-"elemento de pista. Este método comprueba si el dial de pista (mira más "
-"abajo) está activo, y si es así, asigna las flechas izquierda y derecha a "
-"las funciones del dial de pista."
-
-#: ..\python_docs\spladdoninternals.py:349
-msgid ""
-"* Track column navigation: Various methods and scripts used by Track Dial "
-"and friends are defined, including announcing column information, handling "
-"leftmost column and so on. Add-on 8.0 adds Columns Explorer routines, and "
-"17.04 adds vertical column navigation support."
-msgstr ""
-"* Navegación por columnas de pista: se definen diversos métodos y scripts "
-"usados por el dial de pista y sus amigos, incluyendo verbalización de "
-"información de la columna, identificación de la columna más a la izquierda y "
-"demás. El complemento 8.0 añade los procedimientos del explorador de "
-"columnas, y el 17.04 añade soporte de navegación vertical por columnas."
-
-#: ..\python_docs\spladdoninternals.py:350
-msgid ""
-"Studio track item class for 5.0x (appModules.splstudio.SPLStudioTrackItem) "
-"adds:"
-msgstr ""
-"La clase de elemento de pista de Studio para la versión 5.0x (appModules."
-"splstudio.SPLStudioTrackItem) añade:"
-
-#: ..\python_docs\spladdoninternals.py:351
 msgid ""
 "* reportFocus: This is called when reporting track items to you "
 "(broadcaster). It's main job is to see if custom column order is defined "
@@ -3859,7 +3968,7 @@ msgstr ""
 "orden personalizado para las columnas (mira más abajo) y construye las "
 "piezas necesarias si se especifica un orden de columnas."
 
-#: ..\python_docs\spladdoninternals.py:352
+#: ..\python_docs\spladdoninternals.py:349
 msgid ""
 "* Track comments: Routines related to working with comments for traks (see "
 "the previous section for details)."
@@ -3867,23 +3976,15 @@ msgstr ""
 "* Comentarios de pista: procedimientos relacionados con el trabajo con "
 "comentarios de pista (mira la sección anterior para más detalles)."
 
-#: ..\python_docs\spladdoninternals.py:353
-msgid ""
-"In addition, Studio 5.10 track item (appModules.splstudio."
-"SPLStudio510TrackItem) includes a script to announce changed state when "
-"SPACE is pressed (this is done by speaking and/or brailling track name (obj."
-"name))."
+#: ..\python_docs\spladdoninternals.py:350
+msgid "* Announcing toggle state of tracks when Space is pressed."
 msgstr ""
-"Además, el elemento de pista de Studio 5.10 (appModules.splstudio."
-"SPL510TrackItem) incluye un script para verbalizar el cambio de estado "
-"cuando se pulsa espacio (esto se hace hablando y / o mostrando en braille el "
-"nombre de pista (obj.name))."
 
-#: ..\python_docs\spladdoninternals.py:354
+#: ..\python_docs\spladdoninternals.py:351
 msgid "### Birth of Track Dial: from hesitation to possibilities"
 msgstr "### Nacimiento del dial de pista: de la duda a las posibilidades"
 
-#: ..\python_docs\spladdoninternals.py:355
+#: ..\python_docs\spladdoninternals.py:352
 msgid ""
 "Note: Information on Track Dial is kept for reference purposes. Track Dial "
 "was deprecated in 2017 with the release of add-on 17.04."
@@ -3892,7 +3993,7 @@ msgstr ""
 "referencia y consulta. El dial de pista quedó obsoleto en 2017 con la "
 "publicación del complemento 17.04."
 
-#: ..\python_docs\spladdoninternals.py:356
+#: ..\python_docs\spladdoninternals.py:353
 msgid ""
 "As I was writing the add-on, one of the top suggestions I received was "
 "ability to use enhanced arrow keys feature to review columns. This feature "
@@ -3908,7 +4009,7 @@ msgstr ""
 "esto, los tres scripts para lectores de pantalla soportan esta "
 "característica."
 
-#: ..\python_docs\spladdoninternals.py:357
+#: ..\python_docs\spladdoninternals.py:354
 msgid ""
 "At first, I told broadcasters that this wasn't possible. My impression back "
 "then (summer 2014) was that I had to manipulate track description text (obj."
@@ -3923,7 +4024,7 @@ msgstr ""
 "que podría ser posible implementarlo para usuarios de NVDA, y por tanto "
 "comencé a investigar sobre ello a finales de 2014."
 
-#: ..\python_docs\spladdoninternals.py:358
+#: ..\python_docs\spladdoninternals.py:355
 msgid ""
 "I started by looking for patterns in description text that could be used to "
 "give users an impression that column navigation was active (when it was "
@@ -3946,11 +4047,11 @@ msgstr ""
 "especialmente un método para recuperar el contenido de una columna, y esto "
 "me dio una idea sobre cómo traer el dial de pista a la vida."
 
-#: ..\python_docs\spladdoninternals.py:359
+#: ..\python_docs\spladdoninternals.py:356
 msgid "### The magic behind Track Dial: SysListView32 controls"
 msgstr "### La magia tras el dial de pista: los controles SysListView32"
 
-#: ..\python_docs\spladdoninternals.py:360
+#: ..\python_docs\spladdoninternals.py:357
 msgid ""
 "SysListView32 controls are lists with items organized into columns. For "
 "example, certain apps use these controls to arrange entries into columns, "
@@ -3963,7 +4064,7 @@ msgstr ""
 "tablas, y en el caso de Studio, mostrar diversos estados de los "
 "codificadores."
 
-#: ..\python_docs\spladdoninternals.py:361
+#: ..\python_docs\spladdoninternals.py:358
 msgid ""
 "When these controls are encountered, NVDA allows you to use table navigation "
 "commands (Control+Alt+arrows) to navigate between columns, provided that "
@@ -3997,7 +4098,7 @@ msgstr ""
 "(incluyendo los elementos de pista de Creator y las entradas del codificador "
 "SAM) fueron potenciadas por la clase SysListView32.ListItem."
 
-#: ..\python_docs\spladdoninternals.py:362
+#: ..\python_docs\spladdoninternals.py:359
 msgid ""
 "Until 2018, the column text retrieval routine (which lives in SysListView32 "
 "and a copy lives in splstudio.splmisc module) was as follows:"
@@ -4006,7 +4107,7 @@ msgstr ""
 "reside en SysListView32 y cuya copia reside en el módulo splstudio.splmisc) "
 "era el siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:363
+#: ..\python_docs\spladdoninternals.py:360
 msgid ""
 "1. Features requiring text from a specific column will call a private "
 "function in splstudio.splmisc module, which will take the current object and "
@@ -4016,7 +4117,7 @@ msgstr ""
 "llamarán a una función privada en el módulo splstudio.splmisc, que recibirá "
 "el objeto y el índice de columna como parámetros."
 
-#: ..\python_docs\spladdoninternals.py:364
+#: ..\python_docs\spladdoninternals.py:361
 msgid ""
 "2. The column retriever first looks up the handle for the process where the "
 "control lives, then creates a place holder for the buffer to hold the column "
@@ -4026,7 +4127,7 @@ msgstr ""
 "reside el control, luego crea un marcador de posición para el buffer que "
 "capturará el contenido de la columna."
 
-#: ..\python_docs\spladdoninternals.py:365
+#: ..\python_docs\spladdoninternals.py:362
 msgid ""
 "3. Next, it looks at the size of the underlying sysListView32 control "
 "(ctypes.sizeof) and asks Windows to allocate storage for an internal "
@@ -4041,7 +4142,7 @@ msgstr ""
 "se hace con otro marcador de posición para almacenar el texto real de la "
 "columna llamando a VirtualAllocEx."
 
-#: ..\python_docs\spladdoninternals.py:366
+#: ..\python_docs\spladdoninternals.py:363
 msgid ""
 "4. The retriever then creates an internal SysListView32 control used as a "
 "place holder to store column text, then asks Windows to tell the process "
@@ -4063,7 +4164,7 @@ msgstr ""
 "almacena el valor dentro del buffer de texto (ctypes.create_unicode_buffer, "
 "reservado para almacenar el texto resultante)."
 
-#: ..\python_docs\spladdoninternals.py:367
+#: ..\python_docs\spladdoninternals.py:364
 msgid ""
 "5. Lastly, the retriever frees resources (VirtualFreeEx) and returns the "
 "just retrieved column text, which can be used by routines requesting this."
@@ -4072,13 +4173,13 @@ msgstr ""
 "texto de la columna recién recuperado, que puede ser usado por los "
 "procedimientos que lo habían solicitado."
 
-#: ..\python_docs\spladdoninternals.py:368
+#: ..\python_docs\spladdoninternals.py:365
 msgid "In 2018, this was simplified by use of SysListView32 routines directly."
 msgstr ""
 "En 2018, esto se simplificó usando directamente los procedimientos de "
 "SysListView32."
 
-#: ..\python_docs\spladdoninternals.py:369
+#: ..\python_docs\spladdoninternals.py:366
 msgid ""
 "### Column retrieval and navigation routines: from hesitation to a "
 "cornerstone"
@@ -4086,16 +4187,27 @@ msgstr ""
 "### Recuperación de columnas y procedimientos de navegación: de la duda a la "
 "piedra angular"
 
-#: ..\python_docs\spladdoninternals.py:370
+#: ..\python_docs\spladdoninternals.py:367
+#, fuzzy
+#| msgid ""
+#| "Column content retrieval routine has become one of the cornerstones of "
+#| "this add-on. In addition to Track Dial, ten other routines uses it: "
+#| "Column Search, track place marker, column announcement order, Track "
+#| "Columns Explorer, vertical column navigation, playlist snapshots, "
+#| "playlist transcripts, Creator and Track Tool app modules, and when "
+#| "working with SAM encoder entries. Let's find out how seven of these work "
+#| "in more detail (playlist snapshots and transcripts are described under "
+#| "SPL Assistant section, as they deserve sections of their own)."
 msgid ""
 "Column content retrieval routine has become one of the cornerstones of this "
-"add-on. In addition to Track Dial, ten other routines uses it: Column "
+"add-on. In addition to Track Dial, ten other routines rely on it: Column "
 "Search, track place marker, column announcement order, Track Columns "
 "Explorer, vertical column navigation, playlist snapshots, playlist "
-"transcripts, Creator and Track Tool app modules, and when working with SAM "
-"encoder entries. Let's find out how seven of these work in more detail "
-"(playlist snapshots and transcripts are described under SPL Assistant "
-"section, as they deserve sections of their own)."
+"transcripts, Creator and Track Tool app modules, playlist editor found in "
+"Creator and Remote VT client, and when working with SAM encoder entries. "
+"Let's find out how seven of these work in more detail (playlist snapshots "
+"and transcripts are described under SPL Assistant section, as they deserve "
+"sections of their own)."
 msgstr ""
 "El procedimiento de recuperación del contenido de las columnas ha llegado a "
 "ser una de las piedras angulares de este complemento. Además del dial de "
@@ -4109,17 +4221,17 @@ msgstr ""
 "describen en la sección del asistente de SPL, aunque se merece una sección "
 "propia)."
 
-#: ..\python_docs\spladdoninternals.py:371
+#: ..\python_docs\spladdoninternals.py:368
 msgid "#### Track Dial: Navigating columns in track items"
 msgstr "#### Dial de pista: navegación por columnas en elementos de pista"
 
-#: ..\python_docs\spladdoninternals.py:372
+#: ..\python_docs\spladdoninternals.py:369
 msgid "Note: no longer applicable since 17.04, included here for completeness."
 msgstr ""
 "Nota: ya no es aplicable desde la versión 17.04, se incluye aquí por "
 "completitud."
 
-#: ..\python_docs\spladdoninternals.py:373
+#: ..\python_docs\spladdoninternals.py:370
 msgid ""
 "The column retriever routine is just one of the activities performed during "
 "Track Dial, and to see the beauty of this feature, assign a command to "
@@ -4152,7 +4264,7 @@ msgstr ""
 "(si se configura NVDA para ello) y se eliminará el indicador del dial de "
 "pista."
 
-#: ..\python_docs\spladdoninternals.py:374
+#: ..\python_docs\spladdoninternals.py:371
 msgid ""
 "When navigating columns, NVDA will check if you are at the edge of the track "
 "row, and if so, it will play a beep and repeat the last column text. If not, "
@@ -4166,7 +4278,7 @@ msgstr ""
 "(almacenada en el módulo de aplicación), después llamará al recuperador de "
 "texto de columna para recuperar el texto de esa columna."
 
-#: ..\python_docs\spladdoninternals.py:375
+#: ..\python_docs\spladdoninternals.py:372
 msgid ""
 "To handle differences between Studio 5.0x and 5.1x, each track item class "
 "informs NVDA as to how leftmost column should be handled. For Studio 5.0x, "
@@ -4180,12 +4292,12 @@ msgstr ""
 "verificación de la pista es el que se \"muestra\" en Studio 5.10 (se "
 "verbalizará obj.name)."
 
-#: ..\python_docs\spladdoninternals.py:376
+#: ..\python_docs\spladdoninternals.py:373
 msgid "#### Custom column announcement order: What to announce and how"
 msgstr ""
 "#### Orden personalizado de verbalización de columnas: qué anunciar y cómo"
 
-#: ..\python_docs\spladdoninternals.py:377
+#: ..\python_docs\spladdoninternals.py:374
 msgid ""
 "Track Dial routine also allowed another top request to come to life: column "
 "announcement order. This allows you (broadcaster) to hear columns in "
@@ -4198,7 +4310,7 @@ msgstr ""
 "sean verbalizadas. Esto se aloja en el método reportFocus en la clase "
 "principal de elemento de pista."
 
-#: ..\python_docs\spladdoninternals.py:378
+#: ..\python_docs\spladdoninternals.py:375
 msgid ""
 "In order to use this, you must tell NVDA to not use screen order (add-on "
 "settings dialog). Then open column announcement dialog and check the columns "
@@ -4213,7 +4325,7 @@ msgstr ""
 "verbalización de columnas es un cuadro de lista con dos botones: mover "
 "arriba y abajo."
 
-#: ..\python_docs\spladdoninternals.py:379
+#: ..\python_docs\spladdoninternals.py:376
 msgid ""
 "Once column order and included columns are defined, NVDA will use this "
 "information to build track item description text. This is done by repeatedly "
@@ -4228,7 +4340,7 @@ msgstr ""
 "columnas que definiste para construir partes del texto de la descripción (se "
 "usa una combinación de lista y str.join)."
 
-#: ..\python_docs\spladdoninternals.py:380
+#: ..\python_docs\spladdoninternals.py:377
 msgid ""
 "For example, if NVDA is told to announce title and artist (in that specific "
 "order), NVDA will first locate title, then will add artist information. This "
@@ -4243,13 +4355,13 @@ msgstr ""
 "las cabeceras de columna, y esto se controla con la casilla de verificación "
 "a tal efecto en los ajustes del complemento."
 
-#: ..\python_docs\spladdoninternals.py:381
+#: ..\python_docs\spladdoninternals.py:378
 msgid "#### Track Columns Explorer: Retrieve information from specific columns"
 msgstr ""
 "#### Explorador de columnas de pista: recuperar información de columnas "
 "específicas"
 
-#: ..\python_docs\spladdoninternals.py:382
+#: ..\python_docs\spladdoninternals.py:379
 msgid ""
 "In add-on 7.0, it became possible to let NVDA announce information from "
 "specific columns. This is done by letting NVDA assign SPL Assistant, 1 "
@@ -4266,14 +4378,24 @@ msgstr ""
 "explorador de columnas de pista (generalmente conocido como explorador de "
 "columnas)."
 
-#: ..\python_docs\spladdoninternals.py:383
+#: ..\python_docs\spladdoninternals.py:380
+#, fuzzy
+#| msgid ""
+#| "In addition to using column retriever routine in Track Dial, Columns "
+#| "Explorer needs to know Studio version in use, as Studio 5.1x shows "
+#| "columns not found in Studio 5.0x (this is checked when entering SPL "
+#| "Assistant as discussed later). In addition, since not all track items "
+#| "expose more than ten columns or column slots cannot be configured for "
+#| "some items (notably Creator's Playlist Editor), Columns Exploer needs to "
+#| "know how many columns can be retrieved and take action if no column slot "
+#| "can be defined."
 msgid ""
 "In addition to using column retriever routine in Track Dial, Columns "
 "Explorer needs to know Studio version in use, as Studio 5.1x shows columns "
 "not found in Studio 5.0x (this is checked when entering SPL Assistant as "
 "discussed later). In addition, since not all track items expose more than "
 "ten columns or column slots cannot be configured for some items (notably "
-"Creator's Playlist Editor), Columns Exploer needs to know how many columns "
+"Creator's Playlist Editor), Columns Explorer needs to know how many columns "
 "can be retrieved and take action if no column slot can be defined."
 msgstr ""
 "Además de usar el procedimiento de recuperación de columna en el dial de "
@@ -4286,7 +4408,7 @@ msgstr ""
 "explorador de columnas necesita saber cuántas columnas se pueden recuperar y "
 "tomar medidas si no se puede definir un slot de columna."
 
-#: ..\python_docs\spladdoninternals.py:384
+#: ..\python_docs\spladdoninternals.py:381
 msgid ""
 "Once column slots are defined (for items allowing configuring column slots, "
 "which are Studio's Playlist Viewer, Track Tool, and Creator's main tracks "
@@ -4297,7 +4419,7 @@ msgstr ""
 "la lista principal de pistas de Creator), el explorador de columnas hace lo "
 "siguiente:"
 
-#: ..\python_docs\spladdoninternals.py:385
+#: ..\python_docs\spladdoninternals.py:382
 msgid ""
 "1. Checks if you are indeed focused on a track item, and if not, it'll say "
 "\"not a track\"."
@@ -4305,7 +4427,7 @@ msgstr ""
 "1. Comprueba si tienes el foco en un elemento de lista y, si no es así, NVDA "
 "dirá \"No es una pista\"."
 
-#: ..\python_docs\spladdoninternals.py:386
+#: ..\python_docs\spladdoninternals.py:383
 msgid ""
 "2. Consults a list of column slots and locates corresponding column index "
 "for the slot in question."
@@ -4313,7 +4435,7 @@ msgstr ""
 "2. Consulta una lista de slots de columna y ubica el índice de columna "
 "correspondiente del slot en cuestión."
 
-#: ..\python_docs\spladdoninternals.py:387
+#: ..\python_docs\spladdoninternals.py:384
 msgid ""
 "3. Uses column retriever routine to announce column header and content for "
 "the selected column slot."
@@ -4321,12 +4443,12 @@ msgstr ""
 "3. Usa el procedimiento de recuperación de columna para verbalizar la "
 "cabecera de la columna y el contenido de la columna del slot seleccionado."
 
-#: ..\python_docs\spladdoninternals.py:388
+#: ..\python_docs\spladdoninternals.py:385
 msgid "##### Optimization bonus: I've rearranged columns in studio 5.10..."
 msgstr ""
 "##### Bonus de optimización: he reordenado las columnas en Studio 5.10..."
 
-#: ..\python_docs\spladdoninternals.py:389
+#: ..\python_docs\spladdoninternals.py:386
 msgid ""
 "Due to different control data structure in use, one can rearrange columns in "
 "Studio 5.10 and later. But how does NVDA know exactly which column is which? "
@@ -4350,13 +4472,25 @@ msgstr ""
 "(después de una intervención manual) los cambios de presentación de las "
 "columnas en pantalla."
 
-#: ..\python_docs\spladdoninternals.py:390
+#: ..\python_docs\spladdoninternals.py:387
 msgid "##### What about items where column slots cannot be configured?"
 msgstr ""
 "##### ¿Qué pasa con los elementos donde no se pueden configurar slots de "
 "columna?"
 
-#: ..\python_docs\spladdoninternals.py:391
+#: ..\python_docs\spladdoninternals.py:388
+#, fuzzy
+#| msgid ""
+#| "For items other than Studio's Playlist Viewer, Track Tool, and Creator's "
+#| "main tracks list, Columns Explorer slots cannot be configured (hence "
+#| "absence of \"exploreColumns\" property, notably in Creator's Playlist "
+#| "Editor in add-on 20.02). If so, Columns Explorer will resort to "
+#| "displaying data for columns shown in display order (as it appears on "
+#| "screen). As a bonus, if a track item does not show more than ten columns, "
+#| "Columns Explorer will announce an error message if current column "
+#| "position is out of bounds (beyond column count for the track item). These "
+#| "were done in order to support Playlsit Editor properly as track items in "
+#| "there only shows eight columns."
 msgid ""
 "For items other than Studio's Playlist Viewer, Track Tool, and Creator's "
 "main tracks list, Columns Explorer slots cannot be configured (hence absence "
@@ -4366,7 +4500,7 @@ msgid ""
 "track item does not show more than ten columns, Columns Explorer will "
 "announce an error message if current column position is out of bounds "
 "(beyond column count for the track item). These were done in order to "
-"support Playlsit Editor properly as track items in there only shows eight "
+"support Playlist Editor properly as track items in there only shows eight "
 "columns."
 msgstr ""
 "Para elementos distintos al visor de listas de reproducción de Studio, la "
@@ -4382,11 +4516,11 @@ msgstr ""
 "para dar soporte al editor de listas de reproducción adecuadamente, ya que "
 "sus elementos de pista sólo muestran ocho columnas."
 
-#: ..\python_docs\spladdoninternals.py:392
+#: ..\python_docs\spladdoninternals.py:389
 msgid "#### Column Search: Finding text in specific columns"
 msgstr "#### Búsqueda por columnas: encontrar texto en columnas específicas"
 
-#: ..\python_docs\spladdoninternals.py:393
+#: ..\python_docs\spladdoninternals.py:390
 msgid ""
 "In the previous section, I mentioned that a single dialog performs double "
 "duty when talking about Track Finder. We'll now tour the other side of the "
@@ -4396,7 +4530,7 @@ msgstr ""
 "cuando hablamos del buscador de pistas. Ahora recorreremos el otro lado de "
 "la moneda: la búsqueda por columnas."
 
-#: ..\python_docs\spladdoninternals.py:394
+#: ..\python_docs\spladdoninternals.py:391
 msgid ""
 "Column Search dialog adds a second control to Track Finder: a list of "
 "columns. Once text is entered to be searched in a column, NVDA will use "
@@ -4424,7 +4558,7 @@ msgstr ""
 "ha hecho la búsqueda, se moverá el foco a un elemento de pista o bien se "
 "presentará un diálogo de error."
 
-#: ..\python_docs\spladdoninternals.py:395
+#: ..\python_docs\spladdoninternals.py:392
 msgid ""
 "So what causes one dialog to present both Track Finder and Column Search "
 "dialog? It's all thanks to the arguments passed into the find dialog "
@@ -4434,11 +4568,11 @@ msgstr ""
 "como el buscador por columnas? Esto se hace gracias a los argumentos pasados "
 "al constructor del diálogo de búsqueda. La cabecera es:"
 
-#: ..\python_docs\spladdoninternals.py:396
+#: ..\python_docs\spladdoninternals.py:393
 msgid "\tsplmisc.SPLFindDialog(parent, obj, text, title, columnSearch=False)"
 msgstr "\tsplmisc.SPLFindDialog(parent, obj, text, title, columnSearch=False)"
 
-#: ..\python_docs\spladdoninternals.py:397
+#: ..\python_docs\spladdoninternals.py:394
 msgid ""
 "The last argument (columnSearch) determines which version of the dialog to "
 "present. The object (obj) is needed to tell NVDA where to begin the search "
@@ -4449,14 +4583,14 @@ msgstr ""
 "empezar la búsqueda y para llamar al procedimiento del buscador de pistas "
 "definido en su módulo de aplicación."
 
-#: ..\python_docs\spladdoninternals.py:398
+#: ..\python_docs\spladdoninternals.py:395
 msgid ""
 "#### Track Place Marker: A variation of column search for finding filenames"
 msgstr ""
 "#### Marcador de pista: una variante de la búsqueda por columnas para "
 "encontrar nombres de archivo"
 
-#: ..\python_docs\spladdoninternals.py:399
+#: ..\python_docs\spladdoninternals.py:396
 msgid ""
 "Another feature that uses column routines is track place marker. You would "
 "drop a place marker at the current track (SPL Assistant, Control+K), move "
@@ -4468,7 +4602,7 @@ msgstr ""
 "+k), te moverías por la lista de reproducción, y después te moverías a la "
 "pista que tiene el marcador (asistente de SPL, k)."
 
-#: ..\python_docs\spladdoninternals.py:400
+#: ..\python_docs\spladdoninternals.py:397
 msgid ""
 "Once you drop a place marker, Studio app module will record the filename of "
 "the currently focused track, and when you wish to move to the marked track, "
@@ -4487,12 +4621,25 @@ msgstr ""
 "archivo (en efecto, le estás diciendo a NVDA que haga una búsqueda por "
 "columnas después de elegir nombre de archivo como dato a buscar)."
 
-#: ..\python_docs\spladdoninternals.py:401
+#: ..\python_docs\spladdoninternals.py:398
 msgid "#### Vertical column navigation: just announce the column I want"
 msgstr ""
 "#### Navegación vertical por columnas: verbalizar sólo la columna que quiero"
 
-#: ..\python_docs\spladdoninternals.py:402
+#: ..\python_docs\spladdoninternals.py:399
+#, fuzzy
+#| msgid ""
+#| "Ever since implementing Track Dial, some broadcasters requested adding "
+#| "support for moving through tracks vertically (as in reading specific "
+#| "columns just like moving to a different row in a table). This also "
+#| "resolved an issue where pressing Control+Alt+up/down arrow keys caused "
+#| "the monitor to flip upside down. This is achieved by asking SPLTrackItem."
+#| "reportFocus to announce just the column the user wants when Control+Alt"
+#| "+up/down arrow is pressed, all controlled by a hidden class variable. "
+#| "This feature not only works for vertical column navigation - it is also "
+#| "used when a broadcaster requests only one column be announced, and the "
+#| "column to be announced can be customed (not to be confused with column "
+#| "announcement order routine discussed above)."
 msgid ""
 "Ever since implementing Track Dial, some broadcasters requested adding "
 "support for moving through tracks vertically (as in reading specific columns "
@@ -4502,8 +4649,9 @@ msgid ""
 "just the column the user wants when Control+Alt+up/down arrow is pressed, "
 "all controlled by a hidden class variable. This feature not only works for "
 "vertical column navigation - it is also used when a broadcaster requests "
-"only one column be announced, and the column to be announced can be customed "
-"(not to be confused with column announcement order routine discussed above)."
+"only one column be announced, and the column to be announced can be "
+"customized (not to be confused with column announcement order routine "
+"discussed above)."
 msgstr ""
 "Desde que se implementó el dial de pista, algunos locutores solicitaron "
 "añadir soporte para moverse verticalmente por las pistas (como leer columnas "
@@ -4518,13 +4666,23 @@ msgstr ""
 "puede personalizarse (no hay que confundirse con el procedimiento de orden "
 "de verbalización de columnas expuesto arriba)."
 
-#: ..\python_docs\spladdoninternals.py:403
+#: ..\python_docs\spladdoninternals.py:400
+msgid ""
+"Vertical column navigation was simplified in 2020 by using routines found in "
+"SysListView32 list item class directly. Prior to 2020, custom vertical "
+"navigation routines were used, and for places other than playlist viewer, "
+"vertical column navigation was impossible. In 2020, vertical column "
+"navigation routines from SysListView32 are used, which also introduced "
+"vertical navigation to places such as Track Tool."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:401
 msgid "#### Track Tool and Creator: one routine, multiple app modules"
 msgstr ""
 "#### Herramienta de pista y Creator: un procedimiento, múltiples módulos de "
 "aplicación"
 
-#: ..\python_docs\spladdoninternals.py:404
+#: ..\python_docs\spladdoninternals.py:402
 msgid ""
 "Column retriever routine is not only employed by Studio app module, but is "
 "also used in Track Tool and Creator app modules (part of the add-on). These "
@@ -4541,6 +4699,22 @@ msgstr ""
 "columna mediante órdenes de navegación por tablas y anunciar la información "
 "de columna (ctrl+NVDA+números del 1 al 0, ahora llamado explorador de "
 "columnas en la herramienta de pista y en SPL Creator)."
+
+#: ..\python_docs\spladdoninternals.py:403
+msgid "#### Playlist editor: column navigation keeps expanding"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:404
+msgid ""
+"Creator comes with Playlist Editor, a tool to manage locally generated "
+"playlists. Remote VT client also comes with a dedicated playlist editor but "
+"is designed to edit playlists stored remotely. Track items shown on the "
+"playlist editor window are indeed SPL track items, and as such they support "
+"column navigation. Because they only come with up to 8 columns, there is no "
+"need to provide custom Columns Explorer feature for these items. Other than "
+"that, it supports other column announcement and navigation features found in "
+"other track items."
+msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:405
 #: ..\python_docs\spladdoninternals.py:492
@@ -4669,19 +4843,29 @@ msgstr ""
 "ordenador"
 
 #: ..\python_docs\spladdoninternals.py:415
+#, fuzzy
+#| msgid ""
+#| "A decade ago, people thought a single core CPU was enough to run multiple "
+#| "programs. This involved the processor spending small fraction of a second "
+#| "devoted to each program. Nowadays, it has become common to see desktops, "
+#| "laptops, smartphones and other small devices using at least two cores "
+#| "(termed multi-core; two cores is dubbed \"dual core\"). As of 2017, many "
+#| "computers use processors with four cores (dubbed \"quad core\"), while "
+#| "enthusiasts prefer more cores (the current record holder for desktop "
+#| "computers (as of July 2017) is 18, held by Intel Core I9-7980XE, a 3 GHz "
+#| "unlocked processor which costs 2000 dollars; for servers where more cores "
+#| "are used, the current record holder is a group of eight processors (octa "
+#| "processor) called Intel Xeon E7-8895V3, with each processor boasting "
+#| "eighteen cores with base speed of 2.6 GHz)."
 msgid ""
-"A decade ago, people thought a single core CPU was enough to run multiple "
+"Years ago, people thought a single core CPU was enough to run multiple "
 "programs. This involved the processor spending small fraction of a second "
 "devoted to each program. Nowadays, it has become common to see desktops, "
 "laptops, smartphones and other small devices using at least two cores "
-"(termed multi-core; two cores is dubbed \"dual core\"). As of 2017, many "
+"(termed multi-core; two cores is dubbed \"dual core\"). As of 2020, many "
 "computers use processors with four cores (dubbed \"quad core\"), while "
-"enthusiasts prefer more cores (the current record holder for desktop "
-"computers (as of July 2017) is 18, held by Intel Core I9-7980XE, a 3 GHz "
-"unlocked processor which costs 2000 dollars; for servers where more cores "
-"are used, the current record holder is a group of eight processors (octa "
-"processor) called Intel Xeon E7-8895V3, with each processor boasting "
-"eighteen cores with base speed of 2.6 GHz)."
+"enthusiasts prefer more cores (it is common nowadays to see PC's and servers "
+"boasting upwards of ten cores or more)."
 msgstr ""
 "Hace una década, la gente pensaba que que una CPU de un único núcleo era "
 "suficiente para ejecutar múltiples programas. Esto implicaba que el "
@@ -4783,12 +4967,23 @@ msgid "### Threads: a more geeky introduction"
 msgstr "### Hilos: una introducción más jeek"
 
 #: ..\python_docs\spladdoninternals.py:422
+#, fuzzy
+#| msgid ""
+#| "A thread (sometimes termed \"thread of execution) is an independent path "
+#| "of execution. A single process (app) can have as many threads as it "
+#| "desires (minimum is one for the main thread). Each thread can be asked to "
+#| "perform certain operations with other threads in parallel, which can "
+#| "range from a single, repetative task (part of a function) to being "
+#| "responsible for an entire module or a significant part of the program. In "
+#| "case of antivirus example above, each scanner thread is responsible for "
+#| "scanning an entire drive, with each of them reporting its progress to a "
+#| "manager thread which displays overall progress of a virus scan."
 msgid ""
 "A thread (sometimes termed \"thread of execution) is an independent path of "
 "execution. A single process (app) can have as many threads as it desires "
 "(minimum is one for the main thread). Each thread can be asked to perform "
 "certain operations with other threads in parallel, which can range from a "
-"single, repetative task (part of a function) to being responsible for an "
+"single, repetitive task (part of a function) to being responsible for an "
 "entire module or a significant part of the program. In case of antivirus "
 "example above, each scanner thread is responsible for scanning an entire "
 "drive, with each of them reporting its progress to a manager thread which "
@@ -5081,16 +5276,24 @@ msgstr ""
 "resultados del escaneo de la biblioteca de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:446
+#, fuzzy
+#| msgid ""
+#| "A. If you tell NVDA to announce scan progress, NVDA will say, \"scanning"
+#| "\" and/or play a beep (if told to do so)."
 msgid ""
-"A. If you tell NVDA to announce scan progress, NVDA will say, \"scanning\" "
+"\t* If you tell NVDA to announce scan progress, NVDA will say, \"scanning\" "
 "and/or play a beep (if told to do so)."
 msgstr ""
 "A. Si le pides a NVDA que verbalice el progreso del escaneo, este dirá "
 "\"Escaneando\" y / o reproducirá un pitido (si así lo tiene indicado)."
 
 #: ..\python_docs\spladdoninternals.py:447
+#, fuzzy
+#| msgid ""
+#| "B. If NVDA is told to announce scan count, number of items scanned so far "
+#| "will be announced (again with or without a beep)."
 msgid ""
-"B. If NVDA is told to announce scan count, number of items scanned so far "
+"\t* If NVDA is told to announce scan count, number of items scanned so far "
 "will be announced (again with or without a beep)."
 msgstr ""
 "B. Si se pide a NVDA que verbalice la cantidad de elementos escaneados, se "
@@ -5098,8 +5301,14 @@ msgstr ""
 "pitido)."
 
 #: ..\python_docs\spladdoninternals.py:448
+#, fuzzy
+#| msgid ""
+#| "C. This reporter function will not be invoked if you tell NVDA to ignore "
+#| "library scan completely or ask it to interupt you only when the overall "
+#| "scan is complete (you can press Alt+NVDA+R to cycle through different "
+#| "library scan announcement settings)."
 msgid ""
-"C. This reporter function will not be invoked if you tell NVDA to ignore "
+"\t* This reporter function will not be invoked if you tell NVDA to ignore "
 "library scan completely or ask it to interupt you only when the overall scan "
 "is complete (you can press Alt+NVDA+R to cycle through different library "
 "scan announcement settings)."
@@ -5185,6 +5394,15 @@ msgid "## The magic behind Cart Explorer"
 msgstr "## La magia que hay tras el explorador cart"
 
 #: ..\python_docs\spladdoninternals.py:455
+#, fuzzy
+#| msgid ""
+#| "A live radio broadcast would not be complete without jingles. This can "
+#| "range from station promotions (often called \"promos\"), advertisements, "
+#| "jingles to convey the mood of a show, segment jingles and more. Many "
+#| "station automation programs, including StationPlaylist Studio includes "
+#| "facilities to manage jingles (sometimes called carts), including defining "
+#| "a cart to be played when cart keys are pressed, announcing the name of "
+#| "the playing cart and saving uer specific carts to a safe location."
 msgid ""
 "A live radio broadcast would not be complete without jingles. This can range "
 "from station promotions (often called \"promos\"), advertisements, jingles "
@@ -5192,7 +5410,7 @@ msgid ""
 "automation programs, including StationPlaylist Studio includes facilities to "
 "manage jingles (sometimes called carts), including defining a cart to be "
 "played when cart keys are pressed, announcing the name of the playing cart "
-"and saving uer specific carts to a safe location."
+"and saving specific carts to a safe location."
 msgstr ""
 "Una emisión de radio en directo no estaría completa sin jingles. Estos "
 "pueden ir desde promociones de radio (a veces llamadas \"promos\"), "
@@ -5324,11 +5542,21 @@ msgstr ""
 "para un programa."
 
 #: ..\python_docs\spladdoninternals.py:465
+#, fuzzy
+#| msgid ""
+#| "Next, I read JAWS script documentation to get a glimpse of how Brian has "
+#| "managed to implement cart learn mode. In JAWS scripts, script settings "
+#| "are stored in the user configuration directory (typically this is "
+#| "%systemdrive%\\Users\\%username%\\AppDate\\Roaming\\Freedom Scientific"
+#| "\\JAWS\\%JAWSVersion%\\Settings\\Enu; Brian, please correct me if I'm "
+#| "wrong). A section of this script configuration file is dedicated to "
+#| "carts, and JAWS scripts use a map of key names and cart values to "
+#| "announce cart information while cart learn mode is active."
 msgid ""
 "Next, I read JAWS script documentation to get a glimpse of how Brian has "
 "managed to implement cart learn mode. In JAWS scripts, script settings are "
 "stored in the user configuration directory (typically this is %systemdrive%"
-"\\Users\\%username%\\AppDate\\Roaming\\Freedom Scientific\\JAWS\\%JAWSVersion"
+"\\Users\\%username%\\AppData\\Roaming\\Freedom Scientific\\JAWS\\%JAWSVersion"
 "%\\Settings\\Enu; Brian, please correct me if I'm wrong). A section of this "
 "script configuration file is dedicated to carts, and JAWS scripts use a map "
 "of key names and cart values to announce cart information while cart learn "
@@ -5345,13 +5573,21 @@ msgstr ""
 "mientras el modo de aprendizaje de carts esté activo."
 
 #: ..\python_docs\spladdoninternals.py:466
+#, fuzzy
+#| msgid ""
+#| "Based on this information, I started writing an ini file parser, seeing "
+#| "that broadcasters would store cart assignments in a configuration "
+#| "database. This was prone to a number of errors, including wrong cart name "
+#| "format, nonexistent cart key assignment, invalid configuration format and "
+#| "others. I once wrote a blog post (on this blog) explaining how this "
+#| "worked (times have changed, as you'll see very soon)."
 msgid ""
 "Based on this information, I started writing an ini file parser, seeing that "
 "broadcasters would store cart assignments in a configuration database. This "
 "was prone to a number of errors, including wrong cart name format, "
 "nonexistent cart key assignment, invalid configuration format and others. I "
-"once wrote a blog post (on this blog) explaining how this worked (times have "
-"changed, as you'll see very soon)."
+"once wrote a blog post (on my personal blog) explaining how this worked "
+"(times have changed, as you'll see very soon)."
 msgstr ""
 "Basándome en esta información, comencé a escribir un intérprete de archivos "
 "ini, viendo que los locutores almacenarían las asignaciones de cart en una "
@@ -5517,8 +5753,14 @@ msgstr ""
 "diccionario de carts) de la siguiente manera:"
 
 #: ..\python_docs\spladdoninternals.py:479
+#, fuzzy
+#| msgid ""
+#| "1. When entering Cart Explorer, Car Explorer preparation routine (splmisc."
+#| "cartExplorerInit) will take a snapshot of your user name and Studio "
+#| "edition (Studio's title bar indicates which version is in use). Then it "
+#| "initializes the carts dictionary and stores the Studio edition in use."
 msgid ""
-"1. When entering Cart Explorer, Car Explorer preparation routine (splmisc."
+"1. When entering Cart Explorer, Cart Explorer preparation routine (splmisc."
 "cartExplorerInit) will take a snapshot of your user name and Studio edition "
 "(Studio's title bar indicates which version is in use). Then it initializes "
 "the carts dictionary and stores the Studio edition in use."
@@ -5570,8 +5812,14 @@ msgstr ""
 "auxiliar (parte del módulo splmisc) que hará lo siguiente:"
 
 #: ..\python_docs\spladdoninternals.py:483
+#, fuzzy
+#| msgid ""
+#| "A. Depending on Studio edition, this helper will work with only the first "
+#| "half (Standard will only work with function keys, which are the first "
+#| "twelve columns of this row) or the entire row (the rest are number row "
+#| "keys) will be processed."
 msgid ""
-"A. Depending on Studio edition, this helper will work with only the first "
+"\t1. Depending on Studio edition, this helper will work with only the first "
 "half (Standard will only work with function keys, which are the first twelve "
 "columns of this row) or the entire row (the rest are number row keys) will "
 "be processed."
@@ -5582,8 +5830,14 @@ msgstr ""
 "procesará la fila entera (el resto son las teclas numéricas)."
 
 #: ..\python_docs\spladdoninternals.py:484
+#, fuzzy
+#| msgid ""
+#| "B. Depending on column position (items in the row list), it will see if "
+#| "function keys or number row keys should be assigned to the selected cart "
+#| "entry. This routine also checks the type of the cart bank (modifiers or "
+#| "none (main)) and modifies the cart key name accordingly."
 msgid ""
-"B. Depending on column position (items in the row list), it will see if "
+"\t2. Depending on column position (items in the row list), it will see if "
 "function keys or number row keys should be assigned to the selected cart "
 "entry. This routine also checks the type of the cart bank (modifiers or none "
 "(main)) and modifies the cart key name accordingly."
@@ -5595,8 +5849,13 @@ msgstr ""
 "modifica el nombre de la tecla cart según corresponda."
 
 #: ..\python_docs\spladdoninternals.py:485
+#, fuzzy
+#| msgid ""
+#| "C. Next, the helper routine will try to locate the name of the jingle "
+#| "assigned to the cart key in question, and if there is one, it'll add the "
+#| "cart key and jingle name pair into the carts dictionary."
 msgid ""
-"C. Next, the helper routine will try to locate the name of the jingle "
+"\t3. Next, the helper routine will try to locate the name of the jingle "
 "assigned to the cart key in question, and if there is one, it'll add the "
 "cart key and jingle name pair into the carts dictionary."
 msgstr ""
@@ -9972,6 +10231,121 @@ msgid ""
 msgstr ""
 "50. Referencia de SetForegroundWindow (user32.dll) (Windows API): https://"
 "msdn.microsoft.com/en-us/library/windows/desktop/ms633539(v=vs.85).aspx"
+
+#~ msgid ""
+#~ "\t9. Prepares routines used by time-based profile switching facility by "
+#~ "loading triggers map and checking if NVDA should switch to the next "
+#~ "profile (this is done if the show associated with the given profile "
+#~ "hasn't ended yet). See time-based profile section for details."
+#~ msgstr ""
+#~ "\t9. Se preparan los procedimientos usados por la característica de "
+#~ "cambio de perfil basado en tiempo cargando un mapa de disparadores y "
+#~ "comprobando si NVDA debería cambiar al siguiente perfil (esto se hace si "
+#~ "el programa asociado con el perfil dado no ha terminado todavía). Mira la "
+#~ "sección de perfiles basados en tiempo para más detalles."
+
+#~ msgid ""
+#~ "\t10. Encoder settings file is loaded, and if ConfigObj throws errors, "
+#~ "encoder settings will be reset to defaults."
+#~ msgstr ""
+#~ "\t10. Se carga el archivo de ajustes del codificador, y si ConfigObj "
+#~ "lanza errores, los ajustes del codificador se restablecen por defecto."
+
+#~ msgid ""
+#~ "When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song "
+#~ "intro alarm dialogs, the dialog will display two controls:"
+#~ msgstr ""
+#~ "Cuando pulses NVDA+alt+1 o NVDA+alt+2 para abrir los diálogos de alarma "
+#~ "de fin de pista o introducción de canción, el diálogo mostrará dos "
+#~ "controles:"
+
+#~ msgid ""
+#~ "In reality, a single dialog (splconfui.AlarmsCenter class) presents these "
+#~ "two alarm dialogs (there are two additional dialogs, covered in the next "
+#~ "section). The type of dialog to be shown is controled by an integer which "
+#~ "denotes which dialog text to present. The process is outlined below:"
+#~ msgstr ""
+#~ "En realidad, un único diálogo (clase splconfui.AlarmsCenter) presenta "
+#~ "estos dos diálogos de alarma (hay dos diálogos adicionales, cubiertos en "
+#~ "la próxima sección). El tipo de diálogo a mostrar viene controlado por un "
+#~ "entero que indica qué texto presentar en el diálogo. El proceso viene "
+#~ "descrito a continuación:"
+
+#~ msgid ""
+#~ "1. Just before the dialog opens, checks if another dialog or the add-on "
+#~ "settings dialog is opened, and if so, NVDA will ask you to close the "
+#~ "previously opened dialog first."
+#~ msgstr ""
+#~ "1. Antes de que el diálogo se abra, se comprueba si otro diálogo o el "
+#~ "diálogo de configuración del complemento está abierto, y si es así, NVDA "
+#~ "te pedirá que cierres el diálogo previamente abierto primero."
+
+#~ msgid ""
+#~ "2. Tells NVDA that an alarm dialog is opened. This is meant to prevent "
+#~ "the same dialog from being opened repeatedly."
+#~ msgstr ""
+#~ "2. Se le dice a NVDA que hay un diálogo de alarma abierto. Esto se hace "
+#~ "para evitar que se abra el mismo diálogo repetidamente."
+
+#~ msgid ""
+#~ "3. After the dialog is dismissed (either a new value is set or you click "
+#~ "Cancel), NVDA clears the alarm opened flag, thereby letting other dialogs "
+#~ "to be shown. "
+#~ msgstr ""
+#~ "3. Después de cerrar el diálogo (bien porque se establece un nuevo valor "
+#~ "o se pulsa en cancelar), NVDA limpia el indicador de alarma abierta, "
+#~ "permitiendo que otros diálogos se muestren. "
+
+#~ msgid "* Routines for navigating and announcing various columns."
+#~ msgstr "* Procedimientos para verbalizar y navegar por diversas columnas."
+
+#~ msgid ""
+#~ "The contents of the base track item class (appModules.splstudio."
+#~ "SPLTrackItem) are as follows:"
+#~ msgstr ""
+#~ "Los contenidos de la clase base de elemento de pista (appModules."
+#~ "splstudio.SPLTrackItem) son los siguientes:"
+
+#~ msgid ""
+#~ "* initOverlayClass: This is run when the track item is first encountered. "
+#~ "This method checks if Track Dial (see below) is active, and if so, "
+#~ "assigns left and right arrow keys to Track Dial functions."
+#~ msgstr ""
+#~ "* initOverlayClass: se ejecuta cuando se encuentra por primera vez un "
+#~ "elemento de pista. Este método comprueba si el dial de pista (mira más "
+#~ "abajo) está activo, y si es así, asigna las flechas izquierda y derecha a "
+#~ "las funciones del dial de pista."
+
+#~ msgid ""
+#~ "* Track column navigation: Various methods and scripts used by Track Dial "
+#~ "and friends are defined, including announcing column information, "
+#~ "handling leftmost column and so on. Add-on 8.0 adds Columns Explorer "
+#~ "routines, and 17.04 adds vertical column navigation support."
+#~ msgstr ""
+#~ "* Navegación por columnas de pista: se definen diversos métodos y scripts "
+#~ "usados por el dial de pista y sus amigos, incluyendo verbalización de "
+#~ "información de la columna, identificación de la columna más a la "
+#~ "izquierda y demás. El complemento 8.0 añade los procedimientos del "
+#~ "explorador de columnas, y el 17.04 añade soporte de navegación vertical "
+#~ "por columnas."
+
+#~ msgid ""
+#~ "Studio track item class for 5.0x (appModules.splstudio."
+#~ "SPLStudioTrackItem) adds:"
+#~ msgstr ""
+#~ "La clase de elemento de pista de Studio para la versión 5.0x (appModules."
+#~ "splstudio.SPLStudioTrackItem) añade:"
+
+#~ msgid ""
+#~ "In addition, Studio 5.10 track item (appModules.splstudio."
+#~ "SPLStudio510TrackItem) includes a script to announce changed state when "
+#~ "SPACE is pressed (this is done by speaking and/or brailling track name "
+#~ "(obj.name))."
+#~ msgstr ""
+#~ "Además, el elemento de pista de Studio 5.10 (appModules.splstudio."
+#~ "SPL510TrackItem) incluye un script para verbalizar el cambio de estado "
+#~ "cuando se pulsa espacio (esto se hace hablando y / o mostrando en braille "
+#~ "el nombre de pista (obj.name))."
 
 #~ msgid ""
 #~ "* Define and remove stream labels. This is done via stream labels dialog "

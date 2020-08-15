@@ -5,6 +5,7 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
 
 ## Beta release (pre-release)
 * Decide which commit to start the beta from.
+  - This will be the branch off point for the new release. Prior to this (but after the previous "final" release) master can be merged into beta at any point. After the branch of point master will move on and PR's required in this release should target the beta branch.
   - Generally master should be healthy (all checks passing and no known regressions).
   - In the past, the commit chosen should ensure that the most recent (significant) change should have had at least one week of alpha testing. This restriction has been relaxed somewhat to speed up the beta process. Lead developers should use their discretion to choose an appropriate branching point. If necessary, changes can be reverted or new changes added to the beta to address issues.
 * Create a branch from this commit, create a PR from this branch targeting beta
@@ -19,6 +20,8 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
+* [Update auto milestone ID](#update-auto-milestone-id)
+* [Update NVDA version in `master`](#update-nvda-version-in-master)
 
 ### During the Beta period
 * Periodically look at recent issues filed, specifically looking for those with `p1`, `bug/crash` or `bug/app-crash` labels.
@@ -75,22 +78,6 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 * Close the release [milestone](https://github.com/nvaccess/nvda/milestones).
-* Ensure the subsequent milestone is set on issues and pull requests now closed by GitHub automatically.
-  1. Get the milestone id for the new release.
-     - Go to https://github.com/nvaccess/nvda/milestones
-     - Look at the link URL for the relevant milestone.
-     - The number at the end is the `id`.
-  1. Log into exbi
-  1. Swap to nvaccess user: `sudo su nvaccess`
-  1. Edit `~nvaccess/data/nvaServer.conf`
-  1. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` to the milestone `id` obtained in step 1.
-  1. Save the file and `exit` to return to your user.
-  1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`
-* In NVDA source, ensure the `master` branch version number and changes file are correct
-    1. In `source/buildVersion.py`, update the `version_year` and/or `version_major` variables for the next version.
-       - If the next version is the first version for that year (e.g. 2018.1), also update `copyrightYears`.
-    2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is not there already.
-
 
 ## Create the release / annotated tag
 * Checkout the version to release.
@@ -154,3 +141,22 @@ GitHub "releases" are formatted differently, can include metadata such as 'pre-r
 - Post to Twitter
 - Post on Facebook.
 - Post to the NV Access News email list.
+
+## Update auto milestone ID
+This ensures correct milestone is set on issues and pull requests now closed by GitHub automatically.
+1. Get the milestone id for the new release.
+  - Go to https://github.com/nvaccess/nvda/milestones
+  - Look at the link URL for the relevant milestone.
+  - The number at the end is the `id`.
+1. Log into exbi
+1. Swap to nvaccess user: `sudo su nvaccess`
+1. Edit `~nvaccess/data/nvaServer.conf`
+1. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` to the milestone `id` obtained in step 1.
+1. Save the file and `exit` to return to your user.
+1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`
+
+## Update NVDA version in `master`
+In NVDA source, ensure the `master` branch version number and changes file are correct
+1. In `source/buildVersion.py`, update the `version_year` and/or `version_major` variables for the next version.
+   - If the next version is the first version for that year (e.g. 2018.1), also update `copyrightYears`.
+2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is not there already.

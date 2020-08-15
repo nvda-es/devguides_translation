@@ -33,9 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: March 2020 for NVDA 2019.3
-
-IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples from this guide will work on both Python 2 and 3 unless otherwise specified.
+Latest version: July 2020 for NVDA 2020.2
 
 ---
 
@@ -75,11 +73,13 @@ IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples 
     - [A few tips for beginners](#user-content-a-few-tips-for-beginners)
 - [Useful modules from NVDA core](#user-content-useful-modules-from-nvda-core)
     - [List of useful NVDA core modules and methods](#user-content-list-of-useful-nvda-core-modules-and-methods)
-    - [Example 1: am I on the right app where the focus is located?](#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located)
-    - [Example 2: Display a message in a browse mode document](#user-content-example-2-display-a-message-in-a-browse-mode-document)
-    - [Example 3: Announce the automation ID of a UIA object](#user-content-example-3-announce-the-automation-id-of-a-uia-object)
-    - [Example 4: Send keystrokes](#user-content-example-4-send-keystrokes)
-    - [Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off](#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off)
+    - [Some real-life examples](#user-content-some-real-life-examples)
+        - [Example 1: am I on the right app where the focus is located?](#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located)
+        - [Example 2: Display a message in a browse mode document](#user-content-example-2-display-a-message-in-a-browse-mode-document)
+        - [Example 3: Announce the automation ID of a UIA object](#user-content-example-3-announce-the-automation-id-of-a-uia-object)
+        - [Example 4: Send keystrokes](#user-content-example-4-send-keystrokes)
+        - [Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off](#user-content-example-5-stop-speech-whenever-screen-content-changes-if-dynamic-content-change-announcement-is-off)
+        - [Example 6: using script decorator](#user-content-example-6-using-script-decorator)
 - [Add-on module components and development tips](#user-content-add-on-module-components-and-development-tips)
     - [The Python Console](#user-content-the-python-console)
     - [Working with objects on screen](#user-content-working-with-objects-on-screen)
@@ -91,11 +91,13 @@ IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples 
     - [Examples of overlay classes and modified roles](#user-content-examples-of-overlay-classes-and-modified-roles)
     - [Input and output: scripts and UI messages](#user-content-input-and-output-scripts-and-ui-messages)
     - [Example 2: A basic script dictionary and message output](#user-content-example-2-a-basic-script-dictionary-and-message-output)
-    - [Example 3: Scripts for specific objects](#user-content-example-3-scripts-for-specific-objects)
+    - [Example 3: script information using script decorator](#user-content-example-3-script-information-using-script-decorator)
+        - [Script decorator arguments](#user-content-script-decorator-arguments)
+    - [Example 4: Scripts for specific objects](#user-content-example-4-scripts-for-specific-objects)
     - [Script lookup order and command conflicts](#user-content-script-lookup-order-and-command-conflicts)
     - [A few other remarks on scripts](#user-content-a-few-other-remarks-on-scripts)
     - [Events](#user-content-events)
-    - [Example 4: Announcing the changed name of a control](#user-content-example-4-announcing-the-changed-name-of-a-control)
+    - [Example 5: Announcing the changed name of a control](#user-content-example-5-announcing-the-changed-name-of-a-control)
     - [List of possible events](#user-content-list-of-possible-events)
     - [Events within objects](#user-content-events-within-objects)
     - [Other components](#user-content-other-components)
@@ -136,9 +138,12 @@ IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples 
         - [Example 2: A Three-Way Dialog](#user-content-example-2-a-three-way-dialog)
     - [Using The Log](#user-content-using-the-log)
     - [Threading](#user-content-threading)
+        - [Introduction](#user-content-introduction)
+        - [Threading scenarios](#user-content-threading-scenarios)
+        - [Threading examples](#user-content-threading-examples)
     - [Storing and Using Persistent Information Outside Your Add-on](#user-content-storing-and-using-persistent-information-outside-your-add-on)
 - [Miscellaneous information](#user-content-miscellaneous-information)
-- [Appendicies](#user-content-appendicies)
+- [Appendices](#user-content-appendices)
     - [Appendix A: add-on terms dictionary](#user-content-appendix-a-add-on-terms-dictionary)
     - [Appendix B: Programming and Python concepts every add-on developer needs to know](#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know)
     - [Appendix C: Add-on type comparison](#user-content-appendix-c-add-on-type-comparison)
@@ -151,7 +156,11 @@ IMPORTANT: NVDA 2019.3 requires Python 3 development environment. Many examples 
 
 ## Authors, Contributions, and Copyright
 
-This guide was originally written by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. As of March 2020, it is being maintained and revised by Luke Davis ([@XLTechie](https://github.com/XLTechie)). We welcome your feedback and contributions.
+This guide is primarily maintained, and was originally written, by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. Luke Davis ([@XLTechie](https://github.com/XLTechie)) sometimes serves as editor.
+
+Valuable contributions and corrections from the community are welcome.
+
+If you are contributing via the GitHub Wiki web editing mechanism, please be aware that by default, that mechanism changes the name of this file by replacing all spaces with hyphens (-). **Please correct that before submitting your changes.** The correct name of this file is: **"NVDA Add-on Development Guide.md"**.
 
 NVDA is copyright 2006-2020 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
@@ -177,6 +186,8 @@ If you are new to NVDA add-on or core development, we recommend that you get to 
 ### Special note on Python version
 
 Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. With the release of NVDA 2019.3 in February 2020, Python 3 transition is complete. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA. For more information on Python 2 versus 3, please read Appendix E.
+
+This guide will use strictly Python 3 code.
 
 ### A special note for scripters of other screen readers
 
@@ -261,11 +272,11 @@ To create an add-on for NVDA, please make sure your system meets the following r
 
 * NVDA:
     - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
-    - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://community.nvda-project.org/wiki/Snapshots.
+    - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://www.nvaccess.org/files/nvda/snapshots/.
 * Python:
-    - Python 3.7 series, version 3.7.7 32-bit for Windows: https://www.python.org/downloads/release/python-375/
-    - If you wish to work with Python 2 for backward compatibility (not recommended starting January 2020),use version 2.7.16 32-bit for Windows: https://www.python.org/downloads/release/python-2716/
-* SCons 3, version 3.0.1 or later for generating add-on packages: http://www.scons.org/
+    - Python 3.7 series, version 3.7.8 32-bit for Windows: https://www.python.org/downloads/release/python-378/
+    - Although the add-ons community do understand that Python 2 might be required for backward compatibility, we do not recommend using it in production environments.
+* SCons 3, version 3.1.2 or later for generating add-on packages: http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
     - Once downloaded, copy these two exe files to your add-on development folder. See the next section for a description of the add-on folder structure.
@@ -273,7 +284,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
         + xgettext.exe
 * If you are developing support for a program, speech synthesizer, or braille display, install the needed software and hardware.
 * Optional Items:
-    - Git 1.7.9 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
+    - Git 2.25.0 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
     - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
 
 Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
@@ -282,7 +293,7 @@ Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubu
 
 When writing add-ons, it is recommended that you store your add-on code in separate folders, one per add-on. If you chose to download the add-on template, the folder structure will be automatically created.
 
-Once you install the needed dependencies (see above), paste the Gettext package executables into this add-on folder.
+Once you install the needed dependencies (see above), paste the Gettext package executables into this add-on folder. Skip this if you plan to build your add-on using WSL Bash.
 
 ### Add-on folder structure
 
@@ -365,7 +376,7 @@ Our first example lets us sound a beep for one second when we press NVDA+A. But 
 3. Then we wrote `import tones` to import (load, or include) the tones module, a built-in module from NVDA. Whenever you wish to use a method from a given module, import the needed module(s).
 4. Next, we defined a class called GlobalPlugin. The text inside the brackets tells us where this class is coming from (more on this concept in a second). A class, in programming, describes an object, such as a person, a desk, a program and others.
 5. Inside the class, we wrote a method (function) called `script_doBeep`. This is an example of a script, a method that'll be run or executed when you press a command. Inside this script, we wrote `tones.beep(440, 1000)` to tell NVDA to sound a middle A tone for 1 second. In programming, a function can take arguments, or a set or parameters which tells the function what to do based on the given values (we'll meet them later). In fact, many methods you'll be writing, including our doBeep script takes one or more arguments. More on scripts later as we journey through the guide.
-6. Lastly, we wrote a simple dictionary (a collection) to store our command (script) bindings for our doBeep script. Here, we told NVDA to assign NVDA+A command for doBeep script.
+6. Lastly, we wrote a simple dictionary (a collection) to store our command (script) bindings for our doBeep script. Here, we told NVDA to assign NVDA+A command for doBeep script. Later you will learn a handy trick that will let you specify script bindings and other information at the same time as the script itself.
 
 Save this file, then restart NVDA. Now whenever you press NVDA+A, you'll hear a middle A tone for 1 second. Once you are comfortable with the add-on code and how it is laid out, you can delete the newly created .py file.
 
@@ -451,8 +462,9 @@ The following lists available NVDA core modules and some useful methods and clas
 * ARIA support (aria.py): Implements support for Accessible Rich Internet Applications (ARIA).
 * Base object collection (baseObject.py): Contains useful base objects such as scriptable objects (see the chapter on NVDA objects and overlay objects for more information).
 * Braille input and output subsystem (braille.py, brailleInput.py): Controls braille output to and input from braille displays, needed by braille display driver add-ons.
-* Build-in modules (builtin.py): Allows access to builtin modules when working with add-ons.
+* Built-in modules (builtin.py): Allows access to builtin modules when working with add-ons.
 * Configuration (config): Manages configuration and profiles (profiles are available in 2013.3 or later).
+* Content recognition engines (contentRecog packages): adds ability to use OCR and other methods to recognize content in various scenarios. NVDA ships with Windows 10 OCR engine.
 * Controls and states collection (controlTypes.py): Includes dictionaries on control types (roles) and possible states that a control can be in.
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
     - `eventHandler.requestEvents(process ID, window class name for the control, event to be requested)`: Allows NVDA to listen to specific events for certain controls while using another app.
@@ -464,7 +476,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Global Plugin subsystem (globalPluginHandler.py): The module needed for controlling global plugins.
 * NVDA GUI (gui): A collection of classes used by NVDA to display its messages graphically. Includes GUI's for NVDA menu, add-on manager and others.
 * Hardware port utilities and input/output management (hwPortUtils.py, hwIo.py): A set of utilities for communicating over serial and other hardware ports, useful during driver add-on development.
-* IAccessible support (IAccessibleHandler.py, IAccessible objects): Used for supporting Microsoft Active Accessibility (MSAA)/IAccessible controls.
+* IAccessible support (IAccessibleHandler, IAccessible objects): Used for supporting Microsoft Active Accessibility (MSAA)/IAccessible controls.
 * Input management (inputCore.py): Manages input from the user.
 * Java Access Bridge support (JABHandler.py): A collection of methods used for supporting JAB subsystem used for Java applications.
 * Keyboard input (keyboardHandler.py): Supports entering commands from the keyboard.
@@ -474,13 +486,14 @@ The following lists available NVDA core modules and some useful methods and clas
 * Mouse support (mouseHandler.py): Supports mouse commands.
 * NVDA objects collection (NVDAObjects): A collection of NVDA objects or controls used in many applications and standards such as UIA (User Interface Automation). Some objects require special actions to be performed, and these are specified in behaviors module in NVDA objects package. Some of the common ones include:
     - `NVDAObjects.NVDAObject`: the base class for NVDA objects that define events, properties and so on.
+    - `NVDAObjects.behaviors`: a collection of behaviors for specific controls, such as edit fields with or without selection detection, terminals, tool tips, help balloons, a way to simulate table commands in various controls and others.
     - `NVDAObjects.IAccessible`: a collection of MSAA/IAccessible objects, such as working with SysListView32 list views and others.
     - `NVDAObjects.JAB`: a collection of classes used when interfacing with Java applications and Java Access Bridge.
-    - `NVDAObjects.UIA`: various classes for objects powered by UI Automation. Since 2016, it is also the home of a collection of controls used in Microsoft Edge and objects powered by EdgeHTML rendering engine.
+    - `NVDAObjects.UIA`: various classes for objects powered by UI Automation. Since 2016, it is also the home of a collection of controls used in legacy (not Chromium) Microsoft Edge and objects powered by EdgeHTML rendering engine.
     - `NVDAObjects.Window`: generic windows and other custom objects such as those found in Microsoft Excel.
-    - `NVDAObjects.behaviors`: a collection of behaviors for specific controls, such as edit fields with or without selection detection, terminals, tool tips, help balloons, a way to simulate table commands in various controls and others.
 * Review facility (review.py): assists with working with review cursor.
 * Scripts support (scriptHandler.py): Handles scripts, methods executed due to the user pressing keyboard commands and other input.
+    - scriptHandler.script: a decorator that allows information about the bound script to be defined while defining the script itself, including description (input help message), gesture/gestures (commands, the latter used for a list of gestures), and script category.
 * Speech output (speech): Controls speech output.
 * Synthesizer driver support (synthDriverHandler.py): This is the core module needed for speech synthesizer add-ons.
 * Widget text access (textInfos): Allows access to text for widget and documents.
@@ -499,7 +512,11 @@ The following lists available NVDA core modules and some useful methods and clas
 
 The modules without .py extension are directories, containing specialist modules. There are other useful methods out there in addition to the list above, but the above are the most useful ones. See the NVDA source code documentation for other methods, or see the examples below on how these methods and others are used throughout the life of an add-on.
 
-### Example 1: am I on the right app where the focus is located?
+### Some real-life examples
+
+Let's go through some simplified real-life examples demonstrating how the components listed above are used in common add-on writing scenarios.
+
+#### Example 1: am I on the right app where the focus is located?
 
 The below code checks whether the navigator object is located somewhere on the same app or not.
 
@@ -513,7 +530,7 @@ The below code checks whether the navigator object is located somewhere on the s
 
 The `api.getNavigatorObject()` function returns the current navigator object, the object you are interested in as opposed to focused object. Each NVDA object includes `appModule` member which records on which app an object is located.
 
-### Example 2: Display a message in a browse mode document
+#### Example 2: Display a message in a browse mode document
 
 In NVDA 2015.2 and later, it became possible to display a message in a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" in a document window.
 
@@ -523,7 +540,7 @@ In NVDA 2015.2 and later, it became possible to display a message in a browse mo
 
 The isHtml flag tells NVDA to treat the message as an HTML text.
 
-### Example 3: Announce the automation ID of a UIA object
+#### Example 3: Announce the automation ID of a UIA object
 
 In UI Automation, automation ID is used to identify different screen elements. The following code displays this information in a browsable window.
 
@@ -536,7 +553,7 @@ In UI Automation, automation ID is used to identify different screen elements. T
 			UIAElement = obj.UIAElement
 			ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
 
-### Example 4: Send keystrokes
+#### Example 4: Send keystrokes
 
 You can ask NVDA to send specific keystrokes by instantiating a keyboard gesture object.
 
@@ -545,7 +562,7 @@ You can ask NVDA to send specific keystrokes by instantiating a keyboard gesture
 	def sendApplicationsKey():
 		keyboardHandler.KeyboardInputGesture.fromName("applications").send()
 
-### Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off
+#### Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off
 
 The below code is a handler for a name change event that stops speech whenever screen content changes if dynamic content change announcement is off.
 
@@ -559,7 +576,29 @@ The below code is a handler for a name change event that stops speech whenever s
 			if not config.conf["presentation"]["reportDynamicContentChanges"]:
 				speech.cancelSpeech()
 
-This is just a sample of what various NVDA modules and functions can do in your add-on. We'll tour add-on components and meet more functions throughout this guide.
+#### Example 6: using script decorator
+
+A decorator is a function that wraps and returns another function while performing internal operations. For example, a decorator can make changes to the internals of a function or check something on behalf of another function without the wrapped function being aware of what's happening.
+
+In NvDA 2018.3, a special decorator named scriptHandler.script was introduced to make it easier to define information about a script. A script's description (input help mode message), gesture or gestures (commands bound to this script), and script category can be assigned as you define the script.
+
+Recall the first example where a beep was heard when NVDA+A was pressed. The drawback is that the actual script and the command (gesture) associated with it were defined in different places. You can group them by using script decorator (scriptHandler.script) as shown below.
+
+	# Add-on development first example global plugin, now edited to use script decorator
+	
+	import globalPluginHandler
+	import scriptHandler
+	import tones
+	
+	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+	
+		@scriptHandler.script(gesture="kb:NVDA+A")
+		def script_doBeep(self, gesture):
+			tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
+
+Throughout this guide, whenever script examples are shown, script decorator will be used unless noted otherwise.
+
+This is just a sample of things you can encounter as you write add-ons and how you can use various NVDA components to achieve what you want. We'll tour add-on components and meet more functions throughout this guide.
 
 ## Add-on module components and development tips
 
@@ -626,7 +665,7 @@ Here is the code to implement this feature:
 	import appModuleHandler
 	
 	class AppModule(appModuleHandler.AppModule):
-		
+	
 		sliderChildIndex = -1 # The variable to store the child index.
 		
 		def getSliderValue(self):
@@ -639,7 +678,7 @@ In this code, the method `fg.children[index]` is used to retrieve the child with
 However, this code has an issue: what if the slider value is actually within the first child of the actual slider control? One way to fix this is to check the object's role. The modified code looks like this:
 
 	def getSliderValue(self):
-		from controltypes import ROLE_SLIDER # It is possible to import from within a method.
+		from controlTypes import ROLE_SLIDER # It is possible to import from within a method.
 		fg = api.getForegroundObject()
 		slider = fg.lastChild
 		if slider.role == ROLE_SLIDER: return slider.firstChild.value
@@ -662,7 +701,7 @@ Sometimes, it is not enough to work with default behavior for a control. For exa
 NVDA provides two methods for creating or manipulating specialist, or overlay objects (or classes), each suited for different needs:
 
 * `event_NVDAObject_init(self, object we're dealing with)`: If you wish to override certain attributes of a control such as its role or label (name), you can use this method to ask NVDA to take your "input" into account when meeting objects for the first time (or initialized). For instance, if the control has the window class name of TForm (seen on many Delphi applications), you can ask NVDA to treat this control as a standard window by assigning obj.role = ROLE_WINDOW (see control types dictionary for list of available roles).
-* `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: This allows NVDA to use your own logic when dealing with certain objects. For example, this is useful if you wish to assign custom gestures for certain parts of a program in your app module (in fact, many app modules creates objects to deal with certain parts of a program, then uses chooseNVDAObjectOverlayClasses to select the correct object when certain conditions are met). These custom objects must be based on a solid object that we wish to deal with (mostly IAccessible is enough, thus most overlay objects inherit from, or is the child or specialist class of IAccessible objects). In certain situations, you can use this method to drop a property from an object, such as telling NVDA to not treat this object as a progress bar by removing progress bar behavior from this object.
+* `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: This allows NVDA to use your own logic when dealing with certain objects. For example, this is useful if you wish to assign custom gestures for certain parts of a program in your app module (in fact, many app modules define objects to deal with certain parts of a program, then uses chooseNVDAObjectOverlayClasses to select the correct object when certain conditions are met). These custom objects must be based on a solid object that we wish to deal with (mostly IAccessible is enough, thus most overlay objects inherit from, or is the child or specialist class of IAccessible objects). In certain situations, you can use this method to drop a property from an object, such as telling NVDA to not treat this object as a progress bar by removing progress bar behavior from this object.
 
 Note that in case of the second method, the class(s) with the given name must be present in the file, which is/are inherited from a known base object (in Python, the syntax for the inheritance is `childClass(baseClass)`, and is usually read as, "this child class inherits from this base class". We'll see code like this later).
 
@@ -674,6 +713,7 @@ An example of the first case: modifying an attribute.
 
 	# Reassign some Delphi forms as window.
 	from controlTypes import ROLE_WINDOW
+	
 	def event_NVDAObject_init(self, obj):
 		if obj.windowClassName == "TForm": obj.role = ROLE_WINDOW
 
@@ -705,7 +745,7 @@ Another crucial component of add-ons is handling commands from users and display
 
 A script is a method run when the user performs certain commands. For example, when you press NVDA+T, NVDA runs a script in global commands module called SayTitle. In Poedit, for instance, when a translator presses Control+Shift+A, NVDA will read translator comments added by the programmer to help clarify a given translatable string. This command is not a native NVDA command, but it is defined in the Poedit app module to perform this function.
 
-Typically, an add-on which accepts scripts will have a list of command:function mapped somewhere in the module. The simplest is a gestures (commands) dictionary, a python dictionary (typically named __gestures) which holds commands as keys and scripts as values for these keys (more than one key, or command can be bound to scripts). These dictionaries are loaded when add-on loads and is cleared when either NVDA exits or the app for the app module loses focus (that is, the user has switched to another program).
+Typically, an add-on which accepts scripts will have a list of command:function mapped somewhere in the module. The simplest is a gestures (commands) dictionary, a python dictionary (typically named __gestures) which holds commands as keys and scripts as values for these keys (more than one key, or command can be bound to scripts). Alternatively, information about each script such as its description and bound gestures can be specified through script decorator. These dictionaries are loaded when add-on loads and is cleared when either NVDA exits or the app for the app module loses focus (that is, the user has switched to another program).
 
 Another way to bind scripts is via runtime insertion. This is done by creating another gestures dictionary apart from __gestures dictionary which holds context-sensitive gestures such as manipulating a single control. Then the developer would use inputCore.bindGesture (or inputCore.bindGestures if more than one gestures/scripts are defined) to define certain gestures for a time, then using inputCore.clearGestures then inputCore.bindGestures(__gestures) to remove the added gestures. A more elegant way, which involves scripts for specific objects, will be covered when we talk about app modules and assigning gestures to specific parts of a program.
 
@@ -735,20 +775,52 @@ In this example, we'll define two scripts called "sayHello" and say"GoodBye", th
 
 Now when you press Control+NVDA+1, NVDA will say, "Hello", and when you press Control+NVDA+2, NVDA will say, "Good bye." This is the basic code on receiving commands and sending messages.
 
-### Example 3: Scripts for specific objects
+### Example 3: script information using script decorator
 
-As in specialist objects above, scripts can be assigned to certain objects by specifying gestures dictionary for this particular object. Here is an example from an app module which defines scripts for main window of a media player program:
+As we have seen with an example above, script decorator can be used to assign gestures to scripts easily. But script decorator can do more than assign gestures: it can be used to provide additional information such as input help message for a script.
+
+In addition to the modified example 2, the below example will add input help message for both scripts, along with letting Control+NVDA+3 to let NVDA say "good bye".
+
+	# An example fragment for script decorator usage from a global plugin.
+	import ui
+	from scriptHandler import script
+	
+	@script(
+		description="Says Hello",
+		gesture="kb:control+NVDA+1"
+	)
+	def script_sayHello(self, gesture):
+		ui.message("Hello!")
+	
+	@script(
+		description="Says good bye",
+		gestures=["kb:Control+NVDA+2", "kb:Control+NVDA+3"]
+	)
+	def script_sayGoodBye(self, gesture):
+		ui.message("Good Bye!")
+
+#### Script decorator arguments
+
+You can pass in the following information about a script to script decorator:
+
+* description: short description about a script. This will be presented in input help mode and in input gestures dialog.
+* category: the category associated with this script, used to group the script under an appropriate category in input gestures dialog.
+* gesture: a single gesture bound to the script.
+* gestures: a list of gestures bound to this script.
+
+### Example 4: Scripts for specific objects
+
+As in specialist objects above, scripts can be assigned to certain objects by specifying gestures dictionary for this particular object. Here is an example from an app module which defines scripts for main window of a media player program, defined using script decorator:
 
 	# Scripts for objects for a program.
 	from NVDAObjects.IAccessible import IAccessible
+	from scriptHandler import script
 	
 	class Player(IAccessible)
+	
+		@script(gesture="kb:NVDA+T")
 		def script_saySongName(self, gesture):
 			ui.message(self.songTitle_) #Suppose if that variable has been defined.
-	
-		__gestures={
-			"kb:NVDA+T":"saySongTitle"
-		}
 	
 	# And in the main app module:
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
@@ -776,9 +848,9 @@ Because of the above rule, one should be careful when defining a script for an a
 
 * You can use any modifiers as parts of commands for scripts (for example, Alt+NVDA+letter). However, in order to avoid command conflicts, try minimizing use of commands that programs might use such as Control+letter, Alt+Shift+letter and so on.
 * When assigning keyboard commands, keyboard key labels are case insensitive.
-* You can define a script category to show the user where your add-on script will be used (shown in Input Gestures dialog in NVDA 2013.3 or later). There are two ways of doing this: module level via `scriptCategory` attribute from the add-on module, or designating the category for each script via `script_name.category` attribute. It is recommended that you name your script category the same as the add-on name.
-* You can define the input help mode message for a script by using `__doc__` attribute (commonly known as docstrings). The __doc__ attribute is also used in Input Gestures dialog to show the description for a script.
-* If you need to leave one or more scripts unassigned (for example, if a gesture conflicts with a global command), do not include the gesture binding for the script in the gestures dictionary. This helps minimize gesture conflicts and allows users to assign custom gestures for scripts.
+* You can define a script category to show the user where your add-on script will be used (shown in Input Gestures dialog in NVDA 2013.3 or later). There are two ways of doing this: module level via `scriptCategory` attribute from the add-on module, or designating the category for each script via either `script_name.category` attribute or as part of script decorator by defining the category argument. It is recommended that you name your script category the same as the add-on name.
+* You can define the input help mode message for a script by either using `__doc__` attribute (commonly known as docstrings) or by passing in a short description to description argument of script decorator. Script description is also used in Input Gestures dialog to show the description for a script.
+* If you need to leave one or more scripts unassigned (for example, if a gesture conflicts with a global command), do not include the gesture binding for the script in the gestures dictionary or do not define gesture/gestures argument in script decorator. This helps minimize gesture conflicts and allows users to assign custom gestures for scripts.
 * If there are two objects, A and B and if B inherits from A and both contain same command for a script, you can assign "None" to script name in object B (subclass) to bypass a command when dealing with commands from object B. For example, if F10 is defined for both objects and F10 is not used in object B, you can assign object B's F10 command to "None" so F10 can be sent to the operating system. This is implemented in some NVDA core modules and in StationPlaylist Studio add-on.
 
 ### Events
@@ -806,7 +878,7 @@ For object events, use:
 
 In fact, we have met an actual "event" before: `event_NVDAObject_init`. This is a special event (one of many events defined in NVDA) fired when NVDA meets a new object and initializes it according to your input (see the section on overriding object properties for more information). Let's meet other events you may see while writing your add-on.
 
-### Example 4: Announcing the changed name of a control
+### Example 5: Announcing the changed name of a control
 
 The below code came from one of the add-on app modules.
 
@@ -910,13 +982,13 @@ Q. When importing a module, NVDA says it cannot locate the module.
 
 Did you type the correct name of the module? Did you extract the module files in the correct location? Try fixing the typo, look at the import path and try importing again.
 
-Q. What is difference between simple review and normal review and which one should I use?  
+Q. What is the difference between simple review and normal review and which one should I use?  
 
 Simple review excludes layout objects such as windows, grouping and so on which are placed for layout purposes. Normal review includes these as well. The choice of using simple review versus normal review depends on your situation.
 
 Q. The command for my app module does not work in my app module; instead, NVDA does something else.  
 
-Check if a global plugin which uses the command is installed. First, remove the global plugin and try again.
+Check if a global plugin which uses the command is installed. First, disable the global plugin and try again.
 
 Q. How can I use Win32 API in my add-on or object?
 
@@ -924,7 +996,7 @@ There is a document written by an add-on developer which talks about using Win32
 
 Q. How can I create dialogs in my add-on?
 
-See the aaaa section.
+See the [Interactive Dialogs](#user-content-interactive-dialogs) section.
 
 Q. Can I create functions and assign variables outside the module classes?
 
@@ -932,7 +1004,7 @@ Yes. This is useful if you need to reference them from inside the add-on class. 
 
 Q. I want to save user settings for my add-on. Can this be done?
 
-Yes. You'll need to use ConfigObj library (configObj) to manage configuration. Some add-ons (such as OCR) which uses configuration files store their configuration as an ini file in NVDA's user configuration folder. For global plugins, you can load and save user configuration from the add-on when the add-on is created (__init__) or finished (terminate), respectively. You cannot do this easily with app modules. Also, you'll need to provide a facility (commands, dialogs, etc.) where users can configure add-on settings.
+Yes. You'll need to use a library that allows persistence, such as ConfigObj library (configObj), JSON, or pickle to manage configuration. Some add-ons (such as OCR) which uses configuration files store their configuration as an ini file in NVDA's user configuration folder. For global plugins, you can load and save user configuration from the add-on when the add-on is created (__init__) or finished (terminate), respectively. You cannot do this easily with app modules. Also, you'll need to provide a facility (commands, dialogs, etc.) where users can configure add-on settings.
 
 Q. I have a script which calls a function that runs for a long time, and I cannot run NVDA commands when my script runs.
 
@@ -951,13 +1023,17 @@ Q. After installing NVDA 2019.1, users say my add-ons are not compatible.
 NVDA 2019.1 introduces add-on compatibility flags (sometimes called compatibility range) that tells NVDA the following information:
 
 * Minimum NVDA version (minimumNVDAVersion): an add-on can specify minimum NVDA version required for the add-on. This is useful if you need to use features introduced or changed in a given NVDA release without supporting older NVDA releases.
-* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest supported release for the add-on. Without this flag being set, NVDA will treat your add-ons as incompatible with the latest release.
+* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest tested release for the add-on. Without this flag being set, NVDA will treat your add-ons as incompatible with the latest release.
 
 Words in parentheses are manifest keys. Starting in NVDA 2019.1, these compatibility flags are mandatory for all add-ons.
 
 Q. My app module that was stored under appModules folder in user configuration folder isn't working in NVDA 2019.1.
 
 This is because NVDA 2019.1 will not load custom extension code stored in subfolders of user configuration folder anymore. See the section on scratchpad for details.
+
+Q. Should I convert gestures dictionary and script docstring attribute to script decorator?
+
+It is up to you whether or not you wish to use older gestures dictionary and script docstring or the newer script decorator to define script information. For new add-ons, script decorator is preferred for easily defining script information on the spot.
 
 We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
@@ -1018,16 +1094,17 @@ The global plugin, named brailleWrite.py, would look like this:
 	
 	import qtbrl # The braille entry module.
 	import globalPluginHandler
+	from scriptHandler import script
 	
 	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		brlentry = False # Braille entry is not active.
 		
+		@script(
+			description="Toggles braille entry on or off.",
+			gesture="kb:NVDA+X"
+		)
 		def script_toggleBrailleEntry(self, gesture):
 			self.brlentry = True if not self.brlentry else False # Toggle braille entry mode.
-		script_toggleBrailleEntry.__doc__="Toggles braille entry on or off."
-		__gestures={
-			"kb:NVDA+X":"toggleBrailleEntry"
-		}
 
 With this background in mind, try some of the short exercises below.
 
@@ -1080,17 +1157,16 @@ The app module for Notepad would look like this:
 	import appModuleHandler
 	import api
 	import ui
+	from scriptHandler import script
 	
 	class AppModule(appModuleHandler.AppModule):
+	
+		@script(gesture="kb:NVDA+S")
 		def script_sayLineNumber(self, gesture):
 			# Suppose line number is in the form "  ln 1".
 			lineNumList = api.getStatusBar().name.split()
 			lineNum = lineNumLisst[2]+linenumList[3]
 			ui.message(lineNum)
-		
-		__gestures={
-			"kb:NVDA+S":"sayLineNumber"
-		}
 
 So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
 
@@ -1102,6 +1178,7 @@ Openbook is a scanning and reading program from Freedom scientific. Since Openbo
 	import appModuleHandler
 	
 	class AppModule(appModuleHandler.AppModule):
+	
 		sleepMode = True
 
 With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own).
@@ -1119,6 +1196,7 @@ The below code allows NVDA to announce value changes while focused on another ap
 	import eventHandler
 	
 	class AppModule(appModuleHandler.AppModule):
+	
 		def __init__(self, *args, **kwargs):
 			super(AppModule, self).__init__(*args, **kwards)
 			eventHandler.requestEvents(self.processID, "MessengerWindow", "valueChange")
@@ -1150,7 +1228,7 @@ Here are other remarks regarding app modules:
   `from nvdaBuiltin.appModules.appName import *`\
   Where appName is the app module you wish to extend. For example, if you wish to support different controls in Windows calculator (calc.py), use:\
   `from nvdaBuiltin.appModules.calc import *`\
-* Many app modules (both built-in and third-party ones) use app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants starts with "PP". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with "SPL". This is used to remind you where these constants are used.
+* Many app modules (both built-in and third-party ones) use app names as part of the name for a constant (a value that doesn't change). For example, in NVDA's Powerpoint module (powerpnt.py), many constants start with "PP". Similarly, in Station Playlist Studio app module, many constants in the app module file (splstudio.py) starts with "SPL". This is used to remind you where these constants are used.
 
 ## Drivers
 
@@ -1205,8 +1283,8 @@ An enhancer such as vision enhancement provider will look similar to a combinati
 * Enhancer identifier: a camel-case string such as "screenCurtain" that uniquely identifies this enhancer.
 * Friendly name: the name that'll appear under Vision dialog.
 * Supported enhancements: a frozen set of enhancement roles this provider will introduce..
-* Startup check: a routine that will ensure NVDA is running on a specific environment where the enhancer would be most helpful, such as ehcking for a specific Windows release.
-* Startup and shutdown: a class constructor that instructs the enhancer to come online and a "termiante" method that shuts it down.
+* Startup check: a routine that will ensure NVDA is running on a specific environment where the enhancer would be most helpful, such as checking for a specific Windows release.
+* Startup and shutdown: a class constructor that instructs the enhancer to come online and a "terminate" method that shuts it down.
 * Event registrar: if an enhancer wishes to respond to various actions performed by users, it can specify follow-up actions.
 
 ### A Few important things to remember before, during and after enhancer development
@@ -1237,11 +1315,11 @@ For developers wishing to read the code that powers various add-ons, you can sea
 Some of the useful and educational add-on repositories are:
 
 * [Add-on Template]: this is the source code repository for the community add-on template.
-* [Place markers by Noelia Martinez](https://github.com/nvdaes/placeMarkers): adds place marker functionality and provides a good example on using text infos.
+* [Place markers by Noelia Martinez](https://github.com/nvdaes/placeMarkers): adds place marker functionality and provides a good example of using text infos.
 * [Windows 10 App Essentials by Joseph Lee](https://github.com/josephsl/wintenApps): provides improved support for Windows 10 and various universal apps, considered a classic in how global plugins and app modules work together and includes examples of overlay classes and control behaviors that derives from UI Automation objects.
 * [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings.
 * [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used.
-* [StationPlaylist Studio by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces.
+* [StationPlaylist by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces.
 
 ## Advanced Code Examples and Features
 
@@ -1251,7 +1329,7 @@ This chapter is a work in progress. If there is something you would like to see 
 
 #### Introduction
 
-To present straight forward information to your users, ui.message and ui.browseableMessage are usually sufficient. However, if the user needs to give information back to your add-on, those aren't going to help. For that, you need dialogs. Dialog creation and the many considerations around using them are outside the scope of this document, but we can help to get you started.
+To present straight forward information to your users, ui.message and ui.browseableMessage are usually sufficient. However, if the user needs to give information back to your add-on, those aren't going to help. For that, you need dialogs. Creating dialogs and the many considerations around using them are outside the scope of this document, but we can help to get you started.
 
 To create and use dialogs, you need to import two modules: GUI (import gui) and WXPython (import wx). Read their documentation for the large number of options available to you.
 
@@ -1271,7 +1349,9 @@ class GlobalPlugin (globalPluginHandler.GlobalPlugin):
 
 	@script(gesture="kb:nvda+shift+t")		# Configure the key
 	def script_makeSillyWindow(self, gesture):	# A normal GlobalPlugin script method
-		import wx, gui				# We need these for working with dialogs and windows
+		import wx				# We need this for working with dialogs and windows
+		import gui				# We need this for working with dialogs and windows
+
 		def showSillyWindow():			# Define an internal function
 			gui.messageBox("Warning! You are about to do nothing. But you will be doing it with an important looking dialog window. Continue?",
 				"Silly Question Window", wx.OK | wx.CANCEL | wx.ICON_WARNING)
@@ -1284,7 +1364,7 @@ The window is generated by the call to gui.messageBox. The first parameter is th
 * wx.OK, causes the window to display the standard OK button.
 * And wx.CANCEL is the same for cancel.
 
-Unfortunately, if we just call gui.messageBox directly, it will usually cause NVDA to hang, unless it is run from the main thread. To get around that problem, we use wx.CallAfter to queue the dialog for display in the main thread. However, wx.CallAfter can not call gui.messageBox directly: it must do so through some other method or function. In this example we achieve that by using a nested function who's only purpose is the one-time generation of that dialog.
+Unfortunately, if we just call gui.messageBox directly, it will usually cause NVDA to hang, unless it is run from the main thread. To get around that problem, we use wx.CallAfter to queue the dialog for display in the main thread. However, wx.CallAfter can not call gui.messageBox directly: it must do so through some other method or function. In this example we achieve that by using a nested function the only purpose of which is the one-time generation of that dialog.
 
 #### Example 2: A Three-Way Dialog
 
@@ -1293,6 +1373,8 @@ Below is a more complex example, that shows how to return information from a dia
 ```python
 import globalPluginHandler, wx, gui
 from scriptHandler import script
+import gui
+import wx
 
 class GlobalPlugin (globalPluginHandler.GlobalPlugin):
 
@@ -1320,14 +1402,14 @@ Do you wish to proceed?""",
 
 If a routine in an add-on runs for a long time, NVDA would appear to freeze or stop responding altogether. This is where threads come in - running a long-running task with a different thread, allowing NVDA to remain responsive.
 
-Although Python does support threads, it can run one thing at a time due to global interpreter lock (GIL). Thus, on computers with multiple processor cores, it is advised to use processes (via multiprocessing module) to allow Python interpreters to run on all cores. However, this workaround introduces latency and overhead, so for many scenarios, threads are prefered.
+Although Python does support threads, it can run one thing at a time due to global interpreter lock (GIL). Thus, on computers with multiple processor cores, it is advised to use processes (via multiprocessing module) to allow Python interpreters to run on all cores. However, this workaround introduces latency and overhead, so for many scenarios, threads are preferred.
 
 #### Threading scenarios
 
 Threads are useful if
 
 * You need to work on something while waiting for a result. For example, if a global plugin needs to access the internet for various tasks, a separate thread can be used for obtaining online information while NVDA is busy with something else.
-* Monitor things in the background without interupting NVDA. For example, an overlay class defined in an app module can use a thread to announce screen information as it changes in the background.
+* Monitor things in the background without interrupting NVDA. For example, an overlay class defined in an app module can use a thread to announce screen information as it changes in the background.
 * Run tasks periodically. For example, a speech synthesizer can use a timer thread to determine if a hardware synthesizer is ready or not.
 
 #### Threading examples
@@ -1366,7 +1448,7 @@ There are two timers you can use: threading.Timer or wx.Timer. The below app mod
 			messageTimer = threading.Timer(10.0, ui.message, args="this is a timer message", ))
 			messageTimer.start()
 
-One limitation with threading.Timer is that it does not support repetetive tasks, and for these, you need to use wx.Timer.
+One limitation with threading.Timer is that it does not support repetitive tasks, and for these, you need to use wx.Timer.
 
 ### Storing and Using Persistent Information Outside Your Add-on
 
@@ -1376,7 +1458,7 @@ One limitation with threading.Timer is that it does not support repetetive tasks
 
 Please add additional material to this guide. We at NVDA Add-on Team welcome contributions from other add-on developers and users around the world.
 
-## Appendicies
+## Appendices
 
 ### Appendix A: add-on terms dictionary
 
@@ -1475,7 +1557,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Length of a text field with easily retrievable value | len(obj.value) | This works if the value of the field can be found. |
 | Is a checkbox checked | controlTypes.STATE_CHECKED in obj.states | obj.states is a set. First, verify that the role is a checkbox. |
 | How many items are in a list | someList.childCount | Provided that the list provides correct underlying implementation to obtain item count. |
-| Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shelel (desktop) object with screen resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |
+| Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shell (desktop) object with screen resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |
 | Is this an MSAA control | isinstance(obj, NVDAObjects.IAccessible.IAccessible) | A typical implementation is to import IAccessible from NVDAObjects.IAccessible and doing isinstance(obj, IAccessible). |
 | Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for controls other than list items, treeview items and what not is 0. |
 | I need to work with IAccessible object methods directly | obj.IAccessibleObject.method | First, find out how to use the given MSAA method for a control, then retrieve the IAccessible object itself and call the needed method. |
@@ -1536,7 +1618,7 @@ The following describes notable changes between Python 2 and 3 and tips for maki
 | Concept or task | Python 2| Python 3 | Compatibility tips |
 | ------- | --------- | -------- | -------- |
 | Print text | print text | print(text) | The latter also works on Python 2. |
-| Default text format | ANSI | Unicode | Unicode is prefered. To do so, prefix text with a "u". |
+| Default text format | ANSI | Unicode | Unicode is preferred. To do so, prefix text with a "u". |
 | Range | xrange | range | If you are not concerned with performance, use range. |
 | Reduce/accumulate | reduce | functools.reduce | |
 | Map and filter returns | list | iterator | If you want maximum compatibility, wrap a call to map or filter inside a list function call. |

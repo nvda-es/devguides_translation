@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 16:41+0200\n"
+"POT-Creation-Date: 2020-08-15 20:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid "Author: Joseph Lee"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:5
-msgid "Based on StationPlaylist Add-on for NvDA 20.04"
+msgid "Based on StationPlaylist Add-on for NvDA 20.07"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:6
@@ -93,12 +93,12 @@ msgid ""
 "Another big change in 2020 is removing unnecessary and problematic features. "
 "For years, Window-Eyes users were supported by having a dedicated command "
 "layout in SPL Assistant layer. As Window-Eyes usage is declining, the "
-"dedicated command layout is being phased out. Another feature being removed "
-"is time-based (triggered) broadcast profiles as it became clear that "
-"defining instant switch profiles were enough, coupled with design problems "
-"in the feature itself that showed up in recent years. Just like add-on "
-"update feature, time-based profiles feature will be described to provide "
-"historical overview."
+"dedicated command layout is being phased out. Another removed feature is "
+"time-based (triggered) broadcast profiles as it became clear that defining "
+"instant switch profiles were enough, coupled with design problems in the "
+"feature itself that showed up in recent years. Just like add-on update "
+"feature, time-based profiles feature will be described to provide historical "
+"overview."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:13
@@ -333,6 +333,12 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:46
 msgid ""
+"* 20.06: removed Window-Eyes support, time-based broadcast profiles facility "
+"removed, support for Remote VT client."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:47
+msgid ""
 "Throughout this article, you'll get a chance to see how the add-on works, "
 "design philosophy and how the add-on is being developed, with glimpses into "
 "the past and future. My hope is that this add-on internals article would be "
@@ -341,36 +347,37 @@ msgid ""
 "of how an add-on is planned, implemented, tested, released and maintained."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:47
+#: ..\python_docs\spladdoninternals.py:48
 msgid ""
 "To download the add-on, go to https://addons.nvda-project.org/addons/"
 "StationPlaylist.en.html."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:48
+#: ..\python_docs\spladdoninternals.py:49
 msgid ""
 "## Design, code layout, layer sets and importance of Studio API and Studio "
 "window handle"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:49
+#: ..\python_docs\spladdoninternals.py:50
 msgid "### Overall design and source code layout"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:50
+#: ..\python_docs\spladdoninternals.py:51
 msgid ""
-"StationPlaylist add-on for NVDA consists of six app modules (including two "
+"StationPlaylist add-on for NVDA consists of seven app modules (including two "
 "app module packages) and a global plugin. Because Studio and Creator come "
 "with Track Tool for managing tracks, the add-on includes an app module for "
-"Track Tool in addition to the main app module for Studio, as well as an app "
-"module for StationPlaylist Creator. A fourth app module for Voice Track "
-"Recorder is present which is used for event tracking purposes. The other two "
-"app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an "
-"app module package due to inclusion of encoders support module which is also "
-"used by Streamer."
+"Track Tool in addition to the main app module package for Studio, as well as "
+"an app module for StationPlaylist Creator. A fourth app module for Voice "
+"Track Recorder is present which is used for event tracking purposes. Remote "
+"VT client is the fifth app module and is mainly used to support remote "
+"playlist editor. The other two app modules deal with Streamer and SPL DSP "
+"Engine, with SPL Engine being an app module package due to inclusion of "
+"encoders support module which is also used by Streamer."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:51
+#: ..\python_docs\spladdoninternals.py:52
 msgid ""
 "The overall design is that of a partnership between the main Studio app "
 "module and the Studio Utilities (SPLUtils) global plugin. Studio app module "
@@ -384,21 +391,21 @@ msgid ""
 "(here, unlock means using layer commands and parts of encoder support)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:52
+#: ..\python_docs\spladdoninternals.py:53
 msgid ""
 "When it comes to hierarchy of app modules, Studio app module package is "
 "ranked highest. This is because Studio app module is the oldest part of the "
 "add-on, and it provides base services and blueprints for other app modules. "
-"For instance, Creator and Track Tool relies on configuration facility "
-"provided by Studio app module package for Columns Explorer (explained "
-"later), and Voice Track (VT) Recorder app module cannot function properly "
-"without Studio app module running. Even though SPL Engine and Streamer are "
-"independent of Studio app module, they still require Studio app module to "
-"function (this is especially the case with SPL Engine, as Studio loads "
-"splengine.exe, the DSP Engine executable)."
+"For instance, Creator and Track Tool rely on configuration facility provided "
+"by Studio app module package for Columns Explorer (explained later), and "
+"Voice Track (VT) Recorder app module cannot function properly without Studio "
+"app module running. Even though SPL Engine and Streamer are independent of "
+"Studio app module, they still require Studio app module to function (this is "
+"especially the case with SPL Engine, as Studio loads splengine.exe, the DSP "
+"Engine executable)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:53
+#: ..\python_docs\spladdoninternals.py:54
 msgid ""
 "In short, all components of StationPlaylist add-on emphasize studio app "
 "module - although many components are independent of Studio, they still "
@@ -406,18 +413,18 @@ msgid ""
 "connects various add-on features together."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:54
+#: ..\python_docs\spladdoninternals.py:55
 msgid "The source code consists of:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:55
+#: ..\python_docs\spladdoninternals.py:56
 msgid ""
 "* appModules: This folder contains the main splstudio (app module) package "
-"and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine "
-"(package), and Streamer."
+"and the app modules for Track Tool, Creator, VT Recorder, Remote VT client, "
+"SPL DSP Engine (package), and Streamer."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:56
+#: ..\python_docs\spladdoninternals.py:57
 msgid ""
 "* The SPL Studio package consists of various modules, which include __init__ "
 "(main app module and track item classes), configuration manager and user "
@@ -425,13 +432,13 @@ msgid ""
 "well as support modules and various wave files used by the add-on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:57
+#: ..\python_docs\spladdoninternals.py:58
 msgid ""
 "* The SPL Engine package consists of main Engine module and encoder support "
 "module."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:58
+#: ..\python_docs\spladdoninternals.py:59
 msgid ""
 "* The main app module file is divided into sections. First, the overlay "
 "classes for track items are defined, then comes the app module, further "
@@ -442,36 +449,36 @@ msgid ""
 "appropriate sections."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:59
+#: ..\python_docs\spladdoninternals.py:60
 msgid ""
-"* globalPlugins: This folder contains SPLStudioUtils package, which consists "
-"of __init__ (main plugin and SPL Controller layer)."
+"* globalPlugins: This folder contains SPLUtils module, consisting of main "
+"global plugin code and SPL Controller layer."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:60
+#: ..\python_docs\spladdoninternals.py:61
 msgid ""
 "Note: until 2019, encoder support was part of SPL Utils. In 2020, it is part "
 "of SPL DSP Engine app module package."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:61
+#: ..\python_docs\spladdoninternals.py:62
 msgid "### Design philosophy"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:62
+#: ..\python_docs\spladdoninternals.py:63
 msgid ""
 "When I set out to write the add-on in 2013, I put forth certain things the "
 "add-on should adhere to, including:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:63
+#: ..\python_docs\spladdoninternals.py:64
 msgid ""
 "* Consistency: The add-on should have a consistent interface and command "
 "structure. Interface includes various GUI's such as add-on configuration "
 "dialog. For layer commands, I tried using native Studio command assignments."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:64
+#: ..\python_docs\spladdoninternals.py:65
 msgid ""
 "* Extensibility: The add-on should be organized and written in such a way "
 "that permits easy extensibility, hence the app module and the global plugin "
@@ -479,14 +486,14 @@ msgid ""
 "kind (such as configuration management)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:65
+#: ..\python_docs\spladdoninternals.py:66
 msgid ""
 "* Separation of concerns: Coupled with extensibility, this allowed me to "
 "provide just needed commands at the right time, which resulted in two layer "
 "command sets (explained below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:66
+#: ..\python_docs\spladdoninternals.py:67
 msgid ""
 "* Easy to follow source code: Although some may say excessive documentation "
 "is a noise, I believe it is important for a developer to understand how a "
@@ -498,7 +505,7 @@ msgid ""
 "turned off before alarm timeout has expired)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:67
+#: ..\python_docs\spladdoninternals.py:68
 msgid ""
 "* Unique feature labels: One way to stand out was to give features "
 "interesting names. For instance, during add-on 3.0 development, I decided to "
@@ -508,7 +515,7 @@ msgid ""
 "similar to flipping a dial on a remote control)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:68
+#: ..\python_docs\spladdoninternals.py:69
 msgid ""
 "* Extensive collaboration and feedback cycle between users and developers: I "
 "believed that the real stars of the show were not the add-on code files, but "
@@ -521,18 +528,18 @@ msgid ""
 "section)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:69
+#: ..\python_docs\spladdoninternals.py:70
 msgid "### Why two layer sets?"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:70
+#: ..\python_docs\spladdoninternals.py:71
 msgid ""
 "When I first sat down to design the add-on, I knew I had to write both an "
 "app module and a global plugin (to perform Studio commands from anywhere), "
 "which led to defining two layer command sets for specific purposes:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:71
+#: ..\python_docs\spladdoninternals.py:72
 msgid ""
 "* SPL Assistant: This layer command set is available in the app module and "
 "is intended to obtain status information and to manage app module features. "
@@ -541,7 +548,7 @@ msgid ""
 "later in this article."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:72
+#: ..\python_docs\spladdoninternals.py:73
 msgid ""
 "* SPL Controller: This layer is for the global plugin and performs Studio "
 "commands from anywhere. I called this \"controller\" because it controls "
@@ -549,7 +556,7 @@ msgid ""
 "provided below."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:73
+#: ..\python_docs\spladdoninternals.py:74
 msgid ""
 "In the early days, I enforced this separation, but in add-on 6.0, it is "
 "possible to invoke SPL Assistant layer by pressing the command used to "
@@ -558,11 +565,11 @@ msgid ""
 "is covered later in this article."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:74
+#: ..\python_docs\spladdoninternals.py:75
 msgid "### The \"magic\" behind layer commands"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:75
+#: ..\python_docs\spladdoninternals.py:76
 msgid ""
 "In order for layer commands to work, I borrowed code from another add-on: "
 "Toggle and ToggleX by Tyler Spivey. Toggle/ToggleX allows one to toggle "
@@ -570,7 +577,7 @@ msgid ""
 "like this:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:76
+#: ..\python_docs\spladdoninternals.py:77
 msgid ""
 "* Dynamic Command:script binding and removal: It is possible to bind "
 "gestures dynamically via bindGesture/bindGestures method for an app module "
@@ -580,7 +587,7 @@ msgid ""
 "was cleared, then the main gestures were bound."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:77
+#: ..\python_docs\spladdoninternals.py:78
 msgid ""
 "* Use of two or more gesture maps in the app module/global plugin: Normally, "
 "an app module or a global plugin that accepts keyboard input uses a single "
@@ -590,7 +597,7 @@ msgid ""
 "(command and the bound script of the form \"command\":\"script\")."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:78
+#: ..\python_docs\spladdoninternals.py:79
 msgid ""
 "* Wrapped functions: Tyler used \"wraps\" decorator from functools to wrap "
 "how \"finally\" function is called from within the layer set (this was "
@@ -600,11 +607,11 @@ msgid ""
 "context."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:79
+#: ..\python_docs\spladdoninternals.py:80
 msgid "A typical layer command execution is as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:80
+#: ..\python_docs\spladdoninternals.py:81
 msgid ""
 "1. First, assign a command to a layer (entry) command (add-on 2.0 and later; "
 "add-on 1.x used NVDA+Grave for SPL Controller and Control+NVDA+Grave for the "
@@ -612,32 +619,32 @@ msgid ""
 "gestures)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:81
+#: ..\python_docs\spladdoninternals.py:82
 msgid ""
 "2. You press the layer entry command. This causes the app module/global "
 "plugin to perform the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:82
+#: ..\python_docs\spladdoninternals.py:83
 msgid ""
 "\t1. Layer conditions are checked. Until add-on 6.x, the app module wanted "
 "to see if you are in the Playlist Viewer (relaxed in add-on 7.0), and for "
 "the global plugin, checks if Studio is running."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:83
+#: ..\python_docs\spladdoninternals.py:84
 msgid ""
 "\t2. Sets a flag telling NVDA that the Assistant/Controller layer is active."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:84
+#: ..\python_docs\spladdoninternals.py:85
 msgid ""
 "\t3. Adds gestures for the layer set to the main gestures map via "
 "bindGestures function. In case of screen reader emulation in SPL Assistant, "
 "the appropriate gestures map is selected."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:85
+#: ..\python_docs\spladdoninternals.py:86
 msgid ""
 "3. You press a command in the layer set (such as A from Assistant to hear "
 "automation status, or press A to turn automation on if using SPL Controller "
@@ -648,33 +655,33 @@ msgid ""
 "details on mechanics of this procedure in subsequent sections."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:86
+#: ..\python_docs\spladdoninternals.py:87
 msgid ""
 "4. After the layer command is done, it calls \"finish\" function (app module/"
 "global plugin) to perform clean up actions such as:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:87
+#: ..\python_docs\spladdoninternals.py:88
 msgid "\t* Clears layer flags."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:88
+#: ..\python_docs\spladdoninternals.py:89
 msgid ""
 "\t* Removes the \"current\" gestures (main gestures and layer commands) and "
 "reassigns it to the main gestures map (this is dynamic binding removal)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:89
+#: ..\python_docs\spladdoninternals.py:90
 msgid ""
 "\t* Performs additional actions depending on context (for example, if Cart "
 "Explorer was in use)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:90
+#: ..\python_docs\spladdoninternals.py:91
 msgid "### The importance of Studio window handle and Studio API"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:91
+#: ..\python_docs\spladdoninternals.py:92
 msgid ""
 "In order to use services offered by Studio, one has to use Studio API, which "
 "in turn requires one to keep an eye on window handle to Studio (in Windows "
@@ -685,7 +692,7 @@ msgid ""
 "dll's SendMessage function)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:92
+#: ..\python_docs\spladdoninternals.py:93
 msgid ""
 "Starting from add-on 7.0, one of the activities the app module performs when "
 "started (besides announcing the version of Studio you are using) is to look "
@@ -700,11 +707,11 @@ msgid ""
 "plugin accordingly."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:93
+#: ..\python_docs\spladdoninternals.py:94
 msgid "#### FindWindowA versus FindWindowW"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:94
+#: ..\python_docs\spladdoninternals.py:95
 msgid ""
 "In the old days of Windows (1990's), programs were not ready to support "
 "Unicode when Windows itself did. To support programs that are not Unicode-"
@@ -713,15 +720,15 @@ msgid ""
 "being the final character as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:95
+#: ..\python_docs\spladdoninternals.py:96
 msgid "* A: ANSI version meant for legacy programs (e.g. FindWindowA)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:96
+#: ..\python_docs\spladdoninternals.py:97
 msgid "* W: Widechar (Unicode) character version (e.g. FindWindowW)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:97
+#: ..\python_docs\spladdoninternals.py:98
 msgid ""
 "In reality, programs call FindWindow function, and the appropriate \"version"
 "\" was chosen based on overall character representation macro as specified "
@@ -729,7 +736,7 @@ msgid ""
 "FindWindow is called, Windows internally calls FindWindowW."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:98
+#: ..\python_docs\spladdoninternals.py:99
 msgid ""
 "Until 2018, Studio app module and other components of the add-on called "
 "FindWindowA due to the fact that, in Python 2, a string is a read-only array "
@@ -744,11 +751,11 @@ msgid ""
 "NVDA 2019.3/Python 3)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:99
+#: ..\python_docs\spladdoninternals.py:100
 msgid "## Life of the SPL app module"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:100
+#: ..\python_docs\spladdoninternals.py:101
 msgid ""
 "Note: For the rest of this article, you'll see some portions of the source "
 "code to let you better understand how something works (mostly pseudo code "
@@ -757,32 +764,32 @@ msgid ""
 "once)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:101
+#: ..\python_docs\spladdoninternals.py:102
 msgid "### SPL Studio app module and friends: design and code overview"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:102
+#: ..\python_docs\spladdoninternals.py:103
 msgid ""
 "As noted previously, the SPL Studio app module (splstudio/__init__.py) and "
 "friends (other app modules) consists of several sections. These include "
 "(from top to bottom):"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:103
+#: ..\python_docs\spladdoninternals.py:104
 msgid ""
 "* Imports: Many modules from Python packages and from NVDA screen reader are "
 "imported here, including IAccessible controls support, configuration manager "
 "and so on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:104
+#: ..\python_docs\spladdoninternals.py:105
 msgid ""
 "* Layer command wrapper: I talked about how layer commands work in a "
 "previous section, and the \"finally\" function at the top is the one that "
 "makes this possible."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:105
+#: ..\python_docs\spladdoninternals.py:106
 msgid ""
 "* Few helper functions and checks: This includes a flag specifying minimum "
 "version of Studio needed, the cached value for Studio window handle (SPLWin) "
@@ -792,63 +799,64 @@ msgid ""
 "file) and other helper functions."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:106
+#: ..\python_docs\spladdoninternals.py:107
 msgid ""
 "* Track item overlay classes: three classes are defined for various "
 "purposes. The first is a base class that provides commands and services "
 "across Studio and other apps, while other two classes provide support for "
-"Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back "
-"to these objects later."
+"tracks found throughout Studio (one is a general track items class, the "
+"other is specific to playlist viewer). We'll come back to these objects "
+"later."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:107
+#: ..\python_docs\spladdoninternals.py:108
 msgid ""
 "* App module class: This is the core of not only the app module, but the "
 "entire add-on package. The app module class (appModules.splstudio.AppModule) "
 "is further divided into sections as described in add-on design chapter."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:108
+#: ..\python_docs\spladdoninternals.py:109
 msgid ""
-"For Studio's colleagues (Creator and Track Tool), they consist of sections "
-"listed above except layer command wrapper, and track item classes are "
-"simplified. For VT Recorder, because it controls certain internal behaviors "
-"of Studio app module when it starts, only the constructor and terminate "
-"methods (see below) are provided. For Streamer and DSP Engine, encoder "
-"specific workarounds are present."
+"For Studio's colleagues (Creator, Track Tool, Remote VT client), they "
+"consist of sections listed above except layer command wrapper, and track "
+"item classes are simplified. For VT Recorder, because it controls certain "
+"internal behaviors of Studio app module when it starts, only the constructor "
+"and terminate methods (see below) are provided. For Streamer and DSP Engine, "
+"encoder specific workarounds are present."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:109
+#: ..\python_docs\spladdoninternals.py:110
 msgid ""
 "Let's now tour the lifecycle of the app module object in question: before "
 "and during app module initialization, activities performed while the app "
 "module is active, death and (until 2018) add-on updates."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:110
+#: ..\python_docs\spladdoninternals.py:111
 msgid ""
 "Note: although standalone add-on update feature is gone, the mechanism "
 "behind add-on update feature will be documented for sake of completeness."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:111
+#: ..\python_docs\spladdoninternals.py:112
 msgid "### Before birth: NVDA's app module import routines"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:112
+#: ..\python_docs\spladdoninternals.py:113
 msgid ""
 "Before we go any further, it is important for you to understand how NVDA "
 "loads various app modules. This routine, available from source/"
 "appModuleHandler.py (NVDA Core), can be summarized as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:113
+#: ..\python_docs\spladdoninternals.py:114
 msgid ""
 "1. If a new process (program) runs, NVDA will try to obtain the process ID "
 "(PID) for the newly loaded process."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:114
+#: ..\python_docs\spladdoninternals.py:115
 msgid ""
 "2. Next, NVDA will look for an app module matching the name of the "
 "executable for the newly created process. It looks in various places, "
@@ -857,14 +865,14 @@ msgid ""
 "the given name is found."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:115
+#: ..\python_docs\spladdoninternals.py:116
 msgid ""
 "3. Next, NVDA will attempt to use Python's built-in __import__ function to "
 "load the app module, raising errors if necessary. No errors means the app "
 "module is ready for use."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:116
+#: ..\python_docs\spladdoninternals.py:117
 msgid ""
 "4. Once the newly loaded module is ready, NVDA will instantiate appModule."
 "AppModule class (make it available). If a constructor (__init__ method) is "
@@ -872,7 +880,7 @@ msgid ""
 "this below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:117
+#: ..\python_docs\spladdoninternals.py:118
 msgid ""
 "In case the app module's AppModule class has a constructor defined, Python "
 "will follow directions specified in the constructor. Just prior to "
@@ -880,28 +888,28 @@ msgid ""
 "the constructor for the default app module first as in the following code:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:118
+#: ..\python_docs\spladdoninternals.py:119
 msgid "\tdef __init__(self, *args, **kwargs):"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:119
+#: ..\python_docs\spladdoninternals.py:120
 msgid "\t\tsuper(AppModule, self).__init__(*args, **kwargs)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:120
+#: ..\python_docs\spladdoninternals.py:121
 msgid ""
 "This is a must because the default app module constructor performs important "
 "activities, including:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:121
+#: ..\python_docs\spladdoninternals.py:122
 msgid ""
 "1. The default app module constructor will call another base constructor "
 "(this time, it is baseObject.ScriptableObject, containing gestures support "
 "among other important properties)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:122
+#: ..\python_docs\spladdoninternals.py:123
 msgid ""
 "2. Initializes various properties, such as PID (process ID), app module name "
 "(if defined), application name and the handle to the app in question via "
@@ -909,26 +917,27 @@ msgid ""
 "and later requires different arguments)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:123
+#: ..\python_docs\spladdoninternals.py:124
 msgid ""
 "3. Lastly, the constructor initializes process injection handle and helper "
 "binding handle in case such routines are required."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:124
+#: ..\python_docs\spladdoninternals.py:125
 msgid "### Birth: app module construction"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:125
+#: ..\python_docs\spladdoninternals.py:126
 msgid ""
-"Certain app module add-ons shipts with an app module with a constructor "
+"Certain app module add-ons shipt with an app module with a constructor "
 "define, and SPL Studio is one of them; in 2018, constructors were added to "
-"Creator and Track Tool for various purposes. After calling the base "
+"Creator and Track Tool for various purposes, and Remote VT client ships with "
+"a constructor similar to Creator app module. After calling the base "
 "constructor as described above, SPL app module's constructor (__init__ "
 "method that runs when the app module starts) does the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:126
+#: ..\python_docs\spladdoninternals.py:127
 msgid ""
 "1. Checks whether a supported version of Studio is running, and if not, "
 "raises RuntimeError exception, preventing you from using the app module "
@@ -936,7 +945,7 @@ msgid ""
 "need to use Studio 5.10 and later)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:127
+#: ..\python_docs\spladdoninternals.py:128
 msgid ""
 "2. Unless silenced by `globalVars.appArgs.minimal` being True, NVDA "
 "announces, \"Using SPL Studio version 5.01\" if Studio 5.01 is in use (of "
@@ -948,7 +957,7 @@ msgid ""
 "on a braille display if connected)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:128
+#: ..\python_docs\spladdoninternals.py:129
 msgid ""
 "3. Next, add-on settings and related subsystems are initialized by calling "
 "splconfig.initialize(). For add-on 6.x and 7.x, the first four steps are "
@@ -959,7 +968,7 @@ msgid ""
 "follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:129
+#: ..\python_docs\spladdoninternals.py:130
 msgid ""
 "\t1. For add-on 6.x and 7.x, loads a predefined configuration file named "
 "userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "
@@ -972,7 +981,7 @@ msgid ""
 "indicate which app is starting."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:130
+#: ..\python_docs\spladdoninternals.py:131
 msgid ""
 "\t2. For add-on 6.0 and later, loads broadcast profiles from addonDir/"
 "profiles folder. These are .ini files and are processed just like the normal "
@@ -982,7 +991,7 @@ msgid ""
 "normal profile only, this step will not occur."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:131
+#: ..\python_docs\spladdoninternals.py:132
 msgid ""
 "\t3. Each profile is then appended to a record keeper container (splconfig."
 "SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and "
@@ -993,7 +1002,7 @@ msgid ""
 "step is skipped)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:132
+#: ..\python_docs\spladdoninternals.py:133
 msgid ""
 "\t4. Starting from add-on 7.0 and enhanced in 17.10, unless saving settings "
 "to disk is prohibited or in-memory config is requested, Normal profile "
@@ -1003,7 +1012,7 @@ msgid ""
 "broadcast profiles for details and reasons."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:133
+#: ..\python_docs\spladdoninternals.py:134
 msgid ""
 "\t5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen "
 "to config save action so add-on settings can be saved when config save "
@@ -1012,13 +1021,13 @@ msgid ""
 "if Control+NVDA+R is pressed once or three times, respectively."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:134
+#: ..\python_docs\spladdoninternals.py:135
 msgid ""
 "\t6. If an instant profile is defined (a cached instant profile name is "
 "present), the instant profile variable is set accordingly."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:135
+#: ..\python_docs\spladdoninternals.py:136
 msgid ""
 "\t7. If errors were found, NVDA either displays an error dialog (5.x and "
 "earlier) or a status dialog (6.0 and later) detailing the error in question "
@@ -1029,7 +1038,7 @@ msgid ""
 "content doesn't make sense)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:136
+#: ..\python_docs\spladdoninternals.py:137
 msgid ""
 "\t8. Between add-on 7.0 and 18.12, add-on update facility is initialized "
 "(splupdate.initialize). among other things, the initialization routine loads "
@@ -1038,34 +1047,20 @@ msgid ""
 "routines (housed in splstudio/splupdate.py) later in this article."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:137
-msgid ""
-"\t9. Prepares routines used by time-based profile switching facility by "
-"loading triggers map and checking if NVDA should switch to the next profile "
-"(this is done if the show associated with the given profile hasn't ended "
-"yet). See time-based profile section for details."
-msgstr ""
-
 #: ..\python_docs\spladdoninternals.py:138
 msgid ""
-"\t10. Encoder settings file is loaded, and if ConfigObj throws errors, "
-"encoder settings will be reset to defaults."
+"\t9. In add-on 8.0, track comments are loaded (if any). See track items "
+"section for details."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:139
 msgid ""
-"\t11. In add-on 8.0, track comments are loaded (if any). See track items "
-"section for details."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:140
-msgid ""
-"\t12. Although not part of the init routine, starting from 17.12, various "
+"\t10. Although not part of the init routine, starting from 17.12, various "
 "modules register one or more functions for action notifications. See "
 "extension points section for details."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:141
+#: ..\python_docs\spladdoninternals.py:140
 msgid ""
 "4. Starting with NVDA 2015.3, it became possible for an app module to "
 "request NVDA to monitor certain events for certain controls even if the app "
@@ -1077,14 +1072,14 @@ msgid ""
 "handling throughout this article."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:142
+#: ..\python_docs\spladdoninternals.py:141
 msgid ""
 "5. Next, GUI subsystem is initialized (NVDA uses wxPython). This routine "
 "adds an entry in NVDA's preferences menu entitled \"SPL Studio Settings\", "
 "the add-on configuration dialog."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:143
+#: ..\python_docs\spladdoninternals.py:142
 msgid ""
 "6. As described above, the app module will look for the window handle for "
 "the Studio app. In order to avoid this routine consuming resources and "
@@ -1092,20 +1087,20 @@ msgid ""
 "performs the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:144
+#: ..\python_docs\spladdoninternals.py:143
 msgid ""
 "\t1. Studio window handle is searched via a loop. If Studio exits for "
 "whatever reason, an event flag is raised by the app module, causing this "
 "thread to exit."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:145
+#: ..\python_docs\spladdoninternals.py:144
 msgid ""
 "\t2. If the handle is found, its value is recorded in a flag found in base "
 "services module (splbase)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:146
+#: ..\python_docs\spladdoninternals.py:145
 msgid ""
 "\t3. If the app module is told to announce status of metadata streaming and "
 "connect to predefined URL's, NVDA will do it at this point provided that "
@@ -1116,17 +1111,17 @@ msgid ""
 "announcement and related components in the SPL Assistant chapter."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:147
+#: ..\python_docs\spladdoninternals.py:146
 msgid ""
 "7. Between add-on 7.0 and 18.12, if automatic update check is enabled, "
 "update check timer is started."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:148
+#: ..\python_docs\spladdoninternals.py:147
 msgid "#### Changes introduced in 17.10 due to volatile configuration flags"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:149
+#: ..\python_docs\spladdoninternals.py:148
 msgid ""
 "In add-on 17.10, several internal flags and associated command-line switches "
 "are introduced to control how the add-on settings are loaded and treated. "
@@ -1135,28 +1130,29 @@ msgid ""
 "developer, as they are used for troubleshooting or experimenting purposes."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:150
+#: ..\python_docs\spladdoninternals.py:149
 msgid "The flags are as follows:"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:150
+msgid ""
+"1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed "
+"in 20.09): all profiles (including broadcast profiles) will be loaded from "
+"disk but changes will not be saved. With this flag turned on, profile "
+"caching will not occur, including normal profile."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:151
 msgid ""
-"1. Do not save changes to disk (configVolatile/--spl-configvolatile): all "
-"profiles (including broadcast profiles) will be loaded from disk but changes "
-"will not be saved. With this flag turned on, profile caching will not occur, "
-"including normal profile."
+"2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): "
+"broadcast profiles will not be used, including ability to create new "
+"profiles and using time-based profile switching (see time-based profiles "
+"section for details). Combining this with NVDA setting to not have "
+"configuration to disk on exit effectively makes normal profile a read-only "
+"config store."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:152
-msgid ""
-"2. Load normal profile only (normalProfileOnly/--spl-confignormalonly): "
-"broadcast profiles will not be used, including ability to create new "
-"profiles and using time-based profile switching (see time-based profiles "
-"section for details). Combining this with configIsVolatile flag effectively "
-"makes normal profile a read-only config store."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:153
 msgid ""
 "3. Use in-memory config (configInMemory/--spl-configinmemory): only normal "
 "profile will be used, but instead of loading settings from disk, an in-"
@@ -1164,19 +1160,19 @@ msgid ""
 "all."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:154
+#: ..\python_docs\spladdoninternals.py:153
 msgid ""
 "Using flags that specify the use of normal profile only will restrict "
 "ability to create new broadcast profiles."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:155
+#: ..\python_docs\spladdoninternals.py:154
 msgid ""
 "#### Changes introduced in 18.07 to handle add-on settings from apps other "
 "than Studio"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:156
+#: ..\python_docs\spladdoninternals.py:155
 msgid ""
 "Because Columns Explorer (see the corresponding section below) is used in "
 "Studio, Creator and Track Tool, it became necessary to change how add-on "
@@ -1187,7 +1183,7 @@ msgid ""
 "settings already loaded, no construction activity will take place."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:157
+#: ..\python_docs\spladdoninternals.py:156
 msgid ""
 "In app modules for Creator and Track Tool, the constructor will call "
 "splconfig.openConfig to perform the above activity. When the app module "
@@ -1196,23 +1192,23 @@ msgid ""
 "add-on settings will be gone from memory."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:158
+#: ..\python_docs\spladdoninternals.py:157
 msgid "### Life of the app module: events, commands and output"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:159
+#: ..\python_docs\spladdoninternals.py:158
 msgid ""
 "Once the Studio app module is ready, you can then move to Studio window and "
 "perform activities such as:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:160
+#: ..\python_docs\spladdoninternals.py:159
 msgid ""
 "* Press commands, and NVDA will respond by either opening a dialog or "
 "speaking what it did."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:161
+#: ..\python_docs\spladdoninternals.py:160
 msgid ""
 "* Announce status changes such as microphone status. The length and format "
 "of these messages (and other add-on messages) are controlled by message "
@@ -1223,44 +1219,44 @@ msgid ""
 "option in Studio itself."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:162
+#: ..\python_docs\spladdoninternals.py:161
 msgid "* Find tracks."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:163
+#: ..\python_docs\spladdoninternals.py:162
 msgid ""
 "* Examine information in columns via Track Dial and/or Columns Explorer "
 "(Track Dial was deprecated in 2017)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:164
+#: ..\python_docs\spladdoninternals.py:163
 msgid "* Listen to progress of a library scan in the background."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:165
+#: ..\python_docs\spladdoninternals.py:164
 msgid "* Perform SPL Assistant gestures."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:166
+#: ..\python_docs\spladdoninternals.py:165
 msgid ""
 "* For 6.0 and later, manage broadcast profiles (we'll talk about broadcast "
 "profiles in configuration management section)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:167
+#: ..\python_docs\spladdoninternals.py:166
 msgid ""
 "* For 17.12 and later, respond to actions such as broadcast profile switches."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:168
+#: ..\python_docs\spladdoninternals.py:167
 msgid "For Creator and Track Tool, it will let you review column data."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:169
+#: ..\python_docs\spladdoninternals.py:168
 msgid "#### Extension points"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:170
+#: ..\python_docs\spladdoninternals.py:169
 msgid ""
 "Introduced in NVDA 2017.4, an extension point is a notification system from "
 "NVDA that tells modules and functions to perform tasks when something "
@@ -1270,53 +1266,53 @@ msgid ""
 "it to users."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:171
+#: ..\python_docs\spladdoninternals.py:170
 msgid "There are three extension point types:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:172
+#: ..\python_docs\spladdoninternals.py:171
 msgid ""
 "* Action: a function can wait for something to happen, such as change of "
 "profiles, loading and saving settings and others, and act accordingly once "
 "an action takes place."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:173
+#: ..\python_docs\spladdoninternals.py:172
 msgid ""
 "* Decider: A data processor inside a script or a function can tell NVDA to "
 "continue processing data, such as passing a keystroke to remote system."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:174
+#: ..\python_docs\spladdoninternals.py:173
 msgid ""
 "* Filter: a speech processor can add, change, or remove texts before letting "
 "synthesizers announce the would-be spoken text."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:175
+#: ..\python_docs\spladdoninternals.py:174
 msgid ""
 "In SPL add-on, actions are used to notify modules of some action such as "
 "when Studio exits, broadcast profile switches and so on. There are two "
 "actions defined (in splactions module):"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:176
+#: ..\python_docs\spladdoninternals.py:175
 msgid ""
 "* Broadcast profile switch: notifies microphone alarm thread and metadata "
 "streaming configuration to switch streams or turn off the alarm (see below "
 "for details)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:177
+#: ..\python_docs\spladdoninternals.py:176
 msgid ""
 "* Studio exiting: tells add-on dialogs to close without saving settings."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:178
+#: ..\python_docs\spladdoninternals.py:177
 msgid "### Death: termination routines"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:179
+#: ..\python_docs\spladdoninternals.py:178
 msgid ""
 "While using the add-on, you can stop using it in various ways, including "
 "exiting or restarting NVDA, turning off your computer or logging off or "
@@ -1324,41 +1320,41 @@ msgid ""
 "Studio app module has specific directions to follow when add-on is closed."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:180
+#: ..\python_docs\spladdoninternals.py:179
 msgid ""
 "Here is a list of steps Studio app module performs when it is about to leave "
 "this world:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:181
+#: ..\python_docs\spladdoninternals.py:180
 msgid ""
 "1. The \"terminate\" method is called. Just like the startup (constructor) "
 "routine, this method first calls the terminate method defined in the default "
 "app module, which closes handles and performs other closing routines."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:182
+#: ..\python_docs\spladdoninternals.py:181
 msgid ""
 "2. Calls splconfig.terminate() function to save add-on settings and perform "
 "shutdown routines for some features. This function goes through following "
 "steps in add-on 19.01:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:183
+#: ..\python_docs\spladdoninternals.py:182
 msgid ""
 "\t1. In add-on 7.0, if update check timer is running, the timer is told to "
 "stop, and update metadata is copied back to normal profile. This step is "
 "gone in 19.01."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:184
+#: ..\python_docs\spladdoninternals.py:183
 msgid ""
 "\t2. Starting with add-on 18.07, active SPL component is unregistered via "
 "splconfig.closeConfig function. If there are other components running, the "
 "below steps will not occur, otherwise add-on settings will be closed."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:185
+#: ..\python_docs\spladdoninternals.py:184
 msgid ""
 "\t3. Unless disabled through flags in 17.10, profiles are saved (beginning "
 "with normal profile) to disk if and only if profile-specific settings were "
@@ -1367,45 +1363,45 @@ msgid ""
 "version of normal profile is in use or other SPL components are active."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:186
+#: ..\python_docs\spladdoninternals.py:185
 msgid ""
 "\t4. If there is an instant switch profile defined, this is recorded in the "
 "normal profile, otherwise it is removed from the profile database."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:187
+#: ..\python_docs\spladdoninternals.py:186
 msgid ""
 "\t5. Once all profiles are saved, various flags, active profile and config "
 "pool is cleared."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:188
+#: ..\python_docs\spladdoninternals.py:187
 msgid ""
 "\t6. For add-on 5.x and earlier, there is only one broadcast profile to "
 "worry about, and this profile is saved at this point."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:189
+#: ..\python_docs\spladdoninternals.py:188
 msgid ""
 "\t7. These steps are part of splconfig.SPLConfig.save method in add-on 8.0 "
 "and later."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:190
+#: ..\python_docs\spladdoninternals.py:189
 msgid ""
 "3. In 17.12 and later, NVDA notifies registered handlers for app terminate "
 "action. As noted above, this will cause add-on dialogs to close without "
 "saving settings."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:191
+#: ..\python_docs\spladdoninternals.py:190
 msgid ""
 "4. NVDA then attempts to remove StationPlaylist Add-on Settings entry from "
 "NVDA's preferences menu, then various maps used by Studio app module (such "
 "as Cart Explorer map) are cleared."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:192
+#: ..\python_docs\spladdoninternals.py:191
 msgid ""
 "5. An important task is cleaning up objects cache used by some SPL Assistant "
 "commands, as cached information (specifically, objects) will point to "
@@ -1413,7 +1409,7 @@ msgid ""
 "dangerous."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:193
+#: ..\python_docs\spladdoninternals.py:192
 msgid ""
 "6. As the app module is laid to rest, the window handle value for Studio "
 "window is cleared. This is a must, as the handle will be different next time "
@@ -1421,11 +1417,11 @@ msgid ""
 "list of app modules in use."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:194
+#: ..\python_docs\spladdoninternals.py:193
 msgid "### Add-on updates: updating to latest and greatest version"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:195
+#: ..\python_docs\spladdoninternals.py:194
 msgid ""
 "Note: this feature, recently dubbed \"standalone add-on update\", is gone in "
 "19.01, although the mechanism behind it is documented here for sake of "
@@ -1433,14 +1429,14 @@ msgid ""
 "check for updates from Studio."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:196
+#: ..\python_docs\spladdoninternals.py:195
 msgid ""
 "In add-on 7.0 and later (until 18.12), it is possible to update to the "
 "latest version of the add-on by using add-on update check facility. This is "
 "done by connecting to a server where the update add-on files are stored."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:197
+#: ..\python_docs\spladdoninternals.py:196
 msgid ""
 "The SPL add-on uses a combination of urllib library and update channels "
 "(explained later) to fetch the needed update metadata. The user can tell the "
@@ -1448,25 +1444,25 @@ msgid ""
 "manually."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:198
+#: ..\python_docs\spladdoninternals.py:197
 msgid "The update check is performed as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:199
+#: ..\python_docs\spladdoninternals.py:198
 msgid ""
 "1. If the add-on is told to check for updates, the Studio app module "
 "constructor will start a timer whose purpose is to call a function when it "
 "is time to check for an update."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:200
+#: ..\python_docs\spladdoninternals.py:199
 msgid ""
 "2. If automatic update check is enabled, the update manager (splconfig."
 "updateInit) will determine when the update was checked last. This is done in "
 "order to perform update checks every 24 hours."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:201
+#: ..\python_docs\spladdoninternals.py:200
 msgid ""
 "3. Once the timer kicks in (automatic update check is on), the update check "
 "function (splupdate.updateChecker) will be called. This function uses two "
@@ -1474,7 +1470,7 @@ msgid ""
 "schedule the next update check."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:202
+#: ..\python_docs\spladdoninternals.py:201
 msgid ""
 "4. The update check function first connects to the URL for the current "
 "update channel (more on channels at the end of this article) and compares "
@@ -1484,42 +1480,42 @@ msgid ""
 "regular expression) and URL for the file, and if not, it returns nothing."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:203
+#: ..\python_docs\spladdoninternals.py:202
 msgid ""
 "5. If a new version is available and if the user said \"yes\" to update "
 "prompt, the update metadata (update timestamp) will be cached to be "
 "retrieved by the app module later."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:204
+#: ..\python_docs\spladdoninternals.py:203
 msgid ""
 "6. This process repeats if automatic check is enabled (a timer will be set "
 "to call this function again after 24 hours)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:205
+#: ..\python_docs\spladdoninternals.py:204
 msgid ""
 "In case of a manual update check (described in SPL Assistant layer section), "
 "apart from not using a timer and stopping an update check timer temporarily "
 "(if needed), it will go through steps 3 through 5 from above."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:206
+#: ..\python_docs\spladdoninternals.py:205
 msgid "## Time announcements, alarms and adjusting basic settings"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:207
+#: ..\python_docs\spladdoninternals.py:206
 msgid ""
 "Now that we know how Studio app module is born and dies, it is time for us "
 "to look at what happens while Studio is in use, and we'll start with how the "
 "add-on announces time, work with alarms and uses basic settings."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:208
+#: ..\python_docs\spladdoninternals.py:207
 msgid "### Time announcement routines: a tale of four brothers"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:209
+#: ..\python_docs\spladdoninternals.py:208
 msgid ""
 "SPL Studio app module for NVDA comes with four time announcement commands. "
 "These are elapsed time, remaining time, broadcaster time and complete time "
@@ -1528,37 +1524,37 @@ msgid ""
 "API functions."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:210
+#: ..\python_docs\spladdoninternals.py:209
 msgid ""
 "Three of these routines are assigned to commands (sometimes termed "
 "gestures). These are:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:211
+#: ..\python_docs\spladdoninternals.py:210
 msgid "* Control+Alt+T: Remaining time"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:212
+#: ..\python_docs\spladdoninternals.py:211
 msgid "* Alt+Shift+T: Elapsed time"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:213
+#: ..\python_docs\spladdoninternals.py:212
 msgid "* NVDA+Shift+F12: Broadcaster time"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:214
+#: ..\python_docs\spladdoninternals.py:213
 msgid ""
 "One can then use Input Gestures dialog (part of NVDA screen reader) to "
 "change them or assign a command to complete time routine."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:215
+#: ..\python_docs\spladdoninternals.py:214
 msgid ""
 "### A step sideways with studioAPI function: A central Studio API handler "
 "and dispatcher"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:216
+#: ..\python_docs\spladdoninternals.py:215
 msgid ""
 "Before going any further, it is important to mention a function that not "
 "only is used by the first two time routines, but also comes in handy in SPL "
@@ -1568,11 +1564,11 @@ msgid ""
 "signature is:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:217
+#: ..\python_docs\spladdoninternals.py:216
 msgid "\tstudioAPI(arg, command)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:218
+#: ..\python_docs\spladdoninternals.py:217
 msgid ""
 "With the arguments being the message to be sent to studio window (arg and "
 "command). At first glance, it may seem similar to user32's SendMessage "
@@ -1582,7 +1578,7 @@ msgid ""
 "(LParem) are needed."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:219
+#: ..\python_docs\spladdoninternals.py:218
 msgid ""
 "In older versions of the add-on, studioAPI did more than return results. It "
 "called a callback with or without an offset, as well as not return anything. "
@@ -1591,13 +1587,13 @@ msgid ""
 "SendMessage function with Studio window handle and message typed filled in."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:220
+#: ..\python_docs\spladdoninternals.py:219
 msgid ""
 "### First applications of studioAPI function: Announcing elapsed and "
 "remaining times"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:221
+#: ..\python_docs\spladdoninternals.py:220
 msgid ""
 "When you press Control+Alt+T or Alt+Shift+T to hear remaining or elapsed "
 "time, the script will first check if you are in the main Playlist Viewer, "
@@ -1606,18 +1602,18 @@ msgid ""
 "differences are argument that is used and the error message."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:222
+#: ..\python_docs\spladdoninternals.py:221
 msgid "### Broadcaster time: Simulating Studio's broadcaster clock"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:223
+#: ..\python_docs\spladdoninternals.py:222
 msgid ""
 "When you listen to radio shows, you may hear messages such as, \"five "
 "minutes to two\" or \"ten minutes past five\". This announcement is called "
 "broadcaster time."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:224
+#: ..\python_docs\spladdoninternals.py:223
 msgid ""
 "Studio does display broadcaster clock. However, because it is in the middle "
 "of the screen, one has to use object navigation commands to locate it, and "
@@ -1629,7 +1625,7 @@ msgid ""
 "different builds of Studio 5.10 were released)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:225
+#: ..\python_docs\spladdoninternals.py:224
 msgid ""
 "Recently, this method was abandoned in favor of using Python's time module "
 "to obtain current time and convert it into a format that is familiar to "
@@ -1643,11 +1639,11 @@ msgid ""
 "complete for both cases, NVDA announces the output text."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:226
+#: ..\python_docs\spladdoninternals.py:225
 msgid "### Complete time: Windows API to the rescue"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:227
+#: ..\python_docs\spladdoninternals.py:226
 msgid ""
 "Here, complete time refers to time including seconds. Normally, when you "
 "press NVDA+F12, NVDA excludes seconds when announcing time. All that is "
@@ -1657,11 +1653,11 @@ msgid ""
 "this feature (some app module commands are not assigned by default)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:228
+#: ..\python_docs\spladdoninternals.py:227
 msgid "### Setting alarms"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:229
+#: ..\python_docs\spladdoninternals.py:228
 msgid ""
 "Studio app module comes with three alarms: song outro (ending), intro/ramp,  "
 "and microphone active alarm. Because we need to talk about some important "
@@ -1669,10 +1665,18 @@ msgid ""
 "when setting up the intro and outro alarms."
 msgstr ""
 
+#: ..\python_docs\spladdoninternals.py:229
+msgid ""
+"Prior to 2020, separate dialogs were used to configure song outro and intro "
+"alarm settings. In 2020, these have been combined into one command that "
+"opens Alarms category in SPL add-on settings. The mechanism behind the "
+"former method is documented for completeness."
+msgstr ""
+
 #: ..\python_docs\spladdoninternals.py:230
 msgid ""
-"When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song intro "
-"alarm dialogs, the dialog will display two controls:"
+"The following two controls are used to configure song outro and intro "
+"settings from Alarms settings (Alt+NVDA+1):"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:231
@@ -1689,76 +1693,61 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:233
 msgid ""
-"In reality, a single dialog (splconfui.AlarmsCenter class) presents these "
-"two alarm dialogs (there are two additional dialogs, covered in the next "
-"section). The type of dialog to be shown is controled by an integer which "
-"denotes which dialog text to present. The process is outlined below:"
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:234
-msgid ""
-"1. Just before the dialog opens, checks if another dialog or the add-on "
-"settings dialog is opened, and if so, NVDA will ask you to close the "
-"previously opened dialog first."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:235
-msgid ""
-"2. Tells NVDA that an alarm dialog is opened. This is meant to prevent the "
-"same dialog from being opened repeatedly."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:236
-msgid ""
-"3. After the dialog is dismissed (either a new value is set or you click "
-"Cancel), NVDA clears the alarm opened flag, thereby letting other dialogs to "
-"be shown. "
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:237
-msgid ""
 "We'll learn how the alarm values are stored and retrieved in the "
 "configuration management section, and you'll get to meet how intro and outro "
 "alarms work in the next chapter."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:238
+#: ..\python_docs\spladdoninternals.py:234
 msgid "#### Alarms Center"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:239
+#: ..\python_docs\spladdoninternals.py:235
 msgid ""
-"This single dialog that presents different alarm controls is known as "
-"'Alarms Center\". In fact, not only this dialog houses end of track and "
-"track intro alarms, it includes microphone alarm controls, and all that's "
-"needed to change its appearance is a single integer that specifies which "
-"portion of the dialog should be shown. In case of Alarms Center dialog "
-"presented from add-on settings (see a later chapter on add-on "
-"configuration), all alarm controls will be shown (level = 0), with different "
-"levels controlling what controls should be shown as follows:"
+"Prior to introduction of Alarms category in SPL add-on settings, separate "
+"dialogs were used to configure various alarm settings. In reality, it was "
+"really one dialog class called Alarms Center that presented different "
+"settings based on an internal flag."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:240
+#: ..\python_docs\spladdoninternals.py:236
+msgid ""
+"True to its name and function, Alarms Center not only housed end of track "
+"and track intro alarms, it included microphone alarm controls, and all that "
+"was needed to change its appearance was a single integer that specified "
+"which portion of the dialog was shown. In case of Alarms Center dialog "
+"presented from an older version of add-on settings (see a later chapter on "
+"add-on configuration), all alarm controls were shown (level = 0), with "
+"different levels controlling what controls were shown as follows:"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:237
 msgid "* 0: Alarms Center, displays all controls."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:241
+#: ..\python_docs\spladdoninternals.py:238
 msgid "* 1: End of track alarm."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:242
+#: ..\python_docs\spladdoninternals.py:239
 msgid "* 2: Track intro alarm."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:243
+#: ..\python_docs\spladdoninternals.py:240
 msgid "* 3: Microphone alarm controls."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:244
+#: ..\python_docs\spladdoninternals.py:241
+msgid ""
+"Alarms Center was removed in 2020 in favor of standardizing around alarm "
+"settings category."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:242
 msgid "### Toggle settings"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:245
+#: ..\python_docs\spladdoninternals.py:243
 msgid ""
 "StationPlaylist add-on comes with some toggle settings that affect the "
 "operation of the app module. These include library scan announcement (Alt"
@@ -1767,12 +1756,12 @@ msgid ""
 "value."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:246
+#: ..\python_docs\spladdoninternals.py:244
 msgid ""
 "## Event handling: announcing status changes, activating alarms and more"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:247
+#: ..\python_docs\spladdoninternals.py:245
 msgid ""
 "When you are producing a live show, it is important for your screen reader "
 "to announce various status changes and happenings such as number of "
@@ -1782,11 +1771,11 @@ msgid ""
 "behind this expertise: handling events."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:248
+#: ..\python_docs\spladdoninternals.py:246
 msgid "### NVDA is event-driven"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:249
+#: ..\python_docs\spladdoninternals.py:247
 msgid ""
 "Windows applications (especially those using Windows API) are event-driven "
 "programs. Somewhere in the application is an event loop that responds to "
@@ -1796,7 +1785,7 @@ msgid ""
 "ignoring it completely."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:250
+#: ..\python_docs\spladdoninternals.py:248
 msgid ""
 "To handle various events, NVDA uses an event queue (queue handler) and an "
 "event handler for event processing. When an event is fired by itself or from "
@@ -1808,36 +1797,36 @@ msgid ""
 "fire events."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:251
+#: ..\python_docs\spladdoninternals.py:249
 msgid "Typically, an event handling routine is declared like this:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:252
+#: ..\python_docs\spladdoninternals.py:250
 msgid "\tevent_eventname(module, object in question, next handler)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:253
+#: ..\python_docs\spladdoninternals.py:251
 msgid ""
 "For example, for Studio app module, one event handler declared is gain focus "
 "(you have moved to a different control), and is written as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:254
+#: ..\python_docs\spladdoninternals.py:252
 msgid "\tevent_gainFocus(self, obj, nextHandler)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:255
+#: ..\python_docs\spladdoninternals.py:253
 msgid ""
 "The routine is just like any other function (callable) except that the "
 "routine called nextHandler function at the end to allow other controls to "
 "respond to events."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:256
+#: ..\python_docs\spladdoninternals.py:254
 msgid "### What does events have to do with Studio app module?"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:257
+#: ..\python_docs\spladdoninternals.py:255
 msgid ""
 "Events and event handlers are crucial to the operation of the Studio app "
 "module, described as \"heartbeat\" of the add-on. Events and their handlers "
@@ -1845,80 +1834,80 @@ msgid ""
 "function. These include:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:258
+#: ..\python_docs\spladdoninternals.py:256
 msgid ""
 "* Announcing status changes such as when microphone is turned on or off."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:259
+#: ..\python_docs\spladdoninternals.py:257
 msgid "* Alarm notification, such as when end of intro is approaching."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:260
+#: ..\python_docs\spladdoninternals.py:258
 msgid ""
 "* Activating certain announcement and background tasks such as activating "
 "microphone alarm, announcing library scan progress and more."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:261
+#: ..\python_docs\spladdoninternals.py:259
 msgid ""
 "* Perform workarounds for issues such as focus problems when deleting a "
 "track."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:262
+#: ..\python_docs\spladdoninternals.py:260
 msgid ""
 "Of all the event handlers declared, the most important one is name change "
 "event. It is declared as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:263
+#: ..\python_docs\spladdoninternals.py:261
 msgid "\tevent_nameChange(self, obj, nextHandler)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:264
+#: ..\python_docs\spladdoninternals.py:262
 msgid "When this event is fired by Studio, NVDA performs following operations:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:265
+#: ..\python_docs\spladdoninternals.py:263
 msgid "1. Various checks are performed. These include, but are not limited to:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:266
+#: ..\python_docs\spladdoninternals.py:264
 msgid "\t1. Make sure there is something to announce."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:267
+#: ..\python_docs\spladdoninternals.py:265
 msgid ""
 "\t2. If using another app, NVDA will ensure that background monitor flag is "
 "set (see the discussion on app module constructor in previous sections for "
 "more details)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:268
+#: ..\python_docs\spladdoninternals.py:266
 msgid ""
 "\t3. If the status to be announced is a common one such as listener count, "
 "schedule and cart playback status, NVDA will check if it is permited to "
 "announce them."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:269
+#: ..\python_docs\spladdoninternals.py:267
 msgid ""
 "2. Depending on the type of control (mostly window class name), NVDA "
 "performs different operations (see below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:270
+#: ..\python_docs\spladdoninternals.py:268
 msgid ""
 "3. Lastly, NVDA calls nextHandler() to let other controls respond to name "
 "change event."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:271
+#: ..\python_docs\spladdoninternals.py:269
 msgid "### Status announcements versus alarm notification"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:272
+#: ..\python_docs\spladdoninternals.py:270
 msgid ""
 "There are two groups of controls NVDA is interested in: status bar and "
 "status text with window class name of TStatusBar and TStaticText, "
@@ -1926,48 +1915,48 @@ msgid ""
 "fired the event, NVDA will respond differently."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:273
+#: ..\python_docs\spladdoninternals.py:271
 msgid "For status announcements (TStatusBar), NVDA:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:274
+#: ..\python_docs\spladdoninternals.py:272
 msgid ""
 "1. Checks IAccessible child ID (position of the control relative to the "
 "parent control as exposed by MSAA (Microsoft Active Accessibility)/"
 "IAccessible)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:275
+#: ..\python_docs\spladdoninternals.py:273
 msgid ""
 "2. If IAccessible child ID is 1, it either announces library scan progress "
 "or playback status."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:276
+#: ..\python_docs\spladdoninternals.py:274
 msgid ""
 "3. For other status bar objects (controls or windows), NVDA first checks if "
 "it is a toggle change (ends with \"On\" or \"Off\"), and if so, it does the "
 "following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:277
+#: ..\python_docs\spladdoninternals.py:275
 msgid ""
 "\t1. If you set status announcement to words, NVDA announces toggle change "
 "notification via speech."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:278
+#: ..\python_docs\spladdoninternals.py:276
 msgid ""
 "\t2. If status announcement is set to beeps, an appropriate wave file is "
 "selected for playback via NVWave module (nvwave.playWaveFile; this is done "
 "via messageSound function)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:279
+#: ..\python_docs\spladdoninternals.py:277
 msgid "\t3. Braille output is not affected - it'll announce toggle changes."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:280
+#: ..\python_docs\spladdoninternals.py:278
 msgid ""
 "\t4. For cart edit mode or microphone toggle, extra steps are performed, (by "
 "calling extraAction method with the status string as the argument) such as "
@@ -1976,30 +1965,30 @@ msgid ""
 "installments."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:281
+#: ..\python_docs\spladdoninternals.py:279
 msgid ""
 "4. For all other announcements, NVDA announces them. In case of schedule "
 "announcement, to prevent itself from repeating the same message, NVDA checks "
 "if a cached name is the same as the just changed name."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:282
+#: ..\python_docs\spladdoninternals.py:280
 msgid "For static text controls (mostly used for alarm notifications):"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:283
+#: ..\python_docs\spladdoninternals.py:281
 msgid ""
 "1. Checks whether NVDA is looking at remaining time for the intro or the "
 "whole track."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:284
+#: ..\python_docs\spladdoninternals.py:282
 msgid ""
 "2. For both cases, NVDA checks if it can braille this (braille timer is not "
 "off)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:285
+#: ..\python_docs\spladdoninternals.py:283
 msgid ""
 "3. If NVDA is told to play or announce alarms (for outro and intro), NVDA "
 "plays appropriate tones (middle A (440 hertz) for outro, an octave above "
@@ -2007,7 +1996,7 @@ msgid ""
 "track or intro is approaching (add-on 6.0 and later)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:286
+#: ..\python_docs\spladdoninternals.py:284
 msgid ""
 "The structure of event_nameChange function defined in the Studio app module "
 "is such that it can be extended to handle name change event for other "
@@ -2017,48 +2006,48 @@ msgid ""
 "nextHandler()."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:287
+#: ..\python_docs\spladdoninternals.py:285
 msgid "### Other events defined in the Studio app module"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:288
+#: ..\python_docs\spladdoninternals.py:286
 msgid "There are five more events defined in the Studio app module. They are:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:289
+#: ..\python_docs\spladdoninternals.py:287
 msgid ""
 "* Gain focus: performs focus-related routines such as checking if you are in "
 "Insert Tracks dialog in order to turn off background library scanning (more "
 "on background library scan in a future installment)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:290
+#: ..\python_docs\spladdoninternals.py:288
 msgid ""
 "* App module gain focus: Used to handle touchscreens (yes, Studio app module "
 "has a dedicated SPL touch mode) such as assigning additional commands."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:291
+#: ..\python_docs\spladdoninternals.py:289
 msgid "* App module lose focus: opposite of the event above."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:292
+#: ..\python_docs\spladdoninternals.py:290
 msgid ""
 "* Show: this event is specifically designed to respond to listener requests, "
 "discussed below."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:293
+#: ..\python_docs\spladdoninternals.py:291
 msgid ""
 "* Foreground: this is used to coordinate status bar content announcement "
 "when Studio starts."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:294
+#: ..\python_docs\spladdoninternals.py:292
 msgid "#### Listener requests"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:295
+#: ..\python_docs\spladdoninternals.py:293
 msgid ""
 "A seldom talked about component of StationPlaylist Studio is the ability to "
 "host a website with a PHP script to allow listeners to request tracks to be "
@@ -2066,7 +2055,7 @@ msgid ""
 "request dialog that lists requested tracks."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:296
+#: ..\python_docs\spladdoninternals.py:294
 msgid ""
 "Due to limitations of old NVDA releases, Studio app module did not have an "
 "easy way to detect the appearance of this dialog and notify you of listener "
@@ -2079,7 +2068,7 @@ msgid ""
 "arrive provided that the requests pop-up option is set in Studio."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:297
+#: ..\python_docs\spladdoninternals.py:295
 msgid ""
 "So far, we have covered things that the app module performs wherever you are "
 "in Studio. the next few sections will cover how the app module handles "
@@ -2087,11 +2076,11 @@ msgid ""
 "finding tracks, library scans and so on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:298
+#: ..\python_docs\spladdoninternals.py:296
 msgid "## Track items, overlay classes and Track Finder"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:299
+#: ..\python_docs\spladdoninternals.py:297
 msgid ""
 "While using the add-on, you may have noticed that you can perform certain "
 "commands while focused on track items, and that the command to find tracks "
@@ -2101,11 +2090,11 @@ msgid ""
 "about objects."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:300
+#: ..\python_docs\spladdoninternals.py:298
 msgid "### Important facts about NVDA's use of objects"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:301
+#: ..\python_docs\spladdoninternals.py:299
 msgid ""
 "One of the questions I and other add-on authors and NVDA developers received "
 "was, \"what exactly are objects and how are they used in NVDA?\" In "
@@ -2119,7 +2108,7 @@ msgid ""
 "entries), all done via objects."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:302
+#: ..\python_docs\spladdoninternals.py:300
 msgid ""
 "In graphical user interfaces (GUI's), an object is a more technical term for "
 "controls (sometimes called widgets). This includes windows, form fields, "
@@ -2128,21 +2117,21 @@ msgid ""
 "both visible and internal attributes that can be used by other programs)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:303
+#: ..\python_docs\spladdoninternals.py:301
 msgid ""
 "In NVDA world, all screen elements (controls) are objects. As such, when "
 "dealing with objects, NVDA uses accessibility API's to obtain needed "
-"information. To provide consistent user experience, differences between "
+"information. To provide a consistent user experience, differences between "
 "accessibility API's (IAccessible, UI Automation, Java Access Bridge and so "
-"on) are checked and provides a mechanism to announce same information across "
-"controls implemented using different frameworks. For example, when a check "
-"box is checked, NVDA will say \"checked\"\" - NVDA will know if you checked "
-"this box because the underlying accessibility API informs NVDA of this "
-"change, and the same information is spoken regardless of whether it is "
+"on) are abstracted and provides a mechanism to announce same information "
+"across controls implemented using different frameworks. For example, when a "
+"check box is checked, NVDA will say \"checked\"\" - NVDA will know if you "
+"checked this box because the underlying accessibility API informs NVDA of "
+"this change, and the same information is spoken regardless of whether it is "
 "dealing with IAccessible, UIA and so on."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:304
+#: ..\python_docs\spladdoninternals.py:302
 msgid ""
 "Currently, NVDA can work with IAccessible, User Interface Automation (UIA), "
 "Java Access Bridge (JAB) and others (WAI ARIA is supported). Support modules "
@@ -2150,11 +2139,11 @@ msgid ""
 "source code."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:305
+#: ..\python_docs\spladdoninternals.py:303
 msgid "### Overlay classes: Customizing built-in objects"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:306
+#: ..\python_docs\spladdoninternals.py:304
 msgid ""
 "If NVDA was limited to using its own object handlers, we would be limited to "
 "information that is correctly exposed by accessibility API's (no app modules "
@@ -2164,7 +2153,7 @@ msgid ""
 "top of API classes (built-in objects)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:307
+#: ..\python_docs\spladdoninternals.py:305
 msgid ""
 "In essence, overlay classes are subclasses of stable API classes (subclasses "
 "are specialist classes deriving (inheriting) from one or more parent "
@@ -2174,44 +2163,44 @@ msgid ""
 "x and 10) works:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:308
+#: ..\python_docs\spladdoninternals.py:306
 msgid ""
 "1. Toasts are notifications from apps, and they are UIA objects (NVDAObjects."
 "UIA.Toast)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:309
+#: ..\python_docs\spladdoninternals.py:307
 msgid ""
 "2. When events fired by toasts are received by NVDA, it'll check to make "
 "sure it is dealing with toast notifications."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:310
+#: ..\python_docs\spladdoninternals.py:308
 msgid ""
 "3. When NVDA is dealing with toasts, it'll perform what it is told to do by "
 "toast objects (announce toasts provided by \"report help balloons\" is "
 "checked from Object Presentation dialog)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:311
+#: ..\python_docs\spladdoninternals.py:309
 msgid "### Why do objects and overlay classes matter in Studio app module?"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:312
+#: ..\python_docs\spladdoninternals.py:310
 msgid ""
 "Some readers might ask this question after reading the above section on "
 "overlay classes. I had to introduce overlay classes because they are "
 "important in Studio app module: track items in playlist Viewer are overlay "
-"classes. In fact, there are at least three of them: a base object "
+"classes. In fact, there are at least three of them: an abstract base class "
 "representing track items for studio and other apps (appModules.splstudio."
 "SPLTrackItem), a generic representation of Studio track item (appModules."
-"splstudio.SPLStudioTrackItem), and Studio 5.10 track item (appModules."
-"splstudio.SPLStudio510TrackItem; in case of 5.10, it derives its power from "
-"track item class for Studio 5.0x, which in turn is powered by Studio track "
-"item powered by IAccessible)."
+"splstudio.SPLStudioTrackItem), and a playlist viewer (main window) track "
+"item (appModules.splstudio.StudioPlaylistViewerItem; in case of playlist "
+"viewer item class, it derives its power from track item class for Studio, "
+"which in turn is powered by abstract SPL track item powered by IAccessible)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:313
+#: ..\python_docs\spladdoninternals.py:311
 msgid ""
 "These classes were born when I started working on Studio 5.10 support in "
 "2014. Because Studio 5.10 uses a different way of showing track properties, "
@@ -2225,7 +2214,7 @@ msgid ""
 "for differences between Studio versions."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:314
+#: ..\python_docs\spladdoninternals.py:312
 msgid ""
 "Then in 2015, when I was designing Track Dial (next section), I thought "
 "about scope of this feature. I thought, \"if I let this be invoked from "
@@ -2239,7 +2228,7 @@ msgid ""
 "track items inherit from this new class."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:315
+#: ..\python_docs\spladdoninternals.py:313
 msgid ""
 "In 2018, as support for Columns Explorer was being worked on for Creator and "
 "Track Tool, I decided to overhaul the entire track item class hierarchy. "
@@ -2251,42 +2240,61 @@ msgid ""
 "column content for the correct column when columns were rearranged on screen."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:316
+#: ..\python_docs\spladdoninternals.py:314
+msgid ""
+"In 2020, SPL track item overlay classes were reworked. Because base SPL "
+"track item class was meant to serve as a blueprint, it became an abstract "
+"base class in 2019. What was formerly Studio 5.10 track item class became a "
+"specialist class for playlist viewer items, and old Studio 5.0x item class "
+"was revived to represent track items found in other parts of Studio such as "
+"Insert Tracks dialog. At the same time, column navigation services provided "
+"by the SPL track item base class was eliminated in favor of using facilities "
+"provided by SysListView32 list item class to provide consistency with NVDA "
+"itself and to add column navigation commands for Creator's playlist editor "
+"and Remote VT client (prior to this, SPL track item base provided customized "
+"column navigation commands)."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:315
 msgid "### Track items overview"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:316
+msgid ""
+"Each track item in Studio (including playlist viewer), and in extension, "
+"tracks found in Creator, Track Tool, and Remote VT client, consists of a row "
+"of columns (6 for Studio 5.0x and earlier, 18 for playlist viewer in Studio "
+"5.10 and later, may vary on other track lists). As far as NVDA is concerned, "
+"it is an overlay class that provides a number of services, including:"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:317
 msgid ""
-"Each track item in Studio's playlist viewer (and in extension, tracks list "
-"in Creator and Track Tool) consists of a row of columns (6 for Studio 5.0x "
-"and earlier, 18 for 5.10 and later). As far as NVDA is concerned, it is an "
-"overlay class that provides a number of services, including:"
+"* Routines for navigating and announcing various columns (most were "
+"eliminated in favor of using SysListView32 list item routines directly in "
+"2020)."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:318
-msgid "* Routines for navigating and announcing various columns."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:319
 msgid ""
 "* Announcing columns in specific order (see the next chapter on importance "
 "of column navigation)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:320
+#: ..\python_docs\spladdoninternals.py:319
 msgid ""
 "* For Studio, obtaining track comments if defined (see track comments "
 "section below)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:321
+#: ..\python_docs\spladdoninternals.py:320
 msgid ""
 "* For studio 5.10 and later, a routine to handle when check marks are "
 "checked (when you check a track by pressing SPACE, NVDA will announce the "
 "newly checked state and will update the braille display accordingly)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:322
+#: ..\python_docs\spladdoninternals.py:321
 msgid ""
 "We'll come back to track items when talking about columns later. For now, "
 "let's move onto two related features in Studio app module that works with "
@@ -2294,11 +2302,11 @@ msgid ""
 "deals with Track Finder, and we'll meet this feature in the next section."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:323
+#: ..\python_docs\spladdoninternals.py:322
 msgid "### Track Finder: Locating tracks given a search string"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:324
+#: ..\python_docs\spladdoninternals.py:323
 msgid ""
 "Track Finder allows you to search for tracks with the given artist or song "
 "title. This is done by performing a \"linear search\" - examining one track "
@@ -2307,7 +2315,7 @@ msgid ""
 "facility (cursorManager.FindDialog and its friends)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:325
+#: ..\python_docs\spladdoninternals.py:324
 msgid ""
 "Track finder is not limited to searching for artist or title: a variation of "
 "this dialog (called Column Search) allows you to search for text in specific "
@@ -2318,7 +2326,7 @@ msgid ""
 "user."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:326
+#: ..\python_docs\spladdoninternals.py:325
 msgid ""
 "In reality, Track Finder and Column Search are a single dialog (splmisc."
 "SPLFindDialog) that presents two dialogs (does this sound familiar?). For "
@@ -2327,11 +2335,11 @@ msgid ""
 "the complete refactoring of track finder and its applications)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:327
+#: ..\python_docs\spladdoninternals.py:326
 msgid "#### Original track Finder: commands, routines and controls"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:328
+#: ..\python_docs\spladdoninternals.py:327
 msgid ""
 "To use Track Finder, press Control+NVDA+F (wait, I saw this command before). "
 "For anyone who are accustomed to NVDA's browse mode, this command would be "
@@ -2345,7 +2353,7 @@ msgid ""
 "results were not found."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:329
+#: ..\python_docs\spladdoninternals.py:328
 msgid ""
 "Two other commands are used as part of Track Finder: Find next and previous, "
 "assigned to NVDA+F3 and NVDA+Shift+F3, respectively (they also come from "
@@ -2356,11 +2364,11 @@ msgid ""
 "various parameters, and one of them is search direction)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:330
+#: ..\python_docs\spladdoninternals.py:329
 msgid "#### Track Finder 1.0 versus 2.0"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:331
+#: ..\python_docs\spladdoninternals.py:330
 msgid ""
 "In add-on version 2.0 to 5.x, when told to find tracks, NVDA will look for "
 "search term in track descriptions (in case you are searching for artist in "
@@ -2368,20 +2376,20 @@ msgid ""
 "artist name). Although this was simple to implement, it had some issues:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:332
+#: ..\python_docs\spladdoninternals.py:331
 msgid ""
 "1. Because of track item changes in Studio 5.10, I had to spend some time "
 "adjusting the track finder formula."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:333
+#: ..\python_docs\spladdoninternals.py:332
 msgid ""
 "2. Wehn finding a track in a playlist with hundreds of tracks loaded, "
 "finding a track at the end of the playlist took several seconds, and this "
 "wasn't acceptable to users."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:334
+#: ..\python_docs\spladdoninternals.py:333
 msgid ""
 "In add-on 6.0, thanks to column search, Track Finder's performance was "
 "improved. Also, track finder was split into two functions: trackFinder still "
@@ -2391,17 +2399,17 @@ msgid ""
 "this, as you'll see in the next section."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:335
+#: ..\python_docs\spladdoninternals.py:334
 msgid ""
 "For both versions, the signature of trackFinder method (linear search "
 "routine in 1.0, search results manager in 2.0) in the Studio app module is:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:336
+#: ..\python_docs\spladdoninternals.py:335
 msgid "\ttrackFinder(self, text, obj, directionForward=True, column=None)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:337
+#: ..\python_docs\spladdoninternals.py:336
 msgid ""
 "Text is the search term, obj is where the search should begin, direction "
 "specifies search direction and column is used if Column Search is used "
@@ -2409,13 +2417,13 @@ msgid ""
 "add an \"s\" to column keyword."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:338
+#: ..\python_docs\spladdoninternals.py:337
 msgid ""
 "## Method resolution  order and importance of column navigation in track "
 "items, Track Tool and other features"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:339
+#: ..\python_docs\spladdoninternals.py:338
 msgid ""
 "In the previous section, you saw how overlay classes work, as well as how "
 "track items in Studio are defined and used. We'll continue our tour of track "
@@ -2425,12 +2433,12 @@ msgid ""
 "order."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:340
+#: ..\python_docs\spladdoninternals.py:339
 msgid ""
 "### Method resolution order: locating commands and defining command scope"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:341
+#: ..\python_docs\spladdoninternals.py:340
 msgid ""
 "If multiple classes (objects) are defined, especially if inheritance is "
 "involved, it becomes hard to determine which method is which and where "
@@ -2439,7 +2447,7 @@ msgid ""
 "(Python supports both scenarios)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:342
+#: ..\python_docs\spladdoninternals.py:341
 msgid ""
 "One way Python solves this is through Method Resolution Order (MRO). Simply "
 "put, when a method is to be used, it first looks at whether this method is "
@@ -2447,7 +2455,7 @@ msgid ""
 "parent of this object."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:343
+#: ..\python_docs\spladdoninternals.py:342
 msgid ""
 "For example, suppose we have a list box that defines a scroll method, and a "
 "custom list box widget inherits from this list box (in effect, custom list "
@@ -2459,7 +2467,7 @@ msgid ""
 "Python will use the parent's scroll method)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:344
+#: ..\python_docs\spladdoninternals.py:343
 msgid ""
 "In terms of NVDA, method resolution order comes in handy when dealing with "
 "overlay classes. This has wide ranging consequences, including ability to "
@@ -2470,80 +2478,72 @@ msgid ""
 "command to the active program."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:345
+#: ..\python_docs\spladdoninternals.py:344
 msgid "### Finishing the puzzle: MRO and Studio's track items"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:345
+msgid ""
+"As described in the previous section, Studio app module defines three "
+"classes for track items: abstract base class for tracks found in Studio and "
+"other apps, a class representing track items found throughout Studio, and "
+"another for representing playlist viewer track items. In reality, all that "
+"matters is the first two, with the playlist viewer item class providing "
+"custom routines on top of the Studio track item class. In case of MRO, "
+"playlist viewer item class will be consulted if playlist viewer is in use, "
+"otherwise main Studio track item class will be consulted, which in turn will "
+"consult SPL track item base class. Other apps such as Track Tool and Remote "
+"VT client have their own MRO, ultimately consulting SPL track item base "
+"class defined in Studio app module."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:346
 msgid ""
-"As described in the previous section, Studio app module defines three "
-"classes for track items: base class for tracks found in Studio and other "
-"apps, a class representing Studio 5.0x items, and another for 5.1x. In "
-"reality, all that matters is the first two, with the 5.10 class providing "
-"custom routines on top of the 5.0x track item class. In case of MRO, Studio "
-"5.10 will be consulted if 5.10 is in use, then NVDA will consult Studio "
-"track item. For 5.0x, only original track item class will be consulted."
+"The most important job of appModules.splstudio.SPLTrackItem class is "
+"announcing column data. Prior to 2020, it also housed column navigation "
+"commands and routines such as next and previous column, handler for Track "
+"Dial (historical), and a dedicated routine to announce column information "
+"given column number and optional header. In 2020, only Columns Explorer "
+"remains."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:347
 msgid ""
-"The contents of the base track item class (appModules.splstudio."
-"SPLTrackItem) are as follows:"
+"On top of the base SPL track item class is general Studio track item class, "
+"which does nothing, as it is meant to represent tracks in places such as "
+"Insert Tracks dialog. However the class that represents playlist viewer "
+"items (appModules.splstudio.StudioPlaylistViewerItem) adds routines and "
+"scripts for use from playlist viewer. These include:"
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:348
-msgid ""
-"* initOverlayClass: This is run when the track item is first encountered. "
-"This method checks if Track Dial (see below) is active, and if so, assigns "
-"left and right arrow keys to Track Dial functions."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:349
-msgid ""
-"* Track column navigation: Various methods and scripts used by Track Dial "
-"and friends are defined, including announcing column information, handling "
-"leftmost column and so on. Add-on 8.0 adds Columns Explorer routines, and "
-"17.04 adds vertical column navigation support."
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:350
-msgid ""
-"Studio track item class for 5.0x (appModules.splstudio.SPLStudioTrackItem) "
-"adds:"
-msgstr ""
-
-#: ..\python_docs\spladdoninternals.py:351
 msgid ""
 "* reportFocus: This is called when reporting track items to you "
 "(broadcaster). It's main job is to see if custom column order is defined "
 "(see below) and builds needed pieces if column order is specified."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:352
+#: ..\python_docs\spladdoninternals.py:349
 msgid ""
 "* Track comments: Routines related to working with comments for traks (see "
 "the previous section for details)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:353
-msgid ""
-"In addition, Studio 5.10 track item (appModules.splstudio."
-"SPLStudio510TrackItem) includes a script to announce changed state when "
-"SPACE is pressed (this is done by speaking and/or brailling track name (obj."
-"name))."
+#: ..\python_docs\spladdoninternals.py:350
+msgid "* Announcing toggle state of tracks when Space is pressed."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:354
+#: ..\python_docs\spladdoninternals.py:351
 msgid "### Birth of Track Dial: from hesitation to possibilities"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:355
+#: ..\python_docs\spladdoninternals.py:352
 msgid ""
 "Note: Information on Track Dial is kept for reference purposes. Track Dial "
 "was deprecated in 2017 with the release of add-on 17.04."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:356
+#: ..\python_docs\spladdoninternals.py:353
 msgid ""
 "As I was writing the add-on, one of the top suggestions I received was "
 "ability to use enhanced arrow keys feature to review columns. This feature "
@@ -2552,7 +2552,7 @@ msgid ""
 "writing, all three screen reader scripts support this feature."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:357
+#: ..\python_docs\spladdoninternals.py:354
 msgid ""
 "At first, I told broadcasters that this wasn't possible. My impression back "
 "then (summer 2014) was that I had to manipulate track description text (obj."
@@ -2561,7 +2561,7 @@ msgid ""
 "NVDA users, thus I started researching this in fall 2014."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:358
+#: ..\python_docs\spladdoninternals.py:355
 msgid ""
 "I started by looking for patterns in description text that could be used to "
 "give users an impression that column navigation was active (when it was "
@@ -2574,11 +2574,11 @@ msgid ""
 "Dial to life."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:359
+#: ..\python_docs\spladdoninternals.py:356
 msgid "### The magic behind Track Dial: SysListView32 controls"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:360
+#: ..\python_docs\spladdoninternals.py:357
 msgid ""
 "SysListView32 controls are lists with items organized into columns. For "
 "example, certain apps use these controls to arrange entries into columns, "
@@ -2586,7 +2586,7 @@ msgid ""
 "various status about encoders."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:361
+#: ..\python_docs\spladdoninternals.py:358
 msgid ""
 "When these controls are encountered, NVDA allows you to use table navigation "
 "commands (Control+Alt+arrows) to navigate between columns, provided that "
@@ -2604,27 +2604,27 @@ msgid ""
 "repowered by SysListView32.ListItem class."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:362
+#: ..\python_docs\spladdoninternals.py:359
 msgid ""
 "Until 2018, the column text retrieval routine (which lives in SysListView32 "
 "and a copy lives in splstudio.splmisc module) was as follows:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:363
+#: ..\python_docs\spladdoninternals.py:360
 msgid ""
 "1. Features requiring text from a specific column will call a private "
 "function in splstudio.splmisc module, which will take the current object and "
 "the column index as parameters."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:364
+#: ..\python_docs\spladdoninternals.py:361
 msgid ""
 "2. The column retriever first looks up the handle for the process where the "
 "control lives, then creates a place holder for the buffer to hold the column "
 "content."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:365
+#: ..\python_docs\spladdoninternals.py:362
 msgid ""
 "3. Next, it looks at the size of the underlying sysListView32 control "
 "(ctypes.sizeof) and asks Windows to allocate storage for an internal "
@@ -2633,7 +2633,7 @@ msgid ""
 "store the actual column text by calling VirtualAllocEx."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:366
+#: ..\python_docs\spladdoninternals.py:363
 msgid ""
 "4. The retriever then creates an internal SysListView32 control used as a "
 "place holder to store column text, then asks Windows to tell the process "
@@ -2645,43 +2645,44 @@ msgid ""
 "create_unicode_buffer, allocated to store the resulting text)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:367
+#: ..\python_docs\spladdoninternals.py:364
 msgid ""
 "5. Lastly, the retriever frees resources (VirtualFreeEx) and returns the "
 "just retrieved column text, which can be used by routines requesting this."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:368
+#: ..\python_docs\spladdoninternals.py:365
 msgid "In 2018, this was simplified by use of SysListView32 routines directly."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:369
+#: ..\python_docs\spladdoninternals.py:366
 msgid ""
 "### Column retrieval and navigation routines: from hesitation to a "
 "cornerstone"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:370
+#: ..\python_docs\spladdoninternals.py:367
 msgid ""
 "Column content retrieval routine has become one of the cornerstones of this "
-"add-on. In addition to Track Dial, ten other routines uses it: Column "
+"add-on. In addition to Track Dial, ten other routines rely on it: Column "
 "Search, track place marker, column announcement order, Track Columns "
 "Explorer, vertical column navigation, playlist snapshots, playlist "
-"transcripts, Creator and Track Tool app modules, and when working with SAM "
-"encoder entries. Let's find out how seven of these work in more detail "
-"(playlist snapshots and transcripts are described under SPL Assistant "
-"section, as they deserve sections of their own)."
+"transcripts, Creator and Track Tool app modules, playlist editor found in "
+"Creator and Remote VT client, and when working with SAM encoder entries. "
+"Let's find out how seven of these work in more detail (playlist snapshots "
+"and transcripts are described under SPL Assistant section, as they deserve "
+"sections of their own)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:371
+#: ..\python_docs\spladdoninternals.py:368
 msgid "#### Track Dial: Navigating columns in track items"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:372
+#: ..\python_docs\spladdoninternals.py:369
 msgid "Note: no longer applicable since 17.04, included here for completeness."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:373
+#: ..\python_docs\spladdoninternals.py:370
 msgid ""
 "The column retriever routine is just one of the activities performed during "
 "Track Dial, and to see the beauty of this feature, assign a command to "
@@ -2698,7 +2699,7 @@ msgid ""
 "Dial flag will be cleared."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:374
+#: ..\python_docs\spladdoninternals.py:371
 msgid ""
 "When navigating columns, NVDA will check if you are at the edge of the track "
 "row, and if so, it will play a beep and repeat the last column text. If not, "
@@ -2707,7 +2708,7 @@ msgid ""
 "text."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:375
+#: ..\python_docs\spladdoninternals.py:372
 msgid ""
 "To handle differences between Studio 5.0x and 5.1x, each track item class "
 "informs NVDA as to how leftmost column should be handled. For Studio 5.0x, "
@@ -2715,11 +2716,11 @@ msgid ""
 "checked status is \"shown\" in Studio 5.10 (obj.name will be announced)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:376
+#: ..\python_docs\spladdoninternals.py:373
 msgid "#### Custom column announcement order: What to announce and how"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:377
+#: ..\python_docs\spladdoninternals.py:374
 msgid ""
 "Track Dial routine also allowed another top request to come to life: column "
 "announcement order. This allows you (broadcaster) to hear columns in "
@@ -2727,7 +2728,7 @@ msgid ""
 "housed in reportFocus method in the main track item class."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:378
+#: ..\python_docs\spladdoninternals.py:375
 msgid ""
 "In order to use this, you must tell NVDA to not use screen order (add-on "
 "settings dialog). Then open column announcement dialog and check the columns "
@@ -2736,7 +2737,7 @@ msgid ""
 "and down."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:379
+#: ..\python_docs\spladdoninternals.py:376
 msgid ""
 "Once column order and included columns are defined, NVDA will use this "
 "information to build track item description text. This is done by repeatedly "
@@ -2745,7 +2746,7 @@ msgid ""
 "combination of a list and str.join is used)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:380
+#: ..\python_docs\spladdoninternals.py:377
 msgid ""
 "For example, if NVDA is told to announce title and artist (in that specific "
 "order), NVDA will first locate title, then will add artist information. This "
@@ -2754,11 +2755,11 @@ msgid ""
 "by the column header announcement checkbox in add-on settings."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:381
+#: ..\python_docs\spladdoninternals.py:378
 msgid "#### Track Columns Explorer: Retrieve information from specific columns"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:382
+#: ..\python_docs\spladdoninternals.py:379
 msgid ""
 "In add-on 7.0, it became possible to let NVDA announce information from "
 "specific columns. This is done by letting NVDA assign SPL Assistant, 1 "
@@ -2768,47 +2769,47 @@ msgid ""
 "Explorer)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:383
+#: ..\python_docs\spladdoninternals.py:380
 msgid ""
 "In addition to using column retriever routine in Track Dial, Columns "
 "Explorer needs to know Studio version in use, as Studio 5.1x shows columns "
 "not found in Studio 5.0x (this is checked when entering SPL Assistant as "
 "discussed later). In addition, since not all track items expose more than "
 "ten columns or column slots cannot be configured for some items (notably "
-"Creator's Playlist Editor), Columns Exploer needs to know how many columns "
+"Creator's Playlist Editor), Columns Explorer needs to know how many columns "
 "can be retrieved and take action if no column slot can be defined."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:384
+#: ..\python_docs\spladdoninternals.py:381
 msgid ""
 "Once column slots are defined (for items allowing configuring column slots, "
 "which are Studio's Playlist Viewer, Track Tool, and Creator's main tracks "
 "list, Columns Explorer performs the following:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:385
+#: ..\python_docs\spladdoninternals.py:382
 msgid ""
 "1. Checks if you are indeed focused on a track item, and if not, it'll say "
 "\"not a track\"."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:386
+#: ..\python_docs\spladdoninternals.py:383
 msgid ""
 "2. Consults a list of column slots and locates corresponding column index "
 "for the slot in question."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:387
+#: ..\python_docs\spladdoninternals.py:384
 msgid ""
 "3. Uses column retriever routine to announce column header and content for "
 "the selected column slot."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:388
+#: ..\python_docs\spladdoninternals.py:385
 msgid "##### Optimization bonus: I've rearranged columns in studio 5.10..."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:389
+#: ..\python_docs\spladdoninternals.py:386
 msgid ""
 "Due to different control data structure in use, one can rearrange columns in "
 "Studio 5.10 and later. But how does NVDA know exactly which column is which? "
@@ -2821,11 +2822,11 @@ msgid ""
 "presentation changes on screen."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:390
+#: ..\python_docs\spladdoninternals.py:387
 msgid "##### What about items where column slots cannot be configured?"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:391
+#: ..\python_docs\spladdoninternals.py:388
 msgid ""
 "For items other than Studio's Playlist Viewer, Track Tool, and Creator's "
 "main tracks list, Columns Explorer slots cannot be configured (hence absence "
@@ -2835,22 +2836,22 @@ msgid ""
 "track item does not show more than ten columns, Columns Explorer will "
 "announce an error message if current column position is out of bounds "
 "(beyond column count for the track item). These were done in order to "
-"support Playlsit Editor properly as track items in there only shows eight "
+"support Playlist Editor properly as track items in there only shows eight "
 "columns."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:392
+#: ..\python_docs\spladdoninternals.py:389
 msgid "#### Column Search: Finding text in specific columns"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:393
+#: ..\python_docs\spladdoninternals.py:390
 msgid ""
 "In the previous section, I mentioned that a single dialog performs double "
 "duty when talking about Track Finder. We'll now tour the other side of the "
 "coin: Column Search."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:394
+#: ..\python_docs\spladdoninternals.py:391
 msgid ""
 "Column Search dialog adds a second control to Track Finder: a list of "
 "columns. Once text is entered to be searched in a column, NVDA will use "
@@ -2865,30 +2866,30 @@ msgid ""
 "error dialog."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:395
+#: ..\python_docs\spladdoninternals.py:392
 msgid ""
 "So what causes one dialog to present both Track Finder and Column Search "
 "dialog? It's all thanks to the arguments passed into the find dialog "
 "constructor. The signature is:"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:396
+#: ..\python_docs\spladdoninternals.py:393
 msgid "\tsplmisc.SPLFindDialog(parent, obj, text, title, columnSearch=False)"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:397
+#: ..\python_docs\spladdoninternals.py:394
 msgid ""
 "The last argument (columnSearch) determines which version of the dialog to "
 "present. The object (obj) is needed to tell NVDA where to begin the search "
 "and to call the track finder routine defined in the object's app module."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:398
+#: ..\python_docs\spladdoninternals.py:395
 msgid ""
 "#### Track Place Marker: A variation of column search for finding filenames"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:399
+#: ..\python_docs\spladdoninternals.py:396
 msgid ""
 "Another feature that uses column routines is track place marker. You would "
 "drop a place marker at the current track (SPL Assistant, Control+K), move "
@@ -2896,7 +2897,7 @@ msgid ""
 "Assistant, K)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:400
+#: ..\python_docs\spladdoninternals.py:397
 msgid ""
 "Once you drop a place marker, Studio app module will record the filename of "
 "the currently focused track, and when you wish to move to the marked track, "
@@ -2907,11 +2908,11 @@ msgid ""
 "for)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:401
+#: ..\python_docs\spladdoninternals.py:398
 msgid "#### Vertical column navigation: just announce the column I want"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:402
+#: ..\python_docs\spladdoninternals.py:399
 msgid ""
 "Ever since implementing Track Dial, some broadcasters requested adding "
 "support for moving through tracks vertically (as in reading specific columns "
@@ -2921,15 +2922,26 @@ msgid ""
 "just the column the user wants when Control+Alt+up/down arrow is pressed, "
 "all controlled by a hidden class variable. This feature not only works for "
 "vertical column navigation - it is also used when a broadcaster requests "
-"only one column be announced, and the column to be announced can be customed "
-"(not to be confused with column announcement order routine discussed above)."
+"only one column be announced, and the column to be announced can be "
+"customized (not to be confused with column announcement order routine "
+"discussed above)."
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:403
+#: ..\python_docs\spladdoninternals.py:400
+msgid ""
+"Vertical column navigation was simplified in 2020 by using routines found in "
+"SysListView32 list item class directly. Prior to 2020, custom vertical "
+"navigation routines were used, and for places other than playlist viewer, "
+"vertical column navigation was impossible. In 2020, vertical column "
+"navigation routines from SysListView32 are used, which also introduced "
+"vertical navigation to places such as Track Tool."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:401
 msgid "#### Track Tool and Creator: one routine, multiple app modules"
 msgstr ""
 
-#: ..\python_docs\spladdoninternals.py:404
+#: ..\python_docs\spladdoninternals.py:402
 msgid ""
 "Column retriever routine is not only employed by Studio app module, but is "
 "also used in Track Tool and Creator app modules (part of the add-on). These "
@@ -2937,6 +2949,22 @@ msgid ""
 "reviewing column data via table navigation commands and announcing column "
 "information (Control+NVDA+1  through 0, now termed Columns Explorer for "
 "Track Tool/SPL Creator)."
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:403
+msgid "#### Playlist editor: column navigation keeps expanding"
+msgstr ""
+
+#: ..\python_docs\spladdoninternals.py:404
+msgid ""
+"Creator comes with Playlist Editor, a tool to manage locally generated "
+"playlists. Remote VT client also comes with a dedicated playlist editor but "
+"is designed to edit playlists stored remotely. Track items shown on the "
+"playlist editor window are indeed SPL track items, and as such they support "
+"column navigation. Because they only come with up to 8 columns, there is no "
+"need to provide custom Columns Explorer feature for these items. Other than "
+"that, it supports other column announcement and navigation features found in "
+"other track items."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:405
@@ -3020,18 +3048,14 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:415
 msgid ""
-"A decade ago, people thought a single core CPU was enough to run multiple "
+"Years ago, people thought a single core CPU was enough to run multiple "
 "programs. This involved the processor spending small fraction of a second "
 "devoted to each program. Nowadays, it has become common to see desktops, "
 "laptops, smartphones and other small devices using at least two cores "
-"(termed multi-core; two cores is dubbed \"dual core\"). As of 2017, many "
+"(termed multi-core; two cores is dubbed \"dual core\"). As of 2020, many "
 "computers use processors with four cores (dubbed \"quad core\"), while "
-"enthusiasts prefer more cores (the current record holder for desktop "
-"computers (as of July 2017) is 18, held by Intel Core I9-7980XE, a 3 GHz "
-"unlocked processor which costs 2000 dollars; for servers where more cores "
-"are used, the current record holder is a group of eight processors (octa "
-"processor) called Intel Xeon E7-8895V3, with each processor boasting "
-"eighteen cores with base speed of 2.6 GHz)."
+"enthusiasts prefer more cores (it is common nowadays to see PC's and servers "
+"boasting upwards of ten cores or more)."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:416
@@ -3093,7 +3117,7 @@ msgid ""
 "execution. A single process (app) can have as many threads as it desires "
 "(minimum is one for the main thread). Each thread can be asked to perform "
 "certain operations with other threads in parallel, which can range from a "
-"single, repetative task (part of a function) to being responsible for an "
+"single, repetitive task (part of a function) to being responsible for an "
 "entire module or a significant part of the program. In case of antivirus "
 "example above, each scanner thread is responsible for scanning an entire "
 "drive, with each of them reporting its progress to a manager thread which "
@@ -3277,19 +3301,19 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:446
 msgid ""
-"A. If you tell NVDA to announce scan progress, NVDA will say, \"scanning\" "
+"\t* If you tell NVDA to announce scan progress, NVDA will say, \"scanning\" "
 "and/or play a beep (if told to do so)."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:447
 msgid ""
-"B. If NVDA is told to announce scan count, number of items scanned so far "
+"\t* If NVDA is told to announce scan count, number of items scanned so far "
 "will be announced (again with or without a beep)."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:448
 msgid ""
-"C. This reporter function will not be invoked if you tell NVDA to ignore "
+"\t* This reporter function will not be invoked if you tell NVDA to ignore "
 "library scan completely or ask it to interupt you only when the overall scan "
 "is complete (you can press Alt+NVDA+R to cycle through different library "
 "scan announcement settings)."
@@ -3350,7 +3374,7 @@ msgid ""
 "automation programs, including StationPlaylist Studio includes facilities to "
 "manage jingles (sometimes called carts), including defining a cart to be "
 "played when cart keys are pressed, announcing the name of the playing cart "
-"and saving uer specific carts to a safe location."
+"and saving specific carts to a safe location."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:456
@@ -3433,7 +3457,7 @@ msgid ""
 "Next, I read JAWS script documentation to get a glimpse of how Brian has "
 "managed to implement cart learn mode. In JAWS scripts, script settings are "
 "stored in the user configuration directory (typically this is %systemdrive%"
-"\\Users\\%username%\\AppDate\\Roaming\\Freedom Scientific\\JAWS\\%JAWSVersion"
+"\\Users\\%username%\\AppData\\Roaming\\Freedom Scientific\\JAWS\\%JAWSVersion"
 "%\\Settings\\Enu; Brian, please correct me if I'm wrong). A section of this "
 "script configuration file is dedicated to carts, and JAWS scripts use a map "
 "of key names and cart values to announce cart information while cart learn "
@@ -3446,8 +3470,8 @@ msgid ""
 "broadcasters would store cart assignments in a configuration database. This "
 "was prone to a number of errors, including wrong cart name format, "
 "nonexistent cart key assignment, invalid configuration format and others. I "
-"once wrote a blog post (on this blog) explaining how this worked (times have "
-"changed, as you'll see very soon)."
+"once wrote a blog post (on my personal blog) explaining how this worked "
+"(times have changed, as you'll see very soon)."
 msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:467
@@ -3547,7 +3571,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:479
 msgid ""
-"1. When entering Cart Explorer, Car Explorer preparation routine (splmisc."
+"1. When entering Cart Explorer, Cart Explorer preparation routine (splmisc."
 "cartExplorerInit) will take a snapshot of your user name and Studio edition "
 "(Studio's title bar indicates which version is in use). Then it initializes "
 "the carts dictionary and stores the Studio edition in use."
@@ -3580,7 +3604,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:483
 msgid ""
-"A. Depending on Studio edition, this helper will work with only the first "
+"\t1. Depending on Studio edition, this helper will work with only the first "
 "half (Standard will only work with function keys, which are the first twelve "
 "columns of this row) or the entire row (the rest are number row keys) will "
 "be processed."
@@ -3588,7 +3612,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:484
 msgid ""
-"B. Depending on column position (items in the row list), it will see if "
+"\t2. Depending on column position (items in the row list), it will see if "
 "function keys or number row keys should be assigned to the selected cart "
 "entry. This routine also checks the type of the cart bank (modifiers or none "
 "(main)) and modifies the cart key name accordingly."
@@ -3596,7 +3620,7 @@ msgstr ""
 
 #: ..\python_docs\spladdoninternals.py:485
 msgid ""
-"C. Next, the helper routine will try to locate the name of the jingle "
+"\t3. Next, the helper routine will try to locate the name of the jingle "
 "assigned to the cart key in question, and if there is one, it'll add the "
 "cart key and jingle name pair into the carts dictionary."
 msgstr ""

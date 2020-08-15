@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: October 2019
+Revision: July 2020
 
 ## Introduction
 
@@ -14,9 +14,9 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of October 2019 revision, one or two features from upcoming NVDA 2019.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update).
+Note: some of the features described may change as Windows 10 and NvDA development progresses. As of August 2020 revision, features from upcoming NVDA 2020.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
 
-Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2019 Joseph Lee and others, released under GPL 2.
+Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2020 Joseph Lee and contributors, released under GPL 2.
 
 ## Introducing Windows 10
 
@@ -41,7 +41,7 @@ There is a fifth pillar that has emerged in recent years: providing a testing gr
 
 ## Add-on contents
 
-The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps that comes with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, along with UIA event tracking and logger facility. Until 2018, the global plugin was also responsible for add-on update feature, documented here for sake of completeness.
+The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps included with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, along with UIA event tracking and logger facility. Until 2018, the global plugin was also responsible for add-on update feature, documented here for sake of completeness.
 
 In regards to app modules, these were included to either provide workarounds or enhance the user experience. For example, the app module for Settings app (systemsettings) allows NVDA to announce Windows Update download and installation progress, and app module for UWP frame host (shellexperiencehost) includes a workaround for menu expanded status problem in Start menu. We'll meet some of these app modules in subsequent sections.
 
@@ -147,7 +147,7 @@ In addition, in some cases, it is helpful to announce how many suggestions have 
 
 Since NVDA 2017.3, suggestion announcement (not the count) is part of the screen reader.
 
-Note that the routines described above was done at a time when it was desirable to detect all possible search fields. However, it was found that some workarounds were app specific, thus in June 2019, it was decided to transfer some search field handling to app modules. This is especially the case with address omnibar in Microsoft Edge (EdgeHTML version) where the global plugin’s suggestions closed event handler did not apply if Edge is in use. Along the way, handling rarely used search fields that appeared in one or two apps (such as People app search field in old app releases) were dropped.
+Note that the routines described above was done at a time when it was desirable to detect all possible search fields. However, it was found that some workarounds were app specific, thus in June 2019, it was decided to transfer some search field handling to app modules. This is especially the case with address omnibar in legacy Microsoft Edge (EdgeHTML version) where the global plugin’s suggestions closed event handler did not apply if Edge is in use. Along the way, handling rarely used search fields that appeared in one or two apps (such as People app search field in old app releases) were dropped.
 
 #### Announcing notifications
 
@@ -185,7 +185,7 @@ For notification events, NVDA records event parameters from the event handler me
 
 A looping selector is a combo box-like control where the selection loops around. This is employed in places such as Alarms and Clock, Settings/Update and Security/Windows Update/active hours and so on.
 
-In older Windows 10 and universal app releases, when changing selector values, item selected UIA event wasn't fired. To get around this, the add-on will examine states for each item and announce if an item has selected state. This isn't the case for newer implementations, but for backward compatibility, the old routines are kept. This has been enhanced in NVDA 2019.1, and since June 2019, the add-on is no longer involved in keeping an eye on this control.
+In older Windows 10 and universal app releases, when changing selector values, item selected UIA event wasn't fired. To get around this, the add-on will examine states for each item and announce if an item has selected state. This isn't the case for newer implementations, but for backward compatibility, the old routines are kept. This has been enhanced in NVDA 2019.1, and since June 2019, the add-on is no longer involved in keeping an eye on this control as NVDA supports it natively.
 
 #### Live region change events
 
@@ -221,6 +221,7 @@ The modules and enhancers/fixers applied are:
 * Microsoft Store: announce needed information when live region changed event is fired by some controls, aliases to support old and new Store versions (the old alias, winstore_mobile, is no more).
 * Modern keyboard/text input host: support for emoji panel, dictation, hardware input suggestions, and pasting clipboard items (Version 1809), part of NVDA since 2018.3.
 * MSN Weather: use up or down arrow keys to read forecast information.
+* Open With: announce open with dialog content in recent Windows 10 releases.
 * People: announcing first suggestion when looking for a contact.
 * Settings: selectively announce various status information, provide correct labels for certain controls.
 * Shell Experience Host: work around some UIA state information mismatch and announce item status in Action Center. Action Center support, including reclassifying brightness button as a proper button is now part of NVDA 2019.1.
@@ -243,7 +244,7 @@ In build 17666 and later, this panel has been redesigned. Instead of using Tab k
 
 Build 18305 and later brought another design change to this panel. In addition to selecting emojis, it also hosts two new grand categories named kaomoji ("face characters" in Japanese) and symbols. When one presses Tab, one will eventually reach category list with three items: emoji, kaomoji, and symbols. Just like selecting emoji categories, pressing Enter will switch the panel among these modes.
 
-Build 18963 renamed Modern Keyboard to Text Input Host, along wth bringing refined version of Input Method Editor (IME) for certain languages. For languages such as Japanese, the modern IME hosted by Text Input Host is used.
+Build 18963 renamed Modern Keyboard to Text Input Host, along with bringing refined version of Input Method Editor (IME) for certain languages. For languages such as Japanese, the modern IME hosted by Text Input Host is used.
 
 When this panel opens, a menu open event is fired by the emoji panel (File Explorer in build 18305 and later), an event NVDA does not detect for performance reasons. As items are selected, an item selected event is fired, to which NVDA responds by walking the panel in a tree-like fashion in order to locate the item selected. The actual announcement of emoji characters depends on synthesizers; currently, recent SAPI5 and OneCore (aka SAPI Mobile) voices and Espeak nG ships with definitions of emoji characters, expanded to cover other synthesizers in NVDA 2018.4
 
@@ -263,6 +264,7 @@ The app modules (and for one in particular, more than an app module) in question
 * People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event.
 * Cortana (searchui.py)/new Start menu and Windows Search experience (searchapp.py): classic Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases. In recent Windows 10 releases, due to Windows Search redesign (which also involve changing executable for Windows Search to searchapp), search box content instead of result details is announced, or if results are announced, they are announced twice.
 * Cortana conversations (cortana.py): similar to classic Cortana, Cortana's responses are announced.
+* Open With (openwith.py): announces open with dialog content, used to select an app when opening unknown file types.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).
 * Shell Experience Host (shellexperiencehost.py): in Action Center, toggling some quick actions causes item status change event to be logged. NVDA will announce the new status if appropriate.
 * Microsoft Store (winstore_app.py): just like Settings app, status messages are announced, this time dealing with product downloads such as apps and multimedia content.
@@ -274,8 +276,8 @@ As noted above, some controls ship with odd or bad UIA implementations, and univ
 * Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
 * Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). This workaround is no longer applicable due to Windows Search redesign in Version 1903. Also, when opening Sets version of Cortana search box (builds 17666 and 17692), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
 * Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
-* Microsoft Edge (microsoftedge.py and microsoftedgecp.py): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
-* Settings and Store: for some controls (such as wehn downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects, and in case of certain Windows 10 Version 1809 installations, the correct label is the name of the first child.
+* Microsoft Edge (microsoftedge.py and microsoftedgecp.py, legacy version): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
+* Settings and Store: for some controls (such as when downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects, and in case of certain Windows 10 Version 1809 installations, the correct label is the name of the first child.
 * Shell Experience Host: for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018.
 
 ### A tale on app module and executable names

@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NvDA 20.04
+Based on StationPlaylist Add-on for NvDA 20.07
 
 ## 2020 Preface and notes
 
@@ -16,7 +16,7 @@ Then came 2019, and so did Python 3, abstract classes, and new encoder types. Th
 
 In 2020, the add-on is going through another major change: removal of unnecessary features and splitting broadcast profiles management from add-on settings dialog. In the old days, add-on settings management was intimately tied to broadcast profiles, and that was the reason why broadcast profiles panel was an integral part of add-on settings dialog. In early 2020, several bugs stemming from design decisions years ago came to light such as applying settings changes to wrong profile. Together with a need to make add-on settings panels independent of each other in order to allow users to open alarms panel from anywhere (described later), it was decided to split broadcast profiles panel into its own dialog.
 
-Another big change in 2020 is removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout is being phased out. Another feature being removed is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
+Another big change in 2020 is removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout is being phased out. Another removed feature is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
 
 ## Introduction
 
@@ -68,6 +68,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 19.01: add-on update feature removed, compatibility flags with future NVDA releases.
 * 19.07: renaming the add-on, settings reload/reset.
 * 20.02: Python 3, restructured encoders support and new encoders, Creator's Playlist Editor support.
+* 20.06: removed Window-Eyes support, time-based broadcast profiles facility removed, support for Remote VT client.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -77,21 +78,21 @@ To download the add-on, go to https://addons.nvda-project.org/addons/StationPlay
 
 ### Overall design and source code layout
 
-StationPlaylist add-on for NVDA consists of six app modules (including two app module packages) and a global plugin. Because Studio and Creator come with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. The other two app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an app module package due to inclusion of encoders support module which is also used by Streamer.
+StationPlaylist add-on for NVDA consists of seven app modules (including two app module packages) and a global plugin. Because Studio and Creator come with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module package for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. Remote VT client is the fifth app module and is mainly used to support remote playlist editor. The other two app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an app module package due to inclusion of encoders support module which is also used by Streamer.
 
 The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and parts of encoder support).
 
-When it comes to hierarchy of app modules, Studio app module package is ranked highest. This is because Studio app module is the oldest part of the add-on, and it provides base services and blueprints for other app modules. For instance, Creator and Track Tool relies on configuration facility provided by Studio app module package for Columns Explorer (explained later), and Voice Track (VT) Recorder app module cannot function properly without Studio app module running. Even though SPL Engine and Streamer are independent of Studio app module, they still require Studio app module to function (this is especially the case with SPL Engine, as Studio loads splengine.exe, the DSP Engine executable).
+When it comes to hierarchy of app modules, Studio app module package is ranked highest. This is because Studio app module is the oldest part of the add-on, and it provides base services and blueprints for other app modules. For instance, Creator and Track Tool rely on configuration facility provided by Studio app module package for Columns Explorer (explained later), and Voice Track (VT) Recorder app module cannot function properly without Studio app module running. Even though SPL Engine and Streamer are independent of Studio app module, they still require Studio app module to function (this is especially the case with SPL Engine, as Studio loads splengine.exe, the DSP Engine executable).
 
 In short, all components of StationPlaylist add-on emphasize studio app module - although many components are independent of Studio, they still reference it for various reasons. Thus, Studio serves as the bridge that connects various add-on features together.
 
 The source code consists of:
 
-* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator, VT Recorder, SPL DSP Engine (package), and Streamer.
+* appModules: This folder contains the main splstudio (app module) package and the app modules for Track Tool, Creator, VT Recorder, Remote VT client, SPL DSP Engine (package), and Streamer.
 * The SPL Studio package consists of various modules, which include __init__ (main app module and track item classes), configuration manager and user interfaces (splconfig and splconfui) and miscellaneous services (splmisc) as well as support modules and various wave files used by the add-on.
 * The SPL Engine package consists of main Engine module and encoder support module.
 * The main app module file is divided into sections. First, the overlay classes for track items are defined, then comes the app module, further divided into four sections: fundamental methods (constructor, events and others), time commands (end of track, broadcaster time, etc.), other commands (track Finder, cart explorer and others) and SPL Assistant layer. This allows me to identify where a bug is coming from and to add features in appropriate sections.
-* globalPlugins: This folder contains SPLStudioUtils package, which consists of __init__ (main plugin and SPL Controller layer).
+* globalPlugins: This folder contains SPLUtils module, consisting of main global plugin code and SPL Controller layer.
 
 Note: until 2019, encoder support was part of SPL Utils. In 2020, it is part of SPL DSP Engine app module package.
 
@@ -164,10 +165,10 @@ As noted previously, the SPL Studio app module (splstudio/__init__.py) and frien
 * Imports: Many modules from Python packages and from NVDA screen reader are imported here, including IAccessible controls support, configuration manager and so on.
 * Layer command wrapper: I talked about how layer commands work in a previous section, and the "finally" function at the top is the one that makes this possible.
 * Few helper functions and checks: This includes a flag specifying minimum version of Studio needed, the cached value for Studio window handle (SPLWin) and place holders for threads such as microphone alarm timer (more on this in threads section). This section also includes helper functions such as "messageSound" (displays a message on a braille display and plays a wave file) and other helper functions.
-* Track item overlay classes: three classes are defined for various purposes. The first is a base class that provides commands and services across Studio and other apps, while other two classes provide support for Playlist Viewer items in Studio 5.0x and 5.1x, respectivley. We'll come back to these objects later.
+* Track item overlay classes: three classes are defined for various purposes. The first is a base class that provides commands and services across Studio and other apps, while other two classes provide support for tracks found throughout Studio (one is a general track items class, the other is specific to playlist viewer). We'll come back to these objects later.
 * App module class: This is the core of not only the app module, but the entire add-on package. The app module class (appModules.splstudio.AppModule) is further divided into sections as described in add-on design chapter.
 
-For Studio's colleagues (Creator and Track Tool), they consist of sections listed above except layer command wrapper, and track item classes are simplified. For VT Recorder, because it controls certain internal behaviors of Studio app module when it starts, only the constructor and terminate methods (see below) are provided. For Streamer and DSP Engine, encoder specific workarounds are present.
+For Studio's colleagues (Creator, Track Tool, Remote VT client), they consist of sections listed above except layer command wrapper, and track item classes are simplified. For VT Recorder, because it controls certain internal behaviors of Studio app module when it starts, only the constructor and terminate methods (see below) are provided. For Streamer and DSP Engine, encoder specific workarounds are present.
 
 Let's now tour the lifecycle of the app module object in question: before and during app module initialization, activities performed while the app module is active, death and (until 2018) add-on updates.
 
@@ -195,7 +196,7 @@ This is a must because the default app module constructor performs important act
 
 ### Birth: app module construction
 
-Certain app module add-ons shipts with an app module with a constructor define, and SPL Studio is one of them; in 2018, constructors were added to Creator and Track Tool for various purposes. After calling the base constructor as described above, SPL app module's constructor (__init__ method that runs when the app module starts) does the following:
+Certain app module add-ons shipt with an app module with a constructor define, and SPL Studio is one of them; in 2018, constructors were added to Creator and Track Tool for various purposes, and Remote VT client ships with a constructor similar to Creator app module. After calling the base constructor as described above, SPL app module's constructor (__init__ method that runs when the app module starts) does the following:
 
 1. Checks whether a supported version of Studio is running, and if not, raises RuntimeError exception, preventing you from using the app module while an unsupported version of Studio is in use (as of add-on 17.04, you need to use Studio 5.10 and later).
 2. Unless silenced by `globalVars.appArgs.minimal` being True, NVDA announces, "Using SPL Studio version 5.01" if Studio 5.01 is in use (of course, NVDA will say 5.10 when Studio 5.10 is in use). This is done via ui.message function (part of NVDA Core) which lets you hear spoken messages or read the message on a braille display. In reality, ui.message function calls two functions serially (one after the other): speech.speakMessage (speaking something via a synthesizer) and braille.handler.message (brailling messages on a braille display if connected).
@@ -208,10 +209,8 @@ Certain app module add-ons shipts with an app module with a constructor define, 
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
 	8. Between add-on 7.0 and 18.12, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, prior to being removed, update initialization was moved to app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
-	9. Prepares routines used by time-based profile switching facility by loading triggers map and checking if NVDA should switch to the next profile (this is done if the show associated with the given profile hasn't ended yet). See time-based profile section for details.
-	10. Encoder settings file is loaded, and if ConfigObj throws errors, encoder settings will be reset to defaults.
-	11. In add-on 8.0, track comments are loaded (if any). See track items section for details.
-	12. Although not part of the init routine, starting from 17.12, various modules register one or more functions for action notifications. See extension points section for details.
+	9. In add-on 8.0, track comments are loaded (if any). See track items section for details.
+	10. Although not part of the init routine, starting from 17.12, various modules register one or more functions for action notifications. See extension points section for details.
 4. Starting with NVDA 2015.3, it became possible for an app module to request NVDA to monitor certain events for certain controls even if the app is not being used. This is done by calling eventHandler.requestEvents function with three arguments: process ID, window class for the control in question and the event to be monitored. For earlier versions of NVDA (checked via built-in hasattr function), this step is skipped, and background status monitor flag is then set accordingly. We'll discuss event handling throughout this article.
 5. Next, GUI subsystem is initialized (NVDA uses wxPython). This routine adds an entry in NVDA's preferences menu entitled "SPL Studio Settings", the add-on configuration dialog.
 6. As described above, the app module will look for the window handle for the Studio app. In order to avoid this routine consuming resources and making NVDA not responsive, this is done in a separate thread. The thread performs the following:
@@ -226,8 +225,8 @@ In add-on 17.10, several internal flags and associated command-line switches are
 
 The flags are as follows:
 
-1. Do not save changes to disk (configVolatile/--spl-configvolatile): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
-2. Load normal profile only (normalProfileOnly/--spl-confignormalonly): broadcast profiles will not be used, including ability to create new profiles and using time-based profile switching (see time-based profiles section for details). Combining this with configIsVolatile flag effectively makes normal profile a read-only config store.
+1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed in 20.09): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
+2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): broadcast profiles will not be used, including ability to create new profiles and using time-based profile switching (see time-based profiles section for details). Combining this with NVDA setting to not have configuration to disk on exit effectively makes normal profile a read-only config store.
 3. Use in-memory config (configInMemory/--spl-configinmemory): only normal profile will be used, but instead of loading settings from disk, an in-memory version with default settings applied will be used with no caching at all.
 
 Using flags that specify the use of normal profile only will restrict ability to create new broadcast profiles.
@@ -353,27 +352,27 @@ Here, complete time refers to time including seconds. Normally, when you press N
 
 Studio app module comes with three alarms: song outro (ending), intro/ramp,  and microphone active alarm. Because we need to talk about some important things when talking about microphone alarm, we'll just tour the routine used when setting up the intro and outro alarms.
 
-When you press Alt+NVDA+1 or Alt+NVDA+2 to open end of track or song intro alarm dialogs, the dialog will display two controls:
+Prior to 2020, separate dialogs were used to configure song outro and intro alarm settings. In 2020, these have been combined into one command that opens Alarms category in SPL add-on settings. The mechanism behind the former method is documented for completeness.
+
+The following two controls are used to configure song outro and intro settings from Alarms settings (Alt+NVDA+1):
 
 * Alarm setting: a spin box (a sping control) is used to adjust alarm values. You can type the alarm value or use up or down arrow to change the value. If an incorrect value is entered, the maximum value (59 for end of track, 9 for song intro) will be used.
 * Notification check box: This sets whether alarm will play or not.
-
-In reality, a single dialog (splconfui.AlarmsCenter class) presents these two alarm dialogs (there are two additional dialogs, covered in the next section). The type of dialog to be shown is controled by an integer which denotes which dialog text to present. The process is outlined below:
-
-1. Just before the dialog opens, checks if another dialog or the add-on settings dialog is opened, and if so, NVDA will ask you to close the previously opened dialog first.
-2. Tells NVDA that an alarm dialog is opened. This is meant to prevent the same dialog from being opened repeatedly.
-3. After the dialog is dismissed (either a new value is set or you click Cancel), NVDA clears the alarm opened flag, thereby letting other dialogs to be shown. 
 
 We'll learn how the alarm values are stored and retrieved in the configuration management section, and you'll get to meet how intro and outro alarms work in the next chapter.
 
 #### Alarms Center
 
-This single dialog that presents different alarm controls is known as 'Alarms Center". In fact, not only this dialog houses end of track and track intro alarms, it includes microphone alarm controls, and all that's needed to change its appearance is a single integer that specifies which portion of the dialog should be shown. In case of Alarms Center dialog presented from add-on settings (see a later chapter on add-on configuration), all alarm controls will be shown (level = 0), with different levels controlling what controls should be shown as follows:
+Prior to introduction of Alarms category in SPL add-on settings, separate dialogs were used to configure various alarm settings. In reality, it was really one dialog class called Alarms Center that presented different settings based on an internal flag.
+
+True to its name and function, Alarms Center not only housed end of track and track intro alarms, it included microphone alarm controls, and all that was needed to change its appearance was a single integer that specified which portion of the dialog was shown. In case of Alarms Center dialog presented from an older version of add-on settings (see a later chapter on add-on configuration), all alarm controls were shown (level = 0), with different levels controlling what controls were shown as follows:
 
 * 0: Alarms Center, displays all controls.
 * 1: End of track alarm.
 * 2: Track intro alarm.
 * 3: Microphone alarm controls.
+
+Alarms Center was removed in 2020 in favor of standardizing around alarm settings category.
 
 ### Toggle settings
 
@@ -472,7 +471,7 @@ One of the questions I and other add-on authors and NVDA developers received was
 
 In graphical user interfaces (GUI's), an object is a more technical term for controls (sometimes called widgets). This includes windows, form fields, links, documents and so on. A control (object) can convey information such as state of the control, location, color and so on (the control contains both visible and internal attributes that can be used by other programs).
 
-In NVDA world, all screen elements (controls) are objects. As such, when dealing with objects, NVDA uses accessibility API's to obtain needed information. To provide consistent user experience, differences between accessibility API's (IAccessible, UI Automation, Java Access Bridge and so on) are checked and provides a mechanism to announce same information across controls implemented using different frameworks. For example, when a check box is checked, NVDA will say "checked"" - NVDA will know if you checked this box because the underlying accessibility API informs NVDA of this change, and the same information is spoken regardless of whether it is dealing with IAccessible, UIA and so on.
+In NVDA world, all screen elements (controls) are objects. As such, when dealing with objects, NVDA uses accessibility API's to obtain needed information. To provide a consistent user experience, differences between accessibility API's (IAccessible, UI Automation, Java Access Bridge and so on) are abstracted and provides a mechanism to announce same information across controls implemented using different frameworks. For example, when a check box is checked, NVDA will say "checked"" - NVDA will know if you checked this box because the underlying accessibility API informs NVDA of this change, and the same information is spoken regardless of whether it is dealing with IAccessible, UIA and so on.
 
 Currently, NVDA can work with IAccessible, User Interface Automation (UIA), Java Access Bridge (JAB) and others (WAI ARIA is supported). Support modules for these API's lives in source/NVDAObjects directory of the NVDA Core source code.
 
@@ -488,7 +487,7 @@ In essence, overlay classes are subclasses of stable API classes (subclasses are
 
 ### Why do objects and overlay classes matter in Studio app module?
 
-Some readers might ask this question after reading the above section on overlay classes. I had to introduce overlay classes because they are important in Studio app module: track items in playlist Viewer are overlay classes. In fact, there are at least three of them: a base object representing track items for studio and other apps (appModules.splstudio.SPLTrackItem), a generic representation of Studio track item (appModules.splstudio.SPLStudioTrackItem), and Studio 5.10 track item (appModules.splstudio.SPLStudio510TrackItem; in case of 5.10, it derives its power from track item class for Studio 5.0x, which in turn is powered by Studio track item powered by IAccessible).
+Some readers might ask this question after reading the above section on overlay classes. I had to introduce overlay classes because they are important in Studio app module: track items in playlist Viewer are overlay classes. In fact, there are at least three of them: an abstract base class representing track items for studio and other apps (appModules.splstudio.SPLTrackItem), a generic representation of Studio track item (appModules.splstudio.SPLStudioTrackItem), and a playlist viewer (main window) track item (appModules.splstudio.StudioPlaylistViewerItem; in case of playlist viewer item class, it derives its power from track item class for Studio, which in turn is powered by abstract SPL track item powered by IAccessible).
 
 These classes were born when I started working on Studio 5.10 support in 2014. Because Studio 5.10 uses a different way of showing track properties, I had to come up with a way to take care of them. Adding to the urgency was the fact that Studio 5.10 uses check marks to indicate whether a track is selected for playback (Studio 5.0x and earlier uses check boxes), and when check marks are checked in Studio 5.10, NVDA would not announce newly checked state, fixed by defining a routine to be used when SPACE is pressed (via an overlay class). In addition, initial version of Track Finder (see below) was sensitive to object description changes, I modified it to account for differences between Studio versions.
 
@@ -496,11 +495,13 @@ Then in 2015, when I was designing Track Dial (next section), I thought about sc
 
 In 2018, as support for Columns Explorer was being worked on for Creator and Track Tool, I decided to overhaul the entire track item class hierarchy. Since track items would use same column navigation routines, it was decided to split SPL 5.0x track item class into two classes: the old track item class, and a new abstract class providing basic services for Studio, Creator and Track Tool track items. Also, in order to support column reordering, SysListView32 class was employed, as it provides a handy routine to retrieve column content for the correct column when columns were rearranged on screen.
 
+In 2020, SPL track item overlay classes were reworked. Because base SPL track item class was meant to serve as a blueprint, it became an abstract base class in 2019. What was formerly Studio 5.10 track item class became a specialist class for playlist viewer items, and old Studio 5.0x item class was revived to represent track items found in other parts of Studio such as Insert Tracks dialog. At the same time, column navigation services provided by the SPL track item base class was eliminated in favor of using facilities provided by SysListView32 list item class to provide consistency with NVDA itself and to add column navigation commands for Creator's playlist editor and Remote VT client (prior to this, SPL track item base provided customized column navigation commands).
+
 ### Track items overview
 
-Each track item in Studio's playlist viewer (and in extension, tracks list in Creator and Track Tool) consists of a row of columns (6 for Studio 5.0x and earlier, 18 for 5.10 and later). As far as NVDA is concerned, it is an overlay class that provides a number of services, including:
+Each track item in Studio (including playlist viewer), and in extension, tracks found in Creator, Track Tool, and Remote VT client, consists of a row of columns (6 for Studio 5.0x and earlier, 18 for playlist viewer in Studio 5.10 and later, may vary on other track lists). As far as NVDA is concerned, it is an overlay class that provides a number of services, including:
 
-* Routines for navigating and announcing various columns.
+* Routines for navigating and announcing various columns (most were eliminated in favor of using SysListView32 list item routines directly in 2020).
 * Announcing columns in specific order (see the next chapter on importance of column navigation).
 * For Studio, obtaining track comments if defined (see track comments section below).
 * For studio 5.10 and later, a routine to handle when check marks are checked (when you check a track by pressing SPACE, NVDA will announce the newly checked state and will update the braille display accordingly).
@@ -552,19 +553,15 @@ In terms of NVDA, method resolution order comes in handy when dealing with overl
 
 ### Finishing the puzzle: MRO and Studio's track items
 
-As described in the previous section, Studio app module defines three classes for track items: base class for tracks found in Studio and other apps, a class representing Studio 5.0x items, and another for 5.1x. In reality, all that matters is the first two, with the 5.10 class providing custom routines on top of the 5.0x track item class. In case of MRO, Studio 5.10 will be consulted if 5.10 is in use, then NVDA will consult Studio track item. For 5.0x, only original track item class will be consulted.
+As described in the previous section, Studio app module defines three classes for track items: abstract base class for tracks found in Studio and other apps, a class representing track items found throughout Studio, and another for representing playlist viewer track items. In reality, all that matters is the first two, with the playlist viewer item class providing custom routines on top of the Studio track item class. In case of MRO, playlist viewer item class will be consulted if playlist viewer is in use, otherwise main Studio track item class will be consulted, which in turn will consult SPL track item base class. Other apps such as Track Tool and Remote VT client have their own MRO, ultimately consulting SPL track item base class defined in Studio app module.
 
-The contents of the base track item class (appModules.splstudio.SPLTrackItem) are as follows:
+The most important job of appModules.splstudio.SPLTrackItem class is announcing column data. Prior to 2020, it also housed column navigation commands and routines such as next and previous column, handler for Track Dial (historical), and a dedicated routine to announce column information given column number and optional header. In 2020, only Columns Explorer remains.
 
-* initOverlayClass: This is run when the track item is first encountered. This method checks if Track Dial (see below) is active, and if so, assigns left and right arrow keys to Track Dial functions.
-* Track column navigation: Various methods and scripts used by Track Dial and friends are defined, including announcing column information, handling leftmost column and so on. Add-on 8.0 adds Columns Explorer routines, and 17.04 adds vertical column navigation support.
-
-Studio track item class for 5.0x (appModules.splstudio.SPLStudioTrackItem) adds:
+On top of the base SPL track item class is general Studio track item class, which does nothing, as it is meant to represent tracks in places such as Insert Tracks dialog. However the class that represents playlist viewer items (appModules.splstudio.StudioPlaylistViewerItem) adds routines and scripts for use from playlist viewer. These include:
 
 * reportFocus: This is called when reporting track items to you (broadcaster). It's main job is to see if custom column order is defined (see below) and builds needed pieces if column order is specified.
 * Track comments: Routines related to working with comments for traks (see the previous section for details).
-
-In addition, Studio 5.10 track item (appModules.splstudio.SPLStudio510TrackItem) includes a script to announce changed state when SPACE is pressed (this is done by speaking and/or brailling track name (obj.name)).
+* Announcing toggle state of tracks when Space is pressed.
 
 ### Birth of Track Dial: from hesitation to possibilities
 
@@ -594,7 +591,7 @@ In 2018, this was simplified by use of SysListView32 routines directly.
 
 ### Column retrieval and navigation routines: from hesitation to a cornerstone
 
-Column content retrieval routine has become one of the cornerstones of this add-on. In addition to Track Dial, ten other routines uses it: Column Search, track place marker, column announcement order, Track Columns Explorer, vertical column navigation, playlist snapshots, playlist transcripts, Creator and Track Tool app modules, and when working with SAM encoder entries. Let's find out how seven of these work in more detail (playlist snapshots and transcripts are described under SPL Assistant section, as they deserve sections of their own).
+Column content retrieval routine has become one of the cornerstones of this add-on. In addition to Track Dial, ten other routines rely on it: Column Search, track place marker, column announcement order, Track Columns Explorer, vertical column navigation, playlist snapshots, playlist transcripts, Creator and Track Tool app modules, playlist editor found in Creator and Remote VT client, and when working with SAM encoder entries. Let's find out how seven of these work in more detail (playlist snapshots and transcripts are described under SPL Assistant section, as they deserve sections of their own).
 
 #### Track Dial: Navigating columns in track items
 
@@ -620,7 +617,7 @@ For example, if NVDA is told to announce title and artist (in that specific orde
 
 In add-on 7.0, it became possible to let NVDA announce information from specific columns. This is done by letting NVDA assign SPL Assistant, 1 through 0 (6 for Studio 5.0x) to a function to obtain information from specific column (slot); add-on 8.0 changed these commands to use Control+NVDA+number row. This is called Track Columns Explorer (usually termed Coloumns Explorer).
 
-In addition to using column retriever routine in Track Dial, Columns Explorer needs to know Studio version in use, as Studio 5.1x shows columns not found in Studio 5.0x (this is checked when entering SPL Assistant as discussed later). In addition, since not all track items expose more than ten columns or column slots cannot be configured for some items (notably Creator's Playlist Editor), Columns Exploer needs to know how many columns can be retrieved and take action if no column slot can be defined.
+In addition to using column retriever routine in Track Dial, Columns Explorer needs to know Studio version in use, as Studio 5.1x shows columns not found in Studio 5.0x (this is checked when entering SPL Assistant as discussed later). In addition, since not all track items expose more than ten columns or column slots cannot be configured for some items (notably Creator's Playlist Editor), Columns Explorer needs to know how many columns can be retrieved and take action if no column slot can be defined.
 
 Once column slots are defined (for items allowing configuring column slots, which are Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer performs the following:
 
@@ -634,7 +631,7 @@ Due to different control data structure in use, one can rearrange columns in Stu
 
 ##### What about items where column slots cannot be configured?
 
-For items other than Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer slots cannot be configured (hence absence of "exploreColumns" property, notably in Creator's Playlist Editor in add-on 20.02). If so, Columns Explorer will resort to displaying data for columns shown in display order (as it appears on screen). As a bonus, if a track item does not show more than ten columns, Columns Explorer will announce an error message if current column position is out of bounds (beyond column count for the track item). These were done in order to support Playlsit Editor properly as track items in there only shows eight columns.
+For items other than Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer slots cannot be configured (hence absence of "exploreColumns" property, notably in Creator's Playlist Editor in add-on 20.02). If so, Columns Explorer will resort to displaying data for columns shown in display order (as it appears on screen). As a bonus, if a track item does not show more than ten columns, Columns Explorer will announce an error message if current column position is out of bounds (beyond column count for the track item). These were done in order to support Playlist Editor properly as track items in there only shows eight columns.
 
 #### Column Search: Finding text in specific columns
 
@@ -656,11 +653,17 @@ Once you drop a place marker, Studio app module will record the filename of the 
 
 #### Vertical column navigation: just announce the column I want
 
-Ever since implementing Track Dial, some broadcasters requested adding support for moving through tracks vertically (as in reading specific columns just like moving to a different row in a table). This also resolved an issue where pressing Control+Alt+up/down arrow keys caused the monitor to flip upside down. This is achieved by asking SPLTrackItem.reportFocus to announce just the column the user wants when Control+Alt+up/down arrow is pressed, all controlled by a hidden class variable. This feature not only works for vertical column navigation - it is also used when a broadcaster requests only one column be announced, and the column to be announced can be customed (not to be confused with column announcement order routine discussed above).
+Ever since implementing Track Dial, some broadcasters requested adding support for moving through tracks vertically (as in reading specific columns just like moving to a different row in a table). This also resolved an issue where pressing Control+Alt+up/down arrow keys caused the monitor to flip upside down. This is achieved by asking SPLTrackItem.reportFocus to announce just the column the user wants when Control+Alt+up/down arrow is pressed, all controlled by a hidden class variable. This feature not only works for vertical column navigation - it is also used when a broadcaster requests only one column be announced, and the column to be announced can be customized (not to be confused with column announcement order routine discussed above).
+
+Vertical column navigation was simplified in 2020 by using routines found in SysListView32 list item class directly. Prior to 2020, custom vertical navigation routines were used, and for places other than playlist viewer, vertical column navigation was impossible. In 2020, vertical column navigation routines from SysListView32 are used, which also introduced vertical navigation to places such as Track Tool.
 
 #### Track Tool and Creator: one routine, multiple app modules
 
 Column retriever routine is not only employed by Studio app module, but is also used in Track Tool and Creator app modules (part of the add-on). These app modules (specifically, track item classes) uses column retriever for reviewing column data via table navigation commands and announcing column information (Control+NVDA+1  through 0, now termed Columns Explorer for Track Tool/SPL Creator).
+
+#### Playlist editor: column navigation keeps expanding
+
+Creator comes with Playlist Editor, a tool to manage locally generated playlists. Remote VT client also comes with a dedicated playlist editor but is designed to edit playlists stored remotely. Track items shown on the playlist editor window are indeed SPL track items, and as such they support column navigation. Because they only come with up to 8 columns, there is no need to provide custom Columns Explorer feature for these items. Other than that, it supports other column announcement and navigation features found in other track items.
 
 ### Few remarks
 
@@ -682,7 +685,7 @@ But there's more to it than a simple description when it comes to looking at int
 
 ### Recent trends in computing: more and more processors in a single computer
 
-A decade ago, people thought a single core CPU was enough to run multiple programs. This involved the processor spending small fraction of a second devoted to each program. Nowadays, it has become common to see desktops, laptops, smartphones and other small devices using at least two cores (termed multi-core; two cores is dubbed "dual core"). As of 2017, many computers use processors with four cores (dubbed "quad core"), while enthusiasts prefer more cores (the current record holder for desktop computers (as of July 2017) is 18, held by Intel Core I9-7980XE, a 3 GHz unlocked processor which costs 2000 dollars; for servers where more cores are used, the current record holder is a group of eight processors (octa processor) called Intel Xeon E7-8895V3, with each processor boasting eighteen cores with base speed of 2.6 GHz).
+Years ago, people thought a single core CPU was enough to run multiple programs. This involved the processor spending small fraction of a second devoted to each program. Nowadays, it has become common to see desktops, laptops, smartphones and other small devices using at least two cores (termed multi-core; two cores is dubbed "dual core"). As of 2020, many computers use processors with four cores (dubbed "quad core"), while enthusiasts prefer more cores (it is common nowadays to see PC's and servers boasting upwards of ten cores or more).
 
 Despite the fact that many computers come equipped with multi-core processors, not all programs take advantage of this. Python interpreter is one of those programs, and since NVDA is a Python-based screen reader and due to its operational architecture, many of its operations cannot take advantage of multiple processors. Fortunately, Python provides a way to simulate this - run certain tasks in the background, and this is utilized by NVDA and some of its add-ons as you'll see in this section on library scan and microphone alarm.
 
@@ -696,7 +699,7 @@ A thread can be involved with parts of a task, devoted to a single task or multi
 
 ### Threads: a more geeky introduction
 
-A thread (sometimes termed "thread of execution) is an independent path of execution. A single process (app) can have as many threads as it desires (minimum is one for the main thread). Each thread can be asked to perform certain operations with other threads in parallel, which can range from a single, repetative task (part of a function) to being responsible for an entire module or a significant part of the program. In case of antivirus example above, each scanner thread is responsible for scanning an entire drive, with each of them reporting its progress to a manager thread which displays overall progress of a virus scan.
+A thread (sometimes termed "thread of execution) is an independent path of execution. A single process (app) can have as many threads as it desires (minimum is one for the main thread). Each thread can be asked to perform certain operations with other threads in parallel, which can range from a single, repetitive task (part of a function) to being responsible for an entire module or a significant part of the program. In case of antivirus example above, each scanner thread is responsible for scanning an entire drive, with each of them reporting its progress to a manager thread which displays overall progress of a virus scan.
 
 Using threads means each thread can execute on a processor core on a multi-core system. Because of this, many people would want many programs to take advantage of this and finish their jobs faster. However, threads introduce disadvantages, namely many days spent designing careful coordination routines between threads, preventing attempts by multiple threads to change a critical value that a manager thread depends on (called race condition) and so forth.
 
@@ -739,9 +742,9 @@ The library scan routine is performed as follows:
 3. Library scan thread will ask Studio to return number of items scanned (this is done every second) and will store the result for record keeping.
 4. After the scan result is obtained, the thread will check where you are in studio, and if you are back in Insert Tracks dialog, the thread will terminate (see step 1).
 5. Every five seconds, library scan thread will call a private function (which wants to see how many items were scanned and current library scan announcement setting) to announce library scan results as follows:
-A. If you tell NVDA to announce scan progress, NVDA will say, "scanning" and/or play a beep (if told to do so).
-B. If NVDA is told to announce scan count, number of items scanned so far will be announced (again with or without a beep).
-C. This reporter function will not be invoked if you tell NVDA to ignore library scan completely or ask it to interupt you only when the overall scan is complete (you can press Alt+NVDA+R to cycle through different library scan announcement settings).
+	* If you tell NVDA to announce scan progress, NVDA will say, "scanning" and/or play a beep (if told to do so).
+	* If NVDA is told to announce scan count, number of items scanned so far will be announced (again with or without a beep).
+	* This reporter function will not be invoked if you tell NVDA to ignore library scan completely or ask it to interupt you only when the overall scan is complete (you can press Alt+NVDA+R to cycle through different library scan announcement settings).
 6. Once library scanning is complete (after checking scan result value every second and seeing that the previous scan result and the current one have same values), NVDA will announce scan results (in some cases, number of items scanned will be announced). In Studio 5.10 and later, the library scan counter will not be defined when scan completes, which is more efficient than keeping track of equalities.
 
 You can imagine what would have happened if the above operation was not a background task: cannot perform other NVDA commands until library scan is complete, cannot cancel this operation and what not. And this is the signature of the thread that performs the above operation:
@@ -754,7 +757,7 @@ Despite limitations of Python's threading routines, if used properly, it can ope
 
 ## The magic behind Cart Explorer
 
-A live radio broadcast would not be complete without jingles. This can range from station promotions (often called "promos"), advertisements, jingles to convey the mood of a show, segment jingles and more. Many station automation programs, including StationPlaylist Studio includes facilities to manage jingles (sometimes called carts), including defining a cart to be played when cart keys are pressed, announcing the name of the playing cart and saving uer specific carts to a safe location.
+A live radio broadcast would not be complete without jingles. This can range from station promotions (often called "promos"), advertisements, jingles to convey the mood of a show, segment jingles and more. Many station automation programs, including StationPlaylist Studio includes facilities to manage jingles (sometimes called carts), including defining a cart to be played when cart keys are pressed, announcing the name of the playing cart and saving specific carts to a safe location.
 
 For blind broadcasters, one of the things they worry is pressing a wrong jingle key by accident, thus script writers were asked to implement a way for broadcasters to learn which carts are assigned to cart keys. As of time of this post, all three screen readers (JAWS for Windows (script author: Brian Hartgen), Window-Eyes (script author: Jeff Bishop), NVDA (script author: Joseph Lee (I, the author of this article)) includes a feature to learn jingle assignments. As this is an article on internals of an NVDA add-on, I'll give you an overview of what happens when you activate and explore cart assignments (in fact, this section was the most interesting and feedback driven portion of the add-on). Along the way you'll learn where Cart Explorer (NVDA's version of cart learn mode) draws its power and why it is very important.
 
@@ -774,9 +777,9 @@ It was a hot day in June 2014 when I sat down to design a way to let broadcaster
 
 When I started writing this feature, the first thing I thought about was its name. I felt "cart learn mode" didn't really convey the picture - after all, I reasoned that broadcasters will use this feature to explore cart assignments. Thus the name "Cart Explorer" was chosen - in effect, when you use this feature, you are browsing jingle assignments in preparation for a show.
 
-Next, I read JAWS script documentation to get a glimpse of how Brian has managed to implement cart learn mode. In JAWS scripts, script settings are stored in the user configuration directory (typically this is %systemdrive%\Users\%username%\AppDate\Roaming\Freedom Scientific\JAWS\%JAWSVersion%\Settings\Enu; Brian, please correct me if I'm wrong). A section of this script configuration file is dedicated to carts, and JAWS scripts use a map of key names and cart values to announce cart information while cart learn mode is active.
+Next, I read JAWS script documentation to get a glimpse of how Brian has managed to implement cart learn mode. In JAWS scripts, script settings are stored in the user configuration directory (typically this is %systemdrive%\Users\%username%\AppData\Roaming\Freedom Scientific\JAWS\%JAWSVersion%\Settings\Enu; Brian, please correct me if I'm wrong). A section of this script configuration file is dedicated to carts, and JAWS scripts use a map of key names and cart values to announce cart information while cart learn mode is active.
 
-Based on this information, I started writing an ini file parser, seeing that broadcasters would store cart assignments in a configuration database. This was prone to a number of errors, including wrong cart name format, nonexistent cart key assignment, invalid configuration format and others. I once wrote a blog post (on this blog) explaining how this worked (times have changed, as you'll see very soon).
+Based on this information, I started writing an ini file parser, seeing that broadcasters would store cart assignments in a configuration database. This was prone to a number of errors, including wrong cart name format, nonexistent cart key assignment, invalid configuration format and others. I once wrote a blog post (on my personal blog) explaining how this worked (times have changed, as you'll see very soon).
 
 Then I became curious as to how Studio stores its own cart banks, and naturally, I opened the folder where carts were stored and opened each .cart file in Notepad++ (a very handy text editor). From reading the cart bank format (explained below), I thought it might be useful to write a cart bank file parser. Thus I resumed writing Cart Explorer routines, this time incorporating the cart bank format, not forgetting to handle suttle errors, and this is the routine used in add-on releases up to 5.x (6.0 uses a completely different yet related routine, as you'll see).
 
@@ -798,13 +801,13 @@ But there was a major concern with this approach: what if a future version of St
 
 Since Python comes with a library to handle CSV files and since cart banks are CSV files, I rewrote Cart Explorer routine (a function in splmisc module which returns the carts dictionary) as follows:
 
-1. When entering Cart Explorer, Car Explorer preparation routine (splmisc.cartExplorerInit) will take a snapshot of your user name and Studio edition (Studio's title bar indicates which version is in use). Then it initializes the carts dictionary and stores the Studio edition in use.
+1. When entering Cart Explorer, Cart Explorer preparation routine (splmisc.cartExplorerInit) will take a snapshot of your user name and Studio edition (Studio's title bar indicates which version is in use). Then it initializes the carts dictionary and stores the Studio edition in use.
 2. Next, the preparation function will write down names and paths to cart banks. In case a user other than default user is using Studio, it'll modify the cart file names to match the name likely to be used by Studio to present user-specific cart banks. These cart names form one part of the cart bank path (the other part is the path to the folder where the carts live, obtained by using an environment variable).
 3. For each cart bank, NVDA will ask Python to parse the cart bank as a CSV file (csv.reader; when finished, it returns a list of lists, with each list representing one row of a CSV table).
 4. Once the csv version of the selected cart bank is ready, the row containing cart keys and cart names, together with the cart bank modifier and the carts dictionary are sent to a helper function (part of splmisc module) that will do the following:
-A. Depending on Studio edition, this helper will work with only the first half (Standard will only work with function keys, which are the first twelve columns of this row) or the entire row (the rest are number row keys) will be processed.
-B. Depending on column position (items in the row list), it will see if function keys or number row keys should be assigned to the selected cart entry. This routine also checks the type of the cart bank (modifiers or none (main)) and modifies the cart key name accordingly.
-C. Next, the helper routine will try to locate the name of the jingle assigned to the cart key in question, and if there is one, it'll add the cart key and jingle name pair into the carts dictionary.
+	1. Depending on Studio edition, this helper will work with only the first half (Standard will only work with function keys, which are the first twelve columns of this row) or the entire row (the rest are number row keys) will be processed.
+	2. Depending on column position (items in the row list), it will see if function keys or number row keys should be assigned to the selected cart entry. This routine also checks the type of the cart bank (modifiers or none (main)) and modifies the cart key name accordingly.
+	3. Next, the helper routine will try to locate the name of the jingle assigned to the cart key in question, and if there is one, it'll add the cart key and jingle name pair into the carts dictionary.
 5. Back at the cartExplorerInit function, if no erorrs were found while parsing a cart bank, it'll move onto the next one, otherwise it will inform the Studio app module by modifying a flag value in the carts dictionary (stored as an integer, representing number of cart bankks with errors).
 6. By now cartExplorerInit is desperate to pass the carts dictionary to someone, and this someone turns out to be the Studio app module - once picked up by the app module, carts dictionary is hired by you to look up cart names for cart keys while you use Cart Explorer (to fire the carts dictionary, simply deactivate Cart Explorer by pressing Control+NVDA+3).
 
