@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-15 20:26+0200\n"
-"PO-Revision-Date: 2020-08-15 20:27+0200\n"
+"PO-Revision-Date: 2020-08-19 13:20+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -206,10 +206,8 @@ msgid "# NVDA Add-on Development Guide"
 msgstr "# Guía de Desarrollo de Complementos de NVDA"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:34
-#, fuzzy
-#| msgid "Latest version: March 2020 for NVDA 2019.3"
 msgid "Latest version: July 2020 for NVDA 2020.2"
-msgstr "Última versión: marzo de 2020 para NVDA 2019.3"
+msgstr "Última versión: julio de 2020 para NVDA 2020.2"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:35
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:145
@@ -436,86 +434,61 @@ msgstr ""
 "y-metodos-basicos-utiles-de-nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:69
-#, fuzzy
-#| msgid "    - [More new terms please](#user-content-more-new-terms-please)"
 msgid "    - [Some real-life examples](#user-content-some-real-life-examples)"
-msgstr "    - [Más términos nuevos por favor](#mas-terminos-nuevos-por-favor)"
+msgstr ""
+"    - [Algunos ejemplos de la vida real](#algunos-ejemplos-de-la-vida-real)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:70
-#, fuzzy
-#| msgid ""
-#| "    - [Example 1: am I on the right app where the focus is located?]"
-#| "(#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located)"
 msgid ""
 "        - [Example 1: am I on the right app where the focus is located?]"
 "(#user-content-example-1-am-i-on-the-right-app-where-the-focus-is-located)"
 msgstr ""
-"    - [Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el "
+"        - [Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el "
 "foco?](#ejemplo-1-estoy-en-la-aplicacion-correcta-donde-se-encuentra-el-foco)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:71
-#, fuzzy
-#| msgid ""
-#| "    - [Example 2: Display a message in a browse mode document](#user-"
-#| "content-example-2-display-a-message-in-a-browse-mode-document)"
 msgid ""
 "        - [Example 2: Display a message in a browse mode document](#user-"
 "content-example-2-display-a-message-in-a-browse-mode-document)"
 msgstr ""
-"    - [Ejemplo 2: Mostrar un mensaje en un documento en modo exploración]"
+"        - [Ejemplo 2: Mostrar un mensaje en un documento en modo exploración]"
 "(#ejemplo-2-mostrar-un-mensaje-en-un-documento-en-modo-exploracion)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:72
-#, fuzzy
-#| msgid ""
-#| "    - [Example 3: Announce the automation ID of a UIA object](#user-"
-#| "content-example-3-announce-the-automation-id-of-a-uia-object)"
 msgid ""
 "        - [Example 3: Announce the automation ID of a UIA object](#user-"
 "content-example-3-announce-the-automation-id-of-a-uia-object)"
 msgstr ""
-"    - [Ejemplo 3: Anunciar el ID de automatización de un objeto UIA]"
+"        - [Ejemplo 3: Anunciar el ID de automatización de un objeto UIA]"
 "(#ejemplo-3-anunciar-el-id-de-automatizacion-de-un-objeto-uia)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:73
-#, fuzzy
-#| msgid ""
-#| "    - [Example 4: Send keystrokes](#user-content-example-4-send-"
-#| "keystrokes)"
 msgid ""
 "        - [Example 4: Send keystrokes](#user-content-example-4-send-"
 "keystrokes)"
 msgstr ""
-"    - [Ejemplo 4: Enviar pulsaciones de teclas](#ejemplo-4-enviar-"
+"        - [Ejemplo 4: Enviar pulsaciones de teclas](#ejemplo-4-enviar-"
 "pulsaciones-de-teclas)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:74
-#, fuzzy
-#| msgid ""
-#| "    - [Example 5: Stop speech whenever screen content changes if dynamic "
-#| "content change announcement is off](#user-content-example-5-stop-speech-"
-#| "whenever-screen-content-changes-if-dynamic-content-change-announcement-is-"
-#| "off)"
 msgid ""
 "        - [Example 5: Stop speech whenever screen content changes if dynamic "
 "content change announcement is off](#user-content-example-5-stop-speech-"
 "whenever-screen-content-changes-if-dynamic-content-change-announcement-is-"
 "off)"
 msgstr ""
-"    - [Ejemplo 5: Detener la voz cada vez que cambie el contenido de la "
+"        - [Ejemplo 5: Detener la voz cada vez que cambie el contenido de la "
 "pantalla si el anuncio de cambio de contenido dinámico está desactivado]"
 "(#ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-la-pantalla-"
 "si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:75
-#, fuzzy
-#| msgid ""
-#| "        - [Example 1: A Basic Dialog](#user-content-example-1-a-basic-"
-#| "dialog)"
 msgid ""
 "        - [Example 6: using script decorator](#user-content-example-6-using-"
 "script-decorator)"
-msgstr "        - [Ejemplo 1: un diálogo básico](#ejemplo-1-un-dialogo-basico)"
+msgstr ""
+"        - [Ejemplo 6: uso del decorador script](#ejemplo-6-uso-del-decorador-"
+"script)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:76
 msgid ""
@@ -599,35 +572,26 @@ msgstr ""
 "(#ejemplo-2-un-diccionario-de-scripts-basico-y-un-mensaje-de-salida)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:87
-#, fuzzy
-#| msgid ""
-#| "    - [Example 3: Scripts for specific objects](#user-content-example-3-"
-#| "scripts-for-specific-objects)"
 msgid ""
 "    - [Example 3: script information using script decorator](#user-content-"
 "example-3-script-information-using-script-decorator)"
 msgstr ""
-"    - [Ejemplo 3: Scripts para objetos específicos](#ejemplo-3-scripts-para-"
-"objetos-especificos)"
+"    - [Ejemplo 3: información del script usando el decorador script]"
+"(#ejemplo-3-información-del-script-usando-el-decorador-script)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:88
-#, fuzzy
-#| msgid "    - [Driver components](#user-content-driver-components)"
 msgid ""
 "        - [Script decorator arguments](#user-content-script-decorator-"
 "arguments)"
-msgstr "    - [Componentes del controlador](#componentes-del-controlador)"
+msgstr ""
+"        - [Argumentos del decorador script](#argumentos-del-decorador-script)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:89
-#, fuzzy
-#| msgid ""
-#| "    - [Example 3: Scripts for specific objects](#user-content-example-3-"
-#| "scripts-for-specific-objects)"
 msgid ""
 "    - [Example 4: Scripts for specific objects](#user-content-example-4-"
 "scripts-for-specific-objects)"
 msgstr ""
-"    - [Ejemplo 3: Scripts para objetos específicos](#ejemplo-3-scripts-para-"
+"    - [Ejemplo 4: Scripts para objetos específicos](#ejemplo-4-scripts-para-"
 "objetos-especificos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:90
@@ -650,15 +614,11 @@ msgid "    - [Events](#user-content-events)"
 msgstr "    - [Eventos](#eventos)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:93
-#, fuzzy
-#| msgid ""
-#| "    - [Example 4: Announcing the changed name of a control](#user-content-"
-#| "example-4-announcing-the-changed-name-of-a-control)"
 msgid ""
 "    - [Example 5: Announcing the changed name of a control](#user-content-"
 "example-5-announcing-the-changed-name-of-a-control)"
 msgstr ""
-"    - [Ejemplo 4: Anunciar el nombre cambiado de un control](#ejemplo-4-"
+"    - [Ejemplo 5: Anunciar el nombre cambiado de un control](#ejemplo-5-"
 "anunciar-el-nombre-cambiado-de-un-control)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:94
@@ -926,16 +886,12 @@ msgid "    - [Threading](#user-content-threading)"
 msgstr "    - [Concurrencia](#concurrencia)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:135
-#, fuzzy
-#| msgid "    - [Threading](#user-content-threading)"
 msgid "        - [Threading scenarios](#user-content-threading-scenarios)"
-msgstr "    - [Concurrencia](#concurrencia)"
+msgstr "        - [Escenarios de concurrencia](#escenarios-de-concurrencia)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:136
-#, fuzzy
-#| msgid "    - [Threading](#user-content-threading)"
 msgid "        - [Threading examples](#user-content-threading-examples)"
-msgstr "    - [Concurrencia](#concurrencia)"
+msgstr "        - [Ejemplos de concurrencia](#ejemplos-de-concurrencia)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:137
 msgid ""
@@ -950,8 +906,6 @@ msgid "- [Miscellaneous information](#user-content-miscellaneous-information)"
 msgstr "- [Información miscelánea](#informacion-miscelanea)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:139
-#, fuzzy
-#| msgid "- [Appendicies](#user-content-appendicies)"
 msgid "- [Appendices](#user-content-appendices)"
 msgstr "- [Apéndices](#apendices)"
 
@@ -1007,28 +961,21 @@ msgid "## Authors, Contributions, and Copyright"
 msgstr "## Autores, Colaboraciones y Copyright"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:148
-#, fuzzy
-#| msgid ""
-#| "This guide was originally written by Joseph Lee ([@josephsl](https://"
-#| "github.com/josephsl)), and is shaped by the NVDA user and developer "
-#| "community. As of March 2020, it is being maintained and revised by Luke "
-#| "Davis ([@XLTechie](https://github.com/XLTechie)). We welcome your "
-#| "feedback and contributions."
 msgid ""
 "This guide is primarily maintained, and was originally written, by Joseph "
 "Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA "
 "user and developer community. Luke Davis ([@XLTechie](https://github.com/"
 "XLTechie)) sometimes serves as editor."
 msgstr ""
-"Esta guía fue escrita originalmente por Joseph Lee ([@josephsl](https://"
-"github.com/josephsl)), y está diseñada por la comunidad de usuarios y "
-"desarrolladores de NVDA. Desde marzo de 2020, está siendo revisada y "
-"mantenida por Luke Davis ([@XLTechie](https://github.com/XLTechie)). "
-"Agradecemos vuestros comentarios y contribuciones."
+"Esta guía fue escrita originalmente y es mantenida principalmente por Joseph "
+"Lee ([@josephsl](https://github.com/josephsl)), y está diseñada por la "
+"comunidad de usuarios y desarrolladores de NVDA. Luke Davis ([@XLTechie]"
+"(https://github.com/XLTechie)) a veces ejerce como editor."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:149
 msgid "Valuable contributions and corrections from the community are welcome."
 msgstr ""
+"Las valiosas contribuciones y correcciones de la comunidad son bienvenidas."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:150
 msgid ""
@@ -1038,6 +985,11 @@ msgid ""
 "submitting your changes.** The correct name of this file is: **\"NVDA Add-on "
 "Development Guide.md\"**."
 msgstr ""
+"Si colaboras mediante el mecanismo del editor web de wikis de GitHub, ten en "
+"cuenta que, por defecto, dicho mecanismo cambia el nombre de este archivo "
+"sustituyendo todos los espacios con guiones (-). **Por favor, corrígelo "
+"antes de enviar tus cambios.** El nombre correcto de este archivo es: **"
+"\"NVDA Add-on Development Guide.md\"**."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:151
 msgid ""
@@ -1157,7 +1109,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:166
 msgid "This guide will use strictly Python 3 code."
-msgstr ""
+msgstr "Esta guía usará estrictamente código de Python 3."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:167
 msgid "### A special note for scripters of other screen readers"
@@ -1621,12 +1573,6 @@ msgstr ""
 "download/)."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:222
-#, fuzzy
-#| msgid ""
-#| "    - Even better: we recommend installing the latest master (alpha) or "
-#| "beta development version to keep up to date with core API changes. You "
-#| "can download the latest snapshots at https://community.nvda-project.org/"
-#| "wiki/Snapshots."
 msgid ""
 "    - Even better: we recommend installing the latest master (alpha) or beta "
 "development version to keep up to date with core API changes. You can "
@@ -1634,25 +1580,21 @@ msgid ""
 "snapshots/."
 msgstr ""
 "    - O incluso mejor: recomendamos instalar la última versión master "
-"(Alpha) o beta de desarrollo para mantenerse al día con los cambios en el "
-"API del núcleo.  Puedes descargar las últimas snapshots en https://community."
-"nvda-project.org/wiki/Snapshots."
+"(Alpha) o beta de desarrollo para mantenerse al día con los cambios en la "
+"API del núcleo.  Puedes descargar las últimas versiones de desarrollo en "
+"https://www.nvaccess.org/files/nvda/snapshots/."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:223
 msgid "* Python:"
 msgstr "* Python:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:224
-#, fuzzy
-#| msgid ""
-#| "    - Python 3.7 series, version 3.7.7 32-bit for Windows: https://www."
-#| "python.org/downloads/release/python-375/"
 msgid ""
 "    - Python 3.7 series, version 3.7.8 32-bit for Windows: https://www."
 "python.org/downloads/release/python-378/"
 msgstr ""
-"    - Series de Python 3.7, versión 3.7.7 de 32 bits para Windows: https://"
-"www.python.org/downloads/release/python-377/"
+"    - Series de Python 3.7, versión 3.7.8 de 32 bits para Windows: https://"
+"www.python.org/downloads/release/python-378/"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:225
 msgid ""
@@ -1660,17 +1602,16 @@ msgid ""
 "required for backward compatibility, we do not recommend using it in "
 "production environments."
 msgstr ""
+"    - Aunque la comunidad de complementos entiende que Python 2 podría ser "
+"necesario para dar compatibilidad hacia atrás, no recomendamos usarlo en "
+"entornos de producción."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:226
-#, fuzzy
-#| msgid ""
-#| "* SCons 3, version 3.0.1 or later for generating add-on packages: http://"
-#| "www.scons.org/"
 msgid ""
 "* SCons 3, version 3.1.2 or later for generating add-on packages: http://www."
 "scons.org/"
 msgstr ""
-"* Scons 3, versión 3.0.1 o posterior para generar paquetes de complementos: "
+"* SCons 3, versión 3.1.2 o posterior para generar paquetes de complementos: "
 "http://www.scons.org/"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:227
@@ -1721,21 +1662,16 @@ msgid "* Optional Items:"
 msgstr "* Elementos opcionales:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:234
-#, fuzzy
-#| msgid ""
-#| "    - Git 1.7.9 or later if you wish to upload the add-on to a repository "
-#| "such as [Bitbucket] or [Github] (optional. See below). You can use "
-#| "various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], "
-#| "and [TortoiseGit]."
 msgid ""
 "    - Git 2.25.0 or later if you wish to upload the add-on to a repository "
 "such as [Bitbucket] or [Github] (optional. See below). You can use various "
 "Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and "
 "[TortoiseGit]."
 msgstr ""
-"    - Git 1.7.9 o posterior si deseas subir el complemento a un repositorio "
+"    - Git 2.25.0 o posterior si deseas subir el complemento a un repositorio "
 "como [Bitbucket] o [Github] (opcional. Mira más abajo). Puedes utilizar "
-"varios clientes de Git, como [Git Bash], [Git de Cygwin], y [TortoiseGit]."
+"varios clientes de Git, como [Git Bash], [Git de Cygwin][Git para Cygwin], y "
+"[TortoiseGit]."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:235
 msgid ""
@@ -1775,17 +1711,14 @@ msgstr ""
 "automáticamente."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:239
-#, fuzzy
-#| msgid ""
-#| "Once you install the needed dependencies (see above), paste the Gettext "
-#| "package executables into this add-on folder."
 msgid ""
 "Once you install the needed dependencies (see above), paste the Gettext "
 "package executables into this add-on folder. Skip this if you plan to build "
 "your add-on using WSL Bash."
 msgstr ""
 "Una vez que instales las dependencias necesarias (mira arriba), pega los "
-"ejecutables del paquete Gettext en la carpeta del complemento."
+"ejecutables del paquete Gettext en la carpeta del complemento. Sáltate este "
+"paso si planeas construir tu complemento usando el Bash de WSL."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:240
 msgid "### Add-on folder structure"
@@ -2233,11 +2166,6 @@ msgstr ""
 "sobre los scripts más tarde en el viaje a través de la guía."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:290
-#, fuzzy
-#| msgid ""
-#| "6. Lastly, we wrote a simple dictionary (a collection) to store our "
-#| "command (script) bindings for our doBeep script. Here, we told NVDA to "
-#| "assign NVDA+A command for doBeep script."
 msgid ""
 "6. Lastly, we wrote a simple dictionary (a collection) to store our command "
 "(script) bindings for our doBeep script. Here, we told NVDA to assign NVDA+A "
@@ -2247,7 +2175,9 @@ msgid ""
 msgstr ""
 "6. Por último, escribimos un diccionario simple (una colección) para "
 "almacenar enlaces a nuestra orden (script) para nuestro script doBeep. Aquí, "
-"le dijimos a NVDA que asignase NVDA+A command para el script doBeep."
+"le dijimos a NVDA que asignase la orden NVDA+A para el script doBeep. Más "
+"tarde aprenderás un truco útil que te permitirá especificar los gestos del "
+"script y otra información al mismo tiempo que el propio script."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:291
 msgid ""
@@ -2730,10 +2660,6 @@ msgstr ""
 "para complementos de controladores de pantallas braille."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:350
-#, fuzzy
-#| msgid ""
-#| "* Build-in modules (builtin.py): Allows access to builtin modules when "
-#| "working with add-ons."
 msgid ""
 "* Built-in modules (builtin.py): Allows access to builtin modules when "
 "working with add-ons."
@@ -2755,6 +2681,9 @@ msgid ""
 "OCR and other methods to recognize content in various scenarios. NVDA ships "
 "with Windows 10 OCR engine."
 msgstr ""
+"* Motores de reconocimiento de contenido (paquetes contentRecog): añade la "
+"capacidad de utilizar OCR y otros métodos para reconocer contenido en "
+"diversos escenarios. NVDA incorpora un motor de OCR para Windows 10."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:353
 msgid ""
@@ -2858,16 +2787,13 @@ msgstr ""
 "de un complemento de controlador."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:364
-#, fuzzy
-#| msgid ""
-#| "* IAccessible support (IAccessibleHandler.py, IAccessible objects): Used "
-#| "for supporting Microsoft Active Accessibility (MSAA)/IAccessible controls."
 msgid ""
 "* IAccessible support (IAccessibleHandler, IAccessible objects): Used for "
 "supporting Microsoft Active Accessibility (MSAA)/IAccessible controls."
 msgstr ""
-"* Soporte para IAccessible (IAccessibleHandler.py, objetos IAccessible): Se "
-"utiliza para dar soporte a los controles IAccessible."
+"* Soporte para IAccessible (IAccessibleHandler, objetos IAccessible): Se "
+"utilizan para dar soporte a los controles Microsoft Active Accessibility "
+"(MSAA) / IAccessible."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:365
 msgid "* Input management (inputCore.py): Manages input from the user."
@@ -2972,21 +2898,16 @@ msgstr ""
 "con aplicaciones Java y Java Access Bridge."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:377
-#, fuzzy
-#| msgid ""
-#| "    - `NVDAObjects.UIA`: various classes for objects powered by UI "
-#| "Automation. Since 2016, it is also the home of a collection of controls "
-#| "used in Microsoft Edge and objects powered by EdgeHTML rendering engine."
 msgid ""
 "    - `NVDAObjects.UIA`: various classes for objects powered by UI "
 "Automation. Since 2016, it is also the home of a collection of controls used "
 "in legacy (not Chromium) Microsoft Edge and objects powered by EdgeHTML "
 "rendering engine."
 msgstr ""
-"    - `NVDAObjects.UIA`: varias clases para objetos impulsados por UI "
+"    - `NVDAObjects.UIA`: diversas clases para objetos impulsados por UI "
 "Automation. Desde 2016, también es el sitio de una colección de controles "
-"usados en Microsoft Edge y objetos promovidos por el motor de renderizado "
-"EdgeHTML."
+"usados en el antiguo Microsoft Edge (no Chromium) y objetos promovidos por "
+"el motor de renderizado EdgeHTML."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:378
 msgid ""
@@ -3017,6 +2938,10 @@ msgid ""
 "description (input help message), gesture/gestures (commands, the latter "
 "used for a list of gestures), and script category."
 msgstr ""
+"    - scriptHandler.script: un decorador que permite definir información "
+"sobre el script asociado mientras se define el propio script, incluyendo "
+"descripción (mensaje de ayuda de entrada), gesto o gestos (una orden o lista "
+"de órdenes), y la categoría del script."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:382
 msgid "* Speech output (speech): Controls speech output."
@@ -3159,23 +3084,22 @@ msgstr ""
 "durante la vida de un complemento."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:398
-#, fuzzy
-#| msgid "#### Threading examples"
 msgid "### Some real-life examples"
-msgstr "#### Ejemplos de concurrencia"
+msgstr "### Algunos ejemplos de la vida real"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:399
 msgid ""
 "Let's go through some simplified real-life examples demonstrating how the "
 "components listed above are used in common add-on writing scenarios."
 msgstr ""
+"Veamos algunos ejemplos simplificados de la vida real que demuestran cómo se "
+"utilizan los componentes listados más arriba en escenarios comunes de "
+"desarrollo de complementos."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:400
-#, fuzzy
-#| msgid "### Example 1: am I on the right app where the focus is located?"
 msgid "#### Example 1: am I on the right app where the focus is located?"
 msgstr ""
-"### Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el foco?"
+"#### Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el foco?"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:401
 msgid ""
@@ -3230,10 +3154,8 @@ msgstr ""
 "encuentra un objeto."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:410
-#, fuzzy
-#| msgid "### Example 2: Display a message in a browse mode document"
 msgid "#### Example 2: Display a message in a browse mode document"
-msgstr "### Ejemplo 2: Mostrar un mensaje en un documento en modo exploración"
+msgstr "#### Ejemplo 2: Mostrar un mensaje en un documento en modo exploración"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:411
 msgid ""
@@ -3257,10 +3179,8 @@ msgstr ""
 "La bandera isHtml indica a NVDA que trate el mensaje como un texto HTML."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:416
-#, fuzzy
-#| msgid "### Example 3: Announce the automation ID of a UIA object"
 msgid "#### Example 3: Announce the automation ID of a UIA object"
-msgstr "### Ejemplo 3: Anunciar el ID de automatización de un objeto UIA"
+msgstr "#### Ejemplo 3: Anunciar el ID de automatización de un objeto UIA"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:417
 msgid ""
@@ -3296,10 +3216,8 @@ msgid "\t\t\tui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)"
 msgstr "\t\t\tui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:426
-#, fuzzy
-#| msgid "### Example 4: Send keystrokes"
 msgid "#### Example 4: Send keystrokes"
-msgstr "### Ejemplo 4: Enviar pulsaciones de teclas"
+msgstr "#### Ejemplo 4: Enviar pulsaciones de teclas"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:427
 msgid ""
@@ -3324,15 +3242,11 @@ msgstr ""
 "\t\tkeyboardHandler.KeyboardInputGesture.fromName(\"applications\").send()"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:432
-#, fuzzy
-#| msgid ""
-#| "### Example 5: Stop speech whenever screen content changes if dynamic "
-#| "content change announcement is off"
 msgid ""
 "#### Example 5: Stop speech whenever screen content changes if dynamic "
 "content change announcement is off"
 msgstr ""
-"### Ejemplo 5: Detener la voz cada vez que cambie el contenido de la "
+"#### Ejemplo 5: Detener la voz cada vez que cambie el contenido de la "
 "pantalla si el anuncio de cambio de contenido dinámico está desactivado"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:433
@@ -3368,10 +3282,8 @@ msgid "\t\t\t\tspeech.cancelSpeech()"
 msgstr "\t\t\t\tspeech.cancelSpeech()"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:443
-#, fuzzy
-#| msgid "### Example 2: A basic script dictionary and message output"
 msgid "#### Example 6: using script decorator"
-msgstr "### Ejemplo 2: Un diccionario de scripts básico y un mensaje de salida"
+msgstr "#### Ejemplo 6: uso del decorador script"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:444
 msgid ""
@@ -3380,6 +3292,10 @@ msgid ""
 "the internals of a function or check something on behalf of another function "
 "without the wrapped function being aware of what's happening."
 msgstr ""
+"Un decorador es una función que envuelve y devuelve otra función tras "
+"realizar operaciones internas. Por ejemplo, un decorador puede hacer cambios "
+"en el interior de una función o comprobar algo en nombre de otra función sin "
+"que la función envuelta sea consciente de lo que está ocurriendo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:445
 msgid ""
@@ -3389,6 +3305,10 @@ msgid ""
 "(commands bound to this script), and script category can be assigned as you "
 "define the script."
 msgstr ""
+"En NVDA 2018.3, se introdujo un decorador especial llamado scriptHandler."
+"script para facilitar la definición de información de un script. Mientras se "
+"define el script, se pueden asignar su descripción (mensaje en el modo Ayuda "
+"de entrada), gesto o gestos (órdenes asociadas al script), y categoría."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:446
 msgid ""
@@ -3397,43 +3317,45 @@ msgid ""
 "it were defined in different places. You can group them by using script "
 "decorator (scriptHandler.script) as shown below."
 msgstr ""
+"Recuerda el primer ejemplo, donde se oía un pitido cada vez que se pulsaba "
+"NVDA+a. La desventaja es que el script real y su orden (gesto) asociada se "
+"encuentran definidos en lugares distintos. Se pueden agrupar utilizando el "
+"decorador script (scriptHandler.script) como se muestra a continuación."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:447
 msgid ""
 "\t# Add-on development first example global plugin, now edited to use script "
 "decorator"
 msgstr ""
+"\t# Primer ejemplo de extensión global en el desarrollo de complementos, "
+"ahora editado para usar el decorador script"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:450
-#, fuzzy
-#| msgid "\timport eventHandler"
 msgid "\timport scriptHandler"
-msgstr "\timport eventHandler"
+msgstr "\timport scriptHandler"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:455
 msgid "\t\t@scriptHandler.script(gesture=\"kb:NVDA+A\")"
-msgstr ""
+msgstr "\t\t@scriptHandler.script(gesture=\"kb:NVDA+A\")"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:458
 msgid ""
 "Throughout this guide, whenever script examples are shown, script decorator "
 "will be used unless noted otherwise."
 msgstr ""
+"A lo largo de esta guía, cada vez que se muestren scripts de ejemplo, se "
+"utilizará el decorador script a menos que se indique lo contrario."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:459
-#, fuzzy
-#| msgid ""
-#| "This is just a sample of what various NVDA modules and functions can do "
-#| "in your add-on. We'll tour add-on components and meet more functions "
-#| "throughout this guide."
 msgid ""
 "This is just a sample of things you can encounter as you write add-ons and "
 "how you can use various NVDA components to achieve what you want. We'll tour "
 "add-on components and meet more functions throughout this guide."
 msgstr ""
-"Esto es sólo una muestra de lo que pueden hacer varios módulos y funciones "
-"de NVDA en tu complemento. Recorreremos los componentes complementarios y "
-"realizaremos más funciones a lo largo de esta guía."
+"Esto es sólo una muestra de lo que te puedes encontrar al escribir "
+"complementos y de cómo puedes usar diversos componentes de NVDA para lograr "
+"lo que quieras. Recorreremos los componentes de un complemento y conoceremos "
+"más funciones a lo largo de esta guía."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:460
 msgid "## Add-on module components and development tips"
@@ -3825,15 +3747,11 @@ msgid "\tdef getSliderValue(self):"
 msgstr "\tdef getSliderValue(self):"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:508
-#, fuzzy
-#| msgid ""
-#| "\t\tfrom controltypes import ROLE_SLIDER # It is possible to import from "
-#| "within a method."
 msgid ""
 "\t\tfrom controlTypes import ROLE_SLIDER # It is possible to import from "
 "within a method."
 msgstr ""
-"\t\tfrom controltypes import ROLE_SLIDER # es posible importar desde dentro "
+"\t\tfrom controlTypes import ROLE_SLIDER # es posible importar desde dentro "
 "de un método."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:509
@@ -3947,21 +3865,6 @@ msgstr ""
 "disponibles)."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:523
-#, fuzzy
-#| msgid ""
-#| "* `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: This "
-#| "allows NVDA to use your own logic when dealing with certain objects. For "
-#| "example, this is useful if you wish to assign custom gestures for certain "
-#| "parts of a program in your app module (in fact, many app modules creates "
-#| "objects to deal with certain parts of a program, then uses "
-#| "chooseNVDAObjectOverlayClasses to select the correct object when certain "
-#| "conditions are met). These custom objects must be based on a solid object "
-#| "that we wish to deal with (mostly IAccessible is enough, thus most "
-#| "overlay objects inherit from, or is the child or specialist class of "
-#| "IAccessible objects). In certain situations, you can use this method to "
-#| "drop a property from an object, such as telling NVDA to not treat this "
-#| "object as a progress bar by removing progress bar behavior from this "
-#| "object."
 msgid ""
 "* `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: This "
 "allows NVDA to use your own logic when dealing with certain objects. For "
@@ -3977,20 +3880,19 @@ msgid ""
 "bar by removing progress bar behavior from this object."
 msgstr ""
 "* `chooseNVDAObjectOverlayClasses(self, object, lista de clases)`: Esto "
-"permite a NVDA que utilice su propia lógica cuando se trate de ciertos "
-"objetos. Por ejemplo, esto es útil si deseas asignar gestos personalizados "
-"para determinadas partes de un programa en tu módulo de aplicación (De "
-"hecho, muchos módulos de aplicación crean objetos para hacer frente a "
-"determinadas partes de un programa, luego usan "
-"chooseNVDAObjectOverlayClasses para seleccionar el objeto correcto cuando se "
-"cumplan ciertas condiciones). Estos objetos personalizados se deben basar en "
-"un objeto sólido con el que deseamos trabajar (la mayoría de las veces "
-"IAccessible es suficiente, por lo tanto los demás objetos superppuestos "
-"heredan de, o son los hijos o clases especializadas de los objetos "
-"IAccessible). En ciertas situaciones, puedes deshacerte de una propiedad de "
-"un objeto usando este método, por ejemplo diciendo a NVDA que no trate a una "
-"barra de progreso como tal, eliminando el comportamiento de barra de "
-"progreso del objeto en cuestión."
+"permite a NVDA que utilices tu propia lógica al tratar con ciertos objetos. "
+"Por ejemplo, esto es útil si deseas asignar gestos personalizados para "
+"determinadas partes de un programa en tu módulo de aplicación (De hecho, "
+"muchos módulos de aplicación crean objetos para tratar con determinadas "
+"partes de un programa, luego usan chooseNVDAObjectOverlayClasses para "
+"seleccionar el objeto correcto cuando se cumplan ciertas condiciones). Estos "
+"objetos personalizados se deben basar en un objeto sólido con el que "
+"deseamos trabajar (la mayoría de las veces IAccessible es suficiente, por lo "
+"tanto los demás objetos superppuestos heredan de, o son los hijos o clases "
+"especializadas de los objetos IAccessible). En ciertas situaciones, puedes "
+"deshacerte de una propiedad de un objeto usando este método, por ejemplo "
+"diciendo a NVDA que no trate a una barra de progreso como tal, eliminando el "
+"comportamiento de barra de progreso del objeto en cuestión."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:524
 msgid ""
@@ -4167,16 +4069,6 @@ msgstr ""
 "en el módulo de aplicación de Poedit para llevar a cabo esta función."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:553
-#, fuzzy
-#| msgid ""
-#| "Typically, an add-on which accepts scripts will have a list of command:"
-#| "function mapped somewhere in the module. The simplest is a gestures "
-#| "(commands) dictionary, a python dictionary (typically named __gestures) "
-#| "which holds commands as keys and scripts as values for these keys (more "
-#| "than one key, or command can be bound to scripts). These dictionaries are "
-#| "loaded when add-on loads and is cleared when either NVDA exits or the app "
-#| "for the app module loses focus (that is, the user has switched to another "
-#| "program)."
 msgid ""
 "Typically, an add-on which accepts scripts will have a list of command:"
 "function mapped somewhere in the module. The simplest is a gestures "
@@ -4192,7 +4084,9 @@ msgstr ""
 "orden:función en algún lugar en el módulo. El más simple es un diccionario "
 "de Gestos (órdenes), un diccionario python (llamado normalmente __gestures) "
 "que posee órdenes como claves y scripts como valores para estas claves (más "
-"de una tecla, u orden que puede vincularse a los scripts). Estos "
+"de una tecla, u orden que puede vincularse a los scripts). De forma "
+"alternativa, la información de cada script, como su descripción o gestos "
+"asociados, se puede especificar mediante el decorador script. Estos "
 "diccionarios se cargan cuando el complemento se carga y se borran cuando se "
 "sale de NVDA o cuando la aplicación para la que es el módulo de aplicación "
 "pierde el foco(es decir, el usuario ha cambiado a otro programa)."
@@ -4331,10 +4225,8 @@ msgstr ""
 "comandos y enviar mensajes."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:574
-#, fuzzy
-#| msgid "### Example 3: Scripts for specific objects"
 msgid "### Example 3: script information using script decorator"
-msgstr "### Ejemplo 3: Scripts para objetos específicos"
+msgstr "### Ejemplo 3: información del script usando el decorador script"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:575
 msgid ""
@@ -4343,6 +4235,11 @@ msgid ""
 "assign gestures: it can be used to provide additional information such as "
 "input help message for a script."
 msgstr ""
+"Como hemos visto en el ejemplo de más arriba, el decorador script se puede "
+"usar para asignar gestos a los scripts fácilmente. Sin embargo, el decorador "
+"script puede hacer algo más que asignar gestos: se puede usar para "
+"proporcionar información adicional, como el mensaje de ayuda de entrada del "
+"script."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:576
 msgid ""
@@ -4350,97 +4247,89 @@ msgid ""
 "message for both scripts, along with letting Control+NVDA+3 to let NVDA say "
 "\"good bye\"."
 msgstr ""
+"Además del ejemplo 2 modificado, el ejemplo que se muestra a continuación "
+"añadirá un mensaje de ayuda de entrada a ambos scripts, junto con la "
+"posibilidad de que NVDA diga \"Adiós\" al pulsar NVDA+control+3."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:577
-#, fuzzy
-#| msgid "\t# An example fragment for script assignment from a global plugin."
 msgid ""
 "\t# An example fragment for script decorator usage from a global plugin."
 msgstr ""
-"\t# Un fragmento de ejemplo de asignación de un script desde una extensión "
+"\t# Un fragmento de ejemplo del uso del decorador script en una extensión "
 "global."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:579
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:604
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:781
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:825
-#, fuzzy
-#| msgid "from scriptHandler import script"
 msgid "\tfrom scriptHandler import script"
-msgstr "from scriptHandler import script"
+msgstr "\tfrom scriptHandler import script"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:581
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:588
 msgid "\t@script("
-msgstr ""
+msgstr "\t@script("
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:582
 msgid "\t\tdescription=\"Says Hello\","
-msgstr ""
+msgstr "\t\tdescription=\"Dice hola\","
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:583
-#, fuzzy
-#| msgid "\t\t\"kb:control+NVDA+1\":\"sayHello\","
 msgid "\t\tgesture=\"kb:control+NVDA+1\""
-msgstr "\t\t\"kb:control+NVDA+1\":\"sayHello\","
+msgstr "\t\tgesture=\"kb:control+NVDA+1\""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:584
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:591
-#, fuzzy
-#| msgid "\t"
 msgid "\t)"
-msgstr "\t"
+msgstr "\t)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:589
 msgid "\t\tdescription=\"Says good bye\","
-msgstr ""
+msgstr "\t\tdescription=\"Dice adiós\","
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:590
 msgid "\t\tgestures=[\"kb:Control+NVDA+2\", \"kb:Control+NVDA+3\"]"
-msgstr ""
+msgstr "\t\tgestures=[\"kb:Control+NVDA+2\", \"kb:Control+NVDA+3\"]"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:594
 msgid "#### Script decorator arguments"
-msgstr ""
+msgstr "#### Argumentos del decorador script"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:595
 msgid ""
 "You can pass in the following information about a script to script decorator:"
 msgstr ""
+"Puedes pasar la siguiente información al decorador script sobre un script:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:596
 msgid ""
 "* description: short description about a script. This will be presented in "
 "input help mode and in input gestures dialog."
 msgstr ""
+"* description: descripción corta de un script. Se presentará en el modo "
+"Ayuda de entrada y en el diálogo Gestos de entrada."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:597
 msgid ""
 "* category: the category associated with this script, used to group the "
 "script under an appropriate category in input gestures dialog."
 msgstr ""
+"* category: la categoría asociada con el script, usada para agrupar el "
+"script bajo la categoría adecuada en el diálogo Gestos de entrada."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:598
 msgid "* gesture: a single gesture bound to the script."
-msgstr ""
+msgstr "* gesture: un único gesto asociado al script."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:599
 msgid "* gestures: a list of gestures bound to this script."
-msgstr ""
+msgstr "* gestures: una lista de gestos asociados al script."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:600
-#, fuzzy
-#| msgid "### Example 3: Scripts for specific objects"
 msgid "### Example 4: Scripts for specific objects"
-msgstr "### Ejemplo 3: Scripts para objetos específicos"
+msgstr "### Ejemplo 4: Scripts para objetos específicos"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:601
-#, fuzzy
-#| msgid ""
-#| "As in specialist objects above, scripts can be assigned to certain "
-#| "objects by specifying gestures dictionary for this particular object. "
-#| "Here is an example from an app module which defines scripts for main "
-#| "window of a media player program:"
 msgid ""
 "As in specialist objects above, scripts can be assigned to certain objects "
 "by specifying gestures dictionary for this particular object. Here is an "
@@ -4451,7 +4340,7 @@ msgstr ""
 "asignar a ciertos objetos especificando el diccionario de gestos para este "
 "objeto en particular. Aquí hay un ejemplo de un módulo de aplicación que "
 "define scripts para la ventana principal de un programa reproductor "
-"multimedia:"
+"multimedia, utilizando el decorador script:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:602
 msgid "\t# Scripts for objects for a program."
@@ -4467,7 +4356,7 @@ msgstr "\tclass Player(IAccessible):"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:608
 msgid "\t\t@script(gesture=\"kb:NVDA+T\")"
-msgstr ""
+msgstr "\t\t@script(gesture=\"kb:NVDA+T\")"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:609
 msgid "\t\tdef script_saySongName(self, gesture):"
@@ -4616,15 +4505,6 @@ msgstr ""
 "distinguen entre mayúsculas y minúsculas."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:629
-#, fuzzy
-#| msgid ""
-#| "* You can define a script category to show the user where your add-on "
-#| "script will be used (shown in Input Gestures dialog in NVDA 2013.3 or "
-#| "later). There are two ways of doing this: module level via "
-#| "`scriptCategory` attribute from the add-on module, or designating the "
-#| "category for each script via `script_name.category` attribute. It is "
-#| "recommended that you name your script category the same as the add-on "
-#| "name."
 msgid ""
 "* You can define a script category to show the user where your add-on script "
 "will be used (shown in Input Gestures dialog in NVDA 2013.3 or later). There "
@@ -4635,20 +4515,15 @@ msgid ""
 "the same as the add-on name."
 msgstr ""
 "* Puedes definir una categoría de script para mostrar al usuario dónde se "
-"utilizará su script adicional (mostrado en el cuadro de diálogo Gestos de "
-"entrada en NVDA 2013.3 o posterior). Hay dos maneras de hacerlo: a nivel de "
-"módulo mediante el atributo `scriptCategory` del módulo adicional, o bien "
-"designando la categoría para cada script mediante el atributo `script_name."
-"category`. Se recomienda nombrar la categoría de script del mismo modo que "
-"el nombre del complemento."
+"utilizará el script de tu complemento (mostrado en el cuadro de diálogo "
+"Gestos de entrada en NVDA 2013.3 o posterior). Hay dos maneras de hacerlo: a "
+"nivel de módulo mediante el atributo `scriptCategory` del módulo del "
+"complemento, o bien designando la categoría para cada script mediante el "
+"atributo `script_name.category` o como parte del decorador script definiendo "
+"el argumento category. Se recomienda nombrar la categoría de script del "
+"mismo modo que el nombre del complemento."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:630
-#, fuzzy
-#| msgid ""
-#| "* You can define the input help mode message for a script by using "
-#| "`__doc__` attribute (commonly known as docstrings). The __doc__ attribute "
-#| "is also used in Input Gestures dialog to show the description for a "
-#| "script."
 msgid ""
 "* You can define the input help mode message for a script by either using "
 "`__doc__` attribute (commonly known as docstrings) or by passing in a short "
@@ -4656,17 +4531,12 @@ msgid ""
 "is also used in Input Gestures dialog to show the description for a script."
 msgstr ""
 "* Puedes definir el mensaje del modo de ayuda de entrada para un script "
-"utilizando el atributo `__doc__` (comúnmente conocido como docstrings). El "
-"atributo __doc__ también se utiliza en el diálogo de Gestos de entrada para "
-"mostrar la descripción de un script."
+"utilizando el atributo `__doc__` (comúnmente conocido como docstrings) o "
+"pasando una breve descripción al argumento description del decorador script. "
+"La descripción del script también se utiliza en el diálogo de Gestos de "
+"entrada para mostrar información del mismo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:631
-#, fuzzy
-#| msgid ""
-#| "* If you need to leave one or more scripts unassigned (for example, if a "
-#| "gesture conflicts with a global command), do not include the gesture "
-#| "binding for the script in the gestures dictionary. This helps minimize "
-#| "gesture conflicts and allows users to assign custom gestures for scripts."
 msgid ""
 "* If you need to leave one or more scripts unassigned (for example, if a "
 "gesture conflicts with a global command), do not include the gesture binding "
@@ -4676,7 +4546,8 @@ msgid ""
 msgstr ""
 "* Si necesitas dejar uno o más scripts sin asignar (por ejemplo, si un gesto "
 "entra en conflicto con una orden global), no incluyas el vínculo del gesto "
-"para el script en el diccionario de gestos. Esto ayuda a minimizar los "
+"para el script en el diccionario de gestos, o no definas los argumentos "
+"gesture o gestures en el decorador script. Esto ayuda a minimizar los "
 "conflictos de gestos y permite a los usuarios asignar gestos personalizados "
 "para los scripts."
 
@@ -4801,10 +4672,8 @@ msgstr ""
 "que puedes encontrar mientras escribes tu complemento."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:648
-#, fuzzy
-#| msgid "### Example 4: Announcing the changed name of a control"
 msgid "### Example 5: Announcing the changed name of a control"
-msgstr "### Ejemplo 4: Anunciar el nombre cambiado de un control"
+msgstr "### Ejemplo 5: Anunciar el nombre cambiado de un control"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:649
 msgid "The below code came from one of the add-on app modules."
@@ -5317,16 +5186,12 @@ msgstr ""
 "observa la ruta de importación y vuelve a intentar importar."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:719
-#, fuzzy
-#| msgid ""
-#| "Q. What is difference between simple review and normal review and which "
-#| "one should I use?  "
 msgid ""
 "Q. What is the difference between simple review and normal review and which "
 "one should I use?  "
 msgstr ""
 "P. ¿Cuál es la diferencia entre la revisión simple y la revisión normal y "
-"cuál debo usar?  "
+"cuál debería usar?  "
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:720
 msgid ""
@@ -5349,15 +5214,11 @@ msgstr ""
 "hace otra cosa.  "
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:722
-#, fuzzy
-#| msgid ""
-#| "Check if a global plugin which uses the command is installed. First, "
-#| "remove the global plugin and try again."
 msgid ""
 "Check if a global plugin which uses the command is installed. First, disable "
 "the global plugin and try again."
 msgstr ""
-"Comprueba si está instalada una extensión global que utiliza la orden. "
+"Comprueba si está instalada una extensión global que utilice la orden. "
 "Primero, quita la extensión global e inténtalo de nuevo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:723
@@ -5379,11 +5240,9 @@ msgid "Q. How can I create dialogs in my add-on?"
 msgstr "P. ¿Cómo puedo crear diálogos en mi complemento?"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:726
-#, fuzzy
-#| msgid "    - [Interactive Dialogs](#user-content-interactive-dialogs)"
 msgid ""
 "See the [Interactive Dialogs](#user-content-interactive-dialogs) section."
-msgstr "    - [Diálogos interactivos](#dialogos-interactivos)"
+msgstr "Consulta la sección [Diálogos interactivos](#dialogos-interactivos)."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:727
 msgid ""
@@ -5410,16 +5269,6 @@ msgstr ""
 "hacer esto?"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:730
-#, fuzzy
-#| msgid ""
-#| "Yes. You'll need to use ConfigObj library (configObj) to manage "
-#| "configuration. Some add-ons (such as OCR) which uses configuration files "
-#| "store their configuration as an ini file in NVDA's user configuration "
-#| "folder. For global plugins, you can load and save user configuration from "
-#| "the add-on when the add-on is created (__init__) or finished (terminate), "
-#| "respectively. You cannot do this easily with app modules. Also, you'll "
-#| "need to provide a facility (commands, dialogs, etc.) where users can "
-#| "configure add-on settings."
 msgid ""
 "Yes. You'll need to use a library that allows persistence, such as ConfigObj "
 "library (configObj), JSON, or pickle to manage configuration. Some add-ons "
@@ -5430,7 +5279,8 @@ msgid ""
 "with app modules. Also, you'll need to provide a facility (commands, "
 "dialogs, etc.) where users can configure add-on settings."
 msgstr ""
-"Sí. Deberás utilizar la biblioteca ConfigObj(configObj) para administrar la "
+"Sí. Deberás utilizar una biblioteca que permita persistencia, como la "
+"biblioteca ConfigObj(configObj), JSON o Pickle para administrar la "
 "configuración. Algunos complementos (como OCR) que utilizan archivos de "
 "configuración almacenan su configuración como un archivo ini en la carpeta "
 "de configuración de usuario de NVDA. En el caso de las extensiones globales, "
@@ -5438,8 +5288,8 @@ msgstr ""
 "cuando se crea el complemento (__init__) o se finaliza (terminate), "
 "respectivamente. Esto no se puede hacer fácilmente con los módulos de "
 "aplicación. Además, tendrás que proporcionar una alternativa (órdenes, "
-"diálogos, etc.) en la que los usuarios puedan configurar opciones "
-"adicionales."
+"diálogos, etc.) en la que los usuarios puedan configurar las opciones del "
+"complemento."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:731
 msgid ""
@@ -5535,20 +5385,15 @@ msgstr ""
 "versión dada de NVDA sin dar soporte a versiones de NVDA más antiguas."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:740
-#, fuzzy
-#| msgid ""
-#| "* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the "
-#| "highest supported release for the add-on. Without this flag being set, "
-#| "NVDA will treat your add-ons as incompatible with the latest release."
 msgid ""
 "* Last tested NVDA version (lastTestedNVDAVersion): tells NVDA the highest "
 "tested release for the add-on. Without this flag being set, NVDA will treat "
 "your add-ons as incompatible with the latest release."
 msgstr ""
-"* Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): le "
-"dice a NVDA la versión más alta soportada por el complemento. Si no se "
-"establece este indicador, NVDA tratará tus complementos como incompatibles "
-"con la versión más reciente."
+"* Última versión de NVDA donde se ha probado (lastTestedNVDAVersion): indica "
+"a NVDA la versión más alta probada con el complemento. Si no se establece "
+"este indicador, NVDA tratará tus complementos como incompatibles con la "
+"versión más reciente."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:741
 msgid ""
@@ -5582,6 +5427,8 @@ msgid ""
 "Q. Should I convert gestures dictionary and script docstring attribute to "
 "script decorator?"
 msgstr ""
+"P. ¿Debería sustituir el diccionario de gestos y el atributo docstring de "
+"los scripts por el decorador script?"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:745
 msgid ""
@@ -5590,6 +5437,10 @@ msgid ""
 "For new add-ons, script decorator is preferred for easily defining script "
 "information on the spot."
 msgstr ""
+"Es decisión tuya utilizar el antiguo diccionario de gestos y el docstring "
+"del script o el nuevo decorador script para definir su información. Se "
+"recomienda el decorador script para los complementos nuevos, ya que permite "
+"definir la información fácilmente sobre el terreno."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:746
 msgid ""
@@ -5869,26 +5720,19 @@ msgstr "\t\tbrlentry = False # La entrada braille no está activa."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:786
 msgid "\t\t@script("
-msgstr ""
+msgstr "\t\t@script("
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:787
-#, fuzzy
-#| msgid ""
-#| "\t\tscript_toggleBrailleEntry.__doc__=\"Toggles braille entry on or off.\""
 msgid "\t\t\tdescription=\"Toggles braille entry on or off.\","
-msgstr ""
-"\t\tscript_toggleBrailleEntry.__doc__=\"Alterna la entrada Braille entre "
-"encendida y apagada.\""
+msgstr "\t\t\tdescription=\"Enciende o apaga la entrada Braille.\","
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:788
 msgid "\t\t\tgesture=\"kb:NVDA+X\""
-msgstr ""
+msgstr "\t\t\tgesture=\"kb:NVDA+X\""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:789
-#, fuzzy
-#| msgid "\t\t"
 msgid "\t\t)"
-msgstr "\t\t"
+msgstr "\t\t)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:790
 msgid "\t\tdef script_toggleBrailleEntry(self, gesture):"
@@ -6136,7 +5980,7 @@ msgstr "\t# El módulo de aplicación de ejemplo para bloc de notas, notepad.py.
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:829
 msgid "\t\t@script(gesture=\"kb:NVDA+S\")"
-msgstr ""
+msgstr "\t\t@script(gesture=\"kb:NVDA+S\")"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:830
 msgid "\t\tdef script_sayLineNumber(self, gesture):"
@@ -6413,14 +6257,6 @@ msgid "  `from nvdaBuiltin.appModules.calc import *`\\"
 msgstr "  `from nvdaBuiltin.appModules.calc import *`\\"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:879
-#, fuzzy
-#| msgid ""
-#| "* Many app modules (both built-in and third-party ones) use app names as "
-#| "part of the name for a constant (a value that doesn't change). For "
-#| "example, in NVDA's Powerpoint module (powerpnt.py), many constants starts "
-#| "with \"PP\". Similarly, in Station Playlist Studio app module, many "
-#| "constants in the app module file (splstudio.py) starts with \"SPL\". This "
-#| "is used to remind you where these constants are used."
 msgid ""
 "* Many app modules (both built-in and third-party ones) use app names as "
 "part of the name for a constant (a value that doesn't change). For example, "
@@ -6713,31 +6549,22 @@ msgstr ""
 "por este proveedor."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:912
-#, fuzzy
-#| msgid ""
-#| "* Startup check: a routine that will ensure NVDA is running on a specific "
-#| "environment where the enhancer would be most helpful, such as ehcking for "
-#| "a specific Windows release."
 msgid ""
 "* Startup check: a routine that will ensure NVDA is running on a specific "
 "environment where the enhancer would be most helpful, such as checking for a "
 "specific Windows release."
 msgstr ""
 "* Comprobación de inicio: un procedimiento que se aseugrará de que NVDA se "
-"ejecuta en un entorno específico donde el potenciador puede ser útil. Por "
+"ejecuta en un entorno específico donde el potenciador sería más útil. Por "
 "ejemplo, se puede buscar una versión de Windows específica."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:913
-#, fuzzy
-#| msgid ""
-#| "* Startup and shutdown: a class constructor that instructs the enhancer "
-#| "to come online and a \"termiante\" method that shuts it down."
 msgid ""
 "* Startup and shutdown: a class constructor that instructs the enhancer to "
 "come online and a \"terminate\" method that shuts it down."
 msgstr ""
-"* Inicio y apagado: un constructor de clase que indica al potenciador qué "
-"debe hacer para ponerse en línea y un método \"terminate\" que lo desactiva."
+"* Inicio y apagado: un constructor de clase que indica al potenciador que se "
+"ponga en línea y un método \"terminate\" que lo desactiva."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:914
 msgid ""
@@ -6878,11 +6705,6 @@ msgstr ""
 "plantilla de complementos de la comunidad."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:930
-#, fuzzy
-#| msgid ""
-#| "* [Place markers by Noelia Martinez](https://github.com/nvdaes/"
-#| "placeMarkers): adds place marker functionality and provides a good "
-#| "example on using text infos."
 msgid ""
 "* [Place markers by Noelia Martinez](https://github.com/nvdaes/"
 "placeMarkers): adds place marker functionality and provides a good example "
@@ -6930,23 +6752,17 @@ msgstr ""
 "se utilizan varias bibliotecas externas de Python."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:934
-#, fuzzy
-#| msgid ""
-#| "* [StationPlaylist Studio by Joseph Lee](https://github.com/josephsl/"
-#| "stationPlaylist): improves usage of StationPlaylist Studio, provides "
-#| "interesting examples on overlay classes and app API, use of threads, and "
-#| "add-on dialogs and other user interfaces."
 msgid ""
 "* [StationPlaylist by Joseph Lee](https://github.com/josephsl/"
 "stationPlaylist): improves usage of StationPlaylist Studio, provides "
 "interesting examples on overlay classes and app API, use of threads, and add-"
 "on dialogs and other user interfaces."
 msgstr ""
-"* [StationPlaylist Studio de Joseph Lee](https://github.com/josephsl/"
+"* [StationPlaylist de Joseph Lee](https://github.com/josephsl/"
 "stationPlaylist): mejora el uso de StationPlaylist Studio, proporciona "
 "ejemplos interesantes sobre las clases de superposición y la API de "
-"aplicaciones, el uso de hilos y diálogos adicionales y otras interfaces de "
-"usuario."
+"aplicaciones, el uso de hilos y diálogos en un complemento y otras "
+"interfaces de usuario."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:935
 msgid "## Advanced Code Examples and Features"
@@ -6971,14 +6787,6 @@ msgid "#### Introduction"
 msgstr "#### Introducción"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:939
-#, fuzzy
-#| msgid ""
-#| "To present straight forward information to your users, ui.message and ui."
-#| "browseableMessage are usually sufficient. However, if the user needs to "
-#| "give information back to your add-on, those aren't going to help. For "
-#| "that, you need dialogs. Dialog creation and the many considerations "
-#| "around using them are outside the scope of this document, but we can help "
-#| "to get you started."
 msgid ""
 "To present straight forward information to your users, ui.message and ui."
 "browseableMessage are usually sufficient. However, if the user needs to give "
@@ -7070,26 +6878,16 @@ msgstr ""
 "la clase GlobalPlugin"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:952
-#, fuzzy
-#| msgid ""
-#| "\t\timport wx, gui\t\t\t\t# We need these for working with dialogs and "
-#| "windows"
 msgid ""
 "\t\timport wx\t\t\t\t# We need this for working with dialogs and windows"
 msgstr ""
-"\t\timport wx, gui\t\t\t\t# Los necesitamos para trabajar con diálogos y "
-"ventanas"
+"\t\timport wx\t\t\t\t# Lo necesitamos para trabajar con diálogos y ventanas"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:953
-#, fuzzy
-#| msgid ""
-#| "\t\timport wx, gui\t\t\t\t# We need these for working with dialogs and "
-#| "windows"
 msgid ""
 "\t\timport gui\t\t\t\t# We need this for working with dialogs and windows"
 msgstr ""
-"\t\timport wx, gui\t\t\t\t# Los necesitamos para trabajar con diálogos y "
-"ventanas"
+"\t\timport gui\t\t\t\t# Lo necesitamos para trabajar con diálogos y ventanas"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:954
 msgid "\t\tdef showSillyWindow():\t\t\t# Define an internal function"
@@ -7152,15 +6950,6 @@ msgid "* And wx.CANCEL is the same for cancel."
 msgstr "* Y wx.CANCEL hace lo mismo con Cancelar."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:964
-#, fuzzy
-#| msgid ""
-#| "Unfortunately, if we just call gui.messageBox directly, it will usually "
-#| "cause NVDA to hang, unless it is run from the main thread. To get around "
-#| "that problem, we use wx.CallAfter to queue the dialog for display in the "
-#| "main thread. However, wx.CallAfter can not call gui.messageBox directly: "
-#| "it must do so through some other method or function. In this example we "
-#| "achieve that by using a nested function who's only purpose is the one-"
-#| "time generation of that dialog."
 msgid ""
 "Unfortunately, if we just call gui.messageBox directly, it will usually "
 "cause NVDA to hang, unless it is run from the main thread. To get around "
@@ -7173,7 +6962,7 @@ msgstr ""
 "Por desgracia, si llamamos a gui.messageBox directamente, generalmente hará "
 "que NVDA se cuelgue, a menos que se ejecute desde el hilo principal. Para "
 "resolver ese problema, usamos wx.CallAfter, que mete en cola el diálogo para "
-"que se muestre en el hilo principal. Sin embargo, wx.CallAfter puede no "
+"que se muestre desde el hilo principal. Sin embargo, wx.CallAfter no puede "
 "llamar a gui.messageBox directamente: debe hacerlo a través de otro método o "
 "función. En este ejemplo lo solucionamos mediante una función anidada cuyo "
 "único propósito es generar una sola vez ese diálogo."
@@ -7200,16 +6989,12 @@ msgid "import globalPluginHandler, wx, gui"
 msgstr "import globalPluginHandler, wx, gui"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:970
-#, fuzzy
-#| msgid "\timport ui"
 msgid "import gui"
-msgstr "\timport ui"
+msgstr "import gui"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:971
-#, fuzzy
-#| msgid "\timport ui"
 msgid "import wx"
-msgstr "\timport ui"
+msgstr "import wx"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:974
 msgid "\tdef script_askPointlessQuestion(self, gesture):"
@@ -7288,14 +7073,6 @@ msgstr ""
 "hilo diferente, permitiendo que NVDA siga respondiendo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:991
-#, fuzzy
-#| msgid ""
-#| "Although Python does support threads, it can run one thing at a time due "
-#| "to global interpreter lock (GIL). Thus, on computers with multiple "
-#| "processor cores, it is advised to use processes (via multiprocessing "
-#| "module) to allow Python interpreters to run on all cores. However, this "
-#| "workaround introduces latency and overhead, so for many scenarios, "
-#| "threads are prefered."
 msgid ""
 "Although Python does support threads, it can run one thing at a time due to "
 "global interpreter lock (GIL). Thus, on computers with multiple processor "
@@ -7331,11 +7108,6 @@ msgstr ""
 "está ocupado con algo más."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:995
-#, fuzzy
-#| msgid ""
-#| "* Monitor things in the background without interupting NVDA. For example, "
-#| "an overlay class defined in an app module can use a thread to announce "
-#| "screen information as it changes in the background."
 msgid ""
 "* Monitor things in the background without interrupting NVDA. For example, "
 "an overlay class defined in an app module can use a thread to announce "
@@ -7454,16 +7226,12 @@ msgid "\t\t\tmessageTimer.start()"
 msgstr "\t\t\tmessageTimer.start()"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1020
-#, fuzzy
-#| msgid ""
-#| "One limitation with threading.Timer is that it does not support "
-#| "repetetive tasks, and for these, you need to use wx.Timer."
 msgid ""
 "One limitation with threading.Timer is that it does not support repetitive "
 "tasks, and for these, you need to use wx.Timer."
 msgstr ""
-"Una limitación de threading.Timer es que no soporta tareas repetitivas, y "
-"por este motivo puede ser necesario usar wx.Timer."
+"Una limitación de threading.Timer es que no soporta tareas repetitivas, para "
+"ello deberás usar wx.Timer."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1021
 msgid "### Storing and Using Persistent Information Outside Your Add-on"
@@ -7488,8 +7256,6 @@ msgstr ""
 "y usuarios de complementos por todo el mundo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1025
-#, fuzzy
-#| msgid "## Appendicies"
 msgid "## Appendices"
 msgstr "## Apéndices"
 
@@ -8120,13 +7886,6 @@ msgstr ""
 "recuento de elementos. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1112
-#, fuzzy
-#| msgid ""
-#| "| Where the object is located on screen | obj.location | This returns a "
-#| "tuple of four elements, namely x and y coordinates of the top-left corner "
-#| "of the object, as well as length and width. For example, on the Shelel "
-#| "(desktop) object with screen resolution of 1920 by 1080 pixels, the "
-#| "return value will be (0, 0, 1920, 1080. |"
 msgid ""
 "| Where the object is located on screen | obj.location | This returns a "
 "tuple of four elements, namely x and y coordinates of the top-left corner of "
@@ -8645,10 +8404,6 @@ msgstr ""
 "en Python 2. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1170
-#, fuzzy
-#| msgid ""
-#| "| Default text format | ANSI | Unicode | Unicode is prefered. To do so, "
-#| "prefix text with a \"u\". |"
 msgid ""
 "| Default text format | ANSI | Unicode | Unicode is preferred. To do so, "
 "prefix text with a \"u\". |"

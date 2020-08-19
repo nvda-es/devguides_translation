@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2019.3.1</title>
+  <title># Guía del desarrollador de NVDA 2020.2</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2019.3.1</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-201931">Guía del desarrollador de NVDA 2019.3.1</h1>
+  <header><h1># Guía del desarrollador de NVDA 2020.2</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20202">Guía del desarrollador de NVDA 2020.2</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -62,7 +62,7 @@
 </ul>
 </li>
 <li>6. La consola Python remota<ul>
-<li>6.1. Modo de uso</li>
+<li>6.1. Modo de uso </li>
 </ul>
 </li>
 </ul>
@@ -118,8 +118,7 @@ b   bravo
 <li>never: nunca preservar el símbolo. </li>
 <li>always: preservar el símbolo siempre. </li>
 <li>norep: preservar el símbolo sólo si no se reemplaza; es decir, el usuario ha configurado el nivel de símbolos por debajo del nivel de este símbolo. </li>
-<li>-: Usar el valor por defecto. 
-Por defecto se hereda el valor o "never" si no hay nada que heredar. </li>
+<li>-: usar predeterminado. Por defecto se hereda el valor o "never" si no hay nada que heredar. </li>
 </ul>
 </li>
 </ul>
@@ -590,7 +589,7 @@ class AppModule(appModuleHandler.AppModule):
 <p>Todos los valores de cadena deben encerrarse entre comillas, como se muestra en el ejemplo de más abajo. </p>
 <p>El campo lastTestedNVDAVersion en particular se usa para asegurar que los usuarios pueden confiar a la hora de instalar un complemento. Permite que el autor asegure que el complemento no causará inestabilidad o dañará el sistema del usuario. Cuando no se proporcione o sea menor que la versión actual de NVDA (ignorando actualizaciones menores como 2018.3.1), el usuario recibirá una advertencia indicando que no instale el complemento. </p>
 <h3 id="un-ejemplo-de-archivo-de-manifiesto">Un ejemplo de archivo de manifiesto</h3>
-<pre><code>            --- inicio ---
+<pre><code>    --- inicio ---
 
     name = "myTestAddon"
 
@@ -613,11 +612,13 @@ class AppModule(appModuleHandler.AppModule):
     --- fin ---
 </code></pre>
 <h2 id="extensiones-y-controladores">Extensiones y controladores</h2>
-<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: 
-  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
-  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
-  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
-  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento:</p>
+<ul>
+<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
+<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
+<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
+<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
+</ul>
 <h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
 <h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>
@@ -647,7 +648,8 @@ class AppModule(appModuleHandler.AppModule):
 <p>Cerrar la ventana de la consola (con escape o alt+f4) simplemente la oculta. Esto permite al usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo historial y variables. </p>
 <h3 id="52-espacio-de-nombres">5.2. Espacio de nombres</h3>
 <h4 id="521-importaciones-automaticas">5.2.1. Importaciones automáticas</h4>
-<p>Los siguientes módulos y variables se importan automáticamente en la consola por conveniencia: sys, os, wx, log (de logHandler), api, queueHandler, speech, braille </p>
+<p>Los siguientes módulos y variables se importan automáticamente en la consola por conveniencia: sys, os, wx, log (de logHandler), api, queueHandler, config, controlTypes, textInfos, braille, speech, vision, appModules, globalPlugins </p>
+<p>Consulta: pythonConsole.PythonConsole.initNamespace </p>
 <h4 id="522-variables-instantaneas">5.2.2. Variables instantáneas</h4>
 <p>Cada vez que se pulse NVDA+ctrl+z, se asignarán ciertas variables en la consola basándose en el estado actual de NVDA. Estas variables son: </p>
 <ul>

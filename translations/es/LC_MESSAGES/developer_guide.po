@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-15 20:37+0200\n"
-"PO-Revision-Date: 2020-08-15 20:38+0200\n"
+"PO-Revision-Date: 2020-08-16 10:43+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,10 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\developer_guide.py:3
-#, fuzzy
-#| msgid "# NVDA 2019.3.1 Developer Guide"
 msgid "# NVDA 2020.2 Developer Guide"
-msgstr "# Guía del desarrollador de NVDA 2019.3.1"
+msgstr "# Guía del desarrollador de NVDA 2020.2"
 
 #: ..\python_docs\developer_guide.py:4
 msgid "## Table of Contents"
@@ -220,10 +218,8 @@ msgid "  * 6\\. Remote Python Console"
 msgstr "  * 6\\. La consola Python remota"
 
 #: ..\python_docs\developer_guide.py:48
-#, fuzzy
-#| msgid "    * 6.1. Usage"
 msgid "    * 6.1. Usage "
-msgstr "    * 6.1. Modo de uso"
+msgstr "    * 6.1. Modo de uso "
 
 #: ..\python_docs\developer_guide.py:49
 msgid "## 1\\. Introduction"
@@ -595,15 +591,12 @@ msgstr ""
 "símbolo. "
 
 #: ..\python_docs\developer_guide.py:114
-#, fuzzy
-#| msgid ""
-#| "The default is to inherit the value or \"never\" if there is nothing to "
-#| "inherit. "
 msgid ""
 "    * -: Use the default.  The default is to inherit the value or \"never\" "
 "if there is nothing to inherit. "
 msgstr ""
-"Por defecto se hereda el valor o \"never\" si no hay nada que heredar. "
+"    * -: usar predeterminado. Por defecto se hereda el valor o \"never\" si "
+"no hay nada que heredar. "
 
 #: ..\python_docs\developer_guide.py:115
 msgid ""
@@ -2429,17 +2422,6 @@ msgid "### 4.1. Non-ASCII File Names in Zip Archives"
 msgstr "### 4.1. Nombres de fichero no ASCII en archivos Zip"
 
 #: ..\python_docs\developer_guide.py:565
-#, fuzzy
-#| msgid ""
-#| "If your add-on includes files which contain non-ASCII \\(non-English\\) "
-#| "characters, you should create the zip archive such that it uses UTF-8 "
-#| "file names. This means that these files can be extracted properly on all "
-#| "systems, regardless of the system's configured language. Unfortunately, "
-#| "many zip archivers do not support this, including Windows Explorer. "
-#| "Generally, it has to be explicitly enabled even in archivers that do "
-#| "support it. [http://www.7-zip.org/](https://www.nvaccess.org/files/nvda/"
-#| "documentation/7-Zip) supports this, though it must be enabled by "
-#| "specifying the \"cu=on\" method parameter. "
 msgid ""
 "If your add-on includes files which contain non-ASCII \\(non-English\\) "
 "characters, you should create the zip archive such that it uses UTF-8 file "
@@ -2632,10 +2614,8 @@ msgid "        \n"
 msgstr "        \n"
 
 #: ..\python_docs\developer_guide.py:593
-#, fuzzy
-#| msgid "    --- start ---\n"
 msgid "        --- start ---\n"
-msgstr "    --- inicio ---\n"
+msgstr "        --- inicio ---\n"
 
 #: ..\python_docs\developer_guide.py:595
 msgid "        name = \"myTestAddon\"\n"
@@ -2684,12 +2664,10 @@ msgid "## Plugins and Drivers"
 msgstr "## Extensiones y controladores"
 
 #: ..\python_docs\developer_guide.py:617
-#, fuzzy
-#| msgid "The following plugins and drivers can be included in an add-on: "
 msgid "The following plugins and drivers can be included in an add-on:"
 msgstr ""
 "Se pueden incluir las siguientes extensiones y controladores en un "
-"complemento: "
+"complemento:"
 
 #: ..\python_docs\developer_guide.py:618
 msgid "  * App modules: Place them in an appModules directory in the archive. "
@@ -2831,17 +2809,6 @@ msgid "#### 4.4.2. Locale-specific Messages"
 msgstr "#### 4.4.2. Mensajes específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:633
-#, fuzzy
-#| msgid ""
-#| "Each language directory can also contain gettext information, which is "
-#| "the system used to translate the rest of NVDA's user interface and "
-#| "reported messages. As with the rest of NVDA, an nvda.mo compiled gettext "
-#| "database file should be placed in the LC\\_MESSAGES directory within this "
-#| "directory. to allow plugins in your add-on to access gettext message "
-#| "information via calls to \\_\\(\\), you must initialize translations at "
-#| "the top of each Python module by calling addonHandler.initTranslation"
-#| "\\(\\). For more information about gettext and NVDA translation in "
-#| "general, please read <http://www.nvda-project.org/wiki/TranslatingNVDA>"
 msgid ""
 "Each language directory can also contain gettext information, which is the "
 "system used to translate the rest of NVDA's user interface and reported "
@@ -2993,11 +2960,6 @@ msgid "#### 5.2.1. Automatic Imports"
 msgstr "#### 5.2.1. Importaciones automáticas"
 
 #: ..\python_docs\developer_guide.py:649
-#, fuzzy
-#| msgid ""
-#| "For convenience, the following modules and variables are automatically "
-#| "imported in the console: sys, os, wx, log \\(from logHandler\\), api, "
-#| "queueHandler, speech, braille "
 msgid ""
 "For convenience, the following modules and variables are automatically "
 "imported in the console: sys, os, wx, log \\(from logHandler\\), api, "
@@ -3006,11 +2968,12 @@ msgid ""
 msgstr ""
 "Los siguientes módulos y variables se importan automáticamente en la consola "
 "por conveniencia: sys, os, wx, log \\(de logHandler\\), api, queueHandler, "
-"speech, braille "
+"config, controlTypes, textInfos, braille, speech, vision, appModules, "
+"globalPlugins "
 
 #: ..\python_docs\developer_guide.py:650
 msgid "See: pythonConsole.PythonConsole.initNamespace "
-msgstr ""
+msgstr "Consulta: pythonConsole.PythonConsole.initNamespace "
 
 #: ..\python_docs\developer_guide.py:651
 msgid "#### 5.2.2. Snapshot Variables"

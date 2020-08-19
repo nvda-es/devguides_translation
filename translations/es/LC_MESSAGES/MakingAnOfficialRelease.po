@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-15 20:26+0200\n"
-"PO-Revision-Date: 2020-08-15 20:27+0200\n"
+"PO-Revision-Date: 2020-08-16 10:53+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -53,6 +53,11 @@ msgid ""
 "any point. After the branch of point master will move on and PR's required "
 "in this release should target the beta branch."
 msgstr ""
+"  - Esta será la rama de partida para la nueva versión. Antes (pero después "
+"de la versión \"final\" anterior), se puede mezclar master en beta en "
+"cualquier momento. A continuación, la rama master seguirá adelante y las "
+"solicitudes de cambio necesarias para esta versión deberían tener como "
+"destino beta."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:9
 msgid ""
@@ -157,10 +162,12 @@ msgstr "* Difunde la liberación."
 #: ..\python_docs\MakingAnOfficialRelease.py:23
 msgid "* [Update auto milestone ID](#update-auto-milestone-id)"
 msgstr ""
+"* [Actualiza el identificador automático del hito](#update-auto-milestone-id)"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:24
 msgid "* [Update NVDA version in `master`](#update-nvda-version-in-master)"
 msgstr ""
+"* [Actualiza la versión de NVDA en `master`](update-nvda-version-in-master)"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:25
 msgid "### During the Beta period"
@@ -688,143 +695,98 @@ msgstr "- Publica la noticia en la lista de correo de noticias de NV Access."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:132
 msgid "## Update auto milestone ID"
-msgstr ""
+msgstr "## Actualización del identificador automático del hito"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:133
-#, fuzzy
-#| msgid ""
-#| "* Ensure the subsequent milestone is set on issues and pull requests now "
-#| "closed by GitHub automatically."
 msgid ""
 "This ensures correct milestone is set on issues and pull requests now closed "
 "by GitHub automatically."
 msgstr ""
-"* Comprueba que el siguiente hito se ha establecido en incidencias y "
+"Esto se asegura de que el hito correcto se ha establecido en incidencias y "
 "solicitudes de cambio cerradas ahora automáticamente por GitHub."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:134
-#, fuzzy
-#| msgid "  1. Get the milestone id for the new release."
 msgid "1. Get the milestone id for the new release."
-msgstr "    1. Obtén el id del hito para la nueva liberación."
+msgstr "1. Obtén el id del hito para la nueva liberación."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:135
-#, fuzzy
-#| msgid "     - Go to https://github.com/nvaccess/nvda/milestones"
 msgid "  - Go to https://github.com/nvaccess/nvda/milestones"
-msgstr "     - Ve a https://github.com/nvaccess/nvda/milestones"
+msgstr "    - Ve a https://github.com/nvaccess/nvda/milestones"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:136
-#, fuzzy
-#| msgid "     - Look at the link URL for the relevant milestone."
 msgid "  - Look at the link URL for the relevant milestone."
-msgstr "     - Mira la URL del enlace del hito relevante."
+msgstr "    - Mira la URL del enlace del hito relevante."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:137
-#, fuzzy
-#| msgid "     - The number at the end is the `id`."
 msgid "  - The number at the end is the `id`."
-msgstr "     - El número al final es el `id`."
+msgstr "    - El número al final es el `id`."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:138
-#, fuzzy
-#| msgid "  1. Log into exbi"
 msgid "1. Log into exbi"
-msgstr "    1. Inicia sesión en exbi"
+msgstr "1. Inicia sesión en exbi"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:139
-#, fuzzy
-#| msgid "  1. Swap to nvaccess user: `sudo su nvaccess`"
 msgid "1. Swap to nvaccess user: `sudo su nvaccess`"
-msgstr "    1. Cambia al usuario nvaccess: `sudo su nvaccess`"
+msgstr "2. Cambia al usuario nvaccess: `sudo su nvaccess`"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:140
-#, fuzzy
-#| msgid "  1. Edit `~nvaccess/data/nvaServer.conf`"
 msgid "1. Edit `~nvaccess/data/nvaServer.conf`"
-msgstr "    2. Edita `~nvaccess/data/nvaServer.conf`"
+msgstr "3. Edita `~nvaccess/data/nvaServer.conf`"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:141
-#, fuzzy
-#| msgid ""
-#| "  1. In the `[nvdaGithub]` section, change the value of "
-#| "`autoCloseMilestone` to the milestone `id` obtained in step 1."
 msgid ""
 "1. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` "
 "to the milestone `id` obtained in step 1."
 msgstr ""
-"    3. En la sección `[nvdaGithub]`, cambia el valor de `autoCloseMilestone` "
-"al identificador `id` del hito que has obtenido en el paso 1."
+"4. En la sección `[nvdaGithub]`, cambia el valor de `autoCloseMilestone` al "
+"identificador `id` del hito que has obtenido en el paso 1."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:142
-#, fuzzy
-#| msgid "  1. Save the file and `exit` to return to your user."
 msgid "1. Save the file and `exit` to return to your user."
-msgstr ""
-"    1. Guarda el archivo y teclea `exit` para volver a tu propio usuario."
+msgstr "5. Guarda el archivo y teclea `exit` para volver a tu propio usuario."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:143
-#, fuzzy
-#| msgid ""
-#| "  1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload "
-#| "uwsgi`"
 msgid ""
 "1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`"
 msgstr ""
-"    4. Recarga `uwsgi` para que los cambios tengan efecto: `sudo systemctl "
+"6. Recarga `uwsgi` para que los cambios tengan efecto: `sudo systemctl "
 "reload uwsgi`"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:144
 msgid "## Update NVDA version in `master`"
-msgstr ""
+msgstr "## Actualización de la versión de NVDA en `master`"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:145
-#, fuzzy
-#| msgid ""
-#| "* In NVDA source, ensure the `master` branch version number and changes "
-#| "file are correct"
 msgid ""
 "In NVDA source, ensure the `master` branch version number and changes file "
 "are correct"
 msgstr ""
-"* En el código de NVDA, asegúrate de que el número de versión de la rama "
+"En el código de NVDA, asegúrate de que el número de versión de la rama "
 "`master` y el archivo de cambios estén correctos"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:146
-#, fuzzy
-#| msgid ""
-#| "    1. In `source/buildVersion.py`, update the `version_year` and/or "
-#| "`version_major` variables for the next version."
 msgid ""
 "1. In `source/buildVersion.py`, update the `version_year` and/or "
 "`version_major` variables for the next version."
 msgstr ""
-"    1. En `source/buildVersion.py`, actualiza las variables `version_year` y/"
-"o `version_major` para la próxima versión."
+"1. En `source/buildVersion.py`, actualiza las variables `version_year` y/o "
+"`version_major` para la próxima versión."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:147
-#, fuzzy
-#| msgid ""
-#| "       - If the next version is the first version for that year (e.g. "
-#| "2018.1), also update `copyrightYears`."
 msgid ""
 "   - If the next version is the first version for that year (e.g. 2018.1), "
 "also update `copyrightYears`."
 msgstr ""
-"       - Si la próxima versión es la primera del año en curso, (por ejemplo, "
+"    - Si la próxima versión es la primera del año en curso, (por ejemplo, "
 "2018.1), actualiza `copyrightYears` también."
 
 #: ..\python_docs\MakingAnOfficialRelease.py:148
-#, fuzzy
-#| msgid ""
-#| "    2. Add a heading for the next version in `user_docs/en/changes.t2t` "
-#| "if it is not there already."
 msgid ""
 "2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is "
 "not there already."
 msgstr ""
-"    2. Añade un encabezado para la siguiente versión en `user_docs/en/"
-"changes.t2t` si todavía no existe."
+"2. Añade un encabezado para la siguiente versión en `user_docs/en/changes."
+"t2t` si todavía no existe."
 
 #~ msgid ""
 #~ "  - The most recent (significant) change should have had at least one "

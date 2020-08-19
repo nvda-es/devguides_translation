@@ -10,20 +10,38 @@
 <p>NVDA (Non Visual Desktop Access) es un lector de pantalla gratuito y de código abierto para Microsoft Windows.
 Es desarrollado por NV Access en colaboración con una comunidad global de usuarios.
 Para aprender más sobre NVDA o descargar una copia, visita el sitio web principal de <a href="https://www.nvaccess.org/">NV Access</a>.</p>
-<h2 id="enlaces-clave-del-proyecto">Enlaces clave del proyecto</h2>
+<h2 id="obtencion-de-soporte">Obtención de soporte</h2>
+<p>Ya seas un principiante, un usuario avanzado, un desarrollador novato o con experiencia, o una organización dispuesta a saber más o colaborar con NVDA, puedes obtener soporte de la documentación existente así como de canales de comunicación dedicados al lector de pantalla NVDA. Aquí hay una descripción general de las fuentes de soporte más importantes.</p>
+<h3 id="documentacion">Documentación</h3>
 <ul>
-<li><a href="https://www.nvaccess.org/">NV Access</a>: La página principal de NVDA</li>
+<li><a href="https://www.nvaccess.org/files/nvda/documentation/userGuide.html">Guía de usuario de NVDA</a></li>
+<li><a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a></li>
+<li><a href="https://github.com/nvdaaddons/DevGuide/wiki">Desarrollo de complementos de NVDA en profundidad</a></li>
+<li><a href="https://github.com/nvaccess/nvda/tree/master/extras/controllerClient">Manual de NVDA ControllerClient</a></li>
+<li>Hay más documentación en la wiki de este repositorio y en la <a href="https://github.com/nvaccess/nvda-community/wiki">wiki de la comunidad</a></li>
+</ul>
+<h3 id="canales-de-comunicacion">Canales de comunicación</h3>
+<ul>
+<li><a href="https://nvda.groups.io/g/nvda">Lista de correo de usuarios de NVDA</a></li>
+<li><a href="https://groups.io/g/nvda-devel">Lista de correo de desarrollo de NVDA</a></li>
+<li><a href="https://nvda-addons.groups.io/g/nvda-addons">Lista de correo de complementos de NVDA</a></li>
+<li><a href="https://gitter.im/nvaccess/NVDA">Canal de mensajería instantánea de soporte de NVDA</a></li>
+<li><a href="https://github.com/nvaccess/nvda-community/wiki/Connect">Otras fuentes, incluyendo grupos, canales y perfiles en redes sociales, sitios en idiomas específicos y listas de correo, etc.</a></li>
+</ul>
+<p>También puedes obtener soporte directo de NV Access. Consulta el sitio web de <a href="https://nvaccess.org">NV Access</a> para más detalles.</p>
+<h2 id="otros-enlaces-clave-del-proyecto">Otros enlaces clave del proyecto</h2>
+<ul>
 <li><a href="https://github.com/nvaccess/nvda">NVDA en GitHub</a></li>
 <li><a href="https://github.com/nvaccess/nvda/issues">Incidencias de NVDA en GitHub</a>: Informe de fallos, solicitud de características, etc.</li>
 <li><a href="https://www.nvaccess.org/files/nvda/snapshots/">Versiones de desarrollo de NVDA</a>: Compilaciones automáticas del proyecto en su estado actual de desarrollo</li>
 <li><a href="https://addons.nvda-project.org/">Complementos de NVDA</a>: Obtén complementos para mejorar NVDA</li>
+<li><a href="https://github.com/nvdaaddons">Centro de soporte y coordinación de complementos de NVDA</a>: todo sobre el entorno de complementos de NVDA</li>
+<li><a href="https://github.com/nvdaaddons/AddonTemplate">Plantilla de complementos de NVDA</a>: un repositorio para generar la plantilla de complementos de NVDA</li>
 <li><a href="https://github.com/nvaccess/nvda/wiki/Translating">Traducir NVDA</a>: Información sobre cómo traducir NVDA a otro idioma</li>
-<li><a href="https://github.com/nvaccess/nvda-community/wiki">Wiki de la comunidad de NVDA</a>: Artículos proporcionados por la comunidad</li>
 <li><a href="http://www.nvda-project.org/nvdaControllerClient/nvdaControllerClient_20100219.7z">Cliente del controlador de NVDA</a> (19-02-2010): API de NVDA para que las aplicaciones externas hablen directamente o envíen mensajes Braille, etc.</li>
-<li><a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a></li>
 <li><a href="https://github.com/nvaccess/nvda/wiki/Contributing">Cómo contribuir con NVDA</a>: Guías para contribuir con código fuente a NVDA</li>
-<li><a href="https://nvda-devel.groups.io/">Lista de correo de desarrollo de NVDA</a> (<a href="http://nabble.nvda-project.org/Development-f1.html">Archivo antiguo</a>): Debates sobre el desarrollo de NVDA</li>
 <li><a href="https://lists.sourceforge.net/lists/listinfo/nvda-commits">Lista de correo de commits de NVDA</a>: Notificaciones de todos los commits que se hacen al repositorio Git</li>
+<li><a href="http://nabble.nvda-project.org/Development-f1.html">Archivos antiguos de correo</a>: Contienen debates sobre el desarrollo de NVDA</li>
 </ul>
 <h2 id="obtencion-del-codigo-fuente">Obtención del código fuente</h2>
 <p>El proyecto NVDA usa el sistema de control de versiones <a href="https://www.git-scm.com/">Git</a> para su código fuente y documentación.</p>
@@ -38,7 +56,8 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 <p>Necesitas instalar las siguientes dependencias en tu sistema:</p>
 <ul>
 <li><a href="https://www.python.org/">Python</a>, versión 3.7 de 32 bits<ul>
-<li>No uses <code>3.7.6</code>, ya que causa un error durante la construcción. Utiliza la versión <code>3.7.5</code> por ahora. Consulta #10696.</li>
+<li>Utiliza la última revisión menor si es posible.</li>
+<li>No uses <code>3.7.6</code>, ya que causa un error durante la construcción, consulta #10696.</li>
 </ul>
 </li>
 <li>Microsoft Visual Studio 2019 Community, versión 16.3 o posterior:<ul>
@@ -51,7 +70,7 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 </li>
 <li>A continuación, en la sección detalles de la instalación, bajo C++ para escritorio, en el grupo opcional, asegúrate de que se ha seleccionado lo siguiente:<ul>
 <li>Herramientas de compilación MSVC v142 - VS 2019 C++ x64/x86</li>
-<li>Windows 10 SDK (10.0.18362.0)</li>
+<li>Windows 10 SDK (10.0.19041.0)</li>
 <li>ATL de C++ para las herramientas de compilación V142 (X86 y X64)</li>
 <li>Herramientas Clang de C++ para Windows</li>
 </ul>
@@ -80,15 +99,15 @@ Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer
 <li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit ca65812a</li>
 <li><a href="https://github.com/waywardgeek/sonic">Sonic</a>, commit 4f8c1d11</li>
 <li><a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a>, commit 21bbb176</li>
-<li><a href="https://github.com/DiffSK/configobj">ConfigObj</a>, commit 5b5de48</li>
+<li><a href="https://github.com/DiffSK/configobj">ConfigObj</a>, commit f9a265c</li>
 <li><a href="https://pypi.python.org/pypi/six">Six</a>, versión 1.12.0, necesario para wxPython y ConfigObj</li>
-<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.12.0</li>
-<li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a> Emoji Annotations, versión 36.0</li>
+<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.14.0</li>
+<li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a> Emoji Annotations, versión 36.1</li>
 <li>Imágenes y sonidos de NVDA</li>
 <li><a href="https://download.macromedia.com/pub/developer/acrobat/AcrobatAccess.zip">Interfaz de accesibilidad de Adobe Acrobat, versión XI</a></li>
 <li>Biblioteca de tipos de la interfaz de accesibilidad para Adobe Flash</li>
 <li><a href="https://github.com/RaMMicHaeL/minhook">MinHook</a>, versión etiquetada 1.2.2</li>
-<li>Bindings de Python para brlapi versión 0.7.0 o posterior, distribuidos en <a href="https://brltty.app/download.html/brltty/">BRLTTY para Windows</a> versión 4.2-2</li>
+<li>Bindings de Python para brlapi versión 0.8.0 o posterior, distribuidos en <a href="https://brltty.app/download.html">BRLTTY para Windows</a> versión 6.1</li>
 <li>lilli.dll, versión 2.1.0.0</li>
 <li><a href="https://pypi.python.org/pypi/pyserial">pySerial</a>, versión 3.4</li>
 <li><a href="http://fluidmotion.dyndns.org/zenphoto/index.php?p=news&amp;title=Python-interface-to-FTDI-driver-chip">Interfaz Python para el controlador y el chip FTDI</a></li>
@@ -153,11 +172,15 @@ En vez de eso, <code>scons symbolsArchive</code> los empaqueta en un archivo sep
 <p>Por defecto, la compilación se hace sin argumentos de optimización.
 Mira el argumento <code>release</code> más abajo para saber qué optimizaciones se activan al usarlo.</p>
 <h2 id="ejecucion-del-codigo-fuente">Ejecución del código fuente</h2>
-<p>Para iniciar NVDA desde el código fuente, ejecuta el archivo <code>nvda.pyw</code> que se encuentra en la carpeta source.
-Para ver una ayuda sobre los argumentos que acepta NVDA, usa las opciones <code>--help</code> o <code>-h</code>.
-Estos argumentos también están documentados en la guía de usuario.
-Ya que NVDA es una aplicación gráfica (y no de consola), es mejor ejecutarla con <code>pythonw.exe</code>.
+<p>La mayoría de desarrolladores ejecutan directamente desde el código fuente usando:</p>
+<pre><code>cd source
+pythonw.exe nvda.pyw
+</code></pre>
+
+<p>Nota: ya que NVDA es una aplicación de Windows (y no de consola), es mejor ejecutarla con <code>pythonw.exe</code>.
 Sin embargo, si durante el desarrollo encuentras un error en una fase temprana del inicio de NVDA, puedes usar <code>python.exe</code> y probablemente obtendrás más información sobre el error.</p>
+<p>Para ver una ayuda sobre los argumentos que acepta NVDA, usa las opciones <code>--help</code> o <code>-h</code>.
+Estos argumentos también están documentados en la guía de usuario.</p>
 <h2 id="construccion-de-nvda">Construcción de NVDA</h2>
 <p>Una versión binaria de NVDA puede ejecutarse en un sistema sin Python y todas las demás dependencias instaladas (tal y como hace NV Access con las liberaciones oficiales y las versiones de desarrollo).</p>
 <p>Se pueden construir archivos binarios y paquetes usando scons desde la raíz de la distribución del código fuente de NVDA. Para construir cualquiera de ellos, abre un símbolo del sistema y navega a este directorio.</p>
@@ -248,13 +271,10 @@ Si creas una solicitud de cambios, la rama <code>base</code> para ese caso deber
 <p>Para recibir avisos más deprisa sobre errores de estilo, podrías querer integrar Flake8 con otras herramientas de desarrollo que utilices.
 Para más detalles, consulta <code>tests/lint/readme.md</code></p>
 <h3 id="pruebas-del-sistema">Pruebas del sistema</h3>
-<p>También puedes usar scons para ejecutar las pruebas del sistema, aunque esto aún necesitará que las dependencias estén configuradas (consulta <code>tests/system/readme.md</code>).</p>
+<p>También puedes usar <code>scons</code> para ejecutar las pruebas de sistema,
+ aunque todavía será necesario instalar las dependencias.
+Para más detalles (incluyendo filtrado y exclusión de pruebas), consulta <code>tests/system/readme.md</code>.</p>
 <pre><code>scons systemTests
-</code></pre>
-
-<p>Para ejecutar únicamente pruebas del sistema concretas, indícalas en la variable <code>filter</code> en la línea de órdenes.
-Este filtro acepta caracteres comodín.</p>
-<pre><code>scons systemTests filter=&quot;Read welcome dialog&quot;
 </code></pre>
 
 <h2 id="colaboracion-con-nvda">Colaboración con NVDA</h2>

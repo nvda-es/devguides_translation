@@ -11,7 +11,8 @@
 Consulta la documentación del proceso de liberación para más detalles sobre tiempos.</p>
 <h2 id="liberacion-beta-liberacion-previa">Liberación beta (liberación previa)</h2>
 <ul>
-<li>Decide desde qué commit quieres que empiece la beta.<ul>
+<li>Decide desde qué commit quieres que empiece la beta.</li>
+<li>Esta será la rama de partida para la nueva versión. Antes (pero después de la versión "final" anterior), se puede mezclar master en beta en cualquier momento. A continuación, la rama master seguirá adelante y las solicitudes de cambio necesarias para esta versión deberían tener como destino beta.<ul>
 <li>Generalmente master debería estar sana (se superan todas las pruebas y no hay regresiones conocidas)</li>
 <li>Antes el commit seleccionado debía garantizar que el cambio más reciente (y significativo) debía haber tenido al menos una semana de pruebas alpha. Esta restricción se ha relajado un poco para acelerar el proceso beta. Los desarrolladores principales deberían usar su criterio para elegir un punto de ramificación adecuado. Si es necesario, se pueden revertir los cambios o añadir cambios nuevos para corregir fallos en la beta.</li>
 </ul>
@@ -32,6 +33,8 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <li>Analiza el archivo del instalador</li>
 <li>Publica la liberación efectuada.</li>
 <li>Difunde la liberación.</li>
+<li><a href="#update-auto-milestone-id">Actualiza el identificador automático del hito</a></li>
+<li><a href="update-nvda-version-in-master">Actualiza la versión de NVDA en <code>master</code></a></li>
 </ul>
 <h3 id="durante-el-periodo-beta">Durante el periodo beta</h3>
 <ul>
@@ -105,25 +108,6 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <li>Publica la liberación efectuada.</li>
 <li>Difunde la liberación.</li>
 <li>Cierra el <a href="https://github.com/nvaccess/nvda/milestones">hito de la liberación</a>.</li>
-<li>Comprueba que el siguiente hito se ha establecido en incidencias y solicitudes de cambio cerradas ahora automáticamente por GitHub.<ol>
-<li>Obtén el id del hito para la nueva liberación.</li>
-<li>Ve a https://github.com/nvaccess/nvda/milestones</li>
-<li>Mira la URL del enlace del hito relevante.</li>
-<li>El número al final es el <code>id</code>.</li>
-<li>Inicia sesión en exbi</li>
-<li>Cambia al usuario nvaccess: <code>sudo su nvaccess</code></li>
-<li>Edita <code>~nvaccess/data/nvaServer.conf</code></li>
-<li>En la sección <code>[nvdaGithub]</code>, cambia el valor de <code>autoCloseMilestone</code> al identificador <code>id</code> del hito que has obtenido en el paso 1.</li>
-<li>Guarda el archivo y teclea <code>exit</code> para volver a tu propio usuario.</li>
-<li>Recarga <code>uwsgi</code> para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></li>
-</ol>
-</li>
-<li>En el código de NVDA, asegúrate de que el número de versión de la rama <code>master</code> y el archivo de cambios estén correctos<ol>
-<li>En <code>source/buildVersion.py</code>, actualiza las variables <code>version_year</code> y/o <code>version_major</code> para la próxima versión.</li>
-<li>Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza <code>copyrightYears</code> también.</li>
-<li>Añade un encabezado para la siguiente versión en <code>user_docs/en/changes.t2t</code> si todavía no existe.</li>
-</ol>
-</li>
 </ul>
 <h2 id="crear-la-liberacion-etiqueta-anotada">Crear la liberación / etiqueta anotada</h2>
 <ul>
@@ -204,5 +188,22 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <li>Publica la noticia en Facebook.</li>
 <li>Publica la noticia en la lista de correo de noticias de NV Access.</li>
 </ul>
+<h2 id="actualizacion-del-identificador-automatico-del-hito">Actualización del identificador automático del hito</h2>
+<p>Esto se asegura de que el hito correcto se ha establecido en incidencias y solicitudes de cambio cerradas ahora automáticamente por GitHub.
+1. Obtén el id del hito para la nueva liberación.
+    - Ve a https://github.com/nvaccess/nvda/milestones
+    - Mira la URL del enlace del hito relevante.
+    - El número al final es el <code>id</code>.
+1. Inicia sesión en exbi
+2. Cambia al usuario nvaccess: <code>sudo su nvaccess</code>
+3. Edita <code>~nvaccess/data/nvaServer.conf</code>
+4. En la sección <code>[nvdaGithub]</code>, cambia el valor de <code>autoCloseMilestone</code> al identificador <code>id</code> del hito que has obtenido en el paso 1.
+5. Guarda el archivo y teclea <code>exit</code> para volver a tu propio usuario.
+6. Recarga <code>uwsgi</code> para que los cambios tengan efecto: <code>sudo systemctl reload uwsgi</code></p>
+<h2 id="actualizacion-de-la-version-de-nvda-en-master">Actualización de la versión de NVDA en <code>master</code></h2>
+<p>En el código de NVDA, asegúrate de que el número de versión de la rama <code>master</code> y el archivo de cambios estén correctos
+1. En <code>source/buildVersion.py</code>, actualiza las variables <code>version_year</code> y/o <code>version_major</code> para la próxima versión.
+    - Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza <code>copyrightYears</code> también.
+2. Añade un encabezado para la siguiente versión en <code>user_docs/en/changes.t2t</code> si todavía no existe.</p>
 </body>
 </html>
