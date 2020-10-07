@@ -1,0 +1,35 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Cómo iniciar una congelación de cadenas traducibles</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Cómo iniciar una congelación de cadenas traducibles</h1></header>
+  <h1 id="como-iniciar-una-congelacion-de-cadenas-traducibles">Cómo iniciar una congelación de cadenas traducibles</h1>
+<p>Tres semanas antes de que se libere la versión final (2 semanas antes de la rc1), la rama beta debería entrar en un estado de congelación de cadenas traducibles. Estas instrucciones son para el administrador de versiones y documentan el proceso para iniciar esta congelación.</p>
+<ul>
+<li>Si no lo has hecho todavía, haz las correcciones finales necesarias al documento qué hay de nuevo y añade el número de versión correspondiente.</li>
+<li>Si ha habido cambios en beta desde la última mezcla automática en srt (viernes a las 00:05 AEST) se deben mezclar las traducciones en srt manualmente:<ol>
+<li>Inicia sesión en exbi y cambia al usuario nvdal10n; por ejemplo <code>sudo su - nvdal10n</code></li>
+<li><code>cd ~/mr/mainNVDACode</code></li>
+<li>Ejecuta: <code>mr up</code></li>
+<li><code>cd ~/mr/srt</code></li>
+<li>Ejecuta: <code>mr up</code></li>
+<li>Ejecuta: <code>mr mergePot</code></li>
+<li>Ejecuta: <code>mr findRevs</code></li>
+</ol>
+</li>
+<li>
+<p>Anuncia la congelación en las listas de correo nvda-devel y nvda-translations. Apóyate en el ejemplo que hay debajo, modificando según corresponda el número de versión y las fechas:</p>
+<blockquote>
+<p>Asunto: Translatable string freeze for NVDA 2017.2</p>
+<p>Hi all,</p>
+<p>We have now entered the translatable string freeze for NVDA 2017.2.</p>
+<p>Translators, you have until UTC 00:00 on 22 May to ensure your translation is up to date in order for it to be included in NVDA 2017.2. Work submitted after this time will not be included in NVDA 2017.2.</p>
+<p>Thanks to everyone for their valuable work!</p>
+</blockquote>
+</li>
+</ul>
+</body>
+</html>

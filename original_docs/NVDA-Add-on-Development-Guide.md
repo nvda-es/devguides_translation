@@ -351,6 +351,7 @@ First, if you haven't done so, enable development scratchpad. Then open your use
 
 The below code implements our example. Put this in your .py file as exactly as shown:
 
+```python
 	# Add-on development first example
 	
 	import globalPluginHandler
@@ -364,6 +365,7 @@ The below code implements our example. Put this in your .py file as exactly as s
 		__gestures={
 			"kb:NVDA+A": "doBeep"
 		}
+```
 
 In Python, you make comments by putting hash sign (#) at the start of the comment line.
 
@@ -400,6 +402,7 @@ NVDA doesn't just let you add global commands, but it also allows writing code t
 
 The below code, from NVDA developer Guide, gives a short example of a typical app module: play a short beep when switching to Notepad. Put the below code in notepad.py, which in turn should be placed in appModules folder under scratchpad directory (if enabled) in your user configuration folder in order for it to run.
 
+```python
 	# An example app module.
 	
 	import appModuleHandler
@@ -410,6 +413,7 @@ The below code, from NVDA developer Guide, gives a short example of a typical ap
 		def event_gainFocus(self, obj, nextHandler):
 			tones.beep(256, 200)
 			nextHandler()
+```
 
 ### Example 2 code explanation
 
@@ -520,6 +524,7 @@ Let's go through some simplified real-life examples demonstrating how the compon
 
 The below code checks whether the navigator object is located somewhere on the same app or not.
 
+```python
 	import api
 	import ui
 	
@@ -527,6 +532,7 @@ The below code checks whether the navigator object is located somewhere on the s
 		if obj is None:
 			obj = api.getNavigatorObject()
 		return api.getFocusObject().appModule == obj.appModule
+```
 
 The `api.getNavigatorObject()` function returns the current navigator object, the object you are interested in as opposed to focused object. Each NVDA object includes `appModule` member which records on which app an object is located.
 
@@ -534,16 +540,19 @@ The `api.getNavigatorObject()` function returns the current navigator object, th
 
 In NVDA 2015.2 and later, it became possible to display a message in a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" in a document window.
 
+```python
 	import ui
 	
 	ui.browseableMessage("Hello World!", isHtml=False)
+```
 
-The isHtml flag tells NVDA to treat the message as an HTML text.
+The isHtml flag tells NVDA whether to treat the message as HTML text.
 
 #### Example 3: Announce the automation ID of a UIA object
 
 In UI Automation, automation ID is used to identify different screen elements. The following code displays this information in a browsable window.
 
+```python
 	import ui
 	from NVDAObjects.UIA import UIA
 	
@@ -552,20 +561,24 @@ In UI Automation, automation ID is used to identify different screen elements. T
 		if isinstance(obj, UIA):
 			UIAElement = obj.UIAElement
 			ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
+```
 
 #### Example 4: Send keystrokes
 
 You can ask NVDA to send specific keystrokes by instantiating a keyboard gesture object.
 
+```python
 	import keyboardHandler
 	
 	def sendApplicationsKey():
 		keyboardHandler.KeyboardInputGesture.fromName("applications").send()
+```
 
 #### Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off
 
 The below code is a handler for a name change event that stops speech whenever screen content changes if dynamic content change announcement is off.
 
+```python
 	import appModuleHandler
 	import config
 	import speech
@@ -575,15 +588,17 @@ The below code is a handler for a name change event that stops speech whenever s
 		def event_nameChange(self, obj, nextHandler):
 			if not config.conf["presentation"]["reportDynamicContentChanges"]:
 				speech.cancelSpeech()
+```
 
 #### Example 6: using script decorator
 
 A decorator is a function that wraps and returns another function while performing internal operations. For example, a decorator can make changes to the internals of a function or check something on behalf of another function without the wrapped function being aware of what's happening.
 
-In NvDA 2018.3, a special decorator named scriptHandler.script was introduced to make it easier to define information about a script. A script's description (input help mode message), gesture or gestures (commands bound to this script), and script category can be assigned as you define the script.
+In NVDA 2018.3, a special decorator named scriptHandler.script was introduced to make it easier to define information about a script. A script's description (input help mode message), gesture or gestures (commands bound to this script), and script category can be assigned as you define the script.
 
 Recall the first example where a beep was heard when NVDA+A was pressed. The drawback is that the actual script and the command (gesture) associated with it were defined in different places. You can group them by using script decorator (scriptHandler.script) as shown below.
 
+```python
 	# Add-on development first example global plugin, now edited to use script decorator
 	
 	import globalPluginHandler
@@ -595,6 +610,7 @@ Recall the first example where a beep was heard when NVDA+A was pressed. The dra
 		@scriptHandler.script(gesture="kb:NVDA+A")
 		def script_doBeep(self, gesture):
 			tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
+```
 
 Throughout this guide, whenever script examples are shown, script decorator will be used unless noted otherwise.
 
@@ -659,6 +675,7 @@ Suppose you are asked by a user to give him the value of a slider in a program u
 
 Here is the code to implement this feature:
 
+```python
 	# Object example 1
 	
 	import api
@@ -672,16 +689,19 @@ Here is the code to implement this feature:
 			fg = api.getForegroundObject()
 			sliderVal = fg.children[self.sliderChildIndex].value
 			return sliderVal
+```
 
 In this code, the method `fg.children[index]` is used to retrieve the child with the given index (here, since we said the toolbar is the last child, the index would be minus 1, or the very last child; we could have used fg.lastChild). Alternatively, you can use `fg.getChild(-1) in certain situations (IAccessible, for example).)
 
 However, this code has an issue: what if the slider value is actually within the first child of the actual slider control? One way to fix this is to check the object's role. The modified code looks like this:
 
+```python
 	def getSliderValue(self):
 		from controlTypes import ROLE_SLIDER # It is possible to import from within a method.
 		fg = api.getForegroundObject()
 		slider = fg.lastChild
 		if slider.role == ROLE_SLIDER: return slider.firstChild.value
+```
 
 Thus, when we know for sure that we're dealing with the slider, the method returns the value of the slider's first child (if that is the case). Note the two equals signs for equality, as opposed to just one equals sign for assignment.
 
@@ -711,16 +731,19 @@ Below examples illustrate the uses of the two overlay and attribute modification
 
 An example of the first case: modifying an attribute.
 
+```python
 	# Reassign some Delphi forms as window.
 	from controlTypes import ROLE_WINDOW
 	
 	def event_NVDAObject_init(self, obj):
 		if obj.windowClassName == "TForm": obj.role = ROLE_WINDOW
+```
 
 This means that whenever we encounter a window with the class name of "TForm", NVDA will treat this as a normal window.
 
 Example 2 deals with an app module which has two objects for dealing with specific parts of a program, then uses chooseNVDAObjectOverlayClasses to assign the logic for each control.
 
+```python
 	#An example of overlay classes
 	
 	class enhancedEdit(IAccessible):
@@ -734,6 +757,7 @@ Example 2 deals with an app module which has two objects for dealing with specif
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		if obj.windowClassName == "myEdit": clsList.insert(0, enhancedEdit)
 		elif obj.windowClassName == "TWindow": clsList.insert(0, mainWindow)
+```
 
 In both cases, the object that we wish to check must be inserted as the first element of the clsList. The effect is that these custom objects will take precedence when looking up gestures or code (behavior) for the object, and in the developer info, these custom objects will come first when MRO (Method Resolution Order) for the navigator object is displayed.
 
@@ -759,6 +783,7 @@ As of time of writing, NVDA supports input from the keyboard, braille displays w
 
 In this example, we'll define two scripts called "sayHello" and say"GoodBye", then bind them into two separate gestures.
 
+```python
 	# An example fragment for script assignment from a global plugin.
 	import ui
 	
@@ -772,6 +797,7 @@ In this example, we'll define two scripts called "sayHello" and say"GoodBye", th
 		"kb:control+NVDA+1":"sayHello",
 		"kb:Control+NVDA+2":"sayGoodBye"
 	}
+```
 
 Now when you press Control+NVDA+1, NVDA will say, "Hello", and when you press Control+NVDA+2, NVDA will say, "Good bye." This is the basic code on receiving commands and sending messages.
 
@@ -779,8 +805,9 @@ Now when you press Control+NVDA+1, NVDA will say, "Hello", and when you press Co
 
 As we have seen with an example above, script decorator can be used to assign gestures to scripts easily. But script decorator can do more than assign gestures: it can be used to provide additional information such as input help message for a script.
 
-In addition to the modified example 2, the below example will add input help message for both scripts, along with letting Control+NVDA+3 to let NVDA say "good bye".
+In addition to the modified example 2, the below example will add an input help message for both scripts, along with setting Control+NVDA+3 to make NVDA say "good bye".
 
+```python
 	# An example fragment for script decorator usage from a global plugin.
 	import ui
 	from scriptHandler import script
@@ -798,6 +825,7 @@ In addition to the modified example 2, the below example will add input help mes
 	)
 	def script_sayGoodBye(self, gesture):
 		ui.message("Good Bye!")
+```
 
 #### Script decorator arguments
 
@@ -812,6 +840,7 @@ You can pass in the following information about a script to script decorator:
 
 As in specialist objects above, scripts can be assigned to certain objects by specifying gestures dictionary for this particular object. Here is an example from an app module which defines scripts for main window of a media player program, defined using script decorator:
 
+```python
 	# Scripts for objects for a program.
 	from NVDAObjects.IAccessible import IAccessible
 	from scriptHandler import script
@@ -825,6 +854,7 @@ As in specialist objects above, scripts can be assigned to certain objects by sp
 	# And in the main app module:
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		if obj.windowClassName == "PlayerWindow": clsList.insert(0, Player)
+```
 
 There is something odd going on with this example: normally, when you press NVDA+T, NVDA says the title of the current window, but in this example, it announces the name of the song instead. This is the result of script lookup (see below) where the script for the current object is run instead of title script from global commands. This is a common way of binding new scripts at runtime.
 
@@ -867,14 +897,18 @@ Depending on where the event is defined, you'll need two or four things when def
 
 A typical event routine looks like this:
 
+```python
 	def event_eventName(self, obj, nextHandler):
 		# Do some action.
 		nextHandler()
+```
 
 For object events, use:
 
+```python
 	def event_eventName(self):
 		# Event routine.
+```
 
 In fact, we have met an actual "event" before: `event_NVDAObject_init`. This is a special event (one of many events defined in NVDA) fired when NVDA meets a new object and initializes it according to your input (see the section on overriding object properties for more information). Let's meet other events you may see while writing your add-on.
 
@@ -884,9 +918,11 @@ The below code came from one of the add-on app modules.
 
 Below is a routine for an event which tells you the name of some text on the screen when the text changes.
 
+```python
 	def event_nameChange(self, obj, nextHandler):
 		if obj.windowClassName == "TStaticText": ui.message(obj.name)
 		nextHandler()
+```
 
 As you can see, whenever the text object's name changes, NVDA will announce the new name to the user. The "name change" event is one of the many events that you can define custom actions for in your add-on (the complete list is below).
 
@@ -1035,7 +1071,7 @@ Q. Should I convert gestures dictionary and script docstring attribute to script
 
 It is up to you whether or not you wish to use older gestures dictionary and script docstring or the newer script decorator to define script information. For new add-ons, script decorator is preferred for easily defining script information on the spot.
 
-We did not include programming or Python-related FAQ's, as there are sites which answers questions about Python such as coding style. Consult these documents if you have issues with Python code.
+We did not include programming or Python-related FAQ's, as there are sites which answer questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
 Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules, drivers, and enhancers.
 
@@ -1090,6 +1126,7 @@ You are meeting with a client who uses Duxbury braille translator (a popular bra
 
 The global plugin, named brailleWrite.py, would look like this:
 
+```python
 	# An example global plugin.
 	
 	import qtbrl # The braille entry module.
@@ -1105,6 +1142,7 @@ The global plugin, named brailleWrite.py, would look like this:
 		)
 		def script_toggleBrailleEntry(self, gesture):
 			self.brlentry = True if not self.brlentry else False # Toggle braille entry mode.
+```
 
 With this background in mind, try some of the short exercises below.
 
@@ -1153,7 +1191,8 @@ Suppose you wish to find out which line you're editing in Notepad. Assuming that
 
 The app module for Notepad would look like this:
 
-	# The example app module for Notepad, notepad.py.
+```python
+	# Example app module for Notepad, notepad.py.
 	import appModuleHandler
 	import api
 	import ui
@@ -1167,6 +1206,7 @@ The app module for Notepad would look like this:
 			lineNumList = api.getStatusBar().name.split()
 			lineNum = lineNumLisst[2]+linenumList[3]
 			ui.message(lineNum)
+```
 
 So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
 
@@ -1174,12 +1214,14 @@ So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
 
 Openbook is a scanning and reading program from Freedom scientific. Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:
 
+```python
 	# Silencing NVDA in openbook, openbook.py.
 	import appModuleHandler
 	
 	class AppModule(appModuleHandler.AppModule):
 	
 		sleepMode = True
+```
 
 With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own).
 
@@ -1189,7 +1231,8 @@ You can ask NVDA to handle specific events while focused on another app. This is
 
 The below code allows NVDA to announce value changes while focused on another application.
 
-	# The example app module for a messenger app.
+```python
+	# Example app module for a messenger app.
 	# The object we wish to track has window class name of "MessengerWindow".
 	
 	import appModuleHandler
@@ -1200,6 +1243,7 @@ The below code allows NVDA to announce value changes while focused on another ap
 		def __init__(self, *args, **kwargs):
 			super(AppModule, self).__init__(*args, **kwards)
 			eventHandler.requestEvents(self.processID, "MessengerWindow", "valueChange")
+```
 
 Once defined, even if focused in another app, new messages (values) will be announced.
 
@@ -1232,13 +1276,13 @@ Here are other remarks regarding app modules:
 
 ## Drivers
 
-A driver allows a software such as NVDA to communicate with hardware or use functionality provided by another software. Typically, when people speak of drivers, they usually refer to a program installed on a computer that allows software to communicate with a specific hardware, such as video cards, keyboards and so on.
+A driver allows software such as NVDA to communicate with hardware or use functionality provided by another software. Typically, when people speak of drivers, they usually refer to a program installed on a computer that allows software to communicate with a specific piece of hardware, such as video cards, keyboards and so on.
 
 In NVDA, drivers refer to modules that NVDA can use to communicate with a speech synthesizer or a braille display. For instance, you can write a braille display driver that sends braille output to your braille display, or ask your synthesizer to switch languages and provide configurable settings.
 
 ### Driver components
 
-All drivers (regardless of target device or software to be supported) imports appropriate modules such as `synthDriverHandler`. For most drivers, majority of the driver code deals with communicating with the target device or software, and all drivers must define the driver class (synthDriverHandler.SynthDriver or braille.BrailleDisplayDriver).
+All drivers (regardless of target device or software to be supported) import appropriate modules such as `synthDriverHandler`. For most drivers, majority of the driver code deals with communicating with the target device or software, and all drivers must define the driver class (synthDriverHandler.SynthDriver or braille.BrailleDisplayDriver).
 
 All driver classes, at a minimum, must contain:
 
@@ -1260,7 +1304,7 @@ For braille displays:
 ### A Few important things to remember before, during and after driver development
 
 * Before writing a driver, make sure you have the needed software and/or hardware.
-* Be sure to study protocols and API's used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols).
+* Be sure to study protocols and APIs used by a speech synthesizer or a braille display (this is more so for braille displays which may implement different protocols).
 * Make sure you know how to communicate with your equipment or software - ports, USB IDs, Bluetooth addresses, serial port settings, DLLs and so on.
 * Work with another person who happens to use the equipment or software you are writing driver(s) for.
 
@@ -1270,7 +1314,7 @@ When writing drivers, you may wish to follow the recommended steps for app modul
 
 ## Enhancers
 
-An enhancer is a module that helps certain groups of users use computers more efficiently. These may include cursor tracking, magnification, and other enhancements.
+An enhancer is a module that helps certain groups of users use computers more efficiently. Enhancers may include cursor tracking, magnification, and other enhancements.
 
 Currently NVDA can provide assistance through vision enhancement providers. A vision enhancement provider is an enhancer that allows people with low vision or sight use computers effectively by working in tandem with NVDA. Enhancements may include cursor highlighting, screen curtain effect, and magnifying parts of the screen. These enhancers are stored under "visionEnhancementProviders" folder and defined as a "VisionEnhancementProvider" class which inherits from "vision.providerBase.VisionEnhancementProvider".
 

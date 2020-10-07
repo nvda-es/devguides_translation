@@ -322,20 +322,21 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <p>Comencemos con un ejemplo sencillo: Si pulsamos NVDA+A, se oye un tono durante 1 segundo desde cualquier programa. Puesto que queremos usar esto en todas partes, debe ser una extensión global.</p>
 <p>En primer lugar, si todavía no lo has hecho, habilita development scratchpad. Después abre la carpeta de configuración de usuario, abre la carpeta scratchpad (si existe--créala si no es así), a continuación, abre la carpeta globalPlugins. Crea un nuevo fichero .py y dale un nombre descriptivo, como example1.py (se recomienda encarecidamente que cuando le dés el nombre del fichero de la extensión global, este sea corto). A continuación, abre el archivo .py recién creado en el procesador de textos.</p>
 <p>El código siguiente implementa nuestro ejemplo. Pon esto en tu .py exactamente como se muestra.:</p>
-<pre><code># Primer ejemplo de desarrollo de complemento
+<pre><code class="python">    # Primer ejemplo de desarrollo de complemento
 
-import globalPluginHandler
-import tones # Queremos escuchar pitidos.
+    import globalPluginHandler
+    import tones # Queremos escuchar pitidos.
 
-class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+    class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
-    def script_doBeep(self, gesture):
-        tones.beep(440, 1000)  # pita un Lá estándar de la quinta octava durante 1 segundo.
+        def script_doBeep(self, gesture):
+            tones.beep(440, 1000)  # pita un Lá estándar de la quinta octava durante 1 segundo.
 
-    __gestures={
-        "kb:NVDA+A": "doBeep"
-    }
+        __gestures={
+            &quot;kb:NVDA+A&quot;: &quot;doBeep&quot;
+        }
 </code></pre>
+
 <p>En Python, para poner comentarios se pone el símbolo número (#) al principio de la línea de comentario.</p>
 <h3 id="explicacion-del-codigo-del-ejemplo-1">Explicación del código del ejemplo 1</h3>
 <p>Nuestro primer ejemplo nos permite hacer sonar un pitido durante un segundo cuando pulsemos NVDA+A. pero podrías preguntarte sobre el significado del código de más arriba, así que vamos a dar unos pasos a través del código, uno por vez.</p>
@@ -362,17 +363,18 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <p>La mayor parte del código de abajo viene de la Guía del desarrollador de NVDA.</p>
 <p>NVDA no sólo te permite agregar comandos globales, sino que también permite la escritura de código para mejorar el uso de los programas a través de módulos de aplicación. Un módulo de aplicación es también un archivo Python, excepto que, esta vez, el nombre del archivo .PY Es el nombre del ejecutable de un programa. Por ejemplo, un módulo de aplicación para el Bloc de notas se llamaría notepad.py.</p>
 <p>El código de abajo, de la Guía del desarrollador de NVDA, da un pequeño ejemplo de un módulo de aplicación típica: reproducir un pitido corto al cambiar al Bloc de notas. Pon el código de abajo en notepad.py, que a su vez se debe colocar en la carpeta appModules del directorio scratchpad (si está activado) en la carpeta de configuración del usuario con el fin de que se ejecute.</p>
-<pre><code># Un ejemplo de módulo de aplicación.
+<pre><code class="python">    # Un ejemplo de módulo de aplicación.
 
-import appModuleHandler
-import tones
+    import appModuleHandler
+    import tones
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    def event_gainFocus(self, obj, nextHandler):
-        tones.beep(256, 200)
-        nextHandler()
+        def event_gainFocus(self, obj, nextHandler):
+            tones.beep(256, 200)
+            nextHandler()
 </code></pre>
+
 <h3 id="explicacion-del-codigo-del-ejemplo-2">Explicación del código del ejemplo 2</h3>
 <p>Estamos viendo más código nuevo aquí. Vamos a repasar esto, de nuevo pieza por pieza:</p>
 <ol>
@@ -489,68 +491,74 @@ class AppModule(appModuleHandler.AppModule):
 <p>Veamos algunos ejemplos simplificados de la vida real que demuestran cómo se utilizan los componentes listados más arriba en escenarios comunes de desarrollo de complementos.</p>
 <h4 id="ejemplo-1-estoy-en-la-aplicacion-correcta-donde-se-encuentra-el-foco">Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el foco?</h4>
 <p>El siguiente código verifica si el navegador de objetos e encuentra en algún lugar de la misma aplicación o no.</p>
-<pre><code>import api
-import ui
+<pre><code class="python">    import api
+    import ui
 
-def sameApp(obj=None):
-    if obj is None:
-        obj = api.getNavigatorObject()
-    return api.getFocusObject().appModule == obj.appModule
+    def sameApp(obj=None):
+        if obj is None:
+            obj = api.getNavigatorObject()
+        return api.getFocusObject().appModule == obj.appModule
 </code></pre>
+
 <p>La función <code>api.getNavigatorObject ()</code> devuelve el objeto del navegador actual, el objeto que te interesa en lugar del objeto enfocado. Cada objeto de NVDA incluye un miembro <code>appModule</code> que registra en qué aplicación se encuentra un objeto.</p>
 <h4 id="ejemplo-2-mostrar-un-mensaje-en-un-documento-en-modo-exploracion">Ejemplo 2: Mostrar un mensaje en un documento en modo exploración</h4>
 <p>Desde NVDA 2015.2 y posterior, fue posible mostrar un mensaje en una ventana del modo de exploración para que la gente pueda utilizar las órdenes del modo de exploración para revisar el contenido del mensaje. El siguiente código muestra"Hola mundo" en la ventana de un documento.</p>
-<pre><code>import ui
+<pre><code class="python">    import ui
 
-ui.browseableMessage("Hola Mundo!", isHtml=False)
+    ui.browseableMessage(&quot;Hola Mundo!&quot;, isHtml=False)
 </code></pre>
+
 <p>La bandera isHtml indica a NVDA que trate el mensaje como un texto HTML.</p>
 <h4 id="ejemplo-3-anunciar-el-id-de-automatizacion-de-un-objeto-uia">Ejemplo 3: Anunciar el ID de automatización de un objeto UIA</h4>
 <p>En UI Automation, el ID de automatización se utiliza para identificar diferentes elementos de pantalla. El siguiente código muestra esta información en una ventana navegable.</p>
-<pre><code>import ui
-from NVDAObjects.UIA import UIA
+<pre><code class="python">    import ui
+    from NVDAObjects.UIA import UIA
 
-def announceUIAId():
-    obj = api.getFocusObject()
-    if isinstance(obj, UIA):
-        UIAElement = obj.UIAElement
-        ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
+    def announceUIAId():
+        obj = api.getFocusObject()
+        if isinstance(obj, UIA):
+            UIAElement = obj.UIAElement
+            ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
 </code></pre>
+
 <h4 id="ejemplo-4-enviar-pulsaciones-de-teclas">Ejemplo 4: Enviar pulsaciones de teclas</h4>
 <p>Puedes pedirle a NVDA que envíe pulsaciones de teclas específicas instanciando un objeto de gesto de teclado.</p>
-<pre><code>import keyboardHandler
+<pre><code class="python">    import keyboardHandler
 
-def sendApplicationsKey():
-    keyboardHandler.KeyboardInputGesture.fromName("applications").send()
+    def sendApplicationsKey():
+        keyboardHandler.KeyboardInputGesture.fromName(&quot;applications&quot;).send()
 </code></pre>
+
 <h4 id="ejemplo-5-detener-la-voz-cada-vez-que-cambie-el-contenido-de-la-pantalla-si-el-anuncio-de-cambio-de-contenido-dinamico-esta-desactivado">Ejemplo 5: Detener la voz cada vez que cambie el contenido de la pantalla si el anuncio de cambio de contenido dinámico está desactivado</h4>
 <p>El código que aparece a continuación es un controlador para un evento de cambio de nombre que detiene la voz siempre que el contenido de la pantalla cambie si el anuncio de cambio de contenido dinámico está desactivado.</p>
-<pre><code>import appModuleHandler
-import config
-import speech
+<pre><code class="python">    import appModuleHandler
+    import config
+    import speech
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    def event_nameChange(self, obj, nextHandler):
-        if not config.conf["presentation"]["reportDynamicContentChanges"]:
-            speech.cancelSpeech()
+        def event_nameChange(self, obj, nextHandler):
+            if not config.conf[&quot;presentation&quot;][&quot;reportDynamicContentChanges&quot;]:
+                speech.cancelSpeech()
 </code></pre>
+
 <h4 id="ejemplo-6-uso-del-decorador-script">Ejemplo 6: uso del decorador script</h4>
 <p>Un decorador es una función que envuelve y devuelve otra función tras realizar operaciones internas. Por ejemplo, un decorador puede hacer cambios en el interior de una función o comprobar algo en nombre de otra función sin que la función envuelta sea consciente de lo que está ocurriendo.</p>
 <p>En NVDA 2018.3, se introdujo un decorador especial llamado scriptHandler.script para facilitar la definición de información de un script. Mientras se define el script, se pueden asignar su descripción (mensaje en el modo Ayuda de entrada), gesto o gestos (órdenes asociadas al script), y categoría.</p>
 <p>Recuerda el primer ejemplo, donde se oía un pitido cada vez que se pulsaba NVDA+a. La desventaja es que el script real y su orden (gesto) asociada se encuentran definidos en lugares distintos. Se pueden agrupar utilizando el decorador script (scriptHandler.script) como se muestra a continuación.</p>
-<pre><code># Primer ejemplo de extensión global en el desarrollo de complementos, ahora editado para usar el decorador script
+<pre><code class="python">    # Primer ejemplo de extensión global en el desarrollo de complementos, ahora editado para usar el decorador script
 
-import globalPluginHandler
-import scriptHandler
-import tones
+    import globalPluginHandler
+    import scriptHandler
+    import tones
 
-class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+    class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
-    @scriptHandler.script(gesture="kb:NVDA+A")
-    def script_doBeep(self, gesture):
-        tones.beep(440, 1000)  # pita un Lá estándar de la quinta octava durante 1 segundo.
+        @scriptHandler.script(gesture=&quot;kb:NVDA+A&quot;)
+        def script_doBeep(self, gesture):
+            tones.beep(440, 1000)  # pita un Lá estándar de la quinta octava durante 1 segundo.
 </code></pre>
+
 <p>A lo largo de esta guía, cada vez que se muestren scripts de ejemplo, se utilizará el decorador script a menos que se indique lo contrario.</p>
 <p>Esto es sólo una muestra de lo que te puedes encontrar al escribir complementos y de cómo puedes usar diversos componentes de NVDA para lograr lo que quieras. Recorreremos los componentes de un complemento y conoceremos más funciones a lo largo de esta guía.</p>
 <h2 id="componentes-del-modulo-de-un-complemento-y-consejos-de-desarrollo">Componentes del módulo de un complemento y consejos de desarrollo</h2>
@@ -589,28 +597,30 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <h3 id="ejemplo-1-encontrar-el-valor-de-un-deslizador-en-un-programa">Ejemplo 1: encontrar el valor de un deslizador en un programa</h3>
 <p>Supongamos que un usuario te pide que le des el valor de un deslizador en un programa usando un app module. Después de buscar en la jerarquía de objetos y otras propiedades, sabes que la barra de herramientas es el último hijo del objeto en primer plano.</p>
 <p>Aquí está el código para implementar esta función:</p>
-<pre><code># Ejemplo de objeto 1
+<pre><code class="python">    # Ejemplo de objeto 1
 
-import api
-import appModuleHandler
+    import api
+    import appModuleHandler
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    sliderChildIndex = -1 # La variable para almacenar el índice del hijo.
+        sliderChildIndex = -1 # La variable para almacenar el índice del hijo.
 
-    def getSliderValue(self):
-        fg = api.getForegroundObject()
-        sliderVal = fg.children[self.sliderChildIndex].value
-        return sliderVal
+        def getSliderValue(self):
+            fg = api.getForegroundObject()
+            sliderVal = fg.children[self.sliderChildIndex].value
+            return sliderVal
 </code></pre>
+
 <p>En este código, el método <code>fg.children[index]</code> se utiliza para recuperar al hijo con el índice dado (aquí, ya dijimos que la barra de herramientas es el último hijo, el índice sería menos 1, o el último hijo; podríamos haber utilizado fg.lastChild). Alternativamente, puedes utilizar `fg.getChild (-1) en ciertas situaciones (IAccesible, por ejemplo).</p>
 <p>Sin embargo, este código tiene un problema: ¿y si el valor del deslizador está en realidad dentro del primer elemento secundario del control deslizador real? Una forma de solucionar este problema es comprobar el rol del objeto. El código modificado quedaría así:</p>
-<pre><code>def getSliderValue(self):
-    from controlTypes import ROLE_SLIDER # es posible importar desde dentro de un método.
-    fg = api.getForegroundObject()
-    slider = fg.lastChild
-    if slider.role == ROLE_SLIDER: return slider.firstChild.value
+<pre><code class="python">    def getSliderValue(self):
+        from controlTypes import ROLE_SLIDER # es posible importar desde dentro de un método.
+        fg = api.getForegroundObject()
+        slider = fg.lastChild
+        if slider.role == ROLE_SLIDER: return slider.firstChild.value
 </code></pre>
+
 <p>Así, cuando estemos seguros de que estamos tratando con el control deslizador, el método devuelve el valor del primer hijo del deslizador (Si ese es el caso). Presta atención a los dos signos de igual para la comparación de igualdad, en lugar de sólo uno que es el signo igual para la asignación.</p>
 <p>Hay otros ejemplos que puedes probar para familiarizarte con la navegación y manipulación de objetos:</p>
 <ul>
@@ -631,28 +641,30 @@ class AppModule(appModuleHandler.AppModule):
 <h3 id="ejemplos-de-sobreescritura-de-clases-y-de-modificacion-de-roles">Ejemplos de sobreescritura de clases y de modificación de roles</h3>
 <p>A continuación los ejemplos que ilustran el uso de los dos métodos de modificación de sobreescritura y de atributos que hemos comentado anteriormente:</p>
 <p>Un ejemplo del primer caso: la modificación de un atributo.</p>
-<pre><code># Reasignar algunos formularios Delphi como ventana.
-from controlTypes import ROLE_WINDOW
+<pre><code class="python">    # Reasignar algunos formularios Delphi como ventana.
+    from controlTypes import ROLE_WINDOW
 
-def event_NVDAObject_init(self, obj):
-    if obj.windowClassName == "TForm": obj.role = ROLE_WINDOW
+    def event_NVDAObject_init(self, obj):
+        if obj.windowClassName == &quot;TForm&quot;: obj.role = ROLE_WINDOW
 </code></pre>
+
 <p>Esto significa que cada vez que nos encontremos con una ventana con la clase llamada "TForm", NVDA la tratará como una ventana normal.</p>
 <p>El ejemplo 2 trata de un módulo de aplicación que tiene dos objetos para tratar con partes específicas de un programa, luego usa chooseNVDAObjectOverlayClasses para asignar la lógica para cada control.</p>
-<pre><code>#Un ejemplo de superposición de clases
+<pre><code class="python">    #Un ejemplo de superposición de clases
 
-class enhancedEdit(IAccessible):
-    # Algún código para ejecutarse cuando el nombre de la clase de la ventana es MyEdit.
+    class enhancedEdit(IAccessible):
+        # Algún código para ejecutarse cuando el nombre de la clase de la ventana es MyEdit.
 
-class MainWindow(IAccessible):
-    # Otro código, esta vez añadiendo gestos personalizados para la ventana principal del programa.
+    class MainWindow(IAccessible):
+        # Otro código, esta vez añadiendo gestos personalizados para la ventana principal del programa.
 
-# En el módulo de aplicación:
+    # En el módulo de aplicación:
 
-def chooseNVDAObjectOverlayClasses(self, obj, clsList):
-    if obj.windowClassName == "myEdit": clsList.insert(0, enhancedEdit)
-    elif obj.windowClassName == "TWindow": clsList.insert(0, mainWindow)
+    def chooseNVDAObjectOverlayClasses(self, obj, clsList):
+        if obj.windowClassName == &quot;myEdit&quot;: clsList.insert(0, enhancedEdit)
+        elif obj.windowClassName == &quot;TWindow&quot;: clsList.insert(0, mainWindow)
 </code></pre>
+
 <p>En ambos casos, el objeto que se desea comprobar debe insertarse como el primer elemento de la clsList. El efecto es que estos objetos personalizados tendrán prioridad cuando se estén buscando gestos o código (comportamiento) para el objeto, y en la información del desarrollador, estos objetos personalizados vendrán por primera vez cuando el MRO (orden de Métodos de Resolución) muestre el navegador de objetos.</p>
 <p>Nota: es posible que tengas que afinar estos dos métodos para proporcionar clases de superposición correctas para controles muy específicos (tales como comprobación de nombres, roles específicos, etc.); de lo contrario, es posible que descubras que se asignan dos o más controles de apariencia idéntica a tu objeto personalizado cuando en realidad son muy diferentes. Además, el event_NVDAObject_init sólo está disponible en módulos de aplicación.</p>
 <h3 id="entrada-y-salida-scripts-y-mensajes-iu">Entrada y salida: scripts y mensajes IU</h3>
@@ -665,42 +677,44 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>En el momento de escritura de esta guía, NVDA soporta entrada desde el teclado, pantallas braille con o sin teclado braille y pantallas táctiles. Estos tipos de entrada tienen un prefijo de gesto correspondiente (kb para teclado, br para braille y ts para pantalla táctil) que identifica el tipo de gesto. La salida puede enviarse vía voz y/o braille.</p>
 <h3 id="ejemplo-2-un-diccionario-de-scripts-basico-y-un-mensaje-de-salida">Ejemplo 2: Un diccionario de scripts básico y un mensaje de salida</h3>
 <p>En este ejemplo, definiremos dos scripts llamados "sayHello" y "sayGoodBye", luego los vincularemos a dos gestos separados.</p>
-<pre><code># Un fragmento de ejemplo de asignación de un script desde una extensión global.
-import ui
+<pre><code class="python">    # Un fragmento de ejemplo de asignación de un script desde una extensión global.
+    import ui
 
-def script_sayHello(self, gesture):
-    ui.message("Hello!")
+    def script_sayHello(self, gesture):
+        ui.message(&quot;Hello!&quot;)
 
-def script_sayGoodBye(self, gesture):
-    ui.message("Good Bye!")
+    def script_sayGoodBye(self, gesture):
+        ui.message(&quot;Good Bye!&quot;)
 
-__gestures={
-    "kb:control+NVDA+1":"sayHello",
-    "kb:Control+NVDA+2":"sayGoodBye"
-}
+    __gestures={
+        &quot;kb:control+NVDA+1&quot;:&quot;sayHello&quot;,
+        &quot;kb:Control+NVDA+2&quot;:&quot;sayGoodBye&quot;
+    }
 </code></pre>
+
 <p>Ahora cuando pulses Control+NVDA+1, NVDA dirá, "Hello", y cuando pulses Control+NVDA+2, NVDA dirá, "Good bye." Este es el código básico al recibir comandos y enviar mensajes.</p>
 <h3 id="ejemplo-3-informacion-del-script-usando-el-decorador-script">Ejemplo 3: información del script usando el decorador script</h3>
 <p>Como hemos visto en el ejemplo de más arriba, el decorador script se puede usar para asignar gestos a los scripts fácilmente. Sin embargo, el decorador script puede hacer algo más que asignar gestos: se puede usar para proporcionar información adicional, como el mensaje de ayuda de entrada del script.</p>
 <p>Además del ejemplo 2 modificado, el ejemplo que se muestra a continuación añadirá un mensaje de ayuda de entrada a ambos scripts, junto con la posibilidad de que NVDA diga "Adiós" al pulsar NVDA+control+3.</p>
-<pre><code># Un fragmento de ejemplo del uso del decorador script en una extensión global.
-import ui
-from scriptHandler import script
+<pre><code class="python">    # Un fragmento de ejemplo del uso del decorador script en una extensión global.
+    import ui
+    from scriptHandler import script
 
-@script(
-    description="Dice hola",
-    gesture="kb:control+NVDA+1"
-)
-def script_sayHello(self, gesture):
-    ui.message("Hello!")
+    @script(
+        description=&quot;Dice hola&quot;,
+        gesture=&quot;kb:control+NVDA+1&quot;
+    )
+    def script_sayHello(self, gesture):
+        ui.message(&quot;Hello!&quot;)
 
-@script(
-    description="Dice adiós",
-    gestures=["kb:Control+NVDA+2", "kb:Control+NVDA+3"]
-)
-def script_sayGoodBye(self, gesture):
-    ui.message("Good Bye!")
+    @script(
+        description=&quot;Dice adiós&quot;,
+        gestures=[&quot;kb:Control+NVDA+2&quot;, &quot;kb:Control+NVDA+3&quot;]
+    )
+    def script_sayGoodBye(self, gesture):
+        ui.message(&quot;Good Bye!&quot;)
 </code></pre>
+
 <h4 id="argumentos-del-decorador-script">Argumentos del decorador script</h4>
 <p>Puedes pasar la siguiente información al decorador script sobre un script:</p>
 <ul>
@@ -711,20 +725,21 @@ def script_sayGoodBye(self, gesture):
 </ul>
 <h3 id="ejemplo-4-scripts-para-objetos-especificos">Ejemplo 4: Scripts para objetos específicos</h3>
 <p>Al igual que en los objetos especializados anteriores, los scripts se pueden asignar a ciertos objetos especificando el diccionario de gestos para este objeto en particular. Aquí hay un ejemplo de un módulo de aplicación que define scripts para la ventana principal de un programa reproductor multimedia, utilizando el decorador script:</p>
-<pre><code># Scripts para objetos para un programa.
-from NVDAObjects.IAccessible import IAccessible
-from scriptHandler import script
+<pre><code class="python">    # Scripts para objetos para un programa.
+    from NVDAObjects.IAccessible import IAccessible
+    from scriptHandler import script
 
-class Player(IAccessible):
+    class Player(IAccessible):
 
-    @script(gesture="kb:NVDA+T")
-    def script_saySongName(self, gesture):
-        ui.message(self.songTitle_) #Supongamos que se haya definido esa variable.
+        @script(gesture=&quot;kb:NVDA+T&quot;)
+        def script_saySongName(self, gesture):
+            ui.message(self.songTitle_) #Supongamos que se haya definido esa variable.
 
-# Y en el módulo de aplicación principal:
-def chooseNVDAObjectOverlayClasses(self, obj, clsList):
-    if obj.windowClassName == "PlayerWindow": clsList.insert(0, Player)
+    # Y en el módulo de aplicación principal:
+    def chooseNVDAObjectOverlayClasses(self, obj, clsList):
+        if obj.windowClassName == &quot;PlayerWindow&quot;: clsList.insert(0, Player)
 </code></pre>
+
 <p>Algo extraño ocurre con este ejemplo: normalmente, cuando se pulsa NVDA+T, NVDA dice el título de la ventana actual, pero en este ejemplo, anuncia el nombre de la canción. Este es el resultado de la búsqueda del script (ver abajo) donde el script para el objeto actual se ejecuta en lugar del script de título de comandos globales. Esta es una forma común de vincular nuevos scripts en tiempo de ejecución.</p>
 <h3 id="orden-de-busqueda-de-scripts-y-conflictos-de-ordenes">Orden de búsqueda de scripts y conflictos de órdenes</h3>
 <p>Según escribas tus complementos con scripts, necesitas recordar el siguiente orden de búsqueda de script cuando intentes asignar órdenes a scripts:</p>
@@ -759,22 +774,25 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 </ol>
 <p>Dependiendo de dónde se defina el evento, necesitarás dos o cuatro cosas al definirlo. Si se declara desde el módulo de un complemento, las partes requeridas son el nombre del evento, el módulo en cuestión (self), el objeto y el siguiente manejador en caso de que el objeto tenga otros eventos asociados. Si se define como parte de un objeto, se requiere el nombre del evento y el objeto (self).</p>
 <p>Una rutina típica de eventos se ve así:</p>
-<pre><code>def event_eventName(self, obj, nextHandler):
-    # Hace alguna acción.
-    nextHandler()
+<pre><code class="python">    def event_eventName(self, obj, nextHandler):
+        # Hace alguna acción.
+        nextHandler()
 </code></pre>
+
 <p>Para eventos de objeto, usa:</p>
-<pre><code>def event_eventName(self):
-    # Rutina de evento.
+<pre><code class="python">    def event_eventName(self):
+        # Rutina de evento.
 </code></pre>
+
 <p>De hecho, hemos conocido un"evento" real antes: <code>event_NVDAObject-Init</code>. Se trata de un evento especial (uno de los muchos eventos definidos en NVDA) disparado cuando NVDA se encuentra con un nuevo objeto y lo inicializa de acuerdo con tu entrada (consulta la sección sobre sobreescritura de propiedades de un objeto para obtener más información). Veamos otros eventos que puedes encontrar mientras escribes tu complemento.</p>
 <h3 id="ejemplo-5-anunciar-el-nombre-cambiado-de-un-control">Ejemplo 5: Anunciar el nombre cambiado de un control</h3>
 <p>El siguiente código procede de uno de los complementos de módulos de aplicación.</p>
 <p>A continuación se muestra una rutina para un evento que le indica el nombre de algún texto en la pantalla cuando el texto cambie.</p>
-<pre><code>def event_nameChange(self, obj, nextHandler):
-    if obj.windowClassName == "TStaticText": ui.message(obj.name)
-    nextHandler()
+<pre><code class="python">    def event_nameChange(self, obj, nextHandler):
+        if obj.windowClassName == &quot;TStaticText&quot;: ui.message(obj.name)
+        nextHandler()
 </code></pre>
+
 <p>Como puedes ver, siempre que el nombre del objeto de texto cambie, NVDA anunciará el nuevo nombre al usuario. El evento"cambio de nombre" es uno de los muchos eventos para los que puedes definir acciones personalizadas en tu complemento (la lista completa va a continuación).</p>
 <p>Nota: puedes definir eventos para cualquier objeto de tu elección, especialmente controles en un programa (donde puedes definir acciones personalizadas para eventos en tu módulo de aplicación). Si este es el caso, debes asegurarte de que el control cumpla ciertas condiciones establecidas, como el nombre, la función, etc., para permitir que NVDA mantenga un"ojo" en ese objeto específico.</p>
 <h3 id="lista-de-posibles-eventos">Lista de posibles eventos</h3>
@@ -873,7 +891,7 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <p>Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado situado en carpetas del directorio de configuración de usuario. Lee la sección de scratchpad para más detalles.</p>
 <p>P. ¿Debería sustituir el diccionario de gestos y el atributo docstring de los scripts por el decorador script?</p>
 <p>Es decisión tuya utilizar el antiguo diccionario de gestos y el docstring del script o el nuevo decorador script para definir su información. Se recomienda el decorador script para los complementos nuevos, ya que permite definir la información fácilmente sobre el terreno.</p>
-<p>No incluimos preguntas frecuentes de programación relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
+<p>No incluimos preguntas frecuentes de programación o relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación, controladores y potenciadores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
 <p>Una extensión global añade características disponibles en todas partes. Por ejemplo, si hay un control que se utilizará en muchas aplicaciones, puedes escribir una extensión global para manejarlas en NVDA. Otro ejemplo es la adición de funciones adicionales a NVDA que se puedan utilizar en todos los programas, como la capacidad de OCR, la gestión de marcadores de ubicación, etc.</p>
@@ -912,22 +930,23 @@ def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 <h3 id="ejemplo-1-escribir-braille-computerizado-utilizando-el-teclado-qwerty">Ejemplo 1: Escribir braille computerizado utilizando el teclado QWERTY</h3>
 <p>Te vas a reunir con un cliente que utiliza el traductor braille de Duxbury (un popular programa de producción de documentos braille). Este cliente está trabajando con otro usuario de NVDA que desea escribir braille desde el teclado de su computadora en cualquier lugar. Basado en esto, decides escribir una extensión global, y encontraste un módulo que permite al teclado del ordenador actuar como un teclado braille usando una función.</p>
 <p>La extensión global, llamada brailleWrite.py, se vería así:</p>
-<pre><code># Un ejemplo de extensión global.
+<pre><code class="python">    # Un ejemplo de extensión global.
 
-import qtbrl # El módulo de entrada braille.
-import globalPluginHandler
-from scriptHandler import script
+    import qtbrl # El módulo de entrada braille.
+    import globalPluginHandler
+    from scriptHandler import script
 
-class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-    brlentry = False # La entrada braille no está activa.
+    class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+        brlentry = False # La entrada braille no está activa.
 
-    @script(
-        description="Enciende o apaga la entrada Braille.",
-        gesture="kb:NVDA+X"
-    )
-    def script_toggleBrailleEntry(self, gesture):
-        self.brlentry = True if not self.brlentry else False # alternar modo de entrada Braille.
+        @script(
+            description=&quot;Enciende o apaga la entrada Braille.&quot;,
+            gesture=&quot;kb:NVDA+X&quot;
+        )
+        def script_toggleBrailleEntry(self, gesture):
+            self.brlentry = True if not self.brlentry else False # alternar modo de entrada Braille.
 </code></pre>
+
 <p>Con estos antecedentes en mente, prueba algunos de los ejercicios cortos que se presentan a continuación.</p>
 <h3 id="ejercicios">Ejercicios</h3>
 <ol>
@@ -965,47 +984,50 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <h3 id="ejemplo-2-modulo-de-aplicacion-simple-en-el-bloc-de-notas">Ejemplo 2: Módulo de aplicación simple en el Bloc de notas</h3>
 <p>Supongamos que deseas averiguar qué línea estás editando en el Bloc de notas. Asumiendo que el Bloc de notas mostrará la barra de estado en todo momento, deseas asignar una combinación de teclas para leer el número de línea actual.</p>
 <p>El módulo de aplicación para el Bloc de notas se vería así:</p>
-<pre><code># El módulo de aplicación de ejemplo para bloc de notas, notepad.py.
-import appModuleHandler
-import api
-import ui
-from scriptHandler import script
+<pre><code class="python">    # Módulo de aplicación de ejemplo para bloc de notas, notepad.py.
+    import appModuleHandler
+    import api
+    import ui
+    from scriptHandler import script
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    @script(gesture="kb:NVDA+S")
-    def script_sayLineNumber(self, gesture):
-        # Supongamos que el número de línea sigue el formato "  ln 1".
-        lineNumList = api.getStatusBar().name.split()
-        lineNum = lineNumLisst[2]+linenumList[3]
-        ui.message(lineNum)
+        @script(gesture=&quot;kb:NVDA+S&quot;)
+        def script_sayLineNumber(self, gesture):
+            # Supongamos que el número de línea sigue el formato &quot;  ln 1&quot;.
+            lineNumList = api.getStatusBar().name.split()
+            lineNum = lineNumLisst[2]+linenumList[3]
+            ui.message(lineNum)
 </code></pre>
+
 <p>Por lo tanto, cada vez que ejecutes el Bloc de notas, cuando pulses NVDA+S, NVDA dirá el número de línea.</p>
 <h3 id="ejemplo-3-silenciar-nvda-en-openbook">Ejemplo 3: Silenciar NVDA en Openbook</h3>
 <p>Openbook es un programa de lectura y escaneo de Freedom scientific. Como Openbook proporciona voz, puedes decir a NVDA que entre en modo latente mientras Openbook (openbook.exe) se ejecute usando el módulo de aplicación siguiente:</p>
-<pre><code># Silenciar a NVDA en openbook, openbook.py.
-import appModuleHandler
+<pre><code class="python">    # Silenciar a NVDA en openbook, openbook.py.
+    import appModuleHandler
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    sleepMode = True
+        sleepMode = True
 </code></pre>
+
 <p>Con esa única línea de código, NVDA entrará en modo latente en ese programa (sólo debes hacerlo si el programa proporciona soporte de voz y/o braille por sí solo).</p>
 <h3 id="ejemplo-4-anunciar-cambios-de-propiedad-de-control-mientras-se-usa-otra-aplicacion">Ejemplo 4: Anunciar cambios de propiedad de control mientras se usa otra aplicación</h3>
 <p>Puedes pedir a NVDA que gestione eventos específicos mientras se concentra en otra aplicación. Esto se hace llamando a eventHandler.requestEvents en el método <strong>init</strong> del módulo de aplicación. Para poder invocar esto, necesitas el ID de proceso (PID) para la aplicación, el nombre de clase de ventana para el objeto y el nombre del evento a tratar.</p>
 <p>El siguiente código permite a NVDA anunciar los cambios de valor mientras se centra en otra aplicación.</p>
-<pre><code># Ejemplo de módulo de aplicación para un programa de mensajería.
-# El objeto que deseamos rastrear tiene el nombre de la clase de ventana "MessengerWindow".
+<pre><code class="python">    # Ejemplo de módulo de aplicación para un programa de mensajería.
+    # El objeto que deseamos rastrear tiene el nombre de la clase de ventana &quot;MessengerWindow&quot;.
 
-import appModuleHandler
-import eventHandler
+    import appModuleHandler
+    import eventHandler
 
-class AppModule(appModuleHandler.AppModule):
+    class AppModule(appModuleHandler.AppModule):
 
-    def __init__(self, *args, **kwargs):
-        super(AppModule, self).__init__(*args, **kwards)
-        eventHandler.requestEvents(self.processID, "MessengerWindow", "valueChange")
+        def __init__(self, *args, **kwargs):
+            super(AppModule, self).__init__(*args, **kwards)
+            eventHandler.requestEvents(self.processID, &quot;MessengerWindow&quot;, &quot;valueChange&quot;)
 </code></pre>
+
 <p>Una vez definidos, aunque estén enfocados en otra aplicación, se anunciarán nuevos mensajes (valores).</p>
 <h3 id="propiedades-y-metodos-utiles-de-los-modulos-de-aplicacion">Propiedades y métodos útiles de los módulos de aplicación</h3>
 <p><code>sleepMode</code> y <code>processID</code> son sólo dos de los muchos atributos que tienen los módulos de aplicación. Otras propiedades y métodos útiles utilizados en los módulos de aplicación incluyen los siguientes:</p>
@@ -1032,10 +1054,10 @@ class AppModule(appModuleHandler.AppModule):
 <li>Muchos módulos de aplicación (tanto integrados como de terceros) utilizan nombres de applicación como parte del nombre de una constante (un valor que no cambia). Por ejemplo, en el módulo Powerpoint de NVDA (powerpnt.py), muchas constantes comienzan con "PP". Del mismo modo, en el módulo de aplicación de Station Playlist Studio, muchas constantes en el archivo del módulo de aplicación (splstudio.py) comienzan con "SPL". Esto se usa para recordarte dónde se utilizan estas constantes.</li>
 </ul>
 <h2 id="controladores">Controladores</h2>
-<p>Un controlador permite que un software como NVDA se comunique con el hardware o utilice la funcionalidad proporcionada por otro software. Normalmente, cuando la gente habla de controladores, usualmente se refiere a un programa instalado en una computadora que permite que el software se comunique con un hardware específico, como tarjetas de vídeo, teclados y demás.</p>
+<p>Un controlador permite que un software como NVDA se comunique con el hardware o utilice la funcionalidad proporcionada por otro software. Normalmente, cuando la gente habla de controladores, usualmente se refiere a un programa instalado en un ordenador que permite que el software se comunique con un componente hardware específico, como tarjetas de vídeo, teclados y demás.</p>
 <p>En NVDA, los controladores se refieren a módulos que NVDA puede utilizar para comunicarse con un sintetizador de voz o una pantalla braille. Por ejemplo, puedes escribir un controlador de pantalla braille que envíe una salida braille a la pantalla braille, o pedirle a tu sintetizador que cambie de idioma y proporcione opciones configurables.</p>
 <h3 id="componentes-del-controlador">Componentes del controlador</h3>
-<p>Todos los controladores (independientemente del dispositivo de destino o software que se admita) importan los módulos apropiados, como "synthDriverHandler". Para la mayoría de los controladores, la mayoría del código del controlador trata sobre la comunicación con el dispositivo o software de destino, y todos los controladores deben definir la clase de controlador (synthDriverHandler.SynthDriver o braille.BrailleDisplayDriver).</p>
+<p>Todos los controladores (independientemente del dispositivo de destino o software que se admita) importan los módulos apropiados, como <code>synthDriverHandler</code>. En muchos controladores, la mayoría del código del controlador trata sobre la comunicación con el dispositivo o software de destino, y todos los controladores deben definir la clase de controlador (synthDriverHandler.SynthDriver o braille.BrailleDisplayDriver).</p>
 <p>Todas las clases de controladores, como mínimo, deben contener:</p>
 <ul>
 <li>Identificador del controlador: una cadena de caracteres como "oneCore" que identifique de forma unívoca a un controlador determinado.</li>
@@ -1056,14 +1078,14 @@ class AppModule(appModuleHandler.AppModule):
 <h3 id="unas-pocas-cosas-importantes-que-recordar-antes-durante-y-despues-del-desarrollo-de-controladores">Unas pocas cosas importantes que recordar antes, durante y después del desarrollo de controladores</h3>
 <ul>
 <li>Antes de escribir un controlador, asegúrate de tener el software y/o hardware necesarios.</li>
-<li>Asegúrate de estudiar los protocolos y las API's utilizadas por un sintetizador de voz o una pantalla braille (esto es más importante para las pantallas braille que pueden implementar diferentes protocolos).</li>
+<li>Asegúrate de estudiar los protocolos y las API's utilizadas por un sintetizador de voz o una pantalla braille (esto es más importante para las pantallas braille, que pueden implementar diferentes protocolos).</li>
 <li>Asegúrate de saber cómo comunicarte con el equipo o software: puertos, IDs USB, direcciones Bluetooth, configuración del puerto serie, dlls, etc.</li>
 <li>Trabaja con otra persona que utilice el equipo o el software para el que estás escribiendo el (los) controlador (es).</li>
 </ul>
 <h3 id="pasos-tipicos-de-desarrollo-de-un-controlador">Pasos típicos de desarrollo de un controlador</h3>
 <p>Cuando escribas controladores, es posible que desees seguir los pasos recomendados para el desarrollo de módulos de aplicación (planificación, comunicación con los proveedores, pruebas de usuario, etc.). Sin embargo, dado que los controladores requieren un conocimiento íntimo del hardware y/o del software, deberías dedicar más tiempo a probar tu controlador. Esto es más importante si estás escribiendo un controlador para una pantalla braille que puede enviar órdenes arbitrarias (órdenes braille, botones de enrutamiento, etc.).</p>
 <h2 id="potenciadores">Potenciadores</h2>
-<p>Un potenciador es un módulo que ayuda a ciertos grupos de usuarios a utilizar ordenadores de una forma más eficiente. Aquí se puede incluir seguimiento del cursor, ampliación y otras mejoras.</p>
+<p>Un potenciador es un módulo que ayuda a ciertos grupos de usuarios a utilizar ordenadores de una forma más eficiente. Aquí se pueden incluir seguimiento del cursor, ampliación y otras mejoras.</p>
 <p>Actualmente NVDA puede proporcionar asistencia mediante proveedores de mejoras de visión. Un proveedor de mejoras de visión es un potenciador que permite a personas con vista o baja visión usar ordenadores de manera efectiva trabajando en tándem con NVDA. Los potenciadores pueden incluir resaltado del cursor, efecto de cortina de pantalla y ampliación de ciertas zonas de la pantalla. Estos potenciadores se alojan bajo la carpeta "visionEnhancementProviders"y se definen con la clase "VisionEnhancementProvider", que hereda de "vision.providerBase.VisionEnhancementProvider".</p>
 <p>Nota: como de momento sólo se soporta un potenciador, nos referiremos al proveedor de mejoras de visión en las siguientes secciones.</p>
 <h3 id="componentes-potenciadores">Componentes potenciadores</h3>

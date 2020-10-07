@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-07 17:27+0200\n"
+"PO-Revision-Date: 2020-10-07 17:35+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\StartingTranslationFreeze.py:3
+msgid "# Starting a Translatable String Freeze"
+msgstr "# Cómo iniciar una congelación de cadenas traducibles"
+
+#: ..\python_docs\StartingTranslationFreeze.py:4
+msgid ""
+"Three weeks before the release is due (two weeks before rc1), beta should "
+"enter a translatable string freeze. These instructions are for the release "
+"manager and document the process for beginning this freeze."
+msgstr ""
+"Tres semanas antes de que se libere la versión final (2 semanas antes de "
+"la rc1), la rama beta debería entrar en un estado de congelación de "
+"cadenas traducibles. Estas instrucciones son para el administrador de "
+"versiones y documentan el proceso para iniciar esta congelación."
+
+#: ..\python_docs\StartingTranslationFreeze.py:5
+msgid ""
+"* If you haven't already, make any final corrections to the What's New and "
+"add a release blurb."
+msgstr ""
+"* Si no lo has hecho todavía, haz las correcciones finales necesarias al "
+"documento qué hay de nuevo y añade el número de versión correspondiente."
+
+#: ..\python_docs\StartingTranslationFreeze.py:6
+msgid ""
+"* If there have been any changes in beta since the last automated merge to "
+"srt (Friday 00:05 AEST), translations should be merged to srt manually:"
+msgstr ""
+"* Si ha habido cambios en beta desde la última mezcla automática en srt "
+"(viernes a las 00:05 AEST) se deben mezclar las traducciones en srt "
+"manualmente:"
+
+#: ..\python_docs\StartingTranslationFreeze.py:7
+msgid "    1. Log into exbi and su to nvdal10n; e.g. `sudo su - nvdal10n`"
+msgstr ""
+"    1. Inicia sesión en exbi y cambia al usuario nvdal10n; por ejemplo "
+"`sudo su - nvdal10n`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:8
+msgid "    2. `cd ~/mr/mainNVDACode`"
+msgstr "    2. `cd ~/mr/mainNVDACode`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:9
+msgid "    3. Run: `mr up`"
+msgstr "    3. Ejecuta: `mr up`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:10
+msgid "    4. `cd ~/mr/srt`"
+msgstr "    4. `cd ~/mr/srt`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:11
+msgid "    5. Run: `mr up`"
+msgstr "    5. Ejecuta: `mr up`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:12
+msgid "    6. Run: `mr mergePot`"
+msgstr "    6. Ejecuta: `mr mergePot`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:13
+msgid "    7. Run: `mr findRevs`"
+msgstr "    7. Ejecuta: `mr findRevs`"
+
+#: ..\python_docs\StartingTranslationFreeze.py:14
+msgid ""
+"* Announce the freeze on the nvda-devel and nvda-translations email lists. "
+"Use the example below as a base, ensuring you edit all instances of the "
+"version number and dates:"
+msgstr ""
+"* Anuncia la congelación en las listas de correo nvda-devel y nvda-"
+"translations. Apóyate en el ejemplo que hay debajo, modificando según "
+"corresponda el número de versión y las fechas:"
+
+#: ..\python_docs\StartingTranslationFreeze.py:15
+msgid "    > Subject: Translatable string freeze for NVDA 2017.2"
+msgstr "    > Asunto: Translatable string freeze for NVDA 2017.2"
+
+#: ..\python_docs\StartingTranslationFreeze.py:16
+#: ..\python_docs\StartingTranslationFreeze.py:18
+#: ..\python_docs\StartingTranslationFreeze.py:20
+#: ..\python_docs\StartingTranslationFreeze.py:22
+msgid "    >"
+msgstr "    >"
+
+#: ..\python_docs\StartingTranslationFreeze.py:17
+msgid "    > Hi all,"
+msgstr "    > Hi all,"
+
+#: ..\python_docs\StartingTranslationFreeze.py:19
+msgid ""
+"    > We have now entered the translatable string freeze for NVDA 2017.2."
+msgstr ""
+"    > We have now entered the translatable string freeze for NVDA 2017.2."
+
+#: ..\python_docs\StartingTranslationFreeze.py:21
+msgid ""
+"    > Translators, you have until UTC 00:00 on 22 May to ensure your "
+"translation is up to date in order for it to be included in NVDA 2017.2. "
+"Work submitted after this time will not be included in NVDA 2017.2."
+msgstr ""
+"    > Translators, you have until UTC 00:00 on 22 May to ensure your "
+"translation is up to date in order for it to be included in NVDA 2017.2. "
+"Work submitted after this time will not be included in NVDA 2017.2."
+
+#: ..\python_docs\StartingTranslationFreeze.py:23
+msgid "    > Thanks to everyone for their valuable work!"
+msgstr "    > Thanks to everyone for their valuable work!"

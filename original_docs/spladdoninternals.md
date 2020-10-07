@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NvDA 20.07
+Based on StationPlaylist Add-on for NVDA 20.09
 
 ## 2020 Preface and notes
 
@@ -69,6 +69,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 19.07: renaming the add-on, settings reload/reset.
 * 20.02: Python 3, restructured encoders support and new encoders, Creator's Playlist Editor support.
 * 20.06: removed Window-Eyes support, time-based broadcast profiles facility removed, support for Remote VT client.
+* 20.09: fourth LTS release, pilot features removed, connecting to individual encoders in SPL encoders, background encoder monitor registry.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -80,7 +81,7 @@ To download the add-on, go to https://addons.nvda-project.org/addons/StationPlay
 
 StationPlaylist add-on for NVDA consists of seven app modules (including two app module packages) and a global plugin. Because Studio and Creator come with Track Tool for managing tracks, the add-on includes an app module for Track Tool in addition to the main app module package for Studio, as well as an app module for StationPlaylist Creator. A fourth app module for Voice Track Recorder is present which is used for event tracking purposes. Remote VT client is the fifth app module and is mainly used to support remote playlist editor. The other two app modules deal with Streamer and SPL DSP Engine, with SPL Engine being an app module package due to inclusion of encoders support module which is also used by Streamer.
 
-The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere and for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and parts of encoder support).
+The overall design is that of a partnership between the main Studio app module and the Studio Utilities (SPLUtils) global plugin. Studio app module performs things expected from scripts such as responding to key presses, announcing status information, configuration management and so forth, while the global plugin is responsible for running Studio commands from anywhere, and in older add-on releases, for encoder support (the add-on supports SAM, SPL, and AltaCast encoders). In reality, the global plugin is subordinate to the app module, as the app module controls overall functionality of the add-on and because the global plugin requires Studio to be running to unlock some features (here, unlock means using layer commands and parts of encoder support).
 
 When it comes to hierarchy of app modules, Studio app module package is ranked highest. This is because Studio app module is the oldest part of the add-on, and it provides base services and blueprints for other app modules. For instance, Creator and Track Tool rely on configuration facility provided by Studio app module package for Columns Explorer (explained later), and Voice Track (VT) Recorder app module cannot function properly without Studio app module running. Even though SPL Engine and Streamer are independent of Studio app module, they still require Studio app module to function (this is especially the case with SPL Engine, as Studio loads splengine.exe, the DSP Engine executable).
 
@@ -121,7 +122,7 @@ In the early days, I enforced this separation, but in add-on 6.0, it is possible
 In order for layer commands to work, I borrowed code from another add-on: Toggle and ToggleX by Tyler Spivey. Toggle/ToggleX allows one to toggle various formatting announcement settings via a layer command set. It works like this:
 
 * Dynamic Command:script binding and removal: It is possible to bind gestures dynamically via bindGesture/bindGestures method for an app module or a global plugin (bindGesture binds a single command to a script, whereas bindGestures binds commands to scripts from a gestures map or another container). To remove gesture map dynamically, the main/layer gestures combo was cleared, then the main gestures were bound.
-* Use of two or more gesture maps in the app module/global plugin: Normally, an app module or a global plugin that accepts keyboard input uses a single gestures map (called __gestures; a map is another term for dictionaries or associative array where there is a value tied to a key). But in order for layers to work, a second gestures map was provided to store layer commands (command and the bound script of the form "command":"script").
+* Defining extra gesture maps in the app module/global plugin: Normally, an app module or a global plugin that accepts keyboard input uses a single gestures map (called __gestures; a map is another term for dictionaries or associative array where there is a value tied to a key). But in order for layers to work, a second gestures map was provided to store layer commands (command and the bound script of the form "command":"script"). In recent nVDA releases, script decorator is used for main commands while gestures map is used for layer commands.
 * Wrapped functions: Tyler used "wraps" decorator from functools to wrap how "finally" function is called from within the layer set (this was needed to remove bindings for layer commands after they are done). Also, a custom implementation of getScript function (app module/global plugin) was used to return either the main script of the layer version depending on context.
 
 A typical layer command execution is as follows:
@@ -141,7 +142,7 @@ A typical layer command execution is as follows:
 
 In order to use services offered by Studio, one has to use Studio API, which in turn requires one to keep an eye on window handle to Studio (in Windows API, a window handle (just called handle) is a reference to something, such as a window, a file, connection routines and so on). This is important if one wishes to perform Studio commands from other programs (Studio uses messages to communicate with the outside program in question via user32.dll's SendMessage function).
 
-Starting from add-on 7.0, one of the activities the app module performs when started (besides announcing the version of Studio you are using) is to look for the handle to Studio's main window until it is found (this is done via a thread which calls user32.dll's FindWindowW (FindWindowA until late 2018 as explained below) function every second), and once found, the app module caches this information for later use. A similar check is performed by SPL Controller command, as without this, SPL Controller is useless (as noted earlier). Because of the prominence of the Studio API and the window handle, one of the first things I do whenver new versions of Studio is released is to ask for the latest Studio API and modify the app module and/or global plugin accordingly.
+Starting from add-on 7.0, one of the activities the app module performs at startup (besides announcing the version of Studio you are using) is to look for the handle to Studio's main window until it is found (this is done via a thread which calls user32.dll's FindWindowW (FindWindowA until late 2018 as explained below) function every second), and once found, the app module caches this information for later use. A similar check is performed by SPL Controller command, as without this, SPL Controller is useless (as noted earlier). Because of the prominence of the Studio API and the window handle, one of the first things I do whenver new versions of Studio is released is to ask for the latest Studio API and modify the app module and/or global plugin accordingly.
 
 #### FindWindowA versus FindWindowW
 
@@ -204,8 +205,8 @@ Certain app module add-ons shipt with an app module with a constructor define, a
 	1. For add-on 6.x and 7.x, loads a predefined configuration file named userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "normal profile). In add-on 6.x and 7.x, this is done by calling splconfig.unlockConfig() function that handles configuration validation via ConfigObj and Validator, and in 8.0 and later, this is part of SPLConfig constructor. In add-on 17.10 and later, this step will not take place if NVDA is told to use an in-memory config, and in 18.07 and later, any SPL app module that opens SPLConfig (splconfig.openConfig) will register its app name to indicate which app is starting.
 	2. For add-on 6.0 and later, loads broadcast profiles from addonDir/profiles folder. These are .ini files and are processed just like the normal profile except that global settings are pulled in from the normal profile. In add-on 8.0, just like normal profile, this is done when constructing SPLConfig object. In add-on 17.10 and later, if the add-on is told to use normal profile only, this step will not occur.
 	3. Each profile is then appended to a record keeper container (splconfig.SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and later). Then the active profile is set and splconfig.SPLConfig (user configuration map) is set to the first profile in the configuration pool (normal profile; for add-on 5.x and earlier or if only normal profile is to be used (17.10 and later), there is (or will be) just one profile so append step is skipped).
-	4. Starting from add-on 7.0 and enhanced in 17.10, unless saving settings to disk is prohibited or in-memory config is requested, Normal profile dictionary (not others) is cached. This is useful in keeping a record of settings loaded from disk versus run-time configuration and is employed when comparing values when saving profiles. See profile caching section in broadcast profiles for details and reasons.
-	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NvDA+C) is invoked. Add-on 19.03 added support for config reload/reset action so add-on settings can be reloaded or reset to defaults if Control+NVDA+R is pressed once or three times, respectively.
+	4. Starting from add-on 7.0 and enhanced in 17.10 (later relaxed in 20.09), unless in-memory config is requested, Normal profile dictionary (not others) is cached. This is useful in keeping a record of settings loaded from disk versus run-time configuration and is employed when comparing values when saving profiles. See profile caching section in broadcast profiles for details and reasons.
+	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NVDA+C) is invoked. Add-on 19.03 added support for config reload/reset action so add-on settings can be reloaded or reset to defaults if Control+NVDA+R is pressed once or three times, respectively.
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
 	8. Between add-on 7.0 and 18.12, add-on update facility is initialized (splupdate.initialize). among other things, the initialization routine loads update check metadata. In 2018, prior to being removed, update initialization was moved to app module constructor. We'll meet add-on update routines (housed in splstudio/splupdate.py) later in this article.
@@ -226,7 +227,7 @@ In add-on 17.10, several internal flags and associated command-line switches are
 The flags are as follows:
 
 1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed in 20.09): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
-2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): broadcast profiles will not be used, including ability to create new profiles and using time-based profile switching (see time-based profiles section for details). Combining this with NVDA setting to not have configuration to disk on exit effectively makes normal profile a read-only config store.
+2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): broadcast profiles will not be used i.e. cannot create and switch amongst broadcast profiles. Combining this with NVDA setting to not have configuration to disk on exit effectively makes normal profile a read-only config store.
 3. Use in-memory config (configInMemory/--spl-configinmemory): only normal profile will be used, but instead of loading settings from disk, an in-memory version with default settings applied will be used with no caching at all.
 
 Using flags that specify the use of normal profile only will restrict ability to create new broadcast profiles.
@@ -274,7 +275,7 @@ While using the add-on, you can stop using it in various ways, including exiting
 Here is a list of steps Studio app module performs when it is about to leave this world:
 
 1. The "terminate" method is called. Just like the startup (constructor) routine, this method first calls the terminate method defined in the default app module, which closes handles and performs other closing routines.
-2. Calls splconfig.terminate() function to save add-on settings and perform shutdown routines for some features. This function goes through following steps in add-on 19.01:
+2. Calls splconfig.terminate() function to save add-on settings and perform shutdown routines for some features. This function goes through following steps:
 	1. In add-on 7.0, if update check timer is running, the timer is told to stop, and update metadata is copied back to normal profile. This step is gone in 19.01.
 	2. Starting with add-on 18.07, active SPL component is unregistered via splconfig.closeConfig function. If there are other components running, the below steps will not occur, otherwise add-on settings will be closed.
 	3. Unless disabled through flags in 17.10, profiles are saved (beginning with normal profile) to disk if and only if profile-specific settings were changed (an online cache used for storing profile settings when they are loaded is kept for this purpose). This step will not occur if an in-memory version of normal profile is in use or other SPL components are active.
@@ -289,7 +290,7 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 
 ### Add-on updates: updating to latest and greatest version
 
-Note: this feature, recently dubbed "standalone add-on update", is gone in 19.01, although the mechanism behind it is documented here for sake of completeness. Standalone add-on update refers to using SPL Assistant to check for updates from Studio.
+Note: this feature, dubbed "standalone add-on update", is gone in 19.01, although the mechanism behind it is documented here for sake of completeness. Standalone add-on update refers to using SPL Assistant to check for updates from Studio.
 
 In add-on 7.0 and later (until 18.12), it is possible to update to the latest version of the add-on by using add-on update check facility. This is done by connecting to a server where the update add-on files are stored.
 
@@ -587,7 +588,7 @@ Until 2018, the column text retrieval routine (which lives in SysListView32 and 
 4. The retriever then creates an internal SysListView32 control used as a place holder to store column text, then asks Windows to tell the process where the column text lives to reveal the column text for the specified column (first calls WriteProcessMemory, sens a message via user32.dll's SendMessage to retrieve text length, then uses ReadProcessMemory to retrieve the actual column text if there is something to read). Once the column text is revealed, the retriever stores the text inside the text buffer (ctypes.create_unicode_buffer, allocated to store the resulting text).
 5. Lastly, the retriever frees resources (VirtualFreeEx) and returns the just retrieved column text, which can be used by routines requesting this.
 
-In 2018, this was simplified by use of SysListView32 routines directly.
+In 2018, this was simplified by use of SysListView32 routines directly. In 2020, almost the entire table navigation routines are performed by the base SysListView32 item class (the only exception being row navigation in playlist viewer).
 
 ### Column retrieval and navigation routines: from hesitation to a cornerstone
 
@@ -649,7 +650,7 @@ The last argument (columnSearch) determines which version of the dialog to prese
 
 Another feature that uses column routines is track place marker. You would drop a place marker at the current track (SPL Assistant, Control+K), move around the playlist, then move to the track with the marker set on it (SPL Assistant, K).
 
-Once you drop a place marker, Studio app module will record the filename of the currently focused track, and when you wish to move to the marked track, NVDA will use column search routine to locate it. Unlike a typical column search, NVDA will call the private linear search routine directly and will select the column where filename is stored (in effect, you are asking NvDA to do a column search after choosing filename as the data you are looking for).
+Once you drop a place marker, Studio app module will record the filename of the currently focused track, and when you wish to move to the marked track, NVDA will use column search routine to locate it. Unlike a typical column search, NVDA will call the private linear search routine directly and will select the column where filename is stored (in effect, you are asking NVDA to do a column search after choosing filename as the data you are looking for).
 
 #### Vertical column navigation: just announce the column I want
 
@@ -970,7 +971,7 @@ If you are a seasoned NVDA user, you may have noticed a familiar pattern: the co
 
 Until add-on 6.x, playlist remainder announcement was based on Studio API. However, it was found that this "remainder" was actually the remaining time within the selected hour slot. To get around this, in add-on 7.0, this routine was rewritten to take advantage of Track Dial introduced in add-on 5.0 (see Track Dial section above).
 
-Technically, a combination of column content fetching and track navigation routines are used to accomplish this. When SPL Assistant, D is pressed, NvDA will write down the focused track and will move down the playlist (starting from the focused track), recording the segue (total track duration minus crossfade). Once playlist navigation is complete, the total duration is then sent to time announcement routine (see above) for processing (converted to hours, minutes and seconds format).
+Technically, a combination of column content fetching and track navigation routines are used to accomplish this. When SPL Assistant, D is pressed, NVDA will write down the focused track and will move down the playlist (starting from the focused track), recording the segue (total track duration minus crossfade). Once playlist navigation is complete, the total duration is then sent to time announcement routine (see above) for processing (converted to hours, minutes and seconds format).
 
 ##### Playlist snapshots and transcripts
 
@@ -1085,11 +1086,11 @@ In Studio app module world, a broadcast profile (usually shortened to profile) i
 
 There are two ways of creating a profile: brand new or as a copy. Both uses the same dialog (splconfui.NewProfileDialog), with the difference being the base profile in use. For a brand new profile, settings from the normal profile will be used (minus profile-specific settings, which are set to default values), and for a copy, the new profile will contain all settings from the base profile. In both cases, a memory resident profile will be created and initialized just like other profiles (splconfig.unlockConfig/splconfig.SPLConfig.createProfile, taking the name of the new profile as a parameter); this was done to reduce unnecessary disk writes. Also, new/copy profile dialog (and other dialogs invoked from the main configuration dialog) will disable the main settings dialog.
 
-In case the selected profile is deleted, the profile will be removed from the profiles list, the configuration file associated with the profile will be deleted (if it exists) and a previously active profile will take over unless if the active profile itself is gone, in which case normal profile will be set as the active profile. In case of a rename operation, it'll look for a profile with the old name and change some properties to reflect name change. There is an important step the app module will perform if an instant switch profile is renamed or deleted (if renamed, the instant profile variable will hold the new name, and if deleted, instant profile value will be None). A similar procedure is invoked when dealing with time-based profiles.
+In case the selected profile is deleted, the profile will be removed from the profiles list, the configuration file associated with the profile will be deleted (if it exists) and a previously active profile will take over unless if the active profile itself is gone, in which case normal profile will be set as the active profile. In case of a rename operation, it'll look for a profile with the old name and change some properties to reflect name change. There is an important step the app module will perform if an instant switch profile is renamed or deleted (if renamed, the instant profile variable will hold the new name, and if deleted, instant profile value will be None). A similar procedure was invoked in older releases when dealing with time-based profiles.
 
 #### Broadcast profiles dialog
 
-Inspired by NVDA screen reader's configuration profiles dialog, this dialog (splconfui.BroadcastProfilesDialog) shows various profile management controls. When you press Alt+NVDA+P to open this dialog, you'll be greeted with  a list of profiles loaded and buttons to create a brand new profile or a copy of an existing profile, rename and delete profiles. It also contains a "triggers" button to configure profile triggers such as instant switch or time-based profile switching.
+Inspired by NVDA screen reader's configuration profiles dialog, this dialog (splconfui.BroadcastProfilesDialog) shows various profile management controls. When you press Alt+NVDA+P to open this dialog, you'll be greeted with  a list of profiles loaded and buttons to create a brand new profile or a copy of an existing profile, rename and delete profiles. It also contains a "triggers" button to configure profile triggers such as instant profile switching.
 
 There is one more control: activate button. This button is disabled by default if the selected profile is the active profile, becoming active otherwise. Regardless of status of activate button, pressing Enter from profiles list will activate the selected profile.
 
@@ -1109,7 +1110,9 @@ The various changes due to introduction of Config Hub are:
 
 #### How does profile switching work
 
-There are two times where a "live" profile switching will occur: activation or deactivation of instant switch profile, and when it is time to switch to a time-based profile.
+Note: information on time-based profile is included for completeness.
+
+Besides switching to different profiles via broadcast profiles dialog, a profile can be set to be switched to instantly during a live show. In older releases, time-based profiles were supported in which NVDA will switch to a designated broadcast profile just before the show starts.
 
 An instant switch profile is a profile to be switched to if told by the user. This is used before you connect to a streaming server to load settings appropriate for a show (as of time of this writing, only one can be selected as an instant switch profile; to define this profile, select a profile to be used as a show, then go to profile switching button and select it).
 
@@ -1128,6 +1131,8 @@ To activate an instant switch profile, press SPL Assistant, F12. For time-based 
 
 #### Time-based switching fields and triggers dialog
 
+Note: this section is no longer applicable since 2020 but is kept for historical reasons.
+
 For each time-based profile, a list with seven fields is employed to describe trigger (switch) date and time. These are:
 
 * Trigger date (integer between 0 and 127): A 7-bit integer, denoting days on which a given profile should be activated. This field is used in profile triggers dialog to set or clear activation day checkboxes. A value of 0 means the profile should not be activated, and if so, it is removed from the triggers map.
@@ -1139,7 +1144,7 @@ The triggers dialog, used to configure these fields for the selected profile, co
 * Trigger days: seven checkboxes, one for each day of the week. Checking or clearing these boxes sets corresponding bits in the trigger date field.
 * Switch time: three number entry fields denoting when to switch to this profile (hour and minute) and the duration of this show (minutes).
 
-Once the data is gathered, NvDA will first check if trigger date checkboxes are checked (if no checkboxes are checked, the profile is removed). Next, NVDA will see if another profile has taken the given time slot, and if not, will proceed to store the next trigger date and time (will not be saved until OK button is clicked from the main add-on settings dialog).
+Once the data is gathered, NVDA will first check if trigger date checkboxes are checked (if no checkboxes are checked, the profile is removed). Next, NVDA will see if another profile has taken the given time slot, and if not, will proceed to store the next trigger date and time (will not be saved until OK button is clicked from the main add-on settings dialog).
 
 This concludes a detailed tour of Studio app module internals. The rest of the article will focus on SPL Studio Utilities global plugin, encoder support and a few thoughts on how the add-on is developed, starting with a tour of SPL Controller layer commands.
 
@@ -1197,7 +1202,7 @@ Until 2016, this was accomplished with a function in the SPL Utilities module (S
 	1. If counter is 0 (fg is None), NVDA will know that you have minimized Studio, so it'll tell you that Studio is minimized.
 	2. If counter is 1, NVDA will locate the Studio window by looking for the main Studio window (user32.dll is involved).
 	3. For all other values, NVDA will assume the last window found is the Studio window (held in fg variable) and return it.
-4. Back at the focus to Studio script, NvDA will either announce if Studio is minimized or switch to the foreground window returned by the fetch window function (fg.SetFocus).
+4. Back at the focus to Studio script, NVDA will either announce if Studio is minimized or switch to the foreground window returned by the fetch window function (fg.SetFocus).
 
 In 2017, this has been simplified to use SetForegroundWindow Windows API function with the handle to the Studio window being the only required parameter. Not only this simplified this routine significantly, it also improved performance of this command. One side effect is that it is no longer possible to detect Studio being minimized, but one can get a clue of this if NVDA says "unavailable" when trying to switch to Studio. One can then go to system tray and restore Studio window.
 
@@ -1266,14 +1271,14 @@ As we saw in a previous chapter, threads allow developers to let programs perfor
 
 Each encoder overlay class (not the base encoder) includes dedicated connection handling routines (reportConnectionStatus). Depending on how you invoke this, it starts up as follows:
 
-* If background encoder monitoring is off and you press F9 to connect, NVDA will run this routine in a separate thread. For SAM, this is checked right after sending F9 to the application, and for SPL, this is done after clicking "connect" button (manipulates focus in the process).
-* If background encoder monitoring is on before pressing F9, the routine will run from another thread when this setting is switched on. Then when you press F9, NvDA knows that the background monitoring thread is active, thus skipping the above step.
+* If background encoder monitoring is off and you press F9 to connect, NVDA will run this routine in a separate thread. For SAM, this is checked right after sending F9 to the application, and for SPL, this is done after clicking "connect" from the encoder context menu (manipulates focus in the process).
+* If background encoder monitoring is on before pressing F9, the routine will run from another thread when this setting is switched on. Then when you press F9, NVDA knows that the background monitoring thread is active, thus skipping the above step.
 
 The connection handling routine performs the following:
 
 1. Locates status message for the encoder entry. For SAM, it is the description text, and for SPL, it is one of the entry's child objects (columns). This will be done as long as Studio and/or NVDA is live (that is, if the thread is running).
 2. Announces error messages if any and will try again after waiting a little while (fraction of a second). If NVDA is told to not announce connection status until the encoder in question is connected, connection reporter thread will stop when an error message is seen.
-3. If connected, NvDA will play a tone, then:
+3. If connected, NVDA will play a tone, then:
 	* Do nothing if not told to focus to studio nor play the next track.
 	* Focuses to studio and/or plays the next track if no tracks are playing by calling onConnect method.
 4. For other messages, NVDA will periodically play a progress tone and announce connection status so far as reported by the encoder (progress tones will not be played if suppressed from encoder settings dialog).
@@ -1290,7 +1295,7 @@ For SAM encoders:
 
 For SPL encoder family (including AltaCast):
 
-* When you press F9 to connect, NVDA does the following:
+* When you press Control+F9 to connect all encoders, NVDA does the following:
 	1. Locates "connect" button, and if it says "Connect", clicks it (obj.doAction).
 	2. Moves focus back to the entry (self.SetFocus).
 * To disconnect, press TAB until you arrive at "Disconnect" button and press SPACE.
@@ -1321,7 +1326,7 @@ There was an important reason for writing this feature: Since NVDA supports mult
 
 In March and April 2015, I started rewriting certain parts of add-on configuration manager (splstudio.splconfig) in preparation for developing broadcast profiles (now included as part of add-on 6.0). I started by writing todo comments (where appropriate) describing what the future feature should be like. I then modified initConfig and saveConfig (discussed in app module sections), initially telling them to work with the default profile (the one and only configuration map then), then I left it alone until add-on 5.0 was released in June 2015.
 
-In June 2015, I opened a new branch (initially using the codename "starfish") to house code related to broadcast profiles. Before any "real" code was written, I studied NvDA source code dealing with configuration profiles to learn more about how Jamie (James Teh from NV Access, now Mozilla) implemented this feature. Once I understood how it worked, I copied, pasted and changed the code to match the overall add-on code base (giving nV Access the credit they deserve).
+In June 2015, I opened a new branch (initially using the codename "starfish") to house code related to broadcast profiles. Before any "real" code was written, I studied NVDA source code dealing with configuration profiles to learn more about how Jamie (James Teh from NV Access, now Mozilla) implemented this feature. Once I understood how it worked, I copied, pasted and changed the code to match the overall add-on code base (giving nV Access the credit they deserve).
 
 One of the first things I had to decide was how to store profiles. I experimented with using ConfigObj sections, one per profile, but this proved to be problematic (a profile could be given the name of an existing configuration map key). I then went back to NVDA source code to find out how NV Access solved this problem (using separate ini files), implemented it, and was met with another problem: transfering values between profiles. This was resolved by specifying whether a setting was "global" (applies to all profiles) or specific to a profile. Next came profile controls in the add-on settings dialog and using choice events to set alarm values using values from the selected profile.
 
@@ -1411,7 +1416,7 @@ I'd like to thank StationPlaylist staff for continued collaboration with screen 
 
 Source code notice: to protect copyrights, parts of Studio API has not been documented. Also, source code discussed throughout this series may change as future add-on versions are developed.
 
-Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2019 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist add-on for NvDA is copyright 2011, 2013-2019 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
+Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2019 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist add-on for NVDA is copyright 2011, 2013-2019 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
 
 ## References
 

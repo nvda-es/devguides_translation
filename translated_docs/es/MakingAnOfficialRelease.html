@@ -9,32 +9,51 @@
   <h1 id="creacion-de-una-liberacion-oficial">Creación de una liberación oficial</h1>
 <p>Las siguientes instrucciones son para el administrador de liberaciones, y detallan cómo liberar una nueva versión oficial.
 Consulta la documentación del proceso de liberación para más detalles sobre tiempos.</p>
-<h2 id="liberacion-beta-liberacion-previa">Liberación beta (liberación previa)</h2>
+<h2 id="iniciar-un-nuevo-ciclo-de-desarrollo">Iniciar un nuevo ciclo de desarrollo</h2>
 <ul>
-<li>Decide desde qué commit quieres que empiece la beta.</li>
-<li>Esta será la rama de partida para la nueva versión. Antes (pero después de la versión "final" anterior), se puede mezclar master en beta en cualquier momento. A continuación, la rama master seguirá adelante y las solicitudes de cambio necesarias para esta versión deberían tener como destino beta.<ul>
-<li>Generalmente master debería estar sana (se superan todas las pruebas y no hay regresiones conocidas)</li>
+<li>Crea una solicitud de cambio para establecer el punto que da fin a la rama <strong>(merge commit, no squash merge)</strong><ul>
+<li>Primero, crea una nueva rama (por ejemplo, <code>branchFor2020.3</code>) basada en el commit de master que debería usarse para la beta.
+        - Usar una rama separada garantiza que master puede seguir avanzando sin afectar a la solicitud de cambios. </li>
+<li>La solicitud de cambios permite que otros puedan revisar el commit seleccionado, y lo que se incluirá en la liberación</li>
+<li>La solicitud de cambios facilita la revisión de los cambios.</li>
+<li>Haz una revisión del archivo <code>user_docs/en/changes.t2t</code>, pero no añadas lo más destacado, mira el paso siguiente.</li>
+<li>Solicita una segunda revisión, usa la solicitud de cambios y añade un enlace al diff del archivo de cambios, ya que el diff será bastante grande.</li>
+<li>Decide desde qué commit quieres que empiece la beta:<ul>
+<li>Este será el punto de finalización de rama para la próxima liberación.</li>
+<li>Antes de que se descontinúe la rama (pero después de la versión "final" anterior), se puede mezclar master en beta en cualquier momento.</li>
+<li>Después de que el punto de master del que nace la rama avance las solicitudes de cambios necesarias deberían tener como destino la rama beta.</li>
+<li>Generalmente master debería estar sana (se superan todas las pruebas y no hay regresiones conocidas).</li>
 <li>Antes el commit seleccionado debía garantizar que el cambio más reciente (y significativo) debía haber tenido al menos una semana de pruebas alpha. Esta restricción se ha relajado un poco para acelerar el proceso beta. Los desarrolladores principales deberían usar su criterio para elegir un punto de ramificación adecuado. Si es necesario, se pueden revertir los cambios o añadir cambios nuevos para corregir fallos en la beta.</li>
 </ul>
 </li>
-<li>Crea una rama a partir de este commit, crea una solicitud de cambios desde ella y pon beta como destino<ul>
-<li>Permite que otros puedan revisar el commit seleccionado, y lo que se incluirá en la liberación</li>
-<li>Facilita la revisión de los cambios.</li>
-<li>Haz una revisión del archivo <code>user_docs/en/changes.t2t</code>.</li>
-<li>Solicita una segunda revisión, usa la solicitud de cambios y añade un enlace al diff del archivo de cambios, ya que el diff será bastante grande.</li>
-<li>Una vez se hayan aprobado todas, mezcla en beta.</li>
 </ul>
 </li>
+<li>Crea una solicitud de cambios añadiendo lo más destacado de esta versión <strong>(squash merge)</strong>.<ul>
+<li>Basada en <code>ramaParaX</code></li>
+<li>Con destino <code>ramaParaX</code> o beta dependiendo de si ya se ha mezclado la solicitud de cambios de rama. </li>
+</ul>
+</li>
+<li>Crea una solicitud de cambios para mover master al siguiente ciclo de desarrollo de versión <strong>(squash merge)</strong>.<ul>
+<li>Añade una nueva sección al registro de cambios.</li>
+<li><a href="#update-nvda-version-in-master">Actualiza la versión de NVDA en <code>master</code></a></li>
+<li>Al mezclar, <a href="#update-auto-milestone-id">actualiza el identificador automático del hito</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="liberacion-beta-liberacion-previa">Liberación beta (liberación previa)</h2>
+<ul>
 <li>Crea una nueva etiqueta anotada.<ul>
 <li>Una beta no necesita una entrada de liberación previa en GitHub. Guárdatelas para las rc y las liberaciones</li>
 </ul>
 </li>
-<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.</li>
+<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.<ul>
+<li>Plantéate redactar un borrador de la publicación de la versión.</li>
+</ul>
+</li>
 <li>Analiza el archivo del instalador</li>
+<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación previa en GitHub</a></li>
 <li>Publica la liberación efectuada.</li>
 <li>Difunde la liberación.</li>
-<li><a href="#update-auto-milestone-id">Actualiza el identificador automático del hito</a></li>
-<li><a href="update-nvda-version-in-master">Actualiza la versión de NVDA en <code>master</code></a></li>
 </ul>
 <h3 id="durante-el-periodo-beta">Durante el periodo beta</h3>
 <ul>
@@ -93,19 +112,25 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 </ul>
 </li>
 <li>Crea una etiqueta anotada.</li>
-<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación previa en GitHub</a></li>
-<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.</li>
+<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.<ul>
+<li>Plantéate redactar un borrador de la publicación de la versión.</li>
+</ul>
+</li>
 <li>Analiza el archivo del instalador</li>
+<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación previa en GitHub</a></li>
 <li>Publica la liberación efectuada.</li>
 <li>Difunde la liberación.</li>
 </ul>
 <h2 id="liberacion-final">Liberación final</h2>
 <ul>
 <li>Crea una etiqueta anotada.</li>
-<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación en GitHub</a></li>
-<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.</li>
+<li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.<ul>
+<li>Plantéate redactar un borrador de la publicación de la versión.</li>
+</ul>
+</li>
 <li>Analiza el archivo del instalador</li>
 <li>Publica la liberación efectuada.</li>
+<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación en GitHub</a></li>
 <li>Difunde la liberación.</li>
 <li>Cierra el <a href="https://github.com/nvaccess/nvda/milestones">hito de la liberación</a>.</li>
 </ul>
@@ -191,9 +216,9 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 <h2 id="actualizacion-del-identificador-automatico-del-hito">Actualización del identificador automático del hito</h2>
 <p>Esto se asegura de que el hito correcto se ha establecido en incidencias y solicitudes de cambio cerradas ahora automáticamente por GitHub.
 1. Obtén el id del hito para la nueva liberación.
-    - Ve a https://github.com/nvaccess/nvda/milestones
-    - Mira la URL del enlace del hito relevante.
-    - El número al final es el <code>id</code>.
+      - Ve a https://github.com/nvaccess/nvda/milestones
+      - Mira la URL del enlace del hito relevante.
+      - El número al final es el <code>id</code>.
 1. Inicia sesión en exbi
 2. Cambia al usuario nvaccess: <code>sudo su nvaccess</code>
 3. Edita <code>~nvaccess/data/nvaServer.conf</code>

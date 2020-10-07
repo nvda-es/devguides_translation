@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: July 2020
+Revision: September 2020
 
 ## Introduction
 
@@ -14,7 +14,7 @@ To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NvDA development progresses. As of August 2020 revision, features from upcoming NVDA 2020.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
+Note: some of the features described may change as Windows 10 and NVDA development progresses. As of August 2020 revision, features from upcoming NVDA 2020.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2020 Joseph Lee and contributors, released under GPL 2.
 
@@ -63,7 +63,7 @@ In UIA world, an object on screen is termed an "element". Just like any accessib
 
 Although UIA is meant to replace MSAA due to modernized accessibility information that can be gathered, screen reader vendors such as NV Access publishes workarounds for poor or odd UIA implementations. One such case is UIA issues in older versions of Microsoft Office, such as label problem in various combo boxes. Certain areas in Windows 10 and universal apps still have UIA issues, such as odd or badly applied control labels, generic XAML (eXtensible Application Markup Language)/UI labels, expected events not being fired and so on. This is one of the reasons for creating Windows 10 App Essentials add-on: to provide workarounds for issues like these.
 
-### Automation ID and other interfaces and properties
+### Automation Id and other interfaces and properties
 
 A key piece of information UIA exposes (or attempts to gather) is automation ID, a string that uniquely identifies an element. For example, some search fields expose "SearchEditBox" as automation ID, which allows screen readers such as NVDA to detect these controls. Although most controls do expose unique automation ID's, some uses generic or auto-generated automation ID's (such as update history in Settings app).
 
@@ -173,11 +173,12 @@ The Windows 10 Objects global plugin also has ability to track UIA events for co
 * Object name.
 * Name of the event being logged.
 * App where the control can be found (specifically, the app module).
-* Automation ID.
+* Automation Id if possible.
 * UIA class name.
 * For controller for event, the list of objects the given control depends on.
 * For tooltip open event, the GUI framework that powers the element.
 * For item status event, new item status text.
+* For state change event, current element status.
 
 For notification events, NVDA records event parameters from the event handler method itself.
 
@@ -274,8 +275,8 @@ The app modules (and for one in particular, more than an app module) in question
 As noted above, some controls ship with odd or bad UIA implementations, and universal apps are no exception (at least for app modules that ships with the add-on). Because of this, the following app modules (and in case of two, taken care of by Windows 10 Objects global plugin itself) include workarounds for various UIA problems:
 
 * Calendar (hxcalendarappimm.py) and Mail (hxoutlook.py): some edit fields, such as appointment title and others are shown as read-only when they are not, and removing this state from states set for these controls resolved this problem.
-* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). This workaround is no longer applicable due to Windows Search redesign in Version 1903. Also, when opening Sets version of Cortana search box (builds 17666 and 17692), wrong controller for event is fired, which prevents NvDA from announcing suggestions, and this has been corrected.
-* Maps: despite no changes to the app, live region changed event is fired by map title control, so NvDA includes a way to suppress repetitions.
+* Cortana: some search suggestions expose same text for name and description, which results in repeats for suggestion result text. This was corrected by comparing name and description and nullifying the description (obj.description = None). This workaround is no longer applicable due to Windows Search redesign in Version 1903. Also, when opening Sets version of Cortana search box (builds 17666 and 17692), wrong controller for event is fired, which prevents NVDA from announcing suggestions, and this has been corrected.
+* Maps: despite no changes to the app, live region changed event is fired by map title control, so NVDA includes a way to suppress repetitions.
 * Microsoft Edge (microsoftedge.py and microsoftedgecp.py, legacy version): for some alerts, the name of the control that fires live region changed and system alert events have the name of "alert", with the actual text as the last child or text is scattered across child elements, thus NVDA will look for actual alert text when announcing alerts.
 * Settings and Store: for some controls (such as when downloading content from Store), a specific status control fires live region changed event. Unfortunately, the text for them are generic (for example, "downloading some percent" as opposed to announcing the product one is downloading), thus NVDA will locate information such as product names when this happens to make this easier to follow. Also, in Settings app, some controls in older versions of this app have no label, thus NVDA is told to look for labels to traversing sibling (next/previous) objects, and in case of certain Windows 10 Version 1809 installations, the correct label is the name of the first child.
 * Shell Experience Host: for some submenus, NVDA does not know that it is a submenu, thus worked around by teaching NVDA to recognize the proper role and state for these. This procedure was limited to this app in 2018, but was expanded to cover submenus in Edge app menu in August 2018.

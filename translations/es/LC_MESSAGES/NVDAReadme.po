@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-16 12:08+0200\n"
-"PO-Revision-Date: 2020-08-16 12:37+0200\n"
+"POT-Creation-Date: 2020-10-07 12:58+0200\n"
+"PO-Revision-Date: 2020-10-07 13:17+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -451,10 +451,10 @@ msgstr "* [wxPython](https://www.wxpython.org/), versión 4.0.3"
 #: ..\python_docs\NVDAReadme.py:70
 msgid ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), version 1.51-dev "
-"commit ca65812a"
+"commit 1fb68ffffea4 "
 msgstr ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), versión 1.51-dev, "
-"commit ca65812a"
+"commit 1fb68ffffea4 "
 
 #: ..\python_docs\NVDAReadme.py:71
 msgid "* [Sonic](https://github.com/waywardgeek/sonic), commit 4f8c1d11"
@@ -463,10 +463,10 @@ msgstr "* [Sonic](https://github.com/waywardgeek/sonic), commit 4f8c1d11"
 #: ..\python_docs\NVDAReadme.py:72
 msgid ""
 "* [IAccessible2](https://wiki.linuxfoundation.org/accessibility/iaccessible2/"
-"start), commit 21bbb176"
+"start), commit cbc1f29631780"
 msgstr ""
 "* [IAccessible2](https://wiki.linuxfoundation.org/accessibility/iaccessible2/"
-"start), commit 21bbb176"
+"start), commit cbc1f29631780"
 
 #: ..\python_docs\NVDAReadme.py:73
 msgid "* [ConfigObj](https://github.com/DiffSK/configobj), commit f9a265c"
@@ -487,10 +487,10 @@ msgstr "* [liblouis](http://www.liblouis.org/), versión 3.14.0"
 #: ..\python_docs\NVDAReadme.py:76
 msgid ""
 "* [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) "
-"Emoji Annotations, version 36.1"
+"Emoji Annotations, version 37.0"
 msgstr ""
 "* [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) "
-"Emoji Annotations, versión 36.1"
+"Emoji Annotations, versión 37.0"
 
 #: ..\python_docs\NVDAReadme.py:77
 msgid "* NVDA images and sounds"
@@ -576,8 +576,8 @@ msgid "* [txt2tags](https://txt2tags.org/), version 2.5"
 msgstr "* [txt2tags](https://txt2tags.org/), versión 2.5"
 
 #: ..\python_docs\NVDAReadme.py:90
-msgid "* [SCons](https://www.scons.org/), version 3.1.2"
-msgstr "* [SCons](https://www.scons.org/), versión 3.1.2"
+msgid "* [SCons](https://www.scons.org/), version 4.0.1"
+msgstr "* [SCons](https://www.scons.org/), versión 4.0.1"
 
 #: ..\python_docs\NVDAReadme.py:91
 msgid ""

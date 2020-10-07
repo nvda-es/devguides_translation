@@ -3,25 +3,37 @@
 The following instructions are for the release manager and detail how to make an official release.
 See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) for details on timing.
 
-## Beta release (pre-release)
-* Decide which commit to start the beta from.
-  - This will be the branch off point for the new release. Prior to this (but after the previous "final" release) master can be merged into beta at any point. After the branch of point master will move on and PR's required in this release should target the beta branch.
-  - Generally master should be healthy (all checks passing and no known regressions).
-  - In the past, the commit chosen should ensure that the most recent (significant) change should have had at least one week of alpha testing. This restriction has been relaxed somewhat to speed up the beta process. Lead developers should use their discretion to choose an appropriate branching point. If necessary, changes can be reverted or new changes added to the beta to address issues.
-* Create a branch from this commit, create a PR from this branch targeting beta
-  - This allows for others to review the selected commit, and what will be included in the release
-  - It makes reviewing the changes file easier.
-  - Do a review of the `user_docs/en/changes.t2t` file.
+## Starting a new dev cycle
+* Create PR to set the branch off point **(merge commit - not squash merge)**
+  - First create a new branch (eg `branchFor2020.3`) based on the master commit that should be used for the beta.
+      - Using a separate branch is so that master can continue to move on without affecting the PR. 
+      - The PR allows for others to review the selected commit, and what will be included in the release
+      - The PR makes reviewing the changes file easier.
+  - Do a review of the `user_docs/en/changes.t2t` file, but don't add highlights, see next step.
   - Ask for a second review, use the PR and add a link to the diff for the changes file since the diff will be quite large.
-  - Once all approved merge to beta.
+  - Deciding which commit to start the beta from:
+    - This will be the branch off point for the new release.
+    - Before the branch off happens (but after the previous "final" release), master can be merged into beta at any point.
+    - After the branch of point master will move on and PR's required in this release should target the beta branch.
+    - Generally master should be healthy (all checks passing and no known regressions).
+    - In the past, the commit chosen should ensure that the most recent (significant) change should have had at least one week of alpha testing. This restriction has been relaxed somewhat to speed up the beta process. Lead developers should use their discretion to choose an appropriate branching point. If necessary, changes can be reverted or new changes added to the beta to address issues.
+* Create a PR adding highlights for the release **(squash merge)**.
+  - Based on `branchForX`
+  - Targeting either `branchForX` or beta dependent on whether the branching PR has been merged yet. 
+* Create a PR to move master on to the next release dev cycle **(squash merge)**.
+  * Add a new section to the change log.
+  * [Update NVDA version in `master`](#update-nvda-version-in-master)
+  * When merging [update auto milestone ID](#update-auto-milestone-id)
+
+## Beta release (pre-release)
 * Create a [new annotated tag](#create-the-release--annotated-tag)
   - A beta doesn't need a pre-release entry on GitHub. Save that for RC and releases
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
+  - Consider writing a draft of the release post.
 * [Scan the launcher executable](#scan-the-build)
+* Create a [new pre-release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
-* [Update auto milestone ID](#update-auto-milestone-id)
-* [Update NVDA version in `master`](#update-nvda-version-in-master)
 
 ### During the Beta period
 * Periodically look at recent issues filed, specifically looking for those with `p1`, `bug/crash` or `bug/app-crash` labels.
@@ -64,18 +76,20 @@ Normally not required, however, occasionally to fix a critical issue requires ch
   - For RC1, reset the `rc` branch to `beta`
   - For RC1+, merge `beta` to `rc`
 * Create a [annotated tag](#create-the-release--annotated-tag)
-* Create a [new pre-release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
+  - Consider writing a draft of the release post.
 * [Scan the launcher executable](#scan-the-build)
+* Create a [new pre-release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 
 ## Final release
 * Create a [annotated tag](#create-the-release--annotated-tag)
-* Create a [new release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
+  - Consider writing a draft of the release post.
 * [Scan the launcher executable](#scan-the-build)
 * [Publish the staged release](#publish-the-staged-release)
+* Create a [new release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
 * [Publicize the release.](#publicize-the-release)
 * Close the release [milestone](https://github.com/nvaccess/nvda/milestones).
 
@@ -145,9 +159,9 @@ GitHub "releases" are formatted differently, can include metadata such as 'pre-r
 ## Update auto milestone ID
 This ensures correct milestone is set on issues and pull requests now closed by GitHub automatically.
 1. Get the milestone id for the new release.
-  - Go to https://github.com/nvaccess/nvda/milestones
-  - Look at the link URL for the relevant milestone.
-  - The number at the end is the `id`.
+   - Go to https://github.com/nvaccess/nvda/milestones
+   - Look at the link URL for the relevant milestone.
+   - The number at the end is the `id`.
 1. Log into exbi
 1. Swap to nvaccess user: `sudo su nvaccess`
 1. Edit `~nvaccess/data/nvaServer.conf`

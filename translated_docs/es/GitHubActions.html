@@ -8,7 +8,7 @@
   <header><h1># Uso de acciones de GitHub para gestionar complementos de NVDA </h1></header>
   <h1 id="uso-de-acciones-de-github-para-gestionar-complementos-de-nvda">Uso de acciones de GitHub para gestionar complementos de NVDA</h1>
 <p>Este documento está basado en el artículo sobre AppVeyor, disponible en la documentación sobre desarrollo de complementos de esta web.</p>
-<h2 id="procedimiento-para-construir-comprobar-estilo-y-adjuntar-archivos-nvda-addon-a-liberaciones-de-github">Procedimiento para construir, comprobar estilo y adjuntar archivos nvda-addon a liberaciones de GitHub</h2>
+<h2 id="procedimiento-para-construir-probar-con-nvda-comprobar-estilo-de-las-diferencias-y-adjuntar-archivos-nvda-addon-a-liberaciones-de-github">Procedimiento para construir, probar con NVDA, comprobar estilo de las diferencias y adjuntar archivos nvda-addon a liberaciones de GitHub</h2>
 <h3 id="configuracion-de-acciones-de-github-para-complementos">Configuración de acciones de GitHub para complementos</h3>
 <p>Esto funciona con complementos basados en la <a href="https://github.com/nvdaaddons/addontemplate">plantilla de complemento</a>.</p>
 <ol>
@@ -22,17 +22,16 @@ git clone https://github.com/usuario/repo</p>
 2. En la carpeta raíz del complemento (donde se encuentra el archivo sconstruct), pega este <a href="https://gist.githubusercontent.com/nvdaes/9caffa59ebbdcfd3e69f8a200b512be9/raw/3cbaaff48239b1b98e863901cf6a76b955412df7/setup.cfg">archivo de configuración de Flake8</a>, que usa <a href="https://raw.githubusercontent.com/nvaccess/nvda/master/tests/lint/flake8.ini">reglas de Flake8 configuradas para NVDA</a>. El archivo debe llamarse setup.cfg</p>
 </li>
 <li>
+<p>En la misma carpeta, pega este <a href="https://raw.githubusercontent.com/nvaccess/nvda/master/tests/lint/lintInstall/requirements.txt">archivo requirements.txt</a></p>
+</li>
+<li>
 <p>En la carpeta raíz del repositorio del complemento, crea la subcarpeta <code>.github/workflows</code>.</p>
 </li>
 <li>
-<p>Dentro de la subcarpeta <code>carpetaRaízRepositorio/.github/workflows</code>, se puede pegar este <a href="https://gist.githubusercontent.com/nvdaes/05451e4e6065bf67a2f121b3028de5ec/raw/5fc51f0b0bbeb807d22f5bceb7eafcec1e0911c1/addon.yml">archivo de flujo de trabajo de GitHub</a>. La extensión del archivo debería ser .yml (o .yaml).</p>
+<p>Dentro de la subcarpeta <code>carpetaDelRepositorio/.github/workflows</code>, puedes incluir archivos de flujo de trabajo de Github (.yml o .yaml). Por ejemplo, usa con total libertad los flujos de trabajo disponibles en <a href="https://github.com/nvdaes/clipContentsDesigner/tree/master/.github/workflows">https://github.com/nvdaes/clipContentsDesigner/tree/master/.github/workflows</a></p>
 </li>
-<li>
-<p>El flujo de trabajo anterior se disparará en eventos push y ante solicitudes de cambio.</p>
-</li>
-<li>Se mostrarán los errores detectados por Flake8, pero estos no detendrán el flujo de trabajo, de tal forma que el complemento pueda construirse y liberarse incluso si se encuentran fallos de estilo o sintaxis.</li>
 </ol>
-<p>Aquí hay más información sobre <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/managing-a-workflow-run">visualización y gestión de flujos de trabajo de GitHub</a>.</p>
+<p>Aquí hay información sobre la <a href="https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs">gestión de ejecución de flujos de trabajo</a>.</p>
 <h3 id="liberaciones">Liberaciones</h3>
 <p>Para publicar una nueva versión de un complemento, puedes crear una nueva etiqueta y enviar los cambios a GitHub:</p>
 <p>Ejemplo</p>
@@ -52,18 +51,22 @@ git push origin 1.0-dev
 <h2 id="referencias">Referencias</h2>
 <h3 id="documentacion">Documentación</h3>
 <ul>
-<li><a href="https://help.github.com/en/actions">Documentación de las acciones de GitHub</a></li>
+<li><a href="https://docs.github.com/en/free-pro-team@latest/actions">Documentación de las acciones de GitHub</a></li>
 <li><a href="https://flake8.pycqa.org/en/latest/">Documentación de Flake8</a></li>
 </ul>
 <h3 id="acciones-utilizadas">Acciones utilizadas</h3>
 <ul>
 <li><a href="https://github.com/actions/checkout">actions/checkout: acción para hacer checkout en un repositorio</a></li>
+<li><a href="https://github.com/actions/upload-artifact">actions/upload-artifact</a>: acción para subir artefactos</li>
+<li><a href="https://github.com/actions/download-artifact">actions/download-artifact</a>: una acción para descargar artefactos</li>
+<li><a href="https://github.com/unsplash/comment-on-pr">unsplash/comment-on-pr@master</a>: una acción para comentar en una solicitud de cambios (podría no funcionar en Windows)</li>
+<li><a href="https://github.com/actions/github-script">action/GitHubScript</a>: API de scripting de GitHub en JavaScript</li>
 <li><a href="https://github.com/actions/create-release">actions/create-release: una acción para crear liberaciones mediante la API de liberaciones de GitHub</a></li>
 <li><a href="https://github.com/svenstaro/upload-release-action">svenstaro/upload-release-action: Subir archivos a una liberación de GitHub</a></li>
 </ul>
-<h3 id="ejemplo-real">Ejemplo real</h3>
-<ul>
-<li><a href="https://github.com/nvdaes/clipContentsDesigner">Complemento clipContentsDesigner para NVDA</a></li>
-</ul>
+<h2 id="reconocimientos">Reconocimientos</h2>
+<p>Los flujos de trabajo de más arriba están basados o han sido creados a partir del trabajo realizado por @mhameed</p>
+<p><a href="https://github.com/nvdaaddons/l10ntest">https://github.com/nvdaaddons/l10ntest</a></p>
+<p>Gracias también a @josephsl y @CyrilleB79 por sus respuestas, como se menciona en este <a href="https://nvda-addons.groups.io/g/nvda-addons/message/13492">mensaje sobre los flujos de trabajo de GitHub</a></p>
 </body>
 </html>

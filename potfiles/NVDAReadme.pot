@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-16 12:08+0200\n"
+"POT-Creation-Date: 2020-10-07 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -369,7 +369,7 @@ msgstr ""
 #: ..\python_docs\NVDAReadme.py:70
 msgid ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), version 1.51-dev "
-"commit ca65812a"
+"commit 1fb68ffffea4 "
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:71
@@ -379,7 +379,7 @@ msgstr ""
 #: ..\python_docs\NVDAReadme.py:72
 msgid ""
 "* [IAccessible2](https://wiki.linuxfoundation.org/accessibility/iaccessible2/"
-"start), commit 21bbb176"
+"start), commit cbc1f29631780"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:73
@@ -399,7 +399,7 @@ msgstr ""
 #: ..\python_docs\NVDAReadme.py:76
 msgid ""
 "* [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) "
-"Emoji Annotations, version 36.1"
+"Emoji Annotations, version 37.0"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:77
@@ -470,7 +470,7 @@ msgid "* [txt2tags](https://txt2tags.org/), version 2.5"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:90
-msgid "* [SCons](https://www.scons.org/), version 3.1.2"
+msgid "* [SCons](https://www.scons.org/), version 4.0.1"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:91
