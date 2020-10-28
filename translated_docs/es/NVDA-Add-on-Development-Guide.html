@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: julio de 2020 para NVDA 2020.2</p>
+<p>Última versión: octubre de 2020 para NVDA 2020.3</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
 <p><em>Nota para usuarios de lectores de pantalla</em>: para volver a este índice, usa tu orden del modo exploración para moverte al encabezado de nivel 1 en dirección contraria.</p>
@@ -285,7 +285,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 </ul>
-<p>Nota: si utilizas Windows 10 Anniversary Update o posterior y deseas usar Ubuntu en Windows (también conocido como <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Subsystem for Linux">Windows Subsystem for Linux</a>), puedes utilizar Advanced Packaging Tool (APT) para obtener SCons y Gettext. A continuación, puedes utilizar pip para descargar e instalar Markdown.</p>
+<p>Nota: si utilizas Windows 10 Anniversary Update o posterior y deseas usar Ubuntu en Windows (también conocido como <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" title="Windows Subsystem for Linux">Windows Subsystem for Linux</a>), Python ya viene instalado. Puedes utilizar Advanced Packaging Tool (APT) para obtener SCons y Gettext. A continuación, puedes utilizar pip para descargar e instalar Markdown.</p>
 <h3 id="estructura-de-carpetas-de-desarrollo-del-complemento">Estructura de Carpetas de Desarrollo del Complemento</h3>
 <p>Cuando escribas complementos, se recomienda que guardes el código del complemento en carpetas separadas, una por complemento. Si decides descargar la plantilla del complemento, la estructura de carpetas se creará automáticamente.</p>
 <p>Una vez que instales las dependencias necesarias (mira arriba), pega los ejecutables del paquete Gettext en la carpeta del complemento. Sáltate este paso si planeas construir tu complemento usando el Bash de WSL.</p>
@@ -309,7 +309,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <p>Para editar archivos .py, necesitas un procesador de textos que pueda manejar archivos .py. El mejor que recomendamos es Notepad++.</p>
 <h3 id="como-esta-organizado-el-codigo-de-los-complementos">Cómo está organizado el código de los complementos</h3>
 <p>El código de tu complemento se almacena en uno o más ficheros Python (fichero .py). A pesar de los diferentes tipos de complementos que hay por ahí, todos ellos tienen un diseño similar.</p>
-<p>Primero, comienza por escribir una cabecera opcional para el complemento, tal como tu nombre, una o dos frases breves sobre para qué es el complemento y así sucesivamente. Aunque esto es opcional, Se recomienda que escribas el encabezado como un recordatorio para realizar un seguimiento de lo que estás haciendo con tu complemento.</p>
+<p>Primero, comienza por escribir una cabecera opcional para el complemento, tal como tu nombre, una o dos frases breves sobre para qué es el complemento y así sucesivamente. Aunque esto es opcional, Se recomienda que escribas el encabezado como un recordatorio para realizar un seguimiento de lo que estás haciendo con tu complemento. Si planeas distribuir tu complemento, debes escribir una cabecera con avisos de copyright y licencia.</p>
 <p>A continuación, le dices a NVDA los módulos que necesitas para el complemento en el archivo. Esto se hace escribiendo <code>import module</code> donde module es el nombre del módulo que desees utilizar en tu código. Por ejemplo, si quieres escuchar tonos mientras escribes tu complemento, escribe <code>import tones</code>. Normalmente será posible que tengas que importar dos o más módulos para tu complemento específico(véase más abajo en la lista de módulos que necesitas para el tipo de módulo del complemento que estés escribiendo).</p>
 <p>después de declarar los módulos necesarios o de importar, escribe el código de tu complemento (definiendo clases, variables, métodos y así sucesivamente). La sección más importante es el código de la clase del complemento, que determinará el tipo de módulo de complemento al que se asignará tu código.</p>
 <p>Por ejemplo, si deseas agregar soporte para un programa, después de importar appModuleHandler y otros módulos necesarios, podrías escribir:</p>
@@ -474,8 +474,8 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Mensajes de la interfaz de usuario (ui.py): Incluye varias funciones para la salida de voz y/o braille, incluyendo:<ul>
-<li><code>ui.message(mensaje a ser verbalizado/braillificado)</code>: verbaliza o braillifica el mensaje. Este debe ser una cadena entre comillas.</li>
-<li><code>ui.browseableMessage(mensaje a ser mostrado, HTML o no)</code>: muestra algún texto en una ventana de navegador web. Si deseas utilizar el marcado HTML, define el argumento isHTML como True.</li>
+<li><code>ui.message(mensaje que se verbaliza o se muestra en Braille, prioridad de la voz)</code>: verbaliza o muestra en Braille el mensaje (una cadena encerrada entre comillas). Opcionalmente, se puede especificar la prioridad de la voz para interrumpir lo que verbaliza el sintetizador de voz cuando se anuncia el mensaje.</li>
+<li><code>ui.browseableMessage(mensaje a ser mostrado, título, HTML o no)</code>: muestra algún texto y un título opcional en una ventana de navegador web. Si deseas utilizar el marcado HTML, define el argumento isHTML como True.</li>
 </ul>
 </li>
 <li>Soporte UIA (UIAHandler.py, objetos UIA): Usado para soportar controles UIA (User Interface Automation) (Windows 7 y posteriores).</li>
@@ -517,8 +517,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
     def announceUIAId():
         obj = api.getFocusObject()
         if isinstance(obj, UIA):
-            UIAElement = obj.UIAElement
-            ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
+            ui.browseableMessage(obj.UIAAutomationId, isHtml=True)
 </code></pre>
 
 <h4 id="ejemplo-4-enviar-pulsaciones-de-teclas">Ejemplo 4: Enviar pulsaciones de teclas</h4>
@@ -876,7 +875,7 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <p>Sí. Deberás utilizar una biblioteca que permita persistencia, como la biblioteca ConfigObj(configObj), JSON o Pickle para administrar la configuración. Algunos complementos (como OCR) que utilizan archivos de configuración almacenan su configuración como un archivo ini en la carpeta de configuración de usuario de NVDA. En el caso de las extensiones globales, puedes cargar y guardar la configuración de usuario desde el complemento cuando se crea el complemento (<strong>init</strong>) o se finaliza (terminate), respectivamente. Esto no se puede hacer fácilmente con los módulos de aplicación. Además, tendrás que proporcionar una alternativa (órdenes, diálogos, etc.) en la que los usuarios puedan configurar las opciones del complemento.</p>
 <p>P. Tengo un script que llama a una función que se ejecuta durante mucho tiempo, y no puedo ejecutar órdenes de NVDA cuando se ejecuta mi script.</p>
 <p>Una forma de solucionar esto es usando hilos (operaciones separadas e independientes en un programa) a través del módulo de hilos de Python. Para ello, crea un método que sepas que se ejecutará durante mucho tiempo y, a partir del script que llama a este método, crea un nuevo hilo (ver la documentación del módulo de hilos de Python) que se encargará de ejecutarlo. De esta forma, se pueden ejecutar otras órdenes de NVDA mientras el método adicional realiza su trabajo (consulta el módulo de reconocimiento de voz de Google para obtener un código de ejemplo).</p>
-<p>P. Me gustaría conectar un módulo escrito en la sintaxis de Python 3 para utilizarlo como un complemento de NVDA.</p>
+<p>P. Me gustaría portar un módulo escrito en la sintaxis de Python 2 para utilizarlo como un complemento de NVDA.</p>
 <p>Esto no se puede hacer fácilmente. Un módulo práctico para este propósito es six, que permite ejecutar el código Python 2 y 3. NVDA 2019.3 y las versiones posteriores utilizan estrictamente Python 3.</p>
 <p>P. Mi complemento usa componentes de interfaz gráfica, y después de instalar NVDA 2018.3, obtengo errores relacionados con WXPython.</p>
 <p>NVDA 2018.3 usa WXPython 4, mientras que las versiones anteriores usan una versión más antigua de WXPython. Si quieres dar soporte a versiones anteriores de NVDA, debes emplear sentencias condicionales (if/else) y comprobaciones de versión, de tal forma que se elija el camino correcto al ejecutar el código.</p>
@@ -891,6 +890,14 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <p>Esto se debe a que NVDA 2019.1 ya no carga código de extensión personalizado situado en carpetas del directorio de configuración de usuario. Lee la sección de scratchpad para más detalles.</p>
 <p>P. ¿Debería sustituir el diccionario de gestos y el atributo docstring de los scripts por el decorador script?</p>
 <p>Es decisión tuya utilizar el antiguo diccionario de gestos y el docstring del script o el nuevo decorador script para definir su información. Se recomienda el decorador script para los complementos nuevos, ya que permite definir la información fácilmente sobre el terreno.</p>
+<p>P. ¿Cuál es el estilo de código recomendado para los complementos?</p>
+<p>El siguiente es el estilo de código para los complementos, que deriva del estilo de código usado en el lector de pantalla NVDA:</p>
+<ul>
+<li>Usa tabuladores para la sangría.</li>
+<li>Usa el estilo camel case para nombres de variable y función. Por ejemplo, unaFunción.</li>
+</ul>
+<p>P. Me he dado cuenta de que NVDA no viene con todas las bibliotecas de Python.</p>
+<p>En particular, NVDA no viene con asyncio. Debes incluir bibliotecas adicionales en la carpeta de componentes de tu complemento.</p>
 <p>No incluimos preguntas frecuentes de programación o relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación, controladores y potenciadores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
@@ -1037,6 +1044,10 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <li>productVersion: Registra la versión de la aplicación.</li>
 <li>is64BitProcess: si es true, la aplicación es un proceso de 64 bits (sólo true si se está usando una aplicación de 64 bits en versiones Windows de 64 bits).</li>
 <li>dumpOnCrash: si estás depurando aplicaciones que se bloquean con frecuencia, puedes llamar a esta función para permitir que NVDA guarde un volcado de esta aplicación en el directorio de archivos temporales para que puedas recuperarlo más tarde.</li>
+<li>disableBrowseModeByDefault: algunas aplicaciones son, en esencia, documentos web y, como tales, harán que se active el modo exploración. Debes configurar este valor a True si quieres forzar a NVDA a que trate la aplicación adecuadamente como una aplicación. En otras palabras, esto desactiva el modo exploración.</li>
+<li>appPath: registra la ruta al ejecutable de la aplicación.</li>
+<li>appArchitecture: la arquitectura de procesador prevista para la aplicación. Por ejemplo, x86, AMD64, ARM64.</li>
+<li>isWindowsStoreApp: aplicable en Windows 8, 8.1 y 10. Determina si la aplicación está alojada en un contenedor de aplicaciones, tal y como hacen las aplicaciones de la tienda.</li>
 </ul>
 <p>Y otras propiedades. Escribe dir(obj.appModule) desde la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html#PythonConsole" title="Consola Python en la guía del desarrollador de NVDA">consola Python</a> para obtener la lista completa.</p>
 <h3 id="otros-comentarios-sobre-los-modulos-de-aplicacion">Otros comentarios sobre los módulos de aplicación</h3>

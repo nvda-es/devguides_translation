@@ -8,6 +8,11 @@
   <header><h1># Cómo contribuir con NVDA</h1></header>
   <h1 id="como-contribuir-con-nvda">Cómo contribuir con NVDA</h1>
 <p>Si quieres contribuir con código o documentación a NVDA, sigue estas pautas, por favor.</p>
+<p>Si eres nuevo en el proyecto o buscas una forma de ayudar, echa un vistazo a:</p>
+<ul><li><a href="https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+">label:goodfirstissue</a></li>
+<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev">label:goodForNewDev </a></li>
+<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author">label:closed/needs-new-author </a></li>
+<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned">label:Abandoned </a></p></li></ul>
 <h2 id="nota-actualmente-solo-se-aceptan-solicitudes-de-cambio-de-mantenimiento-o-correccion-de-fallos-mientras-se-procesa-la-cola-existente">Nota: actualmente sólo se aceptan solicitudes de cambio de mantenimiento o corrección de fallos mientras se procesa la cola existente.</h2>
 <p>Para más información, consulta: https://github.com/nvaccess/nvda/issues/11006</p>
 <h2 id="pruebas">Pruebas</h2>
@@ -54,12 +59,12 @@ Las solicitudes de cambios que corrijan errores se revisarán antes que las que 
 <h3 id="codificacion">Codificación</h3>
 <ul>
 <li>Cuando los archivos Python contengan caracteres que no sean Ascii, deberán estar codificados en UTF-8.<ul>
-<li>Para evitar errores con las herramientas de traducción, incluye esta línea al principio del código si lo haces. Las marcas Unicode al principio del archivo hacen que Gettext falle:
+<li>No debería haber bom Unicode al principio del archivo, ya que esto desafortunadamente rompe una de las herramientas de traducción que usamos (<code>xgettext</code>). En su lugar, incluye esto como primera línea del archivo (sólo si el archivo contiene caracteres no ASCII):
     <code># -*- coding: UTF-8 -*-</code></li>
-<li>Deberás incluir esta línea incluso si no planeas que las cadenas se puedan traducir, o si tienen secuencias de escape que producen caracteres no Ascii, tales como <code>"\xff"</code>. Esto es particularmente importante para controladores de pantallas braille. El responsable del fallo es Gettext, como se puede ver en https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.</li>
+<li>Deberás incluir esta línea si las cadenas del código (incluso si estas no son traducibles) contienen secuencias de escape que producen caracteres no Ascii, tales como <code>"\xff"</code>. Esto es particularmente importante para controladores de pantallas braille. El responsable del fallo es <code>Gettext</code>, como se puede ver en https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.</li>
 </ul>
 </li>
-<li>La mayoría de los archivos deben contener saltos de línea en formato Windows (crlf). Este es un proyecto hecho exclusivamente para Windows, y no se puede usar en sistemas operativos derivados de Unix.</li>
+<li>La mayoría de los archivos deben contener saltos de línea en formato <code>crlf</code> de Windows. Este es un proyecto hecho exclusivamente para Windows, y no se puede usar en sistemas operativos derivados de Unix.</li>
 </ul>
 <h3 id="indentado">Indentado</h3>
 <ul>

@@ -7,7 +7,7 @@ _(u"""There are several tasks to be done, and this document hopes to give you an
 "","",_(u"""## Translation Mailing List"""),
 _(u"""Translators should subscribe to the [NVDA translations mailing list](https://groups.io/g/nvda-translations)"""),
 _(u"""hosted at Groups.IO."""),
-"",_(u"""It is an English low trafic list devoted for the discussion of translation. """),
+"",_(u"""It is an English low traffic list devoted for the discussion of translation. """),
 _(u"""Important messages that relate to translators will also be sent here, i.e. before official NVDA releases, to remind translators to make sure their localization is up to date."""),
 "",_(u"""## Important Dates"""),
 "",_(u"""Translators should ensure their translation is up to date by (UTC 00:00 on 14 February, 14 May, 14 August and 14 November) in order for it to be included in the upcoming final release, with this being delayed up to three days for some releases. Work submitted after this time will not be included in the upcoming release.  A reminder will be sent three to five days prior to end of this period. For further information please see the ReleaseProcess page."""),

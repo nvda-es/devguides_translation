@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2020.2</title>
+  <title># Guía del desarrollador de NVDA 2020.3</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2020.2</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20202">Guía del desarrollador de NVDA 2020.2</h1>
+  <header><h1># Guía del desarrollador de NVDA 2020.3</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20203">Guía del desarrollador de NVDA 2020.3</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -25,19 +25,21 @@
 <li>3.2. Tipos de extensiones</li>
 <li>3.3. Lo básico de un módulo de aplicación</li>
 <li>3.4. Ejemplo 1: un módulo de aplicación que pita en los eventos de cambio del foco</li>
-<li>3.5. Lo básico de una extensión global</li>
-<li>3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</li>
-<li>3.7. Objetos de NVDA</li>
-<li>3.8. Scripts y asociación de gestos</li>
-<li>3.8.1. Definición de propiedades de los scripts</li>
-<li>3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</li>
-<li>3.10. Eventos</li>
-<li>3.11. La variable SleepMode en módulos de aplicación</li>
-<li>3.12. Ejemplo 4: un módulo de aplicación en modo latente</li>
-<li>3.13. Proporcionar clases de objetos personalizados de NVDA</li>
-<li>3.14. Ejemplo 5: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</li>
-<li>3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</li>
-<li>3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init</li>
+<li>3.5. Módulos de aplicación para aplicaciones hospedadas</li>
+<li>3.6. Ejemplo 2: un módulo de aplicación para una aplicación hospedada en wwahost.exe</li>
+<li>3.7. Lo básico de una extensión global</li>
+<li>3.8. Ejemplo 3: una extensión global que proporciona un script para verbalizar la versión de NVDA</li>
+<li>3.9. Objetos de NVDA</li>
+<li>3.10. Scripts y asociación de gestos</li>
+<li>3.10.1. Definición de propiedades de los scripts</li>
+<li>3.11. Ejemplo 4: una extensión global para encontrar la clase de la ventana y el identificador del control</li>
+<li>3.12. Eventos</li>
+<li>3.13. La variable SleepMode en módulos de aplicación</li>
+<li>3.14. Ejemplo 5: un módulo de aplicación en modo latente</li>
+<li>3.15. Proporcionar clases de objetos personalizados de NVDA</li>
+<li>3.16. Ejemplo 6: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</li>
+<li>3.17. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</li>
+<li>3.18. Ejemplo 7: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init</li>
 </ul>
 </li>
 <li>4. Empaquetado de código como complementos de NVDA<ul>
@@ -156,7 +158,7 @@ b   bravo
 <p>Para probar el código durante el desarrollo, puedes situarlo en un directorio especial llamado 'scratchpad' en tu carpeta de configuración de usuario de NVDA. También será necesario configurar NVDA para habilitar la carga de código personalizado desde el directorio scratchpad para desarrolladores. Esto se puede hacer desde la categoría Avanzado del diálogo de opciones de NVDA. La categoría Avanzado también contiene un botón para abrir fácilmente la carpeta scratchpad de desarrollo si está activada. </p>
 <p>Las siguientes secciones hablarán por separado de módulos de aplicación y extensiones globales. Después de este punto, la discusión volverá a ser más general. </p>
 <h3 id="33-lo-basico-de-un-modulo-de-aplicacion">3.3. Lo básico de un módulo de aplicación</h3>
-<p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. </p>
+<p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen o el nombre del paquete dentro de un ejecutable contenedor. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. Para las aplicaciones alojadas en un ejecutable contenedor, consulta la sección sobre módulos de aplicación para aplicaciones alojadas.</p>
 <p>Los archivos de módulo de aplicación deben situarse en la subcarpeta appModules de un complemento, o en el directorio scratchpad de la carpeta de configuración de usuario de NVDA. </p>
 <p>Los módulos de aplicación deben definir una clase llamada AppModule, que hereda de appModuleHandler.AppModule. Esta clase puede definir métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá más tarde en profundidad. </p>
 <p>NVDA carga el módulo de aplicación para una aplicación dada tan pronto como se da cuenta de que esa aplicación se está ejecutando. El módulo de aplicación se descarga una vez se cierra la aplicación o se sale de NVDA. </p>
@@ -198,12 +200,47 @@ class AppModule(appModuleHandler.AppModule):
 <p>Después, define una clase AppModule, que hereda de appModuleHandler.AppModule. </p>
 <p>Dentro de esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de evento para los eventos gainFocus (event_gainFocus), que reproduce un pitido corto cada vez que se ejecuta. La implementación de este evento no es importante para los propósitos de este ejemplo. La parte más importante es la clase en sí. Los eventos se cubrirán con mucho más detalle más adelante. </p>
 <p>Como se pide con otros ejemplos de esta guía, recuerda eliminar el módulo de aplicación creado cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
-<h3 id="35-lo-basico-de-una-extension-global">3.5. Lo básico de una extensión global</h3>
+<h3 id="35-modulos-de-aplicacion-para-aplicaciones-hospedadas">3.5. Módulos de aplicación para aplicaciones hospedadas</h3>
+<p>Algunos ejecutables hospedan diversas aplicaciones en su interior. Entre ellos se incluyen javaw.exe para ejecutar diversos programas Java, y wwahost.exe para algunas aplicaciones en Windows 8 y posterior.</p>
+<p>Si una aplicación funciona en un ejecutable contenedor, el nombre del módulo de aplicación debe ser el nombre definido por el ejecutable contenedor, que puede obtenerse mediante la propiedad AppModule.appName. Por ejemplo, un módulo de aplicación para una aplicación Java llamada "prueba" alojada dentro de javaw.exe debe llamarse prueba.py. En el caso de las aplicaciones alojadas dentro de wwahost, el nombre del módulo de aplicación no sólo debe ser el de la aplicación cargada, sino que además se debe crear una subclase que herede de la clase del módulo de aplicación de wwahost.</p>
+<h3 id="36-ejemplo-2-un-modulo-de-aplicacion-para-una-aplicacion-hospedada-en-wwahostexe">3.6. Ejemplo 2: un módulo de aplicación para una aplicación hospedada en wwahost.exe</h3>
+<p>El siguiente ejemplo es igual que el módulo de aplicación para el bloc de notas anterior, salvo que en este caso es para una aplicación alojada en wwahost.exe.</p>
+<pre><code>--- inicio ---
+
+# Módulo de aplicación wwahost/test para NVDA
+
+# Ejemplo 2 de la guía del desarrollador
+
+
+
+from nvdaBuiltin.appModules.wwahost import *
+
+
+
+class AppModule(AppModule):
+
+
+
+    def event_gainFocus(self, obj, nextHandler):
+
+        import tones
+
+        tones.beep(550, 50)
+
+        nextHandler()
+
+
+
+--- fin ---
+</code></pre>
+<p>La mayor diferencia con respecto al módulo de aplicación del bloc de notas es el lugar de procedencia del módulo de aplicación wwahost. Al ser un módulo de aplicación incorporado, se puede importar wwahost desde nvdaBuiltin.appModules. </p>
+<p>Otra diferencia es el modo de definir la clase del módulo de aplicación. Ya que el módulo de aplicación wwahost proporciona la infraestructura necesaria para las aplicaciones alojadas en su interior, simplemente es necesario crear una subclase que herede de la clase del módulo de aplicación de wwahost.</p>
+<h3 id="37-lo-basico-de-una-extension-global">3.7. Lo básico de una extensión global</h3>
 <p>Los archivos de extensión global tienen la extensión .py, y deberían tener un nombre corto y único que identifique lo que hacen. </p>
 <p>Los archivos de extensión global deben situarse en el subdirectorio globalPlugins de un complemento, o en la carpeta scratchpad del directorio de configuración de usuario de NVDA. </p>
 <p>Las extensiones globales deben definir una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. Esta clase puede definir a continuación métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá en profundidad más tarde. </p>
 <p>NVDA carga todas las extensiones globales tan pronto como se inicia, y las descarga al salir. </p>
-<h3 id="36-ejemplo-2-una-extension-global-que-proporciona-un-script-para-verbalizar-la-version-de-nvda">3.6. Ejemplo 2: una extensión global que proporciona un script para verbalizar la versión de NVDA</h3>
+<h3 id="38-ejemplo-3-una-extension-global-que-proporciona-un-script-para-verbalizar-la-version-de-nvda">3.8. Ejemplo 3: una extensión global que proporciona un script para verbalizar la versión de NVDA</h3>
 <p>La siguiente extensión global de ejemplo te permite pulsar NVDA+shift+v en cualquier sitio del sistema operativo para obtener la versión de NVDA. Este ejemplo sólo sirve para mostrarte la estructura básica de una extensión global. </p>
 <p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example2.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
 <p>Una vez guardado en el lugar correcto, reinicia NVDA o bien elige recargar plugins en el submenú herramientas del menú de NVDA. </p>
@@ -212,7 +249,7 @@ class AppModule(appModuleHandler.AppModule):
 
 # Extensión de verbalización de versión de NVDA
 
-# Ejemplo 2 de la guía del desarrollador
+# Ejemplo 3 de la guía del desarrollador
 
 
 
@@ -246,7 +283,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <p>Después, define una clase llamada GlobalPlugin, que hereda de globalPluginHandler.GlobalPlugin. </p>
 <p>En esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de script que realiza la verbalización de versión, y ofrece una asociación de NVDA+shift+v a este script utilizando el decorador script del módulo scriptHandler. Sin embargo, los detalles del script y su asociación no son importantes para los propósitos de este ejemplo. La parte más importante es la clase en sí. Se puede encontrar más información sobre los scripts y el decorador de scripts en en la sección Definición de propiedades de scripts en esta guía. </p>
 <p>Como se pide con otros ejemplos de esta guía, recuerda eliminar la extensión global creada cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
-<h3 id="37-objetos-de-nvda">3.7. Objetos de NVDA</h3>
+<h3 id="39-objetos-de-nvda">3.9. Objetos de NVDA</h3>
 <p>NVDA representa controles y otros elementos gráficos como objetos NVDA. Estos objetos NVDA contienen propiedades estandarizadas, como nombre, rol, valor, estados y descripción, que permiten a otras partes de NVDA consultar o presentar información sobre un control de una manera generalizada. Por ejemplo, el botón Aceptar en un diálogo sería representado como un objeto NVDA con un nombre como "Aceptar" y un rol de botón. De forma similar, una casilla de verificación con una etiqueta de "Acepto" tendría un nombre de "Acepto", un rol de casilla de verificación, y si actualmente está marcada, un estado de marcada. </p>
 <p>Como hay muchos kits de herramientas gráficos y apis de accesibilidad y plataforma, los objetos NVDA abstraen sus diferencias de una forma estándar que NVDA pueda usar, sin importar la api o motor gráfico con el que un control esté hecho. Por ejemplo, el botón aceptar del que acabamos de hablar podría ser un widget en una aplicación Java, un objeto MSAA, un objeto IAccessible2 o un elemento de UI Automation. </p>
 <p>Los objetos NVDA tienen muchas propiedades. Algunas de las más útiles son: </p>
@@ -273,7 +310,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>La extensión puede definir sus propias clases de objetos de NVDA personalizadas, que se usarán para envolver un control específico para darle funcionalidad extra, modificar sus propiedades, etc. </li>
 </ul>
 <p>Al igual que los módulos de aplicación o las extensiones, los objetos de NVDA también pueden definir eventos, scripts y asociaciones de gestos. </p>
-<h3 id="38-scripts-y-asociacion-de-gestos">3.8. Scripts y asociación de gestos</h3>
+<h3 id="310-scripts-y-asociacion-de-gestos">3.10. Scripts y asociación de gestos</h3>
 <p>Los módulos de aplicación, extensiones globales y objetos de NVDA pueden definir métodos especiales que pueden asociarse a una unidad de entrada particular como una pulsación de teclado. NVDA se refiere a estos métodos llamándolos scripts. </p>
 <p>Un script es un método de instancia de Python estándar con un nombre que empieza por "script_"; por ejemplo, "script_sayDateTime". </p>
 <p>Un método de script recibe dos argumentos: </p>
@@ -309,7 +346,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>Objeto NVDA con el foco </li>
 <li>Órdenes globales (órdenes incorporadas como salir de NVDA, órdenes de navegación por objetos, etc.) </li>
 </ul>
-<h4 id="381-definicion-de-propiedades-de-los-scripts">3.8.1. Definición de propiedades de los scripts</h4>
+<h4 id="3101-definicion-de-propiedades-de-los-scripts">3.10.1. Definición de propiedades de los scripts</h4>
 <p>En NVDA 2018.3 y versiones posteriores, la forma recomendada de establecer las propiedades de un script se conoce como el decorador de scripts. En resumen, un decorador es una función que modifica el comportamiento de otra función concreta. El decorador de script modifica el script de tal manera que se asocie adecuadamente a los gestos deseados. Además, garantiza que el script se liste con la descripción especificada, y se incluya bajo la categoría deseada en el diálogo Gestos de entrada. </p>
 <p>Para que puedas usar el decorador de scripts, deberás importarlo desde el módulo scriptHandler. </p>
 <pre><code>from scriptHandler import script
@@ -344,7 +381,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>bypassInputHelp: un booleano que indica si este script debería ejecutarse con el modo de ayuda de entrada activado. Por defecto esta opción es False. </li>
 </ul>
 <p>Aunque el decorador script hace mucho más fácil el proceso de definición de scripts, hay más formas de asociar scripts y establecer sus propiedades. Por ejemplo, se puede definir como variable de clase un diccionario Python llamado "__gestures" en un módulo de aplicación, extensión global u objeto NVDA. Este diccionario debería contener cadenas con identificadores de gestos apuntando al nombre del script solicitado, sin el prefijo "script_". También se puede especificar una descripción para el script en la cadena de documentación (docstring) de la función. Además, una forma alternativa de especificar la categoría del script es crear un atributo "category" en la función del script que contenga una cadena con el nombre de la categoría. </p>
-<h3 id="39-ejemplo-3-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.9. Ejemplo 3: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>
+<h3 id="311-ejemplo-4-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.11. Ejemplo 4: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>
 <p>La siguiente extensión global te permite pulsar NVDA+flecha izquierda para verbalizar la clase de ventana del objeto con el foco; y NVDA+flecha derecha para anunciar el identificador de ventana del control actual con el foco. Este ejemplo te muestra cómo definir uno o más scripts y asociaciones de gestos en una clase tal como un módulo de aplicación, extensión global u objeto de NVDA. </p>
 <p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example3.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
 <p>Una vez guardado en el lugar correcto, reinicia NVDA o bien elige recargar plugins en el submenú herramientas del menú de NVDA. </p>
@@ -352,7 +389,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 #Scripts de utilidades de ventana para NVDA
 
-# Ejemplo 3 de la guía del desarrollador
+# Ejemplo 4 de la guía del desarrollador
 
 
 
@@ -412,7 +449,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 --- fin ---
 </code></pre>
-<h3 id="310-eventos">3.10. Eventos</h3>
+<h3 id="312-eventos">3.12. Eventos</h3>
 <p>Cuando NVDA detecta eventos particulares del kit de herramientas, api o sistema operativo, los abstrae y dispara sus propios eventos en extensiones y objetos NVDA. </p>
 <p>Aunque la mayoría de eventos están relacionados con un objeto de NVDA específico (por ejemplo cambio de nombre, obtención de foco, cambio de estado, etc.), estos eventos pueden manejarse a varios niveles. Cuando un evento se captura, se impide que pase al siguiente punto de la cadena. Sin embargo, el código dentro del evento puede elegir si se propaga más adelante. </p>
 <p>El orden de niveles por los que pasa el evento hasta que se encuentra un método de evento es: </p>
@@ -445,10 +482,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 </ul>
 <p>Hay muchos otros eventos, aunque los que se han listado arriba son normalmente los más útiles. </p>
 <p>Para ver un ejemplo de un evento manejado por un módulo de aplicación, mira el ejemplo 1 (pitidos del foco en el bloc de notas). </p>
-<h3 id="311-la-variable-sleepmode-en-modulos-de-aplicacion">3.11. La variable SleepMode en módulos de aplicación</h3>
+<h3 id="313-la-variable-sleepmode-en-modulos-de-aplicacion">3.13. La variable SleepMode en módulos de aplicación</h3>
 <p>Los módulos de aplicación tienen una propiedad muy útil llamada "sleepMode", que si se establece a True deshabilita casi completamente NVDA en la aplicación correspondiente. El modo latente es muy útil para aplicaciones con respuesta de voz propia o funciones internas de lectura de pantalla, o quizás incluso algunos juegos que necesitan disponer completamente del teclado. </p>
 <p>Aunque el modo latente puede ser activado y desactivado por el usuario con la orden de teclado NVDA+shift+s, un desarrollador puede elegir tener el modo latente activado por defecto para una aplicación. Esto se hace proporcionando un módulo de aplicación para esa aplicación que simplemente establezca sleepMode a True en la clase AppModule. </p>
-<h3 id="312-ejemplo-4-un-modulo-de-aplicacion-en-modo-latente">3.12. Ejemplo 4: un módulo de aplicación en modo latente</h3>
+<h3 id="314-ejemplo-5-un-modulo-de-aplicacion-en-modo-latente">3.14. Ejemplo 5: un módulo de aplicación en modo latente</h3>
 <p>El siguiente código se puede copiar y pegar en un archivo de texto, y guardarse en el directorio appModules con el nombre de la aplicación para la que quieras activar el modo latente. Como siempre, el archivo debe tener extensión .py. </p>
 <pre><code>--- inicio ---
 
@@ -466,7 +503,7 @@ class AppModule(appModuleHandler.AppModule):
 
 --- fin ---
 </code></pre>
-<h3 id="313-proporcionar-clases-de-objetos-personalizados-de-nvda">3.13. Proporcionar clases de objetos personalizados de NVDA</h3>
+<h3 id="315-proporcionar-clases-de-objetos-personalizados-de-nvda">3.15. Proporcionar clases de objetos personalizados de NVDA</h3>
 <p>Ofrecer clases personalizadas de objetos NVDA es probablemente la forma más potente y útil de mejorar la experiencia para una aplicación en una extensión de NVDA. Este método te permite situar toda la lógica necesaria para un control en particular junta en una única clase de objeto de NVDA para ese control, en vez de crear código para muchos controles a través de los eventos de la extensión. </p>
 <p>Hay dos pasos para proporcionar una clase de objeto de NVDA personalizado: </p>
 <ul>
@@ -481,7 +518,7 @@ class AppModule(appModuleHandler.AppModule):
 <li>clsList: una lista Python de clases de objetos NVDA que se usarán con obj. </li>
 </ol>
 <p>Dentro de este método, deberías decidir qué clase o clases de objeto NVDA personalizado (si las hay) debería usar este objeto NVDA comprobando sus propiedades, etc. Si debiera usarse una clase personalizada, debe insertarse en la lista de clases, normalmente al principio. También puedes eliminar clases elegidas por NVDA de la lista de clases, aunque esto rara vez hace falta. </p>
-<h3 id="314-ejemplo-5-orden-para-recuperar-la-longitud-del-texto-en-un-cuadro-de-edicion-usando-un-objeto-de-nvda-personalizado">3.14. Ejemplo 5: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</h3>
+<h3 id="316-ejemplo-6-orden-para-recuperar-la-longitud-del-texto-en-un-cuadro-de-edicion-usando-un-objeto-de-nvda-personalizado">3.16. Ejemplo 6: orden para recuperar la longitud del texto en un cuadro de edición usando un objeto de NVDA personalizado</h3>
 <p>Este módulo de aplicación para el bloc de notas proporciona una orden para informar sobre el número de caracteres en los cuadros de edición. Puedes activarlo usando NVDA+l. Ten en cuenta que la orden es específica para cuadros de edición; sólo funciona si el foco está en uno, en vez de funcionar en cualquier lugar de la aplicación. </p>
 <p>El siguiente código puede copiarse y pegarse en un archivo de texto, y guardarse en el directorio appModules con el nombre notepad.py. </p>
 <pre><code>--- inicio ---
@@ -524,7 +561,7 @@ class EnhancedEditField(IAccessible):
 
 --- fin ---
 </code></pre>
-<h3 id="315-hacer-pequenos-cambios-a-un-objeto-de-nvda-en-modulos-de-aplicacion">3.15. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</h3>
+<h3 id="317-hacer-pequenos-cambios-a-un-objeto-de-nvda-en-modulos-de-aplicacion">3.17. Hacer pequeños cambios a un objeto de NVDA en módulos de aplicación</h3>
 <p>En ocasiones, puedes querer hacer solamente pequeños cambios a un objeto de NVDA en una aplicación, tales como sobreescribir su nombre o su rol. En estos casos, no necesitas el poder completo de una clase de objeto NVDA personalizada. Para hacerlo, puedes usar el evento NVDAObject_init, disponible únicamente en módulos de aplicación. </p>
 <p>El método event_NVDAObject_init recibe dos argumentos: </p>
 <ol>
@@ -532,7 +569,7 @@ class EnhancedEditField(IAccessible):
 <li>obj: el objeto de NVDA que se inicializa. </li>
 </ol>
 <p>Dentro de este método, puedes comprobar si este objeto es relevante y sobreescribir propiedades en consecuencia. </p>
-<h3 id="316-ejemplo-6-etiquetando-el-cuadro-de-edicion-del-bloc-de-notas-usando-event95nvdaobject95init">3.16. Ejemplo 6: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init</h3>
+<h3 id="318-ejemplo-7-etiquetando-el-cuadro-de-edicion-del-bloc-de-notas-usando-event95nvdaobject95init">3.18. Ejemplo 7: etiquetando el cuadro de edición del bloc de notas usando event_NVDAObject_init</h3>
 <p>Este módulo de aplicación para el bloc de notas hace que NVDA indique el cuadro de edición principal del bloc de notas como si tuviera el nombre "contenido". Es decir, cuando recibe el foco, NVDA dirá "contenido edición". </p>
 <p>El siguiente código puede copiarse y pegarse en un archivo de texto, y guardarse en el directorio appModules con el nombre notepad.py. </p>
 <pre><code>--- inicio ---
@@ -612,13 +649,11 @@ class AppModule(appModuleHandler.AppModule):
     --- fin ---
 </code></pre>
 <h2 id="extensiones-y-controladores">Extensiones y controladores</h2>
-<p>Se pueden incluir las siguientes extensiones y controladores en un complemento:</p>
-<ul>
-<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
-<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
-<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
-<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
-</ul>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: 
+  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
+  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
+  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
+  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
 <h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
 <h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>

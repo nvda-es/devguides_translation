@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-20 10:18+0200\n"
+"POT-Creation-Date: 2020-10-25 20:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,11 +97,59 @@ msgstr ""
 
 #: ..\python_docs\StartingTranslationFreeze.py:21
 msgid ""
-"    > Translators, you have until UTC 00:00 on 22 May to ensure your "
+"    > Translators, you have until 23:59 UTC on 22 May to ensure your "
 "translation is up to date in order for it to be included in NVDA 2017.2. "
 "Work submitted after this time will not be included in NVDA 2017.2."
 msgstr ""
 
 #: ..\python_docs\StartingTranslationFreeze.py:23
 msgid "    > Thanks to everyone for their valuable work!"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:24
+msgid ""
+"* On translations mailing list, right after sending string freeze email, log "
+"onto groups.io web interface using the membership account for the release "
+"manager and create a calendar event with the following settings:"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:25
+msgid "\t* Name: End of NVDA version translatable string freeze"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:26
+msgid ""
+"\t* Date: date listed above, use UTC as time zone. Set the same value for "
+"start and end dates and times."
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:27
+msgid "\t* Organizer: name of the release manager."
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:28
+msgid "\t* Organizer email: release manager email address"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:29
+msgid "\t* Description: string freeze message above"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:30
+msgid ""
+"\t* Reminder: at least three for 7 days, 3 days, and 1 day prior to end of "
+"string freeze, respectively."
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:31
+msgid "\t* Send a notice when the event occurs: yes"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:32
+msgid "\t* Send as special notice: yes"
+msgstr ""
+
+#: ..\python_docs\StartingTranslationFreeze.py:33
+msgid ""
+"\t* Once the details are correct, create an event and also invite the group."
 msgstr ""

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# NVDA 2020.2 Developer Guide"""),
+_(u"""# NVDA 2020.3 Developer Guide"""),
 "",_(u"""## Table of Contents"""),
 "",_(u"""  * 1\\. Introduction"""),
 _(u"""    * 1.1. A Note About Python"""),
@@ -14,19 +14,21 @@ _(u"""    * 3.1. Overview"""),
 _(u"""    * 3.2. Types of Plugins"""),
 _(u"""    * 3.3. Basics of an App Module"""),
 _(u"""    * 3.4. Example 1: An App Module that Beeps on Focus Change Events"""),
-_(u"""    * 3.5. Basics of a Global Plugin"""),
-_(u"""    * 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA Version"""),
-_(u"""    * 3.7. NVDA Objects"""),
-_(u"""    * 3.8. Scripts and Gesture Bindings"""),
-_(u"""      * 3.8.1. Defining script properties"""),
-_(u"""    * 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"""),
-_(u"""    * 3.10. Events"""),
-_(u"""    * 3.11. the App Module SleepMode variable"""),
-_(u"""    * 3.12. Example 4: A Sleep Mode App Module"""),
-_(u"""    * 3.13. Providing Custom NVDA Object Classes"""),
-_(u"""    * 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"""),
-_(u"""    * 3.15. Making Small Changes to an NVDA Object in App Modules"""),
-_(u"""    * 3.16. Example 6: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"""),
+_(u"""    * 3.5. App modules for hosted apps"""),
+_(u"""    * 3.6. Example 2: an app module for an app hosted by wwahost.exe"""),
+_(u"""    * 3.7. Basics of a Global Plugin"""),
+_(u"""    * 3.8. Example 3: a Global Plugin Providing a Script to Announce the NVDA Version"""),
+_(u"""    * 3.9. NVDA Objects"""),
+_(u"""    * 3.10. Scripts and Gesture Bindings"""),
+_(u"""      * 3.10.1. Defining script properties"""),
+_(u"""    * 3.11. Example 4: A Global Plugin to Find out Window Class and Control ID"""),
+_(u"""    * 3.12. Events"""),
+_(u"""    * 3.13. the App Module SleepMode variable"""),
+_(u"""    * 3.14. Example 5: A Sleep Mode App Module"""),
+_(u"""    * 3.15. Providing Custom NVDA Object Classes"""),
+_(u"""    * 3.16. Example 6: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"""),
+_(u"""    * 3.17. Making Small Changes to an NVDA Object in App Modules"""),
+_(u"""    * 3.18. Example 7: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"""),
 _(u"""  * 4\\. Packaging Code as NVDA Add-ons"""),
 _(u"""    * 4.1. Non-ASCII File Names in Zip Archives"""),
 _(u"""    * 4.2. Manifest Files"""),
@@ -138,7 +140,7 @@ _(u"""  * Global Plugins: code global to NVDA; i.e. it is used in all applicatio
 "",_(u"""In order to test the code while developing, you can place it in a special 'scratchpad' directory in your NVDA user configuration directory. You will also need to configure NVDA to enable loading of custom code from the Developer Scratchpad Directory, by enabling this in the Advanced category of NVDA's Settings dialog. The Advanced category also contains a button to easily open the Developer Scratchpad directory if enabled. """),
 "",_(u"""The following few sections will talk separately about App Modules and Global Plugins. After this point, discussion is again more general. """),
 "",_(u"""### 3.3. Basics of an App Module"""),
-"",_(u"""App Module files have a .py extension, and are named the same as the main executable of the application for which you wish them to be used. For example, an App Module for notepad would be called notepad.py, as notepad's main executable is called notepad.exe. """),
+"",_(u"""App Module files have a .py extension, and are named the same as either the main executable of the application for which you wish them to be used or the package inside a host executable. For example, an App Module for notepad would be called notepad.py, as notepad's main executable is called notepad.exe. For apps hosted inside host executables, see the section on app modules for hosted apps. """),
 "",_(u"""App Module files must be placed in the appModules subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. """),
 "",_(u"""App Modules must define a class called AppModule, which inherits from appModuleHandler.AppModule. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. """),
 "",_(u"""NVDA loads an App Module for an application as soon as it notices the application is running. The App Module is unloaded once the application is closed or when NVDA is exiting. """),
@@ -169,12 +171,36 @@ _(u"""    """),
 "",_(u"""Next, it defines a class called AppModule, which is inherited from appModuleHandler.AppModule. """),
 "",_(u"""Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines one event method for gainFocus events \\(event\\_gainFocus\\), which plays a short beep each time it is executed. The implementation of this event is not important for the purposes of this example. The most important part is the class itself. Events will be covered in greater detail later. """),
 "",_(u"""As with other examples in this guide, remember to delete the created app module when you are finished testing and then restart NVDA or reload plugins, so that original functionality is restored. """),
-"",_(u"""### 3.5. Basics of a Global Plugin"""),
+"",_(u"""### 3.5. App modules for hosted apps"""),
+"",_(u"""Some executables host various apps inside. These include javaw.exe for running various java programs and wwahost.exe for some apps in Windows 8 and later. """),
+"",_(u"""If an app runs inside a host executable, the name of the app module must be the name as defined by the host executable, which can be found through AppModule.appName property. For example, an app module for a java app named \"test\" hosted inside javaw.exe must be named test.py. For apps hosted inside wwahost, not only must the app module name be the name of the loaded app, but the app module must subclass the app module class found in wwahost. """),
+"",_(u"""### 3.6. Example 2: an app module for an app hosted by wwahost.exe"""),
+"",_(u"""The following example is same as Notepad app module above except this is for an app hosted by wwahost.exe. """),
+_(u"""    """),
+_(u"""    """),
+_(u"""    --- start ---"""),
+_(u"""    # wwahost/test App Module for NVDA"""),
+_(u"""    # Developer guide example 2"""),
+_(u"""    """),
+_(u"""    from nvdaBuiltin.appModules.wwahost import *"""),
+_(u"""    """),
+_(u"""    class AppModule(AppModule):"""),
+_(u"""    """),
+_(u"""    	def event_gainFocus(self, obj, nextHandler):"""),
+_(u"""    		import tones"""),
+_(u"""    		tones.beep(550, 50)"""),
+_(u"""    		nextHandler()"""),
+_(u"""    """),
+_(u"""    --- end ---"""),
+_(u"""    """),
+"",_(u"""The biggest difference from Notepad app module is where wwahost app module comes from. As a built-in app module, wwahost can be imported from nvdaBuiltin.appModules. """),
+"",_(u"""Another difference is how the app module class is defined. As wwahost app module provides necessary infrastructure for apps hosted inside, you just need to subclass the wwahost AppModule class. """),
+"",_(u"""### 3.7. Basics of a Global Plugin"""),
 "",_(u"""Global Plugin files have a .py extension, and should have a short unique name which identifies what they do. """),
 "",_(u"""Global plugin files must be placed in the globalPlugins subdirectory of an add-on, or of the scratchpad directory of the NVDA user configuration directory. """),
 "",_(u"""Global Plugins must define a class called GlobalPlugin, which inherits from globalPluginHandler.GlobalPlugin. This class can then define event and script methods, gesture bindings and other code. This will all be covered in depth later. """),
 "",_(u"""NVDA loads all global plugins as soon as it starts, and unloads them on exit. """),
-"",_(u"""### 3.6. Example 2: a Global Plugin Providing a Script to Announce the NVDA Version"""),
+"",_(u"""### 3.8. Example 3: a Global Plugin Providing a Script to Announce the NVDA Version"""),
 "",_(u"""The following example Global Plugin Allows you to press NVDA+shift+v while anywhere in the Operating System to find out NVDA's version. This example is only to show you the basic layout of a Global Plugin. """),
 "",_(u"""Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example2.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. """),
 "",_(u"""Once saved in the right place, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. """),
@@ -183,7 +209,7 @@ _(u"""    """),
 _(u"""    """),
 _(u"""    --- start ---"""),
 _(u"""    # Version announcement plugin for NVDA"""),
-_(u"""    # Developer guide example 2"""),
+_(u"""    # Developer guide example 3"""),
 _(u"""    """),
 _(u"""    import globalPluginHandler"""),
 _(u"""    from scriptHandler import script"""),
@@ -204,7 +230,7 @@ _(u"""    """),
 "",_(u"""Next, it defines a class called GlobalPlugin, which is inherited from globalPluginHandler.GlobalPlugin. """),
 "",_(u"""Inside this class, it defines 1 or more events, scripts or gesture bindings. In this example, it defines a script method that performs the version announcement. The script decorator from the scriptHandler module is used to assign the NVDA+shift+v shortcut to this script. However, the details of the script and its binding are not important for the purposes of this example. The most important part is the class itself. More information about scripts and the script decorator can be found in the Defining script properties section of this guide. """),
 "",_(u"""As with other examples in this guide, remember to delete the created Global Plugin when finished testing and then restart NVDA or reload plugins, so that original functionality is restored. """),
-"",_(u"""### 3.7. NVDA Objects"""),
+"",_(u"""### 3.9. NVDA Objects"""),
 "",_(u"""NVDA represents controls and other GUI elements as NVDA Objects. These NVDA Objects contain standardised properties, such as name, role, value, states and description, which allow other parts of NVDA to query or present information about a control in a generalised way. For example, the OK button in a dialog would be represented as an NVDA Object with a name of \"OK\" and a role of button. Similarly, a checkbox with a label of \"I agree\" would have a name of \"I agree\", a role of checkbox, and if currently checked, a state of checked. """),
 "",_(u"""As there are many different GUI Toolkits and platform and accessibility APIs, NVDA Objects abstract these differences into a standard form that NVDA can use, regardless of the toolkit or API a particular control is made with. For example, the Ok button just discussed could be a widget in a Java application, an MSAA object, an IAccessible2 object or a UI Automation element. """),
 "",_(u"""NVDA Objects have many properties. Some of the most useful are: """),
@@ -227,7 +253,7 @@ _(u"""  * children: a list of all the direct children of this object; e.g. all t
 _(u"""  * Scripts, events or other code may fetch objects of interest such as the NVDA Object with focus, NVDA's current navigator object, or perhaps the Desktop NVDA Object. The code may then retreave information from that object or perhaps even retreave another object related to it \\(e.g. its parent, first child, etc.\\). """),
 _(u"""  * the Plugin may define its own custom NVDA Object classes which will be used to wrap a specific control to give it extra functionality, mutate its properties, etc. """),
 "","",_(u"""Just like App Modules and Global Plugins, NVDA Objects can also define events, scripts and gesture bindings. """),
-"",_(u"""### 3.8. Scripts and Gesture Bindings"""),
+"",_(u"""### 3.10. Scripts and Gesture Bindings"""),
 "",_(u"""App Modules, Global Plugins and NVDA Objects can define special methods which can be bound to a particular piece of input such as a key press. NVDA refers to these methods as scripts. """),
 "",_(u"""A script is a standard Python instance method with a name starting with \"script\\_\"; e.g. \"script\\_sayDateTime\". """),
 "",_(u"""A script method takes two arguments: """),
@@ -255,7 +281,7 @@ _(u"""  * App Module of the active application """),
 _(u"""  * Tree Interceptor of the NVDA Object with focus if any; e.g. a virtualBuffer """),
 _(u"""  * NVDA Object with focus """),
 _(u"""  * Global Commands \\(built in commands like quitting NVDA, object navigation commands, etc.\\) """),
-"","",_(u"""#### 3.8.1. Defining script properties"""),
+"","",_(u"""#### 3.10.1. Defining script properties"""),
 "",_(u"""For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. """),
 "",_(u"""In order for you to use the script decorator, you will have to import it from the scriptHandler module. """),
 _(u"""    """),
@@ -284,7 +310,7 @@ _(u"""  * gestures: A string list of multiple gestures associated with this scri
 _(u"""  * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. """),
 _(u"""  * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. """),
 "","",_(u"""Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special \"\\_\\_gestures\" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the \"script\\_\" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a \"category\" attribute on the script function to a string containing the name of the category. """),
-"",_(u"""### 3.9. Example 3: A Global Plugin to Find out Window Class and Control ID"""),
+"",_(u"""### 3.11. Example 4: A Global Plugin to Find out Window Class and Control ID"""),
 "",_(u"""The following Global Plugin allows you to press NVDA+leftArrow to have the window class of the current focus announced, and NVDA+rightArrow to have the window control ID of the current focus announced. This example shows you how to define one or more scripts and gesture bindings on a class such as an App Module, Global Plugin or NVDA Object. """),
 "",_(u"""Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example3.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. """),
 "",_(u"""Once saved in the right place, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. """),
@@ -292,7 +318,7 @@ _(u"""    """),
 _(u"""    """),
 _(u"""    --- start ---"""),
 _(u"""    #Window utility scripts for NVDA"""),
-_(u"""    #Developer guide example 3"""),
+_(u"""    #Developer guide example 4"""),
 _(u"""    """),
 _(u"""    import globalPluginHandler"""),
 _(u"""    from scriptHandler import script"""),
@@ -323,7 +349,7 @@ _(u"""    		ui.message(\"Control ID for %s window: %d\" % (name, windowControlID
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),
-"",_(u"""### 3.10. Events"""),
+"",_(u"""### 3.12. Events"""),
 "",_(u"""When NVDA detects particular toolkit, API or Operating System events, it abstracts these and fires its own internal events on plugins and NVDA Objects. """),
 "",_(u"""Although most events are related to a specific NVDA Object \\(e.g. name change, gain focus, state change, etc.\\), these events can be handled at various levels. When an event is handled, it is stopped from going further down the chain. However, code inside the event can choose to propagate it further if needed. """),
 "",_(u"""The order of levels through which the event passes until an event method is found is: """),
@@ -350,10 +376,10 @@ _(u"""  * caret: when the caret \\(insertion point\\) within this NVDA Object mo
 _(u"""  * locationChange: physical screen location changes """),
 "","",_(u"""There are many other events, though those listed above are usually the most useful. """),
 "",_(u"""For an example of an event handled by an App Module, please refer to example 1 \\(focus beeps in notepad\\). """),
-"",_(u"""### 3.11. the App Module SleepMode variable"""),
+"",_(u"""### 3.13. the App Module SleepMode variable"""),
 "",_(u"""App Modules have one very useful property called \"sleepMode\", which if set to true almost completely disables NVDA within that application. Sleep Mode is very useful for self voicing applications that have their own screen reading functionality, or perhaps even some games that need full use of the keyboard. """),
 "",_(u"""Although sleep mode can be toggled on and off by the user with the key command NVDA+shift+s, a developer can choose to have sleep mode enabled by default for an application. This is done by providing an App Module for that application which simply sets sleepMode to True in the AppModule class. """),
-"",_(u"""### 3.12. Example 4: A Sleep Mode App Module"""),
+"",_(u"""### 3.14. Example 5: A Sleep Mode App Module"""),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of the application you wish to enable sleep mode for. As always, the file must have a .py extension. """),
 _(u"""    """),
 _(u"""    """),
@@ -366,7 +392,7 @@ _(u"""    	sleepMode = True"""),
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),
-"",_(u"""### 3.13. Providing Custom NVDA Object Classes"""),
+"",_(u"""### 3.15. Providing Custom NVDA Object Classes"""),
 "",_(u"""Providing custom NVDA Object classes is probably the most powerful and useful way to improve the experience of an application in an NVDA plugin. This method allows you to place all the needed logic for a particular control altogether in one NVDA Object class for that control, rather than scattering code for many controls across a plugin's events. """),
 "",_(u"""There are two steps to providing a custom NVDA Object class: """),
 "",_(u"""  * Define the NVDA Object class and its events, scripts, gesture bindings and overridden properties. """),
@@ -377,7 +403,7 @@ _(u"""  * Tell NVDA to use this NVDA Object class in specific situations by hand
 _(u"""  2. obj: the NVDAObject for which classes are being chosen. """),
 _(u"""  3. clsList: a Python list of NVDAObject classes that will be used for obj. """),
 "","",_(u"""Inside this method, you should decide which custom NVDA Object class\\(es\\) \\(if any\\) this NVDA Object should use by checking its properties, etc. If a custom class should be used, it must be inserted into the class list, usually at the beginning. You can also remove classes chosen by NVDA from the class list, although this is rarely required. """),
-"",_(u"""### 3.14. Example 5: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"""),
+"",_(u"""### 3.16. Example 6: Command to Retrieve the Length of Text in an Edit Field Using a Custom NVDA Object"""),
 "",_(u"""This app module for notepad provides a command to report the number of characters in edit fields. You can activate it using NVDA+l. Notice that the command is specific to edit fields; i.e. it only works while you are focused in an edit field, rather than anywhere in the application. """),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of notepad.py. """),
 _(u"""    """),
@@ -403,13 +429,13 @@ _(u"""    		ui.message(\"%d\" % len(self.value))"""),
 _(u"""    """),
 _(u"""    --- end ---"""),
 _(u"""    """),
-"",_(u"""### 3.15. Making Small Changes to an NVDA Object in App Modules"""),
+"",_(u"""### 3.17. Making Small Changes to an NVDA Object in App Modules"""),
 "",_(u"""Sometimes, you may wish to make only small changes to an NVDA Object in an application, such as overriding its name or role. In these cases, you don't need the full power of a custom NVDA Object class. To do this, you can use the NVDAObject\\_init event available only on App Modules. """),
 "",_(u"""The event\\_NVDAObject\\_init method takes two arguments: """),
 "",_(u"""  1. self: the AppModule instance. """),
 _(u"""  2. obj: the NVDAObject being initialized. """),
 "","",_(u"""Inside this method, you can check whether this object is relevant and then override properties accordingly. """),
-"",_(u"""### 3.16. Example 6: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"""),
+"",_(u"""### 3.18. Example 7: Labelling the Notepad Edit Field Using event\\_NVDAObject\\_init"""),
 "",_(u"""This app module for notepad makes NVDA report Notepad's main edit field as having a name of \"content\". That is, when it receives focus, NVDA will say \"Content edit\". """),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of notepad.py. """),
 _(u"""    """),
@@ -468,8 +494,8 @@ _(u"""        lastTestedNVDAVersion = \"2019.1.0\""""),
 _(u"""        --- end ---"""),
 _(u"""        """),
 "",_(u"""## Plugins and Drivers"""),
-"",_(u"""The following plugins and drivers can be included in an add-on:"""),
-"",_(u"""  * App modules: Place them in an appModules directory in the archive. """),
+"",_(u"""The following plugins and drivers can be included in an add-on: """),
+_(u"""  * App modules: Place them in an appModules directory in the archive. """),
 _(u"""  * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. """),
 _(u"""  * Global plugins: Place them in a globalPlugins directory in the archive. """),
 _(u"""  * Synthesizer drivers: Place them in a synthDrivers directory in the archive. """),

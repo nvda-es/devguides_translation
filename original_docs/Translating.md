@@ -9,7 +9,7 @@ There are several tasks to be done, and this document hopes to give you an overv
 Translators should subscribe to the [NVDA translations mailing list](https://groups.io/g/nvda-translations)
 hosted at Groups.IO.
 
-It is an English low trafic list devoted for the discussion of translation. 
+It is an English low traffic list devoted for the discussion of translation. 
 Important messages that relate to translators will also be sent here, i.e. before official NVDA releases, to remind translators to make sure their localization is up to date.
 
 ## Important Dates

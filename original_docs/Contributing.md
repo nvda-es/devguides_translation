@@ -1,5 +1,10 @@
 # Contributing to NVDA
 If you would like to contribute code or documentation to NVDA, please follow these guidelines.
+If you are new to the project, or looking for some way to help take a look at:
+- [label:goodfirstissue](https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+)
+- [label:goodForNewDev ](https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev)
+- [label:closed/needs-new-author ](https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author)
+- [label:Abandoned ](https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned)
 
 ## Note: Currently only accepting bug-fix / maintenance PR's only while addressing backlog.
 For more information please see: https://github.com/nvaccess/nvda/issues/11006
@@ -16,7 +21,7 @@ There are several approaches you may take for this:
 Forming a group can help you to get good coverage, brainstorm on what should be tested, and perhaps learn new ways to use NVDA.
 
 ## Issue triage and investigation:
-You can also make non-code contributions by helping process incoming Github issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
+You can also make non-code contributions by helping process incoming GitHub issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
 
 ## Submitting Changes
 
@@ -57,7 +62,7 @@ For anything touching code, please run `scons tests` before you open your Pull R
 
 When it is time to submit your code, you should open a pull request referring to the original issue.
 Code review will then be done on this pull request.
-Pull requests that fix bugs will be reviewed before PR's that add features / enhancements.
+Pull requests that fix bugs will be reviewed before PRs that add features / enhancements.
 
 ## Code Style
 
@@ -65,12 +70,12 @@ Code style is enforced with the flake8 linter, see [`tests/lint/readme.md`](http
 
 ### Encoding
 * Where Python files contain non-ASCII characters, they should be encoded in UTF-8.
-    * There should be no Unicode BOM at the start of the file, as this unfortunately breaks one of the translation tools we use (xgettext). Instead, include this as the first line of the file (only if the file contains non-ASCII characters):
+    * There should be no Unicode BOM at the start of the file, as this unfortunately breaks one of the translation tools we use (`xgettext`). Instead, include this as the first line of the file (only if the file contains non-ASCII characters):
         ```
         # -*- coding: UTF-8 -*-
         ```
-    * This coding comment must also be included if strings in the code (even strings that aren't translatable) contain escape sequences that produce non-ASCII characters; e.g. `"\xff"`. This is particularly relevant for braille display drivers. This is due to a gettext bug; see https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.
-* Most files should contain CRLF line endings, as this is a Windows project and can't be used on Unix-like operating systems.
+    * This coding comment must also be included if strings in the code (even strings that aren't translatable) contain escape sequences that produce non-ASCII characters; e.g. `"\xff"`. This is particularly relevant for braille display drivers. This is due to a `gettext` bug; see https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911.
+* Most files should contain `CRLF` line endings, as this is a Windows project and can't be used on Unix-like operating systems.
 
 ### Indentation
 * Indentation must be done with tabs (one per level), not spaces.

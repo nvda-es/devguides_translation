@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: July 2020 for NVDA 2020.2
+Latest version: October 2020 for NVDA 2020.3
 
 ---
 
@@ -287,7 +287,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
     - Git 2.25.0 or later if you wish to upload the add-on to a repository such as [Bitbucket] or [Github] (optional. See below). You can use various Git clients, such as [Git Bash], [Cygwin's Git][Git for Cygwin], and [TortoiseGit].
     - The [NVDA Community Add-on Template][add-on template] for ease of add-on file and folder packaging and management (optional).
 
-Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), you can use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
+Note: if you're using Windows 10 Anniversary Update or later and wish to use Ubuntu on Windows (AKA [Windows Subsystem for Linux][WSL]), Python is already installed. You can then use Advanced Packaging Tool (APT) to obtain SCons and Gettext. You can then use pip to download and install Markdown.
 
 ### Add-on Development Folder Structure
 
@@ -325,7 +325,7 @@ To edit .py files, you need a word processor which can handle .py files. The bes
 
 Your add-on code is stored in one or more Python files (.py file). Despite different kinds of add-ons out there, they all have similar layout.
 
-First, you start by writing an optional header for your add-on, such as your name, a brief sentence or two on what the add-on is for and so on. Although this is optional, it is recommended that you write the header as a reminder to keep track of what you are doing with your add-on.
+First, you start by writing an optional header for your add-on, such as your name, a brief sentence or two on what the add-on is for and so on. Although this is optional, it is recommended that you write the header as a reminder to keep track of what you are doing with your add-on. If you plan to distribute your add-on, you must write a header with copyright and license notices.
 
 Next, you tell NVDA the modules you need for your add-on file. This is done by writing `import module` where module is the name of the module you wish to use in your code. For example, if you want to hear tones while writing your add-on, write `import tones`. Typically you may need to import two or more modules for your specific add-on (see below on list of modules you need for the type of add-on module you are writing).
 
@@ -506,8 +506,8 @@ The following lists available NVDA core modules and some useful methods and clas
 * Tone output (tones.py): Allows the user to hear tones. The following function is defined:
     - `tones.beep(pitch in hertz, duration in milliseconds, left channel volume, right channel volume)`: Plays a tone of specified pitch for specified duration. The first two arguments are mandatory, while the other two are optional.
 * User interface messages (ui.py): Includes various functions for speech and/or braille output, including:
-    - `ui.message(message to be spoken/brailled)`: Speaks or brailles the message. This should be a string surrounded by quotes.
-    - `ui.browseableMessage(message to be shown, HTML or not)`: displays some text in a web browser window. If you want to use HTML markup, set isHTML argument to True.
+    - `ui.message(message to be spoken/brailled, speech priority)`: Speaks or brailles the message (a string surrounded by quotes). Optionally, speech priority can be specified to interrupt what the speech synthesizer is saying when announcing the message.
+    - `ui.browseableMessage(message to be shown, title, HTML or not)`: displays some text and an optional title in a web browser window. If you want to use HTML markup, set isHTML argument to True.
 * UIA support (UIAHandler.py, UIA objects): Used for supporting UIA (User Interface Automation) controls (Windows 7 and later).
 * Virtual buffers (virtualBuffers): Handles virtual buffer documents such as web sites.
 * Windows API wrappers: the following modules are thin wrappers around Windows API libraries. You can use the below modules or call Windows API directly via ctypes.windll.dllname (e.g. ctypes.windll.user32):
@@ -559,8 +559,7 @@ In UI Automation, automation ID is used to identify different screen elements. T
 	def announceUIAId():
 		obj = api.getFocusObject()
 		if isinstance(obj, UIA):
-			UIAElement = obj.UIAElement
-			ui.browseableMessage(UIAElement.cachedAutomationId, isHtml=True)
+			ui.browseableMessage(obj.UIAAutomationId, isHtml=True)
 ```
 
 #### Example 4: Send keystrokes
@@ -1046,7 +1045,7 @@ Q. I have a script which calls a function that runs for a long time, and I canno
 
 One way to fix this is using threads (separate, independent  operations in a program) via Python's threading module. In order to do this, create a method which you know will run for a long time, then from the script which calls this method, create a new thread (see Python's threading module documentation) that'll be in charge of running this method. This way other NVDA commands can be performed while the add-on method does its work (see Google Speech Recognition module for an example code).
 
-Q. I would like to port a module written in Python 3 syntax for use as an NVDA add-on.
+Q. I would like to port a module written in Python 2 syntax for use as an NVDA add-on.
 
 This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NVDA 2019.3 and later is strictly a Python 3 release.
 
@@ -1070,6 +1069,17 @@ This is because NVDA 2019.1 will not load custom extension code stored in subfol
 Q. Should I convert gestures dictionary and script docstring attribute to script decorator?
 
 It is up to you whether or not you wish to use older gestures dictionary and script docstring or the newer script decorator to define script information. For new add-ons, script decorator is preferred for easily defining script information on the spot.
+
+Q. What is the recommended coding style for add-ons?
+
+The following is baseline coding style for add-ons, deriving from NVDA screen reader coding style:
+
+* Use tab for indentation.
+* Use camel case for function and variable names e.g. someFunction.
+
+Q. I noticed that NVDA does not come with all Python libraries.
+
+Most notably, NVDA does not ship with asyncio. You must include additional libraries inside your add-on component folder.
 
 We did not include programming or Python-related FAQ's, as there are sites which answer questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
@@ -1256,6 +1266,10 @@ Once defined, even if focused in another app, new messages (values) will be anno
 * productVersion: Records the version of the app.
 * is64BitProcess: if true, the app is a 64-bit process (only true if you're using a 64-bit app under 64-bit Windows versions).
 * dumpOnCrash: if you are debugging apps that crashes often, you can call this function to let NVDA save a crash dump of this app in the temp files directory so you can retrieve it later.
+* disableBrowseModeByDefault: some apps are essentially web documents, and as such, browse mode will be invoked. You must set this value to True if you want to force NVDA to treat this application as a proper aplication i.e. disable browse mode.
+* appPath: records the path to the app executable.
+* appArchitecture: the intended processor architecture for the app e.g. x86, AMD64, ARM64.
+* isWindowsStoreApp: applicable on Windows 8, 8.1, and 10, determines if the app is hosted inside an app container such as a Store app.
 
 And other properties. Type dir(obj.appModule) from [Python Console] for the complete list.
 
