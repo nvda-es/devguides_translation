@@ -21,9 +21,11 @@ This works for add-ons based on the [Add-on Template](https://github.com/nvdaadd
 
 3. In the same folder, paste this [requirements.txt file](https://raw.githubusercontent.com/nvaccess/nvda/master/tests/lint/lintInstall/requirements.txt)
 
-4. Under the root folder of the add-on repository, create a `.github/workflows` subdirectory.
+4. In the same folder, create a file named `changelog.md`. This file should be empty or include changes for the current release.
 
-5. Inside the `repositoryRootFolder/.github/workflows` subfolder, you can include GitHub workflow files (.yml or .yaml). Feel free to use, for example, workflows available at <https://github.com/nvdaes/clipContentsDesigner/tree/master/.github/workflows>
+5. Under the root folder of the add-on repository, create a `.github/workflows` subdirectory.
+
+6. Inside the `repositoryRootFolder/.github/workflows` subfolder, you can include GitHub workflow files (.yml or .yaml). Feel free to use, for example, workflows available at <https://github.com/nvdaes/clipContentsDesigner/tree/master/.github/workflows>
 
 Here is info about [managing workflow runs](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs).
 

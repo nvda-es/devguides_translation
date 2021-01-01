@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 12:58+0200\n"
-"PO-Revision-Date: 2020-10-07 13:28+0200\n"
+"POT-Creation-Date: 2021-01-01 12:32+0100\n"
+"PO-Revision-Date: 2021-01-01 12:43+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\GitHubActions.py:3
@@ -98,25 +98,33 @@ msgstr ""
 
 #: ..\python_docs\GitHubActions.py:16
 msgid ""
-"4. Under the root folder of the add-on repository, create a `.github/"
-"workflows` subdirectory."
+"4. In the same folder, create a file named `changelog.md`. This file should "
+"be empty or include changes for the current release."
 msgstr ""
-"4. En la carpeta raíz del repositorio del complemento, crea la subcarpeta `."
-"github/workflows`."
+"4. En la misma carpeta, crea un archivo llamado `changelog.md`. Este archivo "
+"debería estar vacío o incluir los cambios de la versión actual."
 
 #: ..\python_docs\GitHubActions.py:17
 msgid ""
-"5. Inside the `repositoryRootFolder/.github/workflows` subfolder, you can "
+"5. Under the root folder of the add-on repository, create a `.github/"
+"workflows` subdirectory."
+msgstr ""
+"5. En la carpeta raíz del repositorio del complemento, crea la subcarpeta `."
+"github/workflows`."
+
+#: ..\python_docs\GitHubActions.py:18
+msgid ""
+"6. Inside the `repositoryRootFolder/.github/workflows` subfolder, you can "
 "include GitHub workflow files (.yml or .yaml). Feel free to use, for "
 "example, workflows available at <https://github.com/nvdaes/"
 "clipContentsDesigner/tree/master/.github/workflows>"
 msgstr ""
-"5. Dentro de la subcarpeta `carpetaDelRepositorio/.github/workflows`, puedes "
+"6. Dentro de la subcarpeta `carpetaDelRepositorio/.github/workflows`, puedes "
 "incluir archivos de flujo de trabajo de Github (.yml o .yaml). Por ejemplo, "
 "usa con total libertad los flujos de trabajo disponibles en <https://github."
 "com/nvdaes/clipContentsDesigner/tree/master/.github/workflows>"
 
-#: ..\python_docs\GitHubActions.py:18
+#: ..\python_docs\GitHubActions.py:19
 msgid ""
 "Here is info about [managing workflow runs](https://docs.github.com/en/free-"
 "pro-team@latest/actions/managing-workflow-runs)."
@@ -125,11 +133,11 @@ msgstr ""
 "(https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-"
 "runs)."
 
-#: ..\python_docs\GitHubActions.py:19
+#: ..\python_docs\GitHubActions.py:20
 msgid "### Releasing"
 msgstr "### Liberaciones"
 
-#: ..\python_docs\GitHubActions.py:20
+#: ..\python_docs\GitHubActions.py:21
 msgid ""
 "To post a new release of an add-on, you can create a tag and push it to "
 "GitHub:"
@@ -137,24 +145,24 @@ msgstr ""
 "Para publicar una nueva versión de un complemento, puedes crear una nueva "
 "etiqueta y enviar los cambios a GitHub:"
 
-#: ..\python_docs\GitHubActions.py:21 ..\python_docs\GitHubActions.py:28
+#: ..\python_docs\GitHubActions.py:22 ..\python_docs\GitHubActions.py:29
 msgid "Example"
 msgstr "Ejemplo"
 
-#: ..\python_docs\GitHubActions.py:22 ..\python_docs\GitHubActions.py:25
-#: ..\python_docs\GitHubActions.py:29 ..\python_docs\GitHubActions.py:32
+#: ..\python_docs\GitHubActions.py:23 ..\python_docs\GitHubActions.py:26
+#: ..\python_docs\GitHubActions.py:30 ..\python_docs\GitHubActions.py:33
 msgid "```"
 msgstr "```"
 
-#: ..\python_docs\GitHubActions.py:23
+#: ..\python_docs\GitHubActions.py:24
 msgid "git tag 1.0"
 msgstr "git tag 1.0"
 
-#: ..\python_docs\GitHubActions.py:24
+#: ..\python_docs\GitHubActions.py:25
 msgid "git push origin 1.0"
 msgstr "git push origin 1.0"
 
-#: ..\python_docs\GitHubActions.py:26
+#: ..\python_docs\GitHubActions.py:27
 msgid ""
 "Now, the release will be created and binary-1.0.nvda-addon will be attached "
 "on GitHub."
@@ -162,7 +170,7 @@ msgstr ""
 "Ahora, se creará la liberación en GitHub y se adjuntará el archivo "
 "binary-1.0.nvda-addon."
 
-#: ..\python_docs\GitHubActions.py:27
+#: ..\python_docs\GitHubActions.py:28
 msgid ""
 "With the provided yaml file, releases created from tags ending with \"-dev\" "
 "will be marked as prereleases."
@@ -170,23 +178,23 @@ msgstr ""
 "Con el archivo yaml proporcionado, las liberaciones creadas a partir de "
 "etiquetas que terminen en \"-dev\" se marcarán como en desarrollo."
 
-#: ..\python_docs\GitHubActions.py:30
+#: ..\python_docs\GitHubActions.py:31
 msgid "git tag 1.0-dev"
 msgstr "git tag 1.0-dev"
 
-#: ..\python_docs\GitHubActions.py:31
+#: ..\python_docs\GitHubActions.py:32
 msgid "git push origin 1.0-dev"
 msgstr "git push origin 1.0-dev"
 
-#: ..\python_docs\GitHubActions.py:33
+#: ..\python_docs\GitHubActions.py:34
 msgid "## References"
 msgstr "## Referencias"
 
-#: ..\python_docs\GitHubActions.py:34
+#: ..\python_docs\GitHubActions.py:35
 msgid "### Documentation"
 msgstr "### Documentación"
 
-#: ..\python_docs\GitHubActions.py:35
+#: ..\python_docs\GitHubActions.py:36
 msgid ""
 "- [GitHub Actions documentation](https://docs.github.com/en/free-pro-"
 "team@latest/actions)"
@@ -194,15 +202,15 @@ msgstr ""
 "- [Documentación de las acciones de GitHub](https://docs.github.com/en/free-"
 "pro-team@latest/actions)"
 
-#: ..\python_docs\GitHubActions.py:36
+#: ..\python_docs\GitHubActions.py:37
 msgid "- [Flake8 documentation](https://flake8.pycqa.org/en/latest/)"
 msgstr "- [Documentación de Flake8](https://flake8.pycqa.org/en/latest/)"
 
-#: ..\python_docs\GitHubActions.py:37
+#: ..\python_docs\GitHubActions.py:38
 msgid "### Used actions"
 msgstr "### Acciones utilizadas"
 
-#: ..\python_docs\GitHubActions.py:38
+#: ..\python_docs\GitHubActions.py:39
 msgid ""
 "- [actions/checkout: action for checking out a repo](https://github.com/"
 "actions/checkout)"
@@ -210,7 +218,7 @@ msgstr ""
 "- [actions/checkout: acción para hacer checkout en un repositorio](https://"
 "github.com/actions/checkout)"
 
-#: ..\python_docs\GitHubActions.py:39
+#: ..\python_docs\GitHubActions.py:40
 msgid ""
 "- [actions/upload-artifact](https://github.com/actions/upload-artifact): "
 "action for uploading artifacts"
@@ -218,7 +226,7 @@ msgstr ""
 "- [actions/upload-artifact](https://github.com/actions/upload-artifact): "
 "acción para subir artefactos"
 
-#: ..\python_docs\GitHubActions.py:40
+#: ..\python_docs\GitHubActions.py:41
 msgid ""
 "- [actions/download-artifact](https://github.com/actions/download-artifact): "
 "an action for downloading artifacts"
@@ -226,7 +234,7 @@ msgstr ""
 "- [actions/download-artifact](https://github.com/actions/download-artifact): "
 "una acción para descargar artefactos"
 
-#: ..\python_docs\GitHubActions.py:41
+#: ..\python_docs\GitHubActions.py:42
 msgid ""
 "- [unsplash/comment-on-pr@master](https://github.com/unsplash/comment-on-"
 "pr): an action to comment on a PR (may not work on Windows)"
@@ -235,7 +243,7 @@ msgstr ""
 "pr): una acción para comentar en una solicitud de cambios (podría no "
 "funcionar en Windows)"
 
-#: ..\python_docs\GitHubActions.py:42
+#: ..\python_docs\GitHubActions.py:43
 msgid ""
 "- [action/GitHubScript](https://github.com/actions/github-script): scripting "
 "GitHub API in JavaScript"
@@ -243,7 +251,7 @@ msgstr ""
 "- [action/GitHubScript](https://github.com/actions/github-script): API de "
 "scripting de GitHub en JavaScript"
 
-#: ..\python_docs\GitHubActions.py:43
+#: ..\python_docs\GitHubActions.py:44
 msgid ""
 "- [actions/create-release: An Action to create releases via the GitHub "
 "Release API](https://github.com/actions/create-release)"
@@ -251,7 +259,7 @@ msgstr ""
 "- [actions/create-release: una acción para crear liberaciones mediante la "
 "API de liberaciones de GitHub](https://github.com/actions/create-release)"
 
-#: ..\python_docs\GitHubActions.py:44
+#: ..\python_docs\GitHubActions.py:45
 msgid ""
 "- [svenstaro/upload-release-action: Upload files to a GitHub release]"
 "(https://github.com/svenstaro/upload-release-action)"
@@ -259,21 +267,21 @@ msgstr ""
 "- [svenstaro/upload-release-action: Subir archivos a una liberación de "
 "GitHub](https://github.com/svenstaro/upload-release-action)"
 
-#: ..\python_docs\GitHubActions.py:45
+#: ..\python_docs\GitHubActions.py:46
 msgid "## Aknowledgements ###"
 msgstr "## Reconocimientos"
 
-#: ..\python_docs\GitHubActions.py:46
+#: ..\python_docs\GitHubActions.py:47
 msgid "The above workflows are created or based on work performed by @mhameed"
 msgstr ""
 "Los flujos de trabajo de más arriba están basados o han sido creados a "
 "partir del trabajo realizado por @mhameed"
 
-#: ..\python_docs\GitHubActions.py:47
+#: ..\python_docs\GitHubActions.py:48
 msgid "<https://github.com/nvdaaddons/l10ntest>"
 msgstr "<https://github.com/nvdaaddons/l10ntest>"
 
-#: ..\python_docs\GitHubActions.py:48
+#: ..\python_docs\GitHubActions.py:49
 msgid ""
 "Thanks also to @Josephsl and @CyrilleB79 for replies, as mentioned on this "
 "[message about GitHub workflows](https://nvda-addons.groups.io/g/nvda-addons/"

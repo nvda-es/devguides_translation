@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-25 20:32+0100\n"
+"POT-Creation-Date: 2021-01-01 12:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2090,9 +2090,9 @@ msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:359
 msgid ""
-"    - `eventHandler.requestEvents(process ID, window class name for the "
-"control, event to be requested)`: Allows NVDA to listen to specific events "
-"for certain controls while using another app."
+"    - `eventHandler.requestEvents(event to be requested, process ID, window "
+"class name for the control)`: Allows NVDA to listen to specific events for "
+"certain controls while using another app."
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:360
@@ -4528,7 +4528,7 @@ msgid "\t\t\tlineNumList = api.getStatusBar().name.split()"
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:877
-msgid "\t\t\tlineNum = lineNumLisst[2]+linenumList[3]"
+msgid "\t\t\tlineNum = lineNumList[2]+lineNumList[3]"
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:878
@@ -4610,8 +4610,8 @@ msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:906
 msgid ""
-"\t\t\teventHandler.requestEvents(self.processID, \"MessengerWindow\", "
-"\"valueChange\")"
+"\t\t\teventHandler.requestEvents(\"valueChange\", self.processID, "
+"\"MessengerWindow\")"
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:908
@@ -5169,6 +5169,7 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1000
+#: ..\python_docs\NVDA-Add-on-Development-Guide.py:1021
 msgid "import globalPluginHandler"
 msgstr ""
 
@@ -5268,10 +5269,6 @@ msgid ""
 "dialog, based upon which button was pressed. Note that there are many more "
 "constants you can use, and types of dialog other than messageBox. This "
 "section is only an introduction to the subject to get you started."
-msgstr ""
-
-#: ..\python_docs\NVDA-Add-on-Development-Guide.py:1021
-msgid "import globalPluginHandler, wx, gui"
 msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1023
@@ -5465,7 +5462,7 @@ msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1071
 msgid ""
-"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=\"this is a "
+"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=(\"this is a "
 "timer message\", ))"
 msgstr ""
 

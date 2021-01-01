@@ -425,7 +425,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <li>Motores de reconocimiento de contenido (paquetes contentRecog): añade la capacidad de utilizar OCR y otros métodos para reconocer contenido en diversos escenarios. NVDA incorpora un motor de OCR para Windows 10.</li>
 <li>Colección de controles y estados (controlTypes.py): incluye diccionarios sobre los tipos de control (roles) y posibles estados.</li>
 <li>Eventos (eventHandler.py): maneja varios eventos como la optención del foco. Una función en particular es útil en los módulos de aplicación:<ul>
-<li><code>eventHandler.requestEvents(process ID, window class name for the control, event to be requested)</code>: Permite a NVDA escuchar eventos específicos para ciertos controles mientras se utiliza otra aplicación.</li>
+<li><code>eventHandler.requestEvents(evento a solicitar, id del proceso, nombre de clase de ventana del control)</code>: Permite a NVDA escuchar eventos específicos para ciertos controles mientras se utiliza otra aplicación.</li>
 </ul>
 </li>
 <li>Puntos de extensión (extensionPoints.py): proporciona una forma de permitir que los complementos y otros módulos definan y respondan a acciones específicas como cambios de perfil, acciones en un complemento, etc. Se definen los siguientes puntos de extensión:<ul>
@@ -1003,7 +1003,7 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
         def script_sayLineNumber(self, gesture):
             # Supongamos que el número de línea sigue el formato &quot;  ln 1&quot;.
             lineNumList = api.getStatusBar().name.split()
-            lineNum = lineNumLisst[2]+linenumList[3]
+            lineNum = lineNumList[2]+lineNumList[3]
             ui.message(lineNum)
 </code></pre>
 
@@ -1032,7 +1032,7 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 
         def __init__(self, *args, **kwargs):
             super(AppModule, self).__init__(*args, **kwards)
-            eventHandler.requestEvents(self.processID, &quot;MessengerWindow&quot;, &quot;valueChange&quot;)
+            eventHandler.requestEvents(&quot;valueChange&quot;, self.processID, &quot;MessengerWindow&quot;)
 </code></pre>
 
 <p>Una vez definidos, aunque estén enfocados en otra aplicación, se anunciarán nuevos mensajes (valores).</p>
@@ -1168,7 +1168,7 @@ La ventana es generada por la llamada a gui.messageBox. El primer parámetro es 
 <p>Por desgracia, si llamamos a gui.messageBox directamente, generalmente hará que NVDA se cuelgue, a menos que se ejecute desde el hilo principal. Para resolver ese problema, usamos wx.CallAfter, que mete en cola el diálogo para que se muestre desde el hilo principal. Sin embargo, wx.CallAfter no puede llamar a gui.messageBox directamente: debe hacerlo a través de otro método o función. En este ejemplo lo solucionamos mediante una función anidada cuyo único propósito es generar una sola vez ese diálogo.</p>
 <h4 id="ejemplo-2-un-dialogo-con-tres-caminos">Ejemplo 2: un diálogo con tres caminos</h4>
 <p>A continuación se encuentra un ejemplo más complejo, que muestra cómo devolver información de un diálogo en función del botón que se ha pulsado. Ten en cuenta que existen muchas más constantes que puedes utilizar, y tipos de diálogos distintos a messageBox. Esta sección es sólo una introducción al tema para dar los primeros pasos.</p>
-<pre><code class="python">import globalPluginHandler, wx, gui
+<pre><code class="python">import globalPluginHandler
 from scriptHandler import script
 import gui
 import wx
@@ -1229,7 +1229,7 @@ import ui
 class AppModule(appModuleHandler.AppModule):
 
     def script_saySomething(self, gesture):
-        messageTimer = threading.Timer(10.0, ui.message, args="este es un mensaje de temporizador", ))
+        messageTimer = threading.Timer(10.0, ui.message, args=("este es un mensaje de temporizador", ))
         messageTimer.start()
 </code></pre>
 <p>Una limitación de threading.Timer es que no soporta tareas repetitivas, para ello deberás usar wx.Timer.</p>

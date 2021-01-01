@@ -34,9 +34,15 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 </ul>
 </li>
 <li>Crea una solicitud de cambios para mover master al siguiente ciclo de desarrollo de versión <strong>(squash merge)</strong>.<ul>
-<li>Añade una nueva sección al registro de cambios.</li>
+<li><a href="#nueva-seccion-en-el-archivo-de-cambios">Añade una nueva sección al registro de cambios</a>.</li>
 <li><a href="#update-nvda-version-in-master">Actualiza la versión de NVDA en <code>master</code></a></li>
 <li>Al mezclar, <a href="#update-auto-milestone-id">actualiza el identificador automático del hito</a></li>
+</ul>
+</li>
+<li>Crea una solicitud de cambios para actualizar Espeak, y crea una nueva incidencia en el <a href="https://github.com/espeak-ng/espeak-ng/issues/new">repositorio de Espeak-NG solicitando una nueva versión</a>. <a href="https://github.com/espeak-ng/espeak-ng/issues/792">Consulta la discusión</a>.</li>
+<li>Si se trata de una versión 20XY.1, crea una solicitud de cambios para actualizar la versión <code>BACK_COMPAT_TO</code> de la API de complementos para que coincida con el número de versión de este ciclo de liberaciones.<ul>
+<li>No es necesario mezclar esta solicitud de cambios hasta que se ramifique en la beta de la versión 20XY.1.</li>
+<li>La intención de la existencia de esta solicitud de cambios es actuar como un aviso temprano de lo que está por venir para los desarrolladores de complementos.</li>
 </ul>
 </li>
 </ul>
@@ -230,5 +236,27 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 1. En <code>source/buildVersion.py</code>, actualiza las variables <code>version_year</code> y/o <code>version_major</code> para la próxima versión.
     - Si la próxima versión es la primera del año en curso, (por ejemplo, 2018.1), actualiza <code>copyrightYears</code> también.
 2. Añade un encabezado para la siguiente versión en <code>user_docs/en/changes.t2t</code> si todavía no existe.</p>
+<h2 id="nueva-seccion-en-el-archivo-de-cambios">Nueva sección en el archivo de cambios</h2>
+<p>Añade al principio del archivo de cambios:</p>
+<pre><code>= 20XY.Z =
+
+== New Features ==
+
+
+== Changes ==
+
+
+== Bug Fixes ==
+
+
+== Changes for Developers ==
+
+
+</code></pre>
+
+<ul>
+<li>Si se trata de una versión 20XY.1 añade esto a la sección "Changes for developers":
+<code>- Note: this is a Add-on API compatibility breaking release. Add-ons will need to be re-tested and have their manifest updated.</code></li>
+</ul>
 </body>
 </html>

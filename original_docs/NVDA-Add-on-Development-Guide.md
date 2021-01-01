@@ -471,7 +471,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Content recognition engines (contentRecog packages): adds ability to use OCR and other methods to recognize content in various scenarios. NVDA ships with Windows 10 OCR engine.
 * Controls and states collection (controlTypes.py): Includes dictionaries on control types (roles) and possible states that a control can be in.
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
-    - `eventHandler.requestEvents(process ID, window class name for the control, event to be requested)`: Allows NVDA to listen to specific events for certain controls while using another app.
+    - `eventHandler.requestEvents(event to be requested, process ID, window class name for the control)`: Allows NVDA to listen to specific events for certain controls while using another app.
 * Extension points (extensionPoints.py): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
     - `extensionPoints.Action`: notifies when something happens e.g. profile switches.
     - `extensionPoints.Decider`: decides whether to process something further e.g. processing keyboard input from a remote system.
@@ -1214,7 +1214,7 @@ The app module for Notepad would look like this:
 		def script_sayLineNumber(self, gesture):
 			# Suppose line number is in the form "  ln 1".
 			lineNumList = api.getStatusBar().name.split()
-			lineNum = lineNumLisst[2]+linenumList[3]
+			lineNum = lineNumList[2]+lineNumList[3]
 			ui.message(lineNum)
 ```
 
@@ -1252,7 +1252,7 @@ The below code allows NVDA to announce value changes while focused on another ap
 	
 		def __init__(self, *args, **kwargs):
 			super(AppModule, self).__init__(*args, **kwards)
-			eventHandler.requestEvents(self.processID, "MessengerWindow", "valueChange")
+			eventHandler.requestEvents("valueChange", self.processID, "MessengerWindow")
 ```
 
 Once defined, even if focused in another app, new messages (values) will be announced.
@@ -1429,7 +1429,7 @@ Unfortunately, if we just call gui.messageBox directly, it will usually cause NV
 Below is a more complex example, that shows how to return information from a dialog, based upon which button was pressed. Note that there are many more constants you can use, and types of dialog other than messageBox. This section is only an introduction to the subject to get you started.
 
 ```python
-import globalPluginHandler, wx, gui
+import globalPluginHandler
 from scriptHandler import script
 import gui
 import wx
@@ -1503,7 +1503,7 @@ There are two timers you can use: threading.Timer or wx.Timer. The below app mod
 	class AppModule(appModuleHandler.AppModule):
 
 		def script_saySomething(self, gesture):
-			messageTimer = threading.Timer(10.0, ui.message, args="this is a timer message", ))
+			messageTimer = threading.Timer(10.0, ui.message, args=("this is a timer message", ))
 			messageTimer.start()
 
 One limitation with threading.Timer is that it does not support repetitive tasks, and for these, you need to use wx.Timer.

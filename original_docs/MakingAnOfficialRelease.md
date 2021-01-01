@@ -21,9 +21,13 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
   - Based on `branchForX`
   - Targeting either `branchForX` or beta dependent on whether the branching PR has been merged yet. 
 * Create a PR to move master on to the next release dev cycle **(squash merge)**.
-  * Add a new section to the change log.
+  * [Add a new section to the change log](#new-section-in-changes-file).
   * [Update NVDA version in `master`](#update-nvda-version-in-master)
   * When merging [update auto milestone ID](#update-auto-milestone-id)
+* Create a PR to update espeak, and create and issue on the [espeak-ng repo asking for a new release](https://github.com/espeak-ng/espeak-ng/issues/new). [See discussion](https://github.com/espeak-ng/espeak-ng/issues/792).
+* If this is a 20XY.1 release, create a PR to update the Addon API `BACK_COMPAT_TO` version to match this version number for this release cycle.
+  - This PR does not need be merged until branching for the beta of the 20XY.1 release.
+  - The existence of the PR is intended to act as an early warning for add-on developers of the coming change.
 
 ## Beta release (pre-release)
 * Create a [new annotated tag](#create-the-release--annotated-tag)
@@ -174,3 +178,24 @@ In NVDA source, ensure the `master` branch version number and changes file are c
 1. In `source/buildVersion.py`, update the `version_year` and/or `version_major` variables for the next version.
    - If the next version is the first version for that year (e.g. 2018.1), also update `copyrightYears`.
 2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is not there already.
+
+## New section in changes file
+Add to the top of the changes file:
+```
+= 20XY.Z =
+
+== New Features ==
+
+
+== Changes ==
+
+
+== Bug Fixes ==
+
+
+== Changes for Developers ==
+
+
+```
+* If this is a 20XY.1 release add to the "Changes for Developers" section:
+`- Note: this is a Add-on API compatibility breaking release. Add-ons will need to be re-tested and have their manifest updated.`

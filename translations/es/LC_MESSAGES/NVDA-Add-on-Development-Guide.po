@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-25 20:32+0100\n"
-"PO-Revision-Date: 2020-10-28 00:14+0100\n"
+"POT-Creation-Date: 2021-01-01 12:32+0100\n"
+"PO-Revision-Date: 2021-01-01 12:40+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:3
@@ -2760,12 +2760,12 @@ msgstr ""
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:359
 msgid ""
-"    - `eventHandler.requestEvents(process ID, window class name for the "
-"control, event to be requested)`: Allows NVDA to listen to specific events "
-"for certain controls while using another app."
+"    - `eventHandler.requestEvents(event to be requested, process ID, window "
+"class name for the control)`: Allows NVDA to listen to specific events for "
+"certain controls while using another app."
 msgstr ""
-"    - `eventHandler.requestEvents(process ID, window class name for the "
-"control, event to be requested)`: Permite a NVDA escuchar eventos "
+"    - `eventHandler.requestEvents(evento a solicitar, id del proceso, nombre "
+"de clase de ventana del control)`: Permite a NVDA escuchar eventos "
 "específicos para ciertos controles mientras se utiliza otra aplicación."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:360
@@ -6089,8 +6089,8 @@ msgid "\t\t\tlineNumList = api.getStatusBar().name.split()"
 msgstr "\t\t\tlineNumList = api.getStatusBar().name.split()"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:877
-msgid "\t\t\tlineNum = lineNumLisst[2]+linenumList[3]"
-msgstr "\t\t\tlineNum = lineNumLisst[2]+linenumList[3]"
+msgid "\t\t\tlineNum = lineNumList[2]+lineNumList[3]"
+msgstr "\t\t\tlineNum = lineNumList[2]+lineNumList[3]"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:878
 msgid "\t\t\tui.message(lineNum)"
@@ -6191,11 +6191,11 @@ msgstr "\t\t\tsuper(AppModule, self).__init__(*args, **kwards)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:906
 msgid ""
-"\t\t\teventHandler.requestEvents(self.processID, \"MessengerWindow\", "
-"\"valueChange\")"
+"\t\t\teventHandler.requestEvents(\"valueChange\", self.processID, "
+"\"MessengerWindow\")"
 msgstr ""
-"\t\t\teventHandler.requestEvents(self.processID, \"MessengerWindow\", "
-"\"valueChange\")"
+"\t\t\teventHandler.requestEvents(\"valueChange\", self.processID, "
+"\"MessengerWindow\")"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:908
 msgid ""
@@ -6974,6 +6974,7 @@ msgstr ""
 "entender qué ocurre."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1000
+#: ..\python_docs\NVDA-Add-on-Development-Guide.py:1021
 msgid "import globalPluginHandler"
 msgstr "import globalPluginHandler"
 
@@ -7101,10 +7102,6 @@ msgstr ""
 "Ten en cuenta que existen muchas más constantes que puedes utilizar, y tipos "
 "de diálogos distintos a messageBox. Esta sección es sólo una introducción al "
 "tema para dar los primeros pasos."
-
-#: ..\python_docs\NVDA-Add-on-Development-Guide.py:1021
-msgid "import globalPluginHandler, wx, gui"
-msgstr "import globalPluginHandler, wx, gui"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1023
 msgid "import gui"
@@ -7333,10 +7330,10 @@ msgstr "\t\tdef script_saySomething(self, gesture):"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1071
 msgid ""
-"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=\"this is a "
+"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=(\"this is a "
 "timer message\", ))"
 msgstr ""
-"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=\"este es un "
+"\t\t\tmessageTimer = threading.Timer(10.0, ui.message, args=(\"este es un "
 "mensaje de temporizador\", ))"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1072
@@ -8598,6 +8595,9 @@ msgid ""
 msgstr ""
 "| Definición de clases | class algunaclase: contenido | class "
 "algunaclase(object): contenido | El último también funciona en Python 2. |"
+
+#~ msgid "import globalPluginHandler, wx, gui"
+#~ msgstr "import globalPluginHandler, wx, gui"
 
 #~ msgid ""
 #~ "    - `ui.message(message to be spoken/brailled)`: Speaks or brailles the "

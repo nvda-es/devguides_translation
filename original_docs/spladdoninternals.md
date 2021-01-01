@@ -2,11 +2,11 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NVDA 20.09
+Based on StationPlaylist Add-on for NVDA 21.01
 
-## 2020 Preface and notes
+## 2021 Preface and notes
 
-This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2020, edits are ongoing to remove traces of old style and update this guide to reflect add-on features as of 2020 and beyond.
+This guide has gone through many revisions, style changes, and updated to include features in latest add-on releases. When first published in 2015, it was done as a series of blog posts. Now in 2021, edits were made to remove traces of old style and update this guide to reflect add-on features as of 2021 and beyond.
 
 In 2018, the scope of the add-on has expanded to cover StationPlaylist Creator and Track Tool. For the most part, this guide will still cover StationPlaylist Studio alone, but there are important changes made in recent releases that'll ask us to consider other programs in StationPlaylist suite. In particular, trakc item class inheritance hierarchy has changed so many column navigation commands are available when dealing with tracks across SPL apps. As a result, the add-on itself was renamed in 2019 to just "StationPlaylist".
 
@@ -14,9 +14,11 @@ Later in 2018, add-on update feature was removed in favor of Add-on Updater add-
 
 Then came 2019, and so did Python 3, abstract classes, and new encoder types. The old days of just dealing with SAM and SPL encoders is over, and encoder support has been redesigned from ground up in 2020. Compared to old add-on releases, the scope of SPL Utilities global plugin has been reduced in favor of giving more autonomy to encoder support app modules (mostly SPL Engine). Along with this, the add-on has been updated to be powered strictly by Python 3.
 
-In 2020, the add-on is going through another major change: removal of unnecessary features and splitting broadcast profiles management from add-on settings dialog. In the old days, add-on settings management was intimately tied to broadcast profiles, and that was the reason why broadcast profiles panel was an integral part of add-on settings dialog. In early 2020, several bugs stemming from design decisions years ago came to light such as applying settings changes to wrong profile. Together with a need to make add-on settings panels independent of each other in order to allow users to open alarms panel from anywhere (described later), it was decided to split broadcast profiles panel into its own dialog.
+In 2020, the add-on has gone through another major change: removal of unnecessary features and splitting broadcast profiles management from add-on settings dialog. In the old days, add-on settings management was intimately tied to broadcast profiles, and that was the reason why broadcast profiles panel was an integral part of add-on settings dialog. In early 2020, several bugs stemming from design decisions years ago came to light such as applying settings changes to wrong profile. Together with a need to make add-on settings panels independent of each other in order to allow users to open alarms panel from anywhere (described later), it was decided to split broadcast profiles panel into its own dialog.
 
-Another big change in 2020 is removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout is being phased out. Another removed feature is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
+Another big change in 2020 was removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout was removed. Another removed feature is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
+
+2021 may turn out to be a turning point for the add-on. I (Joseph Lee) will be stepping down from maintaining this add-on. My hope is that new maintainers (whoever might be) will step up and improve this add-on greatly.
 
 ## Introduction
 
@@ -32,7 +34,7 @@ Note: throughout this guide, unless specified otherwise, the terms "StationPlayl
 
 StationPlaylist Studio is a broadcast automation software that helps broadcasters schedule trakcs, play jingles and more. It includes support for break notes, hourly playlist, track tagging and comes with tools to manage track playback such as setting track intros. In studio 5.00 and later, it includes its own stream encoder.
 
-StationPlaylist Creator is mostly used for planning a show and designing playlists to be used by Studio. It can be used to define spot groups, custom track categories and more.
+StationPlaylist Creator and Remote Voice Track (VT) are mostly used for planning a show and designing playlists to be used by Studio. It can be used to define spot groups, custom track categories and more. Whereas Creator is limited to local playlists, Remote VT is used to manage playlists stored on a remote computer.
 
 StationPlaylist Track Tool is mainly used for managing tracks. It is often employed to define introductions, cue points and other properties of tracks.
 
@@ -40,7 +42,7 @@ StationPlaylist Streamer is useful for broadcasting a show with something other 
 
 In addition to the components above, StationPlaylist suite includes additional tools such as VT Recorder, and a host of internal support modules such as SPL Engine used for DSP processing and other tasks.
 
-Is Studio suite accessible? Surprisingly, yes. It is possible to use app features without using screen reader scripts and add-ons. However, there are times when a broadcaster would use scripts, such as announcing status changes, monitoring track intros and endings, enhanced support for encoders and so on, and NVDA add-on for StationPlaylist Studio (usually refered to as SPL) accomplishes this well.
+Is Studio suite accessible? Surprisingly, yes. It is possible to use app features without using screen reader scripts and add-ons. However, there are times when a broadcaster would use scripts, such as announcing status changes, monitoring track intros and endings, enhanced support for encoders and so on, and NVDA add-on for StationPlaylist (usually refered to as SPL) accomplishes this well.
 
 ### StationPlaylist add-on: a history
 
@@ -70,6 +72,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 20.02: Python 3, restructured encoders support and new encoders, Creator's Playlist Editor support.
 * 20.06: removed Window-Eyes support, time-based broadcast profiles facility removed, support for Remote VT client.
 * 20.09: fourth LTS release, pilot features removed, connecting to individual encoders in SPL encoders, background encoder monitor registry.
+* 21.01: track property announcement changes, more lint fixes.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -496,7 +499,7 @@ Then in 2015, when I was designing Track Dial (next section), I thought about sc
 
 In 2018, as support for Columns Explorer was being worked on for Creator and Track Tool, I decided to overhaul the entire track item class hierarchy. Since track items would use same column navigation routines, it was decided to split SPL 5.0x track item class into two classes: the old track item class, and a new abstract class providing basic services for Studio, Creator and Track Tool track items. Also, in order to support column reordering, SysListView32 class was employed, as it provides a handy routine to retrieve column content for the correct column when columns were rearranged on screen.
 
-In 2020, SPL track item overlay classes were reworked. Because base SPL track item class was meant to serve as a blueprint, it became an abstract base class in 2019. What was formerly Studio 5.10 track item class became a specialist class for playlist viewer items, and old Studio 5.0x item class was revived to represent track items found in other parts of Studio such as Insert Tracks dialog. At the same time, column navigation services provided by the SPL track item base class was eliminated in favor of using facilities provided by SysListView32 list item class to provide consistency with NVDA itself and to add column navigation commands for Creator's playlist editor and Remote VT client (prior to this, SPL track item base provided customized column navigation commands).
+In 2020, SPL track item overlay classes were reworked. Because base SPL track item class was meant to serve as a blueprint, it became an abstract base class in 2019. What was formerly Studio 5.10 track item class became a specialist class for playlist viewer items, and old Studio 5.0x item class was revived to represent track items found in other parts of Studio such as Insert Tracks dialog. At the same time, column navigation services provided by the SPL track item base class was eliminated in favor of using facilities provided by SysListView32 list item class to provide consistency with NVDA itself and to add column navigation commands for Creator's playlist editor and Remote VT client (prior to this, SPL track item base provided customized column navigation commands). Later, track name and description routines were revised to use SysListView32 routines (see the section on custom column announcement order), which resolved a long-standing problem where track information would not be announced unless "report object descriptions" setting was enabled from NVDA.
 
 ### Track items overview
 
@@ -560,7 +563,7 @@ The most important job of appModules.splstudio.SPLTrackItem class is announcing 
 
 On top of the base SPL track item class is general Studio track item class, which does nothing, as it is meant to represent tracks in places such as Insert Tracks dialog. However the class that represents playlist viewer items (appModules.splstudio.StudioPlaylistViewerItem) adds routines and scripts for use from playlist viewer. These include:
 
-* reportFocus: This is called when reporting track items to you (broadcaster). It's main job is to see if custom column order is defined (see below) and builds needed pieces if column order is specified.
+* reportFocus: This is called when reporting track items to you (broadcaster). It's main job is to see if custom column order is defined (see below) and builds needed pieces if column order is specified. Later in 2020, column order handling was moved to track name getter.
 * Track comments: Routines related to working with comments for traks (see the previous section for details).
 * Announcing toggle state of tracks when Space is pressed.
 
@@ -606,13 +609,21 @@ To handle differences between Studio 5.0x and 5.1x, each track item class inform
 
 #### Custom column announcement order: What to announce and how
 
-Track Dial routine also allowed another top request to come to life: column announcement order. This allows you (broadcaster) to hear columns in specific order and to exclude certain columns from being announced. This is housed in reportFocus method in the main track item class.
+Track Dial routine also allowed another top request to come to life: column announcement order. This allows you (broadcaster) to hear columns in specific order and to exclude certain columns from being announced.
 
-In order to use this, you must tell NVDA to not use screen order (add-on settings dialog). Then open column announcement dialog and check the columns you wish to hear, then use the columns list to set column announcement order. The column announcement order is a list box with two buttons: move up and down.
+Until 2020, custom column announcement order handler resided in reportFocus method in the main track item class. In late 2020, this was split into a custom track name getter, as track name announcement was revised to use SysListView32 routines directly (prior to this, track item class relied on default IAccessible implementation).
 
-Once column order and included columns are defined, NVDA will use this information to build track item description text. This is done by repeatedly calling the column retriever routine for columns you wish to hear, then using the column order you defined to build parts of the description text (a combination of a list and str.join is used).
+In order to use this, you must tell NVDA to not use screen order (add-on settings dialog's column announcement panel, or in 21.01 and later, press NVDA+V while focused on playlist viewer item to toggle this). Then from the same settings panel (column announcement), check the columns you wish to hear and/or use the columns list to set column announcement order. The column announcement order is a list box with two buttons: move up and down.
 
-For example, if NVDA is told to announce title and artist (in that specific order), NVDA will first locate title, then will add artist information. This is then presented as, "Title: some title, Artist: some artist". It is also possible to suppress announcement of column headers, and this is controlled by the column header announcement checkbox in add-on settings.
+Once column order and included columns are defined, NVDA will use this information to build track property text. Prior to 2021, this was track description, later shifting to building track name text. This is done by repeatedly calling the column retriever routine for columns you wish to hear, then using the column order you defined to build parts of the property text (a combination of a list and str.join is used).
+
+For example, if NVDA is told to announce title and artist (in that specific order), NVDA will first locate title, then will add artist information. This is then presented as, "Title: some title, Artist: some artist".
+
+It is also possible to suppress announcement of column headers. Until 2020, add-on settings shipped with a dedicated checkbox to toggle header announcement. From 2021 onwards, NVDA's table row/column header setting is used to set column header announcement for Studio track columns.
+
+##### Track name versus description?
+
+Until 2020, because Studio's track item class relied mostly on default IAccessible implementation, track description recorded trakc properties. For this reason, whenever custom column order or inclusion were defined, reportFocus method would construct a custom track description text based on the custom column order. This changed in add-on 20.11 when SysListView32 routines took a greater role in defining track items, and since NVDA builds custom text for item names based on column information, Studio's track item class will also construct custom item name based on custom column order and inclusion if defined. Because of this, from late 2020, column builder was split into a different method, namely a custom item name getter which is the method used by NVDA to retrieve name text for a control.
 
 #### Track Columns Explorer: Retrieve information from specific columns
 
@@ -1204,11 +1215,13 @@ Until 2016, this was accomplished with a function in the SPL Utilities module (S
 	3. For all other values, NVDA will assume the last window found is the Studio window (held in fg variable) and return it.
 4. Back at the focus to Studio script, NVDA will either announce if Studio is minimized or switch to the foreground window returned by the fetch window function (fg.SetFocus).
 
-In 2017, this has been simplified to use SetForegroundWindow Windows API function with the handle to the Studio window being the only required parameter. Not only this simplified this routine significantly, it also improved performance of this command. One side effect is that it is no longer possible to detect Studio being minimized, but one can get a clue of this if NVDA says "unavailable" when trying to switch to Studio. One can then go to system tray and restore Studio window.
+In 2017, this has been simplified to use SetForegroundWindow Windows API function with the handle to the Studio window being the only required parameter. Not only this simplified this routine significantly, it also improved performance of this command.
+
+One side effect was difficulty in determining if Studio window is minimized, hence the clue was seeing if NVDA says "unavailable". In 2020, focus to Studio routine was refined to look for visibility of Studio window, and if not visible, present an error message. One can then go to system tray and restore Studio window.
 
 ## Encoder support
 
-We have now arrived at the penultimate chapter in this Add-on Internals article for StationPlaylist add-on: encoder support. We'll talk about how encoder support is implemented, how NVDA can detect stream labels and a behind the scenes overview of what happens when you connect to a streaming server.
+We have now arrived at the penultimate chapter in this Add-on Internals article for StationPlaylist add-on: encoder support. We'll talk about how encoder support is implemented, how NVDA can detect encoder labels and a behind the scenes overview of what happens when you connect to a streaming server.
 
 ### Encoder support: From suggestion to implementation
 
@@ -1222,7 +1235,7 @@ While I was resolving problems with SAM encoders, I also worked on refactoring e
 
 Few years later, encoder support became a hot topic when I was asked by a broadcaster to add support for Edcast in 2019. Edcast, while free, was end of life, and Altacast took its place. Thankfully, adding support for AltaCast encoder (Winamp plugin which must be recognized by Studio and Streamer) was a breeze because its user interface is similar to SPL encoders. Thus, AltaCast encoder support is similar to SPL encoders, thus for purposes of this section, AltaCast is synonymous with SPL encoder.
 
-At the same time, encoder support was reorganized. In 2014, with limited knowledge on encoder engines, I felt it was best to house encoder support module inside SPL Utilities. In the course of time, two encoder engines were found: SPL Engine (splengine) and Streamer (splstreamer). After learning that encoder engines were housed inside these apps, it was decided in 2020 to separate encoder support module into its own app module, transfering encoder support from the global plugin to SPL Engine app module package with Streamer deriving most of its power from SPL Engine package.
+At the same time, encoder support was reorganized. In 2014, with limited knowledge on encoder engines, I felt it was best to house encoder support module inside SPL Utilities. In the course of time, two encoder engines were found: SPL Engine (splengine) and Streamer (splstreamer). After learning that encoder engines were housed inside these apps, it was decided in 2020 to separate encoder support module into its own app module, transfering encoder support from the global plugin to SPL Engine app module package with Streamer deriving most of its power from the former.
 
 ### Encoder support structure
 
@@ -1234,36 +1247,34 @@ Encoder support is part of two app modules: SPL Engine and StationPlaylist Strea
 
 ### Encoder entries: Yet another overlay class family
 
-Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (splengine.encoders.EncoderWindow) that provides basic services such as settings commands, announcing stream labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining stream labels and so on. Speaking of stream labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store stream labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
+Just like Studio track items (see the section on track items), encoder entries are overlay classes. Each encoder type (SAM, SPL, AltaCast and future encoders) inherit from a single encoder object (splengine.encoders.Encoder) that provides basic services such as settings commands, announcing encoder labels and so on. Then each encoder type adds encoder-specific routines such as different connection detection routines, ways of obtaining encoder labels and so on. Speaking of encoder labels and settings, the base encoder class is helped by some friends from the encoder module itself, including a configuration map to store encoder labels and basic settings, a routine to obtain encoder ID (encoder string and the IAccessible child ID) and so on.
 
-On top of the base encoder class are three encoder classes, representing entries from SAM, SPL, and AltaCast. SAM encoder entries (splengine.encoders.SAMEncoderWindow) is laid out just like Studio's track items, whereas SPL encoder entries (splengine.encoders.SPLEncoderWindow) is a typical SysListView32 control (see the section on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder entries (splengine.encoders.AltaCastEncoderWindow) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as encoder type identifier used for looking up encoder settings with help from encoder ID's.
+On top of the base encoder class are three encoder classes, representing entries from SAM, SPL, and AltaCast. SAM encoder entries (splengine.encoders.SAMEncoder) are laid out just like Studio's track items with parts deriving from SysListView32 objects, whereas SPL encoder list (splengine.encoders.SPLEncoder) is a typical SysListView32 control (see the section on column routines for more information). Being similar in appearance to SPL encoder, AltaCast encoder (splengine.encoders.AltaCastEncoder) derives from SPL encoder class with encoder specific differences. All encoder classes provide similar routines, with differences being how connection messages are handled and obtaining encoder specific data such as encoder type identifier used for looking up encoder settings with help from encoder ID's.
 
 ### Encoder ID's
 
 An encoder ID is a string which uniquely identifies an encoder. This consists of a string denoting the encoder type (SAM for SAM encoder, for instance), followed by the encoder position (separated by a space). For instance, the first SAM encoder is given the ID "SAM 1". The ID's are used to retrieve and configure encoder settings, as well as identifying encoders when monitoring them in the background.
 
-### Common services: basic settings, stream labels and related methods
+### Common services: basic settings, encoder labels and related methods
 
 All encoder classes provide the following common services:
 
 * Configuring settings: six settings can be configured:
-	* A custom stream label can be defined for ease of identification.
+	* A custom encoder label can be defined for ease of identification.
 	* Pressing F11 will tell NVDA if NVDA should switch to Studio when the encoder is connected.
 	*Pressing Shift+F11 will tell NVDA if NVDA should ask Studio to play the next track when connected.
 	* Pressing Control+F11 will enable background encoder monitoring (more on this in a second).
 	* Enabling or disabling connection progress tones (add-on 7.0, configurable from encoder settings dialog described below).
 	* Announcing connection status until the selected encoder is connected (add-on 20.03), also configurable from encoder settings dialog.
 	* Once these settings are changed, the new values will be stored in appropriate flag in the encoder entry, which in turn are saved in the configuration map.
-* Apart from stream labels, retrieves settings. This is done by various property methods - once called, these methods will look up various settings for the encoder from the configuration map (key is the setting flag, value is the encoder ID). Stream labels are organized differently (see below).
+* Apart from encoder labels, retrieves settings. This is done by various property methods - once called, these methods will look up various settings for the encoder from the configuration map (key is the setting flag, value is the encoder ID). Encoder labels are organized differently (see below).
 * Monitors and responds to connection status changes. The response routine (onConnection method) attempts to set focus to Studio and/or play the first checked track if configured to do so.
-* Loads stream labels when an encoder first gains focus (if this was loaded earlier, it could be a waste of space, especially if encoders are never used).
-* Announces stream labels (if defined) via reportFocus method. In contrast with the Studio track item version, an encoder's reportFocus routine:
-	1. Locates stream labels for the current encoder (the configuration map stores stream labels as dictionaries (sections), with each dictionary representing the encoder type, key is the encoder position and the value is the label; each encoder, when told to look up stream labels, will consult its own labels dictionary).
-	2. If a label is found, NVDA will announce the label (in braille, surrounded by parentheses).
-* Define and remove stream labels. If a label is defined (no empty string), stream label is stored in a stream labels collection, otherwise removed from the collection.
-* Updates stream label and flags position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear stream label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
-* Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and stream label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL and AltaCast allows one to hear encoder format and transfer rate/connection status.
-* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder has been added. Press Alt+NVDA+0 to open this dialog.
+* Loads encoder labels when an encoder first gains focus (if this was loaded earlier, it could be a waste of space, especially if encoders are never used).
+* Announces encoder labels (if defined) via a dedicated name getter. Labels are stored as dictionary keys corresponding to encoder ID's under a dedicated encoder labels section inside the configuration map.
+* Define and remove encoder labels. If a label is defined (no empty string), encoder label is stored in an encoder labels collection, otherwise removed from the collection.
+* Updates encoder label and flags position when told to do so (via a dialog, activated by pressing Control+F12). This is needed if encoders were removed, as you may hear label for an encoder that no longer exists. This is implemented as a variation of find predecessor algorithm.
+* Announces encoder columns. The base class can announce encoder position (Control+NVDA+1) and label (Control+NVDA+2), while SAM can announce encoder format, status and description and SPL and AltaCast allows one to hear encoder format and transfer rate/connection status.
+* In add-on 7.0, a central configuration dialog for configuring encoder settings for the selected encoder has been added. Press Alt+NVDA+0 or F12 to open this dialog.
 
 ### More and more threads: connection messages and background encoder monitoring
 
@@ -1276,13 +1287,17 @@ Each encoder overlay class (not the base encoder) includes dedicated connection 
 
 The connection handling routine performs the following:
 
-1. Locates status message for the encoder entry. For SAM, it is the description text, and for SPL, it is one of the entry's child objects (columns). This will be done as long as Studio and/or NVDA is live (that is, if the thread is running).
+1. Locates status message for the encoder entry. For SAM, status message is spread over two columns (child objects), and for SPL, transfer rate column is consulted. This will be done as long as Studio and/or NVDA is live (that is, if the thread is running).
 2. Announces error messages if any and will try again after waiting a little while (fraction of a second). If NVDA is told to not announce connection status until the encoder in question is connected, connection reporter thread will stop when an error message is seen.
 3. If connected, NVDA will play a tone, then:
 	* Do nothing if not told to focus to studio nor play the next track.
 	* Focuses to studio and/or plays the next track if no tracks are playing by calling onConnect method.
 4. For other messages, NVDA will periodically play a progress tone and announce connection status so far as reported by the encoder (progress tones will not be played if suppressed from encoder settings dialog).
 5. This loop repeats as long as this encoder is being monitored in the background.
+
+#### Monitoring multiple encoders with encoder registry
+
+Sometimes it becomes necessary to monitor multiple encoders at once, particularly if streaming to multiple servers or files. To handle this, encoder connection monitoring threads are housed inside an encoders registry, a dictionary that maps encoder ID's to connection reporter threads. This is useful to direct NVDA to announce connection status for multiple encoders one encoder at a time, and if this happens, NVDA will prefix encoder status with the ID associated with the encoder in question.
 
 ### Encoder-specific routines
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-25 20:32+0100\n"
+"POT-Creation-Date: 2021-01-01 12:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,10 +40,18 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:7
-msgid "## Get support"
+msgid ""
+"Please note: the NVDA project has a [Citizen and Contributor Code of Conduct]"
+"(CODE_OF_CONDUCT.md). NV Access expects that all contributors and other "
+"community members read and abide by the rules set out in this document while "
+"participating or contributing to this project."
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:8
+msgid "## Get support"
+msgstr ""
+
+#: ..\python_docs\NVDAReadme.py:9
 msgid ""
 "Either if you are a beginner, an advanced user, a new or a long time "
 "developer, or if you are an organization willing to know more or to "
@@ -52,496 +60,496 @@ msgid ""
 "reader. Here is an overview of the most important support sources."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:9
+#: ..\python_docs\NVDAReadme.py:10
 msgid "### Documentation"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:10
+#: ..\python_docs\NVDAReadme.py:11
 msgid ""
 "* [NVDA User Guide](https://www.nvaccess.org/files/nvda/documentation/"
 "userGuide.html)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:11
+#: ..\python_docs\NVDAReadme.py:12
 msgid ""
 "* [NVDA Developer Guide](https://www.nvaccess.org/files/nvda/documentation/"
 "developerGuide.html)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:12
+#: ..\python_docs\NVDAReadme.py:13
 msgid ""
 "* [NVDA Add-ons Development Internals](https://github.com/nvdaaddons/"
 "DevGuide/wiki)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:13
+#: ..\python_docs\NVDAReadme.py:14
 msgid ""
 "* [NVDA ControllerClient manual](https://github.com/nvaccess/nvda/tree/"
 "master/extras/controllerClient)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:14
+#: ..\python_docs\NVDAReadme.py:15
 msgid ""
 "* Further documentation is included in the Wiki of this repository and in "
 "the [Community Wiki](https://github.com/nvaccess/nvda-community/wiki)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:15
+#: ..\python_docs\NVDAReadme.py:16
 msgid "### Communication channels"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:16
+#: ..\python_docs\NVDAReadme.py:17
 msgid "* [NVDA Users Mailing List](https://nvda.groups.io/g/nvda)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:17
+#: ..\python_docs\NVDAReadme.py:18
 msgid "* [NVDA Developers Mailing List](https://groups.io/g/nvda-devel)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:18
+#: ..\python_docs\NVDAReadme.py:19
 msgid ""
 "* [NVDA Add-ons Mailing List](https://nvda-addons.groups.io/g/nvda-addons)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:19
+#: ..\python_docs\NVDAReadme.py:20
 msgid ""
 "* [Instant Messaging channel for NVDA Support](https://gitter.im/nvaccess/"
 "NVDA)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:20
+#: ..\python_docs\NVDAReadme.py:21
 msgid ""
 "* [Other sources including groups and profiles on social media channels, "
 "language specific websites and mailing lists etc.](https://github.com/"
 "nvaccess/nvda-community/wiki/Connect)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:21
+#: ..\python_docs\NVDAReadme.py:22
 msgid ""
 "You can also get  direct support from NV Access. See the [NV Access](http://"
 "www.nvaccess.org/) website for more details."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:22
+#: ..\python_docs\NVDAReadme.py:23
 msgid "## Other Key Project Links"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:23
+#: ..\python_docs\NVDAReadme.py:24
 msgid "* [NVDA on GitHub](https://github.com/nvaccess/nvda)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:24
+#: ..\python_docs\NVDAReadme.py:25
 msgid ""
 "* [NVDA issues on GitHub](https://github.com/nvaccess/nvda/issues): Bug "
 "reports, feature requests, etc."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:25
+#: ..\python_docs\NVDAReadme.py:26
 msgid ""
 "* [NVDA development snapshots](https://www.nvaccess.org/files/nvda/"
 "snapshots/): Automatically generated builds of the project in its current "
 "state of development"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:26
+#: ..\python_docs\NVDAReadme.py:27
 msgid ""
 "* [NVDA add-ons](https://addons.nvda-project.org/): Get add-ons to enhance "
 "NVDA"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:27
+#: ..\python_docs\NVDAReadme.py:28
 msgid ""
 "* [NVDA Add-ons coordination and support center](https://github.com/"
 "nvdaaddons): all about NVDA's addons environment"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:28
+#: ..\python_docs\NVDAReadme.py:29
 msgid ""
 "* [NVDA Add-ons Template](https://github.com/nvdaaddons/AddonTemplate): A "
 "repository for generating the Add-ons template"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:29
+#: ..\python_docs\NVDAReadme.py:30
 msgid ""
 "* [Translating NVDA](https://github.com/nvaccess/nvda/wiki/Translating): "
 "Information about how to translate NVDA into another language"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:30
+#: ..\python_docs\NVDAReadme.py:31
 msgid ""
 "* [NVDA Controller Client](http://www.nvda-project.org/nvdaControllerClient/"
 "nvdaControllerClient_20100219.7z) (2010-02-19): NVDA API for external "
 "applications to directly speak or braille messages, etc."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:31
+#: ..\python_docs\NVDAReadme.py:32
 msgid ""
 "* [Contributing to NVDA](https://github.com/nvaccess/nvda/wiki/"
 "Contributing): Guidelines for contributing to the NVDA source code"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:32
+#: ..\python_docs\NVDAReadme.py:33
 msgid ""
 "* [NVDA commits email list](https://lists.sourceforge.net/lists/listinfo/"
 "nvda-commits): Notifications for all commits to the Git repository"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:33
+#: ..\python_docs\NVDAReadme.py:34
 msgid ""
 "* [Old email archives](http://nabble.nvda-project.org/Development-f1.html): "
 "contain discussions about NVDA development"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:34
+#: ..\python_docs\NVDAReadme.py:35
 msgid "## Getting the Source Code"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:35
+#: ..\python_docs\NVDAReadme.py:36
 msgid ""
 "The NVDA project uses the [Git](https://www.git-scm.com/) version control "
 "system for its source code and documentation."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:36
+#: ..\python_docs\NVDAReadme.py:37
 msgid ""
 "The NVDA Git repository is located at https://github.com/nvaccess/nvda.git. "
 "You can clone it with the following command, which will place files in a "
 "directory named `nvda`:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:37 ..\python_docs\NVDAReadme.py:39
-#: ..\python_docs\NVDAReadme.py:109 ..\python_docs\NVDAReadme.py:111
-#: ..\python_docs\NVDAReadme.py:114 ..\python_docs\NVDAReadme.py:116
-#: ..\python_docs\NVDAReadme.py:128 ..\python_docs\NVDAReadme.py:130
-#: ..\python_docs\NVDAReadme.py:138 ..\python_docs\NVDAReadme.py:141
-#: ..\python_docs\NVDAReadme.py:150 ..\python_docs\NVDAReadme.py:152
-#: ..\python_docs\NVDAReadme.py:156 ..\python_docs\NVDAReadme.py:158
-#: ..\python_docs\NVDAReadme.py:162 ..\python_docs\NVDAReadme.py:164
-#: ..\python_docs\NVDAReadme.py:168 ..\python_docs\NVDAReadme.py:170
-#: ..\python_docs\NVDAReadme.py:174 ..\python_docs\NVDAReadme.py:176
-#: ..\python_docs\NVDAReadme.py:180 ..\python_docs\NVDAReadme.py:182
-#: ..\python_docs\NVDAReadme.py:196 ..\python_docs\NVDAReadme.py:198
-#: ..\python_docs\NVDAReadme.py:205 ..\python_docs\NVDAReadme.py:207
-#: ..\python_docs\NVDAReadme.py:213 ..\python_docs\NVDAReadme.py:215
-#: ..\python_docs\NVDAReadme.py:218 ..\python_docs\NVDAReadme.py:220
-#: ..\python_docs\NVDAReadme.py:226 ..\python_docs\NVDAReadme.py:228
-#: ..\python_docs\NVDAReadme.py:235 ..\python_docs\NVDAReadme.py:237
+#: ..\python_docs\NVDAReadme.py:38 ..\python_docs\NVDAReadme.py:40
+#: ..\python_docs\NVDAReadme.py:110 ..\python_docs\NVDAReadme.py:112
+#: ..\python_docs\NVDAReadme.py:115 ..\python_docs\NVDAReadme.py:117
+#: ..\python_docs\NVDAReadme.py:129 ..\python_docs\NVDAReadme.py:131
+#: ..\python_docs\NVDAReadme.py:139 ..\python_docs\NVDAReadme.py:142
+#: ..\python_docs\NVDAReadme.py:151 ..\python_docs\NVDAReadme.py:153
+#: ..\python_docs\NVDAReadme.py:157 ..\python_docs\NVDAReadme.py:159
+#: ..\python_docs\NVDAReadme.py:163 ..\python_docs\NVDAReadme.py:165
+#: ..\python_docs\NVDAReadme.py:169 ..\python_docs\NVDAReadme.py:171
+#: ..\python_docs\NVDAReadme.py:175 ..\python_docs\NVDAReadme.py:177
+#: ..\python_docs\NVDAReadme.py:181 ..\python_docs\NVDAReadme.py:183
+#: ..\python_docs\NVDAReadme.py:197 ..\python_docs\NVDAReadme.py:199
+#: ..\python_docs\NVDAReadme.py:206 ..\python_docs\NVDAReadme.py:208
+#: ..\python_docs\NVDAReadme.py:214 ..\python_docs\NVDAReadme.py:216
+#: ..\python_docs\NVDAReadme.py:219 ..\python_docs\NVDAReadme.py:221
+#: ..\python_docs\NVDAReadme.py:227 ..\python_docs\NVDAReadme.py:229
+#: ..\python_docs\NVDAReadme.py:236 ..\python_docs\NVDAReadme.py:238
 msgid "```"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:38
+#: ..\python_docs\NVDAReadme.py:39
 msgid "git clone --recursive https://github.com/nvaccess/nvda.git"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:40
+#: ..\python_docs\NVDAReadme.py:41
 msgid ""
 "The `--recursive` option is needed to retrieve various Git submodules we use."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:41
+#: ..\python_docs\NVDAReadme.py:42
 msgid "## Dependencies"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:42
+#: ..\python_docs\NVDAReadme.py:43
 msgid "The NVDA source depends on several other packages to run correctly."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:43
+#: ..\python_docs\NVDAReadme.py:44
 msgid "### Installed Dependencies"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:44
+#: ..\python_docs\NVDAReadme.py:45
 msgid "The following dependencies need to be installed on your system:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:45
+#: ..\python_docs\NVDAReadme.py:46
 msgid "* [Python](https://www.python.org/), version 3.7, 32 bit"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:46
+#: ..\python_docs\NVDAReadme.py:47
 msgid "\t* Use latest minor version if possible."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:47
+#: ..\python_docs\NVDAReadme.py:48
 msgid "\t* Don't use `3.7.6` it causes an error while building, see #10696."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:48
+#: ..\python_docs\NVDAReadme.py:49
 msgid "* Microsoft Visual Studio 2019 Community, Version 16.3 or later:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:49
+#: ..\python_docs\NVDAReadme.py:50
 msgid "\t* Download from https://visualstudio.microsoft.com/vs/"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:50
+#: ..\python_docs\NVDAReadme.py:51
 msgid "\t* When installing Visual Studio, you need to enable the following:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:51
+#: ..\python_docs\NVDAReadme.py:52
 msgid "\t\t* On the Workloads tab"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:52
+#: ..\python_docs\NVDAReadme.py:53
 msgid "\t\t\t* in the Windows group:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:53
+#: ..\python_docs\NVDAReadme.py:54
 msgid "\t\t\t\t* Desktop development with C++"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:54
+#: ..\python_docs\NVDAReadme.py:55
 msgid ""
 "\t\t\t* Then in the Installation details section, under Desktop for C++, "
 "Optional grouping, ensure the following are selected:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:55
+#: ..\python_docs\NVDAReadme.py:56
 msgid "\t\t\t\t* MSVC v142 - VS 2019 C++ x64/x86 build tools"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:56
+#: ..\python_docs\NVDAReadme.py:57
 msgid "\t\t\t\t* Windows 10 SDK (10.0.19041.0)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:57
+#: ..\python_docs\NVDAReadme.py:58
 msgid "\t\t\t\t* C++ ATL for v142 build tools (x86 & x64)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:58
+#: ..\python_docs\NVDAReadme.py:59
 msgid "\t\t\t\t* C++ Clang tools for Windows"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:59
+#: ..\python_docs\NVDAReadme.py:60
 msgid ""
 "\t\t* On the Individual components tab, ensure the following items are "
 "selected:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:60
+#: ..\python_docs\NVDAReadme.py:61
 msgid "\t\t\t* MSVC v142 - VS 2019 C++ ARM64 build tools"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:61
+#: ..\python_docs\NVDAReadme.py:62
 msgid "\t\t\t* C++ ATL for v142 build tools (ARM64)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:62
+#: ..\python_docs\NVDAReadme.py:63
 msgid "### Git Submodules"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:63
+#: ..\python_docs\NVDAReadme.py:64
 msgid "Most of the dependencies are contained in Git submodules."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:64
+#: ..\python_docs\NVDAReadme.py:65
 msgid ""
 "If you didn't pass the `--recursive` option to git clone, you will need to "
 "run `git submodule update --init`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:65
+#: ..\python_docs\NVDAReadme.py:66
 msgid ""
 "Whenever a required submodule commit changes (e.g. after git pull), you will "
 "need to run `git submodule update`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:66
+#: ..\python_docs\NVDAReadme.py:67
 msgid ""
 "If you aren't sure, run `git submodule update` after every git pull, merge "
 "or checkout."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:67
+#: ..\python_docs\NVDAReadme.py:68
 msgid ""
 "For reference, the following run time dependencies are included in Git "
 "submodules:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:68
+#: ..\python_docs\NVDAReadme.py:69
 msgid "* [comtypes](https://github.com/enthought/comtypes), version 1.1.7"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:69
+#: ..\python_docs\NVDAReadme.py:70
 msgid "* [wxPython](https://www.wxpython.org/), version 4.0.3"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:70
+#: ..\python_docs\NVDAReadme.py:71
 msgid ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), version 1.51-dev "
 "commit 1fb68ffffea4 "
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:71
+#: ..\python_docs\NVDAReadme.py:72
 msgid "* [Sonic](https://github.com/waywardgeek/sonic), commit 4f8c1d11"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:72
+#: ..\python_docs\NVDAReadme.py:73
 msgid ""
 "* [IAccessible2](https://wiki.linuxfoundation.org/accessibility/iaccessible2/"
 "start), commit cbc1f29631780"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:73
+#: ..\python_docs\NVDAReadme.py:74
 msgid "* [ConfigObj](https://github.com/DiffSK/configobj), commit f9a265c"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:74
+#: ..\python_docs\NVDAReadme.py:75
 msgid ""
 "* [Six](https://pypi.python.org/pypi/six), version 1.12.0, required by "
 "wxPython and ConfigObj"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:75
-msgid "* [liblouis](http://www.liblouis.org/), version 3.14.0"
-msgstr ""
-
 #: ..\python_docs\NVDAReadme.py:76
-msgid ""
-"* [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) "
-"Emoji Annotations, version 37.0"
+msgid "* [liblouis](http://www.liblouis.org/), version 3.16.1"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:77
-msgid "* NVDA images and sounds"
+msgid ""
+"* [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) "
+"Emoji Annotations, version 38.0"
 msgstr ""
 
 #: ..\python_docs\NVDAReadme.py:78
+msgid "* NVDA images and sounds"
+msgstr ""
+
+#: ..\python_docs\NVDAReadme.py:79
 msgid ""
 "* [Adobe Acrobat accessibility interface, version XI](https://download."
 "macromedia.com/pub/developer/acrobat/AcrobatAccess.zip)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:79
+#: ..\python_docs\NVDAReadme.py:80
 msgid "* Adobe FlashAccessibility interface typelib"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:80
+#: ..\python_docs\NVDAReadme.py:81
 msgid ""
 "* [MinHook](https://github.com/RaMMicHaeL/minhook), tagged version 1.2.2"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:81
+#: ..\python_docs\NVDAReadme.py:82
 msgid ""
 "* brlapi Python bindings, version 0.8 or later, distributed with [BRLTTY for "
 "Windows](https://brltty.app/download.html), version 6.1"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:82
+#: ..\python_docs\NVDAReadme.py:83
 msgid "* lilli.dll, version 2.1.0.0"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:83
+#: ..\python_docs\NVDAReadme.py:84
 msgid "* [pySerial](https://pypi.python.org/pypi/pyserial), version 3.4"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:84
+#: ..\python_docs\NVDAReadme.py:85
 msgid ""
 "* [Python interface to FTDI driver/chip](http://fluidmotion.dyndns.org/"
 "zenphoto/index.php?p=news&title=Python-interface-to-FTDI-driver-chip)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:85
+#: ..\python_docs\NVDAReadme.py:86
 msgid ""
 "* Java Access Bridge 32 bit, from Zulu Community OpenJDK build 13.0.1+10Zulu "
 "(13.28.11)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:86
+#: ..\python_docs\NVDAReadme.py:87
 msgid ""
 "Additionally, the following build time dependencies are included in Git "
 "submodules:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:87
+#: ..\python_docs\NVDAReadme.py:88
 msgid ""
 "* [Py2Exe](https://github.com/albertosottile/py2exe/), version 0.9.3.2 "
 "commit b372a8e"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:88
+#: ..\python_docs\NVDAReadme.py:89
 msgid ""
 "* [Python Windows Extensions](https://sourceforge.net/projects/pywin32/ ), "
 "build 224, required by py2exe"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:89
+#: ..\python_docs\NVDAReadme.py:90
 msgid "* [txt2tags](https://txt2tags.org/), version 2.5"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:90
+#: ..\python_docs\NVDAReadme.py:91
 msgid "* [SCons](https://www.scons.org/), version 4.0.1"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:91
+#: ..\python_docs\NVDAReadme.py:92
 msgid ""
 "* [Nulsoft Install System](https://nsis.sourceforge.io/Main_Page/), version "
 "2.51"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:92
+#: ..\python_docs\NVDAReadme.py:93
 msgid ""
 "* [NSIS UAC plug-in](https://nsis.sourceforge.io/UAC_plug-in), version "
 "0.2.4, ansi"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:93
+#: ..\python_docs\NVDAReadme.py:94
 msgid ""
 "* xgettext and msgfmt from [GNU gettext](https://sourceforge.net/projects/"
 "cppcms/files/boost_locale/gettext_for_windows/)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:94
+#: ..\python_docs\NVDAReadme.py:95
 msgid ""
 "* [epydoc](http://epydoc.sourceforge.net/), version 3.0.1 with patch for bug "
 "#303"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:95
+#: ..\python_docs\NVDAReadme.py:96
 msgid ""
 "* [Boost Optional (stand-alone header)](https://github.com/akrzemi1/"
 "Optional), from commit [3922965](https://github.com/akrzemi1/Optional/"
 "commit/3922965396fc455c6b1770374b9b4111799588a9)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:96
+#: ..\python_docs\NVDAReadme.py:97
 msgid "### Other Dependencies"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:97
+#: ..\python_docs\NVDAReadme.py:98
 msgid ""
 "To lint using Flake 8 locally using our SCons integration, some dependencies "
 "are installed (automatically) via pip."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:98
+#: ..\python_docs\NVDAReadme.py:99
 msgid ""
 "Although this [must be run manually](#linting-your-changes), developers may "
 "wish to first configure a Python Virtual Environment to ensure their general "
 "install is not affected."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:99
+#: ..\python_docs\NVDAReadme.py:100
 msgid "* Flake8"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:100
+#: ..\python_docs\NVDAReadme.py:101
 msgid "* Flake8-tabs"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:101
+#: ..\python_docs\NVDAReadme.py:102
 msgid ""
 "The following dependencies aren't needed by most people, and are not "
 "included in Git submodules:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:102
+#: ..\python_docs\NVDAReadme.py:103
 msgid ""
 "* To generate developer documentation for nvdaHelper: [Doxygen Windows "
 "installer](http://www.doxygen.nl/download.html), version 1.8.15:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:103
+#: ..\python_docs\NVDAReadme.py:104
 msgid ""
 "* When you are using Visual Studio Code as your integrated development "
 "environment of preference, you can make use of our [prepopulated workspace "
@@ -549,523 +557,523 @@ msgid ""
 "Code](https://code.visualstudio.com/)."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:104
+#: ..\python_docs\NVDAReadme.py:105
 msgid ""
 "\tWhile this VSCode project is not included as a submodule in the NVDA "
 "repository, you can easily check out the workspace configuration in your "
 "repository by executing the following from the root of the repository."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:105
+#: ..\python_docs\NVDAReadme.py:106
 msgid "\t```git clone https://github.com/nvaccess/vscode-nvda.git .vscode```"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:106
+#: ..\python_docs\NVDAReadme.py:107
 msgid "## Preparing the Source Tree"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:107
+#: ..\python_docs\NVDAReadme.py:108
 msgid ""
 "Before you can run the NVDA source code, you must prepare the source tree."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:108
+#: ..\python_docs\NVDAReadme.py:109
 msgid ""
 "You do this by opening a command prompt, changing to the root of the NVDA "
 "source distribution and typing:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:110
+#: ..\python_docs\NVDAReadme.py:111
 msgid "scons source"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:112
+#: ..\python_docs\NVDAReadme.py:113
 msgid ""
 "You should do this again whenever the version of comtypes changes or "
 "language files are added or changed."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:113
+#: ..\python_docs\NVDAReadme.py:114
 msgid ""
 "Note that if you want to access user documentation from the help menu while "
 "running the source version, you will also need to add `user_docs` to the "
 "command line like so:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:115
+#: ..\python_docs\NVDAReadme.py:116
 msgid "scons source user_docs"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:117
+#: ..\python_docs\NVDAReadme.py:118
 msgid ""
 "While simply testing or committing changes, it may be faster usually just "
 "doing `scons source` as user documentation will change each time the "
 "revision number changes."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:118
+#: ..\python_docs\NVDAReadme.py:119
 msgid "### Compiling NVDAHelper with Debugging Options"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:119
+#: ..\python_docs\NVDAReadme.py:120
 msgid ""
 "Among other things, preparing the source tree builds the NVDAHelper "
 "libraries."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:120
+#: ..\python_docs\NVDAReadme.py:121
 msgid ""
 "If trying to debug nvdaHelper, you can control various debugging options by "
 "building with the `nvdaHelperDebugFlags` and `nvdaHelperLogLevel` command "
 "line variables."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:121
+#: ..\python_docs\NVDAReadme.py:122
 msgid ""
 "The `nvdaHelperLogLevel` variable specifies the level of logging (0-59) you "
 "wish to see, lower is more verbose. The default is 15."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:122
+#: ..\python_docs\NVDAReadme.py:123
 msgid ""
 "The `nvdaHelperDebugFlags` variable takes one or more of the following flags:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:123
+#: ..\python_docs\NVDAReadme.py:124
 msgid ""
 "* debugCRT: the libraries will be linked against the debug C runtime and "
 "assertions will be enabled. (By default, the normal CRT is used and "
 "assertions are disabled.)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:124
+#: ..\python_docs\NVDAReadme.py:125
 msgid ""
 "* RTC: runtime checks (stack corruption, uninitialized variables, etc.) will "
 "be enabled. (The default is no runtime checks.)"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:125
+#: ..\python_docs\NVDAReadme.py:126
 msgid ""
 "* analyze: runs MSVC code analysis on all nvdaHelper code, holting on any "
 "warning. (default is no analysis)."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:126
+#: ..\python_docs\NVDAReadme.py:127
 msgid ""
 "The special keywords none and all can also be used in place of the "
 "individual flags."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:127
+#: ..\python_docs\NVDAReadme.py:128
 msgid "An example follows that enables debug CRT and runtype checks "
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:129
+#: ..\python_docs\NVDAReadme.py:130
 msgid "scons source nvdaHelperDebugFlags=debugCRT,RTC"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:131
+#: ..\python_docs\NVDAReadme.py:132
 msgid ""
 "Symbol pdb files are always produced when building, regardless of the debug "
 "flags."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:132
+#: ..\python_docs\NVDAReadme.py:133
 msgid "However, they are not included in the NVDA distribution."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:133
+#: ..\python_docs\NVDAReadme.py:134
 msgid ""
 "Instead, `scons symbolsArchive` will package them as a separate archive."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:134
+#: ..\python_docs\NVDAReadme.py:135
 msgid "By default, builds also do not use any compiler optimizations."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:135
+#: ..\python_docs\NVDAReadme.py:136
 msgid ""
 "Please see the `release` keyword argument for what compiler optimizations it "
 "will enable."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:136
+#: ..\python_docs\NVDAReadme.py:137
 msgid "## Running the Source Code"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:137
+#: ..\python_docs\NVDAReadme.py:138
 msgid "Most developers run directly from source by:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:139
+#: ..\python_docs\NVDAReadme.py:140
 msgid "cd source"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:140
+#: ..\python_docs\NVDAReadme.py:141
 msgid "pythonw.exe nvda.pyw"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:142
+#: ..\python_docs\NVDAReadme.py:143
 msgid ""
 "Note: Since NVDA is a Windows application (rather than command line), it is "
 "best to run it with `pythonw.exe`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:143
+#: ..\python_docs\NVDAReadme.py:144
 msgid ""
 "However, if during development you encounter an error early in the startup "
 "of NVDA, you can use `python.exe` which is likely to give more information "
 "about the error."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:144
+#: ..\python_docs\NVDAReadme.py:145
 msgid ""
 "To view help on the arguments that NVDA will accept, use the `-h` or `--"
 "help` option."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:145
+#: ..\python_docs\NVDAReadme.py:146
 msgid "These arguments are also documented in the user guide."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:146
+#: ..\python_docs\NVDAReadme.py:147
 msgid "## Building NVDA"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:147
+#: ..\python_docs\NVDAReadme.py:148
 msgid ""
 "A binary build of NVDA can be run on a system without Python and all of "
 "NVDA's other dependencies installed (as we do for snapshots and releases)."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:148
+#: ..\python_docs\NVDAReadme.py:149
 msgid ""
 "Binary archives and bundles can be created using scons from the root of the "
 "NVDA source distribution. To build any of the following, open a command "
 "prompt and change to this directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:149
+#: ..\python_docs\NVDAReadme.py:150
 msgid ""
 "To make a non-archived binary build (equivalent to an extracted portable "
 "archive), type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:151
+#: ..\python_docs\NVDAReadme.py:152
 msgid "scons dist"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:153
+#: ..\python_docs\NVDAReadme.py:154
 msgid "The build will be created in the dist directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:154
+#: ..\python_docs\NVDAReadme.py:155
 msgid "### Building the installer"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:155
+#: ..\python_docs\NVDAReadme.py:156
 msgid ""
 "To create a launcher archive (one executable allowing for installation or "
 "portable dist generation), type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:157
+#: ..\python_docs\NVDAReadme.py:158
 msgid "scons launcher"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:159 ..\python_docs\NVDAReadme.py:177
+#: ..\python_docs\NVDAReadme.py:160 ..\python_docs\NVDAReadme.py:178
 msgid "The archive will be placed in the output directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:160
+#: ..\python_docs\NVDAReadme.py:161
 msgid "### Building the developer documentation"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:161
+#: ..\python_docs\NVDAReadme.py:162
 msgid "To generate the NVDA developer guide, type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:163
+#: ..\python_docs\NVDAReadme.py:164
 msgid "scons developerGuide"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:165
+#: ..\python_docs\NVDAReadme.py:166
 msgid ""
 "The developer guide will be placed in the `devDocs` folder in the output "
 "directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:166
+#: ..\python_docs\NVDAReadme.py:167
 msgid ""
 "Note that the Python 3 sources of NVDA currently do not support building "
 "NVDA developer documentation using the `scons devDocs` command."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:167
+#: ..\python_docs\NVDAReadme.py:168
 msgid ""
 "To generate developer documentation for nvdaHelper (not included in the "
 "devDocs target):"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:169
+#: ..\python_docs\NVDAReadme.py:170
 msgid "scons devDocs_nvdaHelper"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:171
+#: ..\python_docs\NVDAReadme.py:172
 msgid ""
 "The documentation will be placed in the `devDocs\\nvdaHelper` folder in the "
 "output directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:172
+#: ..\python_docs\NVDAReadme.py:173
 msgid "### Generate debug symbols archive"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:173
+#: ..\python_docs\NVDAReadme.py:174
 msgid ""
 "To generate an archive of debug symbols for the various dll/exe binaries, "
 "type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:175
+#: ..\python_docs\NVDAReadme.py:176
 msgid "scons symbolsArchive"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:178
+#: ..\python_docs\NVDAReadme.py:179
 msgid "### Generate translation template"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:179
+#: ..\python_docs\NVDAReadme.py:180
 msgid "To generate a gettext translation template (for translators), type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:181
+#: ..\python_docs\NVDAReadme.py:182
 msgid "scons pot"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:183
+#: ..\python_docs\NVDAReadme.py:184
 msgid "### Customising the build"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:184
+#: ..\python_docs\NVDAReadme.py:185
 msgid ""
 "Optionally, the build can be customised by providing variables on the "
 "command line:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:185
+#: ..\python_docs\NVDAReadme.py:186
 msgid "* version: The version of this build."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:186
+#: ..\python_docs\NVDAReadme.py:187
 msgid "* release: Whether this is a release version."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:187
+#: ..\python_docs\NVDAReadme.py:188
 msgid ""
 "\t* This enables various C++ compiler optimizations such as /O2 and whole-"
 "program optimization."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:188
+#: ..\python_docs\NVDAReadme.py:189
 msgid "\t* It also instructs Python to generate optimized byte code."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:189
+#: ..\python_docs\NVDAReadme.py:190
 msgid "* publisher: The publisher of this build."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:190
+#: ..\python_docs\NVDAReadme.py:191
 msgid ""
 "* certFile: The certificate file with which to sign executables. The "
 "certificate must be in pfx format and contain the private key."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:191
+#: ..\python_docs\NVDAReadme.py:192
 msgid ""
 "* certPassword: The password for the private key in the signing certificate. "
 "If omitted, no password will be assumed."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:192
+#: ..\python_docs\NVDAReadme.py:193
 msgid ""
 "* certTimestampServer: The URL of the timestamping server to use to "
 "timestamp authenticode signatures. If omitted, signatures will not be "
 "timestamped."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:193
+#: ..\python_docs\NVDAReadme.py:194
 msgid ""
 "* outputDir: The directory where the final built archives and such will be "
 "placed."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:194
+#: ..\python_docs\NVDAReadme.py:195
 msgid ""
 "* targetArchitectures: The target architectures that NVDA should support. "
 "Possible values are all, x86 and x86_64. This should generally be left as "
 "the default."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:195
+#: ..\python_docs\NVDAReadme.py:196
 msgid ""
 "For example, to build a launcher with a specific version, you might type:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:197
+#: ..\python_docs\NVDAReadme.py:198
 msgid "scons launcher version=test1"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:199
+#: ..\python_docs\NVDAReadme.py:200
 msgid "For more see the `sconstruct` file."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:200
+#: ..\python_docs\NVDAReadme.py:201
 msgid "## Running Automated Tests"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:201
+#: ..\python_docs\NVDAReadme.py:202
 msgid ""
 "If you make a change to the NVDA code, you should run NVDA's automated tests."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:202
+#: ..\python_docs\NVDAReadme.py:203
 msgid ""
 "These tests help to ensure that code changes do not unintentionally break "
 "functionality that was previously working."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:203
+#: ..\python_docs\NVDAReadme.py:204
 msgid ""
 "To run the tests (unit tests, translatable string checks), first change "
 "directory to the root of the NVDA source distribution as above."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:204
+#: ..\python_docs\NVDAReadme.py:205
 msgid "Then, run:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:206
+#: ..\python_docs\NVDAReadme.py:207
 msgid "scons tests"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:208
+#: ..\python_docs\NVDAReadme.py:209
 msgid "### Unit tests"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:209
+#: ..\python_docs\NVDAReadme.py:210
 msgid ""
 "To run only specific unit tests, specify them using the `unitTests` variable "
 "on the command line."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:210
+#: ..\python_docs\NVDAReadme.py:211
 msgid "The tests should be provided as a comma separated list."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:211
+#: ..\python_docs\NVDAReadme.py:212
 msgid ""
 "Each test should be specified as a Python module, class or method relative "
 "to the `tests\\unit` directory."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:212
+#: ..\python_docs\NVDAReadme.py:213
 msgid ""
 "For example, to run only methods in the `TestMove` and `TestSelection` "
 "classes in the file `tests\\unit\\test_cursorManager.py` file, run this "
 "command:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:214
+#: ..\python_docs\NVDAReadme.py:215
 msgid ""
 "scons tests unitTests=test_cursorManager.TestMove,test_cursorManager."
 "TestSelection"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:216
+#: ..\python_docs\NVDAReadme.py:217
 msgid "### Translatable string checks"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:217
+#: ..\python_docs\NVDAReadme.py:218
 msgid ""
 "To run only the translatable string checks (which check that all "
 "translatable strings have translator comments), run:"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:219
+#: ..\python_docs\NVDAReadme.py:220
 msgid "scons checkPot"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:221
+#: ..\python_docs\NVDAReadme.py:222
 msgid "### Linting your changes"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:222
+#: ..\python_docs\NVDAReadme.py:223
 msgid ""
 "In order to ensure your changes comply with NVDA's coding style you can run "
 "the Flake8 linter locally."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:223
+#: ..\python_docs\NVDAReadme.py:224
 msgid ""
 "Some developers have found certain linting error messages misleading, these "
 "are clarified in `tests/lint/readme.md`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:224
+#: ..\python_docs\NVDAReadme.py:225
 msgid ""
 "Running via SCons will use Flake8 to inspect only the differences between "
 "your working directory and the specified `base` branch."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:225
+#: ..\python_docs\NVDAReadme.py:226
 msgid ""
 "If you create a Pull Request, the `base` branch you use here should be the "
 "same as the target you would use for a Pull Request. In most cases it will "
 "be `origin/master`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:227
+#: ..\python_docs\NVDAReadme.py:228
 msgid "scons lint base=origin/master"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:229
+#: ..\python_docs\NVDAReadme.py:230
 msgid ""
 "To be warned about linting errors faster, you may wish to integrate Flake8 "
 "other development tools you are using."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:230
+#: ..\python_docs\NVDAReadme.py:231
 msgid "For more details, see `tests/lint/readme.md`"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:231
+#: ..\python_docs\NVDAReadme.py:232
 msgid "### System Tests"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:232
+#: ..\python_docs\NVDAReadme.py:233
 msgid "You may also use `scons` to run the system tests,"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:233
+#: ..\python_docs\NVDAReadme.py:234
 msgid " though this will still require the dependencies to be set up."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:234
+#: ..\python_docs\NVDAReadme.py:235
 msgid ""
 "For more details (including filtering and exclusion of tests) see `tests/"
 "system/readme.md`."
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:236
+#: ..\python_docs\NVDAReadme.py:237
 msgid "scons systemTests"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:238
+#: ..\python_docs\NVDAReadme.py:239
 msgid "## Contributing to NVDA"
 msgstr ""
 
-#: ..\python_docs\NVDAReadme.py:239
+#: ..\python_docs\NVDAReadme.py:240
 msgid ""
 "If you would like to contribute code or documentation to NVDA, you can read "
 "more information in our [contributing guide](https://github.com/nvaccess/"
