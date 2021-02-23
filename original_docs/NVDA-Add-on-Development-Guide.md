@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: October 2020 for NVDA 2020.3
+Latest version: January 2021 for NVDA 2020.4
 
 ---
 
@@ -57,7 +57,7 @@ Latest version: October 2020 for NVDA 2020.3
     - [What Are Add-on Packages?](#user-content-what-are-add-on-packages)
     - [Installing NVDA Add-ons](#user-content-installing-nvda-add-ons)
 - [Setting Up Your Add-on Development Environment](#user-content-setting-up-your-add-on-development-environment)
-    - [Meet System Requirements](#user-content-meet-system-requirements)
+    - [System Requirements](#user-content-system-requirements)
     - [Add-on Development Folder Structure](#user-content-add-on-development-folder-structure)
     - [Add-on folder structure](#user-content-add-on-folder-structure)
     - [Packaging add-ons](#user-content-packaging-add-ons)
@@ -131,6 +131,8 @@ Latest version: October 2020 for NVDA 2020.3
 - [Sharing your add-on and experience with others](#user-content-sharing-your-add-on-and-experience-with-others)
     - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)
     - [The NVDA Community Add-ons web site and code repository](#user-content-the-nvda-community-add-ons-web-site-and-code-repository)
+    - [Submitting your add-on for review](#user-content-submitting-your-add-on-for-review)
+        - [Add-on review checklist](#user-content-add-on-review-checklist)
 - [Advanced Code Examples and Features](#user-content-advanced-code-examples-and-features)
     - [Interactive Dialogs](#user-content-interactive-dialogs)
         - [Introduction](#user-content-introduction)
@@ -162,7 +164,7 @@ Valuable contributions and corrections from the community are welcome.
 
 If you are contributing via the GitHub Wiki web editing mechanism, please be aware that by default, that mechanism changes the name of this file by replacing all spaces with hyphens (-). **Please correct that before submitting your changes.** The correct name of this file is: **"NVDA Add-on Development Guide.md"**.
 
-NVDA is copyright 2006-2020 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
+NVDA is copyright 2006-2021 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction
 
@@ -266,7 +268,7 @@ you may have created or downloaded, by selecting it in your Windows file manager
 
 Follow these steps to prepare your computer for writing NVDA add-ons.
 
-### Meet System Requirements
+### System Requirements
 
 To create an add-on for NVDA, please make sure your system meets the following requirements:
 
@@ -274,7 +276,7 @@ To create an add-on for NVDA, please make sure your system meets the following r
     - A version of NVDA is available on your computer (either a portable or installed version will work, but we strongly recommend that you install a copy of NVDA on your development computer). Download NVDA from the [NV Access download page](https://www.nvaccess.org/download/).
     - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://www.nvaccess.org/files/nvda/snapshots/.
 * Python:
-    - Python 3.7 series, version 3.7.8 32-bit for Windows: https://www.python.org/downloads/release/python-378/
+    - Python 3.7 series, version 3.7.9 32-bit for Windows: https://www.python.org/downloads/release/python-379/
     - Although the add-ons community do understand that Python 2 might be required for backward compatibility, we do not recommend using it in production environments.
 * SCons 3, version 3.1.2 or later for generating add-on packages: http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
@@ -461,7 +463,7 @@ The following lists available NVDA core modules and some useful methods and clas
     - `api.getForegroundObject()`: Returns the foreground window of the current application (the parent of this object is the application itself).
     - These have a corresponding method to set a certain object as the focus or navigator object. Note that this lets NVDA see the new focus or navigator object but does not actually change system focus.
     - `api.getDesktopObject()`: returns the shell (topmost level) object.
-    - `api.copyToClip()`: copies text to the clipboard.
+    - `api.copyToClip(text to be copied, optionally notify success or failure)`: copies text to the clipboard and optionally let NVDA notify the user about this operation.
 * App Module subsystem (appModuleHandler.py, appModules): The subsystem in charge of handling app modules (see the chapter on app modules for more information).
 * ARIA support (aria.py): Implements support for Accessible Rich Internet Applications (ARIA).
 * Base object collection (baseObject.py): Contains useful base objects such as scriptable objects (see the chapter on NVDA objects and overlay objects for more information).
@@ -472,7 +474,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Controls and states collection (controlTypes.py): Includes dictionaries on control types (roles) and possible states that a control can be in.
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
     - `eventHandler.requestEvents(event to be requested, process ID, window class name for the control)`: Allows NVDA to listen to specific events for certain controls while using another app.
-* Extension points (extensionPoints.py): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
+* Extension points (extensionPoints): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
     - `extensionPoints.Action`: notifies when something happens e.g. profile switches.
     - `extensionPoints.Decider`: decides whether to process something further e.g. processing keyboard input from a remote system.
     - `extensionPoints.Filter`: modifies a given text for further processing e.g. advanced speech sequences.
@@ -482,7 +484,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Hardware port utilities and input/output management (hwPortUtils.py, hwIo.py): A set of utilities for communicating over serial and other hardware ports, useful during driver add-on development.
 * IAccessible support (IAccessibleHandler, IAccessible objects): Used for supporting Microsoft Active Accessibility (MSAA)/IAccessible controls.
 * Input management (inputCore.py): Manages input from the user.
-* Java Access Bridge support (JABHandler.py): A collection of methods used for supporting JAB subsystem used for Java applications.
+* Java support (JABHandler.py, JAB objects): A collection of methods used for supporting JAB (Java Access Bridge) subsystem used for Java applications.
 * Keyboard input (keyboardHandler.py): Supports entering commands from the keyboard.
 * Logging facility (logHandler.py): Allows a module to write logs to be viewed by a developer or a user via Log Viewer. It includes the following class:
     - `logHandler.Log`: The class which implements logging facility.
@@ -502,11 +504,11 @@ The following lists available NVDA core modules and some useful methods and clas
 * Synthesizer driver support (synthDriverHandler.py): This is the core module needed for speech synthesizer add-ons.
 * Widget text access (textInfos): Allows access to text for widget and documents.
 * Touchscreen support (touchHandler.py): Provides support for touchscreen input (installed versions only).
-    - `touchHandler.touchSupported()` (NVDA 2018.1 and later): returns if the system supports touch interaction.
+    - `touchHandler.touchSupported()`: returns if the system supports touch interaction.
 * Tone output (tones.py): Allows the user to hear tones. The following function is defined:
     - `tones.beep(pitch in hertz, duration in milliseconds, left channel volume, right channel volume)`: Plays a tone of specified pitch for specified duration. The first two arguments are mandatory, while the other two are optional.
 * User interface messages (ui.py): Includes various functions for speech and/or braille output, including:
-    - `ui.message(message to be spoken/brailled, speech priority)`: Speaks or brailles the message (a string surrounded by quotes). Optionally, speech priority can be specified to interrupt what the speech synthesizer is saying when announcing the message.
+    - `ui.message(message to be spoken/brailled, speech priority, optional braille message)`: Speaks or brailles the message (a string surrounded by quotes). Optionally, speech priority can be specified to interrupt what the speech synthesizer is saying when announcing the message, as well as output a different message on braille displays.
     - `ui.browseableMessage(message to be shown, title, HTML or not)`: displays some text and an optional title in a web browser window. If you want to use HTML markup, set isHTML argument to True.
 * UIA support (UIAHandler.py, UIA objects): Used for supporting UIA (User Interface Automation) controls (Windows 7 and later).
 * Virtual buffers (virtualBuffers): Handles virtual buffer documents such as web sites.
@@ -1081,6 +1083,10 @@ Q. I noticed that NVDA does not come with all Python libraries.
 
 Most notably, NVDA does not ship with asyncio. You must include additional libraries inside your add-on component folder.
 
+Q. I need to manipulate environment variables such as system path.
+
+An effective way to do this is prepending a desired string (such as the path to an executable you need to run) to existing environment variable value. This allows your add-on to work with modified values without breaking NVDA and/or Windows components while NVDA is running.
+
 We did not include programming or Python-related FAQ's, as there are sites which answer questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
 Now that we have covered basic add-on components, let's learn about how to package what you know in your add-on modules themselves: global plugins, app modules, drivers, and enhancers.
@@ -1340,7 +1346,7 @@ An enhancer such as vision enhancement provider will look similar to a combinati
 
 * Enhancer identifier: a camel-case string such as "screenCurtain" that uniquely identifies this enhancer.
 * Friendly name: the name that'll appear under Vision dialog.
-* Supported enhancements: a frozen set of enhancement roles this provider will introduce..
+* Supported enhancements: a frozen set of enhancement roles this provider will introduce.
 * Startup check: a routine that will ensure NVDA is running on a specific environment where the enhancer would be most helpful, such as checking for a specific Windows release.
 * Startup and shutdown: a class constructor that instructs the enhancer to come online and a "terminate" method that shuts it down.
 * Event registrar: if an enhancer wishes to respond to various actions performed by users, it can specify follow-up actions.
@@ -1378,6 +1384,25 @@ Some of the useful and educational add-on repositories are:
 * [Read Feeds by Noelia Martinez](https://github.com/nvdaes/readFeeds): eases discovery of feeds on various websites and includes a simple example of storing and validating add-on settings.
 * [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used.
 * [StationPlaylist by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces.
+
+### Submitting your add-on for review
+
+If you would like to submit your add-on for distribution on community add-ons website, you must request a review from a member of the add-ons community as follows:
+
+1. If you haven't, subscribe to NVDA Add-ons mailing list.
+2. Ask the community to review your add-on. Be sure to specify name, author, brief description of the add-on, and public code repository if possible.
+3. Community members will review and comment on your add-on, including license and copyright, user experience, documentation, and security.
+4. If your add-on is accepted for community add-ons website distribution, a maintainer of the community add-ons website will register your add-on. This includes creating a new entry for your add-on and preparing localization support.
+5. Optionally, after your add-on is accepted, you can ask the community for more detailed reviews. These can include improving messages, GUI layout, advanced security audit, compatibility testing, and porting to newer Python versions.
+
+#### Add-on review checklist
+
+Your add-on:
+
+1. Must be licensed under GNU General Public license (GPL) 2 or later or equivalent which allows a GPL software such as NVDA to incorporate your code while it runs.
+2. Must be written in Python 3. Compatibility with Python 2 is optional but not recommended starting with NVDA 2021.1 base API.
+3. Must be compatible with latest base API release (as of January 2021, base API is 2019.3).
+4. Messages to be presented to users should be made translatable (use _() Gettext function to make messages translatable). Be sure to accompany translatable messages with comments for translators.
 
 ## Advanced Code Examples and Features
 
@@ -1620,8 +1645,8 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Position of a MSAA list item | item.IAccessibleChildID | Provided that this is properly implemented. The default for controls other than list items, treeview items and what not is 0. |
 | I need to work with IAccessible object methods directly | obj.IAccessibleObject.method | First, find out how to use the given MSAA method for a control, then retrieve the IAccessible object itself and call the needed method. |
 | Give me the UIA element that powers a certain UIA control | obj.UIAElement | Useful if you wish to perform UIA client operations on this element. |
-| Automation ID for a UIA element | obj.UIAElement.cachedAutomationID | First, check if the object is a UIA control . |
-| Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Programming Language) and Microsoft Edge. |
+| Automation ID for a UIA element | obj.UIAAutomationID | First, check if the object is a UIA control. |
+| Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Markup Language) and Microsoft Edge. |
 | I want to ask UIA about values of a specific property | obj._getUIACacheablePropertyValue(propertyID) | Provided that the object is a UIA control, pass in the property ID you wish to know as an argument to this function. If the property is supported, a valid value will be returned, otherwise a COM error exception will be thrown. |
 | Executable name of any object | obj.appModule.appName | appModule is the attribute of any object that can be represented within an app such as focused control. |
 | Send keystrokes | gesture.send() | This is to be called from a script with the desired keystroke bound to it. |
@@ -1642,7 +1667,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Check if keyboard echo (typed characters) is on | config.conf["keyboard"]["speakTypedCharacters"] | |
 | turn speak command keys on without opening a settings dialog | config.conf["keyboard"]["speakCommandKeys"] = True | The user should toggle this on via keyboard settings dialog. |
 | Is focus mode/forms mode active | obj.treeInterceptor.passThrough | If True, focus/forms mode is on while using browse mode documents. |
-| Is touchscreen support available | touchHandler.handler is not None | If it is not None, touch support is active and available. |
+| Is touchscreen support available | touchHandler.touchSupported() | If true, touch support is active and available. |
 | Get NVDA version | versionInfo.version | |
 | I wish to do something whenever configuration profiles are changed | config.post_configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |
 | Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |

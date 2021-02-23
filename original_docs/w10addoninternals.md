@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Revision: September 2020
+Revision: January 2021
 
 ## Introduction
 
@@ -16,11 +16,11 @@ Disclaimer: Despite the article text and knowledge that's contained within, I (J
 
 Note: some of the features described may change as Windows 10 and NVDA development progresses. As of August 2020 revision, features from upcoming NVDA 2020.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
 
-Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2020 Joseph Lee and contributors, released under GPL 2.
+Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2021 Joseph Lee and contributors, released under GPL 2.
 
 ## Introducing Windows 10
 
-Windows 10 is the "last major" version of Windows for the foreseeable future. It introduces a completely new way of keeping track of changes through Windows Insider Program and Windows as a Service (WaaS, a fancy term for continuous delivery), new application development framework, unification strategy in terms of user experience across devices and a new web browser. In addition, it features the return of an older style of Start menu, virtual desktops, Action Center to centralize notifications, a way to run command-line Linux utilities, and revamped Narrator that continues to receive refinements.
+Windows 10 is the "last major" version of Windows. It introduces a completely new way of keeping track of changes through Windows Insider Program and Windows as a Service (WaaS, a fancy term for continuous delivery), new application development framework, unification strategy in terms of user experience across devices and a new web browser. In addition, it features the return of an older style of Start menu, virtual desktops, Action Center to centralize notifications, a way to run command-line Linux utilities, and revamped Narrator that continues to receive refinements.
 
 Windows 10 made its maiden flight in October 2014. Back then, it was called Windows Technical Preview, and after several weeks, it was renamed to Windows Insider Preview. Between October 2014 and July 2015 when Windows 10 Version 1507 (build 10240) shipped, more than five million users became Insiders, testing new builds and apps, submitting feedback and so on.
 
@@ -43,7 +43,7 @@ There is a fifth pillar that has emerged in recent years: providing a testing gr
 
 The Windows 10 App Essentials add-on consists of a global plugin and app modules for various universal apps included with Windows 10. The Windows 10 Objects (shortened to WinTenObjs), the global plugin portion of this add-on, provides foundations such as overlay classes for frequently encountered controls in Windows 10 an universal apps, along with UIA event tracking and logger facility. Until 2018, the global plugin was also responsible for add-on update feature, documented here for sake of completeness.
 
-In regards to app modules, these were included to either provide workarounds or enhance the user experience. For example, the app module for Settings app (systemsettings) allows NVDA to announce Windows Update download and installation progress, and app module for UWP frame host (shellexperiencehost) includes a workaround for menu expanded status problem in Start menu. We'll meet some of these app modules in subsequent sections.
+In regards to app modules, these were included to either provide workarounds or enhance the user experience. For example, the app module for Settings app (systemsettings) allows NVDA to announce Windows Update download and installation progress, and app module for modern keyboard (windowsinternal_composableshell_experiences_textinput_inputapp) provides support for more modern input facilities such as enhanced dictation and clipboard history. We'll meet some of these app modules in subsequent sections.
 
 ### A note on feature parity with NVDA screen reader
 

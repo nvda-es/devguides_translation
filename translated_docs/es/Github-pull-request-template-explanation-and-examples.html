@@ -67,5 +67,37 @@ Un desarrollador principal actualizará el archivo al mezclar la solicitud de ca
 </ul>
 <p>Se pueden incluir varios números de incidencia separados por comas. Si no hay número de incidencia, puedes usar el número de la solicitud de cambio.</p>
 <p>Por ejemplo, consulta el <a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t">archivo changes.t2t</a></p>
+<h2 id="lista-de-comprobacion-de-revision-del-codigo">Lista de comprobación de revisión del código</h2>
+<p>El código debe revisarse (mediante una solicitud de cambios en GitHub) antes de que pueda aceptarse en el proyecto.
+La plantilla de solicitud de cambios (<code>.github/PULL_REQUEST_TEMPLATE.md</code>) solicita a los autores (y revisores) que consideren varios aspectos del cambio.</p>
+<p>El propósito de esta lista de comprobación es asegurar que tanto el autor como el revisor han tenido en cuenta cada elemento.
+Con suerte, ayuda a que no se olviden algunos elementos.
+Tras revisar la lista de comprobación, el revisor y el autor deben razonar al máximo si piensan que es necesario hacer más cambios.
+Se invita a los revisores a que inicien una conversación sobre los elementos de la lista, para proporcionar guiado sobre cómo mejorar la solicitud de cambios.
+No todos los elementos son aplicables a todas las situaciones. En este caso, comprobar el elemento hace saber a los revisores que se ha tenido en cuenta.
+Si el revisor alcanza la misma conclusión que el autor, no es necesario más trabajo.
+La mayoría de elementos de la lista de comprobación disponen de una sección en la plantilla de solicitud de cambio donde puedes añadir tus impresiones. Al hacerlo, puedes evitar ciertas preguntas del revisor, y esto asegura que habláis de lo mismo y agiliza el proceso.</p>
+<h3 id="la-descripcion-de-la-solicitud-de-cambios-esta-al-dia">La descripción de la solicitud de cambios está al día.</h3>
+<p>A veces el enfoque tomado puede cambiar durante el proceso de revisión.
+Sin embargo, en el futuro, los desarrolladores pueden necesitar volver a la solicitud de cambios en búsqueda de una explicación del enfoque.
+Comprueba bien que la descripción de la solicitud de cambios es precisa.</p>
+<h3 id="pruebas-unitarias">Pruebas unitarias</h3>
+<p>¿Se puede cubrir el código modificado con pruebas unitarias automatizadas?
+Cualquier comentario sobre esto se puede poner bajo el encabezado "testing strategy".</p>
+<h3 id="pruebas-del-sistema">Pruebas del sistema</h3>
+<p>¿Se puede cubrir el código modificado con pruebas automatizadas del sistema?
+Las pruebas del sistema son pruebas de extremo a extremo de NVDA.
+Cualquier comentario sobre esto se puede poner bajo el encabezado "testing strategy".</p>
+<h3 id="pruebas-manuales">Pruebas manuales</h3>
+<p>¿Es apropiada para el cambio la prueba manual descrita?
+Se deberían describir con detalle los casos comprobados por el autor.
+En algunos casos, los evaluadores alpha tendrán que probar el cambio, por lo que hay que describirlo bajo el encabezado "testing strategy" de la plantilla de solicitud de cambios.</p>
+<h3 id="documentacion-de-usuario">Documentación de usuario</h3>
+<p>¿Se ha actualizado la documentación de usuario?</p>
+<h3 id="entrada-en-el-registro-de-cambios_1">Entrada en el registro de cambios</h3>
+<p>Se ha proporcionado una entrada adecuada en el registro de cambios.
+Como revisor, revísalo.</p>
+<h3 id="ayuda-sensible-al-contexto-en-cambios-de-interfaz-grafica">Ayuda sensible al contexto en cambios de interfaz gráfica.</h3>
+<p>Si el cambio añade una nueva opción a la interfaz gráfica, asegúrate de que se ha añadido una asignación a la ayuda sensible al contexto.</p>
 </body>
 </html>

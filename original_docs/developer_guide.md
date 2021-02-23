@@ -1,4 +1,4 @@
-# NVDA 2020.3 Developer Guide
+# NVDA 2020.4 Developer Guide
 
 ## Table of Contents
 
@@ -102,6 +102,7 @@ Subsequent lines contain a textual identifier used to identify the symbol, a tab
     
     
     . sentence ending	(?<=[^\s.])\.(?=[\"')\s]|$)
+    dates with .	\b(\d\d)\.(\d\d)\.(\d{2}|\d{4})\b
     
 
 Again, the English symbols are inherited by all other locales, so you need not include any complex symbols already defined for English. 
@@ -123,7 +124,7 @@ Subsequent lines should contain several fields separated by tabs. The only manda
     * \r: carriage return 
     * \f: form feed 
     * \\\#: \# character \(needed because \# at the start of a line denotes a comment\) 
-  * replacement: The text which should be spoken for the symbol. 
+  * replacement: The text which should be spoken for the symbol. If the symbol is a complex symbol, \1, \2, etc. can be used to refer to the groups matches, which will be inlined in the replacement, allowing for simpler rules. This also means that to get a \ character in the replacement, one has to type \\\\. 
   * level: The symbol level at which the symbol should be spoken. The symbol level is configured by the user and specifies the amount of symbols that should be spoken. This field should contain one of the levels "none", "some", "most", "all" or "char", or "-" to use the default. "char" means that the symbol should only be pronounced when moving by character. The default is to inherit the value or "all" if there is nothing to inherit. 
   * preserve: Whether the symbol itself should be preserved to facilitate correct pronunciation by the synthesiser. For example, symbols which cause pauses or inflection \(such as the comma in English\) should be preserved. This field should be one of the following: 
     * never: Never preserve the symbol. 
@@ -153,6 +154,12 @@ This means that the "," character should be spoken as "comma" when the symbol le
     
 
 This line appears in the French symbols.dic file. It means that the ". sentence ending" complex symbol should be spoken as "point". Level and preserve are not specified, so they will be taken from English. A display name is provided so that French users will know what the symbol represents. 
+    
+    
+    dates with .	\1 point \2 point \3	all	norep	# date avec points
+    
+
+This line appears in the French symbols.dic file. It means that the first, second, and third groups of the match will be included, separated by the word 'point'. The effect is thus to replace the dots from the date with the word 'point'. 
 
 Please see the file locale\en\symbols.dic for the English definitions which are inherited for all locales. This is also a good full example. 
 
@@ -432,6 +439,7 @@ The following keyword arguments can be used when applying the script decorator:
   * gestures: A string list of multiple gestures associated with this script, e.g. \["kb:NVDA+shift+r", "kb:NVDA+alt+t"\]. When both gesture and gestures are specified, they are combined. Either gesture, or any item in gestures can be used to trigger the script. 
   * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. 
   * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. 
+  * resumeSayAllMode: The say all mode that should be resumed when active before executing this script. The constants for say all mode are prefixed with CURSOR\_ and specified in the sayAllHandler modules. If resumeSayAllMode is not specified, say all does not resume after this script. 
 
 
 Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special "\_\_gestures" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the "script\_" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a "category" attribute on the script function to a string containing the name of the category. 

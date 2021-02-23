@@ -24,6 +24,10 @@ With JAWS loaded, the insert key is solely for its use. This means that, in orde
 NVDA, on the other hand, allows you to carry out the insert key's original function by pressing it twice quickly.
 Keep this in mind the next time you're editing text while using NVDA and find yourself erasing what you've already written by typing over it.  This also works for caps lock when it is assigned as the NVDA modifier key (press it twice to toggle caps lock).
 
+## Keyboard Manager / Navigation Quick Key Manager / Input Gestures
+
+NVDA has one feature to edit keystrokes, called Input Gestures.  Input Gestures is found on NVDA's "Preferences menu".  Any feature can use keystrokes, touch gestures or Braille display buttons.  When Input Gestures is loaded, the focus starts in a tree view.  Use the arrows or first letter navigation to locate categories and options inside categories.  Alternatively, press SHIFT+TAB or ALT+F to move to the filter edit, and type the name of the feature to find.  Any feature can have multiple gestures defined, or none.  When adding a gesture, you can add the gesture for the current keyboard layout only, or all layouts.
+
 ## Alternative Synthesizers
 
 Windows OneCore voices, included in Windows 10, is used by NVDA as the default synthesizer in Windows 10.  Windows OneCore voices are responsive, natural-sounding and available in many languages.  To add extra voices install a new language in Windows 10 itself, including the language pack.  Variants of a language, such as "English (United Kingdom)" and "English (United States)" each include different voices.

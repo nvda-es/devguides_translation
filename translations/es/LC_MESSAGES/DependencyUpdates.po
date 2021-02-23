@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-22 11:05+0100\n"
+"PO-Revision-Date: 2021-02-22 11:44+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\DependencyUpdates.py:3
+msgid ""
+"IMPORTANT: draft document, subject to change without notice, guidance from "
+"NV Access superseeds this document."
+msgstr ""
+"Importante: documento en borrador, sujeto a cambios sin previo aviso, el "
+"guiado de NV Access tiene prioridad sobre él."
+
+#: ..\python_docs\DependencyUpdates.py:4
+msgid "This document describes procedure to use when updating dependencies."
+msgstr ""
+"Este documento describe el procedimiento a seguir para actualizar las "
+"dependencias."
+
+#: ..\python_docs\DependencyUpdates.py:5
+msgid "## Background"
+msgstr "## Contexto"
+
+#: ..\python_docs\DependencyUpdates.py:6
+msgid ""
+"NVDA project uses third-party modules for operations such as compiling NVDA "
+"from source code, speech output, user interface, and other tasks. Key "
+"dependencies include Python, wxPython, SCons, and Liblouis."
+msgstr ""
+"El proyecto NVDA usa módulos de terceros para operaciones como compilarse "
+"desde el código fuente, salida de voz, interfaz de usuario y otras tareas. "
+"Entre las dependencias clave se incluyen Python, WXPython, SCons y Liblouis."
+
+#: ..\python_docs\DependencyUpdates.py:7
+msgid ""
+"As dependencies are updated from time to time, it is important for NVDA "
+"project to use recent versions of these dependencies. However, the community "
+"must consider factors such as stability, compatibility, and security when "
+"choosing dependencies and their versions."
+msgstr ""
+"Ya que las dependencias se actualizan de vez en cuándo, es importante que el "
+"proyecto NVDA utilice versiones recientes de ellas. Sin embargo, la "
+"comunidad debe considerar factores como estabilidad, compatibilidad y "
+"seguridad al elegir dependencias y sus versiones."
+
+#: ..\python_docs\DependencyUpdates.py:8
+msgid "## General rules"
+msgstr "## Reglas generales"
+
+#: ..\python_docs\DependencyUpdates.py:9
+msgid "* Dependency checks should be done at least once a year."
+msgstr ""
+"* Se deberían realizar comprobaciones de dependencias al menos una vez al "
+"año."
+
+#: ..\python_docs\DependencyUpdates.py:10
+msgid ""
+"* For critical dependencies such as Python (those that are required to build "
+"and run NVDA), updates should target year.1 (backwards incompatible) release."
+msgstr ""
+"* En dependencias críticas, como Python (aquellas necesarias para construir "
+"y ejecutar NVDA), las actualizaciones deberían tener como objetivo la "
+"versión año.1 (incompatible hacia atrás)."
+
+#: ..\python_docs\DependencyUpdates.py:11
+msgid ""
+"* For dependencies with predictable release schedule such as Liblouis, most "
+"recent public release should be attempted."
+msgstr ""
+"* En dependencias con un calendario de liberación predecible, como Liblouis, "
+"se debería intentar usar la versión pública más reciente."
+
+#: ..\python_docs\DependencyUpdates.py:12
+msgid "## Specific dependencies"
+msgstr "## Dependencias concretas"
+
+#: ..\python_docs\DependencyUpdates.py:13
+msgid "### Python"
+msgstr "### Python"
+
+#: ..\python_docs\DependencyUpdates.py:14
+msgid "### wxPython"
+msgstr "### wxPython"
+
+#: ..\python_docs\DependencyUpdates.py:15
+msgid "### eSpeak NG"
+msgstr "### eSpeak NG"
+
+#: ..\python_docs\DependencyUpdates.py:16
+msgid "### Liblouis"
+msgstr "### Liblouis"
+
+#: ..\python_docs\DependencyUpdates.py:17
+msgid "### Visual Studio and Windows SDK"
+msgstr "### Visual Studio y el SDK de Windows"
+
+#: ..\python_docs\DependencyUpdates.py:18
+msgid "## Other dependencies"
+msgstr "## Otras dependencias"

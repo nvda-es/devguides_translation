@@ -1,12 +1,12 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2020.3</title>
+  <title># Guía del desarrollador de NVDA 2020.4</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2020.3</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20203">Guía del desarrollador de NVDA 2020.3</h1>
+  <header><h1># Guía del desarrollador de NVDA 2020.4</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20204">Guía del desarrollador de NVDA 2020.4</h1>
 <h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
 <ul>
 <li>1. Introducción<ul>
@@ -78,7 +78,7 @@
 <p>En ocasiones, puede ser muy difícil o incluso imposible distinguir un carácter de otro. Por ejemplo, se podrían pronunciar dos caracteres de la misma manera, incluso aunque sean caracteres realmente diferentes. Para ayudar a los usuarios cuando esto ocurre, pueden proporcionarse descripciones de caracteres que describen el carácter de una forma única. </p>
 <p>Se pueden ofrecer descripciones de caracteres para un idioma en un archivo llamado characterDescriptions.dic en el directorio del idioma. Se trata de un archivo de texto codificado en UTF-8. Las líneas en blanco o las líneas que comienzan con el carácter "#" se ignoran. Todas las demás líneas deberían contener un carácter, seguido de un tabulador, y una o más descripciones separadas por tabuladores. </p>
 <p>Por ejemplo: </p>
-<pre><code># Esto es un comentario
+<pre><code># Esto es un comentario.
 
 a   alpha
 
@@ -97,6 +97,8 @@ b   bravo
 </code></pre>
 <p>Las siguientes líneas contienen un identificador textual usado para identificar el símbolo, un tabulador y un patrón de expresión regular para ese símbolo. Por ejemplo: </p>
 <pre><code>. final de frase    (?&lt;=[^\s.])\.(?=[\"')\s]|$)
+
+fechas con .    \b(\d\d)\.(\d\d)\.(\d{2}|\d{4})\b
 </code></pre>
 <p>Una vez más, todos los idiomas heredan los símbolos del inglés, por lo que no es necesario que incluyas símbolos complejos ya definidos en inglés. </p>
 <h4 id="222-definicion-de-la-informacion-de-simbolos">2.2.2. Definición de la información de símbolos</h4>
@@ -114,7 +116,7 @@ b   bravo
 <li>\#: el carácter # (necesario porque # al comienzo de una línea la convierte en comentario) </li>
 </ul>
 </li>
-<li>Reemplazo: el texto que debería verbalizarse para el símbolo. </li>
+<li>reemplazo: el texto que se debería verbalizar para el símbolo. Si se trata de un símbolo complejo, se pueden usar \1, \2, etc. para hacer referencia a los grupos de coincidencias, que se incluirán en el reemplazo para permitir reglas más simples. Esto también significa que para conseguir un carácter \ en el reemplazo, hay que escribir \\. </li>
 <li>Nivel: el nivel de símbolos en el que el símbolo debería verbalizarse. El usuario configura el nivel de símbolos, que especifica la cantidad de símbolos que deberían verbalizarse. Este campo debería contener uno de los niveles "none", "some", "most", "all" o "char", o "-" para usar el predeterminado. "char" significa que el símbolo sólo debería pronunciarse al moverse por caracteres. Por defecto se hereda el valor o "all" si no hay nada que heredar. </li>
 <li>Preservar: indica si el símbolo debería preservarse para facilitar la correcta pronunciación en el sintetizador. Por ejemplo, los símbolos que causan pausas o inflexiones (como la coma en inglés) deberían preservarse. Este campo debería contener los siguientes valores: <ul>
 <li>never: nunca preservar el símbolo. </li>
@@ -135,6 +137,9 @@ b   bravo
 <pre><code>. sentence ending   point   # . fin de phrase
 </code></pre>
 <p>Esta línea aparece en el archivo symbols.dic francés. Significa que el símbolo complejo ". sentence ending" debería verbalizarse como "point". Nivel y preservar no se han especificado, por lo que se tomarán del inglés. Se ofrece un nombre para mostrar, por lo que los usuarios franceses sabrán lo que representa el símbolo. </p>
+<pre><code>dates with .    \1 point \2 point \3    all norep   # date avec points
+</code></pre>
+<p>Esta línea aparece en el archivo symbols.dyc francés. Significa que se incluirán el primer, segundo y tercer grupo de la coincidencia, separados por la palabra 'point'. El efecto sirve para sustituir los puntos de la fecha por la palabra 'point'. </p>
 <p>Por favor, consulta el archivo locale\en\symbols.dic para ver las definiciones inglesas que heredan todos los idiomas. También representa un buen ejemplo completo. </p>
 <h2 id="346-extensiones">3. Extensiones</h2>
 <h3 id="31-descripcion">3.1. Descripción</h3>
@@ -158,7 +163,7 @@ b   bravo
 <p>Para probar el código durante el desarrollo, puedes situarlo en un directorio especial llamado 'scratchpad' en tu carpeta de configuración de usuario de NVDA. También será necesario configurar NVDA para habilitar la carga de código personalizado desde el directorio scratchpad para desarrolladores. Esto se puede hacer desde la categoría Avanzado del diálogo de opciones de NVDA. La categoría Avanzado también contiene un botón para abrir fácilmente la carpeta scratchpad de desarrollo si está activada. </p>
 <p>Las siguientes secciones hablarán por separado de módulos de aplicación y extensiones globales. Después de este punto, la discusión volverá a ser más general. </p>
 <h3 id="33-lo-basico-de-un-modulo-de-aplicacion">3.3. Lo básico de un módulo de aplicación</h3>
-<p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen o el nombre del paquete dentro de un ejecutable contenedor. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. Para las aplicaciones alojadas en un ejecutable contenedor, consulta la sección sobre módulos de aplicación para aplicaciones alojadas.</p>
+<p>Los archivos de módulo de aplicación tienen una extensión .py, y tienen el mismo nombre del archivo ejecutable de la aplicación para la que quieras que se usen o el nombre del paquete dentro de un ejecutable contenedor. Por ejemplo, un módulo de aplicación para el bloc de notas se llamaría notepad.py, ya que el ejecutable principal del bloc de notas se llama notepad.exe. Para las aplicaciones alojadas en un ejecutable contenedor, consulta la sección sobre módulos de aplicación para aplicaciones alojadas. </p>
 <p>Los archivos de módulo de aplicación deben situarse en la subcarpeta appModules de un complemento, o en el directorio scratchpad de la carpeta de configuración de usuario de NVDA. </p>
 <p>Los módulos de aplicación deben definir una clase llamada AppModule, que hereda de appModuleHandler.AppModule. Esta clase puede definir métodos de eventos y scripts, asociaciones de gestos y otro código. Esto se cubrirá más tarde en profundidad. </p>
 <p>NVDA carga el módulo de aplicación para una aplicación dada tan pronto como se da cuenta de que esa aplicación se está ejecutando. El módulo de aplicación se descarga una vez se cierra la aplicación o se sale de NVDA. </p>
@@ -201,10 +206,10 @@ class AppModule(appModuleHandler.AppModule):
 <p>Dentro de esta clase, define uno o más eventos, scripts o asociaciones de gestos. En este ejemplo, define un método de evento para los eventos gainFocus (event_gainFocus), que reproduce un pitido corto cada vez que se ejecuta. La implementación de este evento no es importante para los propósitos de este ejemplo. La parte más importante es la clase en sí. Los eventos se cubrirán con mucho más detalle más adelante. </p>
 <p>Como se pide con otros ejemplos de esta guía, recuerda eliminar el módulo de aplicación creado cuando termines de hacer pruebas y reinicia NVDA o recarga las extensiones para que se restaure la funcionalidad original. </p>
 <h3 id="35-modulos-de-aplicacion-para-aplicaciones-hospedadas">3.5. Módulos de aplicación para aplicaciones hospedadas</h3>
-<p>Algunos ejecutables hospedan diversas aplicaciones en su interior. Entre ellos se incluyen javaw.exe para ejecutar diversos programas Java, y wwahost.exe para algunas aplicaciones en Windows 8 y posterior.</p>
-<p>Si una aplicación funciona en un ejecutable contenedor, el nombre del módulo de aplicación debe ser el nombre definido por el ejecutable contenedor, que puede obtenerse mediante la propiedad AppModule.appName. Por ejemplo, un módulo de aplicación para una aplicación Java llamada "prueba" alojada dentro de javaw.exe debe llamarse prueba.py. En el caso de las aplicaciones alojadas dentro de wwahost, el nombre del módulo de aplicación no sólo debe ser el de la aplicación cargada, sino que además se debe crear una subclase que herede de la clase del módulo de aplicación de wwahost.</p>
+<p>Algunos ejecutables hospedan diversas aplicaciones en su interior. Entre ellos se incluyen javaw.exe para ejecutar diversos programas Java, y wwahost.exe para algunas aplicaciones en Windows 8 y posterior. </p>
+<p>Si una aplicación funciona en un ejecutable contenedor, el nombre del módulo de aplicación debe ser el nombre definido por el ejecutable contenedor, que puede obtenerse mediante la propiedad AppModule.appName. Por ejemplo, un módulo de aplicación para una aplicación Java llamada "prueba" alojada dentro de javaw.exe debe llamarse prueba.py. En el caso de las aplicaciones alojadas dentro de wwahost, el nombre del módulo de aplicación no sólo debe ser el de la aplicación cargada, sino que además se debe crear una subclase que herede de la clase del módulo de aplicación de wwahost. </p>
 <h3 id="36-ejemplo-2-un-modulo-de-aplicacion-para-una-aplicacion-hospedada-en-wwahostexe">3.6. Ejemplo 2: un módulo de aplicación para una aplicación hospedada en wwahost.exe</h3>
-<p>El siguiente ejemplo es igual que el módulo de aplicación para el bloc de notas anterior, salvo que en este caso es para una aplicación alojada en wwahost.exe.</p>
+<p>El siguiente ejemplo es igual que el módulo de aplicación para el bloc de notas anterior, salvo que en este caso es para una aplicación alojada en wwahost.exe. </p>
 <pre><code>--- inicio ---
 
 # Módulo de aplicación wwahost/test para NVDA
@@ -234,7 +239,7 @@ class AppModule(AppModule):
 --- fin ---
 </code></pre>
 <p>La mayor diferencia con respecto al módulo de aplicación del bloc de notas es el lugar de procedencia del módulo de aplicación wwahost. Al ser un módulo de aplicación incorporado, se puede importar wwahost desde nvdaBuiltin.appModules. </p>
-<p>Otra diferencia es el modo de definir la clase del módulo de aplicación. Ya que el módulo de aplicación wwahost proporciona la infraestructura necesaria para las aplicaciones alojadas en su interior, simplemente es necesario crear una subclase que herede de la clase del módulo de aplicación de wwahost.</p>
+<p>Otra diferencia es el modo de definir la clase del módulo de aplicación. Ya que el módulo de aplicación wwahost proporciona la infraestructura necesaria para las aplicaciones alojadas en su interior, simplemente es necesario crear una subclase que herede de la clase del módulo de aplicación de wwahost. </p>
 <h3 id="37-lo-basico-de-una-extension-global">3.7. Lo básico de una extensión global</h3>
 <p>Los archivos de extensión global tienen la extensión .py, y deberían tener un nombre corto y único que identifique lo que hacen. </p>
 <p>Los archivos de extensión global deben situarse en el subdirectorio globalPlugins de un complemento, o en la carpeta scratchpad del directorio de configuración de usuario de NVDA. </p>
@@ -379,6 +384,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>gestures: una lista de cadenas con varios gestos asociados a este script, por ejemplo ["kb:NVDA+shift+r", "kb:NVDA+alt+t"]. Cuando se especifican tanto gesture como gestures, se combinan. Cualquier elemento de gesture o gestures se puede usar para activar el script. </li>
 <li>canPropagate: un booleano que indica si este script debería aplicarse también a los antecesores del objeto con el foco. Por ejemplo, se puede usar cuando quieres especificar un script en particular para un objeto en primer plano, o en cualquier objeto en la ascendencia del foco que no sea el objeto actualmente enfocado. Esta opción es por defecto False. </li>
 <li>bypassInputHelp: un booleano que indica si este script debería ejecutarse con el modo de ayuda de entrada activado. Por defecto esta opción es False. </li>
+<li>resumeSayAllMode: el modo verbalizar todo que debería reanudarse si estaba activo antes de ejecutar este script. Las constantes del modo verbalizar todo llevan el prefijo CURSOR_ y se especifican en el módulo sayAllHandler. Si no se especifica resumeSayAllMode, verbalizar todo no se reanuda tras ejecutar este script. </li>
 </ul>
 <p>Aunque el decorador script hace mucho más fácil el proceso de definición de scripts, hay más formas de asociar scripts y establecer sus propiedades. Por ejemplo, se puede definir como variable de clase un diccionario Python llamado "__gestures" en un módulo de aplicación, extensión global u objeto NVDA. Este diccionario debería contener cadenas con identificadores de gestos apuntando al nombre del script solicitado, sin el prefijo "script_". También se puede especificar una descripción para el script en la cadena de documentación (docstring) de la función. Además, una forma alternativa de especificar la categoría del script es crear un atributo "category" en la función del script que contenga una cadena con el nombre de la categoría. </p>
 <h3 id="311-ejemplo-4-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.11. Ejemplo 4: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7."""),
-"",_(u"""IMPORTANT: due to ongoing transition activities, this document is subject to change without notice."""),
+_(u"""NOTE: as of 2021, this document is part of the wiki for historical reasons and to serve as a reference for Python upgrades."""),
+"",_(u"""This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7."""),
 "",_(u"""## Background"""),
 "",_(u"""Python is one of the popular programming languages for various projects. Its ease of learning, extensive standard library modules and third-party extensions, as well as extensive documentation and clear syntax makes it an ideal choice for scripting."""),
 "",_(u"""Currently there are two major branches of Python: 2.x, released in early 2000's, and 3.x, first released in 2008. At first glance, Python 3 may seem similar to Python 2, but there are numerous deeper differences which break backwards compatibility with code written for Python 2. These including extensive Unicode support in Python 3, module renames, changes to imports, changes to division, and many more."""),
@@ -13,7 +13,6 @@ _(u"""- https://wiki.python.org/moin/Python2orPython3"""),
 _(u"""- http://python3porting.com/"""),
 _(u"""- http://python-future.org/compatible_idioms.html"""),
 "",_(u"""Install Python 3.7 32-bit."""),
-"",_(u"""Note: as of December 2018, most add-ons won't work, so it is advised not to install any of them into the source code copy of NVDA unless you need to test your add-ons know the risks involved. The requirement to use Windows 10 has been lifted as eSpeak NG has been ported."""),
 "",_(u"""### Needed dependencies:"""),
 "",_(u"""Most Python dependencies can be installed via PIP while running as a module in Python 3.7 like so:"""),
 "",_(u"""`py -3 -m pip install dependencyName`"""),

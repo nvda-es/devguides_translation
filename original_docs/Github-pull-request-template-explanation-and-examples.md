@@ -73,3 +73,45 @@ You may suggest descriptions for multiple sections. The usual sections are:
 Multiple issue numbers can be included, separated by comma. If there is no issue number, you can use the PR number.
 
 For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t)
+
+## Code Review Checklist
+
+Code must be reviewed (via a Pull Request on GitHub) before it can be accepted into the project.
+The Pull Request template (``.github/PULL_REQUEST_TEMPLATE.md``) asks authors (and reviewers) to consider several aspects of the change.
+
+The aim of this checklist is to ensure each item has been considered by both the author and the reviewer.
+Hopefully it helps to prevent items being forgotten.
+After reviewing the checklist the reviewer and author need to use their best judgement on whether they think further changes need to be made.
+Reviewers are invited to start a conversation about items in the list, to provide guidance on how to improve the PR.
+Not all items will be applicable for all situations, in this case checking the item lets reviewers know its been considered.
+If the reviewer reaches the same conclusion as the author, no further work is necessary.
+Most items in the checklist have a section in the PR template where you can add your thoughts, doing so may preempt questions from the reviewer ensuring you are on the same page, and speed up the review process.
+
+### Pull Request description is up to date.
+Often the approach taken can change during the review process.
+However, in the future, developers may need to come to the PR in search of an explanation for the approach.
+Double check that the PR description is accurate.
+
+### Unit tests
+Can the changed code be covered by automated unit tests?
+Any comments on this can be put under the "testing strategy" heading.
+
+### System tests
+Can the changed code be covered by automated system tests
+System tests are end to end tests? of NVDA.
+Any comments on this can be put under the "testing strategy" heading.
+
+### Manual tests
+Is the described manual testing appropriate for the change?
+This should describe in detail the cases checked by the author.
+In some cases, a change will need to be tested by alpha testers and should be described under the "testing strategy" heading of the Pull Request template.
+
+### User Documentation
+Has the user documentation been updated?
+
+### Change log entry
+Has an appropriate change log entry been supplied.
+As a reviewer please review it.
+
+### Context sensitive help for GUI changes.
+If the change adds a new GUI option, ensure that the context sensitive help assignment has been added.

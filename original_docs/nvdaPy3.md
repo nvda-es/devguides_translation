@@ -1,6 +1,6 @@
-This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7.
+NOTE: as of 2021, this document is part of the wiki for historical reasons and to serve as a reference for Python upgrades.
 
-IMPORTANT: due to ongoing transition activities, this document is subject to change without notice.
+This document outlines rationale and steps for moving NVDA from Python 2.7 to 3.7.
 
 ## Background
 
@@ -20,8 +20,6 @@ Learn more about differences between Python 2 and 3, some resources:
 - http://python-future.org/compatible_idioms.html
 
 Install Python 3.7 32-bit.
-
-Note: as of December 2018, most add-ons won't work, so it is advised not to install any of them into the source code copy of NVDA unless you need to test your add-ons know the risks involved. The requirement to use Windows 10 has been lifted as eSpeak NG has been ported.
 
 ### Needed dependencies:
 

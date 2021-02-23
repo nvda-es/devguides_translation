@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 documentation = [
-_(u"""# NVDA 2020.3 Developer Guide"""),
+_(u"""# NVDA 2020.4 Developer Guide"""),
 "",_(u"""## Table of Contents"""),
 "",_(u"""  * 1\\. Introduction"""),
 _(u"""    * 1.1. A Note About Python"""),
@@ -59,11 +59,11 @@ _(u"""    * 6.1. Usage """),
 "",_(u"""Character descriptions can be provided for a locale in a file named characterDescriptions.dic in the directory for the locale. This is a UTF-8 encoded text file. Blank lines and lines beginning with a \"\\#\" character are ignored. All other lines should contain a character, followed by a tab, then one or more descriptions separated by tabs. """),
 "",_(u"""For example: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    # This is a comment."""),
-_(u"""    a	alpha"""),
-_(u"""    b	bravo"""),
 _(u"""    """),
+"",_(u"""    # This is a comment."""),
+"",_(u"""    a	alpha"""),
+"",_(u"""    b	bravo"""),
+"",_(u"""    """),
 "",_(u"""See the file locale\\en\\characterDescriptions.dic for a full example. """),
 "",_(u"""In most cases, the characters in this file should be a single lower case character. It is assumed that characters will have the same description regardless of their case, so upper case characters are converted to lower case before looking up their character descriptions. """),
 "",_(u"""### 2.2. Symbol Pronunciation"""),
@@ -74,21 +74,22 @@ _(u"""    """),
 "",_(u"""The first section is optional and defines regular expression patterns for complex symbols. Complex symbols are symbols which aren't simply a character or sequence of characters, but instead require a more complicated match. An example is the full stop \\(.\\) sentence ending in English. The \".\" is used for multiple purposes, so a more complicated check is required to determine whether this refers to the end of a sentence. """),
 "",_(u"""The complex symbols section begins with the line: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    complexSymbols:"""),
 _(u"""    """),
+"",_(u"""    complexSymbols:"""),
+"",_(u"""    """),
 "",_(u"""Subsequent lines contain a textual identifier used to identify the symbol, a tab and the regular expression pattern for that symbol. For example: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    . sentence ending	(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)"""),
 _(u"""    """),
+"",_(u"""    . sentence ending	(?<=[^\\s.])\\.(?=[\\\"')\\s]|$)"""),
+"",_(u"""    dates with .	\\b(\\d\\d)\\.(\\d\\d)\\.(\\d{2}|\\d{4})\\b"""),
+"",_(u"""    """),
 "",_(u"""Again, the English symbols are inherited by all other locales, so you need not include any complex symbols already defined for English. """),
 "",_(u"""#### 2.2.2. Defining Symbol Information"""),
 "",_(u"""The second section provides information about when and how to pronounce all symbols. It begins with the line: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    symbols:"""),
 _(u"""    """),
+"",_(u"""    symbols:"""),
+"",_(u"""    """),
 "",_(u"""Subsequent lines should contain several fields separated by tabs. The only mandatory fields are the identifier and replacement. The default will be used for omitted fields. The fields are as follows: """),
 "",_(u"""  * identifier: The identifier of the symbol. In most cases, this is just the character or characters of the symbol. However, it can also be the identifier of a complex symbol. Certain characters cannot be typed into the file, so the following special sequences can be used: """),
 _(u"""    * \\0: null """),
@@ -97,7 +98,7 @@ _(u"""    * \\n: line feed """),
 _(u"""    * \\r: carriage return """),
 _(u"""    * \\f: form feed """),
 _(u"""    * \\\\\\#: \\# character \\(needed because \\# at the start of a line denotes a comment\\) """),
-_(u"""  * replacement: The text which should be spoken for the symbol. """),
+_(u"""  * replacement: The text which should be spoken for the symbol. If the symbol is a complex symbol, \\1, \\2, etc. can be used to refer to the groups matches, which will be inlined in the replacement, allowing for simpler rules. This also means that to get a \\ character in the replacement, one has to type \\\\\\\\. """),
 _(u"""  * level: The symbol level at which the symbol should be spoken. The symbol level is configured by the user and specifies the amount of symbols that should be spoken. This field should contain one of the levels \"none\", \"some\", \"most\", \"all\" or \"char\", or \"-\" to use the default. \"char\" means that the symbol should only be pronounced when moving by character. The default is to inherit the value or \"all\" if there is nothing to inherit. """),
 _(u"""  * preserve: Whether the symbol itself should be preserved to facilitate correct pronunciation by the synthesiser. For example, symbols which cause pauses or inflection \\(such as the comma in English\\) should be preserved. This field should be one of the following: """),
 _(u"""    * never: Never preserve the symbol. """),
@@ -107,20 +108,25 @@ _(u"""    * -: Use the default.  The default is to inherit the value or \"never\
 "","",_(u"""Finally, a display name for the symbol can be provided in a comment after a tab at the end of the line. This will be shown to users when editing the symbol information and is especially useful for translators to define translated names for English complex symbols. """),
 "",_(u"""Here are some examples: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    (	left paren	most"""),
 _(u"""    """),
+"",_(u"""    (	left paren	most"""),
+"",_(u"""    """),
 "",_(u"""This means that the \"\\(\" character should be spoken as \"left paren\" only when the symbol level is set to most or higher; i.e. most or all. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    ,	comma	all	always"""),
 _(u"""    """),
+"",_(u"""    ,	comma	all	always"""),
+"",_(u"""    """),
 "",_(u"""This means that the \",\" character should be spoken as \"comma\" when the symbol level is set to all and that the character itself should always be preserved so that the synthesiser will pause appropriately. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    . sentence ending	point	# . fin de phrase"""),
 _(u"""    """),
+"",_(u"""    . sentence ending	point	# . fin de phrase"""),
+"",_(u"""    """),
 "",_(u"""This line appears in the French symbols.dic file. It means that the \". sentence ending\" complex symbol should be spoken as \"point\". Level and preserve are not specified, so they will be taken from English. A display name is provided so that French users will know what the symbol represents. """),
+_(u"""    """),
+_(u"""    """),
+"",_(u"""    dates with .	\\1 point \\2 point \\3	all	norep	# date avec points"""),
+"",_(u"""    """),
+"",_(u"""This line appears in the French symbols.dic file. It means that the first, second, and third groups of the match will be included, separated by the word 'point'. The effect is thus to replace the dots from the date with the word 'point'. """),
 "",_(u"""Please see the file locale\\en\\symbols.dic for the English definitions which are inherited for all locales. This is also a good full example. """),
 "",_(u"""## 3\\. Plugins"""),
 "",_(u"""### 3.1. Overview"""),
@@ -150,22 +156,22 @@ _(u"""  * Global Plugins: code global to NVDA; i.e. it is used in all applicatio
 "",_(u"""Once saved in the correct location, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. """),
 "",_(u"""Finally, open Notepad and move the focus around the application; e.g. move along the menu bar, open some dialog boxes, etc. You should hear beeps each time the focus changes. Note though that if you move outside of Notepad - for instance, to Windows Explorer - you do not hear beeps. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    # Notepad App Module for NVDA"""),
-_(u"""    # Developer guide example 1"""),
-_(u"""    """),
-_(u"""    import appModuleHandler"""),
-_(u"""    """),
-_(u"""    class AppModule(appModuleHandler.AppModule):"""),
-_(u"""    """),
-_(u"""    	def event_gainFocus(self, obj, nextHandler):"""),
-_(u"""    		import tones"""),
-_(u"""    		tones.beep(550, 50)"""),
-_(u"""    		nextHandler()"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    # Notepad App Module for NVDA"""),
+"",_(u"""    # Developer guide example 1"""),
+"",_(u"""    """),
+"",_(u"""    import appModuleHandler"""),
+"",_(u"""    """),
+"",_(u"""    class AppModule(appModuleHandler.AppModule):"""),
+"",_(u"""    """),
+"",_(u"""    	def event_gainFocus(self, obj, nextHandler):"""),
+"",_(u"""    		import tones"""),
+"",_(u"""    		tones.beep(550, 50)"""),
+"",_(u"""    		nextHandler()"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""This App Module file starts with two comment lines, which describe what the file is for. """),
 "",_(u"""It then imports the appModuleHandler module, so that the App Module then has access to the base AppModule class. """),
 "",_(u"""Next, it defines a class called AppModule, which is inherited from appModuleHandler.AppModule. """),
@@ -177,22 +183,22 @@ _(u"""    """),
 "",_(u"""### 3.6. Example 2: an app module for an app hosted by wwahost.exe"""),
 "",_(u"""The following example is same as Notepad app module above except this is for an app hosted by wwahost.exe. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    # wwahost/test App Module for NVDA"""),
-_(u"""    # Developer guide example 2"""),
-_(u"""    """),
-_(u"""    from nvdaBuiltin.appModules.wwahost import *"""),
-_(u"""    """),
-_(u"""    class AppModule(AppModule):"""),
-_(u"""    """),
-_(u"""    	def event_gainFocus(self, obj, nextHandler):"""),
-_(u"""    		import tones"""),
-_(u"""    		tones.beep(550, 50)"""),
-_(u"""    		nextHandler()"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    # wwahost/test App Module for NVDA"""),
+"",_(u"""    # Developer guide example 2"""),
+"",_(u"""    """),
+"",_(u"""    from nvdaBuiltin.appModules.wwahost import *"""),
+"",_(u"""    """),
+"",_(u"""    class AppModule(AppModule):"""),
+"",_(u"""    """),
+"",_(u"""    	def event_gainFocus(self, obj, nextHandler):"""),
+"",_(u"""    		import tones"""),
+"",_(u"""    		tones.beep(550, 50)"""),
+"",_(u"""    		nextHandler()"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""The biggest difference from Notepad app module is where wwahost app module comes from. As a built-in app module, wwahost can be imported from nvdaBuiltin.appModules. """),
 "",_(u"""Another difference is how the app module class is defined. As wwahost app module provides necessary infrastructure for apps hosted inside, you just need to subclass the wwahost AppModule class. """),
 "",_(u"""### 3.7. Basics of a Global Plugin"""),
@@ -206,24 +212,24 @@ _(u"""    """),
 "",_(u"""Once saved in the right place, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. """),
 "",_(u"""From anywhere, you can now press NVDA+shift+v to have NVDA's version spoken and brailled. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    # Version announcement plugin for NVDA"""),
-_(u"""    # Developer guide example 3"""),
-_(u"""    """),
-_(u"""    import globalPluginHandler"""),
-_(u"""    from scriptHandler import script"""),
-_(u"""    import ui"""),
-_(u"""    import versionInfo"""),
-_(u"""    """),
-_(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
-_(u"""    """),
-_(u"""    	@script(gesture=\"kb:NVDA+shift+v\")"""),
-_(u"""    	def script_announceNVDAVersion(self, gesture):"""),
-_(u"""    		ui.message(versionInfo.version)"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    # Version announcement plugin for NVDA"""),
+"",_(u"""    # Developer guide example 3"""),
+"",_(u"""    """),
+"",_(u"""    import globalPluginHandler"""),
+"",_(u"""    from scriptHandler import script"""),
+"",_(u"""    import ui"""),
+"",_(u"""    import versionInfo"""),
+"",_(u"""    """),
+"",_(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
+"",_(u"""    """),
+"",_(u"""    	@script(gesture=\"kb:NVDA+shift+v\")"""),
+"",_(u"""    	def script_announceNVDAVersion(self, gesture):"""),
+"",_(u"""    		ui.message(versionInfo.version)"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""This Global Plugin file starts with two comment lines, which describe what the file is for. """),
 "",_(u"""It then imports the globalPluginHandler module, so that the Global Plugin has access to the base GlobalPlugin class. """),
 "",_(u"""It also imports a few other modules, namely ui, versionInfo and scriptHandler, which this specific plugin needs in order for it to perform the necessary actions to announce the version. """),
@@ -285,22 +291,22 @@ _(u"""  * Global Commands \\(built in commands like quitting NVDA, object naviga
 "",_(u"""For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. """),
 "",_(u"""In order for you to use the script decorator, you will have to import it from the scriptHandler module. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    from scriptHandler import script"""),
 _(u"""    """),
+"",_(u"""    from scriptHandler import script"""),
+"",_(u"""    """),
 "",_(u"""After that, just above your script definition, add the script decorator, providing it the desired arguments. For example: """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    	@script("""),
-_(u"""    		description=_(\"Speaks the date and time\"),"""),
-_(u"""    		category=inputCore.SCRCAT_MISC,"""),
-_(u"""    		gestures=[\"kb:NVDA+shift+t\", \"kb:NVDA+alt+r\"]"""),
-_(u"""    	)"""),
-_(u"""    	def script_sayDateTime(self, gesture):"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    	@script("""),
+"",_(u"""    		description=_(\"Speaks the date and time\"),"""),
+"",_(u"""    		category=inputCore.SCRCAT_MISC,"""),
+"",_(u"""    		gestures=[\"kb:NVDA+shift+t\", \"kb:NVDA+alt+r\"]"""),
+"",_(u"""    	)"""),
+"",_(u"""    	def script_sayDateTime(self, gesture):"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""In this example, your script will be listed in the input gestures dialog under the \"Miscellaneous\" category. It will have the description \"Speaks the date and time\", and will be bound to the \"NVDA+shift+t\" and \"NVDA+alt+r\" key combinations on the keyboard. """),
 "",_(u"""The following keyword arguments can be used when applying the script decorator: """),
 "",_(u"""  * description: A short, translatable string which describes the command for users. This is reported to users when in Input Help mode and shown in the input gestures dialog. The script will not appear in the Input Gestures dialog unless you specify a description. """),
@@ -309,46 +315,47 @@ _(u"""  * gesture: A string containing a single gesture associated with this scr
 _(u"""  * gestures: A string list of multiple gestures associated with this script, e.g. \\[\"kb:NVDA+shift+r\", \"kb:NVDA+alt+t\"\\]. When both gesture and gestures are specified, they are combined. Either gesture, or any item in gestures can be used to trigger the script. """),
 _(u"""  * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. """),
 _(u"""  * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. """),
+_(u"""  * resumeSayAllMode: The say all mode that should be resumed when active before executing this script. The constants for say all mode are prefixed with CURSOR\\_ and specified in the sayAllHandler modules. If resumeSayAllMode is not specified, say all does not resume after this script. """),
 "","",_(u"""Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special \"\\_\\_gestures\" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the \"script\\_\" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a \"category\" attribute on the script function to a string containing the name of the category. """),
 "",_(u"""### 3.11. Example 4: A Global Plugin to Find out Window Class and Control ID"""),
 "",_(u"""The following Global Plugin allows you to press NVDA+leftArrow to have the window class of the current focus announced, and NVDA+rightArrow to have the window control ID of the current focus announced. This example shows you how to define one or more scripts and gesture bindings on a class such as an App Module, Global Plugin or NVDA Object. """),
 "",_(u"""Copy and paste the code between \\(but not including\\) the start and end markers into a new text file with a name of example3.py, which should be saved in the globalPlugins subdirectory. Be very careful to keep all tabs and spaces intact. """),
 "",_(u"""Once saved in the right place, either restart NVDA or choose Reload Plugins found under Tools in the NVDA menu. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    #Window utility scripts for NVDA"""),
-_(u"""    #Developer guide example 4"""),
-_(u"""    """),
-_(u"""    import globalPluginHandler"""),
-_(u"""    from scriptHandler import script"""),
-_(u"""    import ui"""),
-_(u"""    import api"""),
-_(u"""    """),
-_(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
-_(u"""    """),
-_(u"""    	@script("""),
-_(u"""    		description=_(\"Announces the window class name of the current focus object\"),"""),
-_(u"""    		gesture=\"kb:NVDA+leftArrow\""""),
-_(u"""    	)"""),
-_(u"""    	def script_announceWindowClassName(self, gesture):"""),
-_(u"""    		focusObj = api.getFocusObject()"""),
-_(u"""    		name = focusObj.name"""),
-_(u"""    		windowClassName = focusObj.windowClassName"""),
-_(u"""    		ui.message(\"class for %s window: %s\" % (name, windowClassName))"""),
-_(u"""    """),
-_(u"""    	@script("""),
-_(u"""    		description=_(\"Announces the window control ID of the current focus object\"),"""),
-_(u"""    		gesture=\"kb:NVDA+rightArrow\""""),
-_(u"""    	)"""),
-_(u"""    	def script_announceWindowControlID(self, gesture):"""),
-_(u"""    		focusObj = api.getFocusObject()"""),
-_(u"""    		name = focusObj.name"""),
-_(u"""    		windowControlID = focusObj.windowControlID"""),
-_(u"""    		ui.message(\"Control ID for %s window: %d\" % (name, windowControlID))"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    #Window utility scripts for NVDA"""),
+"",_(u"""    #Developer guide example 4"""),
+"",_(u"""    """),
+"",_(u"""    import globalPluginHandler"""),
+"",_(u"""    from scriptHandler import script"""),
+"",_(u"""    import ui"""),
+"",_(u"""    import api"""),
+"",_(u"""    """),
+"",_(u"""    class GlobalPlugin(globalPluginHandler.GlobalPlugin):"""),
+"",_(u"""    """),
+"",_(u"""    	@script("""),
+"",_(u"""    		description=_(\"Announces the window class name of the current focus object\"),"""),
+"",_(u"""    		gesture=\"kb:NVDA+leftArrow\""""),
+"",_(u"""    	)"""),
+"",_(u"""    	def script_announceWindowClassName(self, gesture):"""),
+"",_(u"""    		focusObj = api.getFocusObject()"""),
+"",_(u"""    		name = focusObj.name"""),
+"",_(u"""    		windowClassName = focusObj.windowClassName"""),
+"",_(u"""    		ui.message(\"class for %s window: %s\" % (name, windowClassName))"""),
+"",_(u"""    """),
+"",_(u"""    	@script("""),
+"",_(u"""    		description=_(\"Announces the window control ID of the current focus object\"),"""),
+"",_(u"""    		gesture=\"kb:NVDA+rightArrow\""""),
+"",_(u"""    	)"""),
+"",_(u"""    	def script_announceWindowControlID(self, gesture):"""),
+"",_(u"""    		focusObj = api.getFocusObject()"""),
+"",_(u"""    		name = focusObj.name"""),
+"",_(u"""    		windowControlID = focusObj.windowControlID"""),
+"",_(u"""    		ui.message(\"Control ID for %s window: %d\" % (name, windowControlID))"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""### 3.12. Events"""),
 "",_(u"""When NVDA detects particular toolkit, API or Operating System events, it abstracts these and fires its own internal events on plugins and NVDA Objects. """),
 "",_(u"""Although most events are related to a specific NVDA Object \\(e.g. name change, gain focus, state change, etc.\\), these events can be handled at various levels. When an event is handled, it is stopped from going further down the chain. However, code inside the event can choose to propagate it further if needed. """),
@@ -382,16 +389,16 @@ _(u"""  * locationChange: physical screen location changes """),
 "",_(u"""### 3.14. Example 5: A Sleep Mode App Module"""),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of the application you wish to enable sleep mode for. As always, the file must have a .py extension. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    import appModuleHandler"""),
-_(u"""    """),
-_(u"""    class AppModule(appModuleHandler.AppModule):"""),
-_(u"""    """),
-_(u"""    	sleepMode = True"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    import appModuleHandler"""),
+"",_(u"""    """),
+"",_(u"""    class AppModule(appModuleHandler.AppModule):"""),
+"",_(u"""    """),
+"",_(u"""    	sleepMode = True"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""### 3.15. Providing Custom NVDA Object Classes"""),
 "",_(u"""Providing custom NVDA Object classes is probably the most powerful and useful way to improve the experience of an application in an NVDA plugin. This method allows you to place all the needed logic for a particular control altogether in one NVDA Object class for that control, rather than scattering code for many controls across a plugin's events. """),
 "",_(u"""There are two steps to providing a custom NVDA Object class: """),
@@ -407,28 +414,28 @@ _(u"""  3. clsList: a Python list of NVDAObject classes that will be used for ob
 "",_(u"""This app module for notepad provides a command to report the number of characters in edit fields. You can activate it using NVDA+l. Notice that the command is specific to edit fields; i.e. it only works while you are focused in an edit field, rather than anywhere in the application. """),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of notepad.py. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    import appModuleHandler"""),
-_(u"""    from scriptHandler import script"""),
-_(u"""    from NVDAObjects.IAccessible import IAccessible"""),
-_(u"""    import controlTypes"""),
-_(u"""    import ui"""),
-_(u"""    """),
-_(u"""    class AppModule(appModuleHandler.AppModule):"""),
-_(u"""    """),
-_(u"""    	def chooseNVDAObjectOverlayClasses(self, obj, clsList):"""),
-_(u"""    		if obj.windowClassName == \"Edit\" and obj.role == controlTypes.ROLE_EDITABLETEXT:"""),
-_(u"""    			clsList.insert(0, EnhancedEditField)"""),
-_(u"""    """),
-_(u"""    class EnhancedEditField(IAccessible):"""),
-_(u"""    """),
-_(u"""    	@script(gesture=\"kb:NVDA+l\")"""),
-_(u"""    	def script_reportLength(self, gesture):"""),
-_(u"""    		ui.message(\"%d\" % len(self.value))"""),
-_(u"""    """),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    import appModuleHandler"""),
+"",_(u"""    from scriptHandler import script"""),
+"",_(u"""    from NVDAObjects.IAccessible import IAccessible"""),
+"",_(u"""    import controlTypes"""),
+"",_(u"""    import ui"""),
+"",_(u"""    """),
+"",_(u"""    class AppModule(appModuleHandler.AppModule):"""),
+"",_(u"""    """),
+"",_(u"""    	def chooseNVDAObjectOverlayClasses(self, obj, clsList):"""),
+"",_(u"""    		if obj.windowClassName == \"Edit\" and obj.role == controlTypes.ROLE_EDITABLETEXT:"""),
+"",_(u"""    			clsList.insert(0, EnhancedEditField)"""),
+"",_(u"""    """),
+"",_(u"""    class EnhancedEditField(IAccessible):"""),
+"",_(u"""    """),
+"",_(u"""    	@script(gesture=\"kb:NVDA+l\")"""),
+"",_(u"""    	def script_reportLength(self, gesture):"""),
+"",_(u"""    		ui.message(\"%d\" % len(self.value))"""),
+"",_(u"""    """),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""### 3.17. Making Small Changes to an NVDA Object in App Modules"""),
 "",_(u"""Sometimes, you may wish to make only small changes to an NVDA Object in an application, such as overriding its name or role. In these cases, you don't need the full power of a custom NVDA Object class. To do this, you can use the NVDAObject\\_init event available only on App Modules. """),
 "",_(u"""The event\\_NVDAObject\\_init method takes two arguments: """),
@@ -439,18 +446,18 @@ _(u"""  2. obj: the NVDAObject being initialized. """),
 "",_(u"""This app module for notepad makes NVDA report Notepad's main edit field as having a name of \"content\". That is, when it receives focus, NVDA will say \"Content edit\". """),
 "",_(u"""The following code can be copied and pasted in to a text file, then saved in the appModules directory with the name of notepad.py. """),
 _(u"""    """),
-_(u"""    """),
-_(u"""    --- start ---"""),
-_(u"""    import appModuleHandler"""),
-_(u"""    from NVDAObjects.window import Window"""),
-_(u"""    """),
-_(u"""    class AppModule(appModuleHandler.AppModule):"""),
-_(u"""    """),
-_(u"""    	def event_NVDAObject_init(self, obj):"""),
-_(u"""    		if isinstance(obj, Window) and obj.windowClassName == \"Edit\" and obj.windowControlID == 15:"""),
-_(u"""    			obj.name = \"Content\""""),
-_(u"""    --- end ---"""),
 _(u"""    """),
+"",_(u"""    --- start ---"""),
+"",_(u"""    import appModuleHandler"""),
+"",_(u"""    from NVDAObjects.window import Window"""),
+"",_(u"""    """),
+"",_(u"""    class AppModule(appModuleHandler.AppModule):"""),
+"",_(u"""    """),
+"",_(u"""    	def event_NVDAObject_init(self, obj):"""),
+"",_(u"""    		if isinstance(obj, Window) and obj.windowClassName == \"Edit\" and obj.windowControlID == 15:"""),
+"",_(u"""    			obj.name = \"Content\""""),
+"",_(u"""    --- end ---"""),
+"",_(u"""    """),
 "",_(u"""## 4\\. Packaging Code as NVDA Add-ons"""),
 "",_(u"""To make it easy for users to share and install plugins and drivers, they can be packaged in to a single NVDA add-on package which the user can then install into a copy of NVDA via the Add-ons Manager found under Tools in the NVDA menu. Add-on packages are only supported in NVDA 2012.2 and later. An add-on package is simply a standard zip archive with the file extension of nvda-addon which contains a manifest file, optional install/uninstall code and one or more directories containing plugins and/or drivers. """),
 "",_(u"""### 4.1. Non-ASCII File Names in Zip Archives"""),
@@ -480,19 +487,19 @@ _(u"""    * Must be greater than or equal to \\`minimumNVDAVersion\\` \\- """),
 "",_(u"""The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \\(ignoring minor point updates EG 2018.3.1\\) then the user will be warned not to install the add-on. """),
 "",_(u"""### An Example Manifest File"""),
 _(u"""        """),
-_(u"""        """),
-_(u"""        --- start ---"""),
-_(u"""        name = \"myTestAddon\""""),
-_(u"""        summary = \"Cool Test Add-on\""""),
-_(u"""        version = \"1.0\""""),
-_(u"""        description = \"An example add-on showing how to create add-ons!\""""),
-_(u"""        author = \"Michael Curran <mick@kulgan.net>\""""),
-_(u"""        url = \"http://www.nvda-project.org/wiki/Development\""""),
-_(u"""        docFileName = \"readme.html\""""),
-_(u"""        minimumNVDAVersion = \"2018.1.0\""""),
-_(u"""        lastTestedNVDAVersion = \"2019.1.0\""""),
-_(u"""        --- end ---"""),
 _(u"""        """),
+"",_(u"""        --- start ---"""),
+"",_(u"""        name = \"myTestAddon\""""),
+"",_(u"""        summary = \"Cool Test Add-on\""""),
+"",_(u"""        version = \"1.0\""""),
+"",_(u"""        description = \"An example add-on showing how to create add-ons!\""""),
+"",_(u"""        author = \"Michael Curran <mick@kulgan.net>\""""),
+"",_(u"""        url = \"http://www.nvda-project.org/wiki/Development\""""),
+"",_(u"""        docFileName = \"readme.html\""""),
+"",_(u"""        minimumNVDAVersion = \"2018.1.0\""""),
+"",_(u"""        lastTestedNVDAVersion = \"2019.1.0\""""),
+"",_(u"""        --- end ---"""),
+"",_(u"""        """),
 "",_(u"""## Plugins and Drivers"""),
 "",_(u"""The following plugins and drivers can be included in an add-on: """),
 _(u"""  * App modules: Place them in an appModules directory in the archive. """),

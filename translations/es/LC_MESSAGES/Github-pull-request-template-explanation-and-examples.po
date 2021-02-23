@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-07 14:20+0200\n"
-"PO-Revision-Date: 2020-06-07 16:51+0200\n"
+"POT-Creation-Date: 2021-02-22 11:05+0100\n"
+"PO-Revision-Date: 2021-02-23 17:17+0100\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:3
@@ -360,3 +360,185 @@ msgid ""
 msgstr ""
 "Por ejemplo, consulta el [archivo changes.t2t](https://github.com/nvaccess/"
 "nvda/blob/master/user_docs/en/changes.t2t)"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:58
+msgid "## Code Review Checklist"
+msgstr "## Lista de comprobación de revisión del código"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:59
+msgid ""
+"Code must be reviewed (via a Pull Request on GitHub) before it can be "
+"accepted into the project."
+msgstr ""
+"El código debe revisarse (mediante una solicitud de cambios en GitHub) antes "
+"de que pueda aceptarse en el proyecto."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:60
+msgid ""
+"The Pull Request template (``.github/PULL_REQUEST_TEMPLATE.md``) asks "
+"authors (and reviewers) to consider several aspects of the change."
+msgstr ""
+"La plantilla de solicitud de cambios (``.github/PULL_REQUEST_TEMPLATE.md``) "
+"solicita a los autores (y revisores) que consideren varios aspectos del "
+"cambio."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:61
+msgid ""
+"The aim of this checklist is to ensure each item has been considered by both "
+"the author and the reviewer."
+msgstr ""
+"El propósito de esta lista de comprobación es asegurar que tanto el autor "
+"como el revisor han tenido en cuenta cada elemento."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:62
+msgid "Hopefully it helps to prevent items being forgotten."
+msgstr "Con suerte, ayuda a que no se olviden algunos elementos."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:63
+msgid ""
+"After reviewing the checklist the reviewer and author need to use their best "
+"judgement on whether they think further changes need to be made."
+msgstr ""
+"Tras revisar la lista de comprobación, el revisor y el autor deben razonar "
+"al máximo si piensan que es necesario hacer más cambios."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:64
+msgid ""
+"Reviewers are invited to start a conversation about items in the list, to "
+"provide guidance on how to improve the PR."
+msgstr ""
+"Se invita a los revisores a que inicien una conversación sobre los elementos "
+"de la lista, para proporcionar guiado sobre cómo mejorar la solicitud de "
+"cambios."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:65
+msgid ""
+"Not all items will be applicable for all situations, in this case checking "
+"the item lets reviewers know its been considered."
+msgstr ""
+"No todos los elementos son aplicables a todas las situaciones. En este caso, "
+"comprobar el elemento hace saber a los revisores que se ha tenido en cuenta."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:66
+msgid ""
+"If the reviewer reaches the same conclusion as the author, no further work "
+"is necessary."
+msgstr ""
+"Si el revisor alcanza la misma conclusión que el autor, no es necesario más "
+"trabajo."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:67
+msgid ""
+"Most items in the checklist have a section in the PR template where you can "
+"add your thoughts, doing so may preempt questions from the reviewer ensuring "
+"you are on the same page, and speed up the review process."
+msgstr ""
+"La mayoría de elementos de la lista de comprobación disponen de una sección "
+"en la plantilla de solicitud de cambio donde puedes añadir tus impresiones. "
+"Al hacerlo, puedes evitar ciertas preguntas del revisor, y esto asegura que "
+"habláis de lo mismo y agiliza el proceso."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:68
+msgid "### Pull Request description is up to date."
+msgstr "### La descripción de la solicitud de cambios está al día."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:69
+msgid "Often the approach taken can change during the review process."
+msgstr ""
+"A veces el enfoque tomado puede cambiar durante el proceso de revisión."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:70
+msgid ""
+"However, in the future, developers may need to come to the PR in search of "
+"an explanation for the approach."
+msgstr ""
+"Sin embargo, en el futuro, los desarrolladores pueden necesitar volver a la "
+"solicitud de cambios en búsqueda de una explicación del enfoque."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:71
+msgid "Double check that the PR description is accurate."
+msgstr ""
+"Comprueba bien que la descripción de la solicitud de cambios es precisa."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:72
+msgid "### Unit tests"
+msgstr "### Pruebas unitarias"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:73
+msgid "Can the changed code be covered by automated unit tests?"
+msgstr ""
+"¿Se puede cubrir el código modificado con pruebas unitarias automatizadas?"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:74
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:78
+msgid "Any comments on this can be put under the \"testing strategy\" heading."
+msgstr ""
+"Cualquier comentario sobre esto se puede poner bajo el encabezado \"testing "
+"strategy\"."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:75
+msgid "### System tests"
+msgstr "### Pruebas del sistema"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:76
+msgid "Can the changed code be covered by automated system tests"
+msgstr ""
+"¿Se puede cubrir el código modificado con pruebas automatizadas del sistema?"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:77
+msgid "System tests are end to end tests? of NVDA."
+msgstr "Las pruebas del sistema son pruebas de extremo a extremo de NVDA."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:79
+msgid "### Manual tests"
+msgstr "### Pruebas manuales"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:80
+msgid "Is the described manual testing appropriate for the change?"
+msgstr "¿Es apropiada para el cambio la prueba manual descrita?"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:81
+msgid "This should describe in detail the cases checked by the author."
+msgstr "Se deberían describir con detalle los casos comprobados por el autor."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:82
+msgid ""
+"In some cases, a change will need to be tested by alpha testers and should "
+"be described under the \"testing strategy\" heading of the Pull Request "
+"template."
+msgstr ""
+"En algunos casos, los evaluadores alpha tendrán que probar el cambio, por lo "
+"que hay que describirlo bajo el encabezado \"testing strategy\" de la "
+"plantilla de solicitud de cambios."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:83
+msgid "### User Documentation"
+msgstr "### Documentación de usuario"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:84
+msgid "Has the user documentation been updated?"
+msgstr "¿Se ha actualizado la documentación de usuario?"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:85
+msgid "### Change log entry"
+msgstr "### Entrada en el registro de cambios"
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:86
+msgid "Has an appropriate change log entry been supplied."
+msgstr "Se ha proporcionado una entrada adecuada en el registro de cambios."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:87
+msgid "As a reviewer please review it."
+msgstr "Como revisor, revísalo."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:88
+msgid "### Context sensitive help for GUI changes."
+msgstr "### Ayuda sensible al contexto en cambios de interfaz gráfica."
+
+#: ..\python_docs\Github-pull-request-template-explanation-and-examples.py:89
+msgid ""
+"If the change adds a new GUI option, ensure that the context sensitive help "
+"assignment has been added."
+msgstr ""
+"Si el cambio añade una nueva opción a la interfaz gráfica, asegúrate de que "
+"se ha añadido una asignación a la ayuda sensible al contexto."

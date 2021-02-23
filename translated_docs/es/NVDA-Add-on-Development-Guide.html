@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: octubre de 2020 para NVDA 2020.3</p>
+<p>Última versión: enero de 2021 para NVDA 2020.4</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
 <p><em>Nota para usuarios de lectores de pantalla</em>: para volver a este índice, usa tu orden del modo exploración para moverte al encabezado de nivel 1 en dirección contraria.</p>
@@ -46,7 +46,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 </ul>
 </li>
 <li><a href="#configuracion-del-entorno-de-desarrollo-de-complementos">Configuración del entorno de desarrollo de complementos</a><ul>
-<li><a href="#cumplir-con-los-requisitos-del-sistema">Cumplir con los requisitos del Sistema</a></li>
+<li><a href="#requisitos-del-sistema">Requisitos del Sistema</a></li>
 <li><a href="#estructura-de-carpetas-de-desarrollo-del-complemento">Estructura de Carpetas de Desarrollo del Complemento</a></li>
 <li><a href="#estructura-de-carpetas-del-complemento">Estructura de carpetas del complemento</a></li>
 <li><a href="#enpaquetado-de-complementos">Enpaquetado de complementos</a></li>
@@ -140,6 +140,10 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li><a href="#compartiendo-tu-complemento-y-experiencia-con-otros">Compartiendo tu complemento y experiencia con otros</a><ul>
 <li><a href="#la-lista-de-complementos-de-nvda">La lista de complementos de NVDA</a></li>
 <li><a href="#el-sitio-web-y-el-repositorio-de-codigo-de-los-complementos-de-la-comunidad-de-nvda">El sitio web y el repositorio de código de los complementos de la comunidad de NVDA</a></li>
+<li><a href="#envio-de-tu-complemento-a-revision">Envío de tu complemento a revisión</a><ul>
+<li><a href="#lista-de-comprobacion-de-revision-de-complementos">Lista de comprobación de revisión de complementos</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#ejemplos-avanzados-de-codigo-y-caracteristicas">Ejemplos avanzados de código y características</a><ul>
@@ -174,7 +178,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <p>Esta guía fue escrita originalmente y es mantenida principalmente por Joseph Lee (<a href="https://github.com/josephsl">@josephsl</a>), y está diseñada por la comunidad de usuarios y desarrolladores de NVDA. Luke Davis (<a href="https://github.com/XLTechie">@XLTechie</a>) a veces ejerce como editor.</p>
 <p>Las valiosas contribuciones y correcciones de la comunidad son bienvenidas.</p>
 <p>Si colaboras mediante el mecanismo del editor web de wikis de GitHub, ten en cuenta que, por defecto, dicho mecanismo cambia el nombre de este archivo sustituyendo todos los espacios con guiones (-). <strong>Por favor, corrígelo antes de enviar tus cambios.</strong> El nombre correcto de este archivo es: <strong>"NVDA Add-on Development Guide.md"</strong>.</p>
-<p>NVDA es copyright 2006-2020 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
+<p>NVDA es copyright 2006-2021 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API y otros productos de Microsoft son propiedad de Microsoft Corporation. el paquete IAccessible es propiedad intelectual de IBM y la Fundación Linux. Python es propiedad intelectual de la Python Software Foundation. Otros productos mencionados son propiedad intelectual de sus respectivos propietarios.</p>
 <h2 id="introduccion">Introducción</h2>
 <p>Bienvenido a la Guía de desarrollo de complementos para NVDA. Esta es la guía completa sobre cómo desarrollar complementos de NVDA. Esta guía también explica algún segmento de código útil del código fuente del núcleo de NVDA, que resalta conceptos para ti mientras aprendes a escribir complementos.</p>
 <p>Para obtener más información sobre el desarrollo de NVDA, por favor visita [la Página de GitHub de NVDA]. Asegúrate de revisar la <a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a> para familiarizarte con los términos clave y los conceptos básicos para comenzar con el desarrollo de complementos.</p>
@@ -255,7 +259,7 @@ complemento.</p>
 que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windows, y debería lanzarse el proceso de instalación del complemento.</p>
 <h2 id="configuracion-del-entorno-de-desarrollo-de-complementos">Configuración del entorno de desarrollo de complementos</h2>
 <p>Sigue estos pasos para preparar tu ordenador para escribir complementos de NVDA.</p>
-<h3 id="cumplir-con-los-requisitos-del-sistema">Cumplir con los requisitos del Sistema</h3>
+<h3 id="requisitos-del-sistema">Requisitos del Sistema</h3>
 <p>Para crear un complemento para NVDA, asegúrate de que tu sistema cumple los siguientes requisitos:</p>
 <ul>
 <li>NVDA:<ul>
@@ -264,7 +268,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Python:<ul>
-<li>Series de Python 3.7, versión 3.7.8 de 32 bits para Windows: https://www.python.org/downloads/release/python-378/</li>
+<li>Series de Python 3.7, versión 3.7.9 de 32 bits para Windows: https://www.python.org/downloads/release/python-379/</li>
 <li>Aunque la comunidad de complementos entiende que Python 2 podría ser necesario para dar compatibilidad hacia atrás, no recomendamos usarlo en entornos de producción.</li>
 </ul>
 </li>
@@ -413,7 +417,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <li><code>api.getForegroundObject()</code>: devuelve la ventana en primer plano de la aplicación actual (el padre de este objeto es la aplicación misma).</li>
 <li>Estos tienen un método correspondiente para establecer un objeto determinado como el foco o el navegador de objetos. Ten en cuenta que esto permite a NVDA consultar el foco o el navegador de objetos nuevo pero no cambia el foco actual del sistema.</li>
 <li><code>api.getDesktopObject()</code>: devuelve la shell (objeto del nivel más alto).</li>
-<li><code>api.copyToClip()</code>: copia texto en el portapapeles.</li>
+<li><code>api.copyToClip(texto a copiar, notificar éxito o fallo opcionalmente)</code>: copia texto al portapapeles y, opcionalmente, pide a NVDA que avise al usuario sobre esta operación.</li>
 </ul>
 </li>
 <li>Subsistema de módulos de aplicación (appModuleHandler.py, appModules): El subsistema encargado de manejar los módulos de aplicación (véase el capítulo sobre los módulos de aplicación para obtener más información).</li>
@@ -428,7 +432,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <li><code>eventHandler.requestEvents(evento a solicitar, id del proceso, nombre de clase de ventana del control)</code>: Permite a NVDA escuchar eventos específicos para ciertos controles mientras se utiliza otra aplicación.</li>
 </ul>
 </li>
-<li>Puntos de extensión (extensionPoints.py): proporciona una forma de permitir que los complementos y otros módulos definan y respondan a acciones específicas como cambios de perfil, acciones en un complemento, etc. Se definen los siguientes puntos de extensión:<ul>
+<li>Puntos de extensión (extensionPoints): proporciona una forma de permitir que los complementos y otros módulos definan y respondan a acciones específicas como cambios de perfil, acciones en un complemento, etc. Se definen los siguientes puntos de extensión:<ul>
 <li><code>extensionPoints.Action</code>; notifica cuando algo ocurre, por ejemplo: el perfil cambia.</li>
 <li><code>extensionPoints.Decider</code>: decide si procesar algo más, por ejemplo: procesar la entrada del teclado desde un sistema remoto.</li>
 <li><code>extensionPoints.Filter</code>: modifica un texto determinado para su procesamiento posterior, por ejemplo, secuencias avanzadas de voz.</li>
@@ -440,7 +444,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <li>Utilidades de los puertos Hardware y gestión de la entrada y la salida (hwPortUtils.py, hwIo.py): Un conjunto de utilidades para la comunicación a través de los puertos serie de hardware y otros, útil durante el desarrollo de un complemento de controlador.</li>
 <li>Soporte para IAccessible (IAccessibleHandler, objetos IAccessible): Se utilizan para dar soporte a los controles Microsoft Active Accessibility (MSAA) / IAccessible.</li>
 <li>Gestión de entrada (inputCore.py): Gestiona la entrada del usuario.</li>
-<li>Soporte de Java Access Bridge (JABHandler.py): Una colección de los métodos utilizados para soportar el subsistema JAB utilizado por las aplicaciones Java.</li>
+<li>Soporte Java (JABHandler.py, objetos JAB): Una colección de los métodos utilizados para soportar el subsistema JAB (Java Access Bridge) utilizado por las aplicaciones Java.</li>
 <li>Entrada de teclado (keyboardHandler.py): Soporta la introducción de órdenes desde el teclado.</li>
 <li>Función de registro (logHandler.py): Permite a un módulo escribir registros para ser vistos por un desarrollador o por un usuario a través del visualizador de registro. Incluye la siguiente clase:<ul>
 <li><code>logHandler.Log</code>: la clase que implementa la utilidad de registro.</li>
@@ -466,7 +470,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 <li>Soporte para controladores de Sintetizador (synthDriverHandler.py): Este es el módulo principal necesario para complementos de sintetizador de voz.</li>
 <li>Acceso al texto de los Widgets (textInfos): Permite el acceso al texto de widgets y documentos.</li>
 <li>Soporte de pantalla táctil (touchHandler.py): Proporciona soporte para la entrada de la pantalla táctil (sólo versiones instaladas).<ul>
-<li><code>touchHandler.touchSupported()</code> (NVDA 2018.1 o posterior): indica si el sistema soporta interacción táctil.</li>
+<li><code>touchHandler.touchSupported()</code>: indica si el sistema soporta interacción táctil.</li>
 </ul>
 </li>
 <li>Salida de tonos (tones.py): Permite al usuario escuchar tonos. Se definió la siguiente función:<ul>
@@ -474,7 +478,7 @@ que hayas creado o descargado seleccionándolo en tu gestor de archivos de Windo
 </ul>
 </li>
 <li>Mensajes de la interfaz de usuario (ui.py): Incluye varias funciones para la salida de voz y/o braille, incluyendo:<ul>
-<li><code>ui.message(mensaje que se verbaliza o se muestra en Braille, prioridad de la voz)</code>: verbaliza o muestra en Braille el mensaje (una cadena encerrada entre comillas). Opcionalmente, se puede especificar la prioridad de la voz para interrumpir lo que verbaliza el sintetizador de voz cuando se anuncia el mensaje.</li>
+<li><code>ui.message(mensaje que se verbaliza o se muestra en Braille, prioridad de la voz, mensaje Braille opcional)</code>: verbaliza o muestra en Braille el mensaje (una cadena encerrada entre comillas). Opcionalmente, se puede especificar la prioridad de la voz para interrumpir lo que verbaliza el sintetizador de voz cuando se anuncia el mensaje, así como emitir un mensaje diferente en las pantallas Braille.</li>
 <li><code>ui.browseableMessage(mensaje a ser mostrado, título, HTML o no)</code>: muestra algún texto y un título opcional en una ventana de navegador web. Si deseas utilizar el marcado HTML, define el argumento isHTML como True.</li>
 </ul>
 </li>
@@ -898,6 +902,8 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 </ul>
 <p>P. Me he dado cuenta de que NVDA no viene con todas las bibliotecas de Python.</p>
 <p>En particular, NVDA no viene con asyncio. Debes incluir bibliotecas adicionales en la carpeta de componentes de tu complemento.</p>
+<p>P. Necesito manipular variables de entorno, como las rutas del sistema.</p>
+<p>Una forma eficaz de hacerlo es anexar la cadena deseada (tal como la ruta a un ejecutable que necesitas arrancar) al valor existente de la variable de entorno. Esto permite que tu complemento funcione con los valores modificados sin romper NVDA y/o los componentes de Windows mientras NVDA está en ejecución.</p>
 <p>No incluimos preguntas frecuentes de programación o relacionadas con Python, ya que hay sitios que responden a preguntas sobre Python, tales como las relacionadas con el estilo de codificación. Consulta estos documentos si tienes problemas con el código Python.</p>
 <p>Ahora que hemos cubierto los componentes básicos de un complemento, vamos a aprender acerca de cómo empaquetar lo que sabes en tus propios módulos de complemento: extensiones globales, módulos de aplicación, controladores y potenciadores.</p>
 <h2 id="introduccion-a-las-extensiones-globales">Introducción a las extensiones globales</h2>
@@ -1104,7 +1110,7 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <ul>
 <li>Identificador del potenciador: una cadena de caracteres como "screenCurtain" que identifique de forma unívoca a este potenciador.</li>
 <li>Nombre amigable: el nombre que aparecerá en el diálogo Visión.</li>
-<li>Mejoras soportadas: un conjunto congelado de roles de mejora introducidos por este proveedor.</li>
+<li>Mejoras soportadas: un conjunto congelado de roles de mejora que introducirá este proveedor.</li>
 <li>Comprobación de inicio: un procedimiento que se aseugrará de que NVDA se ejecuta en un entorno específico donde el potenciador sería más útil. Por ejemplo, se puede buscar una versión de Windows específica.</li>
 <li>Inicio y apagado: un constructor de clase que indica al potenciador que se ponga en línea y un método "terminate" que lo desactiva.</li>
 <li>Reacción a eventos: si un potenciador quisiera responder a diversas acciones realizadas por los usuarios, puede especificar acciones como consecuencia.</li>
@@ -1133,6 +1139,23 @@ Puedes activarla yendo al menú Herramientas de NVDA, o pulsando NVDA+ctrl+z.</p
 <li><a href="https://github.com/nvdaremote/nvdaremote">NVDA Remote Support de Christopher Toth y Tyler Spivey</a>: un popular complemento utilizado para la solución remota de problemas y soporte técnico, proporciona ejemplos de cómo se utilizan varias bibliotecas externas de Python.</li>
 <li><a href="https://github.com/josephsl/stationPlaylist">StationPlaylist de Joseph Lee</a>: mejora el uso de StationPlaylist Studio, proporciona ejemplos interesantes sobre las clases de superposición y la API de aplicaciones, el uso de hilos y diálogos en un complemento y otras interfaces de usuario.</li>
 </ul>
+<h3 id="envio-de-tu-complemento-a-revision">Envío de tu complemento a revisión</h3>
+<p>Si quieres enviar tu complemento para que se distribuya en el sitio web de complementos, debes solicitar la revisión por parte de un miembro de la comunidad de complementos como se describe:</p>
+<ol>
+<li>Si no lo has hecho, suscríbete a la lista de correo de complementos de NVDA.</li>
+<li>Solicita a la comunidad que revise tu complemento. Asegúrate de indicar su nombre, autor, una descripción breve del complemento y el repositorio público con el código si es posible.</li>
+<li>Los miembros de la comunidad revisarán y harán comentarios sobre tu complemento, incluyendo aspectos como licencia y copyright, experiencia de usuario, documentación y seguridad.</li>
+<li>Si tu complemento es aceptado para su distribución en el sitio web de la comunidad de complementos, un responsable de mantenimiento del sitio web de complementos de la comunidad lo registrará. Esto incluye la creación de una nueva entrada para tu complemento y la preparación del soporte de traducción.</li>
+<li>Opcionalmente, después de que se acepte tu complemento, puedes solicitar a la comunidad que haga revisiones más detalladas. Aquí se pueden incluir la mejora de mensajes, disposición de la interfaz gráfica, auditorías de seguridad avanzadas, pruebas de compatibilidad y migración a versiones de Python más recientes.</li>
+</ol>
+<h4 id="lista-de-comprobacion-de-revision-de-complementos">Lista de comprobación de revisión de complementos</h4>
+<p>Tu complemento:</p>
+<ol>
+<li>Debe estar liberado bajo la licencia GNU General Public License (GPL) 2 o posterior, o una equivalente que permita a un software GPL, como NVDA, incorporar tu código mientras se ejecuta.</li>
+<li>Debe estar escrito en Python 3. La compatibilidad con Python 2 es opcional, pero no se recomienda a partir de la API base de NVDA 2021.1.</li>
+<li>Debe ser compatible con la última liberación de la API base (en enero de 2021, la API base es 2019.3).</li>
+<li>Los mensajes que se presenten a los usuarios deberían hacerse traducibles (usa la función de Gettext _() para hacer que los mensajes sean traducibles). Asegúrate de acompañar los mensajes traducibles con comentarios para traductores.</li>
+</ol>
 <h2 id="ejemplos-avanzados-de-codigo-y-caracteristicas">Ejemplos avanzados de código y características</h2>
 <p>Este capítulo está en construcción. Si hay algo que desees ver aquí, o tienes un comentario o corrección, contacta con alguno de los autores.</p>
 <h3 id="dialogos-interactivos">Diálogos interactivos</h3>
@@ -1545,13 +1568,13 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>ID de automatización para un elemento UIA</td>
-<td>obj.UIAElement.cachedAutomationID</td>
+<td>obj.UIAAutomationID</td>
 <td>Primero, comprueba si el objeto es un control UIA.</td>
 </tr>
 <tr>
 <td>Framework utilizado para generar este objeto UIA</td>
 <td>obj.UIAElement.cachedFrameworkID</td>
-<td>El framework GUI utilizado para programar este objeto. Los frameworks más comunes son Direct UI, Windows Presentation Foundation (WPF) con UIA habilitado, XAML (lenguaje extensible de programación de aplicaciones) y Microsoft Edge.</td>
+<td>El framework GUI utilizado para programar este objeto. Los frameworks más comunes son Direct UI, Windows Presentation Foundation (WPF) con controles UIA habilitados, XAML (lenguaje extensible de programación de aplicaciones) y Microsoft Edge.</td>
 </tr>
 <tr>
 <td>Quiero pedirle a UIA los valores de una propiedad específica</td>
@@ -1655,8 +1678,8 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>Dispone de soporte para pantalla táctil</td>
-<td>touchHandler.handler is not None</td>
-<td>Si no es None, el soporte táctil está activo y disponible.</td>
+<td>touchHandler.touchSupported()</td>
+<td>Si devuelve True, el soporte táctil está activo y disponible.</td>
 </tr>
 <tr>
 <td>Obtener la versión de NVDA</td>
