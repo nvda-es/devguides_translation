@@ -50,6 +50,10 @@ See the section entitled "Scripts" for information about NVDA add-ons.
 
 If you still cannot find the perfect voice for you, the [Extra Voices page](http://community.nvda-project.org/wiki/ExtraVoices) lists several other speech synthesizers (both free and paid you can use instead.
 
+## Using a specific soundcard / audio device
+
+Jaws has a "Soundcards" option in its utilities, which allows setting which audio device speech comes through.  NVDA has a similar option in the Syntheisizer dialog.  Press NVDA+control+s to open the dialog directly, TAB to the second option which is "Audio Output Device".  This is a drop-down list with the audio devices available.  Select the desired device with the arrow keys.  The third option in this dialog box is "Ducking".  This controls whether NVDA lowers ("Ducks") the volume of sounds from other programs (eg music or YouTube videos).  Ducking can be "Always" (while NVDA is running), only while NVDA is outputting speech and sounds, or never.
+
 ## Terminology
 
 Most of the time, both NVDA and JAWS share a lot of the same terminology to describe controls e.g. radio buttons, combo boxes, checkboxes etc.

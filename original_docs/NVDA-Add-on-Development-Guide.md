@@ -354,19 +354,19 @@ First, if you haven't done so, enable development scratchpad. Then open your use
 The below code implements our example. Put this in your .py file as exactly as shown:
 
 ```python
-	# Add-on development first example
-	
-	import globalPluginHandler
-	import tones # We want to hear beeps.
-	
-	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	
-		def script_doBeep(self, gesture):
-			tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
-	
-		__gestures={
-			"kb:NVDA+A": "doBeep"
-		}
+# Add-on development first example
+
+import globalPluginHandler
+import tones # We want to hear beeps.
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	def script_doBeep(self, gesture):
+		tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
+
+	__gestures={
+		"kb:NVDA+A": "doBeep"
+	}
 ```
 
 In Python, you make comments by putting hash sign (#) at the start of the comment line.
@@ -405,16 +405,16 @@ NVDA doesn't just let you add global commands, but it also allows writing code t
 The below code, from NVDA developer Guide, gives a short example of a typical app module: play a short beep when switching to Notepad. Put the below code in notepad.py, which in turn should be placed in appModules folder under scratchpad directory (if enabled) in your user configuration folder in order for it to run.
 
 ```python
-	# An example app module.
-	
-	import appModuleHandler
-	import tones
-	
-	class AppModule(appModuleHandler.AppModule):
-		
-		def event_gainFocus(self, obj, nextHandler):
-			tones.beep(256, 200)
-			nextHandler()
+# An example app module.
+
+import appModuleHandler
+import tones
+
+class AppModule(appModuleHandler.AppModule):
+
+	def event_gainFocus(self, obj, nextHandler):
+		tones.beep(256, 200)
+		nextHandler()
 ```
 
 ### Example 2 code explanation
@@ -527,13 +527,13 @@ Let's go through some simplified real-life examples demonstrating how the compon
 The below code checks whether the navigator object is located somewhere on the same app or not.
 
 ```python
-	import api
-	import ui
-	
-	def sameApp(obj=None):
-		if obj is None:
-			obj = api.getNavigatorObject()
-		return api.getFocusObject().appModule == obj.appModule
+import api
+import ui
+
+def sameApp(obj=None):
+	if obj is None:
+		obj = api.getNavigatorObject()
+	return api.getFocusObject().appModule == obj.appModule
 ```
 
 The `api.getNavigatorObject()` function returns the current navigator object, the object you are interested in as opposed to focused object. Each NVDA object includes `appModule` member which records on which app an object is located.
@@ -543,9 +543,9 @@ The `api.getNavigatorObject()` function returns the current navigator object, th
 In NVDA 2015.2 and later, it became possible to display a message in a browse mode window so people can use browse mode commands to review the message content. The below code displays "Hello world" in a document window.
 
 ```python
-	import ui
-	
-	ui.browseableMessage("Hello World!", isHtml=False)
+import ui
+
+ui.browseableMessage("Hello World!", isHtml=False)
 ```
 
 The isHtml flag tells NVDA whether to treat the message as HTML text.
@@ -555,13 +555,13 @@ The isHtml flag tells NVDA whether to treat the message as HTML text.
 In UI Automation, automation ID is used to identify different screen elements. The following code displays this information in a browsable window.
 
 ```python
-	import ui
-	from NVDAObjects.UIA import UIA
-	
-	def announceUIAId():
-		obj = api.getFocusObject()
-		if isinstance(obj, UIA):
-			ui.browseableMessage(obj.UIAAutomationId, isHtml=True)
+import ui
+from NVDAObjects.UIA import UIA
+
+def announceUIAId():
+	obj = api.getFocusObject()
+	if isinstance(obj, UIA):
+		ui.browseableMessage(obj.UIAAutomationId, isHtml=True)
 ```
 
 #### Example 4: Send keystrokes
@@ -569,10 +569,10 @@ In UI Automation, automation ID is used to identify different screen elements. T
 You can ask NVDA to send specific keystrokes by instantiating a keyboard gesture object.
 
 ```python
-	import keyboardHandler
-	
-	def sendApplicationsKey():
-		keyboardHandler.KeyboardInputGesture.fromName("applications").send()
+import keyboardHandler
+
+def sendApplicationsKey():
+	keyboardHandler.KeyboardInputGesture.fromName("applications").send()
 ```
 
 #### Example 5: Stop speech whenever screen content changes if dynamic content change announcement is off
@@ -580,15 +580,15 @@ You can ask NVDA to send specific keystrokes by instantiating a keyboard gesture
 The below code is a handler for a name change event that stops speech whenever screen content changes if dynamic content change announcement is off.
 
 ```python
-	import appModuleHandler
-	import config
-	import speech
-	
-	class AppModule(appModuleHandler.AppModule):
-	
-		def event_nameChange(self, obj, nextHandler):
-			if not config.conf["presentation"]["reportDynamicContentChanges"]:
-				speech.cancelSpeech()
+import appModuleHandler
+import config
+import speech
+
+class AppModule(appModuleHandler.AppModule):
+
+	def event_nameChange(self, obj, nextHandler):
+		if not config.conf["presentation"]["reportDynamicContentChanges"]:
+			speech.cancelSpeech()
 ```
 
 #### Example 6: using script decorator
@@ -600,17 +600,17 @@ In NVDA 2018.3, a special decorator named scriptHandler.script was introduced to
 Recall the first example where a beep was heard when NVDA+A was pressed. The drawback is that the actual script and the command (gesture) associated with it were defined in different places. You can group them by using script decorator (scriptHandler.script) as shown below.
 
 ```python
-	# Add-on development first example global plugin, now edited to use script decorator
-	
-	import globalPluginHandler
-	import scriptHandler
-	import tones
-	
-	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	
-		@scriptHandler.script(gesture="kb:NVDA+A")
-		def script_doBeep(self, gesture):
-			tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
+# Add-on development first example global plugin, now edited to use script decorator
+
+import globalPluginHandler
+import scriptHandler
+import tones
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	@scriptHandler.script(gesture="kb:NVDA+A")
+	def script_doBeep(self, gesture):
+		tones.beep(440, 1000)  # Beep a standard middle A for 1 second.
 ```
 
 Throughout this guide, whenever script examples are shown, script decorator will be used unless noted otherwise.
@@ -677,19 +677,19 @@ Suppose you are asked by a user to give him the value of a slider in a program u
 Here is the code to implement this feature:
 
 ```python
-	# Object example 1
-	
-	import api
-	import appModuleHandler
-	
-	class AppModule(appModuleHandler.AppModule):
-	
-		sliderChildIndex = -1 # The variable to store the child index.
-		
-		def getSliderValue(self):
-			fg = api.getForegroundObject()
-			sliderVal = fg.children[self.sliderChildIndex].value
-			return sliderVal
+# Object example 1
+
+import api
+import appModuleHandler
+
+class AppModule(appModuleHandler.AppModule):
+
+	sliderChildIndex = -1 # The variable to store the child index.
+
+	def getSliderValue(self):
+		fg = api.getForegroundObject()
+		sliderVal = fg.children[self.sliderChildIndex].value
+		return sliderVal
 ```
 
 In this code, the method `fg.children[index]` is used to retrieve the child with the given index (here, since we said the toolbar is the last child, the index would be minus 1, or the very last child; we could have used fg.lastChild). Alternatively, you can use `fg.getChild(-1) in certain situations (IAccessible, for example).)
@@ -735,7 +735,7 @@ An example of the first case: modifying an attribute.
 ```python
 	# Reassign some Delphi forms as window.
 	from controlTypes import ROLE_WINDOW
-	
+
 	def event_NVDAObject_init(self, obj):
 		if obj.windowClassName == "TForm": obj.role = ROLE_WINDOW
 ```
@@ -745,19 +745,19 @@ This means that whenever we encounter a window with the class name of "TForm", N
 Example 2 deals with an app module which has two objects for dealing with specific parts of a program, then uses chooseNVDAObjectOverlayClasses to assign the logic for each control.
 
 ```python
-	#An example of overlay classes
-	
-	class enhancedEdit(IAccessible):
-		# Some code to be run when window class name is MyEdit.
-	
-	class MainWindow(IAccessible):
-		# Another code, this time adding custom gestures for main window of the program.
-	
-	# In the app module:
-	
-	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
-		if obj.windowClassName == "myEdit": clsList.insert(0, enhancedEdit)
-		elif obj.windowClassName == "TWindow": clsList.insert(0, mainWindow)
+#An example of overlay classes
+
+class enhancedEdit(IAccessible):
+	# Some code to be run when window class name is MyEdit.
+
+class MainWindow(IAccessible):
+	# Another code, this time adding custom gestures for main window of the program.
+
+# In the app module:
+
+def chooseNVDAObjectOverlayClasses(self, obj, clsList):
+	if obj.windowClassName == "myEdit": clsList.insert(0, enhancedEdit)
+	elif obj.windowClassName == "TWindow": clsList.insert(0, mainWindow)
 ```
 
 In both cases, the object that we wish to check must be inserted as the first element of the clsList. The effect is that these custom objects will take precedence when looking up gestures or code (behavior) for the object, and in the developer info, these custom objects will come first when MRO (Method Resolution Order) for the navigator object is displayed.
@@ -787,13 +787,13 @@ In this example, we'll define two scripts called "sayHello" and say"GoodBye", th
 ```python
 	# An example fragment for script assignment from a global plugin.
 	import ui
-	
+
 	def script_sayHello(self, gesture):
 		ui.message("Hello!")
-	
+
 	def script_sayGoodBye(self, gesture):
 		ui.message("Good Bye!")
-	
+
 	__gestures={
 		"kb:control+NVDA+1":"sayHello",
 		"kb:Control+NVDA+2":"sayGoodBye"
@@ -812,14 +812,14 @@ In addition to the modified example 2, the below example will add an input help 
 	# An example fragment for script decorator usage from a global plugin.
 	import ui
 	from scriptHandler import script
-	
+
 	@script(
 		description="Says Hello",
 		gesture="kb:control+NVDA+1"
 	)
 	def script_sayHello(self, gesture):
 		ui.message("Hello!")
-	
+
 	@script(
 		description="Says good bye",
 		gestures=["kb:Control+NVDA+2", "kb:Control+NVDA+3"]
@@ -842,16 +842,16 @@ You can pass in the following information about a script to script decorator:
 As in specialist objects above, scripts can be assigned to certain objects by specifying gestures dictionary for this particular object. Here is an example from an app module which defines scripts for main window of a media player program, defined using script decorator:
 
 ```python
-	# Scripts for objects for a program.
-	from NVDAObjects.IAccessible import IAccessible
-	from scriptHandler import script
-	
-	class Player(IAccessible)
-	
-		@script(gesture="kb:NVDA+T")
-		def script_saySongName(self, gesture):
-			ui.message(self.songTitle_) #Suppose if that variable has been defined.
-	
+# Scripts for objects for a program.
+from NVDAObjects.IAccessible import IAccessible
+from scriptHandler import script
+
+class Player(IAccessible)
+
+	@script(gesture="kb:NVDA+T")
+	def script_saySongName(self, gesture):
+		ui.message(self.songTitle_) #Suppose if that variable has been defined.
+
 	# And in the main app module:
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		if obj.windowClassName == "PlayerWindow": clsList.insert(0, Player)
@@ -966,23 +966,23 @@ If you wish to store settings for your add-on, use ConfigObj or NVDA's built-in 
 Finally, you can ask NVDA to perform some routines while the add-on is loading or being terminated. This is done by defining `__init__` and `terminate` method for the add-on. Depending on the plugin type, use:
 
 * For global plugin:
-  ```
-  def __init__(self):
-  	super(GlobalPlugin, self).__init__()
-  	# The routine to do when the global plugin loads.
-  	# Warning! You should always call super method first in order to initialize various foundations correctly.
+  ```python
+	  def __init__(self):
+  		# The routine to do when the global plugin loads.
+  		# Warning! You should always call super method first in order to initialize various foundations correctly.
+  		super(GlobalPlugin, self).__init__()
   ```
 * For app modules:
   ```
-  def __init__(self, *args, **kwargs):
-  	super(AppModule, self).__init__(*args, **kwargs)
-  	# What NVDA should do when the app module loads.
+  	def __init__(self, *args, **kwargs):
+  		super(AppModule, self).__init__(*args, **kwargs)
+  		# What NVDA should do when the app module loads.
   ```
 * For terminating, regardless of the add-on type:
   ```
-  def terminate(self):
-  	# Do something when the add-on terminates.
-  	# Warning! Never initialize ANY core module such as GUI in terminate method as doing so will prevent NVDA from exiting properly.
+  	def terminate(self):
+  		# Do something when the add-on terminates.
+  		# Warning! Never initialize ANY core module such as GUI in terminate method as doing so will prevent NVDA from exiting properly.
   ```
 
 ### Let's build an add-on
@@ -1143,21 +1143,21 @@ You are meeting with a client who uses Duxbury braille translator (a popular bra
 The global plugin, named brailleWrite.py, would look like this:
 
 ```python
-	# An example global plugin.
-	
-	import qtbrl # The braille entry module.
-	import globalPluginHandler
-	from scriptHandler import script
-	
-	class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-		brlentry = False # Braille entry is not active.
-		
-		@script(
-			description="Toggles braille entry on or off.",
-			gesture="kb:NVDA+X"
-		)
-		def script_toggleBrailleEntry(self, gesture):
-			self.brlentry = True if not self.brlentry else False # Toggle braille entry mode.
+# An example global plugin.
+
+import qtbrl # The braille entry module.
+import globalPluginHandler
+from scriptHandler import script
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+	brlentry = False # Braille entry is not active.
+
+	@script(
+		description="Toggles braille entry on or off.",
+		gesture="kb:NVDA+X"
+	)
+	def script_toggleBrailleEntry(self, gesture):
+		self.brlentry = True if not self.brlentry else False # Toggle braille entry mode.
 ```
 
 With this background in mind, try some of the short exercises below.
@@ -1208,20 +1208,20 @@ Suppose you wish to find out which line you're editing in Notepad. Assuming that
 The app module for Notepad would look like this:
 
 ```python
-	# Example app module for Notepad, notepad.py.
-	import appModuleHandler
-	import api
-	import ui
-	from scriptHandler import script
-	
-	class AppModule(appModuleHandler.AppModule):
-	
-		@script(gesture="kb:NVDA+S")
-		def script_sayLineNumber(self, gesture):
-			# Suppose line number is in the form "  ln 1".
-			lineNumList = api.getStatusBar().name.split()
-			lineNum = lineNumList[2]+lineNumList[3]
-			ui.message(lineNum)
+# Example app module for Notepad, notepad.py.
+import appModuleHandler
+import api
+import ui
+from scriptHandler import script
+
+class AppModule(appModuleHandler.AppModule):
+
+	@script(gesture="kb:NVDA+S")
+	def script_sayLineNumber(self, gesture):
+		# Suppose line number is in the form "  ln 1".
+		lineNumList = api.getStatusBar().name.split()
+		lineNum = lineNumList[2]+lineNumList[3]
+		ui.message(lineNum)
 ```
 
 So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
@@ -1231,12 +1231,12 @@ So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
 Openbook is a scanning and reading program from Freedom scientific. Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:
 
 ```python
-	# Silencing NVDA in openbook, openbook.py.
-	import appModuleHandler
-	
-	class AppModule(appModuleHandler.AppModule):
-	
-		sleepMode = True
+# Silencing NVDA in openbook, openbook.py.
+import appModuleHandler
+
+class AppModule(appModuleHandler.AppModule):
+
+	sleepMode = True
 ```
 
 With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own).
@@ -1248,17 +1248,17 @@ You can ask NVDA to handle specific events while focused on another app. This is
 The below code allows NVDA to announce value changes while focused on another application.
 
 ```python
-	# Example app module for a messenger app.
-	# The object we wish to track has window class name of "MessengerWindow".
-	
-	import appModuleHandler
-	import eventHandler
-	
-	class AppModule(appModuleHandler.AppModule):
-	
-		def __init__(self, *args, **kwargs):
-			super(AppModule, self).__init__(*args, **kwards)
-			eventHandler.requestEvents("valueChange", self.processID, "MessengerWindow")
+# Example app module for a messenger app.
+# The object we wish to track has window class name of "MessengerWindow".
+
+import appModuleHandler
+import eventHandler
+
+class AppModule(appModuleHandler.AppModule):
+
+	def __init__(self, *args, **kwargs):
+		super(AppModule, self).__init__(*args, **kwards)
+		eventHandler.requestEvents("valueChange", self.processID, "MessengerWindow")
 ```
 
 Once defined, even if focused in another app, new messages (values) will be announced.
@@ -1425,16 +1425,19 @@ In short:
 The following code will create a basic dialog, providing the user with two very familiar options. See the notes after the code to understand what is going on.
 
 ```python
+import wx  # We need this for working with dialogs and windows
+
+import gui  # We need this for working with dialogs and windows
 import globalPluginHandler
 from scriptHandler import script
 
-class GlobalPlugin (globalPluginHandler.GlobalPlugin):
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
-	@script(gesture="kb:nvda+shift+t")		# Configure the key
+	@script(
+		gesture="kb:nvda+shift+t",  # Configure the key
+		description="Run an add-on guide example"  # NVDA input help
+	)
 	def script_makeSillyWindow(self, gesture):	# A normal GlobalPlugin script method
-		import wx				# We need this for working with dialogs and windows
-		import gui				# We need this for working with dialogs and windows
-
 		def showSillyWindow():			# Define an internal function
 			gui.messageBox("Warning! You are about to do nothing. But you will be doing it with an important looking dialog window. Continue?",
 				"Silly Question Window", wx.OK | wx.CANCEL | wx.ICON_WARNING)
@@ -1454,12 +1457,18 @@ Unfortunately, if we just call gui.messageBox directly, it will usually cause NV
 Below is a more complex example, that shows how to return information from a dialog, based upon which button was pressed. Note that there are many more constants you can use, and types of dialog other than messageBox. This section is only an introduction to the subject to get you started.
 
 ```python
-import globalPluginHandler
-from scriptHandler import script
-import gui
 import wx
 
-class GlobalPlugin (globalPluginHandler.GlobalPlugin):
+import gui
+import globalPluginHandler
+from scriptHandler import script
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	@script(
+		gesture="kb:nvda+shift+t",  # Configure the key
+		description="Run an add-on guide example"  # NVDA input help
+	)
 
 	@script(gesture="kb:nvda+shift+t")		# Configure the key
 	def script_askPointlessQuestion(self, gesture):
@@ -1477,7 +1486,33 @@ Do you wish to proceed?""",
 
 ### Using The Log
 
-**Coming soon**
+There are more in-depth things you can do with the log than what will be shown here.
+However, most of the time, all you want to do is write a basic message into the log. To do that, you can import NVDA's log singleton, and call its methods just like any others.
+
+```python
+import globalPluginHandler
+from scriptHandler import script
+from logHandler import log  # This is what you need for logging
+from datetime import date
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	@script(
+		gesture="kb:nvda+shift+l",  # Configure the key
+		description="Run an add-on guide example"  # NVDA input help
+	)
+	def script_captainsLog(self, gesture):
+		today = date.today().strftime("%Y.%m.%d")
+		log.info(f"NVDA log. Earth date, {today}.")
+		log.warning("These are the add-ons of the screen reader NVDA.")
+		log.debugWarning("Its continuing mission. To seek out new opportunities to improve lives!")
+		log.debug("To empower users!")
+		log.error("and to boldly access software that no screen reader has made accessible before!")
+```
+
+If you run the above in the NVDA scratchpad or a global plugin, and call it by pressing the Shift+NVDA+L key sequence, you will receive between zero and five log entries, depending on how your NVDA logging level is configured in general settings. For example, if your log level is set to "debug", you will find them all there, but only four of them if your log level is set to "debug warning".
+
+Note: while developing add-ons, it is usually wise to have the most debugging that you can, so you can gather information when things go wrong. For that reason, you may want to set your logging level to "debug".
 
 ### Threading
 

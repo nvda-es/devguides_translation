@@ -7,12 +7,10 @@
   <body>
   <header><h1># Cómo contribuir con NVDA</h1></header>
   <h1 id="como-contribuir-con-nvda">Cómo contribuir con NVDA</h1>
-<p>Si quieres contribuir con código o documentación a NVDA, sigue estas pautas, por favor.</p>
-<p>Si eres nuevo en el proyecto o buscas una forma de ayudar, echa un vistazo a:</p>
-<ul><li><a href="https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+">label:goodfirstissue</a></li>
-<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev">label:goodForNewDev </a></li>
-<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author">label:closed/needs-new-author </a></li>
-<li><a href="https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned">label:Abandoned </a></p></li></ul>
+<p>Hay diversas maneras de colaborar con el proyecto NVDA:
+- Probando NVDA
+- Clasificación e investigación de incidencias
+- Contribuciones de documentación o código</p>
 <h2 id="nota-actualmente-solo-se-aceptan-solicitudes-de-cambio-de-mantenimiento-o-correccion-de-fallos-mientras-se-procesa-la-cola-existente">Nota: actualmente sólo se aceptan solicitudes de cambio de mantenimiento o corrección de fallos mientras se procesa la cola existente.</h2>
 <p>Para más información, consulta: https://github.com/nvaccess/nvda/issues/11006</p>
 <h2 id="pruebas">Pruebas</h2>
@@ -25,35 +23,66 @@ Hay varios enfoques que se pueden tomar para ellas:
 <p>Formar un grupo puede ayudar a obtener una buena cobertura, ideas sobre lo que se debe probar, y quizá aprender nuevas formas de usar NVDA.</p>
 <h2 id="clasificacion-en-investigacion-de-incidencias">Clasificación en investigación de incidencias:</h2>
 <p>También puedes hacer contribuciones que no sean de código, ayudando a procesar las incidencias entrantes en GitHub. Para más información, consulta los documentos relacionados con la clasificación de incidencias en nuestra web.</p>
-<h2 id="como-enviar-cambios">Cómo enviar cambios</h2>
-<p>Para cualquier cosa distinta a la reparación de problemas pequeños, por favor comenta en una incidencia existente o crea una incidencia nueva exponiendo los detalles del cambio que propones.
-Los cambios no relacionados se deben gestionar en incidencias separadas.
-Incluye información sobre casos de uso, diseño, experiencia de usuario, etc.
-Eso permitirá a los desarrolladores discutir los aspectos y consecuencias derivadas del cambio, y potencialmente evitará gastar tiempo inútilmente.
-Deberías esperar a que se acepte tu propuesta antes de empezar a programar. Ten en cuenta que NV Access no aceptará cambios que no se hayan discutido previamente.</p>
-<p>Si es un cambio pequeñito que no incluye modificaciones en diseño, discusiones sobre la implementación o experiencia de usuario (por ejemplo, arreglar un error que se ve claramente en el código o en la documentación, o un nuevo controlador para un sintetizador o pantalla braille), puedes crear una nueva solicitud de cambios sin tener que abrir una incidencia antes. Sin embargo, esto es muy raro. En caso de duda, abre una incidencia. Usa esta incidencia para debatir las alternativas que te has planteado con respecto a la implementación, diseño y experiencia de usuario. Después da tiempo para que la gente haga comentarios.</p>
-<p>Si esta es tu primera contribución, deberás hacer una "bifurcación" del repositorio oficial en tu cuenta de GitHub.</p>
-<p>Cuando hagas una bifurcación, GitHub copiará la rama master. Sin embargo, esta rama no se actualizará cuando lo haga la oficial. Para asegurarte de que tu trabajo siempre se basa en el último commit de la rama master oficial, se recomienda que vincules la copia de tu rama a la oficial en vez de la que hay en tu cuenta. Si ya has clonado tu bifurcación de GitHub, puedes hacer algo como esto desde la línea de órdenes:</p>
-<pre><code>#Añadir un origen remoto con el repositorio de NVDA.
-git remote add nvaccess https://github.com/nvaccess/nvda.git
-# Descargar las ramas de NV Access.
-git fetch nvaccess
-# Cambiar a la rama master local.
-git checkout master
-# configurar la rama master local para que utilice por defecto el origen remoto de NVDA.
-git branch -u nvaccess/master
-# Actualizar la rama master local.
-git pull
-</code></pre>
-
-<p>Deberías usar una rama "temática" distinta para cada incidencia.
-Todo el código debería basarse en el commit más reciente de la rama master oficial que hay en el momento en que empiezas a trabajar, a no ser que el código oficial sufra cambios drásticos que afecten a tu trabajo o dependa del código de otra incidencia.</p>
-<p>Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías actualizar la guía de usuario convenientemente para reflejar tu cambio.</p>
-<p>Antes de abrir tu solicitud de cambios, ejecuta la orden <code>scons tests</code> y asegúrate de que se superan todas las pruebas unitarias. Si es posible, crea un conjunto de pruebas unitarias adicionales para probar tus cambios. Ejecuta también el comprobador de conformidad de NV Access, visita <a href="https://github.com/nvaccess/nvda/tree/master/tests/lint"><code>tests/lint/readme.md</code></a> para más información.</p>
-<h3 id="crear-una-solicitud-de-cambios-pr-o-pull-request">Crear una solicitud de cambios (PR o Pull Request)</h3>
-<p>Cuando sea hora de enviar el código, abre una nueva solicitud de cambios haciendo referencia a la incidencia que describe tu cambio.
-El equipo de NV Access pasará a revisar tu código.
-Las solicitudes de cambios que corrijan errores se revisarán antes que las que añadan funciones o mejoras.</p>
+<h2 id="contribuciones-de-codigo-documentos">Contribuciones de código / documentos</h2>
+<p>Si eres nuevo en el proyecto o buscas una forma de ayudar, echa un vistazo a:
+- <a href="https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+">label:goodfirstissue</a>
+- <a href="https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev">label:goodForNewDev </a>
+- <a href="https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author">label:closed/needs-new-author </a>
+- <a href="https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned">label:Abandoned </a></p>
+<h3 id="pautas">Pautas:</h3>
+<ul>
+<li>Para cualquier cosa distinta a la reparación de problemas pequeños, por favor comenta en una incidencia existente o crea una incidencia nueva exponiendo los detalles del cambio que propones.</li>
+<li>Los cambios no relacionados se deben gestionar en incidencias separadas.</li>
+<li>Incluye información sobre casos de uso, diseño, experiencia de usuario, etc.</li>
+<li>Eso permitirá a los desarrolladores discutir los aspectos y consecuencias derivadas del cambio, y potencialmente evitará gastar tiempo inútilmente.</li>
+<li>Es recomendable esperar la aceptación de tu propuesta antes de que empieces a codificar.</li>
+<li>Ten en cuenta que NV Access no aceptará cambios que no se hayan discutido previamente.</li>
+<li>Plantéate iniciar un debate por las listas de correo (por ejemplo NVDA Developers) para ver si hay interés.</li>
+<li>Un cambio menor / trivial que no requiera definitivamente debates sobre diseño, experiencia de usuario o implementación puede ir directamente en una solicitud de cambio sin crear una incidencia antes.</li>
+<li>Por ejemplo, una corrección de un error obvio de codificación o escritura o un controlador simple de síntesis o pantalla Braille</li>
+<li>Esto debería ser raro.</li>
+<li>Ante cualquier duda, usa una incidencia primero. Utilízala para debatir sobre las alternativas planteadas respecto a la implementación, el diseño y la experiencia de usuario. Después, da tiempo a la gente para que ofrezca retroalimentación.</li>
+</ul>
+<h3 id="proceso-de-github">Proceso de GitHub:</h3>
+<h4 id="1-bifurca-el-repositorio-de-nvda-en-github">1. "Bifurca" el repositorio de NVDA en GitHub</h4>
+<p>Cuando bifurques el repositorio, GitHub creará una copia de la rama master.
+   Sin embargo, esta rama no se actualizará cuando lo haga la rama master oficial.
+   Para asegurarte de que tu trabajo siempre se basa en el último commit de la rama master oficial, se recomienda que vincules la copia de tu rama a la oficial en vez de la que hay en tu cuenta.
+   Si has clonado tu bifurcación de GitHub, puedes hacerlo desde la línea de órdenes del siguiente modo:
+   ```
+   # Añadir un origen remoto con el repositorio de NV Access.
+   git remote add nvaccess https://github.com/nvaccess/nvda.git</p>
+<p># Descargar las ramas de NV Access.
+   git fetch nvaccess</p>
+<p># Cambiar a la rama master local.
+   git checkout master</p>
+<p># configurar la rama master local para que utilice por defecto la rama master de NV Access.
+   git branch -u nvaccess/master</p>
+<p># Actualizar la rama master local.
+   git pull
+   ```</p>
+<h4 id="2-usa-una-rama-tematica-separada-para-cada-contribucion">2. Usa una rama "temática" separada para cada contribución</h4>
+<p>Todo el código debería basarse en el commit más reciente de la rama master oficial que hay en el momento en que empiezas a trabajar, a no ser que el código oficial sufra cambios drásticos que afecten a tu trabajo o dependa del código de otra incidencia.
+   Si vas a añadir algo de lo que el usuario se vaya a dar cuenta, deberías actualizar la guía de usuario convenientemente para reflejar tu cambio.</p>
+<h4 id="3-ejecuta-las-pruebas-unitarias-y-de-estilo">3. Ejecuta las pruebas unitarias y de estilo</h4>
+<ul>
+<li>Ejecuta <code>rununittests</code> (<code>rununittests.bat</code>) antes de abrir tu solicitud de cambios, y comprueba que se superan todas las pruebas unitarias.</li>
+<li>Si es posible para tu solicitud de cambios, plantéate crear un conjunto de pruebas unitarias para evaluar tus cambios.</li>
+<li>La comprobación de estilo garantiza que tu código cumple con nuestras expectativas de estilo del código. Usa <code>runlint nvaccess/master</code> (<code>runlint.bat</code>)</li>
+</ul>
+<h4 id="4-crea-una-solicitud-de-cambios-pr-o-pull-request">4. Crea una solicitud de cambios (PR o Pull Request)</h4>
+<p>Cuando creas que una contribución está lista, o quieras recibir comentarios, abre un borrador de solicitud de cambios.
+   Rellena la plantilla de solicitud de cambios, incluyendo las consideraciones de la lista de comprobación.
+   La lista de comprobación te pide que confirmes que has pensado en todos los elementos. Si falta alguno de ellos, viene bien explicar en algún lugar de la solicitud por qué se ha descartado.
+   Cuando quieras una revisión, marca la solicitud como "ready for review".</p>
+<h4 id="5-participa-en-el-proceso-de-revision-del-codigo">5. Participa en el proceso de revisión del código</h4>
+<p>Este proceso requiere que los desarrolladores principales de NVDA entiendan el propósito del cambio, lean los cambios en el código, hagan preguntas o sugieran modificaciones.
+   Participa en este proceso, responde a las preguntas y debate sobre los cambios.
+   Ser proactivo acelerará notablemente el proceso de revisión del código.
+   Cuando se apruebe la solicitud de cambio se fusionará, y dicho cambio estará activo en la siguiente compilación Alpha.</p>
+<h4 id="6-comentarios-de-los-usuarios-alpha">6. Comentarios de los usuarios Alpha</h4>
+<p>Después de que se fusione una solicitud de cambios, estáte atento a los comentarios de los usuarios y evaluadores Alpha.
+   Puedes tener que continuar para solucionar fallos o tener en cuenta casos de uso imprevistos.</p>
 <h2 id="estilo-del-codigo">Estilo del código</h2>
 <p>El estilo del código está reforzado por el comprobador de conformidad Flake8, visita <a href="https://github.com/nvaccess/nvda/tree/master/tests/lint"><code>tests/lint/readme.md</code></a> para más información.</p>
 <h3 id="codificacion">Codificación</h3>

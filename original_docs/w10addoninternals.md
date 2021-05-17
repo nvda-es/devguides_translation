@@ -2,19 +2,19 @@
 
 Author: Joseph Lee
 
-Revision: January 2021
+Revision: May 2021
 
 ## Introduction
 
 Supporting new technologies can be fun and challenging, especially a new operating system version that changes how people perform certain tasks and introduces new ways of keeping up with changes. This is more so when it comes to letting screen readers support new operating systems such as Windows 10, which brings new ways of interacting with a computer, new set of apps and technologies, and accessibility improvements and challenges. NVDA includes solid support for Windows 10, including Microsoft Edge, the new Start menu, navigation in universal apps and so on, all made possible thanks to collaboration between users, Microsoft, NV Access and others, part of which involves the add-on we will meet in this article.
 
-In NVDA Add-on Internals: Windows 10 App Essentials, we'll look at how this add-on came about, how it works, and go over recommendations from the add-on author (me) regarding accessibility practices. You'll also glimpse how UI Automation works at a high level, how features start out as an add-on component and end up as an NVDA feature and so on.
+In NVDA Add-on Internals: Windows 10 App Essentials, we'll look at how this add-on came about, how it works, its development, and go over recommendations from the add-on author (me) regarding accessibility practices. You'll also glimpse how UI Automation works at a high level, how features start out as an add-on component and end up as an NVDA feature and so on.
 
 To download the add-on, visit https://addons.nvda-project.org/addons/wintenApps.en.html. The source code for this add-on can be found at https://github.com/josephsl/wintenApps. As Windows 10 and universal apps are UI Automation universes, it is essential that you know some things about UIA, which are covered later.
 
 Disclaimer: Despite the article text and knowledge that's contained within, I (Joseph Lee, the add-on author) do not work for NV Access nor Microsoft.
 
-Note: some of the features described may change as Windows 10 and NVDA development progresses. As of August 2020 revision, features from upcoming NVDA 2020.3 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
+Note: some of the features described may change as Windows 10 and NVDA development progresses. As of May 2021 revision, features from upcoming NVDA 2021.1 release and recent Windows Insider Preview builds are documented for reference purposes. Also, when refering to Windows 10 updates, release ID (YYMM) is used instead of using marketing label unless specified (for example, Version 1709 instead of Fall Creators Update, or 20H2 instead of 2009).
 
 Copyright: Microsoft Windows, Windows 10, Windows API, UI Automation, Microsoft Edge, Universal Windows Platform (UWP) and related technologies are copyright Microsoft Corporation. NVDA is copyright NV Access. Windows 10 App Essentials add-on is copyright 2015-2021 Joseph Lee and contributors, released under GPL 2.
 
@@ -24,9 +24,9 @@ Windows 10 is the "last major" version of Windows. It introduces a completely ne
 
 Windows 10 made its maiden flight in October 2014. Back then, it was called Windows Technical Preview, and after several weeks, it was renamed to Windows Insider Preview. Between October 2014 and July 2015 when Windows 10 Version 1507 (build 10240) shipped, more than five million users became Insiders, testing new builds and apps, submitting feedback and so on.
 
-I call the October 2014 preview (build 9841) a maiden flight for several reasons. First, this is the first time where Microsoft did show interest in user-level feedback. Although betas existed for earlier versions such as Windows 7 and 8.1, Windows 10 is the first attempt from Microsoft at connecting with users and taking comments seriously. Second, build 9841 (the first Insider Preview build) hailed the start of Windows as a Service, a completely different approach to upgrading Windows where Microsoft wanted to provide two things: continuous delivery and feedback loop, and a unified configuration that works well with most devices. There were setbacks, such as privacy concerns due to telemetry, but for the most part, Windows 10 was received positively.
+I call the October 2014 preview (build 9841) a maiden flight for several reasons. First, this is the first time where Microsoft did show interest in user-level feedback. Although betas existed for earlier versions such as Windows 7 and 8.1, Windows 10 is the first attempt from Microsoft at connecting with users and taking comments seriously. Second, build 9841 (the first Insider Preview build) hailed the start of Windows as a Service, a completely different approach to upgrading Windows where Microsoft wanted to provide two things: continuous delivery and feedback loop, and a unified configuration that works well with most devices. There were setbacks such as privacy concerns due to telemetry and data losses in October 2018 Update, but for the most part, Windows 10 was received positively.
 
-There is another, more personal reason for calling October 2014 release a maiden flight: I became one of the first Windows Insiders, and due to my work on NVDA, I have decided to make sure screen reader users were treated with respect. This included sending accessibility-related feedback, getting other screen reader users onboard as Insiders, and releasing NVDA try builds that resolved important issues for Windows Insiders. This culminated in the release of Windows 10 App Essentials add-on in November 2015 (in time for Windows 10 Version 1511/build 10586 release) that provided basic support for Insider Hub (now Feedback Hub) and other workarounds, which translated to superb user experience for NVDA users when it comes to using Windows 10 and various universal apps. My work on championing accessibility continues today, especially when it comes to making sure third-party universal apps are usable by many, supporting features such as Sets and so on.
+There is another, more personal reason for calling October 2014 release a maiden flight: I became one of the first Windows Insiders, and due to my work on NVDA, I have decided to make sure screen reader users were treated with respect. This included sending accessibility-related feedback, getting other screen reader users onboard as Insiders, and releasing NVDA try builds that resolved important issues for Windows Insiders. This culminated in the release of Windows 10 App Essentials add-on in November 2015 (in time for Windows 10 Version 1511/build 10586 release) that provided basic support for Insider Hub (now Feedback Hub) and other workarounds, which translated to superb user experience for NVDA users when it comes to using Windows 10 and various universal apps. My work on championing accessibility continues today, especially when it comes to making sure third-party universal apps are usable by many, supporting features such as modern input facility and so on.
 
 ## Purposes of Windows 10 App Essentials
 
@@ -53,6 +53,10 @@ As noted above, some features discussed in this article (such as suggestion soun
 
 This article will sometimes reference add-on update feature, which is gone in 2019. Information about it is kept here for reference purposes. An add-on appropriately named "Add-on Updater" is used to update windows 10 App Essentials and other add-ons.
 
+### Special note on Windows 10 feature updates support
+
+Windows 10 App Essentials add-on supports a given Windows 10 feature update (release) for at least one year. In addition, it comes with support for features found in Windows Insider Preview (WIP) builds, including features that may not appear in subsequent feature updates.
+
 ## Fun with UI Automation
 
 Before we dive into how the add-on works, it is helpful to understand what UIA is and wy it is important. Only then the rest of the article makes sense, as Windows 10 and universal apps are UIA universes (exceptions exist, including desktop apps converted for distribution in Microsoft Store).
@@ -65,11 +69,11 @@ Although UIA is meant to replace MSAA due to modernized accessibility informatio
 
 ### Automation Id and other interfaces and properties
 
-A key piece of information UIA exposes (or attempts to gather) is automation ID, a string that uniquely identifies an element. For example, some search fields expose "SearchEditBox" as automation ID, which allows screen readers such as NVDA to detect these controls. Although most controls do expose unique automation ID's, some uses generic or auto-generated automation ID's (such as update history in Settings app).
+A key piece of information UIA exposes (or attempts to gather) is Automation Identifier (Id), a string that uniquely identifies an element. For example, some search fields expose "SearchEditBox" as Automation Id, which allows screen readers such as NVDA to detect these controls. Although most controls do expose unique Automation Id's, some uses generic or auto-generated identifiers (such as update history in Settings app).
 
 Other useful information exposed by UIA elements are:
 
-* Class name: the class name for this control, a string that denotes the class of this element (not to be confused with automation ID that uniquely identifies an element).
+* Class name: the class name for this control, a string that denotes the class of this element (not to be confused with Automation Id that uniquely identifies an element).
 * Framework: the underlying framework used to create a given control such as XAML, Direct UI and others.
 * Localized control type: a role type text that should be spoken by screen readers in different languages.
 * Controller for: a list (array) of controls that this element manipulates when performing actions such as search suggestions (explained below).
@@ -83,12 +87,12 @@ In addition to standard events expected from accessibility API's such as focus m
 
 The Windows 10 App Essentials add-on includes the following additions, fixes and workarounds for UIA issues and control problems:
 
-* Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions. More on this below.
+* Search suggestions: NVDA now plays a sound to indicate appearance of search suggestions, incorporated into NVDA 2017.3. More on this below.
 * Live region change announcements in various apps. In the global plugin portion, a way to define and track this event is included.
 * Floating suggestions such as Emoji panel in Version 1709 (Fall Creators Update) and hardware keyboard suggestions in Version 1803 (April 2018 Update). This has been incorporated into NVDA 2018.3 release, but more recent changes do require support from this add-on.
 * Support for UIA notification event introduced in Version 1709. This became part of NVDA in 2018.2, and refined in 2019.2 to interupt users when important notifications are pending.
 * Providing more meaningful labels for certain controls such as update history in Settings/Update and Security/Windows Update, sensitive to changes in Insider Preview builds.
-* Announcing tooltips from universal apps, now part of NVDA 2019.3.
+* Announcing tooltips from universal apps, incorporated into NVDA 2019.3.
 * Recognizing dialogs powered by XAML and various frameworks. Since NVDA 2018.3, NVDA itself takes care of this in most situations.
 
 We'll meet various UIA controls and workarounds throughout this article.
@@ -99,13 +103,7 @@ Windows 10 App Essentials add-on comes with Windows 10 Objects, a global plugin 
 
 ### Source code layout
 
-The global plugin consists of the following: 
-
-* winTenObjs/__init__.py: the base global plugin.
-* winTenObjs/_UIAHandlerEx.py: additional UIA routines for ones NVDA does not support natively (mostly for old NVDA releases). This module can come and go without notice.
-* winTenObjs/w10config.py: configuration and updates. As of June 2017, the only thing configurable from Windows 10 App Essentials settings dialog is update facility, which includes whether update check should be performed automatically, update check interval and channel. This module is gone in 2019.
-
-The main global plugin file is laid out thus:
+The main global plugin is housed inside wintenObjs.py and is laid out thus:
 
 1. Usual add-on header such as copyright information.
 2. UIA constants not included in NVDA, including property ID's such as controller for event. Most are now part of NVDA itself.
@@ -114,14 +112,9 @@ The main global plugin file is laid out thus:
 
 ### Startup and shutdown
 
-When the add-on loads, it performs up to four tasks:
+At startup, along with checking to see if a compatible version of Windows 10 is in use, the add-on enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
 
-1. Enables tracking of missing UIA events. For example, until May 2017, controller for event (an event fired by a control that depends on another control such as an edit field with search suggestions) wasn't available in NVDA screen reader, but search suggestion announcement was made possible as this add-on added this event.
-2. Extends or replaces NVDA's UIA support subsystem if NVDA does not come with support for newer UIA interfaces. This is the case for notification event which NVDA did not support prior to 2018.2.
-3. Adds user interface elements for this add-on, specifically add-on settings if appropriate.
-4. Checks for add-on updates if told to do so.
-
-The only thing done at shutdown is terminating the update check facility and removing user interface elements. This method, along with last two steps from the list above, no longer exists as of 2019.
+Until 2019, the add-on was also responsible for extending UIA interface, adding settings dialogs, and checking for updates. These took the bulk of startup and shutdown routines which were removed with the removal of add-on update check facility.
 
 ### Notable Windows 10 objects and features
 
@@ -161,7 +154,7 @@ The notification event handler takes five keyword arguments:
 * Notification kind: the kind of notification.
 * Notification processing: how NVDA should process incoming notification.
 * Display string: notification text.
-* Activity ID: the unique identifier for the notification.
+* Activity Id: the unique identifier for the notification.
 
 As of October 2018, NVDA itself announces notifications for all apps (especially for the currently active app) except one or two apps where this would cause issues, thus the add-on is no longer involved in announcing many notifications except those that could cause issues.
 
@@ -263,7 +256,7 @@ The app modules (and for one in particular, more than an app module) in question
 
 * Calculator (calculator.py): while entering calculations, entered expression will be announced via name change handler. Because this may interfere with typed character announcement in NVDA, the calculator display will be announced only when actual results appear or when the display is cleared.
 * People (peopleapp.py): NVDA will announce first suggestion when looking for a contact. Unlike other search fields, there is no controller for event. However, the suggestion raises item selected event.
-* Cortana (searchui.py)/new Start menu and Windows Search experience (searchapp.py): classic Cortana uses name change events and specific automation ID's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases. In recent Windows 10 releases, due to Windows Search redesign (which also involve changing executable for Windows Search to searchapp), search box content instead of result details is announced, or if results are announced, they are announced twice.
+* Cortana (searchui.py)/new Start menu and Windows Search experience (searchapp.py): classic Cortana uses name change events and specific Automation Id's to convey text messages. Name change event is also employed when Cortana tries to understand the text a user is dictating, which in old releases of the add-on meant NVDA would announce gibberish, subsequently resolved in later add-on releases. In recent Windows 10 releases, due to Windows Search redesign (which also involve changing executable for Windows Search to searchapp), search box content instead of result details is announced, or if results are announced, they are announced twice.
 * Cortana conversations (cortana.py): similar to classic Cortana, Cortana's responses are announced.
 * Open With (openwith.py): announces open with dialog content, used to select an app when opening unknown file types.
 * Settings (systemsettings.py): NVDA will announce messages such as Windows Update notifications, and this is done through live region changed event (name change event in older add-on releases).

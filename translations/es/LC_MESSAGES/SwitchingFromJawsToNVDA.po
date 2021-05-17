@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-22 11:05+0100\n"
-"PO-Revision-Date: 2021-02-23 17:30+0100\n"
+"POT-Creation-Date: 2021-05-14 14:11+0200\n"
+"PO-Revision-Date: 2021-05-16 13:22+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:3
@@ -267,10 +267,39 @@ msgstr ""
 "como de pago)."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:30
+msgid "## Using a specific soundcard / audio device"
+msgstr ""
+"## Utilización de una tarjeta de sonido / dispositivo de audio específico"
+
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:31
+msgid ""
+"Jaws has a \"Soundcards\" option in its utilities, which allows setting "
+"which audio device speech comes through.  NVDA has a similar option in the "
+"Syntheisizer dialog.  Press NVDA+control+s to open the dialog directly, TAB "
+"to the second option which is \"Audio Output Device\".  This is a drop-down "
+"list with the audio devices available.  Select the desired device with the "
+"arrow keys.  The third option in this dialog box is \"Ducking\".  This "
+"controls whether NVDA lowers (\"Ducks\") the volume of sounds from other "
+"programs (eg music or YouTube videos).  Ducking can be \"Always\" (while "
+"NVDA is running), only while NVDA is outputting speech and sounds, or never."
+msgstr ""
+"Jaws dispone de una opción llamada \"Tarjetas de sonido\" en sus utilidades, "
+"que permite configurar por qué dispositivo de sonido sale la voz. NVDA tiene "
+"una opción parecida en el diálogo de sintetizador. Pulsa NVDA+control+s para "
+"abrir directamente el diálogo, tabula hasta la segunda opción, llamada "
+"\"Dispositivo de salida de audio\". Se trata de una lista desplegable con "
+"los dispositivos de sonido disponibles. Selecciona el dispositivo deseado "
+"con las flechas. La tercera opción de este cuadro de diálogo es \"Modo de "
+"atenuación de audio\". Esta controla si NVDA rebaja (\"atenúa\") el volumen "
+"de los sonidos de otros programas (como música o vídeos de YouTube). La "
+"atenuación puede producirse \"siempre\" (mientras NVDA se encuentra en "
+"ejecución), sólo mientras NVDA está hablando o emitiendo sonidos, o nunca."
+
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:32
 msgid "## Terminology"
 msgstr "## Terminología"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:31
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:33
 msgid ""
 "Most of the time, both NVDA and JAWS share a lot of the same terminology to "
 "describe controls e.g. radio buttons, combo boxes, checkboxes etc."
@@ -279,7 +308,7 @@ msgstr ""
 "comunes para describir controles, por ejemplo botones de opción, cuadros "
 "combinados, casillas de verificación, etc."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:32
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:34
 msgid ""
 "One notable difference is that NVDA differentiates between single and multi-"
 "line edit fields, and will also tell you if a field is \"protected"
@@ -293,7 +322,7 @@ msgstr ""
 "si hay texto seleccionado en un campo cuando te sitúes sobre él con el "
 "tabulador. Si es así, al escribir se reemplazará el texto seleccionado."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:33
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:35
 msgid ""
 "NVDA  refers to the different languages a speech synthesizer can speak as "
 "voices, and the different voices supported by your synthesizer as variants."
@@ -301,11 +330,11 @@ msgstr ""
 "NVDA llama “voces” a los distintos idiomas que un sintetizador puede hablar, "
 "y “variantes” a las diferentes voces admitidas por tu sintetizador."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:34
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:36
 msgid "## Cursors"
 msgstr "## Cursores"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:35
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:37
 msgid ""
 "NVDA has various cursors to aid in navigating Windows and applications, "
 "similar to JAWS.  The terminology is slightly different as described below."
@@ -314,7 +343,7 @@ msgstr ""
 "aplicaciones, similares a JAWS. La terminología es ligeramente distinta, "
 "según se describe a continuación."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:36
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:38
 msgid ""
 "The PC cursor in NVDA's documentation is referred to as the system focus and "
 "system caret."
@@ -322,7 +351,7 @@ msgstr ""
 "El cursor del PC, en la documentación de NVDA, es mencionado como \"el foco "
 "del sistema\" y \"el cursor del sistema\"."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:37
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:39
 msgid ""
 "The equivalent to the JAWS cursor is a combination of object navigation, the "
 "review cursor and the various review modes; such as  Document review, object "
@@ -340,7 +369,7 @@ msgstr ""
 "entender, en la guía de usuario o el libro [formación básica de NVDA]"
 "(https://nvda.es/producto/libro-formacion-basica-de-nvda/) (€17,99)."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:38
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:40
 msgid ""
 "Unlike JAWS, you don't have to switch between the PC and JAWS cursor "
 "equivalents as the numpad is reserved exclusively for working with the JAWS "
@@ -350,7 +379,7 @@ msgstr ""
 "del PC y de JAWS, pues el teclado numérico está reservado exclusivamente "
 "para trabajar con las funciones correspondientes al \"cursor de JAWS\"."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:39
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:41
 msgid ""
 "It is worth noting that when you use object navigation or the review cursor, "
 "the mouse does not, by default, move in sync. You have to press a command to "
@@ -364,7 +393,7 @@ msgstr ""
 "similar a cómo funciona el \"cursor invisible\" de JAWS. También hay órdenes "
 "para simular clic o bloquear ambos botones del ratón."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:40
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:42
 msgid ""
 "However, if you simply want to activate the current object you are focused "
 "on when using object navigation, there is a command to do this without "
@@ -374,11 +403,11 @@ msgstr ""
 "cuando utilizas la navegación de objetos, hay una orden para hacerlo sin "
 "tener que mover el cursor del ratón hasta él objeto."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:41
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:43
 msgid "### Accessing the notification area (system tray)"
 msgstr "### Accediendo al área de notificación (bandeja del sistema)"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:42
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:44
 msgid ""
 "NVDA does not provide a dialog to access the notification area, as this is "
 "accessible natively.  Press WINDOWS+B to access the notification area.  To "
@@ -398,7 +427,7 @@ msgstr ""
 "izquierdo del ratón (no hay distinción entre estos en Windows 10). Pulsar la "
 "tecla aplicaciones o shift+f10 para abrir el menú contextual de un elemento."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:43
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:45
 msgid ""
 "If the first item in the notification area is \"Notification chevron button"
 "\", Windows is not set to show all icons.  Press ENTER or spacebar to open "
@@ -416,7 +445,7 @@ msgstr ""
 "iconos que aparecen en la barra de tareas\", y asegúrate de que la opción "
 "\"Mostrar siempre todos los iconos en el área de notificación\" esté marcada."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:44
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:46
 msgid ""
 "If you prefer to have a dialog you can access with NVDA+F11, there is a "
 "\"SysTrayList\" add-on available in the [Add-ons website](https://addons."
@@ -427,11 +456,11 @@ msgstr ""
 "complementos de la comunidad de NVDA](https://addons.nvda-project.org/index."
 "es.html)."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:45
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:47
 msgid "### Accessing the ribbon"
 msgstr "### Accediendo a la cinta"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:46
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:48
 msgid ""
 "Microsoft Office 2007 replaced the menu and toolbars with a \"ribbon\".  "
 "Like the notification area, these are accessible so NVDA does not provide a "
@@ -462,11 +491,11 @@ msgstr ""
 "acceder, usa las teclas de flechas para seleccionarlo a partir de la lista e "
 "Intro para activarlo."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:47
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:49
 msgid "### Checking the status of progress bars"
 msgstr "### Comprobación del estado de las barras de progreso"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:48
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:50
 msgid ""
 "Jaws provides a command control+insert+b to check the status of progress "
 "bars in the current window.  NVDA has options to have progress bars "
@@ -484,11 +513,11 @@ msgstr ""
 "Presentación de Objetos del cuadro de diálogo Opciones de NVDA.  Pulsa NVDA"
 "+control+o para abrir estas opciones."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:49
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:51
 msgid "### Accessing characters and emoji"
 msgstr "### Accediendo a los caracteres y emojis"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:50
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:52
 msgid ""
 "Jaws has a command INSERT+4 to select symbols.  In NVDA INSERT+4 (assuming "
 "INSERT is your NVDA modifier key) toggle speak command keys, which reports "
@@ -514,7 +543,7 @@ msgstr ""
 "cualquier símbolo de cualquier fuente.  Nuevamente, no todos los caracteres "
 "están completamente descritos."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:51
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:53
 msgid ""
 "The Windows 10 Emoji window is accessible.  Press WINDOWS+. (WINDOWS+full "
 "stop).  Press TAB to move to the categories, select a category then press "
@@ -529,11 +558,11 @@ msgstr ""
 "disponibles e Intro para insertar el emoji actual en el texto.  Pulsa escape "
 "cuando hayas terminado."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:52
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:54
 msgid "### Touch cursor"
 msgstr "### Cursor táctil"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:53
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:55
 msgid ""
 "In JAWS 15 or later, you can use numpad keys to navigate apps using a tree-"
 "like structure, similar to how users of smartphone screen readers such as "
@@ -547,11 +576,11 @@ msgstr ""
 "táctiles. En NVDA, las órdenes de navegación de objetos y de modo objeto "
 "táctil se pueden utilizar con este fin"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:54
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:56
 msgid "## Virtual Cursor"
 msgstr "## Cursor virtual"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:55
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:57
 msgid ""
 "The virtual cursor in NVDA is known as browse mode. It functions in much the "
 "same way as JAWS, giving you access to navigation quick keys, or in NVDA "
@@ -561,7 +590,7 @@ msgstr ""
 "funciona como en JAWS, ofreciéndote acceso a teclas rápidas de navegación o, "
 "en el lenguaje de NVDA, \"navegación con una sola letra\"."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:56
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:58
 msgid ""
 "Following are some common issues you may encounter when browsing the web "
 "with NVDA for the first time, and how to address them."
@@ -569,11 +598,11 @@ msgstr ""
 "A continuación se enumeran algunos problemas comunes que puedes encontrar al "
 "navegar por la web con NVDA por primera vez y cómo solucionarlos."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:57
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:59
 msgid "### Why Is Everything On One Line?"
 msgstr "### ¿Por qué está todo en una línea?"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:58
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:60
 msgid ""
 "In case you are unaware, JAWS has two modes for displaying webpages or other "
 "documents using the virtual cursor; simple layout and screen layout.  Simple "
@@ -588,7 +617,7 @@ msgstr ""
 "pantalla distribuye el contenido de manera semejante a cómo aparece en "
 "pantalla."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:59
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:61
 msgid ""
 "The default in NVDA is screen layout, but you can easily switch to its "
 "version of simple layout by pressing NVDA+V while in browse mode. This will "
@@ -600,11 +629,11 @@ msgstr ""
 "modo exploración. Esto desactivará el \"diseño de pantalla\". Asegúrate de "
 "guardar tu configuración con NVDA+control+c después de hacer este cambio."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:60
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:62
 msgid "### It Keeps Saying Clickable Clickable Clickable."
 msgstr "### Sigue diciendo Cliqueable Cliqueable Cliqueable."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:61
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:63
 msgid ""
 "While reading webpages, you might notice sometimes that NVDA says \"clickable"
 "\", even multiple times on the same link or control."
@@ -613,7 +642,7 @@ msgstr ""
 "\", a veces con demasiada frecuencia, incluso varias veces en el mismo "
 "enlace o control."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:62
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:64
 msgid ""
 "As of version 2018.4 and later, NvDA will now only say clickable once, so if "
 "you experience this issue, please upgrade your copy. Because there is no "
@@ -625,7 +654,7 @@ msgstr ""
 "Debido a que no hay ningún costo asociado con la actualización, NV Access "
 "recomienda usar siempre la última versión estable de NVDA."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:63
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:65
 msgid ""
 "You can also turn off the announcement of clickable elements entirely by "
 "going to document formatting in settings (NVDA+control+d) and unchecking "
@@ -635,11 +664,11 @@ msgstr ""
 "yendo a las opciones de  Formateado de documentos (NVDA+control+d), y "
 "desmarcando la casilla \"cliqueable\" en el grupo de elementos."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:64
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:66
 msgid "### Find doesn't work on the web."
 msgstr "### La búsqueda no funciona en la web."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:65
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:67
 msgid ""
 "While JAWS is loaded, pressing ctrl+f in Internet Explorer or Firefox brings "
 "up the JAWS Find dialogue rather than activating the browser's built-in find "
@@ -656,7 +685,7 @@ msgstr ""
 "el cursor virtual a esa ubicación. Esto se debe al modo en que los lectores "
 "de pantalla interactúan con las páginas web."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:66
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:68
 msgid ""
 "NVDA has its own find command to search in browse mode, but it has not been "
 "tied to CTRL+F, so pressing that shortcut key calls up the browser's find "
@@ -667,7 +696,7 @@ msgstr ""
 "la instrucción de búsqueda del navegador, por lo que la búsqueda no "
 "funcionará como se espera."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:67
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:69
 msgid ""
 "To bring up NVDA's find dialogue, press ctrl+NVDA+F.  Type in what you wish "
 "to find then press enter."
@@ -675,11 +704,11 @@ msgstr ""
 "Para abrir el cuadro de diálogo buscar de NVDA, pulsa ctrl+NVDA+F. Escribe "
 "el texto que deseas encontrar y a continuación pulsa Intro."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:68
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:70
 msgid "### No commands to view forms and headings?"
 msgstr "### ¿No hay órdenes para ver formularios y encabezados?"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:69
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:71
 msgid ""
 "In JAWS, you can press JAWS+F5 to list forms, JAWS+F6 to list headings and "
 "JAWS+F7 to list links. In NVDA, the latter two have been combined into an "
@@ -692,11 +721,11 @@ msgstr ""
 "ha combinado en un diálogo de lista de elementos, y se puede acceder a él "
 "presionando NVDA+F7."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:70
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:72
 msgid "## Forms Mode"
 msgstr "## Modo formularios"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:71
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:73
 msgid ""
 "The equivalent of forms mode in NVDA is focus mode, and it behaves very "
 "similar to JAWS, Even switching modes automatically when navigating through "
@@ -709,16 +738,16 @@ msgstr ""
 "para informarte sobre el modo en el que te encuentras.  Si lo deseas, NVDA "
 "puede verbalizar el cambio de modo en lugar de usar un sonido."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:72
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:74
 msgid "Details about Focus Mode can be found in the user guide."
 msgstr ""
 "Los detalles acerca del \"modo foco\" se explican en la guía del usuario."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:73
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:75
 msgid "## NVDA talks too much."
 msgstr "## NVDA habla demasiado."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:74
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:76
 msgid ""
 "Sometimes you may find that NVDA can seem overly verbose, particularly in "
 "some list views. This is because as far as NVDA is concerned, list views are "
@@ -731,7 +760,7 @@ msgstr ""
 "defecto NVDA está configurado para indicar los encabezados de cada fila o "
 "columna."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:75
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:77
 msgid ""
 "To turn that option off, uncheck \"Report table row/column headers\" in the "
 "\"Document Formatting\" screen of NVDA's settings dialogue.  Press NVDA"
@@ -742,11 +771,11 @@ msgstr ""
 "en las opciones de NVDA. Pulsa NVDA+control+d para abrir este cuadro de "
 "diálogo de Opciones."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:76
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:78
 msgid "## the Speech dictionary"
 msgstr "## Diccionarios del Habla"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:77
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:79
 msgid ""
 "NVDA has always included a function to edit \"Speech Dictionaries\", which "
 "are similar to JAWS' dictionary manager files.  There is a group of radio "
@@ -759,26 +788,26 @@ msgstr ""
 "la etiqueta Tipo), que determina cómo se tratará el texto del cuadro patrón "
 "(como NVDA se refiere a palabra real)."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:78
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:80
 msgid "* anywhere, which is the default behavior."
 msgstr "* En cualquier sitio, que es el comportamiento por defecto."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:79
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:81
 msgid "* Whole word, which is how JAWS handles dictionary entries."
 msgstr ""
 "* Palabra completa, que es cómo JAWS maneja las entradas de diccionario."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:80
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:82
 msgid "* Regular Expression, which is complicated."
 msgstr "* Expresión regular, lo cual es complicado."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:81
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:83
 msgid "You will also find a case sensitive checkbox."
 msgstr ""
 "También encontrarás una casilla de verificación \"sensible a las mayúsculas"
 "\"."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:82
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:84
 msgid ""
 "Access the speech dictionaries with NVDA+n (to open the NVDA menu), then P "
 "for preferences, then D for dictionaries.  There are three options.  Default "
@@ -795,11 +824,11 @@ msgstr ""
 "deseas uno de los otros dos, la mayoría de las veces el \"diccionario "
 "predeterminado\" es el diccionario deseado para editar."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:83
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:85
 msgid "## Scripts"
 msgstr "## Scripts"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:84
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:86
 msgid ""
 "Like JAWS, scripts can be added to NVDA to provide support for other "
 "applications or to add new features that can be accessed from anywhere.  "
@@ -812,7 +841,7 @@ msgstr ""
 "\". Puedes encontrar complementos en el [sitio Web de complementos de la "
 "comunidad de NVDA](http://addons.nvda-project.org/)."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:85
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:87
 msgid ""
 "These include a few that emulate JAWS features not currently present in NVDA "
 "such as a system tray list, virtualise window function and ability to append "
@@ -830,7 +859,7 @@ msgstr ""
 "documentación de ayuda que viene con cada complemento para aprender más "
 "sobre cómo utilizarlo."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:86
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:88
 msgid ""
 "There is an [NVDA Developer Guide](https://www.nvaccess.org/files/nvda/"
 "documentation/developerGuide.html) with information on how to create add-ons."
@@ -839,11 +868,11 @@ msgstr ""
 "(https://www.nvaccess.org/files/nvda/documentation/developerGuide.html) con "
 "información sobre cómo crear complementos."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:87
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:89
 msgid "## Screen Shade"
 msgstr "## Cubrepantallas"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:88
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:90
 msgid ""
 "From version 2019.3, NVDA includes an equivalent to JAWS' Screen Shade "
 "feature called Screen Curtain, which will blacken the screen. By default it "
@@ -856,7 +885,7 @@ msgstr ""
 "asignar uno desde el diálogo Gestos de entrada. Consulta la guía de usuario "
 "para obtener más detalles sobre cómo hacerlo."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:89
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:91
 msgid ""
 "Activating the command once will enable or disable the screen curtain until "
 "you restart your computer, whereas doing so twice quickly will enable it "
@@ -868,11 +897,11 @@ msgstr ""
 "rápidamente se activará de forma permanente hasta que sea desactivada. "
 "También se puede conmutar su estado en la categoría Visión en las opciones. "
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:90
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:92
 msgid "## Remote access"
 msgstr "## Acceso Remoto"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:91
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:93
 msgid ""
 "In 2015, Christopher Toth and Tyler Spivey released a free add-on to allow "
 "NVDA users to provide remote support, similar to JAWS Tandem. To learn more "
@@ -883,11 +912,11 @@ msgstr ""
 "similar al Tamdem de JAWS. Para aprender más sobre el complemento, por favor "
 "consulta [la página de inicio de NVDA Remote](http://www.nvdaremote.com)."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:92
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:94
 msgid "## Application-specific settings"
 msgstr "## Configuración de una aplicación en particular"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:93
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:95
 msgid ""
 "NVDA can use configuration profiles, which make it possible to configure "
 "certain settings to be applied only when using a program. This is done by "
@@ -906,7 +935,7 @@ msgstr ""
 "menú NVDA, flecha abajo hasta que oigas Perfiles de Configuración y pulsa "
 "Intro, o pulsa NVDA+control+P.  "
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:94
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:96
 msgid ""
 "When the dialogue opens, select New, and select \"current application\" when "
 "asked when to use this profile.  Any changes made to NVDA settings (eg "
@@ -918,11 +947,11 @@ msgstr ""
 "sintetizador, velocidad de voz o nivel de puntuación) se aplica a este "
 "perfil."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:95
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:97
 msgid "### Alternate say all"
 msgstr "### Alterna Verbalizar todo"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:96
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:98
 msgid ""
 "In recent versions of JAWS, you can configure a different speech synthesizer "
 "to be used when say all is active. You can do this in NVDA by creating a say "
@@ -933,11 +962,11 @@ msgstr ""
 "hacerlo en NVDA creando un perfil Verbalizar todo en el menú Perfiles de "
 "Configuración."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:97
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:99
 msgid "Here are the steps."
 msgstr "Estos son los pasos."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:98
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:100
 msgid ""
 "1. Open the configurations profile from the main NVDA menu. Press NVDA, N, "
 "then arrow down to configuration profiles."
@@ -945,12 +974,12 @@ msgstr ""
 "1. Abre Perfiles de Configuración en el menú principal de NVDA. Pulsa NVDA"
 "+n; luego, flecha abajo hacia Perfiles de Configuración."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:99
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:101
 msgid "2. Create a new profile by tabbing to the *new* button or press alt, N."
 msgstr ""
 "2. Crea un nuevo perfil tabulando hasta el botón *Nuevo* o pulsa alt+n."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:100
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:102
 msgid ""
 "3. After you name your profile, tab to the profile usage radio butttons. "
 "arrow down until you hear \"say all\". Hit *OK* "
@@ -959,7 +988,7 @@ msgstr ""
 "opciones para usar este perfil. Flecha abajo hasta oír \"Verbalizar todo\". "
 "Pulsa *Aceptar* "
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:101
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:103
 msgid ""
 "while this profile is active, you need to complete the process by "
 "configuring the synthesizer while the say all profile is active."
@@ -967,11 +996,11 @@ msgstr ""
 "necesitas completar el proceso de configuración del sintetizador mientras el "
 "perfil Verbalizar todo está activo."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:102
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:104
 msgid "## Missing Info"
 msgstr "## Información faltante"
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:103
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:105
 msgid ""
 "This guide is a community driven project and is ever expanding. If you have "
 "some experience of both JAWS and NVDA and think something's missing, feel "
@@ -985,7 +1014,7 @@ msgstr ""
 "agradecen, por supuesto, las correcciones gramaticales y ortográficas. Por "
 "favor, ten en cuenta que es necesaria una cuenta de GitHub."
 
-#: ..\python_docs\SwitchingFromJawsToNVDA.py:104
+#: ..\python_docs\SwitchingFromJawsToNVDA.py:106
 msgid ""
 "After Editing, please  preview your changes and  fill in the edit summary "
 "box before submitting."

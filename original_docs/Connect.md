@@ -30,6 +30,8 @@ The web resources mentioned in the following list are published independently; t
 * Arabic discussion list: https://groups.io/g/nvda-ar
  * Czech/Slovak Blog: http://nvda-project.cz
  * Danish website: http://www.nvda.dk
+ * Danish Email list: http://www.freelists.org/list/nvdadk
+ * Danish NVDA Facebook group: http://www.facebook.com/home.php?#!/group.php?gid=126483014066763&ref=ts
  * Dutch website: https://www.nvda-nl.org
  * Dutch wiki: https://wiki.nvda-nl.org
  * Dutch Email List: to subscribe, send a blank email to nvdadutch+subscribe@groups.io and reply to the received message.

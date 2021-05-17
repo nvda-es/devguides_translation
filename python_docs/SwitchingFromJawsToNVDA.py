@@ -27,6 +27,8 @@ _(u"""Keep this in mind the next time you're editing text while using NVDA and f
 "",_(u"""See the section entitled \"Scripts\" for information about NVDA add-ons."""),
 "",_(u"""### Even more voices"""),
 "",_(u"""If you still cannot find the perfect voice for you, the [Extra Voices page](http://community.nvda-project.org/wiki/ExtraVoices) lists several other speech synthesizers (both free and paid you can use instead."""),
+"",_(u"""## Using a specific soundcard / audio device"""),
+"",_(u"""Jaws has a \"Soundcards\" option in its utilities, which allows setting which audio device speech comes through.  NVDA has a similar option in the Syntheisizer dialog.  Press NVDA+control+s to open the dialog directly, TAB to the second option which is \"Audio Output Device\".  This is a drop-down list with the audio devices available.  Select the desired device with the arrow keys.  The third option in this dialog box is \"Ducking\".  This controls whether NVDA lowers (\"Ducks\") the volume of sounds from other programs (eg music or YouTube videos).  Ducking can be \"Always\" (while NVDA is running), only while NVDA is outputting speech and sounds, or never."""),
 "",_(u"""## Terminology"""),
 "",_(u"""Most of the time, both NVDA and JAWS share a lot of the same terminology to describe controls e.g. radio buttons, combo boxes, checkboxes etc."""),
 "",_(u"""One notable difference is that NVDA differentiates between single and multi-line edit fields, and will also tell you if a field is \"protected\" (anything you type will be replaced by asterisks).  It will also alert you if text is selected in a field when you tab over to it.  If so, typing will replace the highlighted text."""),

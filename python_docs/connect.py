@@ -20,6 +20,8 @@ _(u"""Since the creation of NVDA, the community has created a number of independ
 _(u"""* Arabic discussion list: https://groups.io/g/nvda-ar"""),
 _(u""" * Czech/Slovak Blog: http://nvda-project.cz"""),
 _(u""" * Danish website: http://www.nvda.dk"""),
+_(u""" * Danish Email list: http://www.freelists.org/list/nvdadk"""),
+_(u""" * Danish NVDA Facebook group: http://www.facebook.com/home.php?#!/group.php?gid=126483014066763&ref=ts"""),
 _(u""" * Dutch website: https://www.nvda-nl.org"""),
 _(u""" * Dutch wiki: https://wiki.nvda-nl.org"""),
 _(u""" * Dutch Email List: to subscribe, send a blank email to nvdadutch+subscribe@groups.io and reply to the received message."""),

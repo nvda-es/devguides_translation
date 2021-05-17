@@ -1,10 +1,8 @@
 # Contributing to NVDA
-If you would like to contribute code or documentation to NVDA, please follow these guidelines.
-If you are new to the project, or looking for some way to help take a look at:
-- [label:goodfirstissue](https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+)
-- [label:goodForNewDev ](https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev)
-- [label:closed/needs-new-author ](https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author)
-- [label:Abandoned ](https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned)
+There are several ways in which you can contribute to the NVDA project:
+- By testing NVDA
+- Issue triage and investigation
+- Code or documentation contributions
 
 ## Note: Currently only accepting bug-fix / maintenance PR's only while addressing backlog.
 For more information please see: https://github.com/nvaccess/nvda/issues/11006
@@ -23,46 +21,75 @@ Forming a group can help you to get good coverage, brainstorm on what should be 
 ## Issue triage and investigation:
 You can also make non-code contributions by helping process incoming GitHub issues. For information on this please see the [triage process](https://github.com/nvaccess/nvda/wiki/Triage-process) and [issue triage help](https://github.com/nvaccess/nvda/wiki/Issue-triage-help) on the wiki.
 
-## Submitting Changes
+## Code/Docs contributions
 
-For anything other than minor bug fixes, please comment on an existing issue or create a new issue providing details about your proposed change.
-Unrelated changes should be addressed in separate issues.
-Include information about use cases, design, user experience, etc.
-This allows us to discuss these aspects and any other concerns that might arise, thus potentially avoiding a great deal of wasted time.
-You should generally wait for acceptance of your proposal before you start coding. Please understand that we very likely will not accept changes that are not discussed first.
+If you are new to the project, or looking for some way to help take a look at:
+- [label:goodfirstissue](https://github.com/nvaccess/nvda/issues?q=label%3Agoodfirstissue+)
+- [label:goodForNewDev ](https://github.com/nvaccess/nvda/issues?q=label%3AgoodForNewDev)
+- [label:closed/needs-new-author ](https://github.com/nvaccess/nvda/issues?q=label%3Aclosed%2Fneeds-new-author)
+- [label:Abandoned ](https://github.com/nvaccess/nvda/issues?q=label%3AAbandoned)
 
-If this is a minor/trivial change which definitely wouldn't require design, user experience or implementation discussion (e.g. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver), you can just create a pull request rather than using an issue first. However, this should be fairly rare. If in doubt, use an issue first. Use this issue to discuss the alternatives you have considered in regards to implementation, design, and user experience. Then give people time to offer feedback.
+### Guidelines:
+- For anything other than minor bug fixes, please comment on an existing issue or create a new issue providing details about your proposed change.
+- Unrelated changes should be addressed in separate issues.
+- Include information about use cases, design, user experience, etc.
+  - This allows us to discuss these aspects and any other concerns that might arise, thus potentially avoiding a great deal of wasted time.
+- It is recommended to wait for acceptance of your proposal before you start coding.
+  - Please understand that we very likely will not accept changes that are not discussed first.
+  - Consider starting a discussion on mailing lists (EG NVDA developers) to see if there is interest.
+- A minor/trivial change which definitely wouldn't require design, user experience or implementation discussion, you can just create a pull request rather than using an issue first.
+  - E.G. a fix for a typo/obvious coding error or a simple synthesizer/braille display driver
+  - This should be fairly rare.
+- If in doubt, use an issue first. Use this issue to discuss the alternatives you have considered in regards to implementation, design, and user experience. Then give people time to offer feedback.
 
 
-If this is your first contribution, you will first need to "fork" the NVDA repository on GitHub.
+### GitHub process:
+#### 1. "fork" the NVDA repository on GitHub
+   When you fork the repository, GitHub will create a copy of the master branch.
+   However, this branch will not be updated when the official master branch is updated.
+   To ensure your work is always based on the latest commit in the official master branch, it is recommended that your master branch be linked to the official master branch, rather than the master branch in your GitHub fork.
+   If you have cloned your GitHub fork, you can do this from the command line as follows:
+   ```
+   # Add a remote for the NV Access repository.
+   git remote add nvaccess https://github.com/nvaccess/nvda.git
 
-When you fork the repository, GitHub will create a copy of the master branch. However, this branch will not be updated when the official master branch is updated. To ensure your work is always based on the latest commit in the official master branch, it is recommended that your master branch be linked to the official master branch, rather than the master branch in your GitHub fork. If you have cloned your GitHub fork, you can do this from the command line as follows:
+   # Fetch the nvaccess branches.
+   git fetch nvaccess
 
-```
-# Add a remote for the NV Access repository.
-git remote add nvaccess https://github.com/nvaccess/nvda.git
-# Fetch the nvaccess branches.
-git fetch nvaccess
-# Switch to the local master branch.
-git checkout master
-# Set the local master to use the nvaccess master as its upstream.
-git branch -u nvaccess/master
-# Update the local master.
-git pull
-```
+   # Switch to the local master branch.
+   git checkout master
 
-You should use a separate "topic" branch for each issue.
-All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue.
+   # Set the local master to use the nvaccess master as its upstream.
+   git branch -u nvaccess/master
 
-If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly.
+   # Update the local master.
+   git pull
+   ```
 
-For anything touching code, please run `scons tests` before you open your Pull Request, and make sure all the unit tests pass. If possible for your PR, please consider creating a set of unit tests to test your changes. Please also run our linter, see [`tests/lint/readme.md`](https://github.com/nvaccess/nvda/tree/master/tests/lint) for more information.
+#### 2. Use a separate "topic" branch for each contribution
+   All code should usually be based on the latest commit in the official master branch at the time you start the work unless the code is entirely dependent on the code for another issue.
+   If you are adding a feature or changing something that will be noticeable to the user, you should update the User Guide accordingly.
 
-### Create a Pull Request (PR)
+#### 3. Run unit tests and lint check
+   - Run `rununittests` (`rununittests.bat`) before you open your Pull Request, and make sure all the unit tests pass.
+   - If possible for your PR, please consider creating a set of unit tests to test your changes.
+   - The lint check ensures your changes comply with our code style expectations. Use `runlint nvaccess/master` (`runlint.bat`)
 
-When it is time to submit your code, you should open a pull request referring to the original issue.
-Code review will then be done on this pull request.
-Pull requests that fix bugs will be reviewed before PRs that add features / enhancements.
+#### 4. Create a Pull Request (PR)
+   When you think a contribution is ready, or you would like feedback, open a draft pull request.
+   Please fill out the Pull Request Template, including the checklist of considerations.
+   The checklist asks you to confirm that you have thought about each of the items, if any of the items are missing it is helpful to explain elsewhere in the PR why it has been left out.
+   When you would like a review, mark the PR as "ready for review".
+
+#### 5. Participate in the code review process
+   This process requires core NVDA developers to understand the intent of the change, read the code changes, asking questions or suggesting changes.
+   Please participate in this process, answering questions, and discussing the changes.
+   Being proactive will really help to speed up the process of code review.
+   When the PR is approved it will be merged, and the change will be active in the next Alpha build.
+
+#### 6. Feedback from Alpha users
+   After a PR is merged, watch for feedback from Alpha users / testers.
+   You may have to follow up to address bugs or missed use-cases.
 
 ## Code Style
 
