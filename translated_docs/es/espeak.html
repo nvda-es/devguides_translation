@@ -1,0 +1,69 @@
+<!doctype html>
+ <html lang="es">
+ <head>
+  <title># Submódulo espeak-ng</title>
+  <meta charset="utf-8">
+  </head>
+  <body>
+  <header><h1># Submódulo espeak-ng</h1></header>
+  <h1 id="submodulo-espeak-ng">Submódulo espeak-ng</h1>
+<p>El submódulo contenido en el directorio espeak es un sintetizador de voz multiplataforma de código abierto.</p>
+<h3 id="contexto">Contexto</h3>
+<p>La autoridad principal de requisitos de compilación debería ser <code>&lt;raíz del repositorio de NVDA&gt;/include/espeak/Makefile.am</code>.
+También se pueden considerar los archivos <code>*.vcxproj</code> <code>&lt;raíz del repositorio de NVDA&gt;/include/espeak/src/windows/</code>,
+pero no siempre se mantienen actualizados.</p>
+<p>No usamos los archivos de Auto Make o de Visual Studio, mantenemos nuestro propio método de compilación de Espeak.
+Será necesario hacer modificaciones en <code>&lt;raíz del repositorio de NVDA&gt;/nvdaHelper/espeak</code>
+* <code>sconscript</code> para el proceso de compilación.
+* <code>config.h</code> para configurar la versión de Espeak-NG que NVDA muestra en el archivo de registro.</p>
+<h3 id="proceso-de-actualizacion">Proceso de actualización</h3>
+<ol>
+<li>Comienza en una rama <code>master</code> de NVDA limpia<ol>
+<li>Descarga la rama más reciente de NVDA <code>origin/master</code> y crea una nueva rama.</li>
+<li>Ejecuta git clean para asegurarte de que el directorio de trabajo esté limpio.</li>
+</ol>
+</li>
+<li>Asegúrate de que los submódulos están actualizados<ol>
+<li>Sincroniza los submódulos con <code>git submodule sync</code></li>
+<li>Actualiza los submódulos con <code>git submodule update --init --recursive</code></li>
+</ol>
+</li>
+<li>Cambia a la nueva revisión de Espeak-NG a probar.<ol>
+<li>Cambia al directorio <code>include/espeak/</code></li>
+<li>Ejecuta <code>git fetch</code> para obtener los cambios más recientes del repositorio de Espeak-NG</li>
+<li>Ejecuta <code>git checkout origin/master</code> o la revisión de Espeak-NG que quieras.</li>
+</ol>
+</li>
+<li>Busca cambios en <code>Makefile.am</code> y actualiza nuestra compilación.<ol>
+<li>Haz un diff de <code>makefile.am</code> con el commit de Espeak que se usaba antes.</li>
+<li>Algunos módulos se excluyen intencionadamente de la compilación.
+    Si no estás seguro, no los incluyas y pregunta cuando envíes una solicitud de cambios.</li>
+<li>Modifica el archivo <code>&lt;raíz del repositorio de NVDA&gt;/nvdaHelper/espeak/config.h</code> según sea necesario.</li>
+</ol>
+</li>
+<li>Actualiza nuestro registro de número de versión y compila.<ol>
+<li>Vuelve a la raíz del repositorio de NVDA</li>
+<li>Actualiza la versión del paquete en <code>&lt;raíz del repositorio de NVDA&gt;/nvdaHelper/espeak/config.h</code><ul>
+<li>Compara con la información del código fuente de Espeak: <code>&lt;raíz del repositorio de NVDA&gt;/include/espeak/src/windows/config.h</code>.</li>
+</ul>
+</li>
+<li>Actualiza el <code>readme.md</code> de NVDA con la versión de Espeak y haz commit.</li>
+<li>Construye NVDA</li>
+</ol>
+</li>
+<li>Ejecuta NVDA (configura Espeak-NG como sintetizador) y prueba.</li>
+<li>Asegúrate de que el archivo de registro contiene el nuevo número de versión de Espeak-NG</li>
+</ol>
+<h3 id="resolucion-de-problemas">Resolución de problemas</h3>
+<p>Si Python falla mientras compila, comprueba el registro.
+Si la última acción fue compilar un diccionario, intenta excluirlo.
+Esto se puede hacer en <code>&lt;raíz del repositorio de NVDA&gt;/nvdaHelper/espeak/sconscript</code>.
+Recuerda informar del fallo al proyecto Espeak-NG.</p>
+<p>Si la compilación falla, toma nota del error, compara las diferencias del archivo <code>makefile.am</code> y refleja 
+cualquier cambio en nuestro archivo <code>sconscript</code>.</p>
+<h3 id="problemas-conocidos">Problemas conocidos</h3>
+<p>Debido a problemas con el soporte de emojis (que causa errores fatales), se excluyen los archivos de diccionario de emojis
+de la compilación. Se eliminan antes de compilar los diccionarios en el
+archivo <code>&lt;raíz del repositorio de NVDA&gt;/nvdaHelper/espeak/sconscript</code>.</p>
+</body>
+</html>

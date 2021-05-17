@@ -12,20 +12,20 @@ Es desarrollado por NV Access en colaboración con una comunidad global de usuar
 Para aprender más sobre NVDA o descargar una copia, visita el sitio web principal de <a href="https://www.nvaccess.org/">NV Access</a>.</p>
 <p>Nota importante: el proyecto NVDA tiene un <a href="https://nvda.es/documentacion/codigo-de-conducta-del-ciudadano-y-el-colaborador-elaborado-por-nv-access/">código de conducta del ciudadano y el colaborador</a>. NV Access espera que todos los colaboradores y otros miembros de la comunidad lean y cumplan las reglas escritas en este documento al participar y colaborar en este proyecto.</p>
 <h2 id="obtencion-de-soporte">Obtención de soporte</h2>
-<p>Ya seas un principiante, un usuario avanzado, un desarrollador novato o con experiencia, o una organización dispuesta a saber más o colaborar con NVDA, puedes obtener soporte de la documentación existente así como de canales de comunicación dedicados al lector de pantalla NVDA. Aquí hay una descripción general de las fuentes de soporte más importantes.</p>
+<p>Ya seas un principiante, un usuario avanzado, un desarrollador novato o con experiencia, o representas a una organización dispuesta a saber más o colaborar con NVDA: puedes obtener soporte de la documentación incluida, así como de canales de comunicación dedicados al lector de pantalla NVDA. Aquí hay una descripción general de las fuentes de soporte más importantes.</p>
 <h3 id="documentacion">Documentación</h3>
 <ul>
 <li><a href="https://www.nvaccess.org/files/nvda/documentation/userGuide.html">Guía de usuario de NVDA</a></li>
 <li><a href="https://www.nvaccess.org/files/nvda/documentation/developerGuide.html">Guía del desarrollador de NVDA</a></li>
 <li><a href="https://github.com/nvdaaddons/DevGuide/wiki">Desarrollo de complementos de NVDA en profundidad</a></li>
 <li><a href="https://github.com/nvaccess/nvda/tree/master/extras/controllerClient">Manual de NVDA ControllerClient</a></li>
-<li>Hay más documentación en la wiki de este repositorio y en la <a href="https://github.com/nvaccess/nvda-community/wiki">wiki de la comunidad</a></li>
+<li>Hay más documentación en la <a href="https://github.com/nvaccess/nvda/wiki">Wiki</a> del repositorio de NVDA, y en la <a href="https://github.com/nvaccess/nvda-community/wiki">Wiki de la comunidad</a></li>
 </ul>
 <h3 id="canales-de-comunicacion">Canales de comunicación</h3>
 <ul>
 <li><a href="https://nvda.groups.io/g/nvda">Lista de correo de usuarios de NVDA</a></li>
 <li><a href="https://groups.io/g/nvda-devel">Lista de correo de desarrollo de NVDA</a></li>
-<li><a href="https://nvda-addons.groups.io/g/nvda-addons">Lista de correo de complementos de NVDA</a></li>
+<li><a href="https://groups.io/g/nvda-addons">Lista de correo de complementos de NVDA</a></li>
 <li><a href="https://gitter.im/nvaccess/NVDA">Canal de mensajería instantánea de soporte de NVDA</a></li>
 <li><a href="https://github.com/nvaccess/nvda-community/wiki/Connect">Otras fuentes, incluyendo grupos, canales y perfiles en redes sociales, sitios en idiomas específicos y listas de correo, etc.</a></li>
 </ul>
@@ -58,7 +58,6 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 <ul>
 <li><a href="https://www.python.org/">Python</a>, versión 3.7 de 32 bits<ul>
 <li>Utiliza la última revisión menor si es posible.</li>
-<li>No uses <code>3.7.6</code>, ya que causa un error durante la construcción, consulta #10696.</li>
 </ul>
 </li>
 <li>Microsoft Visual Studio 2019 Community, versión 16.3 o posterior:<ul>
@@ -89,57 +88,41 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 </li>
 </ul>
 <h3 id="submodulos-git">Submódulos Git</h3>
-<p>La mayoría de las dependencias van dentro de submódulos Git.
+<p>Algunas de las dependencias van dentro de submódulos Git.
 Si no pasaste la opción <code>–recursive</code> a git clone, tendrás que ejecutar <code>git submodule update –init</code>.
 Cada vez que cambie el commit relacionado con un submódulo necesario (por ejemplo después de git pull), deberás ejecutar <code>git submodule update</code>.
 Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer pull, merge o checkout.</p>
 <p>Para referencia, las siguientes dependencias de tiempo de ejecución se incluyen como submódulos Git:</p>
 <ul>
-<li><a href="https://github.com/enthought/comtypes">comtypes</a>, versión 1.1.7</li>
-<li><a href="https://www.wxpython.org/">wxPython</a>, versión 4.0.3</li>
-<li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit 1fb68ffffea4 </li>
+<li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit cad1c8e8</li>
 <li><a href="https://github.com/waywardgeek/sonic">Sonic</a>, commit 4f8c1d11</li>
 <li><a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a>, commit cbc1f29631780</li>
-<li><a href="https://github.com/DiffSK/configobj">ConfigObj</a>, commit f9a265c</li>
-<li><a href="https://pypi.python.org/pypi/six">Six</a>, versión 1.12.0, necesario para wxPython y ConfigObj</li>
-<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.16.1</li>
-<li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a> Emoji Annotations, versión 38.0</li>
+<li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.17.0</li>
+<li><a href="http://cldr.unicode.org/">Unicode Common Locale Data Repository (CLDR)</a>, versión 39.0</li>
 <li>Imágenes y sonidos de NVDA</li>
 <li><a href="https://download.macromedia.com/pub/developer/acrobat/AcrobatAccess.zip">Interfaz de accesibilidad de Adobe Acrobat, versión XI</a></li>
-<li>Biblioteca de tipos de la interfaz de accesibilidad para Adobe Flash</li>
 <li><a href="https://github.com/RaMMicHaeL/minhook">MinHook</a>, versión etiquetada 1.2.2</li>
 <li>Bindings de Python para brlapi versión 0.8.0 o posterior, distribuidos en <a href="https://brltty.app/download.html">BRLTTY para Windows</a> versión 6.1</li>
 <li>lilli.dll, versión 2.1.0.0</li>
-<li><a href="https://pypi.python.org/pypi/pyserial">pySerial</a>, versión 3.4</li>
 <li><a href="http://fluidmotion.dyndns.org/zenphoto/index.php?p=news&amp;title=Python-interface-to-FTDI-driver-chip">Interfaz Python para el controlador y el chip FTDI</a></li>
 <li>Java Access Bridge de 32 bits, procedente del OpenJDK de la Comunidad Zulu, compilación 13.0.1+10Zulu (13.28.11)</li>
 </ul>
-<p>Además, las siguientes dependencias de tiempo de compilación también se incluyen en submódulos Git:</p>
+<p>Además, las siguientes dependencias de tiempo de compilación también se incluyen en el submódulo Git miscDeps: </p>
 <ul>
-<li><a href="https://github.com/albertosottile/py2exe/">Py2Exe</a>, versión 0.9.3.2, commit b372a8e</li>
-<li><a href="https://sourceforge.net/projects/pywin32/">Python Windows Extensions</a>, compilación 224, necesario para usar py2exe</li>
 <li><a href="https://txt2tags.org/">txt2tags</a>, versión 2.5</li>
-<li><a href="https://www.scons.org/">SCons</a>, versión 4.0.1</li>
 <li><a href="https://nsis.sourceforge.io/Main_Page/">Nulsoft Install System</a>, versión 2.51</li>
 <li><a href="https://nsis.sourceforge.io/UAC_plug-in">Complemento de NSIS para Uac</a>, versión 0.2.4, ansi</li>
 <li>xgettext y msgfmt de <a href="https://sourceforge.net/projects/cppcms/files/boost_locale/gettext_for_windows/">GNU gettext</a></li>
-<li><a href="http://epydoc.sourceforge.net/">epydoc</a>, versión 3.0.1 con parche para el fallo #303</li>
 <li><a href="https://github.com/akrzemi1/Optional">Boost opcional (cabecera independiente)</a>, del commit <a href="https://github.com/akrzemi1/Optional/commit/3922965396fc455c6b1770374b9b4111799588a9">3922965</a></li>
 </ul>
-<h3 id="otras-dependencias">Otras dependencias</h3>
-<p>Para hacer comprobaciones de estilo usando Flake 8 localmente utilizando la integración con SCons, algunas dependencias se instalan (automáticamente) mediante Pip.
-Aunque esto debe hacerse manualmente, los desarrolladores podrían querer configurar primero un entorno virtual de Python para asegurar que su instalación general no se ve afectada.
-* Flake8
-* Flake8-tabs</p>
-<p>Estas dependencias no vienen incluidas en submódulos Git, y casi nadie las necesita:</p>
-<ul>
-<li>Para generar la documentación para nvdaHelper: <a href="http://www.doxygen.nl/download.html">Doxygen Windows installer</a>, versión 1.8.15:</li>
-<li>
-<p>Si utilizas Visual Studio Code como tu entorno de desarrollo preferido, puedes emplear la <a href="https://github.com/nvaccess/vscode-nvda/">configuración de espacio de trabajo preconcebida</a> para <a href="https://code.visualstudio.com/">Visual Studio Code</a>.
+<p>Estas dependencias no vienen incluidas en submódulos Git, y casi nadie las necesita:
+* Para generar la documentación para nvdaHelper: <a href="http://www.doxygen.nl/download.html">Doxygen Windows installer</a>, versión 1.8.15:
+* Si utilizas Visual Studio Code como tu entorno de desarrollo preferido, puedes emplear la <a href="https://github.com/nvaccess/vscode-nvda/">configuración de espacio de trabajo preconcebida</a> para <a href="https://code.visualstudio.com/">Visual Studio Code</a>.
     Aunque este proyecto de VS Code no se incluye como un submódulo en el repositorio de NVDA, se puede situar fácilmente la configuración de espacio de trabajo en el repositorio ejecutando lo siguiente desde la raíz del repositorio.</p>
-<p><code>git clone https://github.com/nvaccess/vscode-nvda.git .vscode</code></p>
-</li>
-</ul>
+<pre><code>```git clone https://github.com/nvaccess/vscode-nvda.git .vscode```
+</code></pre>
+<h3 id="dependencias-python">Dependencias Python</h3>
+<p>NVDA y su sistema de compilación también dependen de una extensa lista de paquetes Python. Se enumeran todos ellos con sus versiones específicas en el archivo requirements.txt en la raíz de este repositorio. No obstante, el sistema de compilación se encarga de obtenerlos por sí mismo cuando los necesita. Estos paquetes se instalarán en un entorno virtual aislado de Python dentro de este repositorio, y no afectarán al conjunto de paquetes del sistema.</p>
 <h2 id="preparacion-del-codigo-fuente">Preparación del código fuente</h2>
 <p>Antes de que puedas ejecutar NVDA desde el código fuente, debes prepararlo.
 Esto se hace abriendo un símbolo del sistema, cambiando a la raíz del repositorio con el código fuente y escribiendo:</p>
@@ -173,13 +156,8 @@ En vez de eso, <code>scons symbolsArchive</code> los empaqueta en un archivo sep
 <p>Por defecto, la compilación se hace sin argumentos de optimización.
 Mira el argumento <code>release</code> más abajo para saber qué optimizaciones se activan al usarlo.</p>
 <h2 id="ejecucion-del-codigo-fuente">Ejecución del código fuente</h2>
-<p>La mayoría de desarrolladores ejecutan directamente desde el código fuente usando:</p>
-<pre><code>cd source
-pythonw.exe nvda.pyw
-</code></pre>
-
-<p>Nota: ya que NVDA es una aplicación de Windows (y no de consola), es mejor ejecutarla con <code>pythonw.exe</code>.
-Sin embargo, si durante el desarrollo encuentras un error en una fase temprana del inicio de NVDA, puedes usar <code>python.exe</code> y probablemente obtendrás más información sobre el error.</p>
+<p>Es posible ejecutar NVDA desde el código fuente directamente sin tener que construir el paquete binario completo ni el instalador.
+Para iniciar NVDA desde el código fuente, utilizando <code>cmd.exe</code>, ejecuta <code>runnvda.bat</code> en la raíz del repositorio.</p>
 <p>Para ver una ayuda sobre los argumentos que acepta NVDA, usa las opciones <code>--help</code> o <code>-h</code>.
 Estos argumentos también están documentados en la guía de usuario.</p>
 <h2 id="construccion-de-nvda">Construcción de NVDA</h2>
@@ -201,8 +179,12 @@ Estos argumentos también están documentados en la guía de usuario.</p>
 <pre><code>scons developerGuide
 </code></pre>
 
-<p>La guía del desarrollador aparecerá en la carpeta <code>devDocs</code> dentro del directorio output.
-Ten en cuenta que el código fuente de NVDA basado en Python 3 actualmente no permite construir la documentación para desarrolladores de NVDA usando la orden <code>scons devDocs</code>.</p>
+<p>La guía del desarrollador aparecerá en la carpeta <code>devDocs</code> dentro del directorio output.</p>
+<p>Para generar la documentación del código fuente basada en HTML, escribe:</p>
+<pre><code>scons devDocs
+</code></pre>
+
+<p>La documentación aparecerá en la carpeta <code>NVDA</code> dentro del directorio output.</p>
 <p>Para generar documentación para desarrolladores de nvdaHelper (no incluida en devDocs):</p>
 <pre><code>scons devDocs_nvdaHelper
 </code></pre>
@@ -264,20 +246,23 @@ Por ejemplo, para ejecutar sólo los métodos en las clases <code>TestMove</code
 <h3 id="comprobacion-del-estilo-de-tus-cambios">Comprobación del estilo de tus cambios</h3>
 <p>Para garantizar que tus cambios cumplen con el estilo de codificación de NVDA, puedes ejecutar el comprobador Flake8 localmente.
 Algunos desarrolladores han encontrado ciertos mensajes de error de comprobación de estilo sin sentido, estos se aclaran en <code>tests/lint/readme.md</code>.
-La ejecución mediante SCons usará Flake8 para inspeccionar únicamente las diferencias entre tu directorio de trabajo y la rama <code>base</code> especificada.
+runlint.bat usará Flake8 para inspeccionar únicamente las diferencias entre tu directorio de trabajo y la rama <code>base</code> especificada.
 Si creas una solicitud de cambios, la rama <code>base</code> para ese caso debería ser la misma que el destino que usarías para la solicitud de cambios. En la mayoría de los casos será <code>origin/master</code>.</p>
-<pre><code>scons lint base=origin/master
+<pre><code>runlint origin/master
 </code></pre>
 
 <p>Para recibir avisos más deprisa sobre errores de estilo, podrías querer integrar Flake8 con otras herramientas de desarrollo que utilices.
 Para más detalles, consulta <code>tests/lint/readme.md</code></p>
+<h3 id="pruebas-unitarias_1">Pruebas unitarias</h3>
+<p>Se pueden ejecutar las pruebas unitarias con el script <code>rununittests.bat</code>.
+Internamente, este script usa el framework de pruebas Python Nose para ejecutar las pruebas.
+Cualquier argumento dado a rununittests.bat se reenvía a Nose.
+Consulta la propia documentación de Nose para saber cómo filtrar pruebas, etc.</p>
 <h3 id="pruebas-del-sistema">Pruebas del sistema</h3>
-<p>También puedes usar <code>scons</code> para ejecutar las pruebas de sistema,
- aunque todavía será necesario instalar las dependencias.
+<p>Las pruebas de sistema se pueden ejecutar con el script <code>runsystemtests.bat</code>.
+Internamente, este script usa el framework de pruebas Robot para ejecutar las pruebas.
+Cualquier argumento dado a runsystemtests.bat se reenvía a Robot.
 Para más detalles (incluyendo filtrado y exclusión de pruebas), consulta <code>tests/system/readme.md</code>.</p>
-<pre><code>scons systemTests
-</code></pre>
-
 <h2 id="colaboracion-con-nvda">Colaboración con NVDA</h2>
 <p>Si deseas colaborar con NVDA aportando código o documentación, puedes leer más sobre ello en la <a href="https://github.com/nvaccess/nvda/wiki/Contributing">guía de colaboración</a>.</p>
 </body>
