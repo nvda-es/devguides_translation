@@ -128,7 +128,7 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 - Release Title example: `Release 2019.2beta3`, 
 - No description necessary for first RC / Release
   - Subsequent RC / Release can describe important additions & removals.
-- For `RC`, ensure option "This is a pre-release" is checked.
+- For `RC` or `Beta`, ensure option "This is a pre-release" is checked.
 
 ### Reasoning
 

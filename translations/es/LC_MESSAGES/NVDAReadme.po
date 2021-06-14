@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-17 12:57+0200\n"
-"PO-Revision-Date: 2021-05-17 12:58+0200\n"
+"POT-Creation-Date: 2021-06-14 14:16+0200\n"
+"PO-Revision-Date: 2021-06-14 14:18+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\NVDAReadme.py:3
@@ -449,10 +449,10 @@ msgstr ""
 #: ..\python_docs\NVDAReadme.py:68
 msgid ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), version 1.51-dev "
-"commit cad1c8e8"
+"commit aafd2e720"
 msgstr ""
 "* [eSpeak NG](https://github.com/espeak-ng/espeak-ng), versión 1.51-dev, "
-"commit cad1c8e8"
+"commit aafd2e720"
 
 #: ..\python_docs\NVDAReadme.py:69
 msgid "* [Sonic](https://github.com/waywardgeek/sonic), commit 4f8c1d11"
@@ -467,8 +467,8 @@ msgstr ""
 "start), commit cbc1f29631780"
 
 #: ..\python_docs\NVDAReadme.py:71
-msgid "* [liblouis](http://www.liblouis.org/), version 3.17.0"
-msgstr "* [liblouis](http://www.liblouis.org/), versión 3.17.0"
+msgid "* [liblouis](http://www.liblouis.org/), version 3.18.0"
+msgstr "* [liblouis](http://www.liblouis.org/), versión 3.18.0"
 
 #: ..\python_docs\NVDAReadme.py:72
 msgid ""

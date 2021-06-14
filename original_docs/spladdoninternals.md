@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NVDA 21.01
+Based on StationPlaylist Add-on for NVDA 21.06
 
 ## 2021 Preface and notes
 
@@ -16,7 +16,7 @@ Then came 2019, and so did Python 3, abstract classes, and new encoder types. Th
 
 In 2020, the add-on has gone through another major change: removal of unnecessary features and splitting broadcast profiles management from add-on settings dialog. In the old days, add-on settings management was intimately tied to broadcast profiles, and that was the reason why broadcast profiles panel was an integral part of add-on settings dialog. In early 2020, several bugs stemming from design decisions years ago came to light such as applying settings changes to wrong profile. Together with a need to make add-on settings panels independent of each other in order to allow users to open alarms panel from anywhere (described later), it was decided to split broadcast profiles panel into its own dialog.
 
-Another big change in 2020 was removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage is declining, the dedicated command layout was removed. Another removed feature is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
+Another big change in 2020 was removing unnecessary and problematic features. For years, Window-Eyes users were supported by having a dedicated command layout in SPL Assistant layer. As Window-Eyes usage has declined, the dedicated command layout was removed. Another removed feature is time-based (triggered) broadcast profiles as it became clear that defining instant switch profiles were enough, coupled with design problems in the feature itself that showed up in recent years. Just like add-on update feature, time-based profiles feature will be described to provide historical overview.
 
 2021 may turn out to be a turning point for the add-on. I (Joseph Lee) will be stepping down from maintaining this add-on. My hope is that new maintainers (whoever might be) will step up and improve this add-on greatly.
 
@@ -73,6 +73,7 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 20.06: removed Window-Eyes support, time-based broadcast profiles facility removed, support for Remote VT client.
 * 20.09: fourth LTS release, pilot features removed, connecting to individual encoders in SPL encoders, background encoder monitor registry.
 * 21.01: track property announcement changes, more lint fixes.
+* 21.06: compatibility with newer NVDA releases, type annotations and more robust source code. This is the last version with new features and bug fixes from me.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -152,7 +153,7 @@ Starting from add-on 7.0, one of the activities the app module performs at start
 In the old days of Windows (1990's), programs were not ready to support Unicode when Windows itself did. To support programs that are not Unicode-aware, Microsoft defined two versions of a given Windows API function. For example, there were two versions of FindWindow function, the difference being the final character as follows:
 
 * A: ANSI version meant for legacy programs (e.g. FindWindowA).
-* W: Widechar (Unicode) character version (e.g. FindWindowW).
+* W: Wide char (Unicode) character version (e.g. FindWindowW).
 
 In reality, programs call FindWindow function, and the appropriate "version" was chosen based on overall character representation macro as specified by the program. For example, if the program was unicode-aware, when FindWindow is called, Windows internally calls FindWindowW.
 
@@ -350,7 +351,7 @@ Recently, this method was abandoned in favor of using Python's time module to ob
 
 ### Complete time: Windows API to the rescue
 
-Here, complete time refers to time including seconds. Normally, when you press NVDA+F12, NVDA excludes seconds when announcing time. All that is needed to announce seconds is to change the format argument for kernel32.dll's GetTimeFormat function. With this change, NVDA can announce time including seconds, but in order to use it, you need to assign a command to this feature (some app module commands are not assigned by default).
+Here, complete time refers to time including seconds. Normally, when you press NVDA+F12, NVDA excludes seconds when announcing time. All that is needed to announce seconds is to change the format argument for kernel32.dll's GetTimeFormatEx (formerly GetTimeFormat) function. With this change, NVDA can announce time including seconds, but in order to use it, you need to assign a command to this feature (some app module commands are not assigned by default).
 
 ### Setting alarms
 
@@ -531,7 +532,7 @@ Two other commands are used as part of Track Finder: Find next and previous, ass
 In add-on version 2.0 to 5.x, when told to find tracks, NVDA will look for search term in track descriptions (in case you are searching for artist in Studio 5.0x, NVDA will also check the name of the check box, as this holds artist name). Although this was simple to implement, it had some issues:
 
 1. Because of track item changes in Studio 5.10, I had to spend some time adjusting the track finder formula.
-2. Wehn finding a track in a playlist with hundreds of tracks loaded, finding a track at the end of the playlist took several seconds, and this wasn't acceptable to users.
+2. When finding a track in a playlist with hundreds of tracks loaded, finding a track at the end of the playlist took several seconds, and this wasn't acceptable to users.
 
 In add-on 6.0, thanks to column search, Track Finder's performance was improved. Also, track finder was split into two functions: trackFinder still manages moving focus or showing the error dialog, while the linear search now lives in a private function. This design allows track finder routine to be used by more than one feature (in this case, place marker feature uses this, as you'll see in the next section.
 
@@ -539,7 +540,7 @@ For both versions, the signature of trackFinder method (linear search routine in
 
 	trackFinder(self, text, obj, directionForward=True, column=None)
 
-Text is the search term, obj is where the search should begin, direction specifies search direction and column is used if Column Search is used (searching for text in specific columns). In Track Finder 2.0 (add-on 6.0), add an "s" to column keyword.
+Text is the search term, obj is where the search should begin, direction specifies search direction and column is used if Column Search is used (searching for text in specific columns). In Track Finder 2.0 (add-on 6.0), add an "s" to column keyword, and since 2021, columns argument expects a list of column position integers.
 
 ## Method resolution  order and importance of column navigation in track items, Track Tool and other features
 
@@ -566,6 +567,7 @@ On top of the base SPL track item class is general Studio track item class, whic
 * reportFocus: This is called when reporting track items to you (broadcaster). It's main job is to see if custom column order is defined (see below) and builds needed pieces if column order is specified. Later in 2020, column order handling was moved to track name getter.
 * Track comments: Routines related to working with comments for traks (see the previous section for details).
 * Announcing toggle state of tracks when Space is pressed.
+* Toggling column announcement inclusion and order between screen order and custom order (see column announcement order section for details).
 
 ### Birth of Track Dial: from hesitation to possibilities
 
@@ -627,19 +629,19 @@ Until 2020, because Studio's track item class relied mostly on default IAccessib
 
 #### Track Columns Explorer: Retrieve information from specific columns
 
-In add-on 7.0, it became possible to let NVDA announce information from specific columns. This is done by letting NVDA assign SPL Assistant, 1 through 0 (6 for Studio 5.0x) to a function to obtain information from specific column (slot); add-on 8.0 changed these commands to use Control+NVDA+number row. This is called Track Columns Explorer (usually termed Coloumns Explorer).
+In add-on 7.0, it became possible to let NVDA announce information from specific columns. This is done by letting NVDA assign SPL Assistant, 1 through 0 (6 for Studio 5.0x) to a function to obtain information from specific column (slot); add-on 8.0 changed these commands to use Control+NVDA+number row, and SPL Assistant, number row commands were removed in 2020. This is called Track Columns Explorer (usually termed Coloumns Explorer).
 
 In addition to using column retriever routine in Track Dial, Columns Explorer needs to know Studio version in use, as Studio 5.1x shows columns not found in Studio 5.0x (this is checked when entering SPL Assistant as discussed later). In addition, since not all track items expose more than ten columns or column slots cannot be configured for some items (notably Creator's Playlist Editor), Columns Explorer needs to know how many columns can be retrieved and take action if no column slot can be defined.
 
 Once column slots are defined (for items allowing configuring column slots, which are Studio's Playlist Viewer, Track Tool, and Creator's main tracks list, Columns Explorer performs the following:
 
-1. Checks if you are indeed focused on a track item, and if not, it'll say "not a track".
+1. Checks if you are indeed focused on a track item, and if not, it'll say "not a track". With the removal of SPL Assistant, number row commands in 2020, this is no longer checked as track items themselves will define Columns Explorer commands.
 2. Consults a list of column slots and locates corresponding column index for the slot in question.
 3. Uses column retriever routine to announce column header and content for the selected column slot.
 
 ##### Optimization bonus: I've rearranged columns in studio 5.10...
 
-Due to different control data structure in use, one can rearrange columns in Studio 5.10 and later. But how does NVDA know exactly which column is which? This is thanks to the fact that internal column position doesn't change. When you rearrange columns, you are changing the way columns are presented on screen. When column retriever function (described above) is invoked, Studio returns column content for a column index regardless of where this column is located on screen. Not only this makes Columns Explorer simpler to implement, it allows Track Dial to track (after manual intervention) column presentation changes on screen.
+Due to a different control data structure in use, one can rearrange columns in Studio 5.10 and later. But how does NVDA know exactly which column is which? This is thanks to the fact that internal column position doesn't change. When you rearrange columns, you are changing the way columns are presented on screen. When column retriever function (described above) is invoked, Studio returns column content for a column index regardless of where this column is located on screen. Not only this makes Columns Explorer simpler to implement, it allows Track Dial to track (after manual intervention) column presentation changes on screen.
 
 ##### What about items where column slots cannot be configured?
 
@@ -855,7 +857,7 @@ When I sat down to design this layer set, I felt it would be helpful for broadca
 
 Originally, one could invoke SPL Assistant layer by pressing Control+NVDA+grave key from within Studio. However, some NVDA translators told me that this key combination is used for NVDA screen reader commands in their languages. Thus, in add-on 2.0 (late spring 2014), I decided to remove this command, which means in order for you (broadcasters) to invoke SPL Assistant layer, you need to go to Input Gestures dialog while focused in Studio, expand StationPlaylist category and look for the Assistant entry (I personally use Control+NVDA+grave, and in recent add-on development builds, I told the add-on to let SPL Controller layer command (discussed later) to invoke Assistant layer).
 
-Another addition to SPL Assistant layer is ability to emulate layer commands provided by other screen readers. This is achieved by using gestures map for each screen reader (NVDA included), with the correct gestures map chosen when entering SPL Assistant layer. Currently, in addition to default NVDA layout, the add-on supports JAWS for Windows and Window-Eyes layer commands.
+Another addition to SPL Assistant layer is ability to emulate layer commands provided by other screen readers. This is achieved by using gestures map for each screen reader (NVDA included), with the correct gestures map chosen when entering SPL Assistant layer. Currently, in addition to default NVDA layout, the add-on includes JAWS for Windows layer commands (Window-Eyes layer was removed in 2020).
 
 ### Categorizing SPL Assistant commands
 
@@ -864,10 +866,10 @@ Once you invoke SPL Assistant layer (a beep will be heard), you can perform one 
 * Status announcements (automation, microphone, etc.).
 * Tools (library scan, track time analysis, obtaining playlist snapshots and transcripts and so on).
 * Configuration (switching broadcast profiles).
-* Ask for help (opening SPL Assistant help dialog or the online user guide).
+* Ask for help (opening SPL Assistant help document or the online user guide).
 * Until 18.12, checking for add-on updates (manually).
 
-For the first two categories, they can be divided further into commands which uses studio API (via statusAPI function discussed in a previous section), ones using Windows API (Columns explorer) and those relying on object navigation (multiple components are involved and is sensitive to user interface changes). We'll go through each of these categories in turn.
+For the first two categories, they can be divided further into commands which uses studio API (via studioAPI function discussed in a previous section), ones using Windows API (Columns explorer) and those relying on object navigation (multiple components are involved and is sensitive to user interface changes). We'll go through each of these categories in turn.
 
 #### SPL Assistant 1: status announcements
 
@@ -946,7 +948,7 @@ Not all status bar messages will use Studio API and status messages table. The l
 
 ##### Another side tour: Playlist Editor and object caching
 
-As noted above, part of object navigation commands in SPL Assistnat involve object cache. This is necessary for performance reasons, as retrieving and navigating via objects is slow versus retrieving needed object from a cache, which is faster than manual object retrieval. This technique is frequently labeled "memoization" and is used to improve responsiveness if an important data is present somewhere for fast retrieval.
+As noted above, part of object navigation commands in SPL Assistant involve object cache. This is necessary for performance reasons, as retrieving and navigating via objects is slow versus retrieving needed object from a cache, which is faster than manual object retrieval. This technique is frequently labeled "memoization" and is used to improve responsiveness if an important data is present somewhere for fast retrieval.
 
 Similar to SPL Assistant commands involving object navigation, Creator's Playlist Editor's status objects require caching because slowness of object navigation. Without caching, retrieving needed information will take seconds instead of fraction of a second. Just like Studio, cached information is cleared when Creator app module is terminated.
 
@@ -1000,7 +1002,7 @@ There is another function key assigned to SPL Assistant: pressing F12 will switc
 
 I believe that a product isn't complete without a good quality documentation. For this reason, SPL Assistant provides two commands to help you use the layer commands or the add-on itself. They are:
 
-* F1: Displays a dialog presenting a list of SPL Assistant layer commands.
+* F1: Opens a browse mode document presenting a list of SPL Assistant layer commands.
 * Shift+F1: Opens the online user guide (os.startfile).
 
 #### SPL Assistant 5: Checking for add-on updates
@@ -1068,7 +1070,7 @@ The add-on settings dialog (splconfui.SPLConfigDialog) contains following option
 
 * Global settings: these are settings not affected by profiles. These include status announcements, announcing listener count, library scan options and so on.
 * Profile-specific settings: Currently alarms, metadata streaming and column announcement settings are profile-specific. These are end of track alarm and the option to use this alarm, song ramp (intro) time and the setting to use this alarm, microphone alarm and microphone alarm interval. It also includes URL's for metadata streaming and column announcement order and inclusion. For numeric settings such as alarm value, it is a spin control (wx.SpinCtrl; use up or down arrow keys to change them).
-* Reset settings: NVDA will ask if you wish to reset settings in the currently active profile back to factory defaults. This is done by using a function in splconfig module (splconfig.resetConfig) that will set current profile values to defaults (a default configuration map is included for this purpose; this map uses a configuration specification (confspec, part of defining validation routine via validator module (a close friend of ConfigObj), and this confspec is defined in the splconfig module).
+* Reset settings: NVDA will ask if you wish to reset settings in the currently active profile back to factory defaults. This is done by using a function in splconfig module (splconfig.resetConfig) that will set current profile values to defaults (a default configuration map is included for this purpose; this map uses a configuration specification (confspec, part of defining validation routine via validator module (a close friend of ConfigObj), and this confspec is defined in the splconfspec module).
 
 When you press Alt+NVDA+0 from Studio to open this dialog, the following will happen:
 
@@ -1199,7 +1201,7 @@ For readers familiar with Studio keyboard commands, you'll find yourself at home
 Here are the two exceptions
 
 * E: NVDA will search for and announce connection status of encoders. This is done by locating top-level windows for various encoder windows and using EnumChildWindows to look for actual encoders list.
-* F1: Opens a dialog displaying Controller layer commands (does this sound familiar?).
+* F1: Opens a browse mode document displaying Controller layer commands (does this sound familiar?).
 
 ### Focusing to Studio window from anywhere
 
@@ -1329,7 +1331,7 @@ In case of SPL add-on, I have different Studio versions installed: 5.11 on my la
 
 Like other NVDA developers and many add-on writers, I use Git for source code management (contrary to its slogan, Git is very smart). This is a distributed system, meaning a local repository contains the complete record of how the source code is managed (no need to connect to a server to commit and fetch updates). For example, using just my local copy of the SPL add-on source code, I can view commit history and generate older add-on releases.
 
-Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: alpha (master branch), beta (beta branch) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a second). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes (in 2018, this has changed significantly).
+Another advantage of Git is extensive support for branches. A branch is a development workflow separate from other branches. For example, NVDA screen reader uses at least three branches for its workflow: alpha (master branch), beta (beta branch) and rc (release candidate, used to build official releases). SPL add-on uses this approach as well: there are at least two branches in use, called master (renamed to main in 2021) and stable used for ongoing development or release and maintenance, respectively (we'll come back to branches in a second). With the advent of Test Drive program (see below), a third branch named "staging" or "next" is used to gather all work done on branches under one roof for testing purposes (in 2018, this has changed significantly).
 
 ### How an add-on feature is born
 
@@ -1411,7 +1413,7 @@ A LTS version is a major version or a major periodic release of the SPL add-on w
 * Studio version supported: A LTS version is the last version to support the oldest supported Studio version. This is designed to give people plenty of time to upgrade to newer Studio releases.
 * Last version with old NVDA technology in use: in some cases, LTS releases are made to support users of old NVDA releases. After the LTS release is created, add-on source code will shift to using newer code from NVDA. This criteria was first applied in 18.09 as a result of NVDA's end of support for Windows XP, Vista and 7 without Service Pack 1, as well as transition to Python 3.
 
-As of January 2020, the most recent LTS version is add-on 18.09.x (September 2018 to December 2019). Previous LTS releases have included 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
+As of June 2021, the most recent LTS version is add-on 20.09.x (September 2020 to April 2021). Previous LTS releases have included 18.09.x (September 2018 to December 2019), 15.x (formerly 7.x until October 2016; October 2016 to April 2018) and 3.x (September 2014 to June 2015). For example, add-on 3.x was maintained thus:
 
 1. Add-on 3.0 was released in September 2014.
 2. Add-on 3.5 (December 2014) could have been the last maintenance version for add-on 3.x if it was not a LTS version.
@@ -1431,7 +1433,7 @@ I'd like to thank StationPlaylist staff for continued collaboration with screen 
 
 Source code notice: to protect copyrights, parts of Studio API has not been documented. Also, source code discussed throughout this series may change as future add-on versions are developed.
 
-Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2019 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist add-on for NVDA is copyright 2011, 2013-2019 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
+Copyrights: StationPlaylist Studio, Track Tool and StationPlaylist Encoders are copyright StationPlaylist.com. NonVisual Desktop Access is copyright 2006-2021 NV access Limited (released under GPL). SAM Encoders is copyright Spatial Audio. Microsoft Windows and Windows API are copyright Microsoft Corporation. Python is copyright Python Software Foundation. StationPlaylist add-on for NVDA is copyright 2011, 2013-2021 Geoff Shang, Joseph Lee and others (released under GPL). Other products mentioned are copyrighted by owners of these products (licenses vary).
 
 ## References
 

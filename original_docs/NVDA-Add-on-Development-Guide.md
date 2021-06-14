@@ -512,6 +512,8 @@ The following lists available NVDA core modules and some useful methods and clas
     - `ui.browseableMessage(message to be shown, title, HTML or not)`: displays some text and an optional title in a web browser window. If you want to use HTML markup, set isHTML argument to True.
 * UIA support (UIAHandler.py, UIA objects): Used for supporting UIA (User Interface Automation) controls (Windows 7 and later).
 * Virtual buffers (virtualBuffers): Handles virtual buffer documents such as web sites.
+* Windows version specifications and checks (winVersion.py): provides constants representing Windows releases and comparing Windows releases.
+    - winVersion.getWinVer(): returns the current Windows release (Windows release name, major.minor.build, installation type, and service pack if any). This data can be compared with other Windows releases such as detecting specific Windows 10 release such as October 2018 Update e.g. winVersion.getWinVer() >= winVersion.WIN10_1809.
 * Windows API wrappers: the following modules are thin wrappers around Windows API libraries. You can use the below modules or call Windows API directly via ctypes.windll.dllname (e.g. ctypes.windll.user32):
     - `winKernel`: Wraps some constants, structures and functions from kernel32.dll that are commonly encountered in NVDA.
     - `winUser`: wraps around constants, structures and functions defined in user32.dll that are used by NVDA.
@@ -1219,8 +1221,8 @@ class AppModule(appModuleHandler.AppModule):
 	@script(gesture="kb:NVDA+S")
 	def script_sayLineNumber(self, gesture):
 		# Suppose line number is in the form "  ln 1".
-		lineNumList = api.getStatusBar().name.split()
-		lineNum = lineNumList[2]+lineNumList[3]
+		lineNumList = api.getStatusBar().getChild(1).name.split()
+		lineNum = lineNumList[0]+lineNumList[1]
 		ui.message(lineNum)
 ```
 
@@ -1399,14 +1401,14 @@ If you would like to submit your add-on for distribution on community add-ons we
 
 Your add-on:
 
-1. Must be licensed under GNU General Public license (GPL) 2 or later or equivalent which allows a GPL software such as NVDA to incorporate your code while it runs.
+1. Must be licensed under GNU General Public license (GPL) version 2 or later or equivalent which allows a GPL software such as NVDA to incorporate your code while it runs.
 2. Must be written in Python 3. Compatibility with Python 2 is optional but not recommended starting with NVDA 2021.1 base API.
-3. Must be compatible with latest base API release (as of January 2021, base API is 2019.3).
+3. Must be compatible with latest base API release (as of May 2021, base API is 2021.1).
 4. Messages to be presented to users should be made translatable (use _() Gettext function to make messages translatable). Be sure to accompany translatable messages with comments for translators.
 
 ## Advanced Code Examples and Features
 
-This chapter is a work in progress. If there is something you would like to see here, or if you have a comment or correction, please contact one of the maintainers.
+This chapter is a work in progress. If there is something you would like to see here, or if you have a comment or correction, please contact one of the maintainers, or ask for it on the add-ons mailing list.
 
 ### Interactive Dialogs
 
@@ -1684,10 +1686,13 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | Framework used to generate this UIA object | obj.UIAElement.cachedFrameworkID | The GUI framework used to program this object. Commonly encountered frameworks are Direct UI, Windows Presentation Foundation (WPF) controls with UIA enabled, XAML (eXtensible Application Markup Language) and Microsoft Edge. |
 | I want to ask UIA about values of a specific property | obj._getUIACacheablePropertyValue(propertyID) | Provided that the object is a UIA control, pass in the property ID you wish to know as an argument to this function. If the property is supported, a valid value will be returned, otherwise a COM error exception will be thrown. |
 | Executable name of any object | obj.appModule.appName | appModule is the attribute of any object that can be represented within an app such as focused control. |
+| Path to the executable for the foreground object | api.getForegroundObject().appModule.appPath | Obtains the path to the executable for any object. |
+| Provide information about a script in one go | scriptHandler.script(description, one or more gestures, category) | This is a decorator. Typically you would write: @scriptHandler.script followed by the script information. Gestures can be a single gesture (gesture=string) or a list (gestures=[gestures]). |
+| Assign a keyboard command to a script | @scriptHandler.script(gesture=keyboardCommand) | Keyboard gestures start with a "kb:". |
 | Send keystrokes | gesture.send() | This is to be called from a script with the desired keystroke bound to it. |
 | Handling multiple presses of a keystroke | scriptHandler.getLastScriptRepeatCount() | 0 means the command was pressed once. |
-| I want to assign Control+Alt+number row to a script | In initOverlayClass(self): for key in range(10): self.bindGesture("control+alt+%s"%(key), "somescript") | For Python 2, use xrange instead. For ease of readability, indent each statement on separate lines. |
-| providing input help message | script_somescript.__doc__ | Effectively, a script's docstring is treated as its input help message. |
+| I want to assign Control+Alt+number row to a script | @scriptHandler.script(gestures=[f"kb:control+alt+{i}" for i in range(10)]) | This uses a combination of a decorator and formatted string literals (f strings) defined inside a list comprehension. |
+| providing input help message | @scriptHandler.script(description=inputHelpMessage) | Effectively, a script's description (assigned to its docstring) is treated as its input help message. |
 | Handle name changes | event_nameChange(self, obj, nextHandler) | The body should consist of what should be done, ending with a call -to nextHandler() function. |
 | Live region change announcements | event_liveRegionChange(self, obj, nextHandler) | By default, new text will be spoken and/or brailled. |
 | Instantly transform a window into a dialog | In chooseNVDAObjectOverlayClasses(self, obj, clsList): if you found the window you want: clsList.insert(0, NVDAObjects.Behaviors.Dialog) | Be sure to identify this window that is really a dialog. If done correctly, contents of this "dialog" will be announced automatically. |
@@ -1707,7 +1712,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I wish to do something whenever configuration profiles are changed | config.post_configProfileSwitch | You need to register a function to listen to this action, then let this function do something when profiles are changed. |
 | Let me know if this is a snapshot build | __debug__ | If yes (True), this is a snapshot build, otherwise this is a release version. |
 | I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |
-| Windows version | sys.getwindowsversion | This returns a tuple of five elements: major version, minor version, build number, platform, and service pack version. |
+| Windows version | winVersion.getWinVer() | This returns current Windows version (Windows release name, major.minor.build, installation type (workstation, server, domain controller), and service pack if any). You can also compare the version returned against a specific Windows release from winVersion module e.g. winVersion.getWinVer() >= winVersion.WIN81. |
 | Is 64-bit Windows | os.environ["PROCESSOR_ARCHITEW6432"] in ("AMD64", "ARM64") or os.path.exists(r"C:\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |
 | Registry access | winreg module | "_winreg" in Python 2. |
 | Open a website with the default web browser | os.startfile(URL) | |

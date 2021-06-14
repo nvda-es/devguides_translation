@@ -119,7 +119,7 @@ _(u"""- Click on the tag menu button, shown as \"...\" and choose \"Create Relea
 _(u"""- Release Title example: `Release 2019.2beta3`, """),
 _(u"""- No description necessary for first RC / Release"""),
 _(u"""  - Subsequent RC / Release can describe important additions & removals."""),
-_(u"""- For `RC`, ensure option \"This is a pre-release\" is checked."""),
+_(u"""- For `RC` or `Beta`, ensure option \"This is a pre-release\" is checked."""),
 "",_(u"""### Reasoning"""),
 "",_(u"""GitHub \"releases\" are formatted differently, can include metadata such as 'pre-release' and can have binaries attached. In the future, we would like to move to a more automated system that creates this release from the appveyor script and attaches the binaries. Unfortunately GitHub releases don't create an \"annotated tag\" in git, as such the tag for the release does not have a date or message."""),
 "",_(u"""## Scan the build"""),

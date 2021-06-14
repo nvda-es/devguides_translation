@@ -484,6 +484,10 @@ class AppModule(appModuleHandler.AppModule):
 </li>
 <li>Soporte UIA (UIAHandler.py, objetos UIA): Usado para soportar controles UIA (User Interface Automation) (Windows 7 y posteriores).</li>
 <li>Mmodos virtuales(virtualBuffers): Maneja documentos del modo virtual, tales como sitios web.</li>
+<li>Especificación de la versión de Windows y comprobaciones (winVersion.py): proporciona constantes que representan y comparan versiones de Windows.<ul>
+<li>winVersion.getWinVer(): devuelve la versión actual de Windows (nombre de la versión, principal.menor.revisión, tipo de instalación, y service pack si lo hay). Estos datos se pueden comparar con otras versiones de Windows, por ejemplo para detectar una versión de Windows 10 concreta como la actualización de octubre de 2018. Ejemplo: winVersion.getWinVer() &gt;= winVersion.WIN10_1809.</li>
+</ul>
+</li>
 <li>Capas de la API de Windows: los siguientes módulos son capas delgadas de las bibliotecas de la API de Windows. Puedes utilizar los módulos siguientes o llamar a la API de Windows directamente a través de ctypes.windll.dllname (por ejemplo, ctypes.windll.user32):<ul>
 <li><code>winKernel</code>: abarca algunas constantes, estructuras y funciones de kernel32.dll que se encuentran comúnmente en NVDA.</li>
 <li><code>winUser</code>: abarca las constantes, estructuras y funciones definidas en user32.dll que utiliza NVDA.</li>
@@ -1009,8 +1013,8 @@ class AppModule(appModuleHandler.AppModule):
     @script(gesture=&quot;kb:NVDA+S&quot;)
     def script_sayLineNumber(self, gesture):
         # Supongamos que el número de línea sigue el formato &quot;  ln 1&quot;.
-        lineNumList = api.getStatusBar().name.split()
-        lineNum = lineNumList[2]+lineNumList[3]
+        lineNumList = api.getStatusBar().getChild(1).name.split()
+        lineNum = lineNumList[0]+lineNumList[1]
         ui.message(lineNum)
 </code></pre>
 
@@ -1152,13 +1156,13 @@ class AppModule(appModuleHandler.AppModule):
 <h4 id="lista-de-comprobacion-de-revision-de-complementos">Lista de comprobación de revisión de complementos</h4>
 <p>Tu complemento:</p>
 <ol>
-<li>Debe estar liberado bajo la licencia GNU General Public License (GPL) 2 o posterior, o una equivalente que permita a un software GPL, como NVDA, incorporar tu código mientras se ejecuta.</li>
+<li>Debe estar liberado bajo la licencia GNU General Public License (GPL), versión 2 o posterior, o una equivalente que permita a un software GPL, como NVDA, incorporar tu código mientras se ejecuta.</li>
 <li>Debe estar escrito en Python 3. La compatibilidad con Python 2 es opcional, pero no se recomienda a partir de la API base de NVDA 2021.1.</li>
-<li>Debe ser compatible con la última liberación de la API base (en enero de 2021, la API base es 2019.3).</li>
+<li>Debe ser compatible con la última liberación de la API base (en mayo de 2021, la API base es 2021.1).</li>
 <li>Los mensajes que se presenten a los usuarios deberían hacerse traducibles (usa la función de Gettext _() para hacer que los mensajes sean traducibles). Asegúrate de acompañar los mensajes traducibles con comentarios para traductores.</li>
 </ol>
 <h2 id="ejemplos-avanzados-de-codigo-y-caracteristicas">Ejemplos avanzados de código y características</h2>
-<p>Este capítulo está en construcción. Si hay algo que desees ver aquí, o tienes un comentario o corrección, contacta con alguno de los autores.</p>
+<p>Este capítulo está en construcción. Si hay algo que desees ver aquí, o tienes un comentario o corrección, contacta con alguno de los autores o solicítalo en la lista de correo de complementos de NVDA.</p>
 <h3 id="dialogos-interactivos">Diálogos interactivos</h3>
 <h4 id="introduccion_1">Introducción</h4>
 <p>Para presentar información a tus usuarios, ui.message y ui.browseableMessage normalmente son suficientes. Sin embargo, si el usuario necesita enviar información de vuelta a tu complemento, no te van a ayudar. Por este motivo necesitas los diálogos. La creación de diálogos y muchas consideraciones sobre su uso se encuentran fuera del ámbito de este documento, pero podemos ayudarte en tus primeros pasos.</p>
@@ -1620,6 +1624,21 @@ class AppModule(appModuleHandler.AppModule):
 <td>appModule es el atributo de cualquier objeto que se pueda representar dentro de una aplicación como el control enfocado.</td>
 </tr>
 <tr>
+<td>Ruta al ejecutable del objeto en primer plano</td>
+<td>api.getForegroundObject().appModule.appPath</td>
+<td>Obtiene la ruta al ejecutable de cualquier objeto.</td>
+</tr>
+<tr>
+<td>Proporcionar información sobre un script en un solo paso</td>
+<td>scriptHandler.script(descripción, uno o más gestos, categoría)</td>
+<td>Este es un decorador. Normalmente escribirías: @scriptHandler.script seguido de la información del script. Gestos puede ser un único gesto (gesture=cadena) o una lista (gestures=[gestos]).</td>
+</tr>
+<tr>
+<td>Asignar un atajo de teclado a un script</td>
+<td>@scriptHandler.script(gesture=atajoDeTeclado)</td>
+<td>Los atajos de teclado empiezan por "kb:".</td>
+</tr>
+<tr>
 <td>Enviar combinaciones de teclas</td>
 <td>gesture.send()</td>
 <td>Se debe llamar desde un script asociado a la combinación de teclas deseada.</td>
@@ -1630,14 +1649,14 @@ class AppModule(appModuleHandler.AppModule):
 <td>0 significa que la orden se ha pulsado una vez.</td>
 </tr>
 <tr>
-<td>Quiero asignar la fila Control+Alt+número a un script</td>
-<td>En initOverlayClass(self): for key in range(10): self.bindGesture("control+alt+%s"%(key), "elscript")</td>
-<td>Para Python 2, utiliza xrange en su lugar. Para facilidad de lectura, indenta cada sentencia en líneas separadas.</td>
+<td>Quiero asignar control+alt+fila numérica a un script</td>
+<td>@scriptHandler.script(gestures=[f"kb:control+alt+{i}" for i in range(10)])</td>
+<td>Se utiliza una combinación de decorador y literales en cadena con formato (cadenas f) definidos dentro de una lista comprimida.</td>
 </tr>
 <tr>
-<td>proporcionar mensajes de ayuda para entradas</td>
-<td>script_somescript.<strong>doc</strong></td>
-<td>Efectivamente, la cadena de documentación del script se trata como su mensaje de ayuda para entradas.</td>
+<td>proporcionar un mensaje de ayuda de entrada</td>
+<td>@scriptHandler.script(description=mensajeDeAyudaDeEntrada)</td>
+<td>Efectivamente, la descripción del script (asignada a su cadena de documentación) se trata como su mensaje de ayuda de entrada.</td>
 </tr>
 <tr>
 <td>Manejar los cambios de nombre</td>
@@ -1736,8 +1755,8 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>Versión de Windows</td>
-<td>sys.getwindowsversion</td>
-<td>Esto devuelve una tupla de cinco elementos: versión principal, versión menor, número de compilación, plataforma y versión del Service Pack.</td>
+<td>winVersion.getWinVer()</td>
+<td>Devuelve la versión actual de Windows (nombre de la versión, principal.menor.revisión, tipo de instalación (estación de trabajo, servidor o controlador de dominio) y service pack si lo hay). Se puede comparar la versión devuelta con una versión de Windows concreta del módulo winVersion. Por ejemplo, winVersion.getWinVer() &gt;= winVersion.WIN81.</td>
 </tr>
 <tr>
 <td>¿Es Windows de 64 bits?</td>
