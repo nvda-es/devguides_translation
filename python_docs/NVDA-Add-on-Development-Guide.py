@@ -149,7 +149,6 @@ _(u"""    - [Appendix E: Python 2 versus 3](#user-content-appendix-e-python-2-ve
 "",_(u"""## Authors, Contributions, and Copyright"""),
 "",_(u"""This guide is primarily maintained, and was originally written, by Joseph Lee ([@josephsl](https://github.com/josephsl)), and is shaped by the NVDA user and developer community. Luke Davis ([@XLTechie](https://github.com/XLTechie)) sometimes serves as editor."""),
 "",_(u"""Valuable contributions and corrections from the community are welcome."""),
-"",_(u"""If you are contributing via the GitHub Wiki web editing mechanism, please be aware that by default, that mechanism changes the name of this file by replacing all spaces with hyphens (-). **Please correct that before submitting your changes.** The correct name of this file is: **\"NVDA Add-on Development Guide.md\"**."""),
 "",_(u"""NVDA is copyright 2006-2021 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders."""),
 "",_(u"""## Introduction"""),
 "",_(u"""Welcome to the NVDA Add-on Development Guide. This is the one-stop guide on how to develop NVDA add-ons. This guide also  explains some useful code segments from the NVDA core source code, which highlight concepts for you, as you learn to write add-ons."""),

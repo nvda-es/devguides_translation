@@ -11,9 +11,40 @@ It is not intended to be a replacement of the included user guide, rather as a m
 
 The intent of this guide is not to be a comparison of JAWS and NVDA, but it is necessary to mention some things that work differently.  In most daily situations, NVDA works just as well as JAWS, if not better in some cases.
 
-## A Quick Note about NVDA's Laptop Keyboard Layout
+## NVDA's Desktop and Laptop Keyboard Layouts
 
-Selecting the laptop keyboard layout does not automatically set the CapsLock key to act as the NVDA modifier key.  In NVDA's keyboard settings, a checkbox is provided next to the Keyboard Layout combo box to toggle this setting.  Press NVDA+control+k to open these settings.
+NVDA uses "Desktop" keyboard layout by default.  This layout uses the number pad (with numlock off) for review cursor and object navigation commands (more on those further down).  Laptop Keyboard layout is designed for keyboards without a number pad.  Those commands are moved to other keys, as are a number of other commands.
+
+Selecting the laptop keyboard layout does not automatically set the CapsLock key to act as the NVDA modifier key.  Keyboard layout and NVDA key can be set independently from NVDA's keyboard settings.  Checkboxes are provided to select caps lock, numpad insert, or extended insert.  Any combination of these keys can be selected regardless of the keyboard layout selected.  Press NVDA+control+k to open NVDA's keyboard layout settings.
+
+## Getting Started With NVDA
+
+The [NVDA User Guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html) contains all NVDA commands.  Here are some basic commands which are used frequently.  All commands are configurable, so these are the default keystrokes for these functions.  As noted previously, your NVDA key can be either insert or caps lock.
+
+Most NVDA functions can be enabled or changed via the NVDA settings.  Settings, and other options, are available via NVDA's menu.  To open NVDA's menu, press NVDA+n.  To open NVDA's settings dialog directly, press NVDA+control+g.  Many settings screens have keystrokes to open them directly, such as NVDA+control+s for synthesizer, or NVDA+control+v for other voice options.
+
+* Start NVDA: Press control+alt+n
+* Exit NVDA: NVDA+Q, then enter.
+* Pause or restart speech: shift
+* Stop speech: control
+* Report window title: NVDA+t
+* Report current focus: NVDA+tab
+* Report time: NVDA+f12 (press twice quickly for date)
+* Toggle speak typed characters: NVDA+2
+* Toggle speak typed words: NVDA+3
+* Toggle speak command keys: NVDA+4
+* Report battery: NVDA+Shift+b
+* Toggle input help mode (read each key without performing an action): NVDA+1
+* Report status bar: NVDA+end (desktop layout) / NVDA+shift+end (laptop layout)
+* Read the current line: NVDA+up arrow (desktop keyboard layout) / NVDA+l (laptop keyboard layout)
+* Say all (Read from the current point onwards): NVDA+down arrow (desktop layout) / NVDA+a (laptop layout)
+* Report clipboard: NVDA+c
+* Read selected text: NVDA+shift+up arrow (desktop layout) / NVDA+shift+s (laptop layout)
+* Report text formatting: NVDA+f
+* Adjust speech options: NVDA+control+arrows (desktop layout) / NVDA+shift+control+arrows (laptop layout) - refer to the [Synth Settings Ring in the User Guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html#SynthSettingsRing) for more information
+* Open Elements list (similar to Jaws' links list): NVDA+f7 (Note that many single letter navigation keys such as H for heading, N for non-linked text or F for form field, are the same as used in Jaws).
+
+To get help for NVDA, press NVDA+n to open the menu, then H for help.  From this submenu you can access the User Guide, a quick reference of commands, history of new features and more.  These first three options open in the default web browser.  There is also more comprehensitve [Training Material available in the NV Access Shop](https://www.nvaccess.org/shop/).
 
 ## Note On The Insert Key.
 
@@ -88,9 +119,9 @@ If you prefer to have a dialog you can access with NVDA+F11, there is a "SysTray
 
 Microsoft Office 2007 replaced the menu and toolbars with a "ribbon".  Like the notification area, these are accessible so NVDA does not provide a "virtual ribbon" replacement.  Microsoft has a page on [Using the keyboard to work with the ribbon](https://support.office.com/en-us/article/use-the-keyboard-to-work-with-the-ribbon-954cd3f7-2f77-4983-978d-c09b20e31f0e).  Essentially press ALT or ALT+letter to access individual ribbons.  Press CONTROL+LEFT and RIGHT ARROWS to move between groups within the current ribbon (eg Clipboard, font, paragraph, etc in Word's Home ribbon).  Press TAB to move between individual items in each ribbon and spacebar or enter to activate the current ribbon item.  The Ribbon also includes "tell me".  Press alt+q, type the command or feature you would like to access, use the arrow keys to select it from the list and enter to activate it.
 
-### Checking the status of progress bars
+### Progress bar announcement
 
-Jaws provides a command control+insert+b to check the status of progress bars in the current window.  NVDA has options to have progress bars automatically reported as they update.  This can be done verbally ("5%", "6%", "23%", etc), as beeps, increasing in pitch, or both.  To adjust this, press NVDA+U.  Alternatively, it is available from the Object Presentation settings.  Press NVDA+control+o to open these settings.
+JAWS has only single type of progress bar announcement E.G speaking the percentage as it changes. In NVDA, This can be done verbally ("5%", "6%", "23%", etc), as beeps, increasing in pitch, or both.  To adjust this, press NVDA+U.  Alternatively, it is available from the Object Presentation settings.  Press NVDA+control+o to open these settings.
 
 ### Accessing characters and emoji
 

@@ -48,16 +48,13 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 </ul>
 <h2 id="liberacion-beta-liberacion-previa">Liberación beta (liberación previa)</h2>
 <ul>
-<li>Crea una nueva etiqueta anotada.<ul>
-<li>Una beta no necesita una entrada de liberación previa en GitHub. Guárdatelas para las rc y las liberaciones</li>
-</ul>
-</li>
+<li>Crea una nueva etiqueta anotada.</li>
 <li>Espera a que <code>AppVeyor</code> complete la <a href="https://ci.appveyor.com/project/nvaccess/nvda/history">construcción</a>.<ul>
 <li>Plantéate redactar un borrador de la publicación de la versión.</li>
 </ul>
 </li>
 <li>Analiza el archivo del instalador</li>
-<li>Crea una <a href="#conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">nueva liberación previa en GitHub</a></li>
+<li>Una beta no necesita una entrada de liberación previa en GitHub. Guárdatelas para las rc y las liberaciones</li>
 <li>Publica la liberación efectuada.</li>
 <li>Difunde la liberación.</li>
 </ul>
@@ -175,21 +172,25 @@ Consulta la documentación del proceso de liberación para más detalles sobre t
 </ul>
 <h2 id="conversion-de-una-etiqueta-anotada-en-una-liberacion-de-github">Conversión de una etiqueta anotada en una liberación de GitHub</h2>
 <ul>
+<li>Una beta no necesita una entrada de liberación previa en GitHub. Guárdatelas para las rc y las liberaciones<ul>
+<li>No hemos sido consistentes con esto en el pasado.</li>
+</ul>
+</li>
 <li>Visita la <a href="https://github.com/nvaccess/nvda/tags">página de nueva liberación de GitHub</a></li>
 <li>Haz clic en el botón de menú tag, mostrado como "...", y elige "Create release"</li>
-<li>Ejemplo de título de liberación: <code>Release 2019.2beta3</code>, </li>
+<li>Ejemplo de título de liberación: <code>Release 2019.2rc1</code>, </li>
 <li>No hace falta descripción para la primera liberación o rc<ul>
 <li>Las siguientes rcs pueden describir adiciones o eliminaciones importantes.</li>
 </ul>
 </li>
-<li>Si es una versión <code>beta</code> o <code>rc</code>, asegúrate de que la opción "This is a pre-release" está marcada.</li>
+<li>Si es una versión <code>rc</code>, asegúrate de que la opción "This is a pre-release" está marcada.</li>
 </ul>
 <h3 id="razonamiento">Razonamiento</h3>
 <p>Las "releases" de GitHub tienen un formato diferente, pueden incluir metadatos como 'pre-release' y pueden tener binarios adjuntos. En el futuro, a NV Access le gustaría migrar a un sistema más automatizado que cree las liberaciones desde el script de Appveyor y adjunte los binarios. Por desgracia, las liberaciones de GitHub no crean una "etiqueta anotada" en Git, por lo que la etiqueta para la liberación no dispone de fecha o mensaje.</p>
 <h2 id="analiza-la-compilacion">Analiza la compilación</h2>
 <ul>
 <li>Utiliza <a href="http://www.virustotal.com/">VirusTotal</a>.</li>
-<li>Simplemente envía la URL de descarga del artefacto de <code>appveyor</code></li>
+<li>Envía la URL de descarga del sitio de NV Access.</li>
 <li>Recientemente, usar la URL de Appveyor ha dado como resultado una incidencia ("CRDF") en uno de los 72 analizadores.</li>
 <li>Continúa analizando con la URL de NV Access, ya que el analizador "CRDF" no la identifica como problemática.</li>
 </ul>

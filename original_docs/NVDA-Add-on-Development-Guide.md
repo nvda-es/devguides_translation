@@ -162,8 +162,6 @@ This guide is primarily maintained, and was originally written, by Joseph Lee ([
 
 Valuable contributions and corrections from the community are welcome.
 
-If you are contributing via the GitHub Wiki web editing mechanism, please be aware that by default, that mechanism changes the name of this file by replacing all spaces with hyphens (-). **Please correct that before submitting your changes.** The correct name of this file is: **"NVDA Add-on Development Guide.md"**.
-
 NVDA is copyright 2006-2021 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction

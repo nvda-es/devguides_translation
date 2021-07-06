@@ -31,11 +31,10 @@ See [the release process](https://github.com/nvaccess/nvda/wiki/ReleaseProcess) 
 
 ## Beta release (pre-release)
 * Create a [new annotated tag](#create-the-release--annotated-tag)
-  - A beta doesn't need a pre-release entry on GitHub. Save that for RC and releases
 * Wait for the [`appVeyor` build](https://ci.appveyor.com/project/nvaccess/nvda/history) to complete.
   - Consider writing a draft of the release post.
 * [Scan the launcher executable](#scan-the-build)
-* Create a [new pre-release on GitHub](#convert-annotated-tag-into-a-gitHub-release)
+* A beta doesn't need a pre-release entry on GitHub. Save that for RC and releases
 * [Publish the staged release](#publish-the-staged-release)
 * [Publicize the release.](#publicize-the-release)
 
@@ -122,13 +121,14 @@ Normally not required, however, occasionally to fix a critical issue requires ch
   - Auto update system will start offering it to those checking for betas
 
 ## Convert annotated tag into a GitHub release
-
+- A beta doesn't need a pre-release entry on GitHub. Save that for RC and releases
+  - We have been inconsistent about this in the past.
 - Visit the [GitHub new release page](https://github.com/nvaccess/nvda/tags)
 - Click on the tag menu button, shown as "..." and choose "Create Release"
-- Release Title example: `Release 2019.2beta3`, 
+- Release Title example: `Release 2019.2rc1`, 
 - No description necessary for first RC / Release
   - Subsequent RC / Release can describe important additions & removals.
-- For `RC` or `Beta`, ensure option "This is a pre-release" is checked.
+- For `RC`, ensure option "This is a pre-release" is checked.
 
 ### Reasoning
 
@@ -136,7 +136,7 @@ GitHub "releases" are formatted differently, can include metadata such as 'pre-r
 
 ## Scan the build
 - Use [VirusTotal](http://www.virustotal.com/).
-- Just submit the artifact download URL from `appveyor`
+- Submit the download URL from the NV Access site.
 - Recently, using the appveyor URL has resulted in 1 ("CRDF) of the 72 scanners reporting an issue.
 - Follow up by scanning with the NV Access URL, which the "CRDF" scanner does not flag as an issue.
 
