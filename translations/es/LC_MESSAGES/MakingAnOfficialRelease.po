@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-05 09:49+0200\n"
-"PO-Revision-Date: 2021-07-05 10:04+0200\n"
+"POT-Creation-Date: 2021-07-22 09:17+0200\n"
+"PO-Revision-Date: 2021-07-22 09:18+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -656,27 +656,37 @@ msgid "- Release Title example: `Release 2019.2rc1`, "
 msgstr "- Ejemplo de título de liberación: `Release 2019.2rc1`, "
 
 #: ..\python_docs\MakingAnOfficialRelease.py:121
-msgid "- No description necessary for first RC / Release"
-msgstr "- No hace falta descripción para la primera liberación o rc"
+msgid "- Add a description pointing to the release post on nvaccess.org:"
+msgstr ""
+"- Añade una descripción que apunte a la publicación de la liberación en "
+"nvaccess.org:"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:122
 msgid ""
-"  - Subsequent RC / Release can describe important additions & removals."
+"  - ``` Highlights and download links can be found in the release blog post "
+"at: https://www.nvaccess.org/post/nvda-2021-1rc2/ ```"
 msgstr ""
-"    - Las siguientes rcs pueden describir adiciones o eliminaciones "
-"importantes."
+"  - ``` Highlights and download links can be found in the release blog post "
+"at: https://www.nvaccess.org/post/nvda-2021-1rc2/ ```"
 
 #: ..\python_docs\MakingAnOfficialRelease.py:123
+msgid ""
+"  - For subsequent RC / Release can describe important additions & removals."
+msgstr ""
+"    - Las siguientes rcs / Liberaciones pueden describir adiciones o "
+"eliminaciones importantes."
+
+#: ..\python_docs\MakingAnOfficialRelease.py:124
 msgid "- For `RC`, ensure option \"This is a pre-release\" is checked."
 msgstr ""
 "- Si es una versión `rc`, asegúrate de que la opción \"This is a pre-release"
 "\" está marcada."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:124
+#: ..\python_docs\MakingAnOfficialRelease.py:125
 msgid "### Reasoning"
 msgstr "### Razonamiento"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:125
+#: ..\python_docs\MakingAnOfficialRelease.py:126
 msgid ""
 "GitHub \"releases\" are formatted differently, can include metadata such as "
 "'pre-release' and can have binaries attached. In the future, we would like "
@@ -692,19 +702,19 @@ msgstr ""
 "desgracia, las liberaciones de GitHub no crean una \"etiqueta anotada\" en "
 "Git, por lo que la etiqueta para la liberación no dispone de fecha o mensaje."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:126
+#: ..\python_docs\MakingAnOfficialRelease.py:127
 msgid "## Scan the build"
 msgstr "## Analiza la compilación"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:127
+#: ..\python_docs\MakingAnOfficialRelease.py:128
 msgid "- Use [VirusTotal](http://www.virustotal.com/)."
 msgstr "- Utiliza [VirusTotal](http://www.virustotal.com/)."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:128
+#: ..\python_docs\MakingAnOfficialRelease.py:129
 msgid "- Submit the download URL from the NV Access site."
 msgstr "- Envía la URL de descarga del sitio de NV Access."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:129
+#: ..\python_docs\MakingAnOfficialRelease.py:130
 msgid ""
 "- Recently, using the appveyor URL has resulted in 1 (\"CRDF) of the 72 "
 "scanners reporting an issue."
@@ -712,7 +722,7 @@ msgstr ""
 "- Recientemente, usar la URL de Appveyor ha dado como resultado una "
 "incidencia (\"CRDF\") en uno de los 72 analizadores."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:130
+#: ..\python_docs\MakingAnOfficialRelease.py:131
 msgid ""
 "- Follow up by scanning with the NV Access URL, which the \"CRDF\" scanner "
 "does not flag as an issue."
@@ -720,43 +730,43 @@ msgstr ""
 "- Continúa analizando con la URL de NV Access, ya que el analizador \"CRDF\" "
 "no la identifica como problemática."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:131
+#: ..\python_docs\MakingAnOfficialRelease.py:132
 msgid "## Publish the staged release"
 msgstr "## Publica la liberación efectuada"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:132
+#: ..\python_docs\MakingAnOfficialRelease.py:133
 msgid "- Connect to `exbi`"
 msgstr "- Conéctate a `exbi`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:133
+#: ..\python_docs\MakingAnOfficialRelease.py:134
 msgid "- Switch user to nvaccess: `sudo su nvaccess`"
 msgstr "- Cambia al usuario nvaccess: `sudo su nvaccess`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:134
+#: ..\python_docs\MakingAnOfficialRelease.py:135
 msgid "- Run `nvdaRelease`"
 msgstr "- Ejecuta `nvdaRelease`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:135
+#: ..\python_docs\MakingAnOfficialRelease.py:136
 msgid "  - This will confirm the file currently staged."
 msgstr "  - Esto confirmará el fichero actualmente almacenado."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:136
+#: ..\python_docs\MakingAnOfficialRelease.py:137
 msgid "  "
 msgstr "  "
 
-#: ..\python_docs\MakingAnOfficialRelease.py:137
+#: ..\python_docs\MakingAnOfficialRelease.py:138
 msgid "## Publicize the release"
 msgstr "## Difunde la liberación"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:138
+#: ..\python_docs\MakingAnOfficialRelease.py:139
 msgid "- Add a blog post on  www.nvaccess.org"
 msgstr "- Crea una entrada de blog en www.nvaccess.org"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:139
+#: ..\python_docs\MakingAnOfficialRelease.py:140
 msgid "  - Use a previous blog post as a base."
 msgstr "    - Usa como base una publicación anterior."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:140
+#: ..\python_docs\MakingAnOfficialRelease.py:141
 msgid ""
 "  - Use a link to the file on NVAccess.org, appveyor build artifacts expire "
 "after 6 months."
@@ -764,12 +774,12 @@ msgstr ""
 "  - Usa un enlace al archivo en NVAccess.org, los artefactos de compilación "
 "de Appveyor caducan tras seis meses."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:141
+#: ..\python_docs\MakingAnOfficialRelease.py:142
 msgid "  - **For RC and Beta:** Put post in the `Development` category."
 msgstr ""
 "    - **Para rc y beta:** pon la entrada en la categoría `development`."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:142
+#: ..\python_docs\MakingAnOfficialRelease.py:143
 msgid ""
 "    - Excluding the first pre-release, include a list of changes since the "
 "last pre-release."
@@ -777,21 +787,21 @@ msgstr ""
 "    - Excluyendo la primera liberación de prueba, incluye los cambios desde "
 "la liberación de prueba anterior."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:143
+#: ..\python_docs\MakingAnOfficialRelease.py:144
 msgid "  - **For Final release:** Put post in the `Releases` category."
 msgstr ""
 "    - **Para la versión final:** pon la entrada en la categoría `releases`."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:144
+#: ..\python_docs\MakingAnOfficialRelease.py:145
 msgid "  - It should never be placed in the `News` category."
 msgstr "    - Nunca debería situarse en la categoría `News`."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:145
+#: ..\python_docs\MakingAnOfficialRelease.py:146
 msgid "- Post to [nvda-devel list](https://groups.io/g/nvda-devel/post)"
 msgstr ""
 "- Publica en [la lista nvda-devel](https://groups.io/g/nvda-devel/post)"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:146
+#: ..\python_docs\MakingAnOfficialRelease.py:147
 msgid ""
 "- Post to [nvda-translations list](https://groups.io/g/nvda-translations/"
 "post)"
@@ -799,23 +809,23 @@ msgstr ""
 "- Publica en [la lista nvda-translations](https://groups.io/g/nvda-"
 "translations/post)"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:147
+#: ..\python_docs\MakingAnOfficialRelease.py:148
 msgid "- Post to Twitter"
 msgstr "- Publícala en Twitter"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:148
+#: ..\python_docs\MakingAnOfficialRelease.py:149
 msgid "- Post on Facebook."
 msgstr "- Publica la noticia en Facebook."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:149
+#: ..\python_docs\MakingAnOfficialRelease.py:150
 msgid "- Post to the NV Access News email list."
 msgstr "- Publica la noticia en la lista de correo de noticias de NV Access."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:150
+#: ..\python_docs\MakingAnOfficialRelease.py:151
 msgid "## Update auto milestone ID"
 msgstr "## Actualización del identificador automático del hito"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:151
+#: ..\python_docs\MakingAnOfficialRelease.py:152
 msgid ""
 "This ensures correct milestone is set on issues and pull requests now closed "
 "by GitHub automatically."
@@ -823,35 +833,35 @@ msgstr ""
 "Esto se asegura de que el hito correcto se ha establecido en incidencias y "
 "solicitudes de cambio cerradas ahora automáticamente por GitHub."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:152
+#: ..\python_docs\MakingAnOfficialRelease.py:153
 msgid "1. Get the milestone id for the new release."
 msgstr "1. Obtén el id del hito para la nueva liberación."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:153
+#: ..\python_docs\MakingAnOfficialRelease.py:154
 msgid "   - Go to https://github.com/nvaccess/nvda/milestones"
 msgstr "      - Ve a https://github.com/nvaccess/nvda/milestones"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:154
+#: ..\python_docs\MakingAnOfficialRelease.py:155
 msgid "   - Look at the link URL for the relevant milestone."
 msgstr "      - Mira la URL del enlace del hito relevante."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:155
+#: ..\python_docs\MakingAnOfficialRelease.py:156
 msgid "   - The number at the end is the `id`."
 msgstr "      - El número al final es el `id`."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:156
+#: ..\python_docs\MakingAnOfficialRelease.py:157
 msgid "1. Log into exbi"
 msgstr "1. Inicia sesión en exbi"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:157
+#: ..\python_docs\MakingAnOfficialRelease.py:158
 msgid "1. Swap to nvaccess user: `sudo su nvaccess`"
 msgstr "2. Cambia al usuario nvaccess: `sudo su nvaccess`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:158
+#: ..\python_docs\MakingAnOfficialRelease.py:159
 msgid "1. Edit `~nvaccess/data/nvaServer.conf`"
 msgstr "3. Edita `~nvaccess/data/nvaServer.conf`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:159
+#: ..\python_docs\MakingAnOfficialRelease.py:160
 msgid ""
 "1. In the `[nvdaGithub]` section, change the value of `autoCloseMilestone` "
 "to the milestone `id` obtained in step 1."
@@ -859,22 +869,22 @@ msgstr ""
 "4. En la sección `[nvdaGithub]`, cambia el valor de `autoCloseMilestone` al "
 "identificador `id` del hito que has obtenido en el paso 1."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:160
+#: ..\python_docs\MakingAnOfficialRelease.py:161
 msgid "1. Save the file and `exit` to return to your user."
 msgstr "5. Guarda el archivo y teclea `exit` para volver a tu propio usuario."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:161
+#: ..\python_docs\MakingAnOfficialRelease.py:162
 msgid ""
 "1. Reload `uwsgi` so the change takes effect: `sudo systemctl reload uwsgi`"
 msgstr ""
 "6. Recarga `uwsgi` para que los cambios tengan efecto: `sudo systemctl "
 "reload uwsgi`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:162
+#: ..\python_docs\MakingAnOfficialRelease.py:163
 msgid "## Update NVDA version in `master`"
 msgstr "## Actualización de la versión de NVDA en `master`"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:163
+#: ..\python_docs\MakingAnOfficialRelease.py:164
 msgid ""
 "In NVDA source, ensure the `master` branch version number and changes file "
 "are correct"
@@ -882,7 +892,7 @@ msgstr ""
 "En el código de NVDA, asegúrate de que el número de versión de la rama "
 "`master` y el archivo de cambios estén correctos"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:164
+#: ..\python_docs\MakingAnOfficialRelease.py:165
 msgid ""
 "1. In `source/buildVersion.py`, update the `version_year` and/or "
 "`version_major` variables for the next version."
@@ -890,7 +900,7 @@ msgstr ""
 "1. En `source/buildVersion.py`, actualiza las variables `version_year` y/o "
 "`version_major` para la próxima versión."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:165
+#: ..\python_docs\MakingAnOfficialRelease.py:166
 msgid ""
 "   - If the next version is the first version for that year (e.g. 2018.1), "
 "also update `copyrightYears`."
@@ -898,7 +908,7 @@ msgstr ""
 "    - Si la próxima versión es la primera del año en curso, (por ejemplo, "
 "2018.1), actualiza `copyrightYears` también."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:166
+#: ..\python_docs\MakingAnOfficialRelease.py:167
 msgid ""
 "2. Add a heading for the next version in `user_docs/en/changes.t2t` if it is "
 "not there already."
@@ -906,53 +916,56 @@ msgstr ""
 "2. Añade un encabezado para la siguiente versión en `user_docs/en/changes."
 "t2t` si todavía no existe."
 
-#: ..\python_docs\MakingAnOfficialRelease.py:167
+#: ..\python_docs\MakingAnOfficialRelease.py:168
 msgid "## New section in changes file"
 msgstr "## Nueva sección en el archivo de cambios"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:168
+#: ..\python_docs\MakingAnOfficialRelease.py:169
 msgid "Add to the top of the changes file:"
 msgstr "Añade al principio del archivo de cambios:"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:169
-#: ..\python_docs\MakingAnOfficialRelease.py:175
+#: ..\python_docs\MakingAnOfficialRelease.py:170
+#: ..\python_docs\MakingAnOfficialRelease.py:176
 msgid "```"
 msgstr "```"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:170
+#: ..\python_docs\MakingAnOfficialRelease.py:171
 msgid "= 20XY.Z ="
 msgstr "= 20XY.Z ="
 
-#: ..\python_docs\MakingAnOfficialRelease.py:171
+#: ..\python_docs\MakingAnOfficialRelease.py:172
 msgid "== New Features =="
 msgstr "== New Features =="
 
-#: ..\python_docs\MakingAnOfficialRelease.py:172
+#: ..\python_docs\MakingAnOfficialRelease.py:173
 msgid "== Changes =="
 msgstr "== Changes =="
 
-#: ..\python_docs\MakingAnOfficialRelease.py:173
+#: ..\python_docs\MakingAnOfficialRelease.py:174
 msgid "== Bug Fixes =="
 msgstr "== Bug Fixes =="
 
-#: ..\python_docs\MakingAnOfficialRelease.py:174
+#: ..\python_docs\MakingAnOfficialRelease.py:175
 msgid "== Changes for Developers =="
 msgstr "== Changes for Developers =="
 
-#: ..\python_docs\MakingAnOfficialRelease.py:176
+#: ..\python_docs\MakingAnOfficialRelease.py:177
 msgid ""
 "* If this is a 20XY.1 release add to the \"Changes for Developers\" section:"
 msgstr ""
 "* Si se trata de una versión 20XY.1 añade esto a la sección \"Changes for "
 "developers\":"
 
-#: ..\python_docs\MakingAnOfficialRelease.py:177
+#: ..\python_docs\MakingAnOfficialRelease.py:178
 msgid ""
 "`- Note: this is a Add-on API compatibility breaking release. Add-ons will "
 "need to be re-tested and have their manifest updated.`"
 msgstr ""
 "`- Note: this is a Add-on API compatibility breaking release. Add-ons will "
 "need to be re-tested and have their manifest updated.`"
+
+#~ msgid "- No description necessary for first RC / Release"
+#~ msgstr "- No hace falta descripción para la primera liberación o rc"
 
 #~ msgid "- Just submit the artifact download URL from `appveyor`"
 #~ msgstr "- Simplemente envía la URL de descarga del artefacto de `appveyor`"

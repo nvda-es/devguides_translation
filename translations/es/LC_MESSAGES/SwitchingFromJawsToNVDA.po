@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-05 09:49+0200\n"
-"PO-Revision-Date: 2021-07-05 10:06+0200\n"
+"PO-Revision-Date: 2021-07-07 14:26+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -82,14 +82,15 @@ msgid ""
 "for keyboards without a number pad.  Those commands are moved to other keys, "
 "as are a number of other commands."
 msgstr ""
+"NVDA utiliza de manera predeterminada la distribución de teclado \"de "
+"escritorio\". Esta distribución usa el bloque numérico (con el bloqueo "
+"numérico desactivado) para las órdenes del cursor de revisión y de "
+"navegación por objetos (se explica más sobre esto posteriormente). La "
+"distribución de teclado portátil está diseñada para teclados sin bloque "
+"numérico. Las órdenes anteriores cambian a otras teclas, al igual que otra "
+"buena cantidad de órdenes."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:12
-#, fuzzy
-#| msgid ""
-#| "Selecting the laptop keyboard layout does not automatically set the "
-#| "CapsLock key to act as the NVDA modifier key.  In NVDA's keyboard "
-#| "settings, a checkbox is provided next to the Keyboard Layout combo box to "
-#| "toggle this setting.  Press NVDA+control+k to open these settings."
 msgid ""
 "Selecting the laptop keyboard layout does not automatically set the CapsLock "
 "key to act as the NVDA modifier key.  Keyboard layout and NVDA key can be "
@@ -99,14 +100,17 @@ msgid ""
 "Press NVDA+control+k to open NVDA's keyboard layout settings."
 msgstr ""
 "Seleccionar la distribución de teclado portátil no establece automáticamente "
-"la tecla Bloqueo de mayúsculas como tecla modificadora de NVDA. No obstante, "
-"se proporciona una casilla de verificación, a continuación del cuadro "
-"combinado del tipo de teclado, para conmutar esta opción. Pulsa NVDA+control"
-"+k para abrir esta opción."
+"la tecla Bloqueo de mayúsculas como tecla modificadora de NVDA. La "
+"distribución de teclado y la tecla modificadora de NVDA se pueden configurar "
+"independientemente desde las opciones de teclado de NVDA. Se proporcionan "
+"casillas de verificación para seleccionar bloqueo mayúsculas, insert del "
+"teclado numérico o insert extendido. Se puede elegir cualquier combinación "
+"de estas teclas sin importar la distribución de teclado elegida. Pulsa NVDA"
+"+control+k para abrir las opciones de distribución de teclado de NVDA."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:13
 msgid "## Getting Started With NVDA"
-msgstr ""
+msgstr "## Primeros pasos con NVDA"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:14
 msgid ""
@@ -116,6 +120,12 @@ msgid ""
 "default keystrokes for these functions.  As noted previously, your NVDA key "
 "can be either insert or caps lock."
 msgstr ""
+"La [guía de usuario de NVDA](https://www.nvaccess.org/files/nvda/"
+"documentation/userGuide.html) contiene todas las órdenes de NVDA. Aquí sólo "
+"hay algunas órdenes básicas que se emplean con frecuencia. Todas las órdenes "
+"son configurables, por lo que estas son las combinaciones de teclado "
+"predeterminadas para estas funciones. Como se ha reseñado antes, tu tecla "
+"NVDA puede ser insert o el bloqueo mayúsculas."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:15
 msgid ""
@@ -126,87 +136,104 @@ msgid ""
 "such as NVDA+control+s for synthesizer, or NVDA+control+v for other voice "
 "options."
 msgstr ""
+"Se pueden activar y cambiar la mayoría de funciones de NVDA desde las "
+"opciones. La configuración, así como otros ajustes, está disponible en el "
+"menú NVDA. Para abrir el menú de NVDA, pulsa NVDA+n. Para abrir directamente "
+"el diálogo de opciones de NVDA, pulsa NVDA+control+g. Muchas pantallas de "
+"opciones disponen de atajos para abrirlas directamente, tales como NVDA"
+"+control+s para sintetizador, o NVDA+control+v para otras opciones de voz."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:16
 msgid "* Start NVDA: Press control+alt+n"
-msgstr ""
+msgstr "* Iniciar NVDA: pulsa control+alt+n"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:17
 msgid "* Exit NVDA: NVDA+Q, then enter."
-msgstr ""
+msgstr "* Salir de NVDA: NVDA+q, luego intro."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:18
 msgid "* Pause or restart speech: shift"
-msgstr ""
+msgstr "* Pausar o reanudar la voz: shift"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:19
 msgid "* Stop speech: control"
-msgstr ""
+msgstr "* Detener la voz: control"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:20
 msgid "* Report window title: NVDA+t"
-msgstr ""
+msgstr "* Indicar el título de la ventana: NVDA+t"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:21
 msgid "* Report current focus: NVDA+tab"
-msgstr ""
+msgstr "* Indicar el objeto que tiene el foco: NVDA+tab"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:22
 msgid "* Report time: NVDA+f12 (press twice quickly for date)"
 msgstr ""
+"* Indicar la hora: NVDA+f12 (pulsa dos veces rápidamente para la fecha)"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:23
 msgid "* Toggle speak typed characters: NVDA+2"
-msgstr ""
+msgstr "* Conmutar la verbalización de caracteres al escribir: NVDA+2"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:24
 msgid "* Toggle speak typed words: NVDA+3"
-msgstr ""
+msgstr "* Conmutar la verbalización de palabras al escribir: NVDA+3"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:25
 msgid "* Toggle speak command keys: NVDA+4"
-msgstr ""
+msgstr "* Conmutar verbalización de teclas de órdenes: NVDA+4"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:26
 msgid "* Report battery: NVDA+Shift+b"
-msgstr ""
+msgstr "* Indicar batería: NVDA+shift+b"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:27
 msgid ""
 "* Toggle input help mode (read each key without performing an action): NVDA+1"
 msgstr ""
+"* Conmutar el modo de ayuda de entrada (leer cada tecla sin realizar ninguna "
+"acción): NVDA+1"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:28
 msgid ""
 "* Report status bar: NVDA+end (desktop layout) / NVDA+shift+end (laptop "
 "layout)"
 msgstr ""
+"* Indicar barra de estado: NVDA+fin (distribución de escritorio), NVDA+shift"
+"+fin (distribución portátil)"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:29
 msgid ""
 "* Read the current line: NVDA+up arrow (desktop keyboard layout) / NVDA+l "
 "(laptop keyboard layout)"
 msgstr ""
+"* Leer la línea actual: NVDA+flecha arriba (distribución de teclado de "
+"escritorio), NVDA+l (distribución de teclado portátil)"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:30
 msgid ""
 "* Say all (Read from the current point onwards): NVDA+down arrow (desktop "
 "layout) / NVDA+a (laptop layout)"
 msgstr ""
+"* Verbalizar todo (leer desde la posición actual en adelante): NVDA+flecha "
+"abajo (distribución de escritorio), NVDA+a (distribución portátil)"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:31
 msgid "* Report clipboard: NVDA+c"
-msgstr ""
+msgstr "* Indicar portapapeles: NVDA+c"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:32
 msgid ""
 "* Read selected text: NVDA+shift+up arrow (desktop layout) / NVDA+shift+s "
 "(laptop layout)"
 msgstr ""
+"* Leer el texto seleccionado: NVDA+shift+flecha arriba (distribución de "
+"escritorio), NVDA+shift+s (distribución portátil)"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:33
 msgid "* Report text formatting: NVDA+f"
-msgstr ""
+msgstr "* Indicar formato del texto: NVDA+f"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:34
 msgid ""
@@ -215,6 +242,11 @@ msgid ""
 "User Guide](https://www.nvaccess.org/files/nvda/documentation/userGuide."
 "html#SynthSettingsRing) for more information"
 msgstr ""
+"* Ajustar opciones de voz: NVDA+control+flechas (distribución de "
+"escritorio), NVDA+control+shift+flechas (distribución portátil). Consulta el "
+"[anillo de opciones del sintetizador en la guía de usuario](https://www."
+"nvaccess.org/files/nvda/documentation/userGuide.html#SynthSettingsRing) para "
+"más información"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:35
 msgid ""
@@ -222,6 +254,7 @@ msgid ""
 "single letter navigation keys such as H for heading, N for non-linked text "
 "or F for form field, are the same as used in Jaws)."
 msgstr ""
+"* Abrir lista de elementos (similar a la lista de enlaces de Jaws): NVDA+f7."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:36
 msgid ""
@@ -231,6 +264,12 @@ msgid ""
 "default web browser.  There is also more comprehensitve [Training Material "
 "available in the NV Access Shop](https://www.nvaccess.org/shop/)."
 msgstr ""
+"Para obtener ayuda sobre NVDA, pulsa NVDA+n para abrir el menú, y A para "
+"Ayuda. Desde este submenú puedes acceder a la guía de usuario, una "
+"referencia rápida de órdenes, un historial de nuevas funciones y más. Estas "
+"tres primeras opciones se abren en el explorador web predeterminado. Hay "
+"material de formación más exhaustivo en la [tienda de la comunidad "
+"hispanohablante de NVDA](https://nvda.es/tienda)."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:37
 msgid "## Note On The Insert Key."
@@ -638,18 +677,9 @@ msgstr ""
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:74
 msgid "### Progress bar announcement"
-msgstr ""
+msgstr "### Anuncio de las barras de progreso"
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:75
-#, fuzzy
-#| msgid ""
-#| "Jaws provides a command control+insert+b to check the status of progress "
-#| "bars in the current window.  NVDA has options to have progress bars "
-#| "automatically reported as they update.  This can be done verbally (\"5%"
-#| "\", \"6%\", \"23%\", etc), as beeps, increasing in pitch, or both.  To "
-#| "adjust this, press NVDA+U.  Alternatively, it is available from the "
-#| "Object Presentation settings.  Press NVDA+control+o to open these "
-#| "settings."
 msgid ""
 "JAWS has only single type of progress bar announcement E.G speaking the "
 "percentage as it changes. In NVDA, This can be done verbally (\"5%\", \"6%"
@@ -657,14 +687,12 @@ msgid ""
 "press NVDA+U.  Alternatively, it is available from the Object Presentation "
 "settings.  Press NVDA+control+o to open these settings."
 msgstr ""
-"Jaws proporciona un comando INSERT+control+b para comprobar el estado de las "
-"barras de progreso en la ventana actual.  NVDA tiene opciones para que las "
-"barras de progreso sean anunciadas automáticamente a medida que  se "
-"actualizan.  Esto se puede hacer tanto verbalmente (\"5%\", \"6%\", \"23%\", "
-"etc.) como por pitidos, aumentando el tono, o ambos. Para ajustar esto, "
-"pulsa NVDA+U.  Alternativamente, está disponible en la categoría "
-"Presentación de Objetos del cuadro de diálogo Opciones de NVDA.  Pulsa NVDA"
-"+control+o para abrir estas opciones."
+"Jaws sólo tiene un único tipo de anuncio de barras de progreso, verbalizar "
+"el porcentaje mientras cambia. En NVDA, esto se puede hacer verbalmente (\"5%"
+"\", \"6%\", \"23%\", etc.), en forma de pitidos que suben de tono, o ambas. "
+"Para ajustar esto, pulsa NVDA+u. Alternativamente, se encuentra disponible "
+"en las opciones de presentación de objetos. Pulsa NVDA+control+o para abrir "
+"estas opciones."
 
 #: ..\python_docs\SwitchingFromJawsToNVDA.py:76
 msgid "### Accessing characters and emoji"

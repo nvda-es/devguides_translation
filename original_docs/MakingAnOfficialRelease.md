@@ -126,8 +126,9 @@ Normally not required, however, occasionally to fix a critical issue requires ch
 - Visit the [GitHub new release page](https://github.com/nvaccess/nvda/tags)
 - Click on the tag menu button, shown as "..." and choose "Create Release"
 - Release Title example: `Release 2019.2rc1`, 
-- No description necessary for first RC / Release
-  - Subsequent RC / Release can describe important additions & removals.
+- Add a description pointing to the release post on nvaccess.org:
+  - ``` Highlights and download links can be found in the release blog post at: https://www.nvaccess.org/post/nvda-2021-1rc2/ ```
+  - For subsequent RC / Release can describe important additions & removals.
 - For `RC`, ensure option "This is a pre-release" is checked.
 
 ### Reasoning
