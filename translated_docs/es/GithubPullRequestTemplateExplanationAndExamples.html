@@ -11,14 +11,12 @@
 <h2 id="la-plantilla">La plantilla</h2>
 <p>Al principio de la plantilla hay un bloque de comentarios en HTML (que comienza con <code>&lt;!--</code>), que apunta a la versión inglesa de esta página en la wiki, se puede dejar donde está y no aparecerá cuando se guarde la incidencia. Puedes eliminarlo sin problema, borrando todo el texto desde el principio hasta <code>--&gt;</code> incluido.</p>
 <h3 id="enlace-al-numero-de-incidencia">Enlace al número de incidencia:</h3>
-<p>Por favor, incluye aquí el número de la incidencia. Esto ayuda a los desarrolladores a mantener la información relacionada entre sí junta. Si se trata de un cambio menor o trivial, no es necesario crear una incidencia. En caso de dudas, crea una.
-Ten en cuenta que Github <a href="https://help.github.com/en/articles/closing-issues-using-keywords">permite cerrar incidencias automáticamente mediante palabras clave</a>. Por ejemplo, 
-si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de la descripción, la incidencia mencionada se cerrará automáticamente al mezclar la solicitud de cambio en la rama master. Si tu solicitud de cambio se archiva en otra rama, como por ejemplo beta, habrá que cerrar la incidencia manualmente tras mezclar dicha solicitud.</p>
+<p>Por favor, incluye aquí el número de incidencia, junto con información de la relación entre tu solicitud de cambio y esta. Esto nos permite mantener la información enlazada. Si es un cambio menor o trivial, no es necesario crear una incidencia. Ante la duda, crea una. Ten en cuenta que GitHub <a href="https://help.github.com/en/articles/closing-issues-using-keywords">permite cerrar automáticamente incidencias usando palabras clave</a>. Por ejemplo, si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de la descripción, la incidencia mencionada se cerrará automáticamente al mezclar la solicitud de cambio en la rama master. Si tu solicitud de cambio se archiva en otra rama, como por ejemplo beta, habrá que cerrar la incidencia manualmente tras mezclar dicha solicitud.</p>
 <h3 id="resumen-de-la-incidencia">Resumen de la incidencia:</h3>
 <p>Un breve resumen del problema que intentas resolver.</p>
 <h3 id="descripcion-de-como-resuelve-la-incidencia-esta-solicitud-de-cambios">Descripción de cómo resuelve la incidencia esta solicitud de cambios:</h3>
 <p>Incluye una breve exposición indicando cómo resuelve la incidencia este cambio. Incluye también cualquier enlace o información externa que hayas usado para solucionar el problema. Esto ayuda a que otros tengan la misma base que tú y aprendan de este trabajo.</p>
-<h3 id="pruebas-realizadas">Pruebas realizadas:</h3>
+<h3 id="estrategia-de-pruebas">Estrategia de pruebas:</h3>
 <p>Describe los pasos que seguiste para probar tus cambios. Esto debería permitir que alguien más pueda reproducir tus pruebas.</p>
 <p>Vayamos más allá, intenta responder las siguientes preguntas:
 - ¿Cómo has hecho las pruebas para asegurarte de que tus cambios funcionan como se esperan?
@@ -46,10 +44,8 @@ si escribes <code>closes #7777</code> o <code>fixes #4242</code> en el cuerpo de
 <h3 id="problemas-conocidos-con-la-solicitud-de-cambio">Problemas conocidos con la solicitud de cambio:</h3>
 <p>¿Hay problemas o desventajas con este enfoque? Por ejemplo: <em>No funcionará en Python 3</em></p>
 <h3 id="entrada-en-el-registro-de-cambios">Entrada en el registro de cambios:</h3>
-<p>Una entrada destinada a explicar los cambios en NVDA a los usuarios finales. La entrada que propongas se añadirá al archivo <code>changes.t2t</code>, que se convierte a HTML y se utiliza como documento de novedades / registro de cambios.
-Consulta (<a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t"><code>user_docs/en/changes.t2t</code></a>)</p>
-<p>Ya que el archivo <code>changes.t2t</code> tiende a provocar conflictos, se pide a los colaboradores que no lo editen directamente, y que en su lugar añadan la entrada en la parte inferior de la descripción de la solicitud de cambios.
-Un desarrollador principal actualizará el archivo al mezclar la solicitud de cambio.</p>
+<p>Una entrada destinada a explicar los cambios en NVDA a los usuarios finales. La entrada que propongas se añadirá al archivo <code>changes.t2t</code>, que se convierte a HTML y se utiliza como documento de novedades / registro de cambios. Consulta <a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t"><code>user_docs/en/changes.t2t</code></a></p>
+<p>Ya que el archivo <code>changes.t2t</code> tiende a provocar conflictos, se pide a los colaboradores que no lo editen directamente, y que en su lugar añadan la entrada en la parte inferior de la descripción de la solicitud de cambios. Un desarrollador principal actualizará el archivo cuando fusione la solicitud de cambios.</p>
 <p>Por ejemplo:</p>
 <pre><code>*Nuevas características*
 `Added a command to announce useful thing. (#WXYZ, #ABCD)`
@@ -68,36 +64,52 @@ Un desarrollador principal actualizará el archivo al mezclar la solicitud de ca
 <p>Se pueden incluir varios números de incidencia separados por comas. Si no hay número de incidencia, puedes usar el número de la solicitud de cambio.</p>
 <p>Por ejemplo, consulta el <a href="https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t">archivo changes.t2t</a></p>
 <h2 id="lista-de-comprobacion-de-revision-del-codigo">Lista de comprobación de revisión del código</h2>
-<p>El código debe revisarse (mediante una solicitud de cambios en GitHub) antes de que pueda aceptarse en el proyecto.
-La plantilla de solicitud de cambios (<code>.github/PULL_REQUEST_TEMPLATE.md</code>) solicita a los autores (y revisores) que consideren varios aspectos del cambio.</p>
-<p>El propósito de esta lista de comprobación es asegurar que tanto el autor como el revisor han tenido en cuenta cada elemento.
-Con suerte, ayuda a que no se olviden algunos elementos.
-Tras revisar la lista de comprobación, el revisor y el autor deben razonar al máximo si piensan que es necesario hacer más cambios.
-Se invita a los revisores a que inicien una conversación sobre los elementos de la lista, para proporcionar guiado sobre cómo mejorar la solicitud de cambios.
-No todos los elementos son aplicables a todas las situaciones. En este caso, comprobar el elemento hace saber a los revisores que se ha tenido en cuenta.
-Si el revisor alcanza la misma conclusión que el autor, no es necesario más trabajo.
-La mayoría de elementos de la lista de comprobación disponen de una sección en la plantilla de solicitud de cambio donde puedes añadir tus impresiones. Al hacerlo, puedes evitar ciertas preguntas del revisor, y esto asegura que habláis de lo mismo y agiliza el proceso.</p>
+<p>Se debe revisar el código (mediante una solicitud de cambios en GitHub) antes de que pueda aceptarse en el proyecto. La plantilla de solicitud de cambios (<code>.github/PULL_REQUEST_TEMPLATE.md</code>) solicita a los autores (y revisores) que consideren diversos aspectos del cambio.</p>
+<p>El propósito de esta lista de comprobación es garantizar que tanto el autor como el revisor han considerado cada elemento. Con un poco de suerte, prevendrá que se olviden elementos. Tras revisar la lista de comprobación, tanto el revisor como el autor deben recurrir a su mejor juicio para determinar si se deben hacer cambios adicionales. Se invita a los revisores a iniciar una conversación sobre los elementos de la lista, para proporcionar guía sobre cómo mejorar la solicitud de cambios. No todos los elementos se aplicarán en todas las situaciones. En estos casos, marcar el elemento hará saber a los revisores que se ha tenido en cuenta. Si el revisor llega a la misma conclusión que el autor, no es necesario más trabajo. La mayoría de elementos de la lista de comprobación tienen una sección en la plantilla de solicitud de cambios donde puedes añadir tus impresiones, y al hacerlo se evitan preguntas de los revisores que aseguren que ambos os entendéis, agilizando el proceso de revisión.</p>
 <h3 id="la-descripcion-de-la-solicitud-de-cambios-esta-al-dia">La descripción de la solicitud de cambios está al día.</h3>
-<p>A veces el enfoque tomado puede cambiar durante el proceso de revisión.
-Sin embargo, en el futuro, los desarrolladores pueden necesitar volver a la solicitud de cambios en búsqueda de una explicación del enfoque.
-Comprueba bien que la descripción de la solicitud de cambios es precisa.</p>
+<p>Los autores deben mantener la descripción de la solicitud de cambios actualizada.
+- Incluso si en los comentarios de la solicitud se describen cambios del enfoque.
+- Los desarrolladores futuros necesitan una explicación concisa del cambio.
+Después de cada modificación, comprueba bien que la descripción de la solicitud de cambios es precisa.</p>
 <h3 id="pruebas-unitarias">Pruebas unitarias</h3>
-<p>¿Se puede cubrir el código modificado con pruebas unitarias automatizadas?
-Cualquier comentario sobre esto se puede poner bajo el encabezado "testing strategy".</p>
+<ul>
+<li>Debate bajo el encabezado "testing strategy".</li>
+<li>¿Se describe la cobertura de las pruebas unitarias automatizadas?</li>
+<li>¿Se puede cubrir el código modificado (o ya está cubierto) con pruebas unitarias automatizadas?</li>
+</ul>
 <h3 id="pruebas-del-sistema">Pruebas del sistema</h3>
-<p>¿Se puede cubrir el código modificado con pruebas automatizadas del sistema?
-Las pruebas del sistema son pruebas de extremo a extremo de NVDA.
-Cualquier comentario sobre esto se puede poner bajo el encabezado "testing strategy".</p>
+<ul>
+<li>Debate bajo el encabezado "testing strategy".</li>
+<li>¿Se describe la cobertura de las pruebas automatizadas de sistema?</li>
+<li>¿Se puede cubrir el código modificado (o ya está cubierto) con pruebas unitarias automatizadas?</li>
+</ul>
 <h3 id="pruebas-manuales">Pruebas manuales</h3>
-<p>¿Es apropiada para el cambio la prueba manual descrita?
-Se deberían describir con detalle los casos comprobados por el autor.
-En algunos casos, los evaluadores alpha tendrán que probar el cambio, por lo que hay que describirlo bajo el encabezado "testing strategy" de la plantilla de solicitud de cambios.</p>
+<ul>
+<li>Debate bajo el encabezado "testing strategy". </li>
+<li>¿Cómo probaste manualmente el cambio?</li>
+<li>Sé claro en los pasos que otro usuario puede seguir para replicar tus pruebas.</li>
+<li>¿Es apropiada para el cambio la prueba manual descrita?</li>
+<li>Al describirlos claramente se ayuda a los evaluadores alfa y a futuros desarrolladores.</li>
+<li>Como revisor, usa esta descripción para replicar las pruebas (si es posible).</li>
+</ul>
 <h3 id="documentacion-de-usuario">Documentación de usuario</h3>
-<p>¿Se ha actualizado la documentación de usuario?</p>
+<ul>
+<li>¿Es necesario actualizar la documentación de usuario?</li>
+</ul>
 <h3 id="entrada-en-el-registro-de-cambios_1">Entrada en el registro de cambios</h3>
-<p>Se ha proporcionado una entrada adecuada en el registro de cambios.
-Como revisor, revísalo.</p>
+<p>Se ha proporcionado una entrada adecuada en el registro de cambios. Como revisor, revísala.</p>
 <h3 id="ayuda-sensible-al-contexto-en-cambios-de-interfaz-grafica">Ayuda sensible al contexto en cambios de interfaz gráfica.</h3>
-<p>Si el cambio añade una nueva opción a la interfaz gráfica, asegúrate de que se ha añadido una asignación a la ayuda sensible al contexto.</p>
+<ul>
+<li>Las nuevas opciones de interfaz gráfica requieren una asignación de ayuda sensible al contexto.</li>
+</ul>
+<h3 id="experiencia-de-usuario-planteada-para-todos-los-usuarios">Experiencia de usuario planteada para todos los usuarios</h3>
+<ul>
+<li>Los usuarios de NVDA son diversos, y se apoyan en distintas partes de NVDA. Asegúrate de que los cambios se adaptan a usuarios de lo siguiente:</li>
+<li>Voz</li>
+<li>Braille</li>
+<li>Baja visión</li>
+<li>Diferentes exploradores web (Firefox, Chrome, Edge)</li>
+<li>Cuando no se soporte algo de esto con el cambio, destácalo bajo el encabezado "Known issues"</li>
+</ul>
 </body>
 </html>

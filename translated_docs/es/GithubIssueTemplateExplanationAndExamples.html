@@ -35,11 +35,11 @@
 <h3 id="describe-alternativas-en-las-que-has-pensado">Describe alternativas en las que has pensado</h3>
 <p>Una descripción clara y concisa de soluciones o características alternativas que te hayas planteado.</p>
 <h3 id="contexto-adicional">Contexto adicional</h3>
-<p>Añade cualquier otro contexto para la solicitud de características aquí. Podría ser las otras aplicaciones y versiones de las mismas con las que se espera que funcione la característica (por ejemplo, Firefox o Microsoft Word). Además, plantéate si puedes subir un documento adjunto que ayude como caso de prueba para la característica.</p>
+<p>Añade cualquier otro contexto para la solicitud de características aquí. Podrían enumerarse los nombres de aplicaciones y números de versión de las mismas con las que se espera que funcione la característica (por ejemplo, Firefox o Microsoft Word). Además, plantéate si puedes subir un documento adjunto que ayude como caso de prueba para la característica.</p>
 <h2 id="plantilla-de-informe-de-fallos">Plantilla de informe de fallos</h2>
 <p>Después del comentario en HTML (<a href="#informacion-general">explicado antes</a>), puedes proporcionar una breve descripción de la incidencia. A continuación, rellena cada uno de los siguientes encabezados, correspondientes con los que hay en la plantilla, con una breve descripción de cómo rellenar cada sección.</p>
 <h3 id="pasos-para-reproducir">Pasos para reproducir:</h3>
-<p>Esta sección debería contener una lista de los pasos que realizas para demostrar el problema. Mientras los estés realizando, haz una copia de tu registro de NVDA para adjuntarla a la incidencia.</p>
+<p>Esta sección es muy importante. Por favor, sé claro y conciso. Esta sección debería contener una lista de los pasos que realizas para demostrar el problema. Mientras los estés realizando, haz una copia de tu registro de NVDA para adjuntarla a la incidencia.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <ol>
@@ -50,16 +50,20 @@
 </ol>
 </blockquote>
 <h3 id="comportamiento-actual">Comportamiento actual:</h3>
-<p>Esta sección debería explicar qué sucede realmente al llevar a cabo los pasos anteriores.</p>
+<p>Esta sección debería contarnos qué sucede realmente cuando se siguen estos pasos. Describe palabra por palabra qué hace NVDA, idealmente usando el visualizador de voz para copiar la voz de NVDA. Esto ayuda a los desarrolladores a asegurarse de que están reproduciendo la misma incidencia que tú.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <p>Se oye un sonido de error de NVDA.</p>
+<p>Voz de NVDA:
+"activar sonido botón"</p>
 </blockquote>
 <h3 id="comportamiento-esperado">Comportamiento esperado:</h3>
 <p>En esta sección deberías explicar qué esperas que pase al seguir los pasos anteriores.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <p>No debería haber sonido de error, y la página debería cambiar para mostrar los resultados de la búsqueda.</p>
+<p>Voz de NVDA:
+"activar sonido casilla de verificación"</p>
 </blockquote>
 <h3 id="configuracion-del-sistema">Configuración del sistema:</h3>
 <p>Esta sección tiene varias subsecciones. Estas van sobre el sistema que estás usando al encontrar el fallo. Si encuentras el fallo con diversas configuraciones diferentes, lístalas. Esto ayuda a los desarrolladores a reproducir el problema, o investigar por qué el problema les ocurre a algunos usuarios y a otros no.</p>
@@ -73,7 +77,8 @@
 <p>La versión de NVDA que estás utilizando para demostrar el problema. Se puede copiar desde la opción Acerca de, en el menú Ayuda de NVDA.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
-<p>next-15370,21fd217a</p>
+<p>alpha-15370,21fd217a</p>
+<p>versión 2020.4</p>
 </blockquote>
 <h4 id="version-de-windows">Versión de Windows:</h4>
 <p>La versión de Windows que estás usando. Puedes copiarla desde la aplicación "Información del sistema":
@@ -87,7 +92,7 @@
 <p>Windows 10 Versión 1607, Compilación 14393.1066</p>
 </blockquote>
 <h4 id="nombre-y-version-de-otro-software-en-uso-al-reproducir-el-problema">Nombre y versión de otro software en uso al reproducir el problema:</h4>
-<p>Normalmente puedes obtener información desde el diálogo "Acerca de" del software.</p>
+<p>Normalmente puedes obtener esta información desde el diálogo "Acerca de" del software.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <p>Chrome versión: 67.0.3396.87</p>
@@ -103,7 +108,7 @@
 <h4 id="el-problema-todavia-ocurre-despues-de-reiniciar-tu-pc">¿El problema todavía ocurre después de reiniciar tu PC?</h4>
 <p>Reiniciar tu ordenador ayudará a asegurar que el software se encuentra en un estado más fresco.</p>
 <h4 id="has-probado-otras-versiones-de-nvda">¿Has probado otras versiones de NVDA?</h4>
-<p>Saber si el problema ocurre en versiones anteriores ayuda a los desarrolladores a entender si es un problema recién introducido, y les da una pista sobre si es un cambio en NVDA o el responsable del problema es otro programa.</p>
+<p>Saber si el problema ocurre en versiones anteriores ayuda a los desarrolladores a entender si es un problema recién introducido. Les ayuda a determinar si es un cambio en NVDA o el responsable del problema es otro programa.</p>
 <p><em>Ejemplo:</em></p>
 <blockquote>
 <ul>
@@ -111,7 +116,7 @@
 <li>NVDA 2018.2 - tiene el sonido de error</li>
 </ul>
 </blockquote>
-<h4 id="todavia-se-da-el-problema-con-los-complementos-deshabilitados">¿Todavía se da el problema con los complementos deshabilitados?</h4>
+<h4 id="si-se-deshabilitan-los-complementos-todavia-ocurre-el-problema">Si se deshabilitan los complementos, ¿todavía ocurre el problema?</h4>
 <p>En muchos casos, los problemas pueden venir causados por un complemento que no funciona correctamente o que hace conflicto con algunas funciones ya integradas dentro del propio NVDA. Contacta primero con el autor del complemento.</p>
 <h4 id="has-intentado-ejecutar-la-herramienta-com-registration-fixing-desde-el-menu-nvda-herramientas">¿Has intentado ejecutar la herramienta COM Registration Fixing desde el menú NVDA / Herramientas?</h4>
 <p>Los archivos COM DLL, de los que por ejemplo depende la interfaz IAccessible, pueden quedar fuera de registro al instalar o desinstalar ciertos programas en un ordenador. Como consecuencia, en ciertos casos NVDA no funciona adecuadamente. Concretamente, indica "desconocido" al intentar navegar por sitios web o falla al cambiar entre los modos foco y exploración, causa problemas de rendimiento, inestabilidad del foco y otros defectos. La herramienta COM Registration Fixing se ha introducido con el objetivo de volver a registrar esos archivos DLL. En cualquier caso, volver a registrar esos archivos DLL no tiene ningún impacto negativo en el funcionamiento del ordenador. Por tanto, se recomienda ejecutar la herramienta siempre que se encuentren problemas con el foco, de rendimiento en sitios web, de navegación en modo foco o exploración en diferentes interfaces.</p>
