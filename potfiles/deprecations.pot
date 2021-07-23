@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-23 11:53+0200\n"
+"POT-Creation-Date: 2021-07-23 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,74 @@ msgstr ""
 
 #: ..\python_docs\deprecations.py:3
 msgid ""
-"Occasionally changes have to be made to NVDA that will break compatibility "
-"with prior versions of the public API. In order to make this predictable for "
-"add-on authors, NV Access has adopted a schedule. The first release of each "
-"year (starting with 2021.1) will be the opportunity to remove deprecated "
-"code, or make other compatibility breaking design changes. Other releases "
-"will aim to maintain compatibility, sometimes keeping code but marking it as "
-"deprecated. When marking code as deprecated, the definition should have a "
-"comment to explain such and the PR that introduces the change will be tagged "
-"with the `deprecated/20YY.1`. Where `YY` is the release year."
+"The NVDA API must maintain compatibility with add-ons throughout yearly "
+"development cycles."
+msgstr ""
+
+#: ..\python_docs\deprecations.py:4
+msgid ""
+"The first release of a year, i.e. `20XX.1`, is when the NVDA API can "
+"introduce breaking changes."
+msgstr ""
+
+#: ..\python_docs\deprecations.py:5
+msgid ""
+"In order to improve the NVDA API, changes that will break future "
+"compatibility can be implemented, as long they retain backwards "
+"compatibility until the `20XX.1` release."
+msgstr ""
+
+#: ..\python_docs\deprecations.py:6
+msgid ""
+"This can be done by using a version check to automate deprecation. For "
+"example, if you wish to replace usages of `foo` with `bar`. When we begin "
+"work on `NEXT_YEAR`, `foo` will no longer be part of the NVDA API and all "
+"internal usages must be removed prior. "
+msgstr ""
+
+#: ..\python_docs\deprecations.py:7 ..\python_docs\deprecations.py:13
+msgid "```python"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:8
+msgid "from buildVersion import version_year"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:9
+msgid "if version_year < NEXT_YEAR:"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:10
+msgid "\tfoo = bar"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:11 ..\python_docs\deprecations.py:16
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:12
+msgid ""
+"To ensure a module retains the same symbol names being importable, check "
+"across versions what is imported using the NVDA python console."
+msgstr ""
+
+#: ..\python_docs\deprecations.py:14
+msgid "import controlTypes"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:15
+msgid "dir(controlTypes)"
+msgstr ""
+
+#: ..\python_docs\deprecations.py:17
+msgid ""
+"Changes different to moving or renaming symbols need to be considered "
+"carefully with a different approach. "
+msgstr ""
+
+#: ..\python_docs\deprecations.py:18
+msgid ""
+"Any API breaking changes such as deprecations marked for removal should be "
+"commented with the year of intended removal, and notes on how to implement "
+"the API change as an add-on developer and NVDA developer."
 msgstr ""

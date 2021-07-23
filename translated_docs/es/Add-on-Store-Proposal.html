@@ -7,36 +7,41 @@
   <body>
   <header><h1># Propuesta de tienda de complementos</h1></header>
   <h1 id="propuesta-de-tienda-de-complementos">Propuesta de tienda de complementos</h1>
-<p>La intención de esta propuesta es mejorar de principio a fin el proceso y la infraestructura de soporte de los complementos.
-Este es el plan actual de NV Access.
-Sin embargo, antes de empezar a trabajar en él nos gustaría recibir comentarios de la comunidad de complementos, particularmente autores y revisores de complementos, ya que serán los más afectados.</p>
+<p>La intención de esta propuesta es mejorar el proceso de extremo a extremo y la infraestructura de soporte para alojar complementos.
+Este es el plan actual de NV Access, una simplificación de <a href="https://github.com/nvaccess/addon-store-submission/blob/c7d6f4fd9187fd0112de66b00caa62d774430d09/README.md">un plan más complicado y altamente automatizado</a>. 
+La inspiración viene del <a href="https://github.com/microsoft/winget-pkgs">repositorio de la comunidad del gestor de paquetes de Windows</a>
+Sería ideal un proceso altamente automatizado, y podemos mantener presentes esas ideas para trabajar en esa dirección.</p>
 <p>El objetivo principal de todo esto es habilitar una "Tienda de complementos de NVDA", accesible desde dentro del propio NVDA.
-En esta propuesta, la palabra "tienda" se usa para referirse al sistema que permite a los usuarios adquirir complementos, no hay intención de soportar complementos de pago.
-Este sistema de "tienda" incluye cualquier sitio web, API, proceso, o infraestructura de apoyo para que los usuarios puedan explorar, buscar, instalar y actualizar complementos de NVDA.</p>
-<p>Se han dado muchas consideraciones en esta propuesta para crear una tienda de complementos de NVDA más segura y robusta.
-Aunque poco se puede hacer para garantizar que es seguro ejecutar un complemento, podemos asegurar que se ven todas las versiones, y que los usuarios ejecutan el complemento que creen que están ejecutando.
-El proceso está pensado paraser tan transparente como sea posible, y que el estado actual de la tienda o el estado de envío de un complemento nuevo o actualizado pendiente de revisión sean simples de entender (para los desarrolladores).
+En esta propuesta, la palabra "tienda" se usa para referirse al sistema usado para almacenar metadatos sobre liberaciones de complementos y APIs para acceder a estos datos.
+Propósitos:
+- Habilitar cualquier API, proceso, o infraestructura de apoyo necesaria para que los usuarios puedan explorar, buscar, instalar y actualizar complementos de NVDA.
+- Una provisión segura y robusta de metadatos de complementos.
+- No hay intención de soportar complementos de pago en esta fase.
+- El proceso está pensado paraser tan transparente como sea posible, y que el estado actual de la tienda o el estado de envío de un complemento nuevo o actualizado pendiente de revisión sean simples de entender (para los desarrolladores).
 El proceso debería dar la capacidad a autores y revisores de aprender y mejorar la tarea de revisar complementos.</p>
-<p>Gran parte de la <a href="https://nvda-addons.groups.io/g/nvda-addons/topic/69393202#10878">conversación reciente en la lista de correo de complementos</a> ha sido sobre la revisión de complementos.
-Aunque NV Access tiene opiniones al respecto, puede ser más productivo centrarse primero en los pasos del proceso.
-Por ahora, nos referiremos a este paso como 'Revisión realizada'.
-Más adelante, se sugiere un hilo para ponerse deacuerdo en una "lista de comprobación de revisión de complementos".
-Con la infraestructura adecuada, se pueden automatizar muchas comprobaciones y reducir la carga de los revisores.</p>
+<h3 id="acerca-de-la-seguridad">Acerca de la seguridad</h3>
+<p>Garantizar que el propio complemento sea seguro es un reto que no se contemplará en esta propuesta.
+En vez de eso, este sistema puede garantizar que se revisan todas las actualizaciones a los metadatos de versiones de los complementos, y permite a los clientes del sistema (sitio web, NVDA) verificar que el paquete del complemento todavía coincide con lo que se revisó.</p>
+<h3 id="debates-pasados">Debates pasados</h3>
+<ul>
+<li>Sobre el proceso de revisión <a href="https://nvda-addons.groups.io/g/nvda-addons/topic/69393202#10878">conversación en la lista de correo de complementos</a> ha sido sobre revisar complementos.</li>
+<li>Si bien NV Access tiene algunas opiniones sobre el proceso de revisión, esta propuesta se ocupará primero de la mecánica del sistema en vez de las consideraciones de un revisor al mirar un complemento.
+Por ahora, nos referiremos a este paso como 'Revisión del complemento realizada'.
+Más adelante se creará una "lista de comprobación de revisión de complementos".</li>
+</ul>
+<h3 id="no-exclusividad">No exclusividad</h3>
 <p>Esta propuesta no tiene la intención de impedir que los autores de complementos desarrollen, publiquen y distribuyan complementos fuera de esta tienda.
 NVDA todavía permitirá la instalación local desde un archivo <code>.nvda-addon</code>.</p>
 <h2 id="si-eres-autor-de-complementos">Si eres autor de complementos</h2>
 <p>Con esta propuesta, si un autor de complementos desea enviar su complemento para que sea visible en la tienda deberá:
-- Alojar su complemento en GitHub en un repositorio abierto (no privado).
-- Crear una incidencia en el repositorio <code>addon-store-submission</code> para cada versión del complemento que quiera publicar.
-- Pegar en la descripción de la incidencia un enlace al commit o a la liberación de GitHub.
-- Esperar a que se revise y se acepte o participar en las acciones de revisión y volver a enviar la nueva versión.</p>
+- Añadir un archivo a este repositorio (mediante una solicitud de cambios) que contenga metadatos sobre complementos publicados, incluyendo una URL de descarga y hash del paquete del complemento.
+- Para facilitar las revisiones, alojar su complemento en GitHub en un repositorio abierto (no privado).
+- Conseguir un "revisor de complementos" para revisar tu complemento y envío de metadatos, cuando este se apruebe se fusionará y estará disponible.</p>
 <h2 id="si-eres-revisor-de-complementos">Si eres revisor de complementos</h2>
 <p>Como revisor de complementos, deberás:
 - Mirar las solicitudes de cambio en el repositorio <code>addon-store-submission</code>.
-- Estas incluirán un enlace al complemento que se revisa.
-- Sigue el proceso de revisión (sin documentar todavía por aquí).
-- Aprueba la solicitud de cambios, o solicita cambios mientras proporcionas comentarios y la cierras.
-- Al aprobar la solicitud de cambio, pulsa el botón Merge para finalizar el proceso.</p>
+- Sigue el proceso de revisión (sin documentar todavía).
+- 'Aprueba' la solicitud de cambios, o 'solicita cambios' mientras proporcionas comentarios.</p>
 <h2 id="consideraciones">Consideraciones</h2>
 <ul>
 <li>Debería ser fácil localizar y conocer el estado de los envíos y revisiones.</li>
@@ -55,28 +60,28 @@ NVDA todavía permitirá la instalación local desde un archivo <code>.nvda-addo
 </li>
 </ul>
 <h2 id="descripcion-general">Descripción general</h2>
-<p>Se usan revisiones de GitHub para alojar envíos.
-Se usa GitHub para almacenar los metadatos de los complementos disponibles en la tienda.
-Se usan las acciones de GitHub (u otras integraciones) para automatizar la construcción del almacén de datos, y tantas comprobaciones de la revisión como sea posible. Todo esto será de código abierto y la comunidad podrá extenderlo.</p>
+<ul>
+<li>Usar revisiones de GitHub para alojar envíos.</li>
+<li>Usar GitHub para almacenar los metadatos de los complementos disponibles en la tienda.</li>
+<li>Usar las acciones de GitHub (u otras integraciones) para automatizar la construcción del almacén de datos, y tantas comprobaciones de la revisión como sea posible.
+  Esto será de código abierto y extensible por la comunidad.</li>
+</ul>
 <h3 id="por-que-revisiones-de-github">¿Por qué revisiones de GitHub?</h3>
 <ul>
 <li>Gran parte del ecosistema de desarrollo de NVDA ya está basado en GitHub.</li>
 <li>Maneja todo el CRUD (<a href="https://en.wikipedia.org/wiki/CRUD">Creación, lectura, actualización y eliminación</a>) de los usuarios, maneja la autenticación, y se puede determinar la relación entre un usuario y el repositorio de un complemento y sus permisos en ese repositorio. ¿Es realmente el propietario o un responsable de mantenimiento?</li>
 <li>GitHub incorpora un sistema de revisiones que permite proponer cambios y debatir sobre ellos. Se puede utilizar para los envíos a la tienda y el proceso de revisión.</li>
-<li>Las solicitudes de cambio de GitHub proporcionan una vista atómica del envío hacia la tienda.</li>
+<li>Las solicitudes de cambio de GitHub proporcionaron una vista atómica del envío hacia la tienda.</li>
 <li>Las partes interesadas pueden observar las solicitudes de cambio que les importan sin estar sujetas al ruido de otras solicitudes de cambio que no les importan.</li>
 <li>El resultado de la solicitud de cambios es claro (abierta / mezclada / cerrada).</li>
 <li>GitHub nos permite gestionar permisos para aceptar revisiones con más facilidad.</li>
 </ul>
 <h2 id="infraestructura">Infraestructura</h2>
 <ul>
-<li>Repositorio <code>NVDA-Addon-submission</code> en GitHub<ul>
+<li>Repositorio <code>addon-store-submission</code> en GitHub<ul>
 <li>Para autores y revisores de complementos.</li>
 <li>Donde se envían las nuevas versiones de los complementos</li>
 <li>Donde tienen lugar las revisiones de los envíos</li>
-</ul>
-</li>
-<li>Repositorio <code>NVDA-Addon-store-data</code> en GitHub<ul>
 <li>Para almacenamiento de metadatos de los complementos "de la tienda"</li>
 <li>Este repositorio actúa como una base de datos back-end, pero es más transparente.</li>
 <li>Como las necesidades son simples, serán suficientes algunas "vistas" preconfiguradas de los datos.</li>
@@ -88,69 +93,52 @@ Se usan las acciones de GitHub (u otras integraciones) para automatizar la const
 </ul>
 </li>
 </ul>
-<h2 id="repositorio-nvda-addon-submission-en-github">Repositorio <code>NVDA-Addon-submission</code> en GitHub</h2>
-<p>En esencia, este repositorio almacena referencias a todas las versiones aceptadas de los complementos que se han incluido en la tienda. Una referencia a una versión antigua de un complemento permanece hasta que se elimina explícitamente o se vuelve inválida, permitiendo su entrega a versiones antiguas de NVDA, o como respaldo si se revoca una versión más nueva porque se detecta un fallo.
-Las versiones de los complementos se envían mediante una solicitud de cambios, añadiendo el commit de esa versión a un archivo que describe el repositorio en GitHub del complemento.</p>
+<h2 id="repositorio-addon-store-submission-en-github">Repositorio <code>addon-store-submission</code>  en GitHub</h2>
+<p>Esencialmente, este repositorio contiene metadatos sobre todas las versiones de los complementos aceptados que se incluyen en la tienda.
+Los metadatos de una versión antigua de un complemento permanecen hasta que se eliminan explícitamente o se vuelven inválidos, permitiendo su entrega a versiones antiguas de NVDA, o como respaldo si se revoca una versión más nueva porque se detecta un fallo crítico.
+Las versiones de los complementos se envían mediante una solicitud de cambios, añadiendo un archivo para esa versión del complemento.</p>
 <h3 id="disposicion">Disposición</h3>
 <p>Carpeta raíz del repositorio:
     - <code>readme.md</code> - Una guía para los envíos
-    - <code>addons/autor1/repo1.commits</code>
-    - <code>addons/autor1/repo2.commits</code>
-    - <code>addons/autor2/repo3.commits</code></p>
-<p>Ejemplo de un complemento de NV Access, 'NVDA-OCR': <code>addons/nvaccess/nvda-ocr.commits</code></p>
-<p>Los contenidos de un archivo <code>.commits</code> constan de una lista (separada por saltos de línea) de hashes SHA de Git, uno por cada commit que podría estar disponible en la tienda.
-Se ha diseñado este formato tan simple intencionadamente para maximizar la facilidad de edición, y minimizar el riesgo de corrupción del formato.
-Se usan commits en vez de tags porque los tags pueden cambiarse después de su creación, y una colisión SHA es bastante difícil de provocar.
-Esto es importante para eliminar la posibilidad de que un autor malicioso modifique su complemento tras la revisión, evitando el proceso de revisión.</p>
+ - <code>addons/publicador1/complemento1/versiónPrincipal.versiónMenor.parche.json</code>
+ - <code>addons/publicador1/complemento2/versiónPrincipal.versiónMenor.parche.json</code>
+ - <code>addons/publicador2/complemento3/versiónPrincipal.versiónMenor.parche.json</code></p>
+<p>Nota: <code>publicador.nombreComplemento</code> será el identificador del complemento, y debe ser único y coincidir con el identificador del complemento de su manifiesto.</p>
+<p>Ejemplo para el complemento de NV Access, 'NVDA-OCR': <code>addons/nvaccess/nvda-ocr/1.6.0.json</code></p>
+<h3 id="formato-de-los-metadatos">Formato de los metadatos</h3>
+<p>Para una descripción completa del esquema, consulta <code>_tools/addonVersion_schema.json</code>
+- Incluye un ejemplo de los contenidos del archivo.</p>
 <h3 id="enviar-una-version-de-un-complemento">Enviar una versión de un complemento</h3>
-<p>Requisitos previos:
-- El complemento debe alojarse en un repositorio público en GitHub
-- El commit que se enviará debe ser un archivo <code>*.nvda-addon</code> de NVDA válido si se comprime y renombra.</p>
-<p>Proceso:
-1. Se crea una solicitud de cambios en el repositorio <code>NVDA-Addon-submission</code>
-    - En ella se añade o elimina el SHA del commit (de la versión enviada) al archivo <code>addons/autor/repo.commits</code> adecuado.
-    - Consulta la sección <code>Creación de la solicitud de envío</code> que hay más adelante
-2. Un bot añade un comentario en la solicitud de cambios con enlaces a las versiones del complemento que se añaden o eliminan
-    - Nota: la URL de este enlace puede ser construida desde 'autor', 'repo' y 'commit' de las líneas añadidas o eliminadas. 
-    - Esto permite que el revisor examine el código en línea o descargue el complemento, consulta el encabezado "Ejemplo de mensaje de bot para una solicitud de cambios en <code>NVDA-Addon-submission</code>" para ver un mensaje de ejemplo.
-3. Se lleva a cabo una revisión (que da como resultado: pedir cambios, mezclar o cerrar)
-    - Un bot puede realizar ciertas comprobaciones automatizadas o proporcionar información útil, consulta 'Ideas de revisión automatizada' más abajo
-    - Se hace una revisión manual siguiendo alguna lista de comprobación de revisión publicada (para que todo el mundo sepa qué puede esperar)
-    - Se pueden decidir más adelante los procesos automatizados y humanos, ya resolveremos estos detalles sobre la marcha para mejorar el proceso
-4. Cuando se mezcla la solicitud de cambios, el complemento aparece disponible en la tienda.</p>
-<h3 id="creacion-de-la-solicitud-de-envio">Creación de la solicitud de envío</h3>
-<p>Para simplificar la implementación inicial de este proceso, la solicitud de cambios deberá crearse manualmente, más adelante se podrá automatizar, de tal forma que un autor sólo tenga que pegar un enlace en una nueva incidencia.</p>
-<p>Se crea una nueva solicitud de cambios en el repositorio <code>NVDA-Addon-submission</code>.
-    1. Busca o crea un archivo: <code>addons/autor/repo.commits</code>
-        - Ejemplo: <code>addons/nvaccess/nvda-ocr.commits</code>
-        - Donde 'autor' es el nombre de usuario u organización a la que pertenece el repositorio de GitHub del complemento. Por ejemplo: para <code>nvda-ocr</code> es <code>nvaccess</code>
-        - Donde 'repo' es el nombre del repositorio. Por ejemplo: <code>nvda-ocr</code>
-        - Nota: crear el archivo significa que este es un envío completamente nuevo
-    2. Para enviar una nueva versión, añade el SHA del commit al archivo
-    3. Para las versiones del complemento que no estén soportadas, elimina el SHA del commit.
-Esto se podría hacer con el editor web, aunque los usuarios de lectores de pantalla pueden sentirse más cómodos haciendo los cambios localmente con un editor de su elección.</p>
-<p>Debido a que esto requiere que los autores de complementos hagan fork del repositorio <code>NVDA-Addon-submission</code>, la situación se vuelve un poco engorrosa.
-Para agilizar este proceso, se podrían usar incidencias de GitHub.
-- El autor del complemento escogería entre dos plantillas de incidencia:
-    - "Añadir versión de complemento"
-    - "Eliminar versión de complemento"
-- En la plantilla, pegarían un enlace al commit o al tag que debería añadirse o eliminarse.
-- La automatización crea automáticamente la solicitud de cambios y cierra la incidencia.
-- Nota: en este enfoque sí es seguro usar un tag de Git, ya que se puede determinar el identificador del commit desde el tag. A continuación, se usa el commit en la solicitud de cambios y el resto del proceso no varía.</p>
-<h3 id="ideas-de-revision-automatizada">Ideas de revisión automatizada</h3>
-<p>Varias sugerencias de ideas para la revisión automatizada con el fin de agilizar el proceso.
-- Comprobar la validez del manifest
-- Proporcionar enlaces a diffs relevantes
-- Comprobar si el usuario de GitHub que envía la solicitud de cambios es un responsable de mantenimiento de la versión del complemento que se envía.
-- Plantearse usar integración continua (Appveyor) para comprobar que el complemento se instala limpiamente:
-    - Instalar NVDA (la versión más reciente soportada por el complemento)
-    - Instalar el complemento
-    - Reiniciar NVDA y comprobar si hay errores</p>
+<h4 id="requisitos-previos">Requisitos previos:</h4>
+<ul>
+<li>Familiaridad con GitHub</li>
+<li>Familiaridad con Git, incluido el trabajo con ramas.</li>
+</ul>
+<p>Proceso para añadir una nueva versión de un complemento de NVDA:
+1. Bifurca el repositorio <code>addon-store-submission</code>
+2. En una nueva rama, copia el archivo <code>_template_addon_release.json</code>. 
+   - Renombra o mueve el archivo a <code>&lt;publicador&gt;/&lt;nombreComplemento&gt;/&lt;versión&gt;.json</code>
+   - <code>&lt;publicador&gt;</code> es el nombre del desarrollador del complemento, por ejemplo "nvaccess"
+   - <code>&lt;nombreComplemento&gt;</code> es el nombre del complemento, por ejemplo "nv-speech-player"
+   - <code>&lt;versión&gt;</code> es la versión del complemento en formato <code>principal.menor.parche</code>. Por ejemplo: "2.4.1"
+3. Crea una solicitud de cambios en el repositorio <code>addon-store-submission</code>
+4. Se completarán los comprobadores automáticos de incidencias.
+5. Se lleva a cabo una revisión (que da como resultado: pedir cambios, aprobar)
+   - Conducida por un revisor de complementos de NVDA.
+   - Se hace una revisión manual siguiendo alguna lista de comprobación de revisión publicada (para que todo el mundo sepa qué puede esperar)
+6. Cuando se mezcla la solicitud de cambios, el complemento aparece disponible en la tienda.</p>
+<h3 id="comprobaciones-durante-la-revision">Comprobaciones durante la revisión</h3>
+<p>Muchas de ellas se pueden automatizar.
+- Cada archivo modificado se ajusta al esquema
+- La URL de descarga es válida
+- El archivo de la URL coincide con el sha256
+- El número de versión coincide con el manifiesto del complemento.
+- El identificador del archivo (<code>&lt;publicador&gt;.&lt;nombreComplemento&gt;</code>) coincide con el campo 'name' del manifiesto
+- El número de versión del archivo es válido y coincide con la versión en el manifiesto.</p>
 <h3 id="comentarios">Comentarios</h3>
-<p>Este enfoque requiere que el repositorio de un complemento sea un complemento válido (e instalable) una vez se comprima. Muchos complementos necesitan pasos adicionales en su construcción.
-    - ¿Se pueden usar las acciones de GitHub para ejecutar estos pasos y producir un resultado de compilación certificable?
-    - Si se puede certificar el código de un commit, y el código de las acciones de GitHub que producen el complemento, ¿significa que el complemento en sí está certificado?
-    - Si esto es así, se puede proporcionar la acción de GitHub junto a la plantilla de complemento.</p>
+<ul>
+<li>Con este esquema de identificador muchos complementos tendrán que cambiar su identificador. ¿Esto hará que sea necesario mover la configuración de usuario previamente guardada a una nueva sección del archivo de configuración?</li>
+</ul>
 <h3 id="otras-notas">Otras notas</h3>
 <ul>
 <li>Utilizando un repositorio de GitHub y un proceso basado en solicitudes de cambios, <code>git blame</code> y <code>git log</code> se pueden emplear para obtener más contexto sobre los complementos listados en la tienda. Por ejemplo:<ul>
@@ -161,16 +149,17 @@ Para agilizar este proceso, se podrían usar incidencias de GitHub.
 </li>
 <li>GitHub permite asignar revisiones a revisores</li>
 </ul>
-<h2 id="repositorio-nvda-addon-store-data-de-github">Repositorio <code>NVDA-Addon-store-data</code> de GitHub</h2>
-<p>Contiene metadatos de complementos aceptados en la tienda.</p>
-<p>Al usar un repositorio separado para el almacenamiento de datos se separan conceptos, se da mayor flexibilidad para gestionar permisos, y se facilita la verificación de cambios (por ejemplo en una solicitud de cambios o mediante automatización), y se simplifica el historial de commits (no hay commits automatizados del tipo "Se actualiza el almacén de datos")</p>
-<p>Los detalles exactos de implementación de este repositorio no se exponen a los usuarios, ya que por un lado tenemos al repositorio <code>NVDA-Addon-submission</code> alimentando con datos, y por otro está el servidor de NV Access recuperando y proporcionando datos a NVDA o a una tienda basada en web.
-Esto significa que cambiar la disposición o la implementación de este repositorio no causará daños colaterales al proceso y se puede actualizar de forma independiente.
-Aunque los detalles de este repositorio realmente no importan demasiado, no es necesario que sean muy concretos en este momento. Sin embargo, se proporciona una breve visión general del plan actual.</p>
+<h2 id="detalles-de-generacion-de-los-datos-de-la-api">Detalles de generación de los datos de la API</h2>
+<p>Se configurará el servidor de NV Access para que responda a un webhook para descargar de este repositorio y ejecutar código que transforme
+los datos.
+Esto puede regenerar las vistas necesarias de los datos para las APIs expuestas</p>
 <h3 id="descripcion">Descripción</h3>
-<p>Para cada versión de NVDA, los metadatos de cada complemento más reciente (con número de versión más alto) se añaden automáticamente, basándose en los datos de 'NVDA-Addon-submission'.</p>
-<h3 id="disposicion_1">Disposición</h3>
-<p>Carpeta raíz del repositorio:
+<p>Para cada versión de NVDA, los metadatos de cada complemento más reciente (con número de versión más alto) se
+añaden automáticamente, basándose en los datos de 'addon-store-submission'.</p>
+<p>El código correspondiente se alojará en la carpeta <code>_tools</code>. Esto permitirá a las partes interesadas generar la misma vista de
+los datos localmente.</p>
+<h3 id="visualizaciones-de-datos">Visualizaciones de datos</h3>
+<p>Transformaciones requeridas de los datos:
 - <code>/Versión de API de NVDA/addon-1-ID/release.json</code>
 - <code>/Versión de API de NVDA/addon-1-ID/pre-rel.json</code>
 - <code>/Versión de API de NVDA/addon-2-ID/release.json</code>
@@ -178,26 +167,14 @@ Aunque los detalles de este repositorio realmente no importan demasiado, no es n
 <p>Notas:
 - 'Versión de la API de NVDA' será algo como '2019.3', habrá una carpeta para cada versión de la API de NVDA.
 - Los archivos <code>pre-rel.json</code> y <code>release.json</code> contienen la información necesaria para una entrada de la tienda.
-    En esencia, sería la URL de descarga del complemento (un zip del commit), y el resto de contenidos del manifiesto del complemento. Por supuesto, incluyendo descripciones traducidas en el manifiesto se puede crear una tienda de complementos multiidioma, aunque posiblemente no sea el objetivo de esta propuesta.
--Los contenidos de <code>all.json</code> son todos los datos (versiones de desarrollo y estables) de esta versión de la API de NVDA juntos.</p>
-<p>La simplicidad de esto radica en que el servidor de NV Access puede simplemente reenviar estos archivos directamente al preguntarle "cuáles son los últimos complementos para la versión X de la API de NVDA" o "Cuál es la última versión de addon-id para la versión X de la API de NVDA". Usar el servidor de NV Access como un extremo para esto es importante en caso de que haya que cambiar la implementación o migrar fuera de GitHub por alguna razón.</p>
-<h3 id="como-llegan-los-datos">Cómo llegan los datos</h3>
-<p>Con el objetivo de simplificar la explicación, se omitirán optimizaciones y detalles menores en esta descripción.</p>
-<p>Se crea una acción de GitHub para responder a un nuevo commit en el repositorio <code>NVDA-Addon-submission</code>. Por cada commit de cada archivo <code>*.commits</code> del repositorio <code>NVDA-Addon-submission</code>, se recupera el manifiesto del complemento.</p>
-<p>Se buscan los manifiestos que soporten cada versión de la API de NVDA.
-Para cada versión de la API, se conserva el manifiesto del complemento de las versiones estables y de desarrollo más recientes (basándose en el número de versión).</p>
-<p>Los archivos de manifiesto recuperados se usan para reconstruir los datos del repositorio y hacer commit.</p>
+-Los contenidos de <code>all.json</code> son todos los datos (versiones de desarrollo y estables) de esta versión de la API de NVDA juntos.
+- Los contenidos de cada complemento incluirán todos los detalles técnicos necesarios para que NVDA los descargue, verifique la integridad del archivo e instale.
+- El archivo incluirá traducciones (si están disponibles) de los metadatos visibles.</p>
+<p>La simplicidad de esto radica en que el servidor de NV Access puede simplemente redirigir estos archivos directamente cuando se le pregunte
+"Cuáles son los complementos más recientes para NVDA con versión de API X" o "Cuál es la última versión de identificador-complemento para NVDA versión de API X".
+Usar el servidor de NV Access como extremo para esto es importante en caso de que haya que cambiar la implementación o migrar
+desde GitHub por cualquier motivo.</p>
 <h2 id="epilogo">Epílogo</h2>
-<h3 id="ejemplo-de-mensaje-de-bot-en-una-solicitud-de-cambio-de-nvda-addon-submission">Ejemplo de mensaje de bot en una solicitud de cambio de <code>NVDA-Addon-submission</code>.</h3>
-<pre><code>Añadida versión.
-- [Explorar código](https://github.com/nvaccess/nvda-ocr/tree/632d037dae906cd582ff4995628aa3fbaacd84e9)
-- [Descargar zip](https://github.com/nvaccess/nvda-ocr/archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)
-</code></pre>
-
-<h3 id="soporte-para-versiones-de-desarrollo-de-complementos">Soporte para versiones de desarrollo de complementos</h3>
-<p>Será necesaria una actualización del manifiesto del complemento. Aunque en la propuesta se contempla, no estará en el ámbito del trabajo inicial.</p>
-<h3 id="referencias-invalidas-de-complementos">Referencias inválidas de complementos</h3>
-<p>Al construir el almacén de datos, cualquier referencia a commits que no existen (repositorio eliminado, historial reescrito, etc.) obviamente se excluirán, ya que el manifiesto no se puede descargar. Aunque no es de alta prioridad, se debería implementar un mecanismo para actualizar el repositorio 'NVDA-Addon-submission' de tal forma que se eliminen estas referencias inválidas.</p>
 <h3 id="terminologia-version-de-complemento-frente-a-liberacion-de-complemento">Terminología: versión de complemento frente a liberación de complemento</h3>
 <p>Ya que en esta propuesta se da soporte a los complementos en desarrollo, se ha intentado evitar el uso del término "liberación de complemento" en favor de "versión de complemento".</p>
 </body>

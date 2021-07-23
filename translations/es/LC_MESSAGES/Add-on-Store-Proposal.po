@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-08 23:47+0200\n"
-"PO-Revision-Date: 2020-04-10 19:16+0200\n"
+"POT-Creation-Date: 2021-07-23 14:21+0200\n"
+"PO-Revision-Date: 2021-07-23 19:02+0200\n"
+"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: es\n"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:3
 msgid "# Add on Store Proposal"
@@ -24,27 +24,39 @@ msgstr "# Propuesta de tienda de complementos"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:4
 msgid ""
-"The intention of this proposal is to improve the end to end process and "
+"The intention of this proposal is to improve the end-to-end process and "
 "supporting infrastructure for hosting Addons."
 msgstr ""
-"La intención de esta propuesta es mejorar de principio a fin el proceso y la "
-"infraestructura de soporte de los complementos."
+"La intención de esta propuesta es mejorar el proceso de extremo a extremo y "
+"la infraestructura de soporte para alojar complementos."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:5
-msgid "This is the current plan from NV Access."
-msgstr "Este es el plan actual de NV Access."
+msgid ""
+"This is the current plan from NV Access, it is a simplification of a [more "
+"complicated and highly automated plan](https://github.com/nvaccess/addon-"
+"store-submission/blob/c7d6f4fd9187fd0112de66b00caa62d774430d09/README.md). "
+msgstr ""
+"Este es el plan actual de NV Access, una simplificación de [un plan más "
+"complicado y altamente automatizado](https://github.com/nvaccess/addon-store-"
+"submission/blob/c7d6f4fd9187fd0112de66b00caa62d774430d09/README.md). "
 
 #: ..\python_docs\Add-on-Store-Proposal.py:6
 msgid ""
-"However, before starting this work we would like feedback from the add-ons "
-"community, particularly addon authors and addon reviewers since this will "
-"affect them the most."
+"Inspiration has been taken from [Windows Package Manager Community repo]"
+"(https://github.com/microsoft/winget-pkgs)"
 msgstr ""
-"Sin embargo, antes de empezar a trabajar en él nos gustaría recibir "
-"comentarios de la comunidad de complementos, particularmente autores y "
-"revisores de complementos, ya que serán los más afectados."
+"La inspiración viene del [repositorio de la comunidad del gestor de paquetes "
+"de Windows](https://github.com/microsoft/winget-pkgs)"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:7
+msgid ""
+"A highly automated process would be ideal, and we can keep the ideas in mind "
+"to work in that direction."
+msgstr ""
+"Sería ideal un proceso altamente automatizado, y podemos mantener presentes "
+"esas ideas para trabajar en esa dirección."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:8
 msgid ""
 "The main goal of this is to enable an \"NVDA addon store\" accessible from "
 "within NVDA itself."
@@ -52,54 +64,48 @@ msgstr ""
 "El objetivo principal de todo esto es habilitar una \"Tienda de complementos "
 "de NVDA\", accesible desde dentro del propio NVDA."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:8
-msgid ""
-"In this proposal the word \"store\" is used to refer to the system allowing "
-"users to acquire addons, there is no intention of supporting paid addons."
-msgstr ""
-"En esta propuesta, la palabra \"tienda\" se usa para referirse al sistema "
-"que permite a los usuarios adquirir complementos, no hay intención de "
-"soportar complementos de pago."
-
 #: ..\python_docs\Add-on-Store-Proposal.py:9
 msgid ""
-"This \"store\" system includes any website, API, process, or infrastructure "
-"to support users to browse, search, install and update Addons for NVDA."
+"In this proposal the word \"store\" is used to refer to the system used to "
+"store metadata about add-on releases and APIs to access this data."
 msgstr ""
-"Este sistema de \"tienda\" incluye cualquier sitio web, API, proceso, o "
-"infraestructura de apoyo para que los usuarios puedan explorar, buscar, "
-"instalar y actualizar complementos de NVDA."
+"En esta propuesta, la palabra \"tienda\" se usa para referirse al sistema "
+"usado para almacenar metadatos sobre liberaciones de complementos y APIs "
+"para acceder a estos datos."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:10
-msgid ""
-"Many considerations in this proposal have been given to creating a more "
-"secure and robust NVDA Addon store."
-msgstr ""
-"Se han dado muchas consideraciones en esta propuesta para crear una tienda "
-"de complementos de NVDA más segura y robusta."
+msgid "Aims:"
+msgstr "Propósitos:"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:11
 msgid ""
-"While there is little that can be done to guarantee an addon is safe to run, "
-"we can ensure that all versions are viewed, and that users are running the "
-"addon they think they are."
+"- Enable any necessary, API, process, or infrastructure to support users to "
+"browse, search, install and update Addons for NVDA."
 msgstr ""
-"Aunque poco se puede hacer para garantizar que es seguro ejecutar un "
-"complemento, podemos asegurar que se ven todas las versiones, y que los "
-"usuarios ejecutan el complemento que creen que están ejecutando."
+"- Habilitar cualquier API, proceso, o infraestructura de apoyo necesaria "
+"para que los usuarios puedan explorar, buscar, instalar y actualizar "
+"complementos de NVDA."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:12
+msgid "- A secure and robust provision of addon-metadata."
+msgstr "- Una provisión segura y robusta de metadatos de complementos."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:13
+msgid "- There is no intention of supporting paid addons at this stage."
+msgstr "- No hay intención de soportar complementos de pago en esta fase."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:14
 msgid ""
-"The process is intended to be as transparent as possible to make it simple "
+"- The process is intended to be as transparent as possible to make it simple "
 "(for developers) to understand the current state of the store or the state "
 "of a submission of a new / updated addon pending review."
 msgstr ""
-"El proceso está pensado paraser tan transparente como sea posible, y que el "
-"estado actual de la tienda o el estado de envío de un complemento nuevo o "
+"- El proceso está pensado paraser tan transparente como sea posible, y que "
+"el estado actual de la tienda o el estado de envío de un complemento nuevo o "
 "actualizado pendiente de revisión sean simples de entender (para los "
 "desarrolladores)."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:13
+#: ..\python_docs\Add-on-Store-Proposal.py:15
 msgid ""
 "The process should enable authors and reviewers to learn about and improve "
 "the addon-review process."
@@ -107,44 +113,71 @@ msgstr ""
 "El proceso debería dar la capacidad a autores y revisores de aprender y "
 "mejorar la tarea de revisar complementos."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:14
-msgid ""
-"Much of the recent [conversation on the addons mailing list](https://nvda-"
-"addons.groups.io/g/nvda-addons/topic/69393202#10878) has been about "
-"reviewing Addons."
-msgstr ""
-"Gran parte de la [conversación reciente en la lista de correo de "
-"complementos](https://nvda-addons.groups.io/g/nvda-addons/"
-"topic/69393202#10878) ha sido sobre la revisión de complementos."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:15
-msgid ""
-"While NV Access has some opinions on this, I think it will be more "
-"productive to first focus on the steps around this."
-msgstr ""
-"Aunque NV Access tiene opiniones al respecto, puede ser más productivo "
-"centrarse primero en los pasos del proceso."
-
 #: ..\python_docs\Add-on-Store-Proposal.py:16
-msgid "For now, this step will just be referred to as 'review performed'."
-msgstr "Por ahora, nos referiremos a este paso como 'Revisión realizada'."
+msgid "### About security "
+msgstr "### Acerca de la seguridad "
 
 #: ..\python_docs\Add-on-Store-Proposal.py:17
 msgid ""
-"Later, I suggest a new thread to agree on a \"addon review check list\"."
+"Ensure that an add-on itself is safe to run, is a challenge that won't be "
+"addressed by this proposal."
 msgstr ""
-"Más adelante, se sugiere un hilo para ponerse deacuerdo en una \"lista de "
-"comprobación de revisión de complementos\"."
+"Garantizar que el propio complemento sea seguro es un reto que no se "
+"contemplará en esta propuesta."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:18
 msgid ""
-"With the right infrastructure, we can automate many checks and reduce the "
-"burden on reviewers."
+"Instead, this system can ensure that all updates to the metadata for add-on "
+"versions are reviewed, and allows clients of the system (website, NVDA) to "
+"verify that the addon package still matches what was reviewed."
 msgstr ""
-"Con la infraestructura adecuada, se pueden automatizar muchas comprobaciones "
-"y reducir la carga de los revisores."
+"En vez de eso, este sistema puede garantizar que se revisan todas las "
+"actualizaciones a los metadatos de versiones de los complementos, y permite "
+"a los clientes del sistema (sitio web, NVDA) verificar que el paquete del "
+"complemento todavía coincide con lo que se revisó."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:19
+msgid "### Past discussions"
+msgstr "### Debates pasados"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:20
+msgid ""
+"- About review process [conversation on the addons mailing list](https://"
+"nvda-addons.groups.io/g/nvda-addons/topic/69393202#10878) has been about "
+"reviewing Addons."
+msgstr ""
+"- Sobre el proceso de revisión [conversación en la lista de correo de "
+"complementos](https://nvda-addons.groups.io/g/nvda-addons/"
+"topic/69393202#10878) ha sido sobre revisar complementos."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:21
+msgid ""
+"- While NV Access has some opinions on the review process, this proposal "
+"will first concern itself with the mechanics of the system rather than the "
+"considerations for a reviewer when looking at an addon."
+msgstr ""
+"- Si bien NV Access tiene algunas opiniones sobre el proceso de revisión, "
+"esta propuesta se ocupará primero de la mecánica del sistema en vez de las "
+"consideraciones de un revisor al mirar un complemento."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:22
+msgid ""
+"For now, this step will just be referred to as 'review of addon performed'."
+msgstr ""
+"Por ahora, nos referiremos a este paso como 'Revisión del complemento "
+"realizada'."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:23
+msgid "Later a \"addon review check list\" will be created."
+msgstr ""
+"Más adelante se creará una \"lista de comprobación de revisión de "
+"complementos\"."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:24
+msgid "### Non-exclusivity"
+msgstr "### No exclusividad"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:25
 msgid ""
 "This proposal does not intend to restrict Addon authors from developing, "
 "publishing, and distributing Addons outside of this store."
@@ -153,16 +186,16 @@ msgstr ""
 "complementos desarrollen, publiquen y distribuyan complementos fuera de esta "
 "tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:20
+#: ..\python_docs\Add-on-Store-Proposal.py:26
 msgid "NVDA will still allow local installation from a `*.nvda-addon` file."
 msgstr ""
 "NVDA todavía permitirá la instalación local desde un archivo `.nvda-addon`."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:21
+#: ..\python_docs\Add-on-Store-Proposal.py:27
 msgid "## Too Long; Didn't Read for Addon authors"
 msgstr "## Si eres autor de complementos"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:22
+#: ..\python_docs\Add-on-Store-Proposal.py:28
 msgid ""
 "With this proposal if an addon author wishes to submit their addon to be "
 "visible in this addon store they will need to:"
@@ -170,80 +203,65 @@ msgstr ""
 "Con esta propuesta, si un autor de complementos desea enviar su complemento "
 "para que sea visible en la tienda deberá:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:23
-msgid "- Store their addon on Github in an open (not private) repository."
-msgstr ""
-"- Alojar su complemento en GitHub en un repositorio abierto (no privado)."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:24
+#: ..\python_docs\Add-on-Store-Proposal.py:29
 msgid ""
-"- Create an issue on the `addon-store-submission` repository for each addon "
-"version they want to make available."
+"- Add a file to this repo (via a pull request) containing metadata about "
+"published addons, including a download URL and hash of the addon package."
 msgstr ""
-"- Crear una incidencia en el repositorio `addon-store-submission` para cada "
-"versión del complemento que quiera publicar."
+"- Añadir un archivo a este repositorio (mediante una solicitud de cambios) "
+"que contenga metadatos sobre complementos publicados, incluyendo una URL de "
+"descarga y hash del paquete del complemento."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:25
+#: ..\python_docs\Add-on-Store-Proposal.py:30
 msgid ""
-"- Paste into the issue description a link to the commit or github release."
+"- To facilitate reviews, store their addon in an open (not private) "
+"repository."
 msgstr ""
-"- Pegar en la descripción de la incidencia un enlace al commit o a la "
-"liberación de GitHub."
+"- Para facilitar las revisiones, alojar su complemento en GitHub en un "
+"repositorio abierto (no privado)."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:26
+#: ..\python_docs\Add-on-Store-Proposal.py:31
 msgid ""
-"- Wait for it to be reviewed and accepted or participate in review actions "
-"and resubmit the new version."
+"- Get an \"add-on reviewer\" to review your addon and metadata submission, "
+"when this is approved it will be merged making it available."
 msgstr ""
-"- Esperar a que se revise y se acepte o participar en las acciones de "
-"revisión y volver a enviar la nueva versión."
+"- Conseguir un \"revisor de complementos\" para revisar tu complemento y "
+"envío de metadatos, cuando este se apruebe se fusionará y estará disponible."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:27
+#: ..\python_docs\Add-on-Store-Proposal.py:32
 msgid "## Too Long; Didn't Read for Addon reviewers"
 msgstr "## Si eres revisor de complementos"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:28
+#: ..\python_docs\Add-on-Store-Proposal.py:33
 msgid "As an Addon reviewer you will:"
 msgstr "Como revisor de complementos, deberás:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:29
+#: ..\python_docs\Add-on-Store-Proposal.py:34
 msgid "- Look at pending PR's on the `addon-store-submission` repository."
 msgstr ""
 "- Mirar las solicitudes de cambio en el repositorio `addon-store-submission`."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:30
-msgid "- These will include a link to the addon version being reviewed."
-msgstr "- Estas incluirán un enlace al complemento que se revisa."
+#: ..\python_docs\Add-on-Store-Proposal.py:35
+msgid "- Follow the review process (yet to be documented)."
+msgstr "- Sigue el proceso de revisión (sin documentar todavía)."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:31
-msgid "- Follow the review process (yet to be documented here)."
-msgstr "- Sigue el proceso de revisión (sin documentar todavía por aquí)."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:32
+#: ..\python_docs\Add-on-Store-Proposal.py:36
 msgid ""
-"- Either 'approve' the PR, or 'request changes' while providing feedback and "
-"close the PR."
+"- Either 'approve' the PR, or 'request changes' while providing feedback."
 msgstr ""
-"- Aprueba la solicitud de cambios, o solicita cambios mientras proporcionas "
-"comentarios y la cierras."
+"- 'Aprueba' la solicitud de cambios, o 'solicita cambios' mientras "
+"proporcionas comentarios."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:33
-msgid ""
-"- When approving the PR, press the merge button to finalise the submision."
-msgstr ""
-"- Al aprobar la solicitud de cambio, pulsa el botón Merge para finalizar el "
-"proceso."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:34
+#: ..\python_docs\Add-on-Store-Proposal.py:37
 msgid "## Considerations"
 msgstr "## Consideraciones"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:35
+#: ..\python_docs\Add-on-Store-Proposal.py:38
 msgid "- Submissions and reviews should be easy to find and get the status of."
 msgstr ""
 "- Debería ser fácil localizar y conocer el estado de los envíos y revisiones."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:36
+#: ..\python_docs\Add-on-Store-Proposal.py:39
 msgid ""
 "- Make it possible to automate many steps in the process, saving reviewers "
 "time."
@@ -251,7 +269,7 @@ msgstr ""
 "- Hacer posible la automatización de muchos pasos del proceso, ahorrando "
 "tiempo a los revisores."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:37
+#: ..\python_docs\Add-on-Store-Proposal.py:40
 msgid ""
 "- Once submitted an addon version should be immutable. No changing the addon "
 "on an external server, it must be updated in the store via the submission "
@@ -261,7 +279,7 @@ msgstr ""
 "de cambiar el complemento en un servidor externo, debe ser actualizado en la "
 "tienda mediante el proceso de envío."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:38
+#: ..\python_docs\Add-on-Store-Proposal.py:41
 msgid ""
 "- Allow addon authors to easily revoke a version if it is buggy / no longer "
 "supported. It should no longer be presented in the store, halting "
@@ -271,7 +289,7 @@ msgstr ""
 "defectuosa o ya no recibe soporte. No debería presentarse más en la tienda, "
 "evitando así la instalación por parte de nuevos usuarios."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:39
+#: ..\python_docs\Add-on-Store-Proposal.py:42
 msgid ""
 "- Enable support in the store for multiple versions of an Addon, based on "
 "NVDA version."
@@ -279,7 +297,7 @@ msgstr ""
 "- Se debe dar soporte a varias versiones de un complemento, en base a la "
 "versión de NVDA."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:40
+#: ..\python_docs\Add-on-Store-Proposal.py:43
 msgid ""
 "  - EG addon version 1.2.5 for NVDA 2019.3 and addon version 1.3.2 for NVDA "
 "2020.1"
@@ -287,65 +305,67 @@ msgstr ""
 "    - Ejemplo: versión del complemento 1.2.5 para NVDA 2019.3 y versión del "
 "complemento 1.3.2 para NVDA 2020.1"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:41
+#: ..\python_docs\Add-on-Store-Proposal.py:44
 msgid "- Enable support in the store for 'pre-release' Addons, for instance:"
 msgstr ""
 "- Se debe dar soporte en la tienda a los complementos en desarrollo, por "
 "ejemplo:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:42
+#: ..\python_docs\Add-on-Store-Proposal.py:45
 msgid "  - Addons being developed against alpha / beta NVDA."
 msgstr "    - Complementos que se desarrollan con NVDA alpha/beta."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:43
+#: ..\python_docs\Add-on-Store-Proposal.py:46
 msgid "  - Addons that want early feedback from end users."
 msgstr ""
 "    - Complementos que necesitan comentarios de los usuarios desde el "
 "principio."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:44
+#: ..\python_docs\Add-on-Store-Proposal.py:47
 msgid "  - End users can choose \"show me pre-release addons\""
 msgstr ""
 "    - Los usuarios finales pueden elegir \"Mostrarme complementos en "
 "desarrollo\"."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:45
+#: ..\python_docs\Add-on-Store-Proposal.py:48
 msgid "## Overview"
 msgstr "## Descripción general"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:46
-msgid "Use GitHub reviews for store submissions."
-msgstr "Se usan revisiones de GitHub para alojar envíos."
+#: ..\python_docs\Add-on-Store-Proposal.py:49
+msgid "- Use GitHub reviews for store submissions."
+msgstr "- Usar revisiones de GitHub para alojar envíos."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:47
+#: ..\python_docs\Add-on-Store-Proposal.py:50
 msgid ""
-"Use GitHub for storage of meta-data for addons available from the store."
+"- Use GitHub for storage of meta-data for addons available from the store."
 msgstr ""
-"Se usa GitHub para almacenar los metadatos de los complementos disponibles "
+"- Usar GitHub para almacenar los metadatos de los complementos disponibles "
 "en la tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:48
+#: ..\python_docs\Add-on-Store-Proposal.py:51
 msgid ""
-"Use GitHub actions (or other integrations) to automate construction of the "
-"data store, and as many of the review checks as possible. This will all be "
-"open source and extensible by the community."
+"- Use GitHub actions (or other integrations) to automate construction of the "
+"data store, and as many of the review checks as possible."
 msgstr ""
-"Se usan las acciones de GitHub (u otras integraciones) para automatizar la "
+"- Usar las acciones de GitHub (u otras integraciones) para automatizar la "
 "construcción del almacén de datos, y tantas comprobaciones de la revisión "
-"como sea posible. Todo esto será de código abierto y la comunidad podrá "
-"extenderlo."
+"como sea posible."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:49
+#: ..\python_docs\Add-on-Store-Proposal.py:52
+msgid "  This will all be open source and extensible by the community."
+msgstr "  Esto será de código abierto y extensible por la comunidad."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:53
 msgid "### Why GitHub reviews?"
 msgstr "### ¿Por qué revisiones de GitHub?"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:50
+#: ..\python_docs\Add-on-Store-Proposal.py:54
 msgid ""
 "- GitHub is where much of the NVDA development ecosystem is already based."
 msgstr ""
 "- Gran parte del ecosistema de desarrollo de NVDA ya está basado en GitHub."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:51
+#: ..\python_docs\Add-on-Store-Proposal.py:55
 msgid ""
 "- Handles all the of the CRUD ([create, read, update, delete](https://en."
 "wikipedia.org/wiki/CRUD)) for users, authentication is handled, and we can "
@@ -358,7 +378,7 @@ msgstr ""
 "repositorio de un complemento y sus permisos en ese repositorio. ¿Es "
 "realmente el propietario o un responsable de mantenimiento?"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:52
+#: ..\python_docs\Add-on-Store-Proposal.py:56
 msgid ""
 "- GitHub has a review system that allows for proposing changes and "
 "discussing these changes. We can leverage this for a store submission and "
@@ -368,13 +388,13 @@ msgstr ""
 "debatir sobre ellos. Se puede utilizar para los envíos a la tienda y el "
 "proceso de revisión."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:53
-msgid "- GitHub PR's provided a atomic view of a store submission."
+#: ..\python_docs\Add-on-Store-Proposal.py:57
+msgid "- GitHub PR's provided an atomic view of a store submission."
 msgstr ""
-"- Las solicitudes de cambio de GitHub proporcionan una vista atómica del "
+"- Las solicitudes de cambio de GitHub proporcionaron una vista atómica del "
 "envío hacia la tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:54
+#: ..\python_docs\Add-on-Store-Proposal.py:58
 msgid ""
 "- Interested parties can 'watch' PR's they care about without being "
 "subjected to the noise from PR's they don't care about."
@@ -383,56 +403,52 @@ msgstr ""
 "importan sin estar sujetas al ruido de otras solicitudes de cambio que no "
 "les importan."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:55
+#: ..\python_docs\Add-on-Store-Proposal.py:59
 msgid "- The result (open / merged / closed) of the PR is clear."
 msgstr ""
 "- El resultado de la solicitud de cambios es claro (abierta / mezclada / "
 "cerrada)."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:56
+#: ..\python_docs\Add-on-Store-Proposal.py:60
 msgid ""
 "- GitHub allows us to manage permissions for accepting reviews more easily."
 msgstr ""
 "- GitHub nos permite gestionar permisos para aceptar revisiones con más "
 "facilidad."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:57
+#: ..\python_docs\Add-on-Store-Proposal.py:61
 msgid "## Infrastructure"
 msgstr "## Infraestructura"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:58
-msgid "- `NVDA-Addon-submission` GitHub Repository"
-msgstr "- Repositorio `NVDA-Addon-submission` en GitHub"
+#: ..\python_docs\Add-on-Store-Proposal.py:62
+msgid "- `addon-store-submission` GitHub Repository"
+msgstr "- Repositorio `addon-store-submission` en GitHub"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:59
+#: ..\python_docs\Add-on-Store-Proposal.py:63
 msgid "  - For Addon authors / reviewers."
 msgstr "    - Para autores y revisores de complementos."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:60
+#: ..\python_docs\Add-on-Store-Proposal.py:64
 msgid "  - Where new Addon versions are submitted"
 msgstr "    - Donde se envían las nuevas versiones de los complementos"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:61
+#: ..\python_docs\Add-on-Store-Proposal.py:65
 msgid "  - Where reviews of Addon submissions happen"
 msgstr "    - Donde tienen lugar las revisiones de los envíos"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:62
-msgid "- `NVDA-Addon-store-data` GitHub Repository"
-msgstr "- Repositorio `NVDA-Addon-store-data` en GitHub"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:63
+#: ..\python_docs\Add-on-Store-Proposal.py:66
 msgid "  - For storage of meta-data about addons \"in the store\""
 msgstr ""
 "    - Para almacenamiento de metadatos de los complementos \"de la tienda\""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:64
+#: ..\python_docs\Add-on-Store-Proposal.py:67
 msgid ""
 "  - This repository acts as a back-end database, but is more transparent."
 msgstr ""
 "    - Este repositorio actúa como una base de datos back-end, pero es más "
 "transparente."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:65
+#: ..\python_docs\Add-on-Store-Proposal.py:68
 msgid ""
 "  - Since our needs are simple, preconfigured \"views\" of the data will "
 "suffice."
@@ -440,7 +456,7 @@ msgstr ""
 "    - Como las necesidades son simples, serán suficientes algunas \"vistas\" "
 "preconfiguradas de los datos."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:66
+#: ..\python_docs\Add-on-Store-Proposal.py:69
 msgid ""
 "- NV Access server - To provide the endpoint for \"available Addons\" meta-"
 "data"
@@ -448,7 +464,7 @@ msgstr ""
 "- Servidor de NV Access - para proporcionar el punto de acceso para los "
 "metadatos de \"complementos disponibles\""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:67
+#: ..\python_docs\Add-on-Store-Proposal.py:70
 msgid ""
 "  - While this is technically not necessary, it provides a good separation "
 "from implementation."
@@ -456,7 +472,7 @@ msgstr ""
 "    - Aunque técnicamente no es necesario, proporciona una buena separación "
 "de la implementación."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:68
+#: ..\python_docs\Add-on-Store-Proposal.py:71
 msgid ""
 "    If we wished to change our storage mechanism, we would not be breaking "
 "old versions of NVDA."
@@ -464,422 +480,248 @@ msgstr ""
 "        Si quisiéramos modificar nuestro mecanismo de almacenamiento, no se "
 "romperían las versiones anteriores de NVDA."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:69
-msgid "## `NVDA-Addon-submission` GitHub Repository"
-msgstr "## Repositorio `NVDA-Addon-submission` en GitHub"
+#: ..\python_docs\Add-on-Store-Proposal.py:72
+msgid "## `addon-store-submission` GitHub Repository"
+msgstr "## Repositorio `addon-store-submission`  en GitHub"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:70
+#: ..\python_docs\Add-on-Store-Proposal.py:73
 msgid ""
-"Essentially this repository holds references to all the accepted versions of "
-"Addons which are included in the store. A reference to an old version of an "
-"addon remains until it is explicitly removed or becomes invalid, allowing "
-"delivery to older versions of NVDA, or as a fall back in case the newer "
-"version is revoked after a critical bug is found."
+"Essentially this repository holds metadata about all the accepted versions "
+"of Addons which are included in the store."
 msgstr ""
-"En esencia, este repositorio almacena referencias a todas las versiones "
-"aceptadas de los complementos que se han incluido en la tienda. Una "
-"referencia a una versión antigua de un complemento permanece hasta que se "
-"elimina explícitamente o se vuelve inválida, permitiendo su entrega a "
-"versiones antiguas de NVDA, o como respaldo si se revoca una versión más "
-"nueva porque se detecta un fallo."
+"Esencialmente, este repositorio contiene metadatos sobre todas las versiones "
+"de los complementos aceptados que se incluyen en la tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:71
+#: ..\python_docs\Add-on-Store-Proposal.py:74
 msgid ""
-"Addons versions are submitted by submitting a pull request, adding the "
-"commit for that version to a file that describes the GitHub repository for "
-"the addon."
+"Metadata about old versions of an addon remains until it is explicitly "
+"removed or becomes invalid, allowing delivery to older versions of NVDA, or "
+"as a fall back in case the newer version is revoked after a critical bug is "
+"found."
+msgstr ""
+"Los metadatos de una versión antigua de un complemento permanecen hasta que "
+"se eliminan explícitamente o se vuelven inválidos, permitiendo su entrega a "
+"versiones antiguas de NVDA, o como respaldo si se revoca una versión más "
+"nueva porque se detecta un fallo crítico."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:75
+msgid ""
+"Addons versions are submitted by submitting a pull request, adding a file "
+"for that version of the addon."
 msgstr ""
 "Las versiones de los complementos se envían mediante una solicitud de "
-"cambios, añadiendo el commit de esa versión a un archivo que describe el "
-"repositorio en GitHub del complemento."
+"cambios, añadiendo un archivo para esa versión del complemento."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:72
-#: ..\python_docs\Add-on-Store-Proposal.py:146
+#: ..\python_docs\Add-on-Store-Proposal.py:76
 msgid "### Layout"
 msgstr "### Disposición"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:73
-#: ..\python_docs\Add-on-Store-Proposal.py:147
+#: ..\python_docs\Add-on-Store-Proposal.py:77
 msgid "Root directory of repository:"
 msgstr "Carpeta raíz del repositorio:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:74
+#: ..\python_docs\Add-on-Store-Proposal.py:78
 msgid " - `readme.md` - A guide for submission"
 msgstr "    - `readme.md` - Una guía para los envíos"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:75
-msgid " - `addons/owner1/repo1.commits`"
-msgstr "    - `addons/autor1/repo1.commits`"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:76
-msgid " - `addons/owner1/repo2.commits`"
-msgstr "    - `addons/autor1/repo2.commits`"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:77
-msgid " - `addons/owner2/repo3.commits`"
-msgstr "    - `addons/autor2/repo3.commits`"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:78
-msgid ""
-"Example for the NV Access addon, 'NVDA - OCR': `addons/nvaccess/nvda-ocr."
-"commits`"
-msgstr ""
-"Ejemplo de un complemento de NV Access, 'NVDA-OCR': `addons/nvaccess/nvda-"
-"ocr.commits`"
-
 #: ..\python_docs\Add-on-Store-Proposal.py:79
-msgid ""
-"Contents of a `*.commits` file, is a (newline separated) list of git SHAs, "
-"one for each commit which could be available in the store."
+msgid " - `addons/publisher1/addon1/majorVersion.minorVersion.patch.json`"
 msgstr ""
-"Los contenidos de un archivo `.commits` constan de una lista (separada por "
-"saltos de línea) de hashes SHA de Git, uno por cada commit que podría estar "
-"disponible en la tienda."
+" - `addons/publicador1/complemento1/versiónPrincipal.versiónMenor.parche."
+"json`"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:80
-msgid ""
-"This is intentionally a very simple format to maximise the ease of editing, "
-"and minimise the risk of format corruption."
+msgid " - `addons/publisher1/addon2/majorVersion.minorVersion.patch.json`"
 msgstr ""
-"Se ha diseñado este formato tan simple intencionadamente para maximizar la "
-"facilidad de edición, y minimizar el riesgo de corrupción del formato."
+" - `addons/publicador1/complemento2/versiónPrincipal.versiónMenor.parche."
+"json`"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:81
-msgid ""
-"Commits are used rather than tags because tags can be changed after "
-"creation, a SHA collision should be quite difficult to achieve."
+msgid " - `addons/publisher2/addon3/majorVersion.minorVersion.patch.json`"
 msgstr ""
-"Se usan commits en vez de tags porque los tags pueden cambiarse después de "
-"su creación, y una colisión SHA es bastante difícil de provocar."
+" - `addons/publicador2/complemento3/versiónPrincipal.versiónMenor.parche."
+"json`"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:82
 msgid ""
-"This is important to stop the possibility of a malicious author changing an "
-"addon post review, bypassing the review process."
+"Note: `publisher.addonName` will become the addon ID, and must be unique and "
+"match the addon ID from the addon manifest."
 msgstr ""
-"Esto es importante para eliminar la posibilidad de que un autor malicioso "
-"modifique su complemento tras la revisión, evitando el proceso de revisión."
+"Nota: `publicador.nombreComplemento` será el identificador del complemento, "
+"y debe ser único y coincidir con el identificador del complemento de su "
+"manifiesto."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:83
+msgid ""
+"Example for the NV Access addon, 'NVDA - OCR': `addons/nvaccess/nvda-"
+"ocr/1.6.0.json`"
+msgstr ""
+"Ejemplo para el complemento de NV Access, 'NVDA-OCR': `addons/nvaccess/nvda-"
+"ocr/1.6.0.json`"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:84
+msgid "### Metadata format"
+msgstr "### Formato de los metadatos"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:85
+msgid ""
+"For a full description of the schema see:` _tools/addonVersion_schema.json`"
+msgstr ""
+"Para una descripción completa del esquema, consulta `_tools/"
+"addonVersion_schema.json`"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:86
+msgid "- This includes an example of the file contents."
+msgstr "- Incluye un ejemplo de los contenidos del archivo."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:87
 msgid "### Submitting an Addon version"
 msgstr "### Enviar una versión de un complemento"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:84
-msgid "Pre-requisites:"
-msgstr "Requisitos previos:"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:85
-msgid "- An addon must be stored on GitHub in a public repository"
-msgstr "- El complemento debe alojarse en un repositorio público en GitHub"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:86
-msgid ""
-"- The commit which will be submitted must be a valid NVDA `*.nvda-addon` "
-"file if zipped and renamed."
-msgstr ""
-"- El commit que se enviará debe ser un archivo `*.nvda-addon` de NVDA válido "
-"si se comprime y renombra."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:87
-msgid "Process:"
-msgstr "Proceso:"
-
 #: ..\python_docs\Add-on-Store-Proposal.py:88
-msgid "1. A PR is created on the `NVDA-Addon-submission` repository"
-msgstr ""
-"1. Se crea una solicitud de cambios en el repositorio `NVDA-Addon-submission`"
+msgid "#### Pre-requisites:"
+msgstr "#### Requisitos previos:"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:89
-msgid ""
-"   - It adds/removes the SHA of the commit (for the submitted version) to "
-"the appropriate `addons/owner/repo.commits` file."
-msgstr ""
-"    - En ella se añade o elimina el SHA del commit (de la versión enviada) "
-"al archivo `addons/autor/repo.commits` adecuado."
+msgid "- Familiarity with GitHub"
+msgstr "- Familiaridad con GitHub"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:90
-msgid "   - Refer to 'Creating the submission PR' below"
-msgstr ""
-"    - Consulta la sección `Creación de la solicitud de envío` que hay más "
-"adelante"
+msgid "- Familiarity with Git, including working with branches."
+msgstr "- Familiaridad con Git, incluido el trabajo con ramas."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:91
-msgid ""
-"1. A bot adds a comment in the PR with links to the addon versions that are "
-"added or removed"
-msgstr ""
-"2. Un bot añade un comentario en la solicitud de cambios con enlaces a las "
-"versiones del complemento que se añaden o eliminan"
+msgid "Process to add a new NVDA-addon version:"
+msgstr "Proceso para añadir una nueva versión de un complemento de NVDA:"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:92
-msgid ""
-"   - NOTE: the URL for this link can be is built from 'owner', 'repo', "
-"'commit' of the lines added / removed. "
-msgstr ""
-"    - Nota: la URL de este enlace puede ser construida desde 'autor', 'repo' "
-"y 'commit' de las líneas añadidas o eliminadas. "
+msgid "1. Fork the `addon-store-submission` repository"
+msgstr "1. Bifurca el repositorio `addon-store-submission`"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:93
-msgid ""
-"   - This allows the reviewer to browse the source online or download the "
-"addon with, see (in suffix) heading \"Example of bot message for `NVDA-Addon-"
-"submission` PR\" for an example message."
+msgid "1. On a new branch, copy the `_template_addon_release.json` file. "
 msgstr ""
-"    - Esto permite que el revisor examine el código en línea o descargue el "
-"complemento, consulta el encabezado \"Ejemplo de mensaje de bot para una "
-"solicitud de cambios en `NVDA-Addon-submission`\" para ver un mensaje de "
-"ejemplo."
+"2. En una nueva rama, copia el archivo `_template_addon_release.json`. "
 
 #: ..\python_docs\Add-on-Store-Proposal.py:94
-msgid "1. A review is performed (resulting in: request changes, merge, close)"
+msgid "   - Rename / move the file to `<publisher>/<addonName>/<version>.json`"
 msgstr ""
-"3. Se lleva a cabo una revisión (que da como resultado: pedir cambios, "
-"mezclar o cerrar)"
+"   - Renombra o mueve el archivo a `<publicador>/<nombreComplemento>/"
+"<versión>.json`"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:95
 msgid ""
-"   - A bot may perform some automated checks or provide helpful information, "
-"refer to 'automated review ideas' below"
+"   - `<publisher>` is the name of the add-on developer, E.G. \"nvaccess\""
 msgstr ""
-"    - Un bot puede realizar ciertas comprobaciones automatizadas o "
-"proporcionar información útil, consulta 'Ideas de revisión automatizada' más "
-"abajo"
+"   - `<publicador>` es el nombre del desarrollador del complemento, por "
+"ejemplo \"nvaccess\""
 
 #: ..\python_docs\Add-on-Store-Proposal.py:96
+msgid "   - `<addonName>` is the name of the add-on, E.G. \"nv-speech-player\""
+msgstr ""
+"   - `<nombreComplemento>` es el nombre del complemento, por ejemplo \"nv-"
+"speech-player\""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:97
+msgid ""
+"   - `<version>` is the add-on version in the form: `Major.Minor.Patch` E.G. "
+"\"2.4.1\""
+msgstr ""
+"   - `<versión>` es la versión del complemento en formato `principal.menor."
+"parche`. Por ejemplo: \"2.4.1\""
+
+#: ..\python_docs\Add-on-Store-Proposal.py:98
+msgid "1. Create a PR on `addon-store-submission` repository"
+msgstr ""
+"3. Crea una solicitud de cambios en el repositorio `addon-store-submission`"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:99
+msgid "1. Automated checks for common issues will complete."
+msgstr "4. Se completarán los comprobadores automáticos de incidencias."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:100
+msgid "1. A review is performed (resulting in: request changes, approval)"
+msgstr ""
+"5. Se lleva a cabo una revisión (que da como resultado: pedir cambios, "
+"aprobar)"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:101
+msgid "   - Conducted by an NVDA add-on reviewer."
+msgstr "   - Conducida por un revisor de complementos de NVDA."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:102
 msgid ""
 "   - Manual review is done according to some published review check list (so "
 "that everyone knows what to expect)"
 msgstr ""
-"    - Se hace una revisión manual siguiendo alguna lista de comprobación de "
+"   - Se hace una revisión manual siguiendo alguna lista de comprobación de "
 "revisión publicada (para que todo el mundo sepa qué puede esperar)"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:97
-msgid ""
-"   - Automated and human process can be decided later, we can address these "
-"details as they come up and improve upon the process"
+#: ..\python_docs\Add-on-Store-Proposal.py:103
+msgid "1. The PR is merged, the add-on becomes available in the store."
 msgstr ""
-"    - Se pueden decidir más adelante los procesos automatizados y humanos, "
-"ya resolveremos estos detalles sobre la marcha para mejorar el proceso"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:98
-msgid "1. When the PR is merged, the Addon becomes available in the store."
-msgstr ""
-"4. Cuando se mezcla la solicitud de cambios, el complemento aparece "
+"6. Cuando se mezcla la solicitud de cambios, el complemento aparece "
 "disponible en la tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:99
-msgid "### Creating the submission PR"
-msgstr "### Creación de la solicitud de envío"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:100
-msgid ""
-"To simplify the initial implementation of this process the PR will need to "
-"be created manually, later we can streamline this, and automate only "
-"requiring the addon author to paste a link in a new issue."
-msgstr ""
-"Para simplificar la implementación inicial de este proceso, la solicitud de "
-"cambios deberá crearse manualmente, más adelante se podrá automatizar, de "
-"tal forma que un autor sólo tenga que pegar un enlace en una nueva "
-"incidencia."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:101
-msgid ""
-"A new Pull Request (PR) is created on the `NVDA-Addon-submission` repository."
-msgstr ""
-"Se crea una nueva solicitud de cambios en el repositorio `NVDA-Addon-"
-"submission`."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:102
-msgid "   1. Find or create a file: `addons/owner/repo.commits`"
-msgstr "    1. Busca o crea un archivo: `addons/autor/repo.commits`"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:103
-msgid "      - Example: `addons/nvaccess/nvda-ocr.commits`"
-msgstr "        - Ejemplo: `addons/nvaccess/nvda-ocr.commits`"
-
 #: ..\python_docs\Add-on-Store-Proposal.py:104
-msgid ""
-"      - Where 'owner' is the username or organisation that owns the addon "
-"GitHub repository. E.G. for `nvda-ocr` it is `nvaccess`"
-msgstr ""
-"        - Donde 'autor' es el nombre de usuario u organización a la que "
-"pertenece el repositorio de GitHub del complemento. Por ejemplo: para `nvda-"
-"ocr` es `nvaccess`"
+msgid "### Checked during review"
+msgstr "### Comprobaciones durante la revisión"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:105
-msgid "      - Where 'repo' is the name of the repository. E.G. `nvda-ocr`"
-msgstr ""
-"        - Donde 'repo' es el nombre del repositorio. Por ejemplo: `nvda-ocr`"
+msgid "Many of these can be automated."
+msgstr "Muchas de ellas se pueden automatizar."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:106
-msgid ""
-"      - NOTE: creating the file means this is an entirely new submission"
-msgstr ""
-"        - Nota: crear el archivo significa que este es un envío "
-"completamente nuevo"
+msgid "- Each modified file conforms to the schema"
+msgstr "- Cada archivo modificado se ajusta al esquema"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:107
-msgid "   1. To submit a new version, add the SHA of the commit to the file"
-msgstr ""
-"    2. Para enviar una nueva versión, añade el SHA del commit al archivo"
+msgid "- Download URL is valid"
+msgstr "- La URL de descarga es válida"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:108
-msgid ""
-"   1. For no longer supported addon versions, remove the SHA of the commit."
-msgstr ""
-"    3. Para las versiones del complemento que no estén soportadas, elimina "
-"el SHA del commit."
+msgid "- File from URL matches Sha256"
+msgstr "- El archivo de la URL coincide con el sha256"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:109
-msgid ""
-"This could be done with the web editor, though screen reader users may be "
-"more comfortable making the changes locally with their chosen editor."
-msgstr ""
-"Esto se podría hacer con el editor web, aunque los usuarios de lectores de "
-"pantalla pueden sentirse más cómodos haciendo los cambios localmente con un "
-"editor de su elección."
+msgid "- Version number matches add-on manifest."
+msgstr "- El número de versión coincide con el manifiesto del complemento."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:110
 msgid ""
-"Because this requires addon authors to fork the `NVDA-Addon-submission` "
-"repository, this is a little cumbersome."
+"- The file ID (`<publisher>.<addonName>`) matches the manifest 'name' field"
 msgstr ""
-"Debido a que esto requiere que los autores de complementos hagan fork del "
-"repositorio `NVDA-Addon-submission`, la situación se vuelve un poco "
-"engorrosa."
+"- El identificador del archivo (`<publicador>.<nombreComplemento>`) coincide "
+"con el campo 'name' del manifiesto"
 
 #: ..\python_docs\Add-on-Store-Proposal.py:111
-msgid "To streamline this process, we could use GitHub issues."
-msgstr "Para agilizar este proceso, se podrían usar incidencias de GitHub."
+msgid ""
+"- The version number from the file name is valid and matches the version in "
+"the manifest."
+msgstr ""
+"- El número de versión del archivo es válido y coincide con la versión en el "
+"manifiesto."
 
 #: ..\python_docs\Add-on-Store-Proposal.py:112
-msgid "- The addon author would pick from two issue templates:"
-msgstr ""
-"- El autor del complemento escogería entre dos plantillas de incidencia:"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:113
-msgid "  - \"Add addon version\""
-msgstr "    - \"Añadir versión de complemento\""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:114
-msgid "  - \"Remove addon version\""
-msgstr "    - \"Eliminar versión de complemento\""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:115
-msgid ""
-"- In the template they would paste a link to the commit or tag that should "
-"be added or removed."
-msgstr ""
-"- En la plantilla, pegarían un enlace al commit o al tag que debería "
-"añadirse o eliminarse."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:116
-msgid ""
-"- Automation creates the PR automatically from this and closes the issue."
-msgstr ""
-"- La automatización crea automáticamente la solicitud de cambios y cierra la "
-"incidencia."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:117
-msgid ""
-"- NOTE: In this approach it is safe to use a git tag, because the commit ID "
-"can be determined from the tag. The commit is then used in the PR and the "
-"rest of the process is the same."
-msgstr ""
-"- Nota: en este enfoque sí es seguro usar un tag de Git, ya que se puede "
-"determinar el identificador del commit desde el tag. A continuación, se usa "
-"el commit en la solicitud de cambios y el resto del proceso no varía."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:118
-msgid "### Automated review ideas"
-msgstr "### Ideas de revisión automatizada"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:119
-msgid ""
-"Several suggestions for automated review ideas to streamline the process."
-msgstr ""
-"Varias sugerencias de ideas para la revisión automatizada con el fin de "
-"agilizar el proceso."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:120
-msgid "- Check manifest validity"
-msgstr "- Comprobar la validez del manifest"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:121
-msgid "- Provide links to relevant diffs"
-msgstr "- Proporcionar enlaces a diffs relevantes"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:122
-msgid ""
-"- Check to see if the GitHub user submitting the PR is a maintainer of the "
-"Addon version being submitted."
-msgstr ""
-"- Comprobar si el usuario de GitHub que envía la solicitud de cambios es un "
-"responsable de mantenimiento de la versión del complemento que se envía."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:123
-msgid "- Consider using CI (Appveyor) to check the addon installs cleanly:"
-msgstr ""
-"- Plantearse usar integración continua (Appveyor) para comprobar que el "
-"complemento se instala limpiamente:"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:124
-msgid "  - Install NVDA (the most recent version supported by the addon)"
-msgstr ""
-"    - Instalar NVDA (la versión más reciente soportada por el complemento)"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:125
-msgid "  - Install the addon"
-msgstr "    - Instalar el complemento"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:126
-msgid "  - Restart NVDA and check for errors"
-msgstr "    - Reiniciar NVDA y comprobar si hay errores"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:127
 msgid "### Concerns"
 msgstr "### Comentarios"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:128
+#: ..\python_docs\Add-on-Store-Proposal.py:113
 msgid ""
-"This approach requires that an addon repository is already a valid (and "
-"installable) addon once it is zipped. Most addons require build steps."
+"- With this ID scheme many add-ons will need to change their ID. Will this "
+"require previously saved user config to be moved to a new section of the "
+"config file?"
 msgstr ""
-"Este enfoque requiere que el repositorio de un complemento sea un "
-"complemento válido (e instalable) una vez se comprima. Muchos complementos "
-"necesitan pasos adicionales en su construcción."
+"- Con este esquema de identificador muchos complementos tendrán que cambiar "
+"su identificador. ¿Esto hará que sea necesario mover la configuración de "
+"usuario previamente guardada a una nueva sección del archivo de "
+"configuración?"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:129
-msgid ""
-" - Can github actions be used to run these steps and produce a certifiable "
-"build artifact?"
-msgstr ""
-"    - ¿Se pueden usar las acciones de GitHub para ejecutar estos pasos y "
-"producir un resultado de compilación certificable?"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:130
-msgid ""
-"   - If we can certify the source for a commit, and the source for the "
-"github actions that produces the artifact, then the artifact itself is "
-"certified?"
-msgstr ""
-"    - Si se puede certificar el código de un commit, y el código de las "
-"acciones de GitHub que producen el complemento, ¿significa que el "
-"complemento en sí está certificado?"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:131
-msgid ""
-"   - If this is true we can provide this action along with the addon-"
-"template."
-msgstr ""
-"    - Si esto es así, se puede proporcionar la acción de GitHub junto a la "
-"plantilla de complemento."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:132
+#: ..\python_docs\Add-on-Store-Proposal.py:114
 msgid "### Other notes"
 msgstr "### Otras notas"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:133
+#: ..\python_docs\Add-on-Store-Proposal.py:115
 msgid ""
 "- By using a git repository and and PR process, `git blame` and `git log` "
 "can be used to get more context about addons listed in the store. For "
@@ -889,111 +731,104 @@ msgstr ""
 "cambios, `git blame` y `git log` se pueden emplear para obtener más contexto "
 "sobre los complementos listados en la tienda. Por ejemplo:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:134
+#: ..\python_docs\Add-on-Store-Proposal.py:116
 msgid "  - When was the addon accepted"
 msgstr "    - Cuándo se aceptó el complemento"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:135
+#: ..\python_docs\Add-on-Store-Proposal.py:117
 msgid "  - What did the review look like"
 msgstr "    - Qué pinta tuvo la revisión"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:136
+#: ..\python_docs\Add-on-Store-Proposal.py:118
 msgid "  - How often does this addon have updates accepted"
 msgstr ""
 "    - Con qué frecuencia se aceptan actualizaciones de este complemento"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:137
+#: ..\python_docs\Add-on-Store-Proposal.py:119
 msgid "- GitHub allows assigning reviews to reviewers"
 msgstr "- GitHub permite asignar revisiones a revisores"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:138
-msgid "## `NVDA-Addon-store-data` GitHub Repository"
-msgstr "## Repositorio `NVDA-Addon-store-data` de GitHub"
+#: ..\python_docs\Add-on-Store-Proposal.py:120
+msgid "## API data generation details"
+msgstr "## Detalles de generación de los datos de la API"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:139
-msgid "Holds meta-data about addons accepted to the store."
-msgstr "Contiene metadatos de complementos aceptados en la tienda."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:140
+#: ..\python_docs\Add-on-Store-Proposal.py:121
 msgid ""
-"Using a separate repository for this data store separates concerns, gives "
-"greater flexibility for managing permissions, makes it easier to verify "
-"changes (eg in a PR, or via automation), and simplifies the commit history "
-"(no automation commits \"updating data store\")"
+"The NV Access server will be configured to respond to a Webhook to pull from "
+"this repository and run code to transform"
 msgstr ""
-"Al usar un repositorio separado para el almacenamiento de datos se separan "
-"conceptos, se da mayor flexibilidad para gestionar permisos, y se facilita "
-"la verificación de cambios (por ejemplo en una solicitud de cambios o "
-"mediante automatización), y se simplifica el historial de commits (no hay "
-"commits automatizados del tipo \"Se actualiza el almacén de datos\")"
+"Se configurará el servidor de NV Access para que responda a un webhook para "
+"descargar de este repositorio y ejecutar código que transforme"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:141
+#: ..\python_docs\Add-on-Store-Proposal.py:122
+msgid "the data."
+msgstr "los datos."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:123
 msgid ""
-"The exact implementation details for this repository are not exposed to "
-"users, because on one side the `NVDA-Addon-submission` repository feeds data "
-"in and the NV Access server is on the other side fetching and providing data "
-"to NVDA or a web based store."
+"This can regenerate the required views of the data for the exposed API's"
 msgstr ""
-"Los detalles exactos de implementación de este repositorio no se exponen a "
-"los usuarios, ya que por un lado tenemos al repositorio `NVDA-Addon-"
-"submission` alimentando con datos, y por otro está el servidor de NV Access "
-"recuperando y proporcionando datos a NVDA o a una tienda basada en web."
+"Esto puede regenerar las vistas necesarias de los datos para las APIs "
+"expuestas"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:142
-msgid ""
-"This means that changing the layout or implementation of this repository "
-"does not cause wide breaking changes to the process and it can be updated "
-"independently."
-msgstr ""
-"Esto significa que cambiar la disposición o la implementación de este "
-"repositorio no causará daños colaterales al proceso y se puede actualizar de "
-"forma independiente."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:143
-msgid ""
-"Since the details of this repository don't really matter too much they don't "
-"need to be concrete at this point, however I'll give a brief overview of the "
-"current plan."
-msgstr ""
-"Aunque los detalles de este repositorio realmente no importan demasiado, no "
-"es necesario que sean muy concretos en este momento. Sin embargo, se "
-"proporciona una breve visión general del plan actual."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:144
+#: ..\python_docs\Add-on-Store-Proposal.py:124
 msgid "### Overview"
 msgstr "### Descripción"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:145
+#: ..\python_docs\Add-on-Store-Proposal.py:125
 msgid ""
-"For each version of NVDA, the meta-data of the most recent (highest version "
-"number) of each Addon is automatically added, based on the data in 'NVDA-"
-"Addon-submission'."
+"For each version of NVDA, the meta-data of the most recent (the highest "
+"version number) of each Addon is automatically"
 msgstr ""
 "Para cada versión de NVDA, los metadatos de cada complemento más reciente "
-"(con número de versión más alto) se añaden automáticamente, basándose en los "
-"datos de 'NVDA-Addon-submission'."
+"(con número de versión más alto) se"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:148
+#: ..\python_docs\Add-on-Store-Proposal.py:126
+msgid "added, based on the data in 'addon-store-submission'."
+msgstr ""
+"añaden automáticamente, basándose en los datos de 'addon-store-submission'."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:127
+msgid ""
+"Code for this will be stored in the `_tools` folder. This will enable "
+"interested parties to generate the same view of"
+msgstr ""
+"El código correspondiente se alojará en la carpeta `_tools`. Esto permitirá "
+"a las partes interesadas generar la misma vista de"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:128
+msgid "the data locally."
+msgstr "los datos localmente."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:129
+msgid "### Data views"
+msgstr "### Visualizaciones de datos"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:130
+msgid "Required transformations of the data:"
+msgstr "Transformaciones requeridas de los datos:"
+
+#: ..\python_docs\Add-on-Store-Proposal.py:131
 msgid "- `/NVDA API Version/addon-1-ID/release.json`"
 msgstr "- `/Versión de API de NVDA/addon-1-ID/release.json`"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:149
+#: ..\python_docs\Add-on-Store-Proposal.py:132
 msgid "- `/NVDA API Version/addon-1-ID/pre-rel.json`"
 msgstr "- `/Versión de API de NVDA/addon-1-ID/pre-rel.json`"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:150
+#: ..\python_docs\Add-on-Store-Proposal.py:133
 msgid "- `/NVDA API Version/addon-2-ID/release.json`"
 msgstr "- `/Versión de API de NVDA/addon-2-ID/release.json`"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:151
+#: ..\python_docs\Add-on-Store-Proposal.py:134
 msgid "- `/NVDA API Version/all.json`"
 msgstr "- `/Versión de API de NVDA/all.json`"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:152
+#: ..\python_docs\Add-on-Store-Proposal.py:135
 msgid "Notes:"
 msgstr "Notas:"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:153
+#: ..\python_docs\Add-on-Store-Proposal.py:136
 msgid ""
 "- 'NVDA API Version' will be something like '2019.3', there will be one "
 "folder for each NVDA API Version."
@@ -1001,7 +836,7 @@ msgstr ""
 "- 'Versión de la API de NVDA' será algo como '2019.3', habrá una carpeta "
 "para cada versión de la API de NVDA."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:154
+#: ..\python_docs\Add-on-Store-Proposal.py:137
 msgid ""
 "- The `pre-rel.json` and `release.json` contain the information necessary "
 "for a store entry."
@@ -1009,20 +844,7 @@ msgstr ""
 "- Los archivos `pre-rel.json` y `release.json` contienen la información "
 "necesaria para una entrada de la tienda."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:155
-msgid ""
-"  This is essentially the URL to download the addon (a zip of the commit), "
-"and the rest of the contents of the addon manifest. Of course, by including "
-"translated descriptions in the manifest a multilingual addon store can be "
-"created, though possible not the core goal of this proposal."
-msgstr ""
-"    En esencia, sería la URL de descarga del complemento (un zip del "
-"commit), y el resto de contenidos del manifiesto del complemento. Por "
-"supuesto, incluyendo descripciones traducidas en el manifiesto se puede "
-"crear una tienda de complementos multiidioma, aunque posiblemente no sea el "
-"objetivo de esta propuesta."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:156
+#: ..\python_docs\Add-on-Store-Proposal.py:138
 msgid ""
 "- The contents of `all.data` is all (pre-release and release) data for this "
 "NVDA API version together."
@@ -1030,138 +852,62 @@ msgstr ""
 "-Los contenidos de `all.json` son todos los datos (versiones de desarrollo y "
 "estables) de esta versión de la API de NVDA juntos."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:157
+#: ..\python_docs\Add-on-Store-Proposal.py:139
+msgid ""
+"- The contents for each addon will include all the technical details "
+"required for NVDA to download, verify file integrity, and install."
+msgstr ""
+"- Los contenidos de cada complemento incluirán todos los detalles técnicos "
+"necesarios para que NVDA los descargue, verifique la integridad del archivo "
+"e instale."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:140
+msgid ""
+"- The file will include translations (if available) for the displayable "
+"metadata."
+msgstr ""
+"- El archivo incluirá traducciones (si están disponibles) de los metadatos "
+"visibles."
+
+#: ..\python_docs\Add-on-Store-Proposal.py:141
 msgid ""
 "The simplicity of this is that the NV Access server can just forward these "
-"files on directly when asked \"what are the latest Addons for NVDA API "
-"Version X\" or \"What is the latest version of Addon-ID for NVDA API Version "
-"X\". Using the NV Access server as the endpoint for this is important in "
-"case the implementation has to change or be migrated away from GitHub for "
-"some reason."
+"files on directly when asked"
 msgstr ""
 "La simplicidad de esto radica en que el servidor de NV Access puede "
-"simplemente reenviar estos archivos directamente al preguntarle \"cuáles son "
-"los últimos complementos para la versión X de la API de NVDA\" o \"Cuál es "
-"la última versión de addon-id para la versión X de la API de NVDA\". Usar el "
-"servidor de NV Access como un extremo para esto es importante en caso de que "
-"haya que cambiar la implementación o migrar fuera de GitHub por alguna razón."
+"simplemente redirigir estos archivos directamente cuando se le pregunte"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:158
-msgid "### How does data arrive"
-msgstr "### Cómo llegan los datos"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:159
+#: ..\python_docs\Add-on-Store-Proposal.py:142
 msgid ""
-"For the sake of a simple explanation, optimisations and minor details will "
-"be omitted from this description."
+"\"what are the latest Addons for NVDA API Version X\" or \"What is the "
+"latest version of Addon-ID for NVDA API Version X\"."
 msgstr ""
-"Con el objetivo de simplificar la explicación, se omitirán optimizaciones y "
-"detalles menores en esta descripción."
+"\"Cuáles son los complementos más recientes para NVDA con versión de API X\" "
+"o \"Cuál es la última versión de identificador-complemento para NVDA versión "
+"de API X\"."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:160
+#: ..\python_docs\Add-on-Store-Proposal.py:143
 msgid ""
-"A GitHub Action is created to respond to a new commit on the `NVDA-Addon-"
-"submission` repository. For each commit in each `*.commits` file in the "
-"`NVDA-Addon-submission` repository, the manifest for the addon is fetched."
+"Using the NV Access server as the endpoint for this is important in case the "
+"implementation has to change or be migrated"
 msgstr ""
-"Se crea una acción de GitHub para responder a un nuevo commit en el "
-"repositorio `NVDA-Addon-submission`. Por cada commit de cada archivo `*."
-"commits` del repositorio `NVDA-Addon-submission`, se recupera el manifiesto "
-"del complemento."
+"Usar el servidor de NV Access como extremo para esto es importante en caso "
+"de que haya que cambiar la implementación o migrar"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:161
-msgid "Addons manifests that support each NVDA API version are found."
-msgstr "Se buscan los manifiestos que soporten cada versión de la API de NVDA."
+#: ..\python_docs\Add-on-Store-Proposal.py:144
+msgid "away from GitHub for some reason."
+msgstr "desde GitHub por cualquier motivo."
 
-#: ..\python_docs\Add-on-Store-Proposal.py:162
-msgid ""
-"For each NVDA API version the most recent (based on version number) release "
-"and pre-release addon manifest is kept."
-msgstr ""
-"Para cada versión de la API, se conserva el manifiesto del complemento de "
-"las versiones estables y de desarrollo más recientes (basándose en el número "
-"de versión)."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:163
-msgid ""
-"These remaining manifest files are used to reconstruct the data in the "
-"repository and commit it."
-msgstr ""
-"Los archivos de manifiesto recuperados se usan para reconstruir los datos "
-"del repositorio y hacer commit."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:164
+#: ..\python_docs\Add-on-Store-Proposal.py:145
 msgid "## Suffix"
 msgstr "## Epílogo"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:165
-msgid "### Example of bot message for `NVDA-Addon-submission` PR."
-msgstr ""
-"### Ejemplo de mensaje de bot en una solicitud de cambio de `NVDA-Addon-"
-"submission`."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:166
-#: ..\python_docs\Add-on-Store-Proposal.py:170
-msgid "```"
-msgstr "```"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:167
-msgid "Added Version."
-msgstr "Añadida versión."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:168
-msgid ""
-"- [Browse source](https://github.com/nvaccess/nvda-ocr/"
-"tree/632d037dae906cd582ff4995628aa3fbaacd84e9)"
-msgstr ""
-"- [Explorar código](https://github.com/nvaccess/nvda-ocr/"
-"tree/632d037dae906cd582ff4995628aa3fbaacd84e9)"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:169
-msgid ""
-"- [Download zip](https://github.com/nvaccess/nvda-ocr/"
-"archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)"
-msgstr ""
-"- [Descargar zip](https://github.com/nvaccess/nvda-ocr/"
-"archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:171
-msgid "### Pre-release addon version support"
-msgstr "### Soporte para versiones de desarrollo de complementos"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:172
-msgid ""
-"This will require an update to the addon-manifest. While this proposal plans "
-"for it, it will not be in the initial scope of work."
-msgstr ""
-"Será necesaria una actualización del manifiesto del complemento. Aunque en "
-"la propuesta se contempla, no estará en el ámbito del trabajo inicial."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:173
-msgid "### Invalid Addon references"
-msgstr "### Referencias inválidas de complementos"
-
-#: ..\python_docs\Add-on-Store-Proposal.py:174
-msgid ""
-"When building the data-store, any references to commits that no longer exist "
-"(repo deleted, history rewritten etc) will obviously be excluded since the "
-"manifest can not be fetched. Although not high priority, a mechanism may "
-"need to be developed to update the 'NVDA-Addon-submission' repository so "
-"that these invalid references can be removed."
-msgstr ""
-"Al construir el almacén de datos, cualquier referencia a commits que no "
-"existen (repositorio eliminado, historial reescrito, etc.) obviamente se "
-"excluirán, ya que el manifiesto no se puede descargar. Aunque no es de alta "
-"prioridad, se debería implementar un mecanismo para actualizar el "
-"repositorio 'NVDA-Addon-submission' de tal forma que se eliminen estas "
-"referencias inválidas."
-
-#: ..\python_docs\Add-on-Store-Proposal.py:175
+#: ..\python_docs\Add-on-Store-Proposal.py:146
 msgid "### Terminology: Addon version vs Addon release"
 msgstr ""
 "### Terminología: versión de complemento frente a liberación de complemento"
 
-#: ..\python_docs\Add-on-Store-Proposal.py:176
+#: ..\python_docs\Add-on-Store-Proposal.py:147
 msgid ""
 "Since this proposal supports pre-release addons, I have tried to avoid using "
 "the term \"addon release\", instead favouring \"addon version\"."
@@ -1169,3 +915,536 @@ msgstr ""
 "Ya que en esta propuesta se da soporte a los complementos en desarrollo, se "
 "ha intentado evitar el uso del término \"liberación de complemento\" en "
 "favor de \"versión de complemento\"."
+
+#~ msgid "This is the current plan from NV Access."
+#~ msgstr "Este es el plan actual de NV Access."
+
+#~ msgid ""
+#~ "However, before starting this work we would like feedback from the add-"
+#~ "ons community, particularly addon authors and addon reviewers since this "
+#~ "will affect them the most."
+#~ msgstr ""
+#~ "Sin embargo, antes de empezar a trabajar en él nos gustaría recibir "
+#~ "comentarios de la comunidad de complementos, particularmente autores y "
+#~ "revisores de complementos, ya que serán los más afectados."
+
+#~ msgid ""
+#~ "Many considerations in this proposal have been given to creating a more "
+#~ "secure and robust NVDA Addon store."
+#~ msgstr ""
+#~ "Se han dado muchas consideraciones en esta propuesta para crear una "
+#~ "tienda de complementos de NVDA más segura y robusta."
+
+#~ msgid ""
+#~ "While there is little that can be done to guarantee an addon is safe to "
+#~ "run, we can ensure that all versions are viewed, and that users are "
+#~ "running the addon they think they are."
+#~ msgstr ""
+#~ "Aunque poco se puede hacer para garantizar que es seguro ejecutar un "
+#~ "complemento, podemos asegurar que se ven todas las versiones, y que los "
+#~ "usuarios ejecutan el complemento que creen que están ejecutando."
+
+#~ msgid ""
+#~ "While NV Access has some opinions on this, I think it will be more "
+#~ "productive to first focus on the steps around this."
+#~ msgstr ""
+#~ "Aunque NV Access tiene opiniones al respecto, puede ser más productivo "
+#~ "centrarse primero en los pasos del proceso."
+
+#~ msgid ""
+#~ "Later, I suggest a new thread to agree on a \"addon review check list\"."
+#~ msgstr ""
+#~ "Más adelante, se sugiere un hilo para ponerse deacuerdo en una \"lista de "
+#~ "comprobación de revisión de complementos\"."
+
+#~ msgid ""
+#~ "With the right infrastructure, we can automate many checks and reduce the "
+#~ "burden on reviewers."
+#~ msgstr ""
+#~ "Con la infraestructura adecuada, se pueden automatizar muchas "
+#~ "comprobaciones y reducir la carga de los revisores."
+
+#~ msgid ""
+#~ "- Create an issue on the `addon-store-submission` repository for each "
+#~ "addon version they want to make available."
+#~ msgstr ""
+#~ "- Crear una incidencia en el repositorio `addon-store-submission` para "
+#~ "cada versión del complemento que quiera publicar."
+
+#~ msgid ""
+#~ "- Paste into the issue description a link to the commit or github release."
+#~ msgstr ""
+#~ "- Pegar en la descripción de la incidencia un enlace al commit o a la "
+#~ "liberación de GitHub."
+
+#~ msgid ""
+#~ "- Wait for it to be reviewed and accepted or participate in review "
+#~ "actions and resubmit the new version."
+#~ msgstr ""
+#~ "- Esperar a que se revise y se acepte o participar en las acciones de "
+#~ "revisión y volver a enviar la nueva versión."
+
+#~ msgid "- These will include a link to the addon version being reviewed."
+#~ msgstr "- Estas incluirán un enlace al complemento que se revisa."
+
+#~ msgid ""
+#~ "- When approving the PR, press the merge button to finalise the submision."
+#~ msgstr ""
+#~ "- Al aprobar la solicitud de cambio, pulsa el botón Merge para finalizar "
+#~ "el proceso."
+
+#~ msgid "- `NVDA-Addon-store-data` GitHub Repository"
+#~ msgstr "- Repositorio `NVDA-Addon-store-data` en GitHub"
+
+#~ msgid " - `addons/owner1/repo1.commits`"
+#~ msgstr "    - `addons/autor1/repo1.commits`"
+
+#~ msgid " - `addons/owner1/repo2.commits`"
+#~ msgstr "    - `addons/autor1/repo2.commits`"
+
+#~ msgid " - `addons/owner2/repo3.commits`"
+#~ msgstr "    - `addons/autor2/repo3.commits`"
+
+#~ msgid ""
+#~ "Contents of a `*.commits` file, is a (newline separated) list of git "
+#~ "SHAs, one for each commit which could be available in the store."
+#~ msgstr ""
+#~ "Los contenidos de un archivo `.commits` constan de una lista (separada "
+#~ "por saltos de línea) de hashes SHA de Git, uno por cada commit que podría "
+#~ "estar disponible en la tienda."
+
+#~ msgid ""
+#~ "This is intentionally a very simple format to maximise the ease of "
+#~ "editing, and minimise the risk of format corruption."
+#~ msgstr ""
+#~ "Se ha diseñado este formato tan simple intencionadamente para maximizar "
+#~ "la facilidad de edición, y minimizar el riesgo de corrupción del formato."
+
+#~ msgid ""
+#~ "Commits are used rather than tags because tags can be changed after "
+#~ "creation, a SHA collision should be quite difficult to achieve."
+#~ msgstr ""
+#~ "Se usan commits en vez de tags porque los tags pueden cambiarse después "
+#~ "de su creación, y una colisión SHA es bastante difícil de provocar."
+
+#~ msgid ""
+#~ "This is important to stop the possibility of a malicious author changing "
+#~ "an addon post review, bypassing the review process."
+#~ msgstr ""
+#~ "Esto es importante para eliminar la posibilidad de que un autor malicioso "
+#~ "modifique su complemento tras la revisión, evitando el proceso de "
+#~ "revisión."
+
+#~ msgid "- An addon must be stored on GitHub in a public repository"
+#~ msgstr "- El complemento debe alojarse en un repositorio público en GitHub"
+
+#~ msgid ""
+#~ "- The commit which will be submitted must be a valid NVDA `*.nvda-addon` "
+#~ "file if zipped and renamed."
+#~ msgstr ""
+#~ "- El commit que se enviará debe ser un archivo `*.nvda-addon` de NVDA "
+#~ "válido si se comprime y renombra."
+
+#~ msgid "Process:"
+#~ msgstr "Proceso:"
+
+#~ msgid "1. A PR is created on the `NVDA-Addon-submission` repository"
+#~ msgstr ""
+#~ "1. Se crea una solicitud de cambios en el repositorio `NVDA-Addon-"
+#~ "submission`"
+
+#~ msgid ""
+#~ "   - It adds/removes the SHA of the commit (for the submitted version) to "
+#~ "the appropriate `addons/owner/repo.commits` file."
+#~ msgstr ""
+#~ "    - En ella se añade o elimina el SHA del commit (de la versión "
+#~ "enviada) al archivo `addons/autor/repo.commits` adecuado."
+
+#~ msgid "   - Refer to 'Creating the submission PR' below"
+#~ msgstr ""
+#~ "    - Consulta la sección `Creación de la solicitud de envío` que hay más "
+#~ "adelante"
+
+#~ msgid ""
+#~ "1. A bot adds a comment in the PR with links to the addon versions that "
+#~ "are added or removed"
+#~ msgstr ""
+#~ "2. Un bot añade un comentario en la solicitud de cambios con enlaces a "
+#~ "las versiones del complemento que se añaden o eliminan"
+
+#~ msgid ""
+#~ "   - NOTE: the URL for this link can be is built from 'owner', 'repo', "
+#~ "'commit' of the lines added / removed. "
+#~ msgstr ""
+#~ "    - Nota: la URL de este enlace puede ser construida desde 'autor', "
+#~ "'repo' y 'commit' de las líneas añadidas o eliminadas. "
+
+#~ msgid ""
+#~ "   - This allows the reviewer to browse the source online or download the "
+#~ "addon with, see (in suffix) heading \"Example of bot message for `NVDA-"
+#~ "Addon-submission` PR\" for an example message."
+#~ msgstr ""
+#~ "    - Esto permite que el revisor examine el código en línea o descargue "
+#~ "el complemento, consulta el encabezado \"Ejemplo de mensaje de bot para "
+#~ "una solicitud de cambios en `NVDA-Addon-submission`\" para ver un mensaje "
+#~ "de ejemplo."
+
+#~ msgid ""
+#~ "   - A bot may perform some automated checks or provide helpful "
+#~ "information, refer to 'automated review ideas' below"
+#~ msgstr ""
+#~ "    - Un bot puede realizar ciertas comprobaciones automatizadas o "
+#~ "proporcionar información útil, consulta 'Ideas de revisión automatizada' "
+#~ "más abajo"
+
+#~ msgid ""
+#~ "   - Automated and human process can be decided later, we can address "
+#~ "these details as they come up and improve upon the process"
+#~ msgstr ""
+#~ "    - Se pueden decidir más adelante los procesos automatizados y "
+#~ "humanos, ya resolveremos estos detalles sobre la marcha para mejorar el "
+#~ "proceso"
+
+#~ msgid "### Creating the submission PR"
+#~ msgstr "### Creación de la solicitud de envío"
+
+#~ msgid ""
+#~ "To simplify the initial implementation of this process the PR will need "
+#~ "to be created manually, later we can streamline this, and automate only "
+#~ "requiring the addon author to paste a link in a new issue."
+#~ msgstr ""
+#~ "Para simplificar la implementación inicial de este proceso, la solicitud "
+#~ "de cambios deberá crearse manualmente, más adelante se podrá automatizar, "
+#~ "de tal forma que un autor sólo tenga que pegar un enlace en una nueva "
+#~ "incidencia."
+
+#~ msgid ""
+#~ "A new Pull Request (PR) is created on the `NVDA-Addon-submission` "
+#~ "repository."
+#~ msgstr ""
+#~ "Se crea una nueva solicitud de cambios en el repositorio `NVDA-Addon-"
+#~ "submission`."
+
+#~ msgid "   1. Find or create a file: `addons/owner/repo.commits`"
+#~ msgstr "    1. Busca o crea un archivo: `addons/autor/repo.commits`"
+
+#~ msgid "      - Example: `addons/nvaccess/nvda-ocr.commits`"
+#~ msgstr "        - Ejemplo: `addons/nvaccess/nvda-ocr.commits`"
+
+#~ msgid ""
+#~ "      - Where 'owner' is the username or organisation that owns the addon "
+#~ "GitHub repository. E.G. for `nvda-ocr` it is `nvaccess`"
+#~ msgstr ""
+#~ "        - Donde 'autor' es el nombre de usuario u organización a la que "
+#~ "pertenece el repositorio de GitHub del complemento. Por ejemplo: para "
+#~ "`nvda-ocr` es `nvaccess`"
+
+#~ msgid "      - Where 'repo' is the name of the repository. E.G. `nvda-ocr`"
+#~ msgstr ""
+#~ "        - Donde 'repo' es el nombre del repositorio. Por ejemplo: `nvda-"
+#~ "ocr`"
+
+#~ msgid ""
+#~ "      - NOTE: creating the file means this is an entirely new submission"
+#~ msgstr ""
+#~ "        - Nota: crear el archivo significa que este es un envío "
+#~ "completamente nuevo"
+
+#~ msgid "   1. To submit a new version, add the SHA of the commit to the file"
+#~ msgstr ""
+#~ "    2. Para enviar una nueva versión, añade el SHA del commit al archivo"
+
+#~ msgid ""
+#~ "   1. For no longer supported addon versions, remove the SHA of the "
+#~ "commit."
+#~ msgstr ""
+#~ "    3. Para las versiones del complemento que no estén soportadas, "
+#~ "elimina el SHA del commit."
+
+#~ msgid ""
+#~ "This could be done with the web editor, though screen reader users may be "
+#~ "more comfortable making the changes locally with their chosen editor."
+#~ msgstr ""
+#~ "Esto se podría hacer con el editor web, aunque los usuarios de lectores "
+#~ "de pantalla pueden sentirse más cómodos haciendo los cambios localmente "
+#~ "con un editor de su elección."
+
+#~ msgid ""
+#~ "Because this requires addon authors to fork the `NVDA-Addon-submission` "
+#~ "repository, this is a little cumbersome."
+#~ msgstr ""
+#~ "Debido a que esto requiere que los autores de complementos hagan fork del "
+#~ "repositorio `NVDA-Addon-submission`, la situación se vuelve un poco "
+#~ "engorrosa."
+
+#~ msgid "To streamline this process, we could use GitHub issues."
+#~ msgstr "Para agilizar este proceso, se podrían usar incidencias de GitHub."
+
+#~ msgid "- The addon author would pick from two issue templates:"
+#~ msgstr ""
+#~ "- El autor del complemento escogería entre dos plantillas de incidencia:"
+
+#~ msgid "  - \"Add addon version\""
+#~ msgstr "    - \"Añadir versión de complemento\""
+
+#~ msgid "  - \"Remove addon version\""
+#~ msgstr "    - \"Eliminar versión de complemento\""
+
+#~ msgid ""
+#~ "- In the template they would paste a link to the commit or tag that "
+#~ "should be added or removed."
+#~ msgstr ""
+#~ "- En la plantilla, pegarían un enlace al commit o al tag que debería "
+#~ "añadirse o eliminarse."
+
+#~ msgid ""
+#~ "- Automation creates the PR automatically from this and closes the issue."
+#~ msgstr ""
+#~ "- La automatización crea automáticamente la solicitud de cambios y cierra "
+#~ "la incidencia."
+
+#~ msgid ""
+#~ "- NOTE: In this approach it is safe to use a git tag, because the commit "
+#~ "ID can be determined from the tag. The commit is then used in the PR and "
+#~ "the rest of the process is the same."
+#~ msgstr ""
+#~ "- Nota: en este enfoque sí es seguro usar un tag de Git, ya que se puede "
+#~ "determinar el identificador del commit desde el tag. A continuación, se "
+#~ "usa el commit en la solicitud de cambios y el resto del proceso no varía."
+
+#~ msgid "### Automated review ideas"
+#~ msgstr "### Ideas de revisión automatizada"
+
+#~ msgid ""
+#~ "Several suggestions for automated review ideas to streamline the process."
+#~ msgstr ""
+#~ "Varias sugerencias de ideas para la revisión automatizada con el fin de "
+#~ "agilizar el proceso."
+
+#~ msgid "- Check manifest validity"
+#~ msgstr "- Comprobar la validez del manifest"
+
+#~ msgid "- Provide links to relevant diffs"
+#~ msgstr "- Proporcionar enlaces a diffs relevantes"
+
+#~ msgid ""
+#~ "- Check to see if the GitHub user submitting the PR is a maintainer of "
+#~ "the Addon version being submitted."
+#~ msgstr ""
+#~ "- Comprobar si el usuario de GitHub que envía la solicitud de cambios es "
+#~ "un responsable de mantenimiento de la versión del complemento que se "
+#~ "envía."
+
+#~ msgid "- Consider using CI (Appveyor) to check the addon installs cleanly:"
+#~ msgstr ""
+#~ "- Plantearse usar integración continua (Appveyor) para comprobar que el "
+#~ "complemento se instala limpiamente:"
+
+#~ msgid "  - Install NVDA (the most recent version supported by the addon)"
+#~ msgstr ""
+#~ "    - Instalar NVDA (la versión más reciente soportada por el complemento)"
+
+#~ msgid "  - Install the addon"
+#~ msgstr "    - Instalar el complemento"
+
+#~ msgid "  - Restart NVDA and check for errors"
+#~ msgstr "    - Reiniciar NVDA y comprobar si hay errores"
+
+#~ msgid ""
+#~ "This approach requires that an addon repository is already a valid (and "
+#~ "installable) addon once it is zipped. Most addons require build steps."
+#~ msgstr ""
+#~ "Este enfoque requiere que el repositorio de un complemento sea un "
+#~ "complemento válido (e instalable) una vez se comprima. Muchos "
+#~ "complementos necesitan pasos adicionales en su construcción."
+
+#~ msgid ""
+#~ " - Can github actions be used to run these steps and produce a "
+#~ "certifiable build artifact?"
+#~ msgstr ""
+#~ "    - ¿Se pueden usar las acciones de GitHub para ejecutar estos pasos y "
+#~ "producir un resultado de compilación certificable?"
+
+#~ msgid ""
+#~ "   - If we can certify the source for a commit, and the source for the "
+#~ "github actions that produces the artifact, then the artifact itself is "
+#~ "certified?"
+#~ msgstr ""
+#~ "    - Si se puede certificar el código de un commit, y el código de las "
+#~ "acciones de GitHub que producen el complemento, ¿significa que el "
+#~ "complemento en sí está certificado?"
+
+#~ msgid ""
+#~ "   - If this is true we can provide this action along with the addon-"
+#~ "template."
+#~ msgstr ""
+#~ "    - Si esto es así, se puede proporcionar la acción de GitHub junto a "
+#~ "la plantilla de complemento."
+
+#~ msgid "## `NVDA-Addon-store-data` GitHub Repository"
+#~ msgstr "## Repositorio `NVDA-Addon-store-data` de GitHub"
+
+#~ msgid "Holds meta-data about addons accepted to the store."
+#~ msgstr "Contiene metadatos de complementos aceptados en la tienda."
+
+#~ msgid ""
+#~ "Using a separate repository for this data store separates concerns, gives "
+#~ "greater flexibility for managing permissions, makes it easier to verify "
+#~ "changes (eg in a PR, or via automation), and simplifies the commit "
+#~ "history (no automation commits \"updating data store\")"
+#~ msgstr ""
+#~ "Al usar un repositorio separado para el almacenamiento de datos se "
+#~ "separan conceptos, se da mayor flexibilidad para gestionar permisos, y se "
+#~ "facilita la verificación de cambios (por ejemplo en una solicitud de "
+#~ "cambios o mediante automatización), y se simplifica el historial de "
+#~ "commits (no hay commits automatizados del tipo \"Se actualiza el almacén "
+#~ "de datos\")"
+
+#~ msgid ""
+#~ "The exact implementation details for this repository are not exposed to "
+#~ "users, because on one side the `NVDA-Addon-submission` repository feeds "
+#~ "data in and the NV Access server is on the other side fetching and "
+#~ "providing data to NVDA or a web based store."
+#~ msgstr ""
+#~ "Los detalles exactos de implementación de este repositorio no se exponen "
+#~ "a los usuarios, ya que por un lado tenemos al repositorio `NVDA-Addon-"
+#~ "submission` alimentando con datos, y por otro está el servidor de NV "
+#~ "Access recuperando y proporcionando datos a NVDA o a una tienda basada en "
+#~ "web."
+
+#~ msgid ""
+#~ "This means that changing the layout or implementation of this repository "
+#~ "does not cause wide breaking changes to the process and it can be updated "
+#~ "independently."
+#~ msgstr ""
+#~ "Esto significa que cambiar la disposición o la implementación de este "
+#~ "repositorio no causará daños colaterales al proceso y se puede actualizar "
+#~ "de forma independiente."
+
+#~ msgid ""
+#~ "Since the details of this repository don't really matter too much they "
+#~ "don't need to be concrete at this point, however I'll give a brief "
+#~ "overview of the current plan."
+#~ msgstr ""
+#~ "Aunque los detalles de este repositorio realmente no importan demasiado, "
+#~ "no es necesario que sean muy concretos en este momento. Sin embargo, se "
+#~ "proporciona una breve visión general del plan actual."
+
+#~ msgid ""
+#~ "  This is essentially the URL to download the addon (a zip of the "
+#~ "commit), and the rest of the contents of the addon manifest. Of course, "
+#~ "by including translated descriptions in the manifest a multilingual addon "
+#~ "store can be created, though possible not the core goal of this proposal."
+#~ msgstr ""
+#~ "    En esencia, sería la URL de descarga del complemento (un zip del "
+#~ "commit), y el resto de contenidos del manifiesto del complemento. Por "
+#~ "supuesto, incluyendo descripciones traducidas en el manifiesto se puede "
+#~ "crear una tienda de complementos multiidioma, aunque posiblemente no sea "
+#~ "el objetivo de esta propuesta."
+
+#~ msgid ""
+#~ "The simplicity of this is that the NV Access server can just forward "
+#~ "these files on directly when asked \"what are the latest Addons for NVDA "
+#~ "API Version X\" or \"What is the latest version of Addon-ID for NVDA API "
+#~ "Version X\". Using the NV Access server as the endpoint for this is "
+#~ "important in case the implementation has to change or be migrated away "
+#~ "from GitHub for some reason."
+#~ msgstr ""
+#~ "La simplicidad de esto radica en que el servidor de NV Access puede "
+#~ "simplemente reenviar estos archivos directamente al preguntarle \"cuáles "
+#~ "son los últimos complementos para la versión X de la API de NVDA\" o "
+#~ "\"Cuál es la última versión de addon-id para la versión X de la API de "
+#~ "NVDA\". Usar el servidor de NV Access como un extremo para esto es "
+#~ "importante en caso de que haya que cambiar la implementación o migrar "
+#~ "fuera de GitHub por alguna razón."
+
+#~ msgid "### How does data arrive"
+#~ msgstr "### Cómo llegan los datos"
+
+#~ msgid ""
+#~ "For the sake of a simple explanation, optimisations and minor details "
+#~ "will be omitted from this description."
+#~ msgstr ""
+#~ "Con el objetivo de simplificar la explicación, se omitirán optimizaciones "
+#~ "y detalles menores en esta descripción."
+
+#~ msgid ""
+#~ "A GitHub Action is created to respond to a new commit on the `NVDA-Addon-"
+#~ "submission` repository. For each commit in each `*.commits` file in the "
+#~ "`NVDA-Addon-submission` repository, the manifest for the addon is fetched."
+#~ msgstr ""
+#~ "Se crea una acción de GitHub para responder a un nuevo commit en el "
+#~ "repositorio `NVDA-Addon-submission`. Por cada commit de cada archivo `*."
+#~ "commits` del repositorio `NVDA-Addon-submission`, se recupera el "
+#~ "manifiesto del complemento."
+
+#~ msgid "Addons manifests that support each NVDA API version are found."
+#~ msgstr ""
+#~ "Se buscan los manifiestos que soporten cada versión de la API de NVDA."
+
+#~ msgid ""
+#~ "For each NVDA API version the most recent (based on version number) "
+#~ "release and pre-release addon manifest is kept."
+#~ msgstr ""
+#~ "Para cada versión de la API, se conserva el manifiesto del complemento de "
+#~ "las versiones estables y de desarrollo más recientes (basándose en el "
+#~ "número de versión)."
+
+#~ msgid ""
+#~ "These remaining manifest files are used to reconstruct the data in the "
+#~ "repository and commit it."
+#~ msgstr ""
+#~ "Los archivos de manifiesto recuperados se usan para reconstruir los datos "
+#~ "del repositorio y hacer commit."
+
+#~ msgid "### Example of bot message for `NVDA-Addon-submission` PR."
+#~ msgstr ""
+#~ "### Ejemplo de mensaje de bot en una solicitud de cambio de `NVDA-Addon-"
+#~ "submission`."
+
+#~ msgid "```"
+#~ msgstr "```"
+
+#~ msgid "Added Version."
+#~ msgstr "Añadida versión."
+
+#~ msgid ""
+#~ "- [Browse source](https://github.com/nvaccess/nvda-ocr/"
+#~ "tree/632d037dae906cd582ff4995628aa3fbaacd84e9)"
+#~ msgstr ""
+#~ "- [Explorar código](https://github.com/nvaccess/nvda-ocr/"
+#~ "tree/632d037dae906cd582ff4995628aa3fbaacd84e9)"
+
+#~ msgid ""
+#~ "- [Download zip](https://github.com/nvaccess/nvda-ocr/"
+#~ "archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)"
+#~ msgstr ""
+#~ "- [Descargar zip](https://github.com/nvaccess/nvda-ocr/"
+#~ "archive/632d037dae906cd582ff4995628aa3fbaacd84e9.zip)"
+
+#~ msgid "### Pre-release addon version support"
+#~ msgstr "### Soporte para versiones de desarrollo de complementos"
+
+#~ msgid ""
+#~ "This will require an update to the addon-manifest. While this proposal "
+#~ "plans for it, it will not be in the initial scope of work."
+#~ msgstr ""
+#~ "Será necesaria una actualización del manifiesto del complemento. Aunque "
+#~ "en la propuesta se contempla, no estará en el ámbito del trabajo inicial."
+
+#~ msgid "### Invalid Addon references"
+#~ msgstr "### Referencias inválidas de complementos"
+
+#~ msgid ""
+#~ "When building the data-store, any references to commits that no longer "
+#~ "exist (repo deleted, history rewritten etc) will obviously be excluded "
+#~ "since the manifest can not be fetched. Although not high priority, a "
+#~ "mechanism may need to be developed to update the 'NVDA-Addon-submission' "
+#~ "repository so that these invalid references can be removed."
+#~ msgstr ""
+#~ "Al construir el almacén de datos, cualquier referencia a commits que no "
+#~ "existen (repositorio eliminado, historial reescrito, etc.) obviamente se "
+#~ "excluirán, ya que el manifiesto no se puede descargar. Aunque no es de "
+#~ "alta prioridad, se debería implementar un mecanismo para actualizar el "
+#~ "repositorio 'NVDA-Addon-submission' de tal forma que se eliminen estas "
+#~ "referencias inválidas."
