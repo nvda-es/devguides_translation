@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-07 14:20+0200\n"
-"PO-Revision-Date: 2020-06-07 20:02+0200\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:30+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\ReleaseProcess.py:3
@@ -165,22 +165,37 @@ msgstr ""
 "audiencias extensas, ytraducciones incorporadas."
 
 #: ..\python_docs\ReleaseProcess.py:22
-msgid "When no blocking issues are encountered it is expected to take 7 weeks:"
+#, fuzzy
+#| msgid ""
+#| "When no blocking issues are encountered it is expected to take 7 weeks:"
+msgid "When no blocking issues are encountered it is expected to take 5 weeks:"
 msgstr ""
 "Cuando no se encuentren incidencias que bloqueen el proceso, se espera que "
 "se desarrolle en 7 semanas:"
 
 #: ..\python_docs\ReleaseProcess.py:23
-msgid "- Beta builds: 6 weeks (starting 7 weeks before release)"
-msgstr ""
-"- Compilaciones beta: 6 semanas (empezando 7 semanas antes de la liberación)"
-
-#: ..\python_docs\ReleaseProcess.py:24
-msgid "  - 4 weeks to receive any required fixes"
+#, fuzzy
+#| msgid "  - 4 weeks to receive any required fixes"
+msgid "- Beta builds: 2 weeks to receive any required fixes"
 msgstr "  - 4 semanas para recibir cualquier corrección necesaria"
 
+#: ..\python_docs\ReleaseProcess.py:24
+#, fuzzy
+#| msgid ""
+#| "  - When issues are encountered, subsequent RC's may take another week at "
+#| "the discretion of lead developers."
+msgid ""
+"  - Subsequent betas may take another week or two at discretion of lead "
+"developers"
+msgstr ""
+"  - Si se encuentran problemas, los desarrolladores pueden decidir liberar "
+"otras RC durante una semana cada una."
+
 #: ..\python_docs\ReleaseProcess.py:25
-msgid "  - 2 weeks for translation freeze (starting 3 weeks before release) "
+#, fuzzy
+#| msgid ""
+#| "  - 2 weeks for translation freeze (starting 3 weeks before release) "
+msgid "- 2 weeks for translation freeze (starting 3 weeks before release) "
 msgstr ""
 "  - 2 semanas para congelación de traducciones (que empieza 3 semanas antes "
 "de la liberación) "
@@ -622,6 +637,11 @@ msgid "* 'rc releases' in most cases will be identical to the final release."
 msgstr ""
 "* En la mayoría de casos, las 'liberaciones RC' serán idénticas a la versión "
 "final."
+
+#~ msgid "- Beta builds: 6 weeks (starting 7 weeks before release)"
+#~ msgstr ""
+#~ "- Compilaciones beta: 6 semanas (empezando 7 semanas antes de la "
+#~ "liberación)"
 
 #~ msgid "## Changes to the existing process"
 #~ msgstr "## Cambios al proceso existente"

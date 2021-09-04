@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:34+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\displayModel.py:3
+msgid "# Display model"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:4
+msgid ""
+"The display model (part of NVDA Helper), is a legacy mechanism for scraping"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:5
+msgid "information during the rendering of GUI applications."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:6
+msgid ""
+"For information on working in this area see the `NVDAHelper/readme.md` file."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:7
+msgid "## Testing GDI applications"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:8
+msgid "To test:"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:9
+msgid "- Use `NVDA+numPad 7` to enter screen review mode."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:10
+msgid ""
+"- Use the number pad to read lines (7, 8, 9), read words, (4, 5, 6), or "
+"characters (1, 2, 3)."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:11
+msgid "Additionally"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:12
+msgid "- Use `NVDA+shift+f` to report formatting."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:13
+msgid "Note:"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:14
+msgid ""
+"- For color reporting enable the option (via Document formatting panel) _"
+"\"report color\"_."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:15
+msgid ""
+"- To report transparencies in color enable the option (via advanced settings "
+"panel) _\"Report transparent color values\"_."
+msgstr ""
+
+#: ..\python_docs\displayModel.py:16
+msgid "There are several simple test applications available:"
+msgstr ""
+
+#: ..\python_docs\displayModel.py:17
+msgid "https://github.com/nvaccess/testDisplayModel"
+msgstr ""

@@ -19,72 +19,73 @@ Translators should ensure their translation is up to date by (UTC 00:00 on 14 Fe
 ## Translation Status
 
 Status for existing NVDA localizations are provided below. If you would like to improve or would like to work on a new language, please write to the NVDA translations email list.
-Information updated as of October 2019 (2019.2.1).
-When 2019.2.1 is listed in the last updated column, it means that the localization is fully up to date and is ready for the current release. For the purposes of the information below, "up to date" refers to interface translation of at least 98%.
+Information updated as of August 2021 (2021.1).
+When 2021.1 is listed in the last updated column, it means that the localization is fully up to date and is ready for the current release. For the purposes of the information below, "up to date" refers to interface translation of at least 98%.
 
 | Language | Status | Last updated |
 |------------|----------|----------------|
 | af_ZA: Afrikaans | out of date, maintainer needed, barely translated. | Oct 2009 |
 | am: Amharic | out of date, maintainer needed, barely translated. | Jul 2012 |
-| an: Aragonese | up to date. | 2019.2.1 |
-| ar: Arabic | Up to date. | 2019.2.1 |
-| bg: Bulgarian | Up to date. | 2019.2.1 |
+| an: Aragonese | up to date. | 2021.1 |
+| ar: Arabic | Up to date. | 2021.1 |
+| bg: Bulgarian | Up to date. | 2021.1 |
 | CA: Catalan | Work in progress. | 2018.4 |
 | CKB: Central Kurdish | Maintainer needed, hasn't begun. | n.a. |
-| cs: Czech |  Up to date, Documentation incomplete (Sept 2017). | 2019.2.1 | 
-| da: Danish | Up to date. | 2019.2.1 | 
-| de: German | Up to date. | 2019.2.1 | 
+| cs: Czech |  Up to date, Documentation incomplete (Sept 2017). | 2021.1 | 
+| da: Danish | Up to date. | 2021.1 | 
+| de: German | Up to date. | 2021.1 | 
 | de_CH: Swiss German | work in progress. | 2018.3 | 
-| el: Greek | Up to date, Documentation incomplete (Sep 2017). | 2019.2.1 |
-| es: Spanish | Up to date. | 2019.2.1 | 
-| es_CO: Spanish (Columbia) | Out of date, maintainer needed. | Jul 2016|
-| fa: Farsi | Work in progress | 2019.1 |
-| fi: Finnish | Up to date. | 2019.2.1 | 
-| fr: French | Up to date. | 2019.2.1 | 
-| ga: Gaeilge (Ireland) | Interface: work in progress. | Dez 2018 |
-| gl: Galician | Up to date. | 2019.2.1 | 
-| he: Hebrew | Up to date, documentation incomplete (Feb 2017). | 2019.2.1 |
-| hi: Hindi | Up to date, documentation missing. | 2019.2.1 |
-| hr: Croatian | Up to date. | 2019.2.1 |
-| hu: Hungarian | Up to date, Documentation incomplete (Feb 2018). | 2019.2.1 |
+| el: Greek | Up to date, Documentation incomplete (Sep 2017). | 2021.1 |
+| es: Spanish | Up to date. | 2021.1 | 
+| es_CO: Spanish (Columbia) | translation Out of date, maintainer needed. | Jun 2020 |
+| Et: Estonian | started translation of interface | Apr 2021 |
+| fa: Farsi | Up to date | 2021.1 |
+| fi: Finnish | Up to date. | 2021.1 | 
+| fr: French | Up to date. | 2021.1 | 
+| ga: Gaeilge (Ireland) | work in progress. | Jun 2021 |
+| gl: Galician | Up to date. | 2021.1 | 
+| he: Hebrew | Up to date. Documentation incomplete (Oct 2018). | 2021.1 |
+| hi: Hindi | Work in progress, documentation missing. | Mar 2021 |
+| hr: Croatian | Up to date. | 2021.1 |
+| hu: Hungarian | Work in progress. | 2020.4 |
 | is: Icelandic | out of date, maintainer needed. | Apr 2013 |
-| it: Italian | Up to date. | 2019.2.1 | 
-| ja: Japanese | Up to date. | 2019.2.1 | 
+| it: Italian | Up to date. | 2021.1 | 
+| ja: Japanese | Up to date. | 2021.1 | 
 | ka: Georgian | out of date, maintainer needed. | May 2015 |
 | kk: Kazakh | out of date, maintainer needed, barely translated. | n/a |
 | kmr: Northern Kurdish | Out of date, maintainer needed. | Dec 2018 |
 | kn: Kannada | Out of date, maintainer needed. | Sept 2015 |
-| ko: Korean | Up to date, Documentation incomplete (Dec 2018). | 2019.2.1 |
+| ko: Korean | Up to date, | 2021.1 |
 | ky: Kyrgyz | Work in progress. | 2018.3 |
 | lt: Lithuanian | Out of date, maintainer needed. | 2016 |
 | lv: Latvian | Out of date, maintainer needed. | 2016 |
-| mk: Macedonian | Work in progress.. | 2018.4 |
+| mk: Macedonian | Interface: Up to date. Documentation: Work in progress.. | 2021.1 |
 | mn: Mongolian | Work in progress. | Jul 2019 |
 | my: Burmese | Work in Progress. | August 2018 |
-| nb_NO: Norwegian | Out of date. | 2012 |
+| nb_NO: Norwegian | Out of date. | 2015 |
 | ne: Nepali  | Out of date, maintainer needed. | 2016 |
-| nl: Dutch | Up to date. | 2019.2.1 |
+| nl: Dutch | Up to date. | 2021.1 |
 | Pa: Punjabi | Out of date, maintainer needed. | Nov 2014 |
-| pl: Polish | Up to date. | 2019.2.1 |
-| pt_BR: Portuguese (Brazil) | Up to date. | 2019.2.1 |
-| pt_PT: Portuguese (Portugal) | Up to date. | 2019.2.1 |
-| ro: Romanian | Up to date. | 2019.2.1 |
-| ru: Russian | Up to date. | 2019.2.1 |
-| sk: Slovak | Up to date. | 2019.2.1 |
-| sl: Slovenian | Up to date. | 2019.2.1 |
+| pl: Polish | Up to date. | 2021.1 |
+| pt_BR: Portuguese (Brazil) | Up to date. | 2021.1 |
+| pt_PT: Portuguese (Portugal) | Up to date. | 2021.1 |
+| ro: Romanian | Up to date. | 2021.1 |
+| ru: Russian | Up to date. | 2021.1 |
+| sk: Slovak | Up to date. | 2021.1 |
+| sl: Slovenian | Up to date. | 2021.1 |
 | so: somali | Out of Date, maintainer needed. | Feb 2019 |
-| sr: Serbian | Up to date. | 2019.2.1 |
+| sr: Serbian | Up to date. | 2021.1 |
 | sv: Swedish | out of date, maintainer needed. | May 2015 |
-| ta: Tamil | Up to date. | 2019.2.1 |
+| ta: Tamil | Up to date. | 2021.1 |
 | th: Tai | Out of date, maintainer needed, barely translated. | Feb 2011 |
-| tr: Turkish | Up to date. | 2019.2.1 |
-| uk: Ukranian | Up to date. | 2019.2.1 |
+| tr: Turkish | Up to date. | 2021.1 |
+| uk: Ukranian | Up to date. | 2021.1 |
 | ur: Urdu | Out of date, maintainer needed, barely translated.| 2016 |
-| vi: Vietnamese | Up to date. | 2019.2.1 |
-| zh_CN: Simplified Chinese | Up to date. | 2019.2.1 |
-| zh_HK: Traditional Chinese Hong Kong | Up to date, Documentation missing. | 2019.2.1 |
-| zh_TW: Traditional Chinese Taiwan | Up to date. | 2019.2.1 |
-| kh:Traditional Khmer Cambodia | Starting | 2020.1.13
+| vi: Vietnamese | Up to date. | 2021.1 |
+| zh_CN: Simplified Chinese | Up to date. | 2021.1 |
+| zh_HK: Traditional Chinese Hong Kong | Up to date, Documentation missing. | 2021.1 |
+| zh_TW: Traditional Chinese Taiwan | Up to date. | 2021.1 |
+| kh: Traditional Khmer Cambodia | Starting, no files submitted | 2020.1 |
 
 ## New Localization
 Start by subscribing to the translation list above, so that you can get help and advice.

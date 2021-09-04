@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-23 14:47+0200\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1465,9 +1465,9 @@ msgid ""
 "(integrated) code paths. These rely on presence of specific module "
 "attributes and do my best to let the add-on emulate features being reviewed. "
 "Once a version of NVDA with new features is released, the add-on is told to "
-"drop support old NVDA versions with just integrated features not present. "
-"This route was taken to incorporate features such as emoji panel, search "
-"suggestions, Calculator support, and handling notification event."
+"drop support for old NVDA versions with just integrated features not "
+"present. This route was taken to incorporate features such as emoji panel, "
+"search suggestions, Calculator support, and handling notification event."
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:201
@@ -1481,10 +1481,90 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:202
-msgid "### Integrating features from this add-on to NVDA screen reader"
+msgid "#### Changes in 2021"
 msgstr ""
 
 #: ..\python_docs\w10addoninternals.py:203
+msgid ""
+"One big change in 2021 is milestone-based development. It is still an "
+"iterative development process, but I decided to use a quarterly development "
+"cycle to isolate long-running features and to focus on other priorities. "
+"This is a result of life changes that will reduce add-on development "
+"commitments - to reduce focus on add-on maintenance in favor of early "
+"planning and initial development, focus on other priorities, and refine the "
+"add-on when I have time."
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:204
+msgid ""
+"The quarterly milestone process derives from Windows development milestones. "
+"As part of Windows development, Microsoft divides development phases into "
+"semesters. Each development semester is named according to a chemical "
+"element, specifically named after elements in the periodic table. This is "
+"done for Microsoft Azure, but also was adopted for Windows development "
+"recently and is designed to set milestones for long-running features. Near "
+"the end of a semester, Microsoft chooses features that will be part of the "
+"next release (either a full build or an enablement package) and creates a "
+"maintenance branch from these features, with others pushed to the next "
+"development semester for further refinements."
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:205
+msgid ""
+"The quarterly development cycle for Windows App Essentials (adopted in June "
+"2021) is named after Windows development semesters, divided into two "
+"quarters or halves. For example, as of August 2021, the latest development "
+"cycle inside Microsoft is \"nickel\", and the internal development cycle for "
+"Windows App Essentials is \"nickel1\", scheduled for completion in "
+"September. Each quarter is dedicated to one or more long-running features or "
+"themes - for example, \"nickel1\" is dedicated to refining Windows 11 "
+"support and preparing the add-on for control types refactor from NVDA "
+"2021.2. I tend to do a code sprint early and refine code as time goes on - "
+"as of August 2021, NVDA 2021.2 changes are housed inside a dedicated "
+"\"prerelease\" branch, which will become part of 'nickel1\" proper once "
+"2021.2 beta 1 is released and refined afterwards. Add-on feature evaluation "
+"such as removing redundant code paths is the tentative theme for \"nickel2\" "
+"which will run from September to December 2021, but as of August 2021, it is "
+"low in my priority compared to more immediate concerns, namely graduate "
+"school."
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:206
+msgid ""
+"In between milestone releases, a dedicated branch is used to backport key "
+"changes from the upcoming quarter. These are initially named after a "
+"chemical compound or an alloy involving the base element which is the base "
+"for the backport branch. For example, a branch named \"alnico\" (an alloy of "
+"aluminum, nickel, and cobalt) is used to backport key changes from "
+"\"nickel2\" to \"nickel1\" branch. These serve not only as maintenance "
+"branches, but also introduce features that will be part of the next "
+"milestone release provided that they do not involve massive rewrites such as "
+"requiring newer NVDA or Windows releases. Eventually the \"alloy\" branches "
+"are merged into milestone branches such as \"nickel1\"."
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:207
+msgid ""
+"The whole point of development milestone/quarter process is to remind me of "
+"life priorities. In the past, I was able to dedicate more time to add-on "
+"development and maintenance. As time went on, it became important to think "
+"about my immediate life concerns such as focusing more on advanced "
+"education. Besides, I have been looking for a way to reimagine add-on "
+"development cycles, so in June 2021, I decided to switch stable version "
+"development from more of a continuous delivery to quarterly releases with "
+"periodic backports, similar how recent features such as News and Interests "
+"(part of widgets in Windows 11) were developed (continuous development, "
+"followed by backports to stable releases). This change should have minimal "
+"impact on development snapshots, which are released continuously as add-on "
+"code changes. Overall, milestone development is still an iterative process "
+"just like previous releases."
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:208
+msgid "### Integrating features from this add-on to NVDA screen reader"
+msgstr ""
+
+#: ..\python_docs\w10addoninternals.py:209
 msgid ""
 "As noted above, some add-on features are being (or have been) integrated "
 "into NVDA. These include search suggestion notification, modern keyboard "
@@ -1493,7 +1573,7 @@ msgid ""
 "sources such as internal NVDA changes."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:204
+#: ..\python_docs\w10addoninternals.py:210
 msgid ""
 "Typically, when a feature from an add-on is integrated into NVDA, it goes "
 "through a typical issue-prototype-review-test-documentation cycle. To "
@@ -1501,23 +1581,23 @@ msgid ""
 "suggestions into NVDA:"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:205
+#: ..\python_docs\w10addoninternals.py:211
 msgid "1. Issue: an issue regarding search suggestions was filed in 2016."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:206
+#: ..\python_docs\w10addoninternals.py:212
 msgid ""
 "2. Prototype: support for search suggestions was included in the add-on."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:207
+#: ..\python_docs\w10addoninternals.py:213
 msgid ""
 "3. Review: while transforming the prototype into an NVDA pull request, I and "
 "NV Access went through a review phase where implementation detail were "
 "discussed and test cases written."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:208
+#: ..\python_docs\w10addoninternals.py:214
 msgid ""
 "4. Test: in 2017, search suggestion feature made its debut in an NVDA next "
 "snapshod. This resulted in feedback from users regarding braille support, "
@@ -1525,25 +1605,25 @@ msgid ""
 "master snapshot users, thus ready for NVDA 2017.3."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:209
+#: ..\python_docs\w10addoninternals.py:215
 msgid ""
 "5. Documentation: the search suggestion feature was documented in the user "
 "guide. Discussion of this feature in this article is a special case of "
 "documentation step."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:210
+#: ..\python_docs\w10addoninternals.py:216
 msgid ""
 "After search suggestions support became part of NVDA, I edited the add-on to "
 "assume this feature was always available."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:211
+#: ..\python_docs\w10addoninternals.py:217
 msgid ""
 "Due to changes to release process in 2018, testing occurs via pull requests."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:212
+#: ..\python_docs\w10addoninternals.py:218
 msgid ""
 "In addition, when a feature from an add-on is under consideration for "
 "inclusion in NVDA, I modify the add-on source code to make it compliant with "
@@ -1551,11 +1631,11 @@ msgid ""
 "so on."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:213
+#: ..\python_docs\w10addoninternals.py:219
 msgid "### Giving feedback to app developers"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:214
+#: ..\python_docs\w10addoninternals.py:220
 msgid ""
 "Feedback drives Windows and universal apps. one of the reasons for "
 "instituting Windows Insider Program, as noted by Microsoft and others, is to "
@@ -1565,38 +1645,38 @@ msgid ""
 "feedback-driven development."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:215
+#: ..\python_docs\w10addoninternals.py:221
 msgid "Here are some tips regarding sending feedback to app writers:"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:216
+#: ..\python_docs\w10addoninternals.py:222
 msgid ""
 "1. Embrace: have willingness to embrace (use and test) the app in question."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:217
+#: ..\python_docs\w10addoninternals.py:223
 msgid ""
 "2. Document: if something happens, document what happened, steps to "
 "reproduce, and possible workarounds."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:218
+#: ..\python_docs\w10addoninternals.py:224
 msgid ""
 "3. Send: send feedback to developers (Feedback Hub, contacting developers of "
 "third-party universal apps, screen reader vendors and so on)."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:219
+#: ..\python_docs\w10addoninternals.py:225
 msgid ""
 "4. Follow-up: follow-up with developers if they have questions for you or "
 "you want to know what's going on with your feedback."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:220
+#: ..\python_docs\w10addoninternals.py:226
 msgid "### Accessibility best practices for universal apps"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:221
+#: ..\python_docs\w10addoninternals.py:227
 msgid ""
 "As a Windows Insider, a screen reader contributor and the author of a screen "
 "reader add-on for Windows 10 and later and universal apps, I came across "
@@ -1604,19 +1684,19 @@ msgid ""
 "overshadowed by issues when working with controls, navigation and so on."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:222
+#: ..\python_docs\w10addoninternals.py:228
 msgid ""
 "Here are some tips in hopes of making universal apps truly universally "
 "accessible and usable:"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:223
+#: ..\python_docs\w10addoninternals.py:229
 msgid ""
 "* Listen to feedback, especially feedback coming from users with "
 "disabilities such as screen reader users."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:224
+#: ..\python_docs\w10addoninternals.py:230
 msgid ""
 "* Do not put accessibility as an afterthought, nor something you want to "
 "work in the future (say, version 3). Proactive accessibility and "
@@ -1624,7 +1704,7 @@ msgid ""
 "develop apps."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:225
+#: ..\python_docs\w10addoninternals.py:231
 msgid ""
 "* Test with screen readers and other assistive technologies: one way to "
 "validate accessibility issues raised by users with disabilities is using "
@@ -1633,7 +1713,7 @@ msgid ""
 "in hopes of locating where the root of the issue lies."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:226
+#: ..\python_docs\w10addoninternals.py:232
 msgid ""
 "* Try using keyboards and other input methods offered by various assistive "
 "technologies: touchscreen isn't the only input method used in universal "
@@ -1643,7 +1723,7 @@ msgid ""
 "as advertised when using keyboards and other input methods."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:227
+#: ..\python_docs\w10addoninternals.py:233
 msgid ""
 "* Use useful labels: in case the control has no label as reported by screen "
 "readers, be sure to provide labels. A good historical case is Windows "
@@ -1655,7 +1735,7 @@ msgid ""
 "were presnet in older versions, subsequently fixed in recent updates."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:228
+#: ..\python_docs\w10addoninternals.py:234
 msgid ""
 "* Raise appropriate UIA events: screen readers listen to UIA events to "
 "detect what's happening with apps. For example, if there's a need to anounce "
@@ -1664,11 +1744,11 @@ msgid ""
 "appeared, with recent versions raising this event."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:229
+#: ..\python_docs\w10addoninternals.py:235
 msgid "## Conclusion"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:230
+#: ..\python_docs\w10addoninternals.py:236
 msgid ""
 "With the introduction of Windows 10 and Universal Windows Platform, a new "
 "way of connecting users and developers has emerged: feedback-driven "
@@ -1680,7 +1760,7 @@ msgid ""
 "continues in Windows 11."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:231
+#: ..\python_docs\w10addoninternals.py:237
 msgid ""
 "In terms of NVDA, what made usability of Windows 10 and later better was not "
 "only changes made from within Windows and universal apps, but also proactive "
@@ -1697,97 +1777,97 @@ msgid ""
 "modern Windows ecosystem and universal apps, the add-on will still be here."
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:232
+#: ..\python_docs\w10addoninternals.py:238
 msgid "## References"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:233
+#: ..\python_docs\w10addoninternals.py:239
 msgid "* Windows 10 (Wikipedia): https://en.wikipedia.org/wiki/Windows_10"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:234
+#: ..\python_docs\w10addoninternals.py:240
 msgid "* Windows 11 (Wikipedia): https://en.wikipedia.org/wiki/Windows_11"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:235
+#: ..\python_docs\w10addoninternals.py:241
 msgid "* Windows Insider Program (Microsoft): https://insider.windows.com/"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:236
+#: ..\python_docs\w10addoninternals.py:242
 msgid ""
 "* Windows as a Service Overview (Microsoft Docs): https://docs.microsoft.com/"
 "en-us/windows/deployment/update/waas-overview"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:237
+#: ..\python_docs\w10addoninternals.py:243
 msgid ""
 "* What's a Universal Windows Platform (UWP) App (Microsoft UWP App "
 "Developer): https://docs.microsoft.com/en-us/windows/uwp/get-started/whats-a-"
 "uwp"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:238
+#: ..\python_docs\w10addoninternals.py:244
 msgid ""
 "* UI Automation Overview (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee684076(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:239
+#: ..\python_docs\w10addoninternals.py:245
 msgid ""
 "* MSAA overview (MSDN): https://msdn.microsoft.com/en-us/library/windows/"
 "desktop/dd373592(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:240
+#: ..\python_docs\w10addoninternals.py:246
 msgid ""
 "* UI Automation and Active Accessibility (MSDN): https://msdn.microsoft.com/"
 "en-us/library/windows/desktop/ee671585(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:241
+#: ..\python_docs\w10addoninternals.py:247
 msgid ""
 "* Component Object Model Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ms680573(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:242
+#: ..\python_docs\w10addoninternals.py:248
 msgid ""
 "* IUIAutomationElement interface (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671425(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:243
+#: ..\python_docs\w10addoninternals.py:249
 msgid ""
 "* cachedAutomationId (MSDN): https://msdn.microsoft.com/en-us/library/"
 "windows/desktop/ee671434(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:244
+#: ..\python_docs\w10addoninternals.py:250
 msgid ""
 "* UI Automation Properties Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671594(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:245
+#: ..\python_docs\w10addoninternals.py:251
 msgid ""
 "* UI Automation Events Overview (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671221(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:246
+#: ..\python_docs\w10addoninternals.py:252
 msgid ""
 "* UI Automation Event Identifiers (MSDN): https://msdn.microsoft.com/en-us/"
 "library/windows/desktop/ee671223(v=vs.85).aspx"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:247
+#: ..\python_docs\w10addoninternals.py:253
 msgid ""
 "* Auto-suggest accessibility, part of Accessible Text Requirements "
 "(Microsoft Docs): https://docs.microsoft.com/en-us/windows/uwp/accessibility/"
 "accessible-text-requirements"
 msgstr ""
 
-#: ..\python_docs\w10addoninternals.py:248
+#: ..\python_docs\w10addoninternals.py:254
 msgid ""
 "* IUIAutomationNotificationEventHandler::HandleNotificationEvent (MSDN): "
 "https://msdn.microsoft.com/en-us/library/windows/desktop/mt814955(v=vs.85)."

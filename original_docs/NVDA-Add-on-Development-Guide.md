@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: January 2021 for NVDA 2020.4
+Latest version: August 2021 for NVDA 2021.2
 
 ---
 
@@ -48,9 +48,11 @@ Latest version: January 2021 for NVDA 2020.4
 - [Introduction](#user-content-introduction)
 - [Audience](#user-content-audience)
     - [Special note on Python version](#user-content-special-note-on-python-version)
+    - [Special note on NVDA backward compatibility](#user-content-special-note-on-nvda-backward-compatibility)
     - [A special note for scripters of other screen readers](#user-content-a-special-note-for-scripters-of-other-screen-readers)
     - [A special note about Windows Store version of NVDA](#user-content-a-special-note-about-windows-store-version-of-nvda)
     - [A very important note about migrating custom extension code to development scratchpad](#user-content-a-very-important-note-about-migrating-custom-extension-code-to-development-scratchpad)
+    - [A very important note about control types module changes in NVDA 2021.2](#user-content-a-very-important-note-about-control-types-changes-in-nvda-2021.2)
 - [Add-on Basics](#user-content-add-on-basics)
     - [What are Add-ons?](#user-content-what-are-add-ons)
     - [What Are Add-on Modules?](#user-content-what-are-add-on-modules)
@@ -189,6 +191,18 @@ Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.
 
 This guide will use strictly Python 3 code.
 
+### Special note on NVDA backward compatibility
+
+To modernize NVDA source code and to respond to screen reader usage changes, NV Access has adopted an annual backward compatibility policy in 2020. For each calendar year, the first major version (year.1) is designated "backwards incompatible" release where changes affecting add-ons will be incorporated. These include changes to names of functions and classes, as well as removing deprecated code. Because these changes will affect many add-ons, developers must test their add-ons for compatibility once the first beta of the backwards incompatible version of NVDA is released.
+
+List of backwards incompatible NVDA releases and their highlights:
+
+* 2019.3: Python 3
+* 2021.1: dependency updates
+* 2022.1: control types refactor
+
+Unless otherwise stated, this guide will assume latest backwards incompatible NVDA when giving code examples (as of August 2021, 2021.1 is assumed). Exceptions will be documented in appropriate places.
+
 ### A special note for scripters of other screen readers
 
 Some of the concepts described in this document are the same across different screen readers, such as objects, windows, events, accessibility API and so on. However, there are important things to be aware of when writing or porting scripts:
@@ -216,6 +230,19 @@ If you are coming from NVDA 2018.4 or earlier, you may recall that you are able 
 	4. Select OK.
 3. You must store code that was formerly housed in the above list of subdirectories inside corresponding subdirectories of the scratchpad folder.
 4. If you need to use NVDA 2018.4 and would like to use custom code, you must not remove the above listed subdirectories from the user configuration directory. Otherwise go ahead and remove the folders listed in item 1.
+
+### A very important note about control types module changes in NVDA 2021.2
+
+NVDA 2021.2 introduces control types refactor that changes how control roles and sates are specified. In older NvDA releases, control roles are written as controlTypes.ROLE_*, and states are written as controlTypes.STATE_*. With control types refactor, roles and states must be written as controlTypes.Role.* and controlTypes.State.*, respectively. For example:
+
+* Editable text role:
+    * 2021.1 and earlier: controlTypes.ROLE_EDITABLETEXT
+    * 2021.2 and later: controlTypes.Role.EDITABLETEXT
+* Checkable state:
+    * 2021.1 and earlier: controlTypes.STATE_CHECKABLE
+    * 2021.2 and later: controlTypes.State.CHECKABLE
+
+The older way of specifying control roles and states will be removed in NVDA 2022.1. Unless otherwise stated, this guide will use the newer style.
 
 ## Add-on Basics
 
@@ -528,7 +555,6 @@ The below code checks whether the navigator object is located somewhere on the s
 
 ```python
 import api
-import ui
 
 def sameApp(obj=None):
 	if obj is None:
@@ -698,10 +724,10 @@ However, this code has an issue: what if the slider value is actually within the
 
 ```python
 	def getSliderValue(self):
-		from controlTypes import ROLE_SLIDER # It is possible to import from within a method.
+		from controlTypes import Role # It is possible to import from within a method.
 		fg = api.getForegroundObject()
 		slider = fg.lastChild
-		if slider.role == ROLE_SLIDER: return slider.firstChild.value
+		if slider.role == Role.SLIDER: return slider.firstChild.value
 ```
 
 Thus, when we know for sure that we're dealing with the slider, the method returns the value of the slider's first child (if that is the case). Note the two equals signs for equality, as opposed to just one equals sign for assignment.
@@ -721,7 +747,7 @@ Sometimes, it is not enough to work with default behavior for a control. For exa
 
 NVDA provides two methods for creating or manipulating specialist, or overlay objects (or classes), each suited for different needs:
 
-* `event_NVDAObject_init(self, object we're dealing with)`: If you wish to override certain attributes of a control such as its role or label (name), you can use this method to ask NVDA to take your "input" into account when meeting objects for the first time (or initialized). For instance, if the control has the window class name of TForm (seen on many Delphi applications), you can ask NVDA to treat this control as a standard window by assigning obj.role = ROLE_WINDOW (see control types dictionary for list of available roles).
+* `event_NVDAObject_init(self, object we're dealing with)`: If you wish to override certain attributes of a control such as its role or label (name), you can use this method to ask NVDA to take your "input" into account when meeting objects for the first time (or initialized). For instance, if the control has the window class name of TForm (seen on many Delphi applications), you can ask NVDA to treat this control as a standard window by assigning obj.role = controlTypes.Role.WINDOW (see control types module for list of available roles).
 * `chooseNVDAObjectOverlayClasses(self, object, list of classes)`: This allows NVDA to use your own logic when dealing with certain objects. For example, this is useful if you wish to assign custom gestures for certain parts of a program in your app module (in fact, many app modules define objects to deal with certain parts of a program, then uses chooseNVDAObjectOverlayClasses to select the correct object when certain conditions are met). These custom objects must be based on a solid object that we wish to deal with (mostly IAccessible is enough, thus most overlay objects inherit from, or is the child or specialist class of IAccessible objects). In certain situations, you can use this method to drop a property from an object, such as telling NVDA to not treat this object as a progress bar by removing progress bar behavior from this object.
 
 Note that in case of the second method, the class(s) with the given name must be present in the file, which is/are inherited from a known base object (in Python, the syntax for the inheritance is `childClass(baseClass)`, and is usually read as, "this child class inherits from this base class". We'll see code like this later).
@@ -734,10 +760,10 @@ An example of the first case: modifying an attribute.
 
 ```python
 	# Reassign some Delphi forms as window.
-	from controlTypes import ROLE_WINDOW
+	import controlTypes
 
 	def event_NVDAObject_init(self, obj):
-		if obj.windowClassName == "TForm": obj.role = ROLE_WINDOW
+		if obj.windowClassName == "TForm": obj.role = controlTypes.Role.WINDOW
 ```
 
 This means that whenever we encounter a window with the class name of "TForm", NVDA will treat this as a normal window.
@@ -1667,13 +1693,13 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | The parent object does not provide what I want, but the grandparent does | something = obj.parent.parent.attribute | |
 | The label of a list item is the name of its first child object | obj.name = obj.firstChild.name | |
 | I want the control label of the focused object and description of the previous object to be announced when I press NVDA+Tab | In reportFocus(self): obj.name += " " + obj.previous.description | |
-| Announce state changes if and only if the next object is the toolbar I'm looking for | In event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute = whatYouAreLookingFor and additional conditions ...: statement | For better readability, place each statement on separate lines with correct indents applied. |
+| Announce state changes if and only if the next object is the toolbar I'm looking for | In event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.Role.TOOLBAR and toolbar.attribute = whatYouAreLookingFor and additional conditions ...: statement | For better readability, place each statement on separate lines with correct indents applied. |
 | Announcing the name of an object on screen (provided that object navigation can be used) | obj = api.getForegroundObject().route...; ui.message(obj.name) | Try placing each statement on its own line with correct indents applied. Route refers to obj.next/previous/parent/firstChild/lastChild/children[index]/getChild(index) and so on. |
-| Check if the object's role is what you want | obj.role == controlTypes.ROLE_* | ROLE_* can be any role you are looking for. |
+| Check if the object's role is what you want | obj.role == controlTypes.Role.* | Role.* can be any role you are looking for. |
 | Looking for a specific text in the object's name | sometext in obj.name | This is a typical string membership task. |
 | Does the control's label start with a specific text | obj.name.startswith(sometext) | |
 | Length of a text field with easily retrievable value | len(obj.value) | This works if the value of the field can be found. |
-| Is a checkbox checked | controlTypes.STATE_CHECKED in obj.states | obj.states is a set. First, verify that the role is a checkbox. |
+| Is a checkbox checked | controlTypes.State.CHECKED in obj.states | obj.states is a set. First, verify that the role is a checkbox. |
 | How many items are in a list | someList.childCount | Provided that the list provides correct underlying implementation to obtain item count. |
 | Where the object is located on screen | obj.location | This returns a tuple of four elements, namely x and y coordinates of the top-left corner of the object, as well as length and width. For example, on the Shell (desktop) object with screen resolution of 1920 by 1080 pixels, the return value will be (0, 0, 1920, 1080. |
 | Is this an MSAA control | isinstance(obj, NVDAObjects.IAccessible.IAccessible) | A typical implementation is to import IAccessible from NVDAObjects.IAccessible and doing isinstance(obj, IAccessible). |

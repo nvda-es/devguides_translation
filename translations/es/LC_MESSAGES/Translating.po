@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-25 20:32+0100\n"
-"PO-Revision-Date: 2020-10-25 20:40+0100\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:31+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\Translating.py:3
@@ -117,12 +117,20 @@ msgstr ""
 "un nuevo idioma, escribe a la lista de correo de traducciones de NVDA."
 
 #: ..\python_docs\Translating.py:16
-msgid "Information updated as of October 2019 (2019.2.1)."
+#, fuzzy
+#| msgid "Information updated as of October 2019 (2019.2.1)."
+msgid "Information updated as of August 2021 (2021.1)."
 msgstr "Información actualizada en octubre de 2019 (2019.2.1)."
 
 #: ..\python_docs\Translating.py:17
+#, fuzzy
+#| msgid ""
+#| "When 2019.2.1 is listed in the last updated column, it means that the "
+#| "localization is fully up to date and is ready for the current release. "
+#| "For the purposes of the information below, \"up to date\" refers to "
+#| "interface translation of at least 98%."
 msgid ""
-"When 2019.2.1 is listed in the last updated column, it means that the "
+"When 2021.1 is listed in the last updated column, it means that the "
 "localization is fully up to date and is ready for the current release. For "
 "the purposes of the information below, \"up to date\" refers to interface "
 "translation of at least 98%."
@@ -158,15 +166,21 @@ msgstr ""
 "traducido. | Jul 2012 |"
 
 #: ..\python_docs\Translating.py:22
-msgid "| an: Aragonese | up to date. | 2019.2.1 |"
+#, fuzzy
+#| msgid "| an: Aragonese | up to date. | 2019.2.1 |"
+msgid "| an: Aragonese | up to date. | 2021.1 |"
 msgstr "| an: aragonés | Actualizada. | 2019.2.1 |"
 
 #: ..\python_docs\Translating.py:23
-msgid "| ar: Arabic | Up to date. | 2019.2.1 |"
+#, fuzzy
+#| msgid "| ar: Arabic | Up to date. | 2019.2.1 |"
+msgid "| ar: Arabic | Up to date. | 2021.1 |"
 msgstr "| ar: árabe | Actualizada. | 2019.2.1 |"
 
 #: ..\python_docs\Translating.py:24
-msgid "| bg: Bulgarian | Up to date. | 2019.2.1 |"
+#, fuzzy
+#| msgid "| bg: Bulgarian | Up to date. | 2019.2.1 |"
+msgid "| bg: Bulgarian | Up to date. | 2021.1 |"
 msgstr "| bg: búlgaro | Actualizada. | 2019.2.1 |"
 
 #: ..\python_docs\Translating.py:25
@@ -180,19 +194,26 @@ msgstr ""
 "a. |"
 
 #: ..\python_docs\Translating.py:27
+#, fuzzy
+#| msgid ""
+#| "| cs: Czech |  Up to date, Documentation incomplete (Sept 2017). | "
+#| "2019.2.1 | "
 msgid ""
-"| cs: Czech |  Up to date, Documentation incomplete (Sept 2017). | 2019.2.1 "
-"| "
+"| cs: Czech |  Up to date, Documentation incomplete (Sept 2017). | 2021.1 | "
 msgstr ""
 "| cs: Checo |  Actualizada, documentación incompleta (Septiembre 2017). | "
 "2019.2.1 | "
 
 #: ..\python_docs\Translating.py:28
-msgid "| da: Danish | Up to date. | 2019.2.1 | "
+#, fuzzy
+#| msgid "| da: Danish | Up to date. | 2019.2.1 | "
+msgid "| da: Danish | Up to date. | 2021.1 | "
 msgstr "| da: danés | Actualizada. | 2019.2.1 | "
 
 #: ..\python_docs\Translating.py:29
-msgid "| de: German | Up to date. | 2019.2.1 | "
+#, fuzzy
+#| msgid "| de: German | Up to date. | 2019.2.1 | "
+msgid "| de: German | Up to date. | 2021.1 | "
 msgstr "| de: alemán | Actualizada. | 2019.2.1 | "
 
 #: ..\python_docs\Translating.py:30
@@ -200,241 +221,317 @@ msgid "| de_CH: Swiss German | work in progress. | 2018.3 | "
 msgstr "| de_CH: alemán de Suiza | En progreso. | 2018.3 | "
 
 #: ..\python_docs\Translating.py:31
+#, fuzzy
+#| msgid ""
+#| "| el: Greek | Up to date, Documentation incomplete (Sep 2017). | 2019.2.1 "
+#| "|"
 msgid ""
-"| el: Greek | Up to date, Documentation incomplete (Sep 2017). | 2019.2.1 |"
+"| el: Greek | Up to date, Documentation incomplete (Sep 2017). | 2021.1 |"
 msgstr ""
 "| el: Griego | Actualizada, documentación incompleta (Sep iembre 2017). | "
 "2019.2.1 |"
 
 #: ..\python_docs\Translating.py:32
-msgid "| es: Spanish | Up to date. | 2019.2.1 | "
+#, fuzzy
+#| msgid "| es: Spanish | Up to date. | 2019.2.1 | "
+msgid "| es: Spanish | Up to date. | 2021.1 | "
 msgstr "| es: español | Actualizada. | 2019.2.1 | "
 
 #: ..\python_docs\Translating.py:33
+#, fuzzy
+#| msgid ""
+#| "| es_CO: Spanish (Columbia) | Out of date, maintainer needed. | Jul 2016|"
 msgid ""
-"| es_CO: Spanish (Columbia) | Out of date, maintainer needed. | Jul 2016|"
+"| es_CO: Spanish (Columbia) | translation Out of date, maintainer needed. | "
+"Jun 2020 |"
 msgstr ""
 "| es_CO: Español (Colombia) | Obsoleta, se necesita un responsable. | Julio "
 "de 2016 |"
 
 #: ..\python_docs\Translating.py:34
-msgid "| fa: Farsi | Work in progress | 2019.1 |"
-msgstr "| fa: farsi | En progreso. | 2019.1 |"
+msgid "| Et: Estonian | started translation of interface | Apr 2021 |"
+msgstr ""
 
 #: ..\python_docs\Translating.py:35
-msgid "| fi: Finnish | Up to date. | 2019.2.1 | "
-msgstr "| fi: finés | Actualizada. | 2019.2.1 | "
+#, fuzzy
+#| msgid "| ta: Tamil | Up to date. | 2019.2.1 |"
+msgid "| fa: Farsi | Up to date | 2021.1 |"
+msgstr "| ta: Tamil | Actualizada. | 2019.2.1 |"
 
 #: ..\python_docs\Translating.py:36
-msgid "| fr: French | Up to date. | 2019.2.1 | "
-msgstr "| fr: francés | Actualizada. | 2019.2.1 | "
+#, fuzzy
+#| msgid "| fi: Finnish | Up to date. | 2019.2.1 | "
+msgid "| fi: Finnish | Up to date. | 2021.1 | "
+msgstr "| fi: finés | Actualizada. | 2019.2.1 | "
 
 #: ..\python_docs\Translating.py:37
-msgid "| ga: Gaeilge (Ireland) | Interface: work in progress. | Dez 2018 |"
+#, fuzzy
+#| msgid "| fr: French | Up to date. | 2019.2.1 | "
+msgid "| fr: French | Up to date. | 2021.1 | "
+msgstr "| fr: francés | Actualizada. | 2019.2.1 | "
+
+#: ..\python_docs\Translating.py:38
+#, fuzzy
+#| msgid "| ga: Gaeilge (Ireland) | Interface: work in progress. | Dez 2018 |"
+msgid "| ga: Gaeilge (Ireland) | work in progress. | Jun 2021 |"
 msgstr ""
 "| ga: gaélico (Irlanda) | Interfaz: actualización en progreso. | Diciembre "
 "de 2018 |"
 
-#: ..\python_docs\Translating.py:38
-msgid "| gl: Galician | Up to date. | 2019.2.1 | "
+#: ..\python_docs\Translating.py:39
+#, fuzzy
+#| msgid "| gl: Galician | Up to date. | 2019.2.1 | "
+msgid "| gl: Galician | Up to date. | 2021.1 | "
 msgstr "| gl: gallego | Actualizada. | 2019.2.1 | "
 
-#: ..\python_docs\Translating.py:39
+#: ..\python_docs\Translating.py:40
+#, fuzzy
+#| msgid ""
+#| "| he: Hebrew | Up to date, documentation incomplete (Feb 2017). | "
+#| "2019.2.1 |"
 msgid ""
-"| he: Hebrew | Up to date, documentation incomplete (Feb 2017). | 2019.2.1 |"
+"| he: Hebrew | Up to date. Documentation incomplete (Oct 2018). | 2021.1 |"
 msgstr ""
 "| he: Hebreo | Actualizada, documentación incompleta (febrero 2017). | "
 "2019.2.1 |"
 
-#: ..\python_docs\Translating.py:40
-msgid "| hi: Hindi | Up to date, documentation missing. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:41
+#, fuzzy
+#| msgid "| hi: Hindi | Up to date, documentation missing. | 2019.2.1 |"
+msgid "| hi: Hindi | Work in progress, documentation missing. | Mar 2021 |"
 msgstr "| hi: Hindú | Actualizada, falta la documentación. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:41
-msgid "| hr: Croatian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:42
+#, fuzzy
+#| msgid "| hr: Croatian | Up to date. | 2019.2.1 |"
+msgid "| hr: Croatian | Up to date. | 2021.1 |"
 msgstr "| hr: croata | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:42
-msgid ""
-"| hu: Hungarian | Up to date, Documentation incomplete (Feb 2018). | "
-"2019.2.1 |"
-msgstr ""
-"| hu: húngaro | Actualizada, documentación incompleta (febrero 2018). | "
-"2019.2.1 |"
-
 #: ..\python_docs\Translating.py:43
+#, fuzzy
+#| msgid "| CA: Catalan | Work in progress. | 2018.4 |"
+msgid "| hu: Hungarian | Work in progress. | 2020.4 |"
+msgstr "| CA: catalán | En progreso. | 2018.4 |"
+
+#: ..\python_docs\Translating.py:44
 msgid "| is: Icelandic | out of date, maintainer needed. | Apr 2013 |"
 msgstr "| is: islandés | Obsoleta, se necesita un responsable. | Abril 2013 |"
 
-#: ..\python_docs\Translating.py:44
-msgid "| it: Italian | Up to date. | 2019.2.1 | "
+#: ..\python_docs\Translating.py:45
+#, fuzzy
+#| msgid "| it: Italian | Up to date. | 2019.2.1 | "
+msgid "| it: Italian | Up to date. | 2021.1 | "
 msgstr "| it: italiano | Actualizada. | 2019.2.1 | "
 
-#: ..\python_docs\Translating.py:45
-msgid "| ja: Japanese | Up to date. | 2019.2.1 | "
+#: ..\python_docs\Translating.py:46
+#, fuzzy
+#| msgid "| ja: Japanese | Up to date. | 2019.2.1 | "
+msgid "| ja: Japanese | Up to date. | 2021.1 | "
 msgstr "| ja: japonés | Actualizada. | 2019.2.1 | "
 
-#: ..\python_docs\Translating.py:46
+#: ..\python_docs\Translating.py:47
 msgid "| ka: Georgian | out of date, maintainer needed. | May 2015 |"
 msgstr "| ka: georgiano | Obsoleta, se necesita un responsable. | Mayo 2015 |"
 
-#: ..\python_docs\Translating.py:47
+#: ..\python_docs\Translating.py:48
 msgid ""
 "| kk: Kazakh | out of date, maintainer needed, barely translated. | n/a |"
 msgstr ""
 "| kk: cazajo | Obsoleta, se necesita responsable. Apenas traducido. | n.a |"
 
-#: ..\python_docs\Translating.py:48
+#: ..\python_docs\Translating.py:49
 msgid "| kmr: Northern Kurdish | Out of date, maintainer needed. | Dec 2018 |"
 msgstr ""
 "| kmr: Curdo del norte | Obsoleta, se necesita un responsable. | diciembre "
 "de 2018 |"
 
-#: ..\python_docs\Translating.py:49
+#: ..\python_docs\Translating.py:50
 msgid "| kn: Kannada | Out of date, maintainer needed. | Sept 2015 |"
 msgstr ""
 "| kn: canarés | Obsoleta, se necesita un responsable. | septiembre de 2015 |"
 
-#: ..\python_docs\Translating.py:50
-msgid ""
-"| ko: Korean | Up to date, Documentation incomplete (Dec 2018). | 2019.2.1 |"
-msgstr ""
-"| ko: Coreano | Actualizada, documentación incompleta (diciembre 2018). | "
-"2019.2.1 |"
-
 #: ..\python_docs\Translating.py:51
+#, fuzzy
+#| msgid "| ro: Romanian | Up to date. | 2019.2.1 |"
+msgid "| ko: Korean | Up to date, | 2021.1 |"
+msgstr "| ro: rumano | Actualizada. | 2019.2.1 |"
+
+#: ..\python_docs\Translating.py:52
 msgid "| ky: Kyrgyz | Work in progress. | 2018.3 |"
 msgstr "| ky: kirguís | En progreso. | 2018.3 |"
 
-#: ..\python_docs\Translating.py:52
+#: ..\python_docs\Translating.py:53
 msgid "| lt: Lithuanian | Out of date, maintainer needed. | 2016 |"
 msgstr "| lt: lituano | Obsoleta, se necesita un responsable. | 2016 |"
 
-#: ..\python_docs\Translating.py:53
+#: ..\python_docs\Translating.py:54
 msgid "| lv: Latvian | Out of date, maintainer needed. | 2016 |"
 msgstr "| lv: letón | Obsoleta, se necesita un responsable. | 2016 |"
 
-#: ..\python_docs\Translating.py:54
-msgid "| mk: Macedonian | Work in progress.. | 2018.4 |"
+#: ..\python_docs\Translating.py:55
+#, fuzzy
+#| msgid "| mk: Macedonian | Work in progress.. | 2018.4 |"
+msgid ""
+"| mk: Macedonian | Interface: Up to date. Documentation: Work in progress.. "
+"| 2021.1 |"
 msgstr "| mk: macedonio | En progreso. | 2018.4 |"
 
-#: ..\python_docs\Translating.py:55
+#: ..\python_docs\Translating.py:56
 msgid "| mn: Mongolian | Work in progress. | Jul 2019 |"
 msgstr "| mn: mongol | En progreso. | julio de 2019 |"
 
-#: ..\python_docs\Translating.py:56
+#: ..\python_docs\Translating.py:57
 msgid "| my: Burmese | Work in Progress. | August 2018 |"
 msgstr "| my: birmano | En progreso. | agosto de 2018 |"
 
-#: ..\python_docs\Translating.py:57
-msgid "| nb_NO: Norwegian | Out of date. | 2012 |"
+#: ..\python_docs\Translating.py:58
+#, fuzzy
+#| msgid "| nb_NO: Norwegian | Out of date. | 2012 |"
+msgid "| nb_NO: Norwegian | Out of date. | 2015 |"
 msgstr "| nb_NO: noruego | Obsoleta. | 2012 |"
 
-#: ..\python_docs\Translating.py:58
+#: ..\python_docs\Translating.py:59
 msgid "| ne: Nepali  | Out of date, maintainer needed. | 2016 |"
 msgstr "| ne: Nepalí  | Obsoleta, se necesita responsable. | 2016 |"
 
-#: ..\python_docs\Translating.py:59
-msgid "| nl: Dutch | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:60
+#, fuzzy
+#| msgid "| nl: Dutch | Up to date. | 2019.2.1 |"
+msgid "| nl: Dutch | Up to date. | 2021.1 |"
 msgstr "| nl: holandés | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:60
+#: ..\python_docs\Translating.py:61
 msgid "| Pa: Punjabi | Out of date, maintainer needed. | Nov 2014 |"
 msgstr "| Pa: punyabí | Obsoleta, se necesita responsable. | Noviembre 2014 |"
 
-#: ..\python_docs\Translating.py:61
-msgid "| pl: Polish | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:62
+#, fuzzy
+#| msgid "| pl: Polish | Up to date. | 2019.2.1 |"
+msgid "| pl: Polish | Up to date. | 2021.1 |"
 msgstr "| pl: polaco | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:62
-msgid "| pt_BR: Portuguese (Brazil) | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:63
+#, fuzzy
+#| msgid "| pt_BR: Portuguese (Brazil) | Up to date. | 2019.2.1 |"
+msgid "| pt_BR: Portuguese (Brazil) | Up to date. | 2021.1 |"
 msgstr "| pt_BR: portugués (Brasil) | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:63
-msgid "| pt_PT: Portuguese (Portugal) | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:64
+#, fuzzy
+#| msgid "| pt_PT: Portuguese (Portugal) | Up to date. | 2019.2.1 |"
+msgid "| pt_PT: Portuguese (Portugal) | Up to date. | 2021.1 |"
 msgstr "| pt_PT: portugués (Portugal) | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:64
-msgid "| ro: Romanian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:65
+#, fuzzy
+#| msgid "| ro: Romanian | Up to date. | 2019.2.1 |"
+msgid "| ro: Romanian | Up to date. | 2021.1 |"
 msgstr "| ro: rumano | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:65
-msgid "| ru: Russian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:66
+#, fuzzy
+#| msgid "| ru: Russian | Up to date. | 2019.2.1 |"
+msgid "| ru: Russian | Up to date. | 2021.1 |"
 msgstr "| ru: ruso | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:66
-msgid "| sk: Slovak | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:67
+#, fuzzy
+#| msgid "| sk: Slovak | Up to date. | 2019.2.1 |"
+msgid "| sk: Slovak | Up to date. | 2021.1 |"
 msgstr "| sk: Eslovaco | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:67
-msgid "| sl: Slovenian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:68
+#, fuzzy
+#| msgid "| sl: Slovenian | Up to date. | 2019.2.1 |"
+msgid "| sl: Slovenian | Up to date. | 2021.1 |"
 msgstr "| sl: esloveno | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:68
+#: ..\python_docs\Translating.py:69
 msgid "| so: somali | Out of Date, maintainer needed. | Feb 2019 |"
 msgstr "| so: somalí | Obsoleta, se necesita responsable. | Febrero de 2019 |"
 
-#: ..\python_docs\Translating.py:69
-msgid "| sr: Serbian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:70
+#, fuzzy
+#| msgid "| sr: Serbian | Up to date. | 2019.2.1 |"
+msgid "| sr: Serbian | Up to date. | 2021.1 |"
 msgstr "| sr: Serbio | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:70
+#: ..\python_docs\Translating.py:71
 msgid "| sv: Swedish | out of date, maintainer needed. | May 2015 |"
 msgstr "| sv: Sueco | Obsoleta, se necesita responsable. | Mayo de 2015 |"
 
-#: ..\python_docs\Translating.py:71
-msgid "| ta: Tamil | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:72
+#, fuzzy
+#| msgid "| ta: Tamil | Up to date. | 2019.2.1 |"
+msgid "| ta: Tamil | Up to date. | 2021.1 |"
 msgstr "| ta: Tamil | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:72
+#: ..\python_docs\Translating.py:73
 msgid ""
 "| th: Tai | Out of date, maintainer needed, barely translated. | Feb 2011 |"
 msgstr ""
 "| th: tailandés | Obsoleta, se necesita responsable. Apenas traducido. | "
 "Febrero 2011 |"
 
-#: ..\python_docs\Translating.py:73
-msgid "| tr: Turkish | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:74
+#, fuzzy
+#| msgid "| tr: Turkish | Up to date. | 2019.2.1 |"
+msgid "| tr: Turkish | Up to date. | 2021.1 |"
 msgstr "| tr: turco | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:74
-msgid "| uk: Ukranian | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:75
+#, fuzzy
+#| msgid "| uk: Ukranian | Up to date. | 2019.2.1 |"
+msgid "| uk: Ukranian | Up to date. | 2021.1 |"
 msgstr "| uk: ucraniano | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:75
+#: ..\python_docs\Translating.py:76
 msgid "| ur: Urdu | Out of date, maintainer needed, barely translated.| 2016 |"
 msgstr ""
 "| ur: urdu | incompleta, se necesita responsable. Apenas traducido. | 2016 |"
 
-#: ..\python_docs\Translating.py:76
-msgid "| vi: Vietnamese | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:77
+#, fuzzy
+#| msgid "| vi: Vietnamese | Up to date. | 2019.2.1 |"
+msgid "| vi: Vietnamese | Up to date. | 2021.1 |"
 msgstr "| vi: Vietnamita | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:77
-msgid "| zh_CN: Simplified Chinese | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:78
+#, fuzzy
+#| msgid "| zh_CN: Simplified Chinese | Up to date. | 2019.2.1 |"
+msgid "| zh_CN: Simplified Chinese | Up to date. | 2021.1 |"
 msgstr "| zh_CN: Chino simplificado | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:78
+#: ..\python_docs\Translating.py:79
+#, fuzzy
+#| msgid ""
+#| "| zh_HK: Traditional Chinese Hong Kong | Up to date, Documentation "
+#| "missing. | 2019.2.1 |"
 msgid ""
 "| zh_HK: Traditional Chinese Hong Kong | Up to date, Documentation missing. "
-"| 2019.2.1 |"
+"| 2021.1 |"
 msgstr ""
 "| zh_HK: chino tradicional de Hong Kong | Actualizada, falta la "
 "documentación. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:79
-msgid "| zh_TW: Traditional Chinese Taiwan | Up to date. | 2019.2.1 |"
+#: ..\python_docs\Translating.py:80
+#, fuzzy
+#| msgid "| zh_TW: Traditional Chinese Taiwan | Up to date. | 2019.2.1 |"
+msgid "| zh_TW: Traditional Chinese Taiwan | Up to date. | 2021.1 |"
 msgstr "| zh_TW: Chino tradicional de Taiguán | Actualizada. | 2019.2.1 |"
 
-#: ..\python_docs\Translating.py:80
-msgid "| kh:Traditional Khmer Cambodia | Starting | 2020.1.13"
+#: ..\python_docs\Translating.py:81
+#, fuzzy
+#| msgid "| kh:Traditional Khmer Cambodia | Starting | 2020.1.13"
+msgid ""
+"| kh: Traditional Khmer Cambodia | Starting, no files submitted | 2020.1 |"
 msgstr "| kh: Khmer tradicional de Camboya | Comenzando | 2020.1.13 |"
 
-#: ..\python_docs\Translating.py:81
+#: ..\python_docs\Translating.py:82
 msgid "## New Localization"
 msgstr "## Nueva traducción"
 
-#: ..\python_docs\Translating.py:82
+#: ..\python_docs\Translating.py:83
 msgid ""
 "Start by subscribing to the translation list above, so that you can get help "
 "and advice."
@@ -442,7 +539,7 @@ msgstr ""
 "Empieza por suscribirte a la lista de traducciones arriba, de forma que "
 "puedas obtener ayuda y consejos."
 
-#: ..\python_docs\Translating.py:83
+#: ..\python_docs\Translating.py:84
 msgid ""
 "It is recommended that you use our new more automated workflow, which will "
 "allow you to focus only on translation. See [the automated workflow section]"
@@ -452,7 +549,7 @@ msgstr ""
 "permite centrarte solo en traducir. Consulta la sección “Método de trabajo "
 "automático” más abajo."
 
-#: ..\python_docs\Translating.py:84
+#: ..\python_docs\Translating.py:85
 msgid ""
 "If you still wish to go through the manual process, then follow the "
 "instructions on the [[TranslatingUsingManualProcess]] page after first "
@@ -463,11 +560,11 @@ msgstr ""
 "artículo después de leer [la sección “Archivos para ser traducidos”]"
 "(#infopmanual)."
 
-#: ..\python_docs\Translating.py:85
+#: ..\python_docs\Translating.py:86
 msgid "## Improving an Existing Localization"
 msgstr "## Mejorar una traducción existente"
 
-#: ..\python_docs\Translating.py:86
+#: ..\python_docs\Translating.py:87
 msgid ""
 "You should contact the existing maintainer of your language, and discuss "
 "your suggestions and changes. Together you should be able to agree on the "
@@ -478,7 +575,7 @@ msgstr ""
 "acuerdo acerca de la mejor traducción y los términos que usar, de forma que "
 "se pueda proceder a la realización de los cambios oportunos."
 
-#: ..\python_docs\Translating.py:87
+#: ..\python_docs\Translating.py:88
 msgid ""
 "You can send an email to the translation mailing list to find out the "
 "correct person. "
@@ -486,7 +583,7 @@ msgstr ""
 "Puedes enviar un correo a la lista de traducciones para encontrar a la "
 "persona correcta. "
 
-#: ..\python_docs\Translating.py:88
+#: ..\python_docs\Translating.py:89
 msgid ""
 "If your language is no longer maintained, you can request to be the new "
 "maintainer for the language."
@@ -494,15 +591,15 @@ msgstr ""
 "Si tu idioma ya no tiene mantenimiento, puedes solicitar ser el nuevo "
 "traductor para esa lengua."
 
-#: ..\python_docs\Translating.py:89
+#: ..\python_docs\Translating.py:90
 msgid "## Files to be Localized"
 msgstr "## Archivos a ser traducidos"
 
-#: ..\python_docs\Translating.py:90
+#: ..\python_docs\Translating.py:91
 msgid "These files are listed in order of importance."
 msgstr "Los archivos se listan por orden de importancia."
 
-#: ..\python_docs\Translating.py:91
+#: ..\python_docs\Translating.py:92
 msgid ""
 "- nvda.po: NVDA's interface messages, see [[TranslatingTheInterface]] page "
 "for more info."
@@ -510,7 +607,7 @@ msgstr ""
 "- nvda.po: mensajes de la interfaz de NVDA, consulta la página “Traduciendo "
 "la interfaz” enlazada abajo para más información."
 
-#: ..\python_docs\Translating.py:92
+#: ..\python_docs\Translating.py:93
 msgid ""
 "- characterDescriptions.dic: names of characters in your language, see "
 "[[TranslatingCharacterDescriptions]] for more info."
@@ -519,7 +616,7 @@ msgstr ""
 "Consulta la página “Traduciendo descripciones de caracteres” enlazada abajo "
 "para más información."
 
-#: ..\python_docs\Translating.py:93
+#: ..\python_docs\Translating.py:94
 msgid ""
 "- symbols.dic: names of symbols and punctuation in your language, see "
 "[[TranslatingSymbols]] for more information."
@@ -528,7 +625,7 @@ msgstr ""
 "Consulta la página “Traduciendo símbolos” enlazada abajo para más "
 "información."
 
-#: ..\python_docs\Translating.py:94
+#: ..\python_docs\Translating.py:95
 msgid ""
 "- gestures.ini: remapping of gestures for your language, see "
 "[[TranslatingGestures]] for more information."
@@ -536,7 +633,7 @@ msgstr ""
 "- gestures.ini: reasignación de gestos para tu idioma. Visita la página "
 "\"Traducción de gestos\" enlazada más abajo para más información."
 
-#: ..\python_docs\Translating.py:95
+#: ..\python_docs\Translating.py:96
 msgid ""
 "- userGuide.t2t: the User Guide, see [[TranslatingUserGuide]] for more "
 "information."
@@ -544,7 +641,7 @@ msgstr ""
 "- userGuide.t2t: La guía del usuario. Consulta la página “Traduciendo la "
 "guía del usuario” enlazada abajo para más información."
 
-#: ..\python_docs\Translating.py:96
+#: ..\python_docs\Translating.py:97
 msgid ""
 "- changes.t2t (optional): a list of changes between releases, see "
 "[[TranslatingChanges]] for more information."
@@ -553,7 +650,7 @@ msgstr ""
 "Consulta la página “traduciendo registro de cambios” enlazada abajo para más "
 "información."
 
-#: ..\python_docs\Translating.py:97
+#: ..\python_docs\Translating.py:98
 msgid ""
 "- Add-ons (optional): a set of optional features that users can install, see "
 "[[TranslatingAddons]] for more information."
@@ -562,15 +659,15 @@ msgstr ""
 "pueden instalar. Consulta la página “Traduciendo complementos” enlazada "
 "abajo para más información."
 
-#: ..\python_docs\Translating.py:98
+#: ..\python_docs\Translating.py:99
 msgid "## Advantages of the Automatic Workflow Process"
 msgstr "## Ventajas del método de trabajo automático"
 
-#: ..\python_docs\Translating.py:99
+#: ..\python_docs\Translating.py:100
 msgid "- No need of a full NVDA development environment."
 msgstr "- No es necesario un entorno de desarrollo completo de NVDA."
 
-#: ..\python_docs\Translating.py:100
+#: ..\python_docs\Translating.py:101
 msgid ""
 "- You will be sent an email or twitter message when your po file needs "
 "updating."
@@ -578,7 +675,7 @@ msgstr ""
 "- Recibirás un correo electrónico o un mensaje en Twitter cuando tengas que "
 "actualizar tus archivos .po."
 
-#: ..\python_docs\Translating.py:101
+#: ..\python_docs\Translating.py:102
 msgid ""
 "- You will be sent an email or twitter message when your userGuide or "
 "changes file needs to be updated."
@@ -587,7 +684,7 @@ msgstr ""
 "archivos de la guía del usuario o el registro de cambios tengan que "
 "actualizarse."
 
-#: ..\python_docs\Translating.py:102
+#: ..\python_docs\Translating.py:103
 msgid ""
 "- Automatic generation of html from t2t files, so that you can check the "
 "correctness of your t2t markup."
@@ -595,7 +692,7 @@ msgstr ""
 "- Generación automática de archivos HTML a partir de T2T, de forma que "
 "puedes verificar si la sintaxis T2T de tu traducción es correcta."
 
-#: ..\python_docs\Translating.py:103
+#: ..\python_docs\Translating.py:104
 msgid ""
 "- Automatically generated difference and word difference between previous "
 "and new versions, to help you quickly find the changes."
@@ -604,7 +701,7 @@ msgstr ""
 "la versión antigua y la nueva, de forma que puedas buscar rápidamente los "
 "cambios para traducirlos."
 
-#: ..\python_docs\Translating.py:104
+#: ..\python_docs\Translating.py:105
 msgid ""
 "- A higher quality User Guide since the difference files encourage you to "
 "keep the English and your localization closely updated."
@@ -613,7 +710,7 @@ msgstr ""
 "permiten tener tu traducción actualizada con mayor precisión con respecto a "
 "la versión inglesa."
 
-#: ..\python_docs\Translating.py:105
+#: ..\python_docs\Translating.py:106
 msgid ""
 "- Translation becomes many small tasks instead a big rush near a deadline. "
 "Maybe 10 minutes per week on average."
@@ -622,12 +719,12 @@ msgstr ""
 "gran trabajo cuando se acerca la fecha límite. De media unos 10 minutos a la "
 "semana."
 
-#: ..\python_docs\Translating.py:106
+#: ..\python_docs\Translating.py:107
 msgid "- It is easier to contribute, since each work unit is self contained."
 msgstr ""
 "- Es fácil contribuir, debido a que cada unidad de trabajo es autónoma."
 
-#: ..\python_docs\Translating.py:107
+#: ..\python_docs\Translating.py:108
 msgid ""
 "- Your translation is regularly and automatically included into NVDA "
 "snapshots."
@@ -635,7 +732,7 @@ msgstr ""
 "- Tu traducción se incluye regular y automáticamente en las versiones de "
 "desarrollo de NVDA."
 
-#: ..\python_docs\Translating.py:108
+#: ..\python_docs\Translating.py:109
 msgid ""
 "- Instead of following nvda-dev mailing list emails, you can just subscribe "
 "to nvda translations and important messages related to translation will be "
@@ -645,7 +742,7 @@ msgstr ""
 "grupo de traducciones, donde se enviarán noticias importantes para los "
 "traductores."
 
-#: ..\python_docs\Translating.py:109
+#: ..\python_docs\Translating.py:110
 msgid ""
 "- Auto generated structure difference between the English and your localized "
 "user guide, to quickly spot missing paragraphs, tables and lists."
@@ -654,7 +751,7 @@ msgstr ""
 "inglesa y de tu idioma de la guía del usuario, de forma que puedes localizar "
 "y corregir párrafos, tablas o listas que falten."
 
-#: ..\python_docs\Translating.py:110
+#: ..\python_docs\Translating.py:111
 msgid ""
 "- Automatic checking of po files, making sure that there are no mistakes "
 "that could cause any runtime errors."
@@ -662,7 +759,7 @@ msgstr ""
 "- Verificación automática de los archivos po, para asegurarse de que no haya "
 "fallos que puedan generar errores en tiempo de ejecución."
 
-#: ..\python_docs\Translating.py:111
+#: ..\python_docs\Translating.py:112
 msgid ""
 "If you want to follow the automatic workflow process, visit the "
 "[[TranslatingUsingAutomaticProcess]] page."
@@ -670,11 +767,11 @@ msgstr ""
 "Si deseas usar el método de trabajo automático, consulta la página "
 "“Traduciendo mediante el método de trabajo automático” enlazada abajo."
 
-#: ..\python_docs\Translating.py:112
+#: ..\python_docs\Translating.py:113
 msgid "## Missing information"
 msgstr "## Información faltante"
 
-#: ..\python_docs\Translating.py:113
+#: ..\python_docs\Translating.py:114
 msgid ""
 "Please feel free to update this or any subsequent page with any tips or "
 "hints that you feel may be of use to other translators."
@@ -682,6 +779,23 @@ msgstr ""
 "Siéntete libre de pedir que se actualice esta página o cualquiera subyacente "
 "con aquellos trucos y consejos que creas que pueden venir bien a los "
 "traductores."
+
+#~ msgid "| fa: Farsi | Work in progress | 2019.1 |"
+#~ msgstr "| fa: farsi | En progreso. | 2019.1 |"
+
+#~ msgid ""
+#~ "| hu: Hungarian | Up to date, Documentation incomplete (Feb 2018). | "
+#~ "2019.2.1 |"
+#~ msgstr ""
+#~ "| hu: húngaro | Actualizada, documentación incompleta (febrero 2018). | "
+#~ "2019.2.1 |"
+
+#~ msgid ""
+#~ "| ko: Korean | Up to date, Documentation incomplete (Dec 2018). | "
+#~ "2019.2.1 |"
+#~ msgstr ""
+#~ "| ko: Coreano | Actualizada, documentación incompleta (diciembre 2018). | "
+#~ "2019.2.1 |"
 
 #~ msgid "### Missing Sections"
 #~ msgstr "### Secciones que faltan"

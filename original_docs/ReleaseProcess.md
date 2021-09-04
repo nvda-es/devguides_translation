@@ -20,10 +20,10 @@ This is the general release workflow. Information for specific community groups 
 
 ### Release phase
 The release phase is intended to refine the release, with testing from wider audiences, and incorporated translations.
-When no blocking issues are encountered it is expected to take 7 weeks:
-- Beta builds: 6 weeks (starting 7 weeks before release)
-  - 4 weeks to receive any required fixes
-  - 2 weeks for translation freeze (starting 3 weeks before release) 
+When no blocking issues are encountered it is expected to take 5 weeks:
+- Beta builds: 2 weeks to receive any required fixes
+  - Subsequent betas may take another week or two at discretion of lead developers
+- 2 weeks for translation freeze (starting 3 weeks before release) 
 - RC: 1 week.
   - When issues are encountered, subsequent RC's may take another week at the discretion of lead developers.
 

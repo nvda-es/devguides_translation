@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:34+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\buildSystemNotes.py:3
+msgid "# Build System Notes"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:4
+msgid ""
+"A Python virtual environment is used transparently by the NVDA build system,"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:5
+msgid ""
+"and all Python dependencies are installed into this environment using `pip`."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:6
+msgid ""
+"NVDA's build system commands will handle all aspects of the virtual "
+"environment."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:7
+msgid ""
+"Developers should not create or activate the virtual environment manually, "
+"unless"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:8
+msgid "working on the build system itself."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:9
+msgid "For the documentation on how to _use_ the build system (E.G. building,"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:10
+msgid "running NVDA or tests) see the main repository readme file."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:11
+msgid "## How the build system works"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:12
+msgid "The virtual environment system used is `venv`."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:13
+msgid "Dependencies are installed with `pip` via the `requirements.txt` file."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:14
+msgid "Version numbers for dependencies should be used to lock in a version."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:15
+msgid "The virtual environment is recreated if it is outdated, either due to:"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:16
+msgid "- Python version."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:17
+msgid "- `pip` requirements."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:18
+msgid ""
+"The user is consulted before modifying / removing a virtual environment that "
+"can't be identified"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:19
+msgid "as having been created by NVDA's build system."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:20
+msgid "### Entry points to the build system"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:21
+msgid ""
+"These are the only files expected to be executed directly by a user/"
+"developer:"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:22
+msgid "- `scons.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:23
+msgid "- `runnvda.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:24
+msgid "- `rununittests.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:25
+msgid "- `runsystemtests.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:26
+msgid "- `runlint.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:27
+msgid ""
+"**Note:** The `runnvda.bat` script intentionally uses `pyw.exe` to run NVDA "
+"as"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:28
+msgid "this is the more common and expected way to run NVDA."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:29
+msgid ""
+"Run NVDA with `py.exe` in order to have standard output/error output to the "
+"console."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:30
+msgid ""
+"This is particularly useful if there is an error in NVDA before logging is "
+"initialised."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:31
+msgid "To do this, modify the `runnvda.bat` file."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:32
+msgid ""
+"**Note:** Executing `source/nvda.pyw` outside of a virtual environment will "
+"produce an error message"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:33
+msgid "and early termination."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:34
+msgid "### Main implementation files:"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:35
+msgid ""
+"The following files contain the main implementation of the virtual "
+"environment setup."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:36
+msgid "#### `venvUtils/ensureAndActivate.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:37
+msgid "   - Activates the virtual environment."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:38
+msgid "   - If necessary, creates and configures it first. "
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:39
+msgid "   - The virtual environment is left active. "
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:40
+msgid "#### `venvUtils/venvCmd.bat`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:41
+msgid "  - Uses `ensureAndActivate.bat` to run a command within the context"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:42
+msgid "   of the virtual environment. "
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:43
+msgid "  - The virtual environment is deactivated after the command"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:44
+msgid "   completes."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:45
+msgid "  - All entry point scripts depend on this."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:46
+msgid "#### `venvUtils/ensureVenv.py`"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:47
+msgid "- Does the actual work to create and configure the virtual"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:48
+msgid "   environment."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:49
+msgid "## Motivation for using virtual environments"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:50
+msgid ""
+"Ensures the build environment is clean, and there are no conflicts with "
+"other installed packages."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:51
+msgid "NVDA and its build system have many Python dependencies."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:52
+msgid "Using `pip` and a virtual environment means:"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:53
+msgid "- Updating is easier than git submodules."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:54
+msgid ""
+"  E.G. wxPython no longer has to be pre-built and stored in our bin repo."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:55
+msgid "- Developers need to sync/update their submodules less often."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:56
+msgid "- More consistency for dependencies."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:57
+msgid "- IDE's can be configured more easily."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:58
+msgid ""
+"- No conflict between NVDA dependencies and Python packages already "
+"installed globally on the"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:59
+msgid "  developer's system."
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:60
+msgid ""
+"- Don't interfere with the developer's system. Installing packages globally "
+"may break things"
+msgstr ""
+
+#: ..\python_docs\buildSystemNotes.py:61
+msgid "  outside of NVDA."
+msgstr ""

@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:37+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\unreachableObjects.py:3
+msgid "# Garbage collection errors"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:4
+msgid ""
+"NVDA's `garbageHandler.py` monitors Python's cyclic garbage collector and "
+"reports"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:5
+msgid "on objects that are unreachable."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:6
+msgid ""
+"Cyclic references are typically a symptom of bad design, and can cause major "
+"problems for certain objects."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:7
+msgid ""
+"For instance, cyclic references involving COM objects may cause a deadlock "
+"if the garbage collector happens to break the cycle and release the COM "
+"object in the wrong thread."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:8
+msgid "## How to know about a cyclic reference?"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:9
+msgid "The log may contain errors like the following."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:10
+#: ..\python_docs\unreachableObjects.py:18
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:11
+#: ..\python_docs\unreachableObjects.py:14
+msgid ""
+"WARNING - garbageHandler.notifyObjectDeletion (10:45:23.171) - MainThread "
+"(21820):"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:12
+msgid ""
+"Garbage collector has found one or more unreachable objects. See further "
+"warnings for specific objects."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:13
+msgid "..."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:15
+msgid ""
+"Deleting unreachable object <eventHandler._EventExecuter object at "
+"0x1AC15350>"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:16
+msgid ""
+"ERROR - garbageHandler._collectionCallback (10:45:23.172) - MainThread "
+"(21820):"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:17
+msgid "Found at least 1 unreachable objects in run"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:19
+msgid "## How to debug a cyclic reference?"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:20
+msgid ""
+"Once you can reliably reproduce the log error, you can tell the garbage "
+"collector to save all unreachable objects."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:21
+msgid ""
+"After an unreachable object is detected the references to the unreachable "
+"object can be inspected via the python console."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:22
+msgid ""
+"Inspecting this should give you a fair idea of where the issue is occurring."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:23
+msgid "1. Open the NVDA Python console `NVDA+control+z`"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:24
+msgid "1. Enable saving all objects:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:25
+#: ..\python_docs\unreachableObjects.py:31
+#: ..\python_docs\unreachableObjects.py:55
+msgid "   ``` python"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:26
+msgid "   import gc"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:27
+msgid "   gc.set_debug(gc.DEBUG_SAVEALL)"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:28
+#: ..\python_docs\unreachableObjects.py:33
+#: ..\python_docs\unreachableObjects.py:58
+msgid "   ```"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:29
+msgid "1. Reproduce the unreachable object error."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:30
+msgid ""
+"1. If garbage collection errors have not yet been logged, force a collect by "
+"calling:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:32
+msgid "   gc.collect()"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:34
+msgid "1. All unreachable objects will now be stored in `gc.garbage`."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:35
+msgid "   It may be a very large list."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:36
+msgid "   Some tricks for narrowing this list down:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:37
+msgid "   - From the log, you can get the memory address (`id`) of the object."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:38
+msgid "     Then use:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:39
+#: ..\python_docs\unreachableObjects.py:47
+msgid "     ``` python"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:40
+msgid "     memoryAddress = 0xabcd123"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:41
+msgid "     obj = None"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:42
+msgid "     for o in gc.garbage:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:43
+msgid "     \tif memoryAddress == id(o)"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:44
+msgid "     \t\tobj = o"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:45
+#: ..\python_docs\unreachableObjects.py:50
+msgid "     ```"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:46
+msgid ""
+"   - Listing the types collected, look for the type(s) matching the log "
+"message:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:48
+msgid "     for index, o in enumerate(gc.garbage):"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:49
+msgid "     \tprint(index, type(o))"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:51
+msgid ""
+"1. Once you have a reference (`obj`) to the unreachable object, see what "
+"other objects refer to an object you can call."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:52
+msgid "   You can do this by using `gc.get_referrers`."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:53
+msgid ""
+"   The python console has a reference to `obj`, there may be a lot of output."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:54
+msgid ""
+"   You can reduce this by looking at the types and following the most "
+"relevant."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:56
+msgid "   for index, o in enumerate(gc.get_referrers(obj)):"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:57
+msgid "   \tprint(index, type(o))"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:59
+msgid "1. Continue following the references to build a picture of the cycle."
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:60
+msgid "## Typical problems"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:61
+msgid "Some examples of common issues:"
+msgstr ""
+
+#: ..\python_docs\unreachableObjects.py:62
+msgid "- Exceptions caught and assigned to a local variable."
+msgstr ""

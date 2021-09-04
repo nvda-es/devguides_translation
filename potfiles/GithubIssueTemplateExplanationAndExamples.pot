@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-23 14:47+0200\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,440 +22,660 @@ msgid "# Creating new issues on the NVDA project"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:4
-msgid ""
-"This page is meant to serve as an explanation for how to fill out our "
-"[Github issue templates](https://github.com/nvaccess/nvda/blob/master/."
-"github/ISSUE_TEMPLATE/)."
+msgid "This page is meant to serve as an explanation for how to fill out our"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:5
 msgid ""
-"The template uses github markdown, to provide formatting for headings, "
-"lists, quotes etc. If you are not familiar, please take some time to learn "
-"about [Github markdown](https://guides.github.com/features/mastering-"
-"markdown/)"
+"[Github issue templates](https://github.com/nvaccess/nvda/blob/master/."
+"github/ISSUE_TEMPLATE/)."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:6
 msgid ""
-"**Warning**: In all but exceptional circumstances we require this template "
-"to be completed. Your issue will likely be closed if this template has not "
-"been followed."
+"The template uses github markdown, to provide formatting for headings, "
+"lists, quotes etc."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:7
-msgid "We currently have two templates, both are described on this page:"
+msgid "If you are not familiar, please take some time to learn about "
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:8
-msgid "- for bug reports"
+msgid ""
+"[Github markdown](https://guides.github.com/features/mastering-markdown/)"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:9
-msgid "- for feature requests."
+msgid ""
+"**Warning**: In all but exceptional circumstances we require this template "
+"to be completed."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:10
-msgid "## General information"
+msgid ""
+"Your issue will likely be closed if this template has not been followed."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:11
-msgid ""
-"The following information applies to all issues (bug reports, new features, "
-"even pull requests). At the start of the template there is an HTML comment "
-"block which points to this wiki page, it can be left in place and will not "
-"appear once the issue is saved. Feel free to delete it."
+msgid "We currently have two templates, both are described on this page:"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:12
-msgid "### Attachments / Images"
+msgid "- for bug reports"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:13
-msgid ""
-"It's important to include any files that are required to reproduce an issue. "
-"This might be a required file for an office suite, or a link to a code "
-"playground such as CodePen or JSFiddle, or perhaps a standalone HTML file. "
-"Github does not allow all [file types to be attached](https://help.github."
-"com/articles/file-attachments-on-issues-and-pull-requests/), however, zip "
-"files are allowed, so you can always zip your file and attach that instead."
+msgid "- for feature requests."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:14
-msgid "#### Logs"
+msgid "## General information"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:15
 msgid ""
-"In most cases an NVDA log file is incredibly helpful when trying to "
-"understand/fix an issue, please remember to attach one. More [instructions "
-"are available on the wiki](https://github.com/nvaccess/nvda/wiki/"
-"LogFilesAndCrashDumps). If you are getting a crash dump file (nvda_crash."
-"dmp) please also include it."
+"The following information applies to all issues (bug reports, new features, "
+"even pull requests)."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:16
-msgid "#### Screenshots"
+msgid ""
+"At the start of the template there is an HTML comment block which points to "
+"this wiki page, it can"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:17
-msgid ""
-"While we welcome **images/screenshots** to help explain a problem, be aware "
-"that many of the developers of NVDA are blind and will greatly appreciate "
-"this image being described in text. Most tools allow you to copy text out of "
-"them."
+msgid "be left in place and will not appear once the issue is saved."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:18
-msgid "### Tips"
+msgid "Feel free to delete it."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:19
-msgid ""
-"* Consider swapping to the preview tab in order to read through your issue "
-"at any stage to confirm the issue reads as expected."
+msgid "### Attachments / Images"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:20
 msgid ""
-"* If you have trouble following this template, or with the initial "
-"investigation that is required, please politely ask for assistance from the "
-"fantastic community of people on the [NVDA users mailing list](https://"
-"github.com/nvaccess/nvda-community/wiki/Connect#international-users-mailing-"
-"list-english)"
+"It's important to include any files that are required to reproduce an issue."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:21
-msgid "## Feature Request template"
+msgid ""
+"This might be a required file for an office suite, or a link to a code "
+"playground such as CodePen or"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:22
-msgid ""
-"After the HTML comment ([discussed earlier](#General_information)), you may "
-"provide a brief overview of the issue. Then fill in each of the following "
-"headings which match those that are found in the template, with a short "
-"description of how to fill in each section."
+msgid "JSFiddle, or perhaps a standalone HTML file."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:23
-msgid "### Is your feature request related to a problem? Please describe."
+msgid "Github does not allow all"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:24
 msgid ""
-"This section should provide a clear and concise description of what the "
-"problem is. Ex. I'm always frustrated when [...]"
+"[file types to be attached](https://help.github.com/articles/file-"
+"attachments-on-issues-and-pull-requests/),"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:25
-msgid "### Describe the solution you'd like"
+msgid ""
+"however, zip files are allowed, so you can always zip your file and attach "
+"that instead."
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:26
-msgid ""
-"A clear and concise description of what you want to happen. If you can "
-"provide technical details about how to address the problem, please do so. "
-"Feel free to add a subheading."
+msgid "#### Logs"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:27
-msgid "### Describe alternatives you've considered"
+msgid ""
+"In most cases an NVDA log file is incredibly helpful when trying to "
+"understand/fix an issue, please"
 msgstr ""
 
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:28
+msgid "remember to attach one."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:29
+msgid ""
+"More [instructions are available on the wiki](https://github.com/nvaccess/"
+"nvda/wiki/LogFilesAndCrashDumps). If you are getting a crash dump file "
+"(nvda_crash.dmp) please also include it."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:30
+msgid "#### Screenshots"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:31
+msgid ""
+"While we welcome **images/screenshots** to help explain a problem, be aware "
+"that many of the "
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:32
+msgid ""
+"developers of NVDA are blind and will greatly appreciate this image being "
+"described in text."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:33
+msgid "Most tools allow you to copy text out of them."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:34
+msgid "### Tips"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:35
+msgid ""
+"* Consider swapping to the preview tab in order to read through your issue "
+"at any stage to confirm"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:36
+msgid "  the issue reads as expected."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:37
+msgid ""
+"* If you have trouble following this template, or with the initial "
+"investigation that is required,"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:38
+msgid ""
+"  please politely ask for assistance from the fantastic community of people "
+"on the"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:39
+msgid ""
+"  [NVDA users mailing list](https://github.com/nvaccess/nvda-community/wiki/"
+"Connect#international-users-mailing-list-english)"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:40
+msgid "## Feature Request template"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:41
+msgid ""
+"After the HTML comment ([discussed earlier](#General_information)), you may "
+"provide a brief overview"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:42
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:62
+msgid "of the issue."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:43
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:63
+msgid ""
+"Then fill in each of the following headings which match those that are found "
+"in the template, with a"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:44
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:64
+msgid "short description of how to fill in each section."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:45
+msgid "### Is your feature request related to a problem? Please describe."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:46
+msgid ""
+"This section should provide a clear and concise description of what the "
+"problem is."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:47
+msgid "Ex. I'm always frustrated when [...]"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:48
+msgid "### Describe the solution you'd like"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:49
+msgid "A clear and concise description of what you want to happen."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:50
+msgid ""
+"If you can provide technical details about how to address the problem, "
+"please do so."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:51
+msgid "Feel free to add a subheading."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:52
+msgid "### Describe alternatives you've considered"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:53
 msgid ""
 "A clear and concise description of any alternative solutions or features "
 "you've considered."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:29
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:54
 msgid "### Additional context"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:30
-msgid ""
-"Add any other context for the feature request here. This might list the "
-"application name and version number that the feature is expected to work "
-"with (EG Firefox or Microsoft Word). Also consider whether you can upload an "
-"attachment document to be used to demonstrate the missing feature."
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:55
+msgid "Add any other context for the feature request here."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:31
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:56
+msgid ""
+"This might list the application name and version number that the feature is "
+"expected to work with"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:57
+msgid "(EG Firefox or Microsoft Word)."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:58
+msgid ""
+"Also consider whether you can upload an attachment document to be used to "
+"demonstrate the missing"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:59
+msgid "feature."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:60
 msgid "## Bug report template"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:32
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:61
 msgid ""
 "After the HTML comment ([discussed earlier](#general-information)), you may "
-"provide a brief overview of the issue. Then fill in each of the following "
-"headings which match those that are found in the template, with a short "
-"description of how to fill in each section."
+"provide a brief overview"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:33
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:65
 msgid "### Steps to reproduce:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:34
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:66
+msgid "This section is very important, please be clear and concise."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:67
 msgid ""
-"This section is very important, please be clear and concise. This section "
-"should contain a list of the steps you take to demonstrate the problem. "
-"While you are working out the steps required, please make a copy of your "
+"This section should contain a list of the steps you take to demonstrate the "
+"problem."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:68
+msgid ""
+"While you are working out the steps required, please make a copy of your"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:69
+msgid ""
 "[NVDA log to attach to the issue](https://github.com/nvaccess/nvda/wiki/"
 "LogFilesAndCrashDumps)."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:35
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:42
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:48
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:56
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:60
 #: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:70
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:74
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:78
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:86
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:79
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:85
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:97
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:102
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:113
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:117
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:121
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:132
 msgid "*Example:*"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:36
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:71
 msgid "> 1. Open Chrome"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:37
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:72
 msgid "> 1. Browse to www.google.com"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:38
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:73
 msgid "> 1. Type \"Hello\""
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:39
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:74
 msgid "> 1. Press Enter"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:40
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:75
 msgid "### Actual behavior:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:41
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:76
 msgid ""
-"This section should tell us what actually happens when these steps are "
-"taken. Please describe verbatim what NVDA does, ideally use speech viewer to "
-"copy the speech from NVDA. This helps developers to be sure they are "
-"reproducing the same issue as you."
+"This section should tell us what actually happens when these steps are taken."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:43
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:77
+msgid ""
+"Please describe verbatim what NVDA does, ideally use speech viewer to copy "
+"the speech from NVDA."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:78
+msgid ""
+"This helps developers to be sure they are reproducing the same issue as you."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:80
 msgid "> An NVDA error sound is heard."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:44
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:50
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:81
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:87
 msgid "> NVDA Speech:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:45
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:82
 msgid "> \"button enable sound\""
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:46
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:83
 msgid "### Expected behavior:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:47
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:84
 msgid ""
 "This section should tell us what you expect to happen when these steps are "
 "taken."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:49
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:86
 msgid ""
 "> There should be no error sound, and the page should change to show the "
 "search results."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:51
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:88
 msgid "> \"checkbox enable sound\""
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:52
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:89
 msgid "### System configuration:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:53
-msgid ""
-"This section has several sub-sections. These are all about the system you "
-"are using when encountering the issue. If you are encountering the issue "
-"with multiple different configurations, please list them. This helps us to "
-"be able to reproduce the issue, or help us to investigate why this issue "
-"occurs for some users and not others."
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:90
+msgid "This section has several sub-sections."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:54
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:91
+msgid ""
+"These are all about the system you are using when encountering the issue."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:92
+msgid ""
+"If you are encountering the issue with multiple different configurations, "
+"please list them."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:93
+msgid ""
+"This helps us to be able to reproduce the issue, or help us to investigate "
+"why this issue occurs"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:94
+msgid "for some users and not others."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:95
 msgid "#### NVDA installed/portable/running from source:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:55
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:96
 msgid "This tells us how you are using NVDA."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:57
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:98
 msgid "> Installed"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:58
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:99
 msgid "#### NVDA version:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:59
-msgid ""
-"The version of NVDA that you are using when demonstrating the issue. This "
-"can be copied from the about option, in the NVDA help menu."
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:100
+msgid "The version of NVDA that you are using when demonstrating the issue."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:61
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:101
+msgid "This can be copied from the about option, in the NVDA help menu."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:103
 msgid "> alpha-15370,21fd217a"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:62
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:104
 msgid "> release 2020.4"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:63
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:105
 msgid "#### Windows version:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:64
-msgid ""
-"The version of Windows that you are using. You can copy this from the "
-"\"System Information\" application:"
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:106
+msgid "The version of Windows that you are using."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:65
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:107
+msgid "You can copy this from the \"System Information\" application:"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:108
 msgid "1. Press `Windows+r` to open the run dialog"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:66
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:109
 msgid "1. Type `msinfo32` and press enter"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:67
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:110
 msgid ""
 "1. From the \"System summary\" treeview item, press tab to get to the right "
 "pane."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:68
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:111
 msgid "1. Press down arrow twice to get to \"Version\""
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:69
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:112
 msgid "1. Press `Control+C` to copy the version information."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:71
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:114
 msgid "> Windows 10 Version 1607 Build 14393.1066"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:72
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:115
 msgid ""
 "#### Name and version of other software in use when reproducing the issue:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:73
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:116
 msgid ""
 "Typically, you can get this information from the \"About\" dialog of the "
 "software."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:75
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:118
 msgid "> Chrome version: 67.0.3396.87"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:76
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:119
 msgid "#### Other information about your system:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:77
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:120
 msgid ""
 "This is other information about your setup that you think might be relevant "
 "to us."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:79
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:122
 msgid "> Running Windows 10 in a VM"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:80
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:123
 msgid "### Other questions:"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:81
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:124
 msgid ""
 "This section has sub-sections, asking about the basic investigation steps "
-"you may have completed. Please feel free to add more information here to "
-"tell us about what you have tried."
+"you may have completed."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:82
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:125
+msgid ""
+"Please feel free to add more information here to tell us about what you have "
+"tried."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:126
 msgid "#### Does the issue still occur after restarting your Computer?"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:83
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:127
 msgid ""
 "Restarting your computer will help to ensure that software is in a fresh "
 "state."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:84
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:128
 msgid "#### Have you tried any other versions of NVDA?"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:85
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:129
 msgid ""
 "Knowing whether this issue occurs in previous releases helps us to "
-"understand if this is a newly introduced issue. It can help us determine if "
-"changes in NVDA or other software introduced the problem."
+"understand if this is a newly"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:87
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:130
+msgid "introduced issue."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:131
+msgid ""
+"It can help us determine if changes in NVDA or other software introduced the "
+"problem."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:133
 msgid "> * NVDA 2018.1 - no error sound"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:88
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:134
 msgid "> * NVDA 2018.2 - has error sound"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:89
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:135
 msgid "#### If addons are disabled, is your problem still occurring?"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:90
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:136
 msgid ""
 "In many cases issues could be caused by an addon not working correctly or "
-"conflicting with other features already integrated in NVDA itself. "
-"Therefore, it is recommended to reproduce issues with all addons disabled. "
+"conflicting with other"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:137
+msgid "features already integrated in NVDA itself."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:138
+msgid ""
+"Therefore, it is recommended to reproduce issues with all addons disabled."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:139
+msgid ""
 "In case the issue is caused by an addon, it is recommended to contact the "
 "author of the addon first."
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:91
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:140
 msgid ""
 "#### Did you try to run the COM registry fixing tool in NVDA menu / tools?"
 msgstr ""
 
-#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:92
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:141
 msgid ""
 "COM DLL files, which i.e. the IAccessible COM interface depends on, can get "
-"unregistered after installing and uninstalling different programs on a "
-"computer. The consequence is that NVDA in certain cases does not work "
-"properly. Specifically, it reports \"unknown\" when trying to navigate "
-"websites or fails to switch between focus and browse mode, it causes "
-"performance issues, focus instability and other odd problems. The COM "
-"registry fixing tool has been introduced in order to re-register those DLL "
-"files. In any case, re-registering those DLL files does not have any "
-"negative impact on computers' functionality. Thus, it is recommended to run "
-"the fixing tool whenever focus problems, performance problems on websites or "
-"navigation problems in focus or browse mode on different interfaces are "
-"encountered."
+"unregistered after"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:142
+msgid "installing and uninstalling different programs on a computer."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:143
+msgid "The consequence is that NVDA in certain cases does not work properly."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:144
+msgid ""
+"Specifically, it reports \"unknown\" when trying to navigate websites or "
+"fails to switch between focus"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:145
+msgid ""
+"and browse mode, it causes performance issues, focus instability and other "
+"odd problems."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:146
+msgid ""
+"The COM registry fixing tool has been introduced in order to re-register "
+"those DLL files."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:147
+msgid ""
+"In any case, re-registering those DLL files does not have any negative "
+"impact on computers'"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:148
+msgid "functionality."
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:149
+msgid ""
+"Thus, it is recommended to run the fixing tool whenever focus problems, "
+"performance problems on"
+msgstr ""
+
+#: ..\python_docs\GithubIssueTemplateExplanationAndExamples.py:150
+msgid ""
+"websites or navigation problems in focus or browse mode on different "
+"interfaces are encountered."
 msgstr ""

@@ -1,0 +1,656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\python_docs\startupShutdown.py:3
+msgid "# NVDA Starting and Exiting outline"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:4
+msgid "## Ways to start NVDA:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:5
+msgid "1. For an installed copy:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:6
+msgid "    1. Ctrl+Alt+N (Desktop shortcut)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:7
+msgid "        - test: `startupShutdownNVDA.Starts from desktop shortcut`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:8
+msgid ""
+"    1. Automatically via Ease of Access on the Windows sign-in screen (at "
+"boot or signing out of a previous session)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:9
+msgid ""
+"    1. Automatically via Ease of Access on User Account Control (UAC) screens"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:10
+msgid "    1. Automatically by Ease of Access after signing in to Windows"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:11
+msgid "1. For an installed copy, portable copy, installer:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:12
+msgid ""
+"    1. An exiting instance of NVDA starting a new process (see shutting down "
+"procedures)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:13
+msgid "    1. By running the exe. "
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:14
+msgid ""
+"        - This can be triggered by a user or external process such as an "
+"existing NVDA instance"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:15
+msgid "        - test: `startupShutdownNVDA.Starts`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:16
+msgid "1. For source: eg runnvda.bat"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:17
+msgid "## NVDA can be shutdown by:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:18
+msgid ""
+"1. UI within NVDA, with and without an ExitDialog prompt (uses "
+"`triggerNVDAExit`):"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:19
+msgid "    1. NVDA+q"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:20
+msgid "        - test: `startupShutdownNVDA.Quits from keyboard, Restarts`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:21
+msgid "    1. An input gesture to restart"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:22
+msgid ""
+"    1. After changing some settings (eg installed add-ons or UI language), "
+"user prompted on dialog exit."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:23
+msgid "    1. Via the NVDA menu -> Exit"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:24
+msgid "        - test: `startupShutdownNVDA.Quits from menu`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:25
+msgid "1. A process sending `WM_QUIT`, eg a new NVDA process starting"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:26
+msgid ""
+"1. A handled crash (directly causes a new process to start, terminates "
+"unsafely)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:27
+msgid ""
+"    - test: `startupShutdownNVDA.Restarts on crash, Restarts on braille "
+"crash`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:28
+msgid "1. An unhandled crash (terminates unsafely)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:29
+msgid "    - requires manual testing/confirmation"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:30
+msgid "1. An external command which kills the process (terminates unsafely) "
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:31
+msgid ""
+"1. Windows shutting down (terminates unsafely) (uses `wx.EVT_END_SESSION`)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:32
+msgid "## Manual testing"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:33
+msgid "Instructions for testing startup / shutdown."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:34
+msgid "### Start from shortcut"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:35 ..\python_docs\startupShutdown.py:43
+#: ..\python_docs\startupShutdown.py:50 ..\python_docs\startupShutdown.py:60
+msgid "Prerequisites:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:36 ..\python_docs\startupShutdown.py:44
+#: ..\python_docs\startupShutdown.py:51 ..\python_docs\startupShutdown.py:61
+msgid " - NVDA installed"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:37
+msgid " - Shortcut enabled during installation"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:38 ..\python_docs\startupShutdown.py:46
+#: ..\python_docs\startupShutdown.py:54 ..\python_docs\startupShutdown.py:63
+#: ..\python_docs\startupShutdown.py:68 ..\python_docs\startupShutdown.py:84
+#: ..\python_docs\startupShutdown.py:90
+msgid "Steps:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:39
+msgid " 1. Press (or emulate) Ctrl+Alt+N, observe NVDA starts up"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:40 ..\python_docs\startupShutdown.py:73
+msgid "Variation:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:41
+msgid ""
+"- At step 1. A version of NVDA is already running. Observe running version "
+"exits before installed version starts up."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:42
+msgid "### Windows Sign-in screen, automatic start"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:45
+msgid " - Enable \"Use NVDA during sign-in\""
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:47
+msgid " 1. Sign out (not lock) Windows"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:48
+msgid " 1. Observe NVDA announces the Windows sign-in screen"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:49
+msgid "### UAC, automatic start"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:52
+msgid " - An active Windows session (i.e. not signed out, locked)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:53
+msgid " - The NVDA installed copy is running"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:55
+msgid " 1. Open the Start menu"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:56
+msgid " 1. Type notepad"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:57
+msgid " 1. Open context menu for notepad and choose `Run as Administrator`."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:58
+msgid ""
+" 1. When the UAC dialog appears, verify that NVDA launches on this secure "
+"desktop and reports the dialog."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:59
+msgid "### Windows Successful sign-in, automatic start"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:62
+msgid " - Enable \"Start NVDA after I sign in\""
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:64
+msgid " 1. Start Windows"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:65
+msgid " 1. Sign in"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:66 ..\python_docs\startupShutdown.py:72
+#: ..\python_docs\startupShutdown.py:86
+msgid " 1. Observe NVDA starts"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:67
+msgid "### Running the *.exe"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:69
+msgid " 1. Press `win+r`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:70
+msgid " 1. Enter <path to nvda.exe>"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:71
+msgid " 1. Press enter"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:74
+msgid "- using an installer (launcher)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:75
+msgid "   -  eg: `C:\\Users\\username\\Downloads\\nvda_2021.1.exe`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:76
+msgid "- using an installed copy"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:77
+msgid "   - just type `nvda` in place of the .exe"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:78
+msgid "- using a portable copy"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:79
+msgid ""
+"   - find and use the path to `nvda.exe`, located within the portable copy "
+"directory"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:80
+msgid ""
+"   - the installer allows you to create an installed copy and a portable copy"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:81
+msgid "### Running from source (runnvda.bat)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:82
+msgid "Prerequisites"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:83
+msgid ""
+"- clone project and build NVDA (see [project readme](https://github.com/"
+"nvaccess/nvda/blob/master/readme.md#getting-the-source-code))."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:85
+msgid " 1. Run `runnvda.bat` from cmd"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:87
+msgid "### An input gesture to restart"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:88
+msgid "Prerequisite:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:89
+msgid "- Input gesture for \"Restarts NVDA!\" is assigned"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:91
+msgid " 1. Press (or emulate) the input gesture"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:92
+msgid " 1. Observe that NVDA exits"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:93
+msgid " 1. Observe that a new instance is started"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:94
+msgid "## Technical notes"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:95
+msgid ""
+"These notes are aimed at developers, wishing to understand technical aspects "
+"of the NVDA start and exit."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:96
+msgid ""
+"1. No more than one NVDA process instance should be running at the same "
+"time. Interactions with itself could cause severe issues, some (non-"
+"exhaustive list) examples of sub-systems where this would be a problem:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:97
+msgid "   - NVDA config files"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:98
+msgid "   - Global (OS level) keyboard hook"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:99
+msgid "   - Changed / incompatible in-process code"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:100
+msgid ""
+"2. As such, we want to be able to detect running instances, cause them to "
+"exit, and confirm they have exited."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:101
+msgid "### Exit hooks/triggers"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:102
+msgid "There are 3 ways that NVDA receives a request to exit:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:103
+msgid ""
+"- From internally calling [triggerNVDAExit](#When-exiting-from-"
+"triggerNVDAExit)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:104
+msgid "- Receiving [WM_QUIT](#When-exiting-from-WM_QUIT) Windows message"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:105
+msgid ""
+"- Receiving [wx.EVT_END_SESSION](#When-exiting-from-wxEVT_END_SESSION) due "
+"to Windows session ending"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:106
+msgid "### When exiting from `triggerNVDAExit`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:107
+msgid "* Called from within NVDA."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:108
+msgid "* A function in the core module"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:109
+msgid "* Only executes the code once, uses a lock and flag to ensure this"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:110
+msgid "* Uses a queue on the main thread to queue a safe shutdown"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:111
+msgid "* Once the queued shutdown starts:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:112
+msgid "    1. the updateCheck is terminated"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:113
+msgid "    1. watchdog is terminated"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:114
+msgid ""
+"    1. globalPlugins and the brailleViewer are terminated, so we can close "
+"all windows safely"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:115
+msgid "    1. All wx windows are closed"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:116
+msgid ""
+"    1. Now that windows are closed, a new NVDA instance is started if "
+"requested"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:117
+msgid "### When exiting from `WM_QUIT`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:118
+msgid ""
+"* [A Windows Message](https://docs.microsoft.com/en-us/windows/win32/winmsg/"
+"wm-quit) received from an external process, such as another NVDA process."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:119
+msgid ""
+"* NVDA accepts `WM_QUIT` messages from other processes and creates a [named "
+"window](https://docs.microsoft.com/en-us/windows/win32/learnwin32/creating-a-"
+"window#creating-the-window) that can be discovered."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:120
+msgid ""
+"* `WM_QUIT` is handled by `wx`, which force closes all wx windows (other UI "
+"features like the systray icon are not windows, and remain) and then exits "
+"the main loop."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:121
+msgid ""
+"`triggerNVDAExit` is a more expansive check than how wxWidgets handles "
+"`WM_QUIT`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:122
+msgid ""
+"* We subsequently run `triggerNVDAExit` to ensure that clean up code isn't "
+"missed, and pump the queue to execute it."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:123
+msgid "* Using a custom message has been considered:"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:124
+msgid "  - Would allow custom handling (eg just `triggerNVDAExit`)"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:125
+msgid ""
+"  - Unfortunately, older NVDA versions will only be aware of `WM_QUIT`, so "
+"we'd need to send `WM_QUIT` to these versions."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:126
+msgid ""
+"  - Sending the custom message, waiting for a timeout, then sending "
+"`WM_QUIT` adds a significant wait time"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:127
+msgid ""
+"  - Identifying the running version (to selectively send the message) "
+"requires maintaining 2 message windows in NVDA (one for legacy behaviour) "
+"and adds complexity"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:128
+msgid "### When exiting from `wx.EVT_END_SESSION`"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:129
+msgid ""
+"* This is a [wxCloseEvent](https://docs.wxwidgets.org/3.0/"
+"classwx_close_event.html) triggered by a Windows session ending."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:130
+msgid "* On `wx.EVT_END_SESSION`, we save the config and play the exit sound."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:131
+msgid ""
+"* Other actions are not performed as we have limited time to perform an "
+"action for this event."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:132
+msgid ""
+"    * NVDA is expected to run as long as possible during the sign out "
+"process."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:133
+msgid ""
+"    * This is achieved through the [Windows API](https://docs.microsoft.com/"
+"en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-"
+"setprocessshutdownparameters), by setting the shutdown priority to the "
+"lowest reserved value for non-system applications, `0x100`."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:134
+msgid ""
+"    * [SHUTDOWN_NORETRY](https://docs.microsoft.com/en-us/windows/win32/api/"
+"processthreadsapi/nf-processthreadsapi-setprocessshutdownparameters) ensures "
+"that NVDA does not show up in the blocked shutdown list dialog."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:135
+msgid ""
+"    If it were, the user would have no way of reading the dialog and fixing "
+"the issue."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:136
+msgid "### Replacing an existing NVDA instance"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:137
+msgid ""
+"With the requirement to only allow a single instance of NVDA, a new NVDA "
+"process must be able to replace an existing NVDA process."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:138
+msgid ""
+"NVDA will exit correctly in response to a [`WM_QUIT`](#When-exiting-from-"
+"WM_QUIT) Windows message, but the process must first be detected / "
+"identified in order to send the message."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:139
+msgid ""
+"For new NVDA process to detect an existing NVDA process, a named [message "
+"window](https://docs.microsoft.com/en-us/windows/win32/learnwin32/creating-a-"
+"window#creating-the-window) is used."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:140
+msgid ""
+"A new NVDA process searches for an existing NVDA window, and if it is "
+"detected, sends `WM_QUIT`."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:141
+msgid ""
+"The message window is created late during the start up, and destroyed early "
+"in exit and is not perfectly indicative of whether or not an NVDA process is "
+"running."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:142
+msgid ""
+"As such, we have a [MutEx](#MutEx) that ensures a newly started process "
+"blocks until any previous NVDA has finished exiting."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:143
+msgid "### MutEx"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:144
+msgid "To confirm that another NVDA process is not running,"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:145
+msgid ""
+"a [MutEx](https://docs.microsoft.com/en-us/windows/win32/sync/mutex-objects) "
+"is owned by the NVDA process."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:146
+msgid "NVDA will be blocked from starting until it can acquire the MutEx."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:147
+msgid "If it can not acquire the MutEx within a timeout, startup is aborted."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:148
+msgid ""
+"This is acquired as soon as possible and released by NVDA as late as "
+"possible."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:149
+msgid "When the NVDA process exits abnormally, Windows will release the MutEx."
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:150
+msgid "### Unsafe restart"
+msgstr ""
+
+#: ..\python_docs\startupShutdown.py:151
+msgid ""
+"Called in the event of a crash. Exiting NVDA safely in the event of a crash "
+"could be improved, but it is limited as we cannot rely on other threads "
+"running or the state of NVDA."
+msgstr ""

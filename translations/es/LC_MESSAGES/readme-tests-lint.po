@@ -1,0 +1,560 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: 2021-09-04 17:35+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: ..\python_docs\readme-tests-lint.py:3
+msgid "## Lint overview"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:4
+msgid "Our linting process with Flake8 consists of two main steps:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:5
+msgid "- Generating a diff"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:6
+msgid "- Running Flake8 on the diff"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:7
+msgid "## Common problems"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:8
+msgid ""
+"There are several common situations for which the Flake8 errors don't "
+"clearly indicate an error free solution."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:9
+msgid "### Continuation lines"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:10
+msgid "According to the"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:11
+msgid ""
+"[Pep8 indentation guide](https://www.python.org/dev/peps/pep-0008/"
+"#indentation),"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:12
+msgid ""
+"continuation lines (Python's implicit line joining inside parentheses) are "
+"expected"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:13
+msgid "to follow one of two main styles:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:14
+#: ..\python_docs\readme-tests-lint.py:23
+msgid "- Vertical alignment"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:15
+msgid "  - The first parameter is on the same line as the opening parenthesis"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:16
+msgid ""
+"  - For each subsequent line, the first character should be aligned with the"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:17
+msgid "    first character of the first parameter."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:18
+#: ..\python_docs\readme-tests-lint.py:27
+msgid "- Hanging indent"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:19
+msgid "  - There is no parameter on the same line as the opening parenthesis."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:20
+msgid ""
+"  - The first parameter is indented by a standard amount on the following "
+"line."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:21
+msgid "  - All subsequent parameters have the same indent."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:22
+msgid "What this means for us:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:24
+msgid ""
+"  - Requires spaces to meet the length of arbitrary function/variable names"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:25
+msgid ""
+"  - Requires counting characters to determine the number of spaces before "
+"arguments"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:26
+msgid "  - Alignment must be changed if the function/variable name changes."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:28
+msgid "  - Fixed indentation"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:29
+msgid "  - Takes up more vertical space"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:30
+msgid ""
+"Previously Flake8 checkers didn't know which style we intend, they allow for "
+"both."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:31
+msgid ""
+"We now configure Flake8-tabs with the `continuation-style=hanging` option to "
+"enforce hanging indent"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:32
+msgid ""
+"and it will complain about code which seems to be using vertical alignment "
+"style (warning ET113)."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:33
+msgid "#### Preferred formatting for continuation lines"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:34
+msgid "- Use hanging indent style."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:35
+msgid ""
+"  - Line break after the opening parenthesis, putting the first parameter on "
+"a new line."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:36
+msgid "- For function definitions, double indent the params to avoid ET121"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:37
+#: ..\python_docs\readme-tests-lint.py:60
+#: ..\python_docs\readme-tests-lint.py:85
+#: ..\python_docs\readme-tests-lint.py:95
+msgid "```python"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:38
+msgid "# method with many parameters"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:39
+msgid ""
+"# use \"hanging indent style\" - start params on new line to avoid ET113 and "
+"ET128"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:40
+#: ..\python_docs\readme-tests-lint.py:96
+msgid "def foo("
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:41
+msgid "\t\targ1,  # double indent to avoid ET121"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:42
+msgid "\t\targ2"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:43
+msgid ""
+"):  # put the closing paren on a new line, reduce the diff when changing "
+"parameters."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:44
+msgid "\t# long expression"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:45
+msgid ""
+"\t# use \"hanging indent style\" - start params on new line to avoid ET113 "
+"and ET128"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:46
+msgid "\tif("
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:47
+msgid ""
+"\t\targ1 is not None  # not a function definition, no double indent required"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:48
+msgid "\t\tand arg2 is None"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:49
+msgid ""
+"\t):  # put the closing paren on a new line, reduce the diff when changing "
+"conditions"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:50
+msgid "\t\treturn None"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:51
+msgid ""
+"\t# use \"hanging indent style\" - start params on new line to avoid EET113 "
+"and T128"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:52
+msgid "\tvalues = ["
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:53
+msgid "\t\t\"value1\", # not a function definition, no double indent required"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:54
+msgid "\t\t\"value2\","
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:55
+msgid ""
+"\t]  # put the closing bracket on a new line, reduce the diff when adding "
+"items."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:56
+msgid "\treturn values"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:57
+#: ..\python_docs\readme-tests-lint.py:69
+#: ..\python_docs\readme-tests-lint.py:90
+#: ..\python_docs\readme-tests-lint.py:101
+#: ..\python_docs\readme-tests-lint.py:106
+#: ..\python_docs\readme-tests-lint.py:108
+#: ..\python_docs\readme-tests-lint.py:129
+#: ..\python_docs\readme-tests-lint.py:131
+#: ..\python_docs\readme-tests-lint.py:133
+#: ..\python_docs\readme-tests-lint.py:135
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:58
+msgid ""
+"Note: An inline comment on an opening parenthesis/bracket/brace does not "
+"cause an error"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:59
+msgid "EG:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:61
+msgid "def foo(  # a comment here is fine"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:62
+msgid "\t\targ1"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:63
+#: ..\python_docs\readme-tests-lint.py:88
+#: ..\python_docs\readme-tests-lint.py:99
+msgid "):"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:64
+msgid "\titems = [  # a comment here is fine"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:65
+msgid "\t\t\"item1\","
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:66
+msgid "\t\t\"item2\","
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:67
+msgid "\t]"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:68
+msgid "\tprint(items)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:70
+msgid "#### ET113 (flake8-tabs)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:71
+#: ..\python_docs\readme-tests-lint.py:77
+#: ..\python_docs\readme-tests-lint.py:92
+msgid "Error messages:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:72
+msgid ""
+" - *Option continuation-style=hanging does not allow use of alignment as "
+"indentation*"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:73
+msgid "A parameter is on the same line as the opening paran/bracket/brace."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:74
+msgid "Move this parameter to a new line to resolve this error."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:75
+msgid ""
+"When triggered, it is likely that ET128 will be triggered for subsequent "
+"lines with parameters."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:76
+msgid "#### ET128 (flake8-tabs)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:78
+msgid "- *unexpected number of tabs at start of definition line*"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:79
+msgid "- *unexpected number of tabs and spaces at start of expression line*s"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:80
+msgid ""
+"Its likely that this is triggered because the linter is expecting \"vertical "
+"alignment\""
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:81
+msgid ""
+"style for the set of continuation lines, rather than \"hanging indent\" "
+"style."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:82
+msgid "To confirm look for ET113 triggered on the same line."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:83
+msgid ""
+"To change this, ensure that there is a newline after the opening paren/"
+"bracket/brace."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:84
+msgid "An example cause:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:86
+msgid "def foo(arg1, # Triggers ET113"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:87
+msgid ""
+"\targ2,  # Triggers ET128: arg2 not vertically aligned with start of first "
+"parameter."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:89
+#: ..\python_docs\readme-tests-lint.py:100
+msgid "\treturn None"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:91
+msgid "#### ET121 (flake8-tabs)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:93
+msgid ""
+"- *unexpected number of tabs at start of definition line (expected 2, got 1)*"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:94
+msgid "Example cause:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:97
+msgid "\targ1,  # one level of indentation, matches the function body"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:98
+msgid "\targ2,"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:102
+msgid ""
+"In function definitions we require double indentation of parameters to "
+"differentiate from"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:103
+msgid "the body of the function."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:104
+msgid "## Scons lint"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:105
+msgid "Executed with SCons."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:107
+msgid "scons lint base=origin/master"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:109
+msgid ""
+"- Remember to set the the `base` branch (the target you would use for a PR)."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:110
+msgid ""
+"- This SCons target will generate a diff file (`tests\\lint\\current.diff`) "
+"and run Flake8 on it."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:111
+msgid ""
+"- The output from Flake8 will be displayed with other SCons output, and will "
+"also be written to file (`tests\\lint\\current.lint`)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:112
+msgid ""
+"- This uses the NVDA flake8 configuration file (`tests\\lint\\flake8.ini`)"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:113
+msgid "## Lint integration"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:114
+msgid ""
+"For faster lint results, or greater integration with your tools you may want "
+"to execute this on the command line or via your IDE."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:115
+msgid "### Generate a diff"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:116
+msgid ""
+"You can use the `tests/lint/genDiff.py` script to generate the diff, or "
+"create the diff on the commandline:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:117
+msgid "- Get the merge base"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:118
+msgid "  - `git merge-base <baseBranch> HEAD`"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:119
+msgid ""
+"  - `merge-base` is used to limit changes to only those that are new on HEAD."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:120
+msgid "- Create a diff with your working tree"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:121
+msgid "  - `git diff -U0 <mergeBaseSha>`"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:122
+msgid "  - `-U0`: Only include changed lines (no context) in the diff."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:123
+msgid ""
+"    - Otherwise developers may end up getting warnings for code adjacent to "
+"code they touched."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:124
+msgid ""
+"    - This could result in very large change sets in order to get a clean "
+"build."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:125
+msgid ""
+"  - Note: We don't use triple dot syntax (`...`) because it will not report "
+"changes in your working tree."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:126
+msgid "### Pipe to Flake8"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:127
+msgid "Flake8 can accept a unified diff, however only via stdin."
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:128
+msgid "In cmd:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:130
+msgid ""
+"type current.diff | py -3 -m flake8 --diff --config=\"tests/lint/flake8.ini\""
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:132
+msgid "In bash:"
+msgstr ""
+
+#: ..\python_docs\readme-tests-lint.py:134
+msgid ""
+"cat current.diff | py -3 -m flake8 --diff --config=\"tests/lint/flake8.ini\""
+msgstr ""

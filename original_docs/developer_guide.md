@@ -1,4 +1,4 @@
-# NVDA 2020.4 Developer Guide
+# NVDA 2021.1 Developer Guide
 
 ## Table of Contents
 
@@ -33,13 +33,15 @@
     * 4.1. Non-ASCII File Names in Zip Archives
     * 4.2. Manifest Files
       * 4.2.1. Available Fields
-    * 4.3. Optional install / Uninstall code
-      * 4.3.1. the onInstall function
-      * 4.3.2. The onUninstall Function
-    * 4.4. Localizing Add-ons
-      * 4.4.1. Locale-specific Manifest Files
-      * 4.4.2. Locale-specific Messages
-    * 4.5. Add-on Documentation
+      * 4.2.2. An Example Manifest File
+    * 4.3. Plugins and Drivers
+    * 4.4. Optional install / Uninstall code
+      * 4.4.1. the onInstall function
+      * 4.4.2. The onUninstall Function
+    * 4.5. Localizing Add-ons
+      * 4.5.1. Locale-specific Manifest Files
+      * 4.5.2. Locale-specific Messages
+    * 4.6. Add-on Documentation
   * 5\. NVDA Python Console
     * 5.1. Usage
     * 5.2. Namespace
@@ -407,7 +409,7 @@ The order for gesture binding lookup is:
 
 #### 3.10.1. Defining script properties
 
-For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. 
+For NVDA 2018.3 and above, the recommended way to set script properties is by means of the so called script decorator. In short, a decorator is a function that modifies the behavior of a particular function or method. The script decorator modifies the script in such a way that it will be properly bound to the desired gestures. Furthermore, it ensures that the script is listed with the description you specify, and that it is categorised under the desired category in the input gestures dialog. 
 
 In order for you to use the script decorator, you will have to import it from the scriptHandler module. 
     
@@ -439,10 +441,11 @@ The following keyword arguments can be used when applying the script decorator:
   * gestures: A string list of multiple gestures associated with this script, e.g. \["kb:NVDA+shift+r", "kb:NVDA+alt+t"\]. When both gesture and gestures are specified, they are combined. Either gesture, or any item in gestures can be used to trigger the script. 
   * canPropagate: A boolean indicating whether this script should also apply when it belongs to a focus ancestor object. For example, this can be used when you want to specify a script on a particular foreground object, or another object in the focus ancestry which is not the current focus object. This option defaults to False. 
   * bypassInputHelp: A boolean indicating whether this script should run when input help is active. This option defaults to False. 
+  * allowInSleepMode: A boolean indicating whether this script should run when sleep mode is active. This option defaults to False. 
   * resumeSayAllMode: The say all mode that should be resumed when active before executing this script. The constants for say all mode are prefixed with CURSOR\_ and specified in the sayAllHandler modules. If resumeSayAllMode is not specified, say all does not resume after this script. 
 
 
-Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special "\_\_gestures" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the "script\_" prefix. You can also specify a description of the script in the function's docstring. Furthermore, an alternative way of specifying the script's category is by means of setting a "category" attribute on the script function to a string containing the name of the category. 
+Though the script decorator makes the script definition process a lot easier, there are more ways of binding gestures and setting script properties. For example, a special "\_\_gestures" Python dictionary can be defined as a class variable on an App Module, Global Plugin or NVDA Object. This dictionary should contain gesture identifier strings pointing to the name of the requested script, without the "script\_" prefix. You can also specify a description of the script in the method's " _doc_ " attribute. However, beware not to include an inline docstring at the start of the method if you do not set the " _doc_ " attribute, as it would render the description not translatable. The script decorator does not suffer from this limitation, so you are encouraged to provide inline docstrings as needed when using it. Furthermore, an alternative way of specifying the script's category is by means of setting a "category" attribute on the script method to a string containing the name of the category. 
 
 ### 3.11. Example 4: A Global Plugin to Find out Window Class and Control ID
 
@@ -639,7 +642,7 @@ To make it easy for users to share and install plugins and drivers, they can be 
 
 ### 4.1. Non-ASCII File Names in Zip Archives
 
-If your add-on includes files which contain non-ASCII \(non-English\) characters, you should create the zip archive such that it uses UTF-8 file names. This means that these files can be extracted properly on all systems, regardless of the system's configured language. Unfortunately, many zip archivers do not support this, including Windows Explorer. Generally, it has to be explicitly enabled even in archivers that do support it. [http://www.7-zip.org/](7-Zip) supports this, though it must be enabled by specifying the "cu=on" method parameter. 
+If your add-on includes files which contain non-ASCII \(non-English\) characters, you should create the zip archive such that it uses UTF-8 file names. This means that these files can be extracted properly on all systems, regardless of the system's configured language. Unfortunately, many zip archivers do not support this, including Windows Explorer. Generally, it has to be explicitly enabled even in archivers that do support it. [7-Zip](http://www.7-zip.org/) supports this, though it must be enabled by specifying the "cu=on" method parameter. 
 
 ### 4.2. Manifest Files
 
@@ -660,67 +663,69 @@ Although it is highly suggested that manifests contain all fields, the fields ma
     * e.g "2019.1.1" 
     * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
     * Defaults to "0.0.0" 
-    * Must be less than or equal to \`lastTestedNVDAVersion\` 
+    * Must be less than or equal to `lastTestedNVDAVersion`
   * lastTestedNVDAVersion \(string\): The last version of NVDA this add-on has been tested with. 
     * e.g "2019.1.0" 
     * Must be a three part version string I.E. Year.Major.Minor, or a two part version string of Year.Major. In the second case, Minor defaults to 0. 
     * Defaults to "0.0.0" 
-    * Must be greater than or equal to \`minimumNVDAVersion\` \- 
+    * Must be greater than or equal to `minimumNVDAVersion` 
+
 
 All string values must be enclosed in quotes as shown in the example below. 
 
 The lastTestedNVDAVersion field in particular is used to ensure that users can be confident about installing an add-on. It allows the add-on author to make an assurance that the add-on will not cause instability, or break the users system. When this is not provided, or is less than the current version of NVDA \(ignoring minor point updates EG 2018.3.1\) then the user will be warned not to install the add-on. 
 
-### An Example Manifest File
-        
-        
-        --- start ---
-        name = "myTestAddon"
-        summary = "Cool Test Add-on"
-        version = "1.0"
-        description = "An example add-on showing how to create add-ons!"
-        author = "Michael Curran <mick@kulgan.net>"
-        url = "http://www.nvda-project.org/wiki/Development"
-        docFileName = "readme.html"
-        minimumNVDAVersion = "2018.1.0"
-        lastTestedNVDAVersion = "2019.1.0"
-        --- end ---
-        
+#### 4.2.2. An Example Manifest File
+    
+    
+    --- start ---
+    name = "myTestAddon"
+    summary = "Cool Test Add-on"
+    version = "1.0"
+    description = "An example add-on showing how to create add-ons!"
+    author = "Michael Curran <mick@kulgan.net>"
+    url = "http://www.nvda-project.org/wiki/Development"
+    docFileName = "readme.html"
+    minimumNVDAVersion = "2018.1.0"
+    lastTestedNVDAVersion = "2019.1.0"
+    --- end ---
+    
 
-## Plugins and Drivers
+### 4.3. Plugins and Drivers
 
 The following plugins and drivers can be included in an add-on: 
+
   * App modules: Place them in an appModules directory in the archive. 
   * Braille display drivers: Place them in a brailleDisplayDrivers directory in the archive. 
   * Global plugins: Place them in a globalPlugins directory in the archive. 
   * Synthesizer drivers: Place them in a synthDrivers directory in the archive. 
 
 
-### 4.3. Optional install / Uninstall code
+### 4.4. Optional install / Uninstall code
 
 If you need to execute code as your add-on is being installed or uninstalled from NVDA \(e.g. to validate license information or to copy files to a custom location\), you can provide a Python file called installTasks.py in the archive which contains special functions that NVDA will call while installing or uninstalling your add-on. This file should avoid loading any modules that are not absolutely necessary, especially Python C extensions or dlls from your own add-on, as this could cause later removal of the add-on to fail. However, if this does happen, the add-on directory will be renamed and then deleted after the next restart of NVDA. Finally, it should not depend on the existence or state of other add-ons, as they may not be installed, have already been removed or not yet be initialized. 
 
-#### 4.3.1. the onInstall function
+#### 4.4.1. the onInstall function
 
 NVDA will look for and execute an onInstall function in installTasks.py after it has finished extracting the add-on into NVDA. Note that although the add-on will have been extracted at this time, its directory will have a .pendingInstall suffix until NVDA is restarted, the directory is renamed and the add-on is really loaded for the first time. If this function raises an exception, the installation of the add-on will fail and its directory will be cleaned up. 
 
-#### 4.3.2. The onUninstall Function
+#### 4.4.2. The onUninstall Function
 
 NVDA will look for and execute an onUninstall function in installTasks.py when NVDA is restarted after the user has chosen to remove the add-on. After this function completes, the add-on's directory will automatically be removed. As this happens on NVDA startup before other components are initialized, this function cannot request input from the user. 
 
-### 4.4. Localizing Add-ons
+### 4.5. Localizing Add-ons
 
 It is possible to provide locale-specific information and messages for your add-on. Locale information can be stored in a locale directory in the archive. This directory should contain directories for each language it supports, using the same language code format as the rest of NVDA; e.g. en for English, fr\_CA for French Canadian. 
 
-#### 4.4.1. Locale-specific Manifest Files
+#### 4.5.1. Locale-specific Manifest Files
 
 Each of these language directories can contain a locale-specific manifest file called manifest.ini, which can contain a small subset of the manifest fields for translation. These fields are summary and description. All other fields will be ignored. 
 
-#### 4.4.2. Locale-specific Messages
+#### 4.5.2. Locale-specific Messages
 
 Each language directory can also contain gettext information, which is the system used to translate the rest of NVDA's user interface and reported messages. As with the rest of NVDA, an nvda.mo compiled gettext database file should be placed in the LC\_MESSAGES directory within this directory. to allow plugins in your add-on to access gettext message information via calls to \_\(\), you must initialize translations at the top of each Python module by calling addonHandler.initTranslation\(\). For more information about gettext and NVDA translation in general, please read <https://github.com/nvaccess/nvda/wiki/Translating>
 
-### 4.5. Add-on Documentation
+### 4.6. Add-on Documentation
 
 Documentation for an add-on should be placed in a doc directory in the archive. Similar to the locale directory, this directory should contain directories for each language in which documentation is available. 
 
@@ -740,7 +745,7 @@ The console can be activated in two ways:
 
 The console is similar to the standard interactive Python interpreter. Input is accepted one line at a time and processed when enter is pressed. Multiple lines can be pasted at once from the clipboard and will be processed one by one. You can navigate through the history of previously entered lines using the up and down arrow keys. 
 
-Output \(responses from the interpreter\) will be spoken when enter is pressed. The f6 key toggles between the input and output controls. 
+Output \(responses from the interpreter\) will be spoken when enter is pressed. The f6 key toggles between the input and output controls. When on the output control, alt+up/down jumps to the previous/next result \(add shift for selecting\). Pressing control+l clears the output. 
 
 The result of the last executed command is stored in the "\_" global variable. This shadows the gettext function which is stored as a built-in with the same name. It can be unshadowed by executing "del \_" and avoided altogether by executing "\_ = \_". 
 
@@ -773,9 +778,9 @@ The input control supports tab-completion of variables and member attributes nam
 
 ## 6\. Remote Python Console
 
-A remote Python console is available for situations where remote debugging of NVDA is useful. It is similar to the local Python console discussed above, but is accessed via TCP. 
+A remote Python console is available in source builds of NVDA, for situations where remote debugging of NVDA is useful. It is similar to the local Python console discussed above, but is accessed via TCP. 
 
-Please be aware that this is a huge security risk. You should only enable it if you are connected to trusted networks. 
+Please be aware that this is a huge security risk. It is not available in binary builds distributed by NV Access, and You should only enable it if you are connected to trusted networks. 
 
 ### 6.1. Usage
 

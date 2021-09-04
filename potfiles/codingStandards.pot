@@ -1,0 +1,456 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\python_docs\codingStandards.py:3
+msgid "## Code Style"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:4
+msgid "Python code style is enforced with the flake8 linter, see"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:5
+msgid ""
+"[`tests/lint/readme.md`](https://github.com/nvaccess/nvda/tree/master/tests/"
+"lint)"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:6
+msgid "for more information."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:7
+msgid "### Encoding"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:8
+msgid ""
+"* Where Python files contain non-ASCII characters, they should be encoded in "
+"UTF-8."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:9
+msgid ""
+"    * There should be no Unicode BOM at the start of the file, as this "
+"unfortunately breaks one of"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:10
+msgid "      the translation tools we use (`xgettext`)."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:11
+msgid ""
+"      Instead, include this as the first line of the file (only if the file "
+"contains non-ASCII"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:12
+msgid "      characters):"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:13 ..\python_docs\codingStandards.py:15
+msgid "        ```"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:14
+msgid "        # -*- coding: UTF-8 -*-"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:16
+msgid ""
+"    * This coding comment must also be included if strings in the code (even "
+"strings that aren't"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:17
+msgid ""
+"      translatable) contain escape sequences that produce non-ASCII "
+"characters; e.g. `\"\\xff\"`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:18
+msgid "      This is particularly relevant for braille display drivers."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:19
+msgid "      This is due to a `gettext` bug; see"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:20
+msgid ""
+"      https://github.com/nvaccess/nvda/issues/2592#issuecomment-155299911."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:21
+msgid ""
+"* Most files should contain `CRLF` line endings, as this is a Windows "
+"project and can't be used on"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:22
+msgid "  Unix-like operating systems."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:23
+msgid "### Indentation"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:24
+msgid "* Indentation must be done with tabs (one per level), not spaces."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:25
+msgid ""
+"* When splitting a single statement over multiple lines, just indent one or "
+"more additional levels."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:26
+msgid ""
+"  Don't use vertical alignment; e.g. lining up with the bracket on the "
+"previous line."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:27
+msgid ""
+"  - Be aware that this requires a new-line after an opening parenthesis/"
+"bracket/brace if you intend"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:28
+msgid "    to split the statement over multiple lines."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:29
+msgid ""
+"  - For the parameter list of function definitions, double indent, this "
+"differentiates the"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:30
+msgid "    parameters and the body of the function."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:31
+msgid "### Identifier Names"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:32
+msgid "* Use descriptive names"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:33
+msgid ""
+"  - name constants to avoid \"magic numbers\" and hint at intent or origin "
+"of the value."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:34
+msgid "    Consider, what does this represent?"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:35
+msgid ""
+"* Functions, variables, properties, etc. use mixed case to separate words, "
+"starting with a lower"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:36
+msgid "  case letter; e.g. `speakText`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:37
+msgid "* Boolean functions or variables"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:38
+msgid "  - Prefer positive form of the language."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:39
+msgid "    Avoid double negatives like `shouldNotDoSomething = False`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:40
+msgid ""
+"  - Start with a \"question word\" to hint at their boolean nature. EG "
+"`shouldX`, `isX`, `hasX`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:41
+msgid ""
+"* Classes should use mixed case to separate words, starting with an upper "
+"case letter;"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:42
+msgid "  - E.G. `BrailleHandler`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:43
+msgid ""
+"* Constants should be all upper case, separating words with underscores;"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:44
+msgid "  - E.G. `LANGS_WITH_CONJUNCT_CHARS`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:45
+msgid ""
+"  - Avoid unnecesary shared prefixes in constants. Instead, use an enum for "
+"related constants."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:46
+msgid ""
+"* Event handlers are prefixed with \"event_\", subsequent words in camel "
+"case."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:47
+msgid "  Note, `object` and `action` are separated by underscores."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:48
+msgid "  - E.G.: `event_action` or `event_object_action`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:49
+msgid "  - `object` refers to the class type that the `action` refers to."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:50
+msgid "  - Examples: `event_caret`, `event_appModule_gainFocus`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:51
+msgid "* Extension points:"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:52
+msgid "  * `Action`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:53
+msgid ""
+"    - Prefixed with `pre_` or `post_` to specify that handlers are being "
+"notified before / after the"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:54
+msgid "      action has taken place."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:55
+msgid "  * `Decider`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:56
+msgid ""
+"    - Prefixed with `should_` to turn them into a question eg "
+"`should_doSomething`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:57
+msgid "  * `Filter`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:58
+msgid ""
+"    - TBD. Ideally follows a similar style the others, and communicates if "
+"the filtering happens"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:59
+msgid "      before or after some action."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:60
+msgid ""
+"    - It would also be nice to have a naming scheme that differentiates it "
+"from the others."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:61
+msgid "* Enums should be formatted using the expected mix of above eg:"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:62
+msgid "  ```python"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:63
+msgid "  class ExampleGroupOfData(Enum):"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:64
+msgid "      CONSTANT_VALUE_MEMBER = auto()"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:65
+msgid "      @property"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:66
+msgid "      def _formatMember(self): pass"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:67
+msgid "  ```"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:68
+msgid "### Translatable Strings"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:69
+msgid ""
+"* All strings that could be presented to the user should be marked as "
+"translatable using the `_()`"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:70
+msgid "  function; e.g. `_(\"Text review\")`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:71
+msgid ""
+"* All translatable strings should have a preceding translators comment "
+"describing the purpose of the"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:72
+msgid "  string for translators. For example:"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:73 ..\python_docs\codingStandards.py:76
+#: ..\python_docs\codingStandards.py:81 ..\python_docs\codingStandards.py:93
+msgid "```"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:74
+msgid "# Translators: The name of a category of NVDA commands."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:75
+msgid "SCRCAT_TEXTREVIEW = _(\"Text review\")"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:77
+msgid ""
+"* Lengthy translatable strings can be split across multiple lines, taking "
+"advantage of Python's"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:78
+msgid "  implicit line joining inside parentheses."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:79
+msgid "  Translators comment can span multiple lines as well."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:80
+msgid "  For example:"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:82
+msgid "self.copySettingsButton = wx.Button("
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:83
+msgid "\tself,"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:84
+msgid "\tlabel=_("
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:85
+msgid "\t\t# Translators: The label for a button in general settings to copy"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:86
+msgid "\t\t# current user settings to system settings (to allow current"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:87
+msgid "\t\t# settings to be used in secure screens such as User Account"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:88
+msgid "\t\t# Control (UAC) dialog)."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:89
+msgid ""
+"\t\t\"Use currently saved settings during sign-in and on secure screens\""
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:90
+msgid "\t\t\" (requires administrator privileges)\""
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:91
+msgid "\t)"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:92
+msgid ")"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:94
+msgid "### Imports"
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:95
+msgid "* Unused imports should be removed where possible."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:96
+msgid ""
+"  - Anything imported into a (sub)module can also be imported from that "
+"submodule."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:97
+msgid ""
+"  - As a result, removing unused imports may break compatibility, and should "
+"be done in compatibility breaking releases (see `deprecations.md`)."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:98
+msgid ""
+"* Unused imports will give a lint warning. These can be handled the "
+"following ways: "
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:99
+msgid ""
+"  - If these imports are inteded to be imported from other modules, they can "
+"be done included in a definition for `__all__`. This will override and "
+"define the symbols imported when performing a star import, eg `from module "
+"import *`."
+msgstr ""
+
+#: ..\python_docs\codingStandards.py:100
+msgid "  - Otherwise, with a comment like `# noqa: <explanation>`."
+msgstr ""

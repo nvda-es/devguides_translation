@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-23 14:47+0200\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,417 +22,611 @@ msgid "# Creating PR's on the NVDA project"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:4
-msgid ""
-"This page is meant to serve as an explanation for how to fill out [our "
-"Github pull request template](https://github.com/nvaccess/nvda/blob/master/."
-"github/PULL_REQUEST_TEMPLATE.md)"
+msgid "This page is meant to serve as an explanation for how to fill out"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:5
-msgid "## The template"
+msgid ""
+"[our Github pull request template](https://github.com/nvaccess/nvda/blob/"
+"master/.github/PULL_REQUEST_TEMPLATE.md)"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:6
-msgid ""
-"At the start of the template there is a HTML comment block (starting with "
-"`<!--`), which points to this wiki page, it can be left in place and will "
-"not appear once the issue is saved. Feel free to delete it, i.e. all text up "
-"to and including `-->`."
+msgid "## The template"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:7
-msgid "### Link to issue number:"
+msgid ""
+"At the start of the template there is a HTML comment block (starting with "
+"`<!--`),"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:8
 msgid ""
-"Please include the issue number here, including information on how this pull "
-"request is related to it. This helps us to keep the information linked "
-"together. If this is a minor/trivial change an issue does not need to be "
-"created. If in doubt, please create one. Note that Github [allows you to "
-"automatically close issues using keywords](https://help.github.com/en/"
-"articles/closing-issues-using-keywords). For example, when writing `closes "
-"#7777` or `fixes #4242` in the body of the description, the mentioned issue "
-"will automatically be closed when the pull request is merged into the master "
-"branch. If your pull request is filed against another branch, such as beta, "
-"the particular issue will have to be close manually after merging the pull "
-"request."
+"which points to this wiki page, it can be left in place and will not appear "
+"once the issue is saved."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:9
-msgid "### Summary of the issue:"
+msgid "Feel free to delete it, i.e. all text up to and including `-->`."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:10
-msgid "A quick summary of the problem you are trying to solve."
+msgid "### Link to issue number:"
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:11
-msgid "### Description of how this pull request fixes the issue:"
+msgid ""
+"Please include the issue number here, including information on how this pull "
+"request is related to "
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:12
-msgid ""
-"Please include a quick discussion of how this change addresses the issue. "
-"Please also include any links or external information you may have used in "
-"order to address the issue. This helps others to have the same background as "
-"you and learn from this work."
+msgid "it."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:13
-msgid "### Testing strategy:"
+msgid "This helps us to keep the information linked together."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:14
-msgid ""
-"Outline the steps you took to test the change. This should allow someone "
-"else to reproduce your testing."
+msgid "If this is a minor/trivial change an issue does not need to be created."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:15
-msgid "More broadly, try to answer the following questions:"
+msgid "If in doubt, please create one."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:16
-msgid "- How have you tested to ensure that your change works as intended?"
+msgid "Note that Github "
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:17
 msgid ""
-"- Have you ensured testing coverage across all supported operating systems?"
+"[allows you to automatically close issues using keywords](https://help."
+"github.com/en/articles/closing-issues-using-keywords)."
 msgstr ""
 
 #: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:18
+msgid ""
+"For example, when writing `closes #7777` or `fixes #4242` in the body of the "
+"description,"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:19
+msgid ""
+"the mentioned issue will automatically be closed when the pull request is "
+"merged into the master"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:20
+msgid "branch."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:21
+msgid ""
+"If your pull request is filed against another branch, such as beta, the "
+"particular issue will have"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:22
+msgid "to be close manually after merging the pull request."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:23
+msgid "### Summary of the issue:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:24
+msgid "A quick summary of the problem you are trying to solve."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:25
+msgid "### Description of how this pull request fixes the issue:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:26
+msgid ""
+"Please include a quick discussion of how this change addresses the issue."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:27
+msgid ""
+"Please also include any links or external information you may have used in "
+"order to address the"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:28
+msgid "issue."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:29
+msgid ""
+"This helps others to have the same background as you and learn from this "
+"work."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:30
+msgid "### Testing strategy:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:31
+msgid "Outline the steps you took to test the change."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:32
+msgid "This should allow someone else to reproduce your testing."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:33
+msgid "More broadly, try to answer the following questions:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:34
+msgid "- How have you tested to ensure that your change works as intended?"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:35
+msgid ""
+"- Have you ensured testing coverage across all supported operating systems?"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:36
 msgid ""
 "- Have you considered possible regressions (related features or behaviours "
 "that may break)?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:19
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:37
 msgid ""
 "Please use this section as an opportunity to try to convince us (and "
-"yourself) that your proposed change should be merged. "
+"yourself) that your proposed "
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:20
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:38
+msgid "change should be merged. "
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:39
 msgid ""
 "Often in face to face development it's useful to demonstrate a change, quite "
-"often bugs are noticed at this point when the new person asks for some "
-"variation in testing approach. Since we unlikely to be able to demonstrate a "
-"feature in an interactive way, an easy-to-follow list of steps for a \"demo"
-"\" allows others check themselves without having to work out all the "
-"details. It also serves as a starting point for members of the community who "
-"are testing the changes that go into NVDA."
+"often bugs are noticed"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:21
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:40
+msgid ""
+"at this point when the new person asks for some variation in testing "
+"approach."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:41
+msgid ""
+"Since we unlikely to be able to demonstrate a feature in an interactive way, "
+"an easy-to-follow list"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:42
+msgid ""
+"of steps for a \"demo\" allows others check themselves without having to "
+"work out all the details."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:43
+msgid ""
+"It also serves as a starting point for members of the community who are "
+"testing the changes that go"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:44
+msgid "into NVDA."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:45
 msgid "Example:"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:22
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:46
 msgid "> In NVDA settings ensure that:"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:23
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:47
 msgid "> - Keyboard category"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:24
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:48
 msgid ">   - \"speak typed characters\" is unchecked"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:25
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:49
 msgid ">   - \"speak typed words\" is checked"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:26
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:30
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:50
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:54
 msgid ">"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:27
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:51
 msgid "> 1. Open notepad"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:28
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:52
 msgid "> 2. Type \"hello\""
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:29
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:53
 msgid "> 3. Press space"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:31
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:55
 msgid "> Expect \"hello\" to be announced."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:32
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:56
 msgid ""
 "- If many NVDA settings are required, consider attaching a sample `nvda.ini` "
 "file to the PR."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:33
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:57
 msgid ""
 "- If a complicated document is required to test with a 3rd party "
-"application, consider attaching it to the PR for others to test with."
+"application, consider attaching it"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:34
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:58
+msgid "  to the PR for others to test with."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:59
 msgid "### Known issues with pull request:"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:35
-msgid ""
-"Are there any known issues or downsides of this approach. For instance: "
-"_Will not work with python 3_"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:60
+msgid "Are there any known issues or downsides of this approach."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:36
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:61
+msgid "For instance: _Will not work with python 3_"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:62
 msgid "### Change log entry:"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:37
-msgid ""
-"An entry intended to explain changes in NVDA to end users. Your proposed "
-"entry will be added to the `changes.t2t` file which is converted to html and "
-"used as a what's changed / change log document. See [`user_docs/en/changes."
-"t2t`](https://github.com/nvaccess/nvda/blob/master/user_docs/en/changes.t2t)"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:63
+msgid "An entry intended to explain changes in NVDA to end users."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:38
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:64
+msgid ""
+"Your proposed entry will be added to the `changes.t2t` file which is "
+"converted to html and used as a"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:65
+msgid "what's changed / change log document."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:66
+msgid "See "
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:67
+msgid ""
+"[`user_docs/en/changes.t2t`](https://github.com/nvaccess/nvda/blob/master/"
+"user_docs/en/changes.t2t)"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:68
 msgid ""
 "Because the `changes.t2t` file is prone to conflicts, we ask contributors "
 "not to edit the file directly, but instead add the entry to the bottom of "
-"the PR description. A lead developer will update file when merging the pull "
-"request."
+"the PR description."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:39
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:69
+msgid "A lead developer will update file when merging the pull request."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:70
 msgid "For instance:"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:40
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:45
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:71
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:76
 msgid "```"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:41
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:72
 msgid "*New features*"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:42
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:73
 msgid "`Added a command to announce useful thing. (#WXYZ, #ABCD)`"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:43
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:74
 msgid "*Changes*"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:44
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:75
 msgid "`Old command, now also uses new useful command. (#WXYZ)`"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:46
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:77
 msgid ""
 "These descriptions should be in the format: `\"{Description of change}. "
 "(#{issue number})\"`"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:47
-msgid ""
-"You may suggest descriptions for multiple sections. The usual sections are:"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:78
+msgid "You may suggest descriptions for multiple sections."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:48
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:79
+msgid "The usual sections are:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:80
 msgid " "
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:49
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:81
 msgid "* New features"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:50
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:82
 msgid "* Changes"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:51
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:83
 msgid "* Bug fixes"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:52
-msgid ""
-"Multiple issue numbers can be included, separated by comma. If there is no "
-"issue number, you can use the PR number."
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:84
+msgid "Multiple issue numbers can be included, separated by comma."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:53
-msgid ""
-"For examples see the [changes.t2t file](https://github.com/nvaccess/nvda/"
-"blob/master/user_docs/en/changes.t2t)"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:85
+msgid "If there is no issue number, you can use the PR number."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:54
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:86
+msgid "For examples see the"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:87
+msgid ""
+"[changes.t2t file](https://github.com/nvaccess/nvda/blob/master/user_docs/en/"
+"changes.t2t)"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:88
 msgid "## Code Review Checklist"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:55
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:89
 msgid ""
 "Code must be reviewed (via a Pull Request on GitHub) before it can be "
-"accepted into the project. The Pull Request template (``.github/"
-"PULL_REQUEST_TEMPLATE.md``) asks authors (and reviewers) to consider several "
-"aspects of the change."
+"accepted into the project."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:56
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:90
+msgid ""
+"The Pull Request template (``.github/PULL_REQUEST_TEMPLATE.md``) asks "
+"authors (and reviewers) to"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:91
+msgid "consider several aspects of the change."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:92
 msgid ""
 "The aim of this checklist is to ensure each item has been considered by both "
-"the author and the reviewer. Hopefully it helps to prevent items being "
-"forgotten. After reviewing the checklist the reviewer and author need to use "
-"their best judgement on whether they think further changes need to be made. "
-"Reviewers are invited to start a conversation about items in the list, to "
-"provide guidance on how to improve the PR. Not all items will be applicable "
-"for all situations, in this case checking the item lets reviewers know it's "
-"been considered. If the reviewer reaches the same conclusion as the author, "
-"no further work is necessary. Most items in the checklist have a section in "
-"the PR template where you can add your thoughts, doing so may preempt "
-"questions from the reviewer ensuring you are on the same page, and speed up "
-"the review process."
+"the author and the"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:57
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:93
+msgid "reviewer."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:94
+msgid "Hopefully it helps to prevent items being forgotten."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:95
+msgid ""
+"After reviewing the checklist the reviewer and author need to use their best "
+"judgement on whether"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:96
+msgid "they think further changes need to be made."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:97
+msgid ""
+"Reviewers are invited to start a conversation about items in the list, to "
+"provide guidance on how to"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:98
+msgid "improve the PR."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:99
+msgid ""
+"Not all items will be applicable for all situations, in this case checking "
+"the item lets reviewers"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:100
+msgid "know it's been considered."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:101
+msgid ""
+"If the reviewer reaches the same conclusion as the author, no further work "
+"is necessary."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:102
+msgid ""
+"Most items in the checklist have a section in the PR template where you can "
+"add your thoughts, doing"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:103
+msgid ""
+"so may preempt questions from the reviewer ensuring you are on the same "
+"page, and speed up the"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:104
+msgid "review process."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:105
 msgid "### Pull Request description is up to date."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:58
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:106
 msgid "Authors must keep the PR description up to date."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:59
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:107
 msgid ""
 "- Even if changes to the approach are described in the comments for the PR."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:60
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:108
 msgid "- Future developers need a concise explanation of a change."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:61
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:109
 msgid ""
 "After each modification, check that the PR description is still accurate."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:62
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:110
 msgid "### Unit tests"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:63
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:67
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:111
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:115
 msgid "- Discuss under \"testing strategy\" heading."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:64
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:112
 msgid "- Describe the coverage of automated unit tests?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:65
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:69
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:113
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:117
 msgid ""
 "- Is the changed code already, or can it be covered by automated unit tests?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:66
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:114
 msgid "### System tests"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:68
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:116
 msgid "- Describe the coverage of automated system tests?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:70
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:118
 msgid "### Manual tests"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:71
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:119
 msgid "- Discuss under \"testing strategy\" heading. "
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:72
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:120
 msgid "- How did you manually test the change?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:73
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:121
 msgid "- Be clear on steps another user can take to replicate your testing."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:74
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:122
 msgid "- Is the described manual testing appropriate for the change?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:75
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:123
 msgid "- Clearly describing this helps alpha testers, and future developers."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:76
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:124
 msgid ""
 "- As a reviewer, please use this description to replicate the testing (if "
 "possible)."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:77
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:125
 msgid "### User Documentation"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:78
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:126
 msgid "- Does the user documentation need updating?"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:79
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:127
 msgid "### Change log entry"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:80
-msgid ""
-"Has an appropriate change log entry been supplied. As a reviewer, please "
-"review it."
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:128
+msgid "Has an appropriate change log entry been supplied."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:81
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:129
+msgid "As a reviewer, please review it."
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:130
 msgid "### Context sensitive help for GUI changes."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:82
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:131
 msgid "- New GUI options require context sensitive help assignment."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:83
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:132
 msgid "### UX of all users considered"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:84
-msgid ""
-"- Users of NVDA are diverse, and rely on different parts of NVDA. Ensure the "
-"change caters to users of the following:"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:133
+msgid "- Users of NVDA are diverse, and rely on different parts of NVDA."
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:85
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:134
+msgid "  Ensure the change caters to users of the following:"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:135
 msgid "  - Speech"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:86
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:136
 msgid "  - Braille"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:87
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:137
 msgid "  - Low Vision"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:88
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:138
 msgid "  - Different web browsers (Firefox, Chrome, Edge)"
 msgstr ""
 
-#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:89
-msgid ""
-"- When one of these can not be supported with this change, highlight it "
-"under the \"Known issues\" heading"
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:139
+msgid "- When one of these can not be supported with this change,"
+msgstr ""
+
+#: ..\python_docs\GithubPullRequestTemplateExplanationAndExamples.py:140
+msgid "  highlight it under the \"Known issues\" heading"
 msgstr ""

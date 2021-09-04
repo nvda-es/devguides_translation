@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-23 14:47+0200\n"
+"POT-Creation-Date: 2021-09-04 17:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,19 +125,21 @@ msgid ""
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:22
-msgid "When no blocking issues are encountered it is expected to take 7 weeks:"
+msgid "When no blocking issues are encountered it is expected to take 5 weeks:"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:23
-msgid "- Beta builds: 6 weeks (starting 7 weeks before release)"
+msgid "- Beta builds: 2 weeks to receive any required fixes"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:24
-msgid "  - 4 weeks to receive any required fixes"
+msgid ""
+"  - Subsequent betas may take another week or two at discretion of lead "
+"developers"
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:25
-msgid "  - 2 weeks for translation freeze (starting 3 weeks before release) "
+msgid "- 2 weeks for translation freeze (starting 3 weeks before release) "
 msgstr ""
 
 #: ..\python_docs\ReleaseProcess.py:26
