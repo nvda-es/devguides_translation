@@ -60,15 +60,20 @@ Para aprender más sobre NVDA o descargar una copia, visita el sitio web princip
 <li>Utiliza la última revisión menor si es posible.</li>
 </ul>
 </li>
-<li>Microsoft Visual Studio 2019 Community, versión 16.3 o posterior:<ul>
-<li>Descarga desde https://visualstudio.microsoft.com/vs/</li>
+<li>Microsoft Visual Studio 2019:<ul>
+<li>Para replicar el entorno de compilación en producción, usa la <a href="https://www.appveyor.com/docs/windows-images-software/#visual-studio-2019">versión de Visual Studio utilizada por AppVeyor</a>. </li>
+<li>Descarga desde https://visualstudio.microsoft.com/downloads/<ul>
+<li>Si no usas el propio entorno de desarrollo de Visual Studio, puedes descargar las herramientas de compilación bajo el encabezado expandible Herramientas de Visual Studio 2019</li>
+<li>Si te propones usar el entorno de desarrollo Visual Studio (no es necesario para el desarrollo de NVDA), puedes descargar la versión Community bajo el encabezado expandible Visual Studio 2019</li>
+</ul>
+</li>
 <li>Al instalar Visual Studio, necesitas activar lo siguiente:<ul>
-<li>En la pestaña cargas de trabajo<ul>
-<li>En el grupo Windows:<ul>
+<li>En la lista de la pestaña cargas de trabajo<ul>
+<li>En la agrupación Windows:<ul>
 <li>Desarrollo para escritorio con C++</li>
 </ul>
 </li>
-<li>A continuación, en la sección detalles de la instalación, bajo C++ para escritorio, en el grupo opcional, asegúrate de que se ha seleccionado lo siguiente:<ul>
+<li>A continuación, en el árbol detalles de la instalación, bajo C++ para escritorio, en el grupo opcional, asegúrate de que se ha seleccionado lo siguiente:<ul>
 <li>Herramientas de compilación MSVC v142 - VS 2019 C++ x64/x86</li>
 <li>Windows 10 SDK (10.0.19041.0)</li>
 <li>ATL de C++ para las herramientas de compilación V142 (X86 y X64)</li>
@@ -94,7 +99,7 @@ Cada vez que cambie el commit relacionado con un submódulo necesario (por ejemp
 Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer pull, merge o checkout.</p>
 <p>Para referencia, las siguientes dependencias de tiempo de ejecución se incluyen como submódulos Git:</p>
 <ul>
-<li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit aafd2e720</li>
+<li><a href="https://github.com/espeak-ng/espeak-ng">eSpeak NG</a>, versión 1.51-dev, commit 74068b91bcd578b</li>
 <li><a href="https://github.com/waywardgeek/sonic">Sonic</a>, commit 4f8c1d11</li>
 <li><a href="https://wiki.linuxfoundation.org/accessibility/iaccessible2/start">IAccessible2</a>, commit cbc1f29631780</li>
 <li><a href="http://www.liblouis.org/">liblouis</a>, versión 3.18.0</li>
@@ -113,7 +118,6 @@ Si no estás seguro, ejecuta <code>git submodule update</code> después de hacer
 <li><a href="https://nsis.sourceforge.io/Main_Page/">Nulsoft Install System</a>, versión 2.51</li>
 <li><a href="https://nsis.sourceforge.io/UAC_plug-in">Complemento de NSIS para Uac</a>, versión 0.2.4, ansi</li>
 <li>xgettext y msgfmt de <a href="https://sourceforge.net/projects/cppcms/files/boost_locale/gettext_for_windows/">GNU gettext</a></li>
-<li><a href="https://github.com/akrzemi1/Optional">Boost opcional (cabecera independiente)</a>, del commit <a href="https://github.com/akrzemi1/Optional/commit/3922965396fc455c6b1770374b9b4111799588a9">3922965</a></li>
 </ul>
 <p>Estas dependencias no vienen incluidas en submódulos Git, y casi nadie las necesita:
 * Para generar la documentación para nvdaHelper: <a href="http://www.doxygen.nl/download.html">Doxygen Windows installer</a>, versión 1.8.15:

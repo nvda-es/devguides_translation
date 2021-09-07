@@ -24,7 +24,7 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 -->
 
 <h1 id="guia-de-desarrollo-de-complementos-de-nvda">Guía de Desarrollo de Complementos de NVDA</h1>
-<p>Última versión: enero de 2021 para NVDA 2020.4</p>
+<p>Última versión: agosto de 2021 para NVDA 2021.2</p>
 <hr />
 <h1 id="indice"><strong>ÍNDICE</strong></h1>
 <p><em>Nota para usuarios de lectores de pantalla</em>: para volver a este índice, usa tu orden del modo exploración para moverte al encabezado de nivel 1 en dirección contraria.</p>
@@ -33,9 +33,11 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li><a href="#introduccion">Introducción</a></li>
 <li><a href="#audiencia">Audiencia</a><ul>
 <li><a href="#nota-especial-sobre-la-version-de-python">Nota especial sobre la versión de Python</a></li>
+<li><a href="#nota-especial-sobre-la-compatibilidad-hacia-atras-de-nvda">Nota especial sobre la compatibilidad hacia atrás de NVDA</a></li>
 <li><a href="#una-nota-especial-para-creadores-de-scripts-de-otros-lectores-de-pantalla">Una nota especial para creadores de scripts de otros lectores de pantalla</a></li>
 <li><a href="#nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows">Nota especial sobre la versión de NVDA para la tienda de Windows</a></li>
 <li><a href="#nota-muy-importante-sobre-la-migracion-de-codigo-personalizado-de-extension-a-development-scratchpad">Nota muy importante sobre la migración de código personalizado de extensión a development scratchpad</a></li>
+<li><a href="#nota-muy-importante-sobre-los-cambios-del-modulo-controltypes-en-nvda-20212">Nota muy importante sobre los cambios del módulo controlTypes en NVDA 2021.2</a></li>
 </ul>
 </li>
 <li><a href="#conceptos-basicos-sobre-complementos">Conceptos básicos sobre complementos</a><ul>
@@ -195,6 +197,15 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <h3 id="nota-especial-sobre-la-version-de-python">Nota especial sobre la versión de Python</h3>
 <p>Hasta 2019, NVDA y los complementos estaban escritos principalmente en Python 2, específicamente 2.7. A partir de julio de 2019, NVDA ha sido migrado a Python 3.7, con algunos desarrolladores de complementos modificando su código fuente para que se ejecute en Python 2 y 3. Con la publicación de NVDA 2019.3 en febrero de 2020, la transición a Python 3 se dio por completada. Asegúrate de estar atento al desarrollo de NVDA y a las listas de correo de complementos, así como a la documentación de desarrollo relevante y a los avisos relacionados con las noticias sobre Python 3 y NVDA. Para más información sobre las diferencias entre Python 2 y 3, consulta el apéndice E.</p>
 <p>Esta guía usará estrictamente código de Python 3.</p>
+<h3 id="nota-especial-sobre-la-compatibilidad-hacia-atras-de-nvda">Nota especial sobre la compatibilidad hacia atrás de NVDA</h3>
+<p>Para modernizar el código fuente de NVDA y reaccionar a los cambios del uso que se hace del lector de pantalla, NV Access adoptó una política anual de compatibilidad hacia atrás en 2020. Para cada año del calendario, se designa la primera versión principal (año.1) como versión "incompatible hacia atrás", en la que se incorporan cambios que afectarán a los complementos. Se incluyen cambios en los nombres de funciones y clases, así como la eliminación de código obsoleto. Como estos cambios afectarán a muchos complementos, los desarrolladores de complementos deben probar su compatibilidad tan pronto como se libere la primera beta de la versión principal de NVDA incompatible hacia atrás.</p>
+<p>Lista de versiones de NVDA incompatibles hacia atrás y cambios destacables:</p>
+<ul>
+<li>2019.3: Python 3</li>
+<li>2021.1: actualización de dependencias</li>
+<li>2022.1: refactorización de tipos de controles</li>
+</ul>
+<p>A menos que se indique lo contrario, esta guía asumirá la versión de NVDA más reciente incompatible hacia atrás al proporcionar ejemplos de código (a fecha de agosto de 2021, se asume 2021.1). Se documentarán las excepciones en los sitios adecuados.</p>
 <h3 id="una-nota-especial-para-creadores-de-scripts-de-otros-lectores-de-pantalla">Una nota especial para creadores de scripts de otros lectores de pantalla</h3>
 <p>Algunos de los conceptos descritos en este documento son los mismos para diferentes lectores de pantalla, tales como objetos, ventanas, eventos, APIs de accesibilidad y así sucesivamente. Sin embargo, hay cosas importantes que hay que tener en cuenta al escribir o portar scripts:</p>
 <ul>
@@ -223,6 +234,21 @@ Por favor, cuéntanos tus experiencias con la traducción, y haremos lo posible 
 <li>Debes almacenar el código que estaba previamente alojado en la lista anterior de subcarpetas dentro de los directorios correspondientes de la carpeta scratchpad.</li>
 <li>Si necesitas usar NVDA 2018.4 y quisieras utilizar código personalizado, no elimines las subcarpetas del directorio de configuración de usuario. En cualquier otro caso, elimina las carpetas que se mencionan en el elemento 1 de esta lista.</li>
 </ol>
+<h3 id="nota-muy-importante-sobre-los-cambios-del-modulo-controltypes-en-nvda-20212">Nota muy importante sobre los cambios del módulo controlTypes en NVDA 2021.2</h3>
+<p>NVDA 2021.2 introduce la refactorización de tipos de controles, que cambia cómo se indican los roles y estados de los controles. En versiones de NVDA más antiguas, los roles de controles se escriben como controlTypes.ROLE_<em>, y los estados se escriben como controlTypes.STATE_</em>. Con la refactorización de tipos de controles, se deben escribir los roles y los estados como controlTypes.Role.<em> y controlTypes.State.</em>, respectivamente. Por ejemplo:</p>
+<ul>
+<li>Rol de texto editable:<ul>
+<li>2021.1 y anteriores: controlTypes.ROLE_EDITABLETEXT</li>
+<li>2021.2 y posteriores: controlTypes.Role.EDITABLETEXT</li>
+</ul>
+</li>
+<li>Estado verificable:<ul>
+<li>2021.1 y anteriores: controlTypes.STATE_CHECKABLE</li>
+<li>2021.2 y posteriores: controlTypes.State.CHECKABLE</li>
+</ul>
+</li>
+</ul>
+<p>La forma anterior de indicar roles y estados de controles se eliminará en NVDA 2022.1. A menos que se indique lo contrario, esta guía empleará el nuevo estilo.</p>
 <h2 id="conceptos-basicos-sobre-complementos">Conceptos básicos sobre complementos</h2>
 <h3 id="que-son-los-complementos">¿Qué son los Complementos?</h3>
 <p>Los complementos son pequeños programas adicionales que extienden la funcionalidad de NVDA o su soporte para aplicaciones. Esto puede incluir la adición de características globales, la mejora 
@@ -499,7 +525,6 @@ class AppModule(appModuleHandler.AppModule):
 <h4 id="ejemplo-1-estoy-en-la-aplicacion-correcta-donde-se-encuentra-el-foco">Ejemplo 1: ¿Estoy en la aplicación correcta donde se encuentra el foco?</h4>
 <p>El siguiente código verifica si el navegador de objetos e encuentra en algún lugar de la misma aplicación o no.</p>
 <pre><code class="python">import api
-import ui
 
 def sameApp(obj=None):
     if obj is None:
@@ -621,10 +646,10 @@ class AppModule(appModuleHandler.AppModule):
 <p>En este código, el método <code>fg.children[index]</code> se utiliza para recuperar al hijo con el índice dado (aquí, ya dijimos que la barra de herramientas es el último hijo, el índice sería menos 1, o el último hijo; podríamos haber utilizado fg.lastChild). Alternativamente, puedes utilizar `fg.getChild (-1) en ciertas situaciones (IAccesible, por ejemplo).</p>
 <p>Sin embargo, este código tiene un problema: ¿y si el valor del deslizador está en realidad dentro del primer elemento secundario del control deslizador real? Una forma de solucionar este problema es comprobar el rol del objeto. El código modificado quedaría así:</p>
 <pre><code class="python">    def getSliderValue(self):
-        from controlTypes import ROLE_SLIDER # es posible importar desde dentro de un método.
+        from controlTypes import Role # es posible importar desde dentro de un método.
         fg = api.getForegroundObject()
         slider = fg.lastChild
-        if slider.role == ROLE_SLIDER: return slider.firstChild.value
+        if slider.role == Role.SLIDER: return slider.firstChild.value
 </code></pre>
 
 <p>Así, cuando estemos seguros de que estamos tratando con el control deslizador, el método devuelve el valor del primer hijo del deslizador (Si ese es el caso). Presta atención a los dos signos de igual para la comparación de igualdad, en lugar de sólo uno que es el signo igual para la asignación.</p>
@@ -640,7 +665,7 @@ class AppModule(appModuleHandler.AppModule):
 <p>A veces, no es suficiente con trabajar con el comportamiento predeterminado de un control. Por ejemplo, algunas partes de un programa pueden necesitar gestos personalizados, o puede que uno tenga que cambiar el rol de una ventana a la de un botón.</p>
 <p>NVDA proporciona dos métodos para crear objetos especiales o superpuestos (o clases), cada uno adaptado para diferentes necesidades:</p>
 <ul>
-<li><code>event_NVDAObject_init(self, objeto con el que trabajamos)</code>: Si deseas sobreescribir ciertos atributos de un control, como su rol o la etiqueta(nombre), puedes utilizar este método para pedirle a NVDA que tome en cuenta tu"entrada" cuando se encuentran los objetos por primera vez (o inicializados). Por ejemplo, si el control tiene el nombre de clase de ventana TForm (visto en muchas aplicaciones Delphi), puedes pedir a NVDA que trate a este control como una ventana estándar asignando obj.role = ROLE_WINDOW (ver diccionario tipos de control para lista de roles disponibles).</li>
+<li><code>event_NVDAObject_init(self, objeto con el que trabajamos)</code>: Si deseas sobreescribir ciertos atributos de un control, como su rol o la etiqueta(nombre), puedes utilizar este método para pedirle a NVDA que tome en cuenta tu"entrada" cuando se encuentran los objetos por primera vez (o inicializados). Por ejemplo, si el control tiene el nombre de clase de ventana TForm (visto en muchas aplicaciones Delphi), puedes pedir a NVDA que trate a este control como una ventana estándar asignando obj.role = controlTypes.Role.WINDOW (ver módulo controlTypes para lista de roles disponibles).</li>
 <li><code>chooseNVDAObjectOverlayClasses(self, object, lista de clases)</code>: Esto permite a NVDA que utilices tu propia lógica al tratar con ciertos objetos. Por ejemplo, esto es útil si deseas asignar gestos personalizados para determinadas partes de un programa en tu módulo de aplicación (De hecho, muchos módulos de aplicación crean objetos para tratar con determinadas partes de un programa, luego usan chooseNVDAObjectOverlayClasses para seleccionar el objeto correcto cuando se cumplan ciertas condiciones). Estos objetos personalizados se deben basar en un objeto sólido con el que deseamos trabajar (la mayoría de las veces IAccessible es suficiente, por lo tanto los demás objetos superppuestos heredan de, o son los hijos o clases especializadas de los objetos IAccessible). En ciertas situaciones, puedes deshacerte de una propiedad de un objeto usando este método, por ejemplo diciendo a NVDA que no trate a una barra de progreso como tal, eliminando el comportamiento de barra de progreso del objeto en cuestión.</li>
 </ul>
 <p>Ten en cuenta que en el caso del segundo método, la clase(s) con el nombre dado debe estar presente en el fichero, que es/son heredados de un objeto base conocido (en Python, la sintaxis para la herencia es <code>claseHija(claseBase)</code>, y es por lo general leída como, "esta clase hija hereda de esta clase base". Veremos un código como éste más tarde).</p>
@@ -648,10 +673,10 @@ class AppModule(appModuleHandler.AppModule):
 <p>A continuación los ejemplos que ilustran el uso de los dos métodos de modificación de sobreescritura y de atributos que hemos comentado anteriormente:</p>
 <p>Un ejemplo del primer caso: la modificación de un atributo.</p>
 <pre><code class="python">    # Reasignar algunos formularios Delphi como ventana.
-    from controlTypes import ROLE_WINDOW
+    import controlTypes
 
     def event_NVDAObject_init(self, obj):
-        if obj.windowClassName == &quot;TForm&quot;: obj.role = ROLE_WINDOW
+        if obj.windowClassName == &quot;TForm&quot;: obj.role = controlTypes.Role.WINDOW
 </code></pre>
 
 <p>Esto significa que cada vez que nos encontremos con una ventana con la clase llamada "TForm", NVDA la tratará como una ventana normal.</p>
@@ -1538,9 +1563,9 @@ class AppModule(appModuleHandler.AppModule):
 <td></td>
 </tr>
 <tr>
-<td>Anunciar si el estado cambia si y sólo si el siguiente objeto es la barra de herramientas que estoy buscando.</td>
-<td>In event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute = loqueestoybuscando y condiciones adicionales ...: instrucciones</td>
-<td>Para una mejor legibilidad, coloca cada declaración en líneas separadas con indentaciones correctas.</td>
+<td>Anunciar cambios de estado si y sólo si el siguiente objeto es la barra de herramientas que estoy buscando.</td>
+<td>En event_stateChange(self): toolbar = obj.next; if toolbar.role == controlTypes.Role.TOOLBAR and toolbar.attribute = loqueestoybuscando y condiciones adicionales ...: instrucciones</td>
+<td>Para una mejor legibilidad, coloca cada declaración en líneas separadas aplicando indentaciones correctas.</td>
 </tr>
 <tr>
 <td>Anunciar el nombre de un objeto en pantalla (siempre que se pueda utilizar la navegación por objeto)</td>
@@ -1549,8 +1574,8 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>Comprueba si el rol del objeto es el que deseas</td>
-<td>obj.role == controlTypes.ROLE_*</td>
-<td>ROLE_* puede ser cualquier rol que estés buscando.</td>
+<td>obj.role == controlTypes.Role.*</td>
+<td>Role.* puede ser cualquier rol que estés buscando.</td>
 </tr>
 <tr>
 <td>Búsqueda de un texto específico en el nombre del objeto</td>
@@ -1569,7 +1594,7 @@ class AppModule(appModuleHandler.AppModule):
 </tr>
 <tr>
 <td>Es una casilla marcada</td>
-<td>controlTypes.STATE_CHECKED in obj.states</td>
+<td>controlTypes.State.CHECKED in obj.states</td>
 <td>obj.states es un conjunto. En primer lugar, verifica que el rol es de una casilla de verificación.</td>
 </tr>
 <tr>

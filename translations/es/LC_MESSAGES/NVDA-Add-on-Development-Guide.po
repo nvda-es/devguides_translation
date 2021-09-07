@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-04 17:28+0200\n"
-"PO-Revision-Date: 2021-09-04 17:29+0200\n"
+"PO-Revision-Date: 2021-09-07 14:22+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -206,10 +206,8 @@ msgid "# NVDA Add-on Development Guide"
 msgstr "# Guía de Desarrollo de Complementos de NVDA"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:34
-#, fuzzy
-#| msgid "Latest version: January 2021 for NVDA 2020.4"
 msgid "Latest version: August 2021 for NVDA 2021.2"
-msgstr "Última versión: enero de 2021 para NVDA 2020.4"
+msgstr "Última versión: agosto de 2021 para NVDA 2021.2"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:35
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:149
@@ -261,16 +259,12 @@ msgstr ""
 "version-de-python)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:44
-#, fuzzy
-#| msgid ""
-#| "    - [Special note on Python version](#user-content-special-note-on-"
-#| "python-version)"
 msgid ""
 "    - [Special note on NVDA backward compatibility](#user-content-special-"
 "note-on-nvda-backward-compatibility)"
 msgstr ""
-"    - [Nota especial sobre la versión de Python](#nota-especial-sobre-la-"
-"version-de-python)"
+"    - [Nota especial sobre la compatibilidad hacia atrás de NVDA](#nota-"
+"especial-sobre-la-compatibilidad-hacia-atras-de-nvda)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:45
 msgid ""
@@ -300,17 +294,14 @@ msgstr ""
 "de-codigo-personalizado-de-extension-a-development-scratchpad)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:48
-#, fuzzy
-#| msgid ""
-#| "    - [A special note about Windows Store version of NVDA](#user-content-"
-#| "a-special-note-about-windows-store-version-of-nvda)"
 msgid ""
 "    - [A very important note about control types module changes in NVDA "
 "2021.2](#user-content-a-very-important-note-about-control-types-changes-in-"
 "nvda-2021.2)"
 msgstr ""
-"    - [Nota especial sobre la versión de NVDA para la tienda de Windows]"
-"(#nota-especial-sobre-la-version-de-nvda-para-la-tienda-de-windows)"
+"    - [Nota muy importante sobre los cambios del módulo controlTypes en NVDA "
+"2021.2](#nota-muy-importante-sobre-los-cambios-del-modulo-controltypes-en-"
+"nvda-20212)"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:49
 msgid "- [Add-on Basics](#user-content-add-on-basics)"
@@ -1138,7 +1129,7 @@ msgstr "Esta guía usará estrictamente código de Python 3."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:170
 msgid "### Special note on NVDA backward compatibility"
-msgstr ""
+msgstr "### Nota especial sobre la compatibilidad hacia atrás de NVDA"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:171
 msgid ""
@@ -1151,22 +1142,33 @@ msgid ""
 "ons, developers must test their add-ons for compatibility once the first "
 "beta of the backwards incompatible version of NVDA is released."
 msgstr ""
+"Para modernizar el código fuente de NVDA y reaccionar a los cambios del uso "
+"que se hace del lector de pantalla, NV Access adoptó una política anual de "
+"compatibilidad hacia atrás en 2020. Para cada año del calendario, se designa "
+"la primera versión principal (año.1) como versión \"incompatible hacia atrás"
+"\", en la que se incorporan cambios que afectarán a los complementos. Se "
+"incluyen cambios en los nombres de funciones y clases, así como la "
+"eliminación de código obsoleto. Como estos cambios afectarán a muchos "
+"complementos, los desarrolladores de complementos deben probar su "
+"compatibilidad tan pronto como se libere la primera beta de la versión "
+"principal de NVDA incompatible hacia atrás."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:172
 msgid "List of backwards incompatible NVDA releases and their highlights:"
 msgstr ""
+"Lista de versiones de NVDA incompatibles hacia atrás y cambios destacables:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:173
 msgid "* 2019.3: Python 3"
-msgstr ""
+msgstr "* 2019.3: Python 3"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:174
 msgid "* 2021.1: dependency updates"
-msgstr ""
+msgstr "* 2021.1: actualización de dependencias"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:175
 msgid "* 2022.1: control types refactor"
-msgstr ""
+msgstr "* 2022.1: refactorización de tipos de controles"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:176
 msgid ""
@@ -1174,6 +1176,10 @@ msgid ""
 "incompatible NVDA when giving code examples (as of August 2021, 2021.1 is "
 "assumed). Exceptions will be documented in appropriate places."
 msgstr ""
+"A menos que se indique lo contrario, esta guía asumirá la versión de NVDA "
+"más reciente incompatible hacia atrás al proporcionar ejemplos de código (a "
+"fecha de agosto de 2021, se asume 2021.1). Se documentarán las excepciones "
+"en los sitios adecuados."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:177
 msgid "### A special note for scripters of other screen readers"
@@ -1375,6 +1381,8 @@ msgstr ""
 msgid ""
 "### A very important note about control types module changes in NVDA 2021.2"
 msgstr ""
+"### Nota muy importante sobre los cambios del módulo controlTypes en NVDA "
+"2021.2"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:198
 msgid ""
@@ -1384,36 +1392,45 @@ msgid ""
 "control types refactor, roles and states must be written as controlTypes."
 "Role.* and controlTypes.State.*, respectively. For example:"
 msgstr ""
+"NVDA 2021.2 introduce la refactorización de tipos de controles, que cambia "
+"cómo se indican los roles y estados de los controles. En versiones de NVDA "
+"más antiguas, los roles de controles se escriben como controlTypes.ROLE_*, y "
+"los estados se escriben como controlTypes.STATE_*. Con la refactorización de "
+"tipos de controles, se deben escribir los roles y los estados como "
+"controlTypes.Role.* y controlTypes.State.*, respectivamente. Por ejemplo:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:199
 msgid "* Editable text role:"
-msgstr ""
+msgstr "* Rol de texto editable:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:200
 msgid "    * 2021.1 and earlier: controlTypes.ROLE_EDITABLETEXT"
-msgstr ""
+msgstr "    * 2021.1 y anteriores: controlTypes.ROLE_EDITABLETEXT"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:201
 msgid "    * 2021.2 and later: controlTypes.Role.EDITABLETEXT"
-msgstr ""
+msgstr "    * 2021.2 y posteriores: controlTypes.Role.EDITABLETEXT"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:202
 msgid "* Checkable state:"
-msgstr ""
+msgstr "* Estado verificable:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:203
 msgid "    * 2021.1 and earlier: controlTypes.STATE_CHECKABLE"
-msgstr ""
+msgstr "    * 2021.1 y anteriores: controlTypes.STATE_CHECKABLE"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:204
 msgid "    * 2021.2 and later: controlTypes.State.CHECKABLE"
-msgstr ""
+msgstr "    * 2021.2 y posteriores: controlTypes.State.CHECKABLE"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:205
 msgid ""
 "The older way of specifying control roles and states will be removed in NVDA "
 "2022.1. Unless otherwise stated, this guide will use the newer style."
 msgstr ""
+"La forma anterior de indicar roles y estados de controles se eliminará en "
+"NVDA 2022.1. A menos que se indique lo contrario, esta guía empleará el "
+"nuevo estilo."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:206
 msgid "## Add-on Basics"
@@ -3900,26 +3917,20 @@ msgstr ""
 "del objeto. El código modificado quedaría así:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:526
-#, fuzzy
-#| msgid ""
-#| "\t\tfrom controlTypes import ROLE_SLIDER # It is possible to import from "
-#| "within a method."
 msgid ""
 "\t\tfrom controlTypes import Role # It is possible to import from within a "
 "method."
 msgstr ""
-"\t\tfrom controlTypes import ROLE_SLIDER # es posible importar desde dentro "
-"de un método."
+"\t\tfrom controlTypes import Role # es posible importar desde dentro de un "
+"método."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:528
 msgid "\t\tslider = fg.lastChild"
 msgstr "\t\tslider = fg.lastChild"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:529
-#, fuzzy
-#| msgid "\t\tif slider.role == ROLE_SLIDER: return slider.firstChild.value"
 msgid "\t\tif slider.role == Role.SLIDER: return slider.firstChild.value"
-msgstr "\t\tif slider.role == ROLE_SLIDER: return slider.firstChild.value"
+msgstr "\t\tif slider.role == Role.SLIDER: return slider.firstChild.value"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:531
 msgid ""
@@ -3999,16 +4010,6 @@ msgstr ""
 "clases), cada uno adaptado para diferentes necesidades:"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:541
-#, fuzzy
-#| msgid ""
-#| "* `event_NVDAObject_init(self, object we're dealing with)`: If you wish "
-#| "to override certain attributes of a control such as its role or label "
-#| "(name), you can use this method to ask NVDA to take your \"input\" into "
-#| "account when meeting objects for the first time (or initialized). For "
-#| "instance, if the control has the window class name of TForm (seen on many "
-#| "Delphi applications), you can ask NVDA to treat this control as a "
-#| "standard window by assigning obj.role = ROLE_WINDOW (see control types "
-#| "dictionary for list of available roles)."
 msgid ""
 "* `event_NVDAObject_init(self, object we're dealing with)`: If you wish to "
 "override certain attributes of a control such as its role or label (name), "
@@ -4026,7 +4027,7 @@ msgstr ""
 "inicializados). Por ejemplo, si el control tiene el nombre de clase de "
 "ventana TForm (visto en muchas aplicaciones Delphi), puedes pedir a NVDA que "
 "trate a este control como una ventana estándar asignando obj.role = "
-"ROLE_WINDOW (ver diccionario tipos de control para lista de roles "
+"controlTypes.Role.WINDOW (ver módulo controlTypes para lista de roles "
 "disponibles)."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:542
@@ -4095,21 +4096,18 @@ msgid "\t# Reassign some Delphi forms as window."
 msgstr "\t# Reasignar algunos formularios Delphi como ventana."
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:549
-#, fuzzy
-#| msgid "import tones"
 msgid "\timport controlTypes"
-msgstr "import tones"
+msgstr "\timport controlTypes"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:550
 msgid "\tdef event_NVDAObject_init(self, obj):"
 msgstr "\tdef event_NVDAObject_init(self, obj):"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:551
-#, fuzzy
-#| msgid "\t\tif obj.windowClassName == \"TForm\": obj.role = ROLE_WINDOW"
 msgid ""
 "\t\tif obj.windowClassName == \"TForm\": obj.role = controlTypes.Role.WINDOW"
-msgstr "\t\tif obj.windowClassName == \"TForm\": obj.role = ROLE_WINDOW"
+msgstr ""
+"\t\tif obj.windowClassName == \"TForm\": obj.role = controlTypes.Role.WINDOW"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:553
 msgid ""
@@ -8253,14 +8251,6 @@ msgstr ""
 "obj.name += \" \" + obj.previous.description | |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1177
-#, fuzzy
-#| msgid ""
-#| "| Announce state changes if and only if the next object is the toolbar "
-#| "I'm looking for | In event_stateChange(self): toolbar = obj.next; if "
-#| "toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute = "
-#| "whatYouAreLookingFor and additional conditions ...: statement | For "
-#| "better readability, place each statement on separate lines with correct "
-#| "indents applied. |"
 msgid ""
 "| Announce state changes if and only if the next object is the toolbar I'm "
 "looking for | In event_stateChange(self): toolbar = obj.next; if toolbar."
@@ -8269,11 +8259,11 @@ msgid ""
 "readability, place each statement on separate lines with correct indents "
 "applied. |"
 msgstr ""
-"| Anunciar si el estado cambia si y sólo si el siguiente objeto es la barra "
-"de herramientas que estoy buscando. | In event_stateChange(self): toolbar = "
-"obj.next; if toolbar.role == controlTypes.ROLE_TOOLBAR and toolbar.attribute "
-"= loqueestoybuscando y condiciones adicionales ...: instrucciones | Para una "
-"mejor legibilidad, coloca cada declaración en líneas separadas con "
+"| Anunciar cambios de estado si y sólo si el siguiente objeto es la barra de "
+"herramientas que estoy buscando. | En event_stateChange(self): toolbar = obj."
+"next; if toolbar.role == controlTypes.Role.TOOLBAR and toolbar.attribute = "
+"loqueestoybuscando y condiciones adicionales ...: instrucciones | Para una "
+"mejor legibilidad, coloca cada declaración en líneas separadas aplicando "
 "indentaciones correctas. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1178
@@ -8292,16 +8282,12 @@ msgstr ""
 "sucesivamente. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1179
-#, fuzzy
-#| msgid ""
-#| "| Check if the object's role is what you want | obj.role == controlTypes."
-#| "ROLE_* | ROLE_* can be any role you are looking for. |"
 msgid ""
 "| Check if the object's role is what you want | obj.role == controlTypes."
 "Role.* | Role.* can be any role you are looking for. |"
 msgstr ""
 "| Comprueba si el rol del objeto es el que deseas | obj.role == controlTypes."
-"ROLE_* | ROLE_* puede ser cualquier rol que estés buscando. |"
+"Role.* | Role.* puede ser cualquier rol que estés buscando. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1180
 msgid ""
@@ -8328,15 +8314,11 @@ msgstr ""
 "value) | Esto funciona si se puede encontrar el valor del campo. |"
 
 #: ..\python_docs\NVDA-Add-on-Development-Guide.py:1183
-#, fuzzy
-#| msgid ""
-#| "| Is a checkbox checked | controlTypes.STATE_CHECKED in obj.states | obj."
-#| "states is a set. First, verify that the role is a checkbox. |"
 msgid ""
 "| Is a checkbox checked | controlTypes.State.CHECKED in obj.states | obj."
 "states is a set. First, verify that the role is a checkbox. |"
 msgstr ""
-"| Es una casilla marcada | controlTypes.STATE_CHECKED in obj.states | obj."
+"| Es una casilla marcada | controlTypes.State.CHECKED in obj.states | obj."
 "states es un conjunto. En primer lugar, verifica que el rol es de una "
 "casilla de verificación. |"
 
