@@ -1,13 +1,13 @@
 <!doctype html>
  <html lang="es">
  <head>
-  <title># Guía del desarrollador de NVDA 2020.4</title>
+  <title># Guía del desarrollador de NVDA 2021.1</title>
   <meta charset="utf-8">
   </head>
   <body>
-  <header><h1># Guía del desarrollador de NVDA 2020.4</h1></header>
-  <h1 id="guia-del-desarrollador-de-nvda-20204">Guía del desarrollador de NVDA 2020.4</h1>
-<h2 id="tabla-de-contenidos">Tabla de contenidos</h2>
+  <header><h1># Guía del desarrollador de NVDA 2021.1</h1></header>
+  <h1 id="guia-del-desarrollador-de-nvda-20211">Guía del desarrollador de NVDA 2021.1</h1>
+<h2 id="indice">Índice</h2>
 <ul>
 <li>1. Introducción<ul>
 <li>1.1. Una nota sobre Python</li>
@@ -46,13 +46,15 @@
 <li>4.1. Nombres de fichero no ASCII en archivos Zip</li>
 <li>4.2. Archivos de manifiesto</li>
 <li>4.2.1. Campos disponibles</li>
-<li>4.3. Código opcional de instalación y desinstalación</li>
-<li>4.3.1. La función onInstall</li>
-<li>4.3.2. La función onUninstall</li>
-<li>4.4. Traducción de complementos</li>
-<li>4.4.1. Archivos de manifiesto específicos del idioma</li>
-<li>4.4.2. Mensajes específicos del idioma</li>
-<li>4.5. Documentación del complemento</li>
+<li>4.2.2. Ejemplo de archivo de manifiesto</li>
+<li>4.3. Extensiones y controladores</li>
+<li>4.4. Código opcional de instalación y desinstalación</li>
+<li>4.4.1. La función onInstall</li>
+<li>4.4.2. La función onUninstall</li>
+<li>4.5. Traducción de complementos</li>
+<li>4.5.1. Archivos de manifiesto específicos del idioma</li>
+<li>4.5.2. Mensajes específicos del idioma</li>
+<li>4.6. Documentación del complemento</li>
 </ul>
 </li>
 <li>5. La consola Python de NVDA<ul>
@@ -352,7 +354,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>Órdenes globales (órdenes incorporadas como salir de NVDA, órdenes de navegación por objetos, etc.) </li>
 </ul>
 <h4 id="3101-definicion-de-propiedades-de-los-scripts">3.10.1. Definición de propiedades de los scripts</h4>
-<p>En NVDA 2018.3 y versiones posteriores, la forma recomendada de establecer las propiedades de un script se conoce como el decorador de scripts. En resumen, un decorador es una función que modifica el comportamiento de otra función concreta. El decorador de script modifica el script de tal manera que se asocie adecuadamente a los gestos deseados. Además, garantiza que el script se liste con la descripción especificada, y se incluya bajo la categoría deseada en el diálogo Gestos de entrada. </p>
+<p>En NVDA 2018.3 y versiones posteriores, la forma recomendada de establecer las propiedades de un script se conoce como el decorador de scripts. En resumen, un decorador es una función que modifica el comportamiento de otra función o método concretos. El decorador de script modifica el script de tal manera que se asocie adecuadamente a los gestos deseados. Además, garantiza que el script se liste con la descripción especificada, y se incluya bajo la categoría deseada en el diálogo Gestos de entrada. </p>
 <p>Para que puedas usar el decorador de scripts, deberás importarlo desde el módulo scriptHandler. </p>
 <pre><code>from scriptHandler import script
 </code></pre>
@@ -384,9 +386,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 <li>gestures: una lista de cadenas con varios gestos asociados a este script, por ejemplo ["kb:NVDA+shift+r", "kb:NVDA+alt+t"]. Cuando se especifican tanto gesture como gestures, se combinan. Cualquier elemento de gesture o gestures se puede usar para activar el script. </li>
 <li>canPropagate: un booleano que indica si este script debería aplicarse también a los antecesores del objeto con el foco. Por ejemplo, se puede usar cuando quieres especificar un script en particular para un objeto en primer plano, o en cualquier objeto en la ascendencia del foco que no sea el objeto actualmente enfocado. Esta opción es por defecto False. </li>
 <li>bypassInputHelp: un booleano que indica si este script debería ejecutarse con el modo de ayuda de entrada activado. Por defecto esta opción es False. </li>
+<li>allowInSleepMode: Un booleano que indica si este script debería funcionar con el modo silencioso activado. El valor predeterminado de esta opción es False. </li>
 <li>resumeSayAllMode: el modo verbalizar todo que debería reanudarse si estaba activo antes de ejecutar este script. Las constantes del modo verbalizar todo llevan el prefijo CURSOR_ y se especifican en el módulo sayAllHandler. Si no se especifica resumeSayAllMode, verbalizar todo no se reanuda tras ejecutar este script. </li>
 </ul>
-<p>Aunque el decorador script hace mucho más fácil el proceso de definición de scripts, hay más formas de asociar scripts y establecer sus propiedades. Por ejemplo, se puede definir como variable de clase un diccionario Python llamado "__gestures" en un módulo de aplicación, extensión global u objeto NVDA. Este diccionario debería contener cadenas con identificadores de gestos apuntando al nombre del script solicitado, sin el prefijo "script_". También se puede especificar una descripción para el script en la cadena de documentación (docstring) de la función. Además, una forma alternativa de especificar la categoría del script es crear un atributo "category" en la función del script que contenga una cadena con el nombre de la categoría. </p>
+<p>Aunque el decorador script hace mucho más fácil el proceso de definición de scripts, hay más formas de asociar scripts y establecer sus propiedades. Por ejemplo, se puede definir como variable de clase un diccionario Python especial llamado "__gestures" en un módulo de aplicación, extensión global u objeto NVDA. Este diccionario debería contener cadenas con identificadores de gestos apuntando al nombre del script solicitado, sin el prefijo "script_". También se puede especificar una descripción para el script en el atributo "<em>doc</em>" del método. Sin embargo, procura no incluir una cadena de documentación en línea como comienzo del método si no configuras el atributo "<em>doc</em>", ya que la descripción renderizada no sería traducible. El decorador script no padece esta limitación, por lo que se recomienda que uses cadenas de documentación en línea según sea necesario cuando lo emplees. Además, una forma alternativa de especificar la categoría del script es crear un atributo "category" en la función del script que contenga una cadena con el nombre de la categoría. </p>
 <h3 id="311-ejemplo-4-una-extension-global-para-encontrar-la-clase-de-la-ventana-y-el-identificador-del-control">3.11. Ejemplo 4: una extensión global para encontrar la clase de la ventana y el identificador del control</h3>
 <p>La siguiente extensión global te permite pulsar NVDA+flecha izquierda para verbalizar la clase de ventana del objeto con el foco; y NVDA+flecha derecha para anunciar el identificador de ventana del control actual con el foco. Este ejemplo te muestra cómo definir uno o más scripts y asociaciones de gestos en una clase tal como un módulo de aplicación, extensión global u objeto de NVDA. </p>
 <p>Copia el código entre (pero sin incluir) los marcadores de inicio y fin en un nuevo archivo de texto con el nombre example3.py, y guárdalo en el subdirectorio globalPlugins. Ten mucho cuidado para mantener todos los tabuladores y espacios intactos. </p>
@@ -618,61 +621,63 @@ class AppModule(appModuleHandler.AppModule):
 <li>por ejemplo "2019.1.1" </li>
 <li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
 <li>Por defecto es "0.0.0" </li>
-<li>Debe ser inferior o igual a `lastTestedNVDAVersion` </li>
+<li>Debe ser inferior o igual a <code>lastTestedNVDAVersion</code></li>
 </ul>
 </li>
 <li>lastTestedNVDAVersion (cadena): la última versión de NVDA con la que se ha probado el complemento. <ul>
 <li>por ejemplo "2019.1.0" </li>
 <li>debe ser una cadena de versión en tres partes, es decir año.mayor.menor, o una cadena de versión en dos partes siguiendo el esquema año.mayor. En el segundo caso, menor se pone por defecto a 0. </li>
 <li>Por defecto es "0.0.0" </li>
-<li>Debe ser mayor o igual a `minimumNVDAVersion` - </li>
+<li>Debe ser mayor o igual a <code>minimumNVDAVersion</code> </li>
 </ul>
 </li>
 </ul>
 <p>Todos los valores de cadena deben encerrarse entre comillas, como se muestra en el ejemplo de más abajo. </p>
 <p>El campo lastTestedNVDAVersion en particular se usa para asegurar que los usuarios pueden confiar a la hora de instalar un complemento. Permite que el autor asegure que el complemento no causará inestabilidad o dañará el sistema del usuario. Cuando no se proporcione o sea menor que la versión actual de NVDA (ignorando actualizaciones menores como 2018.3.1), el usuario recibirá una advertencia indicando que no instale el complemento. </p>
-<h3 id="un-ejemplo-de-archivo-de-manifiesto">Un ejemplo de archivo de manifiesto</h3>
-<pre><code>    --- inicio ---
+<h4 id="422-ejemplo-de-archivo-de-manifiesto">4.2.2. Ejemplo de archivo de manifiesto</h4>
+<pre><code>--- inicio ---
 
-    name = "myTestAddon"
+name = "myTestAddon"
 
-    summary = "Cool Test Add-on"
+summary = "Cool Test Add-on"
 
-    version = "1.0"
+version = "1.0"
 
-    description = "An example add-on showing how to create add-ons!"
+description = "An example add-on showing how to create add-ons!"
 
-    author = "Michael Curran &lt;mick@kulgan.net&gt;"
+author = "Michael Curran &lt;mick@kulgan.net&gt;"
 
-    url = "http://www.nvda-project.org/wiki/Development"
+url = "http://www.nvda-project.org/wiki/Development"
 
-    docFileName = "readme.html"
+docFileName = "readme.html"
 
-    minimumNVDAVersion = "2018.1.0"
+minimumNVDAVersion = "2018.1.0"
 
-    lastTestedNVDAVersion = "2019.1.0"
+lastTestedNVDAVersion = "2019.1.0"
 
-    --- fin ---
+--- fin ---
 </code></pre>
-<h2 id="extensiones-y-controladores">Extensiones y controladores</h2>
-<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: 
-  * Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. 
-  * Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. 
-  * Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. 
-  * Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </p>
-<h3 id="43-codigo-opcional-de-instalacion-y-desinstalacion">4.3. Código opcional de instalación y desinstalación</h3>
+<h3 id="43-extensiones-y-controladores">4.3. Extensiones y controladores</h3>
+<p>Se pueden incluir las siguientes extensiones y controladores en un complemento: </p>
+<ul>
+<li>Módulos de aplicación: sitúalos en una carpeta appModules en tu archivo. </li>
+<li>Controladores de pantallas braille: sitúalos en una carpeta brailleDisplayDrivers en tu archivo. </li>
+<li>Extensiones globales: sitúalas en una carpeta globalPlugins en tu archivo. </li>
+<li>Controladores de sintetizador: sitúalos en una carpeta synthDrivers en tu archivo. </li>
+</ul>
+<h3 id="44-codigo-opcional-de-instalacion-y-desinstalacion">4.4. Código opcional de instalación y desinstalación</h3>
 <p>Si necesitas ejecutar código según se instala o desinstala el complemento de NVDA (por ejemplo para validar información de la licencia o copiar archivos a una ubicación personalizada), puedes proporcionar un fichero Python llamado installTasks.py en el archivo que contiene funciones especiales a las que NVDA llamará mientras instala o desinstala el complemento. Este fichero debería evitar cargar cualquier módulo que no sea absolutamente necesario, especialmente extensiones Python para C o DLLS del complemento, ya que esto podría causar que la posterior desinstalación del complemento falle. Sin embargo, si esto pasa, se renombrará el directorio del complemento y se eliminará tras el siguiente reinicio de NVDA. Finalmente, no debería depender de la existencia o estado de otros complementos, ya que podrían no estar instalados, haber sido eliminados o estar todavía sin inicializar. </p>
-<h4 id="431-la-funcion-oninstall">4.3.1. La función onInstall</h4>
+<h4 id="441-la-funcion-oninstall">4.4.1. La función onInstall</h4>
 <p>NVDA buscará y ejecutará una función onInstall en installTasks.py después de que termine de extraer el complemento en NVDA. Ten en cuenta que aunque el complemento haya sido extraído en ese momento, su directorio tendrá el sufijo .pendingInstall hasta que NVDA se reinicie, el directorio sea renombrado y el complemento realmente cargado por primera vez. Si esta función eleva una excepción, la instalación del complemento fallará y su directorio será eliminado. </p>
-<h4 id="432-la-funcion-onuninstall">4.3.2. La función onUninstall</h4>
+<h4 id="442-la-funcion-onuninstall">4.4.2. La función onUninstall</h4>
 <p>NVDA buscará y ejecutará una función onUninstall en installTasks.py cuando se reinicie después de que el usuario haya elegido eliminar el complemento. Después de que esta función complete su ejecución, se eliminará automáticamente el directorio del complemento. Como esto pasa en la inicialización de NVDA antes de que se carguen otros componentes, esta función no puede solicitar entrada del usuario. </p>
-<h3 id="44-traduccion-de-complementos">4.4. Traducción de complementos</h3>
+<h3 id="45-traduccion-de-complementos">4.5. Traducción de complementos</h3>
 <p>Es posible proporcionar información y mensajes específicos del idioma para tu complemento. La información traducida puede almacenarse en un directorio locale en el archivo. Este directorio debería contener directorios para cada idioma que soporte, usando el mismo formato de código de idioma que el resto de NVDA; por ejemplo en para inglés, fr_ca para francés de Canadá. </p>
-<h4 id="441-archivos-de-manifiesto-especificos-del-idioma">4.4.1. Archivos de manifiesto específicos del idioma</h4>
+<h4 id="451-archivos-de-manifiesto-especificos-del-idioma">4.5.1. Archivos de manifiesto específicos del idioma</h4>
 <p>Cada uno de estos directorios de idioma puede contener un archivo de manifiesto específico del idioma llamado manifest.ini, que puede tener un pequeño subconjunto de los campos de manifiesto para traducir. Estos campos son summary y description. Todos los demás campos se ignoran. </p>
-<h4 id="442-mensajes-especificos-del-idioma">4.4.2. Mensajes específicos del idioma</h4>
+<h4 id="452-mensajes-especificos-del-idioma">4.5.2. Mensajes específicos del idioma</h4>
 <p>Cada directorio de idioma puede contener también información Gettext, que es el sistema usado para traducir el resto de la interfaz de usuario de NVDA y los mensajes verbalizados. Como en el resto de NVDA, se debería situar en el directorio LC_MESSAGES dentro del directorio del idioma un archivo de base de datos de Gettext compilada, llamado nvda.mo. Para permitir que las extensiones de tu complemento accedan a la información de mensajes de Gettext mediante llamadas a _(), debes inicializar las traducciones al principio de cada módulo Python llamando a addonHandler.initTranslation(). Para más información sobre Gettext y la traducción de NVDA en general, lee la documentación para traductores que se encuentra en nuestra web.</p>
-<h3 id="45-documentacion-del-complemento">4.5. Documentación del complemento</h3>
+<h3 id="46-documentacion-del-complemento">4.6. Documentación del complemento</h3>
 <p>La documentación para un complemento debería situarse en un directorio doc en el archivo. De forma similar al directorio locale, este directorio debería contener carpetas para cada idioma en el que haya disponible documentación. </p>
 <p>Los usuarios pueden acceder a la documentación para un complemento específico abriendo el gestor de complementos, seleccionando el complemento y pulsando el botón de ayuda del complemento. Esto abrirá el archivo especificado en el parámetro docFileName del manifiesto. NVDA buscará este archivo en los directorios concretos del idioma. Por ejemplo, si se establece docFileName a readme.html y el usuario utiliza NVDA en inglés, NVDA abrirá doc\en\readme.html. </p>
 <h2 id="546-la-consola-python-de-nvda">5. La consola Python de NVDA</h2>
@@ -684,7 +689,7 @@ class AppModule(appModuleHandler.AppModule):
 <li>Seleccionando Herramientas -&gt; Consola Python desde el menú de NVDA de la bandeja del sistema. </li>
 </ul>
 <p>La consola es similar al intérprete interactivo estándar de Python. La entrada sólo acepta una línea cada vez y la procesa al pulsar intro. Se pueden pegar varias líneas a la vez desde el portapapeles y se procesarán una a una. Puedes navegar por el historial de líneas introducidas anteriormente usando flechas arriba y abajo. </p>
-<p>La salida (respuestas del intérprete) se verbalizará al pulsar intro. La tecla f6 permite desplazarse entre los controles de entrada y salida. </p>
+<p>La salida (respuestas del intérprete) se verbalizará al pulsar intro. La tecla f6 permite desplazarse entre los controles de entrada y salida. Cuando te encuentres en el control de salida, alt+arriba/abajo salta al resultado anterior o siguiente (añade shift para seleccionar). Al pulsar control+l se limpia la salida. </p>
 <p>El resultado del último comando ejecutado se almacena en la variable global "_". Esto impide usar la función de Gettext que se aloja como función incorporada con el mismo nombre. Se puede suprimir esta superposición ejecutando "del _", y evitarse con "_=_". </p>
 <p>Cerrar la ventana de la consola (con escape o alt+f4) simplemente la oculta. Esto permite al usuario volver a la sesión tal y como la dejó cuando la cerró, incluyendo historial y variables. </p>
 <h3 id="52-espacio-de-nombres">5.2. Espacio de nombres</h3>
@@ -705,8 +710,8 @@ class AppModule(appModuleHandler.AppModule):
 <h3 id="53-autocompletado-con-el-tabulador">5.3. Autocompletado con el tabulador</h3>
 <p>El control de entrada soporta el autocompletado mediante tabulador de variables y nombres de atributos miembros. Pulsa el tabulador una vez para autocompletar la entrada actual si hay un candidato único. Si hay más de uno, pulsa el tabulador por segunda vez para abrir un menú que liste todas las posibilidades que encajen. Por defecto, sólo se listan los atributos y miembros "públicos". Esto significa que si por ejemplo la entrada es "nav.", se proponen los nombres de atributo que no comiencen con un guión bajo. Si la entrada es "nav._", se proponen los atributos miembros con un guión bajo al principio. De manera similar, si la entrada es "nav.__", se proponen los atributos que comiencen con dos guiones bajos. </p>
 <h2 id="646-la-consola-python-remota">6. La consola Python remota</h2>
-<p>NVDA dispone de una consola Python remota para situaciones donde la depuración remota de NVDA es útil. Es similar a la consola Python local expuesta arriba, pero se accede a ella a través de tcp. </p>
-<p>Por favor, sé consciente de que supone un enorme riesgo de seguridad. Sólo deberías activarla si estás conectado a una red de confianza. </p>
+<p>En las compilaciones de código fuente de NVDA, se encuentra disponible una consola Python remota para situaciones donde la depuración remota de NVDA es útil. Es similar a la consola Python local expuesta arriba, pero se accede a ella a través de tcp. </p>
+<p>Por favor, sé consciente de que supone un enorme riesgo de seguridad. No se encuentra disponible en las compilaciones binarias distribuidas por NV Access, y sólo deberías activarla si estás conectado a una red de confianza. </p>
 <h3 id="61-modo-de-uso">6.1. Modo de uso</h3>
 <p>Para activar la consola Python remota, usa la consola Python local para importar remotePythonConsole y llama a remotePythonConsole.initialize(). A continuación puedes conectarte a ella por el puerto tcp 6832. </p>
 <p>No se soporta el historial de líneas introducidas previamente. </p>

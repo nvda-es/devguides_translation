@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-04 17:28+0200\n"
-"PO-Revision-Date: 2021-09-04 17:31+0200\n"
+"PO-Revision-Date: 2021-09-08 09:22+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,14 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ..\python_docs\developer_guide.py:3
-#, fuzzy
-#| msgid "# NVDA 2020.4 Developer Guide"
 msgid "# NVDA 2021.1 Developer Guide"
-msgstr "# Guía del desarrollador de NVDA 2020.4"
+msgstr "# Guía del desarrollador de NVDA 2021.1"
 
 #: ..\python_docs\developer_guide.py:4
 msgid "## Table of Contents"
-msgstr "## Tabla de contenidos"
+msgstr "## Índice"
 
 #: ..\python_docs\developer_guide.py:5
 msgid "  * 1\\. Introduction"
@@ -175,58 +173,40 @@ msgid "      * 4.2.1. Available Fields"
 msgstr "      * 4.2.1. Campos disponibles"
 
 #: ..\python_docs\developer_guide.py:36
-#, fuzzy
-#| msgid "    * 4.2. Manifest Files"
 msgid "      * 4.2.2. An Example Manifest File"
-msgstr "    * 4.2. Archivos de manifiesto"
+msgstr "      * 4.2.2. Ejemplo de archivo de manifiesto"
 
 #: ..\python_docs\developer_guide.py:37
-#, fuzzy
-#| msgid "## Plugins and Drivers"
 msgid "    * 4.3. Plugins and Drivers"
-msgstr "## Extensiones y controladores"
+msgstr "    * 4.3. Extensiones y controladores"
 
 #: ..\python_docs\developer_guide.py:38
-#, fuzzy
-#| msgid "    * 4.3. Optional install / Uninstall code"
 msgid "    * 4.4. Optional install / Uninstall code"
-msgstr "    * 4.3. Código opcional de instalación y desinstalación"
+msgstr "    * 4.4. Código opcional de instalación y desinstalación"
 
 #: ..\python_docs\developer_guide.py:39
-#, fuzzy
-#| msgid "      * 4.3.1. the onInstall function"
 msgid "      * 4.4.1. the onInstall function"
-msgstr "      * 4.3.1. La función onInstall"
+msgstr "      * 4.4.1. La función onInstall"
 
 #: ..\python_docs\developer_guide.py:40
-#, fuzzy
-#| msgid "      * 4.3.2. The onUninstall Function"
 msgid "      * 4.4.2. The onUninstall Function"
-msgstr "      * 4.3.2. La función onUninstall"
+msgstr "      * 4.4.2. La función onUninstall"
 
 #: ..\python_docs\developer_guide.py:41
-#, fuzzy
-#| msgid "    * 4.4. Localizing Add-ons"
 msgid "    * 4.5. Localizing Add-ons"
-msgstr "    * 4.4. Traducción de complementos"
+msgstr "    * 4.5. Traducción de complementos"
 
 #: ..\python_docs\developer_guide.py:42
-#, fuzzy
-#| msgid "      * 4.4.1. Locale-specific Manifest Files"
 msgid "      * 4.5.1. Locale-specific Manifest Files"
-msgstr "      * 4.4.1. Archivos de manifiesto específicos del idioma"
+msgstr "      * 4.5.1. Archivos de manifiesto específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:43
-#, fuzzy
-#| msgid "      * 4.4.2. Locale-specific Messages"
 msgid "      * 4.5.2. Locale-specific Messages"
-msgstr "      * 4.4.2. Mensajes específicos del idioma"
+msgstr "      * 4.5.2. Mensajes específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:44
-#, fuzzy
-#| msgid "    * 4.5. Add-on Documentation"
 msgid "    * 4.6. Add-on Documentation"
-msgstr "    * 4.5. Documentación del complemento"
+msgstr "    * 4.6. Documentación del complemento"
 
 #: ..\python_docs\developer_guide.py:45
 msgid "  * 5\\. NVDA Python Console"
@@ -1774,15 +1754,6 @@ msgid "#### 3.10.1. Defining script properties"
 msgstr "#### 3.10.1. Definición de propiedades de los scripts"
 
 #: ..\python_docs\developer_guide.py:293
-#, fuzzy
-#| msgid ""
-#| "For NVDA 2018.3 and above, the recommended way to set script properties "
-#| "is by means of the so called script decorator. In short, a decorator is a "
-#| "function that modifies the behavior of a particular function. The script "
-#| "decorator modifies the script in such a way that it will be properly "
-#| "bound to the desired gestures. Furthermore, it ensures that the script is "
-#| "listed with the description you specify, and that it is categorised under "
-#| "the desired category in the input gestures dialog. "
 msgid ""
 "For NVDA 2018.3 and above, the recommended way to set script properties is "
 "by means of the so called script decorator. In short, a decorator is a "
@@ -1795,9 +1766,9 @@ msgstr ""
 "En NVDA 2018.3 y versiones posteriores, la forma recomendada de establecer "
 "las propiedades de un script se conoce como el decorador de scripts. En "
 "resumen, un decorador es una función que modifica el comportamiento de otra "
-"función concreta. El decorador de script modifica el script de tal manera "
-"que se asocie adecuadamente a los gestos deseados. Además, garantiza que el "
-"script se liste con la descripción especificada, y se incluya bajo la "
+"función o método concretos. El decorador de script modifica el script de tal "
+"manera que se asocie adecuadamente a los gestos deseados. Además, garantiza "
+"que el script se liste con la descripción especificada, y se incluya bajo la "
 "categoría deseada en el diálogo Gestos de entrada. "
 
 #: ..\python_docs\developer_guide.py:294
@@ -1943,17 +1914,13 @@ msgstr ""
 "es False. "
 
 #: ..\python_docs\developer_guide.py:320
-#, fuzzy
-#| msgid ""
-#| "  * bypassInputHelp: A boolean indicating whether this script should run "
-#| "when input help is active. This option defaults to False. "
 msgid ""
 "  * allowInSleepMode: A boolean indicating whether this script should run "
 "when sleep mode is active. This option defaults to False. "
 msgstr ""
-"  * bypassInputHelp: un booleano que indica si este script debería "
-"ejecutarse con el modo de ayuda de entrada activado. Por defecto esta opción "
-"es False. "
+"  * allowInSleepMode: Un booleano que indica si este script debería "
+"funcionar con el modo silencioso activado. El valor predeterminado de esta "
+"opción es False. "
 
 #: ..\python_docs\developer_guide.py:321
 msgid ""
@@ -1970,18 +1937,6 @@ msgstr ""
 "reanuda tras ejecutar este script. "
 
 #: ..\python_docs\developer_guide.py:322
-#, fuzzy
-#| msgid ""
-#| "Though the script decorator makes the script definition process a lot "
-#| "easier, there are more ways of binding gestures and setting script "
-#| "properties. For example, a special \"\\_\\_gestures\" Python dictionary "
-#| "can be defined as a class variable on an App Module, Global Plugin or "
-#| "NVDA Object. This dictionary should contain gesture identifier strings "
-#| "pointing to the name of the requested script, without the \"script\\_\" "
-#| "prefix. You can also specify a description of the script in the "
-#| "function's docstring. Furthermore, an alternative way of specifying the "
-#| "script's category is by means of setting a \"category\" attribute on the "
-#| "script function to a string containing the name of the category. "
 msgid ""
 "Though the script decorator makes the script definition process a lot "
 "easier, there are more ways of binding gestures and setting script "
@@ -2002,14 +1957,18 @@ msgstr ""
 "Aunque el decorador script hace mucho más fácil el proceso de definición de "
 "scripts, hay más formas de asociar scripts y establecer sus propiedades. Por "
 "ejemplo, se puede definir como variable de clase un diccionario Python "
-"llamado \"\\_\\_gestures\" en un módulo de aplicación, extensión global u "
-"objeto NVDA. Este diccionario debería contener cadenas con identificadores "
-"de gestos apuntando al nombre del script solicitado, sin el prefijo \"script"
-"\\_\". También se puede especificar una descripción para el script en la "
-"cadena de documentación (docstring) de la función. Además, una forma "
-"alternativa de especificar la categoría del script es crear un atributo "
-"\"category\" en la función del script que contenga una cadena con el nombre "
-"de la categoría. "
+"especial llamado \"\\_\\_gestures\" en un módulo de aplicación, extensión "
+"global u objeto NVDA. Este diccionario debería contener cadenas con "
+"identificadores de gestos apuntando al nombre del script solicitado, sin el "
+"prefijo \"script\\_\". También se puede especificar una descripción para el "
+"script en el atributo \"_doc_\" del método. Sin embargo, procura no incluir "
+"una cadena de documentación en línea como comienzo del método si no "
+"configuras el atributo \"_doc_\", ya que la descripción renderizada no sería "
+"traducible. El decorador script no padece esta limitación, por lo que se "
+"recomienda que uses cadenas de documentación en línea según sea necesario "
+"cuando lo emplees. Además, una forma alternativa de especificar la categoría "
+"del script es crear un atributo \"category\" en la función del script que "
+"contenga una cadena con el nombre de la categoría. "
 
 #: ..\python_docs\developer_guide.py:323
 msgid ""
@@ -2642,16 +2601,6 @@ msgid "### 4.1. Non-ASCII File Names in Zip Archives"
 msgstr "### 4.1. Nombres de fichero no ASCII en archivos Zip"
 
 #: ..\python_docs\developer_guide.py:467
-#, fuzzy
-#| msgid ""
-#| "If your add-on includes files which contain non-ASCII \\(non-English\\) "
-#| "characters, you should create the zip archive such that it uses UTF-8 "
-#| "file names. This means that these files can be extracted properly on all "
-#| "systems, regardless of the system's configured language. Unfortunately, "
-#| "many zip archivers do not support this, including Windows Explorer. "
-#| "Generally, it has to be explicitly enabled even in archivers that do "
-#| "support it. [http://www.7-zip.org/](7-Zip) supports this, though it must "
-#| "be enabled by specifying the \"cu=on\" method parameter. "
 msgid ""
 "If your add-on includes files which contain non-ASCII \\(non-English\\) "
 "characters, you should create the zip archive such that it uses UTF-8 file "
@@ -2789,10 +2738,8 @@ msgid "    * Defaults to \"0.0.0\" "
 msgstr "    * Por defecto es \"0.0.0\" "
 
 #: ..\python_docs\developer_guide.py:483
-#, fuzzy
-#| msgid "    * Must be less than or equal to \\`lastTestedNVDAVersion\\` "
 msgid "    * Must be less than or equal to `lastTestedNVDAVersion`"
-msgstr "    * Debe ser inferior o igual a \\`lastTestedNVDAVersion\\` "
+msgstr "    * Debe ser inferior o igual a `lastTestedNVDAVersion`"
 
 #: ..\python_docs\developer_guide.py:484
 msgid ""
@@ -2807,10 +2754,8 @@ msgid "    * e.g \"2019.1.0\" "
 msgstr "    * por ejemplo \"2019.1.0\" "
 
 #: ..\python_docs\developer_guide.py:488
-#, fuzzy
-#| msgid "    * Must be greater than or equal to \\`minimumNVDAVersion\\` \\- "
 msgid "    * Must be greater than or equal to `minimumNVDAVersion` "
-msgstr "    * Debe ser mayor o igual a \\`minimumNVDAVersion\\` \\- "
+msgstr "    * Debe ser mayor o igual a `minimumNVDAVersion` "
 
 #: ..\python_docs\developer_guide.py:489
 msgid ""
@@ -2836,72 +2781,48 @@ msgstr ""
 "usuario recibirá una advertencia indicando que no instale el complemento. "
 
 #: ..\python_docs\developer_guide.py:491
-#, fuzzy
-#| msgid "### An Example Manifest File"
 msgid "#### 4.2.2. An Example Manifest File"
-msgstr "### Un ejemplo de archivo de manifiesto"
+msgstr "#### 4.2.2. Ejemplo de archivo de manifiesto"
 
 #: ..\python_docs\developer_guide.py:495
-#, fuzzy
-#| msgid "        name = \"myTestAddon\""
 msgid "    name = \"myTestAddon\""
-msgstr "        name = \"myTestAddon\""
+msgstr "    name = \"myTestAddon\""
 
 #: ..\python_docs\developer_guide.py:496
-#, fuzzy
-#| msgid "        summary = \"Cool Test Add-on\""
 msgid "    summary = \"Cool Test Add-on\""
-msgstr "        summary = \"Cool Test Add-on\""
+msgstr "    summary = \"Cool Test Add-on\""
 
 #: ..\python_docs\developer_guide.py:497
-#, fuzzy
-#| msgid "        version = \"1.0\""
 msgid "    version = \"1.0\""
-msgstr "        version = \"1.0\""
+msgstr "    version = \"1.0\""
 
 #: ..\python_docs\developer_guide.py:498
-#, fuzzy
-#| msgid ""
-#| "        description = \"An example add-on showing how to create add-ons!\""
 msgid "    description = \"An example add-on showing how to create add-ons!\""
-msgstr ""
-"        description = \"An example add-on showing how to create add-ons!\""
+msgstr "    description = \"An example add-on showing how to create add-ons!\""
 
 #: ..\python_docs\developer_guide.py:499
-#, fuzzy
-#| msgid "        author = \"Michael Curran <mick@kulgan.net>\""
 msgid "    author = \"Michael Curran <mick@kulgan.net>\""
-msgstr "        author = \"Michael Curran <mick@kulgan.net>\""
+msgstr "    author = \"Michael Curran <mick@kulgan.net>\""
 
 #: ..\python_docs\developer_guide.py:500
-#, fuzzy
-#| msgid "        url = \"http://www.nvda-project.org/wiki/Development\""
 msgid "    url = \"http://www.nvda-project.org/wiki/Development\""
-msgstr "        url = \"http://www.nvda-project.org/wiki/Development\""
+msgstr "    url = \"http://www.nvda-project.org/wiki/Development\""
 
 #: ..\python_docs\developer_guide.py:501
-#, fuzzy
-#| msgid "        docFileName = \"readme.html\""
 msgid "    docFileName = \"readme.html\""
-msgstr "        docFileName = \"readme.html\""
+msgstr "    docFileName = \"readme.html\""
 
 #: ..\python_docs\developer_guide.py:502
-#, fuzzy
-#| msgid "        minimumNVDAVersion = \"2018.1.0\""
 msgid "    minimumNVDAVersion = \"2018.1.0\""
-msgstr "        minimumNVDAVersion = \"2018.1.0\""
+msgstr "    minimumNVDAVersion = \"2018.1.0\""
 
 #: ..\python_docs\developer_guide.py:503
-#, fuzzy
-#| msgid "        lastTestedNVDAVersion = \"2019.1.0\""
 msgid "    lastTestedNVDAVersion = \"2019.1.0\""
-msgstr "        lastTestedNVDAVersion = \"2019.1.0\""
+msgstr "    lastTestedNVDAVersion = \"2019.1.0\""
 
 #: ..\python_docs\developer_guide.py:506
-#, fuzzy
-#| msgid "## Plugins and Drivers"
 msgid "### 4.3. Plugins and Drivers"
-msgstr "## Extensiones y controladores"
+msgstr "### 4.3. Extensiones y controladores"
 
 #: ..\python_docs\developer_guide.py:507
 msgid "The following plugins and drivers can be included in an add-on: "
@@ -2938,10 +2859,8 @@ msgstr ""
 "tu archivo. "
 
 #: ..\python_docs\developer_guide.py:512
-#, fuzzy
-#| msgid "### 4.3. Optional install / Uninstall code"
 msgid "### 4.4. Optional install / Uninstall code"
-msgstr "### 4.3. Código opcional de instalación y desinstalación"
+msgstr "### 4.4. Código opcional de instalación y desinstalación"
 
 #: ..\python_docs\developer_guide.py:513
 msgid ""
@@ -2972,10 +2891,8 @@ msgstr ""
 "estar todavía sin inicializar. "
 
 #: ..\python_docs\developer_guide.py:514
-#, fuzzy
-#| msgid "#### 4.3.1. the onInstall function"
 msgid "#### 4.4.1. the onInstall function"
-msgstr "#### 4.3.1. La función onInstall"
+msgstr "#### 4.4.1. La función onInstall"
 
 #: ..\python_docs\developer_guide.py:515
 msgid ""
@@ -2996,10 +2913,8 @@ msgstr ""
 "directorio será eliminado. "
 
 #: ..\python_docs\developer_guide.py:516
-#, fuzzy
-#| msgid "#### 4.3.2. The onUninstall Function"
 msgid "#### 4.4.2. The onUninstall Function"
-msgstr "#### 4.3.2. La función onUninstall"
+msgstr "#### 4.4.2. La función onUninstall"
 
 #: ..\python_docs\developer_guide.py:517
 msgid ""
@@ -3017,10 +2932,8 @@ msgstr ""
 "función no puede solicitar entrada del usuario. "
 
 #: ..\python_docs\developer_guide.py:518
-#, fuzzy
-#| msgid "### 4.4. Localizing Add-ons"
 msgid "### 4.5. Localizing Add-ons"
-msgstr "### 4.4. Traducción de complementos"
+msgstr "### 4.5. Traducción de complementos"
 
 #: ..\python_docs\developer_guide.py:519
 msgid ""
@@ -3037,10 +2950,8 @@ msgstr ""
 "de NVDA; por ejemplo en para inglés, fr\\_ca para francés de Canadá. "
 
 #: ..\python_docs\developer_guide.py:520
-#, fuzzy
-#| msgid "#### 4.4.1. Locale-specific Manifest Files"
 msgid "#### 4.5.1. Locale-specific Manifest Files"
-msgstr "#### 4.4.1. Archivos de manifiesto específicos del idioma"
+msgstr "#### 4.5.1. Archivos de manifiesto específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:521
 msgid ""
@@ -3055,10 +2966,8 @@ msgstr ""
 "son summary y description. Todos los demás campos se ignoran. "
 
 #: ..\python_docs\developer_guide.py:522
-#, fuzzy
-#| msgid "#### 4.4.2. Locale-specific Messages"
 msgid "#### 4.5.2. Locale-specific Messages"
-msgstr "#### 4.4.2. Mensajes específicos del idioma"
+msgstr "#### 4.5.2. Mensajes específicos del idioma"
 
 #: ..\python_docs\developer_guide.py:523
 msgid ""
@@ -3085,10 +2994,8 @@ msgstr ""
 "web."
 
 #: ..\python_docs\developer_guide.py:524
-#, fuzzy
-#| msgid "### 4.5. Add-on Documentation"
 msgid "### 4.6. Add-on Documentation"
-msgstr "### 4.5. Documentación del complemento"
+msgstr "### 4.6. Documentación del complemento"
 
 #: ..\python_docs\developer_guide.py:525
 msgid ""
@@ -3176,10 +3083,6 @@ msgstr ""
 "anteriormente usando flechas arriba y abajo. "
 
 #: ..\python_docs\developer_guide.py:534
-#, fuzzy
-#| msgid ""
-#| "Output \\(responses from the interpreter\\) will be spoken when enter is "
-#| "pressed. The f6 key toggles between the input and output controls. "
 msgid ""
 "Output \\(responses from the interpreter\\) will be spoken when enter is "
 "pressed. The f6 key toggles between the input and output controls. When on "
@@ -3187,7 +3090,10 @@ msgid ""
 "shift for selecting\\). Pressing control+l clears the output. "
 msgstr ""
 "La salida \\(respuestas del intérprete\\) se verbalizará al pulsar intro. La "
-"tecla f6 permite desplazarse entre los controles de entrada y salida. "
+"tecla f6 permite desplazarse entre los controles de entrada y salida. Cuando "
+"te encuentres en el control de salida, alt+arriba/abajo salta al resultado "
+"anterior o siguiente \\(añade shift para seleccionar\\). Al pulsar control+l "
+"se limpia la salida. "
 
 #: ..\python_docs\developer_guide.py:535
 msgid ""
@@ -3313,32 +3219,25 @@ msgid "## 6\\. Remote Python Console"
 msgstr "## 6\\. La consola Python remota"
 
 #: ..\python_docs\developer_guide.py:553
-#, fuzzy
-#| msgid ""
-#| "A remote Python console is available for situations where remote "
-#| "debugging of NVDA is useful. It is similar to the local Python console "
-#| "discussed above, but is accessed via TCP. "
 msgid ""
 "A remote Python console is available in source builds of NVDA, for "
 "situations where remote debugging of NVDA is useful. It is similar to the "
 "local Python console discussed above, but is accessed via TCP. "
 msgstr ""
-"NVDA dispone de una consola Python remota para situaciones donde la "
-"depuración remota de NVDA es útil. Es similar a la consola Python local "
-"expuesta arriba, pero se accede a ella a través de tcp. "
+"En las compilaciones de código fuente de NVDA, se encuentra disponible una "
+"consola Python remota para situaciones donde la depuración remota de NVDA es "
+"útil. Es similar a la consola Python local expuesta arriba, pero se accede a "
+"ella a través de tcp. "
 
 #: ..\python_docs\developer_guide.py:554
-#, fuzzy
-#| msgid ""
-#| "Please be aware that this is a huge security risk. You should only enable "
-#| "it if you are connected to trusted networks. "
 msgid ""
 "Please be aware that this is a huge security risk. It is not available in "
 "binary builds distributed by NV Access, and You should only enable it if you "
 "are connected to trusted networks. "
 msgstr ""
-"Por favor, sé consciente de que supone un enorme riesgo de seguridad. Sólo "
-"deberías activarla si estás conectado a una red de confianza. "
+"Por favor, sé consciente de que supone un enorme riesgo de seguridad. No se "
+"encuentra disponible en las compilaciones binarias distribuidas por NV "
+"Access, y sólo deberías activarla si estás conectado a una red de confianza. "
 
 #: ..\python_docs\developer_guide.py:555
 msgid "### 6.1. Usage"
