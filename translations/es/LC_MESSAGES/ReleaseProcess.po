@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-04 17:28+0200\n"
-"PO-Revision-Date: 2021-09-04 17:30+0200\n"
+"PO-Revision-Date: 2021-09-08 13:03+0200\n"
 "Last-Translator: José Manuel Delicado <jmdaweb@hotmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -165,40 +165,29 @@ msgstr ""
 "audiencias extensas, ytraducciones incorporadas."
 
 #: ..\python_docs\ReleaseProcess.py:22
-#, fuzzy
-#| msgid ""
-#| "When no blocking issues are encountered it is expected to take 7 weeks:"
 msgid "When no blocking issues are encountered it is expected to take 5 weeks:"
 msgstr ""
 "Cuando no se encuentren incidencias que bloqueen el proceso, se espera que "
-"se desarrolle en 7 semanas:"
+"se desarrolle en 5 semanas:"
 
 #: ..\python_docs\ReleaseProcess.py:23
-#, fuzzy
-#| msgid "  - 4 weeks to receive any required fixes"
 msgid "- Beta builds: 2 weeks to receive any required fixes"
-msgstr "  - 4 semanas para recibir cualquier corrección necesaria"
+msgstr ""
+"- Compilaciones beta: 2 semanas para recibir cualquier corrección necesaria"
 
 #: ..\python_docs\ReleaseProcess.py:24
-#, fuzzy
-#| msgid ""
-#| "  - When issues are encountered, subsequent RC's may take another week at "
-#| "the discretion of lead developers."
 msgid ""
 "  - Subsequent betas may take another week or two at discretion of lead "
 "developers"
 msgstr ""
-"  - Si se encuentran problemas, los desarrolladores pueden decidir liberar "
-"otras RC durante una semana cada una."
+"  - Las siguientes betas podrían durar una o dos semanas más, según la "
+"decisión de los desarrolladores principales"
 
 #: ..\python_docs\ReleaseProcess.py:25
-#, fuzzy
-#| msgid ""
-#| "  - 2 weeks for translation freeze (starting 3 weeks before release) "
 msgid "- 2 weeks for translation freeze (starting 3 weeks before release) "
 msgstr ""
-"  - 2 semanas para congelación de traducciones (que empieza 3 semanas antes "
-"de la liberación) "
+"- 2 semanas para congelación de traducciones (que empieza 3 semanas antes de "
+"la liberación) "
 
 #: ..\python_docs\ReleaseProcess.py:26
 msgid "- RC: 1 week."
