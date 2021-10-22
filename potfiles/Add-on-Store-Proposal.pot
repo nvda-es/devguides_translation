@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-04 17:28+0200\n"
+"POT-Creation-Date: 2021-10-22 09:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,659 +75,578 @@ msgstr ""
 #: ..\python_docs\Add-on-Store-Proposal.py:14
 msgid ""
 "- Transparent process, to make it simple (for developers) to understand the "
-"current state of the"
+"current state of the Add-on Store, or the state of a submission of a new / "
+"updated addon."
 msgstr ""
 
 #: ..\python_docs\Add-on-Store-Proposal.py:15
-msgid "  Add-on Store, or the state of a submission of a new / updated addon."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:16
 msgid "- Faster release process for add-ons, by-passing human review."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:17
+#: ..\python_docs\Add-on-Store-Proposal.py:16
 msgid "- Non-subjective review process for add-ons."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:18
+#: ..\python_docs\Add-on-Store-Proposal.py:17
 msgid "### About security "
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:19
+#: ..\python_docs\Add-on-Store-Proposal.py:18
 msgid ""
 "Ensuring that an add-on is safe to run is a difficult challenge that isn't "
 "addressed here."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:20
+#: ..\python_docs\Add-on-Store-Proposal.py:19
 msgid ""
 "However, the metadata for a new submission (add-on release) can be confirmed "
-"to match its manifest"
+"to match its manifest description."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:21
-msgid "description."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:22
+#: ..\python_docs\Add-on-Store-Proposal.py:20
 msgid ""
 "Additionally, add-on file integrity can be enforced via a Sha256 checksum."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:23
+#: ..\python_docs\Add-on-Store-Proposal.py:21
 msgid "The checksum allows NVDA to ensure that addon releases are immutable."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:24
+#: ..\python_docs\Add-on-Store-Proposal.py:22
 msgid "### Human review process / code audit"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:25
+#: ..\python_docs\Add-on-Store-Proposal.py:23
 msgid ""
 "- NV Access doesn't require a manual review of the add-on (code or user "
-"experience) itself"
+"experience) itself before the add-on submission."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:26
-msgid "  before the add-on submission."
+#: ..\python_docs\Add-on-Store-Proposal.py:24
+msgid ""
+"- Source code reviews or audits could exist outside the store. The Sha256 "
+"checksum of the `nvda-addon` prevents undetected changes."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:27
-msgid "- Source code reviews or audits could exist outside the store."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:28
-msgid "  The Sha256 checksum of the `nvda-addon` prevents undetected changes."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:29
+#: ..\python_docs\Add-on-Store-Proposal.py:25
 msgid "- User reviews/rating of add-ons are currently out of scope."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:30
+#: ..\python_docs\Add-on-Store-Proposal.py:26
 msgid "### Non-exclusivity"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:31
+#: ..\python_docs\Add-on-Store-Proposal.py:27
 msgid ""
 "This proposal does not intend to restrict add-on authors from developing, "
 "publishing, and distributing an add-on outside this store."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:32
+#: ..\python_docs\Add-on-Store-Proposal.py:28
 msgid "NVDA will still allow local installation from a `*.nvda-addon` file."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:33
+#: ..\python_docs\Add-on-Store-Proposal.py:29
 msgid "## Too Long; Didn't Read for Addon authors"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:34
+#: ..\python_docs\Add-on-Store-Proposal.py:30
 msgid ""
 "With this proposal if an addon author wishes to submit their addon to be "
 "visible in this addon store they will need to:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:35
+#: ..\python_docs\Add-on-Store-Proposal.py:31
 msgid "- Copy and file out the metadata template"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:36
+#: ..\python_docs\Add-on-Store-Proposal.py:32
 msgid ""
 "- Create a pull request to merge the branch to master of this repository."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:37
+#: ..\python_docs\Add-on-Store-Proposal.py:33
 msgid "## Too Long; Didn't Read for Addon reviewers"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:38
+#: ..\python_docs\Add-on-Store-Proposal.py:34
 msgid "Reviews of metadata will be automated."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:39
+#: ..\python_docs\Add-on-Store-Proposal.py:35
 msgid ""
 "You are welcome to review code / UX of addons and provide that feedback "
 "directly to addon authors."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:40
+#: ..\python_docs\Add-on-Store-Proposal.py:36
 msgid "## Considerations"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:41
+#: ..\python_docs\Add-on-Store-Proposal.py:37
 msgid ""
 "- Submissions and automated checks should be easy to find and get the status "
 "of."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:42
+#: ..\python_docs\Add-on-Store-Proposal.py:38
 msgid "- Make it possible to automate many steps in the process."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:43
+#: ..\python_docs\Add-on-Store-Proposal.py:39
 msgid ""
 "- The `.nvda-addon` file accessible via the download URL must continue to "
-"match the SHA."
+"match the SHA. NVDA will verify the file has not changed by comparing the "
+"checksum (SHA256). This gives users certainty when installing a \"known "
+"version\" of an addon. To update or make changes to an add-on, a new unique "
+"URL should be used, and a new add-on submission made to the Add-on Store."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:44
-msgid ""
-"  NVDA will verify the file has not changed by comparing the checksum "
-"(SHA256)."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:45
-msgid ""
-"  This gives users certainty when installing a \"known version\" of an addon."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:46
-msgid ""
-"  To update or make changes to an add-on, a new unique URL should be used, "
-"and a new add-on"
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:47
-msgid "  submission made to the Add-on Store."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:48
+#: ..\python_docs\Add-on-Store-Proposal.py:40
 msgid ""
 "- Allow addon authors to easily revoke a version if it is buggy / no longer "
-"supported."
+"supported. Removed releases are no longer presented in the store, halting "
+"new installations."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:49
-msgid ""
-"  Removed releases are no longer presented in the store, halting new "
-"installations."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:50
+#: ..\python_docs\Add-on-Store-Proposal.py:41
 msgid ""
 "- Enable support in the store for multiple versions of an Addon, based on "
 "NVDA API version."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:51
+#: ..\python_docs\Add-on-Store-Proposal.py:42
 msgid ""
 "  - EG addon version 1.2.5 for NVDA 2019.3 and addon version 1.3.2 for NVDA "
 "2020.1"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:52
+#: ..\python_docs\Add-on-Store-Proposal.py:43
 msgid "- Enable support in the store for 'beta' Addons, for instance:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:53
+#: ..\python_docs\Add-on-Store-Proposal.py:44
 msgid "  - Addons being developed against alpha / beta NVDA."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:54
+#: ..\python_docs\Add-on-Store-Proposal.py:45
 msgid "  - Addons that want early feedback from end users."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:55
+#: ..\python_docs\Add-on-Store-Proposal.py:46
 msgid "  - End users can choose \"show me beta addons\""
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:56
+#: ..\python_docs\Add-on-Store-Proposal.py:47
 msgid "## Overview"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:57
+#: ..\python_docs\Add-on-Store-Proposal.py:48
 msgid "- Use GitHub pull requests for store submissions."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:58
+#: ..\python_docs\Add-on-Store-Proposal.py:49
 msgid ""
 "- Use GitHub for storage of meta-data for addons available from the store."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:59
+#: ..\python_docs\Add-on-Store-Proposal.py:50
 msgid ""
 "- Use GitHub actions (or other integrations) to automate construction of the "
-"data store, and as many of the metadata checks as possible."
+"data store, and as many of the metadata checks as possible. This will all be "
+"open source and extensible by the community."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:60
-msgid "  This will all be open source and extensible by the community."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:61
+#: ..\python_docs\Add-on-Store-Proposal.py:51
 msgid "### Why GitHub Pull Requests?"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:62
+#: ..\python_docs\Add-on-Store-Proposal.py:52
 msgid ""
 "- GitHub is where much of the NVDA development ecosystem is already based."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:63
+#: ..\python_docs\Add-on-Store-Proposal.py:53
 msgid ""
 "- Handles all the of the CRUD ([create, read, update, delete](https://en."
-"wikipedia.org/wiki/CRUD))"
+"wikipedia.org/wiki/CRUD)) for users, authentication is handled, and we can "
+"determine how a user relates to an addon repository and what their "
+"permissions are for that repository."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:64
+#: ..\python_docs\Add-on-Store-Proposal.py:54
 msgid ""
-"  for users, authentication is handled, and we can determine how a user "
-"relates to an addon"
+"- GitHub PR's keep a record of the outcomes of automated checks. They also "
+"facilitate discussion should there be any confusion or disagreement with the "
+"outcome."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:65
-msgid "  repository and what their permissions are for that repository."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:66
-msgid "- GitHub PR's keep a record of the outcomes of automated checks."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:67
-msgid ""
-"  They also facilitate discussion should there be any confusion or "
-"disagreement with the outcome."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:68
+#: ..\python_docs\Add-on-Store-Proposal.py:55
 msgid "- GitHub PR's provided an atomic view of a store submission."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:69
+#: ..\python_docs\Add-on-Store-Proposal.py:56
 msgid "- The status (open / merged / closed) of the PR is clear."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:70
+#: ..\python_docs\Add-on-Store-Proposal.py:57
 msgid "## Infrastructure"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:71
+#: ..\python_docs\Add-on-Store-Proposal.py:58
 msgid "- `addon-store-submission` GitHub Repository"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:72
+#: ..\python_docs\Add-on-Store-Proposal.py:59
 msgid "  - Authors submit new add-on versions."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:73
+#: ..\python_docs\Add-on-Store-Proposal.py:60
 msgid "  - The \"source of truth\" for add-on releases."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:74
+#: ..\python_docs\Add-on-Store-Proposal.py:61
 msgid ""
 "  - This repository acts as a back-end database, it is open and easy to "
 "inspect."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:75
+#: ..\python_docs\Add-on-Store-Proposal.py:62
 msgid ""
 "  - Since our needs are simple, preconfigured \"views\" of the data will "
 "suffice."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:76
+#: ..\python_docs\Add-on-Store-Proposal.py:63
 msgid "- `nvaccess/validateNvdaAddonMetadata` GitHub Repository"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:77
+#: ..\python_docs\Add-on-Store-Proposal.py:64
 msgid "  - Metadata / submission schema."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:78
+#: ..\python_docs\Add-on-Store-Proposal.py:65
 msgid "  - Tools used to validate the submission."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:79
+#: ..\python_docs\Add-on-Store-Proposal.py:66
 msgid ""
 "- NV Access server - To provide the endpoint for \"available Addons\" meta-"
 "data"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:80
+#: ..\python_docs\Add-on-Store-Proposal.py:67
 msgid ""
 "  - While this is technically not necessary, it provides a good separation "
-"from implementation."
+"from implementation. If we wished to change our storage mechanism, we would "
+"not be breaking old versions of NVDA."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:81
-msgid ""
-"    If we wished to change our storage mechanism, we would not be breaking "
-"old versions of NVDA."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:82
+#: ..\python_docs\Add-on-Store-Proposal.py:68
 msgid "## `addon-store-submission` GitHub Repository"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:83
+#: ..\python_docs\Add-on-Store-Proposal.py:69
 msgid ""
 "Essentially this repository holds metadata about all the accepted versions "
 "of Addons which are included in the store."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:84
+#: ..\python_docs\Add-on-Store-Proposal.py:70
 msgid ""
 "Metadata about old versions of an addon remains until it is explicitly "
 "removed or becomes invalid."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:85
+#: ..\python_docs\Add-on-Store-Proposal.py:71
 msgid "This allows delivery to older versions of NVDA."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:86
+#: ..\python_docs\Add-on-Store-Proposal.py:72
 msgid ""
 "If a newer add-on release is removed (in response to a critical bug being "
-"found) NVDA can fall back"
+"found) NVDA can fall back on a prior add-on release."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:87
-msgid "on a prior add-on release."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:88
+#: ..\python_docs\Add-on-Store-Proposal.py:73
 msgid ""
 "Addons versions are submitted by submitting a pull request, adding a file "
 "for that version of the addon."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:89
+#: ..\python_docs\Add-on-Store-Proposal.py:74
 msgid "### Layout"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:90
+#: ..\python_docs\Add-on-Store-Proposal.py:75
 msgid "Root directory of repository:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:91
+#: ..\python_docs\Add-on-Store-Proposal.py:76
 msgid " - `readme.md` - A guide for submission"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:92
+#: ..\python_docs\Add-on-Store-Proposal.py:77
 msgid " - `addons/addon1/majorVersion.minorVersion.patch.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:93
+#: ..\python_docs\Add-on-Store-Proposal.py:78
 msgid " - `addons/addon2/majorVersion.minorVersion.patch.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:94
+#: ..\python_docs\Add-on-Store-Proposal.py:79
 msgid " - `addons/addon3/majorVersion.minorVersion.patch.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:95
+#: ..\python_docs\Add-on-Store-Proposal.py:80
 msgid ""
 "Note: `addonName` is the add-on ID, and must be unique and match the add-on "
 "ID from the addon manifest."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:96
+#: ..\python_docs\Add-on-Store-Proposal.py:81
 msgid "Example for the NV Access addon, 'NVDA - OCR':"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:97
+#: ..\python_docs\Add-on-Store-Proposal.py:82
 msgid "- Filename: `addons/nvda-ocr/1.6.0.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:98
+#: ..\python_docs\Add-on-Store-Proposal.py:83
 msgid "- add-on ID `nvda-ocr`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:99
+#: ..\python_docs\Add-on-Store-Proposal.py:84
 msgid "### Metadata format"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:100
-msgid "For a full description of the schema see the"
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:101
+#: ..\python_docs\Add-on-Store-Proposal.py:85
 msgid ""
-"[_validate/addonVersion_schema.json file](https://github.com/nvaccess/"
-"validateNvdaAddonMetadata/blob/main/_validate/addonVersion_schema.json)."
+"For a full description of the schema see the [_validate/addonVersion_schema."
+"json file](https://github.com/nvaccess/validateNvdaAddonMetadata/blob/main/"
+"_validate/addonVersion_schema.json)."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:102
+#: ..\python_docs\Add-on-Store-Proposal.py:86
 msgid "It includes an example of the file contents."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:103
+#: ..\python_docs\Add-on-Store-Proposal.py:87
 msgid "### Submitting an Addon version"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:104
+#: ..\python_docs\Add-on-Store-Proposal.py:88
 msgid "#### Pre-requisites:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:105
+#: ..\python_docs\Add-on-Store-Proposal.py:89
 msgid "- Familiarity with GitHub"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:106
+#: ..\python_docs\Add-on-Store-Proposal.py:90
 msgid "- Familiarity with Git, including working with branches."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:107
+#: ..\python_docs\Add-on-Store-Proposal.py:91
 msgid "Process to add a new NVDA-addon version:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:108
+#: ..\python_docs\Add-on-Store-Proposal.py:92
 msgid "1. Fork the `addon-store-submission` repository"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:109
+#: ..\python_docs\Add-on-Store-Proposal.py:93
 msgid "1. On a new branch, copy the `_template_addon_release.json` file. "
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:110
+#: ..\python_docs\Add-on-Store-Proposal.py:94
 msgid "   - Rename / move the file to `addons/<addonID>/<version>.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:111
+#: ..\python_docs\Add-on-Store-Proposal.py:95
 msgid ""
 "   - `<addonID>` is the ID of the add-on. This should match the `name` field "
 "in the add-on manifest, E.G. \"nv-speech-player\""
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:112
+#: ..\python_docs\Add-on-Store-Proposal.py:96
 msgid ""
 "   - `<version>` is the add-on version in the form: `Major.Minor.Patch` E.G. "
 "\"2.4.1\""
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:113
+#: ..\python_docs\Add-on-Store-Proposal.py:97
 msgid "1. Fill out the template."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:114
+#: ..\python_docs\Add-on-Store-Proposal.py:98
 msgid ""
 "1. Create a PR to merge your branch into master on the `addon-store-"
 "submission` repository"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:115
+#: ..\python_docs\Add-on-Store-Proposal.py:99
 msgid ""
 "1. Automated checks for common issues will complete. Either giving feedback "
 "or merging the PR."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:116
+#: ..\python_docs\Add-on-Store-Proposal.py:100
 msgid "3. When the PR is merged the add-on becomes available in the store."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:117
+#: ..\python_docs\Add-on-Store-Proposal.py:101
 msgid "### Automated checks"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:118
+#: ..\python_docs\Add-on-Store-Proposal.py:102
 msgid "See https://github.com/nvaccess/validateNvdaAddonMetadata"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:119
+#: ..\python_docs\Add-on-Store-Proposal.py:103
 msgid "### Other notes"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:120
+#: ..\python_docs\Add-on-Store-Proposal.py:104
 msgid ""
 "- By using a git repository and PR process, `git blame` and `git log` can be "
-"used to get more"
+"used to get more context about addons listed in the store. For instance:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:121
-msgid "  context about addons listed in the store."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:122
-msgid "  For instance:"
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:123
+#: ..\python_docs\Add-on-Store-Proposal.py:105
 msgid "  - When was the addon accepted?"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:124
+#: ..\python_docs\Add-on-Store-Proposal.py:106
 msgid "  - What did the review look like?"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:125
+#: ..\python_docs\Add-on-Store-Proposal.py:107
 msgid "  - How often is the add-on updated?"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:126
+#: ..\python_docs\Add-on-Store-Proposal.py:108
 msgid "- GitHub allows assigning reviews to reviewers"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:127
+#: ..\python_docs\Add-on-Store-Proposal.py:109
 msgid "## API data generation details"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:128
+#: ..\python_docs\Add-on-Store-Proposal.py:110
 msgid ""
 "Triggered by a new commit, a GitHub workflow transforms the data into the "
 "required views."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:129
+#: ..\python_docs\Add-on-Store-Proposal.py:111
 msgid ""
 "These views of the data will be committed by the GitHub Action to a `views` "
 "branch."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:130
+#: ..\python_docs\Add-on-Store-Proposal.py:112
 msgid "### Overview"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:131
+#: ..\python_docs\Add-on-Store-Proposal.py:113
 msgid ""
 "For each version of NVDA, the meta-data of the most recent (the highest "
-"version number) of each Addon is automatically"
+"version number) of each Addon is automatically added, based on the data in "
+"'addon-store-submission'."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:132
-msgid "added, based on the data in 'addon-store-submission'."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:133
+#: ..\python_docs\Add-on-Store-Proposal.py:114
 msgid "Code for this will be stored in the `_tools` folder."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:134
+#: ..\python_docs\Add-on-Store-Proposal.py:115
 msgid ""
 "This will enable interested parties to generate the same view of the data "
 "locally."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:135
+#: ..\python_docs\Add-on-Store-Proposal.py:116
 msgid "This code will have automated tests."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:136
+#: ..\python_docs\Add-on-Store-Proposal.py:117
 msgid "### Data views"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:137
+#: ..\python_docs\Add-on-Store-Proposal.py:118
 msgid ""
 "The following views will only be available on a `views` branch, and located "
 "in a `views` folder."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:138
+#: ..\python_docs\Add-on-Store-Proposal.py:119
 msgid "Required transformations of the data:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:139
+#: ..\python_docs\Add-on-Store-Proposal.py:120
 msgid "- `/NVDA API Version/addon-1-ID/stable.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:140
+#: ..\python_docs\Add-on-Store-Proposal.py:121
 msgid "- `/NVDA API Version/addon-1-ID/beta.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:141
+#: ..\python_docs\Add-on-Store-Proposal.py:122
 msgid "- `/NVDA API Version/addon-2-ID/stable.json`"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:142
+#: ..\python_docs\Add-on-Store-Proposal.py:123
 msgid "Notes:"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:143
+#: ..\python_docs\Add-on-Store-Proposal.py:124
 msgid ""
 "- 'NVDA API Version' will be something like '2019.3', there will be one "
 "folder for each NVDA API Version."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:144
+#: ..\python_docs\Add-on-Store-Proposal.py:125
 msgid ""
 "- The `beta.json` and `stable.json` contain the information necessary for a "
 "store entry."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:145
+#: ..\python_docs\Add-on-Store-Proposal.py:126
 msgid ""
 "- The contents for each addon will include all the technical details "
 "required for NVDA to download, verify file integrity, and install."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:146
+#: ..\python_docs\Add-on-Store-Proposal.py:127
 msgid ""
 "- The file will include translations (if available) for the displayable "
 "metadata."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:147
+#: ..\python_docs\Add-on-Store-Proposal.py:128
 msgid ""
 "The simplicity of this is that the NV Access server can just forward these "
-"files on directly when asked"
+"files on directly when asked \"what are the latest Addons for NVDA API "
+"Version X\" or \"What is the latest version of Addon-ID for NVDA API Version "
+"X\"."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:148
-msgid ""
-"\"what are the latest Addons for NVDA API Version X\" or \"What is the "
-"latest version of Addon-ID for NVDA API Version X\"."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:149
+#: ..\python_docs\Add-on-Store-Proposal.py:129
 msgid ""
 "Using the NV Access server as the endpoint for this is important in case the "
-"implementation has to change or be migrated"
+"implementation has to change or be migrated away from GitHub for some reason."
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:150
-msgid "away from GitHub for some reason."
-msgstr ""
-
-#: ..\python_docs\Add-on-Store-Proposal.py:151
+#: ..\python_docs\Add-on-Store-Proposal.py:130
 msgid "## Suffix"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:152
+#: ..\python_docs\Add-on-Store-Proposal.py:131
 msgid "### Terminology: Addon version vs Addon release"
 msgstr ""
 
-#: ..\python_docs\Add-on-Store-Proposal.py:153
+#: ..\python_docs\Add-on-Store-Proposal.py:132
 msgid ""
 "Since this proposal supports beta addons, I have tried to avoid using the "
 "term \"addon release\", instead favouring \"addon version\"."

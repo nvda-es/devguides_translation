@@ -2,7 +2,7 @@
 
 Author: Joseph Lee
 
-Based on StationPlaylist Add-on for NVDA 21.06
+Based on StationPlaylist Add-on for NVDA 21.10
 
 ## 2021 Preface and notes
 
@@ -50,7 +50,7 @@ In 2011, Geoff Shang, a seasoned blind broadcaster, started working on SPL Studi
 
 In 2013, I (Joseph Lee) received several emails regarding NVDA's support for SPL Studio with a request for someone to write an add-on for it. As I was still new to add-on development then (this was after I developed Control Usage Assistant and GoldWave), I decided to take on this challenge in order to learn more Python and to practice what I learned in computer science labs at UC Riverside. I first downloaded the existing add-on (0.01) and installed Studio 5.01 on my computer to learn more about this program and to gather suggestions from SPL users. After little over a month of development and preview releases, I released Studio add-on 1.0 in January 2014.
 
-Most of the early versions (1.x, 2.x, 3.x, released throughout 2014) were mostly quick projects that bridged the gap between NVDA and other screen readers (Brian Hartgen's JAWS scripts were my inspiration and have studied documentation for Jeff Bishop's Window-Eyes scripts). These early versions, supporting Studio 4.33 and later, were also used to fix bugs encountered by Studio users - for instance, a broadcaster posted  a YouTube video explaining how NVDA was not reading edit fields, which was fixed early on. Later releases (4.x, 5.x, 6.x, released throughout 2015), further bridged the gap with other screen readers and introduced unique features (for instance, add-on 5.0 introduced a configuration dialog, and 6.0 introduced concept of a broadcast profile). In late 2016, seeing that some of my add-ons were using year.month scheme for versioning, I decided to switch SPL to follow this model after receiving comments from the NVDA community. As of time of writing, another significant shift is happening in 20.x releases.
+Most of the early versions (1.x, 2.x, 3.x, released throughout 2014) were mostly quick projects that bridged the gap between NVDA and other screen readers (Brian Hartgen's JAWS scripts were my inspiration and have studied documentation for Jeff Bishop's Window-Eyes scripts). These early versions, supporting Studio 4.33 and later, were also used to fix bugs encountered by Studio users - for instance, a broadcaster posted  a YouTube video explaining how NVDA was not reading edit fields, which was fixed early on. Later releases (4.x, 5.x, 6.x, released throughout 2015), further bridged the gap with other screen readers and introduced unique features (for instance, add-on 5.0 introduced a configuration dialog, and 6.0 introduced concept of a broadcast profile). In late 2016, seeing that some of my add-ons were using year.month scheme for versioning, I decided to switch SPL to follow this model after receiving comments from the NVDA community. As of time of writing, another significant shift took place in 20.x and 21.x releases.
 
 Highlights of past major releases and subsequent maintenance releases include:
 
@@ -73,7 +73,8 @@ Highlights of past major releases and subsequent maintenance releases include:
 * 20.06: removed Window-Eyes support, time-based broadcast profiles facility removed, support for Remote VT client.
 * 20.09: fourth LTS release, pilot features removed, connecting to individual encoders in SPL encoders, background encoder monitor registry.
 * 21.01: track property announcement changes, more lint fixes.
-* 21.06: compatibility with newer NVDA releases, type annotations and more robust source code. This is the last version with new features and bug fixes from me.
+* 21.06: compatibility with newer NVDA releases, type annotations and more robust source code. This is the last version with planned new features and bug fixes from me.
+* 22.01: control types refactor, internal refinements to configuration management, remove profile caching mechanism as SSD technology has matured. This is the last release from me.
 
 Throughout this article, you'll get a chance to see how the add-on works, design philosophy and how the add-on is being developed, with glimpses into the past and future. My hope is that this add-on internals article would be a valuable reference for users and developers - for users to see the inner workings of this add-on, and for developers to use this add-on as an example of how an add-on is planned, implemented, tested, released and maintained.
 
@@ -209,7 +210,7 @@ Certain app module add-ons shipt with an app module with a constructor define, a
 	1. For add-on 6.x and 7.x, loads a predefined configuration file named userConfigPath/splstudio.ini. In add-on 6.0 and later, this is known as "normal profile). In add-on 6.x and 7.x, this is done by calling splconfig.unlockConfig() function that handles configuration validation via ConfigObj and Validator, and in 8.0 and later, this is part of SPLConfig constructor. In add-on 17.10 and later, this step will not take place if NVDA is told to use an in-memory config, and in 18.07 and later, any SPL app module that opens SPLConfig (splconfig.openConfig) will register its app name to indicate which app is starting.
 	2. For add-on 6.0 and later, loads broadcast profiles from addonDir/profiles folder. These are .ini files and are processed just like the normal profile except that global settings are pulled in from the normal profile. In add-on 8.0, just like normal profile, this is done when constructing SPLConfig object. In add-on 17.10 and later, if the add-on is told to use normal profile only, this step will not occur.
 	3. Each profile is then appended to a record keeper container (splconfig.SPLConfigPool for 6.x and 7.x, splconfig.SPLConfig.profiles in 8.0 and later). Then the active profile is set and splconfig.SPLConfig (user configuration map) is set to the first profile in the configuration pool (normal profile; for add-on 5.x and earlier or if only normal profile is to be used (17.10 and later), there is (or will be) just one profile so append step is skipped).
-	4. Starting from add-on 7.0 and enhanced in 17.10 (later relaxed in 20.09), unless in-memory config is requested, Normal profile dictionary (not others) is cached. This is useful in keeping a record of settings loaded from disk versus run-time configuration and is employed when comparing values when saving profiles. See profile caching section in broadcast profiles for details and reasons.
+	4. Between add-on 7.0 and 21.10 (enhanced in 17.10 and relaxed in 20.09), unless in-memory config is requested, Normal profile dictionary (not others) is cached. This is useful in keeping a record of settings loaded from disk versus run-time configuration and is employed when comparing values when saving profiles. See profile caching section in broadcast profiles for details and reasons which is documented for historical reasons.
 	5. Starting from add-on 18.08,. if NVDA supports it, SPLConfig will listen to config save action so add-on settings can be saved when config save command (Control+NVDA+C) is invoked. Add-on 19.03 added support for config reload/reset action so add-on settings can be reloaded or reset to defaults if Control+NVDA+R is pressed once or three times, respectively.
 	6. If an instant profile is defined (a cached instant profile name is present), the instant profile variable is set accordingly.
 	7. If errors were found, NVDA either displays an error dialog (5.x and earlier) or a status dialog (6.0 and later) detailing the error in question and what NVDA has done to faulty profiles. This can range from applying default values to some settings to resetting everything to defaults (the latter will occur if validator reports that all settings in the normal profile are invalid or ConfigObj threw parse errors, commonly seen when file content doesn't make sense).
@@ -230,9 +231,9 @@ In add-on 17.10, several internal flags and associated command-line switches are
 
 The flags are as follows:
 
-1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed in 20.09): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur, including normal profile.
+1. Do not save changes to disk (configVolatile/--spl-configvolatile, removed in 20.09): all profiles (including broadcast profiles) will be loaded from disk but changes will not be saved. With this flag turned on, profile caching will not occur if supported, including normal profile.
 2. Load normal profile only (normalProfileOnly/--spl-normalprofileonly): broadcast profiles will not be used i.e. cannot create and switch amongst broadcast profiles. Combining this with NVDA setting to not have configuration to disk on exit effectively makes normal profile a read-only config store.
-3. Use in-memory config (configInMemory/--spl-configinmemory): only normal profile will be used, but instead of loading settings from disk, an in-memory version with default settings applied will be used with no caching at all.
+3. Use in-memory config (configInMemory/--spl-configinmemory): only normal profile will be used, but instead of loading settings from disk, an in-memory version with default settings applied will be used (and no profile caching if supported).
 
 Using flags that specify the use of normal profile only will restrict ability to create new broadcast profiles.
 
@@ -282,7 +283,7 @@ Here is a list of steps Studio app module performs when it is about to leave thi
 2. Calls splconfig.terminate() function to save add-on settings and perform shutdown routines for some features. This function goes through following steps:
 	1. In add-on 7.0, if update check timer is running, the timer is told to stop, and update metadata is copied back to normal profile. This step is gone in 19.01.
 	2. Starting with add-on 18.07, active SPL component is unregistered via splconfig.closeConfig function. If there are other components running, the below steps will not occur, otherwise add-on settings will be closed.
-	3. Unless disabled through flags in 17.10, profiles are saved (beginning with normal profile) to disk if and only if profile-specific settings were changed (an online cache used for storing profile settings when they are loaded is kept for this purpose). This step will not occur if an in-memory version of normal profile is in use or other SPL components are active.
+	3. Unless disabled through flags in 17.10, profiles are saved (beginning with normal profile) to disk if and only if profile-specific settings were changed (an online cache used for storing profile settings when they are loaded is kept for this purpose). This step will not occur if an in-memory version of normal profile is in use or other SPL components are active. The online profile cache is gone in 21.10.
 	4. If there is an instant switch profile defined, this is recorded in the normal profile, otherwise it is removed from the profile database.
 	5. Once all profiles are saved, various flags, active profile and config pool is cleared.
 	6. For add-on 5.x and earlier, there is only one broadcast profile to worry about, and this profile is saved at this point.
@@ -1158,6 +1159,18 @@ The triggers dialog, used to configure these fields for the selected profile, co
 * Switch time: three number entry fields denoting when to switch to this profile (hour and minute) and the duration of this show (minutes).
 
 Once the data is gathered, NVDA will first check if trigger date checkboxes are checked (if no checkboxes are checked, the profile is removed). Next, NVDA will see if another profile has taken the given time slot, and if not, will proceed to store the next trigger date and time (will not be saved until OK button is clicked from the main add-on settings dialog).
+
+#### Profile caching
+
+Note: profile caching was a core component of broadcast profiles management from add-on 7.0 to 21.10 and is documented for historical reasons.
+
+More recent computers ship with a type of drive called a solid-state drive (sSD). This is the internal disk version of a high-quality flash drive that is larger (physically and in capacity) than a typical USB flash drive. Unlike a spinning hard drives, solid-state drives use flash memory to store information, and therefore data can be read and written faster.
+
+One downside of an SSD is limited data writes. Flash memory can endure a limited number of read and write cycles before data cannot be written to a specific location. To avoid this, system software will do its best to store new content across the entire disk so every location can store content (this is called ware leveling).
+
+To help prolong SSD life, add-on 7.0 introduced broadcast profile caching. Whenever profiles (including normal profile) are loaded from disk the first time, a copy of settings stored in profiles is stored in an online cache, a dictionary with profile names as keys, which in turn refers to the dictionary view of profile settings. When profiles are saved, the contents of the profile to be saved is compared to this online cache and the profile contents will be written to disk if settings are changed. This assumption takes advantage of the fact that users would not change add-on settings every time Studio is used.
+
+At first profile caching was seen as a way to increase SSD life. But it was later discovered that the caching mechanism made profile save procedure complex. Further, the SSD technology is more robust in 2021 compared to the first time profile caching was introduced (2016), therefore profile caching mechanism was removed in add-on 21.10.
 
 This concludes a detailed tour of Studio app module internals. The rest of the article will focus on SPL Studio Utilities global plugin, encoder support and a few thoughts on how the add-on is developed, starting with a tour of SPL Controller layer commands.
 

@@ -135,7 +135,7 @@ In JAWS 15 or later, you can use numpad keys to navigate apps using a tree-like 
 
 ## Virtual Cursor
 
-The virtual cursor in NVDA is known as browse mode. It functions in much the same way as JAWS, giving you access to navigation quick keys, or in NVDA speak, single letter navigation.
+The virtual cursor in NVDA is known as browse mode. It functions in much the same way as JAWS, giving you access to navigation quick keys, or in NVDA speak, single letter navigation.  Browse mode is used for reading text.  Focus mode is used when entering text, filling in forms on the web or typing a document in Word, for instance.  On the web, NVDA automatically switches between browse and focus mode as needed.  You can force NVDA to switch between focus and browse mode by pressing NVDA+spacebar.  In Browse mode in Word, single letter navigation keys (like "quick keys" in Jaws) can be used to navigate between elements.  Press H to jump to the next heading, A to jump to the next annotation (comment or tracked change), etc.  The elements list (like Jaws' links list) also works in Word in Browse mode.
 
 Following are some common issues you may encounter when browsing the web with NVDA for the first time, and how to address them.
 

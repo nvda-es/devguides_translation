@@ -11,23 +11,19 @@ Aims:
 - Enable any necessary, API, process, or infrastructure to support users to browse, search, install and update Addons for NVDA.
 - A secure and robust provision of addon-metadata.
 - No intention of supporting paid addons at this stage.
-- Transparent process, to make it simple (for developers) to understand the current state of the
-  Add-on Store, or the state of a submission of a new / updated addon.
+- Transparent process, to make it simple (for developers) to understand the current state of the Add-on Store, or the state of a submission of a new / updated addon.
 - Faster release process for add-ons, by-passing human review.
 - Non-subjective review process for add-ons.
 
 ### About security 
 Ensuring that an add-on is safe to run is a difficult challenge that isn't addressed here.
-However, the metadata for a new submission (add-on release) can be confirmed to match its manifest
-description.
+However, the metadata for a new submission (add-on release) can be confirmed to match its manifest description.
 Additionally, add-on file integrity can be enforced via a Sha256 checksum.
 The checksum allows NVDA to ensure that addon releases are immutable.
 
 ### Human review process / code audit
-- NV Access doesn't require a manual review of the add-on (code or user experience) itself
-  before the add-on submission.
-- Source code reviews or audits could exist outside the store.
-  The Sha256 checksum of the `nvda-addon` prevents undetected changes.
+- NV Access doesn't require a manual review of the add-on (code or user experience) itself before the add-on submission.
+- Source code reviews or audits could exist outside the store. The Sha256 checksum of the `nvda-addon` prevents undetected changes.
 - User reviews/rating of add-ons are currently out of scope.
 
 ### Non-exclusivity
@@ -47,13 +43,8 @@ You are welcome to review code / UX of addons and provide that feedback directly
 
 - Submissions and automated checks should be easy to find and get the status of.
 - Make it possible to automate many steps in the process.
-- The `.nvda-addon` file accessible via the download URL must continue to match the SHA.
-  NVDA will verify the file has not changed by comparing the checksum (SHA256).
-  This gives users certainty when installing a "known version" of an addon.
-  To update or make changes to an add-on, a new unique URL should be used, and a new add-on
-  submission made to the Add-on Store.
-- Allow addon authors to easily revoke a version if it is buggy / no longer supported.
-  Removed releases are no longer presented in the store, halting new installations.
+- The `.nvda-addon` file accessible via the download URL must continue to match the SHA. NVDA will verify the file has not changed by comparing the checksum (SHA256). This gives users certainty when installing a "known version" of an addon. To update or make changes to an add-on, a new unique URL should be used, and a new add-on submission made to the Add-on Store.
+- Allow addon authors to easily revoke a version if it is buggy / no longer supported. Removed releases are no longer presented in the store, halting new installations.
 - Enable support in the store for multiple versions of an Addon, based on NVDA API version.
   - EG addon version 1.2.5 for NVDA 2019.3 and addon version 1.3.2 for NVDA 2020.1
 - Enable support in the store for 'beta' Addons, for instance:
@@ -65,16 +56,12 @@ You are welcome to review code / UX of addons and provide that feedback directly
 
 - Use GitHub pull requests for store submissions.
 - Use GitHub for storage of meta-data for addons available from the store.
-- Use GitHub actions (or other integrations) to automate construction of the data store, and as many of the metadata checks as possible.
-  This will all be open source and extensible by the community.
+- Use GitHub actions (or other integrations) to automate construction of the data store, and as many of the metadata checks as possible. This will all be open source and extensible by the community.
 
 ### Why GitHub Pull Requests?
 - GitHub is where much of the NVDA development ecosystem is already based.
-- Handles all the of the CRUD ([create, read, update, delete](https://en.wikipedia.org/wiki/CRUD))
-  for users, authentication is handled, and we can determine how a user relates to an addon
-  repository and what their permissions are for that repository.
-- GitHub PR's keep a record of the outcomes of automated checks.
-  They also facilitate discussion should there be any confusion or disagreement with the outcome.
+- Handles all the of the CRUD ([create, read, update, delete](https://en.wikipedia.org/wiki/CRUD)) for users, authentication is handled, and we can determine how a user relates to an addon repository and what their permissions are for that repository.
+- GitHub PR's keep a record of the outcomes of automated checks. They also facilitate discussion should there be any confusion or disagreement with the outcome.
 - GitHub PR's provided an atomic view of a store submission.
 - The status (open / merged / closed) of the PR is clear.
 
@@ -89,16 +76,14 @@ You are welcome to review code / UX of addons and provide that feedback directly
   - Metadata / submission schema.
   - Tools used to validate the submission.
 - NV Access server - To provide the endpoint for "available Addons" meta-data
-  - While this is technically not necessary, it provides a good separation from implementation.
-    If we wished to change our storage mechanism, we would not be breaking old versions of NVDA.
+  - While this is technically not necessary, it provides a good separation from implementation. If we wished to change our storage mechanism, we would not be breaking old versions of NVDA.
 
 ## `addon-store-submission` GitHub Repository
 
 Essentially this repository holds metadata about all the accepted versions of Addons which are included in the store.
 Metadata about old versions of an addon remains until it is explicitly removed or becomes invalid.
 This allows delivery to older versions of NVDA.
-If a newer add-on release is removed (in response to a critical bug being found) NVDA can fall back
-on a prior add-on release.
+If a newer add-on release is removed (in response to a critical bug being found) NVDA can fall back on a prior add-on release.
 Addons versions are submitted by submitting a pull request, adding a file for that version of the addon.
 
 ### Layout
@@ -116,8 +101,7 @@ Example for the NV Access addon, 'NVDA - OCR':
 - add-on ID `nvda-ocr`
 
 ### Metadata format
-For a full description of the schema see the
-[_validate/addonVersion_schema.json file](https://github.com/nvaccess/validateNvdaAddonMetadata/blob/main/_validate/addonVersion_schema.json).
+For a full description of the schema see the [_validate/addonVersion_schema.json file](https://github.com/nvaccess/validateNvdaAddonMetadata/blob/main/_validate/addonVersion_schema.json).
 It includes an example of the file contents.
 
 ### Submitting an Addon version
@@ -142,9 +126,7 @@ Process to add a new NVDA-addon version:
 See https://github.com/nvaccess/validateNvdaAddonMetadata
 
 ### Other notes
-- By using a git repository and PR process, `git blame` and `git log` can be used to get more
-  context about addons listed in the store.
-  For instance:
+- By using a git repository and PR process, `git blame` and `git log` can be used to get more context about addons listed in the store. For instance:
   - When was the addon accepted?
   - What did the review look like?
   - How often is the add-on updated?
@@ -157,8 +139,7 @@ These views of the data will be committed by the GitHub Action to a `views` bran
 
 ### Overview
 
-For each version of NVDA, the meta-data of the most recent (the highest version number) of each Addon is automatically
-added, based on the data in 'addon-store-submission'.
+For each version of NVDA, the meta-data of the most recent (the highest version number) of each Addon is automatically added, based on the data in 'addon-store-submission'.
 
 Code for this will be stored in the `_tools` folder.
 This will enable interested parties to generate the same view of the data locally.
@@ -177,10 +158,8 @@ Notes:
 - The contents for each addon will include all the technical details required for NVDA to download, verify file integrity, and install.
 - The file will include translations (if available) for the displayable metadata.
 
-The simplicity of this is that the NV Access server can just forward these files on directly when asked
-"what are the latest Addons for NVDA API Version X" or "What is the latest version of Addon-ID for NVDA API Version X".
-Using the NV Access server as the endpoint for this is important in case the implementation has to change or be migrated
-away from GitHub for some reason.
+The simplicity of this is that the NV Access server can just forward these files on directly when asked "what are the latest Addons for NVDA API Version X" or "What is the latest version of Addon-ID for NVDA API Version X".
+Using the NV Access server as the endpoint for this is important in case the implementation has to change or be migrated away from GitHub for some reason.
 
 ## Suffix
 

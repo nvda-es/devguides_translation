@@ -1,7 +1,6 @@
 # Creating PR's on the NVDA project
 
-This page is meant to serve as an explanation for how to fill out
-[our Github pull request template](https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
+This page is meant to serve as an explanation for how to fill out [our Github pull request template](https://github.com/nvaccess/nvda/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
 
 ## The template
 At the start of the template there is a HTML comment block (starting with `<!--`),
