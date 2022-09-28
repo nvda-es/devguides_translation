@@ -4,9 +4,6 @@ There are several ways in which you can contribute to the NVDA project:
 - Issue triage and investigation
 - Code or documentation contributions
 
-## Note: Currently only accepting bug-fix / maintenance PR's only while addressing backlog.
-For more information please see: https://github.com/nvaccess/nvda/issues/11006
-
 ## Testing
 
 Testing alpha / beta / and release candidates help to ensure the quality of the NVDA.
@@ -52,16 +49,12 @@ If you are new to the project, or looking for some way to help take a look at:
    ```
    # Add a remote for the NV Access repository.
    git remote add nvaccess https://github.com/nvaccess/nvda.git
-
    # Fetch the nvaccess branches.
    git fetch nvaccess
-
    # Switch to the local master branch.
    git checkout master
-
    # Set the local master to use the nvaccess master as its upstream.
    git branch -u nvaccess/master
-
    # Update the local master.
    git pull
    ```

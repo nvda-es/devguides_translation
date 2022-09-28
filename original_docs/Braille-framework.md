@@ -5,15 +5,15 @@ NVDA"s braille framework depends on the following modules:
 
 * [`braille.py`](https://github.com/nvaccess/nvda/blob/master/source/braille.py): contains the base of NVDA"s braille code, including the braille handler as well as a base braille display driver that all braille display drivers inherit from. Also, it contains classes for  regions, braille buffers and braille display gestures, described in greater detail below.
 * [`brailleTables.py`](https://github.com/nvaccess/nvda/blob/master/source/brailleTables.py): contains definitions of liblouis braille tables used within NVDA.
-* [`brailleInput.py`](https://github.com/nvaccess/nvda/blob/master/source/brailleInput.py): the code that is responsible for the processing of braille input and kkey presses from braille keyboards.
+* [`brailleInput.py`](https://github.com/nvaccess/nvda/blob/master/source/brailleInput.py): the code that is responsible for the processing of braille input and key presses from braille keyboards.
 * [`bdDetect.py`](https://github.com/nvaccess/nvda/blob/master/source/bdDetect.py): contains definitions of detection data for braille displays and implements a Detector class that facilitates automatic detection of braille displays over USB or Bluetooth.
-* [`hwIo.py`](https://github.com/nvaccess/nvda/blob/master/source/hwIo.py): contains classes that streamline thread safe communication with braille displays using HID, Serial or Bulk protocols.
-* [`hwPortUtils.py`](https://github.com/nvaccess/nvda/blob/master/source/hwPortUtils.py): contains fucntions that ease detection of HID, USB or Serial based hardware.
+* [`hwIo.py`](https://github.com/nvaccess/nvda/tree/master/source/hwIo): contains classes that streamline thread safe communication with braille displays using HID, Serial or Bulk protocols.
+* [`hwPortUtils.py`](https://github.com/nvaccess/nvda/blob/master/source/hwPortUtils.py): contains functions that ease detection of HID, USB or Serial based hardware.
 
 ## The `braille` module
 
 ### The `BrailleHandler` class
-The `BrailleHandler` class is the playing point guard of the braille framework. It receives requests from NVDA's core to control what has to be shown on a braille display, thereby making use of underlying technics and classes, including BrailleBuffers and BrailleRegions. When braille is initialized using the initialize function, a single BrailleHandler is instantiated as braille.handler. Basically, the braille handler does the following:
+The `BrailleHandler` class is the playing point guard of the braille framework. It receives requests from NVDA's core to control what has to be shown on a braille display, thereby making use of underlying technology and classes, including BrailleBuffers and BrailleRegions. When braille is initialized using the initialize function, a single BrailleHandler is instantiated as braille.handler. Basically, the braille handler does the following:
 
 * It keeps track of the current braille display in use and enables or disables automatic detection if appropriate.
 * It keeps track of several braille settings, including tethering, focus context presentation, cursor blinking, message timeout, braille output tables, etc.

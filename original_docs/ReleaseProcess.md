@@ -1,6 +1,6 @@
 # Release Process
 
-This document provides rough guidelines for the process of developing NVDA releases. All current and potential developers and translators should read and follow this document. These guidelines may be broken under special circumstances. Any concerns should be discussed with the lead developers: Mick Curran (@michaelDCurran) and Reef Turner (@feerrenrut).
+This document provides rough guidelines for the process of developing NVDA releases. All current and potential developers and translators should read and follow this document. These guidelines may be broken under special circumstances. Any concerns should be discussed via [GitHub Discussion](https://github.com/nvaccess/nvda/discussions).
  
 ## Release Workflow
 This is the general release workflow. Information for specific community groups is provided in later sections. The production of a release consists of the following:

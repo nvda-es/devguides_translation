@@ -33,7 +33,7 @@ Please report your experiences with translations, and we will do our best to adj
 
 # NVDA Add-on Development Guide
 
-Latest version: August 2021 for NVDA 2021.2
+Latest version: May 2022 for NVDA 2022.1
 
 ---
 
@@ -117,10 +117,11 @@ Latest version: August 2021 for NVDA 2021.2
 - [Introduction to app modules](#user-content-introduction-to-app-modules)
     - [Differences between app modules and global plugins](#user-content-differences-between-app-modules-and-global-plugins)
     - [App module development process and strategies](#user-content-app-module-development-process-and-strategies)
-    - [Example 2: Simple app module in Notepad](#user-content-example-2-simple-app-module-in-notepad)
-    - [Example 3: Silencing NVDA in Openbook](#user-content-example-3-silencing-nvda-in-openbook)
-    - [Example 4: Announcing control property changes while using another app](#user-content-example-4-announcing-control-property-changes-while-using-another-app)
+    - [Example 1: Simple app module in Notepad](#user-content-example-1-simple-app-module-in-notepad)
+    - [Example 2: Silencing NVDA in Openbook](#user-content-example-2-silencing-nvda-in-openbook)
+    - [Example 3: Announcing control property changes while using another app](#user-content-example-3-announcing-control-property-changes-while-using-another-app)
     - [Useful app module properties and methods](#user-content-useful-app-module-properties-and-methods)
+    - [Example 4: Customizing status bars as seen by NVDA](#user-content-example-3-customizing-status-bars-as-seen-by-nvda)
     - [Other remarks on app modules](#user-content-other-remarks-on-app-modules)
 - [Drivers](#user-content-drivers)
     - [Driver components](#user-content-driver-components)
@@ -133,13 +134,17 @@ Latest version: August 2021 for NVDA 2021.2
 - [Sharing your add-on and experience with others](#user-content-sharing-your-add-on-and-experience-with-others)
     - [The NVDA Add-ons list](#user-content-the-nvda-add-ons-list)
     - [The NVDA Community Add-ons web site and code repository](#user-content-the-nvda-community-add-ons-web-site-and-code-repository)
-    - [Submitting your add-on for review](#user-content-submitting-your-add-on-for-review)
-        - [Add-on review checklist](#user-content-add-on-review-checklist)
+    - [Publishing add-ons for community distribution](#user-content-publishing-add-ons-for-community-distribution)
+        - [Add-on submission checklist](#user-content-add-on-submission-checklist)
 - [Advanced Code Examples and Features](#user-content-advanced-code-examples-and-features)
     - [Interactive Dialogs](#user-content-interactive-dialogs)
         - [Introduction](#user-content-introduction)
         - [Example 1: A Basic Dialog](#user-content-example-1-a-basic-dialog)
         - [Example 2: A Three-Way Dialog](#user-content-example-2-a-three-way-dialog)
+    - [Settings Dialogs And Panels](#user-content-settings-dialogs-and-panels)
+        - [Introduction](#user-content-introduction)
+        - [Settings Panel Ingredients](#user-content-settings-panel-ingredients)
+        - [Example: A Basic Settings Panel](#user-content-example-a-basic-settings-panel)
     - [Using The Log](#user-content-using-the-log)
     - [Threading](#user-content-threading)
         - [Introduction](#user-content-introduction)
@@ -152,7 +157,6 @@ Latest version: August 2021 for NVDA 2021.2
     - [Appendix B: Programming and Python concepts every add-on developer needs to know](#user-content-appendix-b-programming-and-python-concepts-every-add-on-developer-needs-to-know)
     - [Appendix C: Add-on type comparison](#user-content-appendix-c-add-on-type-comparison)
     - [Appendix D: notes and references for scripters of other screen readers](#user-content-appendix-d-notes-and-references-for-scripters-of-other-screen-readers)
-    - [Appendix E: Python 2 versus 3](#user-content-appendix-e-python-2-versus-3)
 
 ---
 
@@ -164,7 +168,7 @@ This guide is primarily maintained, and was originally written, by Joseph Lee ([
 
 Valuable contributions and corrections from the community are welcome.
 
-NVDA is copyright 2006-2021 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
+NVDA is copyright 2006-2022 NV Access Limited. Microsoft Windows, Microsoft Office, Win32 API, and other Microsoft  products are copyright Microsoft Corporation. the IAccessible package is copyright by IBM and the Linux Foundation. Python is copyright by Python Software Foundation. Other products mentioned are copyrighted by their respective copyright holders.
 
 ## Introduction
 
@@ -187,7 +191,7 @@ If you are new to NVDA add-on or core development, we recommend that you get to 
 
 ### Special note on Python version
 
-Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. With the release of NVDA 2019.3 in February 2020, Python 3 transition is complete. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA. For more information on Python 2 versus 3, please read Appendix E.
+Until 2019, NVDA and add-ons were written primarily in Python 2, specifically 2.7. As of July 2019, NVDA was transitioned to use Python 3.7, with some add-on developers modifying their add-on source code to run on Python 2 and 3. With the release of NVDA 2019.3 in February 2020, Python 3 transition is complete, and from January 2022, Python 3 is required. Be sure to keep an eye on NVDA development and add-ons mailing lists, as well as relevant development documentation and notices regarding news on Python 3 and NVDA.
 
 This guide will use strictly Python 3 code.
 
@@ -201,7 +205,7 @@ List of backwards incompatible NVDA releases and their highlights:
 * 2021.1: dependency updates
 * 2022.1: control types refactor
 
-Unless otherwise stated, this guide will assume latest backwards incompatible NVDA when giving code examples (as of August 2021, 2021.1 is assumed). Exceptions will be documented in appropriate places.
+Unless otherwise stated, this guide will assume latest backwards incompatible NVDA when giving code examples (as of May 2022, 2022.1 is assumed). Exceptions will be documented in appropriate places.
 
 ### A special note for scripters of other screen readers
 
@@ -233,7 +237,7 @@ If you are coming from NVDA 2018.4 or earlier, you may recall that you are able 
 
 ### A very important note about control types module changes in NVDA 2021.2
 
-NVDA 2021.2 introduces control types refactor that changes how control roles and sates are specified. In older NvDA releases, control roles are written as controlTypes.ROLE_*, and states are written as controlTypes.STATE_*. With control types refactor, roles and states must be written as controlTypes.Role.* and controlTypes.State.*, respectively. For example:
+NVDA 2021.2 introduces control types refactor that changes how control roles and states are specified. In older NVDA releases, control roles are written as controlTypes.ROLE_*, and states are written as controlTypes.STATE_*. With control types refactor, roles and states must be written as controlTypes.Role.* and controlTypes.State.*, respectively. For example:
 
 * Editable text role:
     * 2021.1 and earlier: controlTypes.ROLE_EDITABLETEXT
@@ -242,7 +246,7 @@ NVDA 2021.2 introduces control types refactor that changes how control roles and
     * 2021.1 and earlier: controlTypes.STATE_CHECKABLE
     * 2021.2 and later: controlTypes.State.CHECKABLE
 
-The older way of specifying control roles and states will be removed in NVDA 2022.1. Unless otherwise stated, this guide will use the newer style.
+The older way of specifying control roles and states is removed in NVDA 2022.1. Unless otherwise stated, this guide will use the newer style.
 
 ## Add-on Basics
 
@@ -302,7 +306,6 @@ To create an add-on for NVDA, please make sure your system meets the following r
     - Even better: we recommend installing the latest master (alpha) or beta development version to keep up to date with core API changes. You can download the latest snapshots at https://www.nvaccess.org/files/nvda/snapshots/.
 * Python:
     - Python 3.7 series, version 3.7.9 32-bit for Windows: https://www.python.org/downloads/release/python-379/
-    - Although the add-ons community do understand that Python 2 might be required for backward compatibility, we do not recommend using it in production environments.
 * SCons 3, version 3.1.2 or later for generating add-on packages: http://www.scons.org/
 * Markdown 2.0.1 or later for generating add-on documentation: https://pypi.python.org/pypi/Markdown/2.0.1
 * The GNU Gettext package for Windows for message localization support. The build can be found at: http://gnuwin32.sourceforge.net/downlinks/gettext.php
@@ -496,7 +499,7 @@ The following lists available NVDA core modules and some useful methods and clas
 * Built-in modules (builtin.py): Allows access to builtin modules when working with add-ons.
 * Configuration (config): Manages configuration and profiles (profiles are available in 2013.3 or later).
 * Content recognition engines (contentRecog packages): adds ability to use OCR and other methods to recognize content in various scenarios. NVDA ships with Windows 10 OCR engine.
-* Controls and states collection (controlTypes.py): Includes dictionaries on control types (roles) and possible states that a control can be in.
+* Controls and states collection (controlTypes): Includes enumerations and dictionaries on control types (roles) and possible states that a control can be in.
 * Events (eventHandler.py): Handles various events such as gaining focus. One function in particular is useful in app modules:
     - `eventHandler.requestEvents(event to be requested, process ID, window class name for the control)`: Allows NVDA to listen to specific events for certain controls while using another app.
 * Extension points (extensionPoints): provides a way to let add-ons and other modules define and respond to specific action such as profile switches, actions in an add-on and so on. The following extension points are defined:
@@ -1075,7 +1078,7 @@ One way to fix this is using threads (separate, independent  operations in a pro
 
 Q. I would like to port a module written in Python 2 syntax for use as an NVDA add-on.
 
-This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NVDA 2019.3 and later is strictly a Python 3 release.
+This cannot be done easily. One handy module for this purpose is six, which allows running Python 2 and 3 code. NVDA 2019.3 and later is strictly a Python 3 release, and from January 2022 onwards, Python 3 is required.
 
 Q. My add-on uses GUI facility, and after installing NVDA 2018.3, I get errors related to wxPython.
 
@@ -1112,6 +1115,28 @@ Most notably, NVDA does not ship with asyncio. You must include additional libra
 Q. I need to manipulate environment variables such as system path.
 
 An effective way to do this is prepending a desired string (such as the path to an executable you need to run) to existing environment variable value. This allows your add-on to work with modified values without breaking NVDA and/or Windows components while NVDA is running.
+
+Q. After installing NVDA 2022.1, parts of add-ons that use control types module report errors.
+
+Control types module (controlTypes) was refactored in NVDA 2021.2 which was completed in 2022.1. Specifically, roles and states definitions have changed from ROLE_*/STATE_* to Role.* and State.*, respectively. You can support older and newer NVDA Releases by doing an attribute check (hasattr) for role and state constants.
+
+Q. Why are add-on commands still available when NVDA is running in secure screens?
+
+It is possible to disable parts of add-ons such as global plugins by checking for globalVars.appArgs.secure flag in their constructor (__init__ method) and returning early if this flag is set. However, this only affects class attributes defined in the constructor. Because scripts are defined at the class level, add-on commands can be performed from secure screens.
+
+You can disable the affected add-on class (global plugin or app module) using one of the following methods:
+
+* Module organization: define the affected class in a file other than the main module file, then from __init__.py file, import the affected class if secure flag is off.
+* Decorator: a decorator that will return either the passed in class or the default implementation from NVDA if secure flag is off or on, respectively.
+
+Q. What are other security issues to consider when handling NVDA in secure screens?
+
+In addition to script execution noted above, the following issues should be considered when running add-ons in secure screens:
+
+* Web access: while add-ons can use modules to access information over the network such as websites, this is a security risk as users can browse to a different website or files can be downloaded by malicious actors.
+* File operations: add-ons can perform file and folder operations such as creating, renaming, deleting, reading, and writing files and folders, and this is a security risk if performed from secure screens.
+
+Unless the add-on is designed for these tasks in mind from secure screens, your add-on should keep the above issues in mind. The best action is advising users to not install affected add-ons to secure screens.
 
 We did not include programming or Python-related FAQ's, as there are sites which answer questions about Python such as coding style. Consult these documents if you have issues with Python code.
 
@@ -1227,7 +1252,7 @@ As you write app modules, try these tips:
 2. If possible, test your app module using two or more versions of the program to make sure your app module works with those versions.
 3. You should not incorporate all desired features in version 1.0 - leave some of them for a future release.
 
-### Example 2: Simple app module in Notepad
+### Example 1: Simple app module in Notepad
 
 Suppose you wish to find out which line you're editing in Notepad. Assuming that Notepad will show status bar at all times, you wish to assign a key combination to read the current line number.
 
@@ -1252,9 +1277,9 @@ class AppModule(appModuleHandler.AppModule):
 
 So whenever you run Notepad, when you press NVDA+S, NVDA will say line number.
 
-### Example 3: Silencing NVDA in Openbook
+### Example 2: Silencing NVDA in Openbook
 
-Openbook is a scanning and reading program from Freedom scientific. Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:
+Openbook is a scanning and reading program from Vispero (formerly Freedom scientific). Since Openbook provides speech, you can tell NVDA to enter sleep mode while Openbook (openbook.exe) is running using the below app module:
 
 ```python
 # Silencing NVDA in openbook, openbook.py.
@@ -1267,7 +1292,7 @@ class AppModule(appModuleHandler.AppModule):
 
 With that single line of code, NVDA will enter sleep mode in that program (you should do this only if the program provides speech and/or braille support on its own).
 
-### Example 4: Announcing control property changes while using another app
+### Example 3: Announcing control property changes while using another app
 
 You can ask NVDA to handle specific events while focused on another app. This is done by calling eventHandler.requestEvents in app module's __init__ method. In order to invoke this, you need process ID (PID) for the application, window class name for the object and the name of the event to be handled.
 
@@ -1302,8 +1327,37 @@ Once defined, even if focused in another app, new messages (values) will be anno
 * appPath: records the path to the app executable.
 * appArchitecture: the intended processor architecture for the app e.g. x86, AMD64, ARM64.
 * isWindowsStoreApp: applicable on Windows 8, 8.1, and 10, determines if the app is hosted inside an app container such as a Store app.
+* statusBar: informs NVDA that an app places status bar somewhere other than bottom of the screen or requires other ways to obtain the status bar.
 
 And other properties. Type dir(obj.appModule) from [Python Console] for the complete list.
+
+
+### Example 4: Customizing status bars as seen by NVDA
+
+Typically, status bars are located at the bottom of the app window, but sometimes NVDA cannot locate status bars easily. You can customize status bar retrieval routine from an app module through a getter method (methods prefixed with "_get_").
+
+The below app module tells NVDA that a UIA control with a unique Automation Id should be treated as a status bar.
+
+```python
+# Example app module for an audio editor.
+# The status bar cannot be retrieved using methods provided by NVDA.
+# However a UIA element with a unique Automation Id shows status bar text.
+
+import appModuleHandler
+import api
+from NVDAObjects.UIA import UIA
+
+class AppModule(appModuleHandler.AppModule):
+
+	def _get_statusBar(self):
+		fg = api.getForegroundObject()
+		for element in fg.children:
+			if isinstance(element, UIA) and element.UIAAutomationId == "StatusBar":
+				return element
+		raise NotImplementedError
+```
+
+As long as this audio editor is in use, NVDA will use the status bar retrieval method defined in the app module to obtain status bar text.
 
 ### Other remarks on app modules
 
@@ -1394,7 +1448,7 @@ This chapter is designed to give some guidance on add-on release and maintenance
 
 ### The NVDA Add-ons list
 
-If you want to keep in touch with your add-on users or want to learn from or contribute your add-on to others, please subscribe to [NVDA add-ons list][4]. This is a low traffic list devoted to discussing current and future add-ons, as well as to review other add-ons created by members of the community or have your add-on reviewed by other add-on developers around the world.
+If you want to keep in touch with your add-on users or want to learn from or contribute your add-on to others, please subscribe to [NVDA add-ons list][4]. This is a low traffic list devoted to discussing current and future add-ons, as well as to send and receive feedback on add-ons, including yours.
 
 ### The NVDA Community Add-ons web site and code repository
 
@@ -1411,24 +1465,29 @@ Some of the useful and educational add-on repositories are:
 * [NVDA Remote Support by Christopher Toth and Tyler Spivey](https://github.com/nvdaremote/nvdaremote): a popular add-on used for remote troubleshooting and technical support, provides examples of how various external Python libraries are used.
 * [StationPlaylist by Joseph Lee](https://github.com/josephsl/stationPlaylist): improves usage of StationPlaylist Studio, provides interesting examples on overlay classes and app API, use of threads, and add-on dialogs and other user interfaces.
 
-### Submitting your add-on for review
+### Publishing add-ons for community distribution
 
-If you would like to submit your add-on for distribution on community add-ons website, you must request a review from a member of the add-ons community as follows:
+If you would like to submit your add-on for distribution on community add-ons website, follow these steps:
 
 1. If you haven't, subscribe to NVDA Add-ons mailing list.
-2. Ask the community to review your add-on. Be sure to specify name, author, brief description of the add-on, and public code repository if possible.
-3. Community members will review and comment on your add-on, including license and copyright, user experience, documentation, and security.
-4. If your add-on is accepted for community add-ons website distribution, a maintainer of the community add-ons website will register your add-on. This includes creating a new entry for your add-on and preparing localization support.
-5. Optionally, after your add-on is accepted, you can ask the community for more detailed reviews. These can include improving messages, GUI layout, advanced security audit, compatibility testing, and porting to newer Python versions.
+2. Make sure your add-on meets the community submission checklist (see the next section).
+3. When you are ready, introduce the add-on. Be sure to specify name, author, brief description of the add-on, and public code repository if possible.
+4. Ask for community feedback. This is so that members (potential users and add-on authors) can use your add-on, report bugs, suggest features and changes, among other things.
+5. If you believe your add-on is ready for community distribution, inform the community and register the add-on with community add-ons repository, or ask a community member to register the add-on on your behalf.
+6. Once your add-on is published on community add-ons website, inform various communities, including users.
+7. For add-on updates, perform steps 4 through 6 and add a brief changelog that describes what the update contains. Make sure you go over the submission checklist again.
+8. Optionally, ask the community for more detailed feedback, including code audit, interface messages, additional compatibility checks, detailed security testing, and so on.
 
-#### Add-on review checklist
+#### Add-on submission checklist
 
 Your add-on:
 
-1. Must be licensed under GNU General Public license (GPL) version 2 or later or equivalent which allows a GPL software such as NVDA to incorporate your code while it runs.
-2. Must be written in Python 3. Compatibility with Python 2 is optional but not recommended starting with NVDA 2021.1 base API.
-3. Must be compatible with latest base API release (as of May 2021, base API is 2021.1).
-4. Messages to be presented to users should be made translatable (use _() Gettext function to make messages translatable). Be sure to accompany translatable messages with comments for translators.
+1. Must be licensed under GNU General Public license (GPL) version 2 which allows a GPL software such as NVDA to incorporate your code while it runs (add-ons are considered derivative works, according to NVDA license document).
+	* The above statement applies to any part of the add-on that uses functionality provided by NVDA such as functions, classes, and modules.
+	* Third-party modules can be included as long as you have appropriate license to do so (such as premission from vendors of proprietary software and/or using modules with licenses compatible with GPL 2 such as 3-Clause BSD license).
+2. Must be written in Python 3.
+3. Must be compatible with latest base API release (as of May 2022, base API is 2022.1).
+4. Messages to be presented to users should be made translatable (use _() Gettext function to make messages translatable). Be sure to accompany translatable messages with comments for translators (of the form: "`# Translators: description of message`", above the string containing the message).
 
 ## Advanced Code Examples and Features
 
@@ -1444,7 +1503,7 @@ To create and use dialogs, you need to import two modules: GUI (import gui) and 
 
 In short:
 * gui provides methods for constructing and displaying some standard dialogs.
-* wx provides the actual implementation for those dialogs, and provides many of the constants and extended options you will need to really make use of dialogs effectively.
+* wx provides the actual implementation for those dialogs, and supplies many of the constants and extended options you will need to really make use of dialogs effectively.
 
 #### Example 1: A Basic Dialog
 
@@ -1459,15 +1518,20 @@ from scriptHandler import script
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
+	# Describe the attributes of the script to NVDA.
 	@script(
 		gesture="kb:nvda+shift+t",  # Configure the key
-		description="Run an add-on guide example"  # NVDA input help
+		description="Run an add-on guide example"  # NVDA input help, may show in Input Gestures
 	)
-	def script_makeSillyWindow(self, gesture):	# A normal GlobalPlugin script method
-		def showSillyWindow():			# Define an internal function
-			gui.messageBox("Warning! You are about to do nothing. But you will be doing it with an important looking dialog window. Continue?",
-				"Silly Question Window", wx.OK | wx.CANCEL | wx.ICON_WARNING)
-		wx.CallAfter(showSillyWindow)
+	def script_makeExampleWindow(self, gesture):	# A normal GlobalPlugin script method
+		def showExampleWindow():			# Define an internal (nested) function
+			gui.messageBox(  # An NVDA function to safely create message dialogs
+				# Translators: a message shown to users as an example.
+				_(
+					"Warning! You are about to do nothing. But you will be doing it with "
+					"an important looking dialog window. Continue?"
+				), "Example Question Window", wx.OK | wx.CANCEL | wx.ICON_WARNING)
+		wx.CallAfter(showExampleWindow)
 ```
 
 If you save the above as a global plugin and load it in NVDA, then press NVDA+shift+t, you should find yourself in a new window.
@@ -1476,7 +1540,9 @@ The window is generated by the call to gui.messageBox. The first parameter is th
 * wx.OK, causes the window to display the standard OK button.
 * And wx.CANCEL is the same for cancel.
 
-Unfortunately, if we just call gui.messageBox directly, it will usually cause NVDA to hang, unless it is run from the main thread. To get around that problem, we use wx.CallAfter to queue the dialog for display in the main thread. However, wx.CallAfter can not call gui.messageBox directly: it must do so through some other method or function. In this example we achieve that by using a nested function the only purpose of which is the one-time generation of that dialog.
+Unfortunately, if we just call gui.messageBox directly, it will usually cause NVDA to hang, unless it is run from the main thread. To get around that problem, we use wx.CallAfter to queue the dialog for display in the main thread. However, wx.CallAfter can not call gui.messageBox directly: it must do so through some other method or function. In this example we achieve that by using a nested function, which only exists to call that single dialog when the script is run. We could have just as easily put this function somewhere else and not nested it; this was only done for example simplicity.
+
+Exercise for the reader: do you notice anything important we forgot to do for the title string of the dialog? Here's a hint: we did do it for the message stringg.
 
 #### Example 2: A Three-Way Dialog
 
@@ -1495,19 +1561,105 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		gesture="kb:nvda+shift+t",  # Configure the key
 		description="Run an add-on guide example"  # NVDA input help
 	)
-
-	@script(gesture="kb:nvda+shift+t")		# Configure the key
 	def script_askPointlessQuestion(self, gesture):
-		def askTheQuestion():			# Define an internal function
-			result = gui.messageBox("""Warning! You are about to answer a pointless question.
-Fortunately you have this great window to do it in!
-Do you wish to proceed?""",
-				"Silly Question", wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL)
-			if result == wx.YES: answer = "yes"
-			elif result == wx.NO: answer = "no"
-			else: return
-			gui.messageBox("You answered %s to the pointless question." %(answer), "Silly Answer", wx.OK)
+		"""This script prompts the user with yes/no, and returns the result as a string."""
+		def askTheQuestion():
+			# This nested function asks the user a yes/no question, and also offers a cancel
+			# option. The yes/no is returned ; or the dialog is closed on cancel.
+			result = gui.messageBox(
+				"Warning! You are about to answer a pointless question.\n"
+				"Fortunately you have this great window to do it in!\n"
+				"Do you wish to proceed?",
+				# Translators: the title of a dialog which asks the user a pointless question.
+				_("Pointless Question"), wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL)
+			if result == wx.YES:
+				# Translators: optionally shown to the user if "yes" was chosen in the Pointless Question dialog.
+				answer = _("yes")
+			elif result == wx.NO:
+				# Translators: optionally shown to the user if "yes" was chosen in the Pointless Question dialog.
+				answer = _("no")
+			else:
+				# Cancel was chosen or the dialog was closed by other means.
+				return
+			# Getting this far means that either yes or no was chosen.
+			# Let's report the answer to the user.
+			gui.messageBox(
+				# Translators: a message in a dialog showing a variable answer to the user.
+				_(f"You answered {answer} to the pointless question."),
+				# Translators: the title of a dialog showing information to the user.
+				_("Pointless Answer"), wx.OK
+			)
+		# Ask the question to the user, by calling the above nested function.
 		wx.CallAfter(askTheQuestion)
+```
+
+When you run this script, a dialog is created. It contains some text, and three buttons: yes, no, and cancel. As you can see, a flag is given to WX that tells it that the no button should be the default--this is optional of course. Then we use wx.CallAfter to run the nested function.
+In this case the nested function presents the dialog to the user, and then optionally shows another dialog which indicates the result. You could have just as easily changed state on some object, or signalled a different thread, with the outcome of the question, depending upon your needs.
+
+Exercise for the reader: did you notice anything we forgot to make translatable in the above code?
+
+### Settings Dialogs And Panels
+
+#### Introduction
+
+As noted above, dialogs are useful in allowing users to interact with add-on features. One variation of a dialog is a settings dialog where users can configure add-on features themselves.
+
+Settings dialogs can be done in two ways: dedicated settings dialog, or as a panel in NVDA Settings dialog. A dedicated settings dialog is useful if settings are divided into sections, such as dedicated panels of their own. In contrast, settings panels are used to integrate add-on settings as though they are part of NVDA settings.
+
+Prior to NVDA 2018.2, only a dedicated settings dialog was supported. NVDA 2018.2 introduced settings panel for use by add-ons. This guide will discuss settings panels exclusively since dedicated settings dialogs are variation of interactive dialogs (see above for details).
+
+#### Settings Panel Ingredients
+
+To create settings panels, you must come up with a way to store add-on settings and make it configurable. A common way to do this is include a configuration specification (confspec) which will be used to configure add-on options.
+
+In addition to configuration specification, you must import NVDA GUI helpers, as well as define a class that inherits from gui.SettingsPanel class with the following defined:
+
+* title (required): the name of the panel.
+* makeSettings (required): a method to populate settings.
+* onSave (required): react to OK button.
+* isValid (optional): validate settings befor saving.
+* postSave (optional): take action after OK button is clicked.
+* onDiscard (optional): respond to Cancel button being clicked.
+
+Lastly, when the add-on is run, add the just define panel to NVDA settings panels list and remove it when the add-on is being terminated.
+
+#### Example: A Basic Settings Panel
+
+The below example is a global plugin with a settings panel with a simple checkbox.
+
+```python
+# A global plugin with a simple settings panel
+
+import globalPluginHandler
+import gui
+import wx
+
+sampleOption = False
+
+class OptionsPanel(gui.SettingsPanel):
+	title = _("Simple Settings")
+
+	def makeSettings(self, settingsSizer):
+		sHelper = gui.guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
+		self.OptionCheckBox = sHelper.addItem(
+			wx.CheckBox(self, label=_("A simple checkbox"))
+		)
+		self.OptionCheckBox.SetValue(sampleOption)
+
+	def onSave(self):
+		global sampleOption
+		sampleOption = self.optionCheckBox.IsChecked()
+
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+
+	def __init__(self):
+		super(GlobalPlugin, self).__init__()
+		gui.settingsDialogs.NVDASettingsDialog.categoryClasses.append(OptionsPanel)
+
+	def terminate(self):
+		super(GlobalPlugin, self).terminate()
+		gui.settingsDialogs.NVDASettingsDialog.categoryClasses.remove(OptionsPanel)
 ```
 
 ### Using The Log
@@ -1738,7 +1890,7 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I need certain features in order for my code to work better | hasattr(module, something) | This allows you to check for existence of a feature/attribute you need, as it then allows you to support old and new code paths. |
 | Windows version | winVersion.getWinVer() | This returns current Windows version (Windows release name, major.minor.build, installation type (workstation, server, domain controller), and service pack if any). You can also compare the version returned against a specific Windows release from winVersion module e.g. winVersion.getWinVer() >= winVersion.WIN81. |
 | Is 64-bit Windows | os.environ["PROCESSOR_ARCHITEW6432"] in ("AMD64", "ARM64") or os.path.exists(r"C:\Program Files (X86) | The environment variable method is more reliable. Starting from 2017.4, both AMD64 or ARM64 must be checked, especially when supporting Windows 10 on ARM. |
-| Registry access | winreg module | "_winreg" in Python 2. |
+| Registry access | winreg module | |
 | Open a website with the default web browser | os.startfile(URL) | |
 | Download headers for a file on the web | resource = urllib.urlopen(URL) | |
 | Work with JSON data | json module | |
@@ -1757,21 +1909,3 @@ If you write scripts for screen readers such as JAWS for Windows or Window-Eyes,
 | I want to release version 1.0 of my code with everything included | NEVER DO THAT UNLESS YOU KNOW WHY,  know WHAT YOU ARE DOING, OR SPECIFIED BY A CONTRACT YOU SIGNED! | |
 | I wish to bring a feature from another screen reader to NVDA | Justify why and plan accordingly | |
 | I want to contribute features of my add-on to NVDA screen reader | Send in a pull request and prepare to answer questions from reviewers | Sometimes, a feature or two from an add-on do land in NVDA screen reader but after going through pull request review process. For more information, see NV Access's contributing guidelines. |
-
-### Appendix E: Python 2 versus 3
-
-The following describes notable changes between Python 2 and 3 and tips for making your add-on Python 2 and 3 compatible.
-
-| Concept or task | Python 2| Python 3 | Compatibility tips |
-| ------- | --------- | -------- | -------- |
-| Print text | print text | print(text) | The latter also works on Python 2. |
-| Default text format | ANSI | Unicode | Unicode is preferred. To do so, prefix text with a "u". |
-| Range | xrange | range | If you are not concerned with performance, use range. |
-| Reduce/accumulate | reduce | functools.reduce | |
-| Map and filter returns | list | iterator | If you want maximum compatibility, wrap a call to map or filter inside a list function call. |
-| Exception aliasing | exception, e | exception as e | The latter works on Python 2. |
-| Relative import | import relativeModule | from . import relativeModule | The latter also works on Python 2. |
-| Registry access | _winreg | winreg | For maximum compatibility, use winreg, and on Python 2, import _winreg as winreg. |
-| Dictionary item/key/value iteration | dict.iteritems/iterkeys/itervalues | dict.items/keys/values | In case of dict.keys, one can just iterate through the dictionary itself. |
-| Strictly integer division | / | // | The former now performs regular division on Python 3. |
-| Class definition | class someclass: content | class someclass(object): content | The latter also works on Python 2. |
